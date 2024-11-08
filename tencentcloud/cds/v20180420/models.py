@@ -48,18 +48,14 @@ class CdsAuditInstance(AbstractModel):
         :param _ExpireTime: 实例过期时间，格式：yyyy-mm-dd HH:ii:ss
         :type ExpireTime: str
         :param _InstanceName: 实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _PublicIp: 实例公网IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIp: str
         :param _PrivateIp: 实例私网IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateIp: str
         :param _InstanceType: 实例类型（版本）
         :type InstanceType: str
         :param _Pdomain: 实例域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Pdomain: str
         """
         self._InstanceId = None
@@ -81,6 +77,9 @@ class CdsAuditInstance(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -89,6 +88,9 @@ class CdsAuditInstance(AbstractModel):
 
     @property
     def AppId(self):
+        """用户AppId
+        :rtype: str
+        """
         return self._AppId
 
     @AppId.setter
@@ -97,6 +99,9 @@ class CdsAuditInstance(AbstractModel):
 
     @property
     def Uin(self):
+        """用户Uin
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -105,6 +110,9 @@ class CdsAuditInstance(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -113,6 +121,9 @@ class CdsAuditInstance(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """续费标识
+        :rtype: int
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -121,6 +132,9 @@ class CdsAuditInstance(AbstractModel):
 
     @property
     def Region(self):
+        """所属地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -129,6 +143,9 @@ class CdsAuditInstance(AbstractModel):
 
     @property
     def PayMode(self):
+        """付费模式（数据安全审计只支持预付费：1）
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -137,6 +154,9 @@ class CdsAuditInstance(AbstractModel):
 
     @property
     def Status(self):
+        """实例状态： 0，未生效；1：正常运行； 2：被隔离； 3，已过期
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -145,6 +165,9 @@ class CdsAuditInstance(AbstractModel):
 
     @property
     def IsolatedTimestamp(self):
+        """实例被隔离时间，格式：yyyy-mm-dd HH:ii:ss
+        :rtype: str
+        """
         return self._IsolatedTimestamp
 
     @IsolatedTimestamp.setter
@@ -153,6 +176,9 @@ class CdsAuditInstance(AbstractModel):
 
     @property
     def CreateTime(self):
+        """实例创建时间，格式： yyyy-mm-dd HH:ii:ss
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -161,6 +187,9 @@ class CdsAuditInstance(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """实例过期时间，格式：yyyy-mm-dd HH:ii:ss
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -169,6 +198,9 @@ class CdsAuditInstance(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -177,6 +209,9 @@ class CdsAuditInstance(AbstractModel):
 
     @property
     def PublicIp(self):
+        """实例公网IP
+        :rtype: str
+        """
         return self._PublicIp
 
     @PublicIp.setter
@@ -185,6 +220,9 @@ class CdsAuditInstance(AbstractModel):
 
     @property
     def PrivateIp(self):
+        """实例私网IP
+        :rtype: str
+        """
         return self._PrivateIp
 
     @PrivateIp.setter
@@ -193,6 +231,9 @@ class CdsAuditInstance(AbstractModel):
 
     @property
     def InstanceType(self):
+        """实例类型（版本）
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -201,6 +242,9 @@ class CdsAuditInstance(AbstractModel):
 
     @property
     def Pdomain(self):
+        """实例域名
+        :rtype: str
+        """
         return self._Pdomain
 
     @Pdomain.setter
@@ -267,6 +311,9 @@ class DbauditTypesInfo(AbstractModel):
 
     @property
     def InstanceVersionName(self):
+        """规格描述
+        :rtype: str
+        """
         return self._InstanceVersionName
 
     @InstanceVersionName.setter
@@ -275,6 +322,9 @@ class DbauditTypesInfo(AbstractModel):
 
     @property
     def InstanceVersionKey(self):
+        """规格名称
+        :rtype: str
+        """
         return self._InstanceVersionKey
 
     @InstanceVersionKey.setter
@@ -283,6 +333,9 @@ class DbauditTypesInfo(AbstractModel):
 
     @property
     def Qps(self):
+        """最大吞吐量
+        :rtype: int
+        """
         return self._Qps
 
     @Qps.setter
@@ -291,6 +344,9 @@ class DbauditTypesInfo(AbstractModel):
 
     @property
     def MaxInstances(self):
+        """最大实例数
+        :rtype: int
+        """
         return self._MaxInstances
 
     @MaxInstances.setter
@@ -299,6 +355,9 @@ class DbauditTypesInfo(AbstractModel):
 
     @property
     def InsertSpeed(self):
+        """入库速率（每小时）
+        :rtype: int
+        """
         return self._InsertSpeed
 
     @InsertSpeed.setter
@@ -307,6 +366,9 @@ class DbauditTypesInfo(AbstractModel):
 
     @property
     def OnlineStorageCapacity(self):
+        """最大在线存储量，单位：条
+        :rtype: int
+        """
         return self._OnlineStorageCapacity
 
     @OnlineStorageCapacity.setter
@@ -315,6 +377,9 @@ class DbauditTypesInfo(AbstractModel):
 
     @property
     def ArchivingStorageCapacity(self):
+        """最大归档存储量，单位：条
+        :rtype: int
+        """
         return self._ArchivingStorageCapacity
 
     @ArchivingStorageCapacity.setter
@@ -363,6 +428,9 @@ class DescribeDbauditInstanceTypeResponse(AbstractModel):
 
     @property
     def DbauditTypesSet(self):
+        """数据安全审计产品规格信息列表
+        :rtype: list of DbauditTypesInfo
+        """
         return self._DbauditTypesSet
 
     @DbauditTypesSet.setter
@@ -371,6 +439,9 @@ class DescribeDbauditInstanceTypeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -408,6 +479,9 @@ class DescribeDbauditInstancesRequest(AbstractModel):
 
     @property
     def SearchRegion(self):
+        """查询条件地域
+        :rtype: str
+        """
         return self._SearchRegion
 
     @SearchRegion.setter
@@ -416,6 +490,9 @@ class DescribeDbauditInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目，默认10， 最大50
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -424,6 +501,9 @@ class DescribeDbauditInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认1
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -465,6 +545,9 @@ class DescribeDbauditInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总实例数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -473,6 +556,9 @@ class DescribeDbauditInstancesResponse(AbstractModel):
 
     @property
     def CdsAuditInstanceSet(self):
+        """数据安全审计实例信息列表
+        :rtype: list of CdsAuditInstance
+        """
         return self._CdsAuditInstanceSet
 
     @CdsAuditInstanceSet.setter
@@ -481,6 +567,9 @@ class DescribeDbauditInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -522,6 +611,9 @@ class DescribeDbauditUsedRegionsResponse(AbstractModel):
 
     @property
     def RegionSet(self):
+        """可售卖地域信息列表
+        :rtype: list of RegionInfo
+        """
         return self._RegionSet
 
     @RegionSet.setter
@@ -530,6 +622,9 @@ class DescribeDbauditUsedRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -573,6 +668,9 @@ class InquiryPriceDbauditInstanceRequest(AbstractModel):
 
     @property
     def InstanceVersion(self):
+        """实例规格，取值范围： cdsaudit，cdsaudit_adv， cdsaudit_ent 分别为合规版，高级版，企业版
+        :rtype: str
+        """
         return self._InstanceVersion
 
     @InstanceVersion.setter
@@ -581,6 +679,9 @@ class InquiryPriceDbauditInstanceRequest(AbstractModel):
 
     @property
     def InquiryType(self):
+        """询价类型： renew，续费；newbuy，新购
+        :rtype: str
+        """
         return self._InquiryType
 
     @InquiryType.setter
@@ -589,6 +690,9 @@ class InquiryPriceDbauditInstanceRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
+        """购买实例的时长。取值范围：1（y/m），2（y/m）,，3（y/m），4（m）， 5（m），6（m）， 7（m），8（m），9（m）， 10（m）
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -597,6 +701,9 @@ class InquiryPriceDbauditInstanceRequest(AbstractModel):
 
     @property
     def TimeUnit(self):
+        """购买时长单位，y：年；m：月
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -605,6 +712,9 @@ class InquiryPriceDbauditInstanceRequest(AbstractModel):
 
     @property
     def ServiceRegion(self):
+        """实例所在地域
+        :rtype: str
+        """
         return self._ServiceRegion
 
     @ServiceRegion.setter
@@ -648,6 +758,9 @@ class InquiryPriceDbauditInstanceResponse(AbstractModel):
 
     @property
     def TotalPrice(self):
+        """总价，单位：元
+        :rtype: float
+        """
         return self._TotalPrice
 
     @TotalPrice.setter
@@ -656,6 +769,9 @@ class InquiryPriceDbauditInstanceResponse(AbstractModel):
 
     @property
     def RealTotalCost(self):
+        """真实价钱，预支费用的折扣价，单位：元
+        :rtype: float
+        """
         return self._RealTotalCost
 
     @RealTotalCost.setter
@@ -664,6 +780,9 @@ class InquiryPriceDbauditInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -694,6 +813,9 @@ class ModifyDbauditInstancesRenewFlagRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -702,6 +824,9 @@ class ModifyDbauditInstancesRenewFlagRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """0，表示默认状态(用户未设置，即初始状态)；1，表示自动续费；2，表示明确不自动续费
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -736,6 +861,9 @@ class ModifyDbauditInstancesRenewFlagResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -770,6 +898,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionId(self):
+        """地域ID
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -778,6 +909,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def Region(self):
+        """地域名称
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -786,6 +920,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionName(self):
+        """地域描述
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -794,6 +931,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionState(self):
+        """地域可用状态
+        :rtype: int
+        """
         return self._RegionState
 
     @RegionState.setter

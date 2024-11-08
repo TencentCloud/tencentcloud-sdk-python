@@ -69,6 +69,10 @@ class ActivityDetail(AbstractModel):
 
     @property
     def ActivityId(self):
+        """活动id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -77,6 +81,10 @@ class ActivityDetail(AbstractModel):
 
     @property
     def ActivityName(self):
+        """活动名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ActivityName
 
     @ActivityName.setter
@@ -85,6 +93,10 @@ class ActivityDetail(AbstractModel):
 
     @property
     def ActivityState(self):
+        """活动状态，10:未开始状态、20:已开始（进行中）状态、30:已结束状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ActivityState
 
     @ActivityState.setter
@@ -93,6 +105,10 @@ class ActivityDetail(AbstractModel):
 
     @property
     def ActivityType(self):
+        """活动类型，100:留资活动
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ActivityType
 
     @ActivityType.setter
@@ -101,6 +117,10 @@ class ActivityDetail(AbstractModel):
 
     @property
     def StartTime(self):
+        """活动开始时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -109,6 +129,10 @@ class ActivityDetail(AbstractModel):
 
     @property
     def EndTime(self):
+        """活动结束时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -117,6 +141,10 @@ class ActivityDetail(AbstractModel):
 
     @property
     def MainPhoto(self):
+        """活动主图
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MainPhoto
 
     @MainPhoto.setter
@@ -125,6 +153,10 @@ class ActivityDetail(AbstractModel):
 
     @property
     def PrivacyAgreementId(self):
+        """协议编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PrivacyAgreementId
 
     @PrivacyAgreementId.setter
@@ -133,6 +165,10 @@ class ActivityDetail(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """活动更新时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -141,6 +177,10 @@ class ActivityDetail(AbstractModel):
 
     @property
     def ActivityDataList(self):
+        """活动数据列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ActivityDataList
 
     @ActivityDataList.setter
@@ -244,6 +284,10 @@ class ActivityJoinDetail(AbstractModel):
 
     @property
     def ActivityId(self):
+        """活动id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -252,6 +296,10 @@ class ActivityJoinDetail(AbstractModel):
 
     @property
     def ActivityName(self):
+        """活动名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ActivityName
 
     @ActivityName.setter
@@ -260,6 +308,10 @@ class ActivityJoinDetail(AbstractModel):
 
     @property
     def SalesName(self):
+        """销售姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SalesName
 
     @SalesName.setter
@@ -268,6 +320,10 @@ class ActivityJoinDetail(AbstractModel):
 
     @property
     def SalesPhone(self):
+        """销售电话
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SalesPhone
 
     @SalesPhone.setter
@@ -276,6 +332,10 @@ class ActivityJoinDetail(AbstractModel):
 
     @property
     def JoinId(self):
+        """参与id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._JoinId
 
     @JoinId.setter
@@ -284,6 +344,10 @@ class ActivityJoinDetail(AbstractModel):
 
     @property
     def LiveCodeId(self):
+        """活码id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LiveCodeId
 
     @LiveCodeId.setter
@@ -292,6 +356,10 @@ class ActivityJoinDetail(AbstractModel):
 
     @property
     def UserPhone(self):
+        """用户电话
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserPhone
 
     @UserPhone.setter
@@ -300,6 +368,10 @@ class ActivityJoinDetail(AbstractModel):
 
     @property
     def UserName(self):
+        """用户姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -308,6 +380,10 @@ class ActivityJoinDetail(AbstractModel):
 
     @property
     def ActivityData(self):
+        """活动数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ActivityData
 
     @ActivityData.setter
@@ -316,6 +392,10 @@ class ActivityJoinDetail(AbstractModel):
 
     @property
     def LeadId(self):
+        """线索id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LeadId
 
     @LeadId.setter
@@ -324,6 +404,10 @@ class ActivityJoinDetail(AbstractModel):
 
     @property
     def JoinTime(self):
+        """参与时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._JoinTime
 
     @JoinTime.setter
@@ -332,6 +416,10 @@ class ActivityJoinDetail(AbstractModel):
 
     @property
     def Duplicate(self):
+        """线索是否是重复创建， 0 ：新建、 1：合并、 2：重复， 默认为0
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Duplicate
 
     @Duplicate.setter
@@ -340,6 +428,10 @@ class ActivityJoinDetail(AbstractModel):
 
     @property
     def DuplicateLeadId(self):
+        """重复线索id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DuplicateLeadId
 
     @DuplicateLeadId.setter
@@ -348,6 +440,10 @@ class ActivityJoinDetail(AbstractModel):
 
     @property
     def JoinState(self):
+        """是否为参与多次活动， 1：参与一次、2、参与多次，默认为0
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._JoinState
 
     @JoinState.setter
@@ -356,6 +452,10 @@ class ActivityJoinDetail(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -364,6 +464,10 @@ class ActivityJoinDetail(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -437,6 +541,9 @@ class ArrivalInfo(AbstractModel):
 
     @property
     def ClueId(self):
+        """线索id
+        :rtype: int
+        """
         return self._ClueId
 
     @ClueId.setter
@@ -445,6 +552,9 @@ class ArrivalInfo(AbstractModel):
 
     @property
     def CustomerId(self):
+        """客户id
+        :rtype: int
+        """
         return self._CustomerId
 
     @CustomerId.setter
@@ -453,6 +563,9 @@ class ArrivalInfo(AbstractModel):
 
     @property
     def UserName(self):
+        """客户姓名
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -461,6 +574,9 @@ class ArrivalInfo(AbstractModel):
 
     @property
     def Phone(self):
+        """客户的手机号
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -469,6 +585,9 @@ class ArrivalInfo(AbstractModel):
 
     @property
     def FirstArrival(self):
+        """是否首次到店，0否，1是
+        :rtype: int
+        """
         return self._FirstArrival
 
     @FirstArrival.setter
@@ -477,6 +596,10 @@ class ArrivalInfo(AbstractModel):
 
     @property
     def ArrivalTime(self):
+        """到店时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ArrivalTime
 
     @ArrivalTime.setter
@@ -485,6 +608,9 @@ class ArrivalInfo(AbstractModel):
 
     @property
     def EventType(self):
+        """发生事件
+        :rtype: int
+        """
         return self._EventType
 
     @EventType.setter
@@ -493,6 +619,9 @@ class ArrivalInfo(AbstractModel):
 
     @property
     def EventTypeName(self):
+        """发生事件名称
+        :rtype: str
+        """
         return self._EventTypeName
 
     @EventTypeName.setter
@@ -501,6 +630,9 @@ class ArrivalInfo(AbstractModel):
 
     @property
     def FollowRecord(self):
+        """跟进记录
+        :rtype: str
+        """
         return self._FollowRecord
 
     @FollowRecord.setter
@@ -587,6 +719,9 @@ class ChannelCodeInnerDetail(AbstractModel):
 
     @property
     def Id(self):
+        """渠道活码id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -595,6 +730,9 @@ class ChannelCodeInnerDetail(AbstractModel):
 
     @property
     def Type(self):
+        """欢迎语类型，0：普通欢迎语、1:渠道欢迎语
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -603,6 +741,9 @@ class ChannelCodeInnerDetail(AbstractModel):
 
     @property
     def Source(self):
+        """渠道来源
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -611,6 +752,9 @@ class ChannelCodeInnerDetail(AbstractModel):
 
     @property
     def SourceName(self):
+        """渠道来源名称
+        :rtype: str
+        """
         return self._SourceName
 
     @SourceName.setter
@@ -619,6 +763,9 @@ class ChannelCodeInnerDetail(AbstractModel):
 
     @property
     def Name(self):
+        """二维码名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -627,6 +774,9 @@ class ChannelCodeInnerDetail(AbstractModel):
 
     @property
     def UseUserIdList(self):
+        """使用成员用户id集
+        :rtype: list of int
+        """
         return self._UseUserIdList
 
     @UseUserIdList.setter
@@ -635,6 +785,9 @@ class ChannelCodeInnerDetail(AbstractModel):
 
     @property
     def UseUserOpenIdList(self):
+        """使用成员企微账号id集
+        :rtype: list of str
+        """
         return self._UseUserOpenIdList
 
     @UseUserOpenIdList.setter
@@ -643,6 +796,9 @@ class ChannelCodeInnerDetail(AbstractModel):
 
     @property
     def TagList(self):
+        """标签
+        :rtype: list of WeComTagDetail
+        """
         return self._TagList
 
     @TagList.setter
@@ -651,6 +807,9 @@ class ChannelCodeInnerDetail(AbstractModel):
 
     @property
     def SkipVerify(self):
+        """自动通过好友，0：开启、1：关闭，默认0开启
+        :rtype: int
+        """
         return self._SkipVerify
 
     @SkipVerify.setter
@@ -659,6 +818,9 @@ class ChannelCodeInnerDetail(AbstractModel):
 
     @property
     def Friends(self):
+        """添加好友人数
+        :rtype: int
+        """
         return self._Friends
 
     @Friends.setter
@@ -667,6 +829,9 @@ class ChannelCodeInnerDetail(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -675,6 +840,9 @@ class ChannelCodeInnerDetail(AbstractModel):
 
     @property
     def MsgId(self):
+        """欢迎语id（通过欢迎语新增返回的id）
+        :rtype: int
+        """
         return self._MsgId
 
     @MsgId.setter
@@ -683,6 +851,9 @@ class ChannelCodeInnerDetail(AbstractModel):
 
     @property
     def ConfigId(self):
+        """联系我config_id
+        :rtype: str
+        """
         return self._ConfigId
 
     @ConfigId.setter
@@ -691,6 +862,9 @@ class ChannelCodeInnerDetail(AbstractModel):
 
     @property
     def QrCodeUrl(self):
+        """联系我二维码地址
+        :rtype: str
+        """
         return self._QrCodeUrl
 
     @QrCodeUrl.setter
@@ -699,6 +873,9 @@ class ChannelCodeInnerDetail(AbstractModel):
 
     @property
     def RecStatus(self):
+        """记录状态， 0：有效、1：无效
+        :rtype: int
+        """
         return self._RecStatus
 
     @RecStatus.setter
@@ -707,6 +884,9 @@ class ChannelCodeInnerDetail(AbstractModel):
 
     @property
     def AppId(self):
+        """应用ID
+        :rtype: str
+        """
         return self._AppId
 
     @AppId.setter
@@ -765,6 +945,10 @@ class ChannelTag(AbstractModel):
 
     @property
     def TagName(self):
+        """该客户档案当前已成功关联的渠道标签名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagName
 
     @TagName.setter
@@ -773,6 +957,10 @@ class ChannelTag(AbstractModel):
 
     @property
     def TagId(self):
+        """该客户档案当前已成功关联的渠道标签的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagId
 
     @TagId.setter
@@ -839,6 +1027,9 @@ https://open.work.weixin.qq.com/api/doc/90000/90135/91774
 
     @property
     def MsgId(self):
+        """消息id
+        :rtype: str
+        """
         return self._MsgId
 
     @MsgId.setter
@@ -847,6 +1038,9 @@ https://open.work.weixin.qq.com/api/doc/90000/90135/91774
 
     @property
     def Action(self):
+        """动作名称，switch表示切换企微账号，send表示企微普通消息
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -855,6 +1049,11 @@ https://open.work.weixin.qq.com/api/doc/90000/90135/91774
 
     @property
     def MsgType(self):
+        """消息类型，当Action != "switch"时存在，例如video, text, voice 等，和企微开放文档一一对应
+https://open.work.weixin.qq.com/api/doc/90000/90135/91774
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MsgType
 
     @MsgType.setter
@@ -863,6 +1062,10 @@ https://open.work.weixin.qq.com/api/doc/90000/90135/91774
 
     @property
     def From(self):
+        """消息发送人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -871,6 +1074,10 @@ https://open.work.weixin.qq.com/api/doc/90000/90135/91774
 
     @property
     def ToList(self):
+        """消息接收人列表，注意接收人可能只有一个
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ToList
 
     @ToList.setter
@@ -879,6 +1086,10 @@ https://open.work.weixin.qq.com/api/doc/90000/90135/91774
 
     @property
     def RoomId(self):
+        """如果是群消息，则不为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -887,6 +1098,10 @@ https://open.work.weixin.qq.com/api/doc/90000/90135/91774
 
     @property
     def MsgTime(self):
+        """消息发送的时间戳，单位为秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MsgTime
 
     @MsgTime.setter
@@ -895,6 +1110,10 @@ https://open.work.weixin.qq.com/api/doc/90000/90135/91774
 
     @property
     def Video(self):
+        """MsgType=video时的消息体，忽略此字段，见BodyJson字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wav.v20210129.models.ChatArchivingMsgTypeVideo`
+        """
         return self._Video
 
     @Video.setter
@@ -903,6 +1122,10 @@ https://open.work.weixin.qq.com/api/doc/90000/90135/91774
 
     @property
     def BodyJson(self):
+        """根据MsgType的不同取值，解析内容不同，参考：https://open.work.weixin.qq.com/api/doc/90000/90135/91774
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BodyJson
 
     @BodyJson.setter
@@ -954,6 +1177,10 @@ class ChatArchivingMsgTypeVideo(AbstractModel):
 
     @property
     def PlayLength(self):
+        """视频时长，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PlayLength
 
     @PlayLength.setter
@@ -962,6 +1189,10 @@ class ChatArchivingMsgTypeVideo(AbstractModel):
 
     @property
     def FileSize(self):
+        """文件大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileSize
 
     @FileSize.setter
@@ -970,6 +1201,9 @@ class ChatArchivingMsgTypeVideo(AbstractModel):
 
     @property
     def CosKey(self):
+        """视频资源对象Cos下载地址
+        :rtype: str
+        """
         return self._CosKey
 
     @CosKey.setter
@@ -1170,6 +1404,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def ClueId(self):
+        """线索id，线索唯一识别编码
+        :rtype: str
+        """
         return self._ClueId
 
     @ClueId.setter
@@ -1178,6 +1415,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def DealerId(self):
+        """接待客户经销商顾问所属经销商code
+        :rtype: str
+        """
         return self._DealerId
 
     @DealerId.setter
@@ -1186,6 +1426,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def EnquireTime(self):
+        """线索获取时间，用户添加企业微信时间，单位是秒
+        :rtype: int
+        """
         return self._EnquireTime
 
     @EnquireTime.setter
@@ -1194,6 +1437,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def UnionId(self):
+        """客户在微信生态中唯一识别码
+        :rtype: str
+        """
         return self._UnionId
 
     @UnionId.setter
@@ -1202,6 +1448,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def Name(self):
+        """微信昵称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1210,6 +1459,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def Phone(self):
+        """联系方式
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -1218,6 +1470,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def SeriesCode(self):
+        """车系编号
+        :rtype: str
+        """
         return self._SeriesCode
 
     @SeriesCode.setter
@@ -1226,6 +1481,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def ModelCode(self):
+        """车型编号
+        :rtype: str
+        """
         return self._ModelCode
 
     @ModelCode.setter
@@ -1234,6 +1492,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def ProvinceCode(self):
+        """省份编号
+        :rtype: str
+        """
         return self._ProvinceCode
 
     @ProvinceCode.setter
@@ -1242,6 +1503,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def CityCode(self):
+        """城市编号
+        :rtype: str
+        """
         return self._CityCode
 
     @CityCode.setter
@@ -1250,6 +1514,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def SalesName(self):
+        """顾问名称
+        :rtype: str
+        """
         return self._SalesName
 
     @SalesName.setter
@@ -1258,6 +1525,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def SalesPhone(self):
+        """顾问电话
+        :rtype: str
+        """
         return self._SalesPhone
 
     @SalesPhone.setter
@@ -1266,6 +1536,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1274,6 +1547,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def TagList(self):
+        """标签
+        :rtype: list of str
+        """
         return self._TagList
 
     @TagList.setter
@@ -1282,6 +1558,10 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def UserName(self):
+        """客户姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -1290,6 +1570,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def LeadUserType(self):
+        """线索属性，0：个人，1：企业
+        :rtype: int
+        """
         return self._LeadUserType
 
     @LeadUserType.setter
@@ -1298,6 +1581,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def LeadType(self):
+        """线索来源类型，1：线上，2：线下
+        :rtype: int
+        """
         return self._LeadType
 
     @LeadType.setter
@@ -1306,6 +1592,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def ChannelId(self):
+        """线索渠道对应ID
+        :rtype: int
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -1314,6 +1603,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def ChannelName(self):
+        """线索渠道类型，与线索来源对应的渠道名称
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -1322,6 +1614,10 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def SourceChannelName(self):
+        """线索渠道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SourceChannelName
 
     @SourceChannelName.setter
@@ -1330,6 +1626,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def Gender(self):
+        """0：未知，1：男，2：女
+        :rtype: int
+        """
         return self._Gender
 
     @Gender.setter
@@ -1338,6 +1637,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def CreateTime(self):
+        """线索创建时间戳，单位：秒
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1346,6 +1648,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """线索创建时间戳，单位：秒
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -1354,6 +1659,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def LeadStatus(self):
+        """线索所处状态，101-待分配 201-待建档 301-已建档 401-已邀约 501-跟进中 601-已下订单 701-已成交 801-战败申请中 901-已战败 1001-未知状态 1101-转移申请中 1201-已完成
+        :rtype: int
+        """
         return self._LeadStatus
 
     @LeadStatus.setter
@@ -1362,6 +1670,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def LevelCode(self):
+        """线索意向等级
+        :rtype: str
+        """
         return self._LevelCode
 
     @LevelCode.setter
@@ -1370,6 +1681,10 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def ImportAtTime(self):
+        """线索成功导入的时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ImportAtTime
 
     @ImportAtTime.setter
@@ -1378,6 +1693,10 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def DistributeTime(self):
+        """完成线索分配的时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DistributeTime
 
     @DistributeTime.setter
@@ -1386,6 +1705,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def CreateAtTime(self):
+        """获取线索的时间戳，单位：秒
+        :rtype: int
+        """
         return self._CreateAtTime
 
     @CreateAtTime.setter
@@ -1394,6 +1716,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def WxId(self):
+        """客户微信id
+        :rtype: str
+        """
         return self._WxId
 
     @WxId.setter
@@ -1402,6 +1727,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def BrandCode(self):
+        """意向车型对应品牌code
+        :rtype: str
+        """
         return self._BrandCode
 
     @BrandCode.setter
@@ -1410,6 +1738,10 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def BuildTime(self):
+        """建档时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BuildTime
 
     @BuildTime.setter
@@ -1418,6 +1750,10 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def OrderTime(self):
+        """下订时间，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._OrderTime
 
     @OrderTime.setter
@@ -1426,6 +1762,10 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def ArrivalTime(self):
+        """到店时间，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ArrivalTime
 
     @ArrivalTime.setter
@@ -1434,6 +1774,10 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def DeliveryTime(self):
+        """交车时间，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DeliveryTime
 
     @DeliveryTime.setter
@@ -1442,6 +1786,10 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def FollowTime(self):
+        """上次跟进时间，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FollowTime
 
     @FollowTime.setter
@@ -1450,6 +1798,10 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def NextFollowTime(self):
+        """下次跟进时间，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._NextFollowTime
 
     @NextFollowTime.setter
@@ -1458,6 +1810,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def OrgId(self):
+        """线索所属组织id
+        :rtype: int
+        """
         return self._OrgId
 
     @OrgId.setter
@@ -1466,6 +1821,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def OrgName(self):
+        """线索所属组织名称
+        :rtype: str
+        """
         return self._OrgName
 
     @OrgName.setter
@@ -1474,6 +1832,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def Introducer(self):
+        """介绍人姓名
+        :rtype: str
+        """
         return self._Introducer
 
     @Introducer.setter
@@ -1482,6 +1843,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def IntroducerPhone(self):
+        """介绍人电话
+        :rtype: str
+        """
         return self._IntroducerPhone
 
     @IntroducerPhone.setter
@@ -1490,6 +1854,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def IsBindWx(self):
+        """是否关联微信 1 是 0 否
+        :rtype: int
+        """
         return self._IsBindWx
 
     @IsBindWx.setter
@@ -1498,6 +1865,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def IsMerge(self):
+        """是否经过合并 1 是 0 否
+        :rtype: int
+        """
         return self._IsMerge
 
     @IsMerge.setter
@@ -1506,6 +1876,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def IsInvalid(self):
+        """是否无效  1 是 0 否
+        :rtype: int
+        """
         return self._IsInvalid
 
     @IsInvalid.setter
@@ -1514,6 +1887,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def InvalidType(self):
+        """无效类型
+        :rtype: str
+        """
         return self._InvalidType
 
     @InvalidType.setter
@@ -1522,6 +1898,10 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def InvalidTypeName(self):
+        """无效类型枚举：
+无意向购买、空错号、未接听、其他
+        :rtype: str
+        """
         return self._InvalidTypeName
 
     @InvalidTypeName.setter
@@ -1530,6 +1910,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def InvalidRemark(self):
+        """由顾问手动输入的无效原因文字
+        :rtype: str
+        """
         return self._InvalidRemark
 
     @InvalidRemark.setter
@@ -1538,6 +1921,10 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def InvalidTime(self):
+        """无效时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._InvalidTime
 
     @InvalidTime.setter
@@ -1546,6 +1933,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def DealerName(self):
+        """经销商名称
+        :rtype: str
+        """
         return self._DealerName
 
     @DealerName.setter
@@ -1554,6 +1944,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def ShopId(self):
+        """经销商下级门店ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -1562,6 +1955,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def ShopName(self):
+        """经销商下级门店名称
+        :rtype: str
+        """
         return self._ShopName
 
     @ShopName.setter
@@ -1570,6 +1966,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def Position(self):
+        """职位
+        :rtype: str
+        """
         return self._Position
 
     @Position.setter
@@ -1578,6 +1977,9 @@ class ClueInfoDetail(AbstractModel):
 
     @property
     def CorpShopId(self):
+        """自定义的门店id
+        :rtype: str
+        """
         return self._CorpShopId
 
     @CorpShopId.setter
@@ -1701,6 +2103,9 @@ class CorpUserInfo(AbstractModel):
 
     @property
     def UserId(self):
+        """企业成员UserId
+        :rtype: int
+        """
         return self._UserId
 
     @UserId.setter
@@ -1709,6 +2114,10 @@ class CorpUserInfo(AbstractModel):
 
     @property
     def UserName(self):
+        """企业成员在SaaS名片内填写的姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -1717,6 +2126,10 @@ class CorpUserInfo(AbstractModel):
 
     @property
     def UserOpenId(self):
+        """企业成员在企微原生通讯录内的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserOpenId
 
     @UserOpenId.setter
@@ -1725,6 +2138,10 @@ class CorpUserInfo(AbstractModel):
 
     @property
     def DealerId(self):
+        """成员所属经销商id，可为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DealerId
 
     @DealerId.setter
@@ -1733,6 +2150,10 @@ class CorpUserInfo(AbstractModel):
 
     @property
     def ShopId(self):
+        """成员所属门店id，可为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -1741,6 +2162,10 @@ class CorpUserInfo(AbstractModel):
 
     @property
     def Phone(self):
+        """企业成员手机号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -1749,6 +2174,10 @@ class CorpUserInfo(AbstractModel):
 
     @property
     def OrgIds(self):
+        """成员所属部门id列表，仅返回该应用有查看权限的部门id；成员授权模式下，固定返回根部门id，即固定为1；多个部门使用逗号分割
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrgIds
 
     @OrgIds.setter
@@ -1757,6 +2186,10 @@ class CorpUserInfo(AbstractModel):
 
     @property
     def MainDepartment(self):
+        """主部门，仅当应用对主部门有查看权限时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MainDepartment
 
     @MainDepartment.setter
@@ -1765,6 +2198,10 @@ class CorpUserInfo(AbstractModel):
 
     @property
     def IsLeaderInDept(self):
+        """是否为部门负责人，第三方应用可为空。与orgIds值一一对应，多个部门使用逗号隔开，0-否， 1-是
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IsLeaderInDept
 
     @IsLeaderInDept.setter
@@ -1773,6 +2210,9 @@ class CorpUserInfo(AbstractModel):
 
     @property
     def Status(self):
+        """激活状态: 0=已激活，1=已禁用，-1=退出企业"
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1781,6 +2221,10 @@ class CorpUserInfo(AbstractModel):
 
     @property
     def JobNumber(self):
+        """工号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._JobNumber
 
     @JobNumber.setter
@@ -1857,6 +2301,9 @@ class CreateChannelCodeRequest(AbstractModel):
 
     @property
     def Type(self):
+        """欢迎语类型:0普通欢迎语,1渠道欢迎语
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -1865,6 +2312,9 @@ class CreateChannelCodeRequest(AbstractModel):
 
     @property
     def UseUserId(self):
+        """使用成员用户id集
+        :rtype: list of int
+        """
         return self._UseUserId
 
     @UseUserId.setter
@@ -1873,6 +2323,9 @@ class CreateChannelCodeRequest(AbstractModel):
 
     @property
     def UseUserOpenId(self):
+        """使用成员企微账号id集
+        :rtype: list of str
+        """
         return self._UseUserOpenId
 
     @UseUserOpenId.setter
@@ -1881,6 +2334,9 @@ class CreateChannelCodeRequest(AbstractModel):
 
     @property
     def AppIds(self):
+        """应用ID,字典表中的APP_TYPE值,多个已逗号分隔
+        :rtype: str
+        """
         return self._AppIds
 
     @AppIds.setter
@@ -1889,6 +2345,9 @@ class CreateChannelCodeRequest(AbstractModel):
 
     @property
     def Source(self):
+        """渠道来源
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -1897,6 +2356,9 @@ class CreateChannelCodeRequest(AbstractModel):
 
     @property
     def SourceName(self):
+        """渠道来源名称
+        :rtype: str
+        """
         return self._SourceName
 
     @SourceName.setter
@@ -1905,6 +2367,9 @@ class CreateChannelCodeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """二维码名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1913,6 +2378,9 @@ class CreateChannelCodeRequest(AbstractModel):
 
     @property
     def Tag(self):
+        """标签
+        :rtype: list of WeComTagDetail
+        """
         return self._Tag
 
     @Tag.setter
@@ -1921,6 +2389,9 @@ class CreateChannelCodeRequest(AbstractModel):
 
     @property
     def SkipVerify(self):
+        """自动通过好友：0开启 1关闭, 默认开启
+        :rtype: int
+        """
         return self._SkipVerify
 
     @SkipVerify.setter
@@ -1929,6 +2400,9 @@ class CreateChannelCodeRequest(AbstractModel):
 
     @property
     def MsgId(self):
+        """欢迎语id（通过欢迎语新增返回的id）
+        :rtype: int
+        """
         return self._MsgId
 
     @MsgId.setter
@@ -1937,6 +2411,9 @@ class CreateChannelCodeRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1945,6 +2422,9 @@ class CreateChannelCodeRequest(AbstractModel):
 
     @property
     def SourceType(self):
+        """渠道类型 0 未知 1 公域 2私域
+        :rtype: int
+        """
         return self._SourceType
 
     @SourceType.setter
@@ -1994,6 +2474,9 @@ class CreateChannelCodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2025,6 +2508,9 @@ class CreateCorpTagRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """标签组名称，最长为15个字符
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -2033,6 +2519,9 @@ class CreateCorpTagRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签信息数组
+        :rtype: list of TagInfo
+        """
         return self._Tags
 
     @Tags.setter
@@ -2041,6 +2530,9 @@ class CreateCorpTagRequest(AbstractModel):
 
     @property
     def Sort(self):
+        """标签组次序值。sort值大的排序靠前。有效的值范围是[0, 2^32)
+        :rtype: int
+        """
         return self._Sort
 
     @Sort.setter
@@ -2084,6 +2576,9 @@ class CreateCorpTagResponse(AbstractModel):
 
     @property
     def TagGroup(self):
+        """标签组信息
+        :rtype: :class:`tencentcloud.wav.v20210129.models.TagGroup`
+        """
         return self._TagGroup
 
     @TagGroup.setter
@@ -2092,6 +2587,9 @@ class CreateCorpTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2162,6 +2660,9 @@ class CreateLeadRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """来源ID
+        :rtype: int
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -2170,6 +2671,9 @@ class CreateLeadRequest(AbstractModel):
 
     @property
     def ChannelName(self):
+        """来源名称
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -2178,6 +2682,9 @@ class CreateLeadRequest(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间， 单位毫秒
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2186,6 +2693,9 @@ class CreateLeadRequest(AbstractModel):
 
     @property
     def SourceType(self):
+        """线索类型：1-400呼入，2-常规留资
+        :rtype: int
+        """
         return self._SourceType
 
     @SourceType.setter
@@ -2194,6 +2704,9 @@ class CreateLeadRequest(AbstractModel):
 
     @property
     def DealerId(self):
+        """经销商id
+        :rtype: int
+        """
         return self._DealerId
 
     @DealerId.setter
@@ -2202,6 +2715,9 @@ class CreateLeadRequest(AbstractModel):
 
     @property
     def BrandId(self):
+        """品牌id
+        :rtype: int
+        """
         return self._BrandId
 
     @BrandId.setter
@@ -2210,6 +2726,9 @@ class CreateLeadRequest(AbstractModel):
 
     @property
     def SeriesId(self):
+        """车系id
+        :rtype: int
+        """
         return self._SeriesId
 
     @SeriesId.setter
@@ -2218,6 +2737,9 @@ class CreateLeadRequest(AbstractModel):
 
     @property
     def CustomerName(self):
+        """客户姓名
+        :rtype: str
+        """
         return self._CustomerName
 
     @CustomerName.setter
@@ -2226,6 +2748,9 @@ class CreateLeadRequest(AbstractModel):
 
     @property
     def CustomerPhone(self):
+        """客户手机号
+        :rtype: str
+        """
         return self._CustomerPhone
 
     @CustomerPhone.setter
@@ -2234,6 +2759,9 @@ class CreateLeadRequest(AbstractModel):
 
     @property
     def ModelId(self):
+        """车型id
+        :rtype: int
+        """
         return self._ModelId
 
     @ModelId.setter
@@ -2242,6 +2770,9 @@ class CreateLeadRequest(AbstractModel):
 
     @property
     def CustomerSex(self):
+        """客户性别: 0-未知, 1-男, 2-女
+        :rtype: int
+        """
         return self._CustomerSex
 
     @CustomerSex.setter
@@ -2250,6 +2781,9 @@ class CreateLeadRequest(AbstractModel):
 
     @property
     def SalesName(self):
+        """销售姓名
+        :rtype: str
+        """
         return self._SalesName
 
     @SalesName.setter
@@ -2258,6 +2792,9 @@ class CreateLeadRequest(AbstractModel):
 
     @property
     def SalesPhone(self):
+        """销售手机号
+        :rtype: str
+        """
         return self._SalesPhone
 
     @SalesPhone.setter
@@ -2266,6 +2803,9 @@ class CreateLeadRequest(AbstractModel):
 
     @property
     def CcName(self):
+        """Cc坐席姓名
+        :rtype: str
+        """
         return self._CcName
 
     @CcName.setter
@@ -2274,6 +2814,9 @@ class CreateLeadRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -2327,6 +2870,9 @@ class CreateLeadResponse(AbstractModel):
 
     @property
     def BusinessCode(self):
+        """线索处理状态码： 0-表示创建成功， 1-表示线索合并，2-表示线索重复
+        :rtype: int
+        """
         return self._BusinessCode
 
     @BusinessCode.setter
@@ -2335,6 +2881,9 @@ class CreateLeadResponse(AbstractModel):
 
     @property
     def BusinessMsg(self):
+        """线索处理结果描述
+        :rtype: str
+        """
         return self._BusinessMsg
 
     @BusinessMsg.setter
@@ -2343,6 +2892,9 @@ class CreateLeadResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2391,6 +2943,9 @@ class CrmStatisticsData(AbstractModel):
 
     @property
     def LeadCnt(self):
+        """新增线索
+        :rtype: int
+        """
         return self._LeadCnt
 
     @LeadCnt.setter
@@ -2399,6 +2954,9 @@ class CrmStatisticsData(AbstractModel):
 
     @property
     def BuildCnt(self):
+        """新增建档
+        :rtype: int
+        """
         return self._BuildCnt
 
     @BuildCnt.setter
@@ -2407,6 +2965,9 @@ class CrmStatisticsData(AbstractModel):
 
     @property
     def InvitedCnt(self):
+        """新增到店
+        :rtype: int
+        """
         return self._InvitedCnt
 
     @InvitedCnt.setter
@@ -2415,6 +2976,9 @@ class CrmStatisticsData(AbstractModel):
 
     @property
     def OrderedCnt(self):
+        """新增下订
+        :rtype: int
+        """
         return self._OrderedCnt
 
     @OrderedCnt.setter
@@ -2423,6 +2987,9 @@ class CrmStatisticsData(AbstractModel):
 
     @property
     def DeliveredCnt(self):
+        """新增成交
+        :rtype: int
+        """
         return self._DeliveredCnt
 
     @DeliveredCnt.setter
@@ -2431,6 +2998,9 @@ class CrmStatisticsData(AbstractModel):
 
     @property
     def DefeatCnt(self):
+        """新增战败
+        :rtype: int
+        """
         return self._DefeatCnt
 
     @DefeatCnt.setter
@@ -2439,6 +3009,9 @@ class CrmStatisticsData(AbstractModel):
 
     @property
     def NewContactCnt(self):
+        """新增好友
+        :rtype: int
+        """
         return self._NewContactCnt
 
     @NewContactCnt.setter
@@ -2447,6 +3020,9 @@ class CrmStatisticsData(AbstractModel):
 
     @property
     def StatisticalTime(self):
+        """统计时间, 单位：天
+        :rtype: str
+        """
         return self._StatisticalTime
 
     @StatisticalTime.setter
@@ -2508,6 +3084,9 @@ class CustomerActionEventDetail(AbstractModel):
 
     @property
     def EventCode(self):
+        """事件码
+        :rtype: str
+        """
         return self._EventCode
 
     @EventCode.setter
@@ -2516,6 +3095,9 @@ class CustomerActionEventDetail(AbstractModel):
 
     @property
     def EventType(self):
+        """事件类型
+        :rtype: int
+        """
         return self._EventType
 
     @EventType.setter
@@ -2524,6 +3106,9 @@ class CustomerActionEventDetail(AbstractModel):
 
     @property
     def EventSource(self):
+        """事件来源
+        :rtype: int
+        """
         return self._EventSource
 
     @EventSource.setter
@@ -2532,6 +3117,9 @@ class CustomerActionEventDetail(AbstractModel):
 
     @property
     def ExternalUserId(self):
+        """外部联系人id
+        :rtype: str
+        """
         return self._ExternalUserId
 
     @ExternalUserId.setter
@@ -2540,6 +3128,9 @@ class CustomerActionEventDetail(AbstractModel):
 
     @property
     def SalesId(self):
+        """销售顾问id
+        :rtype: int
+        """
         return self._SalesId
 
     @SalesId.setter
@@ -2548,6 +3139,9 @@ class CustomerActionEventDetail(AbstractModel):
 
     @property
     def MaterialType(self):
+        """素材类型
+        :rtype: int
+        """
         return self._MaterialType
 
     @MaterialType.setter
@@ -2556,6 +3150,9 @@ class CustomerActionEventDetail(AbstractModel):
 
     @property
     def MaterialId(self):
+        """素材编号id
+        :rtype: int
+        """
         return self._MaterialId
 
     @MaterialId.setter
@@ -2564,6 +3161,9 @@ class CustomerActionEventDetail(AbstractModel):
 
     @property
     def EventTime(self):
+        """事件上报时间，单位：秒
+        :rtype: int
+        """
         return self._EventTime
 
     @EventTime.setter
@@ -2771,6 +3371,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def CustomerId(self):
+        """客户档案id，客户唯一识别编码
+        :rtype: int
+        """
         return self._CustomerId
 
     @CustomerId.setter
@@ -2779,6 +3382,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def DealerCode(self):
+        """所属经销商id
+        :rtype: str
+        """
         return self._DealerCode
 
     @DealerCode.setter
@@ -2787,6 +3393,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def UnionId(self):
+        """客户在微信生态中唯一识别码
+        :rtype: str
+        """
         return self._UnionId
 
     @UnionId.setter
@@ -2795,6 +3404,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def CreateTime(self):
+        """档案创建时间戳，单位：秒
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2803,6 +3415,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def UserName(self):
+        """客户姓名
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -2811,6 +3426,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def Gender(self):
+        """0未知，1：男，2：女
+        :rtype: int
+        """
         return self._Gender
 
     @Gender.setter
@@ -2819,6 +3437,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def Phone(self):
+        """客户联系手机号
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -2827,6 +3448,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def AgeRangeName(self):
+        """客户年龄段名称
+        :rtype: str
+        """
         return self._AgeRangeName
 
     @AgeRangeName.setter
@@ -2835,6 +3459,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def JobTypeName(self):
+        """客户行业类型名称信息，如教师、医生
+        :rtype: str
+        """
         return self._JobTypeName
 
     @JobTypeName.setter
@@ -2843,6 +3470,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def Address(self):
+        """客户居住地址
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -2851,6 +3481,10 @@ class CustomerProfile(AbstractModel):
 
     @property
     def LeadsProcessStatus(self):
+        """客户所处状态
+ 0:已分配 1:未分配 1 待建档, 2 已建档， 3 已到店 4 已经试驾 5 战败申请中 6 已战败 7 已成交 
+        :rtype: int
+        """
         return self._LeadsProcessStatus
 
     @LeadsProcessStatus.setter
@@ -2859,6 +3493,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def LeadType(self):
+        """客户来源类型，1：线上，2：线下
+        :rtype: int
+        """
         return self._LeadType
 
     @LeadType.setter
@@ -2867,6 +3504,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def SourceName(self):
+        """与客户来源类型对应的渠道名称
+        :rtype: str
+        """
         return self._SourceName
 
     @SourceName.setter
@@ -2875,6 +3515,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def LeadsLevelCode(self):
+        """客户购车的意向等级
+        :rtype: str
+        """
         return self._LeadsLevelCode
 
     @LeadsLevelCode.setter
@@ -2883,6 +3526,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def VehicleBrandCode(self):
+        """客户意向品牌编号
+        :rtype: str
+        """
         return self._VehicleBrandCode
 
     @VehicleBrandCode.setter
@@ -2891,6 +3537,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def VehicleSeriesCode(self):
+        """客户意向车系编号
+        :rtype: str
+        """
         return self._VehicleSeriesCode
 
     @VehicleSeriesCode.setter
@@ -2899,6 +3548,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def VehicleTypeCode(self):
+        """客户意向车型编号
+        :rtype: str
+        """
         return self._VehicleTypeCode
 
     @VehicleTypeCode.setter
@@ -2907,6 +3559,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def VehiclePurpose(self):
+        """购车用途信息
+        :rtype: :class:`tencentcloud.wav.v20210129.models.VehiclePurpose`
+        """
         return self._VehiclePurpose
 
     @VehiclePurpose.setter
@@ -2915,6 +3570,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def PurchaseConcern(self):
+        """购车关注点信息
+        :rtype: list of PurchaseConcern
+        """
         return self._PurchaseConcern
 
     @PurchaseConcern.setter
@@ -2923,6 +3581,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def SalesName(self):
+        """客户所属顾问姓名
+        :rtype: str
+        """
         return self._SalesName
 
     @SalesName.setter
@@ -2931,6 +3592,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def SalesPhone(self):
+        """客户所属顾问手机号
+        :rtype: str
+        """
         return self._SalesPhone
 
     @SalesPhone.setter
@@ -2939,6 +3603,10 @@ class CustomerProfile(AbstractModel):
 
     @property
     def RealArrivalTime(self):
+        """客户实际到店时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RealArrivalTime
 
     @RealArrivalTime.setter
@@ -2947,6 +3615,10 @@ class CustomerProfile(AbstractModel):
 
     @property
     def CompleteTestDriveTime(self):
+        """客户到店完成试乘试驾时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CompleteTestDriveTime
 
     @CompleteTestDriveTime.setter
@@ -2955,6 +3627,10 @@ class CustomerProfile(AbstractModel):
 
     @property
     def OrderTime(self):
+        """客户完成下订的时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._OrderTime
 
     @OrderTime.setter
@@ -2963,6 +3639,10 @@ class CustomerProfile(AbstractModel):
 
     @property
     def DeliveryTime(self):
+        """客户成交的时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DeliveryTime
 
     @DeliveryTime.setter
@@ -2971,6 +3651,10 @@ class CustomerProfile(AbstractModel):
 
     @property
     def InvoiceTime(self):
+        """开票时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._InvoiceTime
 
     @InvoiceTime.setter
@@ -2979,6 +3663,10 @@ class CustomerProfile(AbstractModel):
 
     @property
     def LoseTime(self):
+        """完成对此客户战败审批的时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LoseTime
 
     @LoseTime.setter
@@ -2987,6 +3675,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def CreatedAtTime(self):
+        """线索成功获取的时间戳，单位：秒
+        :rtype: int
+        """
         return self._CreatedAtTime
 
     @CreatedAtTime.setter
@@ -2995,6 +3686,10 @@ class CustomerProfile(AbstractModel):
 
     @property
     def ImportAtTime(self):
+        """线索成功导入的时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ImportAtTime
 
     @ImportAtTime.setter
@@ -3003,6 +3698,10 @@ class CustomerProfile(AbstractModel):
 
     @property
     def DistributeTime(self):
+        """完成线索分配的时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DistributeTime
 
     @DistributeTime.setter
@@ -3011,6 +3710,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def LeadCreateTime(self):
+        """线索成功创建的时间戳，单位：秒
+        :rtype: int
+        """
         return self._LeadCreateTime
 
     @LeadCreateTime.setter
@@ -3019,6 +3721,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def Nickname(self):
+        """线索关联微信昵称
+        :rtype: str
+        """
         return self._Nickname
 
     @Nickname.setter
@@ -3027,6 +3732,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def OrgIdList(self):
+        """线索归属部门节点
+        :rtype: list of str
+        """
         return self._OrgIdList
 
     @OrgIdList.setter
@@ -3035,6 +3743,10 @@ class CustomerProfile(AbstractModel):
 
     @property
     def Introducer(self):
+        """客户的介绍人姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Introducer
 
     @Introducer.setter
@@ -3043,6 +3755,10 @@ class CustomerProfile(AbstractModel):
 
     @property
     def IntroducerPhone(self):
+        """客户的介绍人手机号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IntroducerPhone
 
     @IntroducerPhone.setter
@@ -3051,6 +3767,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def FollowTime(self):
+        """最近一次完成跟进的时间戳，单位：秒
+        :rtype: int
+        """
         return self._FollowTime
 
     @FollowTime.setter
@@ -3059,6 +3778,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def NextFollowTime(self):
+        """最近一次计划跟进的时间戳，单位：秒
+        :rtype: int
+        """
         return self._NextFollowTime
 
     @NextFollowTime.setter
@@ -3067,6 +3789,10 @@ class CustomerProfile(AbstractModel):
 
     @property
     def EnterpriseTags(self):
+        """已为该客户添加的企业标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EnterpriseTag
+        """
         return self._EnterpriseTags
 
     @EnterpriseTags.setter
@@ -3075,6 +3801,10 @@ class CustomerProfile(AbstractModel):
 
     @property
     def ChannelTags(self):
+        """已为该客户添加的渠道标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ChannelTag
+        """
         return self._ChannelTags
 
     @ChannelTags.setter
@@ -3083,6 +3813,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def LeadId(self):
+        """关联线索id
+        :rtype: int
+        """
         return self._LeadId
 
     @LeadId.setter
@@ -3091,6 +3824,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def WxId(self):
+        """客户微信id
+        :rtype: str
+        """
         return self._WxId
 
     @WxId.setter
@@ -3099,6 +3835,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def Position(self):
+        """顾问职位
+        :rtype: str
+        """
         return self._Position
 
     @Position.setter
@@ -3107,6 +3846,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def IsBindWx(self):
+        """是否关联微信 1 是 0 否
+        :rtype: int
+        """
         return self._IsBindWx
 
     @IsBindWx.setter
@@ -3115,6 +3857,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def IsInvalid(self):
+        """是否无效
+        :rtype: int
+        """
         return self._IsInvalid
 
     @IsInvalid.setter
@@ -3123,6 +3868,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def InvalidType(self):
+        """无效类型
+        :rtype: str
+        """
         return self._InvalidType
 
     @InvalidType.setter
@@ -3131,6 +3879,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def InvalidTypeName(self):
+        """无效类型名称
+        :rtype: str
+        """
         return self._InvalidTypeName
 
     @InvalidTypeName.setter
@@ -3139,6 +3890,10 @@ class CustomerProfile(AbstractModel):
 
     @property
     def InvalidTime(self):
+        """无效时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._InvalidTime
 
     @InvalidTime.setter
@@ -3147,6 +3902,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def InvalidRemark(self):
+        """由顾问手动输入的无效原因文字
+        :rtype: str
+        """
         return self._InvalidRemark
 
     @InvalidRemark.setter
@@ -3155,6 +3913,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def IsLose(self):
+        """线索是否战败
+        :rtype: int
+        """
         return self._IsLose
 
     @IsLose.setter
@@ -3163,6 +3924,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def LoseType(self):
+        """战败类型
+        :rtype: str
+        """
         return self._LoseType
 
     @LoseType.setter
@@ -3171,6 +3935,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def LoseTypeName(self):
+        """战败类型名称
+        :rtype: str
+        """
         return self._LoseTypeName
 
     @LoseTypeName.setter
@@ -3179,6 +3946,9 @@ class CustomerProfile(AbstractModel):
 
     @property
     def LoseRemark(self):
+        """战败申请原因
+        :rtype: str
+        """
         return self._LoseRemark
 
     @LoseRemark.setter
@@ -3295,6 +4065,9 @@ class DealerInfo(AbstractModel):
 
     @property
     def DealerId(self):
+        """企微SaaS平台经销商id
+        :rtype: int
+        """
         return self._DealerId
 
     @DealerId.setter
@@ -3303,6 +4076,9 @@ class DealerInfo(AbstractModel):
 
     @property
     def DealerName(self):
+        """经销商名称
+        :rtype: str
+        """
         return self._DealerName
 
     @DealerName.setter
@@ -3311,6 +4087,10 @@ class DealerInfo(AbstractModel):
 
     @property
     def ProvinceCode(self):
+        """所属省份编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProvinceCode
 
     @ProvinceCode.setter
@@ -3319,6 +4099,10 @@ class DealerInfo(AbstractModel):
 
     @property
     def CityCodeList(self):
+        """所属城市编号列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._CityCodeList
 
     @CityCodeList.setter
@@ -3327,6 +4111,10 @@ class DealerInfo(AbstractModel):
 
     @property
     def BrandIdList(self):
+        """业务覆盖品牌id列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._BrandIdList
 
     @BrandIdList.setter
@@ -3373,6 +4161,10 @@ class EnterpriseTag(AbstractModel):
 
     @property
     def GroupName(self):
+        """该客户档案当前已成功关联的企业标签分组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -3381,6 +4173,10 @@ class EnterpriseTag(AbstractModel):
 
     @property
     def TagName(self):
+        """该客户档案当前已成功关联的企业标签名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagName
 
     @TagName.setter
@@ -3389,6 +4185,10 @@ class EnterpriseTag(AbstractModel):
 
     @property
     def TagId(self):
+        """该客户档案当前已成功关联的企业标签的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagId
 
     @TagId.setter
@@ -3441,6 +4241,9 @@ class ExternalContact(AbstractModel):
 
     @property
     def ExternalUserId(self):
+        """外部联系人的userId
+        :rtype: str
+        """
         return self._ExternalUserId
 
     @ExternalUserId.setter
@@ -3449,6 +4252,9 @@ class ExternalContact(AbstractModel):
 
     @property
     def Gender(self):
+        """外部联系人性别 0-未知 1-男性 2-女性
+        :rtype: int
+        """
         return self._Gender
 
     @Gender.setter
@@ -3457,6 +4263,9 @@ class ExternalContact(AbstractModel):
 
     @property
     def Name(self):
+        """外部联系人的名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3465,6 +4274,9 @@ class ExternalContact(AbstractModel):
 
     @property
     def Type(self):
+        """外部联系人的类型，1表示该外部联系人是微信用户，2表示该外部联系人是企业微信用户
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -3473,6 +4285,10 @@ class ExternalContact(AbstractModel):
 
     @property
     def UnionId(self):
+        """外部联系人在微信开放平台的唯一身份标识（微信unionid），通过此字段企业可将外部联系人与公众号/小程序用户关联起来。仅当联系人类型是微信用户，且企业或第三方服务商绑定了微信开发者ID有此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UnionId
 
     @UnionId.setter
@@ -3481,6 +4297,10 @@ class ExternalContact(AbstractModel):
 
     @property
     def Phone(self):
+        """外部联系人联系电话
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -3524,6 +4344,10 @@ class ExternalContactDetailPro(AbstractModel):
 
     @property
     def Customer(self):
+        """客户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wav.v20210129.models.ExternalContact`
+        """
         return self._Customer
 
     @Customer.setter
@@ -3532,6 +4356,10 @@ class ExternalContactDetailPro(AbstractModel):
 
     @property
     def FollowUser(self):
+        """添加了此外部联系人的企业成员信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FollowUserPro
+        """
         return self._FollowUser
 
     @FollowUser.setter
@@ -3583,6 +4411,9 @@ class ExternalContactSimpleInfo(AbstractModel):
 
     @property
     def ExternalUserId(self):
+        """外部联系人的userId
+        :rtype: str
+        """
         return self._ExternalUserId
 
     @ExternalUserId.setter
@@ -3591,6 +4422,9 @@ class ExternalContactSimpleInfo(AbstractModel):
 
     @property
     def UserId(self):
+        """添加了此外部联系人的企业成员userId
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -3599,6 +4433,10 @@ class ExternalContactSimpleInfo(AbstractModel):
 
     @property
     def SalesName(self):
+        """添加了此外部联系人的企业成员的姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SalesName
 
     @SalesName.setter
@@ -3607,6 +4445,9 @@ class ExternalContactSimpleInfo(AbstractModel):
 
     @property
     def DepartmentIdList(self):
+        """添加了此外部联系人的企业成员的归属部门id列表
+        :rtype: list of int
+        """
         return self._DepartmentIdList
 
     @DepartmentIdList.setter
@@ -3656,6 +4497,10 @@ class ExternalContactTag(AbstractModel):
 
     @property
     def GroupName(self):
+        """该成员添加此外部联系人所打标签的分组名称（标签功能需要企业微信升级到2.7.5及以上版本）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -3664,6 +4509,10 @@ class ExternalContactTag(AbstractModel):
 
     @property
     def TagName(self):
+        """该成员添加此外部联系人所打标签名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagName
 
     @TagName.setter
@@ -3672,6 +4521,10 @@ class ExternalContactTag(AbstractModel):
 
     @property
     def Type(self):
+        """该成员添加此外部联系人所打标签类型, 1-企业设置, 2-用户自定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -3680,6 +4533,10 @@ class ExternalContactTag(AbstractModel):
 
     @property
     def TagId(self):
+        """该成员添加此外部联系人所打企业标签的id，仅企业设置（type为1）的标签返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagId
 
     @TagId.setter
@@ -3725,6 +4582,9 @@ class ExternalUserEventInfo(AbstractModel):
 
     @property
     def EventCode(self):
+        """事件编码, 添加外部联系人(ADD_EXTERNAL_CUSTOMER)/成员删除外部联系人(DELETE_EXTERNAL_CUSTOMER)/外部联系人删除成员(DELETE_FOLLOW_USER)
+        :rtype: str
+        """
         return self._EventCode
 
     @EventCode.setter
@@ -3733,6 +4593,9 @@ class ExternalUserEventInfo(AbstractModel):
 
     @property
     def ExternalUserId(self):
+        """外部联系人id
+        :rtype: str
+        """
         return self._ExternalUserId
 
     @ExternalUserId.setter
@@ -3741,6 +4604,9 @@ class ExternalUserEventInfo(AbstractModel):
 
     @property
     def SalesId(self):
+        """企微SaaS的成员id
+        :rtype: str
+        """
         return self._SalesId
 
     @SalesId.setter
@@ -3749,6 +4615,9 @@ class ExternalUserEventInfo(AbstractModel):
 
     @property
     def EventTime(self):
+        """事件上报时间戳，单位：秒
+        :rtype: int
+        """
         return self._EventTime
 
     @EventTime.setter
@@ -3789,6 +4658,9 @@ class ExternalUserMappingInfo(AbstractModel):
 
     @property
     def CorpExternalUserId(self):
+        """企业主体对应的外部联系人userId
+        :rtype: str
+        """
         return self._CorpExternalUserId
 
     @CorpExternalUserId.setter
@@ -3797,6 +4669,10 @@ class ExternalUserMappingInfo(AbstractModel):
 
     @property
     def ExternalUserId(self):
+        """乐销车应用主体对应的外部联系人, 当不存在好友关系时，该字段值为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExternalUserId
 
     @ExternalUserId.setter
@@ -3870,6 +4746,9 @@ class FollowInfo(AbstractModel):
 
     @property
     def ClueId(self):
+        """线索id
+        :rtype: int
+        """
         return self._ClueId
 
     @ClueId.setter
@@ -3878,6 +4757,9 @@ class FollowInfo(AbstractModel):
 
     @property
     def CustomerId(self):
+        """客户档案id
+        :rtype: int
+        """
         return self._CustomerId
 
     @CustomerId.setter
@@ -3886,6 +4768,9 @@ class FollowInfo(AbstractModel):
 
     @property
     def UserName(self):
+        """客户姓名
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -3894,6 +4779,9 @@ class FollowInfo(AbstractModel):
 
     @property
     def Phone(self):
+        """客户的手机号
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -3902,6 +4790,9 @@ class FollowInfo(AbstractModel):
 
     @property
     def IsOverdue(self):
+        """是否逾期
+        :rtype: int
+        """
         return self._IsOverdue
 
     @IsOverdue.setter
@@ -3910,6 +4801,10 @@ class FollowInfo(AbstractModel):
 
     @property
     def OverdueTime(self):
+        """逾期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._OverdueTime
 
     @OverdueTime.setter
@@ -3918,6 +4813,9 @@ class FollowInfo(AbstractModel):
 
     @property
     def EventType(self):
+        """发生事件
+        :rtype: int
+        """
         return self._EventType
 
     @EventType.setter
@@ -3926,6 +4824,9 @@ class FollowInfo(AbstractModel):
 
     @property
     def EventTypeName(self):
+        """发生事件名称
+        :rtype: str
+        """
         return self._EventTypeName
 
     @EventTypeName.setter
@@ -3934,6 +4835,9 @@ class FollowInfo(AbstractModel):
 
     @property
     def FollowWayType(self):
+        """跟进方式
+        :rtype: str
+        """
         return self._FollowWayType
 
     @FollowWayType.setter
@@ -3942,6 +4846,9 @@ class FollowInfo(AbstractModel):
 
     @property
     def FollowWayName(self):
+        """跟进方式名称
+        :rtype: str
+        """
         return self._FollowWayName
 
     @FollowWayName.setter
@@ -3950,6 +4857,10 @@ class FollowInfo(AbstractModel):
 
     @property
     def FollowTime(self):
+        """本次跟进时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FollowTime
 
     @FollowTime.setter
@@ -3958,6 +4869,10 @@ class FollowInfo(AbstractModel):
 
     @property
     def NextFollowTime(self):
+        """下次跟进时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._NextFollowTime
 
     @NextFollowTime.setter
@@ -3966,6 +4881,9 @@ class FollowInfo(AbstractModel):
 
     @property
     def FollowRecord(self):
+        """跟进记录
+        :rtype: str
+        """
         return self._FollowRecord
 
     @FollowRecord.setter
@@ -4032,6 +4950,9 @@ class FollowUser(AbstractModel):
 
     @property
     def UserId(self):
+        """添加了此外部联系人的企业成员userid
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -4040,6 +4961,10 @@ class FollowUser(AbstractModel):
 
     @property
     def Remark(self):
+        """该成员对此外部联系人的备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -4048,6 +4973,10 @@ class FollowUser(AbstractModel):
 
     @property
     def Description(self):
+        """该成员对此外部联系人的描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4056,6 +4985,9 @@ class FollowUser(AbstractModel):
 
     @property
     def CreateTime(self):
+        """该成员添加此外部联系人的时间戳，单位为秒
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -4064,6 +4996,9 @@ class FollowUser(AbstractModel):
 
     @property
     def AddWay(self):
+        """该成员添加此客户的来源，具体含义详见<a href="https://work.weixin.qq.com/api/doc/90000/90135/92114#%E6%9D%A5%E6%BA%90%E5%AE%9A%E4%B9%89">来源定义</a>
+        :rtype: int
+        """
         return self._AddWay
 
     @AddWay.setter
@@ -4072,6 +5007,9 @@ class FollowUser(AbstractModel):
 
     @property
     def OperUserId(self):
+        """发起添加的userid，如果成员主动添加，为成员的userid；如果是客户主动添加，则为客户的外部联系人userid；如果是内部成员共享/管理员分配，则为对应的成员/管理员userid
+        :rtype: str
+        """
         return self._OperUserId
 
     @OperUserId.setter
@@ -4080,6 +5018,10 @@ class FollowUser(AbstractModel):
 
     @property
     def Tags(self):
+        """该成员添加此外部联系人所打标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExternalContactTag
+        """
         return self._Tags
 
     @Tags.setter
@@ -4152,6 +5094,9 @@ class FollowUserPro(AbstractModel):
 
     @property
     def UserId(self):
+        """添加了此外部联系人的企业成员userid
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -4160,6 +5105,10 @@ class FollowUserPro(AbstractModel):
 
     @property
     def Remark(self):
+        """该成员对此外部联系人的备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -4168,6 +5117,10 @@ class FollowUserPro(AbstractModel):
 
     @property
     def Description(self):
+        """该成员对此外部联系人的描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4176,6 +5129,9 @@ class FollowUserPro(AbstractModel):
 
     @property
     def CreateTime(self):
+        """该成员添加此外部联系人的时间戳，单位为秒
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -4184,6 +5140,9 @@ class FollowUserPro(AbstractModel):
 
     @property
     def AddWay(self):
+        """该成员添加此客户的来源，具体含义详见<a href="https://work.weixin.qq.com/api/doc/90000/90135/92114#%E6%9D%A5%E6%BA%90%E5%AE%9A%E4%B9%89">来源定义</a>
+        :rtype: int
+        """
         return self._AddWay
 
     @AddWay.setter
@@ -4192,6 +5151,9 @@ class FollowUserPro(AbstractModel):
 
     @property
     def OperUserId(self):
+        """发起添加的userid，如果成员主动添加，为成员的userid；如果是客户主动添加，则为客户的外部联系人userid；如果是内部成员共享/管理员分配，则为对应的成员/管理员userid
+        :rtype: str
+        """
         return self._OperUserId
 
     @OperUserId.setter
@@ -4200,6 +5162,10 @@ class FollowUserPro(AbstractModel):
 
     @property
     def Tags(self):
+        """该成员添加此外部联系人所打标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExternalContactTag
+        """
         return self._Tags
 
     @Tags.setter
@@ -4208,6 +5174,10 @@ class FollowUserPro(AbstractModel):
 
     @property
     def SalesName(self):
+        """添加了此外部联系人的企业成员的姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SalesName
 
     @SalesName.setter
@@ -4216,6 +5186,9 @@ class FollowUserPro(AbstractModel):
 
     @property
     def DepartmentIdList(self):
+        """企业成员的归属部门id列表
+        :rtype: list of int
+        """
         return self._DepartmentIdList
 
     @DepartmentIdList.setter
@@ -4286,6 +5259,9 @@ class LicenseInfo(AbstractModel):
 
     @property
     def License(self):
+        """license编号
+        :rtype: str
+        """
         return self._License
 
     @License.setter
@@ -4294,6 +5270,9 @@ class LicenseInfo(AbstractModel):
 
     @property
     def LicenseEdition(self):
+        """license版本；1-基础版，2-标准版，3-增值版
+        :rtype: int
+        """
         return self._LicenseEdition
 
     @LicenseEdition.setter
@@ -4302,6 +5281,9 @@ class LicenseInfo(AbstractModel):
 
     @property
     def ResourceStartTime(self):
+        """生效开始时间, 格式yyyy-MM-dd HH:mm:ss
+        :rtype: str
+        """
         return self._ResourceStartTime
 
     @ResourceStartTime.setter
@@ -4310,6 +5292,9 @@ class LicenseInfo(AbstractModel):
 
     @property
     def ResourceEndTime(self):
+        """生效结束时间, 格式yyyy-MM-dd HH:mm:ss
+        :rtype: str
+        """
         return self._ResourceEndTime
 
     @ResourceEndTime.setter
@@ -4318,6 +5303,10 @@ class LicenseInfo(AbstractModel):
 
     @property
     def IsolationDeadline(self):
+        """隔离截止时间, 格式yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IsolationDeadline
 
     @IsolationDeadline.setter
@@ -4326,6 +5315,10 @@ class LicenseInfo(AbstractModel):
 
     @property
     def DestroyTime(self):
+        """资源计划销毁时间, 格式yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DestroyTime
 
     @DestroyTime.setter
@@ -4334,6 +5327,9 @@ class LicenseInfo(AbstractModel):
 
     @property
     def Status(self):
+        """资源状态，1.正常，2.隔离，3.销毁
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -4342,6 +5338,10 @@ class LicenseInfo(AbstractModel):
 
     @property
     def Extra(self):
+        """扩展信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -4412,6 +5412,9 @@ class LiveCodeDetail(AbstractModel):
 
     @property
     def LiveCodeId(self):
+        """活码id
+        :rtype: int
+        """
         return self._LiveCodeId
 
     @LiveCodeId.setter
@@ -4420,6 +5423,9 @@ class LiveCodeDetail(AbstractModel):
 
     @property
     def LiveCodeName(self):
+        """活码名称
+        :rtype: str
+        """
         return self._LiveCodeName
 
     @LiveCodeName.setter
@@ -4428,6 +5434,10 @@ class LiveCodeDetail(AbstractModel):
 
     @property
     def ShortChainAddress(self):
+        """短链url
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ShortChainAddress
 
     @ShortChainAddress.setter
@@ -4436,6 +5446,10 @@ class LiveCodeDetail(AbstractModel):
 
     @property
     def LiveCodePreview(self):
+        """活码二维码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LiveCodePreview
 
     @LiveCodePreview.setter
@@ -4444,6 +5458,9 @@ class LiveCodeDetail(AbstractModel):
 
     @property
     def ActivityId(self):
+        """活动id
+        :rtype: int
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -4452,6 +5469,9 @@ class LiveCodeDetail(AbstractModel):
 
     @property
     def ActivityName(self):
+        """活动名称
+        :rtype: str
+        """
         return self._ActivityName
 
     @ActivityName.setter
@@ -4460,6 +5480,9 @@ class LiveCodeDetail(AbstractModel):
 
     @property
     def LiveCodeState(self):
+        """活码状态，-1：删除，0：启用，1禁用，默认为0
+        :rtype: int
+        """
         return self._LiveCodeState
 
     @LiveCodeState.setter
@@ -4468,6 +5491,10 @@ class LiveCodeDetail(AbstractModel):
 
     @property
     def LiveCodeData(self):
+        """活码参数，每个活码参数都是不一样的， 这个的值对应的是字符串json类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LiveCodeData
 
     @LiveCodeData.setter
@@ -4476,6 +5503,9 @@ class LiveCodeDetail(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间戳，单位为秒
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -4484,6 +5514,9 @@ class LiveCodeDetail(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间戳，单位为秒
+        :rtype: int
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -4533,6 +5566,9 @@ class MaterialInfo(AbstractModel):
 
     @property
     def MaterialId(self):
+        """素材id
+        :rtype: int
+        """
         return self._MaterialId
 
     @MaterialId.setter
@@ -4541,6 +5577,10 @@ class MaterialInfo(AbstractModel):
 
     @property
     def MaterialName(self):
+        """素材名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MaterialName
 
     @MaterialName.setter
@@ -4549,6 +5589,9 @@ class MaterialInfo(AbstractModel):
 
     @property
     def Status(self):
+        """素材状态, -1: 删除 0: 启用 1: 禁用
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -4602,6 +5645,9 @@ class MiniAppCodeInfo(AbstractModel):
 
     @property
     def Id(self):
+        """主键id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -4610,6 +5656,9 @@ class MiniAppCodeInfo(AbstractModel):
 
     @property
     def MiniAppName(self):
+        """小程序名称
+        :rtype: str
+        """
         return self._MiniAppName
 
     @MiniAppName.setter
@@ -4618,6 +5667,9 @@ class MiniAppCodeInfo(AbstractModel):
 
     @property
     def MiniAppLogo(self):
+        """小程序logo
+        :rtype: str
+        """
         return self._MiniAppLogo
 
     @MiniAppLogo.setter
@@ -4626,6 +5678,9 @@ class MiniAppCodeInfo(AbstractModel):
 
     @property
     def MiniAdminUrl(self):
+        """小程序管理端地址
+        :rtype: str
+        """
         return self._MiniAdminUrl
 
     @MiniAdminUrl.setter
@@ -4634,6 +5689,9 @@ class MiniAppCodeInfo(AbstractModel):
 
     @property
     def State(self):
+        """状态：0正常，1删除
+        :rtype: int
+        """
         return self._State
 
     @State.setter
@@ -4642,6 +5700,9 @@ class MiniAppCodeInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间戳，单位为秒
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -4650,6 +5711,9 @@ class MiniAppCodeInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间戳，单位为秒
+        :rtype: int
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -4692,6 +5756,9 @@ class PurchaseConcern(AbstractModel):
 
     @property
     def Code(self):
+        """购车关注点code
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -4700,6 +5767,9 @@ class PurchaseConcern(AbstractModel):
 
     @property
     def Description(self):
+        """购车关注点描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4740,6 +5810,9 @@ class QueryActivityJoinListRequest(AbstractModel):
 
     @property
     def ActivityId(self):
+        """活动id
+        :rtype: int
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -4748,6 +5821,9 @@ class QueryActivityJoinListRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """分页游标，对应结果返回的NextCursor,首次请求保持为空
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -4756,6 +5832,9 @@ class QueryActivityJoinListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """单页数据限制
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4799,6 +5878,10 @@ class QueryActivityJoinListResponse(AbstractModel):
 
     @property
     def NextCursor(self):
+        """分页游标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextCursor
 
     @NextCursor.setter
@@ -4807,6 +5890,10 @@ class QueryActivityJoinListResponse(AbstractModel):
 
     @property
     def PageData(self):
+        """活码列表响应参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ActivityJoinDetail
+        """
         return self._PageData
 
     @PageData.setter
@@ -4815,6 +5902,9 @@ class QueryActivityJoinListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4850,6 +5940,9 @@ class QueryActivityListRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """分页游标，对应结果返回的NextCursor,首次请求保持为空
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -4858,6 +5951,9 @@ class QueryActivityListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """单页数据限制
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4900,6 +5996,10 @@ class QueryActivityListResponse(AbstractModel):
 
     @property
     def NextCursor(self):
+        """分页游标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextCursor
 
     @NextCursor.setter
@@ -4908,6 +6008,10 @@ class QueryActivityListResponse(AbstractModel):
 
     @property
     def PageData(self):
+        """活码列表响应参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ActivityDetail
+        """
         return self._PageData
 
     @PageData.setter
@@ -4916,6 +6020,9 @@ class QueryActivityListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4951,6 +6058,9 @@ class QueryActivityLiveCodeListRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -4959,6 +6069,9 @@ class QueryActivityLiveCodeListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5001,6 +6114,10 @@ class QueryActivityLiveCodeListResponse(AbstractModel):
 
     @property
     def NextCursor(self):
+        """分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextCursor
 
     @NextCursor.setter
@@ -5009,6 +6126,10 @@ class QueryActivityLiveCodeListResponse(AbstractModel):
 
     @property
     def PageData(self):
+        """活码列表响应参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LiveCodeDetail
+        """
         return self._PageData
 
     @PageData.setter
@@ -5017,6 +6138,9 @@ class QueryActivityLiveCodeListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5058,6 +6182,9 @@ class QueryArrivalListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页，预期请求的数据量，取值范围 1 ~ 1000
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5066,6 +6193,9 @@ class QueryArrivalListRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """查询开始时间， 单位秒
+        :rtype: int
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -5074,6 +6204,9 @@ class QueryArrivalListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间， 单位秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -5082,6 +6215,9 @@ class QueryArrivalListRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -5130,6 +6266,10 @@ class QueryArrivalListResponse(AbstractModel):
 
     @property
     def NextCursor(self):
+        """分页游标，下次调用带上该值，则从当前的位置继续往后拉，以实现增量拉取。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextCursor
 
     @NextCursor.setter
@@ -5138,6 +6278,10 @@ class QueryArrivalListResponse(AbstractModel):
 
     @property
     def PageData(self):
+        """潜客客户存档信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ArrivalInfo
+        """
         return self._PageData
 
     @PageData.setter
@@ -5146,6 +6290,10 @@ class QueryArrivalListResponse(AbstractModel):
 
     @property
     def HasMore(self):
+        """是否还有更多数据。0-否；1-是。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HasMore
 
     @HasMore.setter
@@ -5154,6 +6302,9 @@ class QueryArrivalListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5190,6 +6341,9 @@ class QueryChannelCodeListRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -5198,6 +6352,9 @@ class QueryChannelCodeListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5240,6 +6397,10 @@ class QueryChannelCodeListResponse(AbstractModel):
 
     @property
     def NextCursor(self):
+        """分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextCursor
 
     @NextCursor.setter
@@ -5248,6 +6409,10 @@ class QueryChannelCodeListResponse(AbstractModel):
 
     @property
     def PageData(self):
+        """活码列表响应参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ChannelCodeInnerDetail
+        """
         return self._PageData
 
     @PageData.setter
@@ -5256,6 +6421,9 @@ class QueryChannelCodeListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5291,6 +6459,9 @@ class QueryChatArchivingListRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -5299,6 +6470,9 @@ class QueryChatArchivingListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5341,6 +6515,10 @@ class QueryChatArchivingListResponse(AbstractModel):
 
     @property
     def NextCursor(self):
+        """分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextCursor
 
     @NextCursor.setter
@@ -5349,6 +6527,10 @@ class QueryChatArchivingListResponse(AbstractModel):
 
     @property
     def PageData(self):
+        """会话存档列表响应参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ChatArchivingDetail
+        """
         return self._PageData
 
     @PageData.setter
@@ -5357,6 +6539,9 @@ class QueryChatArchivingListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5398,6 +6583,9 @@ class QueryClueInfoListRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -5406,6 +6594,9 @@ class QueryClueInfoListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5414,6 +6605,9 @@ class QueryClueInfoListRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """查询开始时间， 单位秒
+        :rtype: int
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -5422,6 +6616,9 @@ class QueryClueInfoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间， 单位秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -5470,6 +6667,10 @@ class QueryClueInfoListResponse(AbstractModel):
 
     @property
     def PageData(self):
+        """线索信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ClueInfoDetail
+        """
         return self._PageData
 
     @PageData.setter
@@ -5478,6 +6679,10 @@ class QueryClueInfoListResponse(AbstractModel):
 
     @property
     def NextCursor(self):
+        """分页游标，下次调用带上该值，则从当前的位置继续往后拉，以实现增量拉取。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextCursor
 
     @NextCursor.setter
@@ -5486,6 +6691,10 @@ class QueryClueInfoListResponse(AbstractModel):
 
     @property
     def HasMore(self):
+        """是否还有更多数据。0-否；1-是。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HasMore
 
     @HasMore.setter
@@ -5494,6 +6703,9 @@ class QueryClueInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5542,6 +6754,9 @@ class QueryCrmStatisticsRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """查询开始时间， 单位秒
+        :rtype: int
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -5550,6 +6765,9 @@ class QueryCrmStatisticsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间， 单位秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -5558,6 +6776,9 @@ class QueryCrmStatisticsRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -5566,6 +6787,9 @@ class QueryCrmStatisticsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5574,6 +6798,9 @@ class QueryCrmStatisticsRequest(AbstractModel):
 
     @property
     def SalesId(self):
+        """请求的企业成员id，为空时默认全租户
+        :rtype: str
+        """
         return self._SalesId
 
     @SalesId.setter
@@ -5582,6 +6809,9 @@ class QueryCrmStatisticsRequest(AbstractModel):
 
     @property
     def OrgId(self):
+        """请求的部门id，为空时默认全租户
+        :rtype: int
+        """
         return self._OrgId
 
     @OrgId.setter
@@ -5628,6 +6858,10 @@ class QueryCrmStatisticsResponse(AbstractModel):
 
     @property
     def NextCursor(self):
+        """分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextCursor
 
     @NextCursor.setter
@@ -5636,6 +6870,10 @@ class QueryCrmStatisticsResponse(AbstractModel):
 
     @property
     def PageData(self):
+        """CRM统计响应数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CrmStatisticsData
+        """
         return self._PageData
 
     @PageData.setter
@@ -5644,6 +6882,9 @@ class QueryCrmStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5685,6 +6926,9 @@ class QueryCustomerEventDetailStatisticsRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """查询开始时间， 单位秒
+        :rtype: int
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -5693,6 +6937,9 @@ class QueryCustomerEventDetailStatisticsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间， 单位秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -5701,6 +6948,9 @@ class QueryCustomerEventDetailStatisticsRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -5709,6 +6959,9 @@ class QueryCustomerEventDetailStatisticsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5753,6 +7006,10 @@ class QueryCustomerEventDetailStatisticsResponse(AbstractModel):
 
     @property
     def NextCursor(self):
+        """分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextCursor
 
     @NextCursor.setter
@@ -5761,6 +7018,10 @@ class QueryCustomerEventDetailStatisticsResponse(AbstractModel):
 
     @property
     def PageData(self):
+        """外部联系人SaaS使用明细统计响应数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CustomerActionEventDetail
+        """
         return self._PageData
 
     @PageData.setter
@@ -5769,6 +7030,9 @@ class QueryCustomerEventDetailStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5810,6 +7074,9 @@ class QueryCustomerProfileListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页，预期请求的数据量，取值范围 1 ~ 1000
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5818,6 +7085,9 @@ class QueryCustomerProfileListRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """查询开始时间， 单位秒
+        :rtype: int
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -5826,6 +7096,9 @@ class QueryCustomerProfileListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间， 单位秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -5834,6 +7107,9 @@ class QueryCustomerProfileListRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -5878,6 +7154,10 @@ class QueryCustomerProfileListResponse(AbstractModel):
 
     @property
     def NextCursor(self):
+        """分页游标，下次调用带上该值，则从当前的位置继续往后拉，以实现增量拉取。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextCursor
 
     @NextCursor.setter
@@ -5886,6 +7166,10 @@ class QueryCustomerProfileListResponse(AbstractModel):
 
     @property
     def PageData(self):
+        """潜客客户存档信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CustomerProfile
+        """
         return self._PageData
 
     @PageData.setter
@@ -5894,6 +7178,9 @@ class QueryCustomerProfileListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5929,6 +7216,9 @@ class QueryDealerInfoListRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -5937,6 +7227,9 @@ class QueryDealerInfoListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5983,6 +7276,10 @@ class QueryDealerInfoListResponse(AbstractModel):
 
     @property
     def PageData(self):
+        """经销商信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DealerInfo
+        """
         return self._PageData
 
     @PageData.setter
@@ -5991,6 +7288,10 @@ class QueryDealerInfoListResponse(AbstractModel):
 
     @property
     def NextCursor(self):
+        """分页游标，下次调用带上该值，则从当前的位置继续往后拉取新增的数据，以实现增量拉取。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextCursor
 
     @NextCursor.setter
@@ -5999,6 +7300,10 @@ class QueryDealerInfoListResponse(AbstractModel):
 
     @property
     def HasMore(self):
+        """是否还有更多数据。0-否；1-是。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HasMore
 
     @HasMore.setter
@@ -6007,6 +7312,9 @@ class QueryDealerInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6049,6 +7357,9 @@ class QueryExternalContactDetailByDateRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """查询结束时间， 单位秒
+        :rtype: int
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -6057,6 +7368,9 @@ class QueryExternalContactDetailByDateRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间， 单位秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6065,6 +7379,9 @@ class QueryExternalContactDetailByDateRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -6073,6 +7390,9 @@ class QueryExternalContactDetailByDateRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6116,6 +7436,10 @@ class QueryExternalContactDetailByDateResponse(AbstractModel):
 
     @property
     def NextCursor(self):
+        """分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextCursor
 
     @NextCursor.setter
@@ -6124,6 +7448,9 @@ class QueryExternalContactDetailByDateResponse(AbstractModel):
 
     @property
     def PageData(self):
+        """外部联系人详细信息
+        :rtype: list of ExternalContactDetailPro
+        """
         return self._PageData
 
     @PageData.setter
@@ -6132,6 +7459,9 @@ class QueryExternalContactDetailByDateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6170,6 +7500,9 @@ class QueryExternalContactDetailRequest(AbstractModel):
 
     @property
     def ExternalUserId(self):
+        """外部联系人的userid，注意不是企业成员的账号
+        :rtype: str
+        """
         return self._ExternalUserId
 
     @ExternalUserId.setter
@@ -6178,6 +7511,9 @@ class QueryExternalContactDetailRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填。当客户在企业内的跟进人超过500人时需要使用cursor参数进行分页获取
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -6186,6 +7522,9 @@ class QueryExternalContactDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """当前接口Limit不需要传参， 保留Limit只是为了保持向后兼容性， Limit默认值为500，当返回结果超过500时， NextCursor才有返回值
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6233,6 +7572,10 @@ class QueryExternalContactDetailResponse(AbstractModel):
 
     @property
     def NextCursor(self):
+        """分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextCursor
 
     @NextCursor.setter
@@ -6241,6 +7584,10 @@ class QueryExternalContactDetailResponse(AbstractModel):
 
     @property
     def Customer(self):
+        """客户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wav.v20210129.models.ExternalContact`
+        """
         return self._Customer
 
     @Customer.setter
@@ -6249,6 +7596,10 @@ class QueryExternalContactDetailResponse(AbstractModel):
 
     @property
     def FollowUser(self):
+        """添加了此外部联系人的企业成员信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FollowUser
+        """
         return self._FollowUser
 
     @FollowUser.setter
@@ -6257,6 +7608,9 @@ class QueryExternalContactDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6295,6 +7649,9 @@ class QueryExternalContactListRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -6303,6 +7660,9 @@ class QueryExternalContactListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6345,6 +7705,10 @@ class QueryExternalContactListResponse(AbstractModel):
 
     @property
     def PageData(self):
+        """外部联系人信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExternalContactSimpleInfo
+        """
         return self._PageData
 
     @PageData.setter
@@ -6353,6 +7717,10 @@ class QueryExternalContactListResponse(AbstractModel):
 
     @property
     def NextCursor(self):
+        """分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextCursor
 
     @NextCursor.setter
@@ -6361,6 +7729,9 @@ class QueryExternalContactListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6402,6 +7773,9 @@ class QueryExternalUserEventListRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """查询开始时间， 单位秒
+        :rtype: int
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -6410,6 +7784,9 @@ class QueryExternalUserEventListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间， 单位秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6418,6 +7795,9 @@ class QueryExternalUserEventListRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -6426,6 +7806,9 @@ class QueryExternalUserEventListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6470,6 +7853,10 @@ class QueryExternalUserEventListResponse(AbstractModel):
 
     @property
     def NextCursor(self):
+        """分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextCursor
 
     @NextCursor.setter
@@ -6478,6 +7865,10 @@ class QueryExternalUserEventListResponse(AbstractModel):
 
     @property
     def PageData(self):
+        """外部联系人事件信息响应数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExternalUserEventInfo
+        """
         return self._PageData
 
     @PageData.setter
@@ -6486,6 +7877,9 @@ class QueryExternalUserEventListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6518,6 +7912,9 @@ class QueryExternalUserMappingInfoRequest(AbstractModel):
 
     @property
     def CorpExternalUserIdList(self):
+        """企业主体对应的外部联系人id列表，列表长度限制最大为50。
+        :rtype: list of str
+        """
         return self._CorpExternalUserIdList
 
     @CorpExternalUserIdList.setter
@@ -6555,6 +7952,10 @@ class QueryExternalUserMappingInfoResponse(AbstractModel):
 
     @property
     def ExternalUserIdMapping(self):
+        """外部联系人映射信息, 只返回映射成功的记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExternalUserMappingInfo
+        """
         return self._ExternalUserIdMapping
 
     @ExternalUserIdMapping.setter
@@ -6563,6 +7964,9 @@ class QueryExternalUserMappingInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6603,6 +8007,9 @@ class QueryFollowListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页，预期请求的数据量，取值范围 1 ~ 1000
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6611,6 +8018,9 @@ class QueryFollowListRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """查询开始时间， 单位秒
+        :rtype: int
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -6619,6 +8029,9 @@ class QueryFollowListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间， 单位秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6627,6 +8040,9 @@ class QueryFollowListRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -6675,6 +8091,10 @@ class QueryFollowListResponse(AbstractModel):
 
     @property
     def NextCursor(self):
+        """分页游标，下次调用带上该值，则从当前的位置继续往后拉，以实现增量拉取。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextCursor
 
     @NextCursor.setter
@@ -6683,6 +8103,10 @@ class QueryFollowListResponse(AbstractModel):
 
     @property
     def PageData(self):
+        """潜客客户存档信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FollowInfo
+        """
         return self._PageData
 
     @PageData.setter
@@ -6691,6 +8115,10 @@ class QueryFollowListResponse(AbstractModel):
 
     @property
     def HasMore(self):
+        """是否还有更多数据。0-否；1-是。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HasMore
 
     @HasMore.setter
@@ -6699,6 +8127,9 @@ class QueryFollowListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6732,6 +8163,9 @@ class QueryLicenseInfoRequest(AbstractModel):
 
     @property
     def License(self):
+        """license编号
+        :rtype: str
+        """
         return self._License
 
     @License.setter
@@ -6769,6 +8203,10 @@ class QueryLicenseInfoResponse(AbstractModel):
 
     @property
     def LicenseInfo(self):
+        """license响应信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wav.v20210129.models.LicenseInfo`
+        """
         return self._LicenseInfo
 
     @LicenseInfo.setter
@@ -6777,6 +8215,9 @@ class QueryLicenseInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6811,6 +8252,9 @@ class QueryMaterialListRequest(AbstractModel):
 
     @property
     def MaterialType(self):
+        """素材类型：0-图片，1-视频，3-文章，10-车型，11-名片
+        :rtype: int
+        """
         return self._MaterialType
 
     @MaterialType.setter
@@ -6819,6 +8263,9 @@ class QueryMaterialListRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -6827,6 +8274,9 @@ class QueryMaterialListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6870,6 +8320,10 @@ class QueryMaterialListResponse(AbstractModel):
 
     @property
     def NextCursor(self):
+        """分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextCursor
 
     @NextCursor.setter
@@ -6878,6 +8332,10 @@ class QueryMaterialListResponse(AbstractModel):
 
     @property
     def PageData(self):
+        """企业素材列表响应数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MaterialInfo
+        """
         return self._PageData
 
     @PageData.setter
@@ -6886,6 +8344,9 @@ class QueryMaterialListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6921,6 +8382,9 @@ class QueryMiniAppCodeListRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -6929,6 +8393,9 @@ class QueryMiniAppCodeListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6971,6 +8438,10 @@ class QueryMiniAppCodeListResponse(AbstractModel):
 
     @property
     def NextCursor(self):
+        """分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextCursor
 
     @NextCursor.setter
@@ -6979,6 +8450,10 @@ class QueryMiniAppCodeListResponse(AbstractModel):
 
     @property
     def PageData(self):
+        """小程序码列表响应数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MiniAppCodeInfo
+        """
         return self._PageData
 
     @PageData.setter
@@ -6987,6 +8462,9 @@ class QueryMiniAppCodeListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7028,6 +8506,9 @@ class QueryStaffEventDetailStatisticsRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """查询开始时间， 单位秒
+        :rtype: int
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -7036,6 +8517,9 @@ class QueryStaffEventDetailStatisticsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间， 单位秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7044,6 +8528,9 @@ class QueryStaffEventDetailStatisticsRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -7052,6 +8539,9 @@ class QueryStaffEventDetailStatisticsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7096,6 +8586,10 @@ class QueryStaffEventDetailStatisticsResponse(AbstractModel):
 
     @property
     def NextCursor(self):
+        """分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextCursor
 
     @NextCursor.setter
@@ -7104,6 +8598,10 @@ class QueryStaffEventDetailStatisticsResponse(AbstractModel):
 
     @property
     def PageData(self):
+        """企业成员SaaS使用明细统计响应数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SalesActionEventDetail
+        """
         return self._PageData
 
     @PageData.setter
@@ -7112,6 +8610,9 @@ class QueryStaffEventDetailStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7147,6 +8648,9 @@ class QueryUserInfoListRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -7155,6 +8659,9 @@ class QueryUserInfoListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7197,6 +8704,10 @@ class QueryUserInfoListResponse(AbstractModel):
 
     @property
     def NextCursor(self):
+        """分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextCursor
 
     @NextCursor.setter
@@ -7205,6 +8716,10 @@ class QueryUserInfoListResponse(AbstractModel):
 
     @property
     def PageData(self):
+        """企业成员信息列表响应数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CorpUserInfo
+        """
         return self._PageData
 
     @PageData.setter
@@ -7213,6 +8728,9 @@ class QueryUserInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7248,6 +8766,9 @@ class QueryVehicleInfoListRequest(AbstractModel):
 
     @property
     def Cursor(self):
+        """用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :rtype: str
+        """
         return self._Cursor
 
     @Cursor.setter
@@ -7256,6 +8777,9 @@ class QueryVehicleInfoListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7302,6 +8826,10 @@ class QueryVehicleInfoListResponse(AbstractModel):
 
     @property
     def PageData(self):
+        """车系车型信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VehicleInfo
+        """
         return self._PageData
 
     @PageData.setter
@@ -7310,6 +8838,10 @@ class QueryVehicleInfoListResponse(AbstractModel):
 
     @property
     def NextCursor(self):
+        """分页游标，下次调用带上该值，则从当前的位置继续往后拉取新增的数据，以实现增量拉取。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NextCursor
 
     @NextCursor.setter
@@ -7318,6 +8850,10 @@ class QueryVehicleInfoListResponse(AbstractModel):
 
     @property
     def HasMore(self):
+        """是否还有更多数据。0-否；1-是。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HasMore
 
     @HasMore.setter
@@ -7326,6 +8862,9 @@ class QueryVehicleInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7377,6 +8916,9 @@ class SalesActionEventDetail(AbstractModel):
 
     @property
     def EventCode(self):
+        """事件码
+        :rtype: str
+        """
         return self._EventCode
 
     @EventCode.setter
@@ -7385,6 +8927,9 @@ class SalesActionEventDetail(AbstractModel):
 
     @property
     def EventType(self):
+        """事件类型
+        :rtype: int
+        """
         return self._EventType
 
     @EventType.setter
@@ -7393,6 +8938,9 @@ class SalesActionEventDetail(AbstractModel):
 
     @property
     def EventSource(self):
+        """事件来源
+        :rtype: int
+        """
         return self._EventSource
 
     @EventSource.setter
@@ -7401,6 +8949,9 @@ class SalesActionEventDetail(AbstractModel):
 
     @property
     def SalesId(self):
+        """销售顾问id
+        :rtype: int
+        """
         return self._SalesId
 
     @SalesId.setter
@@ -7409,6 +8960,9 @@ class SalesActionEventDetail(AbstractModel):
 
     @property
     def MaterialType(self):
+        """素材类型
+        :rtype: int
+        """
         return self._MaterialType
 
     @MaterialType.setter
@@ -7417,6 +8971,9 @@ class SalesActionEventDetail(AbstractModel):
 
     @property
     def MaterialId(self):
+        """素材编号id
+        :rtype: int
+        """
         return self._MaterialId
 
     @MaterialId.setter
@@ -7425,6 +8982,9 @@ class SalesActionEventDetail(AbstractModel):
 
     @property
     def EventTime(self):
+        """事件上报时间，单位：秒
+        :rtype: int
+        """
         return self._EventTime
 
     @EventTime.setter
@@ -7476,6 +9036,9 @@ class TagDetailInfo(AbstractModel):
 
     @property
     def TagName(self):
+        """标签名称
+        :rtype: str
+        """
         return self._TagName
 
     @TagName.setter
@@ -7484,6 +9047,9 @@ class TagDetailInfo(AbstractModel):
 
     @property
     def BizTagId(self):
+        """标签业务ID
+        :rtype: str
+        """
         return self._BizTagId
 
     @BizTagId.setter
@@ -7492,6 +9058,9 @@ class TagDetailInfo(AbstractModel):
 
     @property
     def TagId(self):
+        """企微标签ID
+        :rtype: str
+        """
         return self._TagId
 
     @TagId.setter
@@ -7500,6 +9069,9 @@ class TagDetailInfo(AbstractModel):
 
     @property
     def Sort(self):
+        """标签排序的次序值，sort值大的排序靠前。有效的值范围是[0, 2^32)
+        :rtype: int
+        """
         return self._Sort
 
     @Sort.setter
@@ -7508,6 +9080,9 @@ class TagDetailInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """标签创建时间,单位为秒
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -7560,6 +9135,9 @@ class TagGroup(AbstractModel):
 
     @property
     def GroupId(self):
+        """企微标签组id
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -7568,6 +9146,9 @@ class TagGroup(AbstractModel):
 
     @property
     def BizGroupId(self):
+        """标签组业务id
+        :rtype: str
+        """
         return self._BizGroupId
 
     @BizGroupId.setter
@@ -7576,6 +9157,9 @@ class TagGroup(AbstractModel):
 
     @property
     def GroupName(self):
+        """企微标签组名称，不能超过15个字符
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -7584,6 +9168,9 @@ class TagGroup(AbstractModel):
 
     @property
     def Sort(self):
+        """标签组次序值。sort值大的排序靠前。有效的值范围是[0, 2^32)
+        :rtype: int
+        """
         return self._Sort
 
     @Sort.setter
@@ -7592,6 +9179,9 @@ class TagGroup(AbstractModel):
 
     @property
     def CreateTime(self):
+        """标签组创建时间,单位为秒
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -7600,6 +9190,9 @@ class TagGroup(AbstractModel):
 
     @property
     def Tags(self):
+        """标签组内的标签列表, 上限为20
+        :rtype: list of TagDetailInfo
+        """
         return self._Tags
 
     @Tags.setter
@@ -7646,6 +9239,9 @@ class TagInfo(AbstractModel):
 
     @property
     def TagName(self):
+        """标签名称, 最大长度限制15个字符
+        :rtype: str
+        """
         return self._TagName
 
     @TagName.setter
@@ -7654,6 +9250,9 @@ class TagInfo(AbstractModel):
 
     @property
     def Sort(self):
+        """标签组排序,值越大,排序越靠前
+        :rtype: int
+        """
         return self._Sort
 
     @Sort.setter
@@ -7703,6 +9302,9 @@ class VehicleInfo(AbstractModel):
 
     @property
     def BrandId(self):
+        """品牌id
+        :rtype: int
+        """
         return self._BrandId
 
     @BrandId.setter
@@ -7711,6 +9313,9 @@ class VehicleInfo(AbstractModel):
 
     @property
     def BrandName(self):
+        """品牌名称
+        :rtype: str
+        """
         return self._BrandName
 
     @BrandName.setter
@@ -7719,6 +9324,9 @@ class VehicleInfo(AbstractModel):
 
     @property
     def SeriesId(self):
+        """车系id
+        :rtype: int
+        """
         return self._SeriesId
 
     @SeriesId.setter
@@ -7727,6 +9335,9 @@ class VehicleInfo(AbstractModel):
 
     @property
     def SeriesName(self):
+        """车系名称
+        :rtype: str
+        """
         return self._SeriesName
 
     @SeriesName.setter
@@ -7735,6 +9346,9 @@ class VehicleInfo(AbstractModel):
 
     @property
     def ModelId(self):
+        """车型id
+        :rtype: int
+        """
         return self._ModelId
 
     @ModelId.setter
@@ -7743,6 +9357,9 @@ class VehicleInfo(AbstractModel):
 
     @property
     def ModelName(self):
+        """车型名称
+        :rtype: str
+        """
         return self._ModelName
 
     @ModelName.setter
@@ -7784,6 +9401,9 @@ class VehiclePurpose(AbstractModel):
 
     @property
     def VehiclePurposeCode(self):
+        """购车用途code
+        :rtype: str
+        """
         return self._VehiclePurposeCode
 
     @VehiclePurposeCode.setter
@@ -7792,6 +9412,9 @@ class VehiclePurpose(AbstractModel):
 
     @property
     def VehiclePurposeName(self):
+        """购车用途名称
+        :rtype: str
+        """
         return self._VehiclePurposeName
 
     @VehiclePurposeName.setter
@@ -7851,6 +9474,10 @@ class WeComTagDetail(AbstractModel):
 
     @property
     def GroupName(self):
+        """标签分组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -7859,6 +9486,10 @@ class WeComTagDetail(AbstractModel):
 
     @property
     def BizGroupId(self):
+        """标签分组业务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BizGroupId
 
     @BizGroupId.setter
@@ -7867,6 +9498,10 @@ class WeComTagDetail(AbstractModel):
 
     @property
     def TagName(self):
+        """标签名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagName
 
     @TagName.setter
@@ -7875,6 +9510,10 @@ class WeComTagDetail(AbstractModel):
 
     @property
     def TagId(self):
+        """标签ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagId
 
     @TagId.setter
@@ -7883,6 +9522,10 @@ class WeComTagDetail(AbstractModel):
 
     @property
     def BizTagId(self):
+        """标签业务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BizTagId
 
     @BizTagId.setter
@@ -7891,6 +9534,10 @@ class WeComTagDetail(AbstractModel):
 
     @property
     def Type(self):
+        """标签分类，1：企业设置、2：用户自定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -7899,6 +9546,10 @@ class WeComTagDetail(AbstractModel):
 
     @property
     def BizTagIdStr(self):
+        """标签业务ID字符串格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BizTagIdStr
 
     @BizTagIdStr.setter

@@ -61,6 +61,10 @@ class CodeDetail(AbstractModel):
 
     @property
     def StrCharset(self):
+        """二维码文本的编码格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StrCharset
 
     @StrCharset.setter
@@ -69,6 +73,10 @@ class CodeDetail(AbstractModel):
 
     @property
     def QrCodePosition(self):
+        """二维码在图片中的位置，由边界点的坐标表示
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CodePosition
+        """
         return self._QrCodePosition
 
     @QrCodePosition.setter
@@ -77,6 +85,10 @@ class CodeDetail(AbstractModel):
 
     @property
     def StrQrCodeText(self):
+        """二维码的文本内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StrQrCodeText
 
     @StrQrCodeText.setter
@@ -85,6 +97,10 @@ class CodeDetail(AbstractModel):
 
     @property
     def Uint32QrCodeType(self):
+        """二维码的类型：1:ONED_BARCODE，2:QRCOD，3:WXCODE，4:PDF417，5:DATAMATRIX
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Uint32QrCodeType
 
     @Uint32QrCodeType.setter
@@ -93,6 +109,10 @@ class CodeDetail(AbstractModel):
 
     @property
     def CodeCharset(self):
+        """二维码文本的编码格式（已废弃）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CodeCharset
 
     @CodeCharset.setter
@@ -101,6 +121,10 @@ class CodeDetail(AbstractModel):
 
     @property
     def CodePosition(self):
+        """二维码在图片中的位置，由边界点的坐标表示（已废弃）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CodePosition
+        """
         return self._CodePosition
 
     @CodePosition.setter
@@ -109,6 +133,10 @@ class CodeDetail(AbstractModel):
 
     @property
     def CodeText(self):
+        """二维码的文本内容（已废弃）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CodeText
 
     @CodeText.setter
@@ -117,6 +145,10 @@ class CodeDetail(AbstractModel):
 
     @property
     def CodeType(self):
+        """二维码的类型：1:ONED_BARCODE，2:QRCOD，3:WXCODE，4:PDF417，5:DATAMATRIX（已废弃）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CodeType
 
     @CodeType.setter
@@ -172,6 +204,10 @@ class CodeDetect(AbstractModel):
 
     @property
     def ModerationCode(self):
+        """检测是否成功，0：成功，-1：出错
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ModerationCode
 
     @ModerationCode.setter
@@ -180,6 +216,10 @@ class CodeDetect(AbstractModel):
 
     @property
     def ModerationDetail(self):
+        """从图片中检测到的二维码，可能为多个
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CodeDetail
+        """
         return self._ModerationDetail
 
     @ModerationDetail.setter
@@ -224,6 +264,10 @@ class CodePosition(AbstractModel):
 
     @property
     def FloatX(self):
+        """二维码边界点X轴坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._FloatX
 
     @FloatX.setter
@@ -232,6 +276,10 @@ class CodePosition(AbstractModel):
 
     @property
     def FloatY(self):
+        """二维码边界点Y轴坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._FloatY
 
     @FloatY.setter
@@ -279,6 +327,10 @@ class Coordinate(AbstractModel):
 
     @property
     def Width(self):
+        """宽度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -287,6 +339,10 @@ class Coordinate(AbstractModel):
 
     @property
     def Cy(self):
+        """左上角纵坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Cy
 
     @Cy.setter
@@ -295,6 +351,10 @@ class Coordinate(AbstractModel):
 
     @property
     def Cx(self):
+        """左上角横坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Cx
 
     @Cx.setter
@@ -303,6 +363,10 @@ class Coordinate(AbstractModel):
 
     @property
     def Height(self):
+        """高度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -342,6 +406,9 @@ class CreateKeywordsSamplesRequest(AbstractModel):
 
     @property
     def UserKeywords(self):
+        """关键词库信息：单次限制写入2000个，词库总容量不可超过10000个。
+        :rtype: list of UserKeyword
+        """
         return self._UserKeywords
 
     @UserKeywords.setter
@@ -350,6 +417,9 @@ class CreateKeywordsSamplesRequest(AbstractModel):
 
     @property
     def LibID(self):
+        """词库ID
+        :rtype: str
+        """
         return self._LibID
 
     @LibID.setter
@@ -404,6 +474,10 @@ class CreateKeywordsSamplesResponse(AbstractModel):
 
     @property
     def SampleIDs(self):
+        """添加成功的关键词ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SampleIDs
 
     @SampleIDs.setter
@@ -412,6 +486,9 @@ class CreateKeywordsSamplesResponse(AbstractModel):
 
     @property
     def SuccessInfos(self):
+        """成功入库关键词列表
+        :rtype: list of UserKeywordInfo
+        """
         return self._SuccessInfos
 
     @SuccessInfos.setter
@@ -420,6 +497,10 @@ class CreateKeywordsSamplesResponse(AbstractModel):
 
     @property
     def DupInfos(self):
+        """重复关键词列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UserKeywordInfo
+        """
         return self._DupInfos
 
     @DupInfos.setter
@@ -428,6 +509,10 @@ class CreateKeywordsSamplesResponse(AbstractModel):
 
     @property
     def InvalidSamples(self):
+        """无效关键词列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InvalidSample
+        """
         return self._InvalidSamples
 
     @InvalidSamples.setter
@@ -436,6 +521,9 @@ class CreateKeywordsSamplesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -489,6 +577,9 @@ class CustomResult(AbstractModel):
 
     @property
     def Keywords(self):
+        """命中的自定义关键词
+        :rtype: list of str
+        """
         return self._Keywords
 
     @Keywords.setter
@@ -497,6 +588,9 @@ class CustomResult(AbstractModel):
 
     @property
     def LibName(self):
+        """自定义词库名称
+        :rtype: str
+        """
         return self._LibName
 
     @LibName.setter
@@ -505,6 +599,9 @@ class CustomResult(AbstractModel):
 
     @property
     def LibId(self):
+        """自定义库id
+        :rtype: str
+        """
         return self._LibId
 
     @LibId.setter
@@ -513,6 +610,9 @@ class CustomResult(AbstractModel):
 
     @property
     def Type(self):
+        """命中的自定义关键词的类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -555,6 +655,9 @@ class DeleteLibSamplesRequest(AbstractModel):
 
     @property
     def SampleIDs(self):
+        """关键词ID列表
+        :rtype: list of str
+        """
         return self._SampleIDs
 
     @SampleIDs.setter
@@ -563,6 +666,9 @@ class DeleteLibSamplesRequest(AbstractModel):
 
     @property
     def LibID(self):
+        """词库ID
+        :rtype: str
+        """
         return self._LibID
 
     @LibID.setter
@@ -571,6 +677,9 @@ class DeleteLibSamplesRequest(AbstractModel):
 
     @property
     def SampleContents(self):
+        """关键词内容列表
+        :rtype: list of str
+        """
         return self._SampleContents
 
     @SampleContents.setter
@@ -612,6 +721,9 @@ class DeleteLibSamplesResponse(AbstractModel):
 
     @property
     def Count(self):
+        """删除成功的数量
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -620,6 +732,9 @@ class DeleteLibSamplesResponse(AbstractModel):
 
     @property
     def Details(self):
+        """每个关键词删除的结果
+        :rtype: list of DeleteSampleDetails
+        """
         return self._Details
 
     @Details.setter
@@ -628,6 +743,9 @@ class DeleteLibSamplesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -669,6 +787,9 @@ class DeleteSampleDetails(AbstractModel):
 
     @property
     def SampleID(self):
+        """关键词ID
+        :rtype: str
+        """
         return self._SampleID
 
     @SampleID.setter
@@ -677,6 +798,9 @@ class DeleteSampleDetails(AbstractModel):
 
     @property
     def Content(self):
+        """关键词内容
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -685,6 +809,9 @@ class DeleteSampleDetails(AbstractModel):
 
     @property
     def Deleted(self):
+        """是否删除成功
+        :rtype: bool
+        """
         return self._Deleted
 
     @Deleted.setter
@@ -693,6 +820,9 @@ class DeleteSampleDetails(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """错误信息
+        :rtype: str
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -735,6 +865,9 @@ class DescribeKeywordsLibsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """单页条数，最大为100条
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -743,6 +876,9 @@ class DescribeKeywordsLibsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """条数偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -751,6 +887,9 @@ class DescribeKeywordsLibsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤器(支持LibName模糊查询,CustomLibIDs词库id列表过滤)
+        :rtype: list of Filters
+        """
         return self._Filters
 
     @Filters.setter
@@ -797,6 +936,9 @@ class DescribeKeywordsLibsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """词库记录数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -805,6 +947,9 @@ class DescribeKeywordsLibsResponse(AbstractModel):
 
     @property
     def Infos(self):
+        """词库详情
+        :rtype: list of KeywordsLibInfo
+        """
         return self._Infos
 
     @Infos.setter
@@ -813,6 +958,9 @@ class DescribeKeywordsLibsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -860,6 +1008,9 @@ class DescribeLibSamplesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """单页条数，最大为100条
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -868,6 +1019,9 @@ class DescribeLibSamplesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """条数偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -876,6 +1030,9 @@ class DescribeLibSamplesRequest(AbstractModel):
 
     @property
     def LibID(self):
+        """词库ID
+        :rtype: str
+        """
         return self._LibID
 
     @LibID.setter
@@ -884,6 +1041,9 @@ class DescribeLibSamplesRequest(AbstractModel):
 
     @property
     def Content(self):
+        """词内容过滤
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -892,6 +1052,9 @@ class DescribeLibSamplesRequest(AbstractModel):
 
     @property
     def EvilTypeList(self):
+        """违规类型列表过滤
+        :rtype: list of int
+        """
         return self._EvilTypeList
 
     @EvilTypeList.setter
@@ -900,6 +1063,9 @@ class DescribeLibSamplesRequest(AbstractModel):
 
     @property
     def SampleIDs(self):
+        """样本词ID列表过滤
+        :rtype: list of str
+        """
         return self._SampleIDs
 
     @SampleIDs.setter
@@ -944,6 +1110,9 @@ class DescribeLibSamplesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """词记录数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -952,6 +1121,9 @@ class DescribeLibSamplesResponse(AbstractModel):
 
     @property
     def Infos(self):
+        """词详情
+        :rtype: list of UserKeywordInfo
+        """
         return self._Infos
 
     @Infos.setter
@@ -960,6 +1132,9 @@ class DescribeLibSamplesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1008,6 +1183,9 @@ class DetailResult(AbstractModel):
 
     @property
     def Keywords(self):
+        """该标签下命中的关键词
+        :rtype: list of str
+        """
         return self._Keywords
 
     @Keywords.setter
@@ -1016,6 +1194,16 @@ class DetailResult(AbstractModel):
 
     @property
     def EvilType(self):
+        """恶意类型
+100：正常
+20001：政治
+20002：色情 
+20006：涉毒违法
+20007：谩骂
+20105：广告引流 
+24001：暴恐
+        :rtype: int
+        """
         return self._EvilType
 
     @EvilType.setter
@@ -1024,6 +1212,9 @@ class DetailResult(AbstractModel):
 
     @property
     def Score(self):
+        """该标签模型命中的分值
+        :rtype: int
+        """
         return self._Score
 
     @Score.setter
@@ -1032,6 +1223,9 @@ class DetailResult(AbstractModel):
 
     @property
     def EvilLabel(self):
+        """恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
+        :rtype: str
+        """
         return self._EvilLabel
 
     @EvilLabel.setter
@@ -1086,6 +1280,9 @@ class Device(AbstractModel):
 
     @property
     def IDFV(self):
+        """IOS设备，IDFV - Identifier For Vendor（应用开发商标识符）
+        :rtype: str
+        """
         return self._IDFV
 
     @IDFV.setter
@@ -1094,6 +1291,9 @@ class Device(AbstractModel):
 
     @property
     def TokenId(self):
+        """设备指纹Token
+        :rtype: str
+        """
         return self._TokenId
 
     @TokenId.setter
@@ -1102,6 +1302,9 @@ class Device(AbstractModel):
 
     @property
     def IP(self):
+        """用户IP
+        :rtype: str
+        """
         return self._IP
 
     @IP.setter
@@ -1110,6 +1313,9 @@ class Device(AbstractModel):
 
     @property
     def Mac(self):
+        """Mac地址
+        :rtype: str
+        """
         return self._Mac
 
     @Mac.setter
@@ -1118,6 +1324,9 @@ class Device(AbstractModel):
 
     @property
     def IDFA(self):
+        """IOS设备，Identifier For Advertising（广告标识符）
+        :rtype: str
+        """
         return self._IDFA
 
     @IDFA.setter
@@ -1126,6 +1335,9 @@ class Device(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备指纹ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -1134,6 +1346,9 @@ class Device(AbstractModel):
 
     @property
     def IMEI(self):
+        """设备序列号
+        :rtype: str
+        """
         return self._IMEI
 
     @IMEI.setter
@@ -1176,6 +1391,9 @@ class Filters(AbstractModel):
 
     @property
     def Name(self):
+        """查询字段
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1184,6 +1402,9 @@ class Filters(AbstractModel):
 
     @property
     def Values(self):
+        """查询值
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -1268,6 +1489,16 @@ class ImageData(AbstractModel):
 
     @property
     def EvilType(self):
+        """恶意类型
+100：正常 
+20001：政治
+20002：色情 
+20006：涉毒违法
+20007：谩骂 
+20103：性感
+24001：暴恐
+        :rtype: int
+        """
         return self._EvilType
 
     @EvilType.setter
@@ -1276,6 +1507,10 @@ class ImageData(AbstractModel):
 
     @property
     def HotDetect(self):
+        """图片性感详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cms.v20190321.models.ImageHotDetect`
+        """
         return self._HotDetect
 
     @HotDetect.setter
@@ -1284,6 +1519,9 @@ class ImageData(AbstractModel):
 
     @property
     def EvilFlag(self):
+        """是否恶意 0：正常 1：可疑
+        :rtype: int
+        """
         return self._EvilFlag
 
     @EvilFlag.setter
@@ -1292,6 +1530,10 @@ class ImageData(AbstractModel):
 
     @property
     def CodeDetect(self):
+        """图片二维码详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cms.v20190321.models.CodeDetect`
+        """
         return self._CodeDetect
 
     @CodeDetect.setter
@@ -1300,6 +1542,10 @@ class ImageData(AbstractModel):
 
     @property
     def PolityDetect(self):
+        """图片涉政详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cms.v20190321.models.ImagePolityDetect`
+        """
         return self._PolityDetect
 
     @PolityDetect.setter
@@ -1308,6 +1554,10 @@ class ImageData(AbstractModel):
 
     @property
     def IllegalDetect(self):
+        """图片违法详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cms.v20190321.models.ImageIllegalDetect`
+        """
         return self._IllegalDetect
 
     @IllegalDetect.setter
@@ -1316,6 +1566,10 @@ class ImageData(AbstractModel):
 
     @property
     def PornDetect(self):
+        """图片涉黄详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cms.v20190321.models.ImagePornDetect`
+        """
         return self._PornDetect
 
     @PornDetect.setter
@@ -1324,6 +1578,10 @@ class ImageData(AbstractModel):
 
     @property
     def TerrorDetect(self):
+        """图片暴恐详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cms.v20190321.models.ImageTerrorDetect`
+        """
         return self._TerrorDetect
 
     @TerrorDetect.setter
@@ -1332,6 +1590,10 @@ class ImageData(AbstractModel):
 
     @property
     def OCRDetect(self):
+        """图片OCR详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cms.v20190321.models.OCRDetect`
+        """
         return self._OCRDetect
 
     @OCRDetect.setter
@@ -1340,6 +1602,10 @@ class ImageData(AbstractModel):
 
     @property
     def LogoDetect(self):
+        """logo详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cms.v20190321.models.LogoDetail`
+        """
         return self._LogoDetect
 
     @LogoDetect.setter
@@ -1348,6 +1614,10 @@ class ImageData(AbstractModel):
 
     @property
     def Similar(self):
+        """图片相似度详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cms.v20190321.models.Similar`
+        """
         return self._Similar
 
     @Similar.setter
@@ -1356,6 +1626,10 @@ class ImageData(AbstractModel):
 
     @property
     def PhoneDetect(self):
+        """手机检测详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cms.v20190321.models.PhoneDetect`
+        """
         return self._PhoneDetect
 
     @PhoneDetect.setter
@@ -1434,6 +1708,9 @@ class ImageHotDetect(AbstractModel):
 
     @property
     def Keywords(self):
+        """关键词明细
+        :rtype: list of str
+        """
         return self._Keywords
 
     @Keywords.setter
@@ -1442,6 +1719,11 @@ class ImageHotDetect(AbstractModel):
 
     @property
     def EvilType(self):
+        """恶意类型
+100：正常
+20103：性感
+        :rtype: int
+        """
         return self._EvilType
 
     @EvilType.setter
@@ -1450,6 +1732,9 @@ class ImageHotDetect(AbstractModel):
 
     @property
     def Labels(self):
+        """性感标签：性感特征中文描述
+        :rtype: list of str
+        """
         return self._Labels
 
     @Labels.setter
@@ -1458,6 +1743,9 @@ class ImageHotDetect(AbstractModel):
 
     @property
     def Score(self):
+        """性感分：分值范围 0-100，分数越高性感倾向越明显
+        :rtype: int
+        """
         return self._Score
 
     @Score.setter
@@ -1466,6 +1754,9 @@ class ImageHotDetect(AbstractModel):
 
     @property
     def HitFlag(self):
+        """处置判定 0：正常 1：可疑
+        :rtype: int
+        """
         return self._HitFlag
 
     @HitFlag.setter
@@ -1517,6 +1808,11 @@ class ImageIllegalDetect(AbstractModel):
 
     @property
     def EvilType(self):
+        """恶意类型
+100：正常 
+20006：涉毒违法
+        :rtype: int
+        """
         return self._EvilType
 
     @EvilType.setter
@@ -1525,6 +1821,9 @@ class ImageIllegalDetect(AbstractModel):
 
     @property
     def HitFlag(self):
+        """处置判定 0：正常 1：可疑
+        :rtype: int
+        """
         return self._HitFlag
 
     @HitFlag.setter
@@ -1533,6 +1832,9 @@ class ImageIllegalDetect(AbstractModel):
 
     @property
     def Keywords(self):
+        """关键词明细
+        :rtype: list of str
+        """
         return self._Keywords
 
     @Keywords.setter
@@ -1541,6 +1843,9 @@ class ImageIllegalDetect(AbstractModel):
 
     @property
     def Labels(self):
+        """违法标签：返回违法特征中文描述，如赌桌，枪支
+        :rtype: list of str
+        """
         return self._Labels
 
     @Labels.setter
@@ -1549,6 +1854,9 @@ class ImageIllegalDetect(AbstractModel):
 
     @property
     def Score(self):
+        """违法分：分值范围 0-100，分数越高违法倾向越明显
+        :rtype: int
+        """
         return self._Score
 
     @Score.setter
@@ -1592,6 +1900,9 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def FileUrl(self):
+        """文件地址
+        :rtype: str
+        """
         return self._FileUrl
 
     @FileUrl.setter
@@ -1600,6 +1911,9 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def FileMD5(self):
+        """文件MD5值
+        :rtype: str
+        """
         return self._FileMD5
 
     @FileMD5.setter
@@ -1608,6 +1922,9 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def FileContent(self):
+        """文件内容 Base64,与FileUrl必须二填一
+        :rtype: str
+        """
         return self._FileContent
 
     @FileContent.setter
@@ -1649,6 +1966,9 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def BusinessCode(self):
+        """业务返回码
+        :rtype: int
+        """
         return self._BusinessCode
 
     @BusinessCode.setter
@@ -1657,6 +1977,9 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def Data(self):
+        """识别结果
+        :rtype: :class:`tencentcloud.cms.v20190321.models.ImageData`
+        """
         return self._Data
 
     @Data.setter
@@ -1665,6 +1988,9 @@ class ImageModerationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1716,6 +2042,11 @@ class ImagePolityDetect(AbstractModel):
 
     @property
     def EvilType(self):
+        """恶意类型
+100：正常 
+20001：政治
+        :rtype: int
+        """
         return self._EvilType
 
     @EvilType.setter
@@ -1724,6 +2055,9 @@ class ImagePolityDetect(AbstractModel):
 
     @property
     def HitFlag(self):
+        """处置判定  0：正常 1：可疑
+        :rtype: int
+        """
         return self._HitFlag
 
     @HitFlag.setter
@@ -1732,6 +2066,9 @@ class ImagePolityDetect(AbstractModel):
 
     @property
     def FaceNames(self):
+        """命中的人脸名称
+        :rtype: list of str
+        """
         return self._FaceNames
 
     @FaceNames.setter
@@ -1740,6 +2077,10 @@ class ImagePolityDetect(AbstractModel):
 
     @property
     def PolityLogoDetail(self):
+        """命中的logo标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Logo
+        """
         return self._PolityLogoDetail
 
     @PolityLogoDetail.setter
@@ -1748,6 +2089,10 @@ class ImagePolityDetect(AbstractModel):
 
     @property
     def PolityItems(self):
+        """命中的政治物品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._PolityItems
 
     @PolityItems.setter
@@ -1756,6 +2101,9 @@ class ImagePolityDetect(AbstractModel):
 
     @property
     def Score(self):
+        """政治（人脸）分：分值范围 0-100，分数越高可疑程度越高
+        :rtype: int
+        """
         return self._Score
 
     @Score.setter
@@ -1764,6 +2112,9 @@ class ImagePolityDetect(AbstractModel):
 
     @property
     def Keywords(self):
+        """关键词明细
+        :rtype: list of str
+        """
         return self._Keywords
 
     @Keywords.setter
@@ -1822,6 +2173,11 @@ class ImagePornDetect(AbstractModel):
 
     @property
     def EvilType(self):
+        """恶意类型
+100：正常
+20002：色情
+        :rtype: int
+        """
         return self._EvilType
 
     @EvilType.setter
@@ -1830,6 +2186,9 @@ class ImagePornDetect(AbstractModel):
 
     @property
     def HitFlag(self):
+        """处置判定 0：正常 1：可疑
+        :rtype: int
+        """
         return self._HitFlag
 
     @HitFlag.setter
@@ -1838,6 +2197,9 @@ class ImagePornDetect(AbstractModel):
 
     @property
     def Keywords(self):
+        """关键词明细
+        :rtype: list of str
+        """
         return self._Keywords
 
     @Keywords.setter
@@ -1846,6 +2208,9 @@ class ImagePornDetect(AbstractModel):
 
     @property
     def Labels(self):
+        """色情标签：色情特征中文描述
+        :rtype: list of str
+        """
         return self._Labels
 
     @Labels.setter
@@ -1854,6 +2219,9 @@ class ImagePornDetect(AbstractModel):
 
     @property
     def Score(self):
+        """色情分：分值范围 0-100，分数越高色情倾向越明显
+        :rtype: int
+        """
         return self._Score
 
     @Score.setter
@@ -1910,6 +2278,10 @@ class ImageTerrorDetect(AbstractModel):
 
     @property
     def Keywords(self):
+        """关键词明细
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Keywords
 
     @Keywords.setter
@@ -1918,6 +2290,12 @@ class ImageTerrorDetect(AbstractModel):
 
     @property
     def EvilType(self):
+        """恶意类型
+100：正常
+24001：暴恐
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EvilType
 
     @EvilType.setter
@@ -1926,6 +2304,10 @@ class ImageTerrorDetect(AbstractModel):
 
     @property
     def Labels(self):
+        """暴恐标签：返回暴恐特征中文描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Labels
 
     @Labels.setter
@@ -1934,6 +2316,10 @@ class ImageTerrorDetect(AbstractModel):
 
     @property
     def Score(self):
+        """暴恐分：分值范围0--100，分数越高暴恐倾向越明显
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Score
 
     @Score.setter
@@ -1942,6 +2328,10 @@ class ImageTerrorDetect(AbstractModel):
 
     @property
     def HitFlag(self):
+        """处置判定 0：正常 1：可疑
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HitFlag
 
     @HitFlag.setter
@@ -1988,6 +2378,10 @@ class InvalidSample(AbstractModel):
 
     @property
     def Content(self):
+        """关键词
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -1996,6 +2390,10 @@ class InvalidSample(AbstractModel):
 
     @property
     def InvalidCode(self):
+        """无效代码:1-标签不存在;2-词过长;3-词类型不匹配;4-备注超长
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._InvalidCode
 
     @InvalidCode.setter
@@ -2004,6 +2402,10 @@ class InvalidSample(AbstractModel):
 
     @property
     def InvalidMessage(self):
+        """无效描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InvalidMessage
 
     @InvalidMessage.setter
@@ -2060,6 +2462,9 @@ class KeywordsLibInfo(AbstractModel):
 
     @property
     def ID(self):
+        """关键词库ID
+        :rtype: str
+        """
         return self._ID
 
     @ID.setter
@@ -2068,6 +2473,10 @@ class KeywordsLibInfo(AbstractModel):
 
     @property
     def LibName(self):
+        """关键词库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LibName
 
     @LibName.setter
@@ -2076,6 +2485,10 @@ class KeywordsLibInfo(AbstractModel):
 
     @property
     def Describe(self):
+        """关键词库描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Describe
 
     @Describe.setter
@@ -2084,6 +2497,9 @@ class KeywordsLibInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """关键词库创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2092,6 +2508,9 @@ class KeywordsLibInfo(AbstractModel):
 
     @property
     def Suggestion(self):
+        """审核建议(Review/Block)
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -2100,6 +2519,9 @@ class KeywordsLibInfo(AbstractModel):
 
     @property
     def MatchType(self):
+        """匹配模式(ExactMatch/FuzzyMatch)
+        :rtype: str
+        """
         return self._MatchType
 
     @MatchType.setter
@@ -2108,6 +2530,10 @@ class KeywordsLibInfo(AbstractModel):
 
     @property
     def BizTypes(self):
+        """关联策略BizType列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._BizTypes
 
     @BizTypes.setter
@@ -2156,6 +2582,10 @@ class Logo(AbstractModel):
 
     @property
     def Confidence(self):
+        """logo图标置信度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -2164,6 +2594,10 @@ class Logo(AbstractModel):
 
     @property
     def RrectF(self):
+        """logo图标坐标信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cms.v20190321.models.RrectF`
+        """
         return self._RrectF
 
     @RrectF.setter
@@ -2172,6 +2606,10 @@ class Logo(AbstractModel):
 
     @property
     def Name(self):
+        """logo图标名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2210,6 +2648,10 @@ class LogoDetail(AbstractModel):
 
     @property
     def AppLogoDetail(self):
+        """命中的Applogo详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Logo
+        """
         return self._AppLogoDetail
 
     @AppLogoDetail.setter
@@ -2253,6 +2695,10 @@ class OCRDetect(AbstractModel):
 
     @property
     def Item(self):
+        """识别到的详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OCRItem
+        """
         return self._Item
 
     @Item.setter
@@ -2261,6 +2707,10 @@ class OCRDetect(AbstractModel):
 
     @property
     def TextInfo(self):
+        """识别到的文本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TextInfo
 
     @TextInfo.setter
@@ -2321,6 +2771,10 @@ class OCRItem(AbstractModel):
 
     @property
     def TextPosition(self):
+        """检测到的文本坐标信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cms.v20190321.models.Coordinate`
+        """
         return self._TextPosition
 
     @TextPosition.setter
@@ -2329,6 +2783,10 @@ class OCRItem(AbstractModel):
 
     @property
     def EvilType(self):
+        """文本命中恶意违规类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EvilType
 
     @EvilType.setter
@@ -2337,6 +2795,10 @@ class OCRItem(AbstractModel):
 
     @property
     def TextContent(self):
+        """检测到的文本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TextContent
 
     @TextContent.setter
@@ -2345,6 +2807,10 @@ class OCRItem(AbstractModel):
 
     @property
     def Rate(self):
+        """文本涉嫌违规分值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Rate
 
     @Rate.setter
@@ -2353,6 +2819,10 @@ class OCRItem(AbstractModel):
 
     @property
     def EvilLabel(self):
+        """文本命中具体标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EvilLabel
 
     @EvilLabel.setter
@@ -2361,6 +2831,10 @@ class OCRItem(AbstractModel):
 
     @property
     def Keywords(self):
+        """文本命中违规的关键词
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Keywords
 
     @Keywords.setter
@@ -2416,6 +2890,12 @@ class PhoneDetect(AbstractModel):
 
     @property
     def EvilType(self):
+        """恶意类型
+100：正常
+21000：综合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EvilType
 
     @EvilType.setter
@@ -2424,6 +2904,10 @@ class PhoneDetect(AbstractModel):
 
     @property
     def Labels(self):
+        """特征中文描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Labels
 
     @Labels.setter
@@ -2432,6 +2916,10 @@ class PhoneDetect(AbstractModel):
 
     @property
     def Score(self):
+        """分值范围 0-100，分数越高倾向越明显
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Score
 
     @Score.setter
@@ -2440,6 +2928,10 @@ class PhoneDetect(AbstractModel):
 
     @property
     def HitFlag(self):
+        """处置判定 0：正常 1：可疑
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HitFlag
 
     @HitFlag.setter
@@ -2485,6 +2977,9 @@ class RiskDetails(AbstractModel):
 
     @property
     def Keywords(self):
+        """预留字段，暂时不使用
+        :rtype: list of str
+        """
         return self._Keywords
 
     @Keywords.setter
@@ -2493,6 +2988,9 @@ class RiskDetails(AbstractModel):
 
     @property
     def Lable(self):
+        """预留字段，暂时不用
+        :rtype: str
+        """
         return self._Lable
 
     @Lable.setter
@@ -2501,6 +2999,9 @@ class RiskDetails(AbstractModel):
 
     @property
     def Label(self):
+        """风险类别，RiskAccount，RiskIP, RiskIMEI
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -2509,6 +3010,9 @@ class RiskDetails(AbstractModel):
 
     @property
     def Level(self):
+        """风险等级，1:疑似，2：恶意
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -2562,6 +3066,10 @@ class RrectF(AbstractModel):
 
     @property
     def Width(self):
+        """logo图标宽度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Width
 
     @Width.setter
@@ -2570,6 +3078,10 @@ class RrectF(AbstractModel):
 
     @property
     def Cy(self):
+        """logo纵坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Cy
 
     @Cy.setter
@@ -2578,6 +3090,10 @@ class RrectF(AbstractModel):
 
     @property
     def Cx(self):
+        """logo横坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Cx
 
     @Cx.setter
@@ -2586,6 +3102,10 @@ class RrectF(AbstractModel):
 
     @property
     def Rotate(self):
+        """logo图标中心旋转度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Rotate
 
     @Rotate.setter
@@ -2594,6 +3114,10 @@ class RrectF(AbstractModel):
 
     @property
     def Height(self):
+        """logo图标高度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Height
 
     @Height.setter
@@ -2644,6 +3168,15 @@ class Similar(AbstractModel):
 
     @property
     def EvilType(self):
+        """恶意类型
+100：正常 
+20001：政治
+20002：色情 
+20006：涉毒违法
+20007：谩骂 
+24001：暴恐
+        :rtype: int
+        """
         return self._EvilType
 
     @EvilType.setter
@@ -2652,6 +3185,9 @@ class Similar(AbstractModel):
 
     @property
     def HitFlag(self):
+        """处置判定 0：未匹配到 1：恶意 2：白样本
+        :rtype: int
+        """
         return self._HitFlag
 
     @HitFlag.setter
@@ -2660,6 +3196,10 @@ class Similar(AbstractModel):
 
     @property
     def SeedUrl(self):
+        """返回的种子url
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SeedUrl
 
     @SeedUrl.setter
@@ -2744,6 +3284,16 @@ class TextData(AbstractModel):
 
     @property
     def EvilType(self):
+        """恶意类型
+100：正常
+20001：政治
+20002：色情 
+20006：涉毒违法
+20007：谩骂
+20105：广告引流 
+24001：暴恐
+        :rtype: int
+        """
         return self._EvilType
 
     @EvilType.setter
@@ -2752,6 +3302,9 @@ class TextData(AbstractModel):
 
     @property
     def EvilFlag(self):
+        """是否恶意 0：正常 1：可疑
+        :rtype: int
+        """
         return self._EvilFlag
 
     @EvilFlag.setter
@@ -2760,6 +3313,9 @@ class TextData(AbstractModel):
 
     @property
     def DataId(self):
+        """和请求中的DataId一致，原样返回
+        :rtype: str
+        """
         return self._DataId
 
     @DataId.setter
@@ -2768,6 +3324,9 @@ class TextData(AbstractModel):
 
     @property
     def Extra(self):
+        """输出的其他信息，不同客户内容不同
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -2776,6 +3335,9 @@ class TextData(AbstractModel):
 
     @property
     def BizType(self):
+        """最终使用的BizType
+        :rtype: int
+        """
         return self._BizType
 
     @BizType.setter
@@ -2784,6 +3346,9 @@ class TextData(AbstractModel):
 
     @property
     def Res(self):
+        """消息类输出结果
+        :rtype: :class:`tencentcloud.cms.v20190321.models.TextOutputRes`
+        """
         return self._Res
 
     @Res.setter
@@ -2792,6 +3357,9 @@ class TextData(AbstractModel):
 
     @property
     def RiskDetails(self):
+        """账号风险检测结果
+        :rtype: list of RiskDetails
+        """
         return self._RiskDetails
 
     @RiskDetails.setter
@@ -2800,6 +3368,9 @@ class TextData(AbstractModel):
 
     @property
     def ID(self):
+        """消息类ID信息
+        :rtype: :class:`tencentcloud.cms.v20190321.models.TextOutputID`
+        """
         return self._ID
 
     @ID.setter
@@ -2808,6 +3379,9 @@ class TextData(AbstractModel):
 
     @property
     def Score(self):
+        """命中的模型分值
+        :rtype: int
+        """
         return self._Score
 
     @Score.setter
@@ -2816,6 +3390,9 @@ class TextData(AbstractModel):
 
     @property
     def Common(self):
+        """消息类公共相关参数
+        :rtype: :class:`tencentcloud.cms.v20190321.models.TextOutputComm`
+        """
         return self._Common
 
     @Common.setter
@@ -2824,6 +3401,9 @@ class TextData(AbstractModel):
 
     @property
     def Suggestion(self):
+        """建议值,Block：打击,Review：待复审,Normal：正常
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -2832,6 +3412,9 @@ class TextData(AbstractModel):
 
     @property
     def Keywords(self):
+        """命中的关键词
+        :rtype: list of str
+        """
         return self._Keywords
 
     @Keywords.setter
@@ -2840,6 +3423,9 @@ class TextData(AbstractModel):
 
     @property
     def DetailResult(self):
+        """返回的详细结果
+        :rtype: list of DetailResult
+        """
         return self._DetailResult
 
     @DetailResult.setter
@@ -2848,6 +3434,9 @@ class TextData(AbstractModel):
 
     @property
     def CustomResult(self):
+        """返回的自定义词库结果
+        :rtype: list of CustomResult
+        """
         return self._CustomResult
 
     @CustomResult.setter
@@ -2856,6 +3445,9 @@ class TextData(AbstractModel):
 
     @property
     def EvilLabel(self):
+        """恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
+        :rtype: str
+        """
         return self._EvilLabel
 
     @EvilLabel.setter
@@ -2939,6 +3531,9 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def Content(self):
+        """文本内容Base64编码。原文长度需小于15000字节，即5000个汉字以内。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -2947,6 +3542,9 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def DataId(self):
+        """数据ID，英文字母、下划线、-组成，不超过64个字符
+        :rtype: str
+        """
         return self._DataId
 
     @DataId.setter
@@ -2955,6 +3553,9 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def BizType(self):
+        """该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略
+        :rtype: int
+        """
         return self._BizType
 
     @BizType.setter
@@ -2963,6 +3564,9 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def User(self):
+        """用户相关信息
+        :rtype: :class:`tencentcloud.cms.v20190321.models.User`
+        """
         return self._User
 
     @User.setter
@@ -2971,6 +3575,9 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """业务应用ID
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2979,6 +3586,9 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def Device(self):
+        """设备相关信息
+        :rtype: :class:`tencentcloud.cms.v20190321.models.Device`
+        """
         return self._Device
 
     @Device.setter
@@ -3028,6 +3638,9 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def BusinessCode(self):
+        """业务返回码
+        :rtype: int
+        """
         return self._BusinessCode
 
     @BusinessCode.setter
@@ -3036,6 +3649,10 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def Data(self):
+        """识别结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cms.v20190321.models.TextData`
+        """
         return self._Data
 
     @Data.setter
@@ -3044,6 +3661,9 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3082,6 +3702,9 @@ class TextOutputComm(AbstractModel):
 
     @property
     def BUCtrlID(self):
+        """接口唯一ID，旁路调用接口返回有该字段，标识唯一接口
+        :rtype: int
+        """
         return self._BUCtrlID
 
     @BUCtrlID.setter
@@ -3090,6 +3713,9 @@ class TextOutputComm(AbstractModel):
 
     @property
     def SendTime(self):
+        """消息发送时间
+        :rtype: int
+        """
         return self._SendTime
 
     @SendTime.setter
@@ -3098,6 +3724,9 @@ class TextOutputComm(AbstractModel):
 
     @property
     def AppID(self):
+        """接入业务的唯一ID
+        :rtype: int
+        """
         return self._AppID
 
     @AppID.setter
@@ -3106,6 +3735,9 @@ class TextOutputComm(AbstractModel):
 
     @property
     def Uin(self):
+        """请求字段里的Common.Uin
+        :rtype: int
+        """
         return self._Uin
 
     @Uin.setter
@@ -3145,6 +3777,9 @@ class TextOutputID(AbstractModel):
 
     @property
     def MsgID(self):
+        """接入业务的唯一ID
+        :rtype: str
+        """
         return self._MsgID
 
     @MsgID.setter
@@ -3153,6 +3788,9 @@ class TextOutputID(AbstractModel):
 
     @property
     def Uin(self):
+        """用户账号uin，对应请求协议里的Content.User.Uin。旁路结果有回带，串联结果无该字段
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -3197,6 +3835,9 @@ class TextOutputRes(AbstractModel):
 
     @property
     def Operator(self):
+        """操作人,信安处理人企业微信ID
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -3205,6 +3846,9 @@ class TextOutputRes(AbstractModel):
 
     @property
     def ResultType(self):
+        """恶意类型，广告（10001）， 政治（20001）， 色情（20002）， 社会事件（20004）， 暴力（20011）， 低俗（20012）， 违法犯罪（20006）， 欺诈（20008）， 版权（20013）， 谣言（20104）， 其他（21000）
+        :rtype: int
+        """
         return self._ResultType
 
     @ResultType.setter
@@ -3213,6 +3857,10 @@ class TextOutputRes(AbstractModel):
 
     @property
     def ResultCode(self):
+        """恶意操作码，
+删除（1）， 通过（2）， 先审后发（100012）
+        :rtype: int
+        """
         return self._ResultCode
 
     @ResultCode.setter
@@ -3221,6 +3869,9 @@ class TextOutputRes(AbstractModel):
 
     @property
     def ResultMsg(self):
+        """操作结果备注说明
+        :rtype: str
+        """
         return self._ResultMsg
 
     @ResultMsg.setter
@@ -3275,6 +3926,9 @@ class User(AbstractModel):
 
     @property
     def Level(self):
+        """用户等级，默认0 未知 1 低 2 中 3 高
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -3283,6 +3937,9 @@ class User(AbstractModel):
 
     @property
     def Gender(self):
+        """性别 默认0 未知 1 男性 2 女性
+        :rtype: int
+        """
         return self._Gender
 
     @Gender.setter
@@ -3291,6 +3948,9 @@ class User(AbstractModel):
 
     @property
     def Age(self):
+        """年龄 默认0 未知
+        :rtype: int
+        """
         return self._Age
 
     @Age.setter
@@ -3299,6 +3959,9 @@ class User(AbstractModel):
 
     @property
     def UserId(self):
+        """用户账号ID，如填写，会根据账号历史恶意情况，判定消息有害结果，特别是有利于可疑恶意情况下的辅助判断。账号可以填写微信uin、QQ号、微信openid、QQopenid、字符串等。该字段和账号类别确定唯一账号。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -3307,6 +3970,9 @@ class User(AbstractModel):
 
     @property
     def Phone(self):
+        """手机号
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -3315,6 +3981,9 @@ class User(AbstractModel):
 
     @property
     def AccountType(self):
+        """账号类别，"1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-其它string"
+        :rtype: int
+        """
         return self._AccountType
 
     @AccountType.setter
@@ -3323,6 +3992,9 @@ class User(AbstractModel):
 
     @property
     def Nickname(self):
+        """用户昵称
+        :rtype: str
+        """
         return self._Nickname
 
     @Nickname.setter
@@ -3371,6 +4043,9 @@ class UserKeyword(AbstractModel):
 
     @property
     def Content(self):
+        """关键词内容：最多40个字符，并且符合词类型的规则
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -3379,6 +4054,9 @@ class UserKeyword(AbstractModel):
 
     @property
     def Label(self):
+        """关键词类型，取值范围为："Normal","Polity","Porn","Ad","Illegal","Abuse","Terror","Spam"
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -3387,6 +4065,9 @@ class UserKeyword(AbstractModel):
 
     @property
     def Remark(self):
+        """关键词备注：最多100个字符。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -3395,6 +4076,9 @@ class UserKeyword(AbstractModel):
 
     @property
     def WordType(self):
+        """词类型：Default,Pinyin,English,CompoundWord,ExclusionWord,AffixWord
+        :rtype: str
+        """
         return self._WordType
 
     @WordType.setter
@@ -3448,6 +4132,9 @@ class UserKeywordInfo(AbstractModel):
 
     @property
     def ID(self):
+        """关键词条ID
+        :rtype: str
+        """
         return self._ID
 
     @ID.setter
@@ -3456,6 +4143,9 @@ class UserKeywordInfo(AbstractModel):
 
     @property
     def Content(self):
+        """关键词内容
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -3464,6 +4154,9 @@ class UserKeywordInfo(AbstractModel):
 
     @property
     def Label(self):
+        """关键词标签；取值范围为："Normal","Polity","Porn","Sexy","Ad","Illegal","Abuse","Terror","Spam","Moan"
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -3472,6 +4165,9 @@ class UserKeywordInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3480,6 +4176,10 @@ class UserKeywordInfo(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -3488,6 +4188,10 @@ class UserKeywordInfo(AbstractModel):
 
     @property
     def WordType(self):
+        """词类型：Default,Pinyin,English,CompoundWord,ExclusionWord,AffixWord
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WordType
 
     @WordType.setter

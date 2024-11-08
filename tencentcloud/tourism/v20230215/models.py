@@ -35,6 +35,9 @@ class DescribeDrawResourceListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """PageNumber
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -43,6 +46,9 @@ class DescribeDrawResourceListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """PageSize
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -83,6 +89,9 @@ class DescribeDrawResourceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """返回数据条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -91,6 +100,9 @@ class DescribeDrawResourceListResponse(AbstractModel):
 
     @property
     def ResourceDrawList(self):
+        """返回数据数组
+        :rtype: list of ResourceDrawListType
+        """
         return self._ResourceDrawList
 
     @ResourceDrawList.setter
@@ -99,6 +111,9 @@ class DescribeDrawResourceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -176,6 +191,10 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def Id(self):
+        """记录id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -184,6 +203,10 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def FlowId(self):
+        """资源记录id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -192,6 +215,10 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -200,6 +227,10 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def IndexId(self):
+        """本订单资源序列号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IndexId
 
     @IndexId.setter
@@ -208,6 +239,10 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def Uin(self):
+        """客户的uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -216,6 +251,10 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def BigDealId(self):
+        """大订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BigDealId
 
     @BigDealId.setter
@@ -224,6 +263,10 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def SmallOrderId(self):
+        """小订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SmallOrderId
 
     @SmallOrderId.setter
@@ -232,6 +275,10 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def ResourceNewStartTime(self):
+        """资源创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceNewStartTime
 
     @ResourceNewStartTime.setter
@@ -240,6 +287,10 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def ResourceNewEndTime(self):
+        """资源到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceNewEndTime
 
     @ResourceNewEndTime.setter
@@ -248,6 +299,10 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def ResourceStatus(self):
+        """资源状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ResourceStatus
 
     @ResourceStatus.setter
@@ -256,6 +311,10 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def Status(self):
+        """本记录状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -264,6 +323,10 @@ class ResourceDrawListType(AbstractModel):
 
     @property
     def ResourceType(self):
+        """项目类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ResourceType
 
     @ResourceType.setter

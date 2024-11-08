@@ -32,6 +32,9 @@ class AnalyzeSentimentRequest(AbstractModel):
 
     @property
     def Text(self):
+        """待分析的文本（仅支持UTF-8格式，不超过200字）。
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -80,6 +83,9 @@ neutral：中性、无情感
 
     @property
     def Positive(self):
+        """正面情感概率。
+        :rtype: float
+        """
         return self._Positive
 
     @Positive.setter
@@ -88,6 +94,9 @@ neutral：中性、无情感
 
     @property
     def Neutral(self):
+        """中性情感概率。
+        :rtype: float
+        """
         return self._Neutral
 
     @Neutral.setter
@@ -96,6 +105,9 @@ neutral：中性、无情感
 
     @property
     def Negative(self):
+        """负面情感概率。
+        :rtype: float
+        """
         return self._Negative
 
     @Negative.setter
@@ -104,6 +116,12 @@ neutral：中性、无情感
 
     @property
     def Sentiment(self):
+        """情感分类结果：
+positive：正面情感
+negative：负面情感
+neutral：中性、无情感
+        :rtype: str
+        """
         return self._Sentiment
 
     @Sentiment.setter
@@ -112,6 +130,9 @@ neutral：中性、无情感
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -150,6 +171,9 @@ class BasicParticiple(AbstractModel):
 
     @property
     def Word(self):
+        """基础词。
+        :rtype: str
+        """
         return self._Word
 
     @Word.setter
@@ -158,6 +182,9 @@ class BasicParticiple(AbstractModel):
 
     @property
     def BeginOffset(self):
+        """基础词在NormalText中的起始位置。
+        :rtype: int
+        """
         return self._BeginOffset
 
     @BeginOffset.setter
@@ -166,6 +193,9 @@ class BasicParticiple(AbstractModel):
 
     @property
     def Length(self):
+        """基础词的长度。
+        :rtype: int
+        """
         return self._Length
 
     @Length.setter
@@ -174,6 +204,9 @@ class BasicParticiple(AbstractModel):
 
     @property
     def Pos(self):
+        """词性。
+        :rtype: str
+        """
         return self._Pos
 
     @Pos.setter
@@ -223,6 +256,10 @@ class Category(AbstractModel):
 
     @property
     def Id(self):
+        """分类id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -231,6 +268,10 @@ class Category(AbstractModel):
 
     @property
     def Label(self):
+        """分类英文名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -239,6 +280,10 @@ class Category(AbstractModel):
 
     @property
     def Name(self):
+        """分类中文名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -247,6 +292,10 @@ class Category(AbstractModel):
 
     @property
     def Score(self):
+        """分类置信度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Score
 
     @Score.setter
@@ -286,6 +335,9 @@ class ClassifyContentRequest(AbstractModel):
 
     @property
     def Title(self):
+        """待分类的文章的标题（仅支持UTF-8格式，不超过100字符）。
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -294,6 +346,9 @@ class ClassifyContentRequest(AbstractModel):
 
     @property
     def Content(self):
+        """待分类文章的内容, 每个元素对应一个段落。（仅支持UTF-8格式，文章内容长度总和不超过2000字符）
+        :rtype: list of str
+        """
         return self._Content
 
     @Content.setter
@@ -338,6 +393,9 @@ class ClassifyContentResponse(AbstractModel):
 
     @property
     def FirstClassification(self):
+        """一级分类。（请参见附录[三级分类体系表](https://cloud.tencent.com/document/product/271/94286)）
+        :rtype: :class:`tencentcloud.nlp.v20190408.models.Category`
+        """
         return self._FirstClassification
 
     @FirstClassification.setter
@@ -346,6 +404,9 @@ class ClassifyContentResponse(AbstractModel):
 
     @property
     def SecondClassification(self):
+        """二级分类。（请参见附录[三级分类体系表](https://cloud.tencent.com/document/product/271/94286)）
+        :rtype: :class:`tencentcloud.nlp.v20190408.models.Category`
+        """
         return self._SecondClassification
 
     @SecondClassification.setter
@@ -354,6 +415,10 @@ class ClassifyContentResponse(AbstractModel):
 
     @property
     def ThirdClassification(self):
+        """三级分类。（请参见附录[三级分类体系表](https://cloud.tencent.com/document/product/271/94286)）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.nlp.v20190408.models.Category`
+        """
         return self._ThirdClassification
 
     @ThirdClassification.setter
@@ -362,6 +427,9 @@ class ClassifyContentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -399,6 +467,9 @@ class ComposeCoupletRequest(AbstractModel):
 
     @property
     def Text(self):
+        """生成对联的关键词。长度需>=2，当长度>2时，自动截取前两个字作为关键字。内容需为常用汉字（不含有数字、英文、韩语、日语、符号等等其他）。
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -407,6 +478,9 @@ class ComposeCoupletRequest(AbstractModel):
 
     @property
     def TargetType(self):
+        """返回的文本结果为繁体还是简体。0：简体；1：繁体。默认为0。
+        :rtype: int
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -450,6 +524,9 @@ class ComposeCoupletResponse(AbstractModel):
 
     @property
     def TopScroll(self):
+        """横批。
+        :rtype: str
+        """
         return self._TopScroll
 
     @TopScroll.setter
@@ -458,6 +535,9 @@ class ComposeCoupletResponse(AbstractModel):
 
     @property
     def Content(self):
+        """上联与下联。
+        :rtype: list of str
+        """
         return self._Content
 
     @Content.setter
@@ -466,6 +546,9 @@ class ComposeCoupletResponse(AbstractModel):
 
     @property
     def RandomCause(self):
+        """当对联随机生成时，展示随机生成原因。
+        :rtype: str
+        """
         return self._RandomCause
 
     @RandomCause.setter
@@ -474,6 +557,9 @@ class ComposeCoupletResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -508,6 +594,9 @@ class ComposePoetryRequest(AbstractModel):
 
     @property
     def Text(self):
+        """生成诗词的关键词。
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -516,6 +605,9 @@ class ComposePoetryRequest(AbstractModel):
 
     @property
     def PoetryType(self):
+        """生成诗词的类型。0：藏头或藏身；1：藏头；2：藏身。默认为0。
+        :rtype: int
+        """
         return self._PoetryType
 
     @PoetryType.setter
@@ -524,6 +616,9 @@ class ComposePoetryRequest(AbstractModel):
 
     @property
     def Genre(self):
+        """诗的体裁。0：五言律诗或七言律诗；5：五言律诗；7：七言律诗。默认为0。
+        :rtype: int
+        """
         return self._Genre
 
     @Genre.setter
@@ -565,6 +660,9 @@ class ComposePoetryResponse(AbstractModel):
 
     @property
     def Title(self):
+        """诗题，即输入的生成诗词的关键词。
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -573,6 +671,9 @@ class ComposePoetryResponse(AbstractModel):
 
     @property
     def Content(self):
+        """诗的内容。
+        :rtype: list of str
+        """
         return self._Content
 
     @Content.setter
@@ -581,6 +682,9 @@ class ComposePoetryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -617,6 +721,9 @@ class CompoundParticiple(AbstractModel):
 
     @property
     def Word(self):
+        """基础词。
+        :rtype: str
+        """
         return self._Word
 
     @Word.setter
@@ -625,6 +732,9 @@ class CompoundParticiple(AbstractModel):
 
     @property
     def BeginOffset(self):
+        """基础词在NormalText中的起始位置。
+        :rtype: int
+        """
         return self._BeginOffset
 
     @BeginOffset.setter
@@ -633,6 +743,9 @@ class CompoundParticiple(AbstractModel):
 
     @property
     def Length(self):
+        """基础词的长度。
+        :rtype: int
+        """
         return self._Length
 
     @Length.setter
@@ -641,6 +754,9 @@ class CompoundParticiple(AbstractModel):
 
     @property
     def Pos(self):
+        """词性。
+        :rtype: str
+        """
         return self._Pos
 
     @Pos.setter
@@ -704,6 +820,9 @@ class CorrectionItem(AbstractModel):
 
     @property
     def Order(self):
+        """纠错句子的序号。
+        :rtype: int
+        """
         return self._Order
 
     @Order.setter
@@ -712,6 +831,9 @@ class CorrectionItem(AbstractModel):
 
     @property
     def BeginOffset(self):
+        """错误的起始位置，从0开始。
+        :rtype: int
+        """
         return self._BeginOffset
 
     @BeginOffset.setter
@@ -720,6 +842,9 @@ class CorrectionItem(AbstractModel):
 
     @property
     def Len(self):
+        """错误内容长度。
+        :rtype: int
+        """
         return self._Len
 
     @Len.setter
@@ -728,6 +853,9 @@ class CorrectionItem(AbstractModel):
 
     @property
     def Word(self):
+        """错误内容。
+        :rtype: str
+        """
         return self._Word
 
     @Word.setter
@@ -736,6 +864,10 @@ class CorrectionItem(AbstractModel):
 
     @property
     def CorrectWord(self):
+        """纠错结果，当为删除类错误时，结果为null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._CorrectWord
 
     @CorrectWord.setter
@@ -744,6 +876,9 @@ class CorrectionItem(AbstractModel):
 
     @property
     def CorrectionType(self):
+        """纠错类型。0：替换；1：插入；2：删除。
+        :rtype: int
+        """
         return self._CorrectionType
 
     @CorrectionType.setter
@@ -752,6 +887,9 @@ class CorrectionItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """纠错信息置信度。0：error；1：warning；error的置信度更高。（仅供参考）
+        :rtype: int
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -760,6 +898,10 @@ class CorrectionItem(AbstractModel):
 
     @property
     def DescriptionZh(self):
+        """纠错信息中文描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DescriptionZh
 
     @DescriptionZh.setter
@@ -768,6 +910,10 @@ class CorrectionItem(AbstractModel):
 
     @property
     def DescriptionEn(self):
+        """纠错信息英文描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DescriptionEn
 
     @DescriptionEn.setter
@@ -820,6 +966,10 @@ translation_a2m：从古文改写为现代文
 
     @property
     def Text(self):
+        """润色后的文本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -828,6 +978,16 @@ translation_a2m：从古文改写为现代文
 
     @property
     def EmbellishType(self):
+        """润色类型。类型如下：
+expansion：扩写
+rewriting：改写
+translation_m2a：从现代文改写为古文
+translation_a2m：从古文改写为现代文
+
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EmbellishType
 
     @EmbellishType.setter
@@ -874,6 +1034,9 @@ class Entity(AbstractModel):
 
     @property
     def Word(self):
+        """基础词。
+        :rtype: str
+        """
         return self._Word
 
     @Word.setter
@@ -882,6 +1045,9 @@ class Entity(AbstractModel):
 
     @property
     def BeginOffset(self):
+        """基础词在NormalText中的起始位置。
+        :rtype: int
+        """
         return self._BeginOffset
 
     @BeginOffset.setter
@@ -890,6 +1056,9 @@ class Entity(AbstractModel):
 
     @property
     def Length(self):
+        """基础词的长度。
+        :rtype: int
+        """
         return self._Length
 
     @Length.setter
@@ -898,6 +1067,9 @@ class Entity(AbstractModel):
 
     @property
     def Type(self):
+        """实体类型的标准名字。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -906,6 +1078,9 @@ class Entity(AbstractModel):
 
     @property
     def Name(self):
+        """类型名字的自然语言表达。（中文或英文）
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -943,6 +1118,9 @@ class EvaluateSentenceSimilarityRequest(AbstractModel):
 
     @property
     def SentencePairList(self):
+        """待分析的句子对数组。句子对应不超过1对，仅支持中文文本，原句子与目标句子均应不超过500字符。
+        :rtype: list of SentencePair
+        """
         return self._SentencePairList
 
     @SentencePairList.setter
@@ -984,6 +1162,9 @@ class EvaluateSentenceSimilarityResponse(AbstractModel):
 
     @property
     def ScoreList(self):
+        """每个句子对的相似度分值。
+        :rtype: list of float
+        """
         return self._ScoreList
 
     @ScoreList.setter
@@ -992,6 +1173,9 @@ class EvaluateSentenceSimilarityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1023,6 +1207,10 @@ class EvaluateWordSimilarityRequest(AbstractModel):
 
     @property
     def SourceWord(self):
+        """计算相似度的源词。（仅支持UTF-8格式，不超过10字符）
+
+        :rtype: str
+        """
         return self._SourceWord
 
     @SourceWord.setter
@@ -1031,6 +1219,10 @@ class EvaluateWordSimilarityRequest(AbstractModel):
 
     @property
     def TargetWord(self):
+        """计算相似度的目标词。（仅支持UTF-8格式，不超过10字符）
+
+        :rtype: str
+        """
         return self._TargetWord
 
     @TargetWord.setter
@@ -1068,6 +1260,9 @@ class EvaluateWordSimilarityResponse(AbstractModel):
 
     @property
     def Similarity(self):
+        """词相似度分值。
+        :rtype: float
+        """
         return self._Similarity
 
     @Similarity.setter
@@ -1076,6 +1271,9 @@ class EvaluateWordSimilarityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1112,6 +1310,9 @@ academic：学术领域，仅支持英文
 
     @property
     def WordList(self):
+        """生成句子的关键词，关键词个数需不超过4个，中文关键词长度应不超过10字符，英文关键词长度不超过3个单词。关键词中不可包含标点符号。
+        :rtype: list of str
+        """
         return self._WordList
 
     @WordList.setter
@@ -1120,6 +1321,10 @@ academic：学术领域，仅支持英文
 
     @property
     def Number(self):
+        """返回生成句子的个数。数量需>=1且<=5。
+（注意实际结果可能小于指定个数）
+        :rtype: int
+        """
         return self._Number
 
     @Number.setter
@@ -1128,6 +1333,12 @@ academic：学术领域，仅支持英文
 
     @property
     def Domain(self):
+        """指定生成句子的领域，支持领域如下：
+general：通用领域，支持中英文
+academic：学术领域，仅支持英文
+默认为general（通用领域）。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -1166,6 +1377,9 @@ class GenerateKeywordSentenceResponse(AbstractModel):
 
     @property
     def KeywordSentenceList(self):
+        """生成的句子列表。
+        :rtype: list of KeywordSentence
+        """
         return self._KeywordSentenceList
 
     @KeywordSentenceList.setter
@@ -1174,6 +1388,9 @@ class GenerateKeywordSentenceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1205,6 +1422,9 @@ class KeywordSentence(AbstractModel):
 
     @property
     def TargetText(self):
+        """通过关键词生成的句子。
+        :rtype: str
+        """
         return self._TargetText
 
     @TargetText.setter
@@ -1238,6 +1458,9 @@ class ParseWordsRequest(AbstractModel):
 
     @property
     def Text(self):
+        """待分析的文本（支持中英文文本，不超过500字符）
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -1284,6 +1507,9 @@ class ParseWordsResponse(AbstractModel):
 
     @property
     def NormalText(self):
+        """输入文本正则化的结果。（包括对英文文本中的开头和实体进行大写等）
+        :rtype: str
+        """
         return self._NormalText
 
     @NormalText.setter
@@ -1292,6 +1518,9 @@ class ParseWordsResponse(AbstractModel):
 
     @property
     def BasicParticiples(self):
+        """基础粒度分词和词性标注的结果。（请参见附录[词性表](https://cloud.tencent.com/document/product/271/36460)）
+        :rtype: list of BasicParticiple
+        """
         return self._BasicParticiples
 
     @BasicParticiples.setter
@@ -1300,6 +1529,9 @@ class ParseWordsResponse(AbstractModel):
 
     @property
     def CompoundParticiples(self):
+        """复合粒度分词和词性标注的结果。（请参见附录[词性表](https://cloud.tencent.com/document/product/271/36460)）
+        :rtype: list of CompoundParticiple
+        """
         return self._CompoundParticiples
 
     @CompoundParticiples.setter
@@ -1308,6 +1540,10 @@ class ParseWordsResponse(AbstractModel):
 
     @property
     def Entities(self):
+        """实体识别结果。（请参见附录[实体类型数据](https://cloud.tencent.com/document/product/271/90592)）
+
+        :rtype: list of Entity
+        """
         return self._Entities
 
     @Entities.setter
@@ -1316,6 +1552,9 @@ class ParseWordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1363,6 +1602,9 @@ class RetrieveSimilarWordsRequest(AbstractModel):
 
     @property
     def Text(self):
+        """输入的词语。（仅支持UTF-8格式，不超过10字符）
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -1371,6 +1613,9 @@ class RetrieveSimilarWordsRequest(AbstractModel):
 
     @property
     def Number(self):
+        """召回的相似词个数，取值范围为1-20。
+        :rtype: int
+        """
         return self._Number
 
     @Number.setter
@@ -1408,6 +1653,9 @@ class RetrieveSimilarWordsResponse(AbstractModel):
 
     @property
     def WordList(self):
+        """召回的相似词数组。
+        :rtype: list of str
+        """
         return self._WordList
 
     @WordList.setter
@@ -1416,6 +1664,9 @@ class RetrieveSimilarWordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1442,6 +1693,9 @@ class SentenceCorrectionRequest(AbstractModel):
 
     @property
     def TextList(self):
+        """待纠错的句子列表。可以以数组方式在一次请求中填写多个待纠错的句子。文本统一使用utf-8格式编码，每个中文句子的长度不超过150字符，每个英文句子的长度不超过100个单词，且数组长度需小于30，即句子总数需少于30句。
+        :rtype: list of str
+        """
         return self._TextList
 
     @TextList.setter
@@ -1479,6 +1733,10 @@ class SentenceCorrectionResponse(AbstractModel):
 
     @property
     def CorrectionList(self):
+        """纠错结果列表。
+（注意仅展示错误句子的纠错结果，若句子无错则不展示，若全部待纠错句子都被认为无错，则可能返回数组为空）
+        :rtype: list of CorrectionItem
+        """
         return self._CorrectionList
 
     @CorrectionList.setter
@@ -1487,6 +1745,9 @@ class SentenceCorrectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1522,6 +1783,9 @@ class SentencePair(AbstractModel):
 
     @property
     def SourceText(self):
+        """需要与目标句子计算相似度的源句子。（仅支持UTF-8格式，不超过500字符）
+        :rtype: str
+        """
         return self._SourceText
 
     @SourceText.setter
@@ -1530,6 +1794,10 @@ class SentencePair(AbstractModel):
 
     @property
     def TargetText(self):
+        """目标句子。（仅支持UTF-8格式，不超过500字符）
+
+        :rtype: str
+        """
         return self._TargetText
 
     @TargetText.setter
@@ -1582,6 +1850,9 @@ a2m：从古文改写为现代文
 
     @property
     def Text(self):
+        """待润色的文本。中文文本长度需<=50字符；英文文本长度需<=30个单词。
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -1590,6 +1861,11 @@ a2m：从古文改写为现代文
 
     @property
     def SourceLang(self):
+        """待润色文本的语言类型，支持语言如下：
+zh：中文
+en：英文
+        :rtype: str
+        """
         return self._SourceLang
 
     @SourceLang.setter
@@ -1598,6 +1874,10 @@ a2m：从古文改写为现代文
 
     @property
     def Number(self):
+        """返回润色结果的个数。数量需>=1且<=5。
+（注意实际结果可能小于指定个数）
+        :rtype: int
+        """
         return self._Number
 
     @Number.setter
@@ -1606,6 +1886,15 @@ a2m：从古文改写为现代文
 
     @property
     def Style(self):
+        """控制润色类型，类型如下：
+both：同时返回改写和扩写
+expansion：扩写
+rewriting：改写
+m2a：从现代文改写为古文
+a2m：从古文改写为现代文
+默认为both。
+        :rtype: str
+        """
         return self._Style
 
     @Style.setter
@@ -1645,6 +1934,9 @@ class TextEmbellishResponse(AbstractModel):
 
     @property
     def EmbellishList(self):
+        """润色结果列表。
+        :rtype: list of Embellish
+        """
         return self._EmbellishList
 
     @EmbellishList.setter
@@ -1653,6 +1945,9 @@ class TextEmbellishResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1707,6 +2002,9 @@ urban_officialdom：职场
 
     @property
     def Text(self):
+        """待续写的句子，文本统一使用utf-8格式编码，长度不超过200字符。
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -1715,6 +2013,11 @@ urban_officialdom：职场
 
     @property
     def SourceLang(self):
+        """待续写文本的语言类型，支持语言如下：
+zh：中文
+en：英文
+        :rtype: str
+        """
         return self._SourceLang
 
     @SourceLang.setter
@@ -1723,6 +2026,10 @@ urban_officialdom：职场
 
     @property
     def Number(self):
+        """返回续写结果的个数。数量需>=1且<=5。
+（注意实际结果可能小于指定个数）
+        :rtype: int
+        """
         return self._Number
 
     @Number.setter
@@ -1731,6 +2038,12 @@ urban_officialdom：职场
 
     @property
     def Domain(self):
+        """指定续写领域，支持领域如下：
+general：通用领域，支持中英文补全
+academic：学术领域，仅支持英文补全
+默认为general（通用领域）。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -1739,6 +2052,14 @@ urban_officialdom：职场
 
     @property
     def Style(self):
+        """指定续写风格，支持风格如下：
+science_fiction：科幻
+military_history：军事
+xuanhuan_wuxia：武侠
+urban_officialdom：职场
+默认为xuanhuan_wuxia（武侠）。
+        :rtype: str
+        """
         return self._Style
 
     @Style.setter
@@ -1779,6 +2100,9 @@ class TextWritingResponse(AbstractModel):
 
     @property
     def WritingList(self):
+        """续写结果列表。
+        :rtype: list of Writing
+        """
         return self._WritingList
 
     @WritingList.setter
@@ -1787,6 +2111,9 @@ class TextWritingResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1821,6 +2148,9 @@ class Writing(AbstractModel):
 
     @property
     def TargetText(self):
+        """续写的文本。
+        :rtype: str
+        """
         return self._TargetText
 
     @TargetText.setter
@@ -1829,6 +2159,9 @@ class Writing(AbstractModel):
 
     @property
     def PrefixText(self):
+        """续写的前缀。
+        :rtype: str
+        """
         return self._PrefixText
 
     @PrefixText.setter

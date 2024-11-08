@@ -44,6 +44,9 @@ class Address(AbstractModel):
 
     @property
     def Province(self):
+        """省份
+        :rtype: str
+        """
         return self._Province
 
     @Province.setter
@@ -52,6 +55,9 @@ class Address(AbstractModel):
 
     @property
     def City(self):
+        """城市
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -60,6 +66,9 @@ class Address(AbstractModel):
 
     @property
     def County(self):
+        """区县
+        :rtype: str
+        """
         return self._County
 
     @County.setter
@@ -68,6 +77,9 @@ class Address(AbstractModel):
 
     @property
     def Details(self):
+        """详细地址
+        :rtype: str
+        """
         return self._Details
 
     @Details.setter
@@ -76,6 +88,9 @@ class Address(AbstractModel):
 
     @property
     def Country(self):
+        """国家，默认中国
+        :rtype: str
+        """
         return self._Country
 
     @Country.setter
@@ -116,6 +131,9 @@ class ArchiveFlowRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -124,6 +142,9 @@ class ArchiveFlowRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """流程ID
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -160,6 +181,9 @@ class ArchiveFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -191,6 +215,9 @@ class Caller(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """应用号
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -199,6 +226,9 @@ class Caller(AbstractModel):
 
     @property
     def SubOrganizationId(self):
+        """下属机构ID
+        :rtype: str
+        """
         return self._SubOrganizationId
 
     @SubOrganizationId.setter
@@ -207,6 +237,9 @@ class Caller(AbstractModel):
 
     @property
     def OperatorId(self):
+        """经办人的用户ID
+        :rtype: str
+        """
         return self._OperatorId
 
     @OperatorId.setter
@@ -248,6 +281,9 @@ class CancelFlowRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -256,6 +292,9 @@ class CancelFlowRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """流程ID
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -264,6 +303,9 @@ class CancelFlowRequest(AbstractModel):
 
     @property
     def CancelMessage(self):
+        """撤销原因
+        :rtype: str
+        """
         return self._CancelMessage
 
     @CancelMessage.setter
@@ -301,6 +343,9 @@ class CancelFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -329,6 +374,9 @@ class CatalogApprovers(AbstractModel):
 
     @property
     def FlowId(self):
+        """流程ID
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -337,6 +385,9 @@ class CatalogApprovers(AbstractModel):
 
     @property
     def Approvers(self):
+        """参与者列表
+        :rtype: list of FlowApproverInfo
+        """
         return self._Approvers
 
     @Approvers.setter
@@ -382,6 +433,9 @@ class CatalogComponents(AbstractModel):
 
     @property
     def FlowId(self):
+        """流程ID
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -390,6 +444,9 @@ class CatalogComponents(AbstractModel):
 
     @property
     def SignComponents(self):
+        """签署区列表
+        :rtype: list of Component
+        """
         return self._SignComponents
 
     @SignComponents.setter
@@ -398,6 +455,9 @@ class CatalogComponents(AbstractModel):
 
     @property
     def SignId(self):
+        """签署任务ID
+        :rtype: str
+        """
         return self._SignId
 
     @SignId.setter
@@ -444,6 +504,9 @@ class CheckBankCard2EVerificationRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息; 必选
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -452,6 +515,9 @@ class CheckBankCard2EVerificationRequest(AbstractModel):
 
     @property
     def BankCard(self):
+        """银行卡号
+        :rtype: str
+        """
         return self._BankCard
 
     @BankCard.setter
@@ -460,6 +526,9 @@ class CheckBankCard2EVerificationRequest(AbstractModel):
 
     @property
     def Name(self):
+        """姓名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -524,6 +593,30 @@ class CheckBankCard2EVerificationResponse(AbstractModel):
 
     @property
     def Result(self):
+        """检测结果
+计费结果码：
+  0:  认证通过
+  1:  认证未通过
+  2:  持卡人信息有误
+  3:  未开通无卡支付
+  4:  此卡被没收
+  5:  无效卡号
+  6:  此卡无对应发卡行
+  7:  该卡未初始化或睡眠卡
+  8:  作弊卡、吞卡
+  9:  此卡已挂失
+  10: 该卡已过期
+  11: 受限制的卡
+  12: 密码错误次数超限
+  13: 发卡行不支持此交易
+不收费结果码:
+  101: 姓名校验不通过
+  102: 银行卡号码有误
+  103: 验证中心服务繁忙
+  104: 身份证号码有误
+  105: 手机号码不合法
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -532,6 +625,9 @@ class CheckBankCard2EVerificationResponse(AbstractModel):
 
     @property
     def Description(self):
+        """结果描述; 未通过时必选
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -540,6 +636,9 @@ class CheckBankCard2EVerificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -579,6 +678,9 @@ class CheckBankCard3EVerificationRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息; 必选
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -587,6 +689,9 @@ class CheckBankCard3EVerificationRequest(AbstractModel):
 
     @property
     def BankCard(self):
+        """银行卡号
+        :rtype: str
+        """
         return self._BankCard
 
     @BankCard.setter
@@ -595,6 +700,9 @@ class CheckBankCard3EVerificationRequest(AbstractModel):
 
     @property
     def Name(self):
+        """姓名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -603,6 +711,9 @@ class CheckBankCard3EVerificationRequest(AbstractModel):
 
     @property
     def IdCardNumber(self):
+        """身份证件号码
+        :rtype: str
+        """
         return self._IdCardNumber
 
     @IdCardNumber.setter
@@ -611,6 +722,9 @@ class CheckBankCard3EVerificationRequest(AbstractModel):
 
     @property
     def IdCardType(self):
+        """身份证件类型; ID_CARD
+        :rtype: str
+        """
         return self._IdCardType
 
     @IdCardType.setter
@@ -677,6 +791,30 @@ class CheckBankCard3EVerificationResponse(AbstractModel):
 
     @property
     def Result(self):
+        """检测结果
+计费结果码：
+  0:  认证通过
+  1:  认证未通过
+  2:  持卡人信息有误
+  3:  未开通无卡支付
+  4:  此卡被没收
+  5:  无效卡号
+  6:  此卡无对应发卡行
+  7:  该卡未初始化或睡眠卡
+  8:  作弊卡、吞卡
+  9:  此卡已挂失
+  10: 该卡已过期
+  11: 受限制的卡
+  12: 密码错误次数超限
+  13: 发卡行不支持此交易
+不收费结果码:
+  101: 姓名校验不通过
+  102: 银行卡号码有误
+  103: 验证中心服务繁忙
+  104: 身份证号码有误
+  105: 手机号码不合法
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -685,6 +823,9 @@ class CheckBankCard3EVerificationResponse(AbstractModel):
 
     @property
     def Description(self):
+        """结果描述; 未通过时必选
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -693,6 +834,9 @@ class CheckBankCard3EVerificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -735,6 +879,9 @@ class CheckBankCard4EVerificationRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息; 必选
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -743,6 +890,9 @@ class CheckBankCard4EVerificationRequest(AbstractModel):
 
     @property
     def BankCard(self):
+        """银行卡号
+        :rtype: str
+        """
         return self._BankCard
 
     @BankCard.setter
@@ -751,6 +901,9 @@ class CheckBankCard4EVerificationRequest(AbstractModel):
 
     @property
     def Name(self):
+        """姓名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -759,6 +912,9 @@ class CheckBankCard4EVerificationRequest(AbstractModel):
 
     @property
     def IdCardNumber(self):
+        """身份证件号码
+        :rtype: str
+        """
         return self._IdCardNumber
 
     @IdCardNumber.setter
@@ -767,6 +923,9 @@ class CheckBankCard4EVerificationRequest(AbstractModel):
 
     @property
     def Mobile(self):
+        """手机号
+        :rtype: str
+        """
         return self._Mobile
 
     @Mobile.setter
@@ -775,6 +934,9 @@ class CheckBankCard4EVerificationRequest(AbstractModel):
 
     @property
     def IdCardType(self):
+        """身份证件类型; ID_CARD
+        :rtype: str
+        """
         return self._IdCardType
 
     @IdCardType.setter
@@ -842,6 +1004,30 @@ class CheckBankCard4EVerificationResponse(AbstractModel):
 
     @property
     def Result(self):
+        """检测结果
+计费结果码：
+  0:  认证通过
+  1:  认证未通过
+  2:  持卡人信息有误
+  3:  未开通无卡支付
+  4:  此卡被没收
+  5:  无效卡号
+  6:  此卡无对应发卡行
+  7:  该卡未初始化或睡眠卡
+  8:  作弊卡、吞卡
+  9:  此卡已挂失
+  10: 该卡已过期
+  11: 受限制的卡
+  12: 密码错误次数超限
+  13: 发卡行不支持此交易
+不收费结果码:
+  101: 姓名校验不通过
+  102: 银行卡号码有误
+  103: 验证中心服务繁忙
+  104: 身份证号码有误
+  105: 手机号码不合法
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -850,6 +1036,9 @@ class CheckBankCard4EVerificationResponse(AbstractModel):
 
     @property
     def Description(self):
+        """结果描述; 未通过时必选
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -858,6 +1047,9 @@ class CheckBankCard4EVerificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -900,6 +1092,9 @@ class CheckBankCardVerificationRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息; 必选
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -908,6 +1103,9 @@ class CheckBankCardVerificationRequest(AbstractModel):
 
     @property
     def BankCard(self):
+        """银行卡号
+        :rtype: str
+        """
         return self._BankCard
 
     @BankCard.setter
@@ -916,6 +1114,9 @@ class CheckBankCardVerificationRequest(AbstractModel):
 
     @property
     def Name(self):
+        """姓名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -924,6 +1125,9 @@ class CheckBankCardVerificationRequest(AbstractModel):
 
     @property
     def IdCardNumber(self):
+        """身份证件号码
+        :rtype: str
+        """
         return self._IdCardNumber
 
     @IdCardNumber.setter
@@ -932,6 +1136,9 @@ class CheckBankCardVerificationRequest(AbstractModel):
 
     @property
     def Mobile(self):
+        """手机号
+        :rtype: str
+        """
         return self._Mobile
 
     @Mobile.setter
@@ -940,6 +1147,9 @@ class CheckBankCardVerificationRequest(AbstractModel):
 
     @property
     def IdCardType(self):
+        """身份证件类型; ID_CARD
+        :rtype: str
+        """
         return self._IdCardType
 
     @IdCardType.setter
@@ -1007,6 +1217,30 @@ class CheckBankCardVerificationResponse(AbstractModel):
 
     @property
     def Result(self):
+        """检测结果
+计费结果码：
+  0:  认证通过
+  1:  认证未通过
+  2:  持卡人信息有误
+  3:  未开通无卡支付
+  4:  此卡被没收
+  5:  无效卡号
+  6:  此卡无对应发卡行
+  7:  该卡未初始化或睡眠卡
+  8:  作弊卡、吞卡
+  9:  此卡已挂失
+  10: 该卡已过期
+  11: 受限制的卡
+  12: 密码错误次数超限
+  13: 发卡行不支持此交易
+不收费结果码:
+  101: 姓名校验不通过
+  102: 银行卡号码有误
+  103: 验证中心服务繁忙
+  104: 身份证号码有误
+  105: 手机号码不合法
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -1015,6 +1249,9 @@ class CheckBankCardVerificationResponse(AbstractModel):
 
     @property
     def Description(self):
+        """结果描述; 未通过时必选
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1023,6 +1260,9 @@ class CheckBankCardVerificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1065,6 +1305,9 @@ class CheckFaceIdentifyRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息; 必选
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -1073,6 +1316,9 @@ class CheckFaceIdentifyRequest(AbstractModel):
 
     @property
     def VerifyChannel(self):
+        """人脸核身渠道; 必选; WEIXINAPP:腾讯电子签小程序,FACEID:腾讯电子签慧眼,None:白名单中的客户直接通过
+        :rtype: str
+        """
         return self._VerifyChannel
 
     @VerifyChannel.setter
@@ -1081,6 +1327,9 @@ class CheckFaceIdentifyRequest(AbstractModel):
 
     @property
     def VerifyResult(self):
+        """核身订单号; 必选; 对于WEIXINAPP,直接取响应的{VerifyResult};对于FACEID,使用{WbAppId}:{OrderNo}拼接
+        :rtype: str
+        """
         return self._VerifyResult
 
     @VerifyResult.setter
@@ -1089,6 +1338,9 @@ class CheckFaceIdentifyRequest(AbstractModel):
 
     @property
     def Name(self):
+        """要对比的姓名; 可选; 未填写时对比caller.OperatorId的实名信息
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1097,6 +1349,9 @@ class CheckFaceIdentifyRequest(AbstractModel):
 
     @property
     def IdCardNumber(self):
+        """要对比的身份证号码; 可选; 未填写时对比caller.OperatorId的实名信息
+        :rtype: str
+        """
         return self._IdCardNumber
 
     @IdCardNumber.setter
@@ -1105,6 +1360,9 @@ class CheckFaceIdentifyRequest(AbstractModel):
 
     @property
     def GetPhoto(self):
+        """是否取认证时的照片
+        :rtype: bool
+        """
         return self._GetPhoto
 
     @GetPhoto.setter
@@ -1173,6 +1431,9 @@ class CheckFaceIdentifyResponse(AbstractModel):
 
     @property
     def Result(self):
+        """核身结果; 0:通过,1:不通过
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -1181,6 +1442,9 @@ class CheckFaceIdentifyResponse(AbstractModel):
 
     @property
     def Description(self):
+        """核身结果描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1189,6 +1453,9 @@ class CheckFaceIdentifyResponse(AbstractModel):
 
     @property
     def ChannelName(self):
+        """渠道名
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -1197,6 +1464,10 @@ class CheckFaceIdentifyResponse(AbstractModel):
 
     @property
     def VerifiedOn(self):
+        """认证通过时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._VerifiedOn
 
     @VerifiedOn.setter
@@ -1205,6 +1476,9 @@ class CheckFaceIdentifyResponse(AbstractModel):
 
     @property
     def SerialNumber(self):
+        """核身流水号
+        :rtype: str
+        """
         return self._SerialNumber
 
     @SerialNumber.setter
@@ -1213,6 +1487,10 @@ class CheckFaceIdentifyResponse(AbstractModel):
 
     @property
     def VerifyServerIp(self):
+        """渠道核身服务器IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VerifyServerIp
 
     @VerifyServerIp.setter
@@ -1221,6 +1499,10 @@ class CheckFaceIdentifyResponse(AbstractModel):
 
     @property
     def PhotoFileName(self):
+        """核身照片文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PhotoFileName
 
     @PhotoFileName.setter
@@ -1229,6 +1511,10 @@ class CheckFaceIdentifyResponse(AbstractModel):
 
     @property
     def PhotoFileData(self):
+        """核身照片内容base64(文件格式见文件名后缀,一般为jpg)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PhotoFileData
 
     @PhotoFileData.setter
@@ -1237,6 +1523,9 @@ class CheckFaceIdentifyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1279,6 +1568,9 @@ class CheckIdCardVerificationRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息; 必选
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -1287,6 +1579,9 @@ class CheckIdCardVerificationRequest(AbstractModel):
 
     @property
     def Name(self):
+        """姓名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1295,6 +1590,9 @@ class CheckIdCardVerificationRequest(AbstractModel):
 
     @property
     def IdCardNumber(self):
+        """身份证件号码
+        :rtype: str
+        """
         return self._IdCardNumber
 
     @IdCardNumber.setter
@@ -1303,6 +1601,9 @@ class CheckIdCardVerificationRequest(AbstractModel):
 
     @property
     def IdCardType(self):
+        """身份证件类型; ID_CARD
+        :rtype: str
+        """
         return self._IdCardType
 
     @IdCardType.setter
@@ -1355,6 +1656,17 @@ class CheckIdCardVerificationResponse(AbstractModel):
 
     @property
     def Result(self):
+        """检测结果; 
+收费错误码:
+  0: 通过,
+  1: 姓名和身份证号不一致,
+免费错误码:
+  101: 非法身份证号(长度,格式等不正确),
+  102: 非法姓名(长度,格式等不正确),
+  103: 验证平台异常,
+  104: 证件库中无此身份证记录
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -1363,6 +1675,9 @@ class CheckIdCardVerificationResponse(AbstractModel):
 
     @property
     def Description(self):
+        """结果描述; 未通过时必选
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1371,6 +1686,9 @@ class CheckIdCardVerificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1404,6 +1722,9 @@ class CheckMobileAndNameRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息; 必选
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -1412,6 +1733,9 @@ class CheckMobileAndNameRequest(AbstractModel):
 
     @property
     def Mobile(self):
+        """手机号
+        :rtype: str
+        """
         return self._Mobile
 
     @Mobile.setter
@@ -1420,6 +1744,9 @@ class CheckMobileAndNameRequest(AbstractModel):
 
     @property
     def Name(self):
+        """姓名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1475,6 +1802,21 @@ class CheckMobileAndNameResponse(AbstractModel):
 
     @property
     def Result(self):
+        """检测结果
+计费结果码：
+  0:  验证结果一致
+  1:  手机号未实名
+  2:  姓名和手机号不一致
+  3:  信息不一致(手机号已实名,但姓名和身份证号与实名信息不一致)
+不收费结果码:
+  101: 查无记录
+  102: 非法姓名(长度,格式等不正确)
+  103: 非法手机号(长度,格式等不正确)
+  104: 非法身份证号(长度,校验位等不正确)
+  105: 认证未通过
+  106: 验证平台异常
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -1483,6 +1825,9 @@ class CheckMobileAndNameResponse(AbstractModel):
 
     @property
     def Description(self):
+        """结果描述; 未通过时必选
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1491,6 +1836,9 @@ class CheckMobileAndNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1530,6 +1878,9 @@ class CheckMobileVerificationRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息; 必选
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -1538,6 +1889,9 @@ class CheckMobileVerificationRequest(AbstractModel):
 
     @property
     def Mobile(self):
+        """手机号
+        :rtype: str
+        """
         return self._Mobile
 
     @Mobile.setter
@@ -1546,6 +1900,9 @@ class CheckMobileVerificationRequest(AbstractModel):
 
     @property
     def Name(self):
+        """姓名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1554,6 +1911,9 @@ class CheckMobileVerificationRequest(AbstractModel):
 
     @property
     def IdCardNumber(self):
+        """身份证件号码
+        :rtype: str
+        """
         return self._IdCardNumber
 
     @IdCardNumber.setter
@@ -1562,6 +1922,9 @@ class CheckMobileVerificationRequest(AbstractModel):
 
     @property
     def IdCardType(self):
+        """身份证件类型; ID_CARD
+        :rtype: str
+        """
         return self._IdCardType
 
     @IdCardType.setter
@@ -1619,6 +1982,21 @@ class CheckMobileVerificationResponse(AbstractModel):
 
     @property
     def Result(self):
+        """检测结果
+计费结果码：
+  0:  验证结果一致
+  1:  手机号未实名
+  2:  姓名和手机号不一致
+  3:  信息不一致(手机号已实名,但姓名和身份证号与实名信息不一致)
+不收费结果码:
+  101: 查无记录
+  102: 非法姓名(长度,格式等不正确)
+  103: 非法手机号(长度,格式等不正确)
+  104: 非法身份证号(长度,校验位等不正确)
+  105: 认证未通过
+  106: 验证平台异常
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -1627,6 +2005,9 @@ class CheckMobileVerificationResponse(AbstractModel):
 
     @property
     def Description(self):
+        """结果描述; 未通过时必选
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1635,6 +2016,9 @@ class CheckMobileVerificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1671,6 +2055,9 @@ class CheckVerifyCodeMatchFlowIdRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -1679,6 +2066,9 @@ class CheckVerifyCodeMatchFlowIdRequest(AbstractModel):
 
     @property
     def Mobile(self):
+        """手机号
+        :rtype: str
+        """
         return self._Mobile
 
     @Mobile.setter
@@ -1687,6 +2077,9 @@ class CheckVerifyCodeMatchFlowIdRequest(AbstractModel):
 
     @property
     def VerifyCode(self):
+        """验证码
+        :rtype: str
+        """
         return self._VerifyCode
 
     @VerifyCode.setter
@@ -1695,6 +2088,9 @@ class CheckVerifyCodeMatchFlowIdRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """流程(目录) id
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -1743,6 +2139,9 @@ class CheckVerifyCodeMatchFlowIdResponse(AbstractModel):
 
     @property
     def Success(self):
+        """true: 验证码正确，false: 验证码错误
+        :rtype: bool
+        """
         return self._Success
 
     @Success.setter
@@ -1751,6 +2150,10 @@ class CheckVerifyCodeMatchFlowIdResponse(AbstractModel):
 
     @property
     def Result(self):
+        """0: 验证码正确 1:验证码错误或过期 2:验证码错误 3:验证码和流程不匹配 4:验证码输入错误超过次数 5:内部错误
+6:参数错误
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -1759,6 +2162,9 @@ class CheckVerifyCodeMatchFlowIdResponse(AbstractModel):
 
     @property
     def Description(self):
+        """结果描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1767,6 +2173,9 @@ class CheckVerifyCodeMatchFlowIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1858,6 +2267,15 @@ SIGN_SEAL控件,可以用USER_DEFAULT_SEAL表示个人默认印章
 
     @property
     def ComponentId(self):
+        """控件编号
+
+注：
+当GenerateMode=3时，通过"^"来决定是否使用关键字整词匹配能力。
+例：
+当GenerateMode=3时，如果传入关键字"^甲方签署^"，则会在PDF文件中有且仅有"甲方签署"关键字的地方进行对应操作。
+如传入的关键字为"甲方签署"，则PDF文件中每个出现关键字的位置都会执行相应操作。
+        :rtype: str
+        """
         return self._ComponentId
 
     @ComponentId.setter
@@ -1866,6 +2284,16 @@ SIGN_SEAL控件,可以用USER_DEFAULT_SEAL表示个人默认印章
 
     @property
     def ComponentType(self):
+        """如果是Component控件类型，则可选的字段为：
+TEXT - 普通文本控件；
+DATE - 普通日期控件；
+SELECT- 勾选框控件；
+如果是SignComponent控件类型，则可选的字段为
+SIGN_SEAL- 签署印章控件；
+SIGN_DATE- 签署日期控件；
+SIGN_SIGNATURE - 用户签名控件；
+        :rtype: str
+        """
         return self._ComponentType
 
     @ComponentType.setter
@@ -1874,6 +2302,9 @@ SIGN_SEAL控件,可以用USER_DEFAULT_SEAL表示个人默认印章
 
     @property
     def ComponentName(self):
+        """控件名称
+        :rtype: str
+        """
         return self._ComponentName
 
     @ComponentName.setter
@@ -1882,6 +2313,9 @@ SIGN_SEAL控件,可以用USER_DEFAULT_SEAL表示个人默认印章
 
     @property
     def ComponentRequired(self):
+        """定义控件是否为必填项，默认为false
+        :rtype: bool
+        """
         return self._ComponentRequired
 
     @ComponentRequired.setter
@@ -1890,6 +2324,9 @@ SIGN_SEAL控件,可以用USER_DEFAULT_SEAL表示个人默认印章
 
     @property
     def FileIndex(self):
+        """控件所属文件的序号 (模板中的resourceId排列序号)
+        :rtype: int
+        """
         return self._FileIndex
 
     @FileIndex.setter
@@ -1898,6 +2335,13 @@ SIGN_SEAL控件,可以用USER_DEFAULT_SEAL表示个人默认印章
 
     @property
     def GenerateMode(self):
+        """控件生成的方式：
+0 - 普通控件
+1 - 表单域
+2 - html 控件
+3 - 关键字
+        :rtype: int
+        """
         return self._GenerateMode
 
     @GenerateMode.setter
@@ -1906,6 +2350,9 @@ SIGN_SEAL控件,可以用USER_DEFAULT_SEAL表示个人默认印章
 
     @property
     def ComponentWidth(self):
+        """参数控件宽度，单位px
+        :rtype: float
+        """
         return self._ComponentWidth
 
     @ComponentWidth.setter
@@ -1914,6 +2361,9 @@ SIGN_SEAL控件,可以用USER_DEFAULT_SEAL表示个人默认印章
 
     @property
     def ComponentHeight(self):
+        """参数控件高度，单位px
+        :rtype: float
+        """
         return self._ComponentHeight
 
     @ComponentHeight.setter
@@ -1922,6 +2372,9 @@ SIGN_SEAL控件,可以用USER_DEFAULT_SEAL表示个人默认印章
 
     @property
     def ComponentPage(self):
+        """参数控件所在页码
+        :rtype: int
+        """
         return self._ComponentPage
 
     @ComponentPage.setter
@@ -1930,6 +2383,9 @@ SIGN_SEAL控件,可以用USER_DEFAULT_SEAL表示个人默认印章
 
     @property
     def ComponentPosX(self):
+        """参数控件X位置，单位px
+        :rtype: float
+        """
         return self._ComponentPosX
 
     @ComponentPosX.setter
@@ -1938,6 +2394,9 @@ SIGN_SEAL控件,可以用USER_DEFAULT_SEAL表示个人默认印章
 
     @property
     def ComponentPosY(self):
+        """参数控件Y位置，单位px
+        :rtype: float
+        """
         return self._ComponentPosY
 
     @ComponentPosY.setter
@@ -1946,6 +2405,9 @@ SIGN_SEAL控件,可以用USER_DEFAULT_SEAL表示个人默认印章
 
     @property
     def ComponentExtra(self):
+        """参数控件样式
+        :rtype: str
+        """
         return self._ComponentExtra
 
     @ComponentExtra.setter
@@ -1954,6 +2416,13 @@ SIGN_SEAL控件,可以用USER_DEFAULT_SEAL表示个人默认印章
 
     @property
     def ComponentValue(self):
+        """印章ID，如果是手写签名则为jpg或png格式的base64图片
+
+SIGN_SEAL控件,可以用ORG_DEFAULT_SEAL表示主企业的默认印章
+SIGN_SEAL控件,可以用SUBORG_DEFAULT_SEAL表示子企业的默认印章
+SIGN_SEAL控件,可以用USER_DEFAULT_SEAL表示个人默认印章
+        :rtype: str
+        """
         return self._ComponentValue
 
     @ComponentValue.setter
@@ -1962,6 +2431,9 @@ SIGN_SEAL控件,可以用USER_DEFAULT_SEAL表示个人默认印章
 
     @property
     def SealOperate(self):
+        """如果是SIGN_SEAL类型的签署控件, 参数标识H5签署界面是否在该签署区上进行放置展示, 1为放置,其他为不放置
+        :rtype: int
+        """
         return self._SealOperate
 
     @SealOperate.setter
@@ -1970,6 +2442,9 @@ SIGN_SEAL控件,可以用USER_DEFAULT_SEAL表示个人默认印章
 
     @property
     def GenerateExtra(self):
+        """不同GenerateMode对应的额外信息
+        :rtype: str
+        """
         return self._GenerateExtra
 
     @GenerateExtra.setter
@@ -2020,6 +2495,9 @@ class ComponentSeal(AbstractModel):
 
     @property
     def ComponentId(self):
+        """签署区ID
+        :rtype: str
+        """
         return self._ComponentId
 
     @ComponentId.setter
@@ -2028,6 +2506,9 @@ class ComponentSeal(AbstractModel):
 
     @property
     def SealId(self):
+        """印章ID
+        :rtype: str
+        """
         return self._SealId
 
     @SealId.setter
@@ -2065,6 +2546,9 @@ class CreateFaceIdSignRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息; 必选
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -2073,6 +2557,9 @@ class CreateFaceIdSignRequest(AbstractModel):
 
     @property
     def Values(self):
+        """除api_ticket之外的其它要参与签名的参数值,包括UserId
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -2112,6 +2599,9 @@ class CreateFaceIdSignResponse(AbstractModel):
 
     @property
     def Sign(self):
+        """慧眼API签名
+        :rtype: str
+        """
         return self._Sign
 
     @Sign.setter
@@ -2120,6 +2610,9 @@ class CreateFaceIdSignResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2155,6 +2648,9 @@ class CreateFlowByFilesRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -2163,6 +2659,9 @@ class CreateFlowByFilesRequest(AbstractModel):
 
     @property
     def FlowInfo(self):
+        """流程创建信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.FlowInfo`
+        """
         return self._FlowInfo
 
     @FlowInfo.setter
@@ -2171,6 +2670,9 @@ class CreateFlowByFilesRequest(AbstractModel):
 
     @property
     def FileIds(self):
+        """文件资源列表 (支持多文件)
+        :rtype: list of str
+        """
         return self._FileIds
 
     @FileIds.setter
@@ -2179,6 +2681,9 @@ class CreateFlowByFilesRequest(AbstractModel):
 
     @property
     def CustomId(self):
+        """自定义流程id
+        :rtype: str
+        """
         return self._CustomId
 
     @CustomId.setter
@@ -2222,6 +2727,9 @@ class CreateFlowByFilesResponse(AbstractModel):
 
     @property
     def FlowId(self):
+        """流程ID
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -2230,6 +2738,9 @@ class CreateFlowByFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2280,6 +2791,9 @@ class CreateH5FaceIdUrlRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息; 必选
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -2288,6 +2802,9 @@ class CreateH5FaceIdUrlRequest(AbstractModel):
 
     @property
     def WbAppId(self):
+        """慧眼业务ID; 不填写时后台使用Caller反查
+        :rtype: str
+        """
         return self._WbAppId
 
     @WbAppId.setter
@@ -2296,6 +2813,9 @@ class CreateH5FaceIdUrlRequest(AbstractModel):
 
     @property
     def Name(self):
+        """姓名; 可选(未通过实名认证的用户必选)
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2304,6 +2824,9 @@ class CreateH5FaceIdUrlRequest(AbstractModel):
 
     @property
     def IdCardType(self):
+        """用户证件类型; 可选; 默认ID_CARD:中国居民身份证
+        :rtype: str
+        """
         return self._IdCardType
 
     @IdCardType.setter
@@ -2312,6 +2835,9 @@ class CreateH5FaceIdUrlRequest(AbstractModel):
 
     @property
     def IdCardNumber(self):
+        """用户证件号; 可选(未通过实名认证的用户必选)
+        :rtype: str
+        """
         return self._IdCardNumber
 
     @IdCardNumber.setter
@@ -2320,6 +2846,9 @@ class CreateH5FaceIdUrlRequest(AbstractModel):
 
     @property
     def JumpUrl(self):
+        """H5人脸核身完成后回调的第三方Url; 可选; 不需要做Encode, 跳转的参数: ?code=XX&orderNo=XX&liveRate=xx, code=0表示成功,orderNo为订单号,liveRate为百分制活体检测得分
+        :rtype: str
+        """
         return self._JumpUrl
 
     @JumpUrl.setter
@@ -2328,6 +2857,9 @@ class CreateH5FaceIdUrlRequest(AbstractModel):
 
     @property
     def JumpType(self):
+        """参数值为"1":直接跳转到url回调地址; 可选; 其他值:跳转提供的结果页面
+        :rtype: str
+        """
         return self._JumpType
 
     @JumpType.setter
@@ -2336,6 +2868,9 @@ class CreateH5FaceIdUrlRequest(AbstractModel):
 
     @property
     def OpenFrom(self):
+        """browser:表示在浏览器启动刷脸, app:表示在App里启动刷脸,默认值为browser; 可选
+        :rtype: str
+        """
         return self._OpenFrom
 
     @OpenFrom.setter
@@ -2344,6 +2879,9 @@ class CreateH5FaceIdUrlRequest(AbstractModel):
 
     @property
     def RedirectType(self):
+        """跳转类型; 可选; 参数值为"1"时,刷脸页面使用replace方式跳转,不在浏览器history中留下记录;不传或其他值则正常跳转
+        :rtype: str
+        """
         return self._RedirectType
 
     @RedirectType.setter
@@ -2390,6 +2928,9 @@ class CreateH5FaceIdUrlResponse(AbstractModel):
 
     @property
     def Url(self):
+        """跳转到人脸核身页面的链接
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -2398,6 +2939,9 @@ class CreateH5FaceIdUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2438,6 +2982,9 @@ class CreatePreviewSignUrlRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -2446,6 +2993,9 @@ class CreatePreviewSignUrlRequest(AbstractModel):
 
     @property
     def Deadline(self):
+        """URL过期时间戳
+        :rtype: int
+        """
         return self._Deadline
 
     @Deadline.setter
@@ -2454,6 +3004,9 @@ class CreatePreviewSignUrlRequest(AbstractModel):
 
     @property
     def CatalogId(self):
+        """目录ID。当 SignUrlType 为 CATALOG 时必填
+        :rtype: str
+        """
         return self._CatalogId
 
     @CatalogId.setter
@@ -2462,6 +3015,9 @@ class CreatePreviewSignUrlRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """流程ID。当 SignUrlType 为 FLOW 时必填
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -2470,6 +3026,11 @@ class CreatePreviewSignUrlRequest(AbstractModel):
 
     @property
     def SignUrlType(self):
+        """签署链接类型：
+1. FLOW - 单流程签署 (默认) 
+2. CATALOG - 目录签署
+        :rtype: str
+        """
         return self._SignUrlType
 
     @SignUrlType.setter
@@ -2512,6 +3073,9 @@ class CreatePreviewSignUrlResponse(AbstractModel):
 
     @property
     def PreviewSignUrl(self):
+        """合同预览URL
+        :rtype: str
+        """
         return self._PreviewSignUrl
 
     @PreviewSignUrl.setter
@@ -2520,6 +3084,9 @@ class CreatePreviewSignUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2574,6 +3141,9 @@ class CreateSealRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -2582,6 +3152,16 @@ class CreateSealRequest(AbstractModel):
 
     @property
     def SealType(self):
+        """印章类型：
+1. PERSONAL - 个人私章
+2. OFFICIAL - 公章
+3. SPECIAL_FINANCIAL - 财务专用章
+4. CONTRACT - 合同专用章
+5. LEGAL_REPRESENTATIVE - 法定代表人章
+6. SPECIAL_NATIONWIDE_INVOICE - 发票专用章
+7. OTHER-其他
+        :rtype: str
+        """
         return self._SealType
 
     @SealType.setter
@@ -2590,6 +3170,9 @@ class CreateSealRequest(AbstractModel):
 
     @property
     def SealName(self):
+        """印章名称
+        :rtype: str
+        """
         return self._SealName
 
     @SealName.setter
@@ -2598,6 +3181,9 @@ class CreateSealRequest(AbstractModel):
 
     @property
     def SourceIp(self):
+        """请求创建印章的客户端IP
+        :rtype: str
+        """
         return self._SourceIp
 
     @SourceIp.setter
@@ -2606,6 +3192,9 @@ class CreateSealRequest(AbstractModel):
 
     @property
     def Image(self):
+        """印章图片，base64编码（与FileId参数二选一，同时传入参数时优先使用Image参数）
+        :rtype: str
+        """
         return self._Image
 
     @Image.setter
@@ -2614,6 +3203,9 @@ class CreateSealRequest(AbstractModel):
 
     @property
     def FileId(self):
+        """印章文件图片ID（与Image参数二选一，同时传入参数时优先使用Image参数）
+        :rtype: str
+        """
         return self._FileId
 
     @FileId.setter
@@ -2622,6 +3214,9 @@ class CreateSealRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """需要创建印章的用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -2630,6 +3225,9 @@ class CreateSealRequest(AbstractModel):
 
     @property
     def IsDefault(self):
+        """是否是默认印章 true：是，false：否
+        :rtype: bool
+        """
         return self._IsDefault
 
     @IsDefault.setter
@@ -2675,6 +3273,9 @@ class CreateSealResponse(AbstractModel):
 
     @property
     def SealId(self):
+        """电子印章Id
+        :rtype: str
+        """
         return self._SealId
 
     @SealId.setter
@@ -2683,6 +3284,9 @@ class CreateSealResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2718,6 +3322,9 @@ class CreateServerFlowSignRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -2726,6 +3333,9 @@ class CreateServerFlowSignRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """流程ID
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -2734,6 +3344,9 @@ class CreateServerFlowSignRequest(AbstractModel):
 
     @property
     def SignComponents(self):
+        """签署区域信息
+        :rtype: list of Component
+        """
         return self._SignComponents
 
     @SignComponents.setter
@@ -2742,6 +3355,9 @@ class CreateServerFlowSignRequest(AbstractModel):
 
     @property
     def SourceIp(self):
+        """客户端IP
+        :rtype: str
+        """
         return self._SourceIp
 
     @SourceIp.setter
@@ -2790,6 +3406,11 @@ class CreateServerFlowSignResponse(AbstractModel):
 
     @property
     def SignStatus(self):
+        """任务状态：
+0：失败
+1：成功
+        :rtype: int
+        """
         return self._SignStatus
 
     @SignStatus.setter
@@ -2798,6 +3419,9 @@ class CreateServerFlowSignResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2844,6 +3468,9 @@ class CreateSignUrlRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -2852,6 +3479,9 @@ class CreateSignUrlRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """签署人ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -2860,6 +3490,9 @@ class CreateSignUrlRequest(AbstractModel):
 
     @property
     def Deadline(self):
+        """文件签署截止时间戳
+        :rtype: int
+        """
         return self._Deadline
 
     @Deadline.setter
@@ -2868,6 +3501,9 @@ class CreateSignUrlRequest(AbstractModel):
 
     @property
     def CatalogId(self):
+        """目录ID。当 SignUrlType 为 CATALOG 时必填
+        :rtype: str
+        """
         return self._CatalogId
 
     @CatalogId.setter
@@ -2876,6 +3512,9 @@ class CreateSignUrlRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """流程ID。当 SignUrlType 为 FLOW 时必填
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -2884,6 +3523,11 @@ class CreateSignUrlRequest(AbstractModel):
 
     @property
     def SignUrlType(self):
+        """签署链接类型：
+1. FLOW - 单流程签署 (默认) 
+2. CATALOG - 目录签署
+        :rtype: str
+        """
         return self._SignUrlType
 
     @SignUrlType.setter
@@ -2892,6 +3536,9 @@ class CreateSignUrlRequest(AbstractModel):
 
     @property
     def SignId(self):
+        """发送流程或目录时生成的签署任务ID
+        :rtype: str
+        """
         return self._SignId
 
     @SignId.setter
@@ -2936,6 +3583,9 @@ class CreateSignUrlResponse(AbstractModel):
 
     @property
     def SignUrl(self):
+        """合同签署链接
+        :rtype: str
+        """
         return self._SignUrl
 
     @SignUrl.setter
@@ -2944,6 +3594,9 @@ class CreateSignUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3054,6 +3707,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -3062,6 +3718,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def Name(self):
+        """机构名称全称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3070,6 +3729,11 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def IdCardType(self):
+        """机构证件号码类型可选值：
+1. USCC - 统一社会信用代码
+2. BIZREGISTNO - 营业执照注册号
+        :rtype: str
+        """
         return self._IdCardType
 
     @IdCardType.setter
@@ -3078,6 +3742,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def IdCardNumber(self):
+        """机构证件号码
+        :rtype: str
+        """
         return self._IdCardNumber
 
     @IdCardNumber.setter
@@ -3086,6 +3753,13 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def OrganizationType(self):
+        """机构类型可选值：
+1. ENTERPRISE - 企业
+2. INDIVIDUALBIZ - 个体工商户
+3. PUBLICINSTITUTION - 政府/事业单位
+4. OTHERS - 其他组织
+        :rtype: str
+        """
         return self._OrganizationType
 
     @OrganizationType.setter
@@ -3094,6 +3768,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def LegalName(self):
+        """机构法人/经营者姓名
+        :rtype: str
+        """
         return self._LegalName
 
     @LegalName.setter
@@ -3102,6 +3779,15 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def LegalIdCardType(self):
+        """机构法人/经营者证件类型可选值：
+1. ID_CARD - 居民身份证
+2. PASSPORT - 护照
+3. MAINLAND_TRAVEL_PERMIT_FOR_HONGKONG_AND_MACAO_RESIDENTS - 港澳居民来往内地通行证
+4. MAINLAND_TRAVEL_PERMIT_FOR_TAIWAN_RESIDENTS - 台湾居民来往大陆通行证
+5. HOUSEHOLD_REGISTER - 户口本
+6. TEMP_ID_CARD - 临时居民身份证
+        :rtype: str
+        """
         return self._LegalIdCardType
 
     @LegalIdCardType.setter
@@ -3110,6 +3796,10 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def LegalIdCardNumber(self):
+        """机构法人/经营者证件号码；
+OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选填
+        :rtype: str
+        """
         return self._LegalIdCardNumber
 
     @LegalIdCardNumber.setter
@@ -3118,6 +3808,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def VerifyClientIp(self):
+        """实名认证的客户端IP/请求生成企业印章的客户端Ip
+        :rtype: str
+        """
         return self._VerifyClientIp
 
     @VerifyClientIp.setter
@@ -3126,6 +3819,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def Email(self):
+        """机构电子邮箱
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -3134,6 +3830,11 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def IdCardFileType(self):
+        """机构证件文件类型可选值：
+1. USCCFILE - 统一社会信用代码证书
+2. LICENSEFILE - 营业执照
+        :rtype: str
+        """
         return self._IdCardFileType
 
     @IdCardFileType.setter
@@ -3142,6 +3843,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def BizLicenseFile(self):
+        """机构证件照片文件，base64编码，支持jpg、jpeg、png格式
+        :rtype: str
+        """
         return self._BizLicenseFile
 
     @BizLicenseFile.setter
@@ -3150,6 +3854,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def BizLicenseFileName(self):
+        """机构证件照片文件名
+        :rtype: str
+        """
         return self._BizLicenseFileName
 
     @BizLicenseFileName.setter
@@ -3158,6 +3865,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def LegalMobile(self):
+        """机构法人/经营者/联系人手机号码
+        :rtype: str
+        """
         return self._LegalMobile
 
     @LegalMobile.setter
@@ -3166,6 +3876,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def ContactName(self):
+        """组织联系人姓名
+        :rtype: str
+        """
         return self._ContactName
 
     @ContactName.setter
@@ -3174,6 +3887,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def VerifyServerIp(self):
+        """实名认证的服务器IP
+        :rtype: str
+        """
         return self._VerifyServerIp
 
     @VerifyServerIp.setter
@@ -3182,6 +3898,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def ContactAddress(self):
+        """企业联系地址
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Address`
+        """
         return self._ContactAddress
 
     @ContactAddress.setter
@@ -3190,6 +3909,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def SealName(self):
+        """电子印章名称
+        :rtype: str
+        """
         return self._SealName
 
     @SealName.setter
@@ -3198,6 +3920,15 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def SealType(self):
+        """印章类型：默认: CONTRACT
+1. OFFICIAL-公章
+2. SPECIAL_FINANCIAL-财务专用章
+3. CONTRACT-合同专用章
+4. LEGAL_REPRESENTATIVE-法定代表人章
+5. SPECIAL_NATIONWIDE_INVOICE-发票专用章
+6. OTHER-其他
+        :rtype: str
+        """
         return self._SealType
 
     @SealType.setter
@@ -3206,6 +3937,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def SealHorizontalText(self):
+        """企业印章横向文字，最多可填8个汉字（可为空，默认为"电子签名专用章"）
+        :rtype: str
+        """
         return self._SealHorizontalText
 
     @SealHorizontalText.setter
@@ -3214,6 +3948,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def OpenId(self):
+        """机构在第三方的唯一标识，32位以内标识符
+        :rtype: str
+        """
         return self._OpenId
 
     @OpenId.setter
@@ -3222,6 +3959,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def UseOpenId(self):
+        """是否使用OpenId作为数据主键，如果为true，请确保OpenId在当前应用号唯一
+        :rtype: bool
+        """
         return self._UseOpenId
 
     @UseOpenId.setter
@@ -3286,6 +4026,9 @@ class CreateSubOrganizationAndSealResponse(AbstractModel):
 
     @property
     def SubOrganizationId(self):
+        """子机构在电子文件签署平台唯一标识
+        :rtype: str
+        """
         return self._SubOrganizationId
 
     @SubOrganizationId.setter
@@ -3294,6 +4037,9 @@ class CreateSubOrganizationAndSealResponse(AbstractModel):
 
     @property
     def SealId(self):
+        """电子印章ID
+        :rtype: str
+        """
         return self._SealId
 
     @SealId.setter
@@ -3302,6 +4048,9 @@ class CreateSubOrganizationAndSealResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3398,6 +4147,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -3406,6 +4158,11 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def IdCardType(self):
+        """机构证件号码类型可选值：
+1. USCC - 统一社会信用代码
+2. BIZREGISTNO - 营业执照注册号
+        :rtype: str
+        """
         return self._IdCardType
 
     @IdCardType.setter
@@ -3414,6 +4171,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def IdCardNumber(self):
+        """机构证件号码
+        :rtype: str
+        """
         return self._IdCardNumber
 
     @IdCardNumber.setter
@@ -3422,6 +4182,13 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def OrganizationType(self):
+        """机构类型可选值：
+1. ENTERPRISE - 企业
+2. INDIVIDUALBIZ - 个体工商户
+3. PUBLICINSTITUTION - 政府/事业单位
+4. OTHERS - 其他组织
+        :rtype: str
+        """
         return self._OrganizationType
 
     @OrganizationType.setter
@@ -3430,6 +4197,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def LegalName(self):
+        """机构法人/经营者姓名
+        :rtype: str
+        """
         return self._LegalName
 
     @LegalName.setter
@@ -3438,6 +4208,15 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def LegalIdCardType(self):
+        """机构法人/经营者证件类型可选值：
+1. ID_CARD - 居民身份证
+2. PASSPORT - 护照
+3. MAINLAND_TRAVEL_PERMIT_FOR_HONGKONG_AND_MACAO_RESIDENTS - 港澳居民来往内地通行证
+4. MAINLAND_TRAVEL_PERMIT_FOR_TAIWAN_RESIDENTS - 台湾居民来往大陆通行证
+5. HOUSEHOLD_REGISTER - 户口本
+6. TEMP_ID_CARD - 临时居民身份证
+        :rtype: str
+        """
         return self._LegalIdCardType
 
     @LegalIdCardType.setter
@@ -3446,6 +4225,10 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def LegalIdCardNumber(self):
+        """机构法人/经营者证件号码；
+OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选填
+        :rtype: str
+        """
         return self._LegalIdCardNumber
 
     @LegalIdCardNumber.setter
@@ -3454,6 +4237,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def Name(self):
+        """机构名称全称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3462,6 +4248,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def OpenId(self):
+        """机构在第三方的唯一标识，32位以内标识符
+        :rtype: str
+        """
         return self._OpenId
 
     @OpenId.setter
@@ -3470,6 +4259,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def UseOpenId(self):
+        """是否使用OpenId作为数据主键，如果为true，请确保OpenId在当前应用号唯一
+        :rtype: bool
+        """
         return self._UseOpenId
 
     @UseOpenId.setter
@@ -3478,6 +4270,11 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def IdCardFileType(self):
+        """机构证件文件类型可选值：
+1. USCCFILE - 统一社会信用代码证书
+2. LICENSEFILE - 营业执照
+        :rtype: str
+        """
         return self._IdCardFileType
 
     @IdCardFileType.setter
@@ -3486,6 +4283,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def BizLicenseFile(self):
+        """机构证件照片文件，base64编码，支持jpg、jpeg、png格式
+        :rtype: str
+        """
         return self._BizLicenseFile
 
     @BizLicenseFile.setter
@@ -3494,6 +4294,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def BizLicenseFileName(self):
+        """机构证件照片文件名
+        :rtype: str
+        """
         return self._BizLicenseFileName
 
     @BizLicenseFileName.setter
@@ -3502,6 +4305,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def LegalMobile(self):
+        """机构法人/经营者/联系人手机号码
+        :rtype: str
+        """
         return self._LegalMobile
 
     @LegalMobile.setter
@@ -3510,6 +4316,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def ContactName(self):
+        """组织联系人姓名
+        :rtype: str
+        """
         return self._ContactName
 
     @ContactName.setter
@@ -3518,6 +4327,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def VerifyClientIp(self):
+        """实名认证的客户端IP
+        :rtype: str
+        """
         return self._VerifyClientIp
 
     @VerifyClientIp.setter
@@ -3526,6 +4338,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def VerifyServerIp(self):
+        """实名认证的服务器IP
+        :rtype: str
+        """
         return self._VerifyServerIp
 
     @VerifyServerIp.setter
@@ -3534,6 +4349,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def ContactAddress(self):
+        """企业联系地址
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Address`
+        """
         return self._ContactAddress
 
     @ContactAddress.setter
@@ -3542,6 +4360,9 @@ OrganizationType 为 ENTERPRISE时，INDIVIDUALBIZ 时必填，其他情况选�
 
     @property
     def Email(self):
+        """机构电子邮箱
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -3600,6 +4421,9 @@ class CreateSubOrganizationResponse(AbstractModel):
 
     @property
     def SubOrganizationId(self):
+        """子机构ID
+        :rtype: str
+        """
         return self._SubOrganizationId
 
     @SubOrganizationId.setter
@@ -3608,6 +4432,9 @@ class CreateSubOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3664,6 +4491,9 @@ class CreateUserAndSealRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -3672,6 +4502,9 @@ class CreateUserAndSealRequest(AbstractModel):
 
     @property
     def OpenId(self):
+        """第三方平台唯一标识，要求应用内OpenId唯一
+        :rtype: str
+        """
         return self._OpenId
 
     @OpenId.setter
@@ -3680,6 +4513,9 @@ class CreateUserAndSealRequest(AbstractModel):
 
     @property
     def Name(self):
+        """用户姓名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3688,6 +4524,12 @@ class CreateUserAndSealRequest(AbstractModel):
 
     @property
     def IdCardType(self):
+        """用户证件类型：
+1. ID_CARD - 居民身份证
+5. HOUSEHOLD_REGISTER - 户口本
+6. TEMP_ID_CARD - 临时居民身份证
+        :rtype: str
+        """
         return self._IdCardType
 
     @IdCardType.setter
@@ -3696,6 +4538,9 @@ class CreateUserAndSealRequest(AbstractModel):
 
     @property
     def IdCardNumber(self):
+        """用户证件号
+        :rtype: str
+        """
         return self._IdCardNumber
 
     @IdCardNumber.setter
@@ -3704,6 +4549,9 @@ class CreateUserAndSealRequest(AbstractModel):
 
     @property
     def SourceIp(self):
+        """请求生成个人印章的客户端IP
+        :rtype: str
+        """
         return self._SourceIp
 
     @SourceIp.setter
@@ -3712,6 +4560,9 @@ class CreateUserAndSealRequest(AbstractModel):
 
     @property
     def Mobile(self):
+        """用户手机号码，不要求唯一
+        :rtype: str
+        """
         return self._Mobile
 
     @Mobile.setter
@@ -3720,6 +4571,9 @@ class CreateUserAndSealRequest(AbstractModel):
 
     @property
     def Email(self):
+        """用户邮箱，不要求唯一
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -3728,6 +4582,9 @@ class CreateUserAndSealRequest(AbstractModel):
 
     @property
     def SealName(self):
+        """默认印章名称
+        :rtype: str
+        """
         return self._SealName
 
     @SealName.setter
@@ -3736,6 +4593,9 @@ class CreateUserAndSealRequest(AbstractModel):
 
     @property
     def UseOpenId(self):
+        """是否以OpenId作为UserId (为true时将直接以OpenId生成腾讯电子签平台的UserId)
+        :rtype: bool
+        """
         return self._UseOpenId
 
     @UseOpenId.setter
@@ -3786,6 +4646,9 @@ class CreateUserAndSealResponse(AbstractModel):
 
     @property
     def UserId(self):
+        """用户唯一标识，按应用号隔离
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -3794,6 +4657,9 @@ class CreateUserAndSealResponse(AbstractModel):
 
     @property
     def SealId(self):
+        """默认印章ID
+        :rtype: str
+        """
         return self._SealId
 
     @SealId.setter
@@ -3802,6 +4668,9 @@ class CreateUserAndSealResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3856,6 +4725,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -3864,6 +4736,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def OpenId(self):
+        """第三方平台唯一标识；要求应用内OpenId唯一; len<=32
+        :rtype: str
+        """
         return self._OpenId
 
     @OpenId.setter
@@ -3872,6 +4747,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Name(self):
+        """用户姓名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3880,6 +4758,15 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def IdCardType(self):
+        """用户证件类型：
+1. ID_CARD - 居民身份证
+2. PASSPORT - 护照
+3. MAINLAND_TRAVEL_PERMIT_FOR_HONGKONG_AND_MACAO_RESIDENTS - 港澳居民来往内地通行证
+4. MAINLAND_TRAVEL_PERMIT_FOR_TAIWAN_RESIDENTS - 台湾居民来往大陆通行证
+5. HOUSEHOLD_REGISTER - 户口本
+6. TEMP_ID_CARD - 临时居民身份证
+        :rtype: str
+        """
         return self._IdCardType
 
     @IdCardType.setter
@@ -3888,6 +4775,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def IdCardNumber(self):
+        """用户证件号
+        :rtype: str
+        """
         return self._IdCardNumber
 
     @IdCardNumber.setter
@@ -3896,6 +4786,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def UseOpenId(self):
+        """是否以OpenId作为UserId (为true时将直接以OpenId生成腾讯电子签平台的UserId)
+        :rtype: bool
+        """
         return self._UseOpenId
 
     @UseOpenId.setter
@@ -3904,6 +4797,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Email(self):
+        """用户邮箱，不要求唯一
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -3912,6 +4808,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Mobile(self):
+        """用户手机号码，不要求唯一
+        :rtype: str
+        """
         return self._Mobile
 
     @Mobile.setter
@@ -3957,6 +4856,9 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID，按应用号隔离
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -3965,6 +4867,9 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3994,6 +4899,9 @@ class CustomFileIdMap(AbstractModel):
 
     @property
     def CustomId(self):
+        """用户自定义ID
+        :rtype: str
+        """
         return self._CustomId
 
     @CustomId.setter
@@ -4002,6 +4910,9 @@ class CustomFileIdMap(AbstractModel):
 
     @property
     def FileId(self):
+        """文件id
+        :rtype: str
+        """
         return self._FileId
 
     @FileId.setter
@@ -4039,6 +4950,9 @@ class CustomFlowIdMap(AbstractModel):
 
     @property
     def CustomId(self):
+        """自定义id
+        :rtype: str
+        """
         return self._CustomId
 
     @CustomId.setter
@@ -4047,6 +4961,9 @@ class CustomFlowIdMap(AbstractModel):
 
     @property
     def FlowId(self):
+        """流程id
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -4090,6 +5007,9 @@ class DeleteSealRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -4098,6 +5018,9 @@ class DeleteSealRequest(AbstractModel):
 
     @property
     def SealId(self):
+        """印章ID
+        :rtype: str
+        """
         return self._SealId
 
     @SealId.setter
@@ -4106,6 +5029,9 @@ class DeleteSealRequest(AbstractModel):
 
     @property
     def SourceIp(self):
+        """请求删除印章的客户端IP
+        :rtype: str
+        """
         return self._SourceIp
 
     @SourceIp.setter
@@ -4114,6 +5040,9 @@ class DeleteSealRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户唯一标识，默认为空时删除企业印章，如非空则删除个人印章
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -4152,6 +5081,9 @@ class DeleteSealResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4183,6 +5115,9 @@ class DescribeCatalogApproversRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -4191,6 +5126,9 @@ class DescribeCatalogApproversRequest(AbstractModel):
 
     @property
     def CatalogId(self):
+        """目录ID
+        :rtype: str
+        """
         return self._CatalogId
 
     @CatalogId.setter
@@ -4199,6 +5137,9 @@ class DescribeCatalogApproversRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """查询指定用户是否为参与者,为空表示查询所有参与者
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -4239,6 +5180,9 @@ class DescribeCatalogApproversResponse(AbstractModel):
 
     @property
     def Approvers(self):
+        """参与者列表
+        :rtype: list of CatalogApprovers
+        """
         return self._Approvers
 
     @Approvers.setter
@@ -4247,6 +5191,9 @@ class DescribeCatalogApproversResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4281,6 +5228,9 @@ class DescribeCatalogSignComponentsRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -4289,6 +5239,9 @@ class DescribeCatalogSignComponentsRequest(AbstractModel):
 
     @property
     def CatalogId(self):
+        """目录ID
+        :rtype: str
+        """
         return self._CatalogId
 
     @CatalogId.setter
@@ -4328,6 +5281,9 @@ class DescribeCatalogSignComponentsResponse(AbstractModel):
 
     @property
     def SignComponents(self):
+        """签署区列表
+        :rtype: list of CatalogComponents
+        """
         return self._SignComponents
 
     @SignComponents.setter
@@ -4336,6 +5292,9 @@ class DescribeCatalogSignComponentsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4370,6 +5329,9 @@ class DescribeCustomFlowIdsByFlowIdRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -4378,6 +5340,9 @@ class DescribeCustomFlowIdsByFlowIdRequest(AbstractModel):
 
     @property
     def FlowIds(self):
+        """流程 id 列表，最多同时查询 10 个流程 id
+        :rtype: list of str
+        """
         return self._FlowIds
 
     @FlowIds.setter
@@ -4417,6 +5382,9 @@ class DescribeCustomFlowIdsByFlowIdResponse(AbstractModel):
 
     @property
     def CustomIdList(self):
+        """自定义流程 id 映射列表
+        :rtype: list of CustomFlowIdMap
+        """
         return self._CustomIdList
 
     @CustomIdList.setter
@@ -4425,6 +5393,9 @@ class DescribeCustomFlowIdsByFlowIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4459,6 +5430,9 @@ class DescribeCustomFlowIdsRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -4467,6 +5441,9 @@ class DescribeCustomFlowIdsRequest(AbstractModel):
 
     @property
     def CustomIds(self):
+        """自定义 id 列表，最多同时查询 10 个自定义 id
+        :rtype: list of str
+        """
         return self._CustomIds
 
     @CustomIds.setter
@@ -4506,6 +5483,9 @@ class DescribeCustomFlowIdsResponse(AbstractModel):
 
     @property
     def CustomIdList(self):
+        """自定义流程 id 映射列表
+        :rtype: list of CustomFlowIdMap
+        """
         return self._CustomIdList
 
     @CustomIdList.setter
@@ -4514,6 +5494,9 @@ class DescribeCustomFlowIdsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4551,6 +5534,9 @@ class DescribeFaceIdPhotosRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -4559,6 +5545,9 @@ class DescribeFaceIdPhotosRequest(AbstractModel):
 
     @property
     def WbAppId(self):
+        """慧眼业务ID
+        :rtype: str
+        """
         return self._WbAppId
 
     @WbAppId.setter
@@ -4567,6 +5556,9 @@ class DescribeFaceIdPhotosRequest(AbstractModel):
 
     @property
     def OrderNumbers(self):
+        """订单号(orderNo); 限制在3个或以内
+        :rtype: list of str
+        """
         return self._OrderNumbers
 
     @OrderNumbers.setter
@@ -4607,6 +5599,9 @@ class DescribeFaceIdPhotosResponse(AbstractModel):
 
     @property
     def Photos(self):
+        """照片信息列表
+        :rtype: list of FaceIdPhoto
+        """
         return self._Photos
 
     @Photos.setter
@@ -4615,6 +5610,9 @@ class DescribeFaceIdPhotosResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4655,6 +5653,9 @@ class DescribeFaceIdResultsRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -4663,6 +5664,9 @@ class DescribeFaceIdResultsRequest(AbstractModel):
 
     @property
     def WbAppId(self):
+        """慧眼业务ID
+        :rtype: str
+        """
         return self._WbAppId
 
     @WbAppId.setter
@@ -4671,6 +5675,9 @@ class DescribeFaceIdResultsRequest(AbstractModel):
 
     @property
     def OrderNumbers(self):
+        """订单号(orderNo); 限制在3个或以内
+        :rtype: list of str
+        """
         return self._OrderNumbers
 
     @OrderNumbers.setter
@@ -4679,6 +5686,9 @@ class DescribeFaceIdResultsRequest(AbstractModel):
 
     @property
     def FileType(self):
+        """1:视频+照片,2:照片,3:视频,0（或其他数字）:无; 可选
+        :rtype: int
+        """
         return self._FileType
 
     @FileType.setter
@@ -4720,6 +5730,9 @@ class DescribeFaceIdResultsResponse(AbstractModel):
 
     @property
     def Results(self):
+        """核身结果列表
+        :rtype: list of FaceIdResult
+        """
         return self._Results
 
     @Results.setter
@@ -4728,6 +5741,9 @@ class DescribeFaceIdResultsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4762,6 +5778,9 @@ class DescribeFileIdsByCustomIdsRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息, OrganizationId必填
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -4770,6 +5789,9 @@ class DescribeFileIdsByCustomIdsRequest(AbstractModel):
 
     @property
     def CustomIds(self):
+        """用户自定义ID
+        :rtype: list of str
+        """
         return self._CustomIds
 
     @CustomIds.setter
@@ -4809,6 +5831,9 @@ class DescribeFileIdsByCustomIdsResponse(AbstractModel):
 
     @property
     def CustomIdList(self):
+        """<自定义Id,文件id>数组
+        :rtype: list of CustomFileIdMap
+        """
         return self._CustomIdList
 
     @CustomIdList.setter
@@ -4817,6 +5842,9 @@ class DescribeFileIdsByCustomIdsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4870,6 +5898,9 @@ class DescribeFileUrlsRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -4878,6 +5909,9 @@ class DescribeFileUrlsRequest(AbstractModel):
 
     @property
     def BusinessIds(self):
+        """业务编号数组，如模板编号、文档编号、印章编号、流程编号、目录编号
+        :rtype: list of str
+        """
         return self._BusinessIds
 
     @BusinessIds.setter
@@ -4886,6 +5920,13 @@ class DescribeFileUrlsRequest(AbstractModel):
 
     @property
     def BusinessType(self):
+        """业务类型：
+1. TEMPLATE - 模板
+2. SEAL - 印章
+3. FLOW - 流程
+4.CATALOG - 目录
+        :rtype: str
+        """
         return self._BusinessType
 
     @BusinessType.setter
@@ -4894,6 +5935,9 @@ class DescribeFileUrlsRequest(AbstractModel):
 
     @property
     def FileName(self):
+        """下载后的文件命名，只有FileType为“ZIP”时生效
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -4902,6 +5946,9 @@ class DescribeFileUrlsRequest(AbstractModel):
 
     @property
     def ResourceOffset(self):
+        """单个业务ID多个资源情况下，指定资源起始偏移量
+        :rtype: int
+        """
         return self._ResourceOffset
 
     @ResourceOffset.setter
@@ -4910,6 +5957,9 @@ class DescribeFileUrlsRequest(AbstractModel):
 
     @property
     def ResourceLimit(self):
+        """单个业务ID多个资源情况下，指定资源数量
+        :rtype: int
+        """
         return self._ResourceLimit
 
     @ResourceLimit.setter
@@ -4918,6 +5968,9 @@ class DescribeFileUrlsRequest(AbstractModel):
 
     @property
     def FileType(self):
+        """文件类型，支持"JPG", "PDF","ZIP"等，默认为上传的文件类型
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -4965,6 +6018,9 @@ class DescribeFileUrlsResponse(AbstractModel):
 
     @property
     def FileUrls(self):
+        """文件下载URL数组
+        :rtype: list of FileUrl
+        """
         return self._FileUrls
 
     @FileUrls.setter
@@ -4973,6 +6029,9 @@ class DescribeFileUrlsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """URL数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4981,6 +6040,9 @@ class DescribeFileUrlsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5022,6 +6084,9 @@ class DescribeFlowApproversRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -5030,6 +6095,9 @@ class DescribeFlowApproversRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """需要查询的流程ID
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -5038,6 +6106,9 @@ class DescribeFlowApproversRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """需要查询的用户ID，为空则默认查询所有用户信息
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -5046,6 +6117,9 @@ class DescribeFlowApproversRequest(AbstractModel):
 
     @property
     def SignId(self):
+        """需要查询的签署ID，为空则不按签署ID过滤
+        :rtype: str
+        """
         return self._SignId
 
     @SignId.setter
@@ -5090,6 +6164,9 @@ class DescribeFlowApproversResponse(AbstractModel):
 
     @property
     def FlowId(self):
+        """流程编号
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -5098,6 +6175,9 @@ class DescribeFlowApproversResponse(AbstractModel):
 
     @property
     def Approvers(self):
+        """流程参与者信息
+        :rtype: list of FlowApproverInfo
+        """
         return self._Approvers
 
     @Approvers.setter
@@ -5106,6 +6186,9 @@ class DescribeFlowApproversResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5141,6 +6224,9 @@ class DescribeFlowFilesRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息; 必选
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -5149,6 +6235,9 @@ class DescribeFlowFilesRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """需要查询的流程ID
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -5191,6 +6280,9 @@ class DescribeFlowFilesResponse(AbstractModel):
 
     @property
     def FlowId(self):
+        """流程编号
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -5199,6 +6291,9 @@ class DescribeFlowFilesResponse(AbstractModel):
 
     @property
     def FlowFileInfos(self):
+        """流程文件列表
+        :rtype: list of FlowFileInfo
+        """
         return self._FlowFileInfos
 
     @FlowFileInfos.setter
@@ -5207,6 +6302,9 @@ class DescribeFlowFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5242,6 +6340,9 @@ class DescribeFlowRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -5250,6 +6351,9 @@ class DescribeFlowRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """需要查询的流程ID
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -5327,6 +6431,9 @@ class DescribeFlowResponse(AbstractModel):
 
     @property
     def Creator(self):
+        """流程创建者信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Creator
 
     @Creator.setter
@@ -5335,6 +6442,9 @@ class DescribeFlowResponse(AbstractModel):
 
     @property
     def FlowId(self):
+        """流程编号
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -5343,6 +6453,9 @@ class DescribeFlowResponse(AbstractModel):
 
     @property
     def FlowName(self):
+        """流程名称
+        :rtype: str
+        """
         return self._FlowName
 
     @FlowName.setter
@@ -5351,6 +6464,9 @@ class DescribeFlowResponse(AbstractModel):
 
     @property
     def FlowDescription(self):
+        """流程描述
+        :rtype: str
+        """
         return self._FlowDescription
 
     @FlowDescription.setter
@@ -5359,6 +6475,9 @@ class DescribeFlowResponse(AbstractModel):
 
     @property
     def FlowType(self):
+        """流程的类型: ”劳务合同“,”租赁合同“,”销售合同“,”其他“
+        :rtype: str
+        """
         return self._FlowType
 
     @FlowType.setter
@@ -5367,6 +6486,17 @@ class DescribeFlowResponse(AbstractModel):
 
     @property
     def FlowStatus(self):
+        """流程状态：
+0-创建；
+1-签署中；
+2-拒签；
+3-撤回；
+4-签完存档完成；
+5-已过期；
+6-已销毁
+7-签署完成未归档
+        :rtype: int
+        """
         return self._FlowStatus
 
     @FlowStatus.setter
@@ -5375,6 +6505,9 @@ class DescribeFlowResponse(AbstractModel):
 
     @property
     def CreatedOn(self):
+        """流程创建时间
+        :rtype: int
+        """
         return self._CreatedOn
 
     @CreatedOn.setter
@@ -5383,6 +6516,9 @@ class DescribeFlowResponse(AbstractModel):
 
     @property
     def UpdatedOn(self):
+        """流程完成时间
+        :rtype: int
+        """
         return self._UpdatedOn
 
     @UpdatedOn.setter
@@ -5391,6 +6527,9 @@ class DescribeFlowResponse(AbstractModel):
 
     @property
     def Deadline(self):
+        """流程截止日期
+        :rtype: int
+        """
         return self._Deadline
 
     @Deadline.setter
@@ -5399,6 +6538,9 @@ class DescribeFlowResponse(AbstractModel):
 
     @property
     def CallbackUrl(self):
+        """回调地址
+        :rtype: str
+        """
         return self._CallbackUrl
 
     @CallbackUrl.setter
@@ -5407,6 +6549,9 @@ class DescribeFlowResponse(AbstractModel):
 
     @property
     def FlowMessage(self):
+        """流程中止原因
+        :rtype: str
+        """
         return self._FlowMessage
 
     @FlowMessage.setter
@@ -5415,6 +6560,9 @@ class DescribeFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5459,6 +6607,9 @@ class DescribeSealsRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -5467,6 +6618,9 @@ class DescribeSealsRequest(AbstractModel):
 
     @property
     def SealIds(self):
+        """印章ID列表
+        :rtype: list of str
+        """
         return self._SealIds
 
     @SealIds.setter
@@ -5475,6 +6629,9 @@ class DescribeSealsRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户唯一标识
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -5515,6 +6672,9 @@ class DescribeSealsResponse(AbstractModel):
 
     @property
     def Seals(self):
+        """印章信息
+        :rtype: list of Seal
+        """
         return self._Seals
 
     @Seals.setter
@@ -5523,6 +6683,9 @@ class DescribeSealsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5557,6 +6720,9 @@ class DescribeSubOrganizationsRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -5565,6 +6731,9 @@ class DescribeSubOrganizationsRequest(AbstractModel):
 
     @property
     def SubOrganizationIds(self):
+        """子机构ID数组
+        :rtype: list of str
+        """
         return self._SubOrganizationIds
 
     @SubOrganizationIds.setter
@@ -5604,6 +6773,9 @@ class DescribeSubOrganizationsResponse(AbstractModel):
 
     @property
     def SubOrganizationInfos(self):
+        """子机构信息列表
+        :rtype: list of SubOrganizationDetail
+        """
         return self._SubOrganizationInfos
 
     @SubOrganizationInfos.setter
@@ -5612,6 +6784,9 @@ class DescribeSubOrganizationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5646,6 +6821,9 @@ class DescribeUsersRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -5654,6 +6832,9 @@ class DescribeUsersRequest(AbstractModel):
 
     @property
     def UserIds(self):
+        """UserId列表，最多支持100个UserId
+        :rtype: list of str
+        """
         return self._UserIds
 
     @UserIds.setter
@@ -5693,6 +6874,9 @@ class DescribeUsersResponse(AbstractModel):
 
     @property
     def Users(self):
+        """用户信息查询结果
+        :rtype: list of UserDescribe
+        """
         return self._Users
 
     @Users.setter
@@ -5701,6 +6885,9 @@ class DescribeUsersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5735,6 +6922,9 @@ class DestroyFlowFileRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -5743,6 +6933,9 @@ class DestroyFlowFileRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """流程ID
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -5779,6 +6972,9 @@ class DestroyFlowFileResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5815,6 +7011,11 @@ class FaceIdPhoto(AbstractModel):
 
     @property
     def Result(self):
+        """核身结果：
+0 - 通过；
+1 - 未通过
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -5823,6 +7024,9 @@ class FaceIdPhoto(AbstractModel):
 
     @property
     def Description(self):
+        """核身失败描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -5831,6 +7035,9 @@ class FaceIdPhoto(AbstractModel):
 
     @property
     def Photo(self):
+        """照片数据 (base64编码, 一般为JPG或PNG)
+        :rtype: str
+        """
         return self._Photo
 
     @Photo.setter
@@ -5839,6 +7046,9 @@ class FaceIdPhoto(AbstractModel):
 
     @property
     def OrderNumber(self):
+        """订单号 (orderNo)
+        :rtype: str
+        """
         return self._OrderNumber
 
     @OrderNumber.setter
@@ -5916,6 +7126,11 @@ ID_CARD - 居民身份证
 
     @property
     def Result(self):
+        """核身结果：
+0 - 通过；
+1 - 未通过
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -5924,6 +7139,9 @@ ID_CARD - 居民身份证
 
     @property
     def Description(self):
+        """核身失败描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -5932,6 +7150,9 @@ ID_CARD - 居民身份证
 
     @property
     def OrderNumber(self):
+        """订单号 (orderNo)
+        :rtype: str
+        """
         return self._OrderNumber
 
     @OrderNumber.setter
@@ -5940,6 +7161,10 @@ ID_CARD - 居民身份证
 
     @property
     def Name(self):
+        """姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5948,6 +7173,11 @@ ID_CARD - 居民身份证
 
     @property
     def IdCardType(self):
+        """身份证件类型： 
+ID_CARD - 居民身份证
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IdCardType
 
     @IdCardType.setter
@@ -5956,6 +7186,10 @@ ID_CARD - 居民身份证
 
     @property
     def IdCardNumber(self):
+        """身份证件号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IdCardNumber
 
     @IdCardNumber.setter
@@ -5964,6 +7198,10 @@ ID_CARD - 居民身份证
 
     @property
     def LiveRate(self):
+        """活体检测得分 (百分制)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LiveRate
 
     @LiveRate.setter
@@ -5972,6 +7210,10 @@ ID_CARD - 居民身份证
 
     @property
     def Similarity(self):
+        """人脸检测得分 (百分制)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Similarity
 
     @Similarity.setter
@@ -5980,6 +7222,10 @@ ID_CARD - 居民身份证
 
     @property
     def OccurredTime(self):
+        """刷脸时间 (UNIX时间戳)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._OccurredTime
 
     @OccurredTime.setter
@@ -5988,6 +7234,10 @@ ID_CARD - 居民身份证
 
     @property
     def Photo(self):
+        """照片数据 (base64编码, 一般为JPG或PNG)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Photo
 
     @Photo.setter
@@ -5996,6 +7246,10 @@ ID_CARD - 居民身份证
 
     @property
     def Video(self):
+        """视频数据 (base64编码, 一般为MP4)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Video
 
     @Video.setter
@@ -6048,6 +7302,9 @@ class FileUrl(AbstractModel):
 
     @property
     def Url(self):
+        """下载文件的URL
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -6056,6 +7313,9 @@ class FileUrl(AbstractModel):
 
     @property
     def Option(self):
+        """下载文件的附加信息
+        :rtype: str
+        """
         return self._Option
 
     @Option.setter
@@ -6064,6 +7324,9 @@ class FileUrl(AbstractModel):
 
     @property
     def Index(self):
+        """下载文件所属的资源序号
+        :rtype: int
+        """
         return self._Index
 
     @Index.setter
@@ -6072,6 +7335,9 @@ class FileUrl(AbstractModel):
 
     @property
     def FlowId(self):
+        """目录业务下，文件对应的流程
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -6186,6 +7452,9 @@ THIRD - 第三方 (暂不支持)
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -6194,6 +7463,13 @@ THIRD - 第三方 (暂不支持)
 
     @property
     def VerifyChannel(self):
+        """认证方式：
+WEIXINAPP - 微信小程序；
+FACEID - 慧眼 (默认)；
+VERIFYCODE - 验证码；
+THIRD - 第三方 (暂不支持)
+        :rtype: list of str
+        """
         return self._VerifyChannel
 
     @VerifyChannel.setter
@@ -6202,6 +7478,17 @@ THIRD - 第三方 (暂不支持)
 
     @property
     def ApproveStatus(self):
+        """签署状态：
+0 - 待签署；
+1- 已签署；
+2 - 拒绝；
+3 - 过期未处理；
+4 - 流程已撤回,
+12-审核中,
+13-审核驳回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ApproveStatus
 
     @ApproveStatus.setter
@@ -6210,6 +7497,10 @@ THIRD - 第三方 (暂不支持)
 
     @property
     def ApproveMessage(self):
+        """拒签/签署/审核驳回原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApproveMessage
 
     @ApproveMessage.setter
@@ -6218,6 +7509,10 @@ THIRD - 第三方 (暂不支持)
 
     @property
     def ApproveTime(self):
+        """签约时间的时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ApproveTime
 
     @ApproveTime.setter
@@ -6226,6 +7521,10 @@ THIRD - 第三方 (暂不支持)
 
     @property
     def SubOrganizationId(self):
+        """签署企业ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubOrganizationId
 
     @SubOrganizationId.setter
@@ -6234,6 +7533,10 @@ THIRD - 第三方 (暂不支持)
 
     @property
     def JumpUrl(self):
+        """签署完成后跳转的URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._JumpUrl
 
     @JumpUrl.setter
@@ -6242,6 +7545,10 @@ THIRD - 第三方 (暂不支持)
 
     @property
     def ComponentSeals(self):
+        """用户签署区ID到印章ID的映射集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ComponentSeal
+        """
         return self._ComponentSeals
 
     @ComponentSeals.setter
@@ -6250,6 +7557,9 @@ THIRD - 第三方 (暂不支持)
 
     @property
     def IsFullText(self):
+        """签署前置条件：是否强制用户全文阅读，即阅读到待签署文档的最后一页。默认FALSE
+        :rtype: bool
+        """
         return self._IsFullText
 
     @IsFullText.setter
@@ -6258,6 +7568,9 @@ THIRD - 第三方 (暂不支持)
 
     @property
     def PreReadTime(self):
+        """签署前置条件：强制阅读时长，页面停留时长不足则不允许签署。默认不限制
+        :rtype: int
+        """
         return self._PreReadTime
 
     @PreReadTime.setter
@@ -6266,6 +7579,9 @@ THIRD - 第三方 (暂不支持)
 
     @property
     def Mobile(self):
+        """签署人手机号，脱敏显示
+        :rtype: str
+        """
         return self._Mobile
 
     @Mobile.setter
@@ -6274,6 +7590,9 @@ THIRD - 第三方 (暂不支持)
 
     @property
     def Deadline(self):
+        """签署链接截止时间，默认签署流程发起后7天失效
+        :rtype: int
+        """
         return self._Deadline
 
     @Deadline.setter
@@ -6282,6 +7601,9 @@ THIRD - 第三方 (暂不支持)
 
     @property
     def IsLastApprover(self):
+        """是否为最后一个签署人, 若为最后一人，则其签署完成后自动归档
+        :rtype: bool
+        """
         return self._IsLastApprover
 
     @IsLastApprover.setter
@@ -6290,6 +7612,10 @@ THIRD - 第三方 (暂不支持)
 
     @property
     def SmsTemplate(self):
+        """短信模板
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.SmsTemplate`
+        """
         return self._SmsTemplate
 
     @SmsTemplate.setter
@@ -6298,6 +7624,9 @@ THIRD - 第三方 (暂不支持)
 
     @property
     def IdCardNumber(self):
+        """身份证号，脱敏显示
+        :rtype: str
+        """
         return self._IdCardNumber
 
     @IdCardNumber.setter
@@ -6306,6 +7635,9 @@ THIRD - 第三方 (暂不支持)
 
     @property
     def Name(self):
+        """用户姓名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6314,6 +7646,9 @@ THIRD - 第三方 (暂不支持)
 
     @property
     def CanOffLine(self):
+        """是否支持线下核身
+        :rtype: bool
+        """
         return self._CanOffLine
 
     @CanOffLine.setter
@@ -6322,6 +7657,10 @@ THIRD - 第三方 (暂不支持)
 
     @property
     def IdCardType(self):
+        """证件号码类型：ID_CARD - 身份证，PASSPORT - 护照，MAINLAND_TRAVEL_PERMIT_FOR_HONGKONG_AND_MACAO_RESIDENTS - 港澳居民来往内地通行证; 暂不支持用于电子签自有平台实名认证，MAINLAND_TRAVEL_PERMIT_FOR_TAIWAN_RESIDENTS - 台湾居民来往大陆通行证; 暂不支持用于电子签自有平台实名认证，HOUSEHOLD_REGISTER - 户口本; 暂不支持用于电子签自有平台实名认证，TEMP_ID_CARD - 临时居民身份证; 暂不支持用于电子签自有平台实名认证
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IdCardType
 
     @IdCardType.setter
@@ -6330,6 +7669,10 @@ THIRD - 第三方 (暂不支持)
 
     @property
     def CallbackUrl(self):
+        """签署回调地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CallbackUrl
 
     @CallbackUrl.setter
@@ -6338,6 +7681,10 @@ THIRD - 第三方 (暂不支持)
 
     @property
     def SignId(self):
+        """签署任务ID，标识每一次的流程发送
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SignId
 
     @SignId.setter
@@ -6415,6 +7762,9 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def FileIndex(self):
+        """文件序号
+        :rtype: int
+        """
         return self._FileIndex
 
     @FileIndex.setter
@@ -6423,6 +7773,9 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def FileType(self):
+        """文件类型
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -6431,6 +7784,9 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def FileMd5(self):
+        """文件的MD5码
+        :rtype: str
+        """
         return self._FileMd5
 
     @FileMd5.setter
@@ -6439,6 +7795,9 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def FileName(self):
+        """文件名
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -6447,6 +7806,9 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def FileSize(self):
+        """文件大小，单位为Byte
+        :rtype: int
+        """
         return self._FileSize
 
     @FileSize.setter
@@ -6455,6 +7817,9 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def CreatedOn(self):
+        """文件创建时间戳
+        :rtype: int
+        """
         return self._CreatedOn
 
     @CreatedOn.setter
@@ -6463,6 +7828,9 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def Url(self):
+        """文件的下载地址
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -6521,6 +7889,9 @@ class FlowInfo(AbstractModel):
 
     @property
     def FlowName(self):
+        """合同名字
+        :rtype: str
+        """
         return self._FlowName
 
     @FlowName.setter
@@ -6529,6 +7900,9 @@ class FlowInfo(AbstractModel):
 
     @property
     def Deadline(self):
+        """签署截止时间戳，超过有效签署时间则该签署流程失败
+        :rtype: int
+        """
         return self._Deadline
 
     @Deadline.setter
@@ -6537,6 +7911,9 @@ class FlowInfo(AbstractModel):
 
     @property
     def FlowDescription(self):
+        """合同描述
+        :rtype: str
+        """
         return self._FlowDescription
 
     @FlowDescription.setter
@@ -6545,6 +7922,13 @@ class FlowInfo(AbstractModel):
 
     @property
     def FlowType(self):
+        """合同类型：
+1. “劳务”
+2. “销售”
+3. “租赁”
+4. “其他”
+        :rtype: str
+        """
         return self._FlowType
 
     @FlowType.setter
@@ -6553,6 +7937,9 @@ class FlowInfo(AbstractModel):
 
     @property
     def CallbackUrl(self):
+        """回调地址
+        :rtype: str
+        """
         return self._CallbackUrl
 
     @CallbackUrl.setter
@@ -6561,6 +7948,9 @@ class FlowInfo(AbstractModel):
 
     @property
     def UserData(self):
+        """用户自定义数据
+        :rtype: str
+        """
         return self._UserData
 
     @UserData.setter
@@ -6620,6 +8010,9 @@ OTHER-其他
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -6628,6 +8021,15 @@ OTHER-其他
 
     @property
     def SealType(self):
+        """印章类型：
+OFFICIAL-公章
+SPECIAL_FINANCIAL-财务专用章
+CONTRACT-合同专用章
+LEGAL_REPRESENTATIVE-法定代表人章
+SPECIAL_NATIONWIDE_INVOICE-发票专用章
+OTHER-其他
+        :rtype: str
+        """
         return self._SealType
 
     @SealType.setter
@@ -6636,6 +8038,9 @@ OTHER-其他
 
     @property
     def SourceIp(self):
+        """请求生成企业印章的客户端Ip
+        :rtype: str
+        """
         return self._SourceIp
 
     @SourceIp.setter
@@ -6644,6 +8049,9 @@ OTHER-其他
 
     @property
     def SealName(self):
+        """电子印章名称
+        :rtype: str
+        """
         return self._SealName
 
     @SealName.setter
@@ -6652,6 +8060,9 @@ OTHER-其他
 
     @property
     def SealHorizontalText(self):
+        """企业印章横向文字，最多可填8个汉字（可不填，默认为"电子签名专用章"）
+        :rtype: str
+        """
         return self._SealHorizontalText
 
     @SealHorizontalText.setter
@@ -6660,6 +8071,9 @@ OTHER-其他
 
     @property
     def IsDefault(self):
+        """是否是默认印章 true：是，false：否
+        :rtype: bool
+        """
         return self._IsDefault
 
     @IsDefault.setter
@@ -6703,6 +8117,9 @@ class GenerateOrganizationSealResponse(AbstractModel):
 
     @property
     def SealId(self):
+        """电子印章Id
+        :rtype: str
+        """
         return self._SealId
 
     @SealId.setter
@@ -6711,6 +8128,9 @@ class GenerateOrganizationSealResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6749,6 +8169,9 @@ class GenerateUserSealRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -6757,6 +8180,9 @@ class GenerateUserSealRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -6765,6 +8191,9 @@ class GenerateUserSealRequest(AbstractModel):
 
     @property
     def SourceIp(self):
+        """请求生成个人印章的客户端IP
+        :rtype: str
+        """
         return self._SourceIp
 
     @SourceIp.setter
@@ -6773,6 +8202,9 @@ class GenerateUserSealRequest(AbstractModel):
 
     @property
     def SealName(self):
+        """电子印章名称
+        :rtype: str
+        """
         return self._SealName
 
     @SealName.setter
@@ -6781,6 +8213,9 @@ class GenerateUserSealRequest(AbstractModel):
 
     @property
     def IsDefault(self):
+        """是否是默认印章 true：是，false：否
+        :rtype: bool
+        """
         return self._IsDefault
 
     @IsDefault.setter
@@ -6823,6 +8258,9 @@ class GenerateUserSealResponse(AbstractModel):
 
     @property
     def SealId(self):
+        """电子印章Id
+        :rtype: str
+        """
         return self._SealId
 
     @SealId.setter
@@ -6831,6 +8269,9 @@ class GenerateUserSealResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6863,6 +8304,9 @@ class ModifyOrganizationDefaultSealRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -6871,6 +8315,9 @@ class ModifyOrganizationDefaultSealRequest(AbstractModel):
 
     @property
     def SealId(self):
+        """重新指定的默认印章ID
+        :rtype: str
+        """
         return self._SealId
 
     @SealId.setter
@@ -6879,6 +8326,9 @@ class ModifyOrganizationDefaultSealRequest(AbstractModel):
 
     @property
     def SourceIp(self):
+        """请求重新指定企业默认印章的客户端IP
+        :rtype: str
+        """
         return self._SourceIp
 
     @SourceIp.setter
@@ -6916,6 +8366,9 @@ class ModifyOrganizationDefaultSealResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6959,6 +8412,9 @@ class ModifySealRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -6967,6 +8423,9 @@ class ModifySealRequest(AbstractModel):
 
     @property
     def SourceIp(self):
+        """请求更新印章的客户端IP
+        :rtype: str
+        """
         return self._SourceIp
 
     @SourceIp.setter
@@ -6975,6 +8434,9 @@ class ModifySealRequest(AbstractModel):
 
     @property
     def SealId(self):
+        """电子印章ID。若为空，则修改个人/机构的默认印章。
+        :rtype: str
+        """
         return self._SealId
 
     @SealId.setter
@@ -6983,6 +8445,9 @@ class ModifySealRequest(AbstractModel):
 
     @property
     def SealName(self):
+        """电子印章名称
+        :rtype: str
+        """
         return self._SealName
 
     @SealName.setter
@@ -6991,6 +8456,9 @@ class ModifySealRequest(AbstractModel):
 
     @property
     def Image(self):
+        """印章图片，base64编码（与FileId参数二选一，同时传入参数时优先使用Image参数）
+        :rtype: str
+        """
         return self._Image
 
     @Image.setter
@@ -6999,6 +8467,9 @@ class ModifySealRequest(AbstractModel):
 
     @property
     def FileId(self):
+        """印章图片文件ID（与Image参数二选一，同时传入参数时优先使用Image参数）
+        :rtype: str
+        """
         return self._FileId
 
     @FileId.setter
@@ -7007,6 +8478,9 @@ class ModifySealRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """需要更新印章的用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -7048,6 +8522,9 @@ class ModifySealResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7113,6 +8590,9 @@ class ModifySubOrganizationInfoRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息，该接口 SubOrganizationId 字段与 OpenId 字段二者至少需要传入一个，全部传入时则使用 SubOrganizationId 信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -7121,6 +8601,9 @@ class ModifySubOrganizationInfoRequest(AbstractModel):
 
     @property
     def OpenId(self):
+        """机构在第三方的唯一标识，32位定长字符串，与 Caller 中 SubOrgnizationId 二者至少需要传入一个，全部传入时则使用 SubOrganizationId 信息
+        :rtype: str
+        """
         return self._OpenId
 
     @OpenId.setter
@@ -7129,6 +8612,9 @@ class ModifySubOrganizationInfoRequest(AbstractModel):
 
     @property
     def Name(self):
+        """机构名称全称，修改后机构状态将变为未实名，需要调用实名接口重新实名。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -7137,6 +8623,13 @@ class ModifySubOrganizationInfoRequest(AbstractModel):
 
     @property
     def OrganizationType(self):
+        """机构类型可选值：
+1. ENTERPRISE - 企业；
+2. INDIVIDUALBIZ - 个体工商户；
+3. PUBLICINSTITUTION - 政府/事业单位
+4. OTHERS - 其他组织
+        :rtype: str
+        """
         return self._OrganizationType
 
     @OrganizationType.setter
@@ -7145,6 +8638,9 @@ class ModifySubOrganizationInfoRequest(AbstractModel):
 
     @property
     def BizLicenseFile(self):
+        """机构证件照片文件，base64编码。支持jpg，jpeg，png格式；如果传值，则重新上传文件后，机构状态将变为未实名，需要调用实名接口重新实名。
+        :rtype: str
+        """
         return self._BizLicenseFile
 
     @BizLicenseFile.setter
@@ -7153,6 +8649,9 @@ class ModifySubOrganizationInfoRequest(AbstractModel):
 
     @property
     def BizLicenseFileName(self):
+        """机构证件照片文件名
+        :rtype: str
+        """
         return self._BizLicenseFileName
 
     @BizLicenseFileName.setter
@@ -7161,6 +8660,9 @@ class ModifySubOrganizationInfoRequest(AbstractModel):
 
     @property
     def LegalName(self):
+        """机构法人/经营者姓名
+        :rtype: str
+        """
         return self._LegalName
 
     @LegalName.setter
@@ -7169,6 +8671,9 @@ class ModifySubOrganizationInfoRequest(AbstractModel):
 
     @property
     def LegalIdCardType(self):
+        """机构法人/经营者证件类型，可选值：ID_CARD - 居民身份证。OrganizationType 为 ENTERPRISE、INDIVIDUALBIZ 时，此项必填，其他情况选填。
+        :rtype: str
+        """
         return self._LegalIdCardType
 
     @LegalIdCardType.setter
@@ -7177,6 +8682,9 @@ class ModifySubOrganizationInfoRequest(AbstractModel):
 
     @property
     def LegalIdCardNumber(self):
+        """机构法人/经营者证件号码。OrganizationType 为 ENTERPRISE、INDIVIDUALBIZ 时，此项必填，其他情况选填
+        :rtype: str
+        """
         return self._LegalIdCardNumber
 
     @LegalIdCardNumber.setter
@@ -7185,6 +8693,9 @@ class ModifySubOrganizationInfoRequest(AbstractModel):
 
     @property
     def LegalMobile(self):
+        """机构法人/经营者/联系人手机号码
+        :rtype: str
+        """
         return self._LegalMobile
 
     @LegalMobile.setter
@@ -7193,6 +8704,9 @@ class ModifySubOrganizationInfoRequest(AbstractModel):
 
     @property
     def ContactName(self):
+        """组织联系人姓名
+        :rtype: str
+        """
         return self._ContactName
 
     @ContactName.setter
@@ -7201,6 +8715,9 @@ class ModifySubOrganizationInfoRequest(AbstractModel):
 
     @property
     def ContactAddress(self):
+        """企业联系地址
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Address`
+        """
         return self._ContactAddress
 
     @ContactAddress.setter
@@ -7209,6 +8726,9 @@ class ModifySubOrganizationInfoRequest(AbstractModel):
 
     @property
     def Email(self):
+        """机构电子邮箱
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -7261,6 +8781,9 @@ class ModifySubOrganizationInfoResponse(AbstractModel):
 
     @property
     def SubOrganizationId(self):
+        """子机构ID
+        :rtype: str
+        """
         return self._SubOrganizationId
 
     @SubOrganizationId.setter
@@ -7269,6 +8792,9 @@ class ModifySubOrganizationInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7304,6 +8830,9 @@ class ModifyUserDefaultSealRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -7312,6 +8841,9 @@ class ModifyUserDefaultSealRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户唯一标识，需要重新指定默认印章的用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -7320,6 +8852,9 @@ class ModifyUserDefaultSealRequest(AbstractModel):
 
     @property
     def SealId(self):
+        """重新指定的默认印章ID
+        :rtype: str
+        """
         return self._SealId
 
     @SealId.setter
@@ -7328,6 +8863,9 @@ class ModifyUserDefaultSealRequest(AbstractModel):
 
     @property
     def SourceIp(self):
+        """请求重新指定个人默认印章的客户端IP
+        :rtype: str
+        """
         return self._SourceIp
 
     @SourceIp.setter
@@ -7366,6 +8904,9 @@ class ModifyUserDefaultSealResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7406,6 +8947,9 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -7414,6 +8958,9 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def OpenId(self):
+        """第三方平台用户唯一标识; OpenId 和 UserId 二选一填写, 两个都不为空则优先使用UserId
+        :rtype: str
+        """
         return self._OpenId
 
     @OpenId.setter
@@ -7422,6 +8969,9 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """腾讯电子签平台用户唯一标识; OpenId 和 UserId 二选一填写, 两个都不为空则优先使用UserId
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -7430,6 +8980,9 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def Mobile(self):
+        """用户手机号码，不要求唯一
+        :rtype: str
+        """
         return self._Mobile
 
     @Mobile.setter
@@ -7438,6 +8991,9 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def Email(self):
+        """用户邮箱，不要求唯一
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -7446,6 +9002,9 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def Name(self):
+        """用户姓名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -7489,6 +9048,9 @@ class ModifyUserResponse(AbstractModel):
 
     @property
     def UserId(self):
+        """腾讯电子签平台用户唯一标识
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -7497,6 +9059,9 @@ class ModifyUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7552,6 +9117,9 @@ class RejectFlowRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -7560,6 +9128,9 @@ class RejectFlowRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """流程编号
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -7568,6 +9139,14 @@ class RejectFlowRequest(AbstractModel):
 
     @property
     def VerifyResult(self):
+        """意愿确认票据。
+1. VerifyChannel 为 WEIXINAPP，使用响应的VerifyResult；
+2. VerifyChannel 为 FACEID时，使用OrderNo；
+3. VerifyChannel 为 VERIFYCODE，使用短信验证码
+4. VerifyChannel 为 NONE，传空值
+（注：普通情况下，VerifyResult不能为None，如您不希望腾讯电子签对用户签署意愿做校验，请提前与客户经理或邮件至e-contract@tencent.com与我们联系）
+        :rtype: str
+        """
         return self._VerifyResult
 
     @VerifyResult.setter
@@ -7576,6 +9155,15 @@ class RejectFlowRequest(AbstractModel):
 
     @property
     def VerifyChannel(self):
+        """意愿确认渠道：
+1. WEIXINAPP - 微信小程序
+2. FACEID - 慧眼 (默认) 
+3. VERIFYCODE - 验证码
+4. THIRD - 第三方 (暂不支持)
+5. NONE - 无需电子签系统验证
+（注：普通情况下，VerifyChannel不能为None，如您不希望腾讯电子签对用户签署意愿做校验，请提前与客户经理或邮件至e-contract@tencent.com与我们联系）
+        :rtype: str
+        """
         return self._VerifyChannel
 
     @VerifyChannel.setter
@@ -7584,6 +9172,9 @@ class RejectFlowRequest(AbstractModel):
 
     @property
     def SourceIp(self):
+        """客户端来源IP
+        :rtype: str
+        """
         return self._SourceIp
 
     @SourceIp.setter
@@ -7592,6 +9183,9 @@ class RejectFlowRequest(AbstractModel):
 
     @property
     def RejectMessage(self):
+        """拒签原因
+        :rtype: str
+        """
         return self._RejectMessage
 
     @RejectMessage.setter
@@ -7600,6 +9194,9 @@ class RejectFlowRequest(AbstractModel):
 
     @property
     def SignId(self):
+        """签署参与者编号
+        :rtype: str
+        """
         return self._SignId
 
     @SignId.setter
@@ -7641,6 +9238,9 @@ class RejectFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7692,6 +9292,9 @@ GENERATE - 通过文字生成
 
     @property
     def SealId(self):
+        """电子印章ID
+        :rtype: str
+        """
         return self._SealId
 
     @SealId.setter
@@ -7700,6 +9303,9 @@ GENERATE - 通过文字生成
 
     @property
     def SealName(self):
+        """电子印章名称
+        :rtype: str
+        """
         return self._SealName
 
     @SealName.setter
@@ -7708,6 +9314,9 @@ GENERATE - 通过文字生成
 
     @property
     def SealType(self):
+        """电子印章类型
+        :rtype: str
+        """
         return self._SealType
 
     @SealType.setter
@@ -7716,6 +9325,11 @@ GENERATE - 通过文字生成
 
     @property
     def SealSource(self):
+        """电子印章来源：
+CREATE - 通过图片上传
+GENERATE - 通过文字生成
+        :rtype: str
+        """
         return self._SealSource
 
     @SealSource.setter
@@ -7724,6 +9338,9 @@ GENERATE - 通过文字生成
 
     @property
     def Creator(self):
+        """电子印章创建者
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Creator
 
     @Creator.setter
@@ -7732,6 +9349,9 @@ GENERATE - 通过文字生成
 
     @property
     def CreatedOn(self):
+        """电子印章创建时间戳
+        :rtype: int
+        """
         return self._CreatedOn
 
     @CreatedOn.setter
@@ -7740,6 +9360,9 @@ GENERATE - 通过文字生成
 
     @property
     def UserId(self):
+        """电子印章所有人
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -7748,6 +9371,9 @@ GENERATE - 通过文字生成
 
     @property
     def FileUrl(self):
+        """电子印章URL
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.FileUrl`
+        """
         return self._FileUrl
 
     @FileUrl.setter
@@ -7756,6 +9382,9 @@ GENERATE - 通过文字生成
 
     @property
     def DefaultSeal(self):
+        """是否为默认印章，false-非默认，true-默认
+        :rtype: bool
+        """
         return self._DefaultSeal
 
     @DefaultSeal.setter
@@ -7848,6 +9477,9 @@ class SendFlowRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -7856,6 +9488,9 @@ class SendFlowRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """需要推送合同的流程ID
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -7864,6 +9499,9 @@ class SendFlowRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """签署人用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -7872,6 +9510,9 @@ class SendFlowRequest(AbstractModel):
 
     @property
     def SignComponents(self):
+        """签署控件信息 (支持添加多个控件)
+        :rtype: list of Component
+        """
         return self._SignComponents
 
     @SignComponents.setter
@@ -7880,6 +9521,9 @@ class SendFlowRequest(AbstractModel):
 
     @property
     def Mobile(self):
+        """签署人手机号 (如果选择短信验证码签署，则此字段必填)
+        :rtype: str
+        """
         return self._Mobile
 
     @Mobile.setter
@@ -7888,6 +9532,9 @@ class SendFlowRequest(AbstractModel):
 
     @property
     def SubOrganizationId(self):
+        """签署人对应的子机构ID，个人签署者此字段不填
+        :rtype: str
+        """
         return self._SubOrganizationId
 
     @SubOrganizationId.setter
@@ -7896,6 +9543,14 @@ class SendFlowRequest(AbstractModel):
 
     @property
     def VerifyChannel(self):
+        """签名后校验方式：
+1. WEIXINAPP - 微信小程序；
+2. FACEID - 慧眼 (默认) ；
+3. VERIFYCODE - 验证码；
+4. NONE - 无。此选项为白名单参数，暂不支持公开调用。如需开通权限，请通过客户经理或邮件至e-contract@tencent.com与我们联系；
+5. THIRD - 第三方 (暂不支持)
+        :rtype: list of str
+        """
         return self._VerifyChannel
 
     @VerifyChannel.setter
@@ -7904,6 +9559,9 @@ class SendFlowRequest(AbstractModel):
 
     @property
     def Deadline(self):
+        """签署链接失效截止时间，默认为7天
+        :rtype: int
+        """
         return self._Deadline
 
     @Deadline.setter
@@ -7912,6 +9570,9 @@ class SendFlowRequest(AbstractModel):
 
     @property
     def IsLastApprover(self):
+        """是否为最后一个签署人。若为最后一人，本次签署完成以后自动归档。
+        :rtype: bool
+        """
         return self._IsLastApprover
 
     @IsLastApprover.setter
@@ -7920,6 +9581,9 @@ class SendFlowRequest(AbstractModel):
 
     @property
     def JumpUrl(self):
+        """签署完成后，前端跳转的URL
+        :rtype: str
+        """
         return self._JumpUrl
 
     @JumpUrl.setter
@@ -7928,6 +9592,9 @@ class SendFlowRequest(AbstractModel):
 
     @property
     def SmsTemplate(self):
+        """短信模板。默认使用腾讯电子签官方短信模板，如有自定义需求，请通过客户经理或邮件至e-contract@tencent.com与我们联系。
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.SmsTemplate`
+        """
         return self._SmsTemplate
 
     @SmsTemplate.setter
@@ -7936,6 +9603,9 @@ class SendFlowRequest(AbstractModel):
 
     @property
     def IsFullText(self):
+        """签署前置条件：是否要全文阅读，默认否
+        :rtype: bool
+        """
         return self._IsFullText
 
     @IsFullText.setter
@@ -7944,6 +9614,9 @@ class SendFlowRequest(AbstractModel):
 
     @property
     def PreReadTime(self):
+        """签署前置条件：强制用户阅读待签署文件时长，默认不限制
+        :rtype: int
+        """
         return self._PreReadTime
 
     @PreReadTime.setter
@@ -7952,6 +9625,9 @@ class SendFlowRequest(AbstractModel):
 
     @property
     def CanOffLine(self):
+        """当前参与者是否支持线下核身,默认为不支持
+        :rtype: bool
+        """
         return self._CanOffLine
 
     @CanOffLine.setter
@@ -7960,6 +9636,9 @@ class SendFlowRequest(AbstractModel):
 
     @property
     def CallbackUrl(self):
+        """签署任务的回调地址
+        :rtype: str
+        """
         return self._CallbackUrl
 
     @CallbackUrl.setter
@@ -8019,6 +9698,9 @@ class SendFlowResponse(AbstractModel):
 
     @property
     def SignId(self):
+        """签署任务ID，标识每一次的流程发送
+        :rtype: str
+        """
         return self._SignId
 
     @SignId.setter
@@ -8027,6 +9709,9 @@ class SendFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8102,6 +9787,9 @@ class SendFlowUrlRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -8110,6 +9798,9 @@ class SendFlowUrlRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """需要推送合同的流程ID
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -8118,6 +9809,9 @@ class SendFlowUrlRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """签署人ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -8126,6 +9820,9 @@ class SendFlowUrlRequest(AbstractModel):
 
     @property
     def SignComponents(self):
+        """签署控件信息 (支持添加多个控件)
+        :rtype: list of Component
+        """
         return self._SignComponents
 
     @SignComponents.setter
@@ -8134,6 +9831,9 @@ class SendFlowUrlRequest(AbstractModel):
 
     @property
     def Mobile(self):
+        """签署人手机号 (如果选择短信验证码签署，则此字段必填)
+        :rtype: str
+        """
         return self._Mobile
 
     @Mobile.setter
@@ -8142,6 +9842,9 @@ class SendFlowUrlRequest(AbstractModel):
 
     @property
     def SubOrganizationId(self):
+        """签署人对应的子机构ID，个人签署者此字段不填
+        :rtype: str
+        """
         return self._SubOrganizationId
 
     @SubOrganizationId.setter
@@ -8150,6 +9853,15 @@ class SendFlowUrlRequest(AbstractModel):
 
     @property
     def VerifyChannel(self):
+        """签名后校验方式：
+1. WEIXINAPP - 微信小程序；
+2. FACEID - 慧眼 (默认) ；
+3. VERIFYCODE - 验证码；
+4. NONE - 无。此选项为白名单参数，暂不支持公开调用。如需开通权限，请通过客户经理或邮件至e-contract@tencent.com与我们联系；
+5. THIRD - 第三方 (暂不支持)
+6. OFFLINE - 线下人工审核
+        :rtype: list of str
+        """
         return self._VerifyChannel
 
     @VerifyChannel.setter
@@ -8158,6 +9870,9 @@ class SendFlowUrlRequest(AbstractModel):
 
     @property
     def Deadline(self):
+        """签署链接失效截止时间，默认为7天
+        :rtype: int
+        """
         return self._Deadline
 
     @Deadline.setter
@@ -8166,6 +9881,9 @@ class SendFlowUrlRequest(AbstractModel):
 
     @property
     def IsLastApprover(self):
+        """是否为最后一个签署人。若为最后一人，本次签署完成以后自动归档
+        :rtype: bool
+        """
         return self._IsLastApprover
 
     @IsLastApprover.setter
@@ -8174,6 +9892,9 @@ class SendFlowUrlRequest(AbstractModel):
 
     @property
     def JumpUrl(self):
+        """签署完成后，前端跳转的url
+        :rtype: str
+        """
         return self._JumpUrl
 
     @JumpUrl.setter
@@ -8182,6 +9903,10 @@ class SendFlowUrlRequest(AbstractModel):
 
     @property
     def SmsTemplate(self):
+        """短信模板
+默认使用腾讯电子签官方短信模板，如有自定义需求，请通过客户经理或邮件至e-contract@tencent.com与我们联系。
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.SmsTemplate`
+        """
         return self._SmsTemplate
 
     @SmsTemplate.setter
@@ -8190,6 +9915,9 @@ class SendFlowUrlRequest(AbstractModel):
 
     @property
     def IsFullText(self):
+        """签署前置条件：是否要全文阅读，默认否
+        :rtype: bool
+        """
         return self._IsFullText
 
     @IsFullText.setter
@@ -8198,6 +9926,9 @@ class SendFlowUrlRequest(AbstractModel):
 
     @property
     def PreReadTime(self):
+        """签署前置条件：强制用户阅读待签署文件时长，默认不限制
+        :rtype: int
+        """
         return self._PreReadTime
 
     @PreReadTime.setter
@@ -8206,6 +9937,9 @@ class SendFlowUrlRequest(AbstractModel):
 
     @property
     def CanOffLine(self):
+        """当前参与者是否支持线下核身,默认为不支持
+        :rtype: bool
+        """
         return self._CanOffLine
 
     @CanOffLine.setter
@@ -8214,6 +9948,9 @@ class SendFlowUrlRequest(AbstractModel):
 
     @property
     def CallbackUrl(self):
+        """签署任务的回调地址
+        :rtype: str
+        """
         return self._CallbackUrl
 
     @CallbackUrl.setter
@@ -8276,6 +10013,9 @@ class SendFlowUrlResponse(AbstractModel):
 
     @property
     def SignId(self):
+        """签署任务ID，标识每一次的流程发送
+        :rtype: str
+        """
         return self._SignId
 
     @SignId.setter
@@ -8284,6 +10024,9 @@ class SendFlowUrlResponse(AbstractModel):
 
     @property
     def SignUrl(self):
+        """签署链接
+        :rtype: str
+        """
         return self._SignUrl
 
     @SignUrl.setter
@@ -8292,6 +10035,9 @@ class SendFlowUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8340,6 +10086,9 @@ class SendSignInnerVerifyCodeRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -8348,6 +10097,9 @@ class SendSignInnerVerifyCodeRequest(AbstractModel):
 
     @property
     def Mobile(self):
+        """手机号
+        :rtype: str
+        """
         return self._Mobile
 
     @Mobile.setter
@@ -8356,6 +10108,9 @@ class SendSignInnerVerifyCodeRequest(AbstractModel):
 
     @property
     def VerifyType(self):
+        """验证码类型，取值(SIGN)
+        :rtype: str
+        """
         return self._VerifyType
 
     @VerifyType.setter
@@ -8364,6 +10119,9 @@ class SendSignInnerVerifyCodeRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户 id
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -8372,6 +10130,9 @@ class SendSignInnerVerifyCodeRequest(AbstractModel):
 
     @property
     def VerifyTemplateId(self):
+        """模板 id
+        :rtype: str
+        """
         return self._VerifyTemplateId
 
     @VerifyTemplateId.setter
@@ -8380,6 +10141,9 @@ class SendSignInnerVerifyCodeRequest(AbstractModel):
 
     @property
     def VerifySign(self):
+        """签名
+        :rtype: str
+        """
         return self._VerifySign
 
     @VerifySign.setter
@@ -8388,6 +10152,9 @@ class SendSignInnerVerifyCodeRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """流程(目录) id
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -8396,6 +10163,9 @@ class SendSignInnerVerifyCodeRequest(AbstractModel):
 
     @property
     def CheckThreeElementResult(self):
+        """三要素检测结果
+        :rtype: int
+        """
         return self._CheckThreeElementResult
 
     @CheckThreeElementResult.setter
@@ -8441,6 +10211,9 @@ class SendSignInnerVerifyCodeResponse(AbstractModel):
 
     @property
     def Result(self):
+        """true: 验证码正确，false: 验证码错误
+        :rtype: bool
+        """
         return self._Result
 
     @Result.setter
@@ -8449,6 +10222,9 @@ class SendSignInnerVerifyCodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8507,6 +10283,9 @@ class SignFlowRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -8515,6 +10294,9 @@ class SignFlowRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """流程编号
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -8523,6 +10305,14 @@ class SignFlowRequest(AbstractModel):
 
     @property
     def VerifyResult(self):
+        """意愿确认票据。
+1. VerifyChannel 为 WEIXINAPP，使用响应的VerifyResult；
+2. VerifyChannel 为 FACEID时，使用OrderNo；
+3. VerifyChannel 为 VERIFYCODE，使用短信验证码
+4. VerifyChannel 为 NONE，传空值
+（注：普通情况下，VerifyResult不能为None，如您不希望腾讯电子签对用户签署意愿做校验，请提前与客户经理或邮件至e-contract@tencent.com与我们联系）
+        :rtype: str
+        """
         return self._VerifyResult
 
     @VerifyResult.setter
@@ -8531,6 +10321,15 @@ class SignFlowRequest(AbstractModel):
 
     @property
     def VerifyChannel(self):
+        """意愿确认渠道：
+1. WEIXINAPP - 微信小程序
+2. FACEID - 慧眼 (默认) 
+3. VERIFYCODE - 验证码
+4. THIRD - 第三方 (暂不支持)
+5. NONE - 无需电子签系统验证
+（注：普通情况下，VerifyChannel不能为None，如您不希望腾讯电子签对用户签署意愿做校验，请提前与客户经理或邮件至e-contract@tencent.com与我们联系）
+        :rtype: str
+        """
         return self._VerifyChannel
 
     @VerifyChannel.setter
@@ -8539,6 +10338,9 @@ class SignFlowRequest(AbstractModel):
 
     @property
     def SourceIp(self):
+        """客户端来源IP
+        :rtype: str
+        """
         return self._SourceIp
 
     @SourceIp.setter
@@ -8547,6 +10349,9 @@ class SignFlowRequest(AbstractModel):
 
     @property
     def SignSeals(self):
+        """签署内容
+        :rtype: list of SignSeal
+        """
         return self._SignSeals
 
     @SignSeals.setter
@@ -8555,6 +10360,9 @@ class SignFlowRequest(AbstractModel):
 
     @property
     def ApproveMessage(self):
+        """签署备注
+        :rtype: str
+        """
         return self._ApproveMessage
 
     @ApproveMessage.setter
@@ -8563,6 +10371,9 @@ class SignFlowRequest(AbstractModel):
 
     @property
     def SignId(self):
+        """签署参与者编号
+        :rtype: str
+        """
         return self._SignId
 
     @SignId.setter
@@ -8613,6 +10424,9 @@ class SignFlowResponse(AbstractModel):
 
     @property
     def Status(self):
+        """签署任务状态。签署成功 - SUCCESS、提交审核 - REVIEW
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -8621,6 +10435,9 @@ class SignFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8663,6 +10480,9 @@ SIGN_IMAGE - 图片
 
     @property
     def ComponentId(self):
+        """签署控件ID
+        :rtype: str
+        """
         return self._ComponentId
 
     @ComponentId.setter
@@ -8671,6 +10491,13 @@ SIGN_IMAGE - 图片
 
     @property
     def SignType(self):
+        """签署印章类型:
+SIGN_SIGNATURE - 签名
+SIGN_SEAL - 印章
+SIGN_DATE - 日期
+SIGN_IMAGE - 图片
+        :rtype: str
+        """
         return self._SignType
 
     @SignType.setter
@@ -8679,6 +10506,9 @@ SIGN_IMAGE - 图片
 
     @property
     def FileIndex(self):
+        """合同文件ID
+        :rtype: int
+        """
         return self._FileIndex
 
     @FileIndex.setter
@@ -8687,6 +10517,9 @@ SIGN_IMAGE - 图片
 
     @property
     def SealId(self):
+        """印章ID，仅当 SignType 为 SIGN_SEAL 时必填
+        :rtype: str
+        """
         return self._SealId
 
     @SealId.setter
@@ -8695,6 +10528,9 @@ SIGN_IMAGE - 图片
 
     @property
     def SealContent(self):
+        """签名内容，仅当 SignType 为SIGN_SIGNATURE或SIGN_IMAGE 时必填，base64编码
+        :rtype: str
+        """
         return self._SealContent
 
     @SealContent.setter
@@ -8735,6 +10571,9 @@ class SmsTemplate(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板ID，必须填写已审核通过的模板ID。模板ID可登录短信控制台查看。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -8743,6 +10582,9 @@ class SmsTemplate(AbstractModel):
 
     @property
     def Sign(self):
+        """短信签名内容，使用UTF-8编码，必须填写已审核通过的签名，签名信息可登录短信控制台查看。
+        :rtype: str
+        """
         return self._Sign
 
     @Sign.setter
@@ -8845,6 +10687,9 @@ class SubOrganizationDetail(AbstractModel):
 
     @property
     def Id(self):
+        """组织ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -8853,6 +10698,9 @@ class SubOrganizationDetail(AbstractModel):
 
     @property
     def Name(self):
+        """机构名称全称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8861,6 +10709,9 @@ class SubOrganizationDetail(AbstractModel):
 
     @property
     def Email(self):
+        """机构电子邮箱
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -8869,6 +10720,9 @@ class SubOrganizationDetail(AbstractModel):
 
     @property
     def IdCardType(self):
+        """机构证件号码类型
+        :rtype: str
+        """
         return self._IdCardType
 
     @IdCardType.setter
@@ -8877,6 +10731,9 @@ class SubOrganizationDetail(AbstractModel):
 
     @property
     def IdCardNumber(self):
+        """机构证件号码
+        :rtype: str
+        """
         return self._IdCardNumber
 
     @IdCardNumber.setter
@@ -8885,6 +10742,9 @@ class SubOrganizationDetail(AbstractModel):
 
     @property
     def OrganizationType(self):
+        """机构类型
+        :rtype: str
+        """
         return self._OrganizationType
 
     @OrganizationType.setter
@@ -8893,6 +10753,10 @@ class SubOrganizationDetail(AbstractModel):
 
     @property
     def IdCardFileType(self):
+        """机构证件文件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IdCardFileType
 
     @IdCardFileType.setter
@@ -8901,6 +10765,10 @@ class SubOrganizationDetail(AbstractModel):
 
     @property
     def BizLicenseFile(self):
+        """机构证件照片文件，base64编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BizLicenseFile
 
     @BizLicenseFile.setter
@@ -8909,6 +10777,9 @@ class SubOrganizationDetail(AbstractModel):
 
     @property
     def BizLicenseFileName(self):
+        """机构证件照片文件名
+        :rtype: str
+        """
         return self._BizLicenseFileName
 
     @BizLicenseFileName.setter
@@ -8917,6 +10788,9 @@ class SubOrganizationDetail(AbstractModel):
 
     @property
     def LegalName(self):
+        """机构法人/经营者姓名
+        :rtype: str
+        """
         return self._LegalName
 
     @LegalName.setter
@@ -8925,6 +10799,9 @@ class SubOrganizationDetail(AbstractModel):
 
     @property
     def LegalIdCardType(self):
+        """机构法人/经营者证件类型
+        :rtype: str
+        """
         return self._LegalIdCardType
 
     @LegalIdCardType.setter
@@ -8933,6 +10810,9 @@ class SubOrganizationDetail(AbstractModel):
 
     @property
     def LegalIdCardNumber(self):
+        """机构法人/经营者证件号码
+        :rtype: str
+        """
         return self._LegalIdCardNumber
 
     @LegalIdCardNumber.setter
@@ -8941,6 +10821,9 @@ class SubOrganizationDetail(AbstractModel):
 
     @property
     def LegalMobile(self):
+        """机构法人/经营者/联系人手机号码
+        :rtype: str
+        """
         return self._LegalMobile
 
     @LegalMobile.setter
@@ -8949,6 +10832,10 @@ class SubOrganizationDetail(AbstractModel):
 
     @property
     def ContactName(self):
+        """组织联系人姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ContactName
 
     @ContactName.setter
@@ -8957,6 +10844,9 @@ class SubOrganizationDetail(AbstractModel):
 
     @property
     def VerifyStatus(self):
+        """机构实名状态
+        :rtype: str
+        """
         return self._VerifyStatus
 
     @VerifyStatus.setter
@@ -8965,6 +10855,10 @@ class SubOrganizationDetail(AbstractModel):
 
     @property
     def VerifiedOn(self):
+        """机构通过实名时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._VerifiedOn
 
     @VerifiedOn.setter
@@ -8973,6 +10867,9 @@ class SubOrganizationDetail(AbstractModel):
 
     @property
     def CreatedOn(self):
+        """机构创建时间
+        :rtype: int
+        """
         return self._CreatedOn
 
     @CreatedOn.setter
@@ -8981,6 +10878,10 @@ class SubOrganizationDetail(AbstractModel):
 
     @property
     def UpdatedOn(self):
+        """机构更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UpdatedOn
 
     @UpdatedOn.setter
@@ -8989,6 +10890,10 @@ class SubOrganizationDetail(AbstractModel):
 
     @property
     def VerifyClientIp(self):
+        """实名认证的客户端IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VerifyClientIp
 
     @VerifyClientIp.setter
@@ -8997,6 +10902,10 @@ class SubOrganizationDetail(AbstractModel):
 
     @property
     def VerifyServerIp(self):
+        """实名认证的服务器IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VerifyServerIp
 
     @VerifyServerIp.setter
@@ -9005,6 +10914,10 @@ class SubOrganizationDetail(AbstractModel):
 
     @property
     def ContactAddress(self):
+        """企业联系地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Address`
+        """
         return self._ContactAddress
 
     @ContactAddress.setter
@@ -9063,6 +10976,9 @@ class UploadFile(AbstractModel):
 
     @property
     def FileBody(self):
+        """Base64编码后的文件内容
+        :rtype: str
+        """
         return self._FileBody
 
     @FileBody.setter
@@ -9071,6 +10987,9 @@ class UploadFile(AbstractModel):
 
     @property
     def FileName(self):
+        """文件名
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -9132,6 +11051,9 @@ HTML-- .html文件
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -9140,6 +11062,15 @@ HTML-- .html文件
 
     @property
     def BusinessType(self):
+        """文件对应业务类型，用于区分文件存储路径：
+1. TEMPLATE - 模版； 文件类型：.pdf/.html
+2. DOCUMENT - 签署过程及签署后的合同文档 文件类型：.pdf/.html
+3. FLOW - 签署过程 文件类型：.pdf/.html
+4. SEAL - 印章； 文件类型：.jpg/.jpeg/.png
+5. BUSINESSLICENSE - 营业执照 文件类型：.jpg/.jpeg/.png
+6. IDCARD - 身份证 文件类型：.jpg/.jpeg/.png
+        :rtype: str
+        """
         return self._BusinessType
 
     @BusinessType.setter
@@ -9148,6 +11079,9 @@ HTML-- .html文件
 
     @property
     def FileInfos(self):
+        """上传文件内容数组，最多支持20个文件
+        :rtype: list of UploadFile
+        """
         return self._FileInfos
 
     @FileInfos.setter
@@ -9156,6 +11090,9 @@ HTML-- .html文件
 
     @property
     def FileUrls(self):
+        """上传文件链接数组，最多支持20个URL
+        :rtype: list of str
+        """
         return self._FileUrls
 
     @FileUrls.setter
@@ -9164,6 +11101,11 @@ HTML-- .html文件
 
     @property
     def CoverRect(self):
+        """是否将pdf灰色矩阵置白
+true--是，处理置白
+false--否，不处理
+        :rtype: bool
+        """
         return self._CoverRect
 
     @CoverRect.setter
@@ -9172,6 +11114,10 @@ HTML-- .html文件
 
     @property
     def FileType(self):
+        """特殊文件类型需要指定文件类型：
+HTML-- .html文件
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -9180,6 +11126,9 @@ HTML-- .html文件
 
     @property
     def CustomIds(self):
+        """用户自定义ID数组，与上传文件一一对应
+        :rtype: list of str
+        """
         return self._CustomIds
 
     @CustomIds.setter
@@ -9232,6 +11181,9 @@ class UploadFilesResponse(AbstractModel):
 
     @property
     def FileIds(self):
+        """文件id数组
+        :rtype: list of str
+        """
         return self._FileIds
 
     @FileIds.setter
@@ -9240,6 +11192,9 @@ class UploadFilesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """上传成功文件数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9248,6 +11203,9 @@ class UploadFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9304,6 +11262,9 @@ TEMP_ID_CARD - 临时居民身份证
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -9312,6 +11273,9 @@ TEMP_ID_CARD - 临时居民身份证
 
     @property
     def Mobile(self):
+        """手机号，隐藏中间4位数字，用*代替
+        :rtype: str
+        """
         return self._Mobile
 
     @Mobile.setter
@@ -9320,6 +11284,9 @@ TEMP_ID_CARD - 临时居民身份证
 
     @property
     def CreatedOn(self):
+        """注册时间点 (UNIX时间戳)
+        :rtype: int
+        """
         return self._CreatedOn
 
     @CreatedOn.setter
@@ -9328,6 +11295,11 @@ TEMP_ID_CARD - 临时居民身份证
 
     @property
     def VerifyStatus(self):
+        """实名认证状态：
+0 - 未实名；
+1 - 通过实名
+        :rtype: int
+        """
         return self._VerifyStatus
 
     @VerifyStatus.setter
@@ -9336,6 +11308,9 @@ TEMP_ID_CARD - 临时居民身份证
 
     @property
     def Name(self):
+        """真实姓名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9344,6 +11319,9 @@ TEMP_ID_CARD - 临时居民身份证
 
     @property
     def VerifiedOn(self):
+        """实名认证通过时间 (UNIX时间戳)
+        :rtype: int
+        """
         return self._VerifiedOn
 
     @VerifiedOn.setter
@@ -9352,6 +11330,15 @@ TEMP_ID_CARD - 临时居民身份证
 
     @property
     def IdCardType(self):
+        """身份证件类型; 
+ID_CARD - 居民身份证；
+PASSPORT - 护照；
+MAINLAND_TRAVEL_PERMIT_FOR_HONGKONG_AND_MACAO_RESIDENTS - 港澳居民来往内地通行证；
+MAINLAND_TRAVEL_PERMIT_FOR_TAIWAN_RESIDENTS - 台湾居民来往大陆通行证；
+HOUSEHOLD_REGISTER - 户口本；
+TEMP_ID_CARD - 临时居民身份证
+        :rtype: str
+        """
         return self._IdCardType
 
     @IdCardType.setter
@@ -9360,6 +11347,9 @@ TEMP_ID_CARD - 临时居民身份证
 
     @property
     def IdCardNumber(self):
+        """身份证件号码 (脱敏)
+        :rtype: str
+        """
         return self._IdCardNumber
 
     @IdCardNumber.setter
@@ -9403,6 +11393,9 @@ class VerifySubOrganizationRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息，该接口SubOrganizationId必填
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -9411,6 +11404,9 @@ class VerifySubOrganizationRequest(AbstractModel):
 
     @property
     def OpenId(self):
+        """机构在第三方的唯一标识，32位定长字符串，与 Caller 中 SubOrgnizationId 二者至少需要传入一个，全部传入时则使用 SubOrganizationId 信息
+        :rtype: str
+        """
         return self._OpenId
 
     @OpenId.setter
@@ -9450,6 +11446,9 @@ class VerifySubOrganizationResponse(AbstractModel):
 
     @property
     def SubOrganizationId(self):
+        """子机构ID
+        :rtype: str
+        """
         return self._SubOrganizationId
 
     @SubOrganizationId.setter
@@ -9458,6 +11457,9 @@ class VerifySubOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9491,6 +11493,9 @@ class VerifyUserRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """调用方信息
+        :rtype: :class:`tencentcloud.essbasic.v20201222.models.Caller`
+        """
         return self._Caller
 
     @Caller.setter
@@ -9499,6 +11504,9 @@ class VerifyUserRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """电子签平台用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -9507,6 +11515,10 @@ class VerifyUserRequest(AbstractModel):
 
     @property
     def CertificateRequired(self):
+        """是否需要下发个人长效证书，默认为false
+注：如您有下发个人长效证书需求，请提前邮件至e-contract@oa.com进行申请。
+        :rtype: bool
+        """
         return self._CertificateRequired
 
     @CertificateRequired.setter
@@ -9547,6 +11559,9 @@ class VerifyUserResponse(AbstractModel):
 
     @property
     def UserId(self):
+        """电子签平台用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -9555,6 +11570,9 @@ class VerifyUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

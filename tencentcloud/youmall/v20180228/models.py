@@ -47,6 +47,9 @@ class ArrivedMallInfo(AbstractModel):
 
     @property
     def ArrivedTime(self):
+        """到场时间
+        :rtype: str
+        """
         return self._ArrivedTime
 
     @ArrivedTime.setter
@@ -55,6 +58,9 @@ class ArrivedMallInfo(AbstractModel):
 
     @property
     def LeaveTime(self):
+        """出场时间
+        :rtype: str
+        """
         return self._LeaveTime
 
     @LeaveTime.setter
@@ -63,6 +69,9 @@ class ArrivedMallInfo(AbstractModel):
 
     @property
     def StaySecond(self):
+        """停留时间，秒
+        :rtype: int
+        """
         return self._StaySecond
 
     @StaySecond.setter
@@ -71,6 +80,9 @@ class ArrivedMallInfo(AbstractModel):
 
     @property
     def InCapPic(self):
+        """到场抓拍图片
+        :rtype: str
+        """
         return self._InCapPic
 
     @InCapPic.setter
@@ -79,6 +91,9 @@ class ArrivedMallInfo(AbstractModel):
 
     @property
     def OutCapPic(self):
+        """出场抓拍图片
+        :rtype: str
+        """
         return self._OutCapPic
 
     @OutCapPic.setter
@@ -87,6 +102,9 @@ class ArrivedMallInfo(AbstractModel):
 
     @property
     def TraceId(self):
+        """轨迹编码
+        :rtype: str
+        """
         return self._TraceId
 
     @TraceId.setter
@@ -140,6 +158,9 @@ class CameraPersonInfo(AbstractModel):
 
     @property
     def TempId(self):
+        """临时id，还未生成face id时返回
+        :rtype: str
+        """
         return self._TempId
 
     @TempId.setter
@@ -148,6 +169,9 @@ class CameraPersonInfo(AbstractModel):
 
     @property
     def FaceId(self):
+        """人脸face id
+        :rtype: int
+        """
         return self._FaceId
 
     @FaceId.setter
@@ -156,6 +180,9 @@ class CameraPersonInfo(AbstractModel):
 
     @property
     def IdType(self):
+        """确定当次返回的哪个id有效，1-FaceId，2-TempId
+        :rtype: int
+        """
         return self._IdType
 
     @IdType.setter
@@ -164,6 +191,9 @@ class CameraPersonInfo(AbstractModel):
 
     @property
     def FacePic(self):
+        """当次抓拍到的人脸图片base编码
+        :rtype: str
+        """
         return self._FacePic
 
     @FacePic.setter
@@ -172,6 +202,9 @@ class CameraPersonInfo(AbstractModel):
 
     @property
     def Time(self):
+        """当次抓拍时间戳
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -180,6 +213,9 @@ class CameraPersonInfo(AbstractModel):
 
     @property
     def PersonInfo(self):
+        """当前的person基本信息，图片以FacePic为准，结构体内未填
+        :rtype: :class:`tencentcloud.youmall.v20180228.models.PersonInfo`
+        """
         return self._PersonInfo
 
     @PersonInfo.setter
@@ -232,6 +268,9 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -240,6 +279,9 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def Name(self):
+        """账号名；需要是手机号
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -248,6 +290,9 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def Password(self):
+        """密码；需要是(`~!@#$%^&*()_+=-）中的至少两种且八位以上
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -256,6 +301,9 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def ShopCode(self):
+        """客户门店编码
+        :rtype: str
+        """
         return self._ShopCode
 
     @ShopCode.setter
@@ -264,6 +312,9 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注说明; 30个字符以内
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -301,6 +352,9 @@ class CreateAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -341,6 +395,9 @@ class CreateFacePictureRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -349,6 +406,9 @@ class CreateFacePictureRequest(AbstractModel):
 
     @property
     def PersonType(self):
+        """人物类型（0表示普通顾客，1 白名单，2 表示黑名单，101表示集团白名单，102表示集团黑名单）
+        :rtype: int
+        """
         return self._PersonType
 
     @PersonType.setter
@@ -357,6 +417,9 @@ class CreateFacePictureRequest(AbstractModel):
 
     @property
     def Picture(self):
+        """图片BASE编码
+        :rtype: str
+        """
         return self._Picture
 
     @Picture.setter
@@ -365,6 +428,9 @@ class CreateFacePictureRequest(AbstractModel):
 
     @property
     def PictureName(self):
+        """图片名称
+        :rtype: str
+        """
         return self._PictureName
 
     @PictureName.setter
@@ -373,6 +439,9 @@ class CreateFacePictureRequest(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺ID，如果不填表示操作集团身份库
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -381,6 +450,9 @@ class CreateFacePictureRequest(AbstractModel):
 
     @property
     def IsForceUpload(self):
+        """是否强制更新：为ture时会为用户创建一个新的指定PersonType的身份;目前这个参数已废弃，可不传
+        :rtype: bool
+        """
         return self._IsForceUpload
 
     @IsForceUpload.setter
@@ -428,6 +500,9 @@ class CreateFacePictureResponse(AbstractModel):
 
     @property
     def PersonId(self):
+        """人物ID
+        :rtype: int
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -436,6 +511,9 @@ class CreateFacePictureResponse(AbstractModel):
 
     @property
     def Status(self):
+        """0.正常建档 1.重复身份 2.未检测到人脸 3.检测到多个人脸 4.人脸大小过小 5.人脸质量不达标 6.其他错误
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -444,6 +522,9 @@ class CreateFacePictureResponse(AbstractModel):
 
     @property
     def PictureUrl(self):
+        """图片url
+        :rtype: str
+        """
         return self._PictureUrl
 
     @PictureUrl.setter
@@ -452,6 +533,9 @@ class CreateFacePictureResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -483,6 +567,9 @@ class DailyTracePoint(AbstractModel):
 
     @property
     def TraceDate(self):
+        """轨迹日期
+        :rtype: str
+        """
         return self._TraceDate
 
     @TraceDate.setter
@@ -491,6 +578,9 @@ class DailyTracePoint(AbstractModel):
 
     @property
     def TracePointSet(self):
+        """轨迹点序列
+        :rtype: list of PersonTracePoint
+        """
         return self._TracePointSet
 
     @TracePointSet.setter
@@ -536,6 +626,9 @@ class DeletePersonFeatureRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """公司ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -544,6 +637,9 @@ class DeletePersonFeatureRequest(AbstractModel):
 
     @property
     def ShopId(self):
+        """门店ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -552,6 +648,9 @@ class DeletePersonFeatureRequest(AbstractModel):
 
     @property
     def PersonId(self):
+        """顾客ID
+        :rtype: int
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -587,6 +686,9 @@ class DeletePersonFeatureResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -633,6 +735,9 @@ class DescribeCameraPersonRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -641,6 +746,9 @@ class DescribeCameraPersonRequest(AbstractModel):
 
     @property
     def ShopId(self):
+        """优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -649,6 +757,9 @@ class DescribeCameraPersonRequest(AbstractModel):
 
     @property
     def CameraId(self):
+        """摄像头id
+        :rtype: int
+        """
         return self._CameraId
 
     @CameraId.setter
@@ -657,6 +768,9 @@ class DescribeCameraPersonRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """拉取开始时间戳，单位秒
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -665,6 +779,9 @@ class DescribeCameraPersonRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """拉取结束时间戳，单位秒，不超过StartTime+10秒，超过默认为StartTime+10
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -673,6 +790,9 @@ class DescribeCameraPersonRequest(AbstractModel):
 
     @property
     def PosId(self):
+        """pos机id
+        :rtype: str
+        """
         return self._PosId
 
     @PosId.setter
@@ -681,6 +801,9 @@ class DescribeCameraPersonRequest(AbstractModel):
 
     @property
     def Num(self):
+        """拉取图片数，默认为1，最大为3
+        :rtype: int
+        """
         return self._Num
 
     @Num.setter
@@ -689,6 +812,9 @@ class DescribeCameraPersonRequest(AbstractModel):
 
     @property
     def IsNeedPic(self):
+        """是否需要base64的图片，0-不需要，1-需要，默认0
+        :rtype: int
+        """
         return self._IsNeedPic
 
     @IsNeedPic.setter
@@ -744,6 +870,9 @@ class DescribeCameraPersonResponse(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团id
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -752,6 +881,9 @@ class DescribeCameraPersonResponse(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺id
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -760,6 +892,9 @@ class DescribeCameraPersonResponse(AbstractModel):
 
     @property
     def CameraId(self):
+        """摄像机id
+        :rtype: int
+        """
         return self._CameraId
 
     @CameraId.setter
@@ -768,6 +903,9 @@ class DescribeCameraPersonResponse(AbstractModel):
 
     @property
     def PosId(self):
+        """pos机id
+        :rtype: str
+        """
         return self._PosId
 
     @PosId.setter
@@ -776,6 +914,9 @@ class DescribeCameraPersonResponse(AbstractModel):
 
     @property
     def Infos(self):
+        """抓取的顾客信息
+        :rtype: list of CameraPersonInfo
+        """
         return self._Infos
 
     @Infos.setter
@@ -784,6 +925,9 @@ class DescribeCameraPersonResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -828,6 +972,9 @@ class DescribeClusterPersonArrivedMallRequest(AbstractModel):
 
     @property
     def MallId(self):
+        """卖场编码
+        :rtype: str
+        """
         return self._MallId
 
     @MallId.setter
@@ -836,6 +983,9 @@ class DescribeClusterPersonArrivedMallRequest(AbstractModel):
 
     @property
     def PersonId(self):
+        """客户编码
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -844,6 +994,9 @@ class DescribeClusterPersonArrivedMallRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询开始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -852,6 +1005,9 @@ class DescribeClusterPersonArrivedMallRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -900,6 +1056,9 @@ class DescribeClusterPersonArrivedMallResponse(AbstractModel):
 
     @property
     def MallId(self):
+        """卖场系统编码
+        :rtype: str
+        """
         return self._MallId
 
     @MallId.setter
@@ -908,6 +1067,9 @@ class DescribeClusterPersonArrivedMallResponse(AbstractModel):
 
     @property
     def MallCode(self):
+        """卖场客户编码
+        :rtype: str
+        """
         return self._MallCode
 
     @MallCode.setter
@@ -916,6 +1078,9 @@ class DescribeClusterPersonArrivedMallResponse(AbstractModel):
 
     @property
     def PersonId(self):
+        """客户编码
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -924,6 +1089,9 @@ class DescribeClusterPersonArrivedMallResponse(AbstractModel):
 
     @property
     def ArrivedMallSet(self):
+        """到场信息
+        :rtype: list of ArrivedMallInfo
+        """
         return self._ArrivedMallSet
 
     @ArrivedMallSet.setter
@@ -932,6 +1100,9 @@ class DescribeClusterPersonArrivedMallResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -975,6 +1146,9 @@ class DescribeClusterPersonTraceRequest(AbstractModel):
 
     @property
     def MallId(self):
+        """卖场编码
+        :rtype: str
+        """
         return self._MallId
 
     @MallId.setter
@@ -983,6 +1157,9 @@ class DescribeClusterPersonTraceRequest(AbstractModel):
 
     @property
     def PersonId(self):
+        """客户编码
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -991,6 +1168,9 @@ class DescribeClusterPersonTraceRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询开始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -999,6 +1179,9 @@ class DescribeClusterPersonTraceRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1047,6 +1230,9 @@ class DescribeClusterPersonTraceResponse(AbstractModel):
 
     @property
     def MallId(self):
+        """卖场系统编码
+        :rtype: str
+        """
         return self._MallId
 
     @MallId.setter
@@ -1055,6 +1241,9 @@ class DescribeClusterPersonTraceResponse(AbstractModel):
 
     @property
     def MallCode(self):
+        """卖场用户编码
+        :rtype: str
+        """
         return self._MallCode
 
     @MallCode.setter
@@ -1063,6 +1252,9 @@ class DescribeClusterPersonTraceResponse(AbstractModel):
 
     @property
     def PersonId(self):
+        """客户编码
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -1071,6 +1263,9 @@ class DescribeClusterPersonTraceResponse(AbstractModel):
 
     @property
     def TracePointSet(self):
+        """轨迹序列
+        :rtype: list of DailyTracePoint
+        """
         return self._TracePointSet
 
     @TracePointSet.setter
@@ -1079,6 +1274,9 @@ class DescribeClusterPersonTraceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1128,6 +1326,9 @@ class DescribeFaceIdByTempIdRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -1136,6 +1337,9 @@ class DescribeFaceIdByTempIdRequest(AbstractModel):
 
     @property
     def ShopId(self):
+        """优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -1144,6 +1348,9 @@ class DescribeFaceIdByTempIdRequest(AbstractModel):
 
     @property
     def TempId(self):
+        """临时id
+        :rtype: str
+        """
         return self._TempId
 
     @TempId.setter
@@ -1152,6 +1359,9 @@ class DescribeFaceIdByTempIdRequest(AbstractModel):
 
     @property
     def CameraId(self):
+        """摄像头id
+        :rtype: int
+        """
         return self._CameraId
 
     @CameraId.setter
@@ -1160,6 +1370,9 @@ class DescribeFaceIdByTempIdRequest(AbstractModel):
 
     @property
     def PosId(self):
+        """pos机id
+        :rtype: str
+        """
         return self._PosId
 
     @PosId.setter
@@ -1168,6 +1381,9 @@ class DescribeFaceIdByTempIdRequest(AbstractModel):
 
     @property
     def PictureExpires(self):
+        """图片url过期时间：在当前时间+PictureExpires秒后，图片url无法继续正常访问；单位s；默认值1*24*60*60（1天）
+        :rtype: int
+        """
         return self._PictureExpires
 
     @PictureExpires.setter
@@ -1227,6 +1443,9 @@ class DescribeFaceIdByTempIdResponse(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团id
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -1235,6 +1454,9 @@ class DescribeFaceIdByTempIdResponse(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺id
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -1243,6 +1465,9 @@ class DescribeFaceIdByTempIdResponse(AbstractModel):
 
     @property
     def CameraId(self):
+        """摄像机id
+        :rtype: int
+        """
         return self._CameraId
 
     @CameraId.setter
@@ -1251,6 +1476,9 @@ class DescribeFaceIdByTempIdResponse(AbstractModel):
 
     @property
     def PosId(self):
+        """pos机id
+        :rtype: str
+        """
         return self._PosId
 
     @PosId.setter
@@ -1259,6 +1487,9 @@ class DescribeFaceIdByTempIdResponse(AbstractModel):
 
     @property
     def TempId(self):
+        """请求的临时id
+        :rtype: str
+        """
         return self._TempId
 
     @TempId.setter
@@ -1267,6 +1498,9 @@ class DescribeFaceIdByTempIdResponse(AbstractModel):
 
     @property
     def FaceId(self):
+        """临时id对应的face id
+        :rtype: int
+        """
         return self._FaceId
 
     @FaceId.setter
@@ -1275,6 +1509,9 @@ class DescribeFaceIdByTempIdResponse(AbstractModel):
 
     @property
     def PersonInfo(self):
+        """顾客属性信息
+        :rtype: :class:`tencentcloud.youmall.v20180228.models.PersonInfo`
+        """
         return self._PersonInfo
 
     @PersonInfo.setter
@@ -1283,6 +1520,9 @@ class DescribeFaceIdByTempIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1335,6 +1575,9 @@ class DescribeHistoryNetworkInfoRequest(AbstractModel):
 
     @property
     def Time(self):
+        """请求时间戳
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -1343,6 +1586,9 @@ class DescribeHistoryNetworkInfoRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -1351,6 +1597,9 @@ class DescribeHistoryNetworkInfoRequest(AbstractModel):
 
     @property
     def ShopId(self):
+        """优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取，为0则拉取集团全部店铺当前
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -1359,6 +1608,9 @@ class DescribeHistoryNetworkInfoRequest(AbstractModel):
 
     @property
     def StartDay(self):
+        """拉取开始日期，格式：2018-09-05
+        :rtype: str
+        """
         return self._StartDay
 
     @StartDay.setter
@@ -1367,6 +1619,9 @@ class DescribeHistoryNetworkInfoRequest(AbstractModel):
 
     @property
     def EndDay(self):
+        """拉取结束日期，格式L:2018-09-05，超过StartDay 90天，按StartDay+90天算
+        :rtype: str
+        """
         return self._EndDay
 
     @EndDay.setter
@@ -1375,6 +1630,9 @@ class DescribeHistoryNetworkInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """拉取条数，默认10
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1383,6 +1641,9 @@ class DescribeHistoryNetworkInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """拉取偏移，返回offset之后的数据
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1425,6 +1686,9 @@ class DescribeHistoryNetworkInfoResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
+        """网络状态数据
+        :rtype: :class:`tencentcloud.youmall.v20180228.models.NetworkHistoryInfo`
+        """
         return self._InstanceSet
 
     @InstanceSet.setter
@@ -1433,6 +1697,9 @@ class DescribeHistoryNetworkInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1467,6 +1734,9 @@ class DescribeNetworkInfoRequest(AbstractModel):
 
     @property
     def Time(self):
+        """请求时间戳
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -1475,6 +1745,9 @@ class DescribeNetworkInfoRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -1483,6 +1756,9 @@ class DescribeNetworkInfoRequest(AbstractModel):
 
     @property
     def ShopId(self):
+        """优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取，不填则拉取集团全部店铺当前
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -1521,6 +1797,9 @@ class DescribeNetworkInfoResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
+        """网络状态详情
+        :rtype: :class:`tencentcloud.youmall.v20180228.models.NetworkLastInfo`
+        """
         return self._InstanceSet
 
     @InstanceSet.setter
@@ -1529,6 +1808,9 @@ class DescribeNetworkInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1566,6 +1848,9 @@ class DescribePersonArrivedMallRequest(AbstractModel):
 
     @property
     def MallId(self):
+        """卖场编码
+        :rtype: str
+        """
         return self._MallId
 
     @MallId.setter
@@ -1574,6 +1859,9 @@ class DescribePersonArrivedMallRequest(AbstractModel):
 
     @property
     def PersonId(self):
+        """客户编码
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -1582,6 +1870,9 @@ class DescribePersonArrivedMallRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询开始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1590,6 +1881,9 @@ class DescribePersonArrivedMallRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1638,6 +1932,9 @@ class DescribePersonArrivedMallResponse(AbstractModel):
 
     @property
     def MallId(self):
+        """卖场系统编码
+        :rtype: str
+        """
         return self._MallId
 
     @MallId.setter
@@ -1646,6 +1943,9 @@ class DescribePersonArrivedMallResponse(AbstractModel):
 
     @property
     def MallCode(self):
+        """卖场用户编码
+        :rtype: str
+        """
         return self._MallCode
 
     @MallCode.setter
@@ -1654,6 +1954,9 @@ class DescribePersonArrivedMallResponse(AbstractModel):
 
     @property
     def PersonId(self):
+        """客户编码
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -1662,6 +1965,9 @@ class DescribePersonArrivedMallResponse(AbstractModel):
 
     @property
     def ArrivedMallSet(self):
+        """到场轨迹
+        :rtype: list of ArrivedMallInfo
+        """
         return self._ArrivedMallSet
 
     @ArrivedMallSet.setter
@@ -1670,6 +1976,9 @@ class DescribePersonArrivedMallResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1710,6 +2019,9 @@ class DescribePersonInfoByFacePictureRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -1718,6 +2030,9 @@ class DescribePersonInfoByFacePictureRequest(AbstractModel):
 
     @property
     def ShopId(self):
+        """优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -1726,6 +2041,9 @@ class DescribePersonInfoByFacePictureRequest(AbstractModel):
 
     @property
     def Picture(self):
+        """人脸图片BASE编码
+        :rtype: str
+        """
         return self._Picture
 
     @Picture.setter
@@ -1782,6 +2100,9 @@ class DescribePersonInfoByFacePictureResponse(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团id
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -1790,6 +2111,9 @@ class DescribePersonInfoByFacePictureResponse(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺id
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -1798,6 +2122,9 @@ class DescribePersonInfoByFacePictureResponse(AbstractModel):
 
     @property
     def PersonId(self):
+        """顾客face id
+        :rtype: int
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -1806,6 +2133,9 @@ class DescribePersonInfoByFacePictureResponse(AbstractModel):
 
     @property
     def PictureUrl(self):
+        """顾客底图url
+        :rtype: str
+        """
         return self._PictureUrl
 
     @PictureUrl.setter
@@ -1814,6 +2144,9 @@ class DescribePersonInfoByFacePictureResponse(AbstractModel):
 
     @property
     def PersonType(self):
+        """顾客类型（0表示普通顾客，1 白名单，2 表示黑名单，101表示集团白名单，102表示集团黑名单）
+        :rtype: int
+        """
         return self._PersonType
 
     @PersonType.setter
@@ -1822,6 +2155,9 @@ class DescribePersonInfoByFacePictureResponse(AbstractModel):
 
     @property
     def FirstVisitTime(self):
+        """顾客首次进店时间
+        :rtype: str
+        """
         return self._FirstVisitTime
 
     @FirstVisitTime.setter
@@ -1830,6 +2166,9 @@ class DescribePersonInfoByFacePictureResponse(AbstractModel):
 
     @property
     def VisitTimes(self):
+        """顾客历史到访次数
+        :rtype: int
+        """
         return self._VisitTimes
 
     @VisitTimes.setter
@@ -1838,6 +2177,9 @@ class DescribePersonInfoByFacePictureResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1888,6 +2230,9 @@ class DescribePersonInfoRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """公司ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -1896,6 +2241,9 @@ class DescribePersonInfoRequest(AbstractModel):
 
     @property
     def ShopId(self):
+        """门店ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -1904,6 +2252,9 @@ class DescribePersonInfoRequest(AbstractModel):
 
     @property
     def StartPersonId(self):
+        """起始ID，第一次拉取时StartPersonId传0，后续送入的值为上一页最后一条数据项的PersonId
+        :rtype: int
+        """
         return self._StartPersonId
 
     @StartPersonId.setter
@@ -1912,6 +2263,9 @@ class DescribePersonInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量：分页控制参数，第一页传0，第n页Offset=(n-1)*Limit
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1920,6 +2274,9 @@ class DescribePersonInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Limit:每页的数据项，最大100，超过100会被强制指定为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1928,6 +2285,9 @@ class DescribePersonInfoRequest(AbstractModel):
 
     @property
     def PictureExpires(self):
+        """图片url过期时间：在当前时间+PictureExpires秒后，图片url无法继续正常访问；单位s；默认值1*24*60*60（1天）
+        :rtype: int
+        """
         return self._PictureExpires
 
     @PictureExpires.setter
@@ -1936,6 +2296,9 @@ class DescribePersonInfoRequest(AbstractModel):
 
     @property
     def PersonType(self):
+        """身份类型(0表示普通顾客，1 白名单，2 表示黑名单）
+        :rtype: int
+        """
         return self._PersonType
 
     @PersonType.setter
@@ -1987,6 +2350,9 @@ class DescribePersonInfoResponse(AbstractModel):
 
     @property
     def CompanyId(self):
+        """公司ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -1995,6 +2361,9 @@ class DescribePersonInfoResponse(AbstractModel):
 
     @property
     def ShopId(self):
+        """门店ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -2003,6 +2372,9 @@ class DescribePersonInfoResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2011,6 +2383,9 @@ class DescribePersonInfoResponse(AbstractModel):
 
     @property
     def PersonInfoSet(self):
+        """用户信息
+        :rtype: list of PersonInfo
+        """
         return self._PersonInfoSet
 
     @PersonInfoSet.setter
@@ -2019,6 +2394,9 @@ class DescribePersonInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2059,6 +2437,9 @@ class DescribePersonRequest(AbstractModel):
 
     @property
     def MallId(self):
+        """卖场编码
+        :rtype: str
+        """
         return self._MallId
 
     @MallId.setter
@@ -2067,6 +2448,9 @@ class DescribePersonRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询偏移
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2075,6 +2459,9 @@ class DescribePersonRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询数量，默认20，最大查询数量100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2116,6 +2503,9 @@ class DescribePersonResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总计客户数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2124,6 +2514,9 @@ class DescribePersonResponse(AbstractModel):
 
     @property
     def PersonSet(self):
+        """客户信息
+        :rtype: list of PersonProfile
+        """
         return self._PersonSet
 
     @PersonSet.setter
@@ -2132,6 +2525,9 @@ class DescribePersonResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2170,6 +2566,9 @@ class DescribePersonTraceDetailRequest(AbstractModel):
 
     @property
     def MallId(self):
+        """卖场编码
+        :rtype: str
+        """
         return self._MallId
 
     @MallId.setter
@@ -2178,6 +2577,9 @@ class DescribePersonTraceDetailRequest(AbstractModel):
 
     @property
     def PersonId(self):
+        """客户编码
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -2186,6 +2588,9 @@ class DescribePersonTraceDetailRequest(AbstractModel):
 
     @property
     def TraceId(self):
+        """轨迹编码
+        :rtype: str
+        """
         return self._TraceId
 
     @TraceId.setter
@@ -2233,6 +2638,9 @@ class DescribePersonTraceDetailResponse(AbstractModel):
 
     @property
     def MallId(self):
+        """卖场编码
+        :rtype: str
+        """
         return self._MallId
 
     @MallId.setter
@@ -2241,6 +2649,9 @@ class DescribePersonTraceDetailResponse(AbstractModel):
 
     @property
     def PersonId(self):
+        """客户编码
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -2249,6 +2660,9 @@ class DescribePersonTraceDetailResponse(AbstractModel):
 
     @property
     def TraceId(self):
+        """轨迹编码
+        :rtype: str
+        """
         return self._TraceId
 
     @TraceId.setter
@@ -2257,6 +2671,9 @@ class DescribePersonTraceDetailResponse(AbstractModel):
 
     @property
     def CoordinateSet(self):
+        """轨迹点坐标序列
+        :rtype: list of PersonCoordinate
+        """
         return self._CoordinateSet
 
     @CoordinateSet.setter
@@ -2265,6 +2682,9 @@ class DescribePersonTraceDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2308,6 +2728,9 @@ class DescribePersonTraceRequest(AbstractModel):
 
     @property
     def MallId(self):
+        """卖场编码
+        :rtype: str
+        """
         return self._MallId
 
     @MallId.setter
@@ -2316,6 +2739,9 @@ class DescribePersonTraceRequest(AbstractModel):
 
     @property
     def PersonId(self):
+        """客户编码
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -2324,6 +2750,9 @@ class DescribePersonTraceRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询开始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2332,6 +2761,9 @@ class DescribePersonTraceRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2380,6 +2812,9 @@ class DescribePersonTraceResponse(AbstractModel):
 
     @property
     def MallId(self):
+        """卖场系统编码
+        :rtype: str
+        """
         return self._MallId
 
     @MallId.setter
@@ -2388,6 +2823,9 @@ class DescribePersonTraceResponse(AbstractModel):
 
     @property
     def MallCode(self):
+        """卖场用户编码
+        :rtype: str
+        """
         return self._MallCode
 
     @MallCode.setter
@@ -2396,6 +2834,9 @@ class DescribePersonTraceResponse(AbstractModel):
 
     @property
     def PersonId(self):
+        """客户编码
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -2404,6 +2845,9 @@ class DescribePersonTraceResponse(AbstractModel):
 
     @property
     def TraceRouteSet(self):
+        """轨迹列表
+        :rtype: list of PersonTraceRoute
+        """
         return self._TraceRouteSet
 
     @TraceRouteSet.setter
@@ -2412,6 +2856,9 @@ class DescribePersonTraceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2470,6 +2917,9 @@ class DescribePersonVisitInfoRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """公司ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -2478,6 +2928,9 @@ class DescribePersonVisitInfoRequest(AbstractModel):
 
     @property
     def ShopId(self):
+        """门店ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -2486,6 +2939,9 @@ class DescribePersonVisitInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量：分页控制参数，第一页传0，第n页Offset=(n-1)*Limit
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2494,6 +2950,9 @@ class DescribePersonVisitInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Limit:每页的数据项，最大100，超过100会被强制指定为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2502,6 +2961,9 @@ class DescribePersonVisitInfoRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """开始日期，格式yyyy-MM-dd，已废弃，请使用StartDateTime
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -2510,6 +2972,9 @@ class DescribePersonVisitInfoRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """结束日期，格式yyyy-MM-dd，已废弃，请使用EndDateTime
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -2518,6 +2983,9 @@ class DescribePersonVisitInfoRequest(AbstractModel):
 
     @property
     def PictureExpires(self):
+        """图片url过期时间：在当前时间+PictureExpires秒后，图片url无法继续正常访问；单位s；默认值1*24*60*60（1天）
+        :rtype: int
+        """
         return self._PictureExpires
 
     @PictureExpires.setter
@@ -2526,6 +2994,9 @@ class DescribePersonVisitInfoRequest(AbstractModel):
 
     @property
     def StartDateTime(self):
+        """开始时间，格式yyyy-MM-dd HH:mm:ss
+        :rtype: str
+        """
         return self._StartDateTime
 
     @StartDateTime.setter
@@ -2534,6 +3005,9 @@ class DescribePersonVisitInfoRequest(AbstractModel):
 
     @property
     def EndDateTime(self):
+        """结束时间，格式yyyy-MM-dd HH:mm:ss
+        :rtype: str
+        """
         return self._EndDateTime
 
     @EndDateTime.setter
@@ -2587,6 +3061,9 @@ class DescribePersonVisitInfoResponse(AbstractModel):
 
     @property
     def CompanyId(self):
+        """公司ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -2595,6 +3072,9 @@ class DescribePersonVisitInfoResponse(AbstractModel):
 
     @property
     def ShopId(self):
+        """门店ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -2603,6 +3083,9 @@ class DescribePersonVisitInfoResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2611,6 +3094,9 @@ class DescribePersonVisitInfoResponse(AbstractModel):
 
     @property
     def PersonVisitInfoSet(self):
+        """用户到访明细
+        :rtype: list of PersonVisitInfo
+        """
         return self._PersonVisitInfoSet
 
     @PersonVisitInfoSet.setter
@@ -2619,6 +3105,9 @@ class DescribePersonVisitInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2668,6 +3157,9 @@ class DescribeShopHourTrafficInfoRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """公司ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -2676,6 +3168,9 @@ class DescribeShopHourTrafficInfoRequest(AbstractModel):
 
     @property
     def ShopId(self):
+        """门店ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -2684,6 +3179,9 @@ class DescribeShopHourTrafficInfoRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """开始日期，格式：yyyy-MM-dd
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -2692,6 +3190,9 @@ class DescribeShopHourTrafficInfoRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """结束日期，格式：yyyy-MM-dd
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -2700,6 +3201,9 @@ class DescribeShopHourTrafficInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量：分页控制参数，第一页传0，第n页Offset=(n-1)*Limit
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2708,6 +3212,9 @@ class DescribeShopHourTrafficInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Limit:每页的数据项，最大100，超过100会被强制指定为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2758,6 +3265,9 @@ class DescribeShopHourTrafficInfoResponse(AbstractModel):
 
     @property
     def CompanyId(self):
+        """公司ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -2766,6 +3276,9 @@ class DescribeShopHourTrafficInfoResponse(AbstractModel):
 
     @property
     def ShopId(self):
+        """门店ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -2774,6 +3287,9 @@ class DescribeShopHourTrafficInfoResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """查询结果总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2782,6 +3298,9 @@ class DescribeShopHourTrafficInfoResponse(AbstractModel):
 
     @property
     def ShopHourTrafficInfoSet(self):
+        """分时客流信息
+        :rtype: list of ShopHourTrafficInfo
+        """
         return self._ShopHourTrafficInfoSet
 
     @ShopHourTrafficInfoSet.setter
@@ -2790,6 +3309,9 @@ class DescribeShopHourTrafficInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2827,6 +3349,9 @@ class DescribeShopInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量：分页控制参数，第一页传0，第n页Offset=(n-1)*Limit
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2835,6 +3360,9 @@ class DescribeShopInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Limit:每页的数据项，最大100，超过100会被强制指定为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2875,6 +3403,9 @@ class DescribeShopInfoResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """门店总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2883,6 +3414,9 @@ class DescribeShopInfoResponse(AbstractModel):
 
     @property
     def ShopInfoSet(self):
+        """门店列表信息
+        :rtype: list of ShopInfo
+        """
         return self._ShopInfoSet
 
     @ShopInfoSet.setter
@@ -2891,6 +3425,9 @@ class DescribeShopInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2938,6 +3475,9 @@ class DescribeShopTrafficInfoRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """公司ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -2946,6 +3486,9 @@ class DescribeShopTrafficInfoRequest(AbstractModel):
 
     @property
     def ShopId(self):
+        """门店ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -2954,6 +3497,9 @@ class DescribeShopTrafficInfoRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """开始日期，格式yyyy-MM-dd
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -2962,6 +3508,9 @@ class DescribeShopTrafficInfoRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """介绍日期，格式yyyy-MM-dd
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -2970,6 +3519,9 @@ class DescribeShopTrafficInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量：分页控制参数，第一页传0，第n页Offset=(n-1)*Limit
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2978,6 +3530,9 @@ class DescribeShopTrafficInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Limit:每页的数据项，最大100，超过100会被强制指定为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3028,6 +3583,9 @@ class DescribeShopTrafficInfoResponse(AbstractModel):
 
     @property
     def CompanyId(self):
+        """公司ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -3036,6 +3594,9 @@ class DescribeShopTrafficInfoResponse(AbstractModel):
 
     @property
     def ShopId(self):
+        """门店ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -3044,6 +3605,9 @@ class DescribeShopTrafficInfoResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """查询结果总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3052,6 +3616,9 @@ class DescribeShopTrafficInfoResponse(AbstractModel):
 
     @property
     def ShopDayTrafficInfoSet(self):
+        """客流信息列表
+        :rtype: list of ShopDayTrafficInfo
+        """
         return self._ShopDayTrafficInfoSet
 
     @ShopDayTrafficInfoSet.setter
@@ -3060,6 +3627,9 @@ class DescribeShopTrafficInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3109,6 +3679,9 @@ class DescribeTrajectoryDataRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -3117,6 +3690,9 @@ class DescribeTrajectoryDataRequest(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -3125,6 +3701,9 @@ class DescribeTrajectoryDataRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """开始日期，格式yyyy-MM-dd
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -3133,6 +3712,9 @@ class DescribeTrajectoryDataRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """结束日期，格式yyyy-MM-dd
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -3141,6 +3723,9 @@ class DescribeTrajectoryDataRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制返回数据的最大条数，最大 400（负数代为 400）
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3149,6 +3734,9 @@ class DescribeTrajectoryDataRequest(AbstractModel):
 
     @property
     def Gender(self):
+        """顾客性别顾虑，0是男，1是女，其它代表不分性别
+        :rtype: int
+        """
         return self._Gender
 
     @Gender.setter
@@ -3208,6 +3796,9 @@ class DescribeTrajectoryDataResponse(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -3216,6 +3807,9 @@ class DescribeTrajectoryDataResponse(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -3224,6 +3818,9 @@ class DescribeTrajectoryDataResponse(AbstractModel):
 
     @property
     def TotalPerson(self):
+        """总人数
+        :rtype: int
+        """
         return self._TotalPerson
 
     @TotalPerson.setter
@@ -3232,6 +3829,9 @@ class DescribeTrajectoryDataResponse(AbstractModel):
 
     @property
     def TotalTrajectory(self):
+        """总动迹数目
+        :rtype: int
+        """
         return self._TotalTrajectory
 
     @TotalTrajectory.setter
@@ -3240,6 +3840,9 @@ class DescribeTrajectoryDataResponse(AbstractModel):
 
     @property
     def Person(self):
+        """返回动迹中的总人数
+        :rtype: int
+        """
         return self._Person
 
     @Person.setter
@@ -3248,6 +3851,9 @@ class DescribeTrajectoryDataResponse(AbstractModel):
 
     @property
     def Trajectory(self):
+        """返回动迹的数目
+        :rtype: int
+        """
         return self._Trajectory
 
     @Trajectory.setter
@@ -3256,6 +3862,9 @@ class DescribeTrajectoryDataResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回动迹的具体信息
+        :rtype: list of TrajectorySunData
+        """
         return self._Data
 
     @Data.setter
@@ -3264,6 +3873,9 @@ class DescribeTrajectoryDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3313,6 +3925,9 @@ class DescribeZoneFlowAgeInfoByZoneIdRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -3321,6 +3936,9 @@ class DescribeZoneFlowAgeInfoByZoneIdRequest(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -3329,6 +3947,9 @@ class DescribeZoneFlowAgeInfoByZoneIdRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """区域ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -3337,6 +3958,9 @@ class DescribeZoneFlowAgeInfoByZoneIdRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """开始日期，格式yyyy-MM-dd
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -3345,6 +3969,9 @@ class DescribeZoneFlowAgeInfoByZoneIdRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """结束日期，格式yyyy-MM-dd
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -3397,6 +4024,9 @@ class DescribeZoneFlowAgeInfoByZoneIdResponse(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -3405,6 +4035,9 @@ class DescribeZoneFlowAgeInfoByZoneIdResponse(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -3413,6 +4046,9 @@ class DescribeZoneFlowAgeInfoByZoneIdResponse(AbstractModel):
 
     @property
     def ZoneId(self):
+        """区域ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -3421,6 +4057,9 @@ class DescribeZoneFlowAgeInfoByZoneIdResponse(AbstractModel):
 
     @property
     def ZoneName(self):
+        """区域名称
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -3429,6 +4068,9 @@ class DescribeZoneFlowAgeInfoByZoneIdResponse(AbstractModel):
 
     @property
     def Data(self):
+        """当前年龄段占比
+        :rtype: list of float
+        """
         return self._Data
 
     @Data.setter
@@ -3437,6 +4079,9 @@ class DescribeZoneFlowAgeInfoByZoneIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3476,6 +4121,9 @@ class DescribeZoneFlowAndStayTimeRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -3484,6 +4132,9 @@ class DescribeZoneFlowAndStayTimeRequest(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -3492,6 +4143,9 @@ class DescribeZoneFlowAndStayTimeRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """开始日期，格式yyyy-MM-dd
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -3500,6 +4154,9 @@ class DescribeZoneFlowAndStayTimeRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """结束日期，格式yyyy-MM-dd
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -3545,6 +4202,9 @@ class DescribeZoneFlowAndStayTimeResponse(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团id
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -3553,6 +4213,9 @@ class DescribeZoneFlowAndStayTimeResponse(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺id
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -3561,6 +4224,9 @@ class DescribeZoneFlowAndStayTimeResponse(AbstractModel):
 
     @property
     def Data(self):
+        """各区域人流数目和停留时长
+        :rtype: list of ZoneFlowAndAvrStayTime
+        """
         return self._Data
 
     @Data.setter
@@ -3569,6 +4235,9 @@ class DescribeZoneFlowAndStayTimeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3614,6 +4283,9 @@ class DescribeZoneFlowDailyByZoneIdRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -3622,6 +4294,9 @@ class DescribeZoneFlowDailyByZoneIdRequest(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -3630,6 +4305,9 @@ class DescribeZoneFlowDailyByZoneIdRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """区域ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -3638,6 +4316,9 @@ class DescribeZoneFlowDailyByZoneIdRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """开始日期，格式yyyy-MM-dd
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -3646,6 +4327,9 @@ class DescribeZoneFlowDailyByZoneIdRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """结束日期，格式yyyy-MM-dd
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -3698,6 +4382,9 @@ class DescribeZoneFlowDailyByZoneIdResponse(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团id
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -3706,6 +4393,9 @@ class DescribeZoneFlowDailyByZoneIdResponse(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺id
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -3714,6 +4404,9 @@ class DescribeZoneFlowDailyByZoneIdResponse(AbstractModel):
 
     @property
     def ZoneId(self):
+        """区域ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -3722,6 +4415,9 @@ class DescribeZoneFlowDailyByZoneIdResponse(AbstractModel):
 
     @property
     def ZoneName(self):
+        """区域名称
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -3730,6 +4426,9 @@ class DescribeZoneFlowDailyByZoneIdResponse(AbstractModel):
 
     @property
     def Data(self):
+        """每日人流量
+        :rtype: list of ZoneDayFlow
+        """
         return self._Data
 
     @Data.setter
@@ -3738,6 +4437,9 @@ class DescribeZoneFlowDailyByZoneIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3785,6 +4487,9 @@ class DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -3793,6 +4498,9 @@ class DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -3801,6 +4509,9 @@ class DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """区域ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -3809,6 +4520,9 @@ class DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """开始日期，格式yyyy-MM-dd
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -3817,6 +4531,9 @@ class DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """结束日期，格式yyyy-MM-dd
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -3869,6 +4586,9 @@ class DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -3877,6 +4597,9 @@ class DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -3885,6 +4608,9 @@ class DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse(AbstractModel):
 
     @property
     def ZoneId(self):
+        """区域ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -3893,6 +4619,9 @@ class DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse(AbstractModel):
 
     @property
     def ZoneName(self):
+        """区域名称
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -3901,6 +4630,9 @@ class DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse(AbstractModel):
 
     @property
     def Data(self):
+        """不同年龄段男女停留时间（返回格式为数组，从第 1 个到最后一个数据，年龄段分别为 0-17，18 - 23,  24 - 30, 31 - 40, 41 - 50, 51 - 60, 61 - 100）
+        :rtype: list of ZoneAgeGroupAvrStayTime
+        """
         return self._Data
 
     @Data.setter
@@ -3909,6 +4641,9 @@ class DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3956,6 +4691,9 @@ class DescribeZoneFlowGenderInfoByZoneIdRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -3964,6 +4702,9 @@ class DescribeZoneFlowGenderInfoByZoneIdRequest(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -3972,6 +4713,9 @@ class DescribeZoneFlowGenderInfoByZoneIdRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """区域ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -3980,6 +4724,9 @@ class DescribeZoneFlowGenderInfoByZoneIdRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """开始日期，格式yyyy-MM-dd
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -3988,6 +4735,9 @@ class DescribeZoneFlowGenderInfoByZoneIdRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """结束日期，格式yyyy-MM-dd
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -4043,6 +4793,9 @@ class DescribeZoneFlowGenderInfoByZoneIdResponse(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -4051,6 +4804,9 @@ class DescribeZoneFlowGenderInfoByZoneIdResponse(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -4059,6 +4815,9 @@ class DescribeZoneFlowGenderInfoByZoneIdResponse(AbstractModel):
 
     @property
     def ZoneId(self):
+        """区域ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -4067,6 +4826,9 @@ class DescribeZoneFlowGenderInfoByZoneIdResponse(AbstractModel):
 
     @property
     def ZoneName(self):
+        """区域名称
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -4075,6 +4837,9 @@ class DescribeZoneFlowGenderInfoByZoneIdResponse(AbstractModel):
 
     @property
     def MalePercent(self):
+        """男性占比
+        :rtype: float
+        """
         return self._MalePercent
 
     @MalePercent.setter
@@ -4083,6 +4848,9 @@ class DescribeZoneFlowGenderInfoByZoneIdResponse(AbstractModel):
 
     @property
     def FemalePercent(self):
+        """女性占比
+        :rtype: float
+        """
         return self._FemalePercent
 
     @FemalePercent.setter
@@ -4091,6 +4859,9 @@ class DescribeZoneFlowGenderInfoByZoneIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4134,6 +4905,9 @@ class DescribeZoneFlowHourlyByZoneIdRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -4142,6 +4916,9 @@ class DescribeZoneFlowHourlyByZoneIdRequest(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -4150,6 +4927,9 @@ class DescribeZoneFlowHourlyByZoneIdRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """区域ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -4158,6 +4938,9 @@ class DescribeZoneFlowHourlyByZoneIdRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """开始日期，格式yyyy-MM-dd
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -4166,6 +4949,9 @@ class DescribeZoneFlowHourlyByZoneIdRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """结束日期，格式yyyy-MM-dd
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -4218,6 +5004,9 @@ class DescribeZoneFlowHourlyByZoneIdResponse(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -4226,6 +5015,9 @@ class DescribeZoneFlowHourlyByZoneIdResponse(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -4234,6 +5026,9 @@ class DescribeZoneFlowHourlyByZoneIdResponse(AbstractModel):
 
     @property
     def ZoneId(self):
+        """区域ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -4242,6 +5037,9 @@ class DescribeZoneFlowHourlyByZoneIdResponse(AbstractModel):
 
     @property
     def ZoneName(self):
+        """区域名称
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -4250,6 +5048,9 @@ class DescribeZoneFlowHourlyByZoneIdResponse(AbstractModel):
 
     @property
     def Data(self):
+        """各个分时人流量
+        :rtype: list of ZoneHourFlow
+        """
         return self._Data
 
     @Data.setter
@@ -4258,6 +5059,9 @@ class DescribeZoneFlowHourlyByZoneIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4308,6 +5112,9 @@ class DescribeZoneTrafficInfoRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """公司ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -4316,6 +5123,9 @@ class DescribeZoneTrafficInfoRequest(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -4324,6 +5134,9 @@ class DescribeZoneTrafficInfoRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """开始日期，格式yyyy-MM-dd
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -4332,6 +5145,9 @@ class DescribeZoneTrafficInfoRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """结束日期，格式yyyy-MM-dd
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -4340,6 +5156,9 @@ class DescribeZoneTrafficInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量：分页控制参数，第一页传0，第n页Offset=(n-1)*Limit
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4348,6 +5167,9 @@ class DescribeZoneTrafficInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Limit:每页的数据项，最大100，超过100会被强制指定为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4398,6 +5220,9 @@ class DescribeZoneTrafficInfoResponse(AbstractModel):
 
     @property
     def CompanyId(self):
+        """公司ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -4406,6 +5231,9 @@ class DescribeZoneTrafficInfoResponse(AbstractModel):
 
     @property
     def ShopId(self):
+        """门店ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -4414,6 +5242,9 @@ class DescribeZoneTrafficInfoResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """查询结果总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4422,6 +5253,9 @@ class DescribeZoneTrafficInfoResponse(AbstractModel):
 
     @property
     def ZoneTrafficInfoSet(self):
+        """区域客流信息列表
+        :rtype: list of ZoneTrafficInfo
+        """
         return self._ZoneTrafficInfoSet
 
     @ZoneTrafficInfoSet.setter
@@ -4430,6 +5264,9 @@ class DescribeZoneTrafficInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4470,6 +5307,9 @@ class GenderAgeTrafficDetail(AbstractModel):
 
     @property
     def Gender(self):
+        """性别: 0男1女
+        :rtype: int
+        """
         return self._Gender
 
     @Gender.setter
@@ -4478,6 +5318,9 @@ class GenderAgeTrafficDetail(AbstractModel):
 
     @property
     def AgeGap(self):
+        """年龄区间，枚举值：0-17、18-23、24-30、31-40、41-50、51-60、>60
+        :rtype: str
+        """
         return self._AgeGap
 
     @AgeGap.setter
@@ -4486,6 +5329,9 @@ class GenderAgeTrafficDetail(AbstractModel):
 
     @property
     def TrafficCount(self):
+        """客流量
+        :rtype: int
+        """
         return self._TrafficCount
 
     @TrafficCount.setter
@@ -4524,6 +5370,9 @@ class HourTrafficInfoDetail(AbstractModel):
 
     @property
     def Hour(self):
+        """小时 取值为：0，1，2，3，4，5，6，7，8，9，10，11，12，13，14，15，16，17，18，19，20，21，22，23
+        :rtype: int
+        """
         return self._Hour
 
     @Hour.setter
@@ -4532,6 +5381,9 @@ class HourTrafficInfoDetail(AbstractModel):
 
     @property
     def HourTrafficTotalCount(self):
+        """分时客流量
+        :rtype: int
+        """
         return self._HourTrafficTotalCount
 
     @HourTrafficTotalCount.setter
@@ -4581,6 +5433,9 @@ class ModifyPersonFeatureInfoRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -4589,6 +5444,9 @@ class ModifyPersonFeatureInfoRequest(AbstractModel):
 
     @property
     def PersonId(self):
+        """需要修改的顾客id
+        :rtype: int
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -4597,6 +5455,9 @@ class ModifyPersonFeatureInfoRequest(AbstractModel):
 
     @property
     def Picture(self):
+        """图片BASE编码
+        :rtype: str
+        """
         return self._Picture
 
     @Picture.setter
@@ -4605,6 +5466,9 @@ class ModifyPersonFeatureInfoRequest(AbstractModel):
 
     @property
     def PictureName(self):
+        """图片名称（尽量不要重复）
+        :rtype: str
+        """
         return self._PictureName
 
     @PictureName.setter
@@ -4613,6 +5477,9 @@ class ModifyPersonFeatureInfoRequest(AbstractModel):
 
     @property
     def PersonType(self):
+        """人物类型，仅能操作黑白名单顾客（1 白名单，2 表示黑名单，101表示集团白名单，102表示集团黑名单）
+        :rtype: int
+        """
         return self._PersonType
 
     @PersonType.setter
@@ -4621,6 +5488,9 @@ class ModifyPersonFeatureInfoRequest(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺ID，如果不填表示操作集团身份库
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -4677,6 +5547,9 @@ class ModifyPersonFeatureInfoResponse(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -4685,6 +5558,9 @@ class ModifyPersonFeatureInfoResponse(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺ID，如果不填表示操作集团身份库
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -4693,6 +5569,9 @@ class ModifyPersonFeatureInfoResponse(AbstractModel):
 
     @property
     def PersonId(self):
+        """请求的顾客id
+        :rtype: int
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -4701,6 +5580,9 @@ class ModifyPersonFeatureInfoResponse(AbstractModel):
 
     @property
     def PersonIdBind(self):
+        """图片实际绑定person_id，可能与请求的person_id不同，以此id为准
+        :rtype: int
+        """
         return self._PersonIdBind
 
     @PersonIdBind.setter
@@ -4709,6 +5591,9 @@ class ModifyPersonFeatureInfoResponse(AbstractModel):
 
     @property
     def PersonType(self):
+        """请求的顾客类型
+        :rtype: int
+        """
         return self._PersonType
 
     @PersonType.setter
@@ -4717,6 +5602,9 @@ class ModifyPersonFeatureInfoResponse(AbstractModel):
 
     @property
     def SimilarPersonIds(self):
+        """与请求的person_id类型相同、与请求图片特征相似的一个或多个person_id，需要额外确认这些id是否是同一个人
+        :rtype: list of int
+        """
         return self._SimilarPersonIds
 
     @SimilarPersonIds.setter
@@ -4725,6 +5613,9 @@ class ModifyPersonFeatureInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4762,6 +5653,9 @@ class ModifyPersonTagInfoRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -4770,6 +5664,9 @@ class ModifyPersonTagInfoRequest(AbstractModel):
 
     @property
     def ShopId(self):
+        """优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取，为0则拉取集团全部店铺当前
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -4778,6 +5675,9 @@ class ModifyPersonTagInfoRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """需要设置的顾客信息，批量设置最大为10个
+        :rtype: list of PersonTagInfo
+        """
         return self._Tags
 
     @Tags.setter
@@ -4818,6 +5718,9 @@ class ModifyPersonTagInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4858,6 +5761,9 @@ PersonType=2时(黑名单)，0普通黑名单，1小偷)
 
     @property
     def CompanyId(self):
+        """集团ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -4866,6 +5772,9 @@ PersonType=2时(黑名单)，0普通黑名单，1小偷)
 
     @property
     def ShopId(self):
+        """门店ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -4874,6 +5783,9 @@ PersonType=2时(黑名单)，0普通黑名单，1小偷)
 
     @property
     def PersonId(self):
+        """顾客ID
+        :rtype: int
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -4882,6 +5794,9 @@ PersonType=2时(黑名单)，0普通黑名单，1小偷)
 
     @property
     def PersonType(self):
+        """身份类型(0表示普通顾客，1 白名单，2 表示黑名单）
+        :rtype: int
+        """
         return self._PersonType
 
     @PersonType.setter
@@ -4890,6 +5805,12 @@ PersonType=2时(黑名单)，0普通黑名单，1小偷)
 
     @property
     def PersonSubType(self):
+        """身份子类型:
+PersonType=0时(普通顾客)，0普通顾客
+PersonType=1时(白名单)，0店员，1商场人员，2其他类型人员，3区域经理，4注册会员，5VIP用户
+PersonType=2时(黑名单)，0普通黑名单，1小偷)
+        :rtype: int
+        """
         return self._PersonSubType
 
     @PersonSubType.setter
@@ -4927,6 +5848,9 @@ class ModifyPersonTypeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4991,6 +5915,9 @@ class NetworkAndShopInfo(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团id
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -4999,6 +5926,9 @@ class NetworkAndShopInfo(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺id
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -5007,6 +5937,9 @@ class NetworkAndShopInfo(AbstractModel):
 
     @property
     def Province(self):
+        """店铺省份
+        :rtype: str
+        """
         return self._Province
 
     @Province.setter
@@ -5015,6 +5948,9 @@ class NetworkAndShopInfo(AbstractModel):
 
     @property
     def City(self):
+        """店铺城市
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -5023,6 +5959,9 @@ class NetworkAndShopInfo(AbstractModel):
 
     @property
     def ShopName(self):
+        """店铺名
+        :rtype: str
+        """
         return self._ShopName
 
     @ShopName.setter
@@ -5031,6 +5970,9 @@ class NetworkAndShopInfo(AbstractModel):
 
     @property
     def Upload(self):
+        """上传带宽，单位Mb/s，-1：未知
+        :rtype: float
+        """
         return self._Upload
 
     @Upload.setter
@@ -5039,6 +5981,9 @@ class NetworkAndShopInfo(AbstractModel):
 
     @property
     def Download(self):
+        """下载带宽，单位Mb/s，-1：未知
+        :rtype: float
+        """
         return self._Download
 
     @Download.setter
@@ -5047,6 +5992,9 @@ class NetworkAndShopInfo(AbstractModel):
 
     @property
     def MinRtt(self):
+        """最小延迟，单位ms，-1：未知
+        :rtype: float
+        """
         return self._MinRtt
 
     @MinRtt.setter
@@ -5055,6 +6003,9 @@ class NetworkAndShopInfo(AbstractModel):
 
     @property
     def AvgRtt(self):
+        """平均延迟，单位ms，-1：未知
+        :rtype: float
+        """
         return self._AvgRtt
 
     @AvgRtt.setter
@@ -5063,6 +6014,9 @@ class NetworkAndShopInfo(AbstractModel):
 
     @property
     def MaxRtt(self):
+        """最大延迟，单位ms，-1：未知
+        :rtype: float
+        """
         return self._MaxRtt
 
     @MaxRtt.setter
@@ -5071,6 +6025,9 @@ class NetworkAndShopInfo(AbstractModel):
 
     @property
     def MdevRtt(self):
+        """平均偏差延迟，单位ms，-1：未知
+        :rtype: float
+        """
         return self._MdevRtt
 
     @MdevRtt.setter
@@ -5079,6 +6036,9 @@ class NetworkAndShopInfo(AbstractModel):
 
     @property
     def Loss(self):
+        """丢包率百分比，-1：未知
+        :rtype: float
+        """
         return self._Loss
 
     @Loss.setter
@@ -5087,6 +6047,9 @@ class NetworkAndShopInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间戳
+        :rtype: int
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -5095,6 +6058,9 @@ class NetworkAndShopInfo(AbstractModel):
 
     @property
     def Mac(self):
+        """上报网络状态设备
+        :rtype: str
+        """
         return self._Mac
 
     @Mac.setter
@@ -5159,6 +6125,9 @@ class NetworkHistoryInfo(AbstractModel):
 
     @property
     def Count(self):
+        """总数
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -5167,6 +6136,9 @@ class NetworkHistoryInfo(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团id
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -5175,6 +6147,9 @@ class NetworkHistoryInfo(AbstractModel):
 
     @property
     def ShopId(self):
+        """店铺id
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -5183,6 +6158,9 @@ class NetworkHistoryInfo(AbstractModel):
 
     @property
     def Province(self):
+        """店铺省份
+        :rtype: str
+        """
         return self._Province
 
     @Province.setter
@@ -5191,6 +6169,9 @@ class NetworkHistoryInfo(AbstractModel):
 
     @property
     def City(self):
+        """店铺城市
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -5199,6 +6180,9 @@ class NetworkHistoryInfo(AbstractModel):
 
     @property
     def ShopName(self):
+        """店铺名称
+        :rtype: str
+        """
         return self._ShopName
 
     @ShopName.setter
@@ -5207,6 +6191,9 @@ class NetworkHistoryInfo(AbstractModel):
 
     @property
     def Infos(self):
+        """网络信息
+        :rtype: list of NetworkInfo
+        """
         return self._Infos
 
     @Infos.setter
@@ -5275,6 +6262,9 @@ class NetworkInfo(AbstractModel):
 
     @property
     def Upload(self):
+        """上传带宽，单位Mb/s，-1：未知
+        :rtype: float
+        """
         return self._Upload
 
     @Upload.setter
@@ -5283,6 +6273,9 @@ class NetworkInfo(AbstractModel):
 
     @property
     def Download(self):
+        """下载带宽，单位Mb/s，-1：未知
+        :rtype: float
+        """
         return self._Download
 
     @Download.setter
@@ -5291,6 +6284,9 @@ class NetworkInfo(AbstractModel):
 
     @property
     def MinRtt(self):
+        """最小延迟，单位ms，-1：未知
+        :rtype: float
+        """
         return self._MinRtt
 
     @MinRtt.setter
@@ -5299,6 +6295,9 @@ class NetworkInfo(AbstractModel):
 
     @property
     def AvgRtt(self):
+        """平均延迟，单位ms，-1：未知
+        :rtype: float
+        """
         return self._AvgRtt
 
     @AvgRtt.setter
@@ -5307,6 +6306,9 @@ class NetworkInfo(AbstractModel):
 
     @property
     def MaxRtt(self):
+        """最大延迟，单位ms，-1：未知
+        :rtype: float
+        """
         return self._MaxRtt
 
     @MaxRtt.setter
@@ -5315,6 +6317,9 @@ class NetworkInfo(AbstractModel):
 
     @property
     def MdevRtt(self):
+        """平均偏差延迟，单位ms，-1：未知
+        :rtype: float
+        """
         return self._MdevRtt
 
     @MdevRtt.setter
@@ -5323,6 +6328,9 @@ class NetworkInfo(AbstractModel):
 
     @property
     def Loss(self):
+        """丢包率百分比，-1：未知
+        :rtype: float
+        """
         return self._Loss
 
     @Loss.setter
@@ -5331,6 +6339,9 @@ class NetworkInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间戳
+        :rtype: int
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -5339,6 +6350,9 @@ class NetworkInfo(AbstractModel):
 
     @property
     def Mac(self):
+        """上报网络状态设备
+        :rtype: str
+        """
         return self._Mac
 
     @Mac.setter
@@ -5383,6 +6397,9 @@ class NetworkLastInfo(AbstractModel):
 
     @property
     def Count(self):
+        """总数
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -5391,6 +6408,9 @@ class NetworkLastInfo(AbstractModel):
 
     @property
     def Infos(self):
+        """网络状态
+        :rtype: list of NetworkAndShopInfo
+        """
         return self._Infos
 
     @Infos.setter
@@ -5451,6 +6471,9 @@ class PersonCoordinate(AbstractModel):
 
     @property
     def CADX(self):
+        """CAD图X坐标
+        :rtype: float
+        """
         return self._CADX
 
     @CADX.setter
@@ -5459,6 +6482,9 @@ class PersonCoordinate(AbstractModel):
 
     @property
     def CADY(self):
+        """CAD图Y坐标
+        :rtype: float
+        """
         return self._CADY
 
     @CADY.setter
@@ -5467,6 +6493,9 @@ class PersonCoordinate(AbstractModel):
 
     @property
     def CapTime(self):
+        """抓拍时间点
+        :rtype: str
+        """
         return self._CapTime
 
     @CapTime.setter
@@ -5475,6 +6504,9 @@ class PersonCoordinate(AbstractModel):
 
     @property
     def CapPic(self):
+        """抓拍图片
+        :rtype: str
+        """
         return self._CapPic
 
     @CapPic.setter
@@ -5483,6 +6515,9 @@ class PersonCoordinate(AbstractModel):
 
     @property
     def MallAreaType(self):
+        """卖场区域类型
+        :rtype: int
+        """
         return self._MallAreaType
 
     @MallAreaType.setter
@@ -5491,6 +6526,9 @@ class PersonCoordinate(AbstractModel):
 
     @property
     def PosId(self):
+        """坐标编号
+        :rtype: int
+        """
         return self._PosId
 
     @PosId.setter
@@ -5499,6 +6537,9 @@ class PersonCoordinate(AbstractModel):
 
     @property
     def ShopId(self):
+        """门店编号
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -5507,6 +6548,9 @@ class PersonCoordinate(AbstractModel):
 
     @property
     def Event(self):
+        """事件
+        :rtype: str
+        """
         return self._Event
 
     @Event.setter
@@ -5574,6 +6618,9 @@ PersonType=2时(黑名单)，0普通黑名单，1小偷)
 
     @property
     def PersonId(self):
+        """用户ID
+        :rtype: int
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -5582,6 +6629,9 @@ PersonType=2时(黑名单)，0普通黑名单，1小偷)
 
     @property
     def PersonPicture(self):
+        """人脸图片Base64内容，已弃用，返回默认空值
+        :rtype: str
+        """
         return self._PersonPicture
 
     @PersonPicture.setter
@@ -5590,6 +6640,9 @@ PersonType=2时(黑名单)，0普通黑名单，1小偷)
 
     @property
     def Gender(self):
+        """性别：0男1女
+        :rtype: int
+        """
         return self._Gender
 
     @Gender.setter
@@ -5598,6 +6651,9 @@ PersonType=2时(黑名单)，0普通黑名单，1小偷)
 
     @property
     def Age(self):
+        """年龄
+        :rtype: int
+        """
         return self._Age
 
     @Age.setter
@@ -5606,6 +6662,9 @@ PersonType=2时(黑名单)，0普通黑名单，1小偷)
 
     @property
     def PersonType(self):
+        """身份类型（0表示普通顾客，1 白名单，2 表示黑名单）
+        :rtype: int
+        """
         return self._PersonType
 
     @PersonType.setter
@@ -5614,6 +6673,9 @@ PersonType=2时(黑名单)，0普通黑名单，1小偷)
 
     @property
     def PersonPictureUrl(self):
+        """人脸图片Url，在有效期内可以访问下载
+        :rtype: str
+        """
         return self._PersonPictureUrl
 
     @PersonPictureUrl.setter
@@ -5622,6 +6684,12 @@ PersonType=2时(黑名单)，0普通黑名单，1小偷)
 
     @property
     def PersonSubType(self):
+        """身份子类型:
+PersonType=0时(普通顾客)，0普通顾客
+PersonType=1时(白名单)，0店员，1商场人员，2其他类型人员，3区域经理，4注册用户，5VIP用户
+PersonType=2时(黑名单)，0普通黑名单，1小偷)
+        :rtype: int
+        """
         return self._PersonSubType
 
     @PersonSubType.setter
@@ -5630,6 +6698,9 @@ PersonType=2时(黑名单)，0普通黑名单，1小偷)
 
     @property
     def VisitTimes(self):
+        """到访次数，-1表示未知
+        :rtype: int
+        """
         return self._VisitTimes
 
     @VisitTimes.setter
@@ -5638,6 +6709,9 @@ PersonType=2时(黑名单)，0普通黑名单，1小偷)
 
     @property
     def VisitDays(self):
+        """到访天数，-1表示未知
+        :rtype: int
+        """
         return self._VisitDays
 
     @VisitDays.setter
@@ -5697,6 +6771,9 @@ class PersonProfile(AbstractModel):
 
     @property
     def PersonId(self):
+        """客人编码
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -5705,6 +6782,9 @@ class PersonProfile(AbstractModel):
 
     @property
     def Gender(self):
+        """性别
+        :rtype: int
+        """
         return self._Gender
 
     @Gender.setter
@@ -5713,6 +6793,9 @@ class PersonProfile(AbstractModel):
 
     @property
     def Age(self):
+        """年龄
+        :rtype: int
+        """
         return self._Age
 
     @Age.setter
@@ -5721,6 +6804,9 @@ class PersonProfile(AbstractModel):
 
     @property
     def FirstArrivedTime(self):
+        """首次到场时间
+        :rtype: str
+        """
         return self._FirstArrivedTime
 
     @FirstArrivedTime.setter
@@ -5729,6 +6815,9 @@ class PersonProfile(AbstractModel):
 
     @property
     def ArrivedCount(self):
+        """来访次数
+        :rtype: int
+        """
         return self._ArrivedCount
 
     @ArrivedCount.setter
@@ -5737,6 +6826,9 @@ class PersonProfile(AbstractModel):
 
     @property
     def PicUrl(self):
+        """客户图片
+        :rtype: str
+        """
         return self._PicUrl
 
     @PicUrl.setter
@@ -5745,6 +6837,9 @@ class PersonProfile(AbstractModel):
 
     @property
     def Similarity(self):
+        """置信度
+        :rtype: float
+        """
         return self._Similarity
 
     @Similarity.setter
@@ -5790,6 +6885,9 @@ class PersonTagInfo(AbstractModel):
 
     @property
     def OldType(self):
+        """顾客原类型
+        :rtype: int
+        """
         return self._OldType
 
     @OldType.setter
@@ -5798,6 +6896,9 @@ class PersonTagInfo(AbstractModel):
 
     @property
     def NewType(self):
+        """顾客新类型
+        :rtype: int
+        """
         return self._NewType
 
     @NewType.setter
@@ -5806,6 +6907,9 @@ class PersonTagInfo(AbstractModel):
 
     @property
     def PersonId(self):
+        """顾客face id
+        :rtype: int
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -5862,6 +6966,9 @@ class PersonTracePoint(AbstractModel):
 
     @property
     def MallAreaId(self):
+        """卖场区域编码
+        :rtype: int
+        """
         return self._MallAreaId
 
     @MallAreaId.setter
@@ -5870,6 +6977,9 @@ class PersonTracePoint(AbstractModel):
 
     @property
     def ShopId(self):
+        """门店编码
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -5878,6 +6988,9 @@ class PersonTracePoint(AbstractModel):
 
     @property
     def MallAreaType(self):
+        """卖场区域类型
+        :rtype: int
+        """
         return self._MallAreaType
 
     @MallAreaType.setter
@@ -5886,6 +6999,9 @@ class PersonTracePoint(AbstractModel):
 
     @property
     def TraceEventType(self):
+        """轨迹事件
+        :rtype: int
+        """
         return self._TraceEventType
 
     @TraceEventType.setter
@@ -5894,6 +7010,9 @@ class PersonTracePoint(AbstractModel):
 
     @property
     def TraceEventTime(self):
+        """轨迹事件发生时间点
+        :rtype: str
+        """
         return self._TraceEventTime
 
     @TraceEventTime.setter
@@ -5902,6 +7021,9 @@ class PersonTracePoint(AbstractModel):
 
     @property
     def CapPic(self):
+        """抓拍图片
+        :rtype: str
+        """
         return self._CapPic
 
     @CapPic.setter
@@ -5910,6 +7032,9 @@ class PersonTracePoint(AbstractModel):
 
     @property
     def ShoppingBagType(self):
+        """购物袋类型
+        :rtype: int
+        """
         return self._ShoppingBagType
 
     @ShoppingBagType.setter
@@ -5918,6 +7043,9 @@ class PersonTracePoint(AbstractModel):
 
     @property
     def ShoppingBagCount(self):
+        """购物袋数量
+        :rtype: int
+        """
         return self._ShoppingBagCount
 
     @ShoppingBagCount.setter
@@ -5961,6 +7089,9 @@ class PersonTraceRoute(AbstractModel):
 
     @property
     def TraceId(self):
+        """轨迹编码
+        :rtype: str
+        """
         return self._TraceId
 
     @TraceId.setter
@@ -5969,6 +7100,9 @@ class PersonTraceRoute(AbstractModel):
 
     @property
     def TracePointSet(self):
+        """轨迹点序列
+        :rtype: list of PersonTracePoint
+        """
         return self._TracePointSet
 
     @TracePointSet.setter
@@ -6032,6 +7166,9 @@ class PersonVisitInfo(AbstractModel):
 
     @property
     def PersonId(self):
+        """用户ID
+        :rtype: int
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -6040,6 +7177,9 @@ class PersonVisitInfo(AbstractModel):
 
     @property
     def VisitId(self):
+        """用户到访ID
+        :rtype: int
+        """
         return self._VisitId
 
     @VisitId.setter
@@ -6048,6 +7188,9 @@ class PersonVisitInfo(AbstractModel):
 
     @property
     def InTime(self):
+        """到访时间：Unix时间戳
+        :rtype: int
+        """
         return self._InTime
 
     @InTime.setter
@@ -6056,6 +7199,9 @@ class PersonVisitInfo(AbstractModel):
 
     @property
     def CapturedPicture(self):
+        """抓拍到的头像Base64内容，已弃用，返回默认空值
+        :rtype: str
+        """
         return self._CapturedPicture
 
     @CapturedPicture.setter
@@ -6064,6 +7210,9 @@ class PersonVisitInfo(AbstractModel):
 
     @property
     def MaskType(self):
+        """口罩类型：0不戴口罩，1戴口罩
+        :rtype: int
+        """
         return self._MaskType
 
     @MaskType.setter
@@ -6072,6 +7221,9 @@ class PersonVisitInfo(AbstractModel):
 
     @property
     def GlassType(self):
+        """眼镜类型：0不戴眼镜，1普通眼镜 , 2墨镜
+        :rtype: int
+        """
         return self._GlassType
 
     @GlassType.setter
@@ -6080,6 +7232,9 @@ class PersonVisitInfo(AbstractModel):
 
     @property
     def HairType(self):
+        """发型：0 短发,  1长发
+        :rtype: int
+        """
         return self._HairType
 
     @HairType.setter
@@ -6088,6 +7243,9 @@ class PersonVisitInfo(AbstractModel):
 
     @property
     def CapturedPictureUrl(self):
+        """抓拍到的头像Url，在有效期内可以访问下载
+        :rtype: str
+        """
         return self._CapturedPictureUrl
 
     @CapturedPictureUrl.setter
@@ -6096,6 +7254,9 @@ class PersonVisitInfo(AbstractModel):
 
     @property
     def SceneInfo(self):
+        """抓拍头像的场景图信息
+        :rtype: :class:`tencentcloud.youmall.v20180228.models.SceneInfo`
+        """
         return self._SceneInfo
 
     @SceneInfo.setter
@@ -6148,6 +7309,9 @@ class RegisterCallbackRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """集团id，通过"指定身份标识获取客户门店列表"接口获取
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -6156,6 +7320,9 @@ class RegisterCallbackRequest(AbstractModel):
 
     @property
     def BackUrl(self):
+        """通知回调地址，完整url，示例（http://youmall.tencentcloudapi.com/）
+        :rtype: str
+        """
         return self._BackUrl
 
     @BackUrl.setter
@@ -6164,6 +7331,9 @@ class RegisterCallbackRequest(AbstractModel):
 
     @property
     def Time(self):
+        """请求时间戳
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -6172,6 +7342,9 @@ class RegisterCallbackRequest(AbstractModel):
 
     @property
     def NeedFacePic(self):
+        """是否需要顾客图片，1-需要图片，其它-不需要图片
+        :rtype: int
+        """
         return self._NeedFacePic
 
     @NeedFacePic.setter
@@ -6208,6 +7381,9 @@ class RegisterCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6245,6 +7421,9 @@ class SceneInfo(AbstractModel):
 
     @property
     def ScenePictureURL(self):
+        """场景图
+        :rtype: str
+        """
         return self._ScenePictureURL
 
     @ScenePictureURL.setter
@@ -6253,6 +7432,9 @@ class SceneInfo(AbstractModel):
 
     @property
     def HeadX(self):
+        """抓拍头像左上角X坐标在场景图中的像素点位置
+        :rtype: int
+        """
         return self._HeadX
 
     @HeadX.setter
@@ -6261,6 +7443,9 @@ class SceneInfo(AbstractModel):
 
     @property
     def HeadY(self):
+        """抓拍头像左上角Y坐标在场景图中的像素点位置
+        :rtype: int
+        """
         return self._HeadY
 
     @HeadY.setter
@@ -6269,6 +7454,9 @@ class SceneInfo(AbstractModel):
 
     @property
     def HeadWidth(self):
+        """抓拍头像在场景图中占有的像素宽度
+        :rtype: int
+        """
         return self._HeadWidth
 
     @HeadWidth.setter
@@ -6277,6 +7465,9 @@ class SceneInfo(AbstractModel):
 
     @property
     def HeadHeight(self):
+        """抓拍头像在场景图中占有的像素高度
+        :rtype: int
+        """
         return self._HeadHeight
 
     @HeadHeight.setter
@@ -6320,6 +7511,9 @@ class ShopDayTrafficInfo(AbstractModel):
 
     @property
     def Date(self):
+        """日期
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -6328,6 +7522,9 @@ class ShopDayTrafficInfo(AbstractModel):
 
     @property
     def DayTrafficTotalCount(self):
+        """客流量
+        :rtype: int
+        """
         return self._DayTrafficTotalCount
 
     @DayTrafficTotalCount.setter
@@ -6336,6 +7533,9 @@ class ShopDayTrafficInfo(AbstractModel):
 
     @property
     def GenderAgeTrafficDetailSet(self):
+        """性别年龄分组下的客流信息
+        :rtype: list of GenderAgeTrafficDetail
+        """
         return self._GenderAgeTrafficDetailSet
 
     @GenderAgeTrafficDetailSet.setter
@@ -6379,6 +7579,9 @@ class ShopHourTrafficInfo(AbstractModel):
 
     @property
     def Date(self):
+        """日期，格式yyyy-MM-dd
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -6387,6 +7590,9 @@ class ShopHourTrafficInfo(AbstractModel):
 
     @property
     def HourTrafficInfoDetailSet(self):
+        """分时客流详细信息
+        :rtype: list of HourTrafficInfoDetail
+        """
         return self._HourTrafficInfoDetailSet
 
     @HourTrafficInfoDetailSet.setter
@@ -6444,6 +7650,9 @@ class ShopInfo(AbstractModel):
 
     @property
     def CompanyId(self):
+        """公司ID
+        :rtype: str
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -6452,6 +7661,9 @@ class ShopInfo(AbstractModel):
 
     @property
     def ShopId(self):
+        """门店ID
+        :rtype: int
+        """
         return self._ShopId
 
     @ShopId.setter
@@ -6460,6 +7672,9 @@ class ShopInfo(AbstractModel):
 
     @property
     def ShopName(self):
+        """门店名称
+        :rtype: str
+        """
         return self._ShopName
 
     @ShopName.setter
@@ -6468,6 +7683,9 @@ class ShopInfo(AbstractModel):
 
     @property
     def ShopCode(self):
+        """客户门店编码
+        :rtype: str
+        """
         return self._ShopCode
 
     @ShopCode.setter
@@ -6476,6 +7694,9 @@ class ShopInfo(AbstractModel):
 
     @property
     def Province(self):
+        """省
+        :rtype: str
+        """
         return self._Province
 
     @Province.setter
@@ -6484,6 +7705,9 @@ class ShopInfo(AbstractModel):
 
     @property
     def City(self):
+        """市
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -6492,6 +7716,9 @@ class ShopInfo(AbstractModel):
 
     @property
     def CompanyName(self):
+        """公司名称
+        :rtype: str
+        """
         return self._CompanyName
 
     @CompanyName.setter
@@ -6537,6 +7764,9 @@ class TrajectorySunData(AbstractModel):
 
     @property
     def Zones(self):
+        """区域动线，形如 x-x-x-x-x，其中 x 为区域 ID
+        :rtype: str
+        """
         return self._Zones
 
     @Zones.setter
@@ -6545,6 +7775,9 @@ class TrajectorySunData(AbstractModel):
 
     @property
     def Count(self):
+        """该动线出现次数
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -6553,6 +7786,9 @@ class TrajectorySunData(AbstractModel):
 
     @property
     def AvgStayTime(self):
+        """该动线平均停留时间（秒）
+        :rtype: int
+        """
         return self._AvgStayTime
 
     @AvgStayTime.setter
@@ -6591,6 +7827,9 @@ class ZoneAgeGroupAvrStayTime(AbstractModel):
 
     @property
     def MaleAvrStayTime(self):
+        """男性平均停留时间
+        :rtype: float
+        """
         return self._MaleAvrStayTime
 
     @MaleAvrStayTime.setter
@@ -6599,6 +7838,9 @@ class ZoneAgeGroupAvrStayTime(AbstractModel):
 
     @property
     def FemaleAvrStayTime(self):
+        """女性平均停留时间
+        :rtype: float
+        """
         return self._FemaleAvrStayTime
 
     @FemaleAvrStayTime.setter
@@ -6636,6 +7878,9 @@ class ZoneDayFlow(AbstractModel):
 
     @property
     def Day(self):
+        """日期，如 2018-08-6
+        :rtype: str
+        """
         return self._Day
 
     @Day.setter
@@ -6644,6 +7889,9 @@ class ZoneDayFlow(AbstractModel):
 
     @property
     def FlowCount(self):
+        """客流量
+        :rtype: int
+        """
         return self._FlowCount
 
     @FlowCount.setter
@@ -6687,6 +7935,9 @@ class ZoneFlowAndAvrStayTime(AbstractModel):
 
     @property
     def ZoneId(self):
+        """区域id
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -6695,6 +7946,9 @@ class ZoneFlowAndAvrStayTime(AbstractModel):
 
     @property
     def ZoneName(self):
+        """区域名称
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -6703,6 +7957,9 @@ class ZoneFlowAndAvrStayTime(AbstractModel):
 
     @property
     def FlowCount(self):
+        """人流量
+        :rtype: int
+        """
         return self._FlowCount
 
     @FlowCount.setter
@@ -6711,6 +7968,9 @@ class ZoneFlowAndAvrStayTime(AbstractModel):
 
     @property
     def AvrStayTime(self):
+        """平均停留时长
+        :rtype: int
+        """
         return self._AvrStayTime
 
     @AvrStayTime.setter
@@ -6750,6 +8010,9 @@ class ZoneHourFlow(AbstractModel):
 
     @property
     def Hour(self):
+        """分时 0~23
+        :rtype: int
+        """
         return self._Hour
 
     @Hour.setter
@@ -6758,6 +8021,9 @@ class ZoneHourFlow(AbstractModel):
 
     @property
     def FlowCount(self):
+        """客流量
+        :rtype: int
+        """
         return self._FlowCount
 
     @FlowCount.setter
@@ -6795,6 +8061,9 @@ class ZoneTrafficInfo(AbstractModel):
 
     @property
     def Date(self):
+        """日期
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -6803,6 +8072,9 @@ class ZoneTrafficInfo(AbstractModel):
 
     @property
     def ZoneTrafficInfoDetailSet(self):
+        """门店区域客流详细信息
+        :rtype: list of ZoneTrafficInfoDetail
+        """
         return self._ZoneTrafficInfoDetailSet
 
     @ZoneTrafficInfoDetailSet.setter
@@ -6851,6 +8123,9 @@ class ZoneTrafficInfoDetail(AbstractModel):
 
     @property
     def ZoneId(self):
+        """区域ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -6859,6 +8134,9 @@ class ZoneTrafficInfoDetail(AbstractModel):
 
     @property
     def ZoneName(self):
+        """区域名称
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -6867,6 +8145,9 @@ class ZoneTrafficInfoDetail(AbstractModel):
 
     @property
     def TrafficTotalCount(self):
+        """客流量
+        :rtype: int
+        """
         return self._TrafficTotalCount
 
     @TrafficTotalCount.setter
@@ -6875,6 +8156,9 @@ class ZoneTrafficInfoDetail(AbstractModel):
 
     @property
     def AvgStayTime(self):
+        """平均停留时间
+        :rtype: int
+        """
         return self._AvgStayTime
 
     @AvgStayTime.setter

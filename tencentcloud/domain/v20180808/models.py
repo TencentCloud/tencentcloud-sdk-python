@@ -45,6 +45,10 @@ class AuctionInfo(AbstractModel):
 
     @property
     def Bidder(self):
+        """竞拍人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Bidder
 
     @Bidder.setter
@@ -53,6 +57,10 @@ class AuctionInfo(AbstractModel):
 
     @property
     def AuctionTime(self):
+        """竞拍时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AuctionTime
 
     @AuctionTime.setter
@@ -61,6 +69,10 @@ class AuctionInfo(AbstractModel):
 
     @property
     def AuctionPrice(self):
+        """竞拍价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._AuctionPrice
 
     @AuctionPrice.setter
@@ -69,6 +81,10 @@ class AuctionInfo(AbstractModel):
 
     @property
     def Status(self):
+        """状态 up: 领先 down: 落后
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -113,6 +129,9 @@ false：关闭60天内禁止转移注册商锁定
 
     @property
     def Domains(self):
+        """批量修改的域名。
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -121,6 +140,9 @@ false：关闭60天内禁止转移注册商锁定
 
     @property
     def TemplateId(self):
+        """模板ID(可从模板列表接口获取)
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -129,6 +151,11 @@ false：关闭60天内禁止转移注册商锁定
 
     @property
     def LockTransfer(self):
+        """true： 开启60天内禁止转移注册商锁定
+false：关闭60天内禁止转移注册商锁定
+默认 true
+        :rtype: bool
+        """
         return self._LockTransfer
 
     @LockTransfer.setter
@@ -167,6 +194,9 @@ class BatchModifyDomainInfoResponse(AbstractModel):
 
     @property
     def LogId(self):
+        """日志ID
+        :rtype: int
+        """
         return self._LogId
 
     @LogId.setter
@@ -175,6 +205,9 @@ class BatchModifyDomainInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -207,6 +240,9 @@ class BatchStatus(AbstractModel):
 
     @property
     def LogId(self):
+        """批量任务id
+        :rtype: int
+        """
         return self._LogId
 
     @LogId.setter
@@ -215,6 +251,9 @@ class BatchStatus(AbstractModel):
 
     @property
     def Status(self):
+        """批量任务状态  doing：进行中  success：成功  failed：失败  partial_success：部分成功
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -223,6 +262,9 @@ class BatchStatus(AbstractModel):
 
     @property
     def BatchAction(self):
+        """批量任务类型
+        :rtype: str
+        """
         return self._BatchAction
 
     @BatchAction.setter
@@ -258,6 +300,9 @@ class BidDetailPageRequest(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -315,6 +360,10 @@ class BidDetailPageResponse(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -323,6 +372,10 @@ class BidDetailPageResponse(AbstractModel):
 
     @property
     def CurrentPrice(self):
+        """当前域名价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._CurrentPrice
 
     @CurrentPrice.setter
@@ -331,6 +384,10 @@ class BidDetailPageResponse(AbstractModel):
 
     @property
     def BidPrice(self):
+        """用户上次出价
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._BidPrice
 
     @BidPrice.setter
@@ -339,6 +396,10 @@ class BidDetailPageResponse(AbstractModel):
 
     @property
     def CurrentPriceScope(self):
+        """当前加价幅度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._CurrentPriceScope
 
     @CurrentPriceScope.setter
@@ -347,6 +408,10 @@ class BidDetailPageResponse(AbstractModel):
 
     @property
     def PriceScope(self):
+        """加价幅度区间配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PriceScopeConf
+        """
         return self._PriceScope
 
     @PriceScope.setter
@@ -355,6 +420,10 @@ class BidDetailPageResponse(AbstractModel):
 
     @property
     def DepositPrice(self):
+        """用户当前已经支付了的保证金
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._DepositPrice
 
     @DepositPrice.setter
@@ -363,6 +432,9 @@ class BidDetailPageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -402,6 +474,9 @@ class BidPreDomainsRequest(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -410,6 +485,9 @@ class BidPreDomainsRequest(AbstractModel):
 
     @property
     def Price(self):
+        """价格
+        :rtype: int
+        """
         return self._Price
 
     @Price.setter
@@ -444,6 +522,9 @@ class BidPreDomainsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -494,6 +575,10 @@ class BiddingAppointResult(AbstractModel):
 
     @property
     def BusinessID(self):
+        """business_id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BusinessID
 
     @BusinessID.setter
@@ -502,6 +587,10 @@ class BiddingAppointResult(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -510,6 +599,10 @@ class BiddingAppointResult(AbstractModel):
 
     @property
     def AppointPrice(self):
+        """预定价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AppointPrice
 
     @AppointPrice.setter
@@ -518,6 +611,10 @@ class BiddingAppointResult(AbstractModel):
 
     @property
     def AppointBondPrice(self):
+        """预约保证金
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AppointBondPrice
 
     @AppointBondPrice.setter
@@ -526,6 +623,10 @@ class BiddingAppointResult(AbstractModel):
 
     @property
     def AppointEndTime(self):
+        """预约结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AppointEndTime
 
     @AppointEndTime.setter
@@ -534,6 +635,10 @@ class BiddingAppointResult(AbstractModel):
 
     @property
     def AppointNum(self):
+        """预约人数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AppointNum
 
     @AppointNum.setter
@@ -542,6 +647,10 @@ class BiddingAppointResult(AbstractModel):
 
     @property
     def Status(self):
+        """1 已预约，2 竞价中，3 等待出价 4 竞价失败 5 等待支付 6 等待转移，7 转移中 8 交易成功 9 预约持有者赎回 10 竞价持有者赎回 11 其他阶段持有者赎回 12 违约
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -584,6 +693,9 @@ class BiddingPreReleaseRequest(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -592,6 +704,9 @@ class BiddingPreReleaseRequest(AbstractModel):
 
     @property
     def Price(self):
+        """价格
+        :rtype: float
+        """
         return self._Price
 
     @Price.setter
@@ -632,6 +747,9 @@ class BiddingPreReleaseResponse(AbstractModel):
 
     @property
     def IsNeedPay(self):
+        """是否需要额外支付
+        :rtype: bool
+        """
         return self._IsNeedPay
 
     @IsNeedPay.setter
@@ -640,6 +758,9 @@ class BiddingPreReleaseResponse(AbstractModel):
 
     @property
     def BillingParam(self):
+        """计费请求参数，以Json字符串的形式进行返回。
+        :rtype: str
+        """
         return self._BillingParam
 
     @BillingParam.setter
@@ -648,6 +769,9 @@ class BiddingPreReleaseResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -712,6 +836,10 @@ class BiddingResult(AbstractModel):
 
     @property
     def BusinessID(self):
+        """business_id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BusinessID
 
     @BusinessID.setter
@@ -720,6 +848,10 @@ class BiddingResult(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -728,6 +860,10 @@ class BiddingResult(AbstractModel):
 
     @property
     def CurrentPrice(self):
+        """当前价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CurrentPrice
 
     @CurrentPrice.setter
@@ -736,6 +872,10 @@ class BiddingResult(AbstractModel):
 
     @property
     def CurrentNickname(self):
+        """当前用户昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CurrentNickname
 
     @CurrentNickname.setter
@@ -744,6 +884,10 @@ class BiddingResult(AbstractModel):
 
     @property
     def BiddingPrice(self):
+        """我的出价
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BiddingPrice
 
     @BiddingPrice.setter
@@ -752,6 +896,10 @@ class BiddingResult(AbstractModel):
 
     @property
     def BiddingBondPrice(self):
+        """竞价保证金
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BiddingBondPrice
 
     @BiddingBondPrice.setter
@@ -760,6 +908,10 @@ class BiddingResult(AbstractModel):
 
     @property
     def BiddingEndTime(self):
+        """竞价结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BiddingEndTime
 
     @BiddingEndTime.setter
@@ -768,6 +920,10 @@ class BiddingResult(AbstractModel):
 
     @property
     def BiddingFlag(self):
+        """竞价标识，1 领先，2 落后
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BiddingFlag
 
     @BiddingFlag.setter
@@ -776,6 +932,10 @@ class BiddingResult(AbstractModel):
 
     @property
     def BiddingNum(self):
+        """出价次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BiddingNum
 
     @BiddingNum.setter
@@ -784,6 +944,10 @@ class BiddingResult(AbstractModel):
 
     @property
     def Status(self):
+        """2 竞价中  3 等待出价 4 竞价失败 10 竞价持有者赎回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -827,6 +991,10 @@ class BiddingSuccessfulResult(AbstractModel):
 
     @property
     def PayEndTime(self):
+        """支付结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PayEndTime
 
     @PayEndTime.setter
@@ -938,6 +1106,9 @@ GZJGZY: 公证机构执业证。
 
     @property
     def CertificateCode(self):
+        """证件号码。
+        :rtype: str
+        """
         return self._CertificateCode
 
     @CertificateCode.setter
@@ -946,6 +1117,37 @@ GZJGZY: 公证机构执业证。
 
     @property
     def CertificateType(self):
+        """证件类型。
+SFZ: 身份证。
+HZ: 护照。
+TXZ: 中国港澳居民来往内地通行证。
+TWSFZ: 中国台湾居民来往大陆通行证。
+GWSFZ: 外国人永久居留身份证。
+ORG: 组织机构代码证
+YYZZ: 工商营业执照。
+TYDMZ: 统一社会信用代码证书。
+BDDH: 部队代号
+JDXKZ: 军队单位对外有偿服务许可证。
+SYZS: 事业单位法定代表人证书。
+GWCZDJZ: 外国企业常驻代表机构登记证。
+STDJZ: 社会团体法定代表人登记证书。
+ZJDJZ: 宗教活动场所登记证。
+MBDJZ: 民办非企业单位登记证书。
+JJDJZ: 基金会法定代表人登记证书。
+LSXKZ: 律师事务所执业许可证。
+GWZHDJZ: 外国在华文化中心登记证。
+GWLYDJZ: 外国政府旅游部门常驻代表机构批准登记证。
+SFXKZ: 司法鉴定许可证
+GWJGZJ: 外国机构证件。
+SHFWJGZ: 社会服务机构登记证书。
+MBXXXKZ: 民办学校办学许可证。
+YLJGXKZ: 医疗机构执业许可证。
+GAJZZ: 中国港澳居住证。
+TWJZZ: 中国台湾居住证。
+QTTYDM: 其他-统一社会信用代码证书。
+GZJGZY: 公证机构执业证。
+        :rtype: str
+        """
         return self._CertificateType
 
     @CertificateType.setter
@@ -954,6 +1156,9 @@ GZJGZY: 公证机构执业证。
 
     @property
     def ImgUrl(self):
+        """证件照片地址。
+        :rtype: str
+        """
         return self._ImgUrl
 
     @ImgUrl.setter
@@ -962,6 +1167,10 @@ GZJGZY: 公证机构执业证。
 
     @property
     def OriginImgUrl(self):
+        """原始照片地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OriginImgUrl
 
     @OriginImgUrl.setter
@@ -970,6 +1179,10 @@ GZJGZY: 公证机构执业证。
 
     @property
     def RegistrantCertificateCode(self):
+        """联系人证件号码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegistrantCertificateCode
 
     @RegistrantCertificateCode.setter
@@ -978,6 +1191,38 @@ GZJGZY: 公证机构执业证。
 
     @property
     def RegistrantCertificateType(self):
+        """联系人证件类型。
+SFZ: 身份证。
+HZ: 护照。
+TXZ: 中国港澳居民来往内地通行证。
+TWSFZ: 中国台湾居民来往大陆通行证。
+GWSFZ: 外国人永久居留身份证。
+ORG: 组织机构代码证
+YYZZ: 工商营业执照。
+TYDMZ: 统一社会信用代码证书。
+BDDH: 部队代号
+JDXKZ: 军队单位对外有偿服务许可证。
+SYZS: 事业单位法定代表人证书。
+GWCZDJZ: 外国企业常驻代表机构登记证。
+STDJZ: 社会团体法定代表人登记证书。
+ZJDJZ: 宗教活动场所登记证。
+MBDJZ: 民办非企业单位登记证书。
+JJDJZ: 基金会法定代表人登记证书。
+LSXKZ: 律师事务所执业许可证。
+GWZHDJZ: 外国在华文化中心登记证。
+GWLYDJZ: 外国政府旅游部门常驻代表机构批准登记证。
+SFXKZ: 司法鉴定许可证
+GWJGZJ: 外国机构证件。
+SHFWJGZ: 社会服务机构登记证书。
+MBXXXKZ: 民办学校办学许可证。
+YLJGXKZ: 医疗机构执业许可证。
+GAJZZ: 中国港澳居住证。
+TWJZZ: 中国台湾居住证。
+QTTYDM: 其他-统一社会信用代码证书。
+GZJGZY: 公证机构执业证。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegistrantCertificateType
 
     @RegistrantCertificateType.setter
@@ -986,6 +1231,10 @@ GZJGZY: 公证机构执业证。
 
     @property
     def RegistrantImgUrl(self):
+        """联系人证件照片地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegistrantImgUrl
 
     @RegistrantImgUrl.setter
@@ -1025,6 +1274,9 @@ class CheckBatchStatusRequest(AbstractModel):
 
     @property
     def LogIds(self):
+        """操作日志 ID数组，最多 200 个
+        :rtype: list of int non-negative
+        """
         return self._LogIds
 
     @LogIds.setter
@@ -1061,6 +1313,9 @@ class CheckBatchStatusResponse(AbstractModel):
 
     @property
     def StatusSet(self):
+        """批量任务状态集
+        :rtype: list of BatchStatus
+        """
         return self._StatusSet
 
     @StatusSet.setter
@@ -1069,6 +1324,9 @@ class CheckBatchStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1103,6 +1361,9 @@ class CheckDomainRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """所查询域名名称
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -1111,6 +1372,9 @@ class CheckDomainRequest(AbstractModel):
 
     @property
     def Period(self):
+        """年限。该参数为空时无法查询溢价词域名
+        :rtype: str
+        """
         return self._Period
 
     @Period.setter
@@ -1188,6 +1452,9 @@ class CheckDomainResponse(AbstractModel):
 
     @property
     def DomainName(self):
+        """所查询域名名称
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -1196,6 +1463,9 @@ class CheckDomainResponse(AbstractModel):
 
     @property
     def Available(self):
+        """是否能够注册
+        :rtype: bool
+        """
         return self._Available
 
     @Available.setter
@@ -1204,6 +1474,9 @@ class CheckDomainResponse(AbstractModel):
 
     @property
     def Reason(self):
+        """不能注册原因
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -1212,6 +1485,9 @@ class CheckDomainResponse(AbstractModel):
 
     @property
     def Premium(self):
+        """是否是溢价词
+        :rtype: bool
+        """
         return self._Premium
 
     @Premium.setter
@@ -1220,6 +1496,9 @@ class CheckDomainResponse(AbstractModel):
 
     @property
     def Price(self):
+        """域名价格
+        :rtype: int
+        """
         return self._Price
 
     @Price.setter
@@ -1228,6 +1507,9 @@ class CheckDomainResponse(AbstractModel):
 
     @property
     def BlackWord(self):
+        """是否是敏感词
+        :rtype: bool
+        """
         return self._BlackWord
 
     @BlackWord.setter
@@ -1236,6 +1518,10 @@ class CheckDomainResponse(AbstractModel):
 
     @property
     def Describe(self):
+        """溢价词描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Describe
 
     @Describe.setter
@@ -1244,6 +1530,10 @@ class CheckDomainResponse(AbstractModel):
 
     @property
     def FeeRenew(self):
+        """溢价词的续费价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FeeRenew
 
     @FeeRenew.setter
@@ -1252,6 +1542,10 @@ class CheckDomainResponse(AbstractModel):
 
     @property
     def RealPrice(self):
+        """域名真实价格, 溢价词时价格跟年限有关，非溢价词时价格为1年的价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RealPrice
 
     @RealPrice.setter
@@ -1260,6 +1554,10 @@ class CheckDomainResponse(AbstractModel):
 
     @property
     def FeeTransfer(self):
+        """溢价词的转入价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FeeTransfer
 
     @FeeTransfer.setter
@@ -1268,6 +1566,9 @@ class CheckDomainResponse(AbstractModel):
 
     @property
     def FeeRestore(self):
+        """溢价词的赎回价格
+        :rtype: int
+        """
         return self._FeeRestore
 
     @FeeRestore.setter
@@ -1276,6 +1577,9 @@ class CheckDomainResponse(AbstractModel):
 
     @property
     def Period(self):
+        """检测年限
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -1284,6 +1588,9 @@ class CheckDomainResponse(AbstractModel):
 
     @property
     def RecordSupport(self):
+        """是否支持北京备案  true 支持  false 不支持
+        :rtype: bool
+        """
         return self._RecordSupport
 
     @RecordSupport.setter
@@ -1292,6 +1599,9 @@ class CheckDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1375,6 +1685,9 @@ class ContactInfo(AbstractModel):
 
     @property
     def OrganizationNameCN(self):
+        """注册人（中文）
+        :rtype: str
+        """
         return self._OrganizationNameCN
 
     @OrganizationNameCN.setter
@@ -1383,6 +1696,9 @@ class ContactInfo(AbstractModel):
 
     @property
     def OrganizationName(self):
+        """注册人（英文）
+        :rtype: str
+        """
         return self._OrganizationName
 
     @OrganizationName.setter
@@ -1391,6 +1707,9 @@ class ContactInfo(AbstractModel):
 
     @property
     def RegistrantNameCN(self):
+        """联系人（中文）
+        :rtype: str
+        """
         return self._RegistrantNameCN
 
     @RegistrantNameCN.setter
@@ -1399,6 +1718,9 @@ class ContactInfo(AbstractModel):
 
     @property
     def RegistrantName(self):
+        """联系人（英文）
+        :rtype: str
+        """
         return self._RegistrantName
 
     @RegistrantName.setter
@@ -1407,6 +1729,9 @@ class ContactInfo(AbstractModel):
 
     @property
     def ProvinceCN(self):
+        """省份（中文）
+        :rtype: str
+        """
         return self._ProvinceCN
 
     @ProvinceCN.setter
@@ -1415,6 +1740,9 @@ class ContactInfo(AbstractModel):
 
     @property
     def CityCN(self):
+        """城市（中文）
+        :rtype: str
+        """
         return self._CityCN
 
     @CityCN.setter
@@ -1423,6 +1751,9 @@ class ContactInfo(AbstractModel):
 
     @property
     def StreetCN(self):
+        """街道（中文）
+        :rtype: str
+        """
         return self._StreetCN
 
     @StreetCN.setter
@@ -1431,6 +1762,9 @@ class ContactInfo(AbstractModel):
 
     @property
     def Street(self):
+        """街道（英文）
+        :rtype: str
+        """
         return self._Street
 
     @Street.setter
@@ -1439,6 +1773,9 @@ class ContactInfo(AbstractModel):
 
     @property
     def CountryCN(self):
+        """国家（中文）
+        :rtype: str
+        """
         return self._CountryCN
 
     @CountryCN.setter
@@ -1447,6 +1784,9 @@ class ContactInfo(AbstractModel):
 
     @property
     def Telephone(self):
+        """联系人手机号
+        :rtype: str
+        """
         return self._Telephone
 
     @Telephone.setter
@@ -1455,6 +1795,9 @@ class ContactInfo(AbstractModel):
 
     @property
     def Email(self):
+        """联系人邮箱
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -1463,6 +1806,9 @@ class ContactInfo(AbstractModel):
 
     @property
     def ZipCode(self):
+        """邮编
+        :rtype: str
+        """
         return self._ZipCode
 
     @ZipCode.setter
@@ -1471,6 +1817,9 @@ class ContactInfo(AbstractModel):
 
     @property
     def RegistrantType(self):
+        """用户类型 E:组织， I:个人
+        :rtype: str
+        """
         return self._RegistrantType
 
     @RegistrantType.setter
@@ -1479,6 +1828,9 @@ class ContactInfo(AbstractModel):
 
     @property
     def Province(self):
+        """省份（英文）。作为入参时可以不填
+        :rtype: str
+        """
         return self._Province
 
     @Province.setter
@@ -1487,6 +1839,9 @@ class ContactInfo(AbstractModel):
 
     @property
     def City(self):
+        """城市（英文）。作为入参时可以不填
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -1495,6 +1850,9 @@ class ContactInfo(AbstractModel):
 
     @property
     def Country(self):
+        """国家（英文）。作为入参时可以不填
+        :rtype: str
+        """
         return self._Country
 
     @Country.setter
@@ -1549,6 +1907,9 @@ class CreateCustomDnsHostRequest(AbstractModel):
 
     @property
     def DomainId(self):
+        """域名实例ID
+        :rtype: str
+        """
         return self._DomainId
 
     @DomainId.setter
@@ -1557,6 +1918,9 @@ class CreateCustomDnsHostRequest(AbstractModel):
 
     @property
     def DnsName(self):
+        """Dns名称
+        :rtype: str
+        """
         return self._DnsName
 
     @DnsName.setter
@@ -1565,6 +1929,9 @@ class CreateCustomDnsHostRequest(AbstractModel):
 
     @property
     def IpSet(self):
+        """IP地址列表
+        :rtype: list of str
+        """
         return self._IpSet
 
     @IpSet.setter
@@ -1603,6 +1970,9 @@ class CreateCustomDnsHostResponse(AbstractModel):
 
     @property
     def LogId(self):
+        """异步任务ID
+        :rtype: int
+        """
         return self._LogId
 
     @LogId.setter
@@ -1611,6 +1981,9 @@ class CreateCustomDnsHostResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1669,6 +2042,9 @@ class CreateDomainBatchRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板ID。详情请查看：[获取模板列表](https://cloud.tencent.com/document/product/242/48940)
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -1677,6 +2053,9 @@ class CreateDomainBatchRequest(AbstractModel):
 
     @property
     def Period(self):
+        """购买域名的年限，可选值：[1-10]
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -1685,6 +2064,9 @@ class CreateDomainBatchRequest(AbstractModel):
 
     @property
     def Domains(self):
+        """批量购买的域名,最多为4000个
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -1693,6 +2075,9 @@ class CreateDomainBatchRequest(AbstractModel):
 
     @property
     def PayMode(self):
+        """付费模式 0手动在线付费，1使用余额付费，2使用特惠包
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -1701,6 +2086,11 @@ class CreateDomainBatchRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """自动续费开关。有两个可选值：
+0 表示关闭，不自动续费（默认值）
+1 表示开启，将自动续费
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -1709,6 +2099,9 @@ class CreateDomainBatchRequest(AbstractModel):
 
     @property
     def PackageResourceId(self):
+        """使用的特惠包ID，PayMode为2时必填
+        :rtype: str
+        """
         return self._PackageResourceId
 
     @PackageResourceId.setter
@@ -1717,6 +2110,9 @@ class CreateDomainBatchRequest(AbstractModel):
 
     @property
     def UpdateProhibition(self):
+        """是否开启更新锁：0=默认不开启，1=开启
+        :rtype: int
+        """
         return self._UpdateProhibition
 
     @UpdateProhibition.setter
@@ -1725,6 +2121,9 @@ class CreateDomainBatchRequest(AbstractModel):
 
     @property
     def TransferProhibition(self):
+        """是否开启转移锁：0=默认不开启，1=开启
+        :rtype: int
+        """
         return self._TransferProhibition
 
     @TransferProhibition.setter
@@ -1733,6 +2132,9 @@ class CreateDomainBatchRequest(AbstractModel):
 
     @property
     def ChannelFrom(self):
+        """渠道来源，pc/miniprogram/h5等
+        :rtype: str
+        """
         return self._ChannelFrom
 
     @ChannelFrom.setter
@@ -1741,6 +2143,9 @@ class CreateDomainBatchRequest(AbstractModel):
 
     @property
     def OrderFrom(self):
+        """订单来源，common正常/dianshi_active点石活动等
+        :rtype: str
+        """
         return self._OrderFrom
 
     @OrderFrom.setter
@@ -1749,6 +2154,9 @@ class CreateDomainBatchRequest(AbstractModel):
 
     @property
     def ActivityId(self):
+        """活动id
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -1796,6 +2204,10 @@ class CreateDomainBatchResponse(AbstractModel):
 
     @property
     def LogId(self):
+        """批量日志ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LogId
 
     @LogId.setter
@@ -1804,6 +2216,9 @@ class CreateDomainBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1830,6 +2245,9 @@ class CreateDomainRedemptionRequest(AbstractModel):
 
     @property
     def DomainId(self):
+        """域名 ID
+        :rtype: str
+        """
         return self._DomainId
 
     @DomainId.setter
@@ -1863,6 +2281,9 @@ class CreateDomainRedemptionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1894,6 +2315,9 @@ class CreatePhoneEmailRequest(AbstractModel):
 
     @property
     def Code(self):
+        """手机号或者邮箱
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -1902,6 +2326,9 @@ class CreatePhoneEmailRequest(AbstractModel):
 
     @property
     def Type(self):
+        """1：手机   2：邮箱
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -1910,6 +2337,9 @@ class CreatePhoneEmailRequest(AbstractModel):
 
     @property
     def VerifyCode(self):
+        """验证码(通过SendPhoneEmailCode发送到手机或邮箱的验证码)
+        :rtype: str
+        """
         return self._VerifyCode
 
     @VerifyCode.setter
@@ -1945,6 +2375,9 @@ class CreatePhoneEmailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1973,6 +2406,9 @@ class CreateTemplateRequest(AbstractModel):
 
     @property
     def ContactInfo(self):
+        """联系人信息
+        :rtype: :class:`tencentcloud.domain.v20180808.models.ContactInfo`
+        """
         return self._ContactInfo
 
     @ContactInfo.setter
@@ -1981,6 +2417,9 @@ class CreateTemplateRequest(AbstractModel):
 
     @property
     def CertificateInfo(self):
+        """证件信息
+        :rtype: :class:`tencentcloud.domain.v20180808.models.CertificateInfo`
+        """
         return self._CertificateInfo
 
     @CertificateInfo.setter
@@ -2022,6 +2461,9 @@ class CreateTemplateResponse(AbstractModel):
 
     @property
     def Template(self):
+        """模板信息
+        :rtype: :class:`tencentcloud.domain.v20180808.models.TemplateInfo`
+        """
         return self._Template
 
     @Template.setter
@@ -2030,6 +2472,9 @@ class CreateTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2061,6 +2506,9 @@ class CustomDnsHost(AbstractModel):
 
     @property
     def DnsName(self):
+        """DNS名称
+        :rtype: str
+        """
         return self._DnsName
 
     @DnsName.setter
@@ -2069,6 +2517,9 @@ class CustomDnsHost(AbstractModel):
 
     @property
     def IpSet(self):
+        """IP地址列表
+        :rtype: list of str
+        """
         return self._IpSet
 
     @IpSet.setter
@@ -2103,6 +2554,9 @@ class DeleteBiddingRequest(AbstractModel):
 
     @property
     def BusinessID(self):
+        """business_id
+        :rtype: str
+        """
         return self._BusinessID
 
     @BusinessID.setter
@@ -2136,6 +2590,9 @@ class DeleteBiddingResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2164,6 +2621,9 @@ class DeleteCustomDnsHostRequest(AbstractModel):
 
     @property
     def DomainId(self):
+        """域名实例ID
+        :rtype: str
+        """
         return self._DomainId
 
     @DomainId.setter
@@ -2172,6 +2632,9 @@ class DeleteCustomDnsHostRequest(AbstractModel):
 
     @property
     def DnsName(self):
+        """DNS名称
+        :rtype: str
+        """
         return self._DnsName
 
     @DnsName.setter
@@ -2209,6 +2672,9 @@ class DeleteCustomDnsHostResponse(AbstractModel):
 
     @property
     def LogId(self):
+        """异步任务ID
+        :rtype: int
+        """
         return self._LogId
 
     @LogId.setter
@@ -2217,6 +2683,9 @@ class DeleteCustomDnsHostResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2246,6 +2715,9 @@ class DeletePhoneEmailRequest(AbstractModel):
 
     @property
     def Code(self):
+        """手机或者邮箱
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -2254,6 +2726,9 @@ class DeletePhoneEmailRequest(AbstractModel):
 
     @property
     def Type(self):
+        """1：手机  2：邮箱
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -2288,6 +2763,9 @@ class DeletePhoneEmailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2313,6 +2791,9 @@ class DeleteReservedPreDomainInfoRequest(AbstractModel):
 
     @property
     def ResourceIdList(self):
+        """资源ID列表
+        :rtype: list of str
+        """
         return self._ResourceIdList
 
     @ResourceIdList.setter
@@ -2346,6 +2827,9 @@ class DeleteReservedPreDomainInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2371,6 +2855,9 @@ class DeleteTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板ID(可通过模板信息列表获取)
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -2404,6 +2891,9 @@ class DeleteTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2435,6 +2925,9 @@ class DescribeAuctionListRequest(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID，通过接口DescribeBiddingList返回结果中获取
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -2443,6 +2936,9 @@ class DescribeAuctionListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """条数，默认10条
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2451,6 +2947,9 @@ class DescribeAuctionListRequest(AbstractModel):
 
     @property
     def OffSet(self):
+        """偏移量
+        :rtype: int
+        """
         return self._OffSet
 
     @OffSet.setter
@@ -2494,6 +2993,10 @@ class DescribeAuctionListResponse(AbstractModel):
 
     @property
     def AuctionList(self):
+        """竞拍详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AuctionInfo
+        """
         return self._AuctionList
 
     @AuctionList.setter
@@ -2502,6 +3005,10 @@ class DescribeAuctionListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2510,6 +3017,9 @@ class DescribeAuctionListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2548,6 +3058,9 @@ class DescribeBatchOperationLogDetailsRequest(AbstractModel):
 
     @property
     def LogId(self):
+        """日志ID。
+        :rtype: int
+        """
         return self._LogId
 
     @LogId.setter
@@ -2556,6 +3069,9 @@ class DescribeBatchOperationLogDetailsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2564,6 +3080,9 @@ class DescribeBatchOperationLogDetailsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为200。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2606,6 +3125,9 @@ class DescribeBatchOperationLogDetailsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2614,6 +3136,10 @@ class DescribeBatchOperationLogDetailsResponse(AbstractModel):
 
     @property
     def DomainBatchDetailSet(self):
+        """日志详情列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DomainBatchDetailSet
+        """
         return self._DomainBatchDetailSet
 
     @DomainBatchDetailSet.setter
@@ -2622,6 +3148,9 @@ class DescribeBatchOperationLogDetailsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2657,6 +3186,9 @@ class DescribeBatchOperationLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2665,6 +3197,9 @@ class DescribeBatchOperationLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为200。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2706,6 +3241,9 @@ class DescribeBatchOperationLogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2714,6 +3252,10 @@ class DescribeBatchOperationLogsResponse(AbstractModel):
 
     @property
     def DomainBatchLogSet(self):
+        """日志列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DomainBatchLogSet
+        """
         return self._DomainBatchLogSet
 
     @DomainBatchLogSet.setter
@@ -2722,6 +3264,9 @@ class DescribeBatchOperationLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2754,6 +3299,9 @@ class DescribeBiddingAppointDetailRequest(AbstractModel):
 
     @property
     def BusinessID(self):
+        """business_id
+        :rtype: str
+        """
         return self._BusinessID
 
     @BusinessID.setter
@@ -2821,6 +3369,9 @@ yes：退回 no: 未退回
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -2829,6 +3380,9 @@ yes：退回 no: 未退回
 
     @property
     def AppointNum(self):
+        """预约人数
+        :rtype: int
+        """
         return self._AppointNum
 
     @AppointNum.setter
@@ -2837,6 +3391,9 @@ yes：退回 no: 未退回
 
     @property
     def AppointStartTime(self):
+        """预约开始时间
+        :rtype: str
+        """
         return self._AppointStartTime
 
     @AppointStartTime.setter
@@ -2845,6 +3402,9 @@ yes：退回 no: 未退回
 
     @property
     def AppointEndTime(self):
+        """预约结束时间
+        :rtype: str
+        """
         return self._AppointEndTime
 
     @AppointEndTime.setter
@@ -2853,6 +3413,9 @@ yes：退回 no: 未退回
 
     @property
     def RegTime(self):
+        """ 注册时间
+        :rtype: str
+        """
         return self._RegTime
 
     @RegTime.setter
@@ -2861,6 +3424,9 @@ yes：退回 no: 未退回
 
     @property
     def ExpireTime(self):
+        """过期时间
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -2869,6 +3435,9 @@ yes：退回 no: 未退回
 
     @property
     def DeleteTime(self):
+        """删除时间
+        :rtype: str
+        """
         return self._DeleteTime
 
     @DeleteTime.setter
@@ -2877,6 +3446,9 @@ yes：退回 no: 未退回
 
     @property
     def AppointPrice(self):
+        """当前价格
+        :rtype: int
+        """
         return self._AppointPrice
 
     @AppointPrice.setter
@@ -2885,6 +3457,9 @@ yes：退回 no: 未退回
 
     @property
     def AppointBondPrice(self):
+        """预约保证金
+        :rtype: int
+        """
         return self._AppointBondPrice
 
     @AppointBondPrice.setter
@@ -2893,6 +3468,9 @@ yes：退回 no: 未退回
 
     @property
     def Status(self):
+        """1 已预约，2 竞价中，3 等待出价 4 竞价失败 5 等待支付 6 等待转移，7 转移中 8 交易成功 9 预约持有者赎回 10 竞价持有者赎回 11 其他阶段持有者赎回 12 违约
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2901,6 +3479,10 @@ yes：退回 no: 未退回
 
     @property
     def BiddingBondRefund(self):
+        """预约保证金是否已经退回
+yes：退回 no: 未退回
+        :rtype: str
+        """
         return self._BiddingBondRefund
 
     @BiddingBondRefund.setter
@@ -2909,6 +3491,9 @@ yes：退回 no: 未退回
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2960,6 +3545,9 @@ class DescribeBiddingAppointListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -2968,6 +3556,9 @@ class DescribeBiddingAppointListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页数量
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -2976,6 +3567,9 @@ class DescribeBiddingAppointListRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -2984,6 +3578,9 @@ class DescribeBiddingAppointListRequest(AbstractModel):
 
     @property
     def Status(self):
+        """状态： 1 已预约 9 预约持有者索回
+        :rtype: list of int non-negative
+        """
         return self._Status
 
     @Status.setter
@@ -2992,6 +3589,9 @@ class DescribeBiddingAppointListRequest(AbstractModel):
 
     @property
     def SortField(self):
+        """排序字段：AppointEndTime 预约结束时间
+        :rtype: str
+        """
         return self._SortField
 
     @SortField.setter
@@ -3000,6 +3600,9 @@ class DescribeBiddingAppointListRequest(AbstractModel):
 
     @property
     def SortOrder(self):
+        """排序规则：asc升序，desc降序
+        :rtype: str
+        """
         return self._SortOrder
 
     @SortOrder.setter
@@ -3044,6 +3647,9 @@ class DescribeBiddingAppointListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """搜索结果条数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -3052,6 +3658,9 @@ class DescribeBiddingAppointListResponse(AbstractModel):
 
     @property
     def AppointList(self):
+        """预约列表
+        :rtype: list of BiddingAppointResult
+        """
         return self._AppointList
 
     @AppointList.setter
@@ -3060,6 +3669,9 @@ class DescribeBiddingAppointListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3092,6 +3704,9 @@ class DescribeBiddingDetailRequest(AbstractModel):
 
     @property
     def BusinessID(self):
+        """business_id
+        :rtype: str
+        """
         return self._BusinessID
 
     @BusinessID.setter
@@ -3167,6 +3782,9 @@ class DescribeBiddingDetailResponse(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -3175,6 +3793,9 @@ class DescribeBiddingDetailResponse(AbstractModel):
 
     @property
     def BiddingNum(self):
+        """出价次数
+        :rtype: int
+        """
         return self._BiddingNum
 
     @BiddingNum.setter
@@ -3183,6 +3804,9 @@ class DescribeBiddingDetailResponse(AbstractModel):
 
     @property
     def BiddingStartTime(self):
+        """竞价开始时间
+        :rtype: str
+        """
         return self._BiddingStartTime
 
     @BiddingStartTime.setter
@@ -3191,6 +3815,9 @@ class DescribeBiddingDetailResponse(AbstractModel):
 
     @property
     def BiddingEndTime(self):
+        """竞价结束时间
+        :rtype: str
+        """
         return self._BiddingEndTime
 
     @BiddingEndTime.setter
@@ -3199,6 +3826,9 @@ class DescribeBiddingDetailResponse(AbstractModel):
 
     @property
     def RegTime(self):
+        """ 注册时间
+        :rtype: str
+        """
         return self._RegTime
 
     @RegTime.setter
@@ -3207,6 +3837,9 @@ class DescribeBiddingDetailResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """过期时间
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -3215,6 +3848,9 @@ class DescribeBiddingDetailResponse(AbstractModel):
 
     @property
     def DeleteTime(self):
+        """删除时间
+        :rtype: str
+        """
         return self._DeleteTime
 
     @DeleteTime.setter
@@ -3223,6 +3859,9 @@ class DescribeBiddingDetailResponse(AbstractModel):
 
     @property
     def CurrentPrice(self):
+        """当前价格
+        :rtype: int
+        """
         return self._CurrentPrice
 
     @CurrentPrice.setter
@@ -3231,6 +3870,9 @@ class DescribeBiddingDetailResponse(AbstractModel):
 
     @property
     def CurrentNickname(self):
+        """当前用户昵称
+        :rtype: str
+        """
         return self._CurrentNickname
 
     @CurrentNickname.setter
@@ -3239,6 +3881,9 @@ class DescribeBiddingDetailResponse(AbstractModel):
 
     @property
     def BiddingBondPrice(self):
+        """竞价保证金
+        :rtype: int
+        """
         return self._BiddingBondPrice
 
     @BiddingBondPrice.setter
@@ -3247,6 +3892,9 @@ class DescribeBiddingDetailResponse(AbstractModel):
 
     @property
     def Status(self):
+        """2 竞价中  3 等待出价 4 竞价失败 10 竞价持有者赎回
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -3255,6 +3903,9 @@ class DescribeBiddingDetailResponse(AbstractModel):
 
     @property
     def BiddingFlag(self):
+        """竞价标识，1 领先，2 落后
+        :rtype: int
+        """
         return self._BiddingFlag
 
     @BiddingFlag.setter
@@ -3263,6 +3914,9 @@ class DescribeBiddingDetailResponse(AbstractModel):
 
     @property
     def BiddingBondRefund(self):
+        """是否退款，yes表示退款，no表示不退款
+        :rtype: str
+        """
         return self._BiddingBondRefund
 
     @BiddingBondRefund.setter
@@ -3271,6 +3925,9 @@ class DescribeBiddingDetailResponse(AbstractModel):
 
     @property
     def BiddingPrice(self):
+        """我的出价
+        :rtype: int
+        """
         return self._BiddingPrice
 
     @BiddingPrice.setter
@@ -3279,6 +3936,9 @@ class DescribeBiddingDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3334,6 +3994,9 @@ BiddingPrice 我的价格
 
     @property
     def PageNumber(self):
+        """页码
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -3342,6 +4005,9 @@ BiddingPrice 我的价格
 
     @property
     def PageSize(self):
+        """每页数量
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -3350,6 +4016,9 @@ BiddingPrice 我的价格
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -3358,6 +4027,9 @@ BiddingPrice 我的价格
 
     @property
     def Status(self):
+        """2 竞价中  3 等待出价 4 竞价失败 10 竞价持有者赎回
+        :rtype: list of int non-negative
+        """
         return self._Status
 
     @Status.setter
@@ -3366,6 +4038,10 @@ BiddingPrice 我的价格
 
     @property
     def SortField(self):
+        """排序字段：BiddingEndTime 竞价结束时间	
+BiddingPrice 我的价格
+        :rtype: str
+        """
         return self._SortField
 
     @SortField.setter
@@ -3374,6 +4050,9 @@ BiddingPrice 我的价格
 
     @property
     def SortOrder(self):
+        """排序规则：asc升序，desc降序
+        :rtype: str
+        """
         return self._SortOrder
 
     @SortOrder.setter
@@ -3418,6 +4097,9 @@ class DescribeBiddingListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """搜索结果条数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -3426,6 +4108,9 @@ class DescribeBiddingListResponse(AbstractModel):
 
     @property
     def BiddingList(self):
+        """竞价列表
+        :rtype: list of BiddingResult
+        """
         return self._BiddingList
 
     @BiddingList.setter
@@ -3434,6 +4119,9 @@ class DescribeBiddingListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3466,6 +4154,9 @@ class DescribeBiddingSuccessfulDetailRequest(AbstractModel):
 
     @property
     def BusinessID(self):
+        """business_id
+        :rtype: str
+        """
         return self._BusinessID
 
     @BusinessID.setter
@@ -3529,6 +4220,9 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -3537,6 +4231,9 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
 
     @property
     def SuccessfulTime(self):
+        """得标时间
+        :rtype: str
+        """
         return self._SuccessfulTime
 
     @SuccessfulTime.setter
@@ -3545,6 +4242,9 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
 
     @property
     def SuccessfulPrice(self):
+        """得标价格
+        :rtype: float
+        """
         return self._SuccessfulPrice
 
     @SuccessfulPrice.setter
@@ -3553,6 +4253,9 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
 
     @property
     def RegTime(self):
+        """ 注册时间
+        :rtype: str
+        """
         return self._RegTime
 
     @RegTime.setter
@@ -3561,6 +4264,9 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """过期时间
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -3569,6 +4275,9 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
 
     @property
     def DeleteTime(self):
+        """删除时间
+        :rtype: str
+        """
         return self._DeleteTime
 
     @DeleteTime.setter
@@ -3577,6 +4286,9 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
 
     @property
     def PayEndTime(self):
+        """付款结束时间
+        :rtype: str
+        """
         return self._PayEndTime
 
     @PayEndTime.setter
@@ -3585,6 +4297,9 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
 
     @property
     def BiddingBondRefund(self):
+        """保证金，是否退款，yes表示退款，no表示不退款
+        :rtype: str
+        """
         return self._BiddingBondRefund
 
     @BiddingBondRefund.setter
@@ -3593,6 +4308,9 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
 
     @property
     def BiddingBondPrice(self):
+        """保证金
+        :rtype: float
+        """
         return self._BiddingBondPrice
 
     @BiddingBondPrice.setter
@@ -3601,6 +4319,9 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
 
     @property
     def Status(self):
+        """状态：5 等待支付 6 等待转移， 7 转移中，8 交易成功，11 尾款阶段持有者索回，12 已违约
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -3609,6 +4330,9 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3659,6 +4383,9 @@ class DescribeBiddingSuccessfulListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -3667,6 +4394,9 @@ class DescribeBiddingSuccessfulListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页数量
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -3675,6 +4405,9 @@ class DescribeBiddingSuccessfulListRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -3683,6 +4416,9 @@ class DescribeBiddingSuccessfulListRequest(AbstractModel):
 
     @property
     def Status(self):
+        """状态：5 等待支付 6 等待转移， 7 转移中，8 交易成功，11 尾款阶段持有者索回，12 已违约
+        :rtype: list of int non-negative
+        """
         return self._Status
 
     @Status.setter
@@ -3691,6 +4427,9 @@ class DescribeBiddingSuccessfulListRequest(AbstractModel):
 
     @property
     def SortField(self):
+        """排序字段：SuccessfulTime 预约结束时间
+        :rtype: str
+        """
         return self._SortField
 
     @SortField.setter
@@ -3699,6 +4438,9 @@ class DescribeBiddingSuccessfulListRequest(AbstractModel):
 
     @property
     def SortOrder(self):
+        """排序规则：asc升序，desc降序
+        :rtype: str
+        """
         return self._SortOrder
 
     @SortOrder.setter
@@ -3743,6 +4485,9 @@ class DescribeBiddingSuccessfulListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """搜索结果条数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -3751,6 +4496,9 @@ class DescribeBiddingSuccessfulListResponse(AbstractModel):
 
     @property
     def SuccessfulList(self):
+        """得标列表
+        :rtype: list of BiddingSuccessfulResult
+        """
         return self._SuccessfulList
 
     @SuccessfulList.setter
@@ -3759,6 +4507,9 @@ class DescribeBiddingSuccessfulListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3797,6 +4548,9 @@ class DescribeCustomDnsHostSetRequest(AbstractModel):
 
     @property
     def DomainId(self):
+        """域名实例ID(域名基本信息或我的域名列表接口可获取)
+        :rtype: str
+        """
         return self._DomainId
 
     @DomainId.setter
@@ -3805,6 +4559,9 @@ class DescribeCustomDnsHostSetRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，取值范围[1,100]
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3813,6 +4570,9 @@ class DescribeCustomDnsHostSetRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3855,6 +4615,10 @@ class DescribeCustomDnsHostSetResponse(AbstractModel):
 
     @property
     def DnsHostSet(self):
+        """自定义DNS Host 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CustomDnsHost
+        """
         return self._DnsHostSet
 
     @DnsHostSet.setter
@@ -3863,6 +4627,9 @@ class DescribeCustomDnsHostSetResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """自定义DNS Host总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3871,6 +4638,9 @@ class DescribeCustomDnsHostSetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3903,6 +4673,9 @@ class DescribeDomainBaseInfoRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -3943,6 +4716,9 @@ class DescribeDomainBaseInfoResponse(AbstractModel):
 
     @property
     def DomainInfo(self):
+        """域名信息
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DomainBaseInfo`
+        """
         return self._DomainInfo
 
     @DomainInfo.setter
@@ -3951,6 +4727,10 @@ class DescribeDomainBaseInfoResponse(AbstractModel):
 
     @property
     def Uin(self):
+        """用户Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -3959,6 +4739,9 @@ class DescribeDomainBaseInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3991,6 +4774,9 @@ class DescribeDomainNameListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3999,6 +4785,9 @@ class DescribeDomainNameListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，取值范围[1,100]
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4040,6 +4829,10 @@ class DescribeDomainNameListResponse(AbstractModel):
 
     @property
     def DomainSet(self):
+        """域名信息集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DomainList
+        """
         return self._DomainSet
 
     @DomainSet.setter
@@ -4048,6 +4841,9 @@ class DescribeDomainNameListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """域名总数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4056,6 +4852,9 @@ class DescribeDomainNameListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4094,6 +4893,9 @@ class DescribeDomainPriceListRequest(AbstractModel):
 
     @property
     def TldList(self):
+        """查询价格的后缀列表。默认则为全部后缀
+        :rtype: list of str
+        """
         return self._TldList
 
     @TldList.setter
@@ -4102,6 +4904,9 @@ class DescribeDomainPriceListRequest(AbstractModel):
 
     @property
     def Year(self):
+        """查询购买的年份，默认会列出所有年份的价格
+        :rtype: list of int
+        """
         return self._Year
 
     @Year.setter
@@ -4110,6 +4915,9 @@ class DescribeDomainPriceListRequest(AbstractModel):
 
     @property
     def Operation(self):
+        """域名的购买类型：new  新购，renew 续费，redem 赎回，tran 转入
+        :rtype: list of str
+        """
         return self._Operation
 
     @Operation.setter
@@ -4148,6 +4956,9 @@ class DescribeDomainPriceListResponse(AbstractModel):
 
     @property
     def PriceList(self):
+        """域名价格列表
+        :rtype: list of PriceInfo
+        """
         return self._PriceList
 
     @PriceList.setter
@@ -4156,6 +4967,9 @@ class DescribeDomainPriceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4187,6 +5001,9 @@ class DescribeDomainSimpleInfoRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """域名
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -4226,6 +5043,9 @@ class DescribeDomainSimpleInfoResponse(AbstractModel):
 
     @property
     def DomainInfo(self):
+        """域名信息
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DomainSimpleInfo`
+        """
         return self._DomainInfo
 
     @DomainInfo.setter
@@ -4234,6 +5054,9 @@ class DescribeDomainSimpleInfoResponse(AbstractModel):
 
     @property
     def Uin(self):
+        """账号ID
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -4242,6 +5065,9 @@ class DescribeDomainSimpleInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4271,6 +5097,9 @@ class DescribePayWaitDetailRequest(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -4322,6 +5151,9 @@ class DescribePayWaitDetailResponse(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -4330,6 +5162,9 @@ class DescribePayWaitDetailResponse(AbstractModel):
 
     @property
     def Status(self):
+        """域名类型
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -4338,6 +5173,9 @@ class DescribePayWaitDetailResponse(AbstractModel):
 
     @property
     def EndTime(self):
+        """支付结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4346,6 +5184,9 @@ class DescribePayWaitDetailResponse(AbstractModel):
 
     @property
     def RegTime(self):
+        """域名注册时间
+        :rtype: str
+        """
         return self._RegTime
 
     @RegTime.setter
@@ -4354,6 +5195,9 @@ class DescribePayWaitDetailResponse(AbstractModel):
 
     @property
     def Price(self):
+        """域名成交价格
+        :rtype: float
+        """
         return self._Price
 
     @Price.setter
@@ -4362,6 +5206,9 @@ class DescribePayWaitDetailResponse(AbstractModel):
 
     @property
     def RetDeposit(self):
+        """待退还保证金
+        :rtype: float
+        """
         return self._RetDeposit
 
     @RetDeposit.setter
@@ -4370,6 +5217,9 @@ class DescribePayWaitDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4410,6 +5260,9 @@ class DescribePhoneEmailListRequest(AbstractModel):
 
     @property
     def Type(self):
+        """0：所有类型  1：手机  2：邮箱，默认0
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -4418,6 +5271,9 @@ class DescribePhoneEmailListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4426,6 +5282,9 @@ class DescribePhoneEmailListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，取值范围[1,200]
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4434,6 +5293,9 @@ class DescribePhoneEmailListRequest(AbstractModel):
 
     @property
     def Code(self):
+        """手机或者邮箱，用于精确搜索
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -4476,6 +5338,9 @@ class DescribePhoneEmailListResponse(AbstractModel):
 
     @property
     def PhoneEmailList(self):
+        """手机或者邮箱列表
+        :rtype: list of PhoneEmailData
+        """
         return self._PhoneEmailList
 
     @PhoneEmailList.setter
@@ -4484,6 +5349,9 @@ class DescribePhoneEmailListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4492,6 +5360,9 @@ class DescribePhoneEmailListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4527,6 +5398,9 @@ class DescribePreAuctionListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -4535,6 +5409,9 @@ class DescribePreAuctionListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """条数
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -4577,6 +5454,10 @@ class DescribePreAuctionListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4585,6 +5466,10 @@ class DescribePreAuctionListResponse(AbstractModel):
 
     @property
     def PreAuctionList(self):
+        """预释放竞价列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PreAuctionInfo
+        """
         return self._PreAuctionList
 
     @PreAuctionList.setter
@@ -4593,6 +5478,9 @@ class DescribePreAuctionListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4634,6 +5522,9 @@ class DescribePreDomainListRequest(AbstractModel):
 
     @property
     def Page(self):
+        """页码，默认为1
+        :rtype: int
+        """
         return self._Page
 
     @Page.setter
@@ -4642,6 +5533,9 @@ class DescribePreDomainListRequest(AbstractModel):
 
     @property
     def Size(self):
+        """条数，默认为20
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -4650,6 +5544,9 @@ class DescribePreDomainListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """用于结束时间筛选
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4658,6 +5555,9 @@ class DescribePreDomainListRequest(AbstractModel):
 
     @property
     def UpTime(self):
+        """用户指定上架时间筛选
+        :rtype: str
+        """
         return self._UpTime
 
     @UpTime.setter
@@ -4700,6 +5600,9 @@ class DescribePreDomainListResponse(AbstractModel):
 
     @property
     def ReservedDomainList(self):
+        """预释放预约列表数据
+        :rtype: list of ReservedDomainInfo
+        """
         return self._ReservedDomainList
 
     @ReservedDomainList.setter
@@ -4708,6 +5611,9 @@ class DescribePreDomainListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -4716,6 +5622,9 @@ class DescribePreDomainListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4811,6 +5720,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def Keywords(self):
+        """关键词
+        :rtype: str
+        """
         return self._Keywords
 
     @Keywords.setter
@@ -4819,6 +5731,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def DomainStart(self):
+        """搜索关键字，开头
+        :rtype: bool
+        """
         return self._DomainStart
 
     @DomainStart.setter
@@ -4827,6 +5742,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def DomainEnd(self):
+        """搜索关键字结尾
+        :rtype: bool
+        """
         return self._DomainEnd
 
     @DomainEnd.setter
@@ -4835,6 +5753,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def Sort(self):
+        """排序
+        :rtype: int
+        """
         return self._Sort
 
     @Sort.setter
@@ -4843,6 +5764,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def PriceStart(self):
+        """起始价格
+        :rtype: float
+        """
         return self._PriceStart
 
     @PriceStart.setter
@@ -4851,6 +5775,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def PriceEnd(self):
+        """结束价格
+        :rtype: float
+        """
         return self._PriceEnd
 
     @PriceEnd.setter
@@ -4859,6 +5786,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def LengthStart(self):
+        """起始域名长度
+        :rtype: int
+        """
         return self._LengthStart
 
     @LengthStart.setter
@@ -4867,6 +5797,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def LengthEnd(self):
+        """结束域名长度
+        :rtype: int
+        """
         return self._LengthEnd
 
     @LengthEnd.setter
@@ -4875,6 +5808,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -4883,6 +5819,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页显示数
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -4891,6 +5830,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def Suffix(self):
+        """后缀
+        :rtype: list of int
+        """
         return self._Suffix
 
     @Suffix.setter
@@ -4899,6 +5841,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def ClassOne(self):
+        """一级分类
+        :rtype: int
+        """
         return self._ClassOne
 
     @ClassOne.setter
@@ -4907,6 +5852,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def ClassTwo(self):
+        """二级分类
+        :rtype: list of int
+        """
         return self._ClassTwo
 
     @ClassTwo.setter
@@ -4915,6 +5863,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def ClassThree(self):
+        """三级分类
+        :rtype: list of int
+        """
         return self._ClassThree
 
     @ClassThree.setter
@@ -4923,6 +5874,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def ClassFour(self):
+        """四级分类
+        :rtype: list of int
+        """
         return self._ClassFour
 
     @ClassFour.setter
@@ -4931,6 +5885,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def FilterStart(self):
+        """排除关键字，开头
+        :rtype: bool
+        """
         return self._FilterStart
 
     @FilterStart.setter
@@ -4939,6 +5896,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def FilterEnd(self):
+        """排除关键字，结尾
+        :rtype: bool
+        """
         return self._FilterEnd
 
     @FilterEnd.setter
@@ -4947,6 +5907,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def FilterWords(self):
+        """排除关键字
+        :rtype: str
+        """
         return self._FilterWords
 
     @FilterWords.setter
@@ -4955,6 +5918,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def TransType(self):
+        """交易类型
+        :rtype: int
+        """
         return self._TransType
 
     @TransType.setter
@@ -4963,6 +5929,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def IsTop(self):
+        """搜索白金域名
+        :rtype: bool
+        """
         return self._IsTop
 
     @IsTop.setter
@@ -4971,6 +5940,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def EndTimeSort(self):
+        """结束时间排序啊 desc:倒序 asc:正序
+        :rtype: str
+        """
         return self._EndTimeSort
 
     @EndTimeSort.setter
@@ -4979,6 +5951,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -5041,6 +6016,10 @@ class DescribePreReleaseListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5049,6 +6028,10 @@ class DescribePreReleaseListResponse(AbstractModel):
 
     @property
     def PreReleaseList(self):
+        """预释放列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PreReleaseInfo
+        """
         return self._PreReleaseList
 
     @PreReleaseList.setter
@@ -5057,6 +6040,9 @@ class DescribePreReleaseListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5089,6 +6075,9 @@ class DescribeReservedBidInfoRequest(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -5147,6 +6136,9 @@ class DescribeReservedBidInfoResponse(AbstractModel):
 
     @property
     def UpPrice(self):
+        """竞价领先价格
+        :rtype: int
+        """
         return self._UpPrice
 
     @UpPrice.setter
@@ -5155,6 +6147,9 @@ class DescribeReservedBidInfoResponse(AbstractModel):
 
     @property
     def Price(self):
+        """请求用户当前价格
+        :rtype: int
+        """
         return self._Price
 
     @Price.setter
@@ -5163,6 +6158,9 @@ class DescribeReservedBidInfoResponse(AbstractModel):
 
     @property
     def UpUser(self):
+        """领先用户
+        :rtype: str
+        """
         return self._UpUser
 
     @UpUser.setter
@@ -5171,6 +6169,10 @@ class DescribeReservedBidInfoResponse(AbstractModel):
 
     @property
     def BidList(self):
+        """竞价详细数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ReserveBidInfo
+        """
         return self._BidList
 
     @BidList.setter
@@ -5179,6 +6181,9 @@ class DescribeReservedBidInfoResponse(AbstractModel):
 
     @property
     def BidEndTime(self):
+        """竞价结束时间
+        :rtype: str
+        """
         return self._BidEndTime
 
     @BidEndTime.setter
@@ -5187,6 +6192,9 @@ class DescribeReservedBidInfoResponse(AbstractModel):
 
     @property
     def IsUp(self):
+        """是否领先
+        :rtype: bool
+        """
         return self._IsUp
 
     @IsUp.setter
@@ -5195,6 +6203,9 @@ class DescribeReservedBidInfoResponse(AbstractModel):
 
     @property
     def NextPrice(self):
+        """下次出价金额
+        :rtype: int
+        """
         return self._NextPrice
 
     @NextPrice.setter
@@ -5203,6 +6214,9 @@ class DescribeReservedBidInfoResponse(AbstractModel):
 
     @property
     def Status(self):
+        """状态：1. 等待竞价 2.竞价中 3.竞价结束
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -5211,6 +6225,9 @@ class DescribeReservedBidInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5261,6 +6278,9 @@ class DescribeReservedPreDomainInfoRequest(AbstractModel):
 
     @property
     def DomainList(self):
+        """域名,每次最多支持500条域名查询
+        :rtype: list of str
+        """
         return self._DomainList
 
     @DomainList.setter
@@ -5269,6 +6289,9 @@ class DescribeReservedPreDomainInfoRequest(AbstractModel):
 
     @property
     def ReservedStatus(self):
+        """状态，用于筛选，可不填写(1. 成功 2. 失败（失败Reason字段将会被赋值）3. 域名交割中 4. 域名交割完成 5. 预约 6. 竞价)
+        :rtype: int
+        """
         return self._ReservedStatus
 
     @ReservedStatus.setter
@@ -5277,6 +6300,9 @@ class DescribeReservedPreDomainInfoRequest(AbstractModel):
 
     @property
     def ReservedTimeSort(self):
+        """根据预约时间排序，仅支持："desc","asc"。
+        :rtype: str
+        """
         return self._ReservedTimeSort
 
     @ReservedTimeSort.setter
@@ -5285,6 +6311,9 @@ class DescribeReservedPreDomainInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """条数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5293,6 +6322,9 @@ class DescribeReservedPreDomainInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5336,6 +6368,9 @@ class DescribeReservedPreDomainInfoResponse(AbstractModel):
 
     @property
     def ReservedPreDomainInfoList(self):
+        """预释放预约列表
+        :rtype: list of ReservedPreDomainInfo
+        """
         return self._ReservedPreDomainInfoList
 
     @ReservedPreDomainInfoList.setter
@@ -5344,6 +6379,9 @@ class DescribeReservedPreDomainInfoResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -5352,6 +6390,9 @@ class DescribeReservedPreDomainInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5396,6 +6437,9 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5404,6 +6448,9 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5412,6 +6459,9 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def Type(self):
+        """用户注册类型，默认:all , 个人：I ,企业: E
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -5420,6 +6470,9 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def Status(self):
+        """认证状态：未实名审核:NotUpload, 实名审核中:InAudit，已实名审核:Approved，实名审核失败:Reject，更新手机邮箱:NotVerified。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -5428,6 +6481,9 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def Keyword(self):
+        """关键字，用于域名所有者筛选
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -5471,6 +6527,9 @@ class DescribeTemplateListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """模板数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5479,6 +6538,9 @@ class DescribeTemplateListResponse(AbstractModel):
 
     @property
     def TemplateSet(self):
+        """模板详细信息列表。
+        :rtype: list of TemplateInfo
+        """
         return self._TemplateSet
 
     @TemplateSet.setter
@@ -5487,6 +6549,9 @@ class DescribeTemplateListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5519,6 +6584,9 @@ class DescribeTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -5555,6 +6623,9 @@ class DescribeTemplateResponse(AbstractModel):
 
     @property
     def Template(self):
+        """模板信息
+        :rtype: :class:`tencentcloud.domain.v20180808.models.TemplateInfo`
+        """
         return self._Template
 
     @Template.setter
@@ -5563,6 +6634,9 @@ class DescribeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5600,6 +6674,9 @@ class DescribeTldListResponse(AbstractModel):
 
     @property
     def List(self):
+        """支持的后缀列表
+        :rtype: list of str
+        """
         return self._List
 
     @List.setter
@@ -5608,6 +6685,9 @@ class DescribeTldListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5634,6 +6714,9 @@ class DescribeUnPreDomainDetailRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -5700,6 +6783,9 @@ class DescribeUnPreDomainDetailResponse(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -5708,6 +6794,9 @@ class DescribeUnPreDomainDetailResponse(AbstractModel):
 
     @property
     def PreCount(self):
+        """预约人数
+        :rtype: int
+        """
         return self._PreCount
 
     @PreCount.setter
@@ -5716,6 +6805,9 @@ class DescribeUnPreDomainDetailResponse(AbstractModel):
 
     @property
     def RegTime(self):
+        """域名注册时间
+        :rtype: str
+        """
         return self._RegTime
 
     @RegTime.setter
@@ -5724,6 +6816,9 @@ class DescribeUnPreDomainDetailResponse(AbstractModel):
 
     @property
     def DeleteTime(self):
+        """域名删除时间
+        :rtype: str
+        """
         return self._DeleteTime
 
     @DeleteTime.setter
@@ -5732,6 +6827,9 @@ class DescribeUnPreDomainDetailResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """到期时间
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -5740,6 +6838,9 @@ class DescribeUnPreDomainDetailResponse(AbstractModel):
 
     @property
     def Status(self):
+        """域名状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -5748,6 +6849,9 @@ class DescribeUnPreDomainDetailResponse(AbstractModel):
 
     @property
     def CurrentPrice(self):
+        """域名价格
+        :rtype: float
+        """
         return self._CurrentPrice
 
     @CurrentPrice.setter
@@ -5756,6 +6860,9 @@ class DescribeUnPreDomainDetailResponse(AbstractModel):
 
     @property
     def AppointBondPrice(self):
+        """域名保证金
+        :rtype: float
+        """
         return self._AppointBondPrice
 
     @AppointBondPrice.setter
@@ -5764,6 +6871,9 @@ class DescribeUnPreDomainDetailResponse(AbstractModel):
 
     @property
     def IsAppoint(self):
+        """是否已经预约
+        :rtype: bool
+        """
         return self._IsAppoint
 
     @IsAppoint.setter
@@ -5772,6 +6882,9 @@ class DescribeUnPreDomainDetailResponse(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -5780,6 +6893,9 @@ class DescribeUnPreDomainDetailResponse(AbstractModel):
 
     @property
     def IsDomainUser(self):
+        """是否为原持有者域名
+        :rtype: bool
+        """
         return self._IsDomainUser
 
     @IsDomainUser.setter
@@ -5788,6 +6904,9 @@ class DescribeUnPreDomainDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5907,6 +7026,9 @@ false：关闭锁定
 
     @property
     def DomainId(self):
+        """域名资源ID。
+        :rtype: str
+        """
         return self._DomainId
 
     @DomainId.setter
@@ -5915,6 +7037,9 @@ false：关闭锁定
 
     @property
     def DomainName(self):
+        """域名名称。
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -5923,6 +7048,14 @@ false：关闭锁定
 
     @property
     def RealNameAuditStatus(self):
+        """域名实名认证状态。
+NotUpload：未实名认证
+InAudit：实名审核中
+Approved：实名审核通过
+Reject：实名审核失败
+NoAudit: 无需实名认证
+        :rtype: str
+        """
         return self._RealNameAuditStatus
 
     @RealNameAuditStatus.setter
@@ -5931,6 +7064,10 @@ false：关闭锁定
 
     @property
     def RealNameAuditUnpassReason(self):
+        """域名实名认证不通过原因。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RealNameAuditUnpassReason
 
     @RealNameAuditUnpassReason.setter
@@ -5939,6 +7076,14 @@ false：关闭锁定
 
     @property
     def DomainNameAuditStatus(self):
+        """域名命名审核状态。
+NotAudit：命名审核未上传
+Pending：命名审核待上传
+Auditing：域名命名审核中
+Approved：域名命名审核通过
+Rejected：域名命名审核拒绝
+        :rtype: str
+        """
         return self._DomainNameAuditStatus
 
     @DomainNameAuditStatus.setter
@@ -5947,6 +7092,10 @@ false：关闭锁定
 
     @property
     def DomainNameAuditUnpassReason(self):
+        """域名命名审核不通过原因。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DomainNameAuditUnpassReason
 
     @DomainNameAuditUnpassReason.setter
@@ -5955,6 +7104,9 @@ false：关闭锁定
 
     @property
     def CreationDate(self):
+        """注册时间。
+        :rtype: str
+        """
         return self._CreationDate
 
     @CreationDate.setter
@@ -5963,6 +7115,9 @@ false：关闭锁定
 
     @property
     def ExpirationDate(self):
+        """到期时间
+        :rtype: str
+        """
         return self._ExpirationDate
 
     @ExpirationDate.setter
@@ -5971,6 +7126,24 @@ false：关闭锁定
 
     @property
     def DomainStatus(self):
+        """域名状态。
+ok：正常
+serverHold：注册局暂停解析 
+clientHold：注册商暂停解析
+pendingTransfer：转移中
+renewingPeriod：续费期
+redemptionPeriod：偿还期
+pendingDelete：删除期
+serverTransferProhibited：注册局禁止转移
+serverUpdateProhibited：注册局禁止更新
+serverDeleteProhibited：注册局禁止删除
+clientTransferProhibited：注册商禁止转移
+clientUpdateProhibited：注册商禁止更新
+clientDeleteProhibited：注册商禁止删除
+serverRenewProhibited: 注册局禁止续费
+clientRenewProhobited: 注册商禁止续费
+        :rtype: list of str
+        """
         return self._DomainStatus
 
     @DomainStatus.setter
@@ -5979,6 +7152,21 @@ false：关闭锁定
 
     @property
     def BuyStatus(self):
+        """域名购买状态。
+ok：正常
+RegisterPending：待注册
+RegisterDoing：注册中
+RegisterFailed：注册失败
+AboutToExpire: 即将过期
+RenewPending：已进入续费期，需要进行续费
+RenewDoing：续费中
+RedemptionPending：已进入赎回期，需要进行续费
+RedemptionDoing：赎回中
+TransferPending：待转入中
+TransferTransing：转入中
+TransferFailed：转入失败
+        :rtype: str
+        """
         return self._BuyStatus
 
     @BuyStatus.setter
@@ -5987,6 +7175,13 @@ false：关闭锁定
 
     @property
     def RegistrarType(self):
+        """注册商类型
+epp: DNSPod, Inc.（烟台帝思普网络科技有限公司）
+qcloud: Tencent Cloud Computing (Beijing) Limited Liability Company（腾讯云计算（北京）有限责任公司）
+yunxun: Guangzhou Yunxun Information Technology Co., Ltd.（广州云讯信息科技有限公司）
+xinnet: Xin Net Technology Corporation（北京新网数码信息技术有限公司）
+        :rtype: str
+        """
         return self._RegistrarType
 
     @RegistrarType.setter
@@ -5995,6 +7190,9 @@ false：关闭锁定
 
     @property
     def NameServer(self):
+        """域名绑定的ns
+        :rtype: list of str
+        """
         return self._NameServer
 
     @NameServer.setter
@@ -6003,6 +7201,10 @@ false：关闭锁定
 
     @property
     def LockTransfer(self):
+        """true：开启锁定
+false：关闭锁定
+        :rtype: bool
+        """
         return self._LockTransfer
 
     @LockTransfer.setter
@@ -6011,6 +7213,9 @@ false：关闭锁定
 
     @property
     def LockEndTime(self):
+        """锁定结束时间
+        :rtype: str
+        """
         return self._LockEndTime
 
     @LockEndTime.setter
@@ -6083,6 +7288,9 @@ success  操作成功。
 
     @property
     def Id(self):
+        """详情ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -6091,6 +7299,9 @@ success  操作成功。
 
     @property
     def Action(self):
+        """类型  new: 注册域名 batch_transfer_prohibition_on:开启禁止转移  batch_transfer_prohibition_off:关闭禁止转移 batch_update_prohibition_on:开启禁止更新   batch_update_prohibition_off:关闭禁止更新
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -6099,6 +7310,9 @@ success  操作成功。
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -6107,6 +7321,12 @@ success  操作成功。
 
     @property
     def Status(self):
+        """执行状态：
+doing 执行中。
+failed 操作失败。
+success  操作成功。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -6115,6 +7335,10 @@ success  操作成功。
 
     @property
     def Reason(self):
+        """失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -6123,6 +7347,9 @@ success  操作成功。
 
     @property
     def CreatedOn(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreatedOn
 
     @CreatedOn.setter
@@ -6131,6 +7358,9 @@ success  操作成功。
 
     @property
     def UpdatedOn(self):
+        """更新时间
+        :rtype: str
+        """
         return self._UpdatedOn
 
     @UpdatedOn.setter
@@ -6139,6 +7369,10 @@ success  操作成功。
 
     @property
     def BigDealId(self):
+        """订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BigDealId
 
     @BigDealId.setter
@@ -6199,6 +7433,9 @@ done 执行完成。
 
     @property
     def LogId(self):
+        """日志ID
+        :rtype: int
+        """
         return self._LogId
 
     @LogId.setter
@@ -6207,6 +7444,9 @@ done 执行完成。
 
     @property
     def Number(self):
+        """数量
+        :rtype: int
+        """
         return self._Number
 
     @Number.setter
@@ -6215,6 +7455,11 @@ done 执行完成。
 
     @property
     def Status(self):
+        """执行状态：
+doing 执行中。
+done 执行完成。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -6223,6 +7468,9 @@ done 执行完成。
 
     @property
     def CreatedOn(self):
+        """提交时间
+        :rtype: str
+        """
         return self._CreatedOn
 
     @CreatedOn.setter
@@ -6231,6 +7479,9 @@ done 执行完成。
 
     @property
     def Success(self):
+        """批量操作成功个数
+        :rtype: int
+        """
         return self._Success
 
     @Success.setter
@@ -6239,6 +7490,9 @@ done 执行完成。
 
     @property
     def Doing(self):
+        """批量操作处理中个数
+        :rtype: int
+        """
         return self._Doing
 
     @Doing.setter
@@ -6247,6 +7501,9 @@ done 执行完成。
 
     @property
     def Failed(self):
+        """批量操作失败个数
+        :rtype: int
+        """
         return self._Failed
 
     @Failed.setter
@@ -6327,6 +7584,11 @@ TransferFailed：转入失败
 
     @property
     def IsPremium(self):
+        """是否是溢价域名：
+ture 是    
+false 不是
+        :rtype: bool
+        """
         return self._IsPremium
 
     @IsPremium.setter
@@ -6335,6 +7597,9 @@ TransferFailed：转入失败
 
     @property
     def DomainId(self):
+        """域名资源ID。
+        :rtype: str
+        """
         return self._DomainId
 
     @DomainId.setter
@@ -6343,6 +7608,9 @@ TransferFailed：转入失败
 
     @property
     def DomainName(self):
+        """域名名称。
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -6351,6 +7619,12 @@ TransferFailed：转入失败
 
     @property
     def AutoRenew(self):
+        """是否已设置自动续费 。
+0：未设置 
+1：已设置
+2：设置后，关闭
+        :rtype: int
+        """
         return self._AutoRenew
 
     @AutoRenew.setter
@@ -6359,6 +7633,9 @@ TransferFailed：转入失败
 
     @property
     def CreationDate(self):
+        """注册时间。
+        :rtype: str
+        """
         return self._CreationDate
 
     @CreationDate.setter
@@ -6367,6 +7644,9 @@ TransferFailed：转入失败
 
     @property
     def ExpirationDate(self):
+        """到期时间。
+        :rtype: str
+        """
         return self._ExpirationDate
 
     @ExpirationDate.setter
@@ -6375,6 +7655,9 @@ TransferFailed：转入失败
 
     @property
     def Tld(self):
+        """域名后缀
+        :rtype: str
+        """
         return self._Tld
 
     @Tld.setter
@@ -6383,6 +7666,9 @@ TransferFailed：转入失败
 
     @property
     def CodeTld(self):
+        """编码后的后缀（中文会进行编码）
+        :rtype: str
+        """
         return self._CodeTld
 
     @CodeTld.setter
@@ -6391,6 +7677,21 @@ TransferFailed：转入失败
 
     @property
     def BuyStatus(self):
+        """域名购买状态。
+ok：正常
+AboutToExpire: 即将到期
+RegisterPending：注册中
+RegisterDoing：注册中
+RegisterFailed：注册失败
+RenewPending：续费期
+RenewDoing：续费中
+RedemptionPending：赎回期
+RedemptionDoing：赎回中
+TransferPending：转入中
+TransferTransing：转入中
+TransferFailed：转入失败
+        :rtype: str
+        """
         return self._BuyStatus
 
     @BuyStatus.setter
@@ -6530,6 +7831,9 @@ false：关闭锁定
 
     @property
     def DomainId(self):
+        """域名资源ID。
+        :rtype: str
+        """
         return self._DomainId
 
     @DomainId.setter
@@ -6538,6 +7842,9 @@ false：关闭锁定
 
     @property
     def DomainName(self):
+        """域名名称。
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -6546,6 +7853,14 @@ false：关闭锁定
 
     @property
     def RealNameAuditStatus(self):
+        """域名实名认证状态。
+NotUpload：未实名认证
+InAudit：实名审核中
+Approved：实名审核通过
+Reject：实名审核失败
+NoAudit: 无需实名认证
+        :rtype: str
+        """
         return self._RealNameAuditStatus
 
     @RealNameAuditStatus.setter
@@ -6554,6 +7869,10 @@ false：关闭锁定
 
     @property
     def RealNameAuditUnpassReason(self):
+        """域名实名认证不通过原因。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RealNameAuditUnpassReason
 
     @RealNameAuditUnpassReason.setter
@@ -6562,6 +7881,14 @@ false：关闭锁定
 
     @property
     def DomainNameAuditStatus(self):
+        """域名命名审核状态。
+NotAudit：命名审核未上传
+Pending：命名审核待上传
+Auditing：域名命名审核中
+Approved：域名命名审核通过
+Rejected：域名命名审核拒绝
+        :rtype: str
+        """
         return self._DomainNameAuditStatus
 
     @DomainNameAuditStatus.setter
@@ -6570,6 +7897,10 @@ false：关闭锁定
 
     @property
     def DomainNameAuditUnpassReason(self):
+        """域名命名审核不通过原因。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DomainNameAuditUnpassReason
 
     @DomainNameAuditUnpassReason.setter
@@ -6578,6 +7909,9 @@ false：关闭锁定
 
     @property
     def CreationDate(self):
+        """注册时间。
+        :rtype: str
+        """
         return self._CreationDate
 
     @CreationDate.setter
@@ -6586,6 +7920,9 @@ false：关闭锁定
 
     @property
     def ExpirationDate(self):
+        """到期时间
+        :rtype: str
+        """
         return self._ExpirationDate
 
     @ExpirationDate.setter
@@ -6594,6 +7931,24 @@ false：关闭锁定
 
     @property
     def DomainStatus(self):
+        """域名状态。
+ok：正常
+serverHold：注册局暂停解析 
+clientHold：注册商暂停解析
+pendingTransfer：转移中
+renewingPeriod：续费期
+redemptionPeriod：偿还期
+pendingDelete：删除期
+serverTransferProhibited：注册局禁止转移
+serverUpdateProhibited：注册局禁止更新
+serverDeleteProhibited：注册局禁止删除
+clientTransferProhibited：注册商禁止转移
+clientUpdateProhibited：注册商禁止更新
+clientDeleteProhibited：注册商禁止删除
+serverRenewProhibited: 注册局禁止续费
+clientRenewProhobited: 注册商禁止续费
+        :rtype: list of str
+        """
         return self._DomainStatus
 
     @DomainStatus.setter
@@ -6602,6 +7957,21 @@ false：关闭锁定
 
     @property
     def BuyStatus(self):
+        """域名购买状态。
+ok：正常
+RegisterPending：待注册
+RegisterDoing：注册中
+RegisterFailed：注册失败
+AboutToExpire: 即将过期
+RenewPending：已进入续费期，需要进行续费
+RenewDoing：续费中
+RedemptionPending：已进入赎回期，需要进行续费
+RedemptionDoing：赎回中
+TransferPending：待转入中
+TransferTransing：转入中
+TransferFailed：转入失败
+        :rtype: str
+        """
         return self._BuyStatus
 
     @BuyStatus.setter
@@ -6610,6 +7980,13 @@ false：关闭锁定
 
     @property
     def RegistrarType(self):
+        """注册商类型
+epp: DNSPod, Inc.（烟台帝思普网络科技有限公司）
+qcloud: Tencent Cloud Computing (Beijing) Limited Liability Company（腾讯云计算（北京）有限责任公司）
+yunxun: Guangzhou Yunxun Information Technology Co., Ltd.（广州云讯信息科技有限公司）
+xinnet: Xin Net Technology Corporation（北京新网数码信息技术有限公司）
+        :rtype: str
+        """
         return self._RegistrarType
 
     @RegistrarType.setter
@@ -6618,6 +7995,9 @@ false：关闭锁定
 
     @property
     def NameServer(self):
+        """域名绑定的ns
+        :rtype: list of str
+        """
         return self._NameServer
 
     @NameServer.setter
@@ -6626,6 +8006,10 @@ false：关闭锁定
 
     @property
     def LockTransfer(self):
+        """true：开启锁定
+false：关闭锁定
+        :rtype: bool
+        """
         return self._LockTransfer
 
     @LockTransfer.setter
@@ -6634,6 +8018,9 @@ false：关闭锁定
 
     @property
     def LockEndTime(self):
+        """锁定结束时间
+        :rtype: str
+        """
         return self._LockEndTime
 
     @LockEndTime.setter
@@ -6642,6 +8029,9 @@ false：关闭锁定
 
     @property
     def RegistrantType(self):
+        """认证类型：I=个人，E=企业
+        :rtype: str
+        """
         return self._RegistrantType
 
     @RegistrantType.setter
@@ -6650,6 +8040,9 @@ false：关闭锁定
 
     @property
     def OrganizationNameCN(self):
+        """域名所有者，中文
+        :rtype: str
+        """
         return self._OrganizationNameCN
 
     @OrganizationNameCN.setter
@@ -6658,6 +8051,9 @@ false：关闭锁定
 
     @property
     def OrganizationName(self):
+        """域名所有者，英文
+        :rtype: str
+        """
         return self._OrganizationName
 
     @OrganizationName.setter
@@ -6666,6 +8062,9 @@ false：关闭锁定
 
     @property
     def RegistrantNameCN(self):
+        """域名联系人，中文
+        :rtype: str
+        """
         return self._RegistrantNameCN
 
     @RegistrantNameCN.setter
@@ -6674,6 +8073,9 @@ false：关闭锁定
 
     @property
     def RegistrantName(self):
+        """域名联系人，英文
+        :rtype: str
+        """
         return self._RegistrantName
 
     @RegistrantName.setter
@@ -6730,6 +8132,10 @@ class FailReservedDomainInfo(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -6738,6 +8144,10 @@ class FailReservedDomainInfo(AbstractModel):
 
     @property
     def FailReason(self):
+        """预约失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FailReason
 
     @FailReason.setter
@@ -6778,6 +8188,9 @@ class ModifyCustomDnsHostRequest(AbstractModel):
 
     @property
     def DomainId(self):
+        """域名实例ID
+        :rtype: str
+        """
         return self._DomainId
 
     @DomainId.setter
@@ -6786,6 +8199,9 @@ class ModifyCustomDnsHostRequest(AbstractModel):
 
     @property
     def DnsName(self):
+        """DNS名称
+        :rtype: str
+        """
         return self._DnsName
 
     @DnsName.setter
@@ -6794,6 +8210,9 @@ class ModifyCustomDnsHostRequest(AbstractModel):
 
     @property
     def IpSet(self):
+        """IP地址列表
+        :rtype: list of str
+        """
         return self._IpSet
 
     @IpSet.setter
@@ -6832,6 +8251,9 @@ class ModifyCustomDnsHostResponse(AbstractModel):
 
     @property
     def LogId(self):
+        """异步任务ID
+        :rtype: int
+        """
         return self._LogId
 
     @LogId.setter
@@ -6840,6 +8262,9 @@ class ModifyCustomDnsHostResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6869,6 +8294,9 @@ class ModifyDomainDNSBatchRequest(AbstractModel):
 
     @property
     def Domains(self):
+        """批量操作的域名。
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -6877,6 +8305,9 @@ class ModifyDomainDNSBatchRequest(AbstractModel):
 
     @property
     def Dns(self):
+        """域名DNS 数组。
+        :rtype: list of str
+        """
         return self._Dns
 
     @Dns.setter
@@ -6914,6 +8345,9 @@ class ModifyDomainDNSBatchResponse(AbstractModel):
 
     @property
     def LogId(self):
+        """日志ID。
+        :rtype: int
+        """
         return self._LogId
 
     @LogId.setter
@@ -6922,6 +8356,9 @@ class ModifyDomainDNSBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6957,6 +8394,9 @@ class ModifyDomainOwnerBatchRequest(AbstractModel):
 
     @property
     def Domains(self):
+        """要过户的域名。
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -6965,6 +8405,9 @@ class ModifyDomainOwnerBatchRequest(AbstractModel):
 
     @property
     def NewOwnerUin(self):
+        """转入账户的uin。
+        :rtype: str
+        """
         return self._NewOwnerUin
 
     @NewOwnerUin.setter
@@ -6973,6 +8416,9 @@ class ModifyDomainOwnerBatchRequest(AbstractModel):
 
     @property
     def TransferDns(self):
+        """是否同时转移对应的 DNS 解析域名，默认false
+        :rtype: bool
+        """
         return self._TransferDns
 
     @TransferDns.setter
@@ -6981,6 +8427,9 @@ class ModifyDomainOwnerBatchRequest(AbstractModel):
 
     @property
     def NewOwnerAppId(self):
+        """转入账户的appid。
+        :rtype: str
+        """
         return self._NewOwnerAppId
 
     @NewOwnerAppId.setter
@@ -7020,6 +8469,9 @@ class ModifyDomainOwnerBatchResponse(AbstractModel):
 
     @property
     def LogId(self):
+        """日志id
+        :rtype: int
+        """
         return self._LogId
 
     @LogId.setter
@@ -7028,6 +8480,9 @@ class ModifyDomainOwnerBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7060,6 +8515,9 @@ class ModifyIntlCustomDnsHostRequest(AbstractModel):
 
     @property
     def DomainId(self):
+        """域名ID
+        :rtype: str
+        """
         return self._DomainId
 
     @DomainId.setter
@@ -7068,6 +8526,9 @@ class ModifyIntlCustomDnsHostRequest(AbstractModel):
 
     @property
     def DnsName(self):
+        """DNS Host
+        :rtype: str
+        """
         return self._DnsName
 
     @DnsName.setter
@@ -7076,6 +8537,9 @@ class ModifyIntlCustomDnsHostRequest(AbstractModel):
 
     @property
     def IpSet(self):
+        """IP地址
+        :rtype: list of str
+        """
         return self._IpSet
 
     @IpSet.setter
@@ -7114,6 +8578,9 @@ class ModifyIntlCustomDnsHostResponse(AbstractModel):
 
     @property
     def LogId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._LogId
 
     @LogId.setter
@@ -7122,6 +8589,9 @@ class ModifyIntlCustomDnsHostResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7154,6 +8624,9 @@ class ModifyTemplateRequest(AbstractModel):
 
     @property
     def CertificateInfo(self):
+        """证件信息
+        :rtype: :class:`tencentcloud.domain.v20180808.models.CertificateInfo`
+        """
         return self._CertificateInfo
 
     @CertificateInfo.setter
@@ -7162,6 +8635,9 @@ class ModifyTemplateRequest(AbstractModel):
 
     @property
     def ContactInfo(self):
+        """联系人信息
+        :rtype: :class:`tencentcloud.domain.v20180808.models.ContactInfo`
+        """
         return self._ContactInfo
 
     @ContactInfo.setter
@@ -7170,6 +8646,9 @@ class ModifyTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -7212,6 +8691,9 @@ class ModifyTemplateResponse(AbstractModel):
 
     @property
     def Template(self):
+        """模板信息
+        :rtype: :class:`tencentcloud.domain.v20180808.models.TemplateInfo`
+        """
         return self._Template
 
     @Template.setter
@@ -7220,6 +8702,9 @@ class ModifyTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7257,6 +8742,9 @@ class PhoneEmailData(AbstractModel):
 
     @property
     def Code(self):
+        """手机号或者邮箱
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -7265,6 +8753,9 @@ class PhoneEmailData(AbstractModel):
 
     @property
     def Type(self):
+        """1：手机  2：邮箱
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -7273,6 +8764,9 @@ class PhoneEmailData(AbstractModel):
 
     @property
     def CreatedOn(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreatedOn
 
     @CreatedOn.setter
@@ -7281,6 +8775,9 @@ class PhoneEmailData(AbstractModel):
 
     @property
     def CheckStatus(self):
+        """1=控制台校验，2=第三方校验
+        :rtype: int
+        """
         return self._CheckStatus
 
     @CheckStatus.setter
@@ -7338,6 +8835,10 @@ class PreAuctionInfo(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -7346,6 +8847,10 @@ class PreAuctionInfo(AbstractModel):
 
     @property
     def BiddingTime(self):
+        """竞价倒计时
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BiddingTime
 
     @BiddingTime.setter
@@ -7354,6 +8859,10 @@ class PreAuctionInfo(AbstractModel):
 
     @property
     def BidCount(self):
+        """出价次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BidCount
 
     @BidCount.setter
@@ -7362,6 +8871,10 @@ class PreAuctionInfo(AbstractModel):
 
     @property
     def Price(self):
+        """当前价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Price
 
     @Price.setter
@@ -7370,6 +8883,10 @@ class PreAuctionInfo(AbstractModel):
 
     @property
     def Op(self):
+        """用户操作 bid：出价 "noAction"：无法操作
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Op
 
     @Op.setter
@@ -7378,6 +8895,10 @@ class PreAuctionInfo(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -7453,6 +8974,10 @@ class PreReleaseInfo(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -7461,6 +8986,10 @@ class PreReleaseInfo(AbstractModel):
 
     @property
     def ReservationTime(self):
+        """预订倒计时
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReservationTime
 
     @ReservationTime.setter
@@ -7469,6 +8998,10 @@ class PreReleaseInfo(AbstractModel):
 
     @property
     def RegTime(self):
+        """域名注册时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegTime
 
     @RegTime.setter
@@ -7477,6 +9010,10 @@ class PreReleaseInfo(AbstractModel):
 
     @property
     def DelTime(self):
+        """域名删除时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DelTime
 
     @DelTime.setter
@@ -7485,6 +9022,10 @@ class PreReleaseInfo(AbstractModel):
 
     @property
     def CurrentPeople(self):
+        """当前人数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CurrentPeople
 
     @CurrentPeople.setter
@@ -7493,6 +9034,10 @@ class PreReleaseInfo(AbstractModel):
 
     @property
     def Price(self):
+        """当前价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Price
 
     @Price.setter
@@ -7501,6 +9046,10 @@ class PreReleaseInfo(AbstractModel):
 
     @property
     def IsFollow(self):
+        """是否收藏
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsFollow
 
     @IsFollow.setter
@@ -7509,6 +9058,10 @@ class PreReleaseInfo(AbstractModel):
 
     @property
     def IsAppoint(self):
+        """是否已经预约
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsAppoint
 
     @IsAppoint.setter
@@ -7517,6 +9070,10 @@ class PreReleaseInfo(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -7525,6 +9082,10 @@ class PreReleaseInfo(AbstractModel):
 
     @property
     def IsDomainUser(self):
+        """是否为原持有者
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsDomainUser
 
     @IsDomainUser.setter
@@ -7579,6 +9140,9 @@ class PriceInfo(AbstractModel):
 
     @property
     def Tld(self):
+        """域名后缀，例如.com
+        :rtype: str
+        """
         return self._Tld
 
     @Tld.setter
@@ -7587,6 +9151,9 @@ class PriceInfo(AbstractModel):
 
     @property
     def Year(self):
+        """购买年限，范围[1-10]
+        :rtype: int
+        """
         return self._Year
 
     @Year.setter
@@ -7595,6 +9162,9 @@ class PriceInfo(AbstractModel):
 
     @property
     def Price(self):
+        """域名原价
+        :rtype: int
+        """
         return self._Price
 
     @Price.setter
@@ -7603,6 +9173,9 @@ class PriceInfo(AbstractModel):
 
     @property
     def RealPrice(self):
+        """域名现价
+        :rtype: int
+        """
         return self._RealPrice
 
     @RealPrice.setter
@@ -7611,6 +9184,9 @@ class PriceInfo(AbstractModel):
 
     @property
     def Operation(self):
+        """商品的购买类型，新购，续费，赎回，转入，续费并转入
+        :rtype: str
+        """
         return self._Operation
 
     @Operation.setter
@@ -7661,6 +9237,10 @@ class PriceScopeConf(AbstractModel):
 
     @property
     def MaxPrice(self):
+        """最高价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._MaxPrice
 
     @MaxPrice.setter
@@ -7669,6 +9249,10 @@ class PriceScopeConf(AbstractModel):
 
     @property
     def MinPrice(self):
+        """最低价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._MinPrice
 
     @MinPrice.setter
@@ -7677,6 +9261,10 @@ class PriceScopeConf(AbstractModel):
 
     @property
     def Price(self):
+        """价格幅度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Price
 
     @Price.setter
@@ -7685,6 +9273,10 @@ class PriceScopeConf(AbstractModel):
 
     @property
     def DepositPrice(self):
+        """保证金
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._DepositPrice
 
     @DepositPrice.setter
@@ -7745,6 +9337,9 @@ class RenewDomainBatchRequest(AbstractModel):
 
     @property
     def Period(self):
+        """域名续费的年限。
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -7753,6 +9348,9 @@ class RenewDomainBatchRequest(AbstractModel):
 
     @property
     def Domains(self):
+        """批量续费的域名。
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -7761,6 +9359,9 @@ class RenewDomainBatchRequest(AbstractModel):
 
     @property
     def PayMode(self):
+        """付费模式 0手动在线付费，1使用余额付费，2使用特惠包。
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -7769,6 +9370,12 @@ class RenewDomainBatchRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """自动续费开关。有三个可选值：
+0 表示关闭，不自动续费
+1 表示开启，将自动续费
+2 表示不处理，保留域名原有状态（默认值）
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -7777,6 +9384,9 @@ class RenewDomainBatchRequest(AbstractModel):
 
     @property
     def PackageResourceId(self):
+        """特惠包ID
+        :rtype: str
+        """
         return self._PackageResourceId
 
     @PackageResourceId.setter
@@ -7785,6 +9395,9 @@ class RenewDomainBatchRequest(AbstractModel):
 
     @property
     def ChannelFrom(self):
+        """渠道来源，pc/miniprogram/h5等
+        :rtype: str
+        """
         return self._ChannelFrom
 
     @ChannelFrom.setter
@@ -7793,6 +9406,9 @@ class RenewDomainBatchRequest(AbstractModel):
 
     @property
     def OrderFrom(self):
+        """订单来源，common正常/dianshi_active点石活动等
+        :rtype: str
+        """
         return self._OrderFrom
 
     @OrderFrom.setter
@@ -7801,6 +9417,9 @@ class RenewDomainBatchRequest(AbstractModel):
 
     @property
     def ActivityId(self):
+        """活动id
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -7844,6 +9463,9 @@ class RenewDomainBatchResponse(AbstractModel):
 
     @property
     def LogId(self):
+        """操作日志ID。
+        :rtype: int
+        """
         return self._LogId
 
     @LogId.setter
@@ -7852,6 +9474,9 @@ class RenewDomainBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7891,6 +9516,10 @@ class ReserveBidInfo(AbstractModel):
 
     @property
     def User(self):
+        """用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -7899,6 +9528,10 @@ class ReserveBidInfo(AbstractModel):
 
     @property
     def Price(self):
+        """出价
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Price
 
     @Price.setter
@@ -7907,6 +9540,10 @@ class ReserveBidInfo(AbstractModel):
 
     @property
     def BidTime(self):
+        """出价时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BidTime
 
     @BidTime.setter
@@ -7915,6 +9552,10 @@ class ReserveBidInfo(AbstractModel):
 
     @property
     def BidStatus(self):
+        """当前状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BidStatus
 
     @BidStatus.setter
@@ -7966,6 +9607,9 @@ class ReservedDomainInfo(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -7974,6 +9618,9 @@ class ReservedDomainInfo(AbstractModel):
 
     @property
     def RegTime(self):
+        """注册时间
+        :rtype: str
+        """
         return self._RegTime
 
     @RegTime.setter
@@ -7982,6 +9629,9 @@ class ReservedDomainInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """到期时间
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -7990,6 +9640,9 @@ class ReservedDomainInfo(AbstractModel):
 
     @property
     def RenewEndTime(self):
+        """续费时间结束
+        :rtype: str
+        """
         return self._RenewEndTime
 
     @RenewEndTime.setter
@@ -7998,6 +9651,9 @@ class ReservedDomainInfo(AbstractModel):
 
     @property
     def RestoreEndTime(self):
+        """赎回结束时间
+        :rtype: str
+        """
         return self._RestoreEndTime
 
     @RestoreEndTime.setter
@@ -8006,6 +9662,9 @@ class ReservedDomainInfo(AbstractModel):
 
     @property
     def ReservedEndTime(self):
+        """域名预约结束时间
+        :rtype: str
+        """
         return self._ReservedEndTime
 
     @ReservedEndTime.setter
@@ -8071,6 +9730,9 @@ class ReservedPreDomainInfo(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -8079,6 +9741,9 @@ class ReservedPreDomainInfo(AbstractModel):
 
     @property
     def ReservedStatus(self):
+        """1. 预定成功 2. 预定失败（预定失败Reason字段将会被赋值）3. 域名交割中 4. 域名交割完成
+        :rtype: int
+        """
         return self._ReservedStatus
 
     @ReservedStatus.setter
@@ -8087,6 +9752,10 @@ class ReservedPreDomainInfo(AbstractModel):
 
     @property
     def FailReason(self):
+        """域名预定失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FailReason
 
     @FailReason.setter
@@ -8095,6 +9764,10 @@ class ReservedPreDomainInfo(AbstractModel):
 
     @property
     def ChangeOwnerTime(self):
+        """预计变更所有权时间（仅用于参考，实际时间会存在误差）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChangeOwnerTime
 
     @ChangeOwnerTime.setter
@@ -8103,6 +9776,10 @@ class ReservedPreDomainInfo(AbstractModel):
 
     @property
     def RegTime(self):
+        """注册时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegTime
 
     @RegTime.setter
@@ -8111,6 +9788,10 @@ class ReservedPreDomainInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -8119,6 +9800,10 @@ class ReservedPreDomainInfo(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID，用于删除资源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -8127,6 +9812,10 @@ class ReservedPreDomainInfo(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -8176,6 +9865,9 @@ class ReservedPreDomainsRequest(AbstractModel):
 
     @property
     def DomainList(self):
+        """预约预释放域名列表
+        :rtype: list of str
+        """
         return self._DomainList
 
     @DomainList.setter
@@ -8184,6 +9876,9 @@ class ReservedPreDomainsRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -8192,6 +9887,9 @@ class ReservedPreDomainsRequest(AbstractModel):
 
     @property
     def IsAutoPay(self):
+        """结束后是否自动支付尾款，默认开启 传入1关闭
+        :rtype: int
+        """
         return self._IsAutoPay
 
     @IsAutoPay.setter
@@ -8200,6 +9898,9 @@ class ReservedPreDomainsRequest(AbstractModel):
 
     @property
     def IsBidAutoPay(self):
+        """结束后是否自动进行梯度保证金扣除，默认开启 传入1关闭
+        :rtype: int
+        """
         return self._IsBidAutoPay
 
     @IsBidAutoPay.setter
@@ -8245,6 +9946,9 @@ class ReservedPreDomainsResponse(AbstractModel):
 
     @property
     def SucDomainList(self):
+        """预定成功域名列表
+        :rtype: list of str
+        """
         return self._SucDomainList
 
     @SucDomainList.setter
@@ -8253,6 +9957,9 @@ class ReservedPreDomainsResponse(AbstractModel):
 
     @property
     def FailDomainList(self):
+        """预定失败域名列表
+        :rtype: list of FailReservedDomainInfo
+        """
         return self._FailDomainList
 
     @FailDomainList.setter
@@ -8261,6 +9968,9 @@ class ReservedPreDomainsResponse(AbstractModel):
 
     @property
     def SucDomains(self):
+        """域名预定成功详情
+        :rtype: list of SucDomainInfo
+        """
         return self._SucDomains
 
     @SucDomains.setter
@@ -8269,6 +9979,9 @@ class ReservedPreDomainsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8310,6 +10023,9 @@ class SendPhoneEmailCodeRequest(AbstractModel):
 
     @property
     def Code(self):
+        """手机或者邮箱号。
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -8318,6 +10034,9 @@ class SendPhoneEmailCodeRequest(AbstractModel):
 
     @property
     def Type(self):
+        """1：手机  2：邮箱。
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -8352,6 +10071,9 @@ class SendPhoneEmailCodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8383,6 +10105,9 @@ class SetDomainAutoRenewRequest(AbstractModel):
 
     @property
     def DomainId(self):
+        """域名ID 例如：domain-123abc
+        :rtype: str
+        """
         return self._DomainId
 
     @DomainId.setter
@@ -8391,6 +10116,12 @@ class SetDomainAutoRenewRequest(AbstractModel):
 
     @property
     def AutoRenew(self):
+        """AutoRenew 有三个可选值：
+ 0：不设置自动续费
+1：设置自动续费
+2：设置到期后不续费
+        :rtype: int
+        """
         return self._AutoRenew
 
     @AutoRenew.setter
@@ -8425,6 +10156,9 @@ class SetDomainAutoRenewResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8455,6 +10189,10 @@ class SucDomainInfo(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -8463,6 +10201,10 @@ class SucDomainInfo(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -8497,6 +10239,9 @@ class SyncCustomDnsHostRequest(AbstractModel):
 
     @property
     def DomainId(self):
+        """域名实例ID
+        :rtype: str
+        """
         return self._DomainId
 
     @DomainId.setter
@@ -8533,6 +10278,9 @@ class SyncCustomDnsHostResponse(AbstractModel):
 
     @property
     def LogId(self):
+        """异步任务ID
+        :rtype: int
+        """
         return self._LogId
 
     @LogId.setter
@@ -8541,6 +10289,9 @@ class SyncCustomDnsHostResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8600,6 +10351,9 @@ class TemplateInfo(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -8608,6 +10362,9 @@ class TemplateInfo(AbstractModel):
 
     @property
     def AuditStatus(self):
+        """认证状态：未实名认证:NotUpload, 实名审核中:InAudit，已实名认证:Approved，实名审核失败:Reject
+        :rtype: str
+        """
         return self._AuditStatus
 
     @AuditStatus.setter
@@ -8616,6 +10373,9 @@ class TemplateInfo(AbstractModel):
 
     @property
     def CreatedOn(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreatedOn
 
     @CreatedOn.setter
@@ -8624,6 +10384,9 @@ class TemplateInfo(AbstractModel):
 
     @property
     def UpdatedOn(self):
+        """更新时间
+        :rtype: str
+        """
         return self._UpdatedOn
 
     @UpdatedOn.setter
@@ -8632,6 +10395,9 @@ class TemplateInfo(AbstractModel):
 
     @property
     def UserUin(self):
+        """用户UIN
+        :rtype: str
+        """
         return self._UserUin
 
     @UserUin.setter
@@ -8640,6 +10406,9 @@ class TemplateInfo(AbstractModel):
 
     @property
     def IsDefault(self):
+        """是否是默认模板: 是:yes，否:no
+        :rtype: str
+        """
         return self._IsDefault
 
     @IsDefault.setter
@@ -8648,6 +10417,9 @@ class TemplateInfo(AbstractModel):
 
     @property
     def AuditReason(self):
+        """认证失败原因
+        :rtype: str
+        """
         return self._AuditReason
 
     @AuditReason.setter
@@ -8656,6 +10428,9 @@ class TemplateInfo(AbstractModel):
 
     @property
     def CertificateInfo(self):
+        """认证信息
+        :rtype: :class:`tencentcloud.domain.v20180808.models.CertificateInfo`
+        """
         return self._CertificateInfo
 
     @CertificateInfo.setter
@@ -8664,6 +10439,9 @@ class TemplateInfo(AbstractModel):
 
     @property
     def ContactInfo(self):
+        """联系人信息
+        :rtype: :class:`tencentcloud.domain.v20180808.models.ContactInfo`
+        """
         return self._ContactInfo
 
     @ContactInfo.setter
@@ -8672,6 +10450,9 @@ class TemplateInfo(AbstractModel):
 
     @property
     def IsValidTemplate(self):
+        """模板是否符合规范， 1是 0 否
+        :rtype: int
+        """
         return self._IsValidTemplate
 
     @IsValidTemplate.setter
@@ -8680,6 +10461,9 @@ class TemplateInfo(AbstractModel):
 
     @property
     def InvalidReason(self):
+        """不符合规范原因
+        :rtype: str
+        """
         return self._InvalidReason
 
     @InvalidReason.setter
@@ -8688,6 +10472,9 @@ class TemplateInfo(AbstractModel):
 
     @property
     def IsBlack(self):
+        """是包含黑名单手机或邮箱
+        :rtype: bool
+        """
         return self._IsBlack
 
     @IsBlack.setter
@@ -8770,6 +10557,9 @@ false：关闭60天内禁止转移注册商锁定
 
     @property
     def Domains(self):
+        """转入的域名名称数组。
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -8778,6 +10568,9 @@ false：关闭60天内禁止转移注册商锁定
 
     @property
     def PassWords(self):
+        """域名转移码数组。
+        :rtype: list of str
+        """
         return self._PassWords
 
     @PassWords.setter
@@ -8786,6 +10579,9 @@ false：关闭60天内禁止转移注册商锁定
 
     @property
     def TemplateId(self):
+        """模板ID。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -8794,6 +10590,9 @@ false：关闭60天内禁止转移注册商锁定
 
     @property
     def PayMode(self):
+        """付费模式 0手动在线付费，1使用余额付费。
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -8802,6 +10601,11 @@ false：关闭60天内禁止转移注册商锁定
 
     @property
     def AutoRenewFlag(self):
+        """自动续费开关。有两个可选值：
+0 表示关闭，不自动续费（默认值）
+1 表示开启，将自动续费
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -8810,6 +10614,11 @@ false：关闭60天内禁止转移注册商锁定
 
     @property
     def LockTransfer(self):
+        """true： 开启60天内禁止转移注册商锁定
+false：关闭60天内禁止转移注册商锁定
+默认 true
+        :rtype: bool
+        """
         return self._LockTransfer
 
     @LockTransfer.setter
@@ -8818,6 +10627,9 @@ false：关闭60天内禁止转移注册商锁定
 
     @property
     def UpdateProhibition(self):
+        """是否开启更新锁：0=默认不开启，1=开启
+        :rtype: int
+        """
         return self._UpdateProhibition
 
     @UpdateProhibition.setter
@@ -8826,6 +10638,9 @@ false：关闭60天内禁止转移注册商锁定
 
     @property
     def TransferProhibition(self):
+        """是否开启转移锁：0=默认不开启，1=开启
+        :rtype: int
+        """
         return self._TransferProhibition
 
     @TransferProhibition.setter
@@ -8834,6 +10649,9 @@ false：关闭60天内禁止转移注册商锁定
 
     @property
     def ChannelFrom(self):
+        """渠道来源，pc/miniprogram/h5等
+        :rtype: str
+        """
         return self._ChannelFrom
 
     @ChannelFrom.setter
@@ -8842,6 +10660,9 @@ false：关闭60天内禁止转移注册商锁定
 
     @property
     def OrderFrom(self):
+        """订单来源，common正常/dianshi_active点石活动等
+        :rtype: str
+        """
         return self._OrderFrom
 
     @OrderFrom.setter
@@ -8850,6 +10671,9 @@ false：关闭60天内禁止转移注册商锁定
 
     @property
     def ActivityId(self):
+        """活动id
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -8896,6 +10720,9 @@ class TransferInDomainBatchResponse(AbstractModel):
 
     @property
     def LogId(self):
+        """日志ID
+        :rtype: int
+        """
         return self._LogId
 
     @LogId.setter
@@ -8904,6 +10731,9 @@ class TransferInDomainBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8935,6 +10765,9 @@ False：关闭禁止域名转移状态。
 
     @property
     def Domains(self):
+        """批量操作的域名。
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -8943,6 +10776,11 @@ False：关闭禁止域名转移状态。
 
     @property
     def Status(self):
+        """是否开启禁止域名转移。
+True: 开启禁止域名转移状态。
+False：关闭禁止域名转移状态。
+        :rtype: bool
+        """
         return self._Status
 
     @Status.setter
@@ -8980,6 +10818,9 @@ class TransferProhibitionBatchResponse(AbstractModel):
 
     @property
     def LogId(self):
+        """日志ID
+        :rtype: int
+        """
         return self._LogId
 
     @LogId.setter
@@ -8988,6 +10829,9 @@ class TransferProhibitionBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9019,6 +10863,9 @@ False：关闭禁止域名更新状态。
 
     @property
     def Domains(self):
+        """批量操作的域名。
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -9027,6 +10874,11 @@ False：关闭禁止域名更新状态。
 
     @property
     def Status(self):
+        """是否开启禁止域名更新。
+True:开启禁止域名更新状态。
+False：关闭禁止域名更新状态。
+        :rtype: bool
+        """
         return self._Status
 
     @Status.setter
@@ -9064,6 +10916,9 @@ class UpdateProhibitionBatchResponse(AbstractModel):
 
     @property
     def LogId(self):
+        """日志ID
+        :rtype: int
+        """
         return self._LogId
 
     @LogId.setter
@@ -9072,6 +10927,9 @@ class UpdateProhibitionBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9098,6 +10956,9 @@ class UploadImageRequest(AbstractModel):
 
     @property
     def ImageFile(self):
+        """资质照片，照片的base64编码。
+        :rtype: str
+        """
         return self._ImageFile
 
     @ImageFile.setter
@@ -9134,6 +10995,9 @@ class UploadImageResponse(AbstractModel):
 
     @property
     def AccessUrl(self):
+        """资质照片地址。
+        :rtype: str
+        """
         return self._AccessUrl
 
     @AccessUrl.setter
@@ -9142,6 +11006,9 @@ class UploadImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

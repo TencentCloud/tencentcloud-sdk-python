@@ -35,6 +35,9 @@ class AbortPredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -43,6 +46,9 @@ class AbortPredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
+        """任务 ID
+        :rtype: int
+        """
         return self._CampaignId
 
     @CampaignId.setter
@@ -77,6 +83,9 @@ class AbortPredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -111,6 +120,9 @@ class ActiveCarrierPrivilegeNumber(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """实例Id
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -119,6 +131,9 @@ class ActiveCarrierPrivilegeNumber(AbstractModel):
 
     @property
     def Caller(self):
+        """主叫号码
+        :rtype: str
+        """
         return self._Caller
 
     @Caller.setter
@@ -127,6 +142,9 @@ class ActiveCarrierPrivilegeNumber(AbstractModel):
 
     @property
     def Callee(self):
+        """被叫号码
+        :rtype: str
+        """
         return self._Callee
 
     @Callee.setter
@@ -135,6 +153,9 @@ class ActiveCarrierPrivilegeNumber(AbstractModel):
 
     @property
     def CreateTime(self):
+        """生效unix时间戳(秒)
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -183,6 +204,9 @@ class AsrData(AbstractModel):
 
     @property
     def User(self):
+        """用户方
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -191,6 +215,9 @@ class AsrData(AbstractModel):
 
     @property
     def Message(self):
+        """消息内容
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -201,6 +228,9 @@ class AsrData(AbstractModel):
     def Timestamp(self):
         warnings.warn("parameter `Timestamp` is deprecated", DeprecationWarning) 
 
+        """时间戳
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -211,6 +241,9 @@ class AsrData(AbstractModel):
 
     @property
     def Start(self):
+        """句子开始时间，Unix 毫秒时间戳
+        :rtype: int
+        """
         return self._Start
 
     @Start.setter
@@ -219,6 +252,9 @@ class AsrData(AbstractModel):
 
     @property
     def End(self):
+        """句子结束时间，Unix 毫秒时间戳
+        :rtype: int
+        """
         return self._End
 
     @End.setter
@@ -265,6 +301,9 @@ class AudioFileInfo(AbstractModel):
 
     @property
     def FileId(self):
+        """文件ID
+        :rtype: int
+        """
         return self._FileId
 
     @FileId.setter
@@ -273,6 +312,9 @@ class AudioFileInfo(AbstractModel):
 
     @property
     def CustomFileName(self):
+        """文件别名
+        :rtype: str
+        """
         return self._CustomFileName
 
     @CustomFileName.setter
@@ -281,6 +323,9 @@ class AudioFileInfo(AbstractModel):
 
     @property
     def AudioFileName(self):
+        """文件名
+        :rtype: str
+        """
         return self._AudioFileName
 
     @AudioFileName.setter
@@ -289,6 +334,9 @@ class AudioFileInfo(AbstractModel):
 
     @property
     def Status(self):
+        """审核状态，0-未审核，1-审核通过，2-审核拒绝
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -331,6 +379,9 @@ class AutoCalloutTaskCalleeInfo(AbstractModel):
 
     @property
     def Callee(self):
+        """被叫号码
+        :rtype: str
+        """
         return self._Callee
 
     @Callee.setter
@@ -339,6 +390,9 @@ class AutoCalloutTaskCalleeInfo(AbstractModel):
 
     @property
     def State(self):
+        """呼叫状态 0初始 1已接听 2未接听 3呼叫中 4待重试
+        :rtype: int
+        """
         return self._State
 
     @State.setter
@@ -347,6 +401,9 @@ class AutoCalloutTaskCalleeInfo(AbstractModel):
 
     @property
     def Sessions(self):
+        """会话ID列表
+        :rtype: list of str
+        """
         return self._Sessions
 
     @Sessions.setter
@@ -409,6 +466,9 @@ class AutoCalloutTaskInfo(AbstractModel):
 
     @property
     def Name(self):
+        """任务名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -417,6 +477,9 @@ class AutoCalloutTaskInfo(AbstractModel):
 
     @property
     def CalleeCount(self):
+        """被叫数量
+        :rtype: int
+        """
         return self._CalleeCount
 
     @CalleeCount.setter
@@ -425,6 +488,9 @@ class AutoCalloutTaskInfo(AbstractModel):
 
     @property
     def Callers(self):
+        """主叫号码列表
+        :rtype: list of str
+        """
         return self._Callers
 
     @Callers.setter
@@ -433,6 +499,9 @@ class AutoCalloutTaskInfo(AbstractModel):
 
     @property
     def NotBefore(self):
+        """起始时间戳
+        :rtype: int
+        """
         return self._NotBefore
 
     @NotBefore.setter
@@ -441,6 +510,10 @@ class AutoCalloutTaskInfo(AbstractModel):
 
     @property
     def NotAfter(self):
+        """结束时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._NotAfter
 
     @NotAfter.setter
@@ -449,6 +522,9 @@ class AutoCalloutTaskInfo(AbstractModel):
 
     @property
     def IvrId(self):
+        """任务使用的IvrId
+        :rtype: int
+        """
         return self._IvrId
 
     @IvrId.setter
@@ -457,6 +533,14 @@ class AutoCalloutTaskInfo(AbstractModel):
 
     @property
     def State(self):
+        """任务状态：
+0初始：任务创建，呼叫未开始
+1运行中
+2 已完成：任务中所有呼叫完成
+3结束中：任务到期，但仍有部分呼叫未结束
+4已结束：任务到期终止
+        :rtype: int
+        """
         return self._State
 
     @State.setter
@@ -465,6 +549,9 @@ class AutoCalloutTaskInfo(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务Id
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -511,6 +598,9 @@ class BindNumberCallOutSkillGroupRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -519,6 +609,9 @@ class BindNumberCallOutSkillGroupRequest(AbstractModel):
 
     @property
     def Number(self):
+        """待绑定的号码
+        :rtype: str
+        """
         return self._Number
 
     @Number.setter
@@ -527,6 +620,9 @@ class BindNumberCallOutSkillGroupRequest(AbstractModel):
 
     @property
     def SkillGroupIds(self):
+        """待绑定的技能组Id列表
+        :rtype: list of int non-negative
+        """
         return self._SkillGroupIds
 
     @SkillGroupIds.setter
@@ -562,6 +658,9 @@ class BindNumberCallOutSkillGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -596,6 +695,9 @@ class BindStaffSkillGroupListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -604,6 +706,9 @@ class BindStaffSkillGroupListRequest(AbstractModel):
 
     @property
     def StaffEmail(self):
+        """座席邮箱
+        :rtype: str
+        """
         return self._StaffEmail
 
     @StaffEmail.setter
@@ -614,6 +719,9 @@ class BindStaffSkillGroupListRequest(AbstractModel):
     def SkillGroupList(self):
         warnings.warn("parameter `SkillGroupList` is deprecated", DeprecationWarning) 
 
+        """绑定技能组列表
+        :rtype: list of int
+        """
         return self._SkillGroupList
 
     @SkillGroupList.setter
@@ -624,6 +732,9 @@ class BindStaffSkillGroupListRequest(AbstractModel):
 
     @property
     def StaffSkillGroupList(self):
+        """绑定技能组列表(必填)
+        :rtype: list of StaffSkillGroupList
+        """
         return self._StaffSkillGroupList
 
     @StaffSkillGroupList.setter
@@ -665,6 +776,9 @@ class BindStaffSkillGroupListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -720,6 +834,9 @@ class CallInMetrics(AbstractModel):
 
     @property
     def IvrCount(self):
+        """IVR驻留数量
+        :rtype: int
+        """
         return self._IvrCount
 
     @IvrCount.setter
@@ -728,6 +845,9 @@ class CallInMetrics(AbstractModel):
 
     @property
     def QueueCount(self):
+        """排队中数量
+        :rtype: int
+        """
         return self._QueueCount
 
     @QueueCount.setter
@@ -736,6 +856,9 @@ class CallInMetrics(AbstractModel):
 
     @property
     def RingCount(self):
+        """振铃中数量
+        :rtype: int
+        """
         return self._RingCount
 
     @RingCount.setter
@@ -744,6 +867,9 @@ class CallInMetrics(AbstractModel):
 
     @property
     def AcceptCount(self):
+        """接通中数量
+        :rtype: int
+        """
         return self._AcceptCount
 
     @AcceptCount.setter
@@ -752,6 +878,9 @@ class CallInMetrics(AbstractModel):
 
     @property
     def TransferOuterCount(self):
+        """客服转接外线中数量
+        :rtype: int
+        """
         return self._TransferOuterCount
 
     @TransferOuterCount.setter
@@ -760,6 +889,9 @@ class CallInMetrics(AbstractModel):
 
     @property
     def MaxQueueDuration(self):
+        """最大排队时长
+        :rtype: int
+        """
         return self._MaxQueueDuration
 
     @MaxQueueDuration.setter
@@ -768,6 +900,9 @@ class CallInMetrics(AbstractModel):
 
     @property
     def AvgQueueDuration(self):
+        """平均排队时长
+        :rtype: int
+        """
         return self._AvgQueueDuration
 
     @AvgQueueDuration.setter
@@ -776,6 +911,9 @@ class CallInMetrics(AbstractModel):
 
     @property
     def MaxRingDuration(self):
+        """最大振铃时长
+        :rtype: int
+        """
         return self._MaxRingDuration
 
     @MaxRingDuration.setter
@@ -784,6 +922,9 @@ class CallInMetrics(AbstractModel):
 
     @property
     def AvgRingDuration(self):
+        """平均振铃时长
+        :rtype: int
+        """
         return self._AvgRingDuration
 
     @AvgRingDuration.setter
@@ -792,6 +933,9 @@ class CallInMetrics(AbstractModel):
 
     @property
     def MaxAcceptDuration(self):
+        """最大接通时长
+        :rtype: int
+        """
         return self._MaxAcceptDuration
 
     @MaxAcceptDuration.setter
@@ -800,6 +944,9 @@ class CallInMetrics(AbstractModel):
 
     @property
     def AvgAcceptDuration(self):
+        """平均接通时长
+        :rtype: int
+        """
         return self._AvgAcceptDuration
 
     @AvgAcceptDuration.setter
@@ -849,6 +996,9 @@ class CallInNumberMetrics(AbstractModel):
 
     @property
     def Number(self):
+        """线路号码
+        :rtype: str
+        """
         return self._Number
 
     @Number.setter
@@ -857,6 +1007,9 @@ class CallInNumberMetrics(AbstractModel):
 
     @property
     def Metrics(self):
+        """线路相关指标
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`
+        """
         return self._Metrics
 
     @Metrics.setter
@@ -865,6 +1018,9 @@ class CallInNumberMetrics(AbstractModel):
 
     @property
     def SkillGroupMetrics(self):
+        """所属技能组相关指标
+        :rtype: list of CallInSkillGroupMetrics
+        """
         return self._SkillGroupMetrics
 
     @SkillGroupMetrics.setter
@@ -913,6 +1069,9 @@ class CallInSkillGroupMetrics(AbstractModel):
 
     @property
     def SkillGroupId(self):
+        """技能组ID
+        :rtype: int
+        """
         return self._SkillGroupId
 
     @SkillGroupId.setter
@@ -921,6 +1080,9 @@ class CallInSkillGroupMetrics(AbstractModel):
 
     @property
     def Metrics(self):
+        """数据指标
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`
+        """
         return self._Metrics
 
     @Metrics.setter
@@ -929,6 +1091,9 @@ class CallInSkillGroupMetrics(AbstractModel):
 
     @property
     def Name(self):
+        """技能组名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -972,6 +1137,9 @@ class CalleeAttribute(AbstractModel):
 
     @property
     def Callee(self):
+        """被叫号码
+        :rtype: str
+        """
         return self._Callee
 
     @Callee.setter
@@ -980,6 +1148,9 @@ class CalleeAttribute(AbstractModel):
 
     @property
     def UUI(self):
+        """随路数据
+        :rtype: str
+        """
         return self._UUI
 
     @UUI.setter
@@ -988,6 +1159,9 @@ class CalleeAttribute(AbstractModel):
 
     @property
     def Variables(self):
+        """参数
+        :rtype: list of Variable
+        """
         return self._Variables
 
     @Variables.setter
@@ -1049,6 +1223,9 @@ class CarrierPrivilegeNumberApplicant(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """实例Id
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1057,6 +1234,9 @@ class CarrierPrivilegeNumberApplicant(AbstractModel):
 
     @property
     def ApplicantId(self):
+        """申请单Id
+        :rtype: int
+        """
         return self._ApplicantId
 
     @ApplicantId.setter
@@ -1065,6 +1245,9 @@ class CarrierPrivilegeNumberApplicant(AbstractModel):
 
     @property
     def Callers(self):
+        """主叫号码列表
+        :rtype: list of str
+        """
         return self._Callers
 
     @Callers.setter
@@ -1073,6 +1256,9 @@ class CarrierPrivilegeNumberApplicant(AbstractModel):
 
     @property
     def Callees(self):
+        """被叫号码列表
+        :rtype: list of str
+        """
         return self._Callees
 
     @Callees.setter
@@ -1081,6 +1267,9 @@ class CarrierPrivilegeNumberApplicant(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1089,6 +1278,9 @@ class CarrierPrivilegeNumberApplicant(AbstractModel):
 
     @property
     def State(self):
+        """审批状态:1 待审核、2 通过、3 拒绝
+        :rtype: int
+        """
         return self._State
 
     @State.setter
@@ -1097,6 +1289,9 @@ class CarrierPrivilegeNumberApplicant(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间，unix时间戳(秒)
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1105,6 +1300,9 @@ class CarrierPrivilegeNumberApplicant(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间，unix时间戳(秒)
+        :rtype: int
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -1211,6 +1409,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def ApplicantType(self):
+        """申请人身份，0-公司法定代表人，1-经办人（受法定代表人委托）
+        :rtype: int
+        """
         return self._ApplicantType
 
     @ApplicantType.setter
@@ -1219,6 +1420,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def CompanyName(self):
+        """企业名称
+        :rtype: str
+        """
         return self._CompanyName
 
     @CompanyName.setter
@@ -1227,6 +1431,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def BusinessId(self):
+        """统一社会信用代码
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -1235,6 +1442,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def BusinessIdPicUrl(self):
+        """营业执照扫描件(加盖公章)。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+        :rtype: str
+        """
         return self._BusinessIdPicUrl
 
     @BusinessIdPicUrl.setter
@@ -1243,6 +1453,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def CorporationName(self):
+        """法定代表人名称
+        :rtype: str
+        """
         return self._CorporationName
 
     @CorporationName.setter
@@ -1251,6 +1464,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def CorporationId(self):
+        """法定代表人身份证号码
+        :rtype: str
+        """
         return self._CorporationId
 
     @CorporationId.setter
@@ -1259,6 +1475,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def CorporationIdPicUrl(self):
+        """法定代表人身份证正反面扫描件。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+        :rtype: str
+        """
         return self._CorporationIdPicUrl
 
     @CorporationIdPicUrl.setter
@@ -1267,6 +1486,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def NetworkCommitmentPicUrl(self):
+        """安全合规使用承诺书。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+        :rtype: str
+        """
         return self._NetworkCommitmentPicUrl
 
     @NetworkCommitmentPicUrl.setter
@@ -1275,6 +1497,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def IsEqualTencentCloud(self):
+        """是否与腾讯云账号的资质一致,0-不一致,1-一致
+        :rtype: int
+        """
         return self._IsEqualTencentCloud
 
     @IsEqualTencentCloud.setter
@@ -1283,6 +1508,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def CorporationMobile(self):
+        """法定代表人手机号
+        :rtype: str
+        """
         return self._CorporationMobile
 
     @CorporationMobile.setter
@@ -1291,6 +1519,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def CorporationMobilePicUrl(self):
+        """法定代表人手机号码实名认证。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+        :rtype: str
+        """
         return self._CorporationMobilePicUrl
 
     @CorporationMobilePicUrl.setter
@@ -1299,6 +1530,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def UseDescribeFileUrl(self):
+        """通话话术。(支持doc、docx格式的文档不超过50MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+        :rtype: str
+        """
         return self._UseDescribeFileUrl
 
     @UseDescribeFileUrl.setter
@@ -1307,6 +1541,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def CompanyAuthLetterPicUrl(self):
+        """公司授权函。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+        :rtype: str
+        """
         return self._CompanyAuthLetterPicUrl
 
     @CompanyAuthLetterPicUrl.setter
@@ -1315,6 +1552,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def AcceptPicUrl(self):
+        """电话受理单。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+        :rtype: str
+        """
         return self._AcceptPicUrl
 
     @AcceptPicUrl.setter
@@ -1323,6 +1563,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def CorporationHoldingOnIdPicUrl(self):
+        """法定代表人手持身份证照，申请人类型为法定代表人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+        :rtype: str
+        """
         return self._CorporationHoldingOnIdPicUrl
 
     @CorporationHoldingOnIdPicUrl.setter
@@ -1331,6 +1574,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def OperatorName(self):
+        """经办人名称，申请人类型为经办人时必填。
+        :rtype: str
+        """
         return self._OperatorName
 
     @OperatorName.setter
@@ -1339,6 +1585,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def OperatorId(self):
+        """经办人证件号码，申请人类型为经办人时必填。
+        :rtype: str
+        """
         return self._OperatorId
 
     @OperatorId.setter
@@ -1347,6 +1596,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def OperatorIdPicUrl(self):
+        """经办人身份证正反面扫描件，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+        :rtype: str
+        """
         return self._OperatorIdPicUrl
 
     @OperatorIdPicUrl.setter
@@ -1355,6 +1607,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def OperatorHoldingOnIdPicUrl(self):
+        """经办人手持身份证照，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+        :rtype: str
+        """
         return self._OperatorHoldingOnIdPicUrl
 
     @OperatorHoldingOnIdPicUrl.setter
@@ -1363,6 +1618,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def CommissionPicUrl(self):
+        """委托授权书，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+        :rtype: str
+        """
         return self._CommissionPicUrl
 
     @CommissionPicUrl.setter
@@ -1371,6 +1629,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def OperatorMobile(self):
+        """经办人手机号，申请人类型为经办人时必填。
+        :rtype: str
+        """
         return self._OperatorMobile
 
     @OperatorMobile.setter
@@ -1379,6 +1640,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def OperatorEmail(self):
+        """经办人邮箱，申请人类型为经办人时必填。
+        :rtype: str
+        """
         return self._OperatorEmail
 
     @OperatorEmail.setter
@@ -1387,6 +1651,9 @@ class CompanyApplyInfo(AbstractModel):
 
     @property
     def OperatorMobilePicUrl(self):
+        """经办人手机号码实名认证，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模板参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+        :rtype: str
+        """
         return self._OperatorMobilePicUrl
 
     @OperatorMobilePicUrl.setter
@@ -1463,6 +1730,9 @@ class CompanyStateInfo(AbstractModel):
 
     @property
     def Id(self):
+        """申请单ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -1471,6 +1741,9 @@ class CompanyStateInfo(AbstractModel):
 
     @property
     def CompanyName(self):
+        """公司名称
+        :rtype: str
+        """
         return self._CompanyName
 
     @CompanyName.setter
@@ -1479,6 +1752,9 @@ class CompanyStateInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1487,6 +1763,9 @@ class CompanyStateInfo(AbstractModel):
 
     @property
     def CheckTime(self):
+        """审核时间
+        :rtype: int
+        """
         return self._CheckTime
 
     @CheckTime.setter
@@ -1495,6 +1774,9 @@ class CompanyStateInfo(AbstractModel):
 
     @property
     def CheckMsg(self):
+        """审核备注
+        :rtype: str
+        """
         return self._CheckMsg
 
     @CheckMsg.setter
@@ -1503,6 +1785,9 @@ class CompanyStateInfo(AbstractModel):
 
     @property
     def State(self):
+        """审核状态，1-待审核，2-审核通过，3-驳回
+        :rtype: int
+        """
         return self._State
 
     @State.setter
@@ -1511,6 +1796,9 @@ class CompanyStateInfo(AbstractModel):
 
     @property
     def BusinessId(self):
+        """公司统一社会信用代码
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -1519,6 +1807,9 @@ class CompanyStateInfo(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """修改时间
+        :rtype: int
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -1826,6 +2117,9 @@ HoaiMy
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1834,6 +2128,9 @@ HoaiMy
 
     @property
     def Callee(self):
+        """被叫号码
+        :rtype: str
+        """
         return self._Callee
 
     @Callee.setter
@@ -1842,6 +2139,44 @@ HoaiMy
 
     @property
     def SystemPrompt(self):
+        """用于设定AI人设、说话规则、任务等的全局提示词。
+
+示例：
+
+## 人设
+你是人民医院友善、和蔼的的随访医生李医生，正在给患者小明的家长打电话，原因是医院要求小明2024-08-08回院复查手术恢复情况，但小明没有来。你需要按照任务流程对小明家长进行电话随访调查。
+
+## 要求
+简洁回复：使用简练语言，每次最多询问一个问题，不要在一个回复中询问多个问题。
+富有变化：尽量使表达富有变化，表达机械重复。
+自然亲切：使用日常语言，尽量显得专业并亲切。提到时间时使用口语表述，如下周三、6月18日。
+积极主动：尝试引导对话，每个回复通常以问题或下一步建议来结尾。
+询问清楚：如果对方部分回答了你的问题，或者回答很模糊，请通过追问来确保回答的完整明确。
+遵循任务：当对方的回答偏离了你的任务时，及时引导对方回到任务中。不要从头开始重复，从偏离的的地方继续询问。
+诚实可靠：对于客户的提问，如果不确定请务必不要编造，礼貌告知对方不清楚。不要捏造患者未提及的症状史、用药史、治疗史。
+其他注意点：避免提到病情恶化、恢复不理想或疾病名称等使用会使患者感到紧张的表述。
+不要问患者已经直接或间接回答过的问题，比如患者已经说没有不适症状，那就不要再问手术部位是否有红肿疼痛症状的问题。
+
+##任务： 
+1.自我介绍你是人民医院负责随访的李医生，并说明致电的目的。
+2.询问被叫方是否是小明家长。 
+- 如果不是小明家长，请礼貌表达歉意，并使用 call_end 挂断电话。
+- 如果小明家长没空，请礼貌告诉对方稍后会重新致电，并使用 end_call 挂断电话。
+3.询问小明出院后水肿情况如何，较出院时是否有变化。
+- 如果水肿变严重，直接跳转步骤7。
+4.询问出院后是否给小朋友量过体温，是否出现过发烧情况。
+- 如果没有量过体温，请礼貌告诉家长出院后三个月内需要每天观察体温。
+- 如果出现过发烧，请直接跳转步骤7。
+5.询问出院后是否给小朋友按时服药。
+- 如果没有按时服药，请友善提醒家长严格按医嘱服用药物，避免影响手术效果。
+6.询问小朋友在饮食上是否做到低盐低脂，适量吃优质蛋白如鸡蛋、牛奶、瘦肉等。
+- 如果没有做到，请友善提醒家长低盐低脂和优质蛋白有助小朋友尽快恢复。
+7.告知家长医生要求6月18日回院复查，但没看到有相关复诊记录。提醒家长尽快前往医院体检复查血化验、尿常规。
+8.询问家长是否有问题需要咨询，如果没有请礼貌道别并用call_end挂断电话。
+
+
+        :rtype: str
+        """
         return self._SystemPrompt
 
     @SystemPrompt.setter
@@ -1850,6 +2185,13 @@ HoaiMy
 
     @property
     def LLMType(self):
+        """模型接口协议类型，目前兼容三种协议类型：
+
+- OpenAI协议(包括GPT、混元、DeepSeek等)："openai"
+- Azure协议："azure"
+- Minimax协议："minimax"
+        :rtype: str
+        """
         return self._LLMType
 
     @LLMType.setter
@@ -1858,6 +2200,18 @@ HoaiMy
 
     @property
     def Model(self):
+        """模型名称，如
+
+- OpenAI协议
+"gpt-4o-mini","gpt-4o"，"hunyuan-standard", "hunyuan-turbo"，"deepseek-chat"；
+
+- Azure协议
+"gpt-4o-mini", "gpt-4o"；
+
+- Minmax协议
+"deepseek-chat".
+        :rtype: str
+        """
         return self._Model
 
     @Model.setter
@@ -1866,6 +2220,15 @@ HoaiMy
 
     @property
     def APIKey(self):
+        """模型API密钥，获取鉴权信息方式请参见各模型官网
+
+- OpenAI协议：[GPT](https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key)，[混元](https://cloud.tencent.com/document/product/1729/111008)，[DeepSeek](https://api-docs.deepseek.com/zh-cn/)；
+
+- Azure协议：[Azure GPT](https://learn.microsoft.com/en-us/azure/ai-services/openai/chatgpt-quickstart?tabs=command-line%2Ctypescript%2Cpython-new&pivots=programming-language-studio#key-settings)；
+
+- Minimax：[Minimax](https://platform.minimaxi.com/document/Fast%20access?key=66701cf51d57f38758d581b2)
+        :rtype: str
+        """
         return self._APIKey
 
     @APIKey.setter
@@ -1874,6 +2237,20 @@ HoaiMy
 
     @property
     def APIUrl(self):
+        """模型接口地址
+
+- OpenAI协议
+GPT："https://api.openai.com/v1/"
+混元："https://api.hunyuan.cloud.tencent.com/v1"
+Deepseek："https://api.deepseek.com/v1"
+
+- Azure协议
+ "https://{your-resource-name}.openai.azure.com?api-version={api-version}"
+
+- Minimax协议
+"https://api.minimax.chat/v1"
+        :rtype: str
+        """
         return self._APIUrl
 
     @APIUrl.setter
@@ -1882,6 +2259,43 @@ HoaiMy
 
     @property
     def VoiceType(self):
+        """默认提供以下音色参数值可选择，如需自定义音色VoiceType请留空并在参数CustomTTSConfig中配置
+
+汉语：
+ZhiMei：智美，客服女声
+ZhiXi： 智希 通用女声
+ZhiQi：智琪 客服女声
+ZhiTian：智甜 女童声
+AiXiaoJing：爱小静 对话女声
+
+英语:
+WeRose：英文女声
+Monika：英文女声
+
+日语：
+Nanami
+
+韩语：
+SunHi
+
+印度尼西亚语(印度尼西亚)：
+Gadis
+
+马来语（马来西亚）:
+Yasmin
+
+ 泰米尔语（马来西亚）:
+Kani
+
+泰语（泰国）:
+Achara
+
+越南语(越南):
+HoaiMy
+
+
+        :rtype: str
+        """
         return self._VoiceType
 
     @VoiceType.setter
@@ -1890,6 +2304,9 @@ HoaiMy
 
     @property
     def Callers(self):
+        """主叫号码列表
+        :rtype: list of str
+        """
         return self._Callers
 
     @Callers.setter
@@ -1898,6 +2315,9 @@ HoaiMy
 
     @property
     def WelcomeMessage(self):
+        """用于设定AI座席欢迎语。
+        :rtype: str
+        """
         return self._WelcomeMessage
 
     @WelcomeMessage.setter
@@ -1906,6 +2326,10 @@ HoaiMy
 
     @property
     def WelcomeType(self):
+        """0：使用welcomeMessage(为空时，被叫先说话；不为空时，机器人先说话)
+1:   使用ai根据prompt自动生成welcomeMessage并先说话
+        :rtype: int
+        """
         return self._WelcomeType
 
     @WelcomeType.setter
@@ -1914,6 +2338,9 @@ HoaiMy
 
     @property
     def MaxDuration(self):
+        """最大等待时长(毫秒)，默认60秒，超过这个时间用户没说话，自动挂断
+        :rtype: int
+        """
         return self._MaxDuration
 
     @MaxDuration.setter
@@ -1922,6 +2349,32 @@ HoaiMy
 
     @property
     def Languages(self):
+        """语音识别支持的语言, 默认是"zh" 中文,
+填写数组,最长4个语言，第一个语言为主要识别语言，后面为可选语言，
+注意:主要语言为中国方言时，可选语言无效
+目前全量支持的语言如下，等号左面是语言英文名，右面是Language字段需要填写的值，该值遵循ISO639：
+1. Chinese = "zh" # 中文
+2. Chinese_TW = "zh-TW" # 中国台湾
+3. Chinese_DIALECT = "zh-dialect" # 中国方言
+4. English = "en" # 英语
+5. Vietnamese = "vi" # 越南语
+6. Japanese = "ja" # 日语
+7. Korean = "ko" # 汉语
+8. Indonesia = "id" # 印度尼西亚语
+9. Thai = "th" # 泰语
+10. Portuguese = "pt" # 葡萄牙语
+11. Turkish = "tr" # 土耳其语
+12. Arabic = "ar" # 阿拉伯语
+13. Spanish = "es" # 西班牙语
+14. Hindi = "hi" # 印地语
+15. French = "fr" # 法语
+16. Malay = "ms" # 马来语
+17. Filipino = "fil" # 菲律宾语
+18. German = "de" # 德语
+19. Italian = "it" # 意大利语
+20. Russian = "ru" # 俄语
+        :rtype: list of str
+        """
         return self._Languages
 
     @Languages.setter
@@ -1930,6 +2383,9 @@ HoaiMy
 
     @property
     def InterruptMode(self):
+        """打断AI说话模式，默认为0，0表示服务端自动打断，1表示服务端不打断，由端上发送打断信令进行打断
+        :rtype: int
+        """
         return self._InterruptMode
 
     @InterruptMode.setter
@@ -1938,6 +2394,9 @@ HoaiMy
 
     @property
     def InterruptSpeechDuration(self):
+        """InterruptMode为0时使用，单位为毫秒，默认为500ms。表示服务端检测到持续InterruptSpeechDuration毫秒的人声则进行打断。
+        :rtype: int
+        """
         return self._InterruptSpeechDuration
 
     @InterruptSpeechDuration.setter
@@ -1946,6 +2405,9 @@ HoaiMy
 
     @property
     def EndFunctionEnable(self):
+        """模型是否支持(或者开启)call_end function calling
+        :rtype: bool
+        """
         return self._EndFunctionEnable
 
     @EndFunctionEnable.setter
@@ -1954,6 +2416,9 @@ HoaiMy
 
     @property
     def EndFunctionDesc(self):
+        """EndFunctionEnable为true时生效；call_end function calling的desc，默认为 "End the call when user has to leave (like says bye) or you are instructed to do so."
+        :rtype: str
+        """
         return self._EndFunctionDesc
 
     @EndFunctionDesc.setter
@@ -1962,6 +2427,9 @@ HoaiMy
 
     @property
     def NotifyDuration(self):
+        """用户多久没说话提示时长,最小10秒,默认10秒
+        :rtype: int
+        """
         return self._NotifyDuration
 
     @NotifyDuration.setter
@@ -1970,6 +2438,9 @@ HoaiMy
 
     @property
     def NotifyMessage(self):
+        """用户NotifyDuration没说话，AI提示的语句，默认是"抱歉，我没听清。您可以重复下吗？"
+        :rtype: str
+        """
         return self._NotifyMessage
 
     @NotifyMessage.setter
@@ -1978,6 +2449,96 @@ HoaiMy
 
     @property
     def CustomTTSConfig(self):
+        """和VoiceType字段需要选填一个，这里是使用自己自定义的TTS，VoiceType是系统内置的一些音色
+
+- Tencent TTS
+配置请参考[腾讯云TTS文档链接](https://cloud.tencent.com/document/product/1073/92668#55924b56-1a73-4663-a7a1-a8dd82d6e823)
+```
+{ 
+       "TTSType": "tencent", // String TTS类型, 目前支持"tencent" 和 “minixmax”， 其他的厂商支持中
+       "AppId": "您的应用ID", // String 必填
+       "SecretId": "您的密钥ID", // String 必填
+       "SecretKey":  "您的密钥Key", // String 必填
+       "VoiceType": 101001, // Integer  必填，音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见语音合成计费概述。完整的音色 ID 列表请参见语音合成音色列表。
+       "Speed": 1.25, // Integer 非必填，语速，范围：[-2，6]，分别对应不同语速： -2: 代表0.6倍 -1: 代表0.8倍 0: 代表1.0倍（默认） 1: 代表1.2倍 2: 代表1.5倍  6: 代表2.5倍  如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。 参数值与实际语速转换，可参考 语速转换
+       "Volume": 5, // Integer 非必填，音量大小，范围：[0，10]，分别对应11个等级的音量，默认值为0，代表正常音量。
+       "PrimaryLanguage": 1, // Integer 可选 主要语言 1-中文（默认） 2-英文 3-日文
+       "FastVoiceType": "xxxx"   //  可选参数， 快速声音复刻的参数 
+  }
+```
+
+
+- Minimax TTS
+配置请参考[Minimax TTS文档链接](https://platform.minimaxi.com/document/T2A%20V2?key=66719005a427f0c8a5701643 )。注意Minimax TTS存在频率限制，超频可能会导致回答卡顿，[Minimax TTS频率限制相关文档链接](https://platform.minimaxi.com/document/Rate%20limits?key=66b19417290299a26b234572)。
+```
+{
+        "TTSType": "minimax",  // String TTS类型, 
+        "Model": "speech-01-turbo",
+        "APIUrl": "https://api.minimax.chat/v1/t2a_v2",
+        "APIKey": "eyxxxx",
+        "GroupId": "181000000000000",
+        "VoiceType":"female-tianmei-jingpin",
+        "Speed": 1.2
+}
+```
+
+
+
+
+
+- 火山 TTS
+
+配置音色类型参考[火山TTS文档链接](https://www.volcengine.com/docs/6561/162929 )
+语音合成音色列表--语音技术-火山引擎
+大模型语音合成音色列表--语音技术-火山引擎
+```
+{
+    "TTSType": "volcengine",  // 必填：String TTS类型
+    "AppId" : "xxxxxxxx",   // 必填：String 火山引擎分配的Appid
+    "Token" : "TY9d4sQXHxxxxxxx", // 必填： String类型 火山引擎的访问token
+    "Speed" : 1.0,            // 可选参数 语速，默认为1.0
+    "Volume": 1.0,            // 可选参数， 音量大小， 默认为1.0
+    "Cluster" : "volcano_tts", // 可选参数，业务集群, 默认是 volcano_tts
+    "VoiceType" : "zh_male_aojiaobazong_moon_bigtts"   // 音色类型， 默认为大模型语音合成的音色。 如果使用普通语音合成，则需要填写对应的音色类型。 音色类型填写错误会导致没有声音。
+}
+```
+
+
+
+- Azure TTS
+配置请参考[AzureTTS文档链接](https://docs.azure.cn/zh-cn/ai-services/speech-service/speech-synthesis-markup-voice) 
+```
+{
+    "TTSType": "azure", // 必填：String TTS类型
+    "SubscriptionKey": "xxxxxxxx", // 必填：String 订阅的Key
+    "Region": "chinanorth3",  // 必填：String 订阅的地区
+    "VoiceName": "zh-CN-XiaoxiaoNeural", // 必填：String 音色名必填
+    "Language": "zh-CN", // 必填：String 合成的语言  
+    "Rate": 1 // 选填：float 语速  0.5～2 默认为 1
+}
+```
+
+
+
+
+- 自定义
+
+ TTS 
+具体协议规范请参考[腾讯文档](https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw )
+```
+{
+  "TTSType": "custom", // String 必填
+  "APIKey": "ApiKey", // String 必填 用来鉴权
+  "APIUrl": "http://0.0.0.0:8080/stream-audio" // String，必填，TTS API URL
+  "AudioFormat": "wav", // String, 非必填，期望输出的音频格式，如mp3， ogg_opus，pcm，wav，默认为 wav，目前只支持pcm和wav，
+  "SampleRate": 16000,  // Integer，非必填，音频采样率，默认为16000(16k)，推荐值为16000
+  "AudioChannel": 1,    // Integer，非必填，音频通道数，取值：1 或 2  默认为1  
+}
+```
+
+
+        :rtype: str
+        """
         return self._CustomTTSConfig
 
     @CustomTTSConfig.setter
@@ -2033,6 +2594,9 @@ class CreateAICallResponse(AbstractModel):
 
     @property
     def SessionId(self):
+        """新创建的会话 ID
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -2041,6 +2605,9 @@ class CreateAICallResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2070,6 +2637,9 @@ class CreateAdminURLRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2078,6 +2648,9 @@ class CreateAdminURLRequest(AbstractModel):
 
     @property
     def SeatUserId(self):
+        """管理员账号
+        :rtype: str
+        """
         return self._SeatUserId
 
     @SeatUserId.setter
@@ -2115,6 +2688,9 @@ class CreateAdminURLResponse(AbstractModel):
 
     @property
     def URL(self):
+        """登录链接
+        :rtype: str
+        """
         return self._URL
 
     @URL.setter
@@ -2123,6 +2699,9 @@ class CreateAdminURLResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2182,6 +2761,9 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2190,6 +2772,9 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def NotBefore(self):
+        """任务起始时间戳，Unix 秒级时间戳
+        :rtype: int
+        """
         return self._NotBefore
 
     @NotBefore.setter
@@ -2198,6 +2783,9 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def Callees(self):
+        """被叫号码列表
+        :rtype: list of str
+        """
         return self._Callees
 
     @Callees.setter
@@ -2206,6 +2794,9 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def Callers(self):
+        """主叫号码列表
+        :rtype: list of str
+        """
         return self._Callers
 
     @Callers.setter
@@ -2214,6 +2805,9 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def IvrId(self):
+        """呼叫使用的Ivr
+        :rtype: int
+        """
         return self._IvrId
 
     @IvrId.setter
@@ -2222,6 +2816,9 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def Name(self):
+        """任务名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2230,6 +2827,9 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def Description(self):
+        """任务描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2238,6 +2838,9 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def NotAfter(self):
+        """任务停止时间戳，Unix 秒级时间戳
+        :rtype: int
+        """
         return self._NotAfter
 
     @NotAfter.setter
@@ -2246,6 +2849,9 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def Tries(self):
+        """最大尝试次数，1-3 次
+        :rtype: int
+        """
         return self._Tries
 
     @Tries.setter
@@ -2254,6 +2860,9 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def Variables(self):
+        """自定义变量（仅高级版支持）
+        :rtype: list of Variable
+        """
         return self._Variables
 
     @Variables.setter
@@ -2262,6 +2871,9 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def UUI(self):
+        """UUI
+        :rtype: str
+        """
         return self._UUI
 
     @UUI.setter
@@ -2270,6 +2882,9 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def CalleeAttributes(self):
+        """被叫属性
+        :rtype: list of CalleeAttribute
+        """
         return self._CalleeAttributes
 
     @CalleeAttributes.setter
@@ -2327,6 +2942,9 @@ class CreateAutoCalloutTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务Id
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2335,6 +2953,9 @@ class CreateAutoCalloutTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2371,6 +2992,9 @@ class CreateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2379,6 +3003,9 @@ class CreateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def SkillGroupName(self):
+        """技能组名称
+        :rtype: str
+        """
         return self._SkillGroupName
 
     @SkillGroupName.setter
@@ -2387,6 +3014,9 @@ class CreateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def SkillGroupType(self):
+        """技能组类型0-电话，1-在线，3-音频，4-视频
+        :rtype: int
+        """
         return self._SkillGroupType
 
     @SkillGroupType.setter
@@ -2395,6 +3025,10 @@ class CreateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def MaxConcurrency(self):
+        """技能组接待人数上限（该技能组中1个座席可接待的人数上限）默认为1。1、若技能组类型为在线，则接待上限可设置为1及以上
+2、若技能组类型为电话、音频、视频，则接待上线必须只能为1
+        :rtype: int
+        """
         return self._MaxConcurrency
 
     @MaxConcurrency.setter
@@ -2434,6 +3068,9 @@ class CreateCCCSkillGroupResponse(AbstractModel):
 
     @property
     def SkillGroupId(self):
+        """技能组ID
+        :rtype: int
+        """
         return self._SkillGroupId
 
     @SkillGroupId.setter
@@ -2442,6 +3079,9 @@ class CreateCCCSkillGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2489,6 +3129,9 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2497,6 +3140,9 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """客服用户 ID，一般为客服邮箱
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -2505,6 +3151,9 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def Callee(self):
+        """被叫号码，须带 0086 前缀
+        :rtype: str
+        """
         return self._Callee
 
     @Callee.setter
@@ -2513,6 +3162,9 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def Caller(self):
+        """主叫号码（废弃，使用Callers），须带 0086 前缀
+        :rtype: str
+        """
         return self._Caller
 
     @Caller.setter
@@ -2521,6 +3173,9 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def Callers(self):
+        """指定主叫号码列表，如果前面的号码失败了会自动换成下一个号码，须带 0086 前缀
+        :rtype: list of str
+        """
         return self._Callers
 
     @Callers.setter
@@ -2529,6 +3184,9 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def IsForceUseMobile(self):
+        """是否强制使用手机外呼，当前只支持 true，若为 true 请确保已配置白名单
+        :rtype: bool
+        """
         return self._IsForceUseMobile
 
     @IsForceUseMobile.setter
@@ -2539,6 +3197,9 @@ class CreateCallOutSessionRequest(AbstractModel):
     def Uui(self):
         warnings.warn("parameter `Uui` is deprecated", DeprecationWarning) 
 
+        """自定义数据，长度限制 1024 字节
+        :rtype: str
+        """
         return self._Uui
 
     @Uui.setter
@@ -2549,6 +3210,9 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def UUI(self):
+        """自定义数据，长度限制 1024 字节
+        :rtype: str
+        """
         return self._UUI
 
     @UUI.setter
@@ -2592,6 +3256,9 @@ class CreateCallOutSessionResponse(AbstractModel):
 
     @property
     def SessionId(self):
+        """新创建的会话 ID
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -2600,6 +3267,9 @@ class CreateCallOutSessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2635,6 +3305,9 @@ class CreateCarrierPrivilegeNumberApplicantRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2643,6 +3316,9 @@ class CreateCarrierPrivilegeNumberApplicantRequest(AbstractModel):
 
     @property
     def Callers(self):
+        """主叫号码，必须为实例中存在的号码，格式为0086xxxx（暂时只支持国内号码）
+        :rtype: list of str
+        """
         return self._Callers
 
     @Callers.setter
@@ -2651,6 +3327,9 @@ class CreateCarrierPrivilegeNumberApplicantRequest(AbstractModel):
 
     @property
     def Callees(self):
+        """被叫号码，必须为实例中坐席绑定的手机号码，格式为0086xxxx（暂时只支持国内号码）
+        :rtype: list of str
+        """
         return self._Callees
 
     @Callees.setter
@@ -2659,6 +3338,9 @@ class CreateCarrierPrivilegeNumberApplicantRequest(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2698,6 +3380,9 @@ class CreateCarrierPrivilegeNumberApplicantResponse(AbstractModel):
 
     @property
     def ApplicantId(self):
+        """申请单Id
+        :rtype: int
+        """
         return self._ApplicantId
 
     @ApplicantId.setter
@@ -2706,6 +3391,9 @@ class CreateCarrierPrivilegeNumberApplicantResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2732,6 +3420,9 @@ class CreateCompanyApplyRequest(AbstractModel):
 
     @property
     def CompanyInfo(self):
+        """企业资质信息
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.CompanyApplyInfo`
+        """
         return self._CompanyInfo
 
     @CompanyInfo.setter
@@ -2770,6 +3461,9 @@ class CreateCompanyApplyResponse(AbstractModel):
 
     @property
     def Id(self):
+        """申请单ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -2778,6 +3472,9 @@ class CreateCompanyApplyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2816,6 +3513,9 @@ class CreateExtensionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2824,6 +3524,9 @@ class CreateExtensionRequest(AbstractModel):
 
     @property
     def ExtensionId(self):
+        """分机号
+        :rtype: str
+        """
         return self._ExtensionId
 
     @ExtensionId.setter
@@ -2832,6 +3535,9 @@ class CreateExtensionRequest(AbstractModel):
 
     @property
     def ExtensionName(self):
+        """分机名称
+        :rtype: str
+        """
         return self._ExtensionName
 
     @ExtensionName.setter
@@ -2840,6 +3546,9 @@ class CreateExtensionRequest(AbstractModel):
 
     @property
     def SkillGroupIds(self):
+        """绑定的技能组列表
+        :rtype: list of int non-negative
+        """
         return self._SkillGroupIds
 
     @SkillGroupIds.setter
@@ -2848,6 +3557,9 @@ class CreateExtensionRequest(AbstractModel):
 
     @property
     def Relation(self):
+        """绑定的坐席邮箱
+        :rtype: str
+        """
         return self._Relation
 
     @Relation.setter
@@ -2885,6 +3597,9 @@ class CreateExtensionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2925,6 +3640,9 @@ class CreateIVRSessionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2933,6 +3651,9 @@ class CreateIVRSessionRequest(AbstractModel):
 
     @property
     def Callee(self):
+        """被叫
+        :rtype: str
+        """
         return self._Callee
 
     @Callee.setter
@@ -2941,6 +3662,9 @@ class CreateIVRSessionRequest(AbstractModel):
 
     @property
     def IVRId(self):
+        """指定的 IVR Id，目前支持呼入和自动外呼两种类型
+        :rtype: int
+        """
         return self._IVRId
 
     @IVRId.setter
@@ -2949,6 +3673,9 @@ class CreateIVRSessionRequest(AbstractModel):
 
     @property
     def Callers(self):
+        """主叫号码列表
+        :rtype: list of str
+        """
         return self._Callers
 
     @Callers.setter
@@ -2957,6 +3684,9 @@ class CreateIVRSessionRequest(AbstractModel):
 
     @property
     def Variables(self):
+        """自定义变量
+        :rtype: list of Variable
+        """
         return self._Variables
 
     @Variables.setter
@@ -2965,6 +3695,9 @@ class CreateIVRSessionRequest(AbstractModel):
 
     @property
     def UUI(self):
+        """用户数据
+        :rtype: str
+        """
         return self._UUI
 
     @UUI.setter
@@ -3011,6 +3744,9 @@ class CreateIVRSessionResponse(AbstractModel):
 
     @property
     def SessionId(self):
+        """新创建的会话 ID
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -3019,6 +3755,9 @@ class CreateIVRSessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3054,6 +3793,9 @@ class CreateOwnNumberApplyRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3062,6 +3804,9 @@ class CreateOwnNumberApplyRequest(AbstractModel):
 
     @property
     def SipTrunkId(self):
+        """SIP通道ID
+        :rtype: int
+        """
         return self._SipTrunkId
 
     @SipTrunkId.setter
@@ -3070,6 +3815,9 @@ class CreateOwnNumberApplyRequest(AbstractModel):
 
     @property
     def DetailList(self):
+        """线路相关参数
+        :rtype: list of OwnNumberApplyDetailItem
+        """
         return self._DetailList
 
     @DetailList.setter
@@ -3078,6 +3826,9 @@ class CreateOwnNumberApplyRequest(AbstractModel):
 
     @property
     def Prefix(self):
+        """送号前缀
+        :rtype: str
+        """
         return self._Prefix
 
     @Prefix.setter
@@ -3122,6 +3873,9 @@ class CreateOwnNumberApplyResponse(AbstractModel):
 
     @property
     def ApplyId(self):
+        """审批单号
+        :rtype: int
+        """
         return self._ApplyId
 
     @ApplyId.setter
@@ -3130,6 +3884,9 @@ class CreateOwnNumberApplyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3192,6 +3949,9 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3200,6 +3960,9 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Name(self):
+        """任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3208,6 +3971,9 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Callees(self):
+        """被叫列表，支持 E.164 或不带国家码形式的号码
+        :rtype: list of str
+        """
         return self._Callees
 
     @Callees.setter
@@ -3216,6 +3982,9 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Callers(self):
+        """主叫列表，使用管理端展示的号码格式
+        :rtype: list of str
+        """
         return self._Callers
 
     @Callers.setter
@@ -3224,6 +3993,9 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CallOrder(self):
+        """被叫呼叫顺序 0 随机 1 顺序
+        :rtype: int
+        """
         return self._CallOrder
 
     @CallOrder.setter
@@ -3232,6 +4004,9 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SkillGroupId(self):
+        """使用的座席技能组 ID
+        :rtype: int
+        """
         return self._SkillGroupId
 
     @SkillGroupId.setter
@@ -3240,6 +4015,9 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Priority(self):
+        """相同应用内多个任务运行优先级，从高到底 1 - 5
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -3248,6 +4026,9 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def ExpectedAbandonRate(self):
+        """预期呼损率，百分比，5 - 50
+        :rtype: int
+        """
         return self._ExpectedAbandonRate
 
     @ExpectedAbandonRate.setter
@@ -3256,6 +4037,9 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def RetryInterval(self):
+        """呼叫重试间隔时间，单位秒，60 - 86400
+        :rtype: int
+        """
         return self._RetryInterval
 
     @RetryInterval.setter
@@ -3264,6 +4048,9 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3272,6 +4059,9 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3280,6 +4070,9 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def IVRId(self):
+        """指定的 IVR Id
+        :rtype: int
+        """
         return self._IVRId
 
     @IVRId.setter
@@ -3288,6 +4081,9 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def RetryTimes(self):
+        """呼叫重试次数，0 - 2
+        :rtype: int
+        """
         return self._RetryTimes
 
     @RetryTimes.setter
@@ -3336,6 +4132,9 @@ class CreatePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def CampaignId(self):
+        """生成的任务 ID
+        :rtype: int
+        """
         return self._CampaignId
 
     @CampaignId.setter
@@ -3344,6 +4143,9 @@ class CreatePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3376,6 +4178,9 @@ class CreateSDKLoginTokenRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3384,6 +4189,9 @@ class CreateSDKLoginTokenRequest(AbstractModel):
 
     @property
     def SeatUserId(self):
+        """座席账号。
+        :rtype: str
+        """
         return self._SeatUserId
 
     @SeatUserId.setter
@@ -3392,6 +4200,9 @@ class CreateSDKLoginTokenRequest(AbstractModel):
 
     @property
     def OnlyOnce(self):
+        """生成的token是否一次性校验
+        :rtype: bool
+        """
         return self._OnlyOnce
 
     @OnlyOnce.setter
@@ -3436,6 +4247,9 @@ class CreateSDKLoginTokenResponse(AbstractModel):
 
     @property
     def Token(self):
+        """SDK 登录 Token。
+        :rtype: str
+        """
         return self._Token
 
     @Token.setter
@@ -3444,6 +4258,9 @@ class CreateSDKLoginTokenResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
+        """过期时间戳，Unix 时间戳。
+        :rtype: int
+        """
         return self._ExpiredTime
 
     @ExpiredTime.setter
@@ -3452,6 +4269,9 @@ class CreateSDKLoginTokenResponse(AbstractModel):
 
     @property
     def SdkURL(self):
+        """SDK 加载路径会随着 SDK 的发布而变动。
+        :rtype: str
+        """
         return self._SdkURL
 
     @SdkURL.setter
@@ -3460,6 +4280,9 @@ class CreateSDKLoginTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3494,6 +4317,9 @@ class CreateStaffRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3502,6 +4328,9 @@ class CreateStaffRequest(AbstractModel):
 
     @property
     def Staffs(self):
+        """客服信息，个数不超过 10
+        :rtype: list of SeatUserInfo
+        """
         return self._Staffs
 
     @Staffs.setter
@@ -3510,6 +4339,9 @@ class CreateStaffRequest(AbstractModel):
 
     @property
     def SendPassword(self):
+        """是否发送密码邮件，默认true
+        :rtype: bool
+        """
         return self._SendPassword
 
     @SendPassword.setter
@@ -3553,6 +4385,9 @@ class CreateStaffResponse(AbstractModel):
 
     @property
     def ErrorStaffList(self):
+        """错误坐席列表及错误信息
+        :rtype: list of ErrStaffItem
+        """
         return self._ErrorStaffList
 
     @ErrorStaffList.setter
@@ -3561,6 +4396,9 @@ class CreateStaffResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3601,6 +4439,9 @@ class CreateUserSigRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3609,6 +4450,9 @@ class CreateUserSigRequest(AbstractModel):
 
     @property
     def Uid(self):
+        """用户 ID，该值必须与 ClientData 字段中 Uid 的值一致
+        :rtype: str
+        """
         return self._Uid
 
     @Uid.setter
@@ -3617,6 +4461,9 @@ class CreateUserSigRequest(AbstractModel):
 
     @property
     def ExpiredTime(self):
+        """有效期，单位秒，不超过 1 小时
+        :rtype: int
+        """
         return self._ExpiredTime
 
     @ExpiredTime.setter
@@ -3625,6 +4472,9 @@ class CreateUserSigRequest(AbstractModel):
 
     @property
     def ClientData(self):
+        """用户签名数据，必填字段，为标准 JSON 格式
+        :rtype: str
+        """
         return self._ClientData
 
     @ClientData.setter
@@ -3664,6 +4514,9 @@ class CreateUserSigResponse(AbstractModel):
 
     @property
     def UserSig(self):
+        """签名结果
+        :rtype: str
+        """
         return self._UserSig
 
     @UserSig.setter
@@ -3672,6 +4525,9 @@ class CreateUserSigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3701,6 +4557,9 @@ class DeleteExtensionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3709,6 +4568,9 @@ class DeleteExtensionRequest(AbstractModel):
 
     @property
     def ExtensionId(self):
+        """分机号
+        :rtype: str
+        """
         return self._ExtensionId
 
     @ExtensionId.setter
@@ -3743,6 +4605,9 @@ class DeleteExtensionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3771,6 +4636,9 @@ class DeletePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3779,6 +4647,9 @@ class DeletePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
+        """任务 ID
+        :rtype: int
+        """
         return self._CampaignId
 
     @CampaignId.setter
@@ -3813,6 +4684,9 @@ class DeletePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3841,6 +4715,9 @@ class DeleteStaffRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3849,6 +4726,9 @@ class DeleteStaffRequest(AbstractModel):
 
     @property
     def StaffList(self):
+        """待删除客服邮箱列表，一次最大支持200个。
+        :rtype: list of str
+        """
         return self._StaffList
 
     @StaffList.setter
@@ -3886,6 +4766,9 @@ class DeleteStaffResponse(AbstractModel):
 
     @property
     def OnlineStaffList(self):
+        """无法删除的状态为在线的客服列表
+        :rtype: list of str
+        """
         return self._OnlineStaffList
 
     @OnlineStaffList.setter
@@ -3894,6 +4777,9 @@ class DeleteStaffResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3929,6 +4815,9 @@ class DescribeActiveCarrierPrivilegeNumberRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3937,6 +4826,9 @@ class DescribeActiveCarrierPrivilegeNumberRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """默认0
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -3945,6 +4837,9 @@ class DescribeActiveCarrierPrivilegeNumberRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """默认10，最大100
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -3953,6 +4848,9 @@ class DescribeActiveCarrierPrivilegeNumberRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """筛选条件 Name支持PhoneNumber(按号码模糊查找)
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4003,6 +4901,9 @@ class DescribeActiveCarrierPrivilegeNumberResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4011,6 +4912,9 @@ class DescribeActiveCarrierPrivilegeNumberResponse(AbstractModel):
 
     @property
     def ActiveCarrierPrivilegeNumbers(self):
+        """生效列表
+        :rtype: list of ActiveCarrierPrivilegeNumber
+        """
         return self._ActiveCarrierPrivilegeNumbers
 
     @ActiveCarrierPrivilegeNumbers.setter
@@ -4019,6 +4923,9 @@ class DescribeActiveCarrierPrivilegeNumberResponse(AbstractModel):
 
     @property
     def PendingApplicantIds(self):
+        """待审核单号
+        :rtype: list of int non-negative
+        """
         return self._PendingApplicantIds
 
     @PendingApplicantIds.setter
@@ -4027,6 +4934,9 @@ class DescribeActiveCarrierPrivilegeNumberResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4063,6 +4973,9 @@ class DescribeAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -4071,6 +4984,9 @@ class DescribeAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务Id
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4130,6 +5046,9 @@ class DescribeAutoCalloutTaskResponse(AbstractModel):
 
     @property
     def Name(self):
+        """任务名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4138,6 +5057,9 @@ class DescribeAutoCalloutTaskResponse(AbstractModel):
 
     @property
     def Description(self):
+        """任务描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4146,6 +5068,9 @@ class DescribeAutoCalloutTaskResponse(AbstractModel):
 
     @property
     def NotBefore(self):
+        """任务起始时间戳
+        :rtype: int
+        """
         return self._NotBefore
 
     @NotBefore.setter
@@ -4154,6 +5079,10 @@ class DescribeAutoCalloutTaskResponse(AbstractModel):
 
     @property
     def NotAfter(self):
+        """任务结束时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._NotAfter
 
     @NotAfter.setter
@@ -4162,6 +5091,9 @@ class DescribeAutoCalloutTaskResponse(AbstractModel):
 
     @property
     def Callers(self):
+        """主叫列表
+        :rtype: list of str
+        """
         return self._Callers
 
     @Callers.setter
@@ -4170,6 +5102,9 @@ class DescribeAutoCalloutTaskResponse(AbstractModel):
 
     @property
     def Callees(self):
+        """被叫信息列表
+        :rtype: list of AutoCalloutTaskCalleeInfo
+        """
         return self._Callees
 
     @Callees.setter
@@ -4178,6 +5113,9 @@ class DescribeAutoCalloutTaskResponse(AbstractModel):
 
     @property
     def IvrId(self):
+        """任务使用的IvrId
+        :rtype: int
+        """
         return self._IvrId
 
     @IvrId.setter
@@ -4186,6 +5124,9 @@ class DescribeAutoCalloutTaskResponse(AbstractModel):
 
     @property
     def State(self):
+        """任务状态 0初始 1运行中 2已完成 3结束中 4已终止
+        :rtype: int
+        """
         return self._State
 
     @State.setter
@@ -4194,6 +5135,9 @@ class DescribeAutoCalloutTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4238,6 +5182,9 @@ class DescribeAutoCalloutTasksRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -4246,6 +5193,9 @@ class DescribeAutoCalloutTasksRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """分页大小
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -4254,6 +5204,9 @@ class DescribeAutoCalloutTasksRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页数
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -4295,6 +5248,9 @@ class DescribeAutoCalloutTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4303,6 +5259,9 @@ class DescribeAutoCalloutTasksResponse(AbstractModel):
 
     @property
     def Tasks(self):
+        """任务列表
+        :rtype: list of AutoCalloutTaskInfo
+        """
         return self._Tasks
 
     @Tasks.setter
@@ -4311,6 +5270,9 @@ class DescribeAutoCalloutTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4343,6 +5305,9 @@ class DescribeCCCBuyInfoListRequest(AbstractModel):
 
     @property
     def SdkAppIds(self):
+        """应用ID列表，不传时查询所有应用
+        :rtype: list of int
+        """
         return self._SdkAppIds
 
     @SdkAppIds.setter
@@ -4385,6 +5350,9 @@ class DescribeCCCBuyInfoListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """应用总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4393,6 +5361,9 @@ class DescribeCCCBuyInfoListResponse(AbstractModel):
 
     @property
     def SdkAppIdBuyList(self):
+        """应用购买信息列表
+        :rtype: list of SdkAppIdBuyInfo
+        """
         return self._SdkAppIdBuyList
 
     @SdkAppIdBuyList.setter
@@ -4401,6 +5372,9 @@ class DescribeCCCBuyInfoListResponse(AbstractModel):
 
     @property
     def PackageBuyList(self):
+        """套餐包购买信息列表
+        :rtype: list of PackageBuyInfo
+        """
         return self._PackageBuyList
 
     @PackageBuyList.setter
@@ -4409,6 +5383,9 @@ class DescribeCCCBuyInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4456,6 +5433,9 @@ class DescribeCallInMetricsRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -4464,6 +5444,9 @@ class DescribeCallInMetricsRequest(AbstractModel):
 
     @property
     def EnabledSkillGroup(self):
+        """是否返回技能组维度信息，默认“是”
+        :rtype: bool
+        """
         return self._EnabledSkillGroup
 
     @EnabledSkillGroup.setter
@@ -4472,6 +5455,9 @@ class DescribeCallInMetricsRequest(AbstractModel):
 
     @property
     def EnabledNumber(self):
+        """是否返回线路维度信息，默认“否”
+        :rtype: bool
+        """
         return self._EnabledNumber
 
     @EnabledNumber.setter
@@ -4480,6 +5466,9 @@ class DescribeCallInMetricsRequest(AbstractModel):
 
     @property
     def GroupIdList(self):
+        """筛选技能组列表
+        :rtype: list of int
+        """
         return self._GroupIdList
 
     @GroupIdList.setter
@@ -4528,6 +5517,9 @@ class DescribeCallInMetricsResponse(AbstractModel):
 
     @property
     def Timestamp(self):
+        """时间戳
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -4536,6 +5528,9 @@ class DescribeCallInMetricsResponse(AbstractModel):
 
     @property
     def TotalMetrics(self):
+        """总体指标
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`
+        """
         return self._TotalMetrics
 
     @TotalMetrics.setter
@@ -4544,6 +5539,9 @@ class DescribeCallInMetricsResponse(AbstractModel):
 
     @property
     def NumberMetrics(self):
+        """线路维度指标
+        :rtype: list of CallInNumberMetrics
+        """
         return self._NumberMetrics
 
     @NumberMetrics.setter
@@ -4552,6 +5550,9 @@ class DescribeCallInMetricsResponse(AbstractModel):
 
     @property
     def SkillGroupMetrics(self):
+        """技能组维度指标
+        :rtype: list of CallInSkillGroupMetrics
+        """
         return self._SkillGroupMetrics
 
     @SkillGroupMetrics.setter
@@ -4560,6 +5561,9 @@ class DescribeCallInMetricsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4610,6 +5614,9 @@ class DescribeCarrierPrivilegeNumberApplicantsRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -4618,6 +5625,9 @@ class DescribeCarrierPrivilegeNumberApplicantsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """默认0，从0开始
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -4626,6 +5636,9 @@ class DescribeCarrierPrivilegeNumberApplicantsRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """默认10，最大100
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -4634,6 +5647,9 @@ class DescribeCarrierPrivilegeNumberApplicantsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """筛选条件,Name支持ApplicantId,PhoneNumber(按号码模糊查找)
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4681,6 +5697,9 @@ class DescribeCarrierPrivilegeNumberApplicantsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """筛选出的总申请单数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4689,6 +5708,9 @@ class DescribeCarrierPrivilegeNumberApplicantsResponse(AbstractModel):
 
     @property
     def Applicants(self):
+        """申请单列表
+        :rtype: list of CarrierPrivilegeNumberApplicant
+        """
         return self._Applicants
 
     @Applicants.setter
@@ -4697,6 +5719,9 @@ class DescribeCarrierPrivilegeNumberApplicantsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4747,6 +5772,9 @@ class DescribeChatMessagesRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID，可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -4757,6 +5785,9 @@ class DescribeChatMessagesRequest(AbstractModel):
     def InstanceId(self):
         warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
 
+        """实例 ID（废弃）
+        :rtype: int
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4769,6 +5800,9 @@ class DescribeChatMessagesRequest(AbstractModel):
     def CdrId(self):
         warnings.warn("parameter `CdrId` is deprecated", DeprecationWarning) 
 
+        """服务记录ID（废弃）
+        :rtype: str
+        """
         return self._CdrId
 
     @CdrId.setter
@@ -4779,6 +5813,9 @@ class DescribeChatMessagesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，最大为100 默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4787,6 +5824,9 @@ class DescribeChatMessagesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """返回记录偏移，默认为 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4795,6 +5835,9 @@ class DescribeChatMessagesRequest(AbstractModel):
 
     @property
     def Order(self):
+        """1为从早到晚，2为从晚到早，默认为2
+        :rtype: int
+        """
         return self._Order
 
     @Order.setter
@@ -4803,6 +5846,9 @@ class DescribeChatMessagesRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """服务记录 SessionID
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -4848,6 +5894,9 @@ class DescribeChatMessagesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总记录数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4856,6 +5905,9 @@ class DescribeChatMessagesResponse(AbstractModel):
 
     @property
     def Messages(self):
+        """消息列表
+        :rtype: list of MessageBody
+        """
         return self._Messages
 
     @Messages.setter
@@ -4864,6 +5916,9 @@ class DescribeChatMessagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4908,6 +5963,9 @@ class DescribeCompanyListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """分页尺寸，上限 100
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -4916,6 +5974,9 @@ class DescribeCompanyListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """分页页码，从 0 开始
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -4924,6 +5985,9 @@ class DescribeCompanyListRequest(AbstractModel):
 
     @property
     def CompanyName(self):
+        """公司名称
+        :rtype: list of str
+        """
         return self._CompanyName
 
     @CompanyName.setter
@@ -4932,6 +5996,9 @@ class DescribeCompanyListRequest(AbstractModel):
 
     @property
     def State(self):
+        """审核状态，1-待审核，2-审核通过，3-驳回
+        :rtype: list of int
+        """
         return self._State
 
     @State.setter
@@ -4940,6 +6007,9 @@ class DescribeCompanyListRequest(AbstractModel):
 
     @property
     def ApplyID(self):
+        """申请ID
+        :rtype: list of int
+        """
         return self._ApplyID
 
     @ApplyID.setter
@@ -4983,6 +6053,9 @@ class DescribeCompanyListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4991,6 +6064,9 @@ class DescribeCompanyListResponse(AbstractModel):
 
     @property
     def CompanyInfo(self):
+        """企业资质审核信息
+        :rtype: list of CompanyStateInfo
+        """
         return self._CompanyInfo
 
     @CompanyInfo.setter
@@ -4999,6 +6075,9 @@ class DescribeCompanyListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5034,6 +6113,9 @@ class DescribeExtensionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5042,6 +6124,9 @@ class DescribeExtensionRequest(AbstractModel):
 
     @property
     def ExtensionId(self):
+        """分机号
+        :rtype: str
+        """
         return self._ExtensionId
 
     @ExtensionId.setter
@@ -5091,6 +6176,9 @@ class DescribeExtensionResponse(AbstractModel):
 
     @property
     def ExtensionId(self):
+        """分机号
+        :rtype: str
+        """
         return self._ExtensionId
 
     @ExtensionId.setter
@@ -5099,6 +6187,9 @@ class DescribeExtensionResponse(AbstractModel):
 
     @property
     def ExtensionDomain(self):
+        """域名
+        :rtype: str
+        """
         return self._ExtensionDomain
 
     @ExtensionDomain.setter
@@ -5107,6 +6198,9 @@ class DescribeExtensionResponse(AbstractModel):
 
     @property
     def Password(self):
+        """注册密码
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -5115,6 +6209,9 @@ class DescribeExtensionResponse(AbstractModel):
 
     @property
     def OutboundProxy(self):
+        """代理服务器地址
+        :rtype: str
+        """
         return self._OutboundProxy
 
     @OutboundProxy.setter
@@ -5123,6 +6220,9 @@ class DescribeExtensionResponse(AbstractModel):
 
     @property
     def Transport(self):
+        """传输协议
+        :rtype: str
+        """
         return self._Transport
 
     @Transport.setter
@@ -5131,6 +6231,9 @@ class DescribeExtensionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5176,6 +6279,9 @@ class DescribeExtensionsRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5184,6 +6290,9 @@ class DescribeExtensionsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """分页页号（从0开始）
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -5192,6 +6301,9 @@ class DescribeExtensionsRequest(AbstractModel):
 
     @property
     def ExtensionIds(self):
+        """筛选分机号列表
+        :rtype: list of str
+        """
         return self._ExtensionIds
 
     @ExtensionIds.setter
@@ -5200,6 +6312,9 @@ class DescribeExtensionsRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """分页大小
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -5208,6 +6323,9 @@ class DescribeExtensionsRequest(AbstractModel):
 
     @property
     def FuzzingKeyWord(self):
+        """模糊查询字段（模糊查询分机号、分机名称、坐席邮箱、坐席名称）
+        :rtype: str
+        """
         return self._FuzzingKeyWord
 
     @FuzzingKeyWord.setter
@@ -5216,6 +6334,9 @@ class DescribeExtensionsRequest(AbstractModel):
 
     @property
     def IsNeedStatus(self):
+        """是否需要返回话机当前状态
+        :rtype: bool
+        """
         return self._IsNeedStatus
 
     @IsNeedStatus.setter
@@ -5260,6 +6381,9 @@ class DescribeExtensionsResponse(AbstractModel):
 
     @property
     def Total(self):
+        """查询总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -5268,6 +6392,9 @@ class DescribeExtensionsResponse(AbstractModel):
 
     @property
     def ExtensionList(self):
+        """话机信息列表
+        :rtype: list of ExtensionInfo
+        """
         return self._ExtensionList
 
     @ExtensionList.setter
@@ -5276,6 +6403,9 @@ class DescribeExtensionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5323,6 +6453,9 @@ class DescribeIMCdrListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5331,6 +6464,9 @@ class DescribeIMCdrListRequest(AbstractModel):
 
     @property
     def StartTimestamp(self):
+        """起始时间（必填），Unix 秒级时间戳
+        :rtype: int
+        """
         return self._StartTimestamp
 
     @StartTimestamp.setter
@@ -5339,6 +6475,9 @@ class DescribeIMCdrListRequest(AbstractModel):
 
     @property
     def EndTimestamp(self):
+        """结束时间（必填），Unix 秒级时间戳
+        :rtype: int
+        """
         return self._EndTimestamp
 
     @EndTimestamp.setter
@@ -5347,6 +6486,9 @@ class DescribeIMCdrListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，最大为100默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5355,6 +6497,9 @@ class DescribeIMCdrListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """返回记录偏移，默认为 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5363,6 +6508,9 @@ class DescribeIMCdrListRequest(AbstractModel):
 
     @property
     def Type(self):
+        """1为全媒体，2为文本客服，不填则查询全部
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -5407,6 +6555,9 @@ class DescribeIMCdrListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总记录数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5415,6 +6566,9 @@ class DescribeIMCdrListResponse(AbstractModel):
 
     @property
     def IMCdrList(self):
+        """服务记录列表
+        :rtype: list of IMCdrInfo
+        """
         return self._IMCdrList
 
     @IMCdrList.setter
@@ -5423,6 +6577,9 @@ class DescribeIMCdrListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5473,6 +6630,9 @@ class DescribeIMCdrsRequest(AbstractModel):
 
     @property
     def StartTimestamp(self):
+        """起始时间（必填），Unix 秒级时间戳
+        :rtype: int
+        """
         return self._StartTimestamp
 
     @StartTimestamp.setter
@@ -5481,6 +6641,9 @@ class DescribeIMCdrsRequest(AbstractModel):
 
     @property
     def EndTimestamp(self):
+        """结束时间（必填），Unix 秒级时间戳
+        :rtype: int
+        """
         return self._EndTimestamp
 
     @EndTimestamp.setter
@@ -5491,6 +6654,9 @@ class DescribeIMCdrsRequest(AbstractModel):
     def InstanceId(self):
         warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
 
+        """实例 ID（废弃）
+        :rtype: int
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5501,6 +6667,9 @@ class DescribeIMCdrsRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5509,6 +6678,9 @@ class DescribeIMCdrsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，最大为100默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5517,6 +6689,9 @@ class DescribeIMCdrsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """返回记录偏移，默认为 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5525,6 +6700,9 @@ class DescribeIMCdrsRequest(AbstractModel):
 
     @property
     def Type(self):
+        """1为全媒体，2为文本客服，不填则查询全部
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -5574,6 +6752,9 @@ class DescribeIMCdrsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总记录数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5584,6 +6765,9 @@ class DescribeIMCdrsResponse(AbstractModel):
     def IMCdrs(self):
         warnings.warn("parameter `IMCdrs` is deprecated", DeprecationWarning) 
 
+        """服务记录列表
+        :rtype: list of IMCdrInfo
+        """
         return self._IMCdrs
 
     @IMCdrs.setter
@@ -5594,6 +6778,10 @@ class DescribeIMCdrsResponse(AbstractModel):
 
     @property
     def IMCdrList(self):
+        """服务记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of IMCdrInfo
+        """
         return self._IMCdrList
 
     @IMCdrList.setter
@@ -5602,6 +6790,9 @@ class DescribeIMCdrsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5655,6 +6846,9 @@ class DescribeIvrAudioListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5663,6 +6857,9 @@ class DescribeIvrAudioListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """分页尺寸，上限 50
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -5671,6 +6868,9 @@ class DescribeIvrAudioListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """分页页码，从 0 开始
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -5679,6 +6879,9 @@ class DescribeIvrAudioListRequest(AbstractModel):
 
     @property
     def CustomFileName(self):
+        """文件别名
+        :rtype: list of str
+        """
         return self._CustomFileName
 
     @CustomFileName.setter
@@ -5687,6 +6890,9 @@ class DescribeIvrAudioListRequest(AbstractModel):
 
     @property
     def AudioFileName(self):
+        """文件名
+        :rtype: list of str
+        """
         return self._AudioFileName
 
     @AudioFileName.setter
@@ -5695,6 +6901,9 @@ class DescribeIvrAudioListRequest(AbstractModel):
 
     @property
     def FileId(self):
+        """文件ID
+        :rtype: list of int non-negative
+        """
         return self._FileId
 
     @FileId.setter
@@ -5739,6 +6948,9 @@ class DescribeIvrAudioListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5747,6 +6959,9 @@ class DescribeIvrAudioListResponse(AbstractModel):
 
     @property
     def FileInfo(self):
+        """文件信息
+        :rtype: list of AudioFileInfo
+        """
         return self._FileInfo
 
     @FileInfo.setter
@@ -5755,6 +6970,9 @@ class DescribeIvrAudioListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5793,6 +7011,9 @@ class DescribeNumbersRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5801,6 +7022,9 @@ class DescribeNumbersRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页数，从0开始
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -5809,6 +7033,9 @@ class DescribeNumbersRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """分页大小，默认20
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -5850,6 +7077,9 @@ class DescribeNumbersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5858,6 +7088,9 @@ class DescribeNumbersResponse(AbstractModel):
 
     @property
     def Numbers(self):
+        """号码列表
+        :rtype: list of NumberInfo
+        """
         return self._Numbers
 
     @Numbers.setter
@@ -5866,6 +7099,9 @@ class DescribeNumbersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5904,6 +7140,9 @@ class DescribePSTNActiveSessionListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5912,6 +7151,9 @@ class DescribePSTNActiveSessionListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """数据偏移
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5920,6 +7162,9 @@ class DescribePSTNActiveSessionListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回的数据条数，最大 25
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5961,6 +7206,9 @@ class DescribePSTNActiveSessionListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """列表总条数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -5969,6 +7217,9 @@ class DescribePSTNActiveSessionListResponse(AbstractModel):
 
     @property
     def Sessions(self):
+        """列表内容
+        :rtype: list of PSTNSessionInfo
+        """
         return self._Sessions
 
     @Sessions.setter
@@ -5977,6 +7228,9 @@ class DescribePSTNActiveSessionListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6012,6 +7266,9 @@ class DescribePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -6020,6 +7277,9 @@ class DescribePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
+        """任务 ID
+        :rtype: int
+        """
         return self._CampaignId
 
     @CampaignId.setter
@@ -6087,6 +7347,9 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def CampaignId(self):
+        """任务 ID
+        :rtype: int
+        """
         return self._CampaignId
 
     @CampaignId.setter
@@ -6095,6 +7358,9 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def Name(self):
+        """任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6103,6 +7369,9 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def CallOrder(self):
+        """被叫呼叫顺序 0 随机 1 顺序
+        :rtype: int
+        """
         return self._CallOrder
 
     @CallOrder.setter
@@ -6111,6 +7380,9 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def SkillGroupId(self):
+        """使用的座席技能组 ID
+        :rtype: int
+        """
         return self._SkillGroupId
 
     @SkillGroupId.setter
@@ -6119,6 +7391,9 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def IVRId(self):
+        """指定的 IVR ID
+        :rtype: int
+        """
         return self._IVRId
 
     @IVRId.setter
@@ -6127,6 +7402,9 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def Priority(self):
+        """相同应用内多个任务运行优先级，从高到底 1 - 5
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -6135,6 +7413,9 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def ExpectedAbandonRate(self):
+        """预期呼损率，百分比，5 - 50
+        :rtype: int
+        """
         return self._ExpectedAbandonRate
 
     @ExpectedAbandonRate.setter
@@ -6143,6 +7424,9 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def RetryTimes(self):
+        """呼叫重试次数，0 - 2
+        :rtype: int
+        """
         return self._RetryTimes
 
     @RetryTimes.setter
@@ -6151,6 +7435,9 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def RetryInterval(self):
+        """呼叫重试间隔时间，单位秒，60 - 86400
+        :rtype: int
+        """
         return self._RetryInterval
 
     @RetryInterval.setter
@@ -6159,6 +7446,9 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def StartTime(self):
+        """任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -6167,6 +7457,9 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def EndTime(self):
+        """任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6175,6 +7468,9 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6232,6 +7528,9 @@ class DescribePredictiveDialingCampaignsElement(AbstractModel):
 
     @property
     def CampaignId(self):
+        """任务 ID
+        :rtype: int
+        """
         return self._CampaignId
 
     @CampaignId.setter
@@ -6240,6 +7539,9 @@ class DescribePredictiveDialingCampaignsElement(AbstractModel):
 
     @property
     def Name(self):
+        """任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6248,6 +7550,9 @@ class DescribePredictiveDialingCampaignsElement(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态 0 待开始 1 进行中 2 已暂停 3 已终止 4 已完成
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -6256,6 +7561,9 @@ class DescribePredictiveDialingCampaignsElement(AbstractModel):
 
     @property
     def StatusReason(self):
+        """任务状态原因 0 正常 1 手动结束 2 超时结束
+        :rtype: int
+        """
         return self._StatusReason
 
     @StatusReason.setter
@@ -6264,6 +7572,9 @@ class DescribePredictiveDialingCampaignsElement(AbstractModel):
 
     @property
     def CalleeCount(self):
+        """被叫号码个数
+        :rtype: int
+        """
         return self._CalleeCount
 
     @CalleeCount.setter
@@ -6272,6 +7583,9 @@ class DescribePredictiveDialingCampaignsElement(AbstractModel):
 
     @property
     def FinishedCalleeCount(self):
+        """已完成的被叫个数
+        :rtype: int
+        """
         return self._FinishedCalleeCount
 
     @FinishedCalleeCount.setter
@@ -6280,6 +7594,9 @@ class DescribePredictiveDialingCampaignsElement(AbstractModel):
 
     @property
     def Priority(self):
+        """相同应用内多个任务运行优先级，从高到底 1 - 5
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -6288,6 +7605,9 @@ class DescribePredictiveDialingCampaignsElement(AbstractModel):
 
     @property
     def SkillGroupId(self):
+        """使用的座席技能组 ID
+        :rtype: int
+        """
         return self._SkillGroupId
 
     @SkillGroupId.setter
@@ -6340,6 +7660,9 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -6348,6 +7671,9 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """分页尺寸，最大为 100
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -6356,6 +7682,9 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """分页页码，从 0 开始
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -6364,6 +7693,9 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
 
     @property
     def Name(self):
+        """查询任务列表名称关键字
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6372,6 +7704,9 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
 
     @property
     def SkillGroupId(self):
+        """查询任务列表技能组 ID
+        :rtype: int
+        """
         return self._SkillGroupId
 
     @SkillGroupId.setter
@@ -6415,6 +7750,9 @@ class DescribePredictiveDialingCampaignsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """数据总量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6423,6 +7761,9 @@ class DescribePredictiveDialingCampaignsResponse(AbstractModel):
 
     @property
     def CampaignList(self):
+        """数据
+        :rtype: list of DescribePredictiveDialingCampaignsElement
+        """
         return self._CampaignList
 
     @CampaignList.setter
@@ -6431,6 +7772,9 @@ class DescribePredictiveDialingCampaignsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6472,6 +7816,9 @@ class DescribePredictiveDialingSessionsRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -6480,6 +7827,9 @@ class DescribePredictiveDialingSessionsRequest(AbstractModel):
 
     @property
     def CampaignId(self):
+        """生成的任务 ID
+        :rtype: int
+        """
         return self._CampaignId
 
     @CampaignId.setter
@@ -6488,6 +7838,9 @@ class DescribePredictiveDialingSessionsRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """分页尺寸，最大为 1000
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -6496,6 +7849,9 @@ class DescribePredictiveDialingSessionsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """分页页码，从 0 开始
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -6538,6 +7894,9 @@ class DescribePredictiveDialingSessionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """数据总量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6546,6 +7905,9 @@ class DescribePredictiveDialingSessionsResponse(AbstractModel):
 
     @property
     def SessionList(self):
+        """呼叫的 session id 列表，通过 https://cloud.tencent.com/document/product/679/47714 可以批量获取呼叫详细话单
+        :rtype: list of str
+        """
         return self._SessionList
 
     @SessionList.setter
@@ -6554,6 +7916,9 @@ class DescribePredictiveDialingSessionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6593,6 +7958,9 @@ class DescribeProtectedTelCdrRequest(AbstractModel):
 
     @property
     def StartTimeStamp(self):
+        """起始时间戳，Unix 秒级时间戳
+        :rtype: int
+        """
         return self._StartTimeStamp
 
     @StartTimeStamp.setter
@@ -6601,6 +7969,9 @@ class DescribeProtectedTelCdrRequest(AbstractModel):
 
     @property
     def EndTimeStamp(self):
+        """结束时间戳，Unix 秒级时间戳
+        :rtype: int
+        """
         return self._EndTimeStamp
 
     @EndTimeStamp.setter
@@ -6609,6 +7980,9 @@ class DescribeProtectedTelCdrRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID，可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -6617,6 +7991,9 @@ class DescribeProtectedTelCdrRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """分页尺寸，上限 100
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -6625,6 +8002,9 @@ class DescribeProtectedTelCdrRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """分页页码，从 0 开始
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -6671,6 +8051,9 @@ class DescribeProtectedTelCdrResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """话单记录总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6681,6 +8064,9 @@ class DescribeProtectedTelCdrResponse(AbstractModel):
     def TelCdrs(self):
         warnings.warn("parameter `TelCdrs` is deprecated", DeprecationWarning) 
 
+        """话单记录
+        :rtype: list of TelCdrInfo
+        """
         return self._TelCdrs
 
     @TelCdrs.setter
@@ -6691,6 +8077,9 @@ class DescribeProtectedTelCdrResponse(AbstractModel):
 
     @property
     def TelCdrList(self):
+        """话单记录
+        :rtype: list of TelCdrInfo
+        """
         return self._TelCdrList
 
     @TelCdrList.setter
@@ -6699,6 +8088,9 @@ class DescribeProtectedTelCdrResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6752,6 +8144,9 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -6760,6 +8155,9 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """分页尺寸，上限 100
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -6768,6 +8166,9 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """分页页码，从 0 开始
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -6776,6 +8177,9 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
 
     @property
     def SkillGroupId(self):
+        """技能组ID，查询单个技能组时使用
+        :rtype: int
+        """
         return self._SkillGroupId
 
     @SkillGroupId.setter
@@ -6784,6 +8188,9 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
 
     @property
     def ModifiedTime(self):
+        """查询修改时间大于等于ModifiedTime的技能组时使用
+        :rtype: int
+        """
         return self._ModifiedTime
 
     @ModifiedTime.setter
@@ -6792,6 +8199,9 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
 
     @property
     def SkillGroupName(self):
+        """技能组名称
+        :rtype: str
+        """
         return self._SkillGroupName
 
     @SkillGroupName.setter
@@ -6836,6 +8246,9 @@ class DescribeSkillGroupInfoListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """技能组总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6844,6 +8257,9 @@ class DescribeSkillGroupInfoListResponse(AbstractModel):
 
     @property
     def SkillGroupList(self):
+        """技能组信息列表
+        :rtype: list of SkillGroupInfoItem
+        """
         return self._SkillGroupList
 
     @SkillGroupList.setter
@@ -6852,6 +8268,9 @@ class DescribeSkillGroupInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6899,6 +8318,9 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -6907,6 +8329,9 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """分页尺寸，上限 9999
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -6915,6 +8340,9 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """分页页码，从 0 开始
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -6923,6 +8351,9 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def StaffMail(self):
+        """坐席账号，查询单个坐席时使用
+        :rtype: str
+        """
         return self._StaffMail
 
     @StaffMail.setter
@@ -6931,6 +8362,9 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def ModifiedTime(self):
+        """查询修改时间大于等于ModifiedTime的坐席时使用
+        :rtype: int
+        """
         return self._ModifiedTime
 
     @ModifiedTime.setter
@@ -6939,6 +8373,9 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def SkillGroupId(self):
+        """技能组ID
+        :rtype: int
+        """
         return self._SkillGroupId
 
     @SkillGroupId.setter
@@ -6983,6 +8420,9 @@ class DescribeStaffInfoListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """坐席用户总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6991,6 +8431,9 @@ class DescribeStaffInfoListResponse(AbstractModel):
 
     @property
     def StaffList(self):
+        """坐席用户信息列表
+        :rtype: list of StaffInfo
+        """
         return self._StaffList
 
     @StaffList.setter
@@ -6999,6 +8442,9 @@ class DescribeStaffInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7040,6 +8486,9 @@ class DescribeStaffStatusMetricsRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -7048,6 +8497,9 @@ class DescribeStaffStatusMetricsRequest(AbstractModel):
 
     @property
     def StaffList(self):
+        """筛选坐席列表，默认不传返回全部坐席信息
+        :rtype: list of str
+        """
         return self._StaffList
 
     @StaffList.setter
@@ -7056,6 +8508,9 @@ class DescribeStaffStatusMetricsRequest(AbstractModel):
 
     @property
     def GroupIdList(self):
+        """筛选技能组ID列表
+        :rtype: list of int
+        """
         return self._GroupIdList
 
     @GroupIdList.setter
@@ -7064,6 +8519,9 @@ class DescribeStaffStatusMetricsRequest(AbstractModel):
 
     @property
     def StatusList(self):
+        """筛选坐席状态列表 座席状态 free 示闲 | busy 忙碌 | rest 小休 | notReady 示忙 | afterCallWork 话后调整 | offline 离线 
+        :rtype: list of str
+        """
         return self._StatusList
 
     @StatusList.setter
@@ -7103,6 +8561,9 @@ class DescribeStaffStatusMetricsResponse(AbstractModel):
 
     @property
     def Metrics(self):
+        """坐席状态实时信息
+        :rtype: list of StaffStatusMetrics
+        """
         return self._Metrics
 
     @Metrics.setter
@@ -7111,6 +8572,9 @@ class DescribeStaffStatusMetricsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7148,6 +8612,9 @@ class DescribeTelCallInfoRequest(AbstractModel):
 
     @property
     def StartTimeStamp(self):
+        """起始时间戳，Unix 时间戳(查询维度仅支持天，例如查询5月1日应该传startTime:"2023-05-01 00:00:00","endTime":"2023-05-01 23:59:59"的时间戳,查5月1日和5月2日的应该传startTime:"2023-05-01 00:00:00","endTime":"2023-05-02 23:59:59"的时间戳)
+        :rtype: int
+        """
         return self._StartTimeStamp
 
     @StartTimeStamp.setter
@@ -7156,6 +8623,9 @@ class DescribeTelCallInfoRequest(AbstractModel):
 
     @property
     def EndTimeStamp(self):
+        """结束时间戳，Unix 时间戳，查询时间范围最大为90天(查询维度仅支持天，例如查询5月1日应该传startTime:"2023-05-01 00:00:00","endTime":"2023-05-01 23:59:59"的时间戳,查5月1日和5月2日的应该传startTime:"2023-05-01 00:00:00","endTime":"2023-05-02 23:59:59"的时间戳)
+        :rtype: int
+        """
         return self._EndTimeStamp
 
     @EndTimeStamp.setter
@@ -7164,6 +8634,9 @@ class DescribeTelCallInfoRequest(AbstractModel):
 
     @property
     def SdkAppIdList(self):
+        """应用ID列表，多个ID时，返回值为多个ID使用总和
+        :rtype: list of int
+        """
         return self._SdkAppIdList
 
     @SdkAppIdList.setter
@@ -7220,6 +8693,9 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def TelCallOutCount(self):
+        """呼出套餐包消耗分钟数
+        :rtype: int
+        """
         return self._TelCallOutCount
 
     @TelCallOutCount.setter
@@ -7228,6 +8704,9 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def TelCallInCount(self):
+        """呼入套餐包消耗分钟数
+        :rtype: int
+        """
         return self._TelCallInCount
 
     @TelCallInCount.setter
@@ -7236,6 +8715,9 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def SeatUsedCount(self):
+        """坐席使用统计个数
+        :rtype: int
+        """
         return self._SeatUsedCount
 
     @SeatUsedCount.setter
@@ -7246,6 +8728,9 @@ class DescribeTelCallInfoResponse(AbstractModel):
     def VoipCallInCount(self):
         warnings.warn("parameter `VoipCallInCount` is deprecated", DeprecationWarning) 
 
+        """音频套餐包消耗分钟数
+        :rtype: int
+        """
         return self._VoipCallInCount
 
     @VoipCallInCount.setter
@@ -7256,6 +8741,9 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def VOIPCallInCount(self):
+        """音频套餐包消耗分钟数
+        :rtype: int
+        """
         return self._VOIPCallInCount
 
     @VOIPCallInCount.setter
@@ -7264,6 +8752,9 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def AsrOfflineCount(self):
+        """离线语音转文字套餐包消耗分钟数
+        :rtype: int
+        """
         return self._AsrOfflineCount
 
     @AsrOfflineCount.setter
@@ -7272,6 +8763,9 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def AsrRealtimeCount(self):
+        """实时语音转文字套餐包消耗分钟数
+        :rtype: int
+        """
         return self._AsrRealtimeCount
 
     @AsrRealtimeCount.setter
@@ -7280,6 +8774,9 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7339,6 +8836,9 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def StartTimeStamp(self):
+        """起始时间戳，Unix 秒级时间戳，最大支持近180天。
+        :rtype: int
+        """
         return self._StartTimeStamp
 
     @StartTimeStamp.setter
@@ -7347,6 +8847,9 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def EndTimeStamp(self):
+        """结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
+        :rtype: int
+        """
         return self._EndTimeStamp
 
     @EndTimeStamp.setter
@@ -7357,6 +8860,9 @@ class DescribeTelCdrRequest(AbstractModel):
     def InstanceId(self):
         warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
 
+        """实例 ID（废弃）
+        :rtype: int
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7367,6 +8873,9 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数据条数，上限（废弃）
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7375,6 +8884,9 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移（废弃）
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7383,6 +8895,9 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -7391,6 +8906,9 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """分页尺寸（必填），上限 100
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -7399,6 +8917,9 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """分页页码（必填），从 0 开始
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -7407,6 +8928,9 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def Phones(self):
+        """按手机号筛选
+        :rtype: list of str
+        """
         return self._Phones
 
     @Phones.setter
@@ -7415,6 +8939,9 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def SessionIds(self):
+        """按SessionId筛选
+        :rtype: list of str
+        """
         return self._SessionIds
 
     @SessionIds.setter
@@ -7466,6 +8993,9 @@ class DescribeTelCdrResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """话单记录总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7476,6 +9006,9 @@ class DescribeTelCdrResponse(AbstractModel):
     def TelCdrs(self):
         warnings.warn("parameter `TelCdrs` is deprecated", DeprecationWarning) 
 
+        """话单记录
+        :rtype: list of TelCdrInfo
+        """
         return self._TelCdrs
 
     @TelCdrs.setter
@@ -7486,6 +9019,9 @@ class DescribeTelCdrResponse(AbstractModel):
 
     @property
     def TelCdrList(self):
+        """话单记录
+        :rtype: list of TelCdrInfo
+        """
         return self._TelCdrList
 
     @TelCdrList.setter
@@ -7494,6 +9030,9 @@ class DescribeTelCdrResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7535,6 +9074,9 @@ class DescribeTelRecordAsrRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -7543,6 +9085,9 @@ class DescribeTelRecordAsrRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """会话 ID
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -7580,6 +9125,9 @@ class DescribeTelRecordAsrResponse(AbstractModel):
 
     @property
     def AsrDataList(self):
+        """录音转文本信息
+        :rtype: list of AsrData
+        """
         return self._AsrDataList
 
     @AsrDataList.setter
@@ -7588,6 +9136,9 @@ class DescribeTelRecordAsrResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7622,6 +9173,9 @@ class DescribeTelSessionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -7630,6 +9184,9 @@ class DescribeTelSessionRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """会话 ID
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -7667,6 +9224,9 @@ class DescribeTelSessionResponse(AbstractModel):
 
     @property
     def Session(self):
+        """会话信息
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.PSTNSession`
+        """
         return self._Session
 
     @Session.setter
@@ -7675,6 +9235,9 @@ class DescribeTelSessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7709,6 +9272,9 @@ class DisableCCCPhoneNumberRequest(AbstractModel):
 
     @property
     def PhoneNumbers(self):
+        """号码列表，0086开头
+        :rtype: list of str
+        """
         return self._PhoneNumbers
 
     @PhoneNumbers.setter
@@ -7717,6 +9283,9 @@ class DisableCCCPhoneNumberRequest(AbstractModel):
 
     @property
     def Disabled(self):
+        """停用开关，0启用 1停用
+        :rtype: int
+        """
         return self._Disabled
 
     @Disabled.setter
@@ -7725,6 +9294,9 @@ class DisableCCCPhoneNumberRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TCCC 实例应用 ID
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -7760,6 +9332,9 @@ class DisableCCCPhoneNumberResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7791,6 +9366,9 @@ class ErrStaffItem(AbstractModel):
 
     @property
     def StaffEmail(self):
+        """座席邮箱地址
+        :rtype: str
+        """
         return self._StaffEmail
 
     @StaffEmail.setter
@@ -7799,6 +9377,9 @@ class ErrStaffItem(AbstractModel):
 
     @property
     def Code(self):
+        """错误码
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -7807,6 +9388,9 @@ class ErrStaffItem(AbstractModel):
 
     @property
     def Message(self):
+        """错误描述
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -7872,6 +9456,9 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """实例ID
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -7880,6 +9467,9 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def FullExtensionId(self):
+        """分机全名
+        :rtype: str
+        """
         return self._FullExtensionId
 
     @FullExtensionId.setter
@@ -7888,6 +9478,9 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def ExtensionId(self):
+        """分机号
+        :rtype: str
+        """
         return self._ExtensionId
 
     @ExtensionId.setter
@@ -7896,6 +9489,9 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def SkillGroupId(self):
+        """所属技能组列表
+        :rtype: str
+        """
         return self._SkillGroupId
 
     @SkillGroupId.setter
@@ -7904,6 +9500,9 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def ExtensionName(self):
+        """分机名称
+        :rtype: str
+        """
         return self._ExtensionName
 
     @ExtensionName.setter
@@ -7912,6 +9511,9 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -7920,6 +9522,9 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """最后修改时间
+        :rtype: int
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -7928,6 +9533,9 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def Status(self):
+        """话机状态(0 离线、100 空闲、200忙碌）
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -7936,6 +9544,9 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def Register(self):
+        """是否注册
+        :rtype: bool
+        """
         return self._Register
 
     @Register.setter
@@ -7944,6 +9555,9 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def Relation(self):
+        """绑定座席邮箱
+        :rtype: str
+        """
         return self._Relation
 
     @Relation.setter
@@ -7952,6 +9566,9 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def RelationName(self):
+        """绑定座席名称
+        :rtype: str
+        """
         return self._RelationName
 
     @RelationName.setter
@@ -7998,6 +9615,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """筛选字段名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8006,6 +9626,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """筛选条件值
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -8043,6 +9666,9 @@ class HangUpCallRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -8051,6 +9677,9 @@ class HangUpCallRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """会话ID
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -8085,6 +9714,9 @@ class HangUpCallResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8153,6 +9785,9 @@ class IMCdrInfo(AbstractModel):
 
     @property
     def Id(self):
+        """服务记录ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -8161,6 +9796,9 @@ class IMCdrInfo(AbstractModel):
 
     @property
     def Duration(self):
+        """服务时长秒数
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -8169,6 +9807,18 @@ class IMCdrInfo(AbstractModel):
 
     @property
     def EndStatus(self):
+        """结束状态
+0 异常结束
+1 正常结束
+3 无座席在线
+17 座席放弃接听
+100 黑名单
+101 座席手动转接
+102 IVR阶段放弃
+108 用户超时自动结束
+109 用户主动结束
+        :rtype: int
+        """
         return self._EndStatus
 
     @EndStatus.setter
@@ -8177,6 +9827,9 @@ class IMCdrInfo(AbstractModel):
 
     @property
     def Nickname(self):
+        """用户昵称
+        :rtype: str
+        """
         return self._Nickname
 
     @Nickname.setter
@@ -8185,6 +9838,9 @@ class IMCdrInfo(AbstractModel):
 
     @property
     def Type(self):
+        """服务类型 1为全媒体，2为文本客服
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -8193,6 +9849,9 @@ class IMCdrInfo(AbstractModel):
 
     @property
     def StaffId(self):
+        """客服ID
+        :rtype: str
+        """
         return self._StaffId
 
     @StaffId.setter
@@ -8201,6 +9860,9 @@ class IMCdrInfo(AbstractModel):
 
     @property
     def Timestamp(self):
+        """服务时间戳
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -8209,6 +9871,9 @@ class IMCdrInfo(AbstractModel):
 
     @property
     def SessionId(self):
+        """会话ID
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -8217,6 +9882,9 @@ class IMCdrInfo(AbstractModel):
 
     @property
     def SkillGroupId(self):
+        """技能组ID
+        :rtype: str
+        """
         return self._SkillGroupId
 
     @SkillGroupId.setter
@@ -8225,6 +9893,9 @@ class IMCdrInfo(AbstractModel):
 
     @property
     def SkillGroupName(self):
+        """技能组名称
+        :rtype: str
+        """
         return self._SkillGroupName
 
     @SkillGroupName.setter
@@ -8233,6 +9904,10 @@ class IMCdrInfo(AbstractModel):
 
     @property
     def Satisfaction(self):
+        """满意度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.IMSatisfaction`
+        """
         return self._Satisfaction
 
     @Satisfaction.setter
@@ -8241,6 +9916,9 @@ class IMCdrInfo(AbstractModel):
 
     @property
     def ClientUserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._ClientUserId
 
     @ClientUserId.setter
@@ -8290,6 +9968,9 @@ class IMSatisfaction(AbstractModel):
 
     @property
     def Id(self):
+        """满意度值
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -8298,6 +9979,9 @@ class IMSatisfaction(AbstractModel):
 
     @property
     def Label(self):
+        """满意度标签
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -8347,6 +10031,9 @@ class IVRKeyPressedElement(AbstractModel):
 
     @property
     def Key(self):
+        """命中的关键字或者按键
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -8355,6 +10042,9 @@ class IVRKeyPressedElement(AbstractModel):
 
     @property
     def Label(self):
+        """按键关联的标签
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -8363,6 +10053,9 @@ class IVRKeyPressedElement(AbstractModel):
 
     @property
     def Timestamp(self):
+        """Unix 毫秒时间戳
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -8371,6 +10064,9 @@ class IVRKeyPressedElement(AbstractModel):
 
     @property
     def NodeLabel(self):
+        """节点标签
+        :rtype: str
+        """
         return self._NodeLabel
 
     @NodeLabel.setter
@@ -8379,6 +10075,9 @@ class IVRKeyPressedElement(AbstractModel):
 
     @property
     def OriginalContent(self):
+        """用户原始输入
+        :rtype: str
+        """
         return self._OriginalContent
 
     @OriginalContent.setter
@@ -8387,6 +10086,9 @@ class IVRKeyPressedElement(AbstractModel):
 
     @property
     def TTSPrompt(self):
+        """TTS 提示音内容
+        :rtype: str
+        """
         return self._TTSPrompt
 
     @TTSPrompt.setter
@@ -8428,6 +10130,9 @@ class Message(AbstractModel):
 
     @property
     def Type(self):
+        """消息类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -8436,6 +10141,9 @@ class Message(AbstractModel):
 
     @property
     def Content(self):
+        """消息内容
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -8476,6 +10184,9 @@ class MessageBody(AbstractModel):
 
     @property
     def Timestamp(self):
+        """消息时间戳
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -8484,6 +10195,9 @@ class MessageBody(AbstractModel):
 
     @property
     def From(self):
+        """发消息的用户ID
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -8492,6 +10206,9 @@ class MessageBody(AbstractModel):
 
     @property
     def Messages(self):
+        """消息列表
+        :rtype: list of Message
+        """
         return self._Messages
 
     @Messages.setter
@@ -8535,6 +10252,9 @@ class ModifyCompanyApplyRequest(AbstractModel):
 
     @property
     def ApplyId(self):
+        """申请单ID(只能修改状态为“驳回”或者“待审核”的申请单)
+        :rtype: int
+        """
         return self._ApplyId
 
     @ApplyId.setter
@@ -8543,6 +10263,9 @@ class ModifyCompanyApplyRequest(AbstractModel):
 
     @property
     def CompanyInfo(self):
+        """企业资质信息
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.CompanyApplyInfo`
+        """
         return self._CompanyInfo
 
     @CompanyInfo.setter
@@ -8579,6 +10302,9 @@ class ModifyCompanyApplyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8616,6 +10342,9 @@ class ModifyExtensionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -8624,6 +10353,9 @@ class ModifyExtensionRequest(AbstractModel):
 
     @property
     def ExtensionId(self):
+        """分机号
+        :rtype: str
+        """
         return self._ExtensionId
 
     @ExtensionId.setter
@@ -8632,6 +10364,9 @@ class ModifyExtensionRequest(AbstractModel):
 
     @property
     def ExtensionName(self):
+        """分机名称
+        :rtype: str
+        """
         return self._ExtensionName
 
     @ExtensionName.setter
@@ -8640,6 +10375,9 @@ class ModifyExtensionRequest(AbstractModel):
 
     @property
     def SkillGroupIds(self):
+        """所属技能组列表
+        :rtype: list of int
+        """
         return self._SkillGroupIds
 
     @SkillGroupIds.setter
@@ -8648,6 +10386,9 @@ class ModifyExtensionRequest(AbstractModel):
 
     @property
     def Relation(self):
+        """绑定坐席邮箱账号
+        :rtype: str
+        """
         return self._Relation
 
     @Relation.setter
@@ -8685,6 +10426,9 @@ class ModifyExtensionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8719,6 +10463,9 @@ class ModifyOwnNumberApplyRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -8727,6 +10474,9 @@ class ModifyOwnNumberApplyRequest(AbstractModel):
 
     @property
     def DetailList(self):
+        """线路相关参数
+        :rtype: list of OwnNumberApplyDetailItem
+        """
         return self._DetailList
 
     @DetailList.setter
@@ -8735,6 +10485,9 @@ class ModifyOwnNumberApplyRequest(AbstractModel):
 
     @property
     def ApplyId(self):
+        """审批单号
+        :rtype: int
+        """
         return self._ApplyId
 
     @ApplyId.setter
@@ -8743,6 +10496,9 @@ class ModifyOwnNumberApplyRequest(AbstractModel):
 
     @property
     def Prefix(self):
+        """送号前缀
+        :rtype: str
+        """
         return self._Prefix
 
     @Prefix.setter
@@ -8784,6 +10540,9 @@ class ModifyOwnNumberApplyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8815,6 +10574,9 @@ class ModifyStaffPasswordRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -8823,6 +10585,9 @@ class ModifyStaffPasswordRequest(AbstractModel):
 
     @property
     def Email(self):
+        """座席邮箱
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -8831,6 +10596,9 @@ class ModifyStaffPasswordRequest(AbstractModel):
 
     @property
     def Password(self):
+        """设置的密码
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -8866,6 +10634,9 @@ class ModifyStaffPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8915,6 +10686,9 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -8923,6 +10697,9 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def Email(self):
+        """座席账户
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -8931,6 +10708,9 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def Name(self):
+        """座席名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8939,6 +10719,9 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def Phone(self):
+        """座席手机号（带0086前缀,示例：008618011111111）
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -8947,6 +10730,9 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def Nick(self):
+        """座席昵称
+        :rtype: str
+        """
         return self._Nick
 
     @Nick.setter
@@ -8955,6 +10741,9 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def StaffNo(self):
+        """座席工号
+        :rtype: str
+        """
         return self._StaffNo
 
     @StaffNo.setter
@@ -8963,6 +10752,9 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def SkillGroupIds(self):
+        """绑定技能组ID列表
+        :rtype: list of int
+        """
         return self._SkillGroupIds
 
     @SkillGroupIds.setter
@@ -8971,6 +10763,9 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def UseMobileCallOut(self):
+        """是否开启手机外呼开关
+        :rtype: bool
+        """
         return self._UseMobileCallOut
 
     @UseMobileCallOut.setter
@@ -8979,6 +10774,9 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def UseMobileAccept(self):
+        """手机接听模式 0 - 关闭 | 1 - 仅离线 | 2 - 始终
+        :rtype: int
+        """
         return self._UseMobileAccept
 
     @UseMobileAccept.setter
@@ -9020,6 +10818,9 @@ class ModifyStaffResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9051,6 +10852,9 @@ class NumberInfo(AbstractModel):
 
     @property
     def Number(self):
+        """号码
+        :rtype: str
+        """
         return self._Number
 
     @Number.setter
@@ -9059,6 +10863,9 @@ class NumberInfo(AbstractModel):
 
     @property
     def CallOutSkillGroupIds(self):
+        """绑定的外呼技能组
+        :rtype: list of int non-negative
+        """
         return self._CallOutSkillGroupIds
 
     @CallOutSkillGroupIds.setter
@@ -9067,6 +10874,9 @@ class NumberInfo(AbstractModel):
 
     @property
     def State(self):
+        """号码状态，1-正常，2-欠费停用，4-管理员停用，5-违规停用
+        :rtype: int
+        """
         return self._State
 
     @State.setter
@@ -9114,6 +10924,9 @@ class OwnNumberApplyDetailItem(AbstractModel):
 
     @property
     def CallType(self):
+        """号码类型：0-呼入|1-呼出|2-呼入呼出
+        :rtype: int
+        """
         return self._CallType
 
     @CallType.setter
@@ -9122,6 +10935,9 @@ class OwnNumberApplyDetailItem(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """线路号码
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -9130,6 +10946,9 @@ class OwnNumberApplyDetailItem(AbstractModel):
 
     @property
     def MaxCallCount(self):
+        """最大并发呼叫数
+        :rtype: int
+        """
         return self._MaxCallCount
 
     @MaxCallCount.setter
@@ -9138,6 +10957,9 @@ class OwnNumberApplyDetailItem(AbstractModel):
 
     @property
     def MaxCallPSec(self):
+        """每秒最大并发数
+        :rtype: int
+        """
         return self._MaxCallPSec
 
     @MaxCallPSec.setter
@@ -9146,6 +10968,9 @@ class OwnNumberApplyDetailItem(AbstractModel):
 
     @property
     def OutboundCalleeFormat(self):
+        """呼出被叫格式，使用 {+E.164} 或 {E.164}, 
+        :rtype: str
+        """
         return self._OutboundCalleeFormat
 
     @OutboundCalleeFormat.setter
@@ -9229,6 +11054,9 @@ finished 已完成
 
     @property
     def SessionID(self):
+        """会话 ID
+        :rtype: str
+        """
         return self._SessionID
 
     @SessionID.setter
@@ -9237,6 +11065,9 @@ finished 已完成
 
     @property
     def RoomID(self):
+        """会话临时房间 ID
+        :rtype: str
+        """
         return self._RoomID
 
     @RoomID.setter
@@ -9245,6 +11076,9 @@ finished 已完成
 
     @property
     def Caller(self):
+        """主叫
+        :rtype: str
+        """
         return self._Caller
 
     @Caller.setter
@@ -9253,6 +11087,9 @@ finished 已完成
 
     @property
     def Callee(self):
+        """被叫
+        :rtype: str
+        """
         return self._Callee
 
     @Callee.setter
@@ -9261,6 +11098,9 @@ finished 已完成
 
     @property
     def StartTimestamp(self):
+        """开始时间，Unix 时间戳
+        :rtype: int
+        """
         return self._StartTimestamp
 
     @StartTimestamp.setter
@@ -9269,6 +11109,9 @@ finished 已完成
 
     @property
     def RingTimestamp(self):
+        """振铃时间，Unix 时间戳
+        :rtype: int
+        """
         return self._RingTimestamp
 
     @RingTimestamp.setter
@@ -9277,6 +11120,9 @@ finished 已完成
 
     @property
     def AcceptTimestamp(self):
+        """接听时间，Unix 时间戳
+        :rtype: int
+        """
         return self._AcceptTimestamp
 
     @AcceptTimestamp.setter
@@ -9285,6 +11131,9 @@ finished 已完成
 
     @property
     def StaffEmail(self):
+        """座席邮箱
+        :rtype: str
+        """
         return self._StaffEmail
 
     @StaffEmail.setter
@@ -9293,6 +11142,9 @@ finished 已完成
 
     @property
     def StaffNumber(self):
+        """座席工号
+        :rtype: str
+        """
         return self._StaffNumber
 
     @StaffNumber.setter
@@ -9301,6 +11153,13 @@ finished 已完成
 
     @property
     def SessionStatus(self):
+        """会话状态
+ringing 振铃中
+seatJoining  等待座席接听
+inProgress 进行中
+finished 已完成
+        :rtype: str
+        """
         return self._SessionStatus
 
     @SessionStatus.setter
@@ -9309,6 +11168,9 @@ finished 已完成
 
     @property
     def Direction(self):
+        """会话呼叫方向， 0 呼入 | 1 - 呼出
+        :rtype: int
+        """
         return self._Direction
 
     @Direction.setter
@@ -9317,6 +11179,9 @@ finished 已完成
 
     @property
     def OutBoundCaller(self):
+        """转外线使用的号码（转外线主叫）
+        :rtype: str
+        """
         return self._OutBoundCaller
 
     @OutBoundCaller.setter
@@ -9325,6 +11190,9 @@ finished 已完成
 
     @property
     def OutBoundCallee(self):
+        """转外线被叫
+        :rtype: str
+        """
         return self._OutBoundCallee
 
     @OutBoundCallee.setter
@@ -9333,6 +11201,9 @@ finished 已完成
 
     @property
     def ProtectedCaller(self):
+        """主叫号码保护ID，开启号码保护映射功能时有效，且Caller字段置空
+        :rtype: str
+        """
         return self._ProtectedCaller
 
     @ProtectedCaller.setter
@@ -9341,6 +11212,9 @@ finished 已完成
 
     @property
     def ProtectedCallee(self):
+        """被叫号码保护ID，开启号码保护映射功能时有效，且Callee字段置空
+        :rtype: str
+        """
         return self._ProtectedCallee
 
     @ProtectedCallee.setter
@@ -9424,6 +11298,9 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def SessionID(self):
+        """会话 ID
+        :rtype: str
+        """
         return self._SessionID
 
     @SessionID.setter
@@ -9432,6 +11309,9 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def RoomID(self):
+        """会话临时房间 ID
+        :rtype: str
+        """
         return self._RoomID
 
     @RoomID.setter
@@ -9440,6 +11320,9 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def Caller(self):
+        """主叫
+        :rtype: str
+        """
         return self._Caller
 
     @Caller.setter
@@ -9448,6 +11331,9 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def Callee(self):
+        """被叫
+        :rtype: str
+        """
         return self._Callee
 
     @Callee.setter
@@ -9456,6 +11342,9 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def StartTimestamp(self):
+        """开始时间，Unix 时间戳
+        :rtype: str
+        """
         return self._StartTimestamp
 
     @StartTimestamp.setter
@@ -9464,6 +11353,9 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def AcceptTimestamp(self):
+        """接听时间，Unix 时间戳
+        :rtype: str
+        """
         return self._AcceptTimestamp
 
     @AcceptTimestamp.setter
@@ -9472,6 +11364,9 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def StaffEmail(self):
+        """座席邮箱
+        :rtype: str
+        """
         return self._StaffEmail
 
     @StaffEmail.setter
@@ -9480,6 +11375,9 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def StaffNumber(self):
+        """座席工号
+        :rtype: str
+        """
         return self._StaffNumber
 
     @StaffNumber.setter
@@ -9488,6 +11386,9 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def SessionStatus(self):
+        """座席状态 inProgress 进行中
+        :rtype: str
+        """
         return self._SessionStatus
 
     @SessionStatus.setter
@@ -9496,6 +11397,9 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def Direction(self):
+        """会话呼叫方向， 0 呼入 | 1 - 呼出
+        :rtype: int
+        """
         return self._Direction
 
     @Direction.setter
@@ -9504,6 +11408,9 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def RingTimestamp(self):
+        """振铃时间，Unix 时间戳
+        :rtype: int
+        """
         return self._RingTimestamp
 
     @RingTimestamp.setter
@@ -9512,6 +11419,9 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def ProtectedCaller(self):
+        """主叫号码保护ID，开启号码保护映射功能时有效，且Caller字段置空
+        :rtype: str
+        """
         return self._ProtectedCaller
 
     @ProtectedCaller.setter
@@ -9520,6 +11430,9 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def ProtectedCallee(self):
+        """被叫号码保护ID，开启号码保护映射功能时有效，且Callee字段置空
+        :rtype: str
+        """
         return self._ProtectedCallee
 
     @ProtectedCallee.setter
@@ -9580,6 +11493,9 @@ class PackageBuyInfo(AbstractModel):
 
     @property
     def PackageId(self):
+        """套餐包Id
+        :rtype: str
+        """
         return self._PackageId
 
     @PackageId.setter
@@ -9588,6 +11504,9 @@ class PackageBuyInfo(AbstractModel):
 
     @property
     def Type(self):
+        """套餐包类型，0-外呼套餐包|1-400呼入套餐包
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -9596,6 +11515,9 @@ class PackageBuyInfo(AbstractModel):
 
     @property
     def CapacitySize(self):
+        """套餐包总量
+        :rtype: int
+        """
         return self._CapacitySize
 
     @CapacitySize.setter
@@ -9604,6 +11526,9 @@ class PackageBuyInfo(AbstractModel):
 
     @property
     def CapacityRemain(self):
+        """套餐包剩余量
+        :rtype: int
+        """
         return self._CapacityRemain
 
     @CapacityRemain.setter
@@ -9612,6 +11537,9 @@ class PackageBuyInfo(AbstractModel):
 
     @property
     def BuyTime(self):
+        """购买时间戳
+        :rtype: int
+        """
         return self._BuyTime
 
     @BuyTime.setter
@@ -9620,6 +11548,9 @@ class PackageBuyInfo(AbstractModel):
 
     @property
     def EndTime(self):
+        """截止时间戳
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9661,6 +11592,9 @@ class PausePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -9669,6 +11603,9 @@ class PausePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
+        """任务 ID
+        :rtype: int
+        """
         return self._CampaignId
 
     @CampaignId.setter
@@ -9703,6 +11640,9 @@ class PausePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9743,6 +11683,9 @@ class PhoneNumBuyInfo(AbstractModel):
 
     @property
     def PhoneNum(self):
+        """电话号码
+        :rtype: str
+        """
         return self._PhoneNum
 
     @PhoneNum.setter
@@ -9751,6 +11694,9 @@ class PhoneNumBuyInfo(AbstractModel):
 
     @property
     def Type(self):
+        """号码类型，0-固话|1-虚商号码|2-运营商号码|3-400号码
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -9759,6 +11705,9 @@ class PhoneNumBuyInfo(AbstractModel):
 
     @property
     def CallType(self):
+        """号码呼叫类型，1-呼入|2-呼出|3-呼入呼出
+        :rtype: int
+        """
         return self._CallType
 
     @CallType.setter
@@ -9767,6 +11716,9 @@ class PhoneNumBuyInfo(AbstractModel):
 
     @property
     def BuyTime(self):
+        """购买时间戳
+        :rtype: int
+        """
         return self._BuyTime
 
     @BuyTime.setter
@@ -9775,6 +11727,9 @@ class PhoneNumBuyInfo(AbstractModel):
 
     @property
     def EndTime(self):
+        """截止时间戳
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9783,6 +11738,9 @@ class PhoneNumBuyInfo(AbstractModel):
 
     @property
     def State(self):
+        """号码状态，1正常|2欠费停用|4管理员停用|5违规停用
+        :rtype: int
+        """
         return self._State
 
     @State.setter
@@ -9824,6 +11782,9 @@ class ResetExtensionPasswordRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -9832,6 +11793,9 @@ class ResetExtensionPasswordRequest(AbstractModel):
 
     @property
     def ExtensionId(self):
+        """分机号
+        :rtype: str
+        """
         return self._ExtensionId
 
     @ExtensionId.setter
@@ -9869,6 +11833,9 @@ class ResetExtensionPasswordResponse(AbstractModel):
 
     @property
     def Password(self):
+        """重置后密码
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -9877,6 +11844,9 @@ class ResetExtensionPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9906,6 +11876,9 @@ class ResumePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -9914,6 +11887,9 @@ class ResumePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
+        """任务 ID
+        :rtype: int
+        """
         return self._CampaignId
 
     @CampaignId.setter
@@ -9948,6 +11924,9 @@ class ResumePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9988,6 +11967,9 @@ class SdkAppIdBuyInfo(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用ID
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -9996,6 +11978,9 @@ class SdkAppIdBuyInfo(AbstractModel):
 
     @property
     def Name(self):
+        """应用名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10004,6 +11989,9 @@ class SdkAppIdBuyInfo(AbstractModel):
 
     @property
     def StaffBuyNum(self):
+        """座席购买数（还在有效期内）
+        :rtype: int
+        """
         return self._StaffBuyNum
 
     @StaffBuyNum.setter
@@ -10012,6 +12000,9 @@ class SdkAppIdBuyInfo(AbstractModel):
 
     @property
     def StaffBuyList(self):
+        """座席购买列表 （还在有效期内）
+        :rtype: list of StaffBuyInfo
+        """
         return self._StaffBuyList
 
     @StaffBuyList.setter
@@ -10020,6 +12011,9 @@ class SdkAppIdBuyInfo(AbstractModel):
 
     @property
     def PhoneNumBuyList(self):
+        """号码购买列表
+        :rtype: list of PhoneNumBuyInfo
+        """
         return self._PhoneNumBuyList
 
     @PhoneNumBuyList.setter
@@ -10028,6 +12022,9 @@ class SdkAppIdBuyInfo(AbstractModel):
 
     @property
     def SipBuyNum(self):
+        """办公电话购买数（还在有效期内）
+        :rtype: int
+        """
         return self._SipBuyNum
 
     @SipBuyNum.setter
@@ -10100,6 +12097,9 @@ else:自定义角色ID
 
     @property
     def Name(self):
+        """座席名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10108,6 +12108,9 @@ else:自定义角色ID
 
     @property
     def Mail(self):
+        """座席邮箱
+        :rtype: str
+        """
         return self._Mail
 
     @Mail.setter
@@ -10116,6 +12119,9 @@ else:自定义角色ID
 
     @property
     def StaffNumber(self):
+        """工号
+        :rtype: str
+        """
         return self._StaffNumber
 
     @StaffNumber.setter
@@ -10124,6 +12130,9 @@ else:自定义角色ID
 
     @property
     def Phone(self):
+        """座席电话号码（带0086前缀）
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -10132,6 +12141,9 @@ else:自定义角色ID
 
     @property
     def Nick(self):
+        """座席昵称
+        :rtype: str
+        """
         return self._Nick
 
     @Nick.setter
@@ -10140,6 +12152,9 @@ else:自定义角色ID
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -10148,6 +12163,9 @@ else:自定义角色ID
 
     @property
     def SkillGroupNameList(self):
+        """座席关联的技能组列表
+        :rtype: list of str
+        """
         return self._SkillGroupNameList
 
     @SkillGroupNameList.setter
@@ -10156,6 +12174,12 @@ else:自定义角色ID
 
     @property
     def Role(self):
+        """1:管理员
+2:质检员
+3:普通座席
+else:自定义角色ID
+        :rtype: int
+        """
         return self._Role
 
     @Role.setter
@@ -10247,6 +12271,9 @@ class ServeParticipant(AbstractModel):
 
     @property
     def Mail(self):
+        """座席邮箱
+        :rtype: str
+        """
         return self._Mail
 
     @Mail.setter
@@ -10255,6 +12282,9 @@ class ServeParticipant(AbstractModel):
 
     @property
     def Phone(self):
+        """座席电话
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -10263,6 +12293,9 @@ class ServeParticipant(AbstractModel):
 
     @property
     def RingTimestamp(self):
+        """振铃时间戳，Unix 秒级时间戳
+        :rtype: int
+        """
         return self._RingTimestamp
 
     @RingTimestamp.setter
@@ -10271,6 +12304,9 @@ class ServeParticipant(AbstractModel):
 
     @property
     def AcceptTimestamp(self):
+        """接听时间戳，Unix 秒级时间戳
+        :rtype: int
+        """
         return self._AcceptTimestamp
 
     @AcceptTimestamp.setter
@@ -10279,6 +12315,9 @@ class ServeParticipant(AbstractModel):
 
     @property
     def EndedTimestamp(self):
+        """结束时间戳，Unix 秒级时间戳
+        :rtype: int
+        """
         return self._EndedTimestamp
 
     @EndedTimestamp.setter
@@ -10287,6 +12326,9 @@ class ServeParticipant(AbstractModel):
 
     @property
     def RecordId(self):
+        """录音 ID，能够索引到座席侧的录音
+        :rtype: str
+        """
         return self._RecordId
 
     @RecordId.setter
@@ -10295,6 +12337,9 @@ class ServeParticipant(AbstractModel):
 
     @property
     def Type(self):
+        """参与者类型，"staffSeat", "outboundSeat", "staffPhoneSeat"
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -10303,6 +12348,9 @@ class ServeParticipant(AbstractModel):
 
     @property
     def TransferFrom(self):
+        """转接来源座席信息
+        :rtype: str
+        """
         return self._TransferFrom
 
     @TransferFrom.setter
@@ -10311,6 +12359,9 @@ class ServeParticipant(AbstractModel):
 
     @property
     def TransferFromType(self):
+        """转接来源参与者类型，取值与 Type 一致
+        :rtype: str
+        """
         return self._TransferFromType
 
     @TransferFromType.setter
@@ -10319,6 +12370,9 @@ class ServeParticipant(AbstractModel):
 
     @property
     def TransferTo(self):
+        """转接去向座席信息
+        :rtype: str
+        """
         return self._TransferTo
 
     @TransferTo.setter
@@ -10327,6 +12381,9 @@ class ServeParticipant(AbstractModel):
 
     @property
     def TransferToType(self):
+        """转接去向参与者类型，取值与 Type 一致
+        :rtype: str
+        """
         return self._TransferToType
 
     @TransferToType.setter
@@ -10335,6 +12392,9 @@ class ServeParticipant(AbstractModel):
 
     @property
     def SkillGroupId(self):
+        """技能组 ID
+        :rtype: int
+        """
         return self._SkillGroupId
 
     @SkillGroupId.setter
@@ -10343,6 +12403,9 @@ class ServeParticipant(AbstractModel):
 
     @property
     def EndStatusString(self):
+        """结束状态
+        :rtype: str
+        """
         return self._EndStatusString
 
     @EndStatusString.setter
@@ -10351,6 +12414,9 @@ class ServeParticipant(AbstractModel):
 
     @property
     def RecordURL(self):
+        """录音 URL
+        :rtype: str
+        """
         return self._RecordURL
 
     @RecordURL.setter
@@ -10359,6 +12425,9 @@ class ServeParticipant(AbstractModel):
 
     @property
     def Sequence(self):
+        """参与者序号，从 0 开始
+        :rtype: int
+        """
         return self._Sequence
 
     @Sequence.setter
@@ -10367,6 +12436,9 @@ class ServeParticipant(AbstractModel):
 
     @property
     def StartTimestamp(self):
+        """开始时间戳，Unix 秒级时间戳
+        :rtype: int
+        """
         return self._StartTimestamp
 
     @StartTimestamp.setter
@@ -10375,6 +12447,9 @@ class ServeParticipant(AbstractModel):
 
     @property
     def SkillGroupName(self):
+        """技能组名称
+        :rtype: str
+        """
         return self._SkillGroupName
 
     @SkillGroupName.setter
@@ -10383,6 +12458,9 @@ class ServeParticipant(AbstractModel):
 
     @property
     def CustomRecordURL(self):
+        """录音转存第三方COS地址
+        :rtype: str
+        """
         return self._CustomRecordURL
 
     @CustomRecordURL.setter
@@ -10457,6 +12535,9 @@ class SkillGroupInfoItem(AbstractModel):
 
     @property
     def SkillGroupId(self):
+        """技能组ID
+        :rtype: int
+        """
         return self._SkillGroupId
 
     @SkillGroupId.setter
@@ -10465,6 +12546,9 @@ class SkillGroupInfoItem(AbstractModel):
 
     @property
     def SkillGroupName(self):
+        """技能组名称
+        :rtype: str
+        """
         return self._SkillGroupName
 
     @SkillGroupName.setter
@@ -10473,6 +12557,9 @@ class SkillGroupInfoItem(AbstractModel):
 
     @property
     def Type(self):
+        """（废弃）类型：IM、TEL、ALL（全媒体）
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -10481,6 +12568,9 @@ class SkillGroupInfoItem(AbstractModel):
 
     @property
     def RoutePolicy(self):
+        """会话分配策略
+        :rtype: str
+        """
         return self._RoutePolicy
 
     @RoutePolicy.setter
@@ -10489,6 +12579,9 @@ class SkillGroupInfoItem(AbstractModel):
 
     @property
     def UsingLastSeat(self):
+        """会话分配是否优先上次服务座席
+        :rtype: int
+        """
         return self._UsingLastSeat
 
     @UsingLastSeat.setter
@@ -10497,6 +12590,9 @@ class SkillGroupInfoItem(AbstractModel):
 
     @property
     def MaxConcurrency(self):
+        """单客服最大并发数（电话类型默认1）
+        :rtype: int
+        """
         return self._MaxConcurrency
 
     @MaxConcurrency.setter
@@ -10505,6 +12601,9 @@ class SkillGroupInfoItem(AbstractModel):
 
     @property
     def LastModifyTimestamp(self):
+        """最后修改时间
+        :rtype: int
+        """
         return self._LastModifyTimestamp
 
     @LastModifyTimestamp.setter
@@ -10513,6 +12612,9 @@ class SkillGroupInfoItem(AbstractModel):
 
     @property
     def SkillGroupType(self):
+        """技能组类型0-电话，1-在线，3-音频，4-视频	
+        :rtype: int
+        """
         return self._SkillGroupType
 
     @SkillGroupType.setter
@@ -10521,6 +12623,9 @@ class SkillGroupInfoItem(AbstractModel):
 
     @property
     def Alias(self):
+        """技能组内线号码
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -10571,6 +12676,9 @@ class SkillGroupItem(AbstractModel):
 
     @property
     def SkillGroupId(self):
+        """技能组ID
+        :rtype: int
+        """
         return self._SkillGroupId
 
     @SkillGroupId.setter
@@ -10579,6 +12687,9 @@ class SkillGroupItem(AbstractModel):
 
     @property
     def SkillGroupName(self):
+        """技能组名称
+        :rtype: str
+        """
         return self._SkillGroupName
 
     @SkillGroupName.setter
@@ -10587,6 +12698,9 @@ class SkillGroupItem(AbstractModel):
 
     @property
     def Priority(self):
+        """优先级
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -10595,6 +12709,9 @@ class SkillGroupItem(AbstractModel):
 
     @property
     def Type(self):
+        """类型：IM、TEL、ALL（全媒体）
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -10640,6 +12757,9 @@ class StaffBuyInfo(AbstractModel):
 
     @property
     def Num(self):
+        """购买座席数量
+        :rtype: int
+        """
         return self._Num
 
     @Num.setter
@@ -10648,6 +12768,9 @@ class StaffBuyInfo(AbstractModel):
 
     @property
     def BuyTime(self):
+        """购买时间戳
+        :rtype: int
+        """
         return self._BuyTime
 
     @BuyTime.setter
@@ -10656,6 +12779,9 @@ class StaffBuyInfo(AbstractModel):
 
     @property
     def EndTime(self):
+        """截止时间戳
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -10664,6 +12790,9 @@ class StaffBuyInfo(AbstractModel):
 
     @property
     def SipNum(self):
+        """购买办公电话数量
+        :rtype: int
+        """
         return self._SipNum
 
     @SipNum.setter
@@ -10721,6 +12850,9 @@ class StaffInfo(AbstractModel):
 
     @property
     def Name(self):
+        """座席名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10729,6 +12861,9 @@ class StaffInfo(AbstractModel):
 
     @property
     def Mail(self):
+        """座席邮箱
+        :rtype: str
+        """
         return self._Mail
 
     @Mail.setter
@@ -10737,6 +12872,9 @@ class StaffInfo(AbstractModel):
 
     @property
     def Phone(self):
+        """座席电话号码
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -10745,6 +12883,9 @@ class StaffInfo(AbstractModel):
 
     @property
     def Nick(self):
+        """座席昵称
+        :rtype: str
+        """
         return self._Nick
 
     @Nick.setter
@@ -10753,6 +12894,9 @@ class StaffInfo(AbstractModel):
 
     @property
     def StaffNumber(self):
+        """座席工号
+        :rtype: str
+        """
         return self._StaffNumber
 
     @StaffNumber.setter
@@ -10761,6 +12905,9 @@ class StaffInfo(AbstractModel):
 
     @property
     def RoleId(self):
+        """用户角色id
+        :rtype: int
+        """
         return self._RoleId
 
     @RoleId.setter
@@ -10769,6 +12916,9 @@ class StaffInfo(AbstractModel):
 
     @property
     def SkillGroupList(self):
+        """所属技能组列表
+        :rtype: list of SkillGroupItem
+        """
         return self._SkillGroupList
 
     @SkillGroupList.setter
@@ -10777,6 +12927,9 @@ class StaffInfo(AbstractModel):
 
     @property
     def LastModifyTimestamp(self):
+        """最后修改时间
+        :rtype: int
+        """
         return self._LastModifyTimestamp
 
     @LastModifyTimestamp.setter
@@ -10825,6 +12978,9 @@ class StaffSkillGroupList(AbstractModel):
 
     @property
     def SkillGroupId(self):
+        """技能组ID
+        :rtype: int
+        """
         return self._SkillGroupId
 
     @SkillGroupId.setter
@@ -10833,6 +12989,9 @@ class StaffSkillGroupList(AbstractModel):
 
     @property
     def Priority(self):
+        """座席在技能组中的优先级（1为最高，5最低，默认3）
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -10870,6 +13029,9 @@ class StaffStatusExtra(AbstractModel):
 
     @property
     def Type(self):
+        """im - 文本 | tel - 电话 | all - 全媒体
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -10878,6 +13040,9 @@ class StaffStatusExtra(AbstractModel):
 
     @property
     def Direct(self):
+        """in - 呼入 | out - 呼出
+        :rtype: str
+        """
         return self._Direct
 
     @Direct.setter
@@ -10959,6 +13124,9 @@ class StaffStatusMetrics(AbstractModel):
 
     @property
     def Email(self):
+        """座席邮箱
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -10967,6 +13135,9 @@ class StaffStatusMetrics(AbstractModel):
 
     @property
     def Status(self):
+        """座席状态 free 示闲 | busy 忙碌 | rest 小休 | notReady 示忙 | afterCallWork 话后调整 | offline 离线
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -10975,6 +13146,9 @@ class StaffStatusMetrics(AbstractModel):
 
     @property
     def StatusExtra(self):
+        """座席状态补充信息
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.StaffStatusExtra`
+        """
         return self._StatusExtra
 
     @StatusExtra.setter
@@ -10983,6 +13157,9 @@ class StaffStatusMetrics(AbstractModel):
 
     @property
     def OnlineDuration(self):
+        """当天在线总时长
+        :rtype: int
+        """
         return self._OnlineDuration
 
     @OnlineDuration.setter
@@ -10991,6 +13168,9 @@ class StaffStatusMetrics(AbstractModel):
 
     @property
     def FreeDuration(self):
+        """当天示闲总时长
+        :rtype: int
+        """
         return self._FreeDuration
 
     @FreeDuration.setter
@@ -10999,6 +13179,9 @@ class StaffStatusMetrics(AbstractModel):
 
     @property
     def BusyDuration(self):
+        """当天忙碌总时长
+        :rtype: int
+        """
         return self._BusyDuration
 
     @BusyDuration.setter
@@ -11007,6 +13190,9 @@ class StaffStatusMetrics(AbstractModel):
 
     @property
     def NotReadyDuration(self):
+        """当天示忙总时长
+        :rtype: int
+        """
         return self._NotReadyDuration
 
     @NotReadyDuration.setter
@@ -11015,6 +13201,9 @@ class StaffStatusMetrics(AbstractModel):
 
     @property
     def RestDuration(self):
+        """当天小休总时长
+        :rtype: int
+        """
         return self._RestDuration
 
     @RestDuration.setter
@@ -11023,6 +13212,9 @@ class StaffStatusMetrics(AbstractModel):
 
     @property
     def AfterCallWorkDuration(self):
+        """当天话后调整总时长
+        :rtype: int
+        """
         return self._AfterCallWorkDuration
 
     @AfterCallWorkDuration.setter
@@ -11031,6 +13223,9 @@ class StaffStatusMetrics(AbstractModel):
 
     @property
     def Reason(self):
+        """小休原因
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -11039,6 +13234,9 @@ class StaffStatusMetrics(AbstractModel):
 
     @property
     def ReserveRest(self):
+        """是否预约小休
+        :rtype: bool
+        """
         return self._ReserveRest
 
     @ReserveRest.setter
@@ -11047,6 +13245,9 @@ class StaffStatusMetrics(AbstractModel):
 
     @property
     def ReserveNotReady(self):
+        """是否预约示忙
+        :rtype: bool
+        """
         return self._ReserveNotReady
 
     @ReserveNotReady.setter
@@ -11055,6 +13256,9 @@ class StaffStatusMetrics(AbstractModel):
 
     @property
     def UseMobileAccept(self):
+        """手机接听模式： 0 - 关闭 | 1 - 仅离线 | 2- 始终
+        :rtype: int
+        """
         return self._UseMobileAccept
 
     @UseMobileAccept.setter
@@ -11063,6 +13267,9 @@ class StaffStatusMetrics(AbstractModel):
 
     @property
     def UseMobileCallOut(self):
+        """手机外呼开关
+        :rtype: bool
+        """
         return self._UseMobileCallOut
 
     @UseMobileCallOut.setter
@@ -11071,6 +13278,10 @@ class StaffStatusMetrics(AbstractModel):
 
     @property
     def LastOnlineTimestamp(self):
+        """最近一次上线时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LastOnlineTimestamp
 
     @LastOnlineTimestamp.setter
@@ -11079,6 +13290,10 @@ class StaffStatusMetrics(AbstractModel):
 
     @property
     def LastStatusTimestamp(self):
+        """最近一次状态时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LastStatusTimestamp
 
     @LastStatusTimestamp.setter
@@ -11132,6 +13347,9 @@ class StopAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -11140,6 +13358,9 @@ class StopAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务Id
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -11174,6 +13395,9 @@ class StopAutoCalloutTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11419,6 +13643,9 @@ NotExists
 
     @property
     def Caller(self):
+        """主叫号码
+        :rtype: str
+        """
         return self._Caller
 
     @Caller.setter
@@ -11427,6 +13654,9 @@ NotExists
 
     @property
     def Callee(self):
+        """被叫号码
+        :rtype: str
+        """
         return self._Callee
 
     @Callee.setter
@@ -11435,6 +13665,9 @@ NotExists
 
     @property
     def Time(self):
+        """呼叫发起时间戳，Unix 时间戳
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -11443,6 +13676,9 @@ NotExists
 
     @property
     def Direction(self):
+        """呼入呼出方向 0 呼入 1 呼出
+        :rtype: int
+        """
         return self._Direction
 
     @Direction.setter
@@ -11451,6 +13687,9 @@ NotExists
 
     @property
     def Duration(self):
+        """通话时长
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -11459,6 +13698,9 @@ NotExists
 
     @property
     def RecordURL(self):
+        """录音信息
+        :rtype: str
+        """
         return self._RecordURL
 
     @RecordURL.setter
@@ -11467,6 +13709,9 @@ NotExists
 
     @property
     def RecordId(self):
+        """录音 ID
+        :rtype: str
+        """
         return self._RecordId
 
     @RecordId.setter
@@ -11475,6 +13720,9 @@ NotExists
 
     @property
     def SeatUser(self):
+        """座席信息
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.SeatUserInfo`
+        """
         return self._SeatUser
 
     @SeatUser.setter
@@ -11483,6 +13731,62 @@ NotExists
 
     @property
     def EndStatus(self):
+        """EndStatus与EndStatusString一一对应，具体枚举如下：
+
+**场景	         EndStatus	EndStatusString	状态说明**
+
+电话呼入&呼出	1	        ok	                        正常结束
+
+电话呼入&呼出	0	        error	                系统错误
+
+电话呼入	             102	        ivrGiveUp	        IVR 期间用户放弃
+
+电话呼入	             103	        waitingGiveUp	       会话排队期间用户放弃
+
+电话呼入	             104	        ringingGiveUp	       会话振铃期间用户放弃
+
+电话呼入	             105	        noSeatOnline	       无座席在线
+
+电话呼入              106	       notWorkTime	       非工作时间   
+
+电话呼入	            107	       ivrEnd	               IVR 后直接结束
+
+电话呼入	            100	      blackList 呼入黑名单 
+
+电话呼出               2	              unconnected	未接通
+
+电话呼出             108	        restrictedCallee	被叫因高风险受限
+
+电话呼出             109	        tooManyRequest	    超频
+
+电话呼出             110	        restrictedArea	    外呼盲区
+
+电话呼出             111	        restrictedTime	外呼时间限制
+                         
+电话呼出             201            unknown	未知状态
+
+电话呼出             202            notAnswer	未接听
+
+电话呼出            203	    userReject	拒接挂断
+
+电话呼出	          204	    powerOff	关机
+
+电话呼出           205            numberNotExist	空号
+
+电话呼出	         206	           busy	通话中
+
+电话呼出   	        207	           outOfCredit	欠费
+
+电话呼出	         208	           operatorError	运营商线路异常
+
+电话呼出         	209	           callerCancel	主叫取消
+
+电话呼出	        210	           notInService	不在服务区
+
+电话呼入&呼出	211    clientError    客户端错误
+
+        :rtype: int
+        """
         return self._EndStatus
 
     @EndStatus.setter
@@ -11491,6 +13795,9 @@ NotExists
 
     @property
     def SkillGroup(self):
+        """技能组名称
+        :rtype: str
+        """
         return self._SkillGroup
 
     @SkillGroup.setter
@@ -11499,6 +13806,9 @@ NotExists
 
     @property
     def CallerLocation(self):
+        """主叫归属地
+        :rtype: str
+        """
         return self._CallerLocation
 
     @CallerLocation.setter
@@ -11507,6 +13817,9 @@ NotExists
 
     @property
     def IVRDuration(self):
+        """IVR 阶段耗时
+        :rtype: int
+        """
         return self._IVRDuration
 
     @IVRDuration.setter
@@ -11515,6 +13828,9 @@ NotExists
 
     @property
     def RingTimestamp(self):
+        """振铃时间戳，UNIX 秒级时间戳
+        :rtype: int
+        """
         return self._RingTimestamp
 
     @RingTimestamp.setter
@@ -11523,6 +13839,9 @@ NotExists
 
     @property
     def AcceptTimestamp(self):
+        """接听时间戳，UNIX 秒级时间戳
+        :rtype: int
+        """
         return self._AcceptTimestamp
 
     @AcceptTimestamp.setter
@@ -11531,6 +13850,9 @@ NotExists
 
     @property
     def EndedTimestamp(self):
+        """结束时间戳，UNIX 秒级时间戳
+        :rtype: int
+        """
         return self._EndedTimestamp
 
     @EndedTimestamp.setter
@@ -11539,6 +13861,9 @@ NotExists
 
     @property
     def IVRKeyPressed(self):
+        """IVR 按键信息 ，e.g. ["1","2","3"]
+        :rtype: list of str
+        """
         return self._IVRKeyPressed
 
     @IVRKeyPressed.setter
@@ -11547,6 +13872,9 @@ NotExists
 
     @property
     def HungUpSide(self):
+        """挂机方 seat 座席 user 用户 system 系统
+        :rtype: str
+        """
         return self._HungUpSide
 
     @HungUpSide.setter
@@ -11555,6 +13883,9 @@ NotExists
 
     @property
     def ServeParticipants(self):
+        """服务参与者列表
+        :rtype: list of ServeParticipant
+        """
         return self._ServeParticipants
 
     @ServeParticipants.setter
@@ -11563,6 +13894,9 @@ NotExists
 
     @property
     def SkillGroupId(self):
+        """技能组ID
+        :rtype: int
+        """
         return self._SkillGroupId
 
     @SkillGroupId.setter
@@ -11571,6 +13905,62 @@ NotExists
 
     @property
     def EndStatusString(self):
+        """EndStatus与EndStatusString一一对应，具体枚举如下：
+
+**场景	         EndStatus	EndStatusString	状态说明**
+
+电话呼入&呼出	1	        ok	                        正常结束
+
+电话呼入&呼出	0	        error	                系统错误
+
+电话呼入	             102	        ivrGiveUp	        IVR 期间用户放弃
+
+电话呼入	             103	        waitingGiveUp	       会话排队期间用户放弃
+
+电话呼入	             104	        ringingGiveUp	       会话振铃期间用户放弃
+
+电话呼入	             105	        noSeatOnline	       无座席在线
+
+电话呼入              106	       notWorkTime	       非工作时间   
+
+电话呼入	            107	       ivrEnd	               IVR 后直接结束
+
+电话呼入	            100	      blackList 呼入黑名单 
+
+电话呼出               2	              unconnected	未接通
+
+电话呼出             108	        restrictedCallee	被叫因高风险受限
+
+电话呼出             109	        tooManyRequest	    超频
+
+电话呼出             110	        restrictedArea	    外呼盲区
+
+电话呼出             111	        restrictedTime	外呼时间限制
+                         
+电话呼出             201            unknown	未知状态
+
+电话呼出             202            notAnswer	未接听
+
+电话呼出            203	    userReject	拒接挂断
+
+电话呼出	          204	    powerOff	关机
+
+电话呼出           205            numberNotExist	空号
+
+电话呼出	         206	           busy	通话中
+
+电话呼出   	        207	           outOfCredit	欠费
+
+电话呼出	         208	           operatorError	运营商线路异常
+
+电话呼出         	209	           callerCancel	主叫取消
+
+电话呼出	        210	           notInService	不在服务区
+
+电话呼入&呼出	211    clientError    客户端错误
+
+        :rtype: str
+        """
         return self._EndStatusString
 
     @EndStatusString.setter
@@ -11579,6 +13969,9 @@ NotExists
 
     @property
     def StartTimestamp(self):
+        """会话开始时间戳，UNIX 秒级时间戳
+        :rtype: int
+        """
         return self._StartTimestamp
 
     @StartTimestamp.setter
@@ -11587,6 +13980,9 @@ NotExists
 
     @property
     def QueuedTimestamp(self):
+        """进入排队时间，Unix 秒级时间戳
+        :rtype: int
+        """
         return self._QueuedTimestamp
 
     @QueuedTimestamp.setter
@@ -11595,6 +13991,9 @@ NotExists
 
     @property
     def PostIVRKeyPressed(self):
+        """后置IVR按键信息（e.g. [{"Key":"1","Label":"非常满意"}]）
+        :rtype: list of IVRKeyPressedElement
+        """
         return self._PostIVRKeyPressed
 
     @PostIVRKeyPressed.setter
@@ -11603,6 +14002,9 @@ NotExists
 
     @property
     def QueuedSkillGroupId(self):
+        """排队技能组Id
+        :rtype: int
+        """
         return self._QueuedSkillGroupId
 
     @QueuedSkillGroupId.setter
@@ -11611,6 +14013,9 @@ NotExists
 
     @property
     def SessionId(self):
+        """会话 ID
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -11619,6 +14024,9 @@ NotExists
 
     @property
     def ProtectedCaller(self):
+        """主叫号码保护ID，开启号码保护映射功能时有效，且Caller字段置空
+        :rtype: str
+        """
         return self._ProtectedCaller
 
     @ProtectedCaller.setter
@@ -11627,6 +14035,9 @@ NotExists
 
     @property
     def ProtectedCallee(self):
+        """被叫号码保护ID，开启号码保护映射功能时有效，且Callee字段置空
+        :rtype: str
+        """
         return self._ProtectedCallee
 
     @ProtectedCallee.setter
@@ -11637,6 +14048,10 @@ NotExists
     def Uui(self):
         warnings.warn("parameter `Uui` is deprecated", DeprecationWarning) 
 
+        """客户自定义数据（User-to-User Interface）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Uui
 
     @Uui.setter
@@ -11647,6 +14062,9 @@ NotExists
 
     @property
     def UUI(self):
+        """客户自定义数据（User-to-User Interface）
+        :rtype: str
+        """
         return self._UUI
 
     @UUI.setter
@@ -11655,6 +14073,9 @@ NotExists
 
     @property
     def IVRKeyPressedEx(self):
+        """IVR按键信息（e.g. [{"Key":"1","Label":"非常满意"}]）
+        :rtype: list of IVRKeyPressedElement
+        """
         return self._IVRKeyPressedEx
 
     @IVRKeyPressedEx.setter
@@ -11663,6 +14084,9 @@ NotExists
 
     @property
     def AsrUrl(self):
+        """获取录音ASR文本信息地址
+        :rtype: str
+        """
         return self._AsrUrl
 
     @AsrUrl.setter
@@ -11671,6 +14095,14 @@ NotExists
 
     @property
     def AsrStatus(self):
+        """AsrUrl的状态：Complete
+已完成;
+Processing
+正在生成中;
+NotExists
+无记录(未开启生成离线asr或者无套餐包)
+        :rtype: str
+        """
         return self._AsrStatus
 
     @AsrStatus.setter
@@ -11679,6 +14111,9 @@ NotExists
 
     @property
     def CustomRecordURL(self):
+        """录音转存第三方COS地址
+        :rtype: str
+        """
         return self._CustomRecordURL
 
     @CustomRecordURL.setter
@@ -11687,6 +14122,9 @@ NotExists
 
     @property
     def Remark(self):
+        """备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -11695,6 +14133,9 @@ NotExists
 
     @property
     def QueuedSkillGroupName(self):
+        """排队技能组名称
+        :rtype: str
+        """
         return self._QueuedSkillGroupName
 
     @QueuedSkillGroupName.setter
@@ -11703,6 +14144,9 @@ NotExists
 
     @property
     def VoicemailRecordURL(self):
+        """通话中语音留言录音URL
+        :rtype: list of str
+        """
         return self._VoicemailRecordURL
 
     @VoicemailRecordURL.setter
@@ -11711,6 +14155,9 @@ NotExists
 
     @property
     def VoicemailAsrURL(self):
+        """通话中语音留言ASR文本信息地址
+        :rtype: list of str
+        """
         return self._VoicemailAsrURL
 
     @VoicemailAsrURL.setter
@@ -11803,6 +14250,9 @@ class UnbindNumberCallOutSkillGroupRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -11811,6 +14261,9 @@ class UnbindNumberCallOutSkillGroupRequest(AbstractModel):
 
     @property
     def Number(self):
+        """待解绑的号码
+        :rtype: str
+        """
         return self._Number
 
     @Number.setter
@@ -11819,6 +14272,9 @@ class UnbindNumberCallOutSkillGroupRequest(AbstractModel):
 
     @property
     def SkillGroupIds(self):
+        """待解绑的技能组Id列表
+        :rtype: list of int non-negative
+        """
         return self._SkillGroupIds
 
     @SkillGroupIds.setter
@@ -11854,6 +14310,9 @@ class UnbindNumberCallOutSkillGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11885,6 +14344,9 @@ class UnbindStaffSkillGroupListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -11893,6 +14355,9 @@ class UnbindStaffSkillGroupListRequest(AbstractModel):
 
     @property
     def StaffEmail(self):
+        """客服邮箱
+        :rtype: str
+        """
         return self._StaffEmail
 
     @StaffEmail.setter
@@ -11901,6 +14366,9 @@ class UnbindStaffSkillGroupListRequest(AbstractModel):
 
     @property
     def SkillGroupList(self):
+        """解绑技能组列表
+        :rtype: list of int
+        """
         return self._SkillGroupList
 
     @SkillGroupList.setter
@@ -11936,6 +14404,9 @@ class UnbindStaffSkillGroupListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11973,6 +14444,9 @@ class UpdateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -11981,6 +14455,9 @@ class UpdateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def SkillGroupID(self):
+        """技能组ID
+        :rtype: int
+        """
         return self._SkillGroupID
 
     @SkillGroupID.setter
@@ -11989,6 +14466,9 @@ class UpdateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def SkillGroupName(self):
+        """修改后的技能组名字
+        :rtype: str
+        """
         return self._SkillGroupName
 
     @SkillGroupName.setter
@@ -11997,6 +14477,9 @@ class UpdateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def MaxConcurrency(self):
+        """修改后的最大并发数,同振最大为2
+        :rtype: int
+        """
         return self._MaxConcurrency
 
     @MaxConcurrency.setter
@@ -12005,6 +14488,9 @@ class UpdateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def RingAll(self):
+        """true同振，false顺振
+        :rtype: bool
+        """
         return self._RingAll
 
     @RingAll.setter
@@ -12042,6 +14528,9 @@ class UpdateCCCSkillGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12106,6 +14595,9 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -12114,6 +14606,9 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
+        """生成的任务 ID
+        :rtype: int
+        """
         return self._CampaignId
 
     @CampaignId.setter
@@ -12122,6 +14617,9 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Name(self):
+        """任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12130,6 +14628,9 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Callees(self):
+        """被叫列表，支持 E.164 或不带国家码形式的号码
+        :rtype: list of str
+        """
         return self._Callees
 
     @Callees.setter
@@ -12138,6 +14639,9 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Callers(self):
+        """主叫列表，使用管理端展示的号码格式
+        :rtype: list of str
+        """
         return self._Callers
 
     @Callers.setter
@@ -12146,6 +14650,9 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CallOrder(self):
+        """被叫呼叫顺序 0 随机 1 顺序
+        :rtype: int
+        """
         return self._CallOrder
 
     @CallOrder.setter
@@ -12154,6 +14661,9 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SkillGroupId(self):
+        """使用的座席技能组 ID
+        :rtype: int
+        """
         return self._SkillGroupId
 
     @SkillGroupId.setter
@@ -12162,6 +14672,9 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Priority(self):
+        """相同应用内多个任务运行优先级，从高到底 1 - 5
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -12170,6 +14683,9 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def ExpectedAbandonRate(self):
+        """预期呼损率，百分比，5 - 50	
+        :rtype: int
+        """
         return self._ExpectedAbandonRate
 
     @ExpectedAbandonRate.setter
@@ -12178,6 +14694,9 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def RetryInterval(self):
+        """呼叫重试间隔时间，单位秒，60 - 86400
+        :rtype: int
+        """
         return self._RetryInterval
 
     @RetryInterval.setter
@@ -12186,6 +14705,9 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -12194,6 +14716,9 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -12202,6 +14727,9 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def IVRId(self):
+        """指定的 IVR ID
+        :rtype: int
+        """
         return self._IVRId
 
     @IVRId.setter
@@ -12210,6 +14738,9 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def RetryTimes(self):
+        """呼叫重试次数，0 - 2
+        :rtype: int
+        """
         return self._RetryTimes
 
     @RetryTimes.setter
@@ -12256,6 +14787,9 @@ class UpdatePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12284,6 +14818,9 @@ class UploadAudioInfo(AbstractModel):
 
     @property
     def CustomFileName(self):
+        """文件别名（可重复）
+        :rtype: str
+        """
         return self._CustomFileName
 
     @CustomFileName.setter
@@ -12292,6 +14829,9 @@ class UploadAudioInfo(AbstractModel):
 
     @property
     def AudioUrl(self):
+        """音频文件链接。(支持mp3和wav格式，文件不超过5MB)
+        :rtype: str
+        """
         return self._AudioUrl
 
     @AudioUrl.setter
@@ -12329,6 +14869,9 @@ class UploadIvrAudioFailedInfo(AbstractModel):
 
     @property
     def FileName(self):
+        """文件名
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -12337,6 +14880,9 @@ class UploadIvrAudioFailedInfo(AbstractModel):
 
     @property
     def FailedMsg(self):
+        """失败原因
+        :rtype: str
+        """
         return self._FailedMsg
 
     @FailedMsg.setter
@@ -12374,6 +14920,9 @@ class UploadIvrAudioRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -12382,6 +14931,9 @@ class UploadIvrAudioRequest(AbstractModel):
 
     @property
     def AudioList(self):
+        """音频文件列表
+        :rtype: list of UploadAudioInfo
+        """
         return self._AudioList
 
     @AudioList.setter
@@ -12427,6 +14979,9 @@ class UploadIvrAudioResponse(AbstractModel):
 
     @property
     def FailedFileList(self):
+        """上传失败的文件列表
+        :rtype: list of UploadIvrAudioFailedInfo
+        """
         return self._FailedFileList
 
     @FailedFileList.setter
@@ -12435,6 +14990,9 @@ class UploadIvrAudioResponse(AbstractModel):
 
     @property
     def SuccessFileList(self):
+        """上传成功文件列表
+        :rtype: list of AudioFileInfo
+        """
         return self._SuccessFileList
 
     @SuccessFileList.setter
@@ -12443,6 +15001,9 @@ class UploadIvrAudioResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12483,6 +15044,9 @@ class Variable(AbstractModel):
 
     @property
     def Key(self):
+        """变量名
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -12491,6 +15055,9 @@ class Variable(AbstractModel):
 
     @property
     def Value(self):
+        """变量值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter

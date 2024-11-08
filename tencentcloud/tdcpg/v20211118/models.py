@@ -44,6 +44,9 @@ class Account(AbstractModel):
 
     @property
     def AccountName(self):
+        """数据库账号名
+        :rtype: str
+        """
         return self._AccountName
 
     @AccountName.setter
@@ -52,6 +55,9 @@ class Account(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -60,6 +66,9 @@ class Account(AbstractModel):
 
     @property
     def AccountDescription(self):
+        """数据库账号描述
+        :rtype: str
+        """
         return self._AccountDescription
 
     @AccountDescription.setter
@@ -68,6 +77,9 @@ class Account(AbstractModel):
 
     @property
     def CreateTime(self):
+        """数据库账号创建时间。按照RFC3339标准表示，并且使用东八区时区时间，格式为：YYYY-MM-DDThh:mm:ss+08:00。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -76,6 +88,9 @@ class Account(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """数据库账号信息更新时间。按照RFC3339标准表示，并且使用东八区时区时间，格式为：YYYY-MM-DDThh:mm:ss+08:00。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -116,6 +131,9 @@ class AvailableRecoveryTimeRange(AbstractModel):
 
     @property
     def AvailableBeginTime(self):
+        """可回档起始时间。按照RFC3339标准表示，并且使用东八区时区时间，格式为：YYYY-MM-DDThh:mm:ss+08:00。
+        :rtype: str
+        """
         return self._AvailableBeginTime
 
     @AvailableBeginTime.setter
@@ -124,6 +142,9 @@ class AvailableRecoveryTimeRange(AbstractModel):
 
     @property
     def AvailableEndTime(self):
+        """可回档结束时间。按照RFC3339标准表示，并且使用东八区时区时间，格式为：YYYY-MM-DDThh:mm:ss+08:00。
+        :rtype: str
+        """
         return self._AvailableEndTime
 
     @AvailableEndTime.setter
@@ -179,6 +200,9 @@ class Backup(AbstractModel):
 
     @property
     def BackupId(self):
+        """备份集ID，集群内唯一
+        :rtype: int
+        """
         return self._BackupId
 
     @BackupId.setter
@@ -187,6 +211,9 @@ class Backup(AbstractModel):
 
     @property
     def BackupType(self):
+        """备份集类型，目前只支持 SNAPSHOT：快照
+        :rtype: str
+        """
         return self._BackupType
 
     @BackupType.setter
@@ -195,6 +222,9 @@ class Backup(AbstractModel):
 
     @property
     def BackupMethod(self):
+        """备份集产生的方案，目前只支持 AUTO：自动
+        :rtype: str
+        """
         return self._BackupMethod
 
     @BackupMethod.setter
@@ -203,6 +233,9 @@ class Backup(AbstractModel):
 
     @property
     def BackupDataTime(self):
+        """备份集对应的数据时间。按照RFC3339标准表示，并且使用东八区时区时间，格式为：YYYY-MM-DDThh:mm:ss+08:00。
+        :rtype: str
+        """
         return self._BackupDataTime
 
     @BackupDataTime.setter
@@ -211,6 +244,9 @@ class Backup(AbstractModel):
 
     @property
     def BackupDataSize(self):
+        """备份集数据大小，单位GiB
+        :rtype: int
+        """
         return self._BackupDataSize
 
     @BackupDataSize.setter
@@ -219,6 +255,9 @@ class Backup(AbstractModel):
 
     @property
     def BackupTaskStartTime(self):
+        """备份集对应的任务开始时间。按照RFC3339标准表示，并且使用东八区时区时间，格式为：YYYY-MM-DDThh:mm:ss+08:00。
+        :rtype: str
+        """
         return self._BackupTaskStartTime
 
     @BackupTaskStartTime.setter
@@ -227,6 +266,9 @@ class Backup(AbstractModel):
 
     @property
     def BackupTaskEndTime(self):
+        """备份集对应的任务结束时间。按照RFC3339标准表示，并且使用东八区时区时间，格式为：YYYY-MM-DDThh:mm:ss+08:00。
+        :rtype: str
+        """
         return self._BackupTaskEndTime
 
     @BackupTaskEndTime.setter
@@ -235,6 +277,9 @@ class Backup(AbstractModel):
 
     @property
     def BackupTaskStatus(self):
+        """备份集对应的任务状态  SUCCESS：成功
+        :rtype: str
+        """
         return self._BackupTaskStatus
 
     @BackupTaskStatus.setter
@@ -329,6 +374,9 @@ class CloneClusterToPointInTimeRequest(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -337,6 +385,9 @@ class CloneClusterToPointInTimeRequest(AbstractModel):
 
     @property
     def DBVersion(self):
+        """数据库版本，目前仅支持 10.17
+        :rtype: str
+        """
         return self._DBVersion
 
     @DBVersion.setter
@@ -345,6 +396,9 @@ class CloneClusterToPointInTimeRequest(AbstractModel):
 
     @property
     def CPU(self):
+        """CPU核数。取值参考文档【购买指南】
+        :rtype: int
+        """
         return self._CPU
 
     @CPU.setter
@@ -353,6 +407,9 @@ class CloneClusterToPointInTimeRequest(AbstractModel):
 
     @property
     def Memory(self):
+        """内存大小，单位GiB。取值参考文档【购买指南】
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -361,6 +418,9 @@ class CloneClusterToPointInTimeRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """私有网络ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -369,6 +429,9 @@ class CloneClusterToPointInTimeRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """已配置的私有网络中的子网ID
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -377,6 +440,11 @@ class CloneClusterToPointInTimeRequest(AbstractModel):
 
     @property
     def PayMode(self):
+        """集群付费模式
+- PREPAID：预付费，即包年包月
+- POSTPAID_BY_HOUR：按小时后付费
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -385,6 +453,9 @@ class CloneClusterToPointInTimeRequest(AbstractModel):
 
     @property
     def SourceClusterId(self):
+        """对应的备份数据来源集群ID
+        :rtype: str
+        """
         return self._SourceClusterId
 
     @SourceClusterId.setter
@@ -393,6 +464,9 @@ class CloneClusterToPointInTimeRequest(AbstractModel):
 
     @property
     def SourceDataPoint(self):
+        """对应的备份数据时间点。按照RFC3339标准表示，并且使用东八区时区时间。格式为：YYYY-MM-DDThh:mm:ss+08:00。
+        :rtype: str
+        """
         return self._SourceDataPoint
 
     @SourceDataPoint.setter
@@ -401,6 +475,9 @@ class CloneClusterToPointInTimeRequest(AbstractModel):
 
     @property
     def ClusterName(self):
+        """集群名，1-60个字符，可以包含中文、英文、数字和符号"-"、"_"、"."。不输入此参数时默认与ClusterId保持一致。
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -409,6 +486,9 @@ class CloneClusterToPointInTimeRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目Id，默认为0表示默认项目
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -417,6 +497,9 @@ class CloneClusterToPointInTimeRequest(AbstractModel):
 
     @property
     def Port(self):
+        """连接数据库时，Endpoint使用的端口。取值范围为[1,65534]，默认值为5432
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -425,6 +508,9 @@ class CloneClusterToPointInTimeRequest(AbstractModel):
 
     @property
     def InstanceCount(self):
+        """集群下实例数量。取值范围为[1,4]，默认值为1
+        :rtype: int
+        """
         return self._InstanceCount
 
     @InstanceCount.setter
@@ -433,6 +519,10 @@ class CloneClusterToPointInTimeRequest(AbstractModel):
 
     @property
     def Period(self):
+        """购买时长，单位：月。取值范围为[1,60]，默认值为1。
+只有当PayMode为PREPAID时生效。
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -441,6 +531,9 @@ class CloneClusterToPointInTimeRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """是否自动续费，0-不 1-是。默认为0，只有当PayMode为PREPAID时生效。
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -449,6 +542,12 @@ class CloneClusterToPointInTimeRequest(AbstractModel):
 
     @property
     def StoragePayMode(self):
+        """存储付费模式
+ - PREPAID：预付费，即包年包月
+ - POSTPAID_BY_HOUR：按小时后付费
+默认为POSTPAID_BY_HOUR，实例付费模式为按小时付费时，存储付费模式不支持包年包月
+        :rtype: str
+        """
         return self._StoragePayMode
 
     @StoragePayMode.setter
@@ -457,6 +556,9 @@ class CloneClusterToPointInTimeRequest(AbstractModel):
 
     @property
     def Storage(self):
+        """存储最大使用量，单位GB。取值参考文档【购买指南】。存储使用预付费模式时必须设置，存储使用按小时后付费时不可设置
+        :rtype: int
+        """
         return self._Storage
 
     @Storage.setter
@@ -509,6 +611,9 @@ class CloneClusterToPointInTimeResponse(AbstractModel):
 
     @property
     def DealNameSet(self):
+        """订单号
+        :rtype: list of str
+        """
         return self._DealNameSet
 
     @DealNameSet.setter
@@ -517,6 +622,9 @@ class CloneClusterToPointInTimeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -614,6 +722,9 @@ class Cluster(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID，集群的唯一标识
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -622,6 +733,9 @@ class Cluster(AbstractModel):
 
     @property
     def ClusterName(self):
+        """集群名字，不修改时默认和集群ID相同
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -630,6 +744,9 @@ class Cluster(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -638,6 +755,9 @@ class Cluster(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -646,6 +766,9 @@ class Cluster(AbstractModel):
 
     @property
     def DBVersion(self):
+        """TDSQL-C PostgreSQL 合入的社区版本号
+        :rtype: str
+        """
         return self._DBVersion
 
     @DBVersion.setter
@@ -654,6 +777,9 @@ class Cluster(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -662,6 +788,16 @@ class Cluster(AbstractModel):
 
     @property
     def Status(self):
+        """集群状态。目前包括
+ - creating ：创建中
+ - running : 运行中
+ - isolating : 隔离中
+ - isolated : 已隔离
+ - recovering : 恢复中
+ - deleting : 删除中
+ - deleted : 已删除
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -670,6 +806,9 @@ class Cluster(AbstractModel):
 
     @property
     def StatusDesc(self):
+        """集群状态中文含义
+        :rtype: str
+        """
         return self._StatusDesc
 
     @StatusDesc.setter
@@ -678,6 +817,9 @@ class Cluster(AbstractModel):
 
     @property
     def CreateTime(self):
+        """集群创建时间。按照RFC3339标准表示，并且使用东八区时区时间，格式为：YYYY-MM-DDThh:mm:ss+08:00。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -686,6 +828,9 @@ class Cluster(AbstractModel):
 
     @property
     def StorageUsed(self):
+        """存储当前使用量，单位GiB
+        :rtype: float
+        """
         return self._StorageUsed
 
     @StorageUsed.setter
@@ -694,6 +839,9 @@ class Cluster(AbstractModel):
 
     @property
     def StorageLimit(self):
+        """存储最大使用量，单位GiB
+        :rtype: int
+        """
         return self._StorageLimit
 
     @StorageLimit.setter
@@ -702,6 +850,11 @@ class Cluster(AbstractModel):
 
     @property
     def PayMode(self):
+        """付费模式：
+ - PREPAID : 预付费，即包年包月
+ - POSTPAID_BY_HOUR : 按小时结算后付费
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -710,6 +863,9 @@ class Cluster(AbstractModel):
 
     @property
     def PayPeriodEndTime(self):
+        """预付费集群到期时间。按照RFC3339标准表示，并且使用东八区时区时间，格式为：YYYY-MM-DDThh:mm:ss+08:00。
+        :rtype: str
+        """
         return self._PayPeriodEndTime
 
     @PayPeriodEndTime.setter
@@ -718,6 +874,11 @@ class Cluster(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """预付费集群自动续费标签
+ - 0 : 到期不自动续费
+ - 1 : 到期自动续费
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -726,6 +887,9 @@ class Cluster(AbstractModel):
 
     @property
     def DBCharset(self):
+        """数据库字符集
+        :rtype: str
+        """
         return self._DBCharset
 
     @DBCharset.setter
@@ -734,6 +898,9 @@ class Cluster(AbstractModel):
 
     @property
     def InstanceCount(self):
+        """集群内实例的数量
+        :rtype: int
+        """
         return self._InstanceCount
 
     @InstanceCount.setter
@@ -742,6 +909,9 @@ class Cluster(AbstractModel):
 
     @property
     def EndpointSet(self):
+        """集群内访问点信息
+        :rtype: list of Endpoint
+        """
         return self._EndpointSet
 
     @EndpointSet.setter
@@ -750,6 +920,9 @@ class Cluster(AbstractModel):
 
     @property
     def DBMajorVersion(self):
+        """TDSQL-C PostgreSQL 合入的社区主要版本号
+        :rtype: str
+        """
         return self._DBMajorVersion
 
     @DBMajorVersion.setter
@@ -758,6 +931,9 @@ class Cluster(AbstractModel):
 
     @property
     def DBKernelVersion(self):
+        """TDSQL-C PostgreSQL 内核版本号
+        :rtype: str
+        """
         return self._DBKernelVersion
 
     @DBKernelVersion.setter
@@ -766,6 +942,12 @@ class Cluster(AbstractModel):
 
     @property
     def StoragePayMode(self):
+        """存储付费模式
+ - PREPAID：预付费，即包年包月
+ - POSTPAID_BY_HOUR：按小时后付费
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StoragePayMode
 
     @StoragePayMode.setter
@@ -835,6 +1017,9 @@ class CreateClusterInstancesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -843,6 +1028,9 @@ class CreateClusterInstancesRequest(AbstractModel):
 
     @property
     def CPU(self):
+        """CPU核数。取值参考文档【购买指南】
+        :rtype: int
+        """
         return self._CPU
 
     @CPU.setter
@@ -851,6 +1039,9 @@ class CreateClusterInstancesRequest(AbstractModel):
 
     @property
     def Memory(self):
+        """内存大小，单位GiB。取值参考文档【购买指南】
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -859,6 +1050,9 @@ class CreateClusterInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名，1-60个字符，可以包含中文、英文、数字和符号"-"、"_"、"."。不输入此参数时默认与InstanceId一致。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -867,6 +1061,9 @@ class CreateClusterInstancesRequest(AbstractModel):
 
     @property
     def InstanceCount(self):
+        """新建实例的数量，默认为1。单集群下实例数量目前不能超过4个。
+        :rtype: int
+        """
         return self._InstanceCount
 
     @InstanceCount.setter
@@ -907,6 +1104,9 @@ class CreateClusterInstancesResponse(AbstractModel):
 
     @property
     def DealNameSet(self):
+        """订单号
+        :rtype: list of str
+        """
         return self._DealNameSet
 
     @DealNameSet.setter
@@ -915,6 +1115,9 @@ class CreateClusterInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1004,6 +1207,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -1012,6 +1218,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def MasterUserPassword(self):
+        """数据库用户密码，必须满足 8-64个字符，至少包含 大写字母、小写字母、数字和符号~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/中的任意三种
+        :rtype: str
+        """
         return self._MasterUserPassword
 
     @MasterUserPassword.setter
@@ -1020,6 +1229,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def CPU(self):
+        """CPU核数。取值参考文档【购买指南】
+        :rtype: int
+        """
         return self._CPU
 
     @CPU.setter
@@ -1028,6 +1240,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def Memory(self):
+        """内存大小，单位GiB。取值参考文档【购买指南】
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -1036,6 +1251,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """私有网络ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1044,6 +1262,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """已配置的私有网络中的子网ID
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -1052,6 +1273,11 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def PayMode(self):
+        """实例付费模式
+ - PREPAID：预付费，即包年包月
+ - POSTPAID_BY_HOUR：按小时后付费
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -1060,6 +1286,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ClusterName(self):
+        """集群名，1-60个字符，可以包含中文、英文、数字和符号"-"、"_"、"."。不输入此参数时默认与ClusterId保持一致
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -1068,6 +1297,11 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def DBVersion(self):
+        """TDSQL-C PostgreSQL 合入的社区版本号。
+支持入参值为：10.17。当输入该参数时，会基于此版本号创建对应的最新DBKernelVersion数据库内核。
+注：该参数与DBMajorVersion、DBKernelVersion只能传递一个，且需要传递一个。
+        :rtype: str
+        """
         return self._DBVersion
 
     @DBVersion.setter
@@ -1076,6 +1310,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目Id，默认为0表示默认项目
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1084,6 +1321,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def Port(self):
+        """连接数据库时，Endpoint使用的端口。取值范围为[1,65534]，默认值为5432
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -1092,6 +1332,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def InstanceCount(self):
+        """集群下实例数量。取值范围为[1,4]，默认值为1
+        :rtype: int
+        """
         return self._InstanceCount
 
     @InstanceCount.setter
@@ -1100,6 +1343,10 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def Period(self):
+        """购买时长，单位：月。取值范围为[1,60]，默认值为1。
+只有当PayMode为PREPAID时生效。
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -1108,6 +1355,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """是否自动续费，0-不 1-是。默认值为0，只有当PayMode为PREPAID时生效。
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -1116,6 +1366,11 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def DBMajorVersion(self):
+        """TDSQL-C PostgreSQL 合入的社区主要版本号。
+支持入参值为：10。当输入该参数时，会基于此版本号创建对应的最新DBKernelVersion数据库内核。
+注：该参数和DBVersion、DBKernelVersion只能传递一个，且需要传递一个。
+        :rtype: str
+        """
         return self._DBMajorVersion
 
     @DBMajorVersion.setter
@@ -1124,6 +1379,11 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def DBKernelVersion(self):
+        """TDSQL-C PostgreSQL 内核版本号。
+支持入参值为：v10.17_r1.4。当输入该参数时，会创建此版本号对应的数据库内核。
+注：该参数和DBVersion、DBMajorVersion只能传递一个，且需要传递一个。
+        :rtype: str
+        """
         return self._DBKernelVersion
 
     @DBKernelVersion.setter
@@ -1132,6 +1392,12 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def StoragePayMode(self):
+        """存储付费模式
+ - PREPAID：预付费，即包年包月
+ - POSTPAID_BY_HOUR：按小时后付费
+默认为POSTPAID_BY_HOUR，实例付费模式为按小时付费时，存储付费模式不支持包年包月
+        :rtype: str
+        """
         return self._StoragePayMode
 
     @StoragePayMode.setter
@@ -1140,6 +1406,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def Storage(self):
+        """存储最大使用量，单位GB。取值参考文档【购买指南】。存储使用预付费模式时必须设置，存储使用按小时后付费时不可设置
+        :rtype: int
+        """
         return self._Storage
 
     @Storage.setter
@@ -1193,6 +1462,9 @@ class CreateClusterResponse(AbstractModel):
 
     @property
     def DealNameSet(self):
+        """订单号
+        :rtype: list of str
+        """
         return self._DealNameSet
 
     @DealNameSet.setter
@@ -1201,6 +1473,9 @@ class CreateClusterResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1230,6 +1505,9 @@ class DeleteClusterInstancesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1238,6 +1516,9 @@ class DeleteClusterInstancesRequest(AbstractModel):
 
     @property
     def InstanceIdSet(self):
+        """实例ID列表
+        :rtype: list of str
+        """
         return self._InstanceIdSet
 
     @InstanceIdSet.setter
@@ -1272,6 +1553,9 @@ class DeleteClusterInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1297,6 +1581,9 @@ class DeleteClusterRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1330,6 +1617,9 @@ class DeleteClusterResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1355,6 +1645,9 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1394,6 +1687,9 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1402,6 +1698,9 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def AccountSet(self):
+        """账号信息列表
+        :rtype: list of Account
+        """
         return self._AccountSet
 
     @AccountSet.setter
@@ -1410,6 +1709,9 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1448,6 +1750,9 @@ class DescribeClusterBackupsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1456,6 +1761,9 @@ class DescribeClusterBackupsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码，取值范围为[1,INF)，默认值为1
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -1464,6 +1772,9 @@ class DescribeClusterBackupsRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页个数，取值范围为默认为[1,100]，默认值为20
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1505,6 +1816,9 @@ class DescribeClusterBackupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1513,6 +1827,9 @@ class DescribeClusterBackupsResponse(AbstractModel):
 
     @property
     def BackupSet(self):
+        """备份列表信息
+        :rtype: list of Backup
+        """
         return self._BackupSet
 
     @BackupSet.setter
@@ -1521,6 +1838,9 @@ class DescribeClusterBackupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1553,6 +1873,9 @@ class DescribeClusterEndpointsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1592,6 +1915,9 @@ class DescribeClusterEndpointsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1600,6 +1926,9 @@ class DescribeClusterEndpointsResponse(AbstractModel):
 
     @property
     def EndpointSet(self):
+        """接入点列表
+        :rtype: list of Endpoint
+        """
         return self._EndpointSet
 
     @EndpointSet.setter
@@ -1608,6 +1937,9 @@ class DescribeClusterEndpointsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1664,6 +1996,9 @@ class DescribeClusterInstancesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1672,6 +2007,9 @@ class DescribeClusterInstancesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码，取值范围为[1,INF)，默认值为1
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -1680,6 +2018,9 @@ class DescribeClusterInstancesRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页个数，取值范围为默认为[1,100]，默认值为20
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1688,6 +2029,14 @@ class DescribeClusterInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """目前支持查询条件包括：
+ - InstanceId : 实例ID
+ - InstanceName : 实例名
+ - EndpointId : 接入点ID
+ - Status : 实例状态
+ - InstanceType : 实例类型
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1696,6 +2045,11 @@ class DescribeClusterInstancesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """排序字段，可选字段：
+- CreateTime : 实例创建时间(默认值)
+- PayPeriodEndTime : 实例过期时间
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -1704,6 +2058,11 @@ class DescribeClusterInstancesRequest(AbstractModel):
 
     @property
     def OrderByType(self):
+        """排序方式，可选字段：
+- DESC : 降序(默认值)
+- ASC : 升序
+        :rtype: str
+        """
         return self._OrderByType
 
     @OrderByType.setter
@@ -1753,6 +2112,9 @@ class DescribeClusterInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1761,6 +2123,9 @@ class DescribeClusterInstancesResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
+        """实例列表信息
+        :rtype: list of Instance
+        """
         return self._InstanceSet
 
     @InstanceSet.setter
@@ -1769,6 +2134,9 @@ class DescribeClusterInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1804,6 +2172,9 @@ class DescribeClusterRecoveryTimeRangeRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1812,6 +2183,9 @@ class DescribeClusterRecoveryTimeRangeRequest(AbstractModel):
 
     @property
     def DataPoint(self):
+        """期望的回档时间点，传入从集群创建时间到当前时间之间的时间点。按照RFC3339标准表示，并且使用东八区时区时间，格式为：YYYY-MM-DDThh:mm:ss+08:00。
+        :rtype: str
+        """
         return self._DataPoint
 
     @DataPoint.setter
@@ -1849,6 +2223,9 @@ class DescribeClusterRecoveryTimeRangeResponse(AbstractModel):
 
     @property
     def AvailableRecoveryTimeRangeSet(self):
+        """可回档时间范围列表
+        :rtype: list of AvailableRecoveryTimeRange
+        """
         return self._AvailableRecoveryTimeRangeSet
 
     @AvailableRecoveryTimeRangeSet.setter
@@ -1857,6 +2234,9 @@ class DescribeClusterRecoveryTimeRangeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1909,6 +2289,9 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码，取值范围为[1,INF)，默认值为1
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -1917,6 +2300,9 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页条数，取值范围为默认为[1,100]，默认值为20
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1925,6 +2311,14 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """目前支持查询条件包括：
+ - ClusterId : 集群ID
+ - ClusterName : 集群名
+ - ProjectId : 项目ID
+ - Status : 集群状态
+ - PayMode : 付费模式
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1933,6 +2327,11 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """排序字段，可选字段：
+ - CreateTime : 集群创建时间(默认值)
+ - PayPeriodEndTime : 集群过期时间
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -1941,6 +2340,11 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def OrderByType(self):
+        """排序方式，可选字段：
+ - DESC : 降序(默认值)
+ - ASC : 升序
+        :rtype: str
+        """
         return self._OrderByType
 
     @OrderByType.setter
@@ -1989,6 +2393,9 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1997,6 +2404,9 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def ClusterSet(self):
+        """集群列表信息
+        :rtype: list of Cluster
+        """
         return self._ClusterSet
 
     @ClusterSet.setter
@@ -2005,6 +2415,9 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2037,6 +2450,9 @@ class DescribeResourcesByDealNameRequest(AbstractModel):
 
     @property
     def DealName(self):
+        """计费订单id（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）
+        :rtype: str
+        """
         return self._DealName
 
     @DealName.setter
@@ -2073,6 +2489,9 @@ class DescribeResourcesByDealNameResponse(AbstractModel):
 
     @property
     def ResourceIdInfoSet(self):
+        """资源ID信息列表
+        :rtype: list of ResourceIdInfo
+        """
         return self._ResourceIdInfoSet
 
     @ResourceIdInfoSet.setter
@@ -2081,6 +2500,9 @@ class DescribeResourcesByDealNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2144,6 +2566,9 @@ class Endpoint(AbstractModel):
 
     @property
     def EndpointId(self):
+        """连接点ID，集群内唯一
+        :rtype: str
+        """
         return self._EndpointId
 
     @EndpointId.setter
@@ -2152,6 +2577,9 @@ class Endpoint(AbstractModel):
 
     @property
     def ClusterId(self):
+        """连接点所属的集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2160,6 +2588,9 @@ class Endpoint(AbstractModel):
 
     @property
     def EndpointName(self):
+        """连接点名字，默认和连接点ID一致
+        :rtype: str
+        """
         return self._EndpointName
 
     @EndpointName.setter
@@ -2168,6 +2599,11 @@ class Endpoint(AbstractModel):
 
     @property
     def EndpointType(self):
+        """连接点类型
+ - RW : 读写
+ - RO : 只读
+        :rtype: str
+        """
         return self._EndpointType
 
     @EndpointType.setter
@@ -2176,6 +2612,9 @@ class Endpoint(AbstractModel):
 
     @property
     def VpcId(self):
+        """私有网络VPC实例ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -2184,6 +2623,9 @@ class Endpoint(AbstractModel):
 
     @property
     def SubnetId(self):
+        """私有网络VPC下子网实例ID
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -2192,6 +2634,9 @@ class Endpoint(AbstractModel):
 
     @property
     def PrivateIp(self):
+        """私有网络VPC下用于访问数据库的IP
+        :rtype: str
+        """
         return self._PrivateIp
 
     @PrivateIp.setter
@@ -2200,6 +2645,9 @@ class Endpoint(AbstractModel):
 
     @property
     def PrivatePort(self):
+        """私有网络VPC下用于访问数据库的端口
+        :rtype: int
+        """
         return self._PrivatePort
 
     @PrivatePort.setter
@@ -2208,6 +2656,9 @@ class Endpoint(AbstractModel):
 
     @property
     def WanIp(self):
+        """公共网络用户访问数据库的IP
+        :rtype: str
+        """
         return self._WanIp
 
     @WanIp.setter
@@ -2216,6 +2667,9 @@ class Endpoint(AbstractModel):
 
     @property
     def WanPort(self):
+        """公共网络用户访问数据库的端口
+        :rtype: int
+        """
         return self._WanPort
 
     @WanPort.setter
@@ -2224,6 +2678,9 @@ class Endpoint(AbstractModel):
 
     @property
     def WanDomain(self):
+        """公共网络用户访问数据库的域名
+        :rtype: str
+        """
         return self._WanDomain
 
     @WanDomain.setter
@@ -2273,6 +2730,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """过滤条件名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2281,6 +2741,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """过滤条件值数组
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -2289,6 +2752,9 @@ class Filter(AbstractModel):
 
     @property
     def ExactMatch(self):
+        """true:精确匹配(默认值) false:(模糊匹配)
+        :rtype: bool
+        """
         return self._ExactMatch
 
     @ExactMatch.setter
@@ -2378,6 +2844,9 @@ class Instance(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID，集群下唯一
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2386,6 +2855,9 @@ class Instance(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名字，默认和实例ID一致
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -2394,6 +2866,9 @@ class Instance(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2402,6 +2877,9 @@ class Instance(AbstractModel):
 
     @property
     def EndpointId(self):
+        """实例所在的访问点ID
+        :rtype: str
+        """
         return self._EndpointId
 
     @EndpointId.setter
@@ -2410,6 +2888,9 @@ class Instance(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -2418,6 +2899,9 @@ class Instance(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -2426,6 +2910,9 @@ class Instance(AbstractModel):
 
     @property
     def DBVersion(self):
+        """数据库版本
+        :rtype: str
+        """
         return self._DBVersion
 
     @DBVersion.setter
@@ -2434,6 +2921,9 @@ class Instance(AbstractModel):
 
     @property
     def Status(self):
+        """实例状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2442,6 +2932,9 @@ class Instance(AbstractModel):
 
     @property
     def StatusDesc(self):
+        """实例状态中文含义
+        :rtype: str
+        """
         return self._StatusDesc
 
     @StatusDesc.setter
@@ -2450,6 +2943,9 @@ class Instance(AbstractModel):
 
     @property
     def CreateTime(self):
+        """实例创建时间。按照RFC3339标准表示，并且使用东八区时区时间，格式为：YYYY-MM-DDThh:mm:ss+08:00。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2458,6 +2954,13 @@ class Instance(AbstractModel):
 
     @property
     def PayMode(self):
+        """付费模式：
+- PREPAID : 预付费
+- POSTPAID_BY_HOUR : 按小时结算后付费
+
+同一集群下付费模式需要保持一致。
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -2466,6 +2969,9 @@ class Instance(AbstractModel):
 
     @property
     def PayPeriodEndTime(self):
+        """实例到期时间。同一集群下到期时间需要保持一致。按照RFC3339标准表示，并且使用东八区时区时间，格式为：YYYY-MM-DDThh:mm:ss+08:00。
+        :rtype: str
+        """
         return self._PayPeriodEndTime
 
     @PayPeriodEndTime.setter
@@ -2474,6 +2980,9 @@ class Instance(AbstractModel):
 
     @property
     def CPU(self):
+        """CPU核数
+        :rtype: int
+        """
         return self._CPU
 
     @CPU.setter
@@ -2482,6 +2991,9 @@ class Instance(AbstractModel):
 
     @property
     def Memory(self):
+        """内存大小，单位GiB
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -2490,6 +3002,11 @@ class Instance(AbstractModel):
 
     @property
     def InstanceType(self):
+        """实例类型
+ - RW：读写实例
+ - RO：只读实例
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -2498,6 +3015,9 @@ class Instance(AbstractModel):
 
     @property
     def DBMajorVersion(self):
+        """TDSQL-C PostgreSQL 合入的社区主要版本号
+        :rtype: str
+        """
         return self._DBMajorVersion
 
     @DBMajorVersion.setter
@@ -2506,6 +3026,9 @@ class Instance(AbstractModel):
 
     @property
     def DBKernelVersion(self):
+        """TDSQL-C PostgreSQL 内核版本号
+        :rtype: str
+        """
         return self._DBKernelVersion
 
     @DBKernelVersion.setter
@@ -2558,6 +3081,9 @@ class IsolateClusterInstancesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2566,6 +3092,9 @@ class IsolateClusterInstancesRequest(AbstractModel):
 
     @property
     def InstanceIdSet(self):
+        """实例ID列表
+        :rtype: list of str
+        """
         return self._InstanceIdSet
 
     @InstanceIdSet.setter
@@ -2600,6 +3129,9 @@ class IsolateClusterInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2625,6 +3157,9 @@ class IsolateClusterRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2658,6 +3193,9 @@ class IsolateClusterResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2689,6 +3227,9 @@ class ModifyAccountDescriptionRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2697,6 +3238,9 @@ class ModifyAccountDescriptionRequest(AbstractModel):
 
     @property
     def AccountName(self):
+        """账号名字
+        :rtype: str
+        """
         return self._AccountName
 
     @AccountName.setter
@@ -2705,6 +3249,9 @@ class ModifyAccountDescriptionRequest(AbstractModel):
 
     @property
     def AccountDescription(self):
+        """账号描述，0-256个字符
+        :rtype: str
+        """
         return self._AccountDescription
 
     @AccountDescription.setter
@@ -2740,6 +3287,9 @@ class ModifyAccountDescriptionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2773,6 +3323,9 @@ class ModifyClusterEndpointWanStatusRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2781,6 +3334,9 @@ class ModifyClusterEndpointWanStatusRequest(AbstractModel):
 
     @property
     def EndpointId(self):
+        """接入点ID
+        :rtype: str
+        """
         return self._EndpointId
 
     @EndpointId.setter
@@ -2789,6 +3345,11 @@ class ModifyClusterEndpointWanStatusRequest(AbstractModel):
 
     @property
     def WanStatus(self):
+        """取值为： 
+ - OPEN：开启外网 
+ - CLOSE：关闭外网
+        :rtype: str
+        """
         return self._WanStatus
 
     @WanStatus.setter
@@ -2824,6 +3385,9 @@ class ModifyClusterEndpointWanStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2863,6 +3427,9 @@ class ModifyClusterInstancesSpecRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2871,6 +3438,9 @@ class ModifyClusterInstancesSpecRequest(AbstractModel):
 
     @property
     def InstanceIdSet(self):
+        """实例ID列表，目前只支持单个实例修改
+        :rtype: list of str
+        """
         return self._InstanceIdSet
 
     @InstanceIdSet.setter
@@ -2879,6 +3449,9 @@ class ModifyClusterInstancesSpecRequest(AbstractModel):
 
     @property
     def CPU(self):
+        """修改后的CPU核数。取值参考文档【购买指南】
+        :rtype: int
+        """
         return self._CPU
 
     @CPU.setter
@@ -2887,6 +3460,9 @@ class ModifyClusterInstancesSpecRequest(AbstractModel):
 
     @property
     def Memory(self):
+        """修改后的内存大小，单位GiB。取值参考文档【购买指南】
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -2895,6 +3471,11 @@ class ModifyClusterInstancesSpecRequest(AbstractModel):
 
     @property
     def OperationTiming(self):
+        """操作时机
+ - IMMEDIATE：立即执行 
+ - MAINTAIN_PERIOD：维护窗口期执行
+        :rtype: str
+        """
         return self._OperationTiming
 
     @OperationTiming.setter
@@ -2932,6 +3513,9 @@ class ModifyClusterInstancesSpecResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2960,6 +3544,9 @@ class ModifyClusterNameRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2968,6 +3555,9 @@ class ModifyClusterNameRequest(AbstractModel):
 
     @property
     def ClusterName(self):
+        """集群名，1-60个字符，可以包含中文、英文、数字和符号"-"、"_"、"."
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -3002,6 +3592,9 @@ class ModifyClusterNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3030,6 +3623,9 @@ class ModifyClustersAutoRenewFlagRequest(AbstractModel):
 
     @property
     def ClusterIdSet(self):
+        """集群ID列表
+        :rtype: list of str
+        """
         return self._ClusterIdSet
 
     @ClusterIdSet.setter
@@ -3038,6 +3634,9 @@ class ModifyClustersAutoRenewFlagRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """是否自动续费，0-不 1-是。默认为0，只有当集群的PayMode为PREPAID时生效。
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -3072,6 +3671,9 @@ class ModifyClustersAutoRenewFlagResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3104,6 +3706,9 @@ class RecoverClusterInstancesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3112,6 +3717,9 @@ class RecoverClusterInstancesRequest(AbstractModel):
 
     @property
     def InstanceIdSet(self):
+        """实例ID列表
+        :rtype: list of str
+        """
         return self._InstanceIdSet
 
     @InstanceIdSet.setter
@@ -3120,6 +3728,10 @@ class RecoverClusterInstancesRequest(AbstractModel):
 
     @property
     def Period(self):
+        """购买时长，单位：月。取值范围为[1,60]，默认值为1。
+只有当PayMode为PREPAID时生效。
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -3155,6 +3767,9 @@ class RecoverClusterInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3184,6 +3799,9 @@ class RecoverClusterRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3192,6 +3810,10 @@ class RecoverClusterRequest(AbstractModel):
 
     @property
     def Period(self):
+        """购买时长，单位：月。取值范围为[1,60]，默认值为1。
+只有当PayMode为PREPAID时生效。
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -3226,6 +3848,9 @@ class RecoverClusterResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3254,6 +3879,9 @@ class RenewClusterRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3262,6 +3890,9 @@ class RenewClusterRequest(AbstractModel):
 
     @property
     def Period(self):
+        """续费时间，单位：月。取值范围为[1,60]，默认值为1。
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -3296,6 +3927,9 @@ class RenewClusterResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3327,6 +3961,9 @@ class ResetAccountPasswordRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3335,6 +3972,9 @@ class ResetAccountPasswordRequest(AbstractModel):
 
     @property
     def AccountName(self):
+        """账号名字
+        :rtype: str
+        """
         return self._AccountName
 
     @AccountName.setter
@@ -3343,6 +3983,9 @@ class ResetAccountPasswordRequest(AbstractModel):
 
     @property
     def AccountPassword(self):
+        """数据库用户密码，必须满足 8-64个字符，至少包含 大写字母、小写字母、数字和符号~!@#$%^&*_-+=`|(){}[]:;'<>,.?/中的任意三种
+        :rtype: str
+        """
         return self._AccountPassword
 
     @AccountPassword.setter
@@ -3378,6 +4021,9 @@ class ResetAccountPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3406,6 +4052,9 @@ class ResourceIdInfo(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3414,6 +4063,9 @@ class ResourceIdInfo(AbstractModel):
 
     @property
     def InstanceIdSet(self):
+        """实例ID列表
+        :rtype: list of str
+        """
         return self._InstanceIdSet
 
     @InstanceIdSet.setter
@@ -3451,6 +4103,9 @@ class RestartClusterInstancesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3459,6 +4114,9 @@ class RestartClusterInstancesRequest(AbstractModel):
 
     @property
     def InstanceIdSet(self):
+        """实例ID列表，目前只支持单个实例重启
+        :rtype: list of str
+        """
         return self._InstanceIdSet
 
     @InstanceIdSet.setter
@@ -3493,6 +4151,9 @@ class RestartClusterInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3527,6 +4188,9 @@ class TransformClusterPayModeRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3535,6 +4199,9 @@ class TransformClusterPayModeRequest(AbstractModel):
 
     @property
     def CurrentPayMode(self):
+        """当前付费模式，目前只支持：POSTPAID_BY_HOUR(按小时后付费)
+        :rtype: str
+        """
         return self._CurrentPayMode
 
     @CurrentPayMode.setter
@@ -3543,6 +4210,9 @@ class TransformClusterPayModeRequest(AbstractModel):
 
     @property
     def TargetPayMode(self):
+        """目标付费模式，目前只支持：PREPAID(预付费)
+        :rtype: str
+        """
         return self._TargetPayMode
 
     @TargetPayMode.setter
@@ -3551,6 +4221,9 @@ class TransformClusterPayModeRequest(AbstractModel):
 
     @property
     def Period(self):
+        """购买时长，单位：月。取值范围为[1,60]，默认值为1。
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -3587,6 +4260,9 @@ class TransformClusterPayModeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

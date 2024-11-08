@@ -87,6 +87,9 @@ class Application(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """审批单号
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -95,6 +98,9 @@ class Application(AbstractModel):
 
     @property
     def ApplicationType(self):
+        """申请类型
+        :rtype: int
+        """
         return self._ApplicationType
 
     @ApplicationType.setter
@@ -103,6 +109,9 @@ class Application(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群Id
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -111,6 +120,9 @@ class Application(AbstractModel):
 
     @property
     def ClusterName(self):
+        """集群名称
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -119,6 +131,10 @@ class Application(AbstractModel):
 
     @property
     def TableGroupName(self):
+        """表格组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableGroupName
 
     @TableGroupName.setter
@@ -127,6 +143,9 @@ class Application(AbstractModel):
 
     @property
     def TableName(self):
+        """表格名称
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -135,6 +154,9 @@ class Application(AbstractModel):
 
     @property
     def Applicant(self):
+        """申请人
+        :rtype: str
+        """
         return self._Applicant
 
     @Applicant.setter
@@ -143,6 +165,9 @@ class Application(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """建单时间
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -151,6 +176,9 @@ class Application(AbstractModel):
 
     @property
     def ApplicationStatus(self):
+        """处理状态 -1 撤回 0-待审核 1-已经审核并提交任务 2-已驳回
+        :rtype: int
+        """
         return self._ApplicationStatus
 
     @ApplicationStatus.setter
@@ -159,6 +187,9 @@ class Application(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """表格组Id
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -167,6 +198,9 @@ class Application(AbstractModel):
 
     @property
     def TaskId(self):
+        """已提交的任务Id，未提交申请为0
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -175,6 +209,10 @@ class Application(AbstractModel):
 
     @property
     def TableInstanceId(self):
+        """腾讯云上table的唯一键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableInstanceId
 
     @TableInstanceId.setter
@@ -183,6 +221,10 @@ class Application(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -191,6 +233,10 @@ class Application(AbstractModel):
 
     @property
     def ExecuteUser(self):
+        """审批人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExecuteUser
 
     @ExecuteUser.setter
@@ -199,6 +245,10 @@ class Application(AbstractModel):
 
     @property
     def ExecuteStatus(self):
+        """执行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExecuteStatus
 
     @ExecuteStatus.setter
@@ -207,6 +257,10 @@ class Application(AbstractModel):
 
     @property
     def CanCensor(self):
+        """该申请单是否可以被当前用户审批
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._CanCensor
 
     @CanCensor.setter
@@ -215,6 +269,10 @@ class Application(AbstractModel):
 
     @property
     def CanWithdrawal(self):
+        """该申请单是否可以被当前用户撤回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._CanWithdrawal
 
     @CanWithdrawal.setter
@@ -279,6 +337,9 @@ class ApplyResult(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """申请单id
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -287,6 +348,9 @@ class ApplyResult(AbstractModel):
 
     @property
     def ApplicationType(self):
+        """申请类型
+        :rtype: int
+        """
         return self._ApplicationType
 
     @ApplicationType.setter
@@ -295,6 +359,10 @@ class ApplyResult(AbstractModel):
 
     @property
     def ApplicationStatus(self):
+        """处理状态 0-待审核 1-已经审核并提交任务 2-已驳回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ApplicationStatus
 
     @ApplicationStatus.setter
@@ -303,6 +371,10 @@ class ApplyResult(AbstractModel):
 
     @property
     def TaskId(self):
+        """已提交的任务Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -311,6 +383,10 @@ class ApplyResult(AbstractModel):
 
     @property
     def Error(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        """
         return self._Error
 
     @Error.setter
@@ -359,6 +435,9 @@ class ApplyStatus(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """集群id-申请单id
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -367,6 +446,9 @@ class ApplyStatus(AbstractModel):
 
     @property
     def ApplicationStatus(self):
+        """处理状态-1-撤回 1-通过 2-驳回，非0状态的申请单不可改变状态。
+        :rtype: int
+        """
         return self._ApplicationStatus
 
     @ApplicationStatus.setter
@@ -375,6 +457,9 @@ class ApplyStatus(AbstractModel):
 
     @property
     def ApplicationType(self):
+        """申请单类型
+        :rtype: int
+        """
         return self._ApplicationType
 
     @ApplicationType.setter
@@ -383,6 +468,9 @@ class ApplyStatus(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群Id
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -438,6 +526,9 @@ class BackupExpireRuleInfo(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """所属表格组ID
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -446,6 +537,9 @@ class BackupExpireRuleInfo(AbstractModel):
 
     @property
     def TableName(self):
+        """表名称
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -454,6 +548,9 @@ class BackupExpireRuleInfo(AbstractModel):
 
     @property
     def FileTag(self):
+        """文件标签，见上面描述
+        :rtype: int
+        """
         return self._FileTag
 
     @FileTag.setter
@@ -462,6 +559,9 @@ class BackupExpireRuleInfo(AbstractModel):
 
     @property
     def ExpireDay(self):
+        """淘汰天数，见上面描述
+        :rtype: int
+        """
         return self._ExpireDay
 
     @ExpireDay.setter
@@ -470,6 +570,9 @@ class BackupExpireRuleInfo(AbstractModel):
 
     @property
     def OperType(self):
+        """操作类型，见上面描述
+        :rtype: int
+        """
         return self._OperType
 
     @OperType.setter
@@ -536,6 +639,9 @@ class BackupRecords(AbstractModel):
 
     @property
     def ZoneId(self):
+        """表格组ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -544,6 +650,9 @@ class BackupRecords(AbstractModel):
 
     @property
     def TableName(self):
+        """表名称
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -552,6 +661,9 @@ class BackupRecords(AbstractModel):
 
     @property
     def BackupType(self):
+        """备份源
+        :rtype: str
+        """
         return self._BackupType
 
     @BackupType.setter
@@ -560,6 +672,9 @@ class BackupRecords(AbstractModel):
 
     @property
     def FileTag(self):
+        """文件标签：TCAPLUS_FULL或OSDATA
+        :rtype: str
+        """
         return self._FileTag
 
     @FileTag.setter
@@ -568,6 +683,9 @@ class BackupRecords(AbstractModel):
 
     @property
     def ShardCount(self):
+        """分片数量
+        :rtype: int
+        """
         return self._ShardCount
 
     @ShardCount.setter
@@ -576,6 +694,9 @@ class BackupRecords(AbstractModel):
 
     @property
     def BackupBatchTime(self):
+        """备份批次日期
+        :rtype: str
+        """
         return self._BackupBatchTime
 
     @BackupBatchTime.setter
@@ -584,6 +705,9 @@ class BackupRecords(AbstractModel):
 
     @property
     def BackupFileSize(self):
+        """备份文件汇总大小
+        :rtype: int
+        """
         return self._BackupFileSize
 
     @BackupFileSize.setter
@@ -592,6 +716,9 @@ class BackupRecords(AbstractModel):
 
     @property
     def BackupSuccRate(self):
+        """备份成功率
+        :rtype: str
+        """
         return self._BackupSuccRate
 
     @BackupSuccRate.setter
@@ -600,6 +727,9 @@ class BackupRecords(AbstractModel):
 
     @property
     def BackupExpireTime(self):
+        """备份文件过期时间
+        :rtype: str
+        """
         return self._BackupExpireTime
 
     @BackupExpireTime.setter
@@ -608,6 +738,9 @@ class BackupRecords(AbstractModel):
 
     @property
     def AppId(self):
+        """业务ID
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -653,6 +786,9 @@ class ClearTablesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """表所属集群实例ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -661,6 +797,9 @@ class ClearTablesRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
+        """待清理表信息列表
+        :rtype: list of SelectedTableInfoNew
+        """
         return self._SelectedTables
 
     @SelectedTables.setter
@@ -706,6 +845,9 @@ class ClearTablesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """清除表结果数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -714,6 +856,9 @@ class ClearTablesResponse(AbstractModel):
 
     @property
     def TableResults(self):
+        """清除表结果列表
+        :rtype: list of TableResultNew
+        """
         return self._TableResults
 
     @TableResults.setter
@@ -722,6 +867,9 @@ class ClearTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -857,6 +1005,9 @@ class ClusterInfo(AbstractModel):
 
     @property
     def ClusterName(self):
+        """集群名称
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -865,6 +1016,9 @@ class ClusterInfo(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -873,6 +1027,9 @@ class ClusterInfo(AbstractModel):
 
     @property
     def Region(self):
+        """集群所在地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -881,6 +1038,9 @@ class ClusterInfo(AbstractModel):
 
     @property
     def IdlType(self):
+        """集群数据描述语言类型，如：`PROTO`,`TDR`
+        :rtype: str
+        """
         return self._IdlType
 
     @IdlType.setter
@@ -889,6 +1049,9 @@ class ClusterInfo(AbstractModel):
 
     @property
     def NetworkType(self):
+        """网络类型
+        :rtype: str
+        """
         return self._NetworkType
 
     @NetworkType.setter
@@ -897,6 +1060,9 @@ class ClusterInfo(AbstractModel):
 
     @property
     def VpcId(self):
+        """集群关联的用户私有网络实例ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -905,6 +1071,9 @@ class ClusterInfo(AbstractModel):
 
     @property
     def SubnetId(self):
+        """集群关联的用户子网实例ID
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -913,6 +1082,9 @@ class ClusterInfo(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -921,6 +1093,9 @@ class ClusterInfo(AbstractModel):
 
     @property
     def Password(self):
+        """集群密码
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -929,6 +1104,9 @@ class ClusterInfo(AbstractModel):
 
     @property
     def PasswordStatus(self):
+        """密码状态
+        :rtype: str
+        """
         return self._PasswordStatus
 
     @PasswordStatus.setter
@@ -937,6 +1115,9 @@ class ClusterInfo(AbstractModel):
 
     @property
     def ApiAccessId(self):
+        """TcaplusDB SDK连接参数，接入ID
+        :rtype: str
+        """
         return self._ApiAccessId
 
     @ApiAccessId.setter
@@ -945,6 +1126,9 @@ class ClusterInfo(AbstractModel):
 
     @property
     def ApiAccessIp(self):
+        """TcaplusDB SDK连接参数，接入地址
+        :rtype: str
+        """
         return self._ApiAccessIp
 
     @ApiAccessIp.setter
@@ -953,6 +1137,9 @@ class ClusterInfo(AbstractModel):
 
     @property
     def ApiAccessPort(self):
+        """TcaplusDB SDK连接参数，接入端口
+        :rtype: int
+        """
         return self._ApiAccessPort
 
     @ApiAccessPort.setter
@@ -961,6 +1148,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def OldPasswordExpireTime(self):
+        """如果PasswordStatus是unmodifiable说明有旧密码还未过期，此字段将显示旧密码过期的时间，否则为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OldPasswordExpireTime
 
     @OldPasswordExpireTime.setter
@@ -969,6 +1160,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def ApiAccessIpv6(self):
+        """TcaplusDB SDK连接参数，接入ipv6地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApiAccessIpv6
 
     @ApiAccessIpv6.setter
@@ -977,6 +1172,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def ClusterType(self):
+        """集群类型，0,1:共享集群; 2:独立集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -985,6 +1184,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def ClusterStatus(self):
+        """集群状态, 0：表示正常运行中，1：表示冻结隔离一般欠费进入此状态，2：表示待回收，一般用户主动触发删除进入这个状态，3：待释放，进入这个状态，表示可以释放此表占用的资源了，4：变更中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ClusterStatus
 
     @ClusterStatus.setter
@@ -993,6 +1196,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def ReadCapacityUnit(self):
+        """读CU
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReadCapacityUnit
 
     @ReadCapacityUnit.setter
@@ -1001,6 +1208,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def WriteCapacityUnit(self):
+        """写CU
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._WriteCapacityUnit
 
     @WriteCapacityUnit.setter
@@ -1009,6 +1220,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def DiskVolume(self):
+        """磁盘容量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DiskVolume
 
     @DiskVolume.setter
@@ -1017,6 +1232,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def ServerList(self):
+        """独占server机器信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ServerDetailInfo
+        """
         return self._ServerList
 
     @ServerList.setter
@@ -1025,6 +1244,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def ProxyList(self):
+        """独占proxy机器信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ProxyDetailInfo
+        """
         return self._ProxyList
 
     @ProxyList.setter
@@ -1033,6 +1256,9 @@ class ClusterInfo(AbstractModel):
 
     @property
     def Censorship(self):
+        """是否开启审核 0-不开启 1-开启
+        :rtype: int
+        """
         return self._Censorship
 
     @Censorship.setter
@@ -1041,6 +1267,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def DbaUins(self):
+        """审批人uin列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._DbaUins
 
     @DbaUins.setter
@@ -1049,6 +1279,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def DataFlowStatus(self):
+        """是否开启了数据订阅
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DataFlowStatus
 
     @DataFlowStatus.setter
@@ -1057,6 +1291,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def KafkaInfo(self):
+        """数据订阅的kafka信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.KafkaInfo`
+        """
         return self._KafkaInfo
 
     @KafkaInfo.setter
@@ -1065,6 +1303,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def TxhBackupExpireDay(self):
+        """集群Txh备份文件多少天后过期删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TxhBackupExpireDay
 
     @TxhBackupExpireDay.setter
@@ -1073,6 +1315,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def UlogBackupExpireDay(self):
+        """集群Ulog备份文件多少天后过期删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UlogBackupExpireDay
 
     @UlogBackupExpireDay.setter
@@ -1081,6 +1327,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def IsReadOnlyUlogBackupExpireDay(self):
+        """集群Ulog备份文件过期策略是否为只读， 0： UlogBackupExpire是只读，不可修改， 1： UlogBackupExpire可以修改（当前业务存在Svrid第二段等于clusterid的机器）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsReadOnlyUlogBackupExpireDay
 
     @IsReadOnlyUlogBackupExpireDay.setter
@@ -1089,6 +1339,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def RestProxyStatus(self):
+        """restproxy状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RestProxyStatus
 
     @RestProxyStatus.setter
@@ -1172,6 +1426,9 @@ class CompareIdlFilesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """待修改表格所在集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1180,6 +1437,9 @@ class CompareIdlFilesRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
+        """待修改表格列表
+        :rtype: list of SelectedTableInfoNew
+        """
         return self._SelectedTables
 
     @SelectedTables.setter
@@ -1188,6 +1448,9 @@ class CompareIdlFilesRequest(AbstractModel):
 
     @property
     def ExistingIdlFiles(self):
+        """选中的已上传IDL文件列表，与NewIdlFiles必选其一
+        :rtype: list of IdlFileInfo
+        """
         return self._ExistingIdlFiles
 
     @ExistingIdlFiles.setter
@@ -1196,6 +1459,9 @@ class CompareIdlFilesRequest(AbstractModel):
 
     @property
     def NewIdlFiles(self):
+        """本次上传IDL文件列表，与ExistingIdlFiles必选其一
+        :rtype: list of IdlFileInfo
+        """
         return self._NewIdlFiles
 
     @NewIdlFiles.setter
@@ -1256,6 +1522,9 @@ class CompareIdlFilesResponse(AbstractModel):
 
     @property
     def IdlFiles(self):
+        """本次上传校验所有的IDL文件信息列表
+        :rtype: list of IdlFileInfo
+        """
         return self._IdlFiles
 
     @IdlFiles.setter
@@ -1264,6 +1533,9 @@ class CompareIdlFilesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """本次校验合法的表格数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1272,6 +1544,9 @@ class CompareIdlFilesResponse(AbstractModel):
 
     @property
     def TableInfos(self):
+        """读取IDL描述文件后,根据用户指示的所选中表格解析校验结果
+        :rtype: list of ParsedTableInfoNew
+        """
         return self._TableInfos
 
     @TableInfos.setter
@@ -1280,6 +1555,9 @@ class CompareIdlFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1347,6 +1625,10 @@ class CompareTablesInfo(AbstractModel):
 
     @property
     def SrcTableClusterId(self):
+        """源表格的集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SrcTableClusterId
 
     @SrcTableClusterId.setter
@@ -1355,6 +1637,10 @@ class CompareTablesInfo(AbstractModel):
 
     @property
     def SrcTableGroupId(self):
+        """源表格的表格组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SrcTableGroupId
 
     @SrcTableGroupId.setter
@@ -1363,6 +1649,10 @@ class CompareTablesInfo(AbstractModel):
 
     @property
     def SrcTableName(self):
+        """源表格的表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SrcTableName
 
     @SrcTableName.setter
@@ -1371,6 +1661,10 @@ class CompareTablesInfo(AbstractModel):
 
     @property
     def DstTableClusterId(self):
+        """目标表格的集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DstTableClusterId
 
     @DstTableClusterId.setter
@@ -1379,6 +1673,10 @@ class CompareTablesInfo(AbstractModel):
 
     @property
     def DstTableGroupId(self):
+        """目标表格的表格组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DstTableGroupId
 
     @DstTableGroupId.setter
@@ -1387,6 +1685,10 @@ class CompareTablesInfo(AbstractModel):
 
     @property
     def DstTableName(self):
+        """目标表格的表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DstTableName
 
     @DstTableName.setter
@@ -1395,6 +1697,10 @@ class CompareTablesInfo(AbstractModel):
 
     @property
     def SrcTableInstanceId(self):
+        """源表格的实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SrcTableInstanceId
 
     @SrcTableInstanceId.setter
@@ -1403,6 +1709,10 @@ class CompareTablesInfo(AbstractModel):
 
     @property
     def DstTableInstanceId(self):
+        """目标表格的实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DstTableInstanceId
 
     @DstTableInstanceId.setter
@@ -1449,6 +1759,9 @@ class CreateBackupRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """待创建备份表所属集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1457,6 +1770,9 @@ class CreateBackupRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
+        """待创建备份表信息列表
+        :rtype: list of SelectedTableInfoNew
+        """
         return self._SelectedTables
 
     @SelectedTables.setter
@@ -1465,6 +1781,9 @@ class CreateBackupRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注信息
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1513,6 +1832,10 @@ class CreateBackupResponse(AbstractModel):
 
     @property
     def TaskIds(self):
+        """创建的备份任务ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._TaskIds
 
     @TaskIds.setter
@@ -1521,6 +1844,10 @@ class CreateBackupResponse(AbstractModel):
 
     @property
     def ApplicationIds(self):
+        """创建的备份申请ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ApplicationIds
 
     @ApplicationIds.setter
@@ -1529,6 +1856,9 @@ class CreateBackupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1586,6 +1916,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def IdlType(self):
+        """集群数据描述语言类型，如：`PROTO`，`TDR`或`MIX`
+        :rtype: str
+        """
         return self._IdlType
 
     @IdlType.setter
@@ -1594,6 +1927,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ClusterName(self):
+        """集群名称，可使用中文或英文字符，最大长度32个字符
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -1602,6 +1938,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """集群所绑定的私有网络实例ID，形如：vpc-f49l6u0z
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1610,6 +1949,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """集群所绑定的子网实例ID，形如：subnet-pxir56ns
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -1618,6 +1960,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def Password(self):
+        """集群访问密码，必须是a-zA-Z0-9的字符,且必须包含数字和大小写字母
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -1626,6 +1971,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
+        """集群标签列表
+        :rtype: list of TagInfoUnit
+        """
         return self._ResourceTags
 
     @ResourceTags.setter
@@ -1634,6 +1982,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def Ipv6Enable(self):
+        """集群是否开启IPv6功能
+        :rtype: int
+        """
         return self._Ipv6Enable
 
     @Ipv6Enable.setter
@@ -1642,6 +1993,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ServerList(self):
+        """独占集群占用的svr机器
+        :rtype: list of MachineInfo
+        """
         return self._ServerList
 
     @ServerList.setter
@@ -1650,6 +2004,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ProxyList(self):
+        """独占集群占用的proxy机器
+        :rtype: list of MachineInfo
+        """
         return self._ProxyList
 
     @ProxyList.setter
@@ -1658,6 +2015,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ClusterType(self):
+        """集群类型1共享2独占
+        :rtype: int
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -1666,6 +2026,9 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def AuthType(self):
+        """密码认证类型，0 静态认证， 1 签名认证
+        :rtype: int
+        """
         return self._AuthType
 
     @AuthType.setter
@@ -1727,6 +2090,9 @@ class CreateClusterResponse(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1735,6 +2101,9 @@ class CreateClusterResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1764,6 +2133,9 @@ class CreateSnapshotsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """表格所属集群id
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1772,6 +2144,9 @@ class CreateSnapshotsRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
+        """快照列表
+        :rtype: list of SnapshotInfo
+        """
         return self._SelectedTables
 
     @SelectedTables.setter
@@ -1817,6 +2192,9 @@ class CreateSnapshotsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """批量创建的快照数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1825,6 +2203,9 @@ class CreateSnapshotsResponse(AbstractModel):
 
     @property
     def TableResults(self):
+        """批量创建的快照结果列表
+        :rtype: list of SnapshotResult
+        """
         return self._TableResults
 
     @TableResults.setter
@@ -1833,6 +2214,9 @@ class CreateSnapshotsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1874,6 +2258,9 @@ class CreateTableGroupRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """表格组所属集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1882,6 +2269,9 @@ class CreateTableGroupRequest(AbstractModel):
 
     @property
     def TableGroupName(self):
+        """表格组名称，可以采用中文、英文或数字字符，最大长度32个字符
+        :rtype: str
+        """
         return self._TableGroupName
 
     @TableGroupName.setter
@@ -1890,6 +2280,9 @@ class CreateTableGroupRequest(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """表格组ID，可以由用户指定，但在同一个集群内不能重复，如果不指定则采用自增的模式
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -1898,6 +2291,9 @@ class CreateTableGroupRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
+        """表格组标签列表
+        :rtype: list of TagInfoUnit
+        """
         return self._ResourceTags
 
     @ResourceTags.setter
@@ -1942,6 +2338,9 @@ class CreateTableGroupResponse(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """创建成功的表格组ID
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -1950,6 +2349,9 @@ class CreateTableGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1985,6 +2387,9 @@ class CreateTablesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """待创建表格所属集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1993,6 +2398,9 @@ class CreateTablesRequest(AbstractModel):
 
     @property
     def IdlFiles(self):
+        """用户选定的建表格IDL文件列表
+        :rtype: list of IdlFileInfo
+        """
         return self._IdlFiles
 
     @IdlFiles.setter
@@ -2001,6 +2409,9 @@ class CreateTablesRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
+        """待创建表格信息列表
+        :rtype: list of SelectedTableInfoNew
+        """
         return self._SelectedTables
 
     @SelectedTables.setter
@@ -2009,6 +2420,9 @@ class CreateTablesRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
+        """表格标签列表
+        :rtype: list of TagInfoUnit
+        """
         return self._ResourceTags
 
     @ResourceTags.setter
@@ -2066,6 +2480,9 @@ class CreateTablesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """批量创建表格结果数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2074,6 +2491,9 @@ class CreateTablesResponse(AbstractModel):
 
     @property
     def TableResults(self):
+        """批量创建表格结果列表
+        :rtype: list of TableResultNew
+        """
         return self._TableResults
 
     @TableResults.setter
@@ -2082,6 +2502,9 @@ class CreateTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2117,6 +2540,9 @@ class DeleteBackupRecordsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """待删除备份记录的所在集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2125,6 +2551,9 @@ class DeleteBackupRecordsRequest(AbstractModel):
 
     @property
     def BackupRecords(self):
+        """待删除备份记录的详情
+        :rtype: list of BackupRecords
+        """
         return self._BackupRecords
 
     @BackupRecords.setter
@@ -2168,6 +2597,10 @@ class DeleteBackupRecordsResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2176,6 +2609,9 @@ class DeleteBackupRecordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2202,6 +2638,9 @@ class DeleteClusterRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """待删除的集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2238,6 +2677,9 @@ class DeleteClusterResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """删除集群生成的任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2246,6 +2688,9 @@ class DeleteClusterResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2275,6 +2720,9 @@ class DeleteIdlFilesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """IDL所属集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2283,6 +2731,9 @@ class DeleteIdlFilesRequest(AbstractModel):
 
     @property
     def IdlFiles(self):
+        """待删除的IDL文件信息列表
+        :rtype: list of IdlFileInfo
+        """
         return self._IdlFiles
 
     @IdlFiles.setter
@@ -2328,6 +2779,9 @@ class DeleteIdlFilesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """结果记录数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2336,6 +2790,9 @@ class DeleteIdlFilesResponse(AbstractModel):
 
     @property
     def IdlFileInfos(self):
+        """删除结果
+        :rtype: list of IdlFileInfoWithoutContent
+        """
         return self._IdlFileInfos
 
     @IdlFileInfos.setter
@@ -2344,6 +2801,9 @@ class DeleteIdlFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2379,6 +2839,9 @@ class DeleteSnapshotsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """表格所属集群id
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2387,6 +2850,9 @@ class DeleteSnapshotsRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
+        """删除的快照列表
+        :rtype: list of SnapshotInfoNew
+        """
         return self._SelectedTables
 
     @SelectedTables.setter
@@ -2432,6 +2898,9 @@ class DeleteSnapshotsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """批量删除的快照数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2440,6 +2909,9 @@ class DeleteSnapshotsResponse(AbstractModel):
 
     @property
     def TableResults(self):
+        """批量删除的快照结果
+        :rtype: list of SnapshotResult
+        """
         return self._TableResults
 
     @TableResults.setter
@@ -2448,6 +2920,9 @@ class DeleteSnapshotsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2483,6 +2958,9 @@ class DeleteTableDataFlowRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """表格所属集群实例ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2491,6 +2969,9 @@ class DeleteTableDataFlowRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
+        """待删除分布式索引的表格列表
+        :rtype: list of SelectedTableInfoNew
+        """
         return self._SelectedTables
 
     @SelectedTables.setter
@@ -2536,6 +3017,9 @@ class DeleteTableDataFlowResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """删除表格分布式索引结果数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2544,6 +3028,9 @@ class DeleteTableDataFlowResponse(AbstractModel):
 
     @property
     def TableResults(self):
+        """删除表格分布式索引结果列表
+        :rtype: list of TableResultNew
+        """
         return self._TableResults
 
     @TableResults.setter
@@ -2552,6 +3039,9 @@ class DeleteTableDataFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2587,6 +3077,9 @@ class DeleteTableGroupRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """表格组所属的集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2595,6 +3088,9 @@ class DeleteTableGroupRequest(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """表格组ID
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -2632,6 +3128,9 @@ class DeleteTableGroupResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """删除表格组所创建的任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2640,6 +3139,9 @@ class DeleteTableGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2669,6 +3171,9 @@ class DeleteTableIndexRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """表格所属集群实例ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2677,6 +3182,9 @@ class DeleteTableIndexRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
+        """待删除分布式索引的表格列表
+        :rtype: list of SelectedTableInfoNew
+        """
         return self._SelectedTables
 
     @SelectedTables.setter
@@ -2722,6 +3230,9 @@ class DeleteTableIndexResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """删除表格分布式索引结果数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2730,6 +3241,9 @@ class DeleteTableIndexResponse(AbstractModel):
 
     @property
     def TableResults(self):
+        """删除表格分布式索引结果列表
+        :rtype: list of TableResultNew
+        """
         return self._TableResults
 
     @TableResults.setter
@@ -2738,6 +3252,9 @@ class DeleteTableIndexResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2773,6 +3290,9 @@ class DeleteTablesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """待删除表所在集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2781,6 +3301,9 @@ class DeleteTablesRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
+        """待删除表信息列表
+        :rtype: list of SelectedTableInfoNew
+        """
         return self._SelectedTables
 
     @SelectedTables.setter
@@ -2826,6 +3349,9 @@ class DeleteTablesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """删除表结果数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2834,6 +3360,9 @@ class DeleteTablesResponse(AbstractModel):
 
     @property
     def TableResults(self):
+        """删除表结果详情列表
+        :rtype: list of TableResultNew
+        """
         return self._TableResults
 
     @TableResults.setter
@@ -2842,6 +3371,9 @@ class DeleteTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2895,6 +3427,9 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID，用于获取指定集群的单据
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2903,6 +3438,9 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页，限制当前返回多少条记录，大于等于10
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2911,6 +3449,9 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页，从多少条数据开始返回
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2919,6 +3460,9 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def CensorStatus(self):
+        """申请单状态，用于过滤，0-待审核 1-已经审核并提交任务 2-已驳回
+        :rtype: int
+        """
         return self._CensorStatus
 
     @CensorStatus.setter
@@ -2927,6 +3471,9 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """表格组id，用于过滤
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -2935,6 +3482,9 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def TableName(self):
+        """表格名，用于过滤
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -2943,6 +3493,9 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def Applicant(self):
+        """申请人uin，用于过滤
+        :rtype: str
+        """
         return self._Applicant
 
     @Applicant.setter
@@ -2951,6 +3504,9 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def ApplyType(self):
+        """申请类型，用于过滤，0加表 1删除表 2清理表 3修改表 4表重建 5存储层扩缩容 6接入层扩缩容 7复制表数据 8key回档
+        :rtype: int
+        """
         return self._ApplyType
 
     @ApplyType.setter
@@ -2997,6 +3553,9 @@ class DescribeApplicationsResponse(AbstractModel):
 
     @property
     def Applications(self):
+        """申请单列表
+        :rtype: list of Application
+        """
         return self._Applications
 
     @Applications.setter
@@ -3005,6 +3564,9 @@ class DescribeApplicationsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """申请单个数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3013,6 +3575,9 @@ class DescribeApplicationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3057,6 +3622,9 @@ class DescribeBackupRecordsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID，用于获取指定集群的单据
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3065,6 +3633,9 @@ class DescribeBackupRecordsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3073,6 +3644,9 @@ class DescribeBackupRecordsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3081,6 +3655,9 @@ class DescribeBackupRecordsRequest(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """表格组id，用于过滤
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -3089,6 +3666,9 @@ class DescribeBackupRecordsRequest(AbstractModel):
 
     @property
     def TableName(self):
+        """表格名，用于过滤
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -3132,6 +3712,9 @@ class DescribeBackupRecordsResponse(AbstractModel):
 
     @property
     def BackupRecords(self):
+        """备份记录详情
+        :rtype: list of BackupRecords
+        """
         return self._BackupRecords
 
     @BackupRecords.setter
@@ -3140,6 +3723,9 @@ class DescribeBackupRecordsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """返回记录条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3148,6 +3734,9 @@ class DescribeBackupRecordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3180,6 +3769,9 @@ class DescribeClusterTagsRequest(AbstractModel):
 
     @property
     def ClusterIds(self):
+        """集群ID列表
+        :rtype: list of str
+        """
         return self._ClusterIds
 
     @ClusterIds.setter
@@ -3221,6 +3813,10 @@ class DescribeClusterTagsResponse(AbstractModel):
 
     @property
     def Rows(self):
+        """集群标签信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TagsInfoOfCluster
+        """
         return self._Rows
 
     @Rows.setter
@@ -3229,6 +3825,10 @@ class DescribeClusterTagsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """返回结果个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3237,6 +3837,9 @@ class DescribeClusterTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3281,6 +3884,9 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def ClusterIds(self):
+        """指定查询的集群ID列表
+        :rtype: list of str
+        """
         return self._ClusterIds
 
     @ClusterIds.setter
@@ -3289,6 +3895,9 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """查询过滤条件
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3297,6 +3906,9 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询列表偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3305,6 +3917,9 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询列表返回记录数，默认值20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3313,6 +3928,9 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Ipv6Enable(self):
+        """是否启用Ipv6
+        :rtype: int
+        """
         return self._Ipv6Enable
 
     @Ipv6Enable.setter
@@ -3361,6 +3979,9 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """集群实例数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3369,6 +3990,9 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def Clusters(self):
+        """集群实例列表
+        :rtype: list of ClusterInfo
+        """
         return self._Clusters
 
     @Clusters.setter
@@ -3377,6 +4001,9 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3421,6 +4048,9 @@ class DescribeIdlFileInfosRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """文件所属集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3429,6 +4059,9 @@ class DescribeIdlFileInfosRequest(AbstractModel):
 
     @property
     def TableGroupIds(self):
+        """文件所属表格组ID
+        :rtype: list of str
+        """
         return self._TableGroupIds
 
     @TableGroupIds.setter
@@ -3437,6 +4070,9 @@ class DescribeIdlFileInfosRequest(AbstractModel):
 
     @property
     def IdlFileIds(self):
+        """指定文件ID列表
+        :rtype: list of str
+        """
         return self._IdlFileIds
 
     @IdlFileIds.setter
@@ -3445,6 +4081,9 @@ class DescribeIdlFileInfosRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询列表偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3453,6 +4092,9 @@ class DescribeIdlFileInfosRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询列表返回记录数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3496,6 +4138,9 @@ class DescribeIdlFileInfosResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """文件数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3504,6 +4149,9 @@ class DescribeIdlFileInfosResponse(AbstractModel):
 
     @property
     def IdlFileInfos(self):
+        """文件详情列表
+        :rtype: list of IdlFileInfo
+        """
         return self._IdlFileInfos
 
     @IdlFileInfos.setter
@@ -3512,6 +4160,9 @@ class DescribeIdlFileInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3544,6 +4195,9 @@ class DescribeMachineRequest(AbstractModel):
 
     @property
     def Ipv6Enable(self):
+        """不为0，表示查询支持ipv6的机器
+        :rtype: int
+        """
         return self._Ipv6Enable
 
     @Ipv6Enable.setter
@@ -3580,6 +4234,9 @@ class DescribeMachineResponse(AbstractModel):
 
     @property
     def PoolList(self):
+        """独占机器资源列表
+        :rtype: list of PoolInfo
+        """
         return self._PoolList
 
     @PoolList.setter
@@ -3588,6 +4245,9 @@ class DescribeMachineResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3631,6 +4291,9 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """可用区详情结果数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3639,6 +4302,9 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RegionInfos(self):
+        """可用区详情结果列表
+        :rtype: list of RegionInfo
+        """
         return self._RegionInfos
 
     @RegionInfos.setter
@@ -3647,6 +4313,9 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3691,6 +4360,9 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """表格所属集群id
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3699,6 +4371,9 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """所属表格组ID
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -3707,6 +4382,9 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     @property
     def TableName(self):
+        """表名称
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -3715,6 +4393,9 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     @property
     def SnapshotName(self):
+        """快照名称
+        :rtype: str
+        """
         return self._SnapshotName
 
     @SnapshotName.setter
@@ -3723,6 +4404,9 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
+        """批量拉取快照的表格列表
+        :rtype: list of SelectedTableInfoNew
+        """
         return self._SelectedTables
 
     @SelectedTables.setter
@@ -3771,6 +4455,9 @@ class DescribeSnapshotsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """快照数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3779,6 +4466,9 @@ class DescribeSnapshotsResponse(AbstractModel):
 
     @property
     def TableResults(self):
+        """快照结果列表
+        :rtype: list of SnapshotResult
+        """
         return self._TableResults
 
     @TableResults.setter
@@ -3787,6 +4477,9 @@ class DescribeSnapshotsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3822,6 +4515,9 @@ class DescribeTableGroupTagsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """待查询标签表格组所属集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3830,6 +4526,9 @@ class DescribeTableGroupTagsRequest(AbstractModel):
 
     @property
     def TableGroupIds(self):
+        """待查询标签表格组ID列表
+        :rtype: list of str
+        """
         return self._TableGroupIds
 
     @TableGroupIds.setter
@@ -3872,6 +4571,10 @@ class DescribeTableGroupTagsResponse(AbstractModel):
 
     @property
     def Rows(self):
+        """表格组标签信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TagsInfoOfTableGroup
+        """
         return self._Rows
 
     @Rows.setter
@@ -3880,6 +4583,10 @@ class DescribeTableGroupTagsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """返回结果个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3888,6 +4595,9 @@ class DescribeTableGroupTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3932,6 +4642,9 @@ class DescribeTableGroupsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """表格组所属集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3940,6 +4653,9 @@ class DescribeTableGroupsRequest(AbstractModel):
 
     @property
     def TableGroupIds(self):
+        """表格组ID列表
+        :rtype: list of str
+        """
         return self._TableGroupIds
 
     @TableGroupIds.setter
@@ -3948,6 +4664,9 @@ class DescribeTableGroupsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件，本接口支持：TableGroupName，TableGroupId
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3956,6 +4675,9 @@ class DescribeTableGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询列表偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3964,6 +4686,9 @@ class DescribeTableGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询列表返回记录数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4012,6 +4737,9 @@ class DescribeTableGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """表格组数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4020,6 +4748,9 @@ class DescribeTableGroupsResponse(AbstractModel):
 
     @property
     def TableGroups(self):
+        """表格组信息列表
+        :rtype: list of TableGroupInfo
+        """
         return self._TableGroups
 
     @TableGroups.setter
@@ -4028,6 +4759,9 @@ class DescribeTableGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4063,6 +4797,9 @@ class DescribeTableTagsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """表格所属集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -4071,6 +4808,9 @@ class DescribeTableTagsRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
+        """表格列表
+        :rtype: list of SelectedTableInfoNew
+        """
         return self._SelectedTables
 
     @SelectedTables.setter
@@ -4116,6 +4856,9 @@ class DescribeTableTagsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """返回结果总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4124,6 +4867,9 @@ class DescribeTableTagsResponse(AbstractModel):
 
     @property
     def Rows(self):
+        """表格标签信息列表
+        :rtype: list of TagsInfoOfTable
+        """
         return self._Rows
 
     @Rows.setter
@@ -4132,6 +4878,9 @@ class DescribeTableTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4176,6 +4925,9 @@ class DescribeTablesInRecycleRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """待查询表格所属集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -4184,6 +4936,9 @@ class DescribeTablesInRecycleRequest(AbstractModel):
 
     @property
     def TableGroupIds(self):
+        """待查询表格所属表格组ID列表
+        :rtype: list of str
+        """
         return self._TableGroupIds
 
     @TableGroupIds.setter
@@ -4192,6 +4947,9 @@ class DescribeTablesInRecycleRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件，本接口支持：TableName，TableInstanceId
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4200,6 +4958,9 @@ class DescribeTablesInRecycleRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询结果偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4208,6 +4969,9 @@ class DescribeTablesInRecycleRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询结果返回记录数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4256,6 +5020,9 @@ class DescribeTablesInRecycleResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """表格数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4264,6 +5031,9 @@ class DescribeTablesInRecycleResponse(AbstractModel):
 
     @property
     def TableInfos(self):
+        """表格详情结果列表
+        :rtype: list of TableInfoNew
+        """
         return self._TableInfos
 
     @TableInfos.setter
@@ -4272,6 +5042,9 @@ class DescribeTablesInRecycleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4319,6 +5092,9 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """待查询表格所属集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -4327,6 +5103,9 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def TableGroupIds(self):
+        """待查询表格所属表格组ID列表
+        :rtype: list of str
+        """
         return self._TableGroupIds
 
     @TableGroupIds.setter
@@ -4335,6 +5114,9 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
+        """待查询表格信息列表，用户不用关注，过滤请使用filter
+        :rtype: list of SelectedTableInfoNew
+        """
         return self._SelectedTables
 
     @SelectedTables.setter
@@ -4343,6 +5125,9 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件，本接口支持：TableName，TableInstanceId
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4351,6 +5136,9 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询结果偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4359,6 +5147,9 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询结果返回记录数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4413,6 +5204,9 @@ class DescribeTablesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """表格数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4421,6 +5215,9 @@ class DescribeTablesResponse(AbstractModel):
 
     @property
     def TableInfos(self):
+        """表格详情结果列表
+        :rtype: list of TableInfoNew
+        """
         return self._TableInfos
 
     @TableInfos.setter
@@ -4429,6 +5226,9 @@ class DescribeTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4473,6 +5273,9 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def ClusterIds(self):
+        """需要查询任务所属的集群ID列表
+        :rtype: list of str
+        """
         return self._ClusterIds
 
     @ClusterIds.setter
@@ -4481,6 +5284,9 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def TaskIds(self):
+        """需要查询的任务ID列表
+        :rtype: list of str
+        """
         return self._TaskIds
 
     @TaskIds.setter
@@ -4489,6 +5295,9 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件，本接口支持：Content，TaskType, Operator, Time
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4497,6 +5306,9 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询列表偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4505,6 +5317,9 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询列表返回记录数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4553,6 +5368,9 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """任务数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4561,6 +5379,9 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TaskInfos(self):
+        """查询到的任务详情列表
+        :rtype: list of TaskInfoNew
+        """
         return self._TaskInfos
 
     @TaskInfos.setter
@@ -4569,6 +5390,9 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4610,6 +5434,9 @@ class DescribeUinInWhitelistResponse(AbstractModel):
 
     @property
     def Result(self):
+        """查询结果：`FALSE` 否；`TRUE` 是
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -4618,6 +5445,9 @@ class DescribeUinInWhitelistResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4644,6 +5474,9 @@ class DisableRestProxyRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """对应appid
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -4683,6 +5516,9 @@ class DisableRestProxyResponse(AbstractModel):
 
     @property
     def RestProxyStatus(self):
+        """RestProxy的状态，0为关闭，1为开启中，2为开启，3为关闭中
+        :rtype: int
+        """
         return self._RestProxyStatus
 
     @RestProxyStatus.setter
@@ -4691,6 +5527,9 @@ class DisableRestProxyResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4699,6 +5538,9 @@ class DisableRestProxyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4726,6 +5568,9 @@ class EnableRestProxyRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群 ID。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -4765,6 +5610,9 @@ class EnableRestProxyResponse(AbstractModel):
 
     @property
     def RestProxyStatus(self):
+        """RestProxy的状态，0为关闭，1为开启中，2为开启，3为关闭中
+        :rtype: int
+        """
         return self._RestProxyStatus
 
     @RestProxyStatus.setter
@@ -4773,6 +5621,9 @@ class EnableRestProxyResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4781,6 +5632,9 @@ class EnableRestProxyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4811,6 +5665,9 @@ class ErrorInfo(AbstractModel):
 
     @property
     def Code(self):
+        """错误码
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -4819,6 +5676,9 @@ class ErrorInfo(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -4862,6 +5722,9 @@ class FieldInfo(AbstractModel):
 
     @property
     def FieldName(self):
+        """表格字段名称
+        :rtype: str
+        """
         return self._FieldName
 
     @FieldName.setter
@@ -4870,6 +5733,9 @@ class FieldInfo(AbstractModel):
 
     @property
     def IsPrimaryKey(self):
+        """字段是否是主键字段
+        :rtype: str
+        """
         return self._IsPrimaryKey
 
     @IsPrimaryKey.setter
@@ -4878,6 +5744,9 @@ class FieldInfo(AbstractModel):
 
     @property
     def FieldType(self):
+        """字段类型
+        :rtype: str
+        """
         return self._FieldType
 
     @FieldType.setter
@@ -4886,6 +5755,9 @@ class FieldInfo(AbstractModel):
 
     @property
     def FieldSize(self):
+        """字段长度
+        :rtype: int
+        """
         return self._FieldSize
 
     @FieldSize.setter
@@ -4928,6 +5800,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """过滤字段名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4936,6 +5811,9 @@ class Filter(AbstractModel):
 
     @property
     def Value(self):
+        """过滤字段值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -4944,6 +5822,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """过滤字段值
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -4996,6 +5877,9 @@ class IdlFileInfo(AbstractModel):
 
     @property
     def FileName(self):
+        """文件名称，不包含扩展名
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -5004,6 +5888,9 @@ class IdlFileInfo(AbstractModel):
 
     @property
     def FileType(self):
+        """数据描述语言（IDL）类型
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -5012,6 +5899,9 @@ class IdlFileInfo(AbstractModel):
 
     @property
     def FileExtType(self):
+        """文件扩展名
+        :rtype: str
+        """
         return self._FileExtType
 
     @FileExtType.setter
@@ -5020,6 +5910,9 @@ class IdlFileInfo(AbstractModel):
 
     @property
     def FileSize(self):
+        """文件大小（Bytes）
+        :rtype: int
+        """
         return self._FileSize
 
     @FileSize.setter
@@ -5028,6 +5921,10 @@ class IdlFileInfo(AbstractModel):
 
     @property
     def FileId(self):
+        """文件ID，对于已上传的文件有意义
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileId
 
     @FileId.setter
@@ -5036,6 +5933,10 @@ class IdlFileInfo(AbstractModel):
 
     @property
     def FileContent(self):
+        """文件内容，对于本次新上传的文件有意义
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FileContent
 
     @FileContent.setter
@@ -5095,6 +5996,10 @@ class IdlFileInfoWithoutContent(AbstractModel):
 
     @property
     def FileName(self):
+        """文件名称，不包含扩展名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -5103,6 +6008,10 @@ class IdlFileInfoWithoutContent(AbstractModel):
 
     @property
     def FileType(self):
+        """数据描述语言（IDL）类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -5111,6 +6020,10 @@ class IdlFileInfoWithoutContent(AbstractModel):
 
     @property
     def FileExtType(self):
+        """文件扩展名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FileExtType
 
     @FileExtType.setter
@@ -5119,6 +6032,10 @@ class IdlFileInfoWithoutContent(AbstractModel):
 
     @property
     def FileSize(self):
+        """文件大小（Bytes）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileSize
 
     @FileSize.setter
@@ -5127,6 +6044,10 @@ class IdlFileInfoWithoutContent(AbstractModel):
 
     @property
     def FileId(self):
+        """文件ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileId
 
     @FileId.setter
@@ -5135,6 +6056,10 @@ class IdlFileInfoWithoutContent(AbstractModel):
 
     @property
     def Error(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        """
         return self._Error
 
     @Error.setter
@@ -5193,6 +6118,9 @@ class ImportSnapshotsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """表格所属的集群id
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -5201,6 +6129,9 @@ class ImportSnapshotsRequest(AbstractModel):
 
     @property
     def Snapshots(self):
+        """用于导入的快照信息
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.SnapshotInfo`
+        """
         return self._Snapshots
 
     @Snapshots.setter
@@ -5209,6 +6140,9 @@ class ImportSnapshotsRequest(AbstractModel):
 
     @property
     def ImportSpecialKey(self):
+        """是否导入部分记录，TRUE表示导入部分记录，FALSE表示全表导入
+        :rtype: str
+        """
         return self._ImportSpecialKey
 
     @ImportSpecialKey.setter
@@ -5217,6 +6151,9 @@ class ImportSnapshotsRequest(AbstractModel):
 
     @property
     def ImportOriginTable(self):
+        """是否导入到当前表，TRUE表示导入到当前表，FALSE表示导入到新表
+        :rtype: str
+        """
         return self._ImportOriginTable
 
     @ImportOriginTable.setter
@@ -5225,6 +6162,9 @@ class ImportSnapshotsRequest(AbstractModel):
 
     @property
     def KeyFile(self):
+        """部分记录的key文件
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.KeyFile`
+        """
         return self._KeyFile
 
     @KeyFile.setter
@@ -5233,6 +6173,9 @@ class ImportSnapshotsRequest(AbstractModel):
 
     @property
     def NewTableGroupId(self):
+        """如果导入到新表，此为新表所属的表格组id
+        :rtype: str
+        """
         return self._NewTableGroupId
 
     @NewTableGroupId.setter
@@ -5241,6 +6184,9 @@ class ImportSnapshotsRequest(AbstractModel):
 
     @property
     def NewTableName(self):
+        """如果导入到新表，此为新表的表名，系统会以该名称自动创建一张结构相同的空表
+        :rtype: str
+        """
         return self._NewTableName
 
     @NewTableName.setter
@@ -5292,6 +6238,10 @@ class ImportSnapshotsResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -5300,6 +6250,10 @@ class ImportSnapshotsResponse(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """ApplicationId由 AppInstanceId-applicationId 组成，以区分不同集群的申请
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -5308,6 +6262,9 @@ class ImportSnapshotsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5356,6 +6313,10 @@ class KafkaInfo(AbstractModel):
 
     @property
     def Address(self):
+        """Kafka address
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -5364,6 +6325,10 @@ class KafkaInfo(AbstractModel):
 
     @property
     def Topic(self):
+        """Kafka topic
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -5372,6 +6337,10 @@ class KafkaInfo(AbstractModel):
 
     @property
     def User(self):
+        """kafka username
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -5380,6 +6349,10 @@ class KafkaInfo(AbstractModel):
 
     @property
     def Password(self):
+        """kafka password
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -5388,6 +6361,10 @@ class KafkaInfo(AbstractModel):
 
     @property
     def Instance(self):
+        """ckafka实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Instance
 
     @Instance.setter
@@ -5396,6 +6373,10 @@ class KafkaInfo(AbstractModel):
 
     @property
     def IsVpc(self):
+        """是否走VPC
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsVpc
 
     @IsVpc.setter
@@ -5443,6 +6424,9 @@ class KeyFile(AbstractModel):
 
     @property
     def FileName(self):
+        """key文件名称
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -5451,6 +6435,9 @@ class KeyFile(AbstractModel):
 
     @property
     def FileExtType(self):
+        """key文件扩展名
+        :rtype: str
+        """
         return self._FileExtType
 
     @FileExtType.setter
@@ -5459,6 +6446,9 @@ class KeyFile(AbstractModel):
 
     @property
     def FileContent(self):
+        """key文件内容
+        :rtype: str
+        """
         return self._FileContent
 
     @FileContent.setter
@@ -5467,6 +6457,9 @@ class KeyFile(AbstractModel):
 
     @property
     def FileSize(self):
+        """key文件大小
+        :rtype: int
+        """
         return self._FileSize
 
     @FileSize.setter
@@ -5506,6 +6499,9 @@ class MachineInfo(AbstractModel):
 
     @property
     def MachineType(self):
+        """机器类型
+        :rtype: str
+        """
         return self._MachineType
 
     @MachineType.setter
@@ -5514,6 +6510,9 @@ class MachineInfo(AbstractModel):
 
     @property
     def MachineNum(self):
+        """机器数量
+        :rtype: int
+        """
         return self._MachineNum
 
     @MachineNum.setter
@@ -5560,6 +6559,10 @@ class MergeTableResult(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -5568,6 +6571,10 @@ class MergeTableResult(AbstractModel):
 
     @property
     def Error(self):
+        """成功时此字段返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        """
         return self._Error
 
     @Error.setter
@@ -5576,6 +6583,9 @@ class MergeTableResult(AbstractModel):
 
     @property
     def Table(self):
+        """对比的表格信息
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.CompareTablesInfo`
+        """
         return self._Table
 
     @Table.setter
@@ -5584,6 +6594,10 @@ class MergeTableResult(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """申请单Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -5627,6 +6641,9 @@ class MergeTablesDataRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
+        """选取的表格
+        :rtype: list of MergeTablesInfo
+        """
         return self._SelectedTables
 
     @SelectedTables.setter
@@ -5635,6 +6652,9 @@ class MergeTablesDataRequest(AbstractModel):
 
     @property
     def IsOnlyCompare(self):
+        """true只做对比，false既对比又执行
+        :rtype: bool
+        """
         return self._IsOnlyCompare
 
     @IsOnlyCompare.setter
@@ -5677,6 +6697,9 @@ class MergeTablesDataResponse(AbstractModel):
 
     @property
     def Results(self):
+        """合服结果集
+        :rtype: list of MergeTableResult
+        """
         return self._Results
 
     @Results.setter
@@ -5685,6 +6708,9 @@ class MergeTablesDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5719,6 +6745,9 @@ class MergeTablesInfo(AbstractModel):
 
     @property
     def MergeTables(self):
+        """合服的表格信息
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.CompareTablesInfo`
+        """
         return self._MergeTables
 
     @MergeTables.setter
@@ -5727,6 +6756,9 @@ class MergeTablesInfo(AbstractModel):
 
     @property
     def CheckIndex(self):
+        """是否检查索引
+        :rtype: bool
+        """
         return self._CheckIndex
 
     @CheckIndex.setter
@@ -5769,6 +6801,9 @@ class ModifyCensorshipRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群id
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -5777,6 +6812,9 @@ class ModifyCensorshipRequest(AbstractModel):
 
     @property
     def Censorship(self):
+        """集群是否开启审核 0-关闭 1-开启
+        :rtype: int
+        """
         return self._Censorship
 
     @Censorship.setter
@@ -5785,6 +6823,9 @@ class ModifyCensorshipRequest(AbstractModel):
 
     @property
     def Uins(self):
+        """审批人uin列表
+        :rtype: list of str
+        """
         return self._Uins
 
     @Uins.setter
@@ -5830,6 +6871,9 @@ class ModifyCensorshipResponse(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群id
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -5838,6 +6882,10 @@ class ModifyCensorshipResponse(AbstractModel):
 
     @property
     def Uins(self):
+        """已加入审批人的uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Uins
 
     @Uins.setter
@@ -5846,6 +6894,9 @@ class ModifyCensorshipResponse(AbstractModel):
 
     @property
     def Censorship(self):
+        """集群是否开启审核 0-关闭 1-开启
+        :rtype: int
+        """
         return self._Censorship
 
     @Censorship.setter
@@ -5854,6 +6905,9 @@ class ModifyCensorshipResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5891,6 +6945,9 @@ class ModifyClusterMachineRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群id
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -5899,6 +6956,9 @@ class ModifyClusterMachineRequest(AbstractModel):
 
     @property
     def ServerList(self):
+        """svr占用的机器
+        :rtype: list of MachineInfo
+        """
         return self._ServerList
 
     @ServerList.setter
@@ -5907,6 +6967,9 @@ class ModifyClusterMachineRequest(AbstractModel):
 
     @property
     def ProxyList(self):
+        """proxy占用的机器
+        :rtype: list of MachineInfo
+        """
         return self._ProxyList
 
     @ProxyList.setter
@@ -5915,6 +6978,9 @@ class ModifyClusterMachineRequest(AbstractModel):
 
     @property
     def ClusterType(self):
+        """集群类型1共享集群2独占集群
+        :rtype: int
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -5964,6 +7030,9 @@ class ModifyClusterMachineResponse(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群id
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -5972,6 +7041,9 @@ class ModifyClusterMachineResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6001,6 +7073,9 @@ class ModifyClusterNameRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """需要修改名称的集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -6009,6 +7084,9 @@ class ModifyClusterNameRequest(AbstractModel):
 
     @property
     def ClusterName(self):
+        """需要修改的集群名称，可使用中文或英文字符，最大长度32个字符
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -6043,6 +7121,9 @@ class ModifyClusterNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6080,6 +7161,9 @@ class ModifyClusterPasswordRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """需要修改密码的集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -6088,6 +7172,9 @@ class ModifyClusterPasswordRequest(AbstractModel):
 
     @property
     def OldPassword(self):
+        """集群旧密码
+        :rtype: str
+        """
         return self._OldPassword
 
     @OldPassword.setter
@@ -6096,6 +7183,9 @@ class ModifyClusterPasswordRequest(AbstractModel):
 
     @property
     def OldPasswordExpireTime(self):
+        """集群旧密码预期失效时间
+        :rtype: str
+        """
         return self._OldPasswordExpireTime
 
     @OldPasswordExpireTime.setter
@@ -6104,6 +7194,9 @@ class ModifyClusterPasswordRequest(AbstractModel):
 
     @property
     def NewPassword(self):
+        """集群新密码，密码必须是a-zA-Z0-9的字符,且必须包含数字和大小写字母
+        :rtype: str
+        """
         return self._NewPassword
 
     @NewPassword.setter
@@ -6112,6 +7205,9 @@ class ModifyClusterPasswordRequest(AbstractModel):
 
     @property
     def Mode(self):
+        """更新模式： `1` 更新密码；`2` 更新旧密码失效时间，默认为`1` 模式
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -6149,6 +7245,9 @@ class ModifyClusterPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6180,6 +7279,9 @@ class ModifyClusterTagsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """待修改标签的集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -6188,6 +7290,9 @@ class ModifyClusterTagsRequest(AbstractModel):
 
     @property
     def ReplaceTags(self):
+        """待增加或修改的标签列表
+        :rtype: list of TagInfoUnit
+        """
         return self._ReplaceTags
 
     @ReplaceTags.setter
@@ -6196,6 +7301,9 @@ class ModifyClusterTagsRequest(AbstractModel):
 
     @property
     def DeleteTags(self):
+        """待删除的标签
+        :rtype: list of TagInfoUnit
+        """
         return self._DeleteTags
 
     @DeleteTags.setter
@@ -6245,6 +7353,10 @@ class ModifyClusterTagsResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -6253,6 +7365,9 @@ class ModifyClusterTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6282,6 +7397,9 @@ class ModifySnapshotsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """表格所属集群id
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -6290,6 +7408,9 @@ class ModifySnapshotsRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
+        """快照列表
+        :rtype: list of SnapshotInfoNew
+        """
         return self._SelectedTables
 
     @SelectedTables.setter
@@ -6335,6 +7456,9 @@ class ModifySnapshotsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """批量修改的快照数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6343,6 +7467,9 @@ class ModifySnapshotsResponse(AbstractModel):
 
     @property
     def TableResults(self):
+        """批量修改的快照结果列表
+        :rtype: list of SnapshotResult
+        """
         return self._TableResults
 
     @TableResults.setter
@@ -6351,6 +7478,9 @@ class ModifySnapshotsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6389,6 +7519,9 @@ class ModifyTableGroupNameRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """表格组所属的集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -6397,6 +7530,9 @@ class ModifyTableGroupNameRequest(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """待修改名称的表格组ID
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -6405,6 +7541,9 @@ class ModifyTableGroupNameRequest(AbstractModel):
 
     @property
     def TableGroupName(self):
+        """新的表格组名称，可以使用中英文字符和符号
+        :rtype: str
+        """
         return self._TableGroupName
 
     @TableGroupName.setter
@@ -6440,6 +7579,9 @@ class ModifyTableGroupNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6474,6 +7616,9 @@ class ModifyTableGroupTagsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """待修改标签表格组所属集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -6482,6 +7627,9 @@ class ModifyTableGroupTagsRequest(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """待修改标签表格组ID
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -6490,6 +7638,9 @@ class ModifyTableGroupTagsRequest(AbstractModel):
 
     @property
     def ReplaceTags(self):
+        """待增加或修改的标签列表
+        :rtype: list of TagInfoUnit
+        """
         return self._ReplaceTags
 
     @ReplaceTags.setter
@@ -6498,6 +7649,9 @@ class ModifyTableGroupTagsRequest(AbstractModel):
 
     @property
     def DeleteTags(self):
+        """待删除的标签
+        :rtype: list of TagInfoUnit
+        """
         return self._DeleteTags
 
     @DeleteTags.setter
@@ -6548,6 +7702,10 @@ class ModifyTableGroupTagsResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -6556,6 +7714,9 @@ class ModifyTableGroupTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6585,6 +7746,9 @@ class ModifyTableMemosRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """表所属集群实例ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -6593,6 +7757,9 @@ class ModifyTableMemosRequest(AbstractModel):
 
     @property
     def TableMemos(self):
+        """选定表详情列表
+        :rtype: list of SelectedTableInfoNew
+        """
         return self._TableMemos
 
     @TableMemos.setter
@@ -6638,6 +7805,9 @@ class ModifyTableMemosResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """表备注修改结果数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6646,6 +7816,9 @@ class ModifyTableMemosResponse(AbstractModel):
 
     @property
     def TableResults(self):
+        """表备注修改结果列表
+        :rtype: list of TableResultNew
+        """
         return self._TableResults
 
     @TableResults.setter
@@ -6654,6 +7827,9 @@ class ModifyTableMemosResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6689,6 +7865,9 @@ class ModifyTableQuotasRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """带扩缩容表所属集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -6697,6 +7876,9 @@ class ModifyTableQuotasRequest(AbstractModel):
 
     @property
     def TableQuotas(self):
+        """已选中待修改的表配额列表
+        :rtype: list of SelectedTableInfoNew
+        """
         return self._TableQuotas
 
     @TableQuotas.setter
@@ -6742,6 +7924,9 @@ class ModifyTableQuotasResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """扩缩容结果数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6750,6 +7935,9 @@ class ModifyTableQuotasResponse(AbstractModel):
 
     @property
     def TableResults(self):
+        """扩缩容结果列表
+        :rtype: list of TableResultNew
+        """
         return self._TableResults
 
     @TableResults.setter
@@ -6758,6 +7946,9 @@ class ModifyTableQuotasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6799,6 +7990,9 @@ class ModifyTableTagsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """待修改标签表格所属集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -6807,6 +8001,9 @@ class ModifyTableTagsRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
+        """待修改标签表格列表
+        :rtype: list of SelectedTableInfoNew
+        """
         return self._SelectedTables
 
     @SelectedTables.setter
@@ -6815,6 +8012,9 @@ class ModifyTableTagsRequest(AbstractModel):
 
     @property
     def ReplaceTags(self):
+        """待增加或修改的标签列表
+        :rtype: list of TagInfoUnit
+        """
         return self._ReplaceTags
 
     @ReplaceTags.setter
@@ -6823,6 +8023,9 @@ class ModifyTableTagsRequest(AbstractModel):
 
     @property
     def DeleteTags(self):
+        """待删除的标签列表
+        :rtype: list of TagInfoUnit
+        """
         return self._DeleteTags
 
     @DeleteTags.setter
@@ -6880,6 +8083,9 @@ class ModifyTableTagsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """返回结果总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6888,6 +8094,9 @@ class ModifyTableTagsResponse(AbstractModel):
 
     @property
     def TableResults(self):
+        """返回结果
+        :rtype: list of TableResultNew
+        """
         return self._TableResults
 
     @TableResults.setter
@@ -6896,6 +8105,9 @@ class ModifyTableTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6934,6 +8146,9 @@ class ModifyTablesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """待修改表格所在集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -6942,6 +8157,9 @@ class ModifyTablesRequest(AbstractModel):
 
     @property
     def IdlFiles(self):
+        """选中的改表IDL文件
+        :rtype: list of IdlFileInfo
+        """
         return self._IdlFiles
 
     @IdlFiles.setter
@@ -6950,6 +8168,9 @@ class ModifyTablesRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
+        """待改表格列表
+        :rtype: list of SelectedTableInfoNew
+        """
         return self._SelectedTables
 
     @SelectedTables.setter
@@ -7001,6 +8222,9 @@ class ModifyTablesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """修改表结果数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7009,6 +8233,9 @@ class ModifyTablesResponse(AbstractModel):
 
     @property
     def TableResults(self):
+        """修改表结果列表
+        :rtype: list of TableResultNew
+        """
         return self._TableResults
 
     @TableResults.setter
@@ -7017,6 +8244,9 @@ class ModifyTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7118,6 +8348,10 @@ class ParsedTableInfoNew(AbstractModel):
 
     @property
     def TableIdlType(self):
+        """表格描述语言类型：`PROTO`或`TDR`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableIdlType
 
     @TableIdlType.setter
@@ -7126,6 +8360,10 @@ class ParsedTableInfoNew(AbstractModel):
 
     @property
     def TableInstanceId(self):
+        """表格实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableInstanceId
 
     @TableInstanceId.setter
@@ -7134,6 +8372,10 @@ class ParsedTableInfoNew(AbstractModel):
 
     @property
     def TableName(self):
+        """表格名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -7142,6 +8384,10 @@ class ParsedTableInfoNew(AbstractModel):
 
     @property
     def TableType(self):
+        """表格数据结构类型：`GENERIC`或`LIST`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableType
 
     @TableType.setter
@@ -7150,6 +8396,10 @@ class ParsedTableInfoNew(AbstractModel):
 
     @property
     def KeyFields(self):
+        """主键字段信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._KeyFields
 
     @KeyFields.setter
@@ -7158,6 +8408,10 @@ class ParsedTableInfoNew(AbstractModel):
 
     @property
     def OldKeyFields(self):
+        """原主键字段信息，改表校验时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OldKeyFields
 
     @OldKeyFields.setter
@@ -7166,6 +8420,10 @@ class ParsedTableInfoNew(AbstractModel):
 
     @property
     def ValueFields(self):
+        """非主键字段信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ValueFields
 
     @ValueFields.setter
@@ -7174,6 +8432,10 @@ class ParsedTableInfoNew(AbstractModel):
 
     @property
     def OldValueFields(self):
+        """原非主键字段信息，改表校验时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OldValueFields
 
     @OldValueFields.setter
@@ -7182,6 +8444,10 @@ class ParsedTableInfoNew(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """所属表格组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -7190,6 +8456,10 @@ class ParsedTableInfoNew(AbstractModel):
 
     @property
     def SumKeyFieldSize(self):
+        """主键字段总大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SumKeyFieldSize
 
     @SumKeyFieldSize.setter
@@ -7198,6 +8468,10 @@ class ParsedTableInfoNew(AbstractModel):
 
     @property
     def SumValueFieldSize(self):
+        """非主键字段总大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SumValueFieldSize
 
     @SumValueFieldSize.setter
@@ -7206,6 +8480,10 @@ class ParsedTableInfoNew(AbstractModel):
 
     @property
     def IndexKeySet(self):
+        """索引键集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IndexKeySet
 
     @IndexKeySet.setter
@@ -7214,6 +8492,10 @@ class ParsedTableInfoNew(AbstractModel):
 
     @property
     def ShardingKeySet(self):
+        """分表因子集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ShardingKeySet
 
     @ShardingKeySet.setter
@@ -7222,6 +8504,10 @@ class ParsedTableInfoNew(AbstractModel):
 
     @property
     def TdrVersion(self):
+        """TDR版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TdrVersion
 
     @TdrVersion.setter
@@ -7230,6 +8516,10 @@ class ParsedTableInfoNew(AbstractModel):
 
     @property
     def Error(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        """
         return self._Error
 
     @Error.setter
@@ -7238,6 +8528,10 @@ class ParsedTableInfoNew(AbstractModel):
 
     @property
     def ListElementNum(self):
+        """LIST类型表格元素个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ListElementNum
 
     @ListElementNum.setter
@@ -7246,6 +8540,10 @@ class ParsedTableInfoNew(AbstractModel):
 
     @property
     def SortFieldNum(self):
+        """SORTLIST类型表格排序字段个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SortFieldNum
 
     @SortFieldNum.setter
@@ -7254,6 +8552,10 @@ class ParsedTableInfoNew(AbstractModel):
 
     @property
     def SortRule(self):
+        """SORTLIST类型表格排序顺序
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SortRule
 
     @SortRule.setter
@@ -7318,6 +8620,9 @@ class PoolInfo(AbstractModel):
 
     @property
     def PoolUid(self):
+        """唯一id
+        :rtype: int
+        """
         return self._PoolUid
 
     @PoolUid.setter
@@ -7326,6 +8631,9 @@ class PoolInfo(AbstractModel):
 
     @property
     def Ipv6Enable(self):
+        """是否支持ipv6
+        :rtype: int
+        """
         return self._Ipv6Enable
 
     @Ipv6Enable.setter
@@ -7334,6 +8642,9 @@ class PoolInfo(AbstractModel):
 
     @property
     def AvailableAppCount(self):
+        """剩余可用app
+        :rtype: int
+        """
         return self._AvailableAppCount
 
     @AvailableAppCount.setter
@@ -7342,6 +8653,9 @@ class PoolInfo(AbstractModel):
 
     @property
     def ServerList(self):
+        """svr机器列表
+        :rtype: list of ServerMachineInfo
+        """
         return self._ServerList
 
     @ServerList.setter
@@ -7350,6 +8664,9 @@ class PoolInfo(AbstractModel):
 
     @property
     def ProxyList(self):
+        """proxy机器列表
+        :rtype: list of ProxyMachineInfo
+        """
         return self._ProxyList
 
     @ProxyList.setter
@@ -7413,6 +8730,9 @@ class ProxyDetailInfo(AbstractModel):
 
     @property
     def ProxyUid(self):
+        """proxy的唯一id
+        :rtype: str
+        """
         return self._ProxyUid
 
     @ProxyUid.setter
@@ -7421,6 +8741,9 @@ class ProxyDetailInfo(AbstractModel):
 
     @property
     def MachineType(self):
+        """机器类型
+        :rtype: str
+        """
         return self._MachineType
 
     @MachineType.setter
@@ -7429,6 +8752,9 @@ class ProxyDetailInfo(AbstractModel):
 
     @property
     def ProcessSpeed(self):
+        """请求包速度
+        :rtype: int
+        """
         return self._ProcessSpeed
 
     @ProcessSpeed.setter
@@ -7437,6 +8763,9 @@ class ProxyDetailInfo(AbstractModel):
 
     @property
     def AverageProcessDelay(self):
+        """请求包时延
+        :rtype: int
+        """
         return self._AverageProcessDelay
 
     @AverageProcessDelay.setter
@@ -7445,6 +8774,9 @@ class ProxyDetailInfo(AbstractModel):
 
     @property
     def SlowProcessSpeed(self):
+        """慢处理包速度
+        :rtype: int
+        """
         return self._SlowProcessSpeed
 
     @SlowProcessSpeed.setter
@@ -7453,6 +8785,10 @@ class ProxyDetailInfo(AbstractModel):
 
     @property
     def Version(self):
+        """版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -7497,6 +8833,9 @@ class ProxyMachineInfo(AbstractModel):
 
     @property
     def ProxyUid(self):
+        """唯一id
+        :rtype: str
+        """
         return self._ProxyUid
 
     @ProxyUid.setter
@@ -7505,6 +8844,9 @@ class ProxyMachineInfo(AbstractModel):
 
     @property
     def MachineType(self):
+        """机器类型
+        :rtype: str
+        """
         return self._MachineType
 
     @MachineType.setter
@@ -7513,6 +8855,9 @@ class ProxyMachineInfo(AbstractModel):
 
     @property
     def AvailableCount(self):
+        """可分配proxy资源数
+        :rtype: int
+        """
         return self._AvailableCount
 
     @AvailableCount.setter
@@ -7551,6 +8896,9 @@ class RecoverRecycleTablesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """表所在集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -7559,6 +8907,9 @@ class RecoverRecycleTablesRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
+        """待恢复表信息
+        :rtype: list of SelectedTableInfoNew
+        """
         return self._SelectedTables
 
     @SelectedTables.setter
@@ -7604,6 +8955,9 @@ class RecoverRecycleTablesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """恢复表结果数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7612,6 +8966,9 @@ class RecoverRecycleTablesResponse(AbstractModel):
 
     @property
     def TableResults(self):
+        """恢复表信息列表
+        :rtype: list of TableResultNew
+        """
         return self._TableResults
 
     @TableResults.setter
@@ -7620,6 +8977,9 @@ class RecoverRecycleTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7661,6 +9021,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionName(self):
+        """地域Ap-Code
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -7669,6 +9032,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionAbbr(self):
+        """地域缩写
+        :rtype: str
+        """
         return self._RegionAbbr
 
     @RegionAbbr.setter
@@ -7677,6 +9043,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionId(self):
+        """地域ID
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -7685,6 +9054,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def Ipv6Enable(self):
+        """是否支持ipv6，0:不支持，1:支持
+        :rtype: int
+        """
         return self._Ipv6Enable
 
     @Ipv6Enable.setter
@@ -7730,6 +9102,9 @@ class RollbackTablesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """待回档表格所在集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -7738,6 +9113,9 @@ class RollbackTablesRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
+        """待回档表格列表
+        :rtype: list of SelectedTableInfoNew
+        """
         return self._SelectedTables
 
     @SelectedTables.setter
@@ -7746,6 +9124,9 @@ class RollbackTablesRequest(AbstractModel):
 
     @property
     def RollbackTime(self):
+        """待回档时间
+        :rtype: str
+        """
         return self._RollbackTime
 
     @RollbackTime.setter
@@ -7754,6 +9135,9 @@ class RollbackTablesRequest(AbstractModel):
 
     @property
     def Mode(self):
+        """回档模式，支持：`KEYS`
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -7801,6 +9185,9 @@ class RollbackTablesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """表格回档任务结果数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7809,6 +9196,9 @@ class RollbackTablesResponse(AbstractModel):
 
     @property
     def TableResults(self):
+        """表格回档任务结果列表
+        :rtype: list of TableRollbackResultNew
+        """
         return self._TableResults
 
     @TableResults.setter
@@ -7817,6 +9207,9 @@ class RollbackTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7888,6 +9281,9 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """表所属表格组ID
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -7896,6 +9292,9 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def TableName(self):
+        """表格名称
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -7904,6 +9303,9 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def TableInstanceId(self):
+        """表实例ID
+        :rtype: str
+        """
         return self._TableInstanceId
 
     @TableInstanceId.setter
@@ -7912,6 +9314,9 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def TableIdlType(self):
+        """表格描述语言类型：`PROTO`或`TDR`
+        :rtype: str
+        """
         return self._TableIdlType
 
     @TableIdlType.setter
@@ -7920,6 +9325,9 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def TableType(self):
+        """表格数据结构类型：`GENERIC`或`LIST`
+        :rtype: str
+        """
         return self._TableType
 
     @TableType.setter
@@ -7928,6 +9336,9 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def ListElementNum(self):
+        """LIST表元素个数
+        :rtype: int
+        """
         return self._ListElementNum
 
     @ListElementNum.setter
@@ -7936,6 +9347,9 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def ReservedVolume(self):
+        """表格预留容量（GB）
+        :rtype: int
+        """
         return self._ReservedVolume
 
     @ReservedVolume.setter
@@ -7944,6 +9358,9 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def ReservedReadQps(self):
+        """表格预留读CU
+        :rtype: int
+        """
         return self._ReservedReadQps
 
     @ReservedReadQps.setter
@@ -7952,6 +9369,9 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def ReservedWriteQps(self):
+        """表格预留写CU
+        :rtype: int
+        """
         return self._ReservedWriteQps
 
     @ReservedWriteQps.setter
@@ -7960,6 +9380,9 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def Memo(self):
+        """表格备注信息
+        :rtype: str
+        """
         return self._Memo
 
     @Memo.setter
@@ -7968,6 +9391,9 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def FileName(self):
+        """Key回档文件名，回档专用
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -7976,6 +9402,9 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def FileExtType(self):
+        """Key回档文件扩展名，回档专用
+        :rtype: str
+        """
         return self._FileExtType
 
     @FileExtType.setter
@@ -7984,6 +9413,9 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def FileSize(self):
+        """Key回档文件大小，回档专用
+        :rtype: int
+        """
         return self._FileSize
 
     @FileSize.setter
@@ -7992,6 +9424,9 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def FileContent(self):
+        """Key回档文件内容，回档专用
+        :rtype: str
+        """
         return self._FileContent
 
     @FileContent.setter
@@ -8059,6 +9494,9 @@ class SelectedTableWithField(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """表所属表格组ID
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -8067,6 +9505,9 @@ class SelectedTableWithField(AbstractModel):
 
     @property
     def TableName(self):
+        """表格名称
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -8075,6 +9516,9 @@ class SelectedTableWithField(AbstractModel):
 
     @property
     def TableInstanceId(self):
+        """表实例ID
+        :rtype: str
+        """
         return self._TableInstanceId
 
     @TableInstanceId.setter
@@ -8083,6 +9527,9 @@ class SelectedTableWithField(AbstractModel):
 
     @property
     def TableIdlType(self):
+        """表格描述语言类型：`PROTO`或`TDR`
+        :rtype: str
+        """
         return self._TableIdlType
 
     @TableIdlType.setter
@@ -8091,6 +9538,9 @@ class SelectedTableWithField(AbstractModel):
 
     @property
     def TableType(self):
+        """表格数据结构类型：`GENERIC`或`LIST`
+        :rtype: str
+        """
         return self._TableType
 
     @TableType.setter
@@ -8099,6 +9549,9 @@ class SelectedTableWithField(AbstractModel):
 
     @property
     def SelectedFields(self):
+        """待创建索引、缓写、数据订阅的字段列表
+        :rtype: list of FieldInfo
+        """
         return self._SelectedFields
 
     @SelectedFields.setter
@@ -8107,6 +9560,9 @@ class SelectedTableWithField(AbstractModel):
 
     @property
     def ShardNum(self):
+        """索引分片数
+        :rtype: int
+        """
         return self._ShardNum
 
     @ShardNum.setter
@@ -8115,6 +9571,9 @@ class SelectedTableWithField(AbstractModel):
 
     @property
     def KafkaInfo(self):
+        """ckafka实例信息
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.KafkaInfo`
+        """
         return self._KafkaInfo
 
     @KafkaInfo.setter
@@ -8181,6 +9640,9 @@ class ServerDetailInfo(AbstractModel):
 
     @property
     def ServerUid(self):
+        """svr唯一id
+        :rtype: str
+        """
         return self._ServerUid
 
     @ServerUid.setter
@@ -8189,6 +9651,9 @@ class ServerDetailInfo(AbstractModel):
 
     @property
     def MachineType(self):
+        """机器类型
+        :rtype: str
+        """
         return self._MachineType
 
     @MachineType.setter
@@ -8197,6 +9662,9 @@ class ServerDetailInfo(AbstractModel):
 
     @property
     def MemoryRate(self):
+        """内存占用量
+        :rtype: int
+        """
         return self._MemoryRate
 
     @MemoryRate.setter
@@ -8205,6 +9673,9 @@ class ServerDetailInfo(AbstractModel):
 
     @property
     def DiskRate(self):
+        """磁盘占用量
+        :rtype: int
+        """
         return self._DiskRate
 
     @DiskRate.setter
@@ -8213,6 +9684,9 @@ class ServerDetailInfo(AbstractModel):
 
     @property
     def ReadNum(self):
+        """读次数
+        :rtype: int
+        """
         return self._ReadNum
 
     @ReadNum.setter
@@ -8221,6 +9695,9 @@ class ServerDetailInfo(AbstractModel):
 
     @property
     def WriteNum(self):
+        """写次数
+        :rtype: int
+        """
         return self._WriteNum
 
     @WriteNum.setter
@@ -8229,6 +9706,10 @@ class ServerDetailInfo(AbstractModel):
 
     @property
     def Version(self):
+        """版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -8271,6 +9752,9 @@ class ServerMachineInfo(AbstractModel):
 
     @property
     def ServerUid(self):
+        """机器唯一id
+        :rtype: str
+        """
         return self._ServerUid
 
     @ServerUid.setter
@@ -8279,6 +9763,9 @@ class ServerMachineInfo(AbstractModel):
 
     @property
     def MachineType(self):
+        """机器类型
+        :rtype: str
+        """
         return self._MachineType
 
     @MachineType.setter
@@ -8316,6 +9803,9 @@ class SetBackupExpireRuleRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """表所属集群实例ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -8324,6 +9814,9 @@ class SetBackupExpireRuleRequest(AbstractModel):
 
     @property
     def BackupExpireRules(self):
+        """淘汰策略数组
+        :rtype: list of BackupExpireRuleInfo
+        """
         return self._BackupExpireRules
 
     @BackupExpireRules.setter
@@ -8367,6 +9860,10 @@ class SetBackupExpireRuleResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -8375,6 +9872,9 @@ class SetBackupExpireRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8404,6 +9904,9 @@ class SetTableDataFlowRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """表所属集群实例ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -8412,6 +9915,9 @@ class SetTableDataFlowRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
+        """待创建分布式索引表格列表
+        :rtype: list of SelectedTableWithField
+        """
         return self._SelectedTables
 
     @SelectedTables.setter
@@ -8457,6 +9963,9 @@ class SetTableDataFlowResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """表格数据订阅创建结果数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8465,6 +9974,9 @@ class SetTableDataFlowResponse(AbstractModel):
 
     @property
     def TableResults(self):
+        """表格数据订阅创建结果列表
+        :rtype: list of TableResultNew
+        """
         return self._TableResults
 
     @TableResults.setter
@@ -8473,6 +9985,9 @@ class SetTableDataFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8508,6 +10023,9 @@ class SetTableIndexRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """表所属集群实例ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -8516,6 +10034,9 @@ class SetTableIndexRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
+        """待创建分布式索引表格列表
+        :rtype: list of SelectedTableWithField
+        """
         return self._SelectedTables
 
     @SelectedTables.setter
@@ -8561,6 +10082,9 @@ class SetTableIndexResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """表格分布式索引创建结果数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8569,6 +10093,9 @@ class SetTableIndexResponse(AbstractModel):
 
     @property
     def TableResults(self):
+        """表格分布式索引创建结果列表
+        :rtype: list of TableResultNew
+        """
         return self._TableResults
 
     @TableResults.setter
@@ -8577,6 +10104,9 @@ class SetTableIndexResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8621,6 +10151,9 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """所属表格组ID
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -8629,6 +10162,9 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def TableName(self):
+        """表名称
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -8637,6 +10173,9 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def SnapshotName(self):
+        """快照名称
+        :rtype: str
+        """
         return self._SnapshotName
 
     @SnapshotName.setter
@@ -8645,6 +10184,9 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def SnapshotTime(self):
+        """快照时间点
+        :rtype: str
+        """
         return self._SnapshotTime
 
     @SnapshotTime.setter
@@ -8653,6 +10195,9 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def SnapshotDeadTime(self):
+        """快照过期时间点
+        :rtype: str
+        """
         return self._SnapshotDeadTime
 
     @SnapshotDeadTime.setter
@@ -8699,6 +10244,9 @@ class SnapshotInfoNew(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """所属表格组ID
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -8707,6 +10255,9 @@ class SnapshotInfoNew(AbstractModel):
 
     @property
     def TableName(self):
+        """表名称
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -8715,6 +10266,9 @@ class SnapshotInfoNew(AbstractModel):
 
     @property
     def SnapshotName(self):
+        """快照名称
+        :rtype: str
+        """
         return self._SnapshotName
 
     @SnapshotName.setter
@@ -8723,6 +10277,9 @@ class SnapshotInfoNew(AbstractModel):
 
     @property
     def SnapshotDeadTime(self):
+        """快照过期时间点
+        :rtype: str
+        """
         return self._SnapshotDeadTime
 
     @SnapshotDeadTime.setter
@@ -8800,6 +10357,10 @@ class SnapshotResult(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """表格所属表格组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -8808,6 +10369,10 @@ class SnapshotResult(AbstractModel):
 
     @property
     def TableName(self):
+        """表格名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -8816,6 +10381,10 @@ class SnapshotResult(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID，对于创建单任务的接口有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -8824,6 +10393,10 @@ class SnapshotResult(AbstractModel):
 
     @property
     def Error(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        """
         return self._Error
 
     @Error.setter
@@ -8832,6 +10405,10 @@ class SnapshotResult(AbstractModel):
 
     @property
     def SnapshotName(self):
+        """快照名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SnapshotName
 
     @SnapshotName.setter
@@ -8840,6 +10417,10 @@ class SnapshotResult(AbstractModel):
 
     @property
     def SnapshotTime(self):
+        """快照的时间点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SnapshotTime
 
     @SnapshotTime.setter
@@ -8848,6 +10429,10 @@ class SnapshotResult(AbstractModel):
 
     @property
     def SnapshotDeadTime(self):
+        """快照的过期时间点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SnapshotDeadTime
 
     @SnapshotDeadTime.setter
@@ -8856,6 +10441,10 @@ class SnapshotResult(AbstractModel):
 
     @property
     def SnapshotCreateTime(self):
+        """快照创建时间点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SnapshotCreateTime
 
     @SnapshotCreateTime.setter
@@ -8864,6 +10453,10 @@ class SnapshotResult(AbstractModel):
 
     @property
     def SnapshotSize(self):
+        """快照大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SnapshotSize
 
     @SnapshotSize.setter
@@ -8872,6 +10465,10 @@ class SnapshotResult(AbstractModel):
 
     @property
     def SnapshotStatus(self):
+        """快照状态，0 生成中 1 正常 2 删除中 3 已失效 4 回档使用中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SnapshotStatus
 
     @SnapshotStatus.setter
@@ -8880,6 +10477,10 @@ class SnapshotResult(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """申请单ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -8928,6 +10529,9 @@ class SyncTableField(AbstractModel):
 
     @property
     def SourceName(self):
+        """TcaplusDB表字段名称
+        :rtype: str
+        """
         return self._SourceName
 
     @SourceName.setter
@@ -8936,6 +10540,9 @@ class SyncTableField(AbstractModel):
 
     @property
     def TargetName(self):
+        """目标缓写表的字段名称
+        :rtype: str
+        """
         return self._TargetName
 
     @TargetName.setter
@@ -9000,6 +10607,9 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def TargetTableSplitNum(self):
+        """目标缓写表的分表数目
+        :rtype: int
+        """
         return self._TargetTableSplitNum
 
     @TargetTableSplitNum.setter
@@ -9008,6 +10618,9 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def TargetTableNamePrefix(self):
+        """目标缓写表名前缀
+        :rtype: list of str
+        """
         return self._TargetTableNamePrefix
 
     @TargetTableNamePrefix.setter
@@ -9016,6 +10629,9 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def TargetSyncDBInstanceId(self):
+        """缓写数据库实例ID
+        :rtype: str
+        """
         return self._TargetSyncDBInstanceId
 
     @TargetSyncDBInstanceId.setter
@@ -9024,6 +10640,9 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def TargetDatabaseName(self):
+        """缓写表所在数据库名称
+        :rtype: str
+        """
         return self._TargetDatabaseName
 
     @TargetDatabaseName.setter
@@ -9032,6 +10651,9 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def Status(self):
+        """缓写状态，0：创建中，1：进行中，2：关闭，-1：被删除
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -9040,6 +10662,9 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def ClusterId(self):
+        """表格所在集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -9048,6 +10673,9 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """表格所在表格组ID
+        :rtype: int
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -9056,6 +10684,9 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def TableName(self):
+        """表格名称
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -9064,6 +10695,9 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def TableId(self):
+        """表格ID
+        :rtype: str
+        """
         return self._TableId
 
     @TableId.setter
@@ -9072,6 +10706,9 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def KeyFieldMapping(self):
+        """TcaplusDB表主键字段到目标缓写表字段的映射
+        :rtype: list of SyncTableField
+        """
         return self._KeyFieldMapping
 
     @KeyFieldMapping.setter
@@ -9080,6 +10717,9 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def ValueFieldMapping(self):
+        """TcaplusDB表字段到目标缓写表字段的映射
+        :rtype: list of SyncTableField
+        """
         return self._ValueFieldMapping
 
     @ValueFieldMapping.setter
@@ -9160,6 +10800,9 @@ class TableGroupInfo(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """表格组ID
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -9168,6 +10811,9 @@ class TableGroupInfo(AbstractModel):
 
     @property
     def TableGroupName(self):
+        """表格组名称
+        :rtype: str
+        """
         return self._TableGroupName
 
     @TableGroupName.setter
@@ -9176,6 +10822,9 @@ class TableGroupInfo(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """表格组创建时间
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -9184,6 +10833,9 @@ class TableGroupInfo(AbstractModel):
 
     @property
     def TableCount(self):
+        """表格组包含的表格数量
+        :rtype: int
+        """
         return self._TableCount
 
     @TableCount.setter
@@ -9192,6 +10844,9 @@ class TableGroupInfo(AbstractModel):
 
     @property
     def TotalSize(self):
+        """表格组包含的表格存储总量（MB）
+        :rtype: int
+        """
         return self._TotalSize
 
     @TotalSize.setter
@@ -9200,6 +10855,10 @@ class TableGroupInfo(AbstractModel):
 
     @property
     def TxhBackupExpireDay(self):
+        """表格Txh备份文件多少天后过期删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TxhBackupExpireDay
 
     @TxhBackupExpireDay.setter
@@ -9208,6 +10867,9 @@ class TableGroupInfo(AbstractModel):
 
     @property
     def EnableMysql(self):
+        """是否开启mysql负载均衡,0未开启 1开启中 2已开启
+        :rtype: int
+        """
         return self._EnableMysql
 
     @EnableMysql.setter
@@ -9216,6 +10878,10 @@ class TableGroupInfo(AbstractModel):
 
     @property
     def MysqlConnIp(self):
+        """mysql负载均衡vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MysqlConnIp
 
     @MysqlConnIp.setter
@@ -9224,6 +10890,10 @@ class TableGroupInfo(AbstractModel):
 
     @property
     def MysqlConnPort(self):
+        """mysql负载均衡vport
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MysqlConnPort
 
     @MysqlConnPort.setter
@@ -9378,6 +11048,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def TableName(self):
+        """表格名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -9386,6 +11060,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def TableInstanceId(self):
+        """表格实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableInstanceId
 
     @TableInstanceId.setter
@@ -9394,6 +11072,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def TableType(self):
+        """表格数据结构类型，如：`GENERIC`或`LIST`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableType
 
     @TableType.setter
@@ -9402,6 +11084,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def TableIdlType(self):
+        """表格数据描述语言（IDL）类型，如：`PROTO`或`TDR`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableIdlType
 
     @TableIdlType.setter
@@ -9410,6 +11096,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def ClusterId(self):
+        """表格所属集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -9418,6 +11108,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def ClusterName(self):
+        """表格所属集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -9426,6 +11120,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """表格所属表格组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -9434,6 +11132,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def TableGroupName(self):
+        """表格所属表格组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableGroupName
 
     @TableGroupName.setter
@@ -9442,6 +11144,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def KeyStruct(self):
+        """表格主键字段结构json字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._KeyStruct
 
     @KeyStruct.setter
@@ -9450,6 +11156,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def ValueStruct(self):
+        """表格非主键字段结构json字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ValueStruct
 
     @ValueStruct.setter
@@ -9458,6 +11168,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def ShardingKeySet(self):
+        """表格分表因子集合，对PROTO类型表格有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ShardingKeySet
 
     @ShardingKeySet.setter
@@ -9466,6 +11180,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def IndexStruct(self):
+        """表格索引键字段集合，对PROTO类型表格有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IndexStruct
 
     @IndexStruct.setter
@@ -9474,6 +11192,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def ListElementNum(self):
+        """LIST类型表格元素个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ListElementNum
 
     @ListElementNum.setter
@@ -9482,6 +11204,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def IdlFiles(self):
+        """表格所关联IDL文件信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of IdlFileInfo
+        """
         return self._IdlFiles
 
     @IdlFiles.setter
@@ -9490,6 +11216,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def ReservedVolume(self):
+        """表格预留容量（GB）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReservedVolume
 
     @ReservedVolume.setter
@@ -9498,6 +11228,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def ReservedReadQps(self):
+        """表格预留读CU
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReservedReadQps
 
     @ReservedReadQps.setter
@@ -9506,6 +11240,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def ReservedWriteQps(self):
+        """表格预留写CU
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReservedWriteQps
 
     @ReservedWriteQps.setter
@@ -9514,6 +11252,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def TableSize(self):
+        """表格实际数据量大小（MB）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TableSize
 
     @TableSize.setter
@@ -9522,6 +11264,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def Status(self):
+        """表格状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -9530,6 +11276,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """表格创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -9538,6 +11288,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def UpdatedTime(self):
+        """表格最后一次修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdatedTime
 
     @UpdatedTime.setter
@@ -9546,6 +11300,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def Memo(self):
+        """表格备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Memo
 
     @Memo.setter
@@ -9554,6 +11312,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def Error(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        """
         return self._Error
 
     @Error.setter
@@ -9562,6 +11324,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def ApiAccessId(self):
+        """TcaplusDB SDK数据访问接入ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApiAccessId
 
     @ApiAccessId.setter
@@ -9570,6 +11336,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def SortFieldNum(self):
+        """SORTLIST类型表格排序字段个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SortFieldNum
 
     @SortFieldNum.setter
@@ -9578,6 +11348,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def SortRule(self):
+        """SORTLIST类型表格排序顺序
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SortRule
 
     @SortRule.setter
@@ -9586,6 +11360,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def DbClusterInfoStruct(self):
+        """表格分布式索引/缓写、kafka数据订阅信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DbClusterInfoStruct
 
     @DbClusterInfoStruct.setter
@@ -9594,6 +11372,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def TxhBackupExpireDay(self):
+        """表格Txh备份文件多少天后过期删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TxhBackupExpireDay
 
     @TxhBackupExpireDay.setter
@@ -9602,6 +11384,10 @@ class TableInfoNew(AbstractModel):
 
     @property
     def SyncTableInfo(self):
+        """表格的缓写信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.SyncTableInfo`
+        """
         return self._SyncTableInfo
 
     @SyncTableInfo.setter
@@ -9705,6 +11491,10 @@ class TableResultNew(AbstractModel):
 
     @property
     def TableInstanceId(self):
+        """表格实例ID，形如：tcaplus-3be64cbb
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableInstanceId
 
     @TableInstanceId.setter
@@ -9713,6 +11503,10 @@ class TableResultNew(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID，对于创建单任务的接口有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -9721,6 +11515,10 @@ class TableResultNew(AbstractModel):
 
     @property
     def TableName(self):
+        """表格名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -9729,6 +11527,10 @@ class TableResultNew(AbstractModel):
 
     @property
     def TableType(self):
+        """表格数据结构类型，如：`GENERIC`或`LIST`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableType
 
     @TableType.setter
@@ -9737,6 +11539,10 @@ class TableResultNew(AbstractModel):
 
     @property
     def TableIdlType(self):
+        """表数据描述语言（IDL）类型，如：`PROTO`或`TDR`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableIdlType
 
     @TableIdlType.setter
@@ -9745,6 +11551,10 @@ class TableResultNew(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """表格所属表格组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -9753,6 +11563,10 @@ class TableResultNew(AbstractModel):
 
     @property
     def Error(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        """
         return self._Error
 
     @Error.setter
@@ -9761,6 +11575,10 @@ class TableResultNew(AbstractModel):
 
     @property
     def TaskIds(self):
+        """任务ID列表，对于创建多任务的接口有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._TaskIds
 
     @TaskIds.setter
@@ -9769,6 +11587,10 @@ class TableResultNew(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """腾讯云申请审核单Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -9853,6 +11675,10 @@ class TableRollbackResultNew(AbstractModel):
 
     @property
     def TableInstanceId(self):
+        """表格实例ID，形如：tcaplus-3be64cbb
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableInstanceId
 
     @TableInstanceId.setter
@@ -9861,6 +11687,10 @@ class TableRollbackResultNew(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID，对于创建单任务的接口有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -9869,6 +11699,10 @@ class TableRollbackResultNew(AbstractModel):
 
     @property
     def TableName(self):
+        """表格名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -9877,6 +11711,10 @@ class TableRollbackResultNew(AbstractModel):
 
     @property
     def TableType(self):
+        """表格数据结构类型，如：`GENERIC`或`LIST`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableType
 
     @TableType.setter
@@ -9885,6 +11723,10 @@ class TableRollbackResultNew(AbstractModel):
 
     @property
     def TableIdlType(self):
+        """表格数据描述语言（IDL）类型，如：`PROTO`或`TDR`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableIdlType
 
     @TableIdlType.setter
@@ -9893,6 +11735,10 @@ class TableRollbackResultNew(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """表格所属表格组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -9901,6 +11747,10 @@ class TableRollbackResultNew(AbstractModel):
 
     @property
     def Error(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        """
         return self._Error
 
     @Error.setter
@@ -9909,6 +11759,10 @@ class TableRollbackResultNew(AbstractModel):
 
     @property
     def TaskIds(self):
+        """任务ID列表，对于创建多任务的接口有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._TaskIds
 
     @TaskIds.setter
@@ -9917,6 +11771,10 @@ class TableRollbackResultNew(AbstractModel):
 
     @property
     def FileId(self):
+        """上传的key文件ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FileId
 
     @FileId.setter
@@ -9925,6 +11783,10 @@ class TableRollbackResultNew(AbstractModel):
 
     @property
     def SuccKeyNum(self):
+        """校验成功Key数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SuccKeyNum
 
     @SuccKeyNum.setter
@@ -9933,6 +11795,10 @@ class TableRollbackResultNew(AbstractModel):
 
     @property
     def TotalKeyNum(self):
+        """Key文件中包含总的Key数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalKeyNum
 
     @TotalKeyNum.setter
@@ -9982,6 +11848,9 @@ class TagInfoUnit(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -9990,6 +11859,10 @@ class TagInfoUnit(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -10033,6 +11906,10 @@ class TagsInfoOfCluster(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -10041,6 +11918,10 @@ class TagsInfoOfCluster(AbstractModel):
 
     @property
     def Tags(self):
+        """标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TagInfoUnit
+        """
         return self._Tags
 
     @Tags.setter
@@ -10049,6 +11930,10 @@ class TagsInfoOfCluster(AbstractModel):
 
     @property
     def Error(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        """
         return self._Error
 
     @Error.setter
@@ -10108,6 +11993,10 @@ class TagsInfoOfTable(AbstractModel):
 
     @property
     def TableInstanceId(self):
+        """表格实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableInstanceId
 
     @TableInstanceId.setter
@@ -10116,6 +12005,10 @@ class TagsInfoOfTable(AbstractModel):
 
     @property
     def TableName(self):
+        """表格名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -10124,6 +12017,10 @@ class TagsInfoOfTable(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """表格组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -10132,6 +12029,10 @@ class TagsInfoOfTable(AbstractModel):
 
     @property
     def Tags(self):
+        """标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TagInfoUnit
+        """
         return self._Tags
 
     @Tags.setter
@@ -10140,6 +12041,10 @@ class TagsInfoOfTable(AbstractModel):
 
     @property
     def Error(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        """
         return self._Error
 
     @Error.setter
@@ -10197,6 +12102,10 @@ class TagsInfoOfTableGroup(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -10205,6 +12114,10 @@ class TagsInfoOfTableGroup(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """表格组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -10213,6 +12126,10 @@ class TagsInfoOfTableGroup(AbstractModel):
 
     @property
     def Tags(self):
+        """标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TagInfoUnit
+        """
         return self._Tags
 
     @Tags.setter
@@ -10221,6 +12138,10 @@ class TagsInfoOfTableGroup(AbstractModel):
 
     @property
     def Error(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        """
         return self._Error
 
     @Error.setter
@@ -10303,6 +12224,9 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -10311,6 +12235,9 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -10319,6 +12246,9 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def TransId(self):
+        """任务所关联的TcaplusDB内部事务ID
+        :rtype: str
+        """
         return self._TransId
 
     @TransId.setter
@@ -10327,6 +12257,9 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def ClusterId(self):
+        """任务所属集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -10335,6 +12268,9 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def ClusterName(self):
+        """任务所属集群名称
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -10343,6 +12279,9 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def Progress(self):
+        """任务进度
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -10351,6 +12290,9 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def StartTime(self):
+        """任务创建时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -10359,6 +12301,9 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """任务最后更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -10367,6 +12312,9 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -10375,6 +12323,9 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def Content(self):
+        """任务详情
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -10383,6 +12334,10 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """表格组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -10391,6 +12346,10 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def TableGroupName(self):
+        """表格组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableGroupName
 
     @TableGroupName.setter
@@ -10399,6 +12358,10 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def TableName(self):
+        """表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -10444,6 +12407,9 @@ class UpdateApplyRequest(AbstractModel):
 
     @property
     def ApplyStatus(self):
+        """申请单状态
+        :rtype: list of ApplyStatus
+        """
         return self._ApplyStatus
 
     @ApplyStatus.setter
@@ -10489,6 +12455,10 @@ class UpdateApplyResponse(AbstractModel):
 
     @property
     def ApplyResults(self):
+        """已更新的申请单列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ApplyResult
+        """
         return self._ApplyResults
 
     @ApplyResults.setter
@@ -10497,6 +12467,9 @@ class UpdateApplyResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """更新数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10505,6 +12478,9 @@ class UpdateApplyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10546,6 +12522,9 @@ class VerifyIdlFilesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """待创建表格的集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -10554,6 +12533,9 @@ class VerifyIdlFilesRequest(AbstractModel):
 
     @property
     def TableGroupId(self):
+        """待创建表格的表格组ID
+        :rtype: str
+        """
         return self._TableGroupId
 
     @TableGroupId.setter
@@ -10562,6 +12544,9 @@ class VerifyIdlFilesRequest(AbstractModel):
 
     @property
     def ExistingIdlFiles(self):
+        """曾经上传过的IDL文件信息列表，与NewIdlFiles至少有一者
+        :rtype: list of IdlFileInfo
+        """
         return self._ExistingIdlFiles
 
     @ExistingIdlFiles.setter
@@ -10570,6 +12555,9 @@ class VerifyIdlFilesRequest(AbstractModel):
 
     @property
     def NewIdlFiles(self):
+        """待上传的IDL文件信息列表，与ExistingIdlFiles至少有一者
+        :rtype: list of IdlFileInfo
+        """
         return self._NewIdlFiles
 
     @NewIdlFiles.setter
@@ -10625,6 +12613,9 @@ class VerifyIdlFilesResponse(AbstractModel):
 
     @property
     def IdlFiles(self):
+        """本次上传校验所有的IDL文件信息列表
+        :rtype: list of IdlFileInfo
+        """
         return self._IdlFiles
 
     @IdlFiles.setter
@@ -10633,6 +12624,9 @@ class VerifyIdlFilesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """读取IDL描述文件后解析出的合法表数量，不包含已经创建的表
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10641,6 +12635,9 @@ class VerifyIdlFilesResponse(AbstractModel):
 
     @property
     def TableInfos(self):
+        """读取IDL描述文件后解析出的合法表列表，不包含已经创建的表
+        :rtype: list of ParsedTableInfoNew
+        """
         return self._TableInfos
 
     @TableInfos.setter
@@ -10649,6 +12646,9 @@ class VerifyIdlFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

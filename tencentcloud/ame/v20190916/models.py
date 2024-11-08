@@ -36,6 +36,9 @@ class Album(AbstractModel):
 
     @property
     def AlbumName(self):
+        """专辑名
+        :rtype: str
+        """
         return self._AlbumName
 
     @AlbumName.setter
@@ -44,6 +47,10 @@ class Album(AbstractModel):
 
     @property
     def ImagePathMap(self):
+        """专辑图片大小及类别
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ImagePath
+        """
         return self._ImagePathMap
 
     @ImagePathMap.setter
@@ -92,6 +99,9 @@ class ApplicationLicenseInput(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称，注：后面三个字段AndroidPackageName、IOSBundleId、PcIdentifier，三者选填一个
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -100,6 +110,9 @@ class ApplicationLicenseInput(AbstractModel):
 
     @property
     def AndroidPackageName(self):
+        """app的安卓包名
+        :rtype: str
+        """
         return self._AndroidPackageName
 
     @AndroidPackageName.setter
@@ -108,6 +121,9 @@ class ApplicationLicenseInput(AbstractModel):
 
     @property
     def IOSBundleId(self):
+        """app的IOS的BundleId名
+        :rtype: str
+        """
         return self._IOSBundleId
 
     @IOSBundleId.setter
@@ -116,6 +132,9 @@ class ApplicationLicenseInput(AbstractModel):
 
     @property
     def PcIdentifier(self):
+        """PC标识名
+        :rtype: str
+        """
         return self._PcIdentifier
 
     @PcIdentifier.setter
@@ -152,6 +171,9 @@ class Artist(AbstractModel):
 
     @property
     def ArtistName(self):
+        """歌手名
+        :rtype: str
+        """
         return self._ArtistName
 
     @ArtistName.setter
@@ -208,6 +230,10 @@ class AuthInfo(AbstractModel):
 
     @property
     def SubjectName(self):
+        """主体名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubjectName
 
     @SubjectName.setter
@@ -216,6 +242,10 @@ class AuthInfo(AbstractModel):
 
     @property
     def ProjectName(self):
+        """项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProjectName
 
     @ProjectName.setter
@@ -224,6 +254,9 @@ class AuthInfo(AbstractModel):
 
     @property
     def AppScene(self):
+        """应用场景
+        :rtype: int
+        """
         return self._AppScene
 
     @AppScene.setter
@@ -232,6 +265,9 @@ class AuthInfo(AbstractModel):
 
     @property
     def AppRegion(self):
+        """应用地域
+        :rtype: int
+        """
         return self._AppRegion
 
     @AppRegion.setter
@@ -240,6 +276,9 @@ class AuthInfo(AbstractModel):
 
     @property
     def AuthPeriod(self):
+        """授权时间
+        :rtype: int
+        """
         return self._AuthPeriod
 
     @AuthPeriod.setter
@@ -248,6 +287,9 @@ class AuthInfo(AbstractModel):
 
     @property
     def Commercialization(self):
+        """是否可商业化
+        :rtype: int
+        """
         return self._Commercialization
 
     @Commercialization.setter
@@ -256,6 +298,9 @@ class AuthInfo(AbstractModel):
 
     @property
     def Platform(self):
+        """是否可跨平台
+        :rtype: int
+        """
         return self._Platform
 
     @Platform.setter
@@ -264,6 +309,9 @@ class AuthInfo(AbstractModel):
 
     @property
     def Id(self):
+        """加密后Id
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -304,6 +352,9 @@ class BatchDescribeKTVMusicDetailsRequest(AbstractModel):
 
     @property
     def MusicIds(self):
+        """歌曲Id列表，注：列表最大长度为50
+        :rtype: list of str
+        """
         return self._MusicIds
 
     @MusicIds.setter
@@ -343,6 +394,9 @@ class BatchDescribeKTVMusicDetailsResponse(AbstractModel):
 
     @property
     def KTVMusicDetailInfoSet(self):
+        """歌曲详情列表信息
+        :rtype: list of KTVMusicDetailInfo
+        """
         return self._KTVMusicDetailInfoSet
 
     @KTVMusicDetailInfoSet.setter
@@ -351,6 +405,9 @@ class BatchDescribeKTVMusicDetailsResponse(AbstractModel):
 
     @property
     def NotExistMusicIdSet(self):
+        """不存在的歌曲 ID 列表。
+        :rtype: list of str
+        """
         return self._NotExistMusicIdSet
 
     @NotExistMusicIdSet.setter
@@ -359,6 +416,9 @@ class BatchDescribeKTVMusicDetailsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -394,6 +454,9 @@ class ChorusClip(AbstractModel):
 
     @property
     def StartTime(self):
+        """副歌时间，单位：毫秒
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -402,6 +465,9 @@ class ChorusClip(AbstractModel):
 
     @property
     def EndTime(self):
+        """副歌结束时间，单位：毫秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -446,6 +512,10 @@ class CreateKTVRobotRequest(AbstractModel):
 
     @property
     def RTCSystem(self):
+        """RTC厂商类型，取值有：
+<li>TRTC</li>
+        :rtype: str
+        """
         return self._RTCSystem
 
     @RTCSystem.setter
@@ -454,6 +524,9 @@ class CreateKTVRobotRequest(AbstractModel):
 
     @property
     def JoinRoomInput(self):
+        """进房参数。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.JoinRoomInput`
+        """
         return self._JoinRoomInput
 
     @JoinRoomInput.setter
@@ -462,6 +535,9 @@ class CreateKTVRobotRequest(AbstractModel):
 
     @property
     def ApplicationLicenseInput(self):
+        """license基础信息
+        :rtype: :class:`tencentcloud.ame.v20190916.models.ApplicationLicenseInput`
+        """
         return self._ApplicationLicenseInput
 
     @ApplicationLicenseInput.setter
@@ -470,6 +546,9 @@ class CreateKTVRobotRequest(AbstractModel):
 
     @property
     def SyncRobotCommands(self):
+        """创建机器人时初始化参数。
+        :rtype: list of SyncRobotCommand
+        """
         return self._SyncRobotCommands
 
     @SyncRobotCommands.setter
@@ -518,6 +597,9 @@ class CreateKTVRobotResponse(AbstractModel):
 
     @property
     def RobotId(self):
+        """机器人Id。
+        :rtype: str
+        """
         return self._RobotId
 
     @RobotId.setter
@@ -526,6 +608,9 @@ class CreateKTVRobotResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -567,6 +652,9 @@ class DataInfo(AbstractModel):
 
     @property
     def Name(self):
+        """Song Name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -575,6 +663,9 @@ class DataInfo(AbstractModel):
 
     @property
     def Version(self):
+        """歌曲版本
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -583,6 +674,9 @@ class DataInfo(AbstractModel):
 
     @property
     def Duration(self):
+        """歌曲总时长（非试听时长）
+        :rtype: str
+        """
         return self._Duration
 
     @Duration.setter
@@ -591,6 +685,9 @@ class DataInfo(AbstractModel):
 
     @property
     def AuditionBegin(self):
+        """试听开始时间
+        :rtype: int
+        """
         return self._AuditionBegin
 
     @AuditionBegin.setter
@@ -599,6 +696,9 @@ class DataInfo(AbstractModel):
 
     @property
     def AuditionEnd(self):
+        """试听结束时间
+        :rtype: int
+        """
         return self._AuditionEnd
 
     @AuditionEnd.setter
@@ -607,6 +707,9 @@ class DataInfo(AbstractModel):
 
     @property
     def TagNames(self):
+        """标签名称
+        :rtype: list of str
+        """
         return self._TagNames
 
     @TagNames.setter
@@ -651,6 +754,9 @@ class DescribeAuthInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量：Offset=Offset+Limit
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -659,6 +765,9 @@ class DescribeAuthInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """数据条数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -667,6 +776,9 @@ class DescribeAuthInfoRequest(AbstractModel):
 
     @property
     def Key(self):
+        """搜索关键字
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -708,6 +820,9 @@ class DescribeAuthInfoResponse(AbstractModel):
 
     @property
     def AuthInfo(self):
+        """授权项目列表
+        :rtype: list of AuthInfo
+        """
         return self._AuthInfo
 
     @AuthInfo.setter
@@ -716,6 +831,9 @@ class DescribeAuthInfoResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -724,6 +842,9 @@ class DescribeAuthInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -756,6 +877,9 @@ class DescribeCloudMusicPurchasedRequest(AbstractModel):
 
     @property
     def AuthInfoId(self):
+        """授权项目Id
+        :rtype: str
+        """
         return self._AuthInfoId
 
     @AuthInfoId.setter
@@ -793,6 +917,10 @@ class DescribeCloudMusicPurchasedResponse(AbstractModel):
 
     @property
     def MusicOpenDetail(self):
+        """云音乐列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MusicOpenDetail
+        """
         return self._MusicOpenDetail
 
     @MusicOpenDetail.setter
@@ -801,6 +929,9 @@ class DescribeCloudMusicPurchasedResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -839,6 +970,9 @@ class DescribeCloudMusicRequest(AbstractModel):
 
     @property
     def MusicId(self):
+        """歌曲Id
+        :rtype: str
+        """
         return self._MusicId
 
     @MusicId.setter
@@ -847,6 +981,13 @@ class DescribeCloudMusicRequest(AbstractModel):
 
     @property
     def MusicType(self):
+        """歌曲类型，可选值有：
+<li>MP3-128K-FTW：含有水印的试听资源；</li>
+<li>MP3-320K-FTD-P：320kbps歌曲热门片段；</li>
+<li>MP3-320K-FTD：320kbps已核验歌曲完整资源。</li>
+默认为：MP3-128K-FTW
+        :rtype: str
+        """
         return self._MusicType
 
     @MusicType.setter
@@ -902,6 +1043,9 @@ class DescribeCloudMusicResponse(AbstractModel):
 
     @property
     def MusicId(self):
+        """歌曲Id
+        :rtype: str
+        """
         return self._MusicId
 
     @MusicId.setter
@@ -910,6 +1054,9 @@ class DescribeCloudMusicResponse(AbstractModel):
 
     @property
     def MusicName(self):
+        """歌曲名称
+        :rtype: str
+        """
         return self._MusicName
 
     @MusicName.setter
@@ -918,6 +1065,10 @@ class DescribeCloudMusicResponse(AbstractModel):
 
     @property
     def Duration(self):
+        """歌曲时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -926,6 +1077,9 @@ class DescribeCloudMusicResponse(AbstractModel):
 
     @property
     def MusicUrl(self):
+        """歌曲链接
+        :rtype: str
+        """
         return self._MusicUrl
 
     @MusicUrl.setter
@@ -934,6 +1088,10 @@ class DescribeCloudMusicResponse(AbstractModel):
 
     @property
     def MusicImageUrl(self):
+        """歌曲图片
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MusicImageUrl
 
     @MusicImageUrl.setter
@@ -942,6 +1100,10 @@ class DescribeCloudMusicResponse(AbstractModel):
 
     @property
     def Singers(self):
+        """歌手列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Singers
 
     @Singers.setter
@@ -950,6 +1112,9 @@ class DescribeCloudMusicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -981,6 +1146,9 @@ class DescribeItemByIdRequest(AbstractModel):
 
     @property
     def ItemIDs(self):
+        """歌曲ID，目前暂不支持批量查询
+        :rtype: str
+        """
         return self._ItemIDs
 
     @ItemIDs.setter
@@ -1018,6 +1186,10 @@ class DescribeItemByIdResponse(AbstractModel):
 
     @property
     def Items(self):
+        """歌曲信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Item
+        """
         return self._Items
 
     @Items.setter
@@ -1026,6 +1198,9 @@ class DescribeItemByIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1066,6 +1241,9 @@ class DescribeItemsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """offset (Default = 0)，(当前页-1) * Limit
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1074,6 +1252,9 @@ class DescribeItemsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """条数，必须大于0，最大值为30
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1082,6 +1263,9 @@ class DescribeItemsRequest(AbstractModel):
 
     @property
     def CategoryId(self):
+        """（电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从<a href="https://cloud.tencent.com/document/product/1155/40109">获取分类内容（Station）列表接口</a>中获取。
+        :rtype: str
+        """
         return self._CategoryId
 
     @CategoryId.setter
@@ -1090,6 +1274,9 @@ class DescribeItemsRequest(AbstractModel):
 
     @property
     def CategoryCode(self):
+        """（电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从<a href="https://cloud.tencent.com/document/product/1155/40109">获取分类内容（Station）列表接口</a>中获取。
+        :rtype: str
+        """
         return self._CategoryCode
 
     @CategoryCode.setter
@@ -1143,6 +1330,9 @@ class DescribeItemsResponse(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1151,6 +1341,9 @@ class DescribeItemsResponse(AbstractModel):
 
     @property
     def Size(self):
+        """当前页歌曲数量
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -1159,6 +1352,9 @@ class DescribeItemsResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数据条数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -1167,6 +1363,10 @@ class DescribeItemsResponse(AbstractModel):
 
     @property
     def HaveMore(self):
+        """剩余数量（total-offset-size），通过这个值判断是否
+还有下一页
+        :rtype: int
+        """
         return self._HaveMore
 
     @HaveMore.setter
@@ -1175,6 +1375,10 @@ class DescribeItemsResponse(AbstractModel):
 
     @property
     def Items(self):
+        """Items 歌曲列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Item
+        """
         return self._Items
 
     @Items.setter
@@ -1183,6 +1387,9 @@ class DescribeItemsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1218,6 +1425,9 @@ class DescribeKTVMusicDetailRequest(AbstractModel):
 
     @property
     def MusicId(self):
+        """曲目 Id
+        :rtype: str
+        """
         return self._MusicId
 
     @MusicId.setter
@@ -1272,6 +1482,9 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
 
     @property
     def KTVMusicBaseInfo(self):
+        """歌曲基础信息
+        :rtype: :class:`tencentcloud.ame.v20190916.models.KTVMusicBaseInfo`
+        """
         return self._KTVMusicBaseInfo
 
     @KTVMusicBaseInfo.setter
@@ -1280,6 +1493,9 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
 
     @property
     def PlayToken(self):
+        """播放凭证
+        :rtype: str
+        """
         return self._PlayToken
 
     @PlayToken.setter
@@ -1288,6 +1504,9 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
 
     @property
     def LyricsUrl(self):
+        """歌词下载地址
+        :rtype: str
+        """
         return self._LyricsUrl
 
     @LyricsUrl.setter
@@ -1296,6 +1515,9 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
 
     @property
     def DefinitionInfoSet(self):
+        """歌曲规格信息列表
+        :rtype: list of KTVMusicDefinitionInfo
+        """
         return self._DefinitionInfoSet
 
     @DefinitionInfoSet.setter
@@ -1304,6 +1526,9 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
 
     @property
     def MidiJsonUrl(self):
+        """音高数据文件下载地址
+        :rtype: str
+        """
         return self._MidiJsonUrl
 
     @MidiJsonUrl.setter
@@ -1312,6 +1537,9 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
 
     @property
     def ChorusClipSet(self):
+        """副歌片段数据列表
+        :rtype: list of ChorusClip
+        """
         return self._ChorusClipSet
 
     @ChorusClipSet.setter
@@ -1320,6 +1548,9 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
 
     @property
     def PreludeInterval(self):
+        """前奏间隔，单位：毫秒；注：若参数返回为0则无人声部分
+        :rtype: int
+        """
         return self._PreludeInterval
 
     @PreludeInterval.setter
@@ -1328,6 +1559,9 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1381,6 +1615,9 @@ class DescribeKTVMusicTagsResponse(AbstractModel):
 
     @property
     def TagGroupSet(self):
+        """标签分组列表
+        :rtype: list of KTVMusicTagGroup
+        """
         return self._TagGroupSet
 
     @TagGroupSet.setter
@@ -1389,6 +1626,9 @@ class DescribeKTVMusicTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1426,6 +1666,9 @@ class DescribeKTVPlaylistDetailRequest(AbstractModel):
 
     @property
     def PlaylistId(self):
+        """歌单Id
+        :rtype: str
+        """
         return self._PlaylistId
 
     @PlaylistId.setter
@@ -1434,6 +1677,9 @@ class DescribeKTVPlaylistDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1442,6 +1688,9 @@ class DescribeKTVPlaylistDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1483,6 +1732,9 @@ class DescribeKTVPlaylistDetailResponse(AbstractModel):
 
     @property
     def KTVMusicInfoSet(self):
+        """歌曲基础信息列表
+        :rtype: list of KTVMusicBaseInfo
+        """
         return self._KTVMusicInfoSet
 
     @KTVMusicInfoSet.setter
@@ -1491,6 +1743,9 @@ class DescribeKTVPlaylistDetailResponse(AbstractModel):
 
     @property
     def PlaylistBaseInfo(self):
+        """歌单基础信息
+        :rtype: :class:`tencentcloud.ame.v20190916.models.KTVPlaylistBaseInfo`
+        """
         return self._PlaylistBaseInfo
 
     @PlaylistBaseInfo.setter
@@ -1499,6 +1754,9 @@ class DescribeKTVPlaylistDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1544,6 +1802,12 @@ class DescribeKTVPlaylistsRequest(AbstractModel):
 
     @property
     def Type(self):
+        """歌单类型，取值有：
+·OfficialRec：官方推荐
+·Normal：自定义
+当该字段未填时，默认为取OfficialRec
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1552,6 +1816,10 @@ class DescribeKTVPlaylistsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+取值范围：Offset + Limit 不超过5000
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1560,6 +1828,10 @@ class DescribeKTVPlaylistsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+取值范围：Offset + Limit 不超过5000
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1601,6 +1873,9 @@ class DescribeKTVPlaylistsResponse(AbstractModel):
 
     @property
     def PlaylistBaseInfoSet(self):
+        """推荐歌单列表
+        :rtype: list of KTVPlaylistBaseInfo
+        """
         return self._PlaylistBaseInfoSet
 
     @PlaylistBaseInfoSet.setter
@@ -1609,6 +1884,9 @@ class DescribeKTVPlaylistsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """推荐歌单列表总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1617,6 +1895,9 @@ class DescribeKTVPlaylistsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1665,6 +1946,9 @@ class DescribeKTVRobotsRequest(AbstractModel):
 
     @property
     def RobotIds(self):
+        """机器人Id列表。
+        :rtype: list of str
+        """
         return self._RobotIds
 
     @RobotIds.setter
@@ -1673,6 +1957,12 @@ class DescribeKTVRobotsRequest(AbstractModel):
 
     @property
     def Statuses(self):
+        """机器人状态，取值有：
+<li>Play：播放</li>
+<li>Pause：暂停</li>
+<li>Destroy：销毁</li>
+        :rtype: list of str
+        """
         return self._Statuses
 
     @Statuses.setter
@@ -1681,6 +1971,10 @@ class DescribeKTVRobotsRequest(AbstractModel):
 
     @property
     def CreateTime(self):
+        """匹配创建时间在此时间段内的机器人。
+<li>包含所指定的头尾时间点。</li>
+        :rtype: :class:`tencentcloud.ame.v20190916.models.TimeRange`
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1689,6 +1983,9 @@ class DescribeKTVRobotsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1697,6 +1994,9 @@ class DescribeKTVRobotsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页返回的起始偏移量，默认值：10。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1742,6 +2042,9 @@ class DescribeKTVRobotsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """机器人总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1750,6 +2053,9 @@ class DescribeKTVRobotsResponse(AbstractModel):
 
     @property
     def KTVRobotInfoSet(self):
+        """机器人信息集合。
+        :rtype: list of KTVRobotInfo
+        """
         return self._KTVRobotInfoSet
 
     @KTVRobotInfoSet.setter
@@ -1758,6 +2064,9 @@ class DescribeKTVRobotsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1802,6 +2111,9 @@ class DescribeKTVSingerCategoriesResponse(AbstractModel):
 
     @property
     def GenderSet(self):
+        """歌手性别分类列表
+        :rtype: list of KTVSingerCategoryInfo
+        """
         return self._GenderSet
 
     @GenderSet.setter
@@ -1810,6 +2122,9 @@ class DescribeKTVSingerCategoriesResponse(AbstractModel):
 
     @property
     def AreaSet(self):
+        """歌手区域分类列表
+        :rtype: list of KTVSingerCategoryInfo
+        """
         return self._AreaSet
 
     @AreaSet.setter
@@ -1818,6 +2133,9 @@ class DescribeKTVSingerCategoriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1861,6 +2179,9 @@ class DescribeKTVSingerMusicsRequest(AbstractModel):
 
     @property
     def SingerId(self):
+        """歌手id
+        :rtype: str
+        """
         return self._SingerId
 
     @SingerId.setter
@@ -1869,6 +2190,9 @@ class DescribeKTVSingerMusicsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1877,6 +2201,9 @@ class DescribeKTVSingerMusicsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1918,6 +2245,9 @@ class DescribeKTVSingerMusicsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总曲目数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1926,6 +2256,9 @@ class DescribeKTVSingerMusicsResponse(AbstractModel):
 
     @property
     def KTVMusicInfoSet(self):
+        """KTV 曲目列表
+        :rtype: list of KTVMusicBaseInfo
+        """
         return self._KTVMusicInfoSet
 
     @KTVMusicInfoSet.setter
@@ -1934,6 +2267,9 @@ class DescribeKTVSingerMusicsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1987,6 +2323,10 @@ class DescribeKTVSingersRequest(AbstractModel):
 
     @property
     def SingerIds(self):
+        """歌手id集合，精确匹配歌手id
+<li> 数组长度限制10</li>
+        :rtype: list of str
+        """
         return self._SingerIds
 
     @SingerIds.setter
@@ -1995,6 +2335,11 @@ class DescribeKTVSingersRequest(AbstractModel):
 
     @property
     def Genders(self):
+        """歌手性别集合，不传为全部，精确匹配歌手性别类型，
+<li>数组长度限制1</li>
+<li>取值范围：直播互动曲库歌手分类信息接口，返回性别分类信息列表中，分类英文名</li>
+        :rtype: list of str
+        """
         return self._Genders
 
     @Genders.setter
@@ -2003,6 +2348,11 @@ class DescribeKTVSingersRequest(AbstractModel):
 
     @property
     def Areas(self):
+        """歌手区域集合，不传为全部，精确匹配歌手区域
+<li>数组长度限制10</li>
+<li>取值范围：直播互动曲库歌手分类信息接口，返回的区域分类信息列表中，分类英文名</li>
+        :rtype: list of str
+        """
         return self._Areas
 
     @Areas.setter
@@ -2011,6 +2361,10 @@ class DescribeKTVSingersRequest(AbstractModel):
 
     @property
     def Sort(self):
+        """排序方式。默认按照播放数倒序
+<li> Sort.Field 可选 PlayCount。</li>
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SortBy`
+        """
         return self._Sort
 
     @Sort.setter
@@ -2019,6 +2373,9 @@ class DescribeKTVSingersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2027,6 +2384,9 @@ class DescribeKTVSingersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2073,6 +2433,9 @@ class DescribeKTVSingersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总歌手数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2081,6 +2444,9 @@ class DescribeKTVSingersResponse(AbstractModel):
 
     @property
     def KTVSingerInfoSet(self):
+        """KTV歌手列表
+        :rtype: list of KTVSingerInfo
+        """
         return self._KTVSingerInfoSet
 
     @KTVSingerInfoSet.setter
@@ -2089,6 +2455,9 @@ class DescribeKTVSingersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2121,6 +2490,9 @@ class DescribeKTVSuggestionsRequest(AbstractModel):
 
     @property
     def KeyWord(self):
+        """联想关键词
+        :rtype: str
+        """
         return self._KeyWord
 
     @KeyWord.setter
@@ -2157,6 +2529,9 @@ class DescribeKTVSuggestionsResponse(AbstractModel):
 
     @property
     def KTVSuggestionInfoSet(self):
+        """联想词信息列表。返回总数最大为10。
+        :rtype: list of KTVSuggestionInfo
+        """
         return self._KTVSuggestionInfoSet
 
     @KTVSuggestionInfoSet.setter
@@ -2165,6 +2540,9 @@ class DescribeKTVSuggestionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2202,6 +2580,10 @@ class DescribeKTVTopListRequest(AbstractModel):
 
     @property
     def Type(self):
+        """榜单类型。默认Hot
+<li> Hot, 热歌榜。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2210,6 +2592,11 @@ class DescribeKTVTopListRequest(AbstractModel):
 
     @property
     def Period(self):
+        """榜单周期 默认为Week
+<li> Week, 周榜。</li>
+<li> Month, 月榜。</li>
+        :rtype: str
+        """
         return self._Period
 
     @Period.setter
@@ -2250,6 +2637,9 @@ class DescribeKTVTopListResponse(AbstractModel):
 
     @property
     def KTVMusicTopInfoSet(self):
+        """歌曲基础信息列表
+        :rtype: list of KTVMusicTopInfo
+        """
         return self._KTVMusicTopInfoSet
 
     @KTVMusicTopInfoSet.setter
@@ -2258,6 +2648,9 @@ class DescribeKTVTopListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """返回总条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2266,6 +2659,9 @@ class DescribeKTVTopListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2303,6 +2699,9 @@ class DescribeLyricRequest(AbstractModel):
 
     @property
     def ItemId(self):
+        """歌曲ID
+        :rtype: str
+        """
         return self._ItemId
 
     @ItemId.setter
@@ -2311,6 +2710,11 @@ class DescribeLyricRequest(AbstractModel):
 
     @property
     def SubItemType(self):
+        """格式，可选项，可不填写，默认值为：LRC-LRC。
+<li>LRC-LRC：歌词；</li>
+<li>JSON-ST：波形图。</li>
+        :rtype: str
+        """
         return self._SubItemType
 
     @SubItemType.setter
@@ -2349,6 +2753,10 @@ class DescribeLyricResponse(AbstractModel):
 
     @property
     def Lyric(self):
+        """歌词或者波形图详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.Lyric`
+        """
         return self._Lyric
 
     @Lyric.setter
@@ -2357,6 +2765,9 @@ class DescribeLyricResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2396,6 +2807,9 @@ Values:Y , N(default)
 
     @property
     def ItemId(self):
+        """歌曲ID
+        :rtype: str
+        """
         return self._ItemId
 
     @ItemId.setter
@@ -2404,6 +2818,9 @@ Values:Y , N(default)
 
     @property
     def IdentityId(self):
+        """在应用前端播放音乐C端用户的唯一标识。无需是账户信息，用户唯一标识即可。
+        :rtype: str
+        """
         return self._IdentityId
 
     @IdentityId.setter
@@ -2412,6 +2829,10 @@ Values:Y , N(default)
 
     @property
     def SubItemType(self):
+        """MP3-320K-FTD-P  为获取320kbps歌曲热门片段。
+MP3-320K-FTD 为获取320kbps已核验歌曲完整资源。
+        :rtype: str
+        """
         return self._SubItemType
 
     @SubItemType.setter
@@ -2420,6 +2841,10 @@ Values:Y , N(default)
 
     @property
     def Ssl(self):
+        """CDN URL Protocol:HTTP or HTTPS/SSL
+Values:Y , N(default)
+        :rtype: str
+        """
         return self._Ssl
 
     @Ssl.setter
@@ -2460,6 +2885,10 @@ class DescribeMusicResponse(AbstractModel):
 
     @property
     def Music(self):
+        """音乐相关信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.Music`
+        """
         return self._Music
 
     @Music.setter
@@ -2468,6 +2897,9 @@ class DescribeMusicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2499,6 +2931,9 @@ class DescribeMusicSaleStatusRequest(AbstractModel):
 
     @property
     def MusicIds(self):
+        """歌曲Id集合，可传单个，也可传多个，上线查询单次50个
+        :rtype: list of str
+        """
         return self._MusicIds
 
     @MusicIds.setter
@@ -2507,6 +2942,9 @@ class DescribeMusicSaleStatusRequest(AbstractModel):
 
     @property
     def PurchaseType(self):
+        """查询哪个渠道的数据，1为曲库包，2为单曲
+        :rtype: int
+        """
         return self._PurchaseType
 
     @PurchaseType.setter
@@ -2544,6 +2982,9 @@ class DescribeMusicSaleStatusResponse(AbstractModel):
 
     @property
     def MusicStatusSet(self):
+        """musicId对应歌曲状态
+        :rtype: list of MusicStatus
+        """
         return self._MusicStatusSet
 
     @MusicStatusSet.setter
@@ -2552,6 +2993,9 @@ class DescribeMusicSaleStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2589,6 +3033,9 @@ class DescribePackageItemsRequest(AbstractModel):
 
     @property
     def OrderId(self):
+        """订单id，从获取已购曲库包列表中获取
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -2597,6 +3044,9 @@ class DescribePackageItemsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """默认0，Offset=Offset+Length
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2605,6 +3055,9 @@ class DescribePackageItemsRequest(AbstractModel):
 
     @property
     def Length(self):
+        """默认20
+        :rtype: int
+        """
         return self._Length
 
     @Length.setter
@@ -2644,6 +3097,10 @@ class DescribePackageItemsResponse(AbstractModel):
 
     @property
     def PackageItems(self):
+        """已核销歌曲信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PackageItem
+        """
         return self._PackageItems
 
     @PackageItems.setter
@@ -2652,6 +3109,9 @@ class DescribePackageItemsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2686,6 +3146,9 @@ class DescribePackagesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """默认0，Offset=Offset+Length
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2694,6 +3157,9 @@ class DescribePackagesRequest(AbstractModel):
 
     @property
     def Length(self):
+        """默认20
+        :rtype: int
+        """
         return self._Length
 
     @Length.setter
@@ -2732,6 +3198,10 @@ class DescribePackagesResponse(AbstractModel):
 
     @property
     def Packages(self):
+        """已购曲库包列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Package
+        """
         return self._Packages
 
     @Packages.setter
@@ -2740,6 +3210,9 @@ class DescribePackagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2777,6 +3250,9 @@ class DescribePkgOfflineMusicRequest(AbstractModel):
 
     @property
     def PackageOrderId(self):
+        """订单id
+        :rtype: str
+        """
         return self._PackageOrderId
 
     @PackageOrderId.setter
@@ -2785,6 +3261,9 @@ class DescribePkgOfflineMusicRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条(注：单次上限为100)。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2793,6 +3272,9 @@ class DescribePkgOfflineMusicRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2834,6 +3316,9 @@ class DescribePkgOfflineMusicResponse(AbstractModel):
 
     @property
     def OfflineMusicSet(self):
+        """曲库包中不可用歌曲信息
+        :rtype: list of OfflineMusicDetail
+        """
         return self._OfflineMusicSet
 
     @OfflineMusicSet.setter
@@ -2842,6 +3327,9 @@ class DescribePkgOfflineMusicResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """返回总量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2850,6 +3338,9 @@ class DescribePkgOfflineMusicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2885,6 +3376,9 @@ class DescribeStationsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """条数，必须大于0
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2893,6 +3387,9 @@ class DescribeStationsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """offset (Default = 0)，Offset=Offset+Limit
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2943,6 +3440,9 @@ class DescribeStationsResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数量
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -2951,6 +3451,9 @@ class DescribeStationsResponse(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2959,6 +3462,9 @@ class DescribeStationsResponse(AbstractModel):
 
     @property
     def Size(self):
+        """当前页station数量
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -2967,6 +3473,9 @@ class DescribeStationsResponse(AbstractModel):
 
     @property
     def HaveMore(self):
+        """剩余数量（total-offset-size），通过这个值判断是否还有下一页
+        :rtype: int
+        """
         return self._HaveMore
 
     @HaveMore.setter
@@ -2975,6 +3484,10 @@ class DescribeStationsResponse(AbstractModel):
 
     @property
     def Stations(self):
+        """Stations 素材库列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Station
+        """
         return self._Stations
 
     @Stations.setter
@@ -2983,6 +3496,9 @@ class DescribeStationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3018,6 +3534,9 @@ class DestroyKTVRobotRequest(AbstractModel):
 
     @property
     def RobotId(self):
+        """机器人Id。
+        :rtype: str
+        """
         return self._RobotId
 
     @RobotId.setter
@@ -3051,6 +3570,9 @@ class DestroyKTVRobotResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3081,6 +3603,10 @@ class ImagePath(AbstractModel):
 
     @property
     def Key(self):
+        """station图片大小及类别
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -3089,6 +3615,10 @@ class ImagePath(AbstractModel):
 
     @property
     def Value(self):
+        """station图片地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -3139,6 +3669,9 @@ class Item(AbstractModel):
 
     @property
     def ItemID(self):
+        """Song ID
+        :rtype: str
+        """
         return self._ItemID
 
     @ItemID.setter
@@ -3147,6 +3680,10 @@ class Item(AbstractModel):
 
     @property
     def DataInfo(self):
+        """Song info
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.DataInfo`
+        """
         return self._DataInfo
 
     @DataInfo.setter
@@ -3155,6 +3692,10 @@ class Item(AbstractModel):
 
     @property
     def Album(self):
+        """专辑信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.Album`
+        """
         return self._Album
 
     @Album.setter
@@ -3163,6 +3704,10 @@ class Item(AbstractModel):
 
     @property
     def Artists(self):
+        """多个歌手集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Artist
+        """
         return self._Artists
 
     @Artists.setter
@@ -3171,6 +3716,10 @@ class Item(AbstractModel):
 
     @property
     def Status(self):
+        """歌曲状态，1:添加进购物车；2:核销进曲库包
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -3217,6 +3766,9 @@ class JoinRoomInput(AbstractModel):
 
     @property
     def TRTCJoinRoomInput(self):
+        """TRTC进房参数
+        :rtype: :class:`tencentcloud.ame.v20190916.models.TRTCJoinRoomInput`
+        """
         return self._TRTCJoinRoomInput
 
     @TRTCJoinRoomInput.setter
@@ -3273,6 +3825,9 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def MusicId(self):
+        """歌曲 Id
+        :rtype: str
+        """
         return self._MusicId
 
     @MusicId.setter
@@ -3281,6 +3836,9 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def Name(self):
+        """歌曲名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3289,6 +3847,9 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def SingerInfoSet(self):
+        """演唱者基础信息列表
+        :rtype: list of KTVSingerBaseInfo
+        """
         return self._SingerInfoSet
 
     @SingerInfoSet.setter
@@ -3297,6 +3858,9 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def SingerSet(self):
+        """已弃用，请使用SingerInfoSet
+        :rtype: list of str
+        """
         return self._SingerSet
 
     @SingerSet.setter
@@ -3305,6 +3869,9 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def LyricistSet(self):
+        """作词者列表
+        :rtype: list of str
+        """
         return self._LyricistSet
 
     @LyricistSet.setter
@@ -3313,6 +3880,9 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def ComposerSet(self):
+        """作曲者列表
+        :rtype: list of str
+        """
         return self._ComposerSet
 
     @ComposerSet.setter
@@ -3321,6 +3891,9 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def TagSet(self):
+        """标签列表
+        :rtype: list of str
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -3329,6 +3902,9 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def Duration(self):
+        """歌曲时长
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -3383,6 +3959,12 @@ class KTVMusicDefinitionInfo(AbstractModel):
 
     @property
     def Definition(self):
+        """规格，取值有：
+<li>audio/mi：低规格；</li>
+<li>audio/lo：中规格；</li>
+<li>audio/hi：高规格。</li>
+        :rtype: str
+        """
         return self._Definition
 
     @Definition.setter
@@ -3391,6 +3973,9 @@ class KTVMusicDefinitionInfo(AbstractModel):
 
     @property
     def Bitrate(self):
+        """码率，单位为 bps。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -3399,6 +3984,9 @@ class KTVMusicDefinitionInfo(AbstractModel):
 
     @property
     def Size(self):
+        """文件大小，单位为字节。
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -3452,6 +4040,9 @@ class KTVMusicDetailInfo(AbstractModel):
 
     @property
     def KTVMusicBaseInfo(self):
+        """即使广播曲库歌曲基础信息
+        :rtype: :class:`tencentcloud.ame.v20190916.models.KTVMusicBaseInfo`
+        """
         return self._KTVMusicBaseInfo
 
     @KTVMusicBaseInfo.setter
@@ -3460,6 +4051,9 @@ class KTVMusicDetailInfo(AbstractModel):
 
     @property
     def PlayToken(self):
+        """播放凭证
+        :rtype: str
+        """
         return self._PlayToken
 
     @PlayToken.setter
@@ -3468,6 +4062,9 @@ class KTVMusicDetailInfo(AbstractModel):
 
     @property
     def LyricsUrl(self):
+        """歌词下载地址
+        :rtype: str
+        """
         return self._LyricsUrl
 
     @LyricsUrl.setter
@@ -3476,6 +4073,9 @@ class KTVMusicDetailInfo(AbstractModel):
 
     @property
     def DefinitionInfoSet(self):
+        """歌曲规格信息列表
+        :rtype: list of KTVMusicDefinitionInfo
+        """
         return self._DefinitionInfoSet
 
     @DefinitionInfoSet.setter
@@ -3484,6 +4084,9 @@ class KTVMusicDetailInfo(AbstractModel):
 
     @property
     def MidiJsonUrl(self):
+        """音高数据文件下载地址
+        :rtype: str
+        """
         return self._MidiJsonUrl
 
     @MidiJsonUrl.setter
@@ -3492,6 +4095,9 @@ class KTVMusicDetailInfo(AbstractModel):
 
     @property
     def ChorusClipSet(self):
+        """副歌片段数据列表
+        :rtype: list of ChorusClip
+        """
         return self._ChorusClipSet
 
     @ChorusClipSet.setter
@@ -3500,6 +4106,9 @@ class KTVMusicDetailInfo(AbstractModel):
 
     @property
     def PreludeInterval(self):
+        """前奏间隔，单位：毫秒；注：若参数返回为0则无人声部分
+        :rtype: int
+        """
         return self._PreludeInterval
 
     @PreludeInterval.setter
@@ -3557,6 +4166,9 @@ class KTVMusicTagGroup(AbstractModel):
 
     @property
     def EnglishGroupName(self):
+        """标签分组英文名
+        :rtype: str
+        """
         return self._EnglishGroupName
 
     @EnglishGroupName.setter
@@ -3565,6 +4177,9 @@ class KTVMusicTagGroup(AbstractModel):
 
     @property
     def ChineseGroupName(self):
+        """标签分组中文名
+        :rtype: str
+        """
         return self._ChineseGroupName
 
     @ChineseGroupName.setter
@@ -3573,6 +4188,9 @@ class KTVMusicTagGroup(AbstractModel):
 
     @property
     def TagSet(self):
+        """标签分类下标签列表
+        :rtype: list of KTVMusicTagInfo
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -3616,6 +4234,9 @@ class KTVMusicTagInfo(AbstractModel):
 
     @property
     def TagId(self):
+        """标签Id
+        :rtype: str
+        """
         return self._TagId
 
     @TagId.setter
@@ -3624,6 +4245,9 @@ class KTVMusicTagInfo(AbstractModel):
 
     @property
     def TagName(self):
+        """标签
+        :rtype: str
+        """
         return self._TagName
 
     @TagName.setter
@@ -3676,6 +4300,9 @@ class KTVMusicTopInfo(AbstractModel):
 
     @property
     def MusicId(self):
+        """歌曲Id
+        :rtype: str
+        """
         return self._MusicId
 
     @MusicId.setter
@@ -3684,6 +4311,9 @@ class KTVMusicTopInfo(AbstractModel):
 
     @property
     def Name(self):
+        """歌曲名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3692,6 +4322,9 @@ class KTVMusicTopInfo(AbstractModel):
 
     @property
     def SingerInfoSet(self):
+        """歌手名称列表
+        :rtype: list of KTVSingerBaseInfo
+        """
         return self._SingerInfoSet
 
     @SingerInfoSet.setter
@@ -3700,6 +4333,9 @@ class KTVMusicTopInfo(AbstractModel):
 
     @property
     def LyricistSet(self):
+        """歌词名称列表
+        :rtype: list of str
+        """
         return self._LyricistSet
 
     @LyricistSet.setter
@@ -3708,6 +4344,9 @@ class KTVMusicTopInfo(AbstractModel):
 
     @property
     def ComposerSet(self):
+        """作曲列表
+        :rtype: list of str
+        """
         return self._ComposerSet
 
     @ComposerSet.setter
@@ -3716,6 +4355,9 @@ class KTVMusicTopInfo(AbstractModel):
 
     @property
     def TagSet(self):
+        """标签列表
+        :rtype: list of str
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -3724,6 +4366,9 @@ class KTVMusicTopInfo(AbstractModel):
 
     @property
     def Duration(self):
+        """播放时长
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -3777,6 +4422,9 @@ class KTVPlaylistBaseInfo(AbstractModel):
 
     @property
     def PlaylistId(self):
+        """歌单Id
+        :rtype: str
+        """
         return self._PlaylistId
 
     @PlaylistId.setter
@@ -3785,6 +4433,9 @@ class KTVPlaylistBaseInfo(AbstractModel):
 
     @property
     def Title(self):
+        """歌单标题
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -3793,6 +4444,9 @@ class KTVPlaylistBaseInfo(AbstractModel):
 
     @property
     def Description(self):
+        """歌单介绍
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3801,6 +4455,9 @@ class KTVPlaylistBaseInfo(AbstractModel):
 
     @property
     def MusicNum(self):
+        """歌曲数量
+        :rtype: int
+        """
         return self._MusicNum
 
     @MusicNum.setter
@@ -3875,6 +4532,9 @@ class KTVRobotInfo(AbstractModel):
 
     @property
     def RobotId(self):
+        """机器人Id。
+        :rtype: str
+        """
         return self._RobotId
 
     @RobotId.setter
@@ -3883,6 +4543,12 @@ class KTVRobotInfo(AbstractModel):
 
     @property
     def Status(self):
+        """状态，取值有：
+<li>Play：播放</li>
+<li>Pause：暂停</li>
+<li>Destroy：销毁</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3891,6 +4557,9 @@ class KTVRobotInfo(AbstractModel):
 
     @property
     def Playlists(self):
+        """播放列表。
+        :rtype: list of str
+        """
         return self._Playlists
 
     @Playlists.setter
@@ -3899,6 +4568,9 @@ class KTVRobotInfo(AbstractModel):
 
     @property
     def CurIndex(self):
+        """当前歌单索引位置。
+        :rtype: int
+        """
         return self._CurIndex
 
     @CurIndex.setter
@@ -3907,6 +4579,9 @@ class KTVRobotInfo(AbstractModel):
 
     @property
     def Position(self):
+        """播放进度，单位：毫秒。
+        :rtype: int
+        """
         return self._Position
 
     @Position.setter
@@ -3915,6 +4590,9 @@ class KTVRobotInfo(AbstractModel):
 
     @property
     def SetAudioParamInput(self):
+        """音频参数。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SetAudioParamCommandInput`
+        """
         return self._SetAudioParamInput
 
     @SetAudioParamInput.setter
@@ -3923,6 +4601,9 @@ class KTVRobotInfo(AbstractModel):
 
     @property
     def JoinRoomInput(self):
+        """进房信息。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.JoinRoomInput`
+        """
         return self._JoinRoomInput
 
     @JoinRoomInput.setter
@@ -3931,6 +4612,10 @@ class KTVRobotInfo(AbstractModel):
 
     @property
     def RTCSystem(self):
+        """RTC厂商类型，取值有：
+<li>TRTC</li>
+        :rtype: str
+        """
         return self._RTCSystem
 
     @RTCSystem.setter
@@ -3939,6 +4624,13 @@ class KTVRobotInfo(AbstractModel):
 
     @property
     def SetPlayModeInput(self):
+        """播放模式，PlayMode取值有：
+<li>RepeatPlaylist：列表循环</li>
+<li>Order：顺序播放</li>
+<li>RepeatSingle：单曲循环</li>
+<li>Shuffle：随机播放</li>
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SetPlayModeCommandInput`
+        """
         return self._SetPlayModeInput
 
     @SetPlayModeInput.setter
@@ -3947,6 +4639,9 @@ class KTVRobotInfo(AbstractModel):
 
     @property
     def SetVolumeInput(self):
+        """<del>音量，范围 0~100，默认为 50。</del>（已废弃，请采用 SetRealVolumeInput ）
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SetVolumeCommandInput`
+        """
         return self._SetVolumeInput
 
     @SetVolumeInput.setter
@@ -3955,6 +4650,9 @@ class KTVRobotInfo(AbstractModel):
 
     @property
     def SetRealVolumeInput(self):
+        """真实音量，范围 0~100，默认为 50。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SetRealVolumeCommandInput`
+        """
         return self._SetRealVolumeInput
 
     @SetRealVolumeInput.setter
@@ -4011,6 +4709,9 @@ class KTVSingerBaseInfo(AbstractModel):
 
     @property
     def SingerId(self):
+        """歌手id
+        :rtype: str
+        """
         return self._SingerId
 
     @SingerId.setter
@@ -4019,6 +4720,9 @@ class KTVSingerBaseInfo(AbstractModel):
 
     @property
     def Name(self):
+        """歌手名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4056,6 +4760,9 @@ class KTVSingerCategoryInfo(AbstractModel):
 
     @property
     def ChineseName(self):
+        """分类中文名
+        :rtype: str
+        """
         return self._ChineseName
 
     @ChineseName.setter
@@ -4064,6 +4771,9 @@ class KTVSingerCategoryInfo(AbstractModel):
 
     @property
     def EnglishName(self):
+        """分类英文名
+        :rtype: str
+        """
         return self._EnglishName
 
     @EnglishName.setter
@@ -4113,6 +4823,9 @@ class KTVSingerInfo(AbstractModel):
 
     @property
     def SingerId(self):
+        """歌手id
+        :rtype: str
+        """
         return self._SingerId
 
     @SingerId.setter
@@ -4121,6 +4834,9 @@ class KTVSingerInfo(AbstractModel):
 
     @property
     def Name(self):
+        """歌手名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4129,6 +4845,9 @@ class KTVSingerInfo(AbstractModel):
 
     @property
     def Gender(self):
+        """歌手性别: 男，女，组合
+        :rtype: str
+        """
         return self._Gender
 
     @Gender.setter
@@ -4137,6 +4856,9 @@ class KTVSingerInfo(AbstractModel):
 
     @property
     def Area(self):
+        """地区: 大陆，港台，欧美，日本
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -4145,6 +4867,9 @@ class KTVSingerInfo(AbstractModel):
 
     @property
     def MusicCount(self):
+        """歌曲数
+        :rtype: int
+        """
         return self._MusicCount
 
     @MusicCount.setter
@@ -4153,6 +4878,9 @@ class KTVSingerInfo(AbstractModel):
 
     @property
     def PlayCount(self):
+        """歌曲总播放次数
+        :rtype: int
+        """
         return self._PlayCount
 
     @PlayCount.setter
@@ -4191,6 +4919,9 @@ class KTVSuggestionInfo(AbstractModel):
 
     @property
     def Suggestion(self):
+        """联想词
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -4230,6 +4961,9 @@ class Lyric(AbstractModel):
 
     @property
     def Url(self):
+        """歌词cdn地址
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -4238,6 +4972,9 @@ class Lyric(AbstractModel):
 
     @property
     def FileNameExt(self):
+        """歌词后缀名
+        :rtype: str
+        """
         return self._FileNameExt
 
     @FileNameExt.setter
@@ -4246,6 +4983,9 @@ class Lyric(AbstractModel):
 
     @property
     def SubItemType(self):
+        """歌词类型
+        :rtype: str
+        """
         return self._SubItemType
 
     @SubItemType.setter
@@ -4284,6 +5024,9 @@ class ModifyMusicOnShelvesRequest(AbstractModel):
 
     @property
     def MusicDetailInfos(self):
+        """歌曲变更信息
+        :rtype: :class:`tencentcloud.ame.v20190916.models.MusicDetailInfo`
+        """
         return self._MusicDetailInfos
 
     @MusicDetailInfos.setter
@@ -4292,6 +5035,9 @@ class ModifyMusicOnShelvesRequest(AbstractModel):
 
     @property
     def AmeKey(self):
+        """ame对接资源方密钥
+        :rtype: str
+        """
         return self._AmeKey
 
     @AmeKey.setter
@@ -4328,6 +5074,9 @@ class ModifyMusicOnShelvesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4371,6 +5120,9 @@ Unit :ms
 
     @property
     def Url(self):
+        """音乐播放链接相对路径，必须通过在正版曲库直通车控制台上登记的域名进行拼接。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -4379,6 +5131,9 @@ Unit :ms
 
     @property
     def FileSize(self):
+        """音频文件大小
+        :rtype: int
+        """
         return self._FileSize
 
     @FileSize.setter
@@ -4387,6 +5142,9 @@ Unit :ms
 
     @property
     def FileExtension(self):
+        """音频文件类型
+        :rtype: str
+        """
         return self._FileExtension
 
     @FileExtension.setter
@@ -4395,6 +5153,10 @@ Unit :ms
 
     @property
     def AuditionBegin(self):
+        """Song fragment start.试听片段开始时间，试听时长为auditionEnd-auditionBegin
+Unit :ms
+        :rtype: int
+        """
         return self._AuditionBegin
 
     @AuditionBegin.setter
@@ -4403,6 +5165,10 @@ Unit :ms
 
     @property
     def AuditionEnd(self):
+        """Song fragment end.试听片段结束时间, 试听时长为auditionEnd-auditionBegin
+Unit :ms
+        :rtype: int
+        """
         return self._AuditionEnd
 
     @AuditionEnd.setter
@@ -4411,6 +5177,10 @@ Unit :ms
 
     @property
     def FullUrl(self):
+        """音乐播放链接全路径，前提是在正版曲库直通车控制台添加过域名，否则返回空字符。
+如果添加过多个域名只返回第一个添加域名的播放全路径。
+        :rtype: str
+        """
         return self._FullUrl
 
     @FullUrl.setter
@@ -4482,6 +5252,9 @@ class MusicDetailInfo(AbstractModel):
 
     @property
     def MusicId(self):
+        """资源方音乐Id
+        :rtype: str
+        """
         return self._MusicId
 
     @MusicId.setter
@@ -4490,6 +5263,9 @@ class MusicDetailInfo(AbstractModel):
 
     @property
     def AmeId(self):
+        """资源方识别信息
+        :rtype: str
+        """
         return self._AmeId
 
     @AmeId.setter
@@ -4498,6 +5274,9 @@ class MusicDetailInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """分类标签
+        :rtype: list of str
+        """
         return self._Tags
 
     @Tags.setter
@@ -4506,6 +5285,9 @@ class MusicDetailInfo(AbstractModel):
 
     @property
     def HitWords(self):
+        """关键词
+        :rtype: list of str
+        """
         return self._HitWords
 
     @HitWords.setter
@@ -4514,6 +5296,9 @@ class MusicDetailInfo(AbstractModel):
 
     @property
     def Bpm(self):
+        """节奏信息
+        :rtype: int
+        """
         return self._Bpm
 
     @Bpm.setter
@@ -4522,6 +5307,9 @@ class MusicDetailInfo(AbstractModel):
 
     @property
     def Score(self):
+        """商业化权益
+        :rtype: float
+        """
         return self._Score
 
     @Score.setter
@@ -4530,6 +5318,9 @@ class MusicDetailInfo(AbstractModel):
 
     @property
     def Scene(self):
+        """应用歌曲信息,1.图文/短视频,2.网络直播,3.网络电台FM,4.免费游戏,5.商业游戏,6.网店网站设计,7.广告营销,8.网络长视频
+        :rtype: list of str
+        """
         return self._Scene
 
     @Scene.setter
@@ -4538,6 +5329,9 @@ class MusicDetailInfo(AbstractModel):
 
     @property
     def Region(self):
+        """应用地域,1. 中国大陆,2. 中国含港澳台,3. 全球
+        :rtype: list of str
+        """
         return self._Region
 
     @Region.setter
@@ -4546,6 +5340,9 @@ class MusicDetailInfo(AbstractModel):
 
     @property
     def AuthPeriod(self):
+        """授权时间,1. 1年, 5. 随片永久
+        :rtype: str
+        """
         return self._AuthPeriod
 
     @AuthPeriod.setter
@@ -4554,6 +5351,9 @@ class MusicDetailInfo(AbstractModel):
 
     @property
     def Commercialization(self):
+        """商业化授权，1. 支持商业化 ,2. 不支持商业化
+        :rtype: str
+        """
         return self._Commercialization
 
     @Commercialization.setter
@@ -4562,6 +5362,9 @@ class MusicDetailInfo(AbstractModel):
 
     @property
     def Platform(self):
+        """跨平台传播，1. 支持跨平台传播 ,2. 不支持跨平台传播
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -4570,6 +5373,9 @@ class MusicDetailInfo(AbstractModel):
 
     @property
     def Channel(self):
+        """传播渠道
+        :rtype: str
+        """
         return self._Channel
 
     @Channel.setter
@@ -4651,6 +5457,10 @@ class MusicOpenDetail(AbstractModel):
 
     @property
     def MusicId(self):
+        """音乐Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MusicId
 
     @MusicId.setter
@@ -4659,6 +5469,10 @@ class MusicOpenDetail(AbstractModel):
 
     @property
     def AlbumName(self):
+        """专辑名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AlbumName
 
     @AlbumName.setter
@@ -4667,6 +5481,10 @@ class MusicOpenDetail(AbstractModel):
 
     @property
     def AlbumImageUrl(self):
+        """专辑图片路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AlbumImageUrl
 
     @AlbumImageUrl.setter
@@ -4675,6 +5493,10 @@ class MusicOpenDetail(AbstractModel):
 
     @property
     def MusicName(self):
+        """音乐名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MusicName
 
     @MusicName.setter
@@ -4683,6 +5505,10 @@ class MusicOpenDetail(AbstractModel):
 
     @property
     def MusicImageUrl(self):
+        """音乐图片路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MusicImageUrl
 
     @MusicImageUrl.setter
@@ -4691,6 +5517,10 @@ class MusicOpenDetail(AbstractModel):
 
     @property
     def Singers(self):
+        """歌手
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Singers
 
     @Singers.setter
@@ -4699,6 +5529,10 @@ class MusicOpenDetail(AbstractModel):
 
     @property
     def Duration(self):
+        """播放时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -4707,6 +5541,10 @@ class MusicOpenDetail(AbstractModel):
 
     @property
     def Tags(self):
+        """标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Tags
 
     @Tags.setter
@@ -4715,6 +5553,10 @@ class MusicOpenDetail(AbstractModel):
 
     @property
     def LyricUrl(self):
+        """歌词url
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LyricUrl
 
     @LyricUrl.setter
@@ -4723,6 +5565,10 @@ class MusicOpenDetail(AbstractModel):
 
     @property
     def WaveformUrl(self):
+        """波形图url
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WaveformUrl
 
     @WaveformUrl.setter
@@ -4768,6 +5614,9 @@ class MusicStatus(AbstractModel):
 
     @property
     def MusicId(self):
+        """歌曲Id
+        :rtype: str
+        """
         return self._MusicId
 
     @MusicId.setter
@@ -4776,6 +5625,9 @@ class MusicStatus(AbstractModel):
 
     @property
     def SaleStatus(self):
+        """在售状态,0为在售，1为临时下架，2为永久下架
+        :rtype: int
+        """
         return self._SaleStatus
 
     @SaleStatus.setter
@@ -4819,6 +5671,9 @@ class OfflineMusicDetail(AbstractModel):
 
     @property
     def ItemId(self):
+        """歌曲Id
+        :rtype: str
+        """
         return self._ItemId
 
     @ItemId.setter
@@ -4827,6 +5682,9 @@ class OfflineMusicDetail(AbstractModel):
 
     @property
     def MusicName(self):
+        """歌曲名称
+        :rtype: str
+        """
         return self._MusicName
 
     @MusicName.setter
@@ -4835,6 +5693,9 @@ class OfflineMusicDetail(AbstractModel):
 
     @property
     def OffRemark(self):
+        """不可用原因
+        :rtype: str
+        """
         return self._OffRemark
 
     @OffRemark.setter
@@ -4843,6 +5704,9 @@ class OfflineMusicDetail(AbstractModel):
 
     @property
     def OffTime(self):
+        """不可用时间
+        :rtype: str
+        """
         return self._OffTime
 
     @OffTime.setter
@@ -4909,6 +5773,9 @@ class Package(AbstractModel):
 
     @property
     def OrderId(self):
+        """订单id
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -4917,6 +5784,9 @@ class Package(AbstractModel):
 
     @property
     def Name(self):
+        """曲库包名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4925,6 +5795,9 @@ class Package(AbstractModel):
 
     @property
     def AuthorizedArea(self):
+        """授权地区-global: 全球  CN: 中国
+        :rtype: str
+        """
         return self._AuthorizedArea
 
     @AuthorizedArea.setter
@@ -4933,6 +5806,9 @@ class Package(AbstractModel):
 
     @property
     def AuthorizedLimit(self):
+        """授权次数
+        :rtype: int
+        """
         return self._AuthorizedLimit
 
     @AuthorizedLimit.setter
@@ -4941,6 +5817,9 @@ class Package(AbstractModel):
 
     @property
     def TermOfValidity(self):
+        """套餐有效期，单位:天
+        :rtype: int
+        """
         return self._TermOfValidity
 
     @TermOfValidity.setter
@@ -4949,6 +5828,9 @@ class Package(AbstractModel):
 
     @property
     def Commercial(self):
+        """0:不可商业化；1:可商业化
+        :rtype: int
+        """
         return self._Commercial
 
     @Commercial.setter
@@ -4957,6 +5839,9 @@ class Package(AbstractModel):
 
     @property
     def PackagePrice(self):
+        """套餐价格，单位：元
+        :rtype: float
+        """
         return self._PackagePrice
 
     @PackagePrice.setter
@@ -4965,6 +5850,9 @@ class Package(AbstractModel):
 
     @property
     def EffectTime(self):
+        """生效开始时间,格式yyyy-MM-dd HH:mm:ss
+        :rtype: str
+        """
         return self._EffectTime
 
     @EffectTime.setter
@@ -4973,6 +5861,9 @@ class Package(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """生效结束时间,格式yyyy-MM-dd HH:mm:ss
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -4981,6 +5872,9 @@ class Package(AbstractModel):
 
     @property
     def UsedCount(self):
+        """剩余授权次数
+        :rtype: int
+        """
         return self._UsedCount
 
     @UsedCount.setter
@@ -4989,6 +5883,9 @@ class Package(AbstractModel):
 
     @property
     def UseRanges(self):
+        """曲库包用途信息
+        :rtype: list of UseRange
+        """
         return self._UseRanges
 
     @UseRanges.setter
@@ -5058,6 +5955,9 @@ class PackageItem(AbstractModel):
 
     @property
     def OrderId(self):
+        """订单id
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -5066,6 +5966,9 @@ class PackageItem(AbstractModel):
 
     @property
     def TrackName(self):
+        """歌曲名
+        :rtype: str
+        """
         return self._TrackName
 
     @TrackName.setter
@@ -5074,6 +5977,9 @@ class PackageItem(AbstractModel):
 
     @property
     def ItemID(self):
+        """歌曲ID
+        :rtype: str
+        """
         return self._ItemID
 
     @ItemID.setter
@@ -5082,6 +5988,9 @@ class PackageItem(AbstractModel):
 
     @property
     def Img(self):
+        """专辑图片
+        :rtype: str
+        """
         return self._Img
 
     @Img.setter
@@ -5090,6 +5999,9 @@ class PackageItem(AbstractModel):
 
     @property
     def ArtistName(self):
+        """歌手名
+        :rtype: str
+        """
         return self._ArtistName
 
     @ArtistName.setter
@@ -5098,6 +6010,9 @@ class PackageItem(AbstractModel):
 
     @property
     def Duration(self):
+        """歌曲时长
+        :rtype: str
+        """
         return self._Duration
 
     @Duration.setter
@@ -5106,6 +6021,9 @@ class PackageItem(AbstractModel):
 
     @property
     def AuthorizedArea(self):
+        """授权区域，global: 全球 CN: 中国
+        :rtype: str
+        """
         return self._AuthorizedArea
 
     @AuthorizedArea.setter
@@ -5114,6 +6032,9 @@ class PackageItem(AbstractModel):
 
     @property
     def Tags(self):
+        """标签数组
+        :rtype: list of str
+        """
         return self._Tags
 
     @Tags.setter
@@ -5154,6 +6075,9 @@ class PlayCommandInput(AbstractModel):
 
     @property
     def Index(self):
+        """歌曲位置索引。
+        :rtype: int
+        """
         return self._Index
 
     @Index.setter
@@ -5187,6 +6111,9 @@ class PutMusicOnTheShelvesRequest(AbstractModel):
 
     @property
     def MusicIds(self):
+        """资源方歌曲Id
+        :rtype: list of str
+        """
         return self._MusicIds
 
     @MusicIds.setter
@@ -5230,6 +6157,9 @@ class PutMusicOnTheShelvesResponse(AbstractModel):
 
     @property
     def SuccessNum(self):
+        """操作成功数量
+        :rtype: int
+        """
         return self._SuccessNum
 
     @SuccessNum.setter
@@ -5238,6 +6168,9 @@ class PutMusicOnTheShelvesResponse(AbstractModel):
 
     @property
     def FailedNum(self):
+        """操作失败数量
+        :rtype: int
+        """
         return self._FailedNum
 
     @FailedNum.setter
@@ -5246,6 +6179,10 @@ class PutMusicOnTheShelvesResponse(AbstractModel):
 
     @property
     def FailedMusicIds(self):
+        """失败歌曲Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._FailedMusicIds
 
     @FailedMusicIds.setter
@@ -5254,6 +6191,9 @@ class PutMusicOnTheShelvesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5294,6 +6234,21 @@ https://github.com/tencentyun/ame-documents
 
     @property
     def ReportData(self):
+        """上报数据
+注:reportData为客户端压缩后的上报数据进行16进制转换的字符串数据
+压缩说明：
+a) 上报的json格式字符串通过流的转换（ByteArrayInputStream, java.util.zip.GZIPOutputStream），获取到压缩后的字节数组。
+b) 将压缩后的字节数组转成16进制字符串。
+
+reportData由两部分数据组成：
+1）report_type（上报类型）
+2）data（歌曲上报数据）
+不同的report_type对应的data数据结构不一样。
+
+详细说明请参考文档reportdata.docx：
+https://github.com/tencentyun/ame-documents
+        :rtype: str
+        """
         return self._ReportData
 
     @ReportData.setter
@@ -5327,6 +6282,9 @@ class ReportDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5369,6 +6327,9 @@ class SearchKTVMusicsRequest(AbstractModel):
 
     @property
     def KeyWord(self):
+        """搜索关键词
+        :rtype: str
+        """
         return self._KeyWord
 
     @KeyWord.setter
@@ -5377,6 +6338,10 @@ class SearchKTVMusicsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+取值范围：Offset + Limit 不超过5000。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5385,6 +6350,9 @@ class SearchKTVMusicsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页返回的起始偏移量，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5393,6 +6361,12 @@ class SearchKTVMusicsRequest(AbstractModel):
 
     @property
     def Sort(self):
+        """排序方式。默认按照匹配度排序
+<li> Sort.Field 可选 CreateTime</li>
+<li> Sort.Order 可选 Desc </li>
+<li> 当 KeyWord 不为空时，Sort.Field 字段无效， 搜索结果将以匹配度排序。</li>
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SortBy`
+        """
         return self._Sort
 
     @Sort.setter
@@ -5401,6 +6375,10 @@ class SearchKTVMusicsRequest(AbstractModel):
 
     @property
     def TagIds(self):
+        """标签 ID 集合，匹配集合指定所有 ID 。
+<li>数组长度限制：10。</li>
+        :rtype: list of str
+        """
         return self._TagIds
 
     @TagIds.setter
@@ -5446,6 +6424,9 @@ class SearchKTVMusicsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总记录数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5454,6 +6435,9 @@ class SearchKTVMusicsResponse(AbstractModel):
 
     @property
     def KTVMusicInfoSet(self):
+        """KTV 曲目列表
+        :rtype: list of KTVMusicBaseInfo
+        """
         return self._KTVMusicInfoSet
 
     @KTVMusicInfoSet.setter
@@ -5462,6 +6446,9 @@ class SearchKTVMusicsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5494,6 +6481,9 @@ class SeekCommandInput(AbstractModel):
 
     @property
     def Position(self):
+        """播放位置，单位：毫秒。
+        :rtype: int
+        """
         return self._Position
 
     @Position.setter
@@ -5530,6 +6520,9 @@ class SendMessageCommandInput(AbstractModel):
 
     @property
     def Message(self):
+        """自定义消息，json格式字符串。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -5538,6 +6531,9 @@ class SendMessageCommandInput(AbstractModel):
 
     @property
     def Repeat(self):
+        """消息重复次数，默认为 1。
+        :rtype: int
+        """
         return self._Repeat
 
     @Repeat.setter
@@ -5580,6 +6576,12 @@ class SetAudioParamCommandInput(AbstractModel):
 
     @property
     def Definition(self):
+        """规格，取值有：
+<li>audio/mi：低规格</li>
+<li>audio/lo：中规格</li>
+<li>audio/hi：高规格</li>
+        :rtype: str
+        """
         return self._Definition
 
     @Definition.setter
@@ -5588,6 +6590,11 @@ class SetAudioParamCommandInput(AbstractModel):
 
     @property
     def Type(self):
+        """音频类型，取值有：
+<li>Original：原唱</li>
+<li>Accompaniment：伴奏</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -5628,6 +6635,12 @@ class SetDestroyModeCommandInput(AbstractModel):
 
     @property
     def DestroyMode(self):
+        """销毁模式，取值有：
+<li>Auto：房间没人时自动销毁</li>
+<li>Expire：房间没人时过期自动销毁</li>
+<li>Never：不自动销毁，需手动销毁</li>默认为：Auto。
+        :rtype: str
+        """
         return self._DestroyMode
 
     @DestroyMode.setter
@@ -5636,6 +6649,9 @@ class SetDestroyModeCommandInput(AbstractModel):
 
     @property
     def DestroyExpireTime(self):
+        """过期销毁时间，单位：秒，当DestroyMode取Expire时必填。
+        :rtype: int
+        """
         return self._DestroyExpireTime
 
     @DestroyExpireTime.setter
@@ -5674,6 +6690,13 @@ class SetPlayModeCommandInput(AbstractModel):
 
     @property
     def PlayMode(self):
+        """播放模式，取值有：
+<li>RepeatPlaylist：列表循环</li>
+<li>Order：顺序播放</li>
+<li>RepeatSingle：单曲循环</li>
+<li>Shuffle：随机播放</li>
+        :rtype: str
+        """
         return self._PlayMode
 
     @PlayMode.setter
@@ -5727,6 +6750,13 @@ class SetPlaylistCommandInput(AbstractModel):
 
     @property
     def Type(self):
+        """变更类型，取值有：
+<li>Add：添加</li>
+<li>Delete：删除</li>
+<li>ClearList：清空歌曲列表</li>
+<li>Move：移动歌曲</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -5735,6 +6765,12 @@ class SetPlaylistCommandInput(AbstractModel):
 
     @property
     def Index(self):
+        """歌单索引位置，
+当 Type 取 Add 时，-1表示添加在列表最后位置，大于-1表示要添加的位置；
+当 Type 取 Delete 时，表示待删除歌曲的位置；
+当 Type 取 Move 时，表示待调整歌曲的位置。
+        :rtype: int
+        """
         return self._Index
 
     @Index.setter
@@ -5743,6 +6779,9 @@ class SetPlaylistCommandInput(AbstractModel):
 
     @property
     def ChangedIndex(self):
+        """当 Type 取 Move 时，必填，表示移动歌曲的目标位置。
+        :rtype: int
+        """
         return self._ChangedIndex
 
     @ChangedIndex.setter
@@ -5751,6 +6790,9 @@ class SetPlaylistCommandInput(AbstractModel):
 
     @property
     def MusicIds(self):
+        """歌曲 ID 列表，当 Type 取 Add 时，与MusicURLs必填其中一项。
+        :rtype: list of str
+        """
         return self._MusicIds
 
     @MusicIds.setter
@@ -5759,6 +6801,10 @@ class SetPlaylistCommandInput(AbstractModel):
 
     @property
     def MusicURLs(self):
+        """歌曲 URL 列表，当 Type 取 Add 时，与MusicIds必填其中一项。
+注：URL必须以.mp3结尾且必须是mp3编码文件。
+        :rtype: list of str
+        """
         return self._MusicURLs
 
     @MusicURLs.setter
@@ -5796,6 +6842,9 @@ class SetRealVolumeCommandInput(AbstractModel):
 
     @property
     def RealVolume(self):
+        """真实音量大小，取值范围为 0~100，默认值为 50。
+        :rtype: int
+        """
         return self._RealVolume
 
     @RealVolume.setter
@@ -5829,6 +6878,9 @@ class SetVolumeCommandInput(AbstractModel):
 
     @property
     def Volume(self):
+        """音量大小，取值范围为 0~100，默认值为 50。
+        :rtype: int
+        """
         return self._Volume
 
     @Volume.setter
@@ -5865,6 +6917,9 @@ class SortBy(AbstractModel):
 
     @property
     def Field(self):
+        """排序字段
+        :rtype: str
+        """
         return self._Field
 
     @Field.setter
@@ -5873,6 +6928,9 @@ class SortBy(AbstractModel):
 
     @property
     def Order(self):
+        """排序方式，可选值：Asc（升序）、Desc（降序）
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -5923,6 +6981,9 @@ class Station(AbstractModel):
 
     @property
     def CategoryID(self):
+        """StationID
+        :rtype: str
+        """
         return self._CategoryID
 
     @CategoryID.setter
@@ -5931,6 +6992,10 @@ class Station(AbstractModel):
 
     @property
     def CategoryCode(self):
+        """Station MCCode
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CategoryCode
 
     @CategoryCode.setter
@@ -5939,6 +7004,10 @@ class Station(AbstractModel):
 
     @property
     def Name(self):
+        """Category Name
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5947,6 +7016,10 @@ class Station(AbstractModel):
 
     @property
     def Rank(self):
+        """Station的排序值，供参考（返回结果已按其升序）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Rank
 
     @Rank.setter
@@ -5955,6 +7028,10 @@ class Station(AbstractModel):
 
     @property
     def ImagePathMap(self):
+        """station图片集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ImagePath
+        """
         return self._ImagePathMap
 
     @ImagePathMap.setter
@@ -6040,6 +7117,9 @@ class SyncKTVRobotCommandRequest(AbstractModel):
 
     @property
     def RobotId(self):
+        """机器人Id。
+        :rtype: str
+        """
         return self._RobotId
 
     @RobotId.setter
@@ -6048,6 +7128,21 @@ class SyncKTVRobotCommandRequest(AbstractModel):
 
     @property
     def Command(self):
+        """指令，取值有：
+<li>Play：播放</li>
+<li>Pause：暂停</li>
+<li>SwitchPrevious：上一首</li>
+<li>SwitchNext：下一首</li>
+<li>SetPlayMode：设置播放模式</li>
+<li>Seek：调整播放进度</li>
+<li>SetPlaylist：歌单变更</li>
+<li>SetAudioParam：音频参数变更</li>
+<li>SendMessage：发送自定义消息</li>
+<li>SetDestroyMode：设置销毁模式</li>
+<li><del>SetVolume：设置音量</del>（已废弃，请采用 SetRealVolume）</li>
+<li>SetRealVolume：设置真实音量</li>
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -6056,6 +7151,9 @@ class SyncKTVRobotCommandRequest(AbstractModel):
 
     @property
     def PlayCommandInput(self):
+        """播放参数。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.PlayCommandInput`
+        """
         return self._PlayCommandInput
 
     @PlayCommandInput.setter
@@ -6064,6 +7162,9 @@ class SyncKTVRobotCommandRequest(AbstractModel):
 
     @property
     def SetPlaylistCommandInput(self):
+        """播放列表变更信息，当Command取SetPlaylist时，必填。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SetPlaylistCommandInput`
+        """
         return self._SetPlaylistCommandInput
 
     @SetPlaylistCommandInput.setter
@@ -6072,6 +7173,9 @@ class SyncKTVRobotCommandRequest(AbstractModel):
 
     @property
     def SeekCommandInput(self):
+        """播放进度，当Command取Seek时，必填。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SeekCommandInput`
+        """
         return self._SeekCommandInput
 
     @SeekCommandInput.setter
@@ -6080,6 +7184,9 @@ class SyncKTVRobotCommandRequest(AbstractModel):
 
     @property
     def SetAudioParamCommandInput(self):
+        """音频参数，当Command取SetAudioParam时，必填。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SetAudioParamCommandInput`
+        """
         return self._SetAudioParamCommandInput
 
     @SetAudioParamCommandInput.setter
@@ -6088,6 +7195,9 @@ class SyncKTVRobotCommandRequest(AbstractModel):
 
     @property
     def SendMessageCommandInput(self):
+        """自定义消息，当Command取SendMessage时，必填。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SendMessageCommandInput`
+        """
         return self._SendMessageCommandInput
 
     @SendMessageCommandInput.setter
@@ -6096,6 +7206,9 @@ class SyncKTVRobotCommandRequest(AbstractModel):
 
     @property
     def SetPlayModeCommandInput(self):
+        """播放模式，当Command取SetPlayMode时，必填。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SetPlayModeCommandInput`
+        """
         return self._SetPlayModeCommandInput
 
     @SetPlayModeCommandInput.setter
@@ -6104,6 +7217,9 @@ class SyncKTVRobotCommandRequest(AbstractModel):
 
     @property
     def SetDestroyModeCommandInput(self):
+        """销毁模式，当Command取SetDestroyMode时，必填。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SetDestroyModeCommandInput`
+        """
         return self._SetDestroyModeCommandInput
 
     @SetDestroyModeCommandInput.setter
@@ -6112,6 +7228,10 @@ class SyncKTVRobotCommandRequest(AbstractModel):
 
     @property
     def SetVolumeCommandInput(self):
+        """<del>音量，当Command取SetVolume时，必填。</del>
+（已废弃，请采用 SetRealVolumeCommandInput ）
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SetVolumeCommandInput`
+        """
         return self._SetVolumeCommandInput
 
     @SetVolumeCommandInput.setter
@@ -6120,6 +7240,9 @@ class SyncKTVRobotCommandRequest(AbstractModel):
 
     @property
     def SetRealVolumeCommandInput(self):
+        """真实音量，当Command取SetRealVolume时，必填。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SetRealVolumeCommandInput`
+        """
         return self._SetRealVolumeCommandInput
 
     @SetRealVolumeCommandInput.setter
@@ -6181,6 +7304,9 @@ class SyncKTVRobotCommandResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6246,6 +7372,21 @@ class SyncRobotCommand(AbstractModel):
 
     @property
     def Command(self):
+        """可同时传入多个指令，顺序执行。取值有：
+<li>Play：播放</li>
+<li>Pause：暂停</li>
+<li>SwitchPrevious：上一首</li>
+<li>SwitchNext：下一首</li>
+<li>SetPlayMode：设置播放模式</li>
+<li>Seek：调整播放进度</li>
+<li>SetPlaylist：歌单变更</li>
+<li>SetAudioParam：音频参数变更</li>
+<li>SendMessage：发送自定义消息</li>
+<li>SetDestroyMode：设置销毁模式</li>
+<li><del>SetVolume：设置音量</del>（已废弃，请采用 SetRealVolume）</li>
+<li>SetRealVolume：设置真实音量</li>
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -6254,6 +7395,9 @@ class SyncRobotCommand(AbstractModel):
 
     @property
     def PlayCommandInput(self):
+        """播放参数。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.PlayCommandInput`
+        """
         return self._PlayCommandInput
 
     @PlayCommandInput.setter
@@ -6262,6 +7406,9 @@ class SyncRobotCommand(AbstractModel):
 
     @property
     def SetPlaylistCommandInput(self):
+        """播放列表变更信息，当Command取SetPlaylist时，必填。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SetPlaylistCommandInput`
+        """
         return self._SetPlaylistCommandInput
 
     @SetPlaylistCommandInput.setter
@@ -6270,6 +7417,9 @@ class SyncRobotCommand(AbstractModel):
 
     @property
     def SeekCommandInput(self):
+        """播放进度，当Command取Seek时，必填。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SeekCommandInput`
+        """
         return self._SeekCommandInput
 
     @SeekCommandInput.setter
@@ -6278,6 +7428,9 @@ class SyncRobotCommand(AbstractModel):
 
     @property
     def SetAudioParamCommandInput(self):
+        """音频参数，当Command取SetAudioParam时，必填。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SetAudioParamCommandInput`
+        """
         return self._SetAudioParamCommandInput
 
     @SetAudioParamCommandInput.setter
@@ -6286,6 +7439,9 @@ class SyncRobotCommand(AbstractModel):
 
     @property
     def SendMessageCommandInput(self):
+        """自定义消息，当Command取SendMessage时，必填。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SendMessageCommandInput`
+        """
         return self._SendMessageCommandInput
 
     @SendMessageCommandInput.setter
@@ -6294,6 +7450,9 @@ class SyncRobotCommand(AbstractModel):
 
     @property
     def SetPlayModeCommandInput(self):
+        """播放模式，当Command取SetPlayMode时，必填。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SetPlayModeCommandInput`
+        """
         return self._SetPlayModeCommandInput
 
     @SetPlayModeCommandInput.setter
@@ -6302,6 +7461,9 @@ class SyncRobotCommand(AbstractModel):
 
     @property
     def SetDestroyModeCommandInput(self):
+        """销毁模式，当Command取SetDestroyMode时，必填。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SetDestroyModeCommandInput`
+        """
         return self._SetDestroyModeCommandInput
 
     @SetDestroyModeCommandInput.setter
@@ -6310,6 +7472,10 @@ class SyncRobotCommand(AbstractModel):
 
     @property
     def SetVolumeCommandInput(self):
+        """<del>音量，当Command取SetVolume时，必填。</del>
+（已废弃，请采用 SetRealVolumeCommandInput）
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SetVolumeCommandInput`
+        """
         return self._SetVolumeCommandInput
 
     @SetVolumeCommandInput.setter
@@ -6318,6 +7484,9 @@ class SyncRobotCommand(AbstractModel):
 
     @property
     def SetRealVolumeCommandInput(self):
+        """真实音量，当Command取SetRealVolume时，必填。
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SetRealVolumeCommandInput`
+        """
         return self._SetRealVolumeCommandInput
 
     @SetRealVolumeCommandInput.setter
@@ -6402,6 +7571,9 @@ class TRTCJoinRoomInput(AbstractModel):
 
     @property
     def Sign(self):
+        """签名。
+        :rtype: str
+        """
         return self._Sign
 
     @Sign.setter
@@ -6410,6 +7582,9 @@ class TRTCJoinRoomInput(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间号。
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -6418,6 +7593,9 @@ class TRTCJoinRoomInput(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """推流应用ID。
+        :rtype: str
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -6426,6 +7604,9 @@ class TRTCJoinRoomInput(AbstractModel):
 
     @property
     def UserId(self):
+        """用户唯一标识。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -6434,6 +7615,10 @@ class TRTCJoinRoomInput(AbstractModel):
 
     @property
     def PrivateMapKey(self):
+        """进房钥匙，若需要权限控制请携带该参数。
+ [privateMapKey 权限设置](/document/product/647/32240) 
+        :rtype: str
+        """
         return self._PrivateMapKey
 
     @PrivateMapKey.setter
@@ -6442,6 +7627,11 @@ class TRTCJoinRoomInput(AbstractModel):
 
     @property
     def Role(self):
+        """用户角色，目前支持两种角色：
+<li>anchor：主播</li>
+<li>audience：观众</li>
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -6450,6 +7640,12 @@ class TRTCJoinRoomInput(AbstractModel):
 
     @property
     def RoomIdType(self):
+        """TRTC房间号的类型：
+<li>Integer：数字类型</li>
+<li> String：字符串类型</li>
+默认为：Integer 。
+        :rtype: str
+        """
         return self._RoomIdType
 
     @RoomIdType.setter
@@ -6493,6 +7689,9 @@ class TakeMusicOffShelves(AbstractModel):
 
     @property
     def MusicIds(self):
+        """资源方对应音乐Id
+        :rtype: str
+        """
         return self._MusicIds
 
     @MusicIds.setter
@@ -6501,6 +7700,10 @@ class TakeMusicOffShelves(AbstractModel):
 
     @property
     def SaleStatus(self):
+        """当曲目临时下架时：已订购客户无影响，无需消息通知。当曲目封杀下架后，推送消息至已订购老客户，枚举值，判断是否上/下架
+在售状态，0在售，1临时下架，2永久下架
+        :rtype: str
+        """
         return self._SaleStatus
 
     @SaleStatus.setter
@@ -6535,6 +7738,9 @@ class TakeMusicOffShelvesRequest(AbstractModel):
 
     @property
     def TakeMusicOffShelves(self):
+        """资源方下架必传结构
+        :rtype: list of TakeMusicOffShelves
+        """
         return self._TakeMusicOffShelves
 
     @TakeMusicOffShelves.setter
@@ -6583,6 +7789,9 @@ class TakeMusicOffShelvesResponse(AbstractModel):
 
     @property
     def SuccessNum(self):
+        """返回成功数量
+        :rtype: int
+        """
         return self._SuccessNum
 
     @SuccessNum.setter
@@ -6591,6 +7800,9 @@ class TakeMusicOffShelvesResponse(AbstractModel):
 
     @property
     def FailedNum(self):
+        """返回失败数量
+        :rtype: int
+        """
         return self._FailedNum
 
     @FailedNum.setter
@@ -6599,6 +7811,10 @@ class TakeMusicOffShelvesResponse(AbstractModel):
 
     @property
     def FailedMusicIds(self):
+        """返回失败歌曲musicId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._FailedMusicIds
 
     @FailedMusicIds.setter
@@ -6607,6 +7823,9 @@ class TakeMusicOffShelvesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6640,6 +7859,10 @@ class TimeRange(AbstractModel):
 
     @property
     def Before(self):
+        """<li>大于等于此时间（起始时间）。</li>
+<li>格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I" target="_blank">ISO 日期格式说明</a>。</li>
+        :rtype: str
+        """
         return self._Before
 
     @Before.setter
@@ -6648,6 +7871,10 @@ class TimeRange(AbstractModel):
 
     @property
     def After(self):
+        """<li>小于此时间（结束时间）。</li>
+<li>格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I" target="_blank">ISO 日期格式说明</a>。</li>
+        :rtype: str
+        """
         return self._After
 
     @After.setter
@@ -6685,6 +7912,9 @@ class UseRange(AbstractModel):
 
     @property
     def UseRangeId(self):
+        """用途id
+        :rtype: int
+        """
         return self._UseRangeId
 
     @UseRangeId.setter
@@ -6693,6 +7923,9 @@ class UseRange(AbstractModel):
 
     @property
     def Name(self):
+        """用途范围名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter

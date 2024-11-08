@@ -35,6 +35,9 @@ class CreateBotRequest(AbstractModel):
 
     @property
     def BotName(self):
+        """机器人名称
+        :rtype: str
+        """
         return self._BotName
 
     @BotName.setter
@@ -43,6 +46,9 @@ class CreateBotRequest(AbstractModel):
 
     @property
     def BotCnName(self):
+        """机器人中文名称
+        :rtype: str
+        """
         return self._BotCnName
 
     @BotCnName.setter
@@ -83,6 +89,9 @@ class CreateBotResponse(AbstractModel):
 
     @property
     def TaskRequestId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._TaskRequestId
 
     @TaskRequestId.setter
@@ -91,6 +100,9 @@ class CreateBotResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """任务信息
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -99,6 +111,9 @@ class CreateBotResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -134,6 +149,9 @@ class Group(AbstractModel):
 
     @property
     def ContentType(self):
+        """消息类型参考互联网MIME类型标准，当前仅支持"text/plain"。	
+        :rtype: str
+        """
         return self._ContentType
 
     @ContentType.setter
@@ -142,6 +160,10 @@ class Group(AbstractModel):
 
     @property
     def Url(self):
+        """返回内容以链接形式提供。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -150,6 +172,10 @@ class Group(AbstractModel):
 
     @property
     def Content(self):
+        """普通文本。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -194,6 +220,9 @@ class ResetRequest(AbstractModel):
 
     @property
     def BotId(self):
+        """机器人标识
+        :rtype: str
+        """
         return self._BotId
 
     @BotId.setter
@@ -202,6 +231,9 @@ class ResetRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """子账户id，每个终端对应一个
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -210,6 +242,9 @@ class ResetRequest(AbstractModel):
 
     @property
     def BotVersion(self):
+        """机器人版本号。BotVersion/BotEnv二选一：二者均填，仅BotVersion有效；二者均不填，默认BotEnv=dev
+        :rtype: str
+        """
         return self._BotVersion
 
     @BotVersion.setter
@@ -218,6 +253,9 @@ class ResetRequest(AbstractModel):
 
     @property
     def BotEnv(self):
+        """机器人环境{dev:测试;release:线上}。BotVersion/BotEnv二选一：二者均填，仅BotVersion有效；二者均不填，默认BotEnv=dev
+        :rtype: str
+        """
         return self._BotEnv
 
     @BotEnv.setter
@@ -289,6 +327,10 @@ class ResetResponse(AbstractModel):
 
     @property
     def DialogStatus(self):
+        """当前会话状态。取值:"start"/"continue"/"complete"
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DialogStatus
 
     @DialogStatus.setter
@@ -297,6 +339,10 @@ class ResetResponse(AbstractModel):
 
     @property
     def BotName(self):
+        """匹配到的机器人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BotName
 
     @BotName.setter
@@ -305,6 +351,10 @@ class ResetResponse(AbstractModel):
 
     @property
     def IntentName(self):
+        """匹配到的意图名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IntentName
 
     @IntentName.setter
@@ -313,6 +363,9 @@ class ResetResponse(AbstractModel):
 
     @property
     def ResponseText(self):
+        """机器人回答
+        :rtype: str
+        """
         return self._ResponseText
 
     @ResponseText.setter
@@ -321,6 +374,10 @@ class ResetResponse(AbstractModel):
 
     @property
     def SlotInfoList(self):
+        """语义解析的槽位结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SlotInfo
+        """
         return self._SlotInfoList
 
     @SlotInfoList.setter
@@ -329,6 +386,10 @@ class ResetResponse(AbstractModel):
 
     @property
     def SessionAttributes(self):
+        """透传字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SessionAttributes
 
     @SessionAttributes.setter
@@ -337,6 +398,10 @@ class ResetResponse(AbstractModel):
 
     @property
     def Question(self):
+        """用户说法。该说法是用户原生说法或ASR识别结果，未经过语义优化
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Question
 
     @Question.setter
@@ -345,6 +410,10 @@ class ResetResponse(AbstractModel):
 
     @property
     def WaveUrl(self):
+        """tts合成pcm音频存储链接。仅当请求参数NeedTts=true时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WaveUrl
 
     @WaveUrl.setter
@@ -353,6 +422,10 @@ class ResetResponse(AbstractModel):
 
     @property
     def WaveData(self):
+        """tts合成的pcm音频。二进制数组经过base64编码(暂时不返回)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WaveData
 
     @WaveData.setter
@@ -361,6 +434,9 @@ class ResetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -401,6 +477,10 @@ class ResponseMessage(AbstractModel):
 
     @property
     def GroupList(self):
+        """消息组列表。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Group
+        """
         return self._GroupList
 
     @GroupList.setter
@@ -444,6 +524,10 @@ class SlotInfo(AbstractModel):
 
     @property
     def SlotName(self):
+        """槽位名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SlotName
 
     @SlotName.setter
@@ -452,6 +536,10 @@ class SlotInfo(AbstractModel):
 
     @property
     def SlotValue(self):
+        """槽位值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SlotValue
 
     @SlotValue.setter
@@ -498,6 +586,9 @@ class TextProcessRequest(AbstractModel):
 
     @property
     def BotId(self):
+        """机器人标识，用于定义抽象机器人。
+        :rtype: str
+        """
         return self._BotId
 
     @BotId.setter
@@ -506,6 +597,9 @@ class TextProcessRequest(AbstractModel):
 
     @property
     def TerminalId(self):
+        """终端标识，每个终端(或线程)对应一个，区分并发多用户。
+        :rtype: str
+        """
         return self._TerminalId
 
     @TerminalId.setter
@@ -514,6 +608,9 @@ class TextProcessRequest(AbstractModel):
 
     @property
     def InputText(self):
+        """请求的文本。
+        :rtype: str
+        """
         return self._InputText
 
     @InputText.setter
@@ -522,6 +619,9 @@ class TextProcessRequest(AbstractModel):
 
     @property
     def BotEnv(self):
+        """机器人版本，取值"dev"或"release"，{调试版本：dev；线上版本：release}。
+        :rtype: str
+        """
         return self._BotEnv
 
     @BotEnv.setter
@@ -530,6 +630,9 @@ class TextProcessRequest(AbstractModel):
 
     @property
     def SessionAttributes(self):
+        """透传字段，透传给用户自定义的WebService服务。
+        :rtype: str
+        """
         return self._SessionAttributes
 
     @SessionAttributes.setter
@@ -603,6 +706,10 @@ class TextProcessResponse(AbstractModel):
 
     @property
     def DialogStatus(self):
+        """当前会话状态{会话开始: START; 会话中: COUTINUE; 会话结束: COMPLETE}。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DialogStatus
 
     @DialogStatus.setter
@@ -611,6 +718,10 @@ class TextProcessResponse(AbstractModel):
 
     @property
     def BotName(self):
+        """匹配到的机器人名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BotName
 
     @BotName.setter
@@ -619,6 +730,10 @@ class TextProcessResponse(AbstractModel):
 
     @property
     def IntentName(self):
+        """匹配到的意图名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IntentName
 
     @IntentName.setter
@@ -627,6 +742,10 @@ class TextProcessResponse(AbstractModel):
 
     @property
     def SlotInfoList(self):
+        """槽位信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SlotInfo
+        """
         return self._SlotInfoList
 
     @SlotInfoList.setter
@@ -635,6 +754,10 @@ class TextProcessResponse(AbstractModel):
 
     @property
     def InputText(self):
+        """原始的用户说法。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InputText
 
     @InputText.setter
@@ -643,6 +766,10 @@ class TextProcessResponse(AbstractModel):
 
     @property
     def SessionAttributes(self):
+        """透传字段，由用户自定义的WebService服务返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SessionAttributes
 
     @SessionAttributes.setter
@@ -651,6 +778,10 @@ class TextProcessResponse(AbstractModel):
 
     @property
     def ResponseText(self):
+        """机器人对话的应答文本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResponseText
 
     @ResponseText.setter
@@ -659,6 +790,10 @@ class TextProcessResponse(AbstractModel):
 
     @property
     def ResultType(self):
+        """结果类型 {中间逻辑出错:0; 任务型机器人:1; 问答型机器人:2; 闲聊型机器人:3; 未匹配上，返回预设兜底话术:5; 未匹配上，返回相似问题列表:6}。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResultType
 
     @ResultType.setter
@@ -667,6 +802,10 @@ class TextProcessResponse(AbstractModel):
 
     @property
     def ResponseMessage(self):
+        """机器人应答。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tbp.v20190311.models.ResponseMessage`
+        """
         return self._ResponseMessage
 
     @ResponseMessage.setter
@@ -675,6 +814,9 @@ class TextProcessResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -722,6 +864,9 @@ class TextResetRequest(AbstractModel):
 
     @property
     def BotId(self):
+        """机器人标识，用于定义抽象机器人。
+        :rtype: str
+        """
         return self._BotId
 
     @BotId.setter
@@ -730,6 +875,9 @@ class TextResetRequest(AbstractModel):
 
     @property
     def TerminalId(self):
+        """终端标识，每个终端(或线程)对应一个，区分并发多用户。
+        :rtype: str
+        """
         return self._TerminalId
 
     @TerminalId.setter
@@ -738,6 +886,9 @@ class TextResetRequest(AbstractModel):
 
     @property
     def BotEnv(self):
+        """机器人版本，取值"dev"或"release"，{调试版本：dev；线上版本：release}。
+        :rtype: str
+        """
         return self._BotEnv
 
     @BotEnv.setter
@@ -801,6 +952,10 @@ class TextResetResponse(AbstractModel):
 
     @property
     def DialogStatus(self):
+        """当前会话状态，取值："START"/"COUTINUE"/"COMPLETE"。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DialogStatus
 
     @DialogStatus.setter
@@ -809,6 +964,10 @@ class TextResetResponse(AbstractModel):
 
     @property
     def BotName(self):
+        """匹配到的机器人名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BotName
 
     @BotName.setter
@@ -817,6 +976,10 @@ class TextResetResponse(AbstractModel):
 
     @property
     def IntentName(self):
+        """匹配到的意图名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IntentName
 
     @IntentName.setter
@@ -825,6 +988,10 @@ class TextResetResponse(AbstractModel):
 
     @property
     def SlotInfoList(self):
+        """槽位信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SlotInfo
+        """
         return self._SlotInfoList
 
     @SlotInfoList.setter
@@ -833,6 +1000,10 @@ class TextResetResponse(AbstractModel):
 
     @property
     def InputText(self):
+        """原始的用户说法。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InputText
 
     @InputText.setter
@@ -841,6 +1012,10 @@ class TextResetResponse(AbstractModel):
 
     @property
     def SessionAttributes(self):
+        """透传字段，由用户自定义的WebService服务返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SessionAttributes
 
     @SessionAttributes.setter
@@ -849,6 +1024,10 @@ class TextResetResponse(AbstractModel):
 
     @property
     def ResponseText(self):
+        """机器人对话的应答文本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResponseText
 
     @ResponseText.setter
@@ -857,6 +1036,9 @@ class TextResetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

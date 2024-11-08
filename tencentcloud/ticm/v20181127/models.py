@@ -35,6 +35,9 @@ class Candidate(AbstractModel):
 
     @property
     def Name(self):
+        """识别出人脸对应的候选人数组。当前返回相似度最高的候选人。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -43,6 +46,9 @@ class Candidate(AbstractModel):
 
     @property
     def Confidence(self):
+        """相似度，0-100之间。
+        :rtype: int
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -77,6 +83,9 @@ class DescribeVideoTaskRequest(AbstractModel):
 
     @property
     def VodTaskId(self):
+        """需要查询的视频审核的任务ID
+        :rtype: str
+        """
         return self._VodTaskId
 
     @VodTaskId.setter
@@ -146,6 +155,12 @@ FINISH：已完成。
 
     @property
     def Status(self):
+        """任务状态，取值：
+WAITING：等待中；
+PROCESSING：处理中；
+FINISH：已完成。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -154,6 +169,9 @@ FINISH：已完成。
 
     @property
     def BeginProcessTime(self):
+        """任务开始执行的时间，采用 ISO 日期格式。
+        :rtype: str
+        """
         return self._BeginProcessTime
 
     @BeginProcessTime.setter
@@ -162,6 +180,9 @@ FINISH：已完成。
 
     @property
     def FinishTime(self):
+        """任务执行完毕的时间，采用 ISO 日期格式。
+        :rtype: str
+        """
         return self._FinishTime
 
     @FinishTime.setter
@@ -170,6 +191,9 @@ FINISH：已完成。
 
     @property
     def PornResult(self):
+        """视频内容审核智能画面鉴黄任务的查询结果。
+        :rtype: :class:`tencentcloud.ticm.v20181127.models.VodPornReviewResult`
+        """
         return self._PornResult
 
     @PornResult.setter
@@ -178,6 +202,9 @@ FINISH：已完成。
 
     @property
     def TerrorismResult(self):
+        """视频内容审核智能画面鉴恐任务的查询结果。
+        :rtype: :class:`tencentcloud.ticm.v20181127.models.VodTerrorismReviewResult`
+        """
         return self._TerrorismResult
 
     @TerrorismResult.setter
@@ -186,6 +213,9 @@ FINISH：已完成。
 
     @property
     def PoliticalResult(self):
+        """视频内容审核智能画面鉴政任务的查询结果。
+        :rtype: :class:`tencentcloud.ticm.v20181127.models.VodPoliticalReviewResult`
+        """
         return self._PoliticalResult
 
     @PoliticalResult.setter
@@ -194,6 +224,9 @@ FINISH：已完成。
 
     @property
     def PoliticalOcrResult(self):
+        """视频内容审核 Ocr 文字鉴政任务的查询结果。
+        :rtype: :class:`tencentcloud.ticm.v20181127.models.VodPoliticalOcrReviewResult`
+        """
         return self._PoliticalOcrResult
 
     @PoliticalOcrResult.setter
@@ -202,6 +235,9 @@ FINISH：已完成。
 
     @property
     def PornAsrResult(self):
+        """视频内容审核 Asr 文字鉴黄任务的查询结果。
+        :rtype: :class:`tencentcloud.ticm.v20181127.models.VodPornAsrReviewResult`
+        """
         return self._PornAsrResult
 
     @PornAsrResult.setter
@@ -210,6 +246,9 @@ FINISH：已完成。
 
     @property
     def PoliticalAsrResult(self):
+        """视频内容审核 Asr 文字鉴政任务的查询结果。
+        :rtype: :class:`tencentcloud.ticm.v20181127.models.VodPoliticalAsrReviewResult`
+        """
         return self._PoliticalAsrResult
 
     @PoliticalAsrResult.setter
@@ -218,6 +257,9 @@ FINISH：已完成。
 
     @property
     def PornOcrResult(self):
+        """视频内容审核 Ocr 文字鉴黄任务的查询结果。
+        :rtype: :class:`tencentcloud.ticm.v20181127.models.VodPornOcrResult`
+        """
         return self._PornOcrResult
 
     @PornOcrResult.setter
@@ -226,6 +268,9 @@ FINISH：已完成。
 
     @property
     def MetaData(self):
+        """原始视频的元信息。
+        :rtype: :class:`tencentcloud.ticm.v20181127.models.VodMetaData`
+        """
         return self._MetaData
 
     @MetaData.setter
@@ -234,6 +279,9 @@ FINISH：已完成。
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -301,6 +349,12 @@ BLOCK：违规
 
     @property
     def Code(self):
+        """该识别场景的错误码：
+0表示成功，
+-1表示系统错误，
+-2表示引擎错误。
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -309,6 +363,9 @@ BLOCK：违规
 
     @property
     def Msg(self):
+        """错误码描述信息。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -317,6 +374,12 @@ BLOCK：违规
 
     @property
     def Suggestion(self):
+        """识别场景的审核结论：
+PASS：正常
+REVIEW：疑似
+BLOCK：违规
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -325,6 +388,9 @@ BLOCK：违规
 
     @property
     def Confidence(self):
+        """图像恶心的分数，0-100之间，分数越高恶心几率越大。
+        :rtype: int
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -370,6 +436,9 @@ class FaceRect(AbstractModel):
 
     @property
     def X(self):
+        """人脸区域左上角横坐标。
+        :rtype: int
+        """
         return self._X
 
     @X.setter
@@ -378,6 +447,9 @@ class FaceRect(AbstractModel):
 
     @property
     def Y(self):
+        """人脸区域左上角纵坐标。
+        :rtype: int
+        """
         return self._Y
 
     @Y.setter
@@ -386,6 +458,9 @@ class FaceRect(AbstractModel):
 
     @property
     def Width(self):
+        """人脸区域宽度。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -394,6 +469,9 @@ class FaceRect(AbstractModel):
 
     @property
     def Height(self):
+        """人脸区域高度。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -433,6 +511,9 @@ class FaceResult(AbstractModel):
 
     @property
     def FaceRect(self):
+        """检测出的人脸框位置。
+        :rtype: :class:`tencentcloud.ticm.v20181127.models.FaceRect`
+        """
         return self._FaceRect
 
     @FaceRect.setter
@@ -441,6 +522,9 @@ class FaceResult(AbstractModel):
 
     @property
     def Candidates(self):
+        """候选人列表。当前返回相似度最高的候选人。
+        :rtype: list of Candidate
+        """
         return self._Candidates
 
     @Candidates.setter
@@ -505,6 +589,14 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def Scenes(self):
+        """本次调用支持的识别场景，可选值如下：
+1. PORN，即色情识别
+2. TERRORISM，即暴恐识别
+3. POLITICS，即政治敏感识别
+
+支持多场景（Scenes）一起检测。例如，使用 Scenes=["PORN", "TERRORISM"]，即对一张图片同时进行色情识别和暴恐识别。
+        :rtype: list of str
+        """
         return self._Scenes
 
     @Scenes.setter
@@ -513,6 +605,15 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
+        """图片URL地址。 
+图片限制： 
+ • 图片格式：PNG、JPG、JPEG。 
+ • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+ • 图片像素：大于50*50像素，否则影响识别效果； 
+ • 长宽比：长边：短边<5； 
+接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -521,6 +622,9 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def Config(self):
+        """预留字段，后期用于展示更多识别信息。
+        :rtype: str
+        """
         return self._Config
 
     @Config.setter
@@ -529,6 +633,9 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def Extra(self):
+        """透传字段，透传简单信息。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -537,6 +644,9 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
+        """图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        :rtype: str
+        """
         return self._ImageBase64
 
     @ImageBase64.setter
@@ -599,6 +709,12 @@ BLOCK：违规
 
     @property
     def Suggestion(self):
+        """识别场景的审核结论：
+PASS：正常
+REVIEW：疑似
+BLOCK：违规
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -607,6 +723,10 @@ BLOCK：违规
 
     @property
     def PornResult(self):
+        """色情识别结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ticm.v20181127.models.PornResult`
+        """
         return self._PornResult
 
     @PornResult.setter
@@ -615,6 +735,10 @@ BLOCK：违规
 
     @property
     def TerrorismResult(self):
+        """暴恐识别结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ticm.v20181127.models.TerrorismResult`
+        """
         return self._TerrorismResult
 
     @TerrorismResult.setter
@@ -623,6 +747,10 @@ BLOCK：违规
 
     @property
     def PoliticsResult(self):
+        """政治敏感识别结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ticm.v20181127.models.PoliticsResult`
+        """
         return self._PoliticsResult
 
     @PoliticsResult.setter
@@ -631,6 +759,9 @@ BLOCK：违规
 
     @property
     def Extra(self):
+        """透传字段，透传简单信息。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -639,6 +770,10 @@ BLOCK：违规
 
     @property
     def DisgustResult(self):
+        """恶心内容识别结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ticm.v20181127.models.DisgustResult`
+        """
         return self._DisgustResult
 
     @DisgustResult.setter
@@ -647,6 +782,9 @@ BLOCK：违规
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -720,6 +858,14 @@ Type为FACE时：
 
     @property
     def Code(self):
+        """该识别场景的错误码：
+0表示成功，
+-1表示系统错误，
+-2表示引擎错误，
+-1400表示图片解码失败，
+-1401表示图片不符合规范。
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -728,6 +874,9 @@ Type为FACE时：
 
     @property
     def Msg(self):
+        """错误码描述信息。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -736,6 +885,12 @@ Type为FACE时：
 
     @property
     def Suggestion(self):
+        """识别场景的审核结论：
+PASS：正常
+REVIEW：疑似
+BLOCK：违规
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -744,6 +899,17 @@ Type为FACE时：
 
     @property
     def Confidence(self):
+        """图像涉政的分数，0-100之间，分数越高涉政几率越大。
+Type为DNA时：
+0到75，Suggestion建议为PASS
+75到90，Suggestion建议为REVIEW
+90到100，Suggestion建议为BLOCK
+Type为FACE时：
+0到55，Suggestion建议为PASS
+55到60，Suggestion建议为REVIEW
+60到100，Suggestion建议为BLOCK
+        :rtype: int
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -752,6 +918,9 @@ Type为FACE时：
 
     @property
     def FaceResults(self):
+        """Type取值为‘FACE’时，人脸识别的结果列表。基于图片中实际检测到的人脸数，返回数组最大值不超过5个。
+        :rtype: list of FaceResult
+        """
         return self._FaceResults
 
     @FaceResults.setter
@@ -760,6 +929,9 @@ Type为FACE时：
 
     @property
     def Type(self):
+        """取值'DNA' 或‘FACE’。DNA表示结论和置信度来自图像指纹，FACE表示结论和置信度来自人脸识别。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -768,6 +940,9 @@ Type为FACE时：
 
     @property
     def AdvancedInfo(self):
+        """鉴政识别返回的详细标签后期开放。
+        :rtype: str
+        """
         return self._AdvancedInfo
 
     @AdvancedInfo.setter
@@ -834,6 +1009,13 @@ BLOCK：违规
 
     @property
     def Code(self):
+        """该识别场景的错误码：
+0表示成功，
+-1表示系统错误，
+-2表示引擎错误，
+-1400表示图片解码失败。
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -842,6 +1024,9 @@ BLOCK：违规
 
     @property
     def Msg(self):
+        """错误码描述信息。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -850,6 +1035,12 @@ BLOCK：违规
 
     @property
     def Suggestion(self):
+        """识别场景的审核结论：
+PASS：正常
+REVIEW：疑似
+BLOCK：违规
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -858,6 +1049,9 @@ BLOCK：违规
 
     @property
     def Confidence(self):
+        """算法对于Suggestion的置信度，0-100之间，值越高，表示对于Suggestion越确定。
+        :rtype: int
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -866,6 +1060,9 @@ BLOCK：违规
 
     @property
     def AdvancedInfo(self):
+        """预留字段，后期用于展示更多识别信息。
+        :rtype: str
+        """
         return self._AdvancedInfo
 
     @AdvancedInfo.setter
@@ -874,6 +1071,9 @@ BLOCK：违规
 
     @property
     def Type(self):
+        """取值'LABEL‘，LABEL表示结论和置信度来自标签分类。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -945,6 +1145,13 @@ Type为FACE时：
 
     @property
     def Code(self):
+        """该识别场景的错误码：
+0表示成功，
+-1表示系统错误，
+-2表示引擎错误，
+-1400表示图片解码失败。
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -953,6 +1160,9 @@ Type为FACE时：
 
     @property
     def Msg(self):
+        """错误码描述信息。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -961,6 +1171,12 @@ Type为FACE时：
 
     @property
     def Suggestion(self):
+        """识别场景的审核结论：
+PASS：正常
+REVIEW：疑似
+BLOCK：违规
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -969,6 +1185,17 @@ Type为FACE时：
 
     @property
     def Confidence(self):
+        """图像涉恐的分数，0-100之间，分数越高涉恐几率越大。
+Type为LABEL时：
+0到86，Suggestion建议为PASS
+86到91，Suggestion建议为REVIEW
+91到100，Suggestion建议为BLOCK
+Type为FACE时：
+0到55，Suggestion建议为PASS
+55到60，Suggestion建议为REVIEW
+60到100，Suggestion建议为BLOCK
+        :rtype: int
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -977,6 +1204,9 @@ Type为FACE时：
 
     @property
     def FaceResults(self):
+        """Type取值为‘FACE’时，人脸识别的结果列表。基于图片中实际检测到的人脸数，返回数组最大值不超过5个。
+        :rtype: list of FaceResult
+        """
         return self._FaceResults
 
     @FaceResults.setter
@@ -985,6 +1215,9 @@ Type为FACE时：
 
     @property
     def AdvancedInfo(self):
+        """暴恐识别返回的详细标签后期开放。
+        :rtype: str
+        """
         return self._AdvancedInfo
 
     @AdvancedInfo.setter
@@ -993,6 +1226,9 @@ Type为FACE时：
 
     @property
     def Type(self):
+        """取值'LABEL' 或‘FACE’，LABEL表示结论和置信度来自标签分类，FACE表示结论和置信度来自人脸识别。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1046,6 +1282,9 @@ class VideoModerationRequest(AbstractModel):
 
     @property
     def VideoUrl(self):
+        """需要审核的视频的URL地址
+        :rtype: str
+        """
         return self._VideoUrl
 
     @VideoUrl.setter
@@ -1054,6 +1293,9 @@ class VideoModerationRequest(AbstractModel):
 
     @property
     def DeveloperId(self):
+        """开发者标识
+        :rtype: str
+        """
         return self._DeveloperId
 
     @DeveloperId.setter
@@ -1062,6 +1304,9 @@ class VideoModerationRequest(AbstractModel):
 
     @property
     def CBUrl(self):
+        """审核完成后回调地址
+        :rtype: str
+        """
         return self._CBUrl
 
     @CBUrl.setter
@@ -1070,6 +1315,9 @@ class VideoModerationRequest(AbstractModel):
 
     @property
     def Extra(self):
+        """透传字段，透传简单信息。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -1109,6 +1357,9 @@ class VideoModerationResponse(AbstractModel):
 
     @property
     def VodTaskId(self):
+        """视频审核任务ID
+        :rtype: str
+        """
         return self._VodTaskId
 
     @VodTaskId.setter
@@ -1117,6 +1368,9 @@ class VideoModerationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1164,6 +1418,10 @@ block。
 
     @property
     def StartTimeOffset(self):
+        """嫌疑片段起始的偏移时间，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -1172,6 +1430,10 @@ block。
 
     @property
     def EndTimeOffset(self):
+        """嫌疑片段结束的偏移时间，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -1180,6 +1442,10 @@ block。
 
     @property
     def Confidence(self):
+        """嫌疑片段置信度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -1188,6 +1454,14 @@ block。
 
     @property
     def Suggestion(self):
+        """嫌疑片段审核结果建议，取值范围：
+pass。
+review。
+block。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -1196,6 +1470,10 @@ block。
 
     @property
     def KeywordSet(self):
+        """嫌疑关键词列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._KeywordSet
 
     @KeywordSet.setter
@@ -1242,6 +1520,10 @@ class VodAudioStreamItem(AbstractModel):
 
     @property
     def Bitrate(self):
+        """音频流的码率，单位：bps。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -1250,6 +1532,10 @@ class VodAudioStreamItem(AbstractModel):
 
     @property
     def SamplingRate(self):
+        """音频流的采样率，单位：hz。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SamplingRate
 
     @SamplingRate.setter
@@ -1258,6 +1544,10 @@ class VodAudioStreamItem(AbstractModel):
 
     @property
     def Codec(self):
+        """音频流的编码格式，例如 aac。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -1334,6 +1624,10 @@ class VodMetaData(AbstractModel):
 
     @property
     def Size(self):
+        """上传的媒体文件大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -1342,6 +1636,10 @@ class VodMetaData(AbstractModel):
 
     @property
     def Container(self):
+        """容器类型，例如 m4a，mp4 等。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -1350,6 +1648,10 @@ class VodMetaData(AbstractModel):
 
     @property
     def Bitrate(self):
+        """视频流码率平均值与音频流码率平均值之和，单位：bps。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -1358,6 +1660,10 @@ class VodMetaData(AbstractModel):
 
     @property
     def Height(self):
+        """视频流高度的最大值，单位：px。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -1366,6 +1672,10 @@ class VodMetaData(AbstractModel):
 
     @property
     def Width(self):
+        """视频流宽度的最大值，单位：px。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -1374,6 +1684,10 @@ class VodMetaData(AbstractModel):
 
     @property
     def Duration(self):
+        """视频时长，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -1382,6 +1696,10 @@ class VodMetaData(AbstractModel):
 
     @property
     def Rotate(self):
+        """视频拍摄时的选择角度，单位：度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Rotate
 
     @Rotate.setter
@@ -1390,6 +1708,10 @@ class VodMetaData(AbstractModel):
 
     @property
     def VideoStreamSet(self):
+        """视频流信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VodVideoStreamItem
+        """
         return self._VideoStreamSet
 
     @VideoStreamSet.setter
@@ -1398,6 +1720,10 @@ class VodMetaData(AbstractModel):
 
     @property
     def AudioStreamSet(self):
+        """音频流信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VodAudioStreamItem
+        """
         return self._AudioStreamSet
 
     @AudioStreamSet.setter
@@ -1406,6 +1732,10 @@ class VodMetaData(AbstractModel):
 
     @property
     def VideoDuration(self):
+        """视频时长，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._VideoDuration
 
     @VideoDuration.setter
@@ -1414,6 +1744,10 @@ class VodMetaData(AbstractModel):
 
     @property
     def AudioDuration(self):
+        """音频时长，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._AudioDuration
 
     @AudioDuration.setter
@@ -1492,6 +1826,10 @@ block。
 
     @property
     def StartTimeOffset(self):
+        """嫌疑片段起始的偏移时间，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -1500,6 +1838,10 @@ block。
 
     @property
     def EndTimeOffset(self):
+        """嫌疑片段结束的偏移时间，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -1508,6 +1850,10 @@ block。
 
     @property
     def Confidence(self):
+        """嫌疑片段置信度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -1516,6 +1862,14 @@ block。
 
     @property
     def Suggestion(self):
+        """嫌疑片段审核结果建议，取值范围：
+pass。
+review。
+block。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -1524,6 +1878,10 @@ block。
 
     @property
     def KeywordSet(self):
+        """嫌疑关键词列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._KeywordSet
 
     @KeywordSet.setter
@@ -1532,6 +1890,10 @@ block。
 
     @property
     def AreaCoordSet(self):
+        """嫌疑文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -1599,6 +1961,9 @@ block。
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1607,6 +1972,10 @@ block。
 
     @property
     def Code(self):
+        """错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -1615,6 +1984,10 @@ block。
 
     @property
     def Msg(self):
+        """错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -1623,6 +1996,15 @@ block。
 
     @property
     def Confidence(self):
+        """嫌疑片段审核结果建议，取值范围：
+pass。
+review。
+block。
+
+Asr 文字涉政、敏感评分，分值为0到100。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -1631,6 +2013,14 @@ block。
 
     @property
     def Suggestion(self):
+        """Asr 文字涉政、敏感结果建议，取值范围：
+pass。
+review。
+block。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -1639,6 +2029,10 @@ block。
 
     @property
     def SegmentSet(self):
+        """Asr 文字有涉政、敏感嫌疑的视频片段列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VodAsrTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -1703,6 +2097,9 @@ block。
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1711,6 +2108,10 @@ block。
 
     @property
     def Code(self):
+        """错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -1719,6 +2120,10 @@ block。
 
     @property
     def Msg(self):
+        """错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -1727,6 +2132,9 @@ block。
 
     @property
     def Confidence(self):
+        """Ocr 文字涉政、敏感评分，分值为0到100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -1735,6 +2143,12 @@ block。
 
     @property
     def Suggestion(self):
+        """Ocr 文字涉政、敏感结果建议，取值范围：
+pass。
+review。
+block。
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -1743,6 +2157,10 @@ block。
 
     @property
     def SegmentSet(self):
+        """Ocr 文字有涉政、敏感嫌疑的视频片段列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VodOcrTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -1817,6 +2235,9 @@ violation_photo：违规图标。
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1825,6 +2246,10 @@ violation_photo：违规图标。
 
     @property
     def Code(self):
+        """错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -1833,6 +2258,10 @@ violation_photo：违规图标。
 
     @property
     def Msg(self):
+        """错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -1841,6 +2270,10 @@ violation_photo：违规图标。
 
     @property
     def Confidence(self):
+        """视频涉政评分，分值为0到100。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -1849,6 +2282,14 @@ violation_photo：违规图标。
 
     @property
     def Suggestion(self):
+        """涉政结果建议，取值范围：
+pass。
+review。
+block。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -1857,6 +2298,13 @@ violation_photo：违规图标。
 
     @property
     def Label(self):
+        """视频鉴政结果标签，取值范围：
+politician：政治人物。
+violation_photo：违规图标。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -1865,6 +2313,10 @@ violation_photo：违规图标。
 
     @property
     def SegmentSet(self):
+        """有涉政嫌疑的视频片段列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VodPoliticalReviewSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -1947,6 +2399,10 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def StartTimeOffset(self):
+        """嫌疑片段起始的偏移时间，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -1955,6 +2411,10 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def EndTimeOffset(self):
+        """嫌疑片段结束的偏移时间，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -1963,6 +2423,10 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Confidence(self):
+        """嫌疑片段涉政分数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -1971,6 +2435,14 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Suggestion(self):
+        """嫌疑片段鉴政结果建议，取值范围：
+pass。
+review。
+block。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -1979,6 +2451,10 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Name(self):
+        """涉政人物、违规图标名字。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1987,6 +2463,10 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Label(self):
+        """嫌疑片段鉴政结果标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -1995,6 +2475,11 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Url(self):
+        """嫌疑图片 URL （图片不会永久存储，到达
+PicUrlExpireTime 时间点后图片将被删除）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -2003,6 +2488,10 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def PicUrlExpireTimeStamp(self):
+        """嫌疑图片 URL 失效时间，使用 ISO 日期格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PicUrlExpireTimeStamp
 
     @PicUrlExpireTimeStamp.setter
@@ -2011,6 +2500,10 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def AreaCoordSet(self):
+        """涉政人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -2076,6 +2569,9 @@ block。
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2084,6 +2580,10 @@ block。
 
     @property
     def Code(self):
+        """错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -2092,6 +2592,10 @@ block。
 
     @property
     def Msg(self):
+        """错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -2100,6 +2604,10 @@ block。
 
     @property
     def Confidence(self):
+        """Asr 文字涉黄评分，分值为0到100。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -2108,6 +2616,14 @@ block。
 
     @property
     def Suggestion(self):
+        """Asr 文字涉黄结果建议，取值范围：
+pass。
+review。
+block。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -2116,6 +2632,10 @@ block。
 
     @property
     def SegmentSet(self):
+        """Asr 文字有涉黄嫌疑的视频片段列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VodAsrTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -2183,6 +2703,9 @@ block。
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2191,6 +2714,10 @@ block。
 
     @property
     def Code(self):
+        """错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -2199,6 +2726,10 @@ block。
 
     @property
     def Msg(self):
+        """错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -2207,6 +2738,10 @@ block。
 
     @property
     def Confidence(self):
+        """Ocr 文字涉黄评分，分值为0到100。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -2215,6 +2750,14 @@ block。
 
     @property
     def Suggestion(self):
+        """Ocr 文字涉黄结果建议，取值范围：
+pass。
+review。
+block。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -2223,6 +2766,10 @@ block。
 
     @property
     def SegmentSet(self):
+        """Ocr 文字有涉黄嫌疑的视频片段列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VodOcrTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -2299,6 +2846,9 @@ intimacy：亲密行为。
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2307,6 +2857,10 @@ intimacy：亲密行为。
 
     @property
     def Code(self):
+        """错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -2315,6 +2869,10 @@ intimacy：亲密行为。
 
     @property
     def Msg(self):
+        """错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -2323,6 +2881,10 @@ intimacy：亲密行为。
 
     @property
     def Confidence(self):
+        """视频鉴黄评分，分值为0到100。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -2331,6 +2893,14 @@ intimacy：亲密行为。
 
     @property
     def Suggestion(self):
+        """鉴黄结果建议，取值范围：
+pass。
+review。
+block。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -2339,6 +2909,15 @@ intimacy：亲密行为。
 
     @property
     def Label(self):
+        """视频鉴黄结果标签，取值范围：
+porn：色情。
+sexy：性感。
+vulgar：低俗。
+intimacy：亲密行为。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -2347,6 +2926,10 @@ intimacy：亲密行为。
 
     @property
     def SegmentSet(self):
+        """有涉黄嫌疑的视频片段列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VodPornReviewSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -2421,6 +3004,10 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def StartTimeOffset(self):
+        """嫌疑片段起始的偏移时间，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -2429,6 +3016,10 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def EndTimeOffset(self):
+        """嫌疑片段结束的偏移时间，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -2437,6 +3028,10 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Confidence(self):
+        """嫌疑片段涉黄分数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -2445,6 +3040,10 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Label(self):
+        """嫌疑片段鉴黄结果标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -2453,6 +3052,14 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Suggestion(self):
+        """嫌疑片段鉴黄结果建议，取值范围：
+pass。
+review。
+block。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -2461,6 +3068,11 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Url(self):
+        """嫌疑图片 URL （图片不会永久存储，到达
+PicUrlExpireTime 时间点后图片将被删除）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -2469,6 +3081,10 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def PicUrlExpireTimeStamp(self):
+        """嫌疑图片 URL 失效时间，使用 ISO 日期格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PicUrlExpireTimeStamp
 
     @PicUrlExpireTimeStamp.setter
@@ -2545,6 +3161,10 @@ terrorists：暴恐人物。
 
     @property
     def Confidence(self):
+        """视频暴恐评分，分值为0到100。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -2553,6 +3173,14 @@ terrorists：暴恐人物。
 
     @property
     def Suggestion(self):
+        """暴恐结果建议，取值范围：
+pass。
+review。
+block。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -2561,6 +3189,19 @@ terrorists：暴恐人物。
 
     @property
     def Label(self):
+        """视频暴恐结果标签，取值范围：
+guns：武器枪支。
+crowd：人群聚集。
+police：警察部队。
+bloody：血腥画面。
+banners：暴恐旗帜。
+militant：武装分子。
+explosion：爆炸火灾。
+terrorists：暴恐人物。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -2569,6 +3210,9 @@ terrorists：暴恐人物。
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2577,6 +3221,10 @@ terrorists：暴恐人物。
 
     @property
     def Code(self):
+        """错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -2585,6 +3233,10 @@ terrorists：暴恐人物。
 
     @property
     def Msg(self):
+        """错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -2593,6 +3245,10 @@ terrorists：暴恐人物。
 
     @property
     def SegmentSet(self):
+        """有暴恐嫌疑的视频片段列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VodPornReviewSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -2654,6 +3310,10 @@ class VodVideoStreamItem(AbstractModel):
 
     @property
     def Bitrate(self):
+        """视频流的码率，单位：bps。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -2662,6 +3322,10 @@ class VodVideoStreamItem(AbstractModel):
 
     @property
     def Height(self):
+        """视频流的高度，单位：px。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -2670,6 +3334,10 @@ class VodVideoStreamItem(AbstractModel):
 
     @property
     def Width(self):
+        """视频流的宽度，单位：px。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -2678,6 +3346,10 @@ class VodVideoStreamItem(AbstractModel):
 
     @property
     def Codec(self):
+        """视频流的编码格式，例如 h264。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -2686,6 +3358,10 @@ class VodVideoStreamItem(AbstractModel):
 
     @property
     def Fps(self):
+        """帧率，单位：hz。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter

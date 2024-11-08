@@ -57,6 +57,9 @@ class ApplicationBasicConfig(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -65,6 +68,9 @@ class ApplicationBasicConfig(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -73,6 +79,9 @@ class ApplicationBasicConfig(AbstractModel):
 
     @property
     def WorkflowKind(self):
+        """工作负载类型
+        :rtype: str
+        """
         return self._WorkflowKind
 
     @WorkflowKind.setter
@@ -81,6 +90,9 @@ class ApplicationBasicConfig(AbstractModel):
 
     @property
     def Labels(self):
+        """标签信息
+        :rtype: list of Label
+        """
         return self._Labels
 
     @Labels.setter
@@ -89,6 +101,9 @@ class ApplicationBasicConfig(AbstractModel):
 
     @property
     def GridUniqKey(self):
+        """Grid唯一Key
+        :rtype: str
+        """
         return self._GridUniqKey
 
     @GridUniqKey.setter
@@ -97,6 +112,9 @@ class ApplicationBasicConfig(AbstractModel):
 
     @property
     def NodeSelector(self):
+        """NodeSelector标签
+        :rtype: list of Label
+        """
         return self._NodeSelector
 
     @NodeSelector.setter
@@ -105,6 +123,9 @@ class ApplicationBasicConfig(AbstractModel):
 
     @property
     def Replicas(self):
+        """实例数
+        :rtype: int
+        """
         return self._Replicas
 
     @Replicas.setter
@@ -113,6 +134,9 @@ class ApplicationBasicConfig(AbstractModel):
 
     @property
     def AvailableReplicas(self):
+        """可用实例数
+        :rtype: int
+        """
         return self._AvailableReplicas
 
     @AvailableReplicas.setter
@@ -121,6 +145,10 @@ class ApplicationBasicConfig(AbstractModel):
 
     @property
     def EnableServiceLinks(self):
+        """是否开启service环境变量注入pod
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._EnableServiceLinks
 
     @EnableServiceLinks.setter
@@ -185,6 +213,9 @@ class ApplicationBasicInfo(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -193,6 +224,9 @@ class ApplicationBasicInfo(AbstractModel):
 
     @property
     def ManageUrl(self):
+        """管理URL地址
+        :rtype: str
+        """
         return self._ManageUrl
 
     @ManageUrl.setter
@@ -201,6 +235,9 @@ class ApplicationBasicInfo(AbstractModel):
 
     @property
     def Description(self):
+        """描述信息
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -209,6 +246,9 @@ class ApplicationBasicInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -217,6 +257,10 @@ class ApplicationBasicInfo(AbstractModel):
 
     @property
     def AllowVisualModify(self):
+        """是否允许可视化修改
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._AllowVisualModify
 
     @AllowVisualModify.setter
@@ -261,6 +305,10 @@ class ApplicationDeployMode(AbstractModel):
 
     @property
     def Type(self):
+        """1:指定节点部署 2:单元部署
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -269,6 +317,9 @@ class ApplicationDeployMode(AbstractModel):
 
     @property
     def ResourceID(self):
+        """资源ID
+        :rtype: int
+        """
         return self._ResourceID
 
     @ResourceID.setter
@@ -277,6 +328,9 @@ class ApplicationDeployMode(AbstractModel):
 
     @property
     def ResourceName(self):
+        """资源名
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -349,6 +403,10 @@ class ApplicationStatusInfo(AbstractModel):
 
     @property
     def Id(self):
+        """应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -357,6 +415,10 @@ class ApplicationStatusInfo(AbstractModel):
 
     @property
     def Name(self):
+        """应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -365,6 +427,10 @@ class ApplicationStatusInfo(AbstractModel):
 
     @property
     def Version(self):
+        """应用版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -373,6 +439,10 @@ class ApplicationStatusInfo(AbstractModel):
 
     @property
     def Status(self):
+        """应用状态(1:待部署 2:部署中 3:运行中 4:待更新 5:更新中 6:待删除 7:删除中 8:已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -381,6 +451,10 @@ class ApplicationStatusInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -389,6 +463,10 @@ class ApplicationStatusInfo(AbstractModel):
 
     @property
     def ManageUrl(self):
+        """管理地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ManageUrl
 
     @ManageUrl.setter
@@ -397,6 +475,10 @@ class ApplicationStatusInfo(AbstractModel):
 
     @property
     def WorkloadKind(self):
+        """负载类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WorkloadKind
 
     @WorkloadKind.setter
@@ -405,6 +487,10 @@ class ApplicationStatusInfo(AbstractModel):
 
     @property
     def DeployMode(self):
+        """应用部署模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.ApplicationDeployMode`
+        """
         return self._DeployMode
 
     @DeployMode.setter
@@ -413,6 +499,10 @@ class ApplicationStatusInfo(AbstractModel):
 
     @property
     def Replicas(self):
+        """期望Pod数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Replicas
 
     @Replicas.setter
@@ -421,6 +511,10 @@ class ApplicationStatusInfo(AbstractModel):
 
     @property
     def AvailableReplicas(self):
+        """运行Pod数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AvailableReplicas
 
     @AvailableReplicas.setter
@@ -486,6 +580,9 @@ class BuildMessageRouteRequest(AbstractModel):
 
     @property
     def RouteName(self):
+        """路由名字
+        :rtype: str
+        """
         return self._RouteName
 
     @RouteName.setter
@@ -494,6 +591,9 @@ class BuildMessageRouteRequest(AbstractModel):
 
     @property
     def SourceProductID(self):
+        """源产品id
+        :rtype: str
+        """
         return self._SourceProductID
 
     @SourceProductID.setter
@@ -502,6 +602,9 @@ class BuildMessageRouteRequest(AbstractModel):
 
     @property
     def SourceDeviceNameList(self):
+        """源设备名列表
+        :rtype: list of str
+        """
         return self._SourceDeviceNameList
 
     @SourceDeviceNameList.setter
@@ -510,6 +613,9 @@ class BuildMessageRouteRequest(AbstractModel):
 
     @property
     def TopicFilter(self):
+        """第一个字符为 "0"或"1"，"1"表示自定义topic
+        :rtype: str
+        """
         return self._TopicFilter
 
     @TopicFilter.setter
@@ -518,6 +624,9 @@ class BuildMessageRouteRequest(AbstractModel):
 
     @property
     def Mode(self):
+        """http或mqtt-broker
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -526,6 +635,9 @@ class BuildMessageRouteRequest(AbstractModel):
 
     @property
     def SourceUnitIDList(self):
+        """源单元id列表
+        :rtype: list of str
+        """
         return self._SourceUnitIDList
 
     @SourceUnitIDList.setter
@@ -534,6 +646,9 @@ class BuildMessageRouteRequest(AbstractModel):
 
     @property
     def Descript(self):
+        """描述
+        :rtype: str
+        """
         return self._Descript
 
     @Descript.setter
@@ -542,6 +657,9 @@ class BuildMessageRouteRequest(AbstractModel):
 
     @property
     def TargetOptions(self):
+        """无
+        :rtype: str
+        """
         return self._TargetOptions
 
     @TargetOptions.setter
@@ -582,6 +700,9 @@ class BuildMessageRouteResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -616,6 +737,10 @@ class ConfigMapBasicInfo(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -624,6 +749,10 @@ class ConfigMapBasicInfo(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -632,6 +761,10 @@ class ConfigMapBasicInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -719,6 +852,9 @@ class Container(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -727,6 +863,9 @@ class Container(AbstractModel):
 
     @property
     def ImageName(self):
+        """镜像名
+        :rtype: str
+        """
         return self._ImageName
 
     @ImageName.setter
@@ -735,6 +874,9 @@ class Container(AbstractModel):
 
     @property
     def ImageVersion(self):
+        """镜像版本
+        :rtype: str
+        """
         return self._ImageVersion
 
     @ImageVersion.setter
@@ -743,6 +885,9 @@ class Container(AbstractModel):
 
     @property
     def ImagePullPolicy(self):
+        """镜像拉取策略(Always|Never|IfNotPresent)
+        :rtype: str
+        """
         return self._ImagePullPolicy
 
     @ImagePullPolicy.setter
@@ -751,6 +896,10 @@ class Container(AbstractModel):
 
     @property
     def VolumeMounts(self):
+        """卷挂载配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VolumeMount
+        """
         return self._VolumeMounts
 
     @VolumeMounts.setter
@@ -759,6 +908,9 @@ class Container(AbstractModel):
 
     @property
     def CpuRequest(self):
+        """cpu最低配置
+        :rtype: str
+        """
         return self._CpuRequest
 
     @CpuRequest.setter
@@ -767,6 +919,9 @@ class Container(AbstractModel):
 
     @property
     def CpuLimit(self):
+        """cpu最高限制
+        :rtype: str
+        """
         return self._CpuLimit
 
     @CpuLimit.setter
@@ -775,6 +930,9 @@ class Container(AbstractModel):
 
     @property
     def MemoryRequest(self):
+        """内存最低要求
+        :rtype: str
+        """
         return self._MemoryRequest
 
     @MemoryRequest.setter
@@ -783,6 +941,9 @@ class Container(AbstractModel):
 
     @property
     def MemoryLimit(self):
+        """内存最高要求
+        :rtype: str
+        """
         return self._MemoryLimit
 
     @MemoryLimit.setter
@@ -791,6 +952,9 @@ class Container(AbstractModel):
 
     @property
     def MemoryUnit(self):
+        """内存单位
+        :rtype: str
+        """
         return self._MemoryUnit
 
     @MemoryUnit.setter
@@ -799,6 +963,9 @@ class Container(AbstractModel):
 
     @property
     def GpuLimit(self):
+        """gpu最高限制
+        :rtype: str
+        """
         return self._GpuLimit
 
     @GpuLimit.setter
@@ -807,6 +974,9 @@ class Container(AbstractModel):
 
     @property
     def ResourceMapCloud(self):
+        """资源配置
+        :rtype: list of KeyValueObj
+        """
         return self._ResourceMapCloud
 
     @ResourceMapCloud.setter
@@ -815,6 +985,9 @@ class Container(AbstractModel):
 
     @property
     def Envs(self):
+        """环境配置
+        :rtype: list of Env
+        """
         return self._Envs
 
     @Envs.setter
@@ -823,6 +996,9 @@ class Container(AbstractModel):
 
     @property
     def WorkingDir(self):
+        """工作目录
+        :rtype: str
+        """
         return self._WorkingDir
 
     @WorkingDir.setter
@@ -831,6 +1007,9 @@ class Container(AbstractModel):
 
     @property
     def Commands(self):
+        """命令
+        :rtype: list of str
+        """
         return self._Commands
 
     @Commands.setter
@@ -839,6 +1018,9 @@ class Container(AbstractModel):
 
     @property
     def Args(self):
+        """参数
+        :rtype: list of str
+        """
         return self._Args
 
     @Args.setter
@@ -847,6 +1029,9 @@ class Container(AbstractModel):
 
     @property
     def SecurityContext(self):
+        """安全配置
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.SecurityContext`
+        """
         return self._SecurityContext
 
     @SecurityContext.setter
@@ -855,6 +1040,9 @@ class Container(AbstractModel):
 
     @property
     def ReadinessProbe(self):
+        """就绪探针配置
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.Probe`
+        """
         return self._ReadinessProbe
 
     @ReadinessProbe.setter
@@ -933,6 +1121,9 @@ class CreateConfigMapRequest(AbstractModel):
 
     @property
     def EdgeUnitID(self):
+        """单元ID
+        :rtype: int
+        """
         return self._EdgeUnitID
 
     @EdgeUnitID.setter
@@ -941,6 +1132,9 @@ class CreateConfigMapRequest(AbstractModel):
 
     @property
     def ConfigMapName(self):
+        """ConfigMap名称
+        :rtype: str
+        """
         return self._ConfigMapName
 
     @ConfigMapName.setter
@@ -949,6 +1143,9 @@ class CreateConfigMapRequest(AbstractModel):
 
     @property
     def ConfigMapData(self):
+        """ConfigMap内容
+        :rtype: list of KeyValueObj
+        """
         return self._ConfigMapData
 
     @ConfigMapData.setter
@@ -957,6 +1154,9 @@ class CreateConfigMapRequest(AbstractModel):
 
     @property
     def ConfigMapNamespace(self):
+        """ConfigMap命名空间,默认：default
+        :rtype: str
+        """
         return self._ConfigMapNamespace
 
     @ConfigMapNamespace.setter
@@ -998,6 +1198,9 @@ class CreateConfigMapResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1026,6 +1229,9 @@ class CreateEdgeNodeBatchRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -1034,6 +1240,9 @@ class CreateEdgeNodeBatchRequest(AbstractModel):
 
     @property
     def Nodes(self):
+        """节点信息
+        :rtype: list of DracoNodeInfo
+        """
         return self._Nodes
 
     @Nodes.setter
@@ -1073,6 +1282,9 @@ class CreateEdgeNodeBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1110,6 +1322,9 @@ class CreateEdgeNodeGroupRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -1118,6 +1333,9 @@ class CreateEdgeNodeGroupRequest(AbstractModel):
 
     @property
     def Name(self):
+        """NodeGroup名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1126,6 +1344,9 @@ class CreateEdgeNodeGroupRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，不填默认为default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -1134,6 +1355,9 @@ class CreateEdgeNodeGroupRequest(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1142,6 +1366,9 @@ class CreateEdgeNodeGroupRequest(AbstractModel):
 
     @property
     def NodeUnitTemplateIDs(self):
+        """模版ID数组
+        :rtype: list of int non-negative
+        """
         return self._NodeUnitTemplateIDs
 
     @NodeUnitTemplateIDs.setter
@@ -1179,6 +1406,9 @@ class CreateEdgeNodeGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1207,6 +1437,9 @@ class CreateEdgeNodeRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -1215,6 +1448,9 @@ class CreateEdgeNodeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """节点名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1249,6 +1485,9 @@ class CreateEdgeNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1286,6 +1525,9 @@ class CreateEdgeNodeUnitTemplateRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -1294,6 +1536,9 @@ class CreateEdgeNodeUnitTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """NodeUnit模板名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1302,6 +1547,9 @@ class CreateEdgeNodeUnitTemplateRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，默认default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -1310,6 +1558,9 @@ class CreateEdgeNodeUnitTemplateRequest(AbstractModel):
 
     @property
     def Nodes(self):
+        """包含的节点列表
+        :rtype: list of str
+        """
         return self._Nodes
 
     @Nodes.setter
@@ -1318,6 +1569,9 @@ class CreateEdgeNodeUnitTemplateRequest(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1355,6 +1609,9 @@ class CreateEdgeNodeUnitTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1398,6 +1655,9 @@ class CreateEdgeUnitCloudRequest(AbstractModel):
 
     @property
     def Name(self):
+        """集群名称，长度小于32
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1406,6 +1666,9 @@ class CreateEdgeUnitCloudRequest(AbstractModel):
 
     @property
     def K8sVersion(self):
+        """k8s版本，仅支持1.16.7 和 1.18.2
+        :rtype: str
+        """
         return self._K8sVersion
 
     @K8sVersion.setter
@@ -1414,6 +1677,9 @@ class CreateEdgeUnitCloudRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """私有网络ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1422,6 +1688,9 @@ class CreateEdgeUnitCloudRequest(AbstractModel):
 
     @property
     def Description(self):
+        """集群描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1430,6 +1699,9 @@ class CreateEdgeUnitCloudRequest(AbstractModel):
 
     @property
     def PodCIDR(self):
+        """集群pod cidr， 默认  10.1.0.0/16
+        :rtype: str
+        """
         return self._PodCIDR
 
     @PodCIDR.setter
@@ -1438,6 +1710,9 @@ class CreateEdgeUnitCloudRequest(AbstractModel):
 
     @property
     def ServiceCIDR(self):
+        """集群service cidr, 默认 10.2.0.0/16
+        :rtype: str
+        """
         return self._ServiceCIDR
 
     @ServiceCIDR.setter
@@ -1446,6 +1721,9 @@ class CreateEdgeUnitCloudRequest(AbstractModel):
 
     @property
     def OpenCloudMonitor(self):
+        """是否开启监控。目前内存中权限开启联系产品开通白名单
+        :rtype: bool
+        """
         return self._OpenCloudMonitor
 
     @OpenCloudMonitor.setter
@@ -1493,6 +1771,10 @@ class CreateEdgeUnitCloudResponse(AbstractModel):
 
     @property
     def ClusterId(self):
+        """tke集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1501,6 +1783,10 @@ class CreateEdgeUnitCloudResponse(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -1509,6 +1795,9 @@ class CreateEdgeUnitCloudResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1542,6 +1831,9 @@ class CreateEdgeUnitDevicesRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """无
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -1550,6 +1842,9 @@ class CreateEdgeUnitDevicesRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """无
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -1558,6 +1853,9 @@ class CreateEdgeUnitDevicesRequest(AbstractModel):
 
     @property
     def DeviceNames(self):
+        """无
+        :rtype: list of str
+        """
         return self._DeviceNames
 
     @DeviceNames.setter
@@ -1593,6 +1891,9 @@ class CreateEdgeUnitDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1627,6 +1928,9 @@ class CreateIotDeviceRequest(AbstractModel):
 
     @property
     def DeviceName(self):
+        """设备名称
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -1635,6 +1939,9 @@ class CreateIotDeviceRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """设备所属的产品id
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -1643,6 +1950,9 @@ class CreateIotDeviceRequest(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1651,6 +1961,9 @@ class CreateIotDeviceRequest(AbstractModel):
 
     @property
     def UnitID(self):
+        """无
+        :rtype: int
+        """
         return self._UnitID
 
     @UnitID.setter
@@ -1687,6 +2000,9 @@ class CreateIotDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1715,6 +2031,9 @@ class CreateMessageRouteRequest(AbstractModel):
 
     @property
     def RouteName(self):
+        """路由名称
+        :rtype: str
+        """
         return self._RouteName
 
     @RouteName.setter
@@ -1723,6 +2042,9 @@ class CreateMessageRouteRequest(AbstractModel):
 
     @property
     def Descript(self):
+        """路由备注
+        :rtype: str
+        """
         return self._Descript
 
     @Descript.setter
@@ -1760,6 +2082,9 @@ class CreateMessageRouteResponse(AbstractModel):
 
     @property
     def RouteID(self):
+        """路由id
+        :rtype: int
+        """
         return self._RouteID
 
     @RouteID.setter
@@ -1768,6 +2093,9 @@ class CreateMessageRouteResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1800,6 +2128,9 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def EdgeUnitID(self):
+        """单元ID
+        :rtype: int
+        """
         return self._EdgeUnitID
 
     @EdgeUnitID.setter
@@ -1808,6 +2139,9 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -1816,6 +2150,9 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def Description(self):
+        """描述信息
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1851,6 +2188,9 @@ class CreateNamespaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1894,6 +2234,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def EdgeUnitID(self):
+        """单元ID
+        :rtype: int
+        """
         return self._EdgeUnitID
 
     @EdgeUnitID.setter
@@ -1902,6 +2245,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """secret名
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1910,6 +2256,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def SecretNamespace(self):
+        """命名空间（默认:default）
+        :rtype: str
+        """
         return self._SecretNamespace
 
     @SecretNamespace.setter
@@ -1918,6 +2267,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def SecretType(self):
+        """secret类型(取值范围:DockerConfigJson,Opaque 默认Opaque)
+        :rtype: str
+        """
         return self._SecretType
 
     @SecretType.setter
@@ -1926,6 +2278,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def DockerConfigJson(self):
+        """DockerConfig的序列化base64编码后的字符串
+        :rtype: str
+        """
         return self._DockerConfigJson
 
     @DockerConfigJson.setter
@@ -1934,6 +2289,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def CloudData(self):
+        """Opaque类型的Secret内容
+        :rtype: list of KeyValueObj
+        """
         return self._CloudData
 
     @CloudData.setter
@@ -1942,6 +2300,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def DockerConfig(self):
+        """DockerConfig配置
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.DockerConfig`
+        """
         return self._DockerConfig
 
     @DockerConfig.setter
@@ -1988,6 +2349,9 @@ class CreateSecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2028,6 +2392,9 @@ class CreateUpdateNodeUnitRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -2036,6 +2403,9 @@ class CreateUpdateNodeUnitRequest(AbstractModel):
 
     @property
     def NodeGroupName(self):
+        """NodeUnit所属的NodeGroup名称
+        :rtype: str
+        """
         return self._NodeGroupName
 
     @NodeGroupName.setter
@@ -2044,6 +2414,9 @@ class CreateUpdateNodeUnitRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，默认为default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -2052,6 +2425,9 @@ class CreateUpdateNodeUnitRequest(AbstractModel):
 
     @property
     def NodeUnitName(self):
+        """NodeUnit名称，通过模版创建可不填
+        :rtype: str
+        """
         return self._NodeUnitName
 
     @NodeUnitName.setter
@@ -2060,6 +2436,9 @@ class CreateUpdateNodeUnitRequest(AbstractModel):
 
     @property
     def Nodes(self):
+        """NodeUnit包含的节点列表，通过模版创建可不填
+        :rtype: list of str
+        """
         return self._Nodes
 
     @Nodes.setter
@@ -2068,6 +2447,9 @@ class CreateUpdateNodeUnitRequest(AbstractModel):
 
     @property
     def NodeUnitTemplateIDs(self):
+        """NodeUnit模版ID列表
+        :rtype: list of int non-negative
+        """
         return self._NodeUnitTemplateIDs
 
     @NodeUnitTemplateIDs.setter
@@ -2106,6 +2488,9 @@ class CreateUpdateNodeUnitResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2131,6 +2516,9 @@ class CreateUserTokenRequest(AbstractModel):
 
     @property
     def Second(self):
+        """token过期时间，有效值是1~300秒
+        :rtype: int
+        """
         return self._Second
 
     @Second.setter
@@ -2167,6 +2555,9 @@ class CreateUserTokenResponse(AbstractModel):
 
     @property
     def Token(self):
+        """无
+        :rtype: str
+        """
         return self._Token
 
     @Token.setter
@@ -2175,6 +2566,9 @@ class CreateUserTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2210,6 +2604,9 @@ class CronJob(AbstractModel):
 
     @property
     def Schedule(self):
+        """调度配置
+        :rtype: str
+        """
         return self._Schedule
 
     @Schedule.setter
@@ -2218,6 +2615,9 @@ class CronJob(AbstractModel):
 
     @property
     def StartingDeadlineSeconds(self):
+        """运行时间
+        :rtype: int
+        """
         return self._StartingDeadlineSeconds
 
     @StartingDeadlineSeconds.setter
@@ -2226,6 +2626,9 @@ class CronJob(AbstractModel):
 
     @property
     def ConcurrencyPolicy(self):
+        """job并行策略(Allow|Forbid|Replace)
+        :rtype: str
+        """
         return self._ConcurrencyPolicy
 
     @ConcurrencyPolicy.setter
@@ -2234,6 +2637,9 @@ class CronJob(AbstractModel):
 
     @property
     def Job(self):
+        """Job配置
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.Job`
+        """
         return self._Job
 
     @Job.setter
@@ -2278,6 +2684,9 @@ class DeleteConfigMapRequest(AbstractModel):
 
     @property
     def EdgeUnitID(self):
+        """单元ID
+        :rtype: int
+        """
         return self._EdgeUnitID
 
     @EdgeUnitID.setter
@@ -2286,6 +2695,9 @@ class DeleteConfigMapRequest(AbstractModel):
 
     @property
     def ConfigMapName(self):
+        """ConfigMap名
+        :rtype: str
+        """
         return self._ConfigMapName
 
     @ConfigMapName.setter
@@ -2294,6 +2706,9 @@ class DeleteConfigMapRequest(AbstractModel):
 
     @property
     def ConfigMapNamespace(self):
+        """ConfigMap命名空间，默认：default
+        :rtype: str
+        """
         return self._ConfigMapNamespace
 
     @ConfigMapNamespace.setter
@@ -2329,6 +2744,9 @@ class DeleteConfigMapResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2360,6 +2778,9 @@ class DeleteEdgeNodeGroupRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -2368,6 +2789,9 @@ class DeleteEdgeNodeGroupRequest(AbstractModel):
 
     @property
     def Name(self):
+        """NodeGroup名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2376,6 +2800,9 @@ class DeleteEdgeNodeGroupRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，默认为default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -2411,6 +2838,9 @@ class DeleteEdgeNodeGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2439,6 +2869,9 @@ class DeleteEdgeNodeUnitTemplatesRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -2447,6 +2880,9 @@ class DeleteEdgeNodeUnitTemplatesRequest(AbstractModel):
 
     @property
     def NodeUnitTemplateIDs(self):
+        """删除的NodeUnit模板ID列表
+        :rtype: list of int non-negative
+        """
         return self._NodeUnitTemplateIDs
 
     @NodeUnitTemplateIDs.setter
@@ -2481,6 +2917,9 @@ class DeleteEdgeNodeUnitTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2509,6 +2948,9 @@ class DeleteEdgeNodesRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -2517,6 +2959,9 @@ class DeleteEdgeNodesRequest(AbstractModel):
 
     @property
     def NodeIds(self):
+        """IECP边缘节点ID列表
+        :rtype: list of int non-negative
+        """
         return self._NodeIds
 
     @NodeIds.setter
@@ -2551,6 +2996,9 @@ class DeleteEdgeNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2576,6 +3024,9 @@ class DeleteEdgeUnitCloudRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """边缘集群ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -2609,6 +3060,9 @@ class DeleteEdgeUnitCloudResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2643,6 +3097,9 @@ class DeleteEdgeUnitDeployGridItemRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -2651,6 +3108,9 @@ class DeleteEdgeUnitDeployGridItemRequest(AbstractModel):
 
     @property
     def WorkloadKind(self):
+        """负载类型（StatefulSetGrid｜DeploymentGrid）
+        :rtype: str
+        """
         return self._WorkloadKind
 
     @WorkloadKind.setter
@@ -2659,6 +3119,9 @@ class DeleteEdgeUnitDeployGridItemRequest(AbstractModel):
 
     @property
     def GridItemName(self):
+        """Grid部署名称
+        :rtype: str
+        """
         return self._GridItemName
 
     @GridItemName.setter
@@ -2667,6 +3130,9 @@ class DeleteEdgeUnitDeployGridItemRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，默认default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -2703,6 +3169,9 @@ class DeleteEdgeUnitDeployGridItemResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2731,6 +3200,9 @@ class DeleteEdgeUnitDevicesDevice(AbstractModel):
 
     @property
     def ProductId(self):
+        """无
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -2739,6 +3211,9 @@ class DeleteEdgeUnitDevicesDevice(AbstractModel):
 
     @property
     def DeviceName(self):
+        """无
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -2776,6 +3251,9 @@ class DeleteEdgeUnitDevicesRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """无
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -2784,6 +3262,9 @@ class DeleteEdgeUnitDevicesRequest(AbstractModel):
 
     @property
     def Devices(self):
+        """无
+        :rtype: list of DeleteEdgeUnitDevicesDevice
+        """
         return self._Devices
 
     @Devices.setter
@@ -2823,6 +3304,9 @@ class DeleteEdgeUnitDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2854,6 +3338,9 @@ class DeleteEdgeUnitPodRequest(AbstractModel):
 
     @property
     def ClusterID(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterID
 
     @ClusterID.setter
@@ -2862,6 +3349,9 @@ class DeleteEdgeUnitPodRequest(AbstractModel):
 
     @property
     def PodName(self):
+        """Pod名称
+        :rtype: str
+        """
         return self._PodName
 
     @PodName.setter
@@ -2870,6 +3360,9 @@ class DeleteEdgeUnitPodRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -2905,6 +3398,9 @@ class DeleteEdgeUnitPodResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2930,6 +3426,9 @@ class DeleteIotDeviceBatchRequest(AbstractModel):
 
     @property
     def DeviceIDList(self):
+        """无
+        :rtype: list of int non-negative
+        """
         return self._DeviceIDList
 
     @DeviceIDList.setter
@@ -2963,6 +3462,9 @@ class DeleteIotDeviceBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2988,6 +3490,9 @@ class DeleteIotDeviceRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备id
+        :rtype: int
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -3021,6 +3526,9 @@ class DeleteIotDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3046,6 +3554,9 @@ class DeleteMessageRouteRequest(AbstractModel):
 
     @property
     def RouteID(self):
+        """无
+        :rtype: int
+        """
         return self._RouteID
 
     @RouteID.setter
@@ -3079,6 +3590,9 @@ class DeleteMessageRouteResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3107,6 +3621,9 @@ class DeleteNamespaceRequest(AbstractModel):
 
     @property
     def EdgeUnitID(self):
+        """单元ID
+        :rtype: int
+        """
         return self._EdgeUnitID
 
     @EdgeUnitID.setter
@@ -3115,6 +3632,9 @@ class DeleteNamespaceRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -3149,6 +3669,9 @@ class DeleteNamespaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3186,6 +3709,9 @@ class DeleteNodeUnitRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -3194,6 +3720,9 @@ class DeleteNodeUnitRequest(AbstractModel):
 
     @property
     def NodeGroupName(self):
+        """NodeUnit所属的NodeGroup名称
+        :rtype: str
+        """
         return self._NodeGroupName
 
     @NodeGroupName.setter
@@ -3202,6 +3731,9 @@ class DeleteNodeUnitRequest(AbstractModel):
 
     @property
     def NodeUnitName(self):
+        """NodeUnit名称
+        :rtype: str
+        """
         return self._NodeUnitName
 
     @NodeUnitName.setter
@@ -3210,6 +3742,9 @@ class DeleteNodeUnitRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，默认为default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -3218,6 +3753,9 @@ class DeleteNodeUnitRequest(AbstractModel):
 
     @property
     def Nodes(self):
+        """NodeUnit包含的节点列表
+        :rtype: list of str
+        """
         return self._Nodes
 
     @Nodes.setter
@@ -3255,6 +3793,9 @@ class DeleteNodeUnitResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3286,6 +3827,9 @@ class DeleteSecretRequest(AbstractModel):
 
     @property
     def EdgeUnitID(self):
+        """单元ID
+        :rtype: int
+        """
         return self._EdgeUnitID
 
     @EdgeUnitID.setter
@@ -3294,6 +3838,9 @@ class DeleteSecretRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """secret名称
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -3302,6 +3849,9 @@ class DeleteSecretRequest(AbstractModel):
 
     @property
     def SecretNamespace(self):
+        """secret命名空间（默认:default）
+        :rtype: str
+        """
         return self._SecretNamespace
 
     @SecretNamespace.setter
@@ -3337,6 +3887,9 @@ class DeleteSecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3368,6 +3921,9 @@ class DescribeConfigMapRequest(AbstractModel):
 
     @property
     def EdgeUnitID(self):
+        """单元ID
+        :rtype: int
+        """
         return self._EdgeUnitID
 
     @EdgeUnitID.setter
@@ -3376,6 +3932,9 @@ class DescribeConfigMapRequest(AbstractModel):
 
     @property
     def ConfigMapName(self):
+        """ConfigMap名称
+        :rtype: str
+        """
         return self._ConfigMapName
 
     @ConfigMapName.setter
@@ -3384,6 +3943,9 @@ class DescribeConfigMapRequest(AbstractModel):
 
     @property
     def ConfigMapNamespace(self):
+        """ConfigMap命名空间
+        :rtype: str
+        """
         return self._ConfigMapNamespace
 
     @ConfigMapNamespace.setter
@@ -3439,6 +4001,10 @@ class DescribeConfigMapResponse(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3447,6 +4013,10 @@ class DescribeConfigMapResponse(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -3455,6 +4025,10 @@ class DescribeConfigMapResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3463,6 +4037,10 @@ class DescribeConfigMapResponse(AbstractModel):
 
     @property
     def Yaml(self):
+        """yaml配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Yaml
 
     @Yaml.setter
@@ -3471,6 +4049,10 @@ class DescribeConfigMapResponse(AbstractModel):
 
     @property
     def Json(self):
+        """配置项的json格式(base64编码)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Json
 
     @Json.setter
@@ -3479,6 +4061,9 @@ class DescribeConfigMapResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3509,6 +4094,9 @@ class DescribeConfigMapYamlErrorRequest(AbstractModel):
 
     @property
     def Yaml(self):
+        """yaml文件
+        :rtype: str
+        """
         return self._Yaml
 
     @Yaml.setter
@@ -3554,6 +4142,10 @@ class DescribeConfigMapYamlErrorResponse(AbstractModel):
 
     @property
     def CheckPass(self):
+        """校验是通过
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._CheckPass
 
     @CheckPass.setter
@@ -3562,6 +4154,10 @@ class DescribeConfigMapYamlErrorResponse(AbstractModel):
 
     @property
     def ErrType(self):
+        """错误类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ErrType
 
     @ErrType.setter
@@ -3570,6 +4166,10 @@ class DescribeConfigMapYamlErrorResponse(AbstractModel):
 
     @property
     def ErrInfo(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrInfo
 
     @ErrInfo.setter
@@ -3578,6 +4178,9 @@ class DescribeConfigMapYamlErrorResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3621,6 +4224,9 @@ class DescribeConfigMapsRequest(AbstractModel):
 
     @property
     def EdgeUnitID(self):
+        """单元ID
+        :rtype: int
+        """
         return self._EdgeUnitID
 
     @EdgeUnitID.setter
@@ -3629,6 +4235,9 @@ class DescribeConfigMapsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """翻页偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3637,6 +4246,9 @@ class DescribeConfigMapsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页大小(最大100)
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3645,6 +4257,9 @@ class DescribeConfigMapsRequest(AbstractModel):
 
     @property
     def ConfigMapNamespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._ConfigMapNamespace
 
     @ConfigMapNamespace.setter
@@ -3653,6 +4268,9 @@ class DescribeConfigMapsRequest(AbstractModel):
 
     @property
     def NamePattern(self):
+        """模糊匹配的名称
+        :rtype: str
+        """
         return self._NamePattern
 
     @NamePattern.setter
@@ -3661,6 +4279,9 @@ class DescribeConfigMapsRequest(AbstractModel):
 
     @property
     def Sort(self):
+        """Sort.Fileld填写CreateTime Sort.Order(ASC|DESC) 默认ASC
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.FieldSort`
+        """
         return self._Sort
 
     @Sort.setter
@@ -3705,6 +4326,10 @@ class DescribeConfigMapsResponse(AbstractModel):
 
     @property
     def Items(self):
+        """ConfigMap列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ConfigMapBasicInfo
+        """
         return self._Items
 
     @Items.setter
@@ -3713,6 +4338,9 @@ class DescribeConfigMapsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3744,6 +4372,9 @@ class DescribeDracoEdgeNodeInstallerRequest(AbstractModel):
 
     @property
     def SN(self):
+        """设备SN
+        :rtype: str
+        """
         return self._SN
 
     @SN.setter
@@ -3781,6 +4412,10 @@ class DescribeDracoEdgeNodeInstallerResponse(AbstractModel):
 
     @property
     def OnlineInstallationCommand(self):
+        """在线安装命名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OnlineInstallationCommand
 
     @OnlineInstallationCommand.setter
@@ -3789,6 +4424,9 @@ class DescribeDracoEdgeNodeInstallerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3818,6 +4456,9 @@ class DescribeEdgeAgentNodeInstallerRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -3826,6 +4467,9 @@ class DescribeEdgeAgentNodeInstallerRequest(AbstractModel):
 
     @property
     def NodeId(self):
+        """IECP边缘节点ID
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -3864,6 +4508,10 @@ class DescribeEdgeAgentNodeInstallerResponse(AbstractModel):
 
     @property
     def Online(self):
+        """节点在线安装信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.EdgeNodeInstallerOnline`
+        """
         return self._Online
 
     @Online.setter
@@ -3872,6 +4520,9 @@ class DescribeEdgeAgentNodeInstallerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3922,6 +4573,10 @@ class DescribeEdgeDefaultVpcResponse(AbstractModel):
 
     @property
     def VpcId(self):
+        """私有网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -3930,6 +4585,10 @@ class DescribeEdgeDefaultVpcResponse(AbstractModel):
 
     @property
     def VpcCidrBlock(self):
+        """网络CIDR
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcCidrBlock
 
     @VpcCidrBlock.setter
@@ -3938,6 +4597,10 @@ class DescribeEdgeDefaultVpcResponse(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -3946,6 +4609,10 @@ class DescribeEdgeDefaultVpcResponse(AbstractModel):
 
     @property
     def SubnetCidrBlock(self):
+        """子网CIDR
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubnetCidrBlock
 
     @SubnetCidrBlock.setter
@@ -3954,6 +4621,9 @@ class DescribeEdgeDefaultVpcResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3992,6 +4662,9 @@ class DescribeEdgeNodePodContainersRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -4000,6 +4673,9 @@ class DescribeEdgeNodePodContainersRequest(AbstractModel):
 
     @property
     def NodeId(self):
+        """节点ID
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -4008,6 +4684,9 @@ class DescribeEdgeNodePodContainersRequest(AbstractModel):
 
     @property
     def PodName(self):
+        """Pod名称
+        :rtype: str
+        """
         return self._PodName
 
     @PodName.setter
@@ -4016,6 +4695,9 @@ class DescribeEdgeNodePodContainersRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -4056,6 +4738,10 @@ class DescribeEdgeNodePodContainersResponse(AbstractModel):
 
     @property
     def ContainerSet(self):
+        """Pod容器列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EdgeNodePodContainerInfo
+        """
         return self._ContainerSet
 
     @ContainerSet.setter
@@ -4064,6 +4750,9 @@ class DescribeEdgeNodePodContainersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4104,6 +4793,9 @@ class DescribeEdgeNodePodsRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -4112,6 +4804,9 @@ class DescribeEdgeNodePodsRequest(AbstractModel):
 
     @property
     def NodeId(self):
+        """节点ID
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -4120,6 +4815,9 @@ class DescribeEdgeNodePodsRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -4128,6 +4826,9 @@ class DescribeEdgeNodePodsRequest(AbstractModel):
 
     @property
     def PodNamePattern(self):
+        """Pod名称过滤串
+        :rtype: str
+        """
         return self._PodNamePattern
 
     @PodNamePattern.setter
@@ -4168,6 +4869,10 @@ class DescribeEdgeNodePodsResponse(AbstractModel):
 
     @property
     def PodSet(self):
+        """Pod列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EdgeNodePodInfo
+        """
         return self._PodSet
 
     @PodSet.setter
@@ -4176,6 +4881,9 @@ class DescribeEdgeNodePodsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4207,6 +4915,9 @@ class DescribeEdgeNodeRemarkListRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -4244,6 +4955,10 @@ class DescribeEdgeNodeRemarkListResponse(AbstractModel):
 
     @property
     def Remarks(self):
+        """边缘单元内的备注列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Remarks
 
     @Remarks.setter
@@ -4252,6 +4967,9 @@ class DescribeEdgeNodeRemarkListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4281,6 +4999,9 @@ class DescribeEdgeNodeRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -4289,6 +5010,9 @@ class DescribeEdgeNodeRequest(AbstractModel):
 
     @property
     def NodeId(self):
+        """IECP边缘节点ID
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -4358,6 +5082,10 @@ class DescribeEdgeNodeResponse(AbstractModel):
 
     @property
     def Id(self):
+        """节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -4366,6 +5094,10 @@ class DescribeEdgeNodeResponse(AbstractModel):
 
     @property
     def Kind(self):
+        """节点类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Kind
 
     @Kind.setter
@@ -4374,6 +5106,10 @@ class DescribeEdgeNodeResponse(AbstractModel):
 
     @property
     def Name(self):
+        """节点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4382,6 +5118,10 @@ class DescribeEdgeNodeResponse(AbstractModel):
 
     @property
     def Status(self):
+        """节点状态 （1健康｜2异常｜3离线｜4未激活）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -4390,6 +5130,10 @@ class DescribeEdgeNodeResponse(AbstractModel):
 
     @property
     def CpuArchitecture(self):
+        """CPU体系结构
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CpuArchitecture
 
     @CpuArchitecture.setter
@@ -4398,6 +5142,10 @@ class DescribeEdgeNodeResponse(AbstractModel):
 
     @property
     def AiChipArchitecture(self):
+        """AI处理器体系结构
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AiChipArchitecture
 
     @AiChipArchitecture.setter
@@ -4406,6 +5154,10 @@ class DescribeEdgeNodeResponse(AbstractModel):
 
     @property
     def Ip(self):
+        """IP地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -4414,6 +5166,9 @@ class DescribeEdgeNodeResponse(AbstractModel):
 
     @property
     def Labels(self):
+        """节点标签列表
+        :rtype: list of EdgeNodeLabel
+        """
         return self._Labels
 
     @Labels.setter
@@ -4422,6 +5177,10 @@ class DescribeEdgeNodeResponse(AbstractModel):
 
     @property
     def Resource(self):
+        """节点资源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.EdgeNodeResourceInfo`
+        """
         return self._Resource
 
     @Resource.setter
@@ -4430,6 +5189,9 @@ class DescribeEdgeNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4489,6 +5251,9 @@ class DescribeEdgeNodesRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -4497,6 +5262,9 @@ class DescribeEdgeNodesRequest(AbstractModel):
 
     @property
     def NamePattern(self):
+        """边缘节点名称模糊搜索串
+        :rtype: str
+        """
         return self._NamePattern
 
     @NamePattern.setter
@@ -4505,6 +5273,9 @@ class DescribeEdgeNodesRequest(AbstractModel):
 
     @property
     def NameMatchedList(self):
+        """边缘节点名称列表，支持批量查询 ，优先于模糊查询
+        :rtype: list of str
+        """
         return self._NameMatchedList
 
     @NameMatchedList.setter
@@ -4513,6 +5284,9 @@ class DescribeEdgeNodesRequest(AbstractModel):
 
     @property
     def Sort(self):
+        """排序信息列表
+        :rtype: list of Sort
+        """
         return self._Sort
 
     @Sort.setter
@@ -4521,6 +5295,9 @@ class DescribeEdgeNodesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4529,6 +5306,9 @@ class DescribeEdgeNodesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """页面大小Limit
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4537,6 +5317,9 @@ class DescribeEdgeNodesRequest(AbstractModel):
 
     @property
     def NodeType(self):
+        """节点类型
+        :rtype: int
+        """
         return self._NodeType
 
     @NodeType.setter
@@ -4588,6 +5371,9 @@ class DescribeEdgeNodesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """边缘节点数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4596,6 +5382,10 @@ class DescribeEdgeNodesResponse(AbstractModel):
 
     @property
     def NodeSet(self):
+        """节点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EdgeNodeInfo
+        """
         return self._NodeSet
 
     @NodeSet.setter
@@ -4604,6 +5394,9 @@ class DescribeEdgeNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4654,6 +5447,9 @@ class DescribeEdgeOperationLogsRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """开始时间
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -4662,6 +5458,9 @@ class DescribeEdgeOperationLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4670,6 +5469,9 @@ class DescribeEdgeOperationLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4678,6 +5480,9 @@ class DescribeEdgeOperationLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """翻页大小
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4686,6 +5491,9 @@ class DescribeEdgeOperationLogsRequest(AbstractModel):
 
     @property
     def Sort(self):
+        """排序字段
+        :rtype: list of FieldSort
+        """
         return self._Sort
 
     @Sort.setter
@@ -4694,6 +5502,9 @@ class DescribeEdgeOperationLogsRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -4702,6 +5513,9 @@ class DescribeEdgeOperationLogsRequest(AbstractModel):
 
     @property
     def Condition(self):
+        """过滤条件
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.OperationLogsCondition`
+        """
         return self._Condition
 
     @Condition.setter
@@ -4756,6 +5570,10 @@ class DescribeEdgeOperationLogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4764,6 +5582,10 @@ class DescribeEdgeOperationLogsResponse(AbstractModel):
 
     @property
     def OperationLogSet(self):
+        """操作日志列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OperationLog
+        """
         return self._OperationLogSet
 
     @OperationLogSet.setter
@@ -4772,6 +5594,9 @@ class DescribeEdgeOperationLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4810,6 +5635,9 @@ class DescribeEdgePodRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -4818,6 +5646,9 @@ class DescribeEdgePodRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -4826,6 +5657,9 @@ class DescribeEdgePodRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Pod名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4865,6 +5699,10 @@ class DescribeEdgePodResponse(AbstractModel):
 
     @property
     def Pod(self):
+        """Pod详情信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.EdgeNodePodInfo`
+        """
         return self._Pod
 
     @Pod.setter
@@ -4873,6 +5711,9 @@ class DescribeEdgePodResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4916,6 +5757,9 @@ class DescribeEdgeSnNodesRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -4924,6 +5768,9 @@ class DescribeEdgeSnNodesRequest(AbstractModel):
 
     @property
     def NamePattern(self):
+        """根据节点名称模糊匹配
+        :rtype: str
+        """
         return self._NamePattern
 
     @NamePattern.setter
@@ -4932,6 +5779,9 @@ class DescribeEdgeSnNodesRequest(AbstractModel):
 
     @property
     def SNPattern(self):
+        """根据设备SN模糊匹配
+        :rtype: str
+        """
         return self._SNPattern
 
     @SNPattern.setter
@@ -4940,6 +5790,9 @@ class DescribeEdgeSnNodesRequest(AbstractModel):
 
     @property
     def RemarkPattern(self):
+        """根据备注批次信息模糊匹配
+        :rtype: str
+        """
         return self._RemarkPattern
 
     @RemarkPattern.setter
@@ -4948,6 +5801,9 @@ class DescribeEdgeSnNodesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4956,6 +5812,9 @@ class DescribeEdgeSnNodesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5002,6 +5861,10 @@ class DescribeEdgeSnNodesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """满足条件的总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5010,6 +5873,10 @@ class DescribeEdgeSnNodesResponse(AbstractModel):
 
     @property
     def NodeSet(self):
+        """节点详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EdgeDracoNodeInfo
+        """
         return self._NodeSet
 
     @NodeSet.setter
@@ -5018,6 +5885,9 @@ class DescribeEdgeSnNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5065,6 +5935,9 @@ class DescribeEdgeUnitApplicationsRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -5073,6 +5946,9 @@ class DescribeEdgeUnitApplicationsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """翻页偏移
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5081,6 +5957,9 @@ class DescribeEdgeUnitApplicationsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """翻页大小
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5089,6 +5968,9 @@ class DescribeEdgeUnitApplicationsRequest(AbstractModel):
 
     @property
     def NamePattern(self):
+        """名称模糊匹配
+        :rtype: str
+        """
         return self._NamePattern
 
     @NamePattern.setter
@@ -5097,6 +5979,9 @@ class DescribeEdgeUnitApplicationsRequest(AbstractModel):
 
     @property
     def Sort(self):
+        """字段排序 (Sort.Filed为:StartTime）
+        :rtype: list of FieldSort
+        """
         return self._Sort
 
     @Sort.setter
@@ -5105,6 +5990,9 @@ class DescribeEdgeUnitApplicationsRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间过滤
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -5155,6 +6043,10 @@ class DescribeEdgeUnitApplicationsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5163,6 +6055,9 @@ class DescribeEdgeUnitApplicationsResponse(AbstractModel):
 
     @property
     def ApplicationSet(self):
+        """应用列表
+        :rtype: list of ApplicationStatusInfo
+        """
         return self._ApplicationSet
 
     @ApplicationSet.setter
@@ -5171,6 +6066,9 @@ class DescribeEdgeUnitApplicationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5215,6 +6113,9 @@ class DescribeEdgeUnitDeployGridItemRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -5223,6 +6124,9 @@ class DescribeEdgeUnitDeployGridItemRequest(AbstractModel):
 
     @property
     def GridName(self):
+        """Grid名称
+        :rtype: str
+        """
         return self._GridName
 
     @GridName.setter
@@ -5231,6 +6135,9 @@ class DescribeEdgeUnitDeployGridItemRequest(AbstractModel):
 
     @property
     def WorkloadKind(self):
+        """负载类型（StatefulSetGrid｜DeploymentGrid）
+        :rtype: str
+        """
         return self._WorkloadKind
 
     @WorkloadKind.setter
@@ -5239,6 +6146,9 @@ class DescribeEdgeUnitDeployGridItemRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，默认default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -5247,6 +6157,9 @@ class DescribeEdgeUnitDeployGridItemRequest(AbstractModel):
 
     @property
     def Order(self):
+        """排序，默认ASC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -5291,6 +6204,9 @@ class DescribeEdgeUnitDeployGridItemResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """记录总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5299,6 +6215,10 @@ class DescribeEdgeUnitDeployGridItemResponse(AbstractModel):
 
     @property
     def DeploySet(self):
+        """Grid部署列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GridItemInfo
+        """
         return self._DeploySet
 
     @DeploySet.setter
@@ -5307,6 +6227,9 @@ class DescribeEdgeUnitDeployGridItemResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5348,6 +6271,9 @@ class DescribeEdgeUnitDeployGridItemYamlRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -5356,6 +6282,9 @@ class DescribeEdgeUnitDeployGridItemYamlRequest(AbstractModel):
 
     @property
     def WorkloadKind(self):
+        """负载类型（StatefulSetGrid｜DeploymentGrid）
+        :rtype: str
+        """
         return self._WorkloadKind
 
     @WorkloadKind.setter
@@ -5364,6 +6293,9 @@ class DescribeEdgeUnitDeployGridItemYamlRequest(AbstractModel):
 
     @property
     def GridItemName(self):
+        """Grid部署项名称
+        :rtype: str
+        """
         return self._GridItemName
 
     @GridItemName.setter
@@ -5372,6 +6304,9 @@ class DescribeEdgeUnitDeployGridItemYamlRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，默认default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -5415,6 +6350,9 @@ class DescribeEdgeUnitDeployGridItemYamlResponse(AbstractModel):
 
     @property
     def Yaml(self):
+        """yaml，base64编码字符串
+        :rtype: str
+        """
         return self._Yaml
 
     @Yaml.setter
@@ -5423,6 +6361,10 @@ class DescribeEdgeUnitDeployGridItemYamlResponse(AbstractModel):
 
     @property
     def Replicas(self):
+        """对应类型的副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._Replicas
 
     @Replicas.setter
@@ -5431,6 +6373,9 @@ class DescribeEdgeUnitDeployGridItemYamlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5473,6 +6418,9 @@ class DescribeEdgeUnitDeployGridRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -5481,6 +6429,9 @@ class DescribeEdgeUnitDeployGridRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，默认为default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -5489,6 +6440,9 @@ class DescribeEdgeUnitDeployGridRequest(AbstractModel):
 
     @property
     def NamePattern(self):
+        """模糊匹配
+        :rtype: str
+        """
         return self._NamePattern
 
     @NamePattern.setter
@@ -5497,6 +6451,9 @@ class DescribeEdgeUnitDeployGridRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页offset，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5505,6 +6462,9 @@ class DescribeEdgeUnitDeployGridRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页limit，默认为20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5513,6 +6473,9 @@ class DescribeEdgeUnitDeployGridRequest(AbstractModel):
 
     @property
     def Order(self):
+        """排序，默认为ASC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -5558,6 +6521,9 @@ class DescribeEdgeUnitDeployGridResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """记录总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5566,6 +6532,10 @@ class DescribeEdgeUnitDeployGridResponse(AbstractModel):
 
     @property
     def GridSet(self):
+        """Grid列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GridInfo
+        """
         return self._GridSet
 
     @GridSet.setter
@@ -5574,6 +6544,9 @@ class DescribeEdgeUnitDeployGridResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5606,6 +6579,9 @@ class DescribeEdgeUnitExtraRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -5657,6 +6633,9 @@ class DescribeEdgeUnitExtraResponse(AbstractModel):
 
     @property
     def APIServerType(self):
+        """APIServer类型
+        :rtype: str
+        """
         return self._APIServerType
 
     @APIServerType.setter
@@ -5665,6 +6644,9 @@ class DescribeEdgeUnitExtraResponse(AbstractModel):
 
     @property
     def APIServerURL(self):
+        """域名URL
+        :rtype: str
+        """
         return self._APIServerURL
 
     @APIServerURL.setter
@@ -5673,6 +6655,9 @@ class DescribeEdgeUnitExtraResponse(AbstractModel):
 
     @property
     def APIServerURLPort(self):
+        """域名URL对应的端口
+        :rtype: str
+        """
         return self._APIServerURLPort
 
     @APIServerURLPort.setter
@@ -5681,6 +6666,9 @@ class DescribeEdgeUnitExtraResponse(AbstractModel):
 
     @property
     def APIServerResolveIP(self):
+        """域名URL对应的端口
+        :rtype: str
+        """
         return self._APIServerResolveIP
 
     @APIServerResolveIP.setter
@@ -5689,6 +6677,9 @@ class DescribeEdgeUnitExtraResponse(AbstractModel):
 
     @property
     def APIServerExposeAddress(self):
+        """对外可访问的IP
+        :rtype: str
+        """
         return self._APIServerExposeAddress
 
     @APIServerExposeAddress.setter
@@ -5697,6 +6688,9 @@ class DescribeEdgeUnitExtraResponse(AbstractModel):
 
     @property
     def IsCreatePrometheus(self):
+        """是否开启监控
+        :rtype: bool
+        """
         return self._IsCreatePrometheus
 
     @IsCreatePrometheus.setter
@@ -5705,6 +6699,9 @@ class DescribeEdgeUnitExtraResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5751,6 +6748,9 @@ class DescribeEdgeUnitGridEventsRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -5759,6 +6759,9 @@ class DescribeEdgeUnitGridEventsRequest(AbstractModel):
 
     @property
     def GridName(self):
+        """Grid名称
+        :rtype: str
+        """
         return self._GridName
 
     @GridName.setter
@@ -5767,6 +6770,9 @@ class DescribeEdgeUnitGridEventsRequest(AbstractModel):
 
     @property
     def WorkloadKind(self):
+        """负载类型（StatefulSetGrid｜DeploymentGrid）
+        :rtype: str
+        """
         return self._WorkloadKind
 
     @WorkloadKind.setter
@@ -5775,6 +6781,9 @@ class DescribeEdgeUnitGridEventsRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，默认为default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -5783,6 +6792,9 @@ class DescribeEdgeUnitGridEventsRequest(AbstractModel):
 
     @property
     def NodeUnit(self):
+        """NodeUnit名称
+        :rtype: str
+        """
         return self._NodeUnit
 
     @NodeUnit.setter
@@ -5791,6 +6803,9 @@ class DescribeEdgeUnitGridEventsRequest(AbstractModel):
 
     @property
     def PodName(self):
+        """Pod名称
+        :rtype: str
+        """
         return self._PodName
 
     @PodName.setter
@@ -5833,6 +6848,10 @@ class DescribeEdgeUnitGridEventsResponse(AbstractModel):
 
     @property
     def EventSet(self):
+        """事件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GridEventInfo
+        """
         return self._EventSet
 
     @EventSet.setter
@@ -5841,6 +6860,9 @@ class DescribeEdgeUnitGridEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5884,6 +6906,9 @@ class DescribeEdgeUnitGridPodsRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -5892,6 +6917,9 @@ class DescribeEdgeUnitGridPodsRequest(AbstractModel):
 
     @property
     def GridName(self):
+        """Grid名称
+        :rtype: str
+        """
         return self._GridName
 
     @GridName.setter
@@ -5900,6 +6928,9 @@ class DescribeEdgeUnitGridPodsRequest(AbstractModel):
 
     @property
     def WorkloadKind(self):
+        """负载类型（StatefulSetGrid｜DeploymentGrid）
+        :rtype: str
+        """
         return self._WorkloadKind
 
     @WorkloadKind.setter
@@ -5908,6 +6939,9 @@ class DescribeEdgeUnitGridPodsRequest(AbstractModel):
 
     @property
     def NodeUnit(self):
+        """NodeUnit名
+        :rtype: str
+        """
         return self._NodeUnit
 
     @NodeUnit.setter
@@ -5916,6 +6950,9 @@ class DescribeEdgeUnitGridPodsRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，默认default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -5957,6 +6994,10 @@ class DescribeEdgeUnitGridPodsResponse(AbstractModel):
 
     @property
     def PodSet(self):
+        """Pod列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GridPodInfo
+        """
         return self._PodSet
 
     @PodSet.setter
@@ -5965,6 +7006,9 @@ class DescribeEdgeUnitGridPodsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5996,6 +7040,9 @@ class DescribeEdgeUnitMonitorStatusRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -6040,6 +7087,14 @@ class DescribeEdgeUnitMonitorStatusResponse(AbstractModel):
 
     @property
     def MonitorStatus(self):
+        """监控状态描述：
+"running" 单元监控正常运行
+"deploying" 单元监控部署中
+"norsc" 单元需要可用节点以部署监控
+"abnormal" 单元监控异常
+"none" 单元监控不可用
+        :rtype: str
+        """
         return self._MonitorStatus
 
     @MonitorStatus.setter
@@ -6048,6 +7103,9 @@ class DescribeEdgeUnitMonitorStatusResponse(AbstractModel):
 
     @property
     def IsAvailable(self):
+        """监控是否就绪
+        :rtype: bool
+        """
         return self._IsAvailable
 
     @IsAvailable.setter
@@ -6056,6 +7114,9 @@ class DescribeEdgeUnitMonitorStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6101,6 +7162,9 @@ class DescribeEdgeUnitNodeGroupRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -6109,6 +7173,9 @@ class DescribeEdgeUnitNodeGroupRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，默认为default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -6117,6 +7184,9 @@ class DescribeEdgeUnitNodeGroupRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页offset，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6125,6 +7195,9 @@ class DescribeEdgeUnitNodeGroupRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页limit，默认为20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6133,6 +7206,9 @@ class DescribeEdgeUnitNodeGroupRequest(AbstractModel):
 
     @property
     def NameFilter(self):
+        """模糊匹配参数，精确匹配时失效
+        :rtype: str
+        """
         return self._NameFilter
 
     @NameFilter.setter
@@ -6141,6 +7217,9 @@ class DescribeEdgeUnitNodeGroupRequest(AbstractModel):
 
     @property
     def NameMatched(self):
+        """精确匹配参数
+        :rtype: str
+        """
         return self._NameMatched
 
     @NameMatched.setter
@@ -6149,6 +7228,9 @@ class DescribeEdgeUnitNodeGroupRequest(AbstractModel):
 
     @property
     def Order(self):
+        """按时间排序，ASC/DESC，默认为DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -6194,6 +7276,9 @@ class DescribeEdgeUnitNodeGroupResponse(AbstractModel):
 
     @property
     def Total(self):
+        """记录总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -6202,6 +7287,9 @@ class DescribeEdgeUnitNodeGroupResponse(AbstractModel):
 
     @property
     def NodeGroupInfo(self):
+        """NodeGroup数组
+        :rtype: list of NodeGroupInfo
+        """
         return self._NodeGroupInfo
 
     @NodeGroupInfo.setter
@@ -6210,6 +7298,9 @@ class DescribeEdgeUnitNodeGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6260,6 +7351,9 @@ class DescribeEdgeUnitNodeUnitTemplatesRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -6268,6 +7362,9 @@ class DescribeEdgeUnitNodeUnitTemplatesRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，默认为default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -6276,6 +7373,9 @@ class DescribeEdgeUnitNodeUnitTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页查询offset，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6284,6 +7384,9 @@ class DescribeEdgeUnitNodeUnitTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页查询limit，默认为20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6292,6 +7395,9 @@ class DescribeEdgeUnitNodeUnitTemplatesRequest(AbstractModel):
 
     @property
     def NameFilter(self):
+        """模糊匹配，精确匹配时失效
+        :rtype: str
+        """
         return self._NameFilter
 
     @NameFilter.setter
@@ -6300,6 +7406,9 @@ class DescribeEdgeUnitNodeUnitTemplatesRequest(AbstractModel):
 
     @property
     def NameMatched(self):
+        """精确匹配
+        :rtype: str
+        """
         return self._NameMatched
 
     @NameMatched.setter
@@ -6308,6 +7417,9 @@ class DescribeEdgeUnitNodeUnitTemplatesRequest(AbstractModel):
 
     @property
     def Order(self):
+        """按时间排序顺序，默认为DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -6354,6 +7466,9 @@ class DescribeEdgeUnitNodeUnitTemplatesResponse(AbstractModel):
 
     @property
     def Total(self):
+        """符合查询条件的记录总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -6362,6 +7477,10 @@ class DescribeEdgeUnitNodeUnitTemplatesResponse(AbstractModel):
 
     @property
     def NodeUnitTemplates(self):
+        """NodeUnit模板列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NodeUnitTemplate
+        """
         return self._NodeUnitTemplates
 
     @NodeUnitTemplates.setter
@@ -6370,6 +7489,9 @@ class DescribeEdgeUnitNodeUnitTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6411,6 +7533,9 @@ class DescribeEdgeUnitsCloudRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6419,6 +7544,9 @@ class DescribeEdgeUnitsCloudRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """limit值
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6427,6 +7555,9 @@ class DescribeEdgeUnitsCloudRequest(AbstractModel):
 
     @property
     def NamePattern(self):
+        """集群名称模糊匹配
+        :rtype: str
+        """
         return self._NamePattern
 
     @NamePattern.setter
@@ -6435,6 +7566,9 @@ class DescribeEdgeUnitsCloudRequest(AbstractModel):
 
     @property
     def Order(self):
+        """排序，ASC/DESC(默认)
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -6479,6 +7613,10 @@ class DescribeEdgeUnitsCloudResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6487,6 +7625,10 @@ class DescribeEdgeUnitsCloudResponse(AbstractModel):
 
     @property
     def EdgeUnitSet(self):
+        """集群详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EdgeCloudCluster
+        """
         return self._EdgeUnitSet
 
     @EdgeUnitSet.setter
@@ -6495,6 +7637,9 @@ class DescribeEdgeUnitsCloudResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6533,6 +7678,9 @@ class DescribeIotDeviceRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备id，传0值表示此参数无效
+        :rtype: int
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -6541,6 +7689,9 @@ class DescribeIotDeviceRequest(AbstractModel):
 
     @property
     def ProductID(self):
+        """无
+        :rtype: str
+        """
         return self._ProductID
 
     @ProductID.setter
@@ -6549,6 +7700,9 @@ class DescribeIotDeviceRequest(AbstractModel):
 
     @property
     def DeviceName(self):
+        """无
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -6638,6 +7792,9 @@ class DescribeIotDeviceResponse(AbstractModel):
 
     @property
     def Id(self):
+        """设备id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -6646,6 +7803,9 @@ class DescribeIotDeviceResponse(AbstractModel):
 
     @property
     def Name(self):
+        """设备名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6654,6 +7814,9 @@ class DescribeIotDeviceResponse(AbstractModel):
 
     @property
     def Version(self):
+        """版本号
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -6662,6 +7825,9 @@ class DescribeIotDeviceResponse(AbstractModel):
 
     @property
     def Cert(self):
+        """ssl证书
+        :rtype: str
+        """
         return self._Cert
 
     @Cert.setter
@@ -6670,6 +7836,9 @@ class DescribeIotDeviceResponse(AbstractModel):
 
     @property
     def PrivateKey(self):
+        """ssl私钥
+        :rtype: str
+        """
         return self._PrivateKey
 
     @PrivateKey.setter
@@ -6678,6 +7847,9 @@ class DescribeIotDeviceResponse(AbstractModel):
 
     @property
     def Psk(self):
+        """psk认证密钥
+        :rtype: str
+        """
         return self._Psk
 
     @Psk.setter
@@ -6686,6 +7858,9 @@ class DescribeIotDeviceResponse(AbstractModel):
 
     @property
     def Disabled(self):
+        """设备是否打开
+        :rtype: bool
+        """
         return self._Disabled
 
     @Disabled.setter
@@ -6694,6 +7869,9 @@ class DescribeIotDeviceResponse(AbstractModel):
 
     @property
     def LogSetting(self):
+        """设备日志
+        :rtype: int
+        """
         return self._LogSetting
 
     @LogSetting.setter
@@ -6702,6 +7880,9 @@ class DescribeIotDeviceResponse(AbstractModel):
 
     @property
     def LogLevel(self):
+        """设备日志级别
+        :rtype: int
+        """
         return self._LogLevel
 
     @LogLevel.setter
@@ -6710,6 +7891,9 @@ class DescribeIotDeviceResponse(AbstractModel):
 
     @property
     def UserName(self):
+        """mqtt参数
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -6718,6 +7902,9 @@ class DescribeIotDeviceResponse(AbstractModel):
 
     @property
     def Password(self):
+        """mqtt参数
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -6726,6 +7913,9 @@ class DescribeIotDeviceResponse(AbstractModel):
 
     @property
     def ClientID(self):
+        """mqtt参数
+        :rtype: str
+        """
         return self._ClientID
 
     @ClientID.setter
@@ -6734,6 +7924,9 @@ class DescribeIotDeviceResponse(AbstractModel):
 
     @property
     def PskHex(self):
+        """16进制的psk格式
+        :rtype: str
+        """
         return self._PskHex
 
     @PskHex.setter
@@ -6742,6 +7935,9 @@ class DescribeIotDeviceResponse(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -6750,6 +7946,9 @@ class DescribeIotDeviceResponse(AbstractModel):
 
     @property
     def Status(self):
+        """设备在线状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -6758,6 +7957,9 @@ class DescribeIotDeviceResponse(AbstractModel):
 
     @property
     def Region(self):
+        """无
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -6766,6 +7968,9 @@ class DescribeIotDeviceResponse(AbstractModel):
 
     @property
     def UnitID(self):
+        """无
+        :rtype: int
+        """
         return self._UnitID
 
     @UnitID.setter
@@ -6774,6 +7979,9 @@ class DescribeIotDeviceResponse(AbstractModel):
 
     @property
     def UnitName(self):
+        """无
+        :rtype: str
+        """
         return self._UnitName
 
     @UnitName.setter
@@ -6782,6 +7990,9 @@ class DescribeIotDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6840,6 +8051,9 @@ class DescribeIotDevicesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """页偏移
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6848,6 +8062,9 @@ class DescribeIotDevicesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6856,6 +8073,9 @@ class DescribeIotDevicesRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品id
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -6864,6 +8084,9 @@ class DescribeIotDevicesRequest(AbstractModel):
 
     @property
     def NamePattern(self):
+        """设备名称模糊查找
+        :rtype: str
+        """
         return self._NamePattern
 
     @NamePattern.setter
@@ -6872,6 +8095,9 @@ class DescribeIotDevicesRequest(AbstractModel):
 
     @property
     def Versions(self):
+        """版本列表
+        :rtype: list of str
+        """
         return self._Versions
 
     @Versions.setter
@@ -6880,6 +8106,9 @@ class DescribeIotDevicesRequest(AbstractModel):
 
     @property
     def Order(self):
+        """ASC 或 DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -6924,6 +8153,9 @@ class DescribeIotDevicesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合查找条件的总数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6932,6 +8164,9 @@ class DescribeIotDevicesResponse(AbstractModel):
 
     @property
     def DeviceSet(self):
+        """设备列表
+        :rtype: list of IotDevicesInfo
+        """
         return self._DeviceSet
 
     @DeviceSet.setter
@@ -6940,6 +8175,9 @@ class DescribeIotDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6987,6 +8225,9 @@ class DescribeMessageRouteListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """无
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6995,6 +8236,9 @@ class DescribeMessageRouteListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """无
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7003,6 +8247,9 @@ class DescribeMessageRouteListRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """无
+        :rtype: str
+        """
         return self._Filter
 
     @Filter.setter
@@ -7011,6 +8258,9 @@ class DescribeMessageRouteListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """无
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7019,6 +8269,9 @@ class DescribeMessageRouteListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """无
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7027,6 +8280,9 @@ class DescribeMessageRouteListRequest(AbstractModel):
 
     @property
     def Order(self):
+        """无
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -7071,6 +8327,9 @@ class DescribeMessageRouteListResponse(AbstractModel):
 
     @property
     def RouteList(self):
+        """无
+        :rtype: list of RouteInfo
+        """
         return self._RouteList
 
     @RouteList.setter
@@ -7079,6 +8338,9 @@ class DescribeMessageRouteListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """无
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7087,6 +8349,9 @@ class DescribeMessageRouteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7143,6 +8408,9 @@ class DescribeMonitorMetricsRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -7151,6 +8419,9 @@ class DescribeMonitorMetricsRequest(AbstractModel):
 
     @property
     def QueryType(self):
+        """查询维度
+        :rtype: str
+        """
         return self._QueryType
 
     @QueryType.setter
@@ -7159,6 +8430,9 @@ class DescribeMonitorMetricsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """起始时间Unix秒时间戳
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7167,6 +8441,9 @@ class DescribeMonitorMetricsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """终止时间Unix秒时间戳
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7175,6 +8452,9 @@ class DescribeMonitorMetricsRequest(AbstractModel):
 
     @property
     def Interval(self):
+        """步长（分钟）
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -7183,6 +8463,9 @@ class DescribeMonitorMetricsRequest(AbstractModel):
 
     @property
     def NodeName(self):
+        """节点名称，查询节点监控时必填
+        :rtype: str
+        """
         return self._NodeName
 
     @NodeName.setter
@@ -7191,6 +8474,9 @@ class DescribeMonitorMetricsRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，不填则默认为default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -7199,6 +8485,9 @@ class DescribeMonitorMetricsRequest(AbstractModel):
 
     @property
     def PodName(self):
+        """Pod名称，查询Pod监控时必填
+        :rtype: str
+        """
         return self._PodName
 
     @PodName.setter
@@ -7207,6 +8496,9 @@ class DescribeMonitorMetricsRequest(AbstractModel):
 
     @property
     def WorkloadName(self):
+        """Workload名称，查询Workload监控时必填
+        :rtype: str
+        """
         return self._WorkloadName
 
     @WorkloadName.setter
@@ -7252,6 +8544,10 @@ class DescribeMonitorMetricsResponse(AbstractModel):
 
     @property
     def Metrics(self):
+        """查询监控指标结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MonitorMetricsColumn
+        """
         return self._Metrics
 
     @Metrics.setter
@@ -7260,6 +8556,9 @@ class DescribeMonitorMetricsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7294,6 +8593,9 @@ class DescribeNamespaceRequest(AbstractModel):
 
     @property
     def EdgeUnitID(self):
+        """单元ID
+        :rtype: int
+        """
         return self._EdgeUnitID
 
     @EdgeUnitID.setter
@@ -7302,6 +8604,9 @@ class DescribeNamespaceRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间名
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -7339,6 +8644,9 @@ class DescribeNamespaceResourcesRequest(AbstractModel):
 
     @property
     def EdgeUnitID(self):
+        """单元ID
+        :rtype: int
+        """
         return self._EdgeUnitID
 
     @EdgeUnitID.setter
@@ -7347,6 +8655,9 @@ class DescribeNamespaceResourcesRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -7385,6 +8696,10 @@ class DescribeNamespaceResourcesResponse(AbstractModel):
 
     @property
     def Resources(self):
+        """资源列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NamespaceResource
+        """
         return self._Resources
 
     @Resources.setter
@@ -7393,6 +8708,9 @@ class DescribeNamespaceResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7448,6 +8766,10 @@ class DescribeNamespaceResponse(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -7456,6 +8778,10 @@ class DescribeNamespaceResponse(AbstractModel):
 
     @property
     def Status(self):
+        """状态 (Active|Terminating)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7464,6 +8790,10 @@ class DescribeNamespaceResponse(AbstractModel):
 
     @property
     def Description(self):
+        """描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -7472,6 +8802,10 @@ class DescribeNamespaceResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -7480,6 +8814,10 @@ class DescribeNamespaceResponse(AbstractModel):
 
     @property
     def Protected(self):
+        """是否保护-不允许删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Protected
 
     @Protected.setter
@@ -7488,6 +8826,10 @@ class DescribeNamespaceResponse(AbstractModel):
 
     @property
     def Yaml(self):
+        """Yaml文件格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Yaml
 
     @Yaml.setter
@@ -7496,6 +8838,9 @@ class DescribeNamespaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7530,6 +8875,9 @@ class DescribeNamespacesRequest(AbstractModel):
 
     @property
     def EdgeUnitID(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitID
 
     @EdgeUnitID.setter
@@ -7538,6 +8886,9 @@ class DescribeNamespacesRequest(AbstractModel):
 
     @property
     def NamePattern(self):
+        """边缘节点名称模糊搜索串
+        :rtype: str
+        """
         return self._NamePattern
 
     @NamePattern.setter
@@ -7575,6 +8926,9 @@ class DescribeNamespacesResponse(AbstractModel):
 
     @property
     def Items(self):
+        """命名空间信息列表
+        :rtype: list of NamespaceInfo
+        """
         return self._Items
 
     @Items.setter
@@ -7583,6 +8937,9 @@ class DescribeNamespacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7629,6 +8986,9 @@ class DescribeNodeUnitRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -7637,6 +8997,9 @@ class DescribeNodeUnitRequest(AbstractModel):
 
     @property
     def NodeGroupName(self):
+        """NodeUnit所属的NodeGroup名称
+        :rtype: str
+        """
         return self._NodeGroupName
 
     @NodeGroupName.setter
@@ -7645,6 +9008,9 @@ class DescribeNodeUnitRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，默认default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -7653,6 +9019,9 @@ class DescribeNodeUnitRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页查询limit，默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7661,6 +9030,9 @@ class DescribeNodeUnitRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页查询offset，默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7669,6 +9041,9 @@ class DescribeNodeUnitRequest(AbstractModel):
 
     @property
     def NameFilter(self):
+        """模糊匹配
+        :rtype: str
+        """
         return self._NameFilter
 
     @NameFilter.setter
@@ -7714,6 +9089,9 @@ class DescribeNodeUnitResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合查询条件的记录总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7722,6 +9100,10 @@ class DescribeNodeUnitResponse(AbstractModel):
 
     @property
     def NodeGridInfo(self):
+        """NodeUnit信息数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NodeUnitInfo
+        """
         return self._NodeGridInfo
 
     @NodeGridInfo.setter
@@ -7730,6 +9112,9 @@ class DescribeNodeUnitResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7780,6 +9165,9 @@ class DescribeNodeUnitTemplateOnNodeGroupRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -7788,6 +9176,9 @@ class DescribeNodeUnitTemplateOnNodeGroupRequest(AbstractModel):
 
     @property
     def NodeGroupName(self):
+        """NodeGroup名称
+        :rtype: str
+        """
         return self._NodeGroupName
 
     @NodeGroupName.setter
@@ -7796,6 +9187,9 @@ class DescribeNodeUnitTemplateOnNodeGroupRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，默认default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -7804,6 +9198,9 @@ class DescribeNodeUnitTemplateOnNodeGroupRequest(AbstractModel):
 
     @property
     def NodeUnitNamePattern(self):
+        """名称模糊匹配
+        :rtype: str
+        """
         return self._NodeUnitNamePattern
 
     @NodeUnitNamePattern.setter
@@ -7812,6 +9209,9 @@ class DescribeNodeUnitTemplateOnNodeGroupRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页查询offset，默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7820,6 +9220,9 @@ class DescribeNodeUnitTemplateOnNodeGroupRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页查询limit，默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7828,6 +9231,9 @@ class DescribeNodeUnitTemplateOnNodeGroupRequest(AbstractModel):
 
     @property
     def Order(self):
+        """排序，默认DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -7874,6 +9280,9 @@ class DescribeNodeUnitTemplateOnNodeGroupResponse(AbstractModel):
 
     @property
     def Total(self):
+        """记录总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -7882,6 +9291,10 @@ class DescribeNodeUnitTemplateOnNodeGroupResponse(AbstractModel):
 
     @property
     def NodeUnitTemplates(self):
+        """NodeUnit模板
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NodeGroupNodeUnitTemplateInfo
+        """
         return self._NodeUnitTemplates
 
     @NodeUnitTemplates.setter
@@ -7890,6 +9303,9 @@ class DescribeNodeUnitTemplateOnNodeGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7928,6 +9344,9 @@ class DescribeSecretRequest(AbstractModel):
 
     @property
     def EdgeUnitID(self):
+        """边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitID
 
     @EdgeUnitID.setter
@@ -7936,6 +9355,9 @@ class DescribeSecretRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """secret名
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -7944,6 +9366,9 @@ class DescribeSecretRequest(AbstractModel):
 
     @property
     def SecretNamespace(self):
+        """命名空间(默认值:default）
+        :rtype: str
+        """
         return self._SecretNamespace
 
     @SecretNamespace.setter
@@ -7999,6 +9424,10 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def Name(self):
+        """Secret名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8007,6 +9436,10 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -8015,6 +9448,10 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8023,6 +9460,10 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def Yaml(self):
+        """secret的yaml格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Yaml
 
     @Yaml.setter
@@ -8031,6 +9472,10 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def Json(self):
+        """secret的json格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Json
 
     @Json.setter
@@ -8039,6 +9484,9 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8069,6 +9517,9 @@ class DescribeSecretYamlErrorRequest(AbstractModel):
 
     @property
     def Yaml(self):
+        """yaml文件
+        :rtype: str
+        """
         return self._Yaml
 
     @Yaml.setter
@@ -8114,6 +9565,10 @@ class DescribeSecretYamlErrorResponse(AbstractModel):
 
     @property
     def CheckPass(self):
+        """校验是通过
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._CheckPass
 
     @CheckPass.setter
@@ -8122,6 +9577,10 @@ class DescribeSecretYamlErrorResponse(AbstractModel):
 
     @property
     def ErrType(self):
+        """错误类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ErrType
 
     @ErrType.setter
@@ -8130,6 +9589,10 @@ class DescribeSecretYamlErrorResponse(AbstractModel):
 
     @property
     def ErrInfo(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrInfo
 
     @ErrInfo.setter
@@ -8138,6 +9601,9 @@ class DescribeSecretYamlErrorResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8184,6 +9650,9 @@ class DescribeSecretsRequest(AbstractModel):
 
     @property
     def EdgeUnitID(self):
+        """边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitID
 
     @EdgeUnitID.setter
@@ -8192,6 +9661,9 @@ class DescribeSecretsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """页号
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8200,6 +9672,9 @@ class DescribeSecretsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页数目
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8208,6 +9683,9 @@ class DescribeSecretsRequest(AbstractModel):
 
     @property
     def SecretNamespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._SecretNamespace
 
     @SecretNamespace.setter
@@ -8216,6 +9694,9 @@ class DescribeSecretsRequest(AbstractModel):
 
     @property
     def NamePattern(self):
+        """Secret名(模糊匹配)
+        :rtype: str
+        """
         return self._NamePattern
 
     @NamePattern.setter
@@ -8224,6 +9705,9 @@ class DescribeSecretsRequest(AbstractModel):
 
     @property
     def Sort(self):
+        """Sort.Field:CreateTime Sort.Order:ASC|DESC
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.FieldSort`
+        """
         return self._Sort
 
     @Sort.setter
@@ -8232,6 +9716,9 @@ class DescribeSecretsRequest(AbstractModel):
 
     @property
     def SecretType(self):
+        """Secret类型(DockerConfigJson或Opaque)
+        :rtype: str
+        """
         return self._SecretType
 
     @SecretType.setter
@@ -8281,6 +9768,10 @@ class DescribeSecretsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8289,6 +9780,10 @@ class DescribeSecretsResponse(AbstractModel):
 
     @property
     def Items(self):
+        """Secret列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SecretItem
+        """
         return self._Items
 
     @Items.setter
@@ -8297,6 +9792,9 @@ class DescribeSecretsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8355,6 +9853,10 @@ class DescribeYeheResourceLimitResponse(AbstractModel):
 
     @property
     def Uin(self):
+        """用户父账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -8363,6 +9865,10 @@ class DescribeYeheResourceLimitResponse(AbstractModel):
 
     @property
     def CreateNodeLimit(self):
+        """允许创建的节点数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CreateNodeLimit
 
     @CreateNodeLimit.setter
@@ -8371,6 +9877,10 @@ class DescribeYeheResourceLimitResponse(AbstractModel):
 
     @property
     def CreateClusterLimit(self):
+        """允许创建的集群数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CreateClusterLimit
 
     @CreateClusterLimit.setter
@@ -8379,6 +9889,10 @@ class DescribeYeheResourceLimitResponse(AbstractModel):
 
     @property
     def EnablePermMonitor(self):
+        """是否有监控开启权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._EnablePermMonitor
 
     @EnablePermMonitor.setter
@@ -8387,6 +9901,10 @@ class DescribeYeheResourceLimitResponse(AbstractModel):
 
     @property
     def EnablePermAdminNode(self):
+        """节点是否有admin的所有权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._EnablePermAdminNode
 
     @EnablePermAdminNode.setter
@@ -8395,6 +9913,9 @@ class DescribeYeheResourceLimitResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8432,6 +9953,10 @@ class DockerConfig(AbstractModel):
 
     @property
     def RegistryDomain(self):
+        """镜像仓库地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegistryDomain
 
     @RegistryDomain.setter
@@ -8440,6 +9965,9 @@ class DockerConfig(AbstractModel):
 
     @property
     def UserName(self):
+        """用户名
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -8448,6 +9976,9 @@ class DockerConfig(AbstractModel):
 
     @property
     def Password(self):
+        """密码
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -8489,6 +10020,9 @@ class DracoNodeInfo(AbstractModel):
 
     @property
     def SN(self):
+        """设备SN。SN仅支持大写字母、数字，长度限制为1~32个字符
+        :rtype: str
+        """
         return self._SN
 
     @SN.setter
@@ -8497,6 +10031,9 @@ class DracoNodeInfo(AbstractModel):
 
     @property
     def Name(self):
+        """节点名称。长度限制为1~63个字符，节点名称只支持小写英文、数字、中横线、英文句号
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8505,6 +10042,9 @@ class DracoNodeInfo(AbstractModel):
 
     @property
     def Remark(self):
+        """节点备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -8589,6 +10129,10 @@ class EdgeCloudCluster(AbstractModel):
 
     @property
     def EdgeId(self):
+        """IECP侧边缘集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EdgeId
 
     @EdgeId.setter
@@ -8597,6 +10141,10 @@ class EdgeCloudCluster(AbstractModel):
 
     @property
     def ClusterId(self):
+        """边缘集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -8605,6 +10153,10 @@ class EdgeCloudCluster(AbstractModel):
 
     @property
     def Region(self):
+        """区域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -8613,6 +10165,10 @@ class EdgeCloudCluster(AbstractModel):
 
     @property
     def ClusterName(self):
+        """集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -8621,6 +10177,10 @@ class EdgeCloudCluster(AbstractModel):
 
     @property
     def K8SVersion(self):
+        """集群版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._K8SVersion
 
     @K8SVersion.setter
@@ -8629,6 +10189,10 @@ class EdgeCloudCluster(AbstractModel):
 
     @property
     def VpcId(self):
+        """私有网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -8637,6 +10201,10 @@ class EdgeCloudCluster(AbstractModel):
 
     @property
     def ClusterDesc(self):
+        """描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterDesc
 
     @ClusterDesc.setter
@@ -8645,6 +10213,10 @@ class EdgeCloudCluster(AbstractModel):
 
     @property
     def Status(self):
+        """集群状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -8653,6 +10225,10 @@ class EdgeCloudCluster(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8661,6 +10237,10 @@ class EdgeCloudCluster(AbstractModel):
 
     @property
     def PodCIDR(self):
+        """pod cidr
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PodCIDR
 
     @PodCIDR.setter
@@ -8669,6 +10249,10 @@ class EdgeCloudCluster(AbstractModel):
 
     @property
     def ServiceCIDR(self):
+        """service cidr
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceCIDR
 
     @ServiceCIDR.setter
@@ -8677,6 +10261,10 @@ class EdgeCloudCluster(AbstractModel):
 
     @property
     def EdgeClusterVersion(self):
+        """边缘版本类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EdgeClusterVersion
 
     @EdgeClusterVersion.setter
@@ -8685,6 +10273,10 @@ class EdgeCloudCluster(AbstractModel):
 
     @property
     def UID(self):
+        """用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UID
 
     @UID.setter
@@ -8745,6 +10337,9 @@ class EdgeDracoNodeInfo(AbstractModel):
 
     @property
     def Id(self):
+        """节点ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -8753,6 +10348,9 @@ class EdgeDracoNodeInfo(AbstractModel):
 
     @property
     def Name(self):
+        """节点名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8761,6 +10359,9 @@ class EdgeDracoNodeInfo(AbstractModel):
 
     @property
     def IsUsed(self):
+        """是否已激活
+        :rtype: bool
+        """
         return self._IsUsed
 
     @IsUsed.setter
@@ -8769,6 +10370,9 @@ class EdgeDracoNodeInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8777,6 +10381,9 @@ class EdgeDracoNodeInfo(AbstractModel):
 
     @property
     def Remark(self):
+        """备注信息，如批次
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -8785,6 +10392,9 @@ class EdgeDracoNodeInfo(AbstractModel):
 
     @property
     def SN(self):
+        """SN 设备号
+        :rtype: str
+        """
         return self._SN
 
     @SN.setter
@@ -8853,6 +10463,9 @@ key：NodeUnit模版ID，Value：NodeUnit模版名称
 
     @property
     def Id(self):
+        """IECP边缘节点ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -8861,6 +10474,9 @@ key：NodeUnit模版ID，Value：NodeUnit模版名称
 
     @property
     def Name(self):
+        """节点名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8869,6 +10485,9 @@ key：NodeUnit模版ID，Value：NodeUnit模版名称
 
     @property
     def Status(self):
+        """节点状态 （1健康｜2异常｜3离线｜4未激活）
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -8877,6 +10496,9 @@ key：NodeUnit模版ID，Value：NodeUnit模版名称
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8885,6 +10507,10 @@ key：NodeUnit模版ID，Value：NodeUnit模版名称
 
     @property
     def Resource(self):
+        """节点资源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.EdgeNodeResourceInfo`
+        """
         return self._Resource
 
     @Resource.setter
@@ -8893,6 +10519,10 @@ key：NodeUnit模版ID，Value：NodeUnit模版名称
 
     @property
     def CpuArchitecture(self):
+        """CPU体系结构
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CpuArchitecture
 
     @CpuArchitecture.setter
@@ -8901,6 +10531,10 @@ key：NodeUnit模版ID，Value：NodeUnit模版名称
 
     @property
     def Ip(self):
+        """IP地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -8909,6 +10543,10 @@ key：NodeUnit模版ID，Value：NodeUnit模版名称
 
     @property
     def OperatingSystem(self):
+        """操作系统
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OperatingSystem
 
     @OperatingSystem.setter
@@ -8917,6 +10555,11 @@ key：NodeUnit模版ID，Value：NodeUnit模版名称
 
     @property
     def NodeUnits(self):
+        """节点所属的NodeUnit
+key：NodeUnit模版ID，Value：NodeUnit模版名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.KeyValueObj`
+        """
         return self._NodeUnits
 
     @NodeUnits.setter
@@ -8971,6 +10614,10 @@ class EdgeNodeInstallerOnline(AbstractModel):
 
     @property
     def ScriptName(self):
+        """节点安装脚本名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ScriptName
 
     @ScriptName.setter
@@ -8979,6 +10626,10 @@ class EdgeNodeInstallerOnline(AbstractModel):
 
     @property
     def ScriptDownloadUrl(self):
+        """节点安装脚本下载链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ScriptDownloadUrl
 
     @ScriptDownloadUrl.setter
@@ -8987,6 +10638,10 @@ class EdgeNodeInstallerOnline(AbstractModel):
 
     @property
     def Guide(self):
+        """节点安装命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Guide
 
     @Guide.setter
@@ -9030,6 +10685,10 @@ class EdgeNodeLabel(AbstractModel):
 
     @property
     def Key(self):
+        """标签名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -9038,6 +10697,10 @@ class EdgeNodeLabel(AbstractModel):
 
     @property
     def Value(self):
+        """标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -9046,6 +10709,9 @@ class EdgeNodeLabel(AbstractModel):
 
     @property
     def Protected(self):
+        """是否受保护
+        :rtype: bool
+        """
         return self._Protected
 
     @Protected.setter
@@ -9114,6 +10780,10 @@ class EdgeNodePodContainerInfo(AbstractModel):
 
     @property
     def Name(self):
+        """Pod名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9122,6 +10792,10 @@ class EdgeNodePodContainerInfo(AbstractModel):
 
     @property
     def Id(self):
+        """容器ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -9130,6 +10804,10 @@ class EdgeNodePodContainerInfo(AbstractModel):
 
     @property
     def Image(self):
+        """镜像（含版本号）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Image
 
     @Image.setter
@@ -9138,6 +10816,10 @@ class EdgeNodePodContainerInfo(AbstractModel):
 
     @property
     def CpuRequest(self):
+        """CPU Request
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CpuRequest
 
     @CpuRequest.setter
@@ -9146,6 +10828,10 @@ class EdgeNodePodContainerInfo(AbstractModel):
 
     @property
     def CpuLimit(self):
+        """CPU Limit
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CpuLimit
 
     @CpuLimit.setter
@@ -9154,6 +10840,10 @@ class EdgeNodePodContainerInfo(AbstractModel):
 
     @property
     def MemoryRequest(self):
+        """Memory Request
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MemoryRequest
 
     @MemoryRequest.setter
@@ -9162,6 +10852,10 @@ class EdgeNodePodContainerInfo(AbstractModel):
 
     @property
     def MemoryLimit(self):
+        """Memory Limit
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MemoryLimit
 
     @MemoryLimit.setter
@@ -9170,6 +10864,10 @@ class EdgeNodePodContainerInfo(AbstractModel):
 
     @property
     def RestartCount(self):
+        """重启次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RestartCount
 
     @RestartCount.setter
@@ -9178,6 +10876,10 @@ class EdgeNodePodContainerInfo(AbstractModel):
 
     @property
     def Status(self):
+        """容器状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -9263,6 +10965,10 @@ class EdgeNodePodInfo(AbstractModel):
 
     @property
     def Name(self):
+        """Pod名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9271,6 +10977,10 @@ class EdgeNodePodInfo(AbstractModel):
 
     @property
     def Status(self):
+        """Pod状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -9279,6 +10989,10 @@ class EdgeNodePodInfo(AbstractModel):
 
     @property
     def NodeIp(self):
+        """所在节点IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NodeIp
 
     @NodeIp.setter
@@ -9287,6 +11001,10 @@ class EdgeNodePodInfo(AbstractModel):
 
     @property
     def Ip(self):
+        """实例IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -9295,6 +11013,10 @@ class EdgeNodePodInfo(AbstractModel):
 
     @property
     def CpuRequest(self):
+        """CPU Request
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CpuRequest
 
     @CpuRequest.setter
@@ -9303,6 +11025,10 @@ class EdgeNodePodInfo(AbstractModel):
 
     @property
     def MemoryRequest(self):
+        """Memory Request
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MemoryRequest
 
     @MemoryRequest.setter
@@ -9311,6 +11037,10 @@ class EdgeNodePodInfo(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -9319,6 +11049,10 @@ class EdgeNodePodInfo(AbstractModel):
 
     @property
     def WorkloadType(self):
+        """工作负载类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WorkloadType
 
     @WorkloadType.setter
@@ -9327,6 +11061,10 @@ class EdgeNodePodInfo(AbstractModel):
 
     @property
     def WorkloadName(self):
+        """工作负载名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WorkloadName
 
     @WorkloadName.setter
@@ -9335,6 +11073,10 @@ class EdgeNodePodInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9343,6 +11085,10 @@ class EdgeNodePodInfo(AbstractModel):
 
     @property
     def RestartCount(self):
+        """重启次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RestartCount
 
     @RestartCount.setter
@@ -9351,6 +11097,9 @@ class EdgeNodePodInfo(AbstractModel):
 
     @property
     def ClusterID(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterID
 
     @ClusterID.setter
@@ -9428,6 +11177,10 @@ class EdgeNodeResourceInfo(AbstractModel):
 
     @property
     def AllocatedCPU(self):
+        """可使用的CPU 单位: m核
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AllocatedCPU
 
     @AllocatedCPU.setter
@@ -9436,6 +11189,10 @@ class EdgeNodeResourceInfo(AbstractModel):
 
     @property
     def TotalCPU(self):
+        """CPU总量 单位:m核
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TotalCPU
 
     @TotalCPU.setter
@@ -9444,6 +11201,10 @@ class EdgeNodeResourceInfo(AbstractModel):
 
     @property
     def AllocatedMemory(self):
+        """已分配的内存 单位G
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AllocatedMemory
 
     @AllocatedMemory.setter
@@ -9452,6 +11213,10 @@ class EdgeNodeResourceInfo(AbstractModel):
 
     @property
     def TotalMemory(self):
+        """内存总量 单位G
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TotalMemory
 
     @TotalMemory.setter
@@ -9460,6 +11225,10 @@ class EdgeNodeResourceInfo(AbstractModel):
 
     @property
     def AllocatedGPU(self):
+        """已分配的GPU资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AllocatedGPU
 
     @AllocatedGPU.setter
@@ -9468,6 +11237,10 @@ class EdgeNodeResourceInfo(AbstractModel):
 
     @property
     def TotalGPU(self):
+        """GPU总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TotalGPU
 
     @TotalGPU.setter
@@ -9476,6 +11249,10 @@ class EdgeNodeResourceInfo(AbstractModel):
 
     @property
     def AvailableCPU(self):
+        """可使用的CPU 单位: m核
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AvailableCPU
 
     @AvailableCPU.setter
@@ -9484,6 +11261,10 @@ class EdgeNodeResourceInfo(AbstractModel):
 
     @property
     def AvailableMemory(self):
+        """可使用的内存 单位: G
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AvailableMemory
 
     @AvailableMemory.setter
@@ -9492,6 +11273,10 @@ class EdgeNodeResourceInfo(AbstractModel):
 
     @property
     def AvailableGPU(self):
+        """可使用的GPU资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AvailableGPU
 
     @AvailableGPU.setter
@@ -9539,6 +11324,9 @@ class Env(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9547,6 +11335,9 @@ class Env(AbstractModel):
 
     @property
     def Value(self):
+        """值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -9555,6 +11346,9 @@ class Env(AbstractModel):
 
     @property
     def ValueFrom(self):
+        """值引用
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.EnvValueSelector`
+        """
         return self._ValueFrom
 
     @ValueFrom.setter
@@ -9598,6 +11392,9 @@ class EnvValueSelector(AbstractModel):
 
     @property
     def Key(self):
+        """健名
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -9606,6 +11403,9 @@ class EnvValueSelector(AbstractModel):
 
     @property
     def ObjectName(self):
+        """对象名
+        :rtype: str
+        """
         return self._ObjectName
 
     @ObjectName.setter
@@ -9614,6 +11414,9 @@ class EnvValueSelector(AbstractModel):
 
     @property
     def ObjectType(self):
+        """对象值
+        :rtype: str
+        """
         return self._ObjectType
 
     @ObjectType.setter
@@ -9652,6 +11455,9 @@ class FieldSort(AbstractModel):
 
     @property
     def Field(self):
+        """字段名
+        :rtype: str
+        """
         return self._Field
 
     @Field.setter
@@ -9660,6 +11466,9 @@ class FieldSort(AbstractModel):
 
     @property
     def Order(self):
+        """排序(ASC:升序 DESC:降序
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -9703,6 +11512,9 @@ class GetMarketComponentListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """页偏移，从0开始
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -9711,6 +11523,9 @@ class GetMarketComponentListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页条数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -9719,6 +11534,9 @@ class GetMarketComponentListRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """名称模糊筛选
+        :rtype: str
+        """
         return self._Filter
 
     @Filter.setter
@@ -9727,6 +11545,9 @@ class GetMarketComponentListRequest(AbstractModel):
 
     @property
     def Order(self):
+        """以名称排序，ASC、DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -9769,6 +11590,9 @@ class GetMarketComponentListResponse(AbstractModel):
 
     @property
     def ComponentList(self):
+        """组件列表
+        :rtype: list of MarketComponentInfo
+        """
         return self._ComponentList
 
     @ComponentList.setter
@@ -9777,6 +11601,9 @@ class GetMarketComponentListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """组件总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9785,6 +11612,9 @@ class GetMarketComponentListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9817,6 +11647,9 @@ class GetMarketComponentRequest(AbstractModel):
 
     @property
     def ID(self):
+        """组件ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -9877,6 +11710,9 @@ class GetMarketComponentResponse(AbstractModel):
 
     @property
     def ID(self):
+        """组件ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -9885,6 +11721,9 @@ class GetMarketComponentResponse(AbstractModel):
 
     @property
     def AppName(self):
+        """组件名称
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -9893,6 +11732,9 @@ class GetMarketComponentResponse(AbstractModel):
 
     @property
     def Author(self):
+        """发行组织
+        :rtype: str
+        """
         return self._Author
 
     @Author.setter
@@ -9901,6 +11743,9 @@ class GetMarketComponentResponse(AbstractModel):
 
     @property
     def ReleaseTime(self):
+        """发布时间
+        :rtype: str
+        """
         return self._ReleaseTime
 
     @ReleaseTime.setter
@@ -9909,6 +11754,9 @@ class GetMarketComponentResponse(AbstractModel):
 
     @property
     def Outline(self):
+        """组件简介
+        :rtype: str
+        """
         return self._Outline
 
     @Outline.setter
@@ -9917,6 +11765,9 @@ class GetMarketComponentResponse(AbstractModel):
 
     @property
     def Detail(self):
+        """详细介绍链接
+        :rtype: str
+        """
         return self._Detail
 
     @Detail.setter
@@ -9925,6 +11776,9 @@ class GetMarketComponentResponse(AbstractModel):
 
     @property
     def Icon(self):
+        """图标连接
+        :rtype: str
+        """
         return self._Icon
 
     @Icon.setter
@@ -9933,6 +11787,9 @@ class GetMarketComponentResponse(AbstractModel):
 
     @property
     def Version(self):
+        """组件版本
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -9941,6 +11798,9 @@ class GetMarketComponentResponse(AbstractModel):
 
     @property
     def WorkloadVisualConfig(self):
+        """组件可视化配置
+        :rtype: str
+        """
         return self._WorkloadVisualConfig
 
     @WorkloadVisualConfig.setter
@@ -9949,6 +11809,9 @@ class GetMarketComponentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9986,6 +11849,9 @@ class GridDetail(AbstractModel):
 
     @property
     def Name(self):
+        """Grid名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9994,6 +11860,9 @@ class GridDetail(AbstractModel):
 
     @property
     def Id(self):
+        """GridID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -10056,6 +11925,9 @@ class GridEventInfo(AbstractModel):
 
     @property
     def FirstTime(self):
+        """首次出现时间
+        :rtype: str
+        """
         return self._FirstTime
 
     @FirstTime.setter
@@ -10064,6 +11936,9 @@ class GridEventInfo(AbstractModel):
 
     @property
     def LastTime(self):
+        """最后出现时间
+        :rtype: str
+        """
         return self._LastTime
 
     @LastTime.setter
@@ -10072,6 +11947,9 @@ class GridEventInfo(AbstractModel):
 
     @property
     def InvolvedObjectKind(self):
+        """对象类型
+        :rtype: str
+        """
         return self._InvolvedObjectKind
 
     @InvolvedObjectKind.setter
@@ -10080,6 +11958,9 @@ class GridEventInfo(AbstractModel):
 
     @property
     def InvolvedObjectName(self):
+        """对象名称
+        :rtype: str
+        """
         return self._InvolvedObjectName
 
     @InvolvedObjectName.setter
@@ -10088,6 +11969,9 @@ class GridEventInfo(AbstractModel):
 
     @property
     def Type(self):
+        """事件类型(Normal,Warning)
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -10096,6 +11980,9 @@ class GridEventInfo(AbstractModel):
 
     @property
     def Reason(self):
+        """事件原因
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -10104,6 +11991,9 @@ class GridEventInfo(AbstractModel):
 
     @property
     def Message(self):
+        """事件内容
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -10112,6 +12002,9 @@ class GridEventInfo(AbstractModel):
 
     @property
     def Count(self):
+        """次数
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -10120,6 +12013,9 @@ class GridEventInfo(AbstractModel):
 
     @property
     def NodeName(self):
+        """节点名（Pod事件类型时有值）
+        :rtype: str
+        """
         return self._NodeName
 
     @NodeName.setter
@@ -10128,6 +12024,10 @@ class GridEventInfo(AbstractModel):
 
     @property
     def IP(self):
+        """节点内部IP（Pod事件类型时有值）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IP
 
     @IP.setter
@@ -10195,6 +12095,9 @@ class GridInfo(AbstractModel):
 
     @property
     def Id(self):
+        """DeployGridId
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -10203,6 +12106,9 @@ class GridInfo(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10211,6 +12117,9 @@ class GridInfo(AbstractModel):
 
     @property
     def GridUniqKey(self):
+        """Key
+        :rtype: str
+        """
         return self._GridUniqKey
 
     @GridUniqKey.setter
@@ -10219,6 +12128,9 @@ class GridInfo(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -10227,6 +12139,9 @@ class GridInfo(AbstractModel):
 
     @property
     def WorkloadKind(self):
+        """工作负载类型
+        :rtype: str
+        """
         return self._WorkloadKind
 
     @WorkloadKind.setter
@@ -10235,6 +12150,9 @@ class GridInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """启动时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -10243,6 +12161,10 @@ class GridInfo(AbstractModel):
 
     @property
     def Replicas(self):
+        """副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Replicas
 
     @Replicas.setter
@@ -10251,6 +12173,9 @@ class GridInfo(AbstractModel):
 
     @property
     def Publisher(self):
+        """创建人
+        :rtype: str
+        """
         return self._Publisher
 
     @Publisher.setter
@@ -10259,6 +12184,9 @@ class GridInfo(AbstractModel):
 
     @property
     def Version(self):
+        """版本信息
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -10313,6 +12241,9 @@ class GridItemInfo(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10321,6 +12252,10 @@ class GridItemInfo(AbstractModel):
 
     @property
     def Replicas(self):
+        """期望副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Replicas
 
     @Replicas.setter
@@ -10329,6 +12264,9 @@ class GridItemInfo(AbstractModel):
 
     @property
     def AvailableReplicas(self):
+        """可用副本数
+        :rtype: int
+        """
         return self._AvailableReplicas
 
     @AvailableReplicas.setter
@@ -10337,6 +12275,9 @@ class GridItemInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """启动时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -10345,6 +12286,9 @@ class GridItemInfo(AbstractModel):
 
     @property
     def WorkloadKind(self):
+        """工作负载类型
+        :rtype: str
+        """
         return self._WorkloadKind
 
     @WorkloadKind.setter
@@ -10412,6 +12356,9 @@ class GridPodInfo(AbstractModel):
 
     @property
     def Name(self):
+        """Pod名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10420,6 +12367,9 @@ class GridPodInfo(AbstractModel):
 
     @property
     def NameSpace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._NameSpace
 
     @NameSpace.setter
@@ -10428,6 +12378,9 @@ class GridPodInfo(AbstractModel):
 
     @property
     def Status(self):
+        """状态(Pending｜Running｜Succeeded｜Failed｜Unknown)
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -10436,6 +12389,9 @@ class GridPodInfo(AbstractModel):
 
     @property
     def NodeName(self):
+        """节点名
+        :rtype: str
+        """
         return self._NodeName
 
     @NodeName.setter
@@ -10444,6 +12400,9 @@ class GridPodInfo(AbstractModel):
 
     @property
     def NodeIP(self):
+        """节点IP
+        :rtype: str
+        """
         return self._NodeIP
 
     @NodeIP.setter
@@ -10452,6 +12411,9 @@ class GridPodInfo(AbstractModel):
 
     @property
     def PodIP(self):
+        """Pod的IP
+        :rtype: str
+        """
         return self._PodIP
 
     @PodIP.setter
@@ -10460,6 +12422,10 @@ class GridPodInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """启动时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -10468,6 +12434,10 @@ class GridPodInfo(AbstractModel):
 
     @property
     def RunSec(self):
+        """运行时长（秒）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RunSec
 
     @RunSec.setter
@@ -10476,6 +12446,9 @@ class GridPodInfo(AbstractModel):
 
     @property
     def RestartCount(self):
+        """重启次数
+        :rtype: int
+        """
         return self._RestartCount
 
     @RestartCount.setter
@@ -10484,6 +12457,10 @@ class GridPodInfo(AbstractModel):
 
     @property
     def ClusterID(self):
+        """集群名称ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterID
 
     @ClusterID.setter
@@ -10538,6 +12515,9 @@ class HorizontalPodAutoscaler(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10546,6 +12526,9 @@ class HorizontalPodAutoscaler(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -10554,6 +12537,9 @@ class HorizontalPodAutoscaler(AbstractModel):
 
     @property
     def MinReplicas(self):
+        """最小实例数
+        :rtype: int
+        """
         return self._MinReplicas
 
     @MinReplicas.setter
@@ -10562,6 +12548,9 @@ class HorizontalPodAutoscaler(AbstractModel):
 
     @property
     def MaxReplicas(self):
+        """最大实例数
+        :rtype: int
+        """
         return self._MaxReplicas
 
     @MaxReplicas.setter
@@ -10570,6 +12559,9 @@ class HorizontalPodAutoscaler(AbstractModel):
 
     @property
     def ResourceMetricTarget(self):
+        """资源目标指标
+        :rtype: list of ResourceMetricTarget
+        """
         return self._ResourceMetricTarget
 
     @ResourceMetricTarget.setter
@@ -10617,6 +12609,10 @@ class HttpHeader(AbstractModel):
 
     @property
     def Name(self):
+        """HTTP头的名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10625,6 +12621,10 @@ class HttpHeader(AbstractModel):
 
     @property
     def Value(self):
+        """HTTP头的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -10676,6 +12676,10 @@ class HttpProbe(AbstractModel):
 
     @property
     def Path(self):
+        """请求路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -10684,6 +12688,10 @@ class HttpProbe(AbstractModel):
 
     @property
     def Port(self):
+        """请求端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -10692,6 +12700,10 @@ class HttpProbe(AbstractModel):
 
     @property
     def Host(self):
+        """请求地址，默认Pod的IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -10700,6 +12712,10 @@ class HttpProbe(AbstractModel):
 
     @property
     def Scheme(self):
+        """请求模式  HTTP|HTTPS，默认HTTP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Scheme
 
     @Scheme.setter
@@ -10708,6 +12724,10 @@ class HttpProbe(AbstractModel):
 
     @property
     def Headers(self):
+        """HTTP的请求头
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of HttpHeader
+        """
         return self._Headers
 
     @Headers.setter
@@ -10783,6 +12803,9 @@ class IotDevicesInfo(AbstractModel):
 
     @property
     def Id(self):
+        """设备id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -10791,6 +12814,9 @@ class IotDevicesInfo(AbstractModel):
 
     @property
     def Name(self):
+        """设备名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10799,6 +12825,9 @@ class IotDevicesInfo(AbstractModel):
 
     @property
     def Status(self):
+        """设备状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -10807,6 +12836,9 @@ class IotDevicesInfo(AbstractModel):
 
     @property
     def Disabled(self):
+        """设备打开状态
+        :rtype: bool
+        """
         return self._Disabled
 
     @Disabled.setter
@@ -10815,6 +12847,9 @@ class IotDevicesInfo(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -10823,6 +12858,9 @@ class IotDevicesInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """设备创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -10831,6 +12869,9 @@ class IotDevicesInfo(AbstractModel):
 
     @property
     def LastOnlineTime(self):
+        """最后在线时间
+        :rtype: str
+        """
         return self._LastOnlineTime
 
     @LastOnlineTime.setter
@@ -10839,6 +12880,9 @@ class IotDevicesInfo(AbstractModel):
 
     @property
     def IsBound(self):
+        """设备是否绑定到节点
+        :rtype: bool
+        """
         return self._IsBound
 
     @IsBound.setter
@@ -10847,6 +12891,9 @@ class IotDevicesInfo(AbstractModel):
 
     @property
     def Version(self):
+        """设备版本
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -10855,6 +12902,9 @@ class IotDevicesInfo(AbstractModel):
 
     @property
     def Region(self):
+        """无
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -10863,6 +12913,9 @@ class IotDevicesInfo(AbstractModel):
 
     @property
     def UnitID(self):
+        """无
+        :rtype: int
+        """
         return self._UnitID
 
     @UnitID.setter
@@ -10871,6 +12924,9 @@ class IotDevicesInfo(AbstractModel):
 
     @property
     def UnitName(self):
+        """无
+        :rtype: str
+        """
         return self._UnitName
 
     @UnitName.setter
@@ -10924,6 +12980,9 @@ class Job(AbstractModel):
 
     @property
     def Parallelism(self):
+        """并发数
+        :rtype: int
+        """
         return self._Parallelism
 
     @Parallelism.setter
@@ -10932,6 +12991,9 @@ class Job(AbstractModel):
 
     @property
     def Completion(self):
+        """完成数
+        :rtype: int
+        """
         return self._Completion
 
     @Completion.setter
@@ -10940,6 +13002,9 @@ class Job(AbstractModel):
 
     @property
     def ActiveDeadlineSeconds(self):
+        """最大运行时间
+        :rtype: int
+        """
         return self._ActiveDeadlineSeconds
 
     @ActiveDeadlineSeconds.setter
@@ -10948,6 +13013,9 @@ class Job(AbstractModel):
 
     @property
     def BackOffLimit(self):
+        """失败前重试次数
+        :rtype: int
+        """
         return self._BackOffLimit
 
     @BackOffLimit.setter
@@ -10987,6 +13055,9 @@ class KeyValueObj(AbstractModel):
 
     @property
     def Key(self):
+        """Key值
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -10995,6 +13066,9 @@ class KeyValueObj(AbstractModel):
 
     @property
     def Value(self):
+        """Value值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -11032,6 +13106,9 @@ class Label(AbstractModel):
 
     @property
     def Key(self):
+        """健名
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -11040,6 +13117,9 @@ class Label(AbstractModel):
 
     @property
     def Value(self):
+        """健值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -11104,6 +13184,9 @@ class MarketComponentInfo(AbstractModel):
 
     @property
     def ID(self):
+        """组件ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -11112,6 +13195,9 @@ class MarketComponentInfo(AbstractModel):
 
     @property
     def AppName(self):
+        """组件名称
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -11120,6 +13206,9 @@ class MarketComponentInfo(AbstractModel):
 
     @property
     def Author(self):
+        """发布者
+        :rtype: str
+        """
         return self._Author
 
     @Author.setter
@@ -11128,6 +13217,9 @@ class MarketComponentInfo(AbstractModel):
 
     @property
     def ReleaseTime(self):
+        """发布时间
+        :rtype: str
+        """
         return self._ReleaseTime
 
     @ReleaseTime.setter
@@ -11136,6 +13228,9 @@ class MarketComponentInfo(AbstractModel):
 
     @property
     def Outline(self):
+        """组件简介
+        :rtype: str
+        """
         return self._Outline
 
     @Outline.setter
@@ -11144,6 +13239,9 @@ class MarketComponentInfo(AbstractModel):
 
     @property
     def Detail(self):
+        """指向详细描述的url
+        :rtype: str
+        """
         return self._Detail
 
     @Detail.setter
@@ -11152,6 +13250,9 @@ class MarketComponentInfo(AbstractModel):
 
     @property
     def Icon(self):
+        """图标链接
+        :rtype: str
+        """
         return self._Icon
 
     @Icon.setter
@@ -11160,6 +13261,9 @@ class MarketComponentInfo(AbstractModel):
 
     @property
     def Version(self):
+        """组件版本
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -11168,6 +13272,9 @@ class MarketComponentInfo(AbstractModel):
 
     @property
     def WorkloadVisualConfig(self):
+        """组件可视化信息
+        :rtype: str
+        """
         return self._WorkloadVisualConfig
 
     @WorkloadVisualConfig.setter
@@ -11176,6 +13283,9 @@ class MarketComponentInfo(AbstractModel):
 
     @property
     def DetailUrl(self):
+        """无
+        :rtype: str
+        """
         return self._DetailUrl
 
     @DetailUrl.setter
@@ -11184,6 +13294,9 @@ class MarketComponentInfo(AbstractModel):
 
     @property
     def Installed(self):
+        """无
+        :rtype: bool
+        """
         return self._Installed
 
     @Installed.setter
@@ -11236,6 +13349,9 @@ class ModifyConfigMapRequest(AbstractModel):
 
     @property
     def EdgeUnitID(self):
+        """单元ID
+        :rtype: int
+        """
         return self._EdgeUnitID
 
     @EdgeUnitID.setter
@@ -11244,6 +13360,9 @@ class ModifyConfigMapRequest(AbstractModel):
 
     @property
     def ConfigMapName(self):
+        """ConfigMap名称
+        :rtype: str
+        """
         return self._ConfigMapName
 
     @ConfigMapName.setter
@@ -11252,6 +13371,9 @@ class ModifyConfigMapRequest(AbstractModel):
 
     @property
     def Yaml(self):
+        """Yaml配置, base64之后的串
+        :rtype: str
+        """
         return self._Yaml
 
     @Yaml.setter
@@ -11260,6 +13382,9 @@ class ModifyConfigMapRequest(AbstractModel):
 
     @property
     def ConfigMapNamespace(self):
+        """ConfigMap命名空间
+        :rtype: str
+        """
         return self._ConfigMapNamespace
 
     @ConfigMapNamespace.setter
@@ -11296,6 +13421,9 @@ class ModifyConfigMapResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11330,6 +13458,9 @@ class ModifyEdgeDracoNodeRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -11338,6 +13469,9 @@ class ModifyEdgeDracoNodeRequest(AbstractModel):
 
     @property
     def NodeId(self):
+        """边缘节点ID
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -11346,6 +13480,9 @@ class ModifyEdgeDracoNodeRequest(AbstractModel):
 
     @property
     def NodeInfo(self):
+        """节点信息
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.DracoNodeInfo`
+        """
         return self._NodeInfo
 
     @NodeInfo.setter
@@ -11354,6 +13491,9 @@ class ModifyEdgeDracoNodeRequest(AbstractModel):
 
     @property
     def IsReset(self):
+        """是否重置draco设备
+        :rtype: bool
+        """
         return self._IsReset
 
     @IsReset.setter
@@ -11392,6 +13532,9 @@ class ModifyEdgeDracoNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11423,6 +13566,9 @@ class ModifyEdgeNodeLabelsRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -11431,6 +13577,9 @@ class ModifyEdgeNodeLabelsRequest(AbstractModel):
 
     @property
     def NodeId(self):
+        """IECP边缘节点ID
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -11439,6 +13588,9 @@ class ModifyEdgeNodeLabelsRequest(AbstractModel):
 
     @property
     def Labels(self):
+        """标签列表
+        :rtype: list of KeyValueObj
+        """
         return self._Labels
 
     @Labels.setter
@@ -11479,6 +13631,9 @@ class ModifyEdgeNodeLabelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11510,6 +13665,9 @@ class ModifyEdgeUnitApplicationBasicInfoRequest(AbstractModel):
 
     @property
     def BasicInfo(self):
+        """应用基本信息
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.ApplicationBasicInfo`
+        """
         return self._BasicInfo
 
     @BasicInfo.setter
@@ -11518,6 +13676,9 @@ class ModifyEdgeUnitApplicationBasicInfoRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -11526,6 +13687,9 @@ class ModifyEdgeUnitApplicationBasicInfoRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """应用ID
+        :rtype: int
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -11563,6 +13727,9 @@ class ModifyEdgeUnitApplicationBasicInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11621,6 +13788,9 @@ class ModifyEdgeUnitApplicationVisualizationRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -11629,6 +13799,9 @@ class ModifyEdgeUnitApplicationVisualizationRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """应用ID
+        :rtype: int
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -11637,6 +13810,9 @@ class ModifyEdgeUnitApplicationVisualizationRequest(AbstractModel):
 
     @property
     def BasicConfig(self):
+        """应用配置
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.ApplicationBasicConfig`
+        """
         return self._BasicConfig
 
     @BasicConfig.setter
@@ -11645,6 +13821,9 @@ class ModifyEdgeUnitApplicationVisualizationRequest(AbstractModel):
 
     @property
     def Volumes(self):
+        """卷配置
+        :rtype: list of Volume
+        """
         return self._Volumes
 
     @Volumes.setter
@@ -11653,6 +13832,9 @@ class ModifyEdgeUnitApplicationVisualizationRequest(AbstractModel):
 
     @property
     def InitContainers(self):
+        """初始容器列表
+        :rtype: list of Container
+        """
         return self._InitContainers
 
     @InitContainers.setter
@@ -11661,6 +13843,9 @@ class ModifyEdgeUnitApplicationVisualizationRequest(AbstractModel):
 
     @property
     def Containers(self):
+        """容器配置
+        :rtype: list of Container
+        """
         return self._Containers
 
     @Containers.setter
@@ -11669,6 +13854,9 @@ class ModifyEdgeUnitApplicationVisualizationRequest(AbstractModel):
 
     @property
     def Service(self):
+        """服务配置
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.Service`
+        """
         return self._Service
 
     @Service.setter
@@ -11677,6 +13865,9 @@ class ModifyEdgeUnitApplicationVisualizationRequest(AbstractModel):
 
     @property
     def Job(self):
+        """Job配置
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.Job`
+        """
         return self._Job
 
     @Job.setter
@@ -11685,6 +13876,9 @@ class ModifyEdgeUnitApplicationVisualizationRequest(AbstractModel):
 
     @property
     def CronJob(self):
+        """CronJob配置
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.CronJob`
+        """
         return self._CronJob
 
     @CronJob.setter
@@ -11693,6 +13887,9 @@ class ModifyEdgeUnitApplicationVisualizationRequest(AbstractModel):
 
     @property
     def RestartPolicy(self):
+        """重启策略
+        :rtype: str
+        """
         return self._RestartPolicy
 
     @RestartPolicy.setter
@@ -11701,6 +13898,9 @@ class ModifyEdgeUnitApplicationVisualizationRequest(AbstractModel):
 
     @property
     def ImagePullSecrets(self):
+        """镜像拉取密钥
+        :rtype: list of str
+        """
         return self._ImagePullSecrets
 
     @ImagePullSecrets.setter
@@ -11709,6 +13909,9 @@ class ModifyEdgeUnitApplicationVisualizationRequest(AbstractModel):
 
     @property
     def HorizontalPodAutoscaler(self):
+        """HPA配置
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.HorizontalPodAutoscaler`
+        """
         return self._HorizontalPodAutoscaler
 
     @HorizontalPodAutoscaler.setter
@@ -11778,6 +13981,9 @@ class ModifyEdgeUnitApplicationVisualizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11809,6 +14015,9 @@ class ModifyEdgeUnitApplicationYamlRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -11817,6 +14026,9 @@ class ModifyEdgeUnitApplicationYamlRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """应用ID
+        :rtype: int
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -11825,6 +14037,9 @@ class ModifyEdgeUnitApplicationYamlRequest(AbstractModel):
 
     @property
     def Yaml(self):
+        """Yaml配置
+        :rtype: str
+        """
         return self._Yaml
 
     @Yaml.setter
@@ -11860,6 +14075,9 @@ class ModifyEdgeUnitApplicationYamlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11894,6 +14112,9 @@ class ModifyEdgeUnitCloudApiRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -11902,6 +14123,9 @@ class ModifyEdgeUnitCloudApiRequest(AbstractModel):
 
     @property
     def Name(self):
+        """边缘单元名称，64字符内
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -11910,6 +14134,9 @@ class ModifyEdgeUnitCloudApiRequest(AbstractModel):
 
     @property
     def Description(self):
+        """描述，200字符内
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -11918,6 +14145,9 @@ class ModifyEdgeUnitCloudApiRequest(AbstractModel):
 
     @property
     def OpenCloudMonitor(self):
+        """是否开启监控
+        :rtype: bool
+        """
         return self._OpenCloudMonitor
 
     @OpenCloudMonitor.setter
@@ -11954,6 +14184,9 @@ class ModifyEdgeUnitCloudApiResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11991,6 +14224,9 @@ class ModifyEdgeUnitDeployGridItemRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -11999,6 +14235,9 @@ class ModifyEdgeUnitDeployGridItemRequest(AbstractModel):
 
     @property
     def GridItemName(self):
+        """Grid名称
+        :rtype: str
+        """
         return self._GridItemName
 
     @GridItemName.setter
@@ -12007,6 +14246,9 @@ class ModifyEdgeUnitDeployGridItemRequest(AbstractModel):
 
     @property
     def WorkloadKind(self):
+        """负载类型（StatefulSetGrid｜DeploymentGrid）
+        :rtype: str
+        """
         return self._WorkloadKind
 
     @WorkloadKind.setter
@@ -12015,6 +14257,9 @@ class ModifyEdgeUnitDeployGridItemRequest(AbstractModel):
 
     @property
     def Replicas(self):
+        """副本数
+        :rtype: int
+        """
         return self._Replicas
 
     @Replicas.setter
@@ -12023,6 +14268,9 @@ class ModifyEdgeUnitDeployGridItemRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，默认default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -12060,6 +14308,9 @@ class ModifyEdgeUnitDeployGridItemResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12091,6 +14342,9 @@ class ModifyEdgeUnitRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """边缘集群ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -12099,6 +14353,9 @@ class ModifyEdgeUnitRequest(AbstractModel):
 
     @property
     def Name(self):
+        """边缘集群名称，64字符以内
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12107,6 +14364,9 @@ class ModifyEdgeUnitRequest(AbstractModel):
 
     @property
     def Description(self):
+        """集群描述，200字符以内
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -12142,6 +14402,9 @@ class ModifyEdgeUnitResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12179,6 +14442,9 @@ class ModifyIotDeviceRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备id
+        :rtype: int
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -12187,6 +14453,9 @@ class ModifyIotDeviceRequest(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -12195,6 +14464,9 @@ class ModifyIotDeviceRequest(AbstractModel):
 
     @property
     def Disabled(self):
+        """设备是否开启
+        :rtype: bool
+        """
         return self._Disabled
 
     @Disabled.setter
@@ -12203,6 +14475,9 @@ class ModifyIotDeviceRequest(AbstractModel):
 
     @property
     def LogSetting(self):
+        """日志设置
+        :rtype: int
+        """
         return self._LogSetting
 
     @LogSetting.setter
@@ -12211,6 +14486,9 @@ class ModifyIotDeviceRequest(AbstractModel):
 
     @property
     def LogLevel(self):
+        """日志级别
+        :rtype: int
+        """
         return self._LogLevel
 
     @LogLevel.setter
@@ -12248,6 +14526,9 @@ class ModifyIotDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12279,6 +14560,9 @@ class ModifyNodeUnitTemplateRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """IECP边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -12287,6 +14571,9 @@ class ModifyNodeUnitTemplateRequest(AbstractModel):
 
     @property
     def NodeUnitTemplateID(self):
+        """NodeUnit模板ID
+        :rtype: int
+        """
         return self._NodeUnitTemplateID
 
     @NodeUnitTemplateID.setter
@@ -12295,6 +14582,9 @@ class ModifyNodeUnitTemplateRequest(AbstractModel):
 
     @property
     def Nodes(self):
+        """包含的节点列表
+        :rtype: list of str
+        """
         return self._Nodes
 
     @Nodes.setter
@@ -12330,6 +14620,9 @@ class ModifyNodeUnitTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12364,6 +14657,9 @@ class ModifySecretRequest(AbstractModel):
 
     @property
     def EdgeUnitID(self):
+        """边缘单元ID
+        :rtype: int
+        """
         return self._EdgeUnitID
 
     @EdgeUnitID.setter
@@ -12372,6 +14668,9 @@ class ModifySecretRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """Secret名
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -12380,6 +14679,9 @@ class ModifySecretRequest(AbstractModel):
 
     @property
     def Yaml(self):
+        """Secret的Yaml格式
+        :rtype: str
+        """
         return self._Yaml
 
     @Yaml.setter
@@ -12388,6 +14690,9 @@ class ModifySecretRequest(AbstractModel):
 
     @property
     def SecretNamespace(self):
+        """Secret命名空间（默认:default）
+        :rtype: str
+        """
         return self._SecretNamespace
 
     @SecretNamespace.setter
@@ -12424,6 +14729,9 @@ class ModifySecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12469,6 +14777,9 @@ class MonitorMetricsColumn(AbstractModel):
 
     @property
     def ColumnName(self):
+        """数据名称
+        :rtype: str
+        """
         return self._ColumnName
 
     @ColumnName.setter
@@ -12477,6 +14788,10 @@ class MonitorMetricsColumn(AbstractModel):
 
     @property
     def ColumnData(self):
+        """数据内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ColumnData
 
     @ColumnData.setter
@@ -12485,6 +14800,9 @@ class MonitorMetricsColumn(AbstractModel):
 
     @property
     def ColumnBelong(self):
+        """数据所属，查询Workload类型时有值
+        :rtype: str
+        """
         return self._ColumnBelong
 
     @ColumnBelong.setter
@@ -12493,6 +14811,9 @@ class MonitorMetricsColumn(AbstractModel):
 
     @property
     def MaxValue(self):
+        """最大值
+        :rtype: float
+        """
         return self._MaxValue
 
     @MaxValue.setter
@@ -12501,6 +14822,9 @@ class MonitorMetricsColumn(AbstractModel):
 
     @property
     def MinValue(self):
+        """最小值
+        :rtype: float
+        """
         return self._MinValue
 
     @MinValue.setter
@@ -12509,6 +14833,9 @@ class MonitorMetricsColumn(AbstractModel):
 
     @property
     def AvgValue(self):
+        """平均值
+        :rtype: float
+        """
         return self._AvgValue
 
     @AvgValue.setter
@@ -12517,6 +14844,10 @@ class MonitorMetricsColumn(AbstractModel):
 
     @property
     def ColumnTime(self):
+        """时间戳数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ColumnTime
 
     @ColumnTime.setter
@@ -12577,6 +14908,10 @@ class NamespaceInfo(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -12585,6 +14920,10 @@ class NamespaceInfo(AbstractModel):
 
     @property
     def Status(self):
+        """状态(Active|Terminating)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -12593,6 +14932,10 @@ class NamespaceInfo(AbstractModel):
 
     @property
     def Description(self):
+        """描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -12601,6 +14944,10 @@ class NamespaceInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -12609,6 +14956,10 @@ class NamespaceInfo(AbstractModel):
 
     @property
     def Protected(self):
+        """是否保护(不允许删除)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Protected
 
     @Protected.setter
@@ -12617,6 +14968,10 @@ class NamespaceInfo(AbstractModel):
 
     @property
     def Yaml(self):
+        """对应的Yaml配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Yaml
 
     @Yaml.setter
@@ -12664,6 +15019,10 @@ class NamespaceResource(AbstractModel):
 
     @property
     def Type(self):
+        """类型(workload|grid|configmap|secret)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -12672,6 +15031,10 @@ class NamespaceResource(AbstractModel):
 
     @property
     def Count(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -12680,6 +15043,10 @@ class NamespaceResource(AbstractModel):
 
     @property
     def Names(self):
+        """名称(最多返回5个）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Names
 
     @Names.setter
@@ -12733,6 +15100,9 @@ class NodeGroupInfo(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -12741,6 +15111,9 @@ class NodeGroupInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -12749,6 +15122,9 @@ class NodeGroupInfo(AbstractModel):
 
     @property
     def NodeGroupName(self):
+        """NodeGroup名称
+        :rtype: str
+        """
         return self._NodeGroupName
 
     @NodeGroupName.setter
@@ -12757,6 +15133,10 @@ class NodeGroupInfo(AbstractModel):
 
     @property
     def DeploymentGridList(self):
+        """DeploymentGrid数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GridDetail
+        """
         return self._DeploymentGridList
 
     @DeploymentGridList.setter
@@ -12765,6 +15145,10 @@ class NodeGroupInfo(AbstractModel):
 
     @property
     def StatefulSetGridList(self):
+        """StatefulSetGrid数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GridDetail
+        """
         return self._StatefulSetGridList
 
     @StatefulSetGridList.setter
@@ -12773,6 +15157,10 @@ class NodeGroupInfo(AbstractModel):
 
     @property
     def Protect(self):
+        """是否平台保护
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Protect
 
     @Protect.setter
@@ -12842,6 +15230,9 @@ class NodeGroupNodeUnitTemplateInfo(AbstractModel):
 
     @property
     def ID(self):
+        """模版ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -12850,6 +15241,9 @@ class NodeGroupNodeUnitTemplateInfo(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12858,6 +15252,9 @@ class NodeGroupNodeUnitTemplateInfo(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -12866,6 +15263,9 @@ class NodeGroupNodeUnitTemplateInfo(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -12874,6 +15274,9 @@ class NodeGroupNodeUnitTemplateInfo(AbstractModel):
 
     @property
     def NodeList(self):
+        """包含节点列表
+        :rtype: list of NodeSimpleInfo
+        """
         return self._NodeList
 
     @NodeList.setter
@@ -12882,6 +15285,9 @@ class NodeGroupNodeUnitTemplateInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -12890,6 +15296,9 @@ class NodeGroupNodeUnitTemplateInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -12898,6 +15307,9 @@ class NodeGroupNodeUnitTemplateInfo(AbstractModel):
 
     @property
     def Relation(self):
+        """是否关联
+        :rtype: bool
+        """
         return self._Relation
 
     @Relation.setter
@@ -12946,6 +15358,9 @@ class NodeSimpleInfo(AbstractModel):
 
     @property
     def ID(self):
+        """节点ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -12954,6 +15369,9 @@ class NodeSimpleInfo(AbstractModel):
 
     @property
     def NodeName(self):
+        """节点名称
+        :rtype: str
+        """
         return self._NodeName
 
     @NodeName.setter
@@ -12995,6 +15413,9 @@ class NodeUnitInfo(AbstractModel):
 
     @property
     def Id(self):
+        """NodeUnitId
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -13003,6 +15424,9 @@ class NodeUnitInfo(AbstractModel):
 
     @property
     def NodeUnitName(self):
+        """NodeUnit名称
+        :rtype: str
+        """
         return self._NodeUnitName
 
     @NodeUnitName.setter
@@ -13011,6 +15435,10 @@ class NodeUnitInfo(AbstractModel):
 
     @property
     def NodeList(self):
+        """包含节点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NodeUnitNodeInfo
+        """
         return self._NodeList
 
     @NodeList.setter
@@ -13060,6 +15488,9 @@ class NodeUnitNodeInfo(AbstractModel):
 
     @property
     def Id(self):
+        """节点ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -13068,6 +15499,9 @@ class NodeUnitNodeInfo(AbstractModel):
 
     @property
     def Status(self):
+        """节点状态  NodeStatusHealthy (健康)/NodeStatusAbnormal (异常)/NodeStatusOffline (下线)/NodeStatusNotActivated (未激活
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -13076,6 +15510,9 @@ class NodeUnitNodeInfo(AbstractModel):
 
     @property
     def NodeName(self):
+        """节点名称
+        :rtype: str
+        """
         return self._NodeName
 
     @NodeName.setter
@@ -13084,6 +15521,9 @@ class NodeUnitNodeInfo(AbstractModel):
 
     @property
     def InternalIP(self):
+        """内网节点IP
+        :rtype: str
+        """
         return self._InternalIP
 
     @InternalIP.setter
@@ -13143,6 +15583,9 @@ class NodeUnitTemplate(AbstractModel):
 
     @property
     def ID(self):
+        """NodeUnit模版ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -13151,6 +15594,9 @@ class NodeUnitTemplate(AbstractModel):
 
     @property
     def Name(self):
+        """NodeUnit模版名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -13159,6 +15605,9 @@ class NodeUnitTemplate(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -13167,6 +15616,9 @@ class NodeUnitTemplate(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -13175,6 +15627,10 @@ class NodeUnitTemplate(AbstractModel):
 
     @property
     def NodeList(self):
+        """包含节点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NodeSimpleInfo
+        """
         return self._NodeList
 
     @NodeList.setter
@@ -13183,6 +15639,10 @@ class NodeUnitTemplate(AbstractModel):
 
     @property
     def NodeGroups(self):
+        """NodeGroup列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._NodeGroups
 
     @NodeGroups.setter
@@ -13191,6 +15651,9 @@ class NodeUnitTemplate(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -13199,6 +15662,9 @@ class NodeUnitTemplate(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -13266,6 +15732,10 @@ class OperationLog(AbstractModel):
 
     @property
     def OperateTime(self):
+        """操作时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OperateTime
 
     @OperateTime.setter
@@ -13274,6 +15744,10 @@ class OperationLog(AbstractModel):
 
     @property
     def Module(self):
+        """模块名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -13282,6 +15756,9 @@ class OperationLog(AbstractModel):
 
     @property
     def Description(self):
+        """操作信息
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -13290,6 +15767,9 @@ class OperationLog(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -13298,6 +15778,9 @@ class OperationLog(AbstractModel):
 
     @property
     def Status(self):
+        """状态: 1:成功 2:失败
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -13306,6 +15789,10 @@ class OperationLog(AbstractModel):
 
     @property
     def OperatorUserID(self):
+        """操作用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OperatorUserID
 
     @OperatorUserID.setter
@@ -13314,6 +15801,10 @@ class OperationLog(AbstractModel):
 
     @property
     def Action(self):
+        """操作动作
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -13354,6 +15845,10 @@ class OperationLogsCondition(AbstractModel):
 
     @property
     def Status(self):
+        """状态列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._Status
 
     @Status.setter
@@ -13396,6 +15891,9 @@ class PortConfig(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议类型(tcp|udp)
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -13404,6 +15902,9 @@ class PortConfig(AbstractModel):
 
     @property
     def Port(self):
+        """源端口
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -13412,6 +15913,9 @@ class PortConfig(AbstractModel):
 
     @property
     def TargetPort(self):
+        """目标端口
+        :rtype: int
+        """
         return self._TargetPort
 
     @TargetPort.setter
@@ -13420,6 +15924,9 @@ class PortConfig(AbstractModel):
 
     @property
     def NodePort(self):
+        """节点端口
+        :rtype: int
+        """
         return self._NodePort
 
     @NodePort.setter
@@ -13481,6 +15988,10 @@ class Probe(AbstractModel):
 
     @property
     def InitialDelaySeconds(self):
+        """启动后，延迟探测时间 单位:秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._InitialDelaySeconds
 
     @InitialDelaySeconds.setter
@@ -13489,6 +16000,10 @@ class Probe(AbstractModel):
 
     @property
     def PeriodSeconds(self):
+        """探测间隔，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PeriodSeconds
 
     @PeriodSeconds.setter
@@ -13497,6 +16012,10 @@ class Probe(AbstractModel):
 
     @property
     def TimeoutSeconds(self):
+        """探测超时时间 单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TimeoutSeconds
 
     @TimeoutSeconds.setter
@@ -13505,6 +16024,10 @@ class Probe(AbstractModel):
 
     @property
     def SuccessThreshold(self):
+        """失败后检查成功的最小连续成功次数。默认为1.活跃度必须为1。最小值为1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SuccessThreshold
 
     @SuccessThreshold.setter
@@ -13513,6 +16036,10 @@ class Probe(AbstractModel):
 
     @property
     def FailureThreshold(self):
+        """当Pod成功启动且检查失败时，放弃之前尝试次数。默认为3.最小值为1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FailureThreshold
 
     @FailureThreshold.setter
@@ -13521,6 +16048,10 @@ class Probe(AbstractModel):
 
     @property
     def HttpProbe(self):
+        """HTTP探测配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.HttpProbe`
+        """
         return self._HttpProbe
 
     @HttpProbe.setter
@@ -13529,6 +16060,10 @@ class Probe(AbstractModel):
 
     @property
     def TcpProbe(self):
+        """TCP探测配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.TcpProbe`
+        """
         return self._TcpProbe
 
     @TcpProbe.setter
@@ -13575,6 +16110,9 @@ class RedeployEdgeUnitApplicationRequest(AbstractModel):
 
     @property
     def EdgeUnitId(self):
+        """单元ID
+        :rtype: int
+        """
         return self._EdgeUnitId
 
     @EdgeUnitId.setter
@@ -13583,6 +16121,9 @@ class RedeployEdgeUnitApplicationRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """应用ID
+        :rtype: int
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -13617,6 +16158,9 @@ class RedeployEdgeUnitApplicationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13651,6 +16195,9 @@ class ResourceMetricTarget(AbstractModel):
 
     @property
     def Type(self):
+        """类型(cpu|memory)
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -13659,6 +16206,9 @@ class ResourceMetricTarget(AbstractModel):
 
     @property
     def AverageValue(self):
+        """平均值
+        :rtype: int
+        """
         return self._AverageValue
 
     @AverageValue.setter
@@ -13667,6 +16217,9 @@ class ResourceMetricTarget(AbstractModel):
 
     @property
     def Scale(self):
+        """单位
+        :rtype: str
+        """
         return self._Scale
 
     @Scale.setter
@@ -13675,6 +16228,9 @@ class ResourceMetricTarget(AbstractModel):
 
     @property
     def AverageUtilization(self):
+        """平均值
+        :rtype: int
+        """
         return self._AverageUtilization
 
     @AverageUtilization.setter
@@ -13756,6 +16312,9 @@ class RouteInfo(AbstractModel):
 
     @property
     def RouteID(self):
+        """无
+        :rtype: int
+        """
         return self._RouteID
 
     @RouteID.setter
@@ -13764,6 +16323,9 @@ class RouteInfo(AbstractModel):
 
     @property
     def RouteName(self):
+        """无
+        :rtype: str
+        """
         return self._RouteName
 
     @RouteName.setter
@@ -13772,6 +16334,9 @@ class RouteInfo(AbstractModel):
 
     @property
     def SourceProductID(self):
+        """无
+        :rtype: str
+        """
         return self._SourceProductID
 
     @SourceProductID.setter
@@ -13780,6 +16345,9 @@ class RouteInfo(AbstractModel):
 
     @property
     def TopicFilter(self):
+        """无
+        :rtype: str
+        """
         return self._TopicFilter
 
     @TopicFilter.setter
@@ -13788,6 +16356,9 @@ class RouteInfo(AbstractModel):
 
     @property
     def Mode(self):
+        """无
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -13796,6 +16367,9 @@ class RouteInfo(AbstractModel):
 
     @property
     def TargetOptions(self):
+        """无
+        :rtype: str
+        """
         return self._TargetOptions
 
     @TargetOptions.setter
@@ -13804,6 +16378,9 @@ class RouteInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """无
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -13812,6 +16389,9 @@ class RouteInfo(AbstractModel):
 
     @property
     def Descript(self):
+        """无
+        :rtype: str
+        """
         return self._Descript
 
     @Descript.setter
@@ -13820,6 +16400,9 @@ class RouteInfo(AbstractModel):
 
     @property
     def Healthy(self):
+        """无
+        :rtype: str
+        """
         return self._Healthy
 
     @Healthy.setter
@@ -13828,6 +16411,9 @@ class RouteInfo(AbstractModel):
 
     @property
     def Status(self):
+        """无
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -13836,6 +16422,9 @@ class RouteInfo(AbstractModel):
 
     @property
     def MessageCount(self):
+        """无
+        :rtype: int
+        """
         return self._MessageCount
 
     @MessageCount.setter
@@ -13844,6 +16433,9 @@ class RouteInfo(AbstractModel):
 
     @property
     def MessageLastTime(self):
+        """无
+        :rtype: str
+        """
         return self._MessageLastTime
 
     @MessageLastTime.setter
@@ -13852,6 +16444,9 @@ class RouteInfo(AbstractModel):
 
     @property
     def SourceProductName(self):
+        """无
+        :rtype: str
+        """
         return self._SourceProductName
 
     @SourceProductName.setter
@@ -13860,6 +16455,9 @@ class RouteInfo(AbstractModel):
 
     @property
     def SourceUnitIDList(self):
+        """无
+        :rtype: list of str
+        """
         return self._SourceUnitIDList
 
     @SourceUnitIDList.setter
@@ -13868,6 +16466,9 @@ class RouteInfo(AbstractModel):
 
     @property
     def SourceUnitNameList(self):
+        """无
+        :rtype: list of str
+        """
         return self._SourceUnitNameList
 
     @SourceUnitNameList.setter
@@ -13876,6 +16477,9 @@ class RouteInfo(AbstractModel):
 
     @property
     def SourceDeviceNameList(self):
+        """无
+        :rtype: list of str
+        """
         return self._SourceDeviceNameList
 
     @SourceDeviceNameList.setter
@@ -13937,6 +16541,10 @@ class SecretItem(AbstractModel):
 
     @property
     def Name(self):
+        """Secret名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -13945,6 +16553,10 @@ class SecretItem(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -13953,6 +16565,10 @@ class SecretItem(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -13961,6 +16577,10 @@ class SecretItem(AbstractModel):
 
     @property
     def SecretType(self):
+        """Secret类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SecretType
 
     @SecretType.setter
@@ -14002,6 +16622,10 @@ class SecurityCapabilities(AbstractModel):
 
     @property
     def Add(self):
+        """允许操作列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Add
 
     @Add.setter
@@ -14010,6 +16634,10 @@ class SecurityCapabilities(AbstractModel):
 
     @property
     def Drop(self):
+        """禁止操作列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Drop
 
     @Drop.setter
@@ -14050,6 +16678,9 @@ class SecurityContext(AbstractModel):
 
     @property
     def Privilege(self):
+        """是否开启特权模式
+        :rtype: bool
+        """
         return self._Privilege
 
     @Privilege.setter
@@ -14058,6 +16689,9 @@ class SecurityContext(AbstractModel):
 
     @property
     def ProcMount(self):
+        """目录/Proc挂载方式
+        :rtype: str
+        """
         return self._ProcMount
 
     @ProcMount.setter
@@ -14066,6 +16700,9 @@ class SecurityContext(AbstractModel):
 
     @property
     def Capabilities(self):
+        """安全配置
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.SecurityCapabilities`
+        """
         return self._Capabilities
 
     @Capabilities.setter
@@ -14118,6 +16755,9 @@ class Service(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14126,6 +16766,9 @@ class Service(AbstractModel):
 
     @property
     def Type(self):
+        """类型 (ClusterIP|NodePort)
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -14134,6 +16777,9 @@ class Service(AbstractModel):
 
     @property
     def Ports(self):
+        """端口配置
+        :rtype: list of PortConfig
+        """
         return self._Ports
 
     @Ports.setter
@@ -14142,6 +16788,9 @@ class Service(AbstractModel):
 
     @property
     def Labels(self):
+        """标签
+        :rtype: list of Label
+        """
         return self._Labels
 
     @Labels.setter
@@ -14150,6 +16799,9 @@ class Service(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间默认default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -14158,6 +16810,9 @@ class Service(AbstractModel):
 
     @property
     def ClusterIP(self):
+        """服务IP
+        :rtype: str
+        """
         return self._ClusterIP
 
     @ClusterIP.setter
@@ -14209,6 +16864,9 @@ class SetRouteOnOffRequest(AbstractModel):
 
     @property
     def RouteID(self):
+        """无
+        :rtype: int
+        """
         return self._RouteID
 
     @RouteID.setter
@@ -14217,6 +16875,9 @@ class SetRouteOnOffRequest(AbstractModel):
 
     @property
     def Status(self):
+        """on 或 off
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -14251,6 +16912,9 @@ class SetRouteOnOffResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14279,6 +16943,9 @@ class Sort(AbstractModel):
 
     @property
     def Field(self):
+        """排序字段
+        :rtype: str
+        """
         return self._Field
 
     @Field.setter
@@ -14287,6 +16954,9 @@ class Sort(AbstractModel):
 
     @property
     def Order(self):
+        """排序方式，升序ASC / 降序DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -14322,6 +16992,10 @@ class TcpProbe(AbstractModel):
 
     @property
     def Port(self):
+        """连接端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -14374,6 +17048,9 @@ class Volume(AbstractModel):
 
     @property
     def Source(self):
+        """来源(emptyDir|hostPath|configMap|secret|nfs)
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -14382,6 +17059,9 @@ class Volume(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14390,6 +17070,10 @@ class Volume(AbstractModel):
 
     @property
     def HostPath(self):
+        """Host挂载配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.VolumeHostPath`
+        """
         return self._HostPath
 
     @HostPath.setter
@@ -14398,6 +17082,10 @@ class Volume(AbstractModel):
 
     @property
     def ConfigMap(self):
+        """ConfigMap挂载配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.VolumeConfigMap`
+        """
         return self._ConfigMap
 
     @ConfigMap.setter
@@ -14406,6 +17094,10 @@ class Volume(AbstractModel):
 
     @property
     def Secret(self):
+        """Secret挂载配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.VolumeConfigMap`
+        """
         return self._Secret
 
     @Secret.setter
@@ -14414,6 +17106,10 @@ class Volume(AbstractModel):
 
     @property
     def NFS(self):
+        """NFS挂载配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.VolumeNFS`
+        """
         return self._NFS
 
     @NFS.setter
@@ -14463,6 +17159,9 @@ class VolumeConfigMap(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14471,6 +17170,9 @@ class VolumeConfigMap(AbstractModel):
 
     @property
     def Items(self):
+        """Key列表配置
+        :rtype: list of VolumeConfigMapKeyToPath
+        """
         return self._Items
 
     @Items.setter
@@ -14516,6 +17218,9 @@ class VolumeConfigMapKeyToPath(AbstractModel):
 
     @property
     def Key(self):
+        """健名
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -14524,6 +17229,9 @@ class VolumeConfigMapKeyToPath(AbstractModel):
 
     @property
     def Path(self):
+        """对应本地路径
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -14532,6 +17240,9 @@ class VolumeConfigMapKeyToPath(AbstractModel):
 
     @property
     def Mode(self):
+        """对应权限模式
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -14570,6 +17281,9 @@ class VolumeHostPath(AbstractModel):
 
     @property
     def Type(self):
+        """类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -14578,6 +17292,9 @@ class VolumeHostPath(AbstractModel):
 
     @property
     def Path(self):
+        """路径
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -14623,6 +17340,9 @@ class VolumeMount(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14631,6 +17351,9 @@ class VolumeMount(AbstractModel):
 
     @property
     def MountPath(self):
+        """挂载路径
+        :rtype: str
+        """
         return self._MountPath
 
     @MountPath.setter
@@ -14639,6 +17362,10 @@ class VolumeMount(AbstractModel):
 
     @property
     def SubPath(self):
+        """子路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubPath
 
     @SubPath.setter
@@ -14647,6 +17374,10 @@ class VolumeMount(AbstractModel):
 
     @property
     def ReadOnly(self):
+        """是否只读
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._ReadOnly
 
     @ReadOnly.setter
@@ -14689,6 +17420,9 @@ class VolumeNFS(AbstractModel):
 
     @property
     def Server(self):
+        """服务地址
+        :rtype: str
+        """
         return self._Server
 
     @Server.setter
@@ -14697,6 +17431,9 @@ class VolumeNFS(AbstractModel):
 
     @property
     def ServerPath(self):
+        """对应服务器路径
+        :rtype: str
+        """
         return self._ServerPath
 
     @ServerPath.setter
@@ -14705,6 +17442,9 @@ class VolumeNFS(AbstractModel):
 
     @property
     def Path(self):
+        """对应本地路径
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter

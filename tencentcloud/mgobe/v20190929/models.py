@@ -35,6 +35,9 @@ class DismissRoomRequest(AbstractModel):
 
     @property
     def GameId(self):
+        """表示游戏资源唯一 ID, 由后台自动分配, 无法修改。
+        :rtype: str
+        """
         return self._GameId
 
     @GameId.setter
@@ -43,6 +46,9 @@ class DismissRoomRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """表示游戏房间唯一ID。
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -77,6 +83,9 @@ class DismissRoomResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

@@ -77,6 +77,9 @@ False -- 不开启
 
     @property
     def SecretName(self):
+        """凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -85,6 +88,15 @@ False -- 不开启
 
     @property
     def UserNamePrefix(self):
+        """用户账号名前缀，由用户自行指定，长度限定在8个字符以内，
+可选字符集包括：
+数字字符：[0, 9]，
+小写字符：[a, z]，
+大写字符：[A, Z]，
+特殊字符(全英文符号)：下划线(_)，
+前缀必须以大写或小写字母开头。
+        :rtype: str
+        """
         return self._UserNamePrefix
 
     @UserNamePrefix.setter
@@ -93,6 +105,9 @@ False -- 不开启
 
     @property
     def ProductName(self):
+        """凭据所绑定的云产品名称，如Mysql，可以通过DescribeSupportedProducts接口获取所支持的云产品名称。
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -101,6 +116,9 @@ False -- 不开启
 
     @property
     def InstanceID(self):
+        """云产品实例ID。
+        :rtype: str
+        """
         return self._InstanceID
 
     @InstanceID.setter
@@ -109,6 +127,9 @@ False -- 不开启
 
     @property
     def Domains(self):
+        """账号的域名，IP形式，支持填入%。
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -117,6 +138,9 @@ False -- 不开启
 
     @property
     def PrivilegesList(self):
+        """将凭据与云产品实例绑定时，需要授予的权限列表。
+        :rtype: list of ProductPrivilegeUnit
+        """
         return self._PrivilegesList
 
     @PrivilegesList.setter
@@ -125,6 +149,9 @@ False -- 不开启
 
     @property
     def Description(self):
+        """描述信息，用于详细描述用途等，最大支持2048字节。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -133,6 +160,11 @@ False -- 不开启
 
     @property
     def KmsKeyId(self):
+        """指定对凭据进行加密的KMS CMK。
+如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。
+您也可以指定在同region 下自行创建的KMS CMK进行加密。
+        :rtype: str
+        """
         return self._KmsKeyId
 
     @KmsKeyId.setter
@@ -141,6 +173,9 @@ False -- 不开启
 
     @property
     def Tags(self):
+        """标签列表。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -149,6 +184,10 @@ False -- 不开启
 
     @property
     def RotationBeginTime(self):
+        """用户自定义的开始轮转时间，格式：2006-01-02 15:04:05。
+当EnableRotation为True时，此参数必填。
+        :rtype: str
+        """
         return self._RotationBeginTime
 
     @RotationBeginTime.setter
@@ -157,6 +196,12 @@ False -- 不开启
 
     @property
     def EnableRotation(self):
+        """是否开启轮转
+True -- 开启
+False -- 不开启
+如果不指定，默认为False。
+        :rtype: bool
+        """
         return self._EnableRotation
 
     @EnableRotation.setter
@@ -165,6 +210,9 @@ False -- 不开启
 
     @property
     def RotationFrequency(self):
+        """轮转周期，以天为单位，默认为1天。
+        :rtype: int
+        """
         return self._RotationFrequency
 
     @RotationFrequency.setter
@@ -231,6 +279,9 @@ class CreateProductSecretResponse(AbstractModel):
 
     @property
     def SecretName(self):
+        """创建的凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -239,6 +290,9 @@ class CreateProductSecretResponse(AbstractModel):
 
     @property
     def TagCode(self):
+        """标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误。
+        :rtype: int
+        """
         return self._TagCode
 
     @TagCode.setter
@@ -247,6 +301,9 @@ class CreateProductSecretResponse(AbstractModel):
 
     @property
     def TagMsg(self):
+        """标签操作的返回信息。
+        :rtype: str
+        """
         return self._TagMsg
 
     @TagMsg.setter
@@ -255,6 +312,9 @@ class CreateProductSecretResponse(AbstractModel):
 
     @property
     def FlowID(self):
+        """创建云产品凭据异步任务ID号。
+        :rtype: int
+        """
         return self._FlowID
 
     @FlowID.setter
@@ -263,6 +323,9 @@ class CreateProductSecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -309,6 +372,9 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -317,6 +383,9 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """密钥对创建后所属的项目ID。
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -325,6 +394,9 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
 
     @property
     def Description(self):
+        """描述信息，用于详细描述用途等，最大支持2048字节。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -333,6 +405,11 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
 
     @property
     def KmsKeyId(self):
+        """指定对凭据进行加密的KMS CMK。
+如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。
+您也可以指定在同region 下自行创建的KMS CMK进行加密。
+        :rtype: str
+        """
         return self._KmsKeyId
 
     @KmsKeyId.setter
@@ -341,6 +418,9 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -349,6 +429,9 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
 
     @property
     def SSHKeyName(self):
+        """用户自定义输入的SSH密钥对的名称，可由数字，字母和下划线组成，只能以数字和字母开头，长度不超过25个字符。
+        :rtype: str
+        """
         return self._SSHKeyName
 
     @SSHKeyName.setter
@@ -407,6 +490,9 @@ class CreateSSHKeyPairSecretResponse(AbstractModel):
 
     @property
     def SecretName(self):
+        """创建的凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -415,6 +501,9 @@ class CreateSSHKeyPairSecretResponse(AbstractModel):
 
     @property
     def SSHKeyID(self):
+        """创建的SSH密钥ID。
+        :rtype: str
+        """
         return self._SSHKeyID
 
     @SSHKeyID.setter
@@ -423,6 +512,9 @@ class CreateSSHKeyPairSecretResponse(AbstractModel):
 
     @property
     def SSHKeyName(self):
+        """创建的SSH密钥名称。
+        :rtype: str
+        """
         return self._SSHKeyName
 
     @SSHKeyName.setter
@@ -431,6 +523,9 @@ class CreateSSHKeyPairSecretResponse(AbstractModel):
 
     @property
     def TagCode(self):
+        """标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+        :rtype: int
+        """
         return self._TagCode
 
     @TagCode.setter
@@ -439,6 +534,9 @@ class CreateSSHKeyPairSecretResponse(AbstractModel):
 
     @property
     def TagMsg(self):
+        """标签操作的返回信息。
+        :rtype: str
+        """
         return self._TagMsg
 
     @TagMsg.setter
@@ -447,6 +545,9 @@ class CreateSSHKeyPairSecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -501,6 +602,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。一旦创建不可修改。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -509,6 +613,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def VersionId(self):
+        """凭据版本，查询凭据信息时需要根据SecretName 和 VersionId进行查询，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。若为空，则使用默认的初始凭据版本号。可选，若为空或该凭据为云产品类凭据，则该版本号默认为 SSM_Current。
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -517,6 +624,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def Description(self):
+        """描述信息，用于详细描述用途等，最大支持2048字节。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -525,6 +635,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def KmsKeyId(self):
+        """指定对凭据进行加密的KMS CMK。如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。您也可以指定在同region 下自行创建的KMS CMK进行加密。
+        :rtype: str
+        """
         return self._KmsKeyId
 
     @KmsKeyId.setter
@@ -533,6 +646,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def SecretType(self):
+        """凭据类型，默认为0自定义凭据。
+        :rtype: int
+        """
         return self._SecretType
 
     @SecretType.setter
@@ -541,6 +657,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def SecretBinary(self):
+        """二进制凭据信息base64编码后的明文。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。
+        :rtype: str
+        """
         return self._SecretBinary
 
     @SecretBinary.setter
@@ -549,6 +668,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def SecretString(self):
+        """文本类型凭据信息明文（不需要进行base64编码）。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。
+        :rtype: str
+        """
         return self._SecretString
 
     @SecretString.setter
@@ -557,6 +679,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def AdditionalConfig(self):
+        """JSON 格式字符串，用于指定特定凭据类型的额外配置。
+        :rtype: str
+        """
         return self._AdditionalConfig
 
     @AdditionalConfig.setter
@@ -565,6 +690,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -623,6 +751,9 @@ class CreateSecretResponse(AbstractModel):
 
     @property
     def SecretName(self):
+        """新创建的凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -631,6 +762,9 @@ class CreateSecretResponse(AbstractModel):
 
     @property
     def VersionId(self):
+        """新创建的凭据版本。
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -639,6 +773,9 @@ class CreateSecretResponse(AbstractModel):
 
     @property
     def TagCode(self):
+        """标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+        :rtype: int
+        """
         return self._TagCode
 
     @TagCode.setter
@@ -647,6 +784,9 @@ class CreateSecretResponse(AbstractModel):
 
     @property
     def TagMsg(self):
+        """标签操作的返回信息
+        :rtype: str
+        """
         return self._TagMsg
 
     @TagMsg.setter
@@ -655,6 +795,9 @@ class CreateSecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -693,6 +836,9 @@ False --  表示仅仅清理此凭据中存储的SSH密钥信息，不在CVM进�
 
     @property
     def SecretName(self):
+        """指定需要删除的凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -701,6 +847,10 @@ False --  表示仅仅清理此凭据中存储的SSH密钥信息，不在CVM进�
 
     @property
     def RecoveryWindowInDays(self):
+        """指定计划删除日期，单位（天），0（默认）表示立即删除， 1-30 表示预留的天数，超出该日期之后彻底删除。
+当凭据类型为SSH密钥对凭据时，此字段只能取值只能为0。
+        :rtype: int
+        """
         return self._RecoveryWindowInDays
 
     @RecoveryWindowInDays.setter
@@ -709,6 +859,11 @@ False --  表示仅仅清理此凭据中存储的SSH密钥信息，不在CVM进�
 
     @property
     def CleanSSHKey(self):
+        """当凭据类型为SSH密钥对凭据时，此字段有效，取值：
+True -- 表示不仅仅清理此凭据中存储的SSH密钥信息，还会将SSH密钥对从CVM侧进行清理。注意，如果SSH密钥此时绑定了CVM实例，那么会清理失败。
+False --  表示仅仅清理此凭据中存储的SSH密钥信息，不在CVM进侧进行清理。
+        :rtype: bool
+        """
         return self._CleanSSHKey
 
     @CleanSSHKey.setter
@@ -750,6 +905,9 @@ class DeleteSecretResponse(AbstractModel):
 
     @property
     def SecretName(self):
+        """指定删除的凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -758,6 +916,9 @@ class DeleteSecretResponse(AbstractModel):
 
     @property
     def DeleteTime(self):
+        """凭据删除的日期，unix时间戳。
+        :rtype: int
+        """
         return self._DeleteTime
 
     @DeleteTime.setter
@@ -766,6 +927,9 @@ class DeleteSecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -796,6 +960,9 @@ class DeleteSecretVersionRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """指定凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -804,6 +971,9 @@ class DeleteSecretVersionRequest(AbstractModel):
 
     @property
     def VersionId(self):
+        """指定该名称下需要删除的凭据的版本号。
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -844,6 +1014,9 @@ class DeleteSecretVersionResponse(AbstractModel):
 
     @property
     def SecretName(self):
+        """凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -852,6 +1025,9 @@ class DeleteSecretVersionResponse(AbstractModel):
 
     @property
     def VersionId(self):
+        """凭据版本号。
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -860,6 +1036,9 @@ class DeleteSecretVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -887,6 +1066,9 @@ class DescribeAsyncRequestInfoRequest(AbstractModel):
 
     @property
     def FlowID(self):
+        """异步任务ID号
+        :rtype: int
+        """
         return self._FlowID
 
     @FlowID.setter
@@ -926,6 +1108,9 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """0:处理中，1:处理成功，2:处理失败
+        :rtype: int
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -934,6 +1119,9 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     @property
     def Description(self):
+        """任务描述信息。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -942,6 +1130,9 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -969,6 +1160,9 @@ class DescribeRotationDetailRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """指定需要获取凭据轮转详细信息的凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1014,6 +1208,9 @@ class DescribeRotationDetailResponse(AbstractModel):
 
     @property
     def EnableRotation(self):
+        """否允许轮转，true表示开启轮转，false表示禁止轮转。
+        :rtype: bool
+        """
         return self._EnableRotation
 
     @EnableRotation.setter
@@ -1022,6 +1219,9 @@ class DescribeRotationDetailResponse(AbstractModel):
 
     @property
     def Frequency(self):
+        """轮转的频率，以天为单位，默认为1天。
+        :rtype: int
+        """
         return self._Frequency
 
     @Frequency.setter
@@ -1030,6 +1230,9 @@ class DescribeRotationDetailResponse(AbstractModel):
 
     @property
     def LatestRotateTime(self):
+        """最近一次轮转的时间，显式可见的时间字符串，格式 2006-01-02 15:04:05。
+        :rtype: str
+        """
         return self._LatestRotateTime
 
     @LatestRotateTime.setter
@@ -1038,6 +1241,9 @@ class DescribeRotationDetailResponse(AbstractModel):
 
     @property
     def NextRotateBeginTime(self):
+        """下一次开始轮转的时间，显式可见的时间字符串，格式 2006-01-02 15:04:05。
+        :rtype: str
+        """
         return self._NextRotateBeginTime
 
     @NextRotateBeginTime.setter
@@ -1046,6 +1252,9 @@ class DescribeRotationDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1075,6 +1284,9 @@ class DescribeRotationHistoryRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """指定需要获取凭据轮转历史的凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1114,6 +1326,9 @@ class DescribeRotationHistoryResponse(AbstractModel):
 
     @property
     def VersionIDs(self):
+        """版本号列表
+        :rtype: list of str
+        """
         return self._VersionIDs
 
     @VersionIDs.setter
@@ -1122,6 +1337,9 @@ class DescribeRotationHistoryResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """版本号个数，可以给用户展示的版本号个数上限为10个。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1130,6 +1348,9 @@ class DescribeRotationHistoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1157,6 +1378,9 @@ class DescribeSecretRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """指定需要获取凭据详细信息的凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1212,7 +1436,6 @@ class DescribeSecretResponse(AbstractModel):
         :param _ProjectID: 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。
         :type ProjectID: int
         :param _AssociatedInstanceIDs: 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssociatedInstanceIDs: list of str
         :param _TargetUin: 当凭据类型为云API密钥对凭据时，此字段有效，用于表示此云API密钥对所属的用户UIN。
         :type TargetUin: int
@@ -1242,6 +1465,9 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def SecretName(self):
+        """凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1250,6 +1476,9 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def Description(self):
+        """凭据描述信息。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1258,6 +1487,9 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def KmsKeyId(self):
+        """用于加密的KMS CMK ID。
+        :rtype: str
+        """
         return self._KmsKeyId
 
     @KmsKeyId.setter
@@ -1266,6 +1498,9 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def CreateUin(self):
+        """创建者UIN。
+        :rtype: int
+        """
         return self._CreateUin
 
     @CreateUin.setter
@@ -1274,6 +1509,9 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def Status(self):
+        """凭据状态：Enabled、Disabled、PendingDelete, Creating, Failed。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1282,6 +1520,9 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def DeleteTime(self):
+        """删除日期，uinx 时间戳，非计划删除状态的凭据为0。
+        :rtype: int
+        """
         return self._DeleteTime
 
     @DeleteTime.setter
@@ -1290,6 +1531,9 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建日期。
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1298,6 +1542,9 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def SecretType(self):
+        """0 --  用户自定义凭据类型；1 -- 数据库凭据类型；2 -- SSH密钥对凭据类型；3 -- 云API密钥（AKSK）凭据类型（使用此功能需要联系云助手单独开启白名单）；4 -- Redis类型凭据。
+        :rtype: int
+        """
         return self._SecretType
 
     @SecretType.setter
@@ -1306,6 +1553,9 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def ProductName(self):
+        """云产品名称。
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -1314,6 +1564,9 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def ResourceID(self):
+        """云产品实例ID。
+        :rtype: str
+        """
         return self._ResourceID
 
     @ResourceID.setter
@@ -1322,6 +1575,9 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def RotationStatus(self):
+        """是否开启轮转：True -- 开启轮转；False -- 关闭轮转。
+        :rtype: bool
+        """
         return self._RotationStatus
 
     @RotationStatus.setter
@@ -1330,6 +1586,9 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def RotationFrequency(self):
+        """轮转周期，默认以天为单位。
+        :rtype: int
+        """
         return self._RotationFrequency
 
     @RotationFrequency.setter
@@ -1338,6 +1597,9 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def ResourceName(self):
+        """当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对凭据的名称。
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -1346,6 +1608,9 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def ProjectID(self):
+        """当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。
+        :rtype: int
+        """
         return self._ProjectID
 
     @ProjectID.setter
@@ -1354,6 +1619,9 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def AssociatedInstanceIDs(self):
+        """当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
+        :rtype: list of str
+        """
         return self._AssociatedInstanceIDs
 
     @AssociatedInstanceIDs.setter
@@ -1362,6 +1630,9 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def TargetUin(self):
+        """当凭据类型为云API密钥对凭据时，此字段有效，用于表示此云API密钥对所属的用户UIN。
+        :rtype: int
+        """
         return self._TargetUin
 
     @TargetUin.setter
@@ -1370,6 +1641,9 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def AdditionalConfig(self):
+        """凭据额外配置
+        :rtype: str
+        """
         return self._AdditionalConfig
 
     @AdditionalConfig.setter
@@ -1378,6 +1652,9 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1437,6 +1714,14 @@ class DescribeSupportedProductsResponse(AbstractModel):
 
     @property
     def Products(self):
+        """支持的所有云产品列表。
+每种云产品与凭据类型的对应关系如下：
+当SecretType为1时，支持的云产品列表包括：Mysql、Tdsql-mysql、Tdsql_C_Mysql；
+当SecretType为2时，支持的产品列表为：Cvm；
+当SecretType为3时，支持的产品列表为：Cam（此功能的使用需要联系云助手单独开始白名单）；
+当SecretType为4时，支持的产品列表为：Redis。
+        :rtype: list of str
+        """
         return self._Products
 
     @Products.setter
@@ -1445,6 +1730,9 @@ class DescribeSupportedProductsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """支持的产品个数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1453,6 +1741,9 @@ class DescribeSupportedProductsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1480,6 +1771,9 @@ class DisableSecretRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """指定停用的凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1516,6 +1810,9 @@ class DisableSecretResponse(AbstractModel):
 
     @property
     def SecretName(self):
+        """停用的凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1524,6 +1821,9 @@ class DisableSecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1550,6 +1850,9 @@ class EnableSecretRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """指定启用凭据的名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1586,6 +1889,9 @@ class EnableSecretResponse(AbstractModel):
 
     @property
     def SecretName(self):
+        """启用的凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1594,6 +1900,9 @@ class EnableSecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1629,6 +1938,9 @@ class GetRegionsResponse(AbstractModel):
 
     @property
     def Regions(self):
+        """region列表。
+        :rtype: list of str
+        """
         return self._Regions
 
     @Regions.setter
@@ -1637,6 +1949,9 @@ class GetRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1666,6 +1981,9 @@ class GetSSHKeyPairValueRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """凭据名称，此凭据只能为SSH密钥对凭据类型。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1674,6 +1992,9 @@ class GetSSHKeyPairValueRequest(AbstractModel):
 
     @property
     def SSHKeyId(self):
+        """密钥对ID，是云服务器中密钥对的唯一标识。
+        :rtype: str
+        """
         return self._SSHKeyId
 
     @SSHKeyId.setter
@@ -1728,6 +2049,9 @@ class GetSSHKeyPairValueResponse(AbstractModel):
 
     @property
     def SSHKeyID(self):
+        """SSH密钥对ID。
+        :rtype: str
+        """
         return self._SSHKeyID
 
     @SSHKeyID.setter
@@ -1736,6 +2060,9 @@ class GetSSHKeyPairValueResponse(AbstractModel):
 
     @property
     def PublicKey(self):
+        """公钥明文，使用base64编码。
+        :rtype: str
+        """
         return self._PublicKey
 
     @PublicKey.setter
@@ -1744,6 +2071,9 @@ class GetSSHKeyPairValueResponse(AbstractModel):
 
     @property
     def PrivateKey(self):
+        """私钥明文，使用base64编码
+        :rtype: str
+        """
         return self._PrivateKey
 
     @PrivateKey.setter
@@ -1752,6 +2082,9 @@ class GetSSHKeyPairValueResponse(AbstractModel):
 
     @property
     def ProjectID(self):
+        """此密钥对所属的项目ID。
+        :rtype: int
+        """
         return self._ProjectID
 
     @ProjectID.setter
@@ -1760,6 +2093,10 @@ class GetSSHKeyPairValueResponse(AbstractModel):
 
     @property
     def SSHKeyDescription(self):
+        """SSH密钥对的描述信息。
+用户可以在CVM侧控制台对密钥对的描述信息进行修改。
+        :rtype: str
+        """
         return self._SSHKeyDescription
 
     @SSHKeyDescription.setter
@@ -1768,6 +2105,10 @@ class GetSSHKeyPairValueResponse(AbstractModel):
 
     @property
     def SSHKeyName(self):
+        """SSH密钥对的名称。
+用户可以在CVM侧控制台对密钥对的名称进行修改。
+        :rtype: str
+        """
         return self._SSHKeyName
 
     @SSHKeyName.setter
@@ -1776,6 +2117,9 @@ class GetSSHKeyPairValueResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1811,6 +2155,9 @@ class GetSecretValueRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """指定凭据的名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1819,6 +2166,10 @@ class GetSecretValueRequest(AbstractModel):
 
     @property
     def VersionId(self):
+        """指定对应凭据的版本号。
+对于云产品凭据如Mysql凭据，通过指定凭据名称和历史版本号来获取历史轮转凭据的明文信息，如果要获取当前正在使用的凭据版本的明文，需要将版本号指定为：SSM_Current。
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -1867,6 +2218,9 @@ SecretBinary和SecretString只有一个不为空。
 
     @property
     def SecretName(self):
+        """凭据的名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1875,6 +2229,9 @@ SecretBinary和SecretString只有一个不为空。
 
     @property
     def VersionId(self):
+        """该凭据对应的版本号。
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -1883,6 +2240,10 @@ SecretBinary和SecretString只有一个不为空。
 
     @property
     def SecretBinary(self):
+        """在创建凭据(CreateSecret)时，如果指定的是二进制数据，则该字段为返回结果，并且使用base64进行编码，应用方需要进行base64解码后获取原始数据。
+SecretBinary和SecretString只有一个不为空。
+        :rtype: str
+        """
         return self._SecretBinary
 
     @SecretBinary.setter
@@ -1891,6 +2252,10 @@ SecretBinary和SecretString只有一个不为空。
 
     @property
     def SecretString(self):
+        """在创建凭据(CreateSecret)时，如果指定的是普通文本数据，则该字段为返回结果。
+SecretBinary和SecretString只有一个不为空。
+        :rtype: str
+        """
         return self._SecretString
 
     @SecretString.setter
@@ -1899,6 +2264,9 @@ SecretBinary和SecretString只有一个不为空。
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1965,6 +2333,9 @@ false表示用户暂时不能使用密钥安全托管功能。
 
     @property
     def ServiceEnabled(self):
+        """true表示服务已开通，false 表示服务尚未开通。
+        :rtype: bool
+        """
         return self._ServiceEnabled
 
     @ServiceEnabled.setter
@@ -1973,6 +2344,9 @@ false表示用户暂时不能使用密钥安全托管功能。
 
     @property
     def InvalidType(self):
+        """服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放。
+        :rtype: int
+        """
         return self._InvalidType
 
     @InvalidType.setter
@@ -1981,6 +2355,10 @@ false表示用户暂时不能使用密钥安全托管功能。
 
     @property
     def AccessKeyEscrowEnabled(self):
+        """true表示用户已经可以使用密钥安全托管功能，
+false表示用户暂时不能使用密钥安全托管功能。
+        :rtype: bool
+        """
         return self._AccessKeyEscrowEnabled
 
     @AccessKeyEscrowEnabled.setter
@@ -1989,6 +2367,9 @@ false表示用户暂时不能使用密钥安全托管功能。
 
     @property
     def ExpireTime(self):
+        """过期时间
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -1997,6 +2378,9 @@ false表示用户暂时不能使用密钥安全托管功能。
 
     @property
     def QPSLimit(self):
+        """计算性能限制
+        :rtype: int
+        """
         return self._QPSLimit
 
     @QPSLimit.setter
@@ -2005,6 +2389,9 @@ false表示用户暂时不能使用密钥安全托管功能。
 
     @property
     def SecretLimit(self):
+        """凭据个数限制
+        :rtype: int
+        """
         return self._SecretLimit
 
     @SecretLimit.setter
@@ -2013,6 +2400,9 @@ false表示用户暂时不能使用密钥安全托管功能。
 
     @property
     def PayModel(self):
+        """付费模式
+        :rtype: str
+        """
         return self._PayModel
 
     @PayModel.setter
@@ -2021,6 +2411,9 @@ false表示用户暂时不能使用密钥安全托管功能。
 
     @property
     def RenewFlag(self):
+        """自动续费标识，0:手动续费 1:自动续费 2:到期不续
+        :rtype: int
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -2029,6 +2422,9 @@ false表示用户暂时不能使用密钥安全托管功能。
 
     @property
     def ResourceId(self):
+        """资源id
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -2037,6 +2433,9 @@ false表示用户暂时不能使用密钥安全托管功能。
 
     @property
     def TotalCount(self):
+        """已托管凭据个数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2045,6 +2444,9 @@ false表示用户暂时不能使用密钥安全托管功能。
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2080,6 +2482,9 @@ class ListSecretVersionIdsRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """凭据名称
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -2119,6 +2524,9 @@ class ListSecretVersionIdsResponse(AbstractModel):
 
     @property
     def SecretName(self):
+        """凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -2127,6 +2535,9 @@ class ListSecretVersionIdsResponse(AbstractModel):
 
     @property
     def Versions(self):
+        """VersionId列表。
+        :rtype: list of VersionInfo
+        """
         return self._Versions
 
     @Versions.setter
@@ -2135,6 +2546,9 @@ class ListSecretVersionIdsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2203,6 +2617,9 @@ class ListSecretsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询列表的起始位置，以0开始，不设置默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2211,6 +2628,9 @@ class ListSecretsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """单次查询返回的最大数量，0或不设置则使用默认值 20。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2219,6 +2639,9 @@ class ListSecretsRequest(AbstractModel):
 
     @property
     def OrderType(self):
+        """根据创建时间的排序方式，0或者不设置则使用降序排序， 1 表示升序排序。
+        :rtype: int
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -2227,6 +2650,16 @@ class ListSecretsRequest(AbstractModel):
 
     @property
     def State(self):
+        """根据凭据状态进行过滤。
+默认为0表示查询全部。
+1 --  表示查询Enabled 凭据列表。
+2 --  表示查询Disabled 凭据列表。
+3 --  表示查询PendingDelete 凭据列表。
+4 --  表示PendingCreate。
+5 --  表示CreateFailed。
+其中状态PendingCreate和CreateFailed只有在SecretType为云产品凭据时生效
+        :rtype: int
+        """
         return self._State
 
     @State.setter
@@ -2235,6 +2668,9 @@ class ListSecretsRequest(AbstractModel):
 
     @property
     def SearchSecretName(self):
+        """根据凭据名称进行过滤，为空表示不过滤。
+        :rtype: str
+        """
         return self._SearchSecretName
 
     @SearchSecretName.setter
@@ -2243,6 +2679,9 @@ class ListSecretsRequest(AbstractModel):
 
     @property
     def TagFilters(self):
+        """标签过滤条件。
+        :rtype: list of TagFilter
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -2251,6 +2690,12 @@ class ListSecretsRequest(AbstractModel):
 
     @property
     def SecretType(self):
+        """0  -- 表示用户自定义凭据，默认为0。
+1  -- 表示用户云产品凭据。
+2 -- 表示SSH密钥对凭据。
+3 -- 表示云API密钥对凭据。
+        :rtype: int
+        """
         return self._SecretType
 
     @SecretType.setter
@@ -2259,6 +2704,14 @@ class ListSecretsRequest(AbstractModel):
 
     @property
     def ProductName(self):
+        """此参数仅在SecretType参数值为1时生效，
+当SecretType值为1时：
+如果ProductName值为空，则表示查询所有类型的云产品凭据；
+如果ProductName值为某个指定的云产品值如Mysql时，则表示查询Mysql数据库凭据；
+如果ProductName值为多个云产品值，如：Mysql,Tdsql-mysql,Tdsql_C_Mysql（多个值以英文逗号,分隔开）则表示查询三种云产品类型的凭据；
+支持的云产品列表请通过接口：DescribeSupportedProducts进行查询。
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -2310,6 +2763,9 @@ class ListSecretsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """根据State和SearchSecretName 筛选的凭据总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2318,6 +2774,9 @@ class ListSecretsResponse(AbstractModel):
 
     @property
     def SecretMetadatas(self):
+        """返回凭据信息列表。
+        :rtype: list of SecretMetadata
+        """
         return self._SecretMetadatas
 
     @SecretMetadatas.setter
@@ -2326,6 +2785,9 @@ class ListSecretsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2395,6 +2857,19 @@ TableName - 显式指明所在表
 
     @property
     def PrivilegeName(self):
+        """权限名称，当前可选：
+GlobalPrivileges
+DatabasePrivileges
+TablePrivileges
+ColumnPrivileges
+
+当权限为DatabasePrivileges时，必须通过参数Database指定数据库名；
+
+当权限为TablePrivileges时，必须通过参数Database和TableName指定数据库名以及数据库中的表名；
+
+当权限为ColumnPrivileges时，必须通过参数Database、TableName和CoulmnName指定数据库、数据库中的表名以及表中的列名。
+        :rtype: str
+        """
         return self._PrivilegeName
 
     @PrivilegeName.setter
@@ -2403,6 +2878,22 @@ TableName - 显式指明所在表
 
     @property
     def Privileges(self):
+        """权限列表。
+对于Mysql产品来说，可选权限值为：
+
+1. GlobalPrivileges 中权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
+注意，不传该参数表示清除该权限。
+
+2. DatabasePrivileges 权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
+注意，不传该参数表示清除该权限。
+
+3. TablePrivileges 权限的可选值为：权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
+注意，不传该参数表示清除该权限。
+
+4. ColumnPrivileges 权限的可选值为："SELECT","INSERT","UPDATE","REFERENCES"。
+注意，不传该参数表示清除该权限。
+        :rtype: list of str
+        """
         return self._Privileges
 
     @Privileges.setter
@@ -2411,6 +2902,9 @@ TableName - 显式指明所在表
 
     @property
     def Database(self):
+        """仅当PrivilegeName为DatabasePrivileges时这个值才有效。
+        :rtype: str
+        """
         return self._Database
 
     @Database.setter
@@ -2419,6 +2913,9 @@ TableName - 显式指明所在表
 
     @property
     def TableName(self):
+        """仅当PrivilegeName为TablePrivileges时这个值才有效，并且此时需要填充Database显式指明所在的数据库实例。
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -2427,6 +2924,11 @@ TableName - 显式指明所在表
 
     @property
     def ColumnName(self):
+        """仅当PrivilegeName为ColumnPrivileges时这个值才生效，并且此时必须填充：
+Database - 显式指明所在的数据库实例。
+TableName - 显式指明所在表
+        :rtype: str
+        """
         return self._ColumnName
 
     @ColumnName.setter
@@ -2474,6 +2976,9 @@ SecretBinary 和 SecretString 必须且只能设置一个。
 
     @property
     def SecretName(self):
+        """指定需要增加版本的凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -2482,6 +2987,9 @@ SecretBinary 和 SecretString 必须且只能设置一个。
 
     @property
     def VersionId(self):
+        """指定新增加的版本号，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -2490,6 +2998,10 @@ SecretBinary 和 SecretString 必须且只能设置一个。
 
     @property
     def SecretBinary(self):
+        """二进制凭据信息，使用base64编码。
+SecretBinary 和 SecretString 必须且只能设置一个。
+        :rtype: str
+        """
         return self._SecretBinary
 
     @SecretBinary.setter
@@ -2498,6 +3010,9 @@ SecretBinary 和 SecretString 必须且只能设置一个。
 
     @property
     def SecretString(self):
+        """文本类型凭据信息明文（不需要进行base64编码），SecretBinary 和 SecretString 必须且只能设置一个。
+        :rtype: str
+        """
         return self._SecretString
 
     @SecretString.setter
@@ -2540,6 +3055,9 @@ class PutSecretValueResponse(AbstractModel):
 
     @property
     def SecretName(self):
+        """凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -2548,6 +3066,9 @@ class PutSecretValueResponse(AbstractModel):
 
     @property
     def VersionId(self):
+        """新增加的版本号。
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -2556,6 +3077,9 @@ class PutSecretValueResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2583,6 +3107,9 @@ class RestoreSecretRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """指定需要恢复的凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -2619,6 +3146,9 @@ class RestoreSecretResponse(AbstractModel):
 
     @property
     def SecretName(self):
+        """凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -2627,6 +3157,9 @@ class RestoreSecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2653,6 +3186,9 @@ class RotateProductSecretRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """需要轮转的凭据名。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -2689,6 +3225,9 @@ class RotateProductSecretResponse(AbstractModel):
 
     @property
     def FlowID(self):
+        """当凭据类型为云产品凭据时（即SecretType为1，如MySQL、Tdsql等托管凭据）此字段有效，返回轮转异步任务ID号。
+        :rtype: int
+        """
         return self._FlowID
 
     @FlowID.setter
@@ -2697,6 +3236,9 @@ class RotateProductSecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2749,7 +3291,6 @@ class SecretMetadata(AbstractModel):
         :param _ProjectID: 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。
         :type ProjectID: int
         :param _AssociatedInstanceIDs: 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssociatedInstanceIDs: list of str
         :param _TargetUin: 当凭据类型为云API密钥对凭据时，此字段有效，用于表示云API密钥对所属的用户UIN。
         :type TargetUin: int
@@ -2782,6 +3323,9 @@ class SecretMetadata(AbstractModel):
 
     @property
     def SecretName(self):
+        """凭据名称
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -2790,6 +3334,9 @@ class SecretMetadata(AbstractModel):
 
     @property
     def Description(self):
+        """凭据的描述信息
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2798,6 +3345,9 @@ class SecretMetadata(AbstractModel):
 
     @property
     def KmsKeyId(self):
+        """用于加密凭据的KMS KeyId
+        :rtype: str
+        """
         return self._KmsKeyId
 
     @KmsKeyId.setter
@@ -2806,6 +3356,9 @@ class SecretMetadata(AbstractModel):
 
     @property
     def CreateUin(self):
+        """创建者UIN
+        :rtype: int
+        """
         return self._CreateUin
 
     @CreateUin.setter
@@ -2814,6 +3367,9 @@ class SecretMetadata(AbstractModel):
 
     @property
     def Status(self):
+        """凭据状态：Enabled、Disabled、PendingDelete、Creating、Failed
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2822,6 +3378,9 @@ class SecretMetadata(AbstractModel):
 
     @property
     def DeleteTime(self):
+        """凭据删除日期，对于status为PendingDelete 的有效，unix时间戳
+        :rtype: int
+        """
         return self._DeleteTime
 
     @DeleteTime.setter
@@ -2830,6 +3389,9 @@ class SecretMetadata(AbstractModel):
 
     @property
     def CreateTime(self):
+        """凭据创建时间，unix时间戳
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2838,6 +3400,9 @@ class SecretMetadata(AbstractModel):
 
     @property
     def KmsKeyType(self):
+        """用于加密凭据的KMS CMK类型，DEFAULT 表示SecretsManager 创建的默认密钥， CUSTOMER 表示用户指定的密钥
+        :rtype: str
+        """
         return self._KmsKeyType
 
     @KmsKeyType.setter
@@ -2846,6 +3411,9 @@ class SecretMetadata(AbstractModel):
 
     @property
     def RotationStatus(self):
+        """1:--开启轮转；0--禁止轮转
+        :rtype: int
+        """
         return self._RotationStatus
 
     @RotationStatus.setter
@@ -2854,6 +3422,9 @@ class SecretMetadata(AbstractModel):
 
     @property
     def NextRotationTime(self):
+        """下一次轮转开始时间，uinx 时间戳
+        :rtype: int
+        """
         return self._NextRotationTime
 
     @NextRotationTime.setter
@@ -2862,6 +3433,13 @@ class SecretMetadata(AbstractModel):
 
     @property
     def SecretType(self):
+        """0 -- 用户自定义凭据；
+1 -- 云产品凭据；
+2 -- SSH密钥对凭据；
+3 -- 云API密钥对凭据；
+4 -- Redis类型凭据；
+        :rtype: int
+        """
         return self._SecretType
 
     @SecretType.setter
@@ -2870,6 +3448,9 @@ class SecretMetadata(AbstractModel):
 
     @property
     def ProductName(self):
+        """云产品名称，仅在SecretType为1，即凭据类型为云产品凭据时生效
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -2878,6 +3459,9 @@ class SecretMetadata(AbstractModel):
 
     @property
     def ResourceName(self):
+        """当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对凭据的名称。
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -2886,6 +3470,9 @@ class SecretMetadata(AbstractModel):
 
     @property
     def ProjectID(self):
+        """当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。
+        :rtype: int
+        """
         return self._ProjectID
 
     @ProjectID.setter
@@ -2894,6 +3481,9 @@ class SecretMetadata(AbstractModel):
 
     @property
     def AssociatedInstanceIDs(self):
+        """当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
+        :rtype: list of str
+        """
         return self._AssociatedInstanceIDs
 
     @AssociatedInstanceIDs.setter
@@ -2902,6 +3492,9 @@ class SecretMetadata(AbstractModel):
 
     @property
     def TargetUin(self):
+        """当凭据类型为云API密钥对凭据时，此字段有效，用于表示云API密钥对所属的用户UIN。
+        :rtype: int
+        """
         return self._TargetUin
 
     @TargetUin.setter
@@ -2910,6 +3503,9 @@ class SecretMetadata(AbstractModel):
 
     @property
     def RotationFrequency(self):
+        """轮转的频率，以天作为单位，在轮转开启状态下生效。
+        :rtype: int
+        """
         return self._RotationFrequency
 
     @RotationFrequency.setter
@@ -2918,6 +3514,9 @@ class SecretMetadata(AbstractModel):
 
     @property
     def ResourceID(self):
+        """云产品凭据对应的云产品实例 ID 号。
+        :rtype: str
+        """
         return self._ResourceID
 
     @ResourceID.setter
@@ -2926,6 +3525,9 @@ class SecretMetadata(AbstractModel):
 
     @property
     def RotationBeginTime(self):
+        """用户指定的轮转开始时间。
+        :rtype: str
+        """
         return self._RotationBeginTime
 
     @RotationBeginTime.setter
@@ -2980,6 +3582,9 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -2988,6 +3593,9 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签值
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -3025,6 +3633,9 @@ class TagFilter(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -3033,6 +3644,9 @@ class TagFilter(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签值
+        :rtype: list of str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -3070,6 +3684,9 @@ class UpdateDescriptionRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """指定需要更新描述信息的凭据名。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -3078,6 +3695,9 @@ class UpdateDescriptionRequest(AbstractModel):
 
     @property
     def Description(self):
+        """新的描述信息，最大长度2048个字节。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3115,6 +3735,9 @@ class UpdateDescriptionResponse(AbstractModel):
 
     @property
     def SecretName(self):
+        """凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -3123,6 +3746,9 @@ class UpdateDescriptionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3161,6 +3787,9 @@ false -- 禁止轮转。
 
     @property
     def SecretName(self):
+        """云产品凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -3169,6 +3798,11 @@ false -- 禁止轮转。
 
     @property
     def EnableRotation(self):
+        """是否开启轮转。
+true -- 开启轮转；
+false -- 禁止轮转。
+        :rtype: bool
+        """
         return self._EnableRotation
 
     @EnableRotation.setter
@@ -3177,6 +3811,9 @@ false -- 禁止轮转。
 
     @property
     def Frequency(self):
+        """轮转周期，以天为单位，最小为30天，最大为365天。
+        :rtype: int
+        """
         return self._Frequency
 
     @Frequency.setter
@@ -3185,6 +3822,10 @@ false -- 禁止轮转。
 
     @property
     def RotationBeginTime(self):
+        """用户设置的期望开始轮转时间，格式为：2006-01-02 15:04:05。
+当EnableRotation为true时，如果不填RotationBeginTime，则默认填充为当前时间。
+        :rtype: str
+        """
         return self._RotationBeginTime
 
     @RotationBeginTime.setter
@@ -3221,6 +3862,9 @@ class UpdateRotationStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3256,6 +3900,9 @@ SecretBinary 和 SecretString 只能一个不为空。
 
     @property
     def SecretName(self):
+        """指定需要更新凭据内容的名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -3264,6 +3911,9 @@ SecretBinary 和 SecretString 只能一个不为空。
 
     @property
     def VersionId(self):
+        """指定需要更新凭据内容的版本号。
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -3272,6 +3922,10 @@ SecretBinary 和 SecretString 只能一个不为空。
 
     @property
     def SecretBinary(self):
+        """新的凭据内容为二进制的场景使用该字段，并使用base64进行编码。
+SecretBinary 和 SecretString 只能一个不为空。
+        :rtype: str
+        """
         return self._SecretBinary
 
     @SecretBinary.setter
@@ -3280,6 +3934,9 @@ SecretBinary 和 SecretString 只能一个不为空。
 
     @property
     def SecretString(self):
+        """新的凭据内容为文本的场景使用该字段，不需要base64编码SecretBinary 和 SecretString 只能一个不为空。
+        :rtype: str
+        """
         return self._SecretString
 
     @SecretString.setter
@@ -3322,6 +3979,9 @@ class UpdateSecretResponse(AbstractModel):
 
     @property
     def SecretName(self):
+        """凭据名称。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -3330,6 +3990,9 @@ class UpdateSecretResponse(AbstractModel):
 
     @property
     def VersionId(self):
+        """凭据版本号。
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -3338,6 +4001,9 @@ class UpdateSecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3368,6 +4034,9 @@ class VersionInfo(AbstractModel):
 
     @property
     def VersionId(self):
+        """版本号
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -3376,6 +4045,9 @@ class VersionInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间，unix时间戳。
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter

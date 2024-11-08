@@ -35,6 +35,9 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """要绑定的安全组 ID，类似sg-efil7***。
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -43,6 +46,9 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例 ID，格式如：vdb-c1nl9***，支持指定多个实例
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -77,6 +83,9 @@ class AssociateSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -102,6 +111,9 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID，格式如：vdb-c1nl9***。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -139,6 +151,10 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
 
     @property
     def Groups(self):
+        """安全组规则。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SecurityGroup
+        """
         return self._Groups
 
     @Groups.setter
@@ -147,6 +163,9 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -187,6 +206,9 @@ class DescribeInstanceNodesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -195,6 +217,9 @@ class DescribeInstanceNodesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """limit
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -203,6 +228,9 @@ class DescribeInstanceNodesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -211,6 +239,9 @@ class DescribeInstanceNodesRequest(AbstractModel):
 
     @property
     def Component(self):
+        """component
+        :rtype: str
+        """
         return self._Component
 
     @Component.setter
@@ -254,6 +285,10 @@ class DescribeInstanceNodesResponse(AbstractModel):
 
     @property
     def Items(self):
+        """实例pod列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NodeInfo
+        """
         return self._Items
 
     @Items.setter
@@ -262,6 +297,9 @@ class DescribeInstanceNodesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """查询结果总数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -270,6 +308,9 @@ class DescribeInstanceNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -338,6 +379,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例ID数组。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -346,6 +390,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceNames(self):
+        """实例名称，支持模糊搜索。
+        :rtype: list of str
+        """
         return self._InstanceNames
 
     @InstanceNames.setter
@@ -354,6 +401,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceKeys(self):
+        """实例模糊搜索字段。
+        :rtype: list of str
+        """
         return self._InstanceKeys
 
     @InstanceKeys.setter
@@ -362,6 +412,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Status(self):
+        """根据状态获取实例， 为空则获取全部非隔离和非下线的实例。
+        :rtype: list of str
+        """
         return self._Status
 
     @Status.setter
@@ -370,6 +423,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def EngineNames(self):
+        """按照引擎筛选实例。
+        :rtype: list of str
+        """
         return self._EngineNames
 
     @EngineNames.setter
@@ -378,6 +434,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def EngineVersions(self):
+        """按照版本筛选实例。
+        :rtype: list of str
+        """
         return self._EngineVersions
 
     @EngineVersions.setter
@@ -386,6 +445,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def CreateAt(self):
+        """按照创建时间筛选实例。
+        :rtype: str
+        """
         return self._CreateAt
 
     @CreateAt.setter
@@ -394,6 +456,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Zones(self):
+        """按照可用区筛选实例。
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -402,6 +467,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """排序字段。
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -410,6 +478,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
+        """排序方式。
+        :rtype: str
+        """
         return self._OrderDirection
 
     @OrderDirection.setter
@@ -418,6 +489,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询开始位置。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -426,6 +500,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """列表查询数量。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -434,6 +511,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
+        """按照标签筛选实例
+        :rtype: list of Tag
+        """
         return self._ResourceTags
 
     @ResourceTags.setter
@@ -491,6 +571,10 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def Items(self):
+        """实例列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InstanceInfo
+        """
         return self._Items
 
     @Items.setter
@@ -499,6 +583,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """实例总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -507,6 +594,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -542,6 +632,9 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """要绑定的安全组 ID，类似sg-efil****。
+        :rtype: str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -550,6 +643,9 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例 ID，格式如：vdb-c1nl****，支持指定多个实例。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -584,6 +680,9 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -630,6 +729,9 @@ class Inbound(AbstractModel):
 
     @property
     def Action(self):
+        """策略，ACCEPT或者DROP。
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -638,6 +740,9 @@ class Inbound(AbstractModel):
 
     @property
     def AddressModule(self):
+        """地址组id代表的地址集合。
+        :rtype: str
+        """
         return self._AddressModule
 
     @AddressModule.setter
@@ -646,6 +751,9 @@ class Inbound(AbstractModel):
 
     @property
     def CidrIp(self):
+        """来源Ip或Ip段，例如192.168.0.0/16。
+        :rtype: str
+        """
         return self._CidrIp
 
     @CidrIp.setter
@@ -654,6 +762,9 @@ class Inbound(AbstractModel):
 
     @property
     def Desc(self):
+        """描述。
+        :rtype: str
+        """
         return self._Desc
 
     @Desc.setter
@@ -662,6 +773,9 @@ class Inbound(AbstractModel):
 
     @property
     def IpProtocol(self):
+        """网络协议，支持udp、tcp等。
+        :rtype: str
+        """
         return self._IpProtocol
 
     @IpProtocol.setter
@@ -670,6 +784,9 @@ class Inbound(AbstractModel):
 
     @property
     def PortRange(self):
+        """端口。
+        :rtype: str
+        """
         return self._PortRange
 
     @PortRange.setter
@@ -678,6 +795,9 @@ class Inbound(AbstractModel):
 
     @property
     def ServiceModule(self):
+        """服务组id代表的协议和端口集合。
+        :rtype: str
+        """
         return self._ServiceModule
 
     @ServiceModule.setter
@@ -686,6 +806,9 @@ class Inbound(AbstractModel):
 
     @property
     def Id(self):
+        """安全组id代表的地址集合。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -835,6 +958,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -843,6 +970,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Name(self):
+        """实例自定义名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -851,6 +982,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def AppId(self):
+        """用户APPID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -859,6 +994,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Region(self):
+        """地域。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -867,6 +1006,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -875,6 +1018,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Product(self):
+        """产品。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -883,6 +1030,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Networks(self):
+        """网络信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Network
+        """
         return self._Networks
 
     @Networks.setter
@@ -891,6 +1042,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ShardNum(self):
+        """分片信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ShardNum
 
     @ShardNum.setter
@@ -899,6 +1054,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ReplicaNum(self):
+        """副本数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReplicaNum
 
     @ReplicaNum.setter
@@ -907,6 +1066,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Cpu(self):
+        """CPU.
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -915,6 +1078,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Memory(self):
+        """内存。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Memory
 
     @Memory.setter
@@ -923,6 +1090,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Disk(self):
+        """磁盘。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Disk
 
     @Disk.setter
@@ -931,6 +1102,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def HealthScore(self):
+        """健康得分。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._HealthScore
 
     @HealthScore.setter
@@ -939,6 +1114,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Warning(self):
+        """异常告警。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Warning
 
     @Warning.setter
@@ -947,6 +1126,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Project(self):
+        """所属项目。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Project
 
     @Project.setter
@@ -955,6 +1138,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ResourceTags(self):
+        """所属标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._ResourceTags
 
     @ResourceTags.setter
@@ -963,6 +1150,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -971,6 +1162,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Status(self):
+        """资源状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -979,6 +1174,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def EngineName(self):
+        """引擎名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EngineName
 
     @EngineName.setter
@@ -987,6 +1186,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def EngineVersion(self):
+        """引擎版本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EngineVersion
 
     @EngineVersion.setter
@@ -995,6 +1198,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ApiVersion(self):
+        """api版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApiVersion
 
     @ApiVersion.setter
@@ -1003,6 +1210,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def PayMode(self):
+        """计费模式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -1011,6 +1222,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Extend(self):
+        """差异化扩展信息, json格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extend
 
     @Extend.setter
@@ -1019,6 +1234,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ExpiredAt(self):
+        """过期时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpiredAt
 
     @ExpiredAt.setter
@@ -1027,6 +1246,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def IsNoExpired(self):
+        """是否不过期(永久)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsNoExpired
 
     @IsNoExpired.setter
@@ -1035,6 +1258,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def WanAddress(self):
+        """外网地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WanAddress
 
     @WanAddress.setter
@@ -1043,6 +1270,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def IsolateAt(self):
+        """隔离时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IsolateAt
 
     @IsolateAt.setter
@@ -1051,6 +1282,10 @@ class InstanceInfo(AbstractModel):
 
     @property
     def AutoRenew(self):
+        """是否自动续费。0: 不自动续费(可以支持特权不停服)；1:自动续费；2:到期不续费.
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AutoRenew
 
     @AutoRenew.setter
@@ -1124,6 +1359,9 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """要修改的安全组ID列表，一个或者多个安全组 ID 组成的数组。
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -1132,6 +1370,9 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例ID，格式如：vdb-c9s3****。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -1166,6 +1407,9 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1204,6 +1448,10 @@ class Network(AbstractModel):
 
     @property
     def VpcId(self):
+        """VpcId(VPC网络下有效)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1212,6 +1460,10 @@ class Network(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网Id(VPC网络下有效)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -1220,6 +1472,10 @@ class Network(AbstractModel):
 
     @property
     def Vip(self):
+        """内网访问IP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -1228,6 +1484,10 @@ class Network(AbstractModel):
 
     @property
     def Port(self):
+        """内网访问Port。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -1265,6 +1525,10 @@ class NodeInfo(AbstractModel):
 
     @property
     def Name(self):
+        """Pod名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1319,6 +1583,9 @@ class Outbound(AbstractModel):
 
     @property
     def Action(self):
+        """策略，ACCEPT或者DROP。
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -1327,6 +1594,9 @@ class Outbound(AbstractModel):
 
     @property
     def AddressModule(self):
+        """地址组id代表的地址集合。
+        :rtype: str
+        """
         return self._AddressModule
 
     @AddressModule.setter
@@ -1335,6 +1605,9 @@ class Outbound(AbstractModel):
 
     @property
     def CidrIp(self):
+        """来源Ip或Ip段，例如192.168.0.0/16。
+        :rtype: str
+        """
         return self._CidrIp
 
     @CidrIp.setter
@@ -1343,6 +1616,9 @@ class Outbound(AbstractModel):
 
     @property
     def Desc(self):
+        """描述。
+        :rtype: str
+        """
         return self._Desc
 
     @Desc.setter
@@ -1351,6 +1627,9 @@ class Outbound(AbstractModel):
 
     @property
     def IpProtocol(self):
+        """网络协议，支持udp、tcp等。
+        :rtype: str
+        """
         return self._IpProtocol
 
     @IpProtocol.setter
@@ -1359,6 +1638,9 @@ class Outbound(AbstractModel):
 
     @property
     def PortRange(self):
+        """端口。
+        :rtype: str
+        """
         return self._PortRange
 
     @PortRange.setter
@@ -1367,6 +1649,9 @@ class Outbound(AbstractModel):
 
     @property
     def ServiceModule(self):
+        """服务组id代表的协议和端口集合。
+        :rtype: str
+        """
         return self._ServiceModule
 
     @ServiceModule.setter
@@ -1375,6 +1660,9 @@ class Outbound(AbstractModel):
 
     @property
     def Id(self):
+        """安全组id代表的地址集合。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -1436,6 +1724,9 @@ class SecurityGroup(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间，时间格式：yyyy-mm-dd hh:mm:ss。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1444,6 +1735,9 @@ class SecurityGroup(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1452,6 +1746,9 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupId(self):
+        """安全组ID。
+        :rtype: str
+        """
         return self._SecurityGroupId
 
     @SecurityGroupId.setter
@@ -1460,6 +1757,9 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupName(self):
+        """安全组名称。
+        :rtype: str
+        """
         return self._SecurityGroupName
 
     @SecurityGroupName.setter
@@ -1468,6 +1768,9 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupRemark(self):
+        """安全组备注。
+        :rtype: str
+        """
         return self._SecurityGroupRemark
 
     @SecurityGroupRemark.setter
@@ -1476,6 +1779,9 @@ class SecurityGroup(AbstractModel):
 
     @property
     def Outbound(self):
+        """出站规则。
+        :rtype: list of Outbound
+        """
         return self._Outbound
 
     @Outbound.setter
@@ -1484,6 +1790,9 @@ class SecurityGroup(AbstractModel):
 
     @property
     def Inbound(self):
+        """入站规则。
+        :rtype: list of Inbound
+        """
         return self._Inbound
 
     @Inbound.setter
@@ -1492,6 +1801,9 @@ class SecurityGroup(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """修改时间，时间格式：yyyy-mm-dd hh:mm:ss。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -1547,6 +1859,10 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -1555,6 +1871,10 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter

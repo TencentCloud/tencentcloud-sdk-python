@@ -50,6 +50,9 @@ project，ChatBI嵌出时
 
     @property
     def ProjectId(self):
+        """分享项目id，必选
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -58,6 +61,10 @@ project，ChatBI嵌出时
 
     @property
     def PageId(self):
+        """分享页面id，嵌出看板时此为空值0，ChatBI嵌出时不传
+
+        :rtype: int
+        """
         return self._PageId
 
     @PageId.setter
@@ -66,6 +73,9 @@ project，ChatBI嵌出时
 
     @property
     def BIToken(self):
+        """需要申请延期的Token
+        :rtype: str
+        """
         return self._BIToken
 
     @BIToken.setter
@@ -74,6 +84,9 @@ project，ChatBI嵌出时
 
     @property
     def ExtraParam(self):
+        """备用字段
+        :rtype: str
+        """
         return self._ExtraParam
 
     @ExtraParam.setter
@@ -82,6 +95,10 @@ project，ChatBI嵌出时
 
     @property
     def Intention(self):
+        """embed：页面/看板嵌出
+chatBIEmbed：ChatBI嵌出
+        :rtype: str
+        """
         return self._Intention
 
     @Intention.setter
@@ -90,6 +107,10 @@ project，ChatBI嵌出时
 
     @property
     def Scope(self):
+        """panel, 看板；page，页面
+project，ChatBI嵌出时
+        :rtype: str
+        """
         return self._Scope
 
     @Scope.setter
@@ -144,6 +165,10 @@ class ApplyEmbedIntervalResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -152,6 +177,10 @@ class ApplyEmbedIntervalResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """额外参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -160,6 +189,10 @@ class ApplyEmbedIntervalResponse(AbstractModel):
 
     @property
     def Data(self):
+        """结果数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ApplyEmbedTokenInfo`
+        """
         return self._Data
 
     @Data.setter
@@ -168,6 +201,10 @@ class ApplyEmbedIntervalResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """结果描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -176,6 +213,9 @@ class ApplyEmbedIntervalResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -210,6 +250,10 @@ class ApplyEmbedTokenInfo(AbstractModel):
 
     @property
     def Result(self):
+        """申请结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Result
 
     @Result.setter
@@ -284,6 +328,10 @@ class BaseStateAction(AbstractModel):
 
     @property
     def ShowEdit(self):
+        """编辑是否可见
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._ShowEdit
 
     @ShowEdit.setter
@@ -292,6 +340,10 @@ class BaseStateAction(AbstractModel):
 
     @property
     def IsEdit(self):
+        """编辑是否可点击
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsEdit
 
     @IsEdit.setter
@@ -300,6 +352,10 @@ class BaseStateAction(AbstractModel):
 
     @property
     def EditText(self):
+        """编辑按钮的文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EditText
 
     @EditText.setter
@@ -308,6 +364,10 @@ class BaseStateAction(AbstractModel):
 
     @property
     def EditTips(self):
+        """编辑不可用时的提示文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EditTips
 
     @EditTips.setter
@@ -316,6 +376,10 @@ class BaseStateAction(AbstractModel):
 
     @property
     def ShowDel(self):
+        """删除是否可见
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._ShowDel
 
     @ShowDel.setter
@@ -324,6 +388,10 @@ class BaseStateAction(AbstractModel):
 
     @property
     def IsDel(self):
+        """删除是否可点击
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsDel
 
     @IsDel.setter
@@ -332,6 +400,10 @@ class BaseStateAction(AbstractModel):
 
     @property
     def DelText(self):
+        """删除按钮的文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DelText
 
     @DelText.setter
@@ -340,6 +412,10 @@ class BaseStateAction(AbstractModel):
 
     @property
     def DelTips(self):
+        """删除不可用时的提示文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DelTips
 
     @DelTips.setter
@@ -348,6 +424,10 @@ class BaseStateAction(AbstractModel):
 
     @property
     def ShowCopy(self):
+        """复制是否可见
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._ShowCopy
 
     @ShowCopy.setter
@@ -356,6 +436,10 @@ class BaseStateAction(AbstractModel):
 
     @property
     def ShowView(self):
+        """是否可见
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._ShowView
 
     @ShowView.setter
@@ -364,6 +448,10 @@ class BaseStateAction(AbstractModel):
 
     @property
     def ShowRename(self):
+        """是否可重命名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._ShowRename
 
     @ShowRename.setter
@@ -414,6 +502,10 @@ class CorpUserListData(AbstractModel):
 
     @property
     def List(self):
+        """列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UserIdAndUserName
+        """
         return self._List
 
     @List.setter
@@ -422,6 +514,9 @@ class CorpUserListData(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -430,6 +525,9 @@ class CorpUserListData(AbstractModel):
 
     @property
     def TotalPages(self):
+        """页数
+        :rtype: int
+        """
         return self._TotalPages
 
     @TotalPages.setter
@@ -527,6 +625,9 @@ class CreateDatasourceCloudRequest(AbstractModel):
 
     @property
     def ServiceType(self):
+        """后端提供字典：域类型，1、腾讯云，2、本地
+        :rtype: str
+        """
         return self._ServiceType
 
     @ServiceType.setter
@@ -535,6 +636,9 @@ class CreateDatasourceCloudRequest(AbstractModel):
 
     @property
     def DbType(self):
+        """驱动
+        :rtype: str
+        """
         return self._DbType
 
     @DbType.setter
@@ -543,6 +647,9 @@ class CreateDatasourceCloudRequest(AbstractModel):
 
     @property
     def Charset(self):
+        """数据库编码
+        :rtype: str
+        """
         return self._Charset
 
     @Charset.setter
@@ -551,6 +658,9 @@ class CreateDatasourceCloudRequest(AbstractModel):
 
     @property
     def DbUser(self):
+        """用户名
+        :rtype: str
+        """
         return self._DbUser
 
     @DbUser.setter
@@ -559,6 +669,9 @@ class CreateDatasourceCloudRequest(AbstractModel):
 
     @property
     def DbPwd(self):
+        """密码
+        :rtype: str
+        """
         return self._DbPwd
 
     @DbPwd.setter
@@ -567,6 +680,9 @@ class CreateDatasourceCloudRequest(AbstractModel):
 
     @property
     def DbName(self):
+        """数据库名称
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -575,6 +691,9 @@ class CreateDatasourceCloudRequest(AbstractModel):
 
     @property
     def SourceName(self):
+        """数据库别名
+        :rtype: str
+        """
         return self._SourceName
 
     @SourceName.setter
@@ -583,6 +702,9 @@ class CreateDatasourceCloudRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -591,6 +713,9 @@ class CreateDatasourceCloudRequest(AbstractModel):
 
     @property
     def Vip(self):
+        """公有云内网ip
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -599,6 +724,9 @@ class CreateDatasourceCloudRequest(AbstractModel):
 
     @property
     def Vport(self):
+        """公有云内网端口
+        :rtype: str
+        """
         return self._Vport
 
     @Vport.setter
@@ -607,6 +735,9 @@ class CreateDatasourceCloudRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """vpc标识
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -615,6 +746,9 @@ class CreateDatasourceCloudRequest(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """统一vpc标识
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -623,6 +757,9 @@ class CreateDatasourceCloudRequest(AbstractModel):
 
     @property
     def RegionId(self):
+        """区域标识（gz,bj)
+        :rtype: str
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -631,6 +768,9 @@ class CreateDatasourceCloudRequest(AbstractModel):
 
     @property
     def ExtraParam(self):
+        """扩展参数
+        :rtype: str
+        """
         return self._ExtraParam
 
     @ExtraParam.setter
@@ -639,6 +779,9 @@ class CreateDatasourceCloudRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -647,6 +790,9 @@ class CreateDatasourceCloudRequest(AbstractModel):
 
     @property
     def ProdDbName(self):
+        """数据源产品名
+        :rtype: str
+        """
         return self._ProdDbName
 
     @ProdDbName.setter
@@ -655,6 +801,9 @@ class CreateDatasourceCloudRequest(AbstractModel):
 
     @property
     def DataOrigin(self):
+        """第三方数据源标识
+        :rtype: str
+        """
         return self._DataOrigin
 
     @DataOrigin.setter
@@ -663,6 +812,9 @@ class CreateDatasourceCloudRequest(AbstractModel):
 
     @property
     def DataOriginProjectId(self):
+        """第三方项目id
+        :rtype: str
+        """
         return self._DataOriginProjectId
 
     @DataOriginProjectId.setter
@@ -671,6 +823,9 @@ class CreateDatasourceCloudRequest(AbstractModel):
 
     @property
     def DataOriginDatasourceId(self):
+        """第三方数据源id
+        :rtype: str
+        """
         return self._DataOriginDatasourceId
 
     @DataOriginDatasourceId.setter
@@ -679,6 +834,9 @@ class CreateDatasourceCloudRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群id
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -747,6 +905,10 @@ class CreateDatasourceCloudResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -755,6 +917,10 @@ class CreateDatasourceCloudResponse(AbstractModel):
 
     @property
     def Data(self):
+        """成功无
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.IdDTO`
+        """
         return self._Data
 
     @Data.setter
@@ -763,6 +929,10 @@ class CreateDatasourceCloudResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -771,6 +941,10 @@ class CreateDatasourceCloudResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """提示
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -779,6 +953,9 @@ class CreateDatasourceCloudResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -869,6 +1046,9 @@ class CreateDatasourceRequest(AbstractModel):
 
     @property
     def DbHost(self):
+        """HOST
+        :rtype: str
+        """
         return self._DbHost
 
     @DbHost.setter
@@ -877,6 +1057,9 @@ class CreateDatasourceRequest(AbstractModel):
 
     @property
     def DbPort(self):
+        """端口
+        :rtype: int
+        """
         return self._DbPort
 
     @DbPort.setter
@@ -885,6 +1068,9 @@ class CreateDatasourceRequest(AbstractModel):
 
     @property
     def ServiceType(self):
+        """后端提供字典：域类型，1、腾讯云，2、本地
+        :rtype: str
+        """
         return self._ServiceType
 
     @ServiceType.setter
@@ -893,6 +1079,9 @@ class CreateDatasourceRequest(AbstractModel):
 
     @property
     def DbType(self):
+        """驱动
+        :rtype: str
+        """
         return self._DbType
 
     @DbType.setter
@@ -901,6 +1090,9 @@ class CreateDatasourceRequest(AbstractModel):
 
     @property
     def Charset(self):
+        """数据库编码
+        :rtype: str
+        """
         return self._Charset
 
     @Charset.setter
@@ -909,6 +1101,9 @@ class CreateDatasourceRequest(AbstractModel):
 
     @property
     def DbUser(self):
+        """用户名
+        :rtype: str
+        """
         return self._DbUser
 
     @DbUser.setter
@@ -917,6 +1112,9 @@ class CreateDatasourceRequest(AbstractModel):
 
     @property
     def DbPwd(self):
+        """密码
+        :rtype: str
+        """
         return self._DbPwd
 
     @DbPwd.setter
@@ -925,6 +1123,9 @@ class CreateDatasourceRequest(AbstractModel):
 
     @property
     def DbName(self):
+        """数据库名称
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -933,6 +1134,9 @@ class CreateDatasourceRequest(AbstractModel):
 
     @property
     def SourceName(self):
+        """数据库别名
+        :rtype: str
+        """
         return self._SourceName
 
     @SourceName.setter
@@ -941,6 +1145,9 @@ class CreateDatasourceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目id
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -949,6 +1156,9 @@ class CreateDatasourceRequest(AbstractModel):
 
     @property
     def Catalog(self):
+        """catalog值
+        :rtype: str
+        """
         return self._Catalog
 
     @Catalog.setter
@@ -957,6 +1167,9 @@ class CreateDatasourceRequest(AbstractModel):
 
     @property
     def DataOrigin(self):
+        """第三方数据源标识
+        :rtype: str
+        """
         return self._DataOrigin
 
     @DataOrigin.setter
@@ -965,6 +1178,9 @@ class CreateDatasourceRequest(AbstractModel):
 
     @property
     def DataOriginProjectId(self):
+        """第三方项目id
+        :rtype: str
+        """
         return self._DataOriginProjectId
 
     @DataOriginProjectId.setter
@@ -973,6 +1189,9 @@ class CreateDatasourceRequest(AbstractModel):
 
     @property
     def DataOriginDatasourceId(self):
+        """第三方数据源id
+        :rtype: str
+        """
         return self._DataOriginDatasourceId
 
     @DataOriginDatasourceId.setter
@@ -981,6 +1200,9 @@ class CreateDatasourceRequest(AbstractModel):
 
     @property
     def ExtraParam(self):
+        """扩展参数
+        :rtype: str
+        """
         return self._ExtraParam
 
     @ExtraParam.setter
@@ -989,6 +1211,9 @@ class CreateDatasourceRequest(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """腾讯云私有网络统一标识
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -997,6 +1222,9 @@ class CreateDatasourceRequest(AbstractModel):
 
     @property
     def Vip(self):
+        """私有网络ip
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -1005,6 +1233,9 @@ class CreateDatasourceRequest(AbstractModel):
 
     @property
     def Vport(self):
+        """私有网络端口
+        :rtype: str
+        """
         return self._Vport
 
     @Vport.setter
@@ -1013,6 +1244,9 @@ class CreateDatasourceRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """腾讯云私有网络标识
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1021,6 +1255,9 @@ class CreateDatasourceRequest(AbstractModel):
 
     @property
     def OperationAuthLimit(self):
+        """操作权限限制
+        :rtype: list of str
+        """
         return self._OperationAuthLimit
 
     @OperationAuthLimit.setter
@@ -1089,6 +1326,10 @@ class CreateDatasourceResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -1097,6 +1338,10 @@ class CreateDatasourceResponse(AbstractModel):
 
     @property
     def Data(self):
+        """数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.IdDTO`
+        """
         return self._Data
 
     @Data.setter
@@ -1105,6 +1350,10 @@ class CreateDatasourceResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -1113,6 +1362,10 @@ class CreateDatasourceResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """提示
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -1121,6 +1374,9 @@ class CreateDatasourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1206,6 +1462,10 @@ Operator 目前支持
 -is     in操作符
 
         :type GlobalParam: str
+        :param _TokenType: 100 不绑定用户  200 单用户单token  300 单用户多token
+        :type TokenType: int
+        :param _TokenNum: 一次创建的token数
+        :type TokenNum: int
         """
         self._ProjectId = None
         self._PageId = None
@@ -1217,9 +1477,14 @@ Operator 目前支持
         self._UserId = None
         self._TicketNum = None
         self._GlobalParam = None
+        self._TokenType = None
+        self._TokenNum = None
 
     @property
     def ProjectId(self):
+        """分享项目id
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1228,6 +1493,9 @@ Operator 目前支持
 
     @property
     def PageId(self):
+        """分享页面id，嵌出看板时此为空值0，ChatBI嵌出时不传
+        :rtype: int
+        """
         return self._PageId
 
     @PageId.setter
@@ -1236,6 +1504,9 @@ Operator 目前支持
 
     @property
     def Intention(self):
+        """embed表示页面看板嵌出，chatBIEmbed表示ChatBI嵌出
+        :rtype: str
+        """
         return self._Intention
 
     @Intention.setter
@@ -1244,6 +1515,9 @@ Operator 目前支持
 
     @property
     def Scope(self):
+        """page表示嵌出页面，panel表示嵌出整个看板，ChatBI嵌出时使用project
+        :rtype: str
+        """
         return self._Scope
 
     @Scope.setter
@@ -1252,6 +1526,9 @@ Operator 目前支持
 
     @property
     def ExpireTime(self):
+        """过期时间。 单位：分钟 最大值：240。即，4小时 默认值：240
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -1260,6 +1537,9 @@ Operator 目前支持
 
     @property
     def ExtraParam(self):
+        """备用字段
+        :rtype: str
+        """
         return self._ExtraParam
 
     @ExtraParam.setter
@@ -1268,6 +1548,9 @@ Operator 目前支持
 
     @property
     def UserCorpId(self):
+        """使用者企业Id(仅用于多用户)
+        :rtype: str
+        """
         return self._UserCorpId
 
     @UserCorpId.setter
@@ -1276,6 +1559,9 @@ Operator 目前支持
 
     @property
     def UserId(self):
+        """使用者Id(仅用于多用户)
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -1284,6 +1570,9 @@ Operator 目前支持
 
     @property
     def TicketNum(self):
+        """访问次数限制，限制范围1-99999，为空则不设置访问次数限制
+        :rtype: int
+        """
         return self._TicketNum
 
     @TicketNum.setter
@@ -1292,11 +1581,75 @@ Operator 目前支持
 
     @property
     def GlobalParam(self):
+        """全局筛选参数 报表过滤条件的全局参数。 格式为JSON格式的字符串
+**目前仅支持字符类型页面参数绑定到全局参数
+**
+[
+    {
+        "ParamKey": "name",  //页面参数名称
+        "JoinType": "AND",     // 连接方式,目前仅支持AND
+        "WhereList": [
+            {
+                "Operator": "-neq",   // 操作符，参考以下说明
+                "Value": [                   //操作值，单值数组只传一个值
+                    "zZWJMD",
+                    "ZzVGHX",
+                    "湖南省",
+                    "河北省"
+                ]
+            }
+        ]
+    },
+    {
+        "ParamKey": "genderParam",
+        "JoinType": "AND",
+        "WhereList": [
+            {
+                "Operator": "-neq",
+                "Value": [
+                    "男"
+                ]
+            }
+        ]
+    }
+]
+
+
+
+Operator 目前支持
+-neq  不等于!=操作符
+-eq  等于=操作符
+-is     in操作符
+
+        :rtype: str
+        """
         return self._GlobalParam
 
     @GlobalParam.setter
     def GlobalParam(self, GlobalParam):
         self._GlobalParam = GlobalParam
+
+    @property
+    def TokenType(self):
+        """100 不绑定用户  200 单用户单token  300 单用户多token
+        :rtype: int
+        """
+        return self._TokenType
+
+    @TokenType.setter
+    def TokenType(self, TokenType):
+        self._TokenType = TokenType
+
+    @property
+    def TokenNum(self):
+        """一次创建的token数
+        :rtype: int
+        """
+        return self._TokenNum
+
+    @TokenNum.setter
+    def TokenNum(self, TokenNum):
+        self._TokenNum = TokenNum
 
 
     def _deserialize(self, params):
@@ -1310,6 +1663,8 @@ Operator 目前支持
         self._UserId = params.get("UserId")
         self._TicketNum = params.get("TicketNum")
         self._GlobalParam = params.get("GlobalParam")
+        self._TokenType = params.get("TokenType")
+        self._TokenNum = params.get("TokenNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1350,6 +1705,10 @@ class CreateEmbedTokenResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -1358,6 +1717,10 @@ class CreateEmbedTokenResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -1366,6 +1729,10 @@ class CreateEmbedTokenResponse(AbstractModel):
 
     @property
     def Data(self):
+        """数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.EmbedTokenInfo`
+        """
         return self._Data
 
     @Data.setter
@@ -1374,6 +1741,10 @@ class CreateEmbedTokenResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """结果描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -1382,6 +1753,9 @@ class CreateEmbedTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1433,6 +1807,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Name(self):
+        """项目名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1441,6 +1818,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def ColorCode(self):
+        """logo底色
+        :rtype: str
+        """
         return self._ColorCode
 
     @ColorCode.setter
@@ -1449,6 +1829,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Logo(self):
+        """项目Logo
+        :rtype: str
+        """
         return self._Logo
 
     @Logo.setter
@@ -1457,6 +1840,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Mark(self):
+        """备注
+        :rtype: str
+        """
         return self._Mark
 
     @Mark.setter
@@ -1465,6 +1851,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def IsApply(self):
+        """是否允许用户申请
+        :rtype: bool
+        """
         return self._IsApply
 
     @IsApply.setter
@@ -1473,6 +1862,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def DefaultPanelType(self):
+        """默认看板
+        :rtype: int
+        """
         return self._DefaultPanelType
 
     @DefaultPanelType.setter
@@ -1481,6 +1873,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def ManagePlatform(self):
+        """管理平台
+        :rtype: str
+        """
         return self._ManagePlatform
 
     @ManagePlatform.setter
@@ -1533,6 +1928,10 @@ class CreateProjectResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -1541,6 +1940,9 @@ class CreateProjectResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """额外数据
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -1549,6 +1951,9 @@ class CreateProjectResponse(AbstractModel):
 
     @property
     def Data(self):
+        """数据
+        :rtype: :class:`tencentcloud.bi.v20220105.models.Data`
+        """
         return self._Data
 
     @Data.setter
@@ -1557,6 +1962,9 @@ class CreateProjectResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """返回信息
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -1565,6 +1973,9 @@ class CreateProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1607,6 +2018,9 @@ class CreateUserRoleProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1615,6 +2029,9 @@ class CreateUserRoleProjectRequest(AbstractModel):
 
     @property
     def RoleIdList(self):
+        """角色ID列表
+        :rtype: list of int
+        """
         return self._RoleIdList
 
     @RoleIdList.setter
@@ -1623,6 +2040,9 @@ class CreateUserRoleProjectRequest(AbstractModel):
 
     @property
     def UserList(self):
+        """用户列表（废弃）
+        :rtype: list of UserIdAndUserName
+        """
         return self._UserList
 
     @UserList.setter
@@ -1631,6 +2051,9 @@ class CreateUserRoleProjectRequest(AbstractModel):
 
     @property
     def UserInfoList(self):
+        """用户列表（新）
+        :rtype: list of UserInfo
+        """
         return self._UserInfoList
 
     @UserInfoList.setter
@@ -1693,6 +2116,10 @@ class CreateUserRoleProjectResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -1701,6 +2128,10 @@ class CreateUserRoleProjectResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -1709,6 +2140,10 @@ class CreateUserRoleProjectResponse(AbstractModel):
 
     @property
     def Data(self):
+        """数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DataId`
+        """
         return self._Data
 
     @Data.setter
@@ -1717,6 +2152,10 @@ class CreateUserRoleProjectResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -1725,6 +2164,9 @@ class CreateUserRoleProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1764,6 +2206,9 @@ class CreateUserRoleRequest(AbstractModel):
 
     @property
     def RoleIdList(self):
+        """角色ID列表
+        :rtype: list of int
+        """
         return self._RoleIdList
 
     @RoleIdList.setter
@@ -1772,6 +2217,9 @@ class CreateUserRoleRequest(AbstractModel):
 
     @property
     def UserList(self):
+        """用户列表（废弃）
+        :rtype: list of UserIdAndUserName
+        """
         return self._UserList
 
     @UserList.setter
@@ -1780,6 +2228,9 @@ class CreateUserRoleRequest(AbstractModel):
 
     @property
     def UserInfoList(self):
+        """用户列表（新）
+        :rtype: list of UserInfo
+        """
         return self._UserInfoList
 
     @UserInfoList.setter
@@ -1841,6 +2292,10 @@ class CreateUserRoleResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -1849,6 +2304,10 @@ class CreateUserRoleResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -1857,6 +2316,10 @@ class CreateUserRoleResponse(AbstractModel):
 
     @property
     def Data(self):
+        """数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DataId`
+        """
         return self._Data
 
     @Data.setter
@@ -1865,6 +2328,10 @@ class CreateUserRoleResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -1873,6 +2340,9 @@ class CreateUserRoleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1906,6 +2376,9 @@ class Data(AbstractModel):
 
     @property
     def Id(self):
+        """项目Id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -1940,6 +2413,10 @@ class DataId(AbstractModel):
 
     @property
     def Id(self):
+        """数据id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -2104,6 +2581,9 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def Id(self):
+        """数据库ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -2112,6 +2592,9 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def DbName(self):
+        """数据库名称
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -2120,6 +2603,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def ServiceType(self):
+        """域类型，1、腾讯云，2、本地
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceType
 
     @ServiceType.setter
@@ -2128,6 +2615,9 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def SourceName(self):
+        """数据库别名
+        :rtype: str
+        """
         return self._SourceName
 
     @SourceName.setter
@@ -2136,6 +2626,9 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def DbType(self):
+        """数据库驱动
+        :rtype: str
+        """
         return self._DbType
 
     @DbType.setter
@@ -2144,6 +2637,9 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def DbHost(self):
+        """HOST
+        :rtype: str
+        """
         return self._DbHost
 
     @DbHost.setter
@@ -2152,6 +2648,9 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def DbPort(self):
+        """端口
+        :rtype: int
+        """
         return self._DbPort
 
     @DbPort.setter
@@ -2160,6 +2659,9 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def DbUser(self):
+        """用户名
+        :rtype: str
+        """
         return self._DbUser
 
     @DbUser.setter
@@ -2168,6 +2670,9 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def Charset(self):
+        """数据库编码
+        :rtype: str
+        """
         return self._Charset
 
     @Charset.setter
@@ -2176,6 +2681,9 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -2184,6 +2692,9 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """修改时间
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -2192,6 +2703,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def CreatedUser(self):
+        """创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedUser
 
     @CreatedUser.setter
@@ -2200,6 +2715,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def Catalog(self):
+        """catalog值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Catalog
 
     @Catalog.setter
@@ -2208,6 +2727,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def ConnectType(self):
+        """连接类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ConnectType
 
     @ConnectType.setter
@@ -2216,6 +2739,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -2224,6 +2751,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def Desc(self):
+        """数据源描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Desc
 
     @Desc.setter
@@ -2232,6 +2763,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def Status(self):
+        """数据源状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2240,6 +2775,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def SourcePlat(self):
+        """来源平台
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SourcePlat
 
     @SourcePlat.setter
@@ -2248,6 +2787,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def ExtraParam(self):
+        """扩展参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExtraParam
 
     @ExtraParam.setter
@@ -2256,6 +2799,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def AddInfo(self):
+        """额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AddInfo
 
     @AddInfo.setter
@@ -2264,6 +2811,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def ProjectName(self):
+        """项目名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProjectName
 
     @ProjectName.setter
@@ -2272,6 +2823,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def EngineType(self):
+        """引擎类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EngineType
 
     @EngineType.setter
@@ -2280,6 +2835,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def Manager(self):
+        """数据源负责人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Manager
 
     @Manager.setter
@@ -2288,6 +2847,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def OperatorWhitelist(self):
+        """特定操作人员白名单
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OperatorWhitelist
 
     @OperatorWhitelist.setter
@@ -2296,6 +2859,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def VpcId(self):
+        """数据源的vpc信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -2304,6 +2871,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """数据源的uniqVpc信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -2312,6 +2883,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def RegionId(self):
+        """数据源的地域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -2320,6 +2895,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def StateAction(self):
+        """操作属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.BaseStateAction`
+        """
         return self._StateAction
 
     @StateAction.setter
@@ -2328,6 +2907,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def UpdatedUser(self):
+        """更新人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdatedUser
 
     @UpdatedUser.setter
@@ -2336,6 +2919,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def PermissionList(self):
+        """权限列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PermissionGroup
+        """
         return self._PermissionList
 
     @PermissionList.setter
@@ -2344,6 +2931,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def AuthList(self):
+        """权限值列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AuthList
 
     @AuthList.setter
@@ -2352,6 +2943,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def DataOrigin(self):
+        """第三方数据源标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataOrigin
 
     @DataOrigin.setter
@@ -2360,6 +2955,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def DataOriginProjectId(self):
+        """第三方项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataOriginProjectId
 
     @DataOriginProjectId.setter
@@ -2368,6 +2967,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def DataOriginDatasourceId(self):
+        """第三方数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataOriginDatasourceId
 
     @DataOriginDatasourceId.setter
@@ -2376,6 +2979,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2384,6 +2991,10 @@ class DatasourceInfo(AbstractModel):
 
     @property
     def DbTypeName(self):
+        """数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DbTypeName
 
     @DbTypeName.setter
@@ -2468,6 +3079,10 @@ class DatasourceInfoData(AbstractModel):
 
     @property
     def List(self):
+        """数据源详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DatasourceInfo
+        """
         return self._List
 
     @List.setter
@@ -2476,6 +3091,10 @@ class DatasourceInfoData(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -2484,6 +3103,10 @@ class DatasourceInfoData(AbstractModel):
 
     @property
     def TotalPages(self):
+        """总页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalPages
 
     @TotalPages.setter
@@ -2527,6 +3150,9 @@ class DeleteDatasourceRequest(AbstractModel):
 
     @property
     def Id(self):
+        """数据源id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -2535,6 +3161,9 @@ class DeleteDatasourceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目id
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -2583,6 +3212,10 @@ class DeleteDatasourceResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -2591,6 +3224,10 @@ class DeleteDatasourceResponse(AbstractModel):
 
     @property
     def Data(self):
+        """数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -2599,6 +3236,9 @@ class DeleteDatasourceResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """扩展
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -2607,6 +3247,9 @@ class DeleteDatasourceResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """信息
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -2615,6 +3258,9 @@ class DeleteDatasourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2652,6 +3298,9 @@ class DeleteProjectRequest(AbstractModel):
 
     @property
     def Id(self):
+        """项目ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -2660,6 +3309,9 @@ class DeleteProjectRequest(AbstractModel):
 
     @property
     def Seed(self):
+        """随机数
+        :rtype: str
+        """
         return self._Seed
 
     @Seed.setter
@@ -2668,6 +3320,9 @@ class DeleteProjectRequest(AbstractModel):
 
     @property
     def DefaultPanelType(self):
+        """默认看板
+        :rtype: int
+        """
         return self._DefaultPanelType
 
     @DefaultPanelType.setter
@@ -2718,6 +3373,10 @@ class DeleteProjectResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -2726,6 +3385,9 @@ class DeleteProjectResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """”“
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -2734,6 +3396,10 @@ class DeleteProjectResponse(AbstractModel):
 
     @property
     def Data(self):
+        """""
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -2742,6 +3408,10 @@ class DeleteProjectResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """""
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -2750,6 +3420,9 @@ class DeleteProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2784,6 +3457,9 @@ class DeleteUserRoleProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -2792,6 +3468,9 @@ class DeleteUserRoleProjectRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -2842,6 +3521,10 @@ class DeleteUserRoleProjectResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -2850,6 +3533,10 @@ class DeleteUserRoleProjectResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -2858,6 +3545,10 @@ class DeleteUserRoleProjectResponse(AbstractModel):
 
     @property
     def Data(self):
+        """数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -2866,6 +3557,10 @@ class DeleteUserRoleProjectResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -2874,6 +3569,9 @@ class DeleteUserRoleProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2905,6 +3603,9 @@ class DeleteUserRoleRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -2954,6 +3655,10 @@ class DeleteUserRoleResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -2962,6 +3667,10 @@ class DeleteUserRoleResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -2970,6 +3679,10 @@ class DeleteUserRoleResponse(AbstractModel):
 
     @property
     def Data(self):
+        """数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -2978,6 +3691,10 @@ class DeleteUserRoleResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -2986,6 +3703,9 @@ class DeleteUserRoleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3035,6 +3755,9 @@ class DescribeDatasourceListRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """无
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -3043,6 +3766,9 @@ class DescribeDatasourceListRequest(AbstractModel):
 
     @property
     def AllPage(self):
+        """返回所有页面，默认false
+        :rtype: bool
+        """
         return self._AllPage
 
     @AllPage.setter
@@ -3051,6 +3777,9 @@ class DescribeDatasourceListRequest(AbstractModel):
 
     @property
     def DbName(self):
+        """数据库名称检索
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -3059,6 +3788,9 @@ class DescribeDatasourceListRequest(AbstractModel):
 
     @property
     def PageNo(self):
+        """无
+        :rtype: int
+        """
         return self._PageNo
 
     @PageNo.setter
@@ -3067,6 +3799,9 @@ class DescribeDatasourceListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """无
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -3075,6 +3810,9 @@ class DescribeDatasourceListRequest(AbstractModel):
 
     @property
     def Keyword(self):
+        """搜索关键词
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -3083,6 +3821,9 @@ class DescribeDatasourceListRequest(AbstractModel):
 
     @property
     def PermissionType(self):
+        """过滤无权限列表的参数（0 全量，1 使用权限，2 编辑权限）
+        :rtype: int
+        """
         return self._PermissionType
 
     @PermissionType.setter
@@ -3136,6 +3877,10 @@ class DescribeDatasourceListResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -3144,6 +3889,10 @@ class DescribeDatasourceListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """列表详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DatasourceInfoData`
+        """
         return self._Data
 
     @Data.setter
@@ -3152,6 +3901,9 @@ class DescribeDatasourceListResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """信息
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -3160,6 +3912,9 @@ class DescribeDatasourceListResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """信息
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -3168,6 +3923,9 @@ class DescribeDatasourceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3204,6 +3962,9 @@ class DescribeProjectInfoRequest(AbstractModel):
 
     @property
     def Id(self):
+        """项目Id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -3212,6 +3973,9 @@ class DescribeProjectInfoRequest(AbstractModel):
 
     @property
     def DefaultPanelType(self):
+        """默认看板
+        :rtype: int
+        """
         return self._DefaultPanelType
 
     @DefaultPanelType.setter
@@ -3262,6 +4026,10 @@ class DescribeProjectInfoResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -3270,6 +4038,10 @@ class DescribeProjectInfoResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """""
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -3278,6 +4050,10 @@ class DescribeProjectInfoResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """""
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -3286,6 +4062,10 @@ class DescribeProjectInfoResponse(AbstractModel):
 
     @property
     def Data(self):
+        """项目详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.Project`
+        """
         return self._Data
 
     @Data.setter
@@ -3294,6 +4074,9 @@ class DescribeProjectInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3339,6 +4122,9 @@ class DescribeProjectListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """页容，初版默认20，将来可能根据屏幕宽度动态变化
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -3347,6 +4133,9 @@ class DescribeProjectListRequest(AbstractModel):
 
     @property
     def PageNo(self):
+        """页标
+        :rtype: int
+        """
         return self._PageNo
 
     @PageNo.setter
@@ -3355,6 +4144,9 @@ class DescribeProjectListRequest(AbstractModel):
 
     @property
     def Keyword(self):
+        """检索模糊字段
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -3363,6 +4155,9 @@ class DescribeProjectListRequest(AbstractModel):
 
     @property
     def AllPage(self):
+        """是否全部展示，如果是ture，则忽略分页
+        :rtype: bool
+        """
         return self._AllPage
 
     @AllPage.setter
@@ -3371,6 +4166,9 @@ class DescribeProjectListRequest(AbstractModel):
 
     @property
     def ModuleCollection(self):
+        """角色信息
+        :rtype: str
+        """
         return self._ModuleCollection
 
     @ModuleCollection.setter
@@ -3424,6 +4222,10 @@ class DescribeProjectListResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -3432,6 +4234,10 @@ class DescribeProjectListResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -3440,6 +4246,10 @@ class DescribeProjectListResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """接口信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -3448,6 +4258,10 @@ class DescribeProjectListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ProjectListData`
+        """
         return self._Data
 
     @Data.setter
@@ -3456,6 +4270,9 @@ class DescribeProjectListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3498,6 +4315,9 @@ class DescribeUserProjectListRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -3506,6 +4326,9 @@ class DescribeUserProjectListRequest(AbstractModel):
 
     @property
     def AllPage(self):
+        """无
+        :rtype: bool
+        """
         return self._AllPage
 
     @AllPage.setter
@@ -3514,6 +4337,9 @@ class DescribeUserProjectListRequest(AbstractModel):
 
     @property
     def PageNo(self):
+        """无
+        :rtype: int
+        """
         return self._PageNo
 
     @PageNo.setter
@@ -3522,6 +4348,9 @@ class DescribeUserProjectListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """无
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -3574,6 +4403,10 @@ class DescribeUserProjectListResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -3582,6 +4415,10 @@ class DescribeUserProjectListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.CorpUserListData`
+        """
         return self._Data
 
     @Data.setter
@@ -3590,6 +4427,10 @@ class DescribeUserProjectListResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -3598,6 +4439,10 @@ class DescribeUserProjectListResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -3606,6 +4451,9 @@ class DescribeUserProjectListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3657,6 +4505,9 @@ class DescribeUserRoleListRequest(AbstractModel):
 
     @property
     def PageNo(self):
+        """页码
+        :rtype: int
+        """
         return self._PageNo
 
     @PageNo.setter
@@ -3665,6 +4516,9 @@ class DescribeUserRoleListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """页数
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -3673,6 +4527,9 @@ class DescribeUserRoleListRequest(AbstractModel):
 
     @property
     def AllPage(self):
+        """全部页码
+        :rtype: bool
+        """
         return self._AllPage
 
     @AllPage.setter
@@ -3681,6 +4538,9 @@ class DescribeUserRoleListRequest(AbstractModel):
 
     @property
     def UserType(self):
+        """0 企业用户 1 访客 不填表示所有用户
+        :rtype: str
+        """
         return self._UserType
 
     @UserType.setter
@@ -3689,6 +4549,9 @@ class DescribeUserRoleListRequest(AbstractModel):
 
     @property
     def Keyword(self):
+        """模糊搜索的关键字
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -3697,6 +4560,9 @@ class DescribeUserRoleListRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -3705,6 +4571,9 @@ class DescribeUserRoleListRequest(AbstractModel):
 
     @property
     def IsOnlyBindAppUser(self):
+        """是否只获取绑定企微应用的
+        :rtype: bool
+        """
         return self._IsOnlyBindAppUser
 
     @IsOnlyBindAppUser.setter
@@ -3760,6 +4629,10 @@ class DescribeUserRoleListResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -3768,6 +4641,10 @@ class DescribeUserRoleListResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -3776,6 +4653,10 @@ class DescribeUserRoleListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.UserRoleListData`
+        """
         return self._Data
 
     @Data.setter
@@ -3784,6 +4665,10 @@ class DescribeUserRoleListResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -3792,6 +4677,9 @@ class DescribeUserRoleListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3834,6 +4722,9 @@ class DescribeUserRoleProjectListRequest(AbstractModel):
 
     @property
     def PageNo(self):
+        """页码
+        :rtype: int
+        """
         return self._PageNo
 
     @PageNo.setter
@@ -3842,6 +4733,9 @@ class DescribeUserRoleProjectListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """页数
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -3850,6 +4744,9 @@ class DescribeUserRoleProjectListRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -3858,6 +4755,9 @@ class DescribeUserRoleProjectListRequest(AbstractModel):
 
     @property
     def IsOnlyBindAppUser(self):
+        """是否只获取绑定企微应用的
+        :rtype: bool
+        """
         return self._IsOnlyBindAppUser
 
     @IsOnlyBindAppUser.setter
@@ -3910,6 +4810,10 @@ class DescribeUserRoleProjectListResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -3918,6 +4822,10 @@ class DescribeUserRoleProjectListResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -3926,6 +4834,10 @@ class DescribeUserRoleProjectListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.UserRoleListData`
+        """
         return self._Data
 
     @Data.setter
@@ -3934,6 +4846,10 @@ class DescribeUserRoleProjectListResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -3942,6 +4858,9 @@ class DescribeUserRoleProjectListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4016,6 +4935,17 @@ class EmbedTokenInfo(AbstractModel):
         :param _Intention: embed表示页面看板嵌出，chatBIEmbed表示ChatBI嵌出
 注意：此字段可能返回 null，表示取不到有效值。
         :type Intention: str
+        :param _TokenType: 100 无绑定用户
+200 单用户单token
+300 单用户 多token
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TokenType: int
+        :param _TokenNum: token 数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TokenNum: int
+        :param _SingleUserMultiToken: 是否单用户多token
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SingleUserMultiToken: bool
         """
         self._Id = None
         self._BIToken = None
@@ -4033,9 +4963,16 @@ class EmbedTokenInfo(AbstractModel):
         self._TicketNum = None
         self._GlobalParam = None
         self._Intention = None
+        self._TokenType = None
+        self._TokenNum = None
+        self._SingleUserMultiToken = None
 
     @property
     def Id(self):
+        """信息标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -4044,6 +4981,10 @@ class EmbedTokenInfo(AbstractModel):
 
     @property
     def BIToken(self):
+        """令牌
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BIToken
 
     @BIToken.setter
@@ -4052,6 +4993,10 @@ class EmbedTokenInfo(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -4060,6 +5005,10 @@ class EmbedTokenInfo(AbstractModel):
 
     @property
     def CreatedUser(self):
+        """创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedUser
 
     @CreatedUser.setter
@@ -4068,6 +5017,10 @@ class EmbedTokenInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -4076,6 +5029,10 @@ class EmbedTokenInfo(AbstractModel):
 
     @property
     def UpdatedUser(self):
+        """更新人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdatedUser
 
     @UpdatedUser.setter
@@ -4084,6 +5041,10 @@ class EmbedTokenInfo(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -4092,6 +5053,10 @@ class EmbedTokenInfo(AbstractModel):
 
     @property
     def PageId(self):
+        """页面Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PageId
 
     @PageId.setter
@@ -4100,6 +5065,10 @@ class EmbedTokenInfo(AbstractModel):
 
     @property
     def ExtraParam(self):
+        """备用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExtraParam
 
     @ExtraParam.setter
@@ -4108,6 +5077,10 @@ class EmbedTokenInfo(AbstractModel):
 
     @property
     def Scope(self):
+        """嵌出类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Scope
 
     @Scope.setter
@@ -4116,6 +5089,10 @@ class EmbedTokenInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """过期时间，分钟为单位，最大240
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -4124,6 +5101,10 @@ class EmbedTokenInfo(AbstractModel):
 
     @property
     def UserCorpId(self):
+        """使用者企业Id(仅用于多用户)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserCorpId
 
     @UserCorpId.setter
@@ -4132,6 +5113,10 @@ class EmbedTokenInfo(AbstractModel):
 
     @property
     def UserId(self):
+        """使用者Id(仅用于多用户)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -4140,6 +5125,10 @@ class EmbedTokenInfo(AbstractModel):
 
     @property
     def TicketNum(self):
+        """访问次数限制，限制范围1-99999，为空则不设置访问次数限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TicketNum
 
     @TicketNum.setter
@@ -4148,6 +5137,10 @@ class EmbedTokenInfo(AbstractModel):
 
     @property
     def GlobalParam(self):
+        """全局参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GlobalParam
 
     @GlobalParam.setter
@@ -4156,11 +5149,53 @@ class EmbedTokenInfo(AbstractModel):
 
     @property
     def Intention(self):
+        """embed表示页面看板嵌出，chatBIEmbed表示ChatBI嵌出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Intention
 
     @Intention.setter
     def Intention(self, Intention):
         self._Intention = Intention
+
+    @property
+    def TokenType(self):
+        """100 无绑定用户
+200 单用户单token
+300 单用户 多token
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TokenType
+
+    @TokenType.setter
+    def TokenType(self, TokenType):
+        self._TokenType = TokenType
+
+    @property
+    def TokenNum(self):
+        """token 数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TokenNum
+
+    @TokenNum.setter
+    def TokenNum(self, TokenNum):
+        self._TokenNum = TokenNum
+
+    @property
+    def SingleUserMultiToken(self):
+        """是否单用户多token
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SingleUserMultiToken
+
+    @SingleUserMultiToken.setter
+    def SingleUserMultiToken(self, SingleUserMultiToken):
+        self._SingleUserMultiToken = SingleUserMultiToken
 
 
     def _deserialize(self, params):
@@ -4180,6 +5215,9 @@ class EmbedTokenInfo(AbstractModel):
         self._TicketNum = params.get("TicketNum")
         self._GlobalParam = params.get("GlobalParam")
         self._Intention = params.get("Intention")
+        self._TokenType = params.get("TokenType")
+        self._TokenNum = params.get("TokenNum")
+        self._SingleUserMultiToken = params.get("SingleUserMultiToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4228,6 +5266,10 @@ INFO
 
     @property
     def ErrorTip(self):
+        """错误说明字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorTip
 
     @ErrorTip.setter
@@ -4236,6 +5278,10 @@ INFO
 
     @property
     def ErrorMessage(self):
+        """原始异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorMessage
 
     @ErrorMessage.setter
@@ -4244,6 +5290,13 @@ INFO
 
     @property
     def ErrorLevel(self):
+        """错误等级字段
+ERROR
+WARN
+INFO
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorLevel
 
     @ErrorLevel.setter
@@ -4252,6 +5305,10 @@ INFO
 
     @property
     def DocLink(self):
+        """指引文档链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DocLink
 
     @DocLink.setter
@@ -4260,6 +5317,10 @@ INFO
 
     @property
     def FAQ(self):
+        """快速指引说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FAQ
 
     @FAQ.setter
@@ -4268,6 +5329,10 @@ INFO
 
     @property
     def ReservedField(self):
+        """预留字段1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReservedField
 
     @ReservedField.setter
@@ -4323,6 +5388,10 @@ class IdDTO(AbstractModel):
 
     @property
     def Id(self):
+        """请求id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -4331,6 +5400,10 @@ class IdDTO(AbstractModel):
 
     @property
     def AccessKey(self):
+        """key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AccessKey
 
     @AccessKey.setter
@@ -4339,6 +5412,10 @@ class IdDTO(AbstractModel):
 
     @property
     def ProjectId(self):
+        """id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -4347,6 +5424,10 @@ class IdDTO(AbstractModel):
 
     @property
     def TranId(self):
+        """事务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TranId
 
     @TranId.setter
@@ -4355,6 +5436,10 @@ class IdDTO(AbstractModel):
 
     @property
     def TranStatus(self):
+        """事务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TranStatus
 
     @TranStatus.setter
@@ -4452,6 +5537,9 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     @property
     def ServiceType(self):
+        """后端提供字典：域类型，1、腾讯云，2、本地
+        :rtype: str
+        """
         return self._ServiceType
 
     @ServiceType.setter
@@ -4460,6 +5548,9 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     @property
     def DbType(self):
+        """驱动
+        :rtype: str
+        """
         return self._DbType
 
     @DbType.setter
@@ -4468,6 +5559,9 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     @property
     def Charset(self):
+        """数据库编码
+        :rtype: str
+        """
         return self._Charset
 
     @Charset.setter
@@ -4476,6 +5570,9 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     @property
     def DbUser(self):
+        """用户名
+        :rtype: str
+        """
         return self._DbUser
 
     @DbUser.setter
@@ -4484,6 +5581,9 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     @property
     def DbPwd(self):
+        """密码
+        :rtype: str
+        """
         return self._DbPwd
 
     @DbPwd.setter
@@ -4492,6 +5592,9 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     @property
     def DbName(self):
+        """数据库名称
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -4500,6 +5603,9 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     @property
     def SourceName(self):
+        """数据库别名
+        :rtype: str
+        """
         return self._SourceName
 
     @SourceName.setter
@@ -4508,6 +5614,9 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -4516,6 +5625,9 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     @property
     def Id(self):
+        """住键
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -4524,6 +5636,9 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     @property
     def Vip(self):
+        """公有云内网ip
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -4532,6 +5647,9 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     @property
     def Vport(self):
+        """公有云内网端口
+        :rtype: str
+        """
         return self._Vport
 
     @Vport.setter
@@ -4540,6 +5658,9 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """vpc标识
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -4548,6 +5669,9 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """统一vpc标识
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -4556,6 +5680,9 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     @property
     def RegionId(self):
+        """区域标识（gz,bj)
+        :rtype: str
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -4564,6 +5691,9 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     @property
     def ExtraParam(self):
+        """扩展参数
+        :rtype: str
+        """
         return self._ExtraParam
 
     @ExtraParam.setter
@@ -4572,6 +5702,9 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4580,6 +5713,9 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     @property
     def ProdDbName(self):
+        """数据源产品名
+        :rtype: str
+        """
         return self._ProdDbName
 
     @ProdDbName.setter
@@ -4588,6 +5724,9 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     @property
     def DataOrigin(self):
+        """第三方数据源标识
+        :rtype: str
+        """
         return self._DataOrigin
 
     @DataOrigin.setter
@@ -4596,6 +5735,9 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     @property
     def DataOriginProjectId(self):
+        """第三方项目id
+        :rtype: str
+        """
         return self._DataOriginProjectId
 
     @DataOriginProjectId.setter
@@ -4604,6 +5746,9 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     @property
     def DataOriginDatasourceId(self):
+        """第三方数据源id
+        :rtype: str
+        """
         return self._DataOriginDatasourceId
 
     @DataOriginDatasourceId.setter
@@ -4612,6 +5757,9 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群id
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -4681,6 +5829,10 @@ class ModifyDatasourceCloudResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -4689,6 +5841,10 @@ class ModifyDatasourceCloudResponse(AbstractModel):
 
     @property
     def Data(self):
+        """成功无
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -4697,6 +5853,10 @@ class ModifyDatasourceCloudResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -4705,6 +5865,10 @@ class ModifyDatasourceCloudResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """提示
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -4713,6 +5877,9 @@ class ModifyDatasourceCloudResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4801,6 +5968,9 @@ class ModifyDatasourceRequest(AbstractModel):
 
     @property
     def DbHost(self):
+        """HOST
+        :rtype: str
+        """
         return self._DbHost
 
     @DbHost.setter
@@ -4809,6 +5979,9 @@ class ModifyDatasourceRequest(AbstractModel):
 
     @property
     def DbPort(self):
+        """端口
+        :rtype: int
+        """
         return self._DbPort
 
     @DbPort.setter
@@ -4817,6 +5990,9 @@ class ModifyDatasourceRequest(AbstractModel):
 
     @property
     def ServiceType(self):
+        """后端提供字典：域类型，1、腾讯云，2、本地
+        :rtype: str
+        """
         return self._ServiceType
 
     @ServiceType.setter
@@ -4825,6 +6001,9 @@ class ModifyDatasourceRequest(AbstractModel):
 
     @property
     def DbType(self):
+        """驱动
+        :rtype: str
+        """
         return self._DbType
 
     @DbType.setter
@@ -4833,6 +6012,9 @@ class ModifyDatasourceRequest(AbstractModel):
 
     @property
     def Charset(self):
+        """数据库编码
+        :rtype: str
+        """
         return self._Charset
 
     @Charset.setter
@@ -4841,6 +6023,9 @@ class ModifyDatasourceRequest(AbstractModel):
 
     @property
     def DbUser(self):
+        """用户名
+        :rtype: str
+        """
         return self._DbUser
 
     @DbUser.setter
@@ -4849,6 +6034,9 @@ class ModifyDatasourceRequest(AbstractModel):
 
     @property
     def DbPwd(self):
+        """密码
+        :rtype: str
+        """
         return self._DbPwd
 
     @DbPwd.setter
@@ -4857,6 +6045,9 @@ class ModifyDatasourceRequest(AbstractModel):
 
     @property
     def DbName(self):
+        """数据库名称
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -4865,6 +6056,9 @@ class ModifyDatasourceRequest(AbstractModel):
 
     @property
     def SourceName(self):
+        """数据库别名
+        :rtype: str
+        """
         return self._SourceName
 
     @SourceName.setter
@@ -4873,6 +6067,9 @@ class ModifyDatasourceRequest(AbstractModel):
 
     @property
     def Id(self):
+        """数据源id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -4881,6 +6078,9 @@ class ModifyDatasourceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -4889,6 +6089,9 @@ class ModifyDatasourceRequest(AbstractModel):
 
     @property
     def Catalog(self):
+        """catalog值
+        :rtype: str
+        """
         return self._Catalog
 
     @Catalog.setter
@@ -4897,6 +6100,9 @@ class ModifyDatasourceRequest(AbstractModel):
 
     @property
     def DataOrigin(self):
+        """第三方数据源标识
+        :rtype: str
+        """
         return self._DataOrigin
 
     @DataOrigin.setter
@@ -4905,6 +6111,9 @@ class ModifyDatasourceRequest(AbstractModel):
 
     @property
     def DataOriginProjectId(self):
+        """第三方项目id
+        :rtype: str
+        """
         return self._DataOriginProjectId
 
     @DataOriginProjectId.setter
@@ -4913,6 +6122,9 @@ class ModifyDatasourceRequest(AbstractModel):
 
     @property
     def DataOriginDatasourceId(self):
+        """第三方数据源id
+        :rtype: str
+        """
         return self._DataOriginDatasourceId
 
     @DataOriginDatasourceId.setter
@@ -4921,6 +6133,9 @@ class ModifyDatasourceRequest(AbstractModel):
 
     @property
     def ExtraParam(self):
+        """扩展参数
+        :rtype: str
+        """
         return self._ExtraParam
 
     @ExtraParam.setter
@@ -4929,6 +6144,9 @@ class ModifyDatasourceRequest(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """腾讯云私有网络统一标识
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -4937,6 +6155,9 @@ class ModifyDatasourceRequest(AbstractModel):
 
     @property
     def Vip(self):
+        """私有网络ip
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -4945,6 +6166,9 @@ class ModifyDatasourceRequest(AbstractModel):
 
     @property
     def Vport(self):
+        """私有网络端口
+        :rtype: str
+        """
         return self._Vport
 
     @Vport.setter
@@ -4953,6 +6177,9 @@ class ModifyDatasourceRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """腾讯云私有网络标识
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -5021,6 +6248,10 @@ class ModifyDatasourceResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -5029,6 +6260,10 @@ class ModifyDatasourceResponse(AbstractModel):
 
     @property
     def Data(self):
+        """无
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -5037,6 +6272,10 @@ class ModifyDatasourceResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -5045,6 +6284,10 @@ class ModifyDatasourceResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """提示
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -5053,6 +6296,9 @@ class ModifyDatasourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5111,6 +6357,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Id(self):
+        """项目Id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -5119,6 +6368,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Name(self):
+        """名字
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5127,6 +6379,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ColorCode(self):
+        """颜色值
+        :rtype: str
+        """
         return self._ColorCode
 
     @ColorCode.setter
@@ -5135,6 +6390,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Logo(self):
+        """图标
+        :rtype: str
+        """
         return self._Logo
 
     @Logo.setter
@@ -5143,6 +6401,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Mark(self):
+        """备注
+        :rtype: str
+        """
         return self._Mark
 
     @Mark.setter
@@ -5151,6 +6412,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def IsApply(self):
+        """可申请
+        :rtype: bool
+        """
         return self._IsApply
 
     @IsApply.setter
@@ -5159,6 +6423,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Seed(self):
+        """种子
+        :rtype: str
+        """
         return self._Seed
 
     @Seed.setter
@@ -5167,6 +6434,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def DefaultPanelType(self):
+        """默认看板
+        :rtype: int
+        """
         return self._DefaultPanelType
 
     @DefaultPanelType.setter
@@ -5175,6 +6445,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def PanelScope(self):
+        """2
+        :rtype: str
+        """
         return self._PanelScope
 
     @PanelScope.setter
@@ -5183,6 +6456,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ManagePlatform(self):
+        """项目管理平台
+        :rtype: str
+        """
         return self._ManagePlatform
 
     @ManagePlatform.setter
@@ -5241,6 +6517,10 @@ class ModifyProjectResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -5249,6 +6529,10 @@ class ModifyProjectResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -5257,6 +6541,10 @@ class ModifyProjectResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -5265,6 +6553,10 @@ class ModifyProjectResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -5273,6 +6565,9 @@ class ModifyProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5319,6 +6614,9 @@ class ModifyUserRoleProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -5327,6 +6625,9 @@ class ModifyUserRoleProjectRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -5335,6 +6636,9 @@ class ModifyUserRoleProjectRequest(AbstractModel):
 
     @property
     def RoleIdList(self):
+        """角色ID 列表
+        :rtype: list of int
+        """
         return self._RoleIdList
 
     @RoleIdList.setter
@@ -5343,6 +6647,9 @@ class ModifyUserRoleProjectRequest(AbstractModel):
 
     @property
     def Email(self):
+        """邮箱
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -5351,6 +6658,9 @@ class ModifyUserRoleProjectRequest(AbstractModel):
 
     @property
     def UserName(self):
+        """用户名
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -5359,6 +6669,9 @@ class ModifyUserRoleProjectRequest(AbstractModel):
 
     @property
     def AppUserId(self):
+        """企业微信应用用户id
+        :rtype: str
+        """
         return self._AppUserId
 
     @AppUserId.setter
@@ -5413,6 +6726,10 @@ class ModifyUserRoleProjectResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -5421,6 +6738,10 @@ class ModifyUserRoleProjectResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -5429,6 +6750,10 @@ class ModifyUserRoleProjectResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -5437,6 +6762,10 @@ class ModifyUserRoleProjectResponse(AbstractModel):
 
     @property
     def Data(self):
+        """数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -5445,6 +6774,9 @@ class ModifyUserRoleProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5497,6 +6829,9 @@ class ModifyUserRoleRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -5505,6 +6840,9 @@ class ModifyUserRoleRequest(AbstractModel):
 
     @property
     def RoleIdList(self):
+        """角色ID 列表
+        :rtype: list of int
+        """
         return self._RoleIdList
 
     @RoleIdList.setter
@@ -5513,6 +6851,9 @@ class ModifyUserRoleRequest(AbstractModel):
 
     @property
     def Email(self):
+        """邮箱
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -5521,6 +6862,9 @@ class ModifyUserRoleRequest(AbstractModel):
 
     @property
     def UserName(self):
+        """用户名
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -5529,6 +6873,9 @@ class ModifyUserRoleRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """手机号
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -5537,6 +6884,9 @@ class ModifyUserRoleRequest(AbstractModel):
 
     @property
     def AreaCode(self):
+        """手机区号
+        :rtype: str
+        """
         return self._AreaCode
 
     @AreaCode.setter
@@ -5545,6 +6895,9 @@ class ModifyUserRoleRequest(AbstractModel):
 
     @property
     def AppUserId(self):
+        """企业微信应用用户id
+        :rtype: str
+        """
         return self._AppUserId
 
     @AppUserId.setter
@@ -5553,6 +6906,9 @@ class ModifyUserRoleRequest(AbstractModel):
 
     @property
     def LoginSecurityStatus(self):
+        """是否开启手机验证码登录（0 关闭，1 开启）
+        :rtype: int
+        """
         return self._LoginSecurityStatus
 
     @LoginSecurityStatus.setter
@@ -5609,6 +6965,10 @@ class ModifyUserRoleResponse(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -5617,6 +6977,10 @@ class ModifyUserRoleResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -5625,6 +6989,10 @@ class ModifyUserRoleResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -5633,6 +7001,10 @@ class ModifyUserRoleResponse(AbstractModel):
 
     @property
     def Data(self):
+        """数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -5641,6 +7013,9 @@ class ModifyUserRoleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5689,6 +7064,10 @@ class PermissionComponent(AbstractModel):
 
     @property
     def ModuleId(self):
+        """权限值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModuleId
 
     @ModuleId.setter
@@ -5697,6 +7076,10 @@ class PermissionComponent(AbstractModel):
 
     @property
     def IncludeType(self):
+        """可见/可用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IncludeType
 
     @IncludeType.setter
@@ -5705,6 +7088,10 @@ class PermissionComponent(AbstractModel):
 
     @property
     def UpgradeVersionType(self):
+        """目标升级版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpgradeVersionType
 
     @UpgradeVersionType.setter
@@ -5713,6 +7100,10 @@ class PermissionComponent(AbstractModel):
 
     @property
     def Tips(self):
+        """补充信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Tips
 
     @Tips.setter
@@ -5721,6 +7112,10 @@ class PermissionComponent(AbstractModel):
 
     @property
     def TipsKey(self):
+        """补充信息的key值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TipsKey
 
     @TipsKey.setter
@@ -5763,6 +7158,10 @@ class PermissionGroup(AbstractModel):
 
     @property
     def ModuleGroup(self):
+        """分组名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModuleGroup
 
     @ModuleGroup.setter
@@ -5771,6 +7170,10 @@ class PermissionGroup(AbstractModel):
 
     @property
     def Components(self):
+        """权限列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PermissionComponent
+        """
         return self._Components
 
     @Components.setter
@@ -5890,6 +7293,9 @@ class Project(AbstractModel):
 
     @property
     def Id(self):
+        """项目ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -5898,6 +7304,10 @@ class Project(AbstractModel):
 
     @property
     def Logo(self):
+        """项目Logo
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Logo
 
     @Logo.setter
@@ -5906,6 +7316,10 @@ class Project(AbstractModel):
 
     @property
     def Name(self):
+        """项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5914,6 +7328,10 @@ class Project(AbstractModel):
 
     @property
     def ColorCode(self):
+        """logo底色
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ColorCode
 
     @ColorCode.setter
@@ -5922,6 +7340,10 @@ class Project(AbstractModel):
 
     @property
     def CreatedUser(self):
+        """创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedUser
 
     @CreatedUser.setter
@@ -5930,6 +7352,10 @@ class Project(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -5938,6 +7364,10 @@ class Project(AbstractModel):
 
     @property
     def MemberCount(self):
+        """成员个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MemberCount
 
     @MemberCount.setter
@@ -5946,6 +7376,10 @@ class Project(AbstractModel):
 
     @property
     def PageCount(self):
+        """页面个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PageCount
 
     @PageCount.setter
@@ -5954,6 +7388,10 @@ class Project(AbstractModel):
 
     @property
     def LastModifyName(self):
+        """最后修改报表、简报名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastModifyName
 
     @LastModifyName.setter
@@ -5962,6 +7400,10 @@ class Project(AbstractModel):
 
     @property
     def Source(self):
+        """""
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -5970,6 +7412,10 @@ class Project(AbstractModel):
 
     @property
     def Apply(self):
+        """""
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Apply
 
     @Apply.setter
@@ -5978,6 +7424,10 @@ class Project(AbstractModel):
 
     @property
     def UpdatedUser(self):
+        """""
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdatedUser
 
     @UpdatedUser.setter
@@ -5986,6 +7436,10 @@ class Project(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """""
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -5994,6 +7448,10 @@ class Project(AbstractModel):
 
     @property
     def CorpId(self):
+        """""
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CorpId
 
     @CorpId.setter
@@ -6002,6 +7460,10 @@ class Project(AbstractModel):
 
     @property
     def Mark(self):
+        """""
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Mark
 
     @Mark.setter
@@ -6010,6 +7472,10 @@ class Project(AbstractModel):
 
     @property
     def Seed(self):
+        """""
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Seed
 
     @Seed.setter
@@ -6018,6 +7484,10 @@ class Project(AbstractModel):
 
     @property
     def AuthList(self):
+        """项目内权限列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AuthList
 
     @AuthList.setter
@@ -6026,6 +7496,10 @@ class Project(AbstractModel):
 
     @property
     def PanelScope(self):
+        """默认看板
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PanelScope
 
     @PanelScope.setter
@@ -6034,6 +7508,10 @@ class Project(AbstractModel):
 
     @property
     def IsExternalManage(self):
+        """是否被托管
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsExternalManage
 
     @IsExternalManage.setter
@@ -6042,6 +7520,10 @@ class Project(AbstractModel):
 
     @property
     def ManagePlatform(self):
+        """托管平台名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ManagePlatform
 
     @ManagePlatform.setter
@@ -6050,6 +7532,10 @@ class Project(AbstractModel):
 
     @property
     def ConfigList(self):
+        """定制化参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ProjectConfigList
+        """
         return self._ConfigList
 
     @ConfigList.setter
@@ -6113,6 +7599,10 @@ class ProjectConfigList(AbstractModel):
 
     @property
     def ModuleGroup(self):
+        """模块组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModuleGroup
 
     @ModuleGroup.setter
@@ -6121,6 +7611,10 @@ class ProjectConfigList(AbstractModel):
 
     @property
     def Components(self):
+        """内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ProjectConfigResult
+        """
         return self._Components
 
     @Components.setter
@@ -6169,6 +7663,10 @@ class ProjectConfigResult(AbstractModel):
 
     @property
     def ModuleId(self):
+        """配置名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModuleId
 
     @ModuleId.setter
@@ -6177,6 +7675,10 @@ class ProjectConfigResult(AbstractModel):
 
     @property
     def IncludeType(self):
+        """配置方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IncludeType
 
     @IncludeType.setter
@@ -6185,6 +7687,10 @@ class ProjectConfigResult(AbstractModel):
 
     @property
     def Params(self):
+        """额外参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Params
 
     @Params.setter
@@ -6229,6 +7735,10 @@ class ProjectListData(AbstractModel):
 
     @property
     def List(self):
+        """数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Project
+        """
         return self._List
 
     @List.setter
@@ -6237,6 +7747,10 @@ class ProjectListData(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -6245,6 +7759,10 @@ class ProjectListData(AbstractModel):
 
     @property
     def TotalPages(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalPages
 
     @TotalPages.setter
@@ -6360,6 +7878,9 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -6368,6 +7889,9 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def UserName(self):
+        """用户名
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -6376,6 +7900,10 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def CorpId(self):
+        """企业ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CorpId
 
     @CorpId.setter
@@ -6384,6 +7912,10 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def Email(self):
+        """电子邮箱
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -6392,6 +7924,10 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def LastLogin(self):
+        """最后一次登录时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastLogin
 
     @LastLogin.setter
@@ -6400,6 +7936,10 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def Status(self):
+        """停启用状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -6408,6 +7948,10 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def FirstModify(self):
+        """首次登陆是否修改密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FirstModify
 
     @FirstModify.setter
@@ -6416,6 +7960,10 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """手机号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -6424,6 +7972,10 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def AreaCode(self):
+        """手机区号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AreaCode
 
     @AreaCode.setter
@@ -6432,6 +7984,10 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def CreatedUser(self):
+        """创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedUser
 
     @CreatedUser.setter
@@ -6440,6 +7996,10 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -6448,6 +8008,10 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def UpdatedUser(self):
+        """更改人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdatedUser
 
     @UpdatedUser.setter
@@ -6456,6 +8020,10 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """更改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -6464,6 +8032,10 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def GlobalUserName(self):
+        """全局角色
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GlobalUserName
 
     @GlobalUserName.setter
@@ -6472,6 +8044,10 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def Mobile(self):
+        """手机号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Mobile
 
     @Mobile.setter
@@ -6480,6 +8056,10 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def AppId(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AppId
 
     @AppId.setter
@@ -6488,6 +8068,10 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def AppUserId(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AppUserId
 
     @AppUserId.setter
@@ -6496,6 +8080,10 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def AppUserAliasName(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AppUserAliasName
 
     @AppUserAliasName.setter
@@ -6504,6 +8092,10 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def AppUserName(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AppUserName
 
     @AppUserName.setter
@@ -6512,6 +8104,10 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def InValidateAppRange(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._InValidateAppRange
 
     @InValidateAppRange.setter
@@ -6587,6 +8183,9 @@ class UserInfo(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -6595,6 +8194,9 @@ class UserInfo(AbstractModel):
 
     @property
     def UserName(self):
+        """用户名
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -6603,6 +8205,10 @@ class UserInfo(AbstractModel):
 
     @property
     def Email(self):
+        """邮箱
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -6611,6 +8217,10 @@ class UserInfo(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """手机号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -6619,6 +8229,10 @@ class UserInfo(AbstractModel):
 
     @property
     def AreaCode(self):
+        """手机号区号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AreaCode
 
     @AreaCode.setter
@@ -6627,6 +8241,10 @@ class UserInfo(AbstractModel):
 
     @property
     def AppUserId(self):
+        """企微账号id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AppUserId
 
     @AppUserId.setter
@@ -6635,6 +8253,10 @@ class UserInfo(AbstractModel):
 
     @property
     def AppUserName(self):
+        """企微账号名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AppUserName
 
     @AppUserName.setter
@@ -6683,6 +8305,10 @@ class UserRoleListData(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -6691,6 +8317,10 @@ class UserRoleListData(AbstractModel):
 
     @property
     def TotalPages(self):
+        """总页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalPages
 
     @TotalPages.setter
@@ -6699,6 +8329,10 @@ class UserRoleListData(AbstractModel):
 
     @property
     def List(self):
+        """列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UserRoleListDataUserRoleInfo
+        """
         return self._List
 
     @List.setter
@@ -6760,6 +8394,10 @@ class UserRoleListDataRoleInfo(AbstractModel):
 
     @property
     def RoleName(self):
+        """角色名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RoleName
 
     @RoleName.setter
@@ -6768,6 +8406,10 @@ class UserRoleListDataRoleInfo(AbstractModel):
 
     @property
     def RoleId(self):
+        """角色ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RoleId
 
     @RoleId.setter
@@ -6776,6 +8418,10 @@ class UserRoleListDataRoleInfo(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -6784,6 +8430,10 @@ class UserRoleListDataRoleInfo(AbstractModel):
 
     @property
     def ProjectName(self):
+        """项目名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProjectName
 
     @ProjectName.setter
@@ -6792,6 +8442,10 @@ class UserRoleListDataRoleInfo(AbstractModel):
 
     @property
     def ScopeType(self):
+        """是否为全局角色（0 不是 1 是）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ScopeType
 
     @ScopeType.setter
@@ -6800,6 +8454,10 @@ class UserRoleListDataRoleInfo(AbstractModel):
 
     @property
     def ModuleCollection(self):
+        """角色key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModuleCollection
 
     @ModuleCollection.setter
@@ -6919,6 +8577,9 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def Id(self):
+        """业务ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -6927,6 +8588,10 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def RoleList(self):
+        """角色列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UserRoleListDataRoleInfo
+        """
         return self._RoleList
 
     @RoleList.setter
@@ -6935,6 +8600,10 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def RoleIdList(self):
+        """角色ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int non-negative
+        """
         return self._RoleIdList
 
     @RoleIdList.setter
@@ -6943,6 +8612,9 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -6951,6 +8623,9 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def UserName(self):
+        """用户名
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -6959,6 +8634,9 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def CorpId(self):
+        """企业ID
+        :rtype: str
+        """
         return self._CorpId
 
     @CorpId.setter
@@ -6967,6 +8645,10 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def Email(self):
+        """邮箱
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -6975,6 +8657,10 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def CreatedUser(self):
+        """创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedUser
 
     @CreatedUser.setter
@@ -6983,6 +8669,10 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -6991,6 +8681,10 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def UpdatedUser(self):
+        """更新人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdatedUser
 
     @UpdatedUser.setter
@@ -6999,6 +8693,10 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -7007,6 +8705,10 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def LastLogin(self):
+        """最后一次登录时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastLogin
 
     @LastLogin.setter
@@ -7015,6 +8717,10 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def Status(self):
+        """账号状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -7023,6 +8729,10 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """手机号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -7031,6 +8741,10 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def AreaCode(self):
+        """手机号区号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AreaCode
 
     @AreaCode.setter
@@ -7039,6 +8753,10 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def RootAccount(self):
+        """是否为主账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._RootAccount
 
     @RootAccount.setter
@@ -7047,6 +8765,10 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def CorpAdmin(self):
+        """是否为企业管理员
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._CorpAdmin
 
     @CorpAdmin.setter
@@ -7055,6 +8777,10 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def AppUserId(self):
+        """企微用户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AppUserId
 
     @AppUserId.setter
@@ -7063,6 +8789,10 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def AppUserAliasName(self):
+        """昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AppUserAliasName
 
     @AppUserAliasName.setter
@@ -7071,6 +8801,10 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def AppUserName(self):
+        """应用用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AppUserName
 
     @AppUserName.setter
@@ -7079,6 +8813,10 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def InValidateAppRange(self):
+        """是否在可见范围内
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._InValidateAppRange
 
     @InValidateAppRange.setter
@@ -7087,6 +8825,10 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def AppOpenUserId(self):
+        """用户openid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AppOpenUserId
 
     @AppOpenUserId.setter

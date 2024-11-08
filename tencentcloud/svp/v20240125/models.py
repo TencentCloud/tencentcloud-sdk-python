@@ -56,6 +56,9 @@ class CreateSavingPlanOrderRequest(AbstractModel):
 
     @property
     def RegionId(self):
+        """地域编码
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -64,6 +67,9 @@ class CreateSavingPlanOrderRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """区域编码
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -72,6 +78,9 @@ class CreateSavingPlanOrderRequest(AbstractModel):
 
     @property
     def PrePayType(self):
+        """预付费类型
+        :rtype: str
+        """
         return self._PrePayType
 
     @PrePayType.setter
@@ -80,6 +89,9 @@ class CreateSavingPlanOrderRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
+        """时长
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -88,6 +100,9 @@ class CreateSavingPlanOrderRequest(AbstractModel):
 
     @property
     def TimeUnit(self):
+        """时长单位
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -96,6 +111,9 @@ class CreateSavingPlanOrderRequest(AbstractModel):
 
     @property
     def CommodityCode(self):
+        """商品唯一标识
+        :rtype: str
+        """
         return self._CommodityCode
 
     @CommodityCode.setter
@@ -104,6 +122,9 @@ class CreateSavingPlanOrderRequest(AbstractModel):
 
     @property
     def PromiseUseAmount(self):
+        """承诺时长内的小额金额（单位：元）
+        :rtype: int
+        """
         return self._PromiseUseAmount
 
     @PromiseUseAmount.setter
@@ -112,6 +133,9 @@ class CreateSavingPlanOrderRequest(AbstractModel):
 
     @property
     def SpecifyEffectTime(self):
+        """节省计划的指定生效时间，若不传则为当前下单时间。传参数格式:"2023-10-01 00:00:00"，仅支持指定日期的0点时刻
+        :rtype: str
+        """
         return self._SpecifyEffectTime
 
     @SpecifyEffectTime.setter
@@ -120,6 +144,9 @@ class CreateSavingPlanOrderRequest(AbstractModel):
 
     @property
     def ClientToken(self):
+        """可重入ID
+        :rtype: str
+        """
         return self._ClientToken
 
     @ClientToken.setter
@@ -164,6 +191,9 @@ class CreateSavingPlanOrderResponse(AbstractModel):
 
     @property
     def BigDealId(self):
+        """订单号
+        :rtype: str
+        """
         return self._BigDealId
 
     @BigDealId.setter
@@ -172,6 +202,9 @@ class CreateSavingPlanOrderResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -228,6 +261,9 @@ class DescribeSavingPlanDeductRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -236,6 +272,9 @@ class DescribeSavingPlanDeductRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页数量，最大值为200
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -244,6 +283,9 @@ class DescribeSavingPlanDeductRequest(AbstractModel):
 
     @property
     def StartEndDate(self):
+        """节省计划使用开始的查询结束时间
+        :rtype: str
+        """
         return self._StartEndDate
 
     @StartEndDate.setter
@@ -252,6 +294,9 @@ class DescribeSavingPlanDeductRequest(AbstractModel):
 
     @property
     def StartStartDate(self):
+        """节省计划使用开始的查询开始时间
+        :rtype: str
+        """
         return self._StartStartDate
 
     @StartStartDate.setter
@@ -260,6 +305,9 @@ class DescribeSavingPlanDeductRequest(AbstractModel):
 
     @property
     def RegionId(self):
+        """地域编码
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -268,6 +316,9 @@ class DescribeSavingPlanDeductRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """区域编码
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -276,6 +327,9 @@ class DescribeSavingPlanDeductRequest(AbstractModel):
 
     @property
     def SpId(self):
+        """节省计划资源id
+        :rtype: str
+        """
         return self._SpId
 
     @SpId.setter
@@ -284,6 +338,9 @@ class DescribeSavingPlanDeductRequest(AbstractModel):
 
     @property
     def DeductEndDate(self):
+        """抵扣查询结束时间，格式：yyyy-MM-dd HH:mm:ss
+        :rtype: str
+        """
         return self._DeductEndDate
 
     @DeductEndDate.setter
@@ -292,6 +349,9 @@ class DescribeSavingPlanDeductRequest(AbstractModel):
 
     @property
     def DeductStartDate(self):
+        """抵扣查询开始时间，格式：yyyy-MM-dd HH:mm:ss
+        :rtype: str
+        """
         return self._DeductStartDate
 
     @DeductStartDate.setter
@@ -300,6 +360,9 @@ class DescribeSavingPlanDeductRequest(AbstractModel):
 
     @property
     def EndEndDate(self):
+        """节省计划使用结束的查询结束时间
+        :rtype: str
+        """
         return self._EndEndDate
 
     @EndEndDate.setter
@@ -308,6 +371,9 @@ class DescribeSavingPlanDeductRequest(AbstractModel):
 
     @property
     def EndStartDate(self):
+        """节省计划使用结束的查询开始时间
+        :rtype: str
+        """
         return self._EndStartDate
 
     @EndStartDate.setter
@@ -358,6 +424,10 @@ class DescribeSavingPlanDeductResponse(AbstractModel):
 
     @property
     def Total(self):
+        """查询命中的节省计划抵扣明细数据总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -366,6 +436,9 @@ class DescribeSavingPlanDeductResponse(AbstractModel):
 
     @property
     def Deducts(self):
+        """查询命中的节省计划抵扣明细数据明细
+        :rtype: list of SavingPlanDeductDetail
+        """
         return self._Deducts
 
     @Deducts.setter
@@ -374,6 +447,9 @@ class DescribeSavingPlanDeductResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -415,6 +491,9 @@ class DescribeSavingPlanOverviewRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """开始时间，格式yyyy-MM-dd 注：查询范围请勿超过6个月
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -423,6 +502,9 @@ class DescribeSavingPlanOverviewRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """结束时间，格式yyyy-MM-dd
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -431,6 +513,9 @@ class DescribeSavingPlanOverviewRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -439,6 +524,9 @@ class DescribeSavingPlanOverviewRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页数量，最大值为200
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -482,6 +570,10 @@ class DescribeSavingPlanOverviewResponse(AbstractModel):
 
     @property
     def Overviews(self):
+        """节省计划总览明细数据	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SavingPlanOverviewDetail
+        """
         return self._Overviews
 
     @Overviews.setter
@@ -490,6 +582,9 @@ class DescribeSavingPlanOverviewResponse(AbstractModel):
 
     @property
     def Total(self):
+        """查询命中的节省计划总览明细数据总条数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -498,6 +593,9 @@ class DescribeSavingPlanOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -542,6 +640,9 @@ class DescribeSavingPlanUsageRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """开始时间，格式yyyy-MM-dd 注：查询范围请勿超过6个月
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -550,6 +651,9 @@ class DescribeSavingPlanUsageRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """结束时间，格式yyyy-MM-dd
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -558,6 +662,9 @@ class DescribeSavingPlanUsageRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -566,6 +673,9 @@ class DescribeSavingPlanUsageRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页数量，最大值为200
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -574,6 +684,9 @@ class DescribeSavingPlanUsageRequest(AbstractModel):
 
     @property
     def TimeInterval(self):
+        """查询结果数据的时间间隔
+        :rtype: str
+        """
         return self._TimeInterval
 
     @TimeInterval.setter
@@ -618,6 +731,9 @@ class DescribeSavingPlanUsageResponse(AbstractModel):
 
     @property
     def Total(self):
+        """查询命中的节省计划总览明细数据总条数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -626,6 +742,10 @@ class DescribeSavingPlanUsageResponse(AbstractModel):
 
     @property
     def Usages(self):
+        """节省计划使用率数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SavingPlanUsageDetail
+        """
         return self._Usages
 
     @Usages.setter
@@ -634,6 +754,9 @@ class DescribeSavingPlanUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -743,6 +866,10 @@ class SavingPlanDeductDetail(AbstractModel):
 
     @property
     def OwnerUin(self):
+        """账号id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -751,6 +878,10 @@ class SavingPlanDeductDetail(AbstractModel):
 
     @property
     def OwnerUinName(self):
+        """账号名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OwnerUinName
 
     @OwnerUinName.setter
@@ -759,6 +890,10 @@ class SavingPlanDeductDetail(AbstractModel):
 
     @property
     def PayerUin(self):
+        """抵扣账号id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PayerUin
 
     @PayerUin.setter
@@ -767,6 +902,10 @@ class SavingPlanDeductDetail(AbstractModel):
 
     @property
     def PayerUinName(self):
+        """抵扣账号名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PayerUinName
 
     @PayerUinName.setter
@@ -775,6 +914,10 @@ class SavingPlanDeductDetail(AbstractModel):
 
     @property
     def SpId(self):
+        """节省计划资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SpId
 
     @SpId.setter
@@ -783,6 +926,10 @@ class SavingPlanDeductDetail(AbstractModel):
 
     @property
     def ProductCode(self):
+        """产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductCode
 
     @ProductCode.setter
@@ -791,6 +938,10 @@ class SavingPlanDeductDetail(AbstractModel):
 
     @property
     def ProductName(self):
+        """产品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -799,6 +950,10 @@ class SavingPlanDeductDetail(AbstractModel):
 
     @property
     def SubProductCode(self):
+        """子产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubProductCode
 
     @SubProductCode.setter
@@ -807,6 +962,10 @@ class SavingPlanDeductDetail(AbstractModel):
 
     @property
     def SubProductName(self):
+        """子产品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubProductName
 
     @SubProductName.setter
@@ -815,6 +974,10 @@ class SavingPlanDeductDetail(AbstractModel):
 
     @property
     def OutTradeNo(self):
+        """交易ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OutTradeNo
 
     @OutTradeNo.setter
@@ -823,6 +986,10 @@ class SavingPlanDeductDetail(AbstractModel):
 
     @property
     def RegionId(self):
+        """地域id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -831,6 +998,10 @@ class SavingPlanDeductDetail(AbstractModel):
 
     @property
     def RegionName(self):
+        """地域名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -839,6 +1010,10 @@ class SavingPlanDeductDetail(AbstractModel):
 
     @property
     def ZoneId(self):
+        """地区id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -847,6 +1022,10 @@ class SavingPlanDeductDetail(AbstractModel):
 
     @property
     def ZoneName(self):
+        """地区名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -855,6 +1034,10 @@ class SavingPlanDeductDetail(AbstractModel):
 
     @property
     def SpStartTime(self):
+        """开始使用时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SpStartTime
 
     @SpStartTime.setter
@@ -863,6 +1046,10 @@ class SavingPlanDeductDetail(AbstractModel):
 
     @property
     def SpEndTime(self):
+        """结束使用时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SpEndTime
 
     @SpEndTime.setter
@@ -871,6 +1058,10 @@ class SavingPlanDeductDetail(AbstractModel):
 
     @property
     def DeductTime(self):
+        """折扣时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeductTime
 
     @DeductTime.setter
@@ -879,6 +1070,10 @@ class SavingPlanDeductDetail(AbstractModel):
 
     @property
     def DeductAmount(self):
+        """抵扣金额，单位分
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeductAmount
 
     @DeductAmount.setter
@@ -887,6 +1082,10 @@ class SavingPlanDeductDetail(AbstractModel):
 
     @property
     def DeductDiscount(self):
+        """抵扣折扣率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeductDiscount
 
     @DeductDiscount.setter
@@ -895,6 +1094,10 @@ class SavingPlanDeductDetail(AbstractModel):
 
     @property
     def DeductRate(self):
+        """抵扣比率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeductRate
 
     @DeductRate.setter
@@ -973,6 +1176,9 @@ class SavingPlanOverviewDetail(AbstractModel):
 
     @property
     def SpType(self):
+        """节省计划类型
+        :rtype: str
+        """
         return self._SpType
 
     @SpType.setter
@@ -981,6 +1187,9 @@ class SavingPlanOverviewDetail(AbstractModel):
 
     @property
     def PayAmount(self):
+        """支付金额（单位：元）
+        :rtype: str
+        """
         return self._PayAmount
 
     @PayAmount.setter
@@ -989,6 +1198,9 @@ class SavingPlanOverviewDetail(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间 yyyy-mm-dd HH:mm:ss格式
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -997,6 +1209,9 @@ class SavingPlanOverviewDetail(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间 yyyy-mm-dd HH:mm:ss格式
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1005,6 +1220,9 @@ class SavingPlanOverviewDetail(AbstractModel):
 
     @property
     def Status(self):
+        """状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1013,6 +1231,9 @@ class SavingPlanOverviewDetail(AbstractModel):
 
     @property
     def SavingAmount(self):
+        """累计节省金额（单位：元）
+        :rtype: str
+        """
         return self._SavingAmount
 
     @SavingAmount.setter
@@ -1021,6 +1242,9 @@ class SavingPlanOverviewDetail(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: list of str
+        """
         return self._Region
 
     @Region.setter
@@ -1029,6 +1253,10 @@ class SavingPlanOverviewDetail(AbstractModel):
 
     @property
     def PayType(self):
+        """支付类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PayType
 
     @PayType.setter
@@ -1037,6 +1265,10 @@ class SavingPlanOverviewDetail(AbstractModel):
 
     @property
     def BuyTime(self):
+        """购买时间 yyyy-mm-dd HH:mm:ss格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BuyTime
 
     @BuyTime.setter
@@ -1106,6 +1338,9 @@ class SavingPlanUsageDetail(AbstractModel):
 
     @property
     def SpType(self):
+        """节省计划类型
+        :rtype: str
+        """
         return self._SpType
 
     @SpType.setter
@@ -1114,6 +1349,9 @@ class SavingPlanUsageDetail(AbstractModel):
 
     @property
     def Status(self):
+        """节省计划状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1122,6 +1360,9 @@ class SavingPlanUsageDetail(AbstractModel):
 
     @property
     def DeductAmount(self):
+        """累计抵扣的金额（单位：元）
+        :rtype: str
+        """
         return self._DeductAmount
 
     @DeductAmount.setter
@@ -1130,6 +1371,9 @@ class SavingPlanUsageDetail(AbstractModel):
 
     @property
     def PromiseAmount(self):
+        """累计承诺消费金额（单位：元）
+        :rtype: str
+        """
         return self._PromiseAmount
 
     @PromiseAmount.setter
@@ -1138,6 +1382,9 @@ class SavingPlanUsageDetail(AbstractModel):
 
     @property
     def NetSavings(self):
+        """累计净节省金额（单位：元）
+        :rtype: str
+        """
         return self._NetSavings
 
     @NetSavings.setter
@@ -1146,6 +1393,9 @@ class SavingPlanUsageDetail(AbstractModel):
 
     @property
     def UtilizationRate(self):
+        """使用率
+        :rtype: float
+        """
         return self._UtilizationRate
 
     @UtilizationRate.setter
@@ -1154,6 +1404,9 @@ class SavingPlanUsageDetail(AbstractModel):
 
     @property
     def LossAmount(self):
+        """累计流失金额（单位：元）
+        :rtype: str
+        """
         return self._LossAmount
 
     @LossAmount.setter
@@ -1162,6 +1415,9 @@ class SavingPlanUsageDetail(AbstractModel):
 
     @property
     def DosageAmount(self):
+        """累计按量计费预期金额（单位：元）
+        :rtype: str
+        """
         return self._DosageAmount
 
     @DosageAmount.setter
@@ -1170,6 +1426,9 @@ class SavingPlanUsageDetail(AbstractModel):
 
     @property
     def CostAmount(self):
+        """累计成本金额（单位：元）
+        :rtype: str
+        """
         return self._CostAmount
 
     @CostAmount.setter
@@ -1178,6 +1437,10 @@ class SavingPlanUsageDetail(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Region
 
     @Region.setter

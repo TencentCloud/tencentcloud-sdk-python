@@ -36,6 +36,9 @@ class AddMachineGroupInfoRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """机器组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -44,6 +47,10 @@ class AddMachineGroupInfoRequest(AbstractModel):
 
     @property
     def MachineGroupType(self):
+        """机器组类型
+目前type支持 ip 和 label
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MachineGroupTypeInfo`
+        """
         return self._MachineGroupType
 
     @MachineGroupType.setter
@@ -80,6 +87,9 @@ class AddMachineGroupInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -114,6 +124,10 @@ class AdvanceFilterRuleInfo(AbstractModel):
 
     @property
     def Key(self):
+        """过滤字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -122,6 +136,10 @@ class AdvanceFilterRuleInfo(AbstractModel):
 
     @property
     def Rule(self):
+        """过滤规则，0:等于，1:字段存在，2:字段不存在
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Rule
 
     @Rule.setter
@@ -130,6 +148,10 @@ class AdvanceFilterRuleInfo(AbstractModel):
 
     @property
     def Value(self):
+        """过滤值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -183,6 +205,16 @@ Limit：最大日志条数。 value示例： 5。
 
     @property
     def Key(self):
+        """键。支持以下key：
+SyntaxRule：语法规则，value支持 0：Lucene语法；1： CQL语法。
+QueryIndex：执行语句序号。value支持  -1：自定义； 1：执行语句1； 2：执行语句2。
+CustomQuery：检索语句。 QueryIndex为-1时有效且必填，value示例： "* | select count(*) as count"。
+Fields：字段。value支持 __SOURCE__；__FILENAME__；__HOSTNAME__；__TIMESTAMP__；__INDEX_STATUS__；__PKG_LOGID__；__TOPIC__。
+Format：显示形式。value支持 1：每条日志一行；2：每条日志每个字段一行。
+Limit：最大日志条数。 value示例： 5。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -191,6 +223,17 @@ Limit：最大日志条数。 value示例： 5。
 
     @property
     def Value(self):
+        """值。
+键对应值如下：
+SyntaxRule：语法规则，value支持 0：Lucene语法；1： CQL语法。
+QueryIndex：执行语句序号。value支持  -1：自定义； 1：执行语句1； 2：执行语句2。
+CustomQuery：检索语句。 QueryIndex为-1时有效且必填，value示例： "* | select count(*) as count"。
+Fields：字段。value支持 __SOURCE__；__FILENAME__；__HOSTNAME__；__TIMESTAMP__；__INDEX_STATUS__；__PKG_LOGID__；__TOPIC__。
+Format：显示形式。value支持 1：每条日志一行；2：每条日志每个字段一行。
+Limit：最大日志条数。 value示例： 5。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -228,6 +271,9 @@ class AlarmClassification(AbstractModel):
 
     @property
     def Key(self):
+        """分类键
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -236,6 +282,9 @@ class AlarmClassification(AbstractModel):
 
     @property
     def Value(self):
+        """分类值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -333,6 +382,9 @@ Condition互斥。
 
     @property
     def Name(self):
+        """告警策略名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -341,6 +393,9 @@ Condition互斥。
 
     @property
     def AlarmTargets(self):
+        """监控对象列表。
+        :rtype: list of AlarmTargetInfo
+        """
         return self._AlarmTargets
 
     @AlarmTargets.setter
@@ -349,6 +404,9 @@ Condition互斥。
 
     @property
     def MonitorTime(self):
+        """监控任务运行时间点。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MonitorTime`
+        """
         return self._MonitorTime
 
     @MonitorTime.setter
@@ -357,6 +415,9 @@ Condition互斥。
 
     @property
     def Condition(self):
+        """单触发条件。与MultiConditions参数互斥。
+        :rtype: str
+        """
         return self._Condition
 
     @Condition.setter
@@ -365,6 +426,9 @@ Condition互斥。
 
     @property
     def TriggerCount(self):
+        """持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
+        :rtype: int
+        """
         return self._TriggerCount
 
     @TriggerCount.setter
@@ -373,6 +437,9 @@ Condition互斥。
 
     @property
     def AlarmPeriod(self):
+        """告警重复的周期。单位是min。取值范围是0~1440。
+        :rtype: int
+        """
         return self._AlarmPeriod
 
     @AlarmPeriod.setter
@@ -381,6 +448,9 @@ Condition互斥。
 
     @property
     def AlarmNoticeIds(self):
+        """关联的告警通知模板列表。
+        :rtype: list of str
+        """
         return self._AlarmNoticeIds
 
     @AlarmNoticeIds.setter
@@ -389,6 +459,9 @@ Condition互斥。
 
     @property
     def Status(self):
+        """开启状态。
+        :rtype: bool
+        """
         return self._Status
 
     @Status.setter
@@ -397,6 +470,9 @@ Condition互斥。
 
     @property
     def AlarmId(self):
+        """告警策略ID。
+        :rtype: str
+        """
         return self._AlarmId
 
     @AlarmId.setter
@@ -405,6 +481,9 @@ Condition互斥。
 
     @property
     def CreateTime(self):
+        """创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -413,6 +492,9 @@ Condition互斥。
 
     @property
     def UpdateTime(self):
+        """最近更新时间。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -421,6 +503,10 @@ Condition互斥。
 
     @property
     def MessageTemplate(self):
+        """自定义通知模板
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MessageTemplate
 
     @MessageTemplate.setter
@@ -429,6 +515,10 @@ Condition互斥。
 
     @property
     def CallBack(self):
+        """自定义回调模板
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`
+        """
         return self._CallBack
 
     @CallBack.setter
@@ -437,6 +527,10 @@ Condition互斥。
 
     @property
     def Analysis(self):
+        """多维分析设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AnalysisDimensional
+        """
         return self._Analysis
 
     @Analysis.setter
@@ -445,6 +539,10 @@ Condition互斥。
 
     @property
     def GroupTriggerStatus(self):
+        """分组触发状态。1：开启，0：关闭（默认）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._GroupTriggerStatus
 
     @GroupTriggerStatus.setter
@@ -453,6 +551,10 @@ Condition互斥。
 
     @property
     def GroupTriggerCondition(self):
+        """分组触发条件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._GroupTriggerCondition
 
     @GroupTriggerCondition.setter
@@ -461,6 +563,10 @@ Condition互斥。
 
     @property
     def MonitorObjectType(self):
+        """监控对象类型。0:执行语句共用监控对象;1:每个执行语句单独选择监控对象。 
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MonitorObjectType
 
     @MonitorObjectType.setter
@@ -469,6 +575,10 @@ Condition互斥。
 
     @property
     def AlarmLevel(self):
+        """告警级别。0:警告(Warn);1:提醒(Info);2:紧急 (Critical)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AlarmLevel
 
     @AlarmLevel.setter
@@ -477,6 +587,11 @@ Condition互斥。
 
     @property
     def MultiConditions(self):
+        """多触发条件。与
+Condition互斥。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MultiCondition
+        """
         return self._MultiConditions
 
     @MultiConditions.setter
@@ -594,6 +709,9 @@ class AlarmNotice(AbstractModel):
 
     @property
     def Name(self):
+        """告警通知渠道组名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -602,6 +720,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def Tags(self):
+        """告警通知渠道组绑定的标签信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -610,6 +732,12 @@ class AlarmNotice(AbstractModel):
 
     @property
     def Type(self):
+        """告警模板的类型。可选值：
+<br><li> Trigger - 告警触发</li>
+<br><li> Recovery - 告警恢复</li>
+<br><li> All - 告警触发和告警恢复</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -618,6 +746,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def NoticeReceivers(self):
+        """告警通知模板接收者信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NoticeReceiver
+        """
         return self._NoticeReceivers
 
     @NoticeReceivers.setter
@@ -626,6 +758,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def WebCallbacks(self):
+        """告警通知模板回调信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of WebCallback
+        """
         return self._WebCallbacks
 
     @WebCallbacks.setter
@@ -634,6 +770,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def AlarmNoticeId(self):
+        """告警通知模板ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AlarmNoticeId
 
     @AlarmNoticeId.setter
@@ -642,6 +782,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def NoticeRules(self):
+        """通知规则。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NoticeRule
+        """
         return self._NoticeRules
 
     @NoticeRules.setter
@@ -650,6 +794,11 @@ class AlarmNotice(AbstractModel):
 
     @property
     def AlarmShieldStatus(self):
+        """免登录操作告警开关。
+参数值： 1：关闭 2：开启（默认开启）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AlarmShieldStatus
 
     @AlarmShieldStatus.setter
@@ -658,6 +807,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def JumpDomain(self):
+        """调用链接域名。http:// 或者 https:// 开头，不能/结尾
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._JumpDomain
 
     @JumpDomain.setter
@@ -666,6 +819,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def AlarmNoticeDeliverConfig(self):
+        """投递相关信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.AlarmNoticeDeliverConfig`
+        """
         return self._AlarmNoticeDeliverConfig
 
     @AlarmNoticeDeliverConfig.setter
@@ -674,6 +831,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -682,6 +843,10 @@ class AlarmNotice(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """最近更新时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -752,6 +917,9 @@ class AlarmNoticeDeliverConfig(AbstractModel):
 
     @property
     def DeliverConfig(self):
+        """通知渠道投递日志配置信息。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeliverConfig`
+        """
         return self._DeliverConfig
 
     @DeliverConfig.setter
@@ -760,6 +928,10 @@ class AlarmNoticeDeliverConfig(AbstractModel):
 
     @property
     def ErrMsg(self):
+        """投递失败原因。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrMsg
 
     @ErrMsg.setter
@@ -832,6 +1004,9 @@ class AlarmShieldInfo(AbstractModel):
 
     @property
     def AlarmNoticeId(self):
+        """通知渠道组Id
+        :rtype: str
+        """
         return self._AlarmNoticeId
 
     @AlarmNoticeId.setter
@@ -840,6 +1015,9 @@ class AlarmShieldInfo(AbstractModel):
 
     @property
     def TaskId(self):
+        """屏蔽规则id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -848,6 +1026,9 @@ class AlarmShieldInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """屏蔽开始时间（秒级时间戳）。
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -856,6 +1037,9 @@ class AlarmShieldInfo(AbstractModel):
 
     @property
     def EndTime(self):
+        """屏蔽结束时间（秒级时间戳）。
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -864,6 +1048,9 @@ class AlarmShieldInfo(AbstractModel):
 
     @property
     def Type(self):
+        """屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -872,6 +1059,10 @@ class AlarmShieldInfo(AbstractModel):
 
     @property
     def Rule(self):
+        """屏蔽规则，当Type为2时必填。规则填写方式详见[产品文档](https://cloud.tencent.com/document/product/614/103178#rule)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Rule
 
     @Rule.setter
@@ -880,6 +1071,9 @@ class AlarmShieldInfo(AbstractModel):
 
     @property
     def Reason(self):
+        """屏蔽原因。
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -888,6 +1082,10 @@ class AlarmShieldInfo(AbstractModel):
 
     @property
     def Source(self):
+        """规则创建来源。
+1. 控制台，2.api，3.告警通知
+        :rtype: int
+        """
         return self._Source
 
     @Source.setter
@@ -896,6 +1094,9 @@ class AlarmShieldInfo(AbstractModel):
 
     @property
     def Operator(self):
+        """操作者。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -904,6 +1105,10 @@ class AlarmShieldInfo(AbstractModel):
 
     @property
     def Status(self):
+        """规则状态。
+0：暂未生效，1：生效中，2：已失效
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -912,6 +1117,9 @@ class AlarmShieldInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """规则创建时间。
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -920,6 +1128,9 @@ class AlarmShieldInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """规则更新时间。
+        :rtype: int
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -991,6 +1202,10 @@ class AlarmTarget(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -999,6 +1214,10 @@ class AlarmTarget(AbstractModel):
 
     @property
     def Query(self):
+        """查询语句。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -1007,6 +1226,10 @@ class AlarmTarget(AbstractModel):
 
     @property
     def Number(self):
+        """告警对象序号；从1开始递增。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Number
 
     @Number.setter
@@ -1015,6 +1238,10 @@ class AlarmTarget(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """查询范围起始时间相对于告警执行时间的偏移，单位为分钟，取值为非正，最大值为0，最小值为-1440。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -1023,6 +1250,10 @@ class AlarmTarget(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """查询范围终止时间相对于告警执行时间的偏移，单位为分钟，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -1031,6 +1262,10 @@ class AlarmTarget(AbstractModel):
 
     @property
     def LogsetId(self):
+        """日志集ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogsetId
 
     @LogsetId.setter
@@ -1039,6 +1274,12 @@ class AlarmTarget(AbstractModel):
 
     @property
     def SyntaxRule(self):
+        """检索语法规则，默认值为0。
+0：Lucene语法，1：CQL语法。
+详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SyntaxRule
 
     @SyntaxRule.setter
@@ -1110,6 +1351,9 @@ class AlarmTargetInfo(AbstractModel):
 
     @property
     def LogsetId(self):
+        """日志集ID。
+        :rtype: str
+        """
         return self._LogsetId
 
     @LogsetId.setter
@@ -1118,6 +1362,9 @@ class AlarmTargetInfo(AbstractModel):
 
     @property
     def LogsetName(self):
+        """日志集名称。
+        :rtype: str
+        """
         return self._LogsetName
 
     @LogsetName.setter
@@ -1126,6 +1373,9 @@ class AlarmTargetInfo(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID。
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -1134,6 +1384,9 @@ class AlarmTargetInfo(AbstractModel):
 
     @property
     def TopicName(self):
+        """日志主题名称。
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -1142,6 +1395,9 @@ class AlarmTargetInfo(AbstractModel):
 
     @property
     def Query(self):
+        """查询语句。
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -1150,6 +1406,9 @@ class AlarmTargetInfo(AbstractModel):
 
     @property
     def Number(self):
+        """告警对象序号。
+        :rtype: int
+        """
         return self._Number
 
     @Number.setter
@@ -1158,6 +1417,9 @@ class AlarmTargetInfo(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """查询范围起始时间相对于告警执行时间的偏移，单位为分钟，取值为非正，最大值为0，最小值为-1440。
+        :rtype: int
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -1166,6 +1428,9 @@ class AlarmTargetInfo(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """查询范围终止时间相对于告警执行时间的偏移，单位为分钟，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。
+        :rtype: int
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -1174,6 +1439,12 @@ class AlarmTargetInfo(AbstractModel):
 
     @property
     def SyntaxRule(self):
+        """检索语法规则，默认值为0。
+0：Lucene语法，1：CQL语法。
+详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SyntaxRule
 
     @SyntaxRule.setter
@@ -1182,6 +1453,11 @@ class AlarmTargetInfo(AbstractModel):
 
     @property
     def BizType(self):
+        """主题类型。
+0: 日志主题，1: 指标主题
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BizType
 
     @BizType.setter
@@ -1227,6 +1503,9 @@ class AlertHistoryNotice(AbstractModel):
 
     @property
     def Name(self):
+        """通知渠道组名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1235,6 +1514,9 @@ class AlertHistoryNotice(AbstractModel):
 
     @property
     def AlarmNoticeId(self):
+        """通知渠道组ID
+        :rtype: str
+        """
         return self._AlarmNoticeId
 
     @AlarmNoticeId.setter
@@ -1318,6 +1600,9 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def RecordId(self):
+        """告警历史ID
+        :rtype: str
+        """
         return self._RecordId
 
     @RecordId.setter
@@ -1326,6 +1611,9 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def AlarmId(self):
+        """告警策略ID
+        :rtype: str
+        """
         return self._AlarmId
 
     @AlarmId.setter
@@ -1334,6 +1622,9 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def AlarmName(self):
+        """告警策略名称
+        :rtype: str
+        """
         return self._AlarmName
 
     @AlarmName.setter
@@ -1342,6 +1633,9 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def TopicId(self):
+        """监控对象ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -1350,6 +1644,9 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def TopicName(self):
+        """监控对象名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -1358,6 +1655,9 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def Region(self):
+        """监控对象所属地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -1366,6 +1666,9 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def Trigger(self):
+        """触发条件
+        :rtype: str
+        """
         return self._Trigger
 
     @Trigger.setter
@@ -1374,6 +1677,9 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def TriggerCount(self):
+        """持续周期，持续满足触发条件TriggerCount个周期后，再进行告警
+        :rtype: int
+        """
         return self._TriggerCount
 
     @TriggerCount.setter
@@ -1382,6 +1688,9 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def AlarmPeriod(self):
+        """告警通知发送频率，单位为分钟
+        :rtype: int
+        """
         return self._AlarmPeriod
 
     @AlarmPeriod.setter
@@ -1390,6 +1699,9 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def Notices(self):
+        """通知渠道组
+        :rtype: list of AlertHistoryNotice
+        """
         return self._Notices
 
     @Notices.setter
@@ -1398,6 +1710,9 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def Duration(self):
+        """告警持续时间，单位为分钟
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -1406,6 +1721,9 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def Status(self):
+        """告警状态，0代表未恢复，1代表已恢复，2代表已失效
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1414,6 +1732,9 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def CreateTime(self):
+        """告警发生时间，毫秒级Unix时间戳
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1422,6 +1743,10 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def GroupTriggerCondition(self):
+        """告警分组触发时对应的分组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GroupTriggerConditionInfo
+        """
         return self._GroupTriggerCondition
 
     @GroupTriggerCondition.setter
@@ -1430,6 +1755,10 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def AlarmLevel(self):
+        """告警级别，0代表警告(Warn)，1代表提醒(Info)，2代表紧急 (Critical)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AlarmLevel
 
     @AlarmLevel.setter
@@ -1438,6 +1767,11 @@ class AlertHistoryRecord(AbstractModel):
 
     @property
     def MonitorObjectType(self):
+        """监控对象类型。
+0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MonitorObjectType
 
     @MonitorObjectType.setter
@@ -1549,6 +1883,10 @@ class AnalysisDimensional(AbstractModel):
 
     @property
     def Name(self):
+        """分析名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1557,6 +1895,10 @@ class AnalysisDimensional(AbstractModel):
 
     @property
     def Type(self):
+        """分析类型：query，field ，original
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1565,6 +1907,10 @@ class AnalysisDimensional(AbstractModel):
 
     @property
     def Content(self):
+        """分析内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -1573,6 +1919,50 @@ class AnalysisDimensional(AbstractModel):
 
     @property
     def ConfigInfo(self):
+        """多维分析配置。
+
+当Analysis的Type字段为query（自定义）时，支持
+{
+"Key": "SyntaxRule",  // 语法规则
+"Value": "1"  //0：Lucene语法 ，1： CQL语法
+}
+
+当Analysis的Type字段为field（top5）时,  支持
+ {
+    "Key": "QueryIndex",
+    "Value": "-1" //  -1：自定义， 1：执行语句1， 2：执行语句2
+},{
+    "Key": "CustomQuery", //检索语句。 QueryIndex为-1时有效且必填
+    "Value": "* | select count(*) as count"
+},{
+    "Key": "SyntaxRule", // 查不到这个字段也是老语法（Lucene）
+    "Value": "0"//0:Lucene, 1:CQL
+}       
+
+当Analysis的Type字段为original（原始日志）时,  支持
+{
+    "Key": "Fields",
+    "Value": "__SOURCE__,__HOSTNAME__,__TIMESTAMP__,__PKG_LOGID__,__TAG__.pod_ip"
+}, {
+    "Key": "QueryIndex",
+    "Value": "-1" //  -1：自定义， 1：执行语句1， 2：执行语句2
+},{
+    "Key": "CustomQuery", //  //检索语句。 QueryIndex为-1时有效且必填
+    "Value": "* | select count(*) as count"
+},{
+    "Key": "Format", //显示形式。1：每条日志一行，2：每条日志每个字段一行
+    "Value": "2"
+},
+{
+    "Key": "Limit", //最大日志条数
+    "Value": "5"
+},{
+    "Key": "SyntaxRule", // 查不到这个字段也是老语法
+    "Value": "0"//0:Lucene, 1:CQL
+}
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AlarmAnalysisConfig
+        """
         return self._ConfigInfo
 
     @ConfigInfo.setter
@@ -1617,6 +2007,9 @@ class AnonymousInfo(AbstractModel):
 
     @property
     def Operations(self):
+        """操作列表，支持trackLog(JS/HTTP上传日志  )和realtimeProducer(kafka协议上传日志)
+        :rtype: list of str
+        """
         return self._Operations
 
     @Operations.setter
@@ -1625,6 +2018,9 @@ class AnonymousInfo(AbstractModel):
 
     @property
     def Conditions(self):
+        """条件列表
+        :rtype: list of ConditionInfo
+        """
         return self._Conditions
 
     @Conditions.setter
@@ -1667,6 +2063,9 @@ class ApplyConfigToMachineGroupRequest(AbstractModel):
 
     @property
     def ConfigId(self):
+        """采集配置ID
+        :rtype: str
+        """
         return self._ConfigId
 
     @ConfigId.setter
@@ -1675,6 +2074,9 @@ class ApplyConfigToMachineGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """机器组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -1709,6 +2111,9 @@ class ApplyConfigToMachineGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1754,6 +2159,21 @@ class CallBackInfo(AbstractModel):
 
     @property
     def Body(self):
+        """回调时的Body。
+可将各类告警变量放在请求内容中，详见[帮助文档](https://cloud.tencent.com/document/product/614/74718)。
+如下示例：
+
+```
+{
+"TopicId": "{{ .QueryLog[0][0].topicId }}",
+"key": "{{.Alarm}}",
+"time": "{{ .QueryLog[0][0].time }}",
+"log": "{{ .QueryLog[0][0].content.__CONTENT__ }}",
+"namespace": "{{ .QueryLog[0][0].content.__TAG__.namespace }}"
+}
+```
+        :rtype: str
+        """
         return self._Body
 
     @Body.setter
@@ -1762,6 +2182,14 @@ class CallBackInfo(AbstractModel):
 
     @property
     def Headers(self):
+        """回调时的HTTP请求头部字段。
+例如：下面请求头部字段来告知服务器请求主体的内容类型为JSON。
+```
+"Content-Type: application/json"
+```
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Headers
 
     @Headers.setter
@@ -1802,6 +2230,9 @@ class CheckFunctionRequest(AbstractModel):
 
     @property
     def EtlContent(self):
+        """用户输入的加工语句
+        :rtype: str
+        """
         return self._EtlContent
 
     @EtlContent.setter
@@ -1810,6 +2241,9 @@ class CheckFunctionRequest(AbstractModel):
 
     @property
     def DstResources(self):
+        """加工任务目的topic_id以及别名
+        :rtype: list of DataTransformResouceInfo
+        """
         return self._DstResources
 
     @DstResources.setter
@@ -1818,6 +2252,9 @@ class CheckFunctionRequest(AbstractModel):
 
     @property
     def FuncType(self):
+        """数据加工目标主题的类型. 1 固定主题 2动态创建
+        :rtype: int
+        """
         return self._FuncType
 
     @FuncType.setter
@@ -1864,6 +2301,9 @@ class CheckFunctionResponse(AbstractModel):
 
     @property
     def ErrorCode(self):
+        """失败错误码
+        :rtype: int
+        """
         return self._ErrorCode
 
     @ErrorCode.setter
@@ -1872,6 +2312,9 @@ class CheckFunctionResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
+        """失败错误信息
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -1880,6 +2323,9 @@ class CheckFunctionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1921,6 +2367,9 @@ KafkaType为1时，ServerAddr必填
 
     @property
     def KafkaType(self):
+        """导入Kafka类型，0: 腾讯云CKafka；1: 用户自建Kafka。
+        :rtype: int
+        """
         return self._KafkaType
 
     @KafkaType.setter
@@ -1929,6 +2378,10 @@ KafkaType为1时，ServerAddr必填
 
     @property
     def KafkaInstance(self):
+        """腾讯云CKafka实例ID。
+KafkaType为0时，KafkaInstance必填
+        :rtype: str
+        """
         return self._KafkaInstance
 
     @KafkaInstance.setter
@@ -1937,6 +2390,10 @@ KafkaType为1时，ServerAddr必填
 
     @property
     def ServerAddr(self):
+        """服务地址。
+KafkaType为1时，ServerAddr必填
+        :rtype: str
+        """
         return self._ServerAddr
 
     @ServerAddr.setter
@@ -1945,6 +2402,9 @@ KafkaType为1时，ServerAddr必填
 
     @property
     def IsEncryptionAddr(self):
+        """ServerAddr是否为加密连接，默认值false。当KafkaType为1用户自建kafka时生效。
+        :rtype: bool
+        """
         return self._IsEncryptionAddr
 
     @IsEncryptionAddr.setter
@@ -1953,6 +2413,9 @@ KafkaType为1时，ServerAddr必填
 
     @property
     def Protocol(self):
+        """加密访问协议。KafkaType参数为1并且IsEncryptionAddr参数为true时必填。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -1996,6 +2459,10 @@ class CheckRechargeKafkaServerResponse(AbstractModel):
 
     @property
     def Status(self):
+        """Kafka集群可访问状态，0：可正常访问 ...
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2004,6 +2471,9 @@ class CheckRechargeKafkaServerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2045,6 +2515,9 @@ class Ckafka(AbstractModel):
 
     @property
     def Vip(self):
+        """Ckafka 的 Vip
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -2053,6 +2526,9 @@ class Ckafka(AbstractModel):
 
     @property
     def Vport(self):
+        """Ckafka 的 Vport
+        :rtype: str
+        """
         return self._Vport
 
     @Vport.setter
@@ -2061,6 +2537,9 @@ class Ckafka(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Ckafka 的 InstanceId
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2069,6 +2548,9 @@ class Ckafka(AbstractModel):
 
     @property
     def InstanceName(self):
+        """Ckafka 的 InstanceName
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -2077,6 +2559,9 @@ class Ckafka(AbstractModel):
 
     @property
     def TopicId(self):
+        """Ckafka 的 TopicId
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -2085,6 +2570,9 @@ class Ckafka(AbstractModel):
 
     @property
     def TopicName(self):
+        """Ckafka 的 TopicName
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -2123,6 +2611,9 @@ class CloseKafkaConsumerRequest(AbstractModel):
 
     @property
     def FromTopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._FromTopicId
 
     @FromTopicId.setter
@@ -2156,6 +2647,9 @@ class CloseKafkaConsumerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2185,6 +2679,13 @@ class CollectConfig(AbstractModel):
 
     @property
     def Name(self):
+        """指定采集类型的采集配置名称信息。
+<li>当CollectInfo中Type为0：表示元数据配置，name为元数据名称。
+目前支持"container_id"，"container_name"，"image_name"，"namespace"，"pod_uid"，"pod_name"，"pod_ip"。
+</li>
+<li>当CollectInfo中Type为1：指定pod label，name为指定pod label名称。</li>
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2227,6 +2728,12 @@ class CollectInfo(AbstractModel):
 
     @property
     def Type(self):
+        """采集类型，必填字段。
+<li>0：元数据配置。</li>
+<li>1：指定Pod Label。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -2235,6 +2742,12 @@ class CollectInfo(AbstractModel):
 
     @property
     def CollectConfigs(self):
+        """指定采集类型的采集配置信息。
+<li>当Type为0时，CollectConfigs不允许为空。</li>
+<li>当Type为1时，CollectConfigs为空时，表示选择所有Pod Label；否则CollectConfigs为指定Pod Label。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CollectConfig
+        """
         return self._CollectConfigs
 
     @CollectConfigs.setter
@@ -2277,6 +2790,9 @@ class Column(AbstractModel):
 
     @property
     def Name(self):
+        """列的名字
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2285,6 +2801,9 @@ class Column(AbstractModel):
 
     @property
     def Type(self):
+        """列的属性
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2319,6 +2838,9 @@ class CompressInfo(AbstractModel):
 
     @property
     def Format(self):
+        """压缩格式，支持gzip、lzop、snappy和none不压缩
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -2358,6 +2880,9 @@ class ConditionInfo(AbstractModel):
 
     @property
     def Attributes(self):
+        """条件属性，目前只支持VpcID
+        :rtype: str
+        """
         return self._Attributes
 
     @Attributes.setter
@@ -2366,6 +2891,9 @@ class ConditionInfo(AbstractModel):
 
     @property
     def Rule(self):
+        """条件规则，1:等于，2:不等于
+        :rtype: int
+        """
         return self._Rule
 
     @Rule.setter
@@ -2374,6 +2902,9 @@ class ConditionInfo(AbstractModel):
 
     @property
     def ConditionValue(self):
+        """对应条件属性的值
+        :rtype: str
+        """
         return self._ConditionValue
 
     @ConditionValue.setter
@@ -2487,6 +3018,9 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def ConfigExtraId(self):
+        """采集规则扩展配置ID
+        :rtype: str
+        """
         return self._ConfigExtraId
 
     @ConfigExtraId.setter
@@ -2495,6 +3029,9 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def Name(self):
+        """采集规则名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2503,6 +3040,9 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -2511,6 +3051,9 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def Type(self):
+        """类型：container_stdout、container_file、host_file
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2519,6 +3062,10 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def HostFile(self):
+        """节点文件配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.HostFileInfo`
+        """
         return self._HostFile
 
     @HostFile.setter
@@ -2527,6 +3074,10 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def ContainerFile(self):
+        """容器文件路径信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ContainerFileInfo`
+        """
         return self._ContainerFile
 
     @ContainerFile.setter
@@ -2535,6 +3086,10 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def ContainerStdout(self):
+        """容器标准输出信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ContainerStdoutInfo`
+        """
         return self._ContainerStdout
 
     @ContainerStdout.setter
@@ -2543,6 +3098,10 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def LogFormat(self):
+        """日志格式化方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogFormat
 
     @LogFormat.setter
@@ -2551,6 +3110,10 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def LogType(self):
+        """采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogType
 
     @LogType.setter
@@ -2559,6 +3122,10 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def ExtractRule(self):
+        """提取规则，如果设置了ExtractRule，则必须设置LogType
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        """
         return self._ExtractRule
 
     @ExtractRule.setter
@@ -2567,6 +3134,10 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def ExcludePaths(self):
+        """采集黑名单路径列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExcludePathInfo
+        """
         return self._ExcludePaths
 
     @ExcludePaths.setter
@@ -2575,6 +3146,9 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -2583,6 +3157,9 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2591,6 +3168,10 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def UserDefineRule(self):
+        """用户自定义解析字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserDefineRule
 
     @UserDefineRule.setter
@@ -2599,6 +3180,9 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def GroupId(self):
+        """机器组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -2607,6 +3191,10 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def ConfigFlag(self):
+        """自建采集配置标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ConfigFlag
 
     @ConfigFlag.setter
@@ -2615,6 +3203,10 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def LogsetId(self):
+        """日志集ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogsetId
 
     @LogsetId.setter
@@ -2623,6 +3215,10 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def LogsetName(self):
+        """日志集name
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogsetName
 
     @LogsetName.setter
@@ -2631,6 +3227,10 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def TopicName(self):
+        """日志主题name
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -2639,6 +3239,10 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def CollectInfos(self):
+        """采集相关配置信息。详情见 CollectInfo复杂类型配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CollectInfo
+        """
         return self._CollectInfos
 
     @CollectInfos.setter
@@ -2647,6 +3251,14 @@ class ConfigExtraInfo(AbstractModel):
 
     @property
     def AdvancedConfig(self):
+        """高级采集配置。 Json字符串， Key/Value定义为如下：
+- ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+- ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+- ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AdvancedConfig
 
     @AdvancedConfig.setter
@@ -2776,6 +3388,9 @@ class ConfigInfo(AbstractModel):
 
     @property
     def ConfigId(self):
+        """采集规则配置ID
+        :rtype: str
+        """
         return self._ConfigId
 
     @ConfigId.setter
@@ -2784,6 +3399,10 @@ class ConfigInfo(AbstractModel):
 
     @property
     def Name(self):
+        """采集规则配置名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2792,6 +3411,10 @@ class ConfigInfo(AbstractModel):
 
     @property
     def LogFormat(self):
+        """日志格式化方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogFormat
 
     @LogFormat.setter
@@ -2800,6 +3423,10 @@ class ConfigInfo(AbstractModel):
 
     @property
     def Path(self):
+        """日志采集路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -2808,6 +3435,19 @@ class ConfigInfo(AbstractModel):
 
     @property
     def LogType(self):
+        """采集的日志类型。
+- json_log代表：JSON-文件日志（详见[使用 JSON 提取模式采集日志](https://cloud.tencent.com/document/product/614/17419)）；
+- delimiter_log代表：分隔符-文件日志（详见[使用分隔符提取模式采集日志](https://cloud.tencent.com/document/product/614/17420)）；
+- minimalist_log代表：单行全文-文件日志（详见[使用单行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17421)）；
+- fullregex_log代表：单行完全正则-文件日志（详见[使用单行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52365)）；
+- multiline_log代表：多行全文-文件日志（详见[使用多行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17422)）；
+- multiline_fullregex_log代表：多行完全正则-文件日志（详见[使用多行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52366)）；
+- user_define_log代表：组合解析（适用于多格式嵌套的日志，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)）；
+- service_syslog代表：syslog 采集（详见[采集 Syslog](https://cloud.tencent.com/document/product/614/81454)）；
+- windows_event_log代表：Windows事件日志（详见[采集 Windows 事件日志](https://cloud.tencent.com/document/product/614/96678)）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogType
 
     @LogType.setter
@@ -2816,6 +3456,10 @@ class ConfigInfo(AbstractModel):
 
     @property
     def ExtractRule(self):
+        """提取规则，如果设置了ExtractRule，则必须设置LogType
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        """
         return self._ExtractRule
 
     @ExtractRule.setter
@@ -2824,6 +3468,10 @@ class ConfigInfo(AbstractModel):
 
     @property
     def ExcludePaths(self):
+        """采集黑名单路径列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExcludePathInfo
+        """
         return self._ExcludePaths
 
     @ExcludePaths.setter
@@ -2832,6 +3480,9 @@ class ConfigInfo(AbstractModel):
 
     @property
     def Output(self):
+        """采集配置所属日志主题ID即TopicId
+        :rtype: str
+        """
         return self._Output
 
     @Output.setter
@@ -2840,6 +3491,10 @@ class ConfigInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -2848,6 +3503,9 @@ class ConfigInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2856,6 +3514,10 @@ class ConfigInfo(AbstractModel):
 
     @property
     def UserDefineRule(self):
+        """用户自定义解析字符串，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserDefineRule
 
     @UserDefineRule.setter
@@ -2864,6 +3526,17 @@ class ConfigInfo(AbstractModel):
 
     @property
     def AdvancedConfig(self):
+        """高级采集配置。 Json字符串， Key/Value定义为如下：
+- ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+- ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+- ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+样例：
+`{\"ClsAgentFileTimeout\":0,\"ClsAgentMaxDepth\":10,\"ClsAgentParseFailMerge\":true}`
+
+控制台默认占位值：`{\"ClsAgentDefault\":0}`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AdvancedConfig
 
     @AdvancedConfig.setter
@@ -2958,6 +3631,9 @@ class ConsoleSharingConfig(AbstractModel):
 
     @property
     def Name(self):
+        """分享链接名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2966,6 +3642,9 @@ class ConsoleSharingConfig(AbstractModel):
 
     @property
     def Type(self):
+        """仪表盘: 1; 检索页:2
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -2974,6 +3653,9 @@ class ConsoleSharingConfig(AbstractModel):
 
     @property
     def DurationMilliseconds(self):
+        """分享链接有效期，单位：毫秒，最长支持30天
+        :rtype: int
+        """
         return self._DurationMilliseconds
 
     @DurationMilliseconds.setter
@@ -2982,6 +3664,9 @@ class ConsoleSharingConfig(AbstractModel):
 
     @property
     def Resources(self):
+        """允许访问的资源列表，目前仅支持一个Resource
+        :rtype: list of str
+        """
         return self._Resources
 
     @Resources.setter
@@ -2990,6 +3675,12 @@ class ConsoleSharingConfig(AbstractModel):
 
     @property
     def Domain(self):
+        """分享链接域名，可选范围
+- 公网匿名分享：填写clsshare.com
+- datasight内网匿名分享(若开启)：datasight内网域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -2998,6 +3689,10 @@ class ConsoleSharingConfig(AbstractModel):
 
     @property
     def VerifyCode(self):
+        """验证码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VerifyCode
 
     @VerifyCode.setter
@@ -3006,6 +3701,9 @@ class ConsoleSharingConfig(AbstractModel):
 
     @property
     def StartTime(self):
+        """默认查询范围的开始时间点，支持绝对时间(13位Unix时间戳)或相对时间表达式
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3014,6 +3712,9 @@ class ConsoleSharingConfig(AbstractModel):
 
     @property
     def EndTime(self):
+        """默认查询范围的结束时间点，支持绝对时间(13位Unix时间戳)或相对时间表达式。注意，结束时间点要大于开始时间点
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3022,6 +3723,10 @@ class ConsoleSharingConfig(AbstractModel):
 
     @property
     def NowTime(self):
+        """仅当StartTime/EndTime为相对时间时使用，基于NowTime计算绝对时间，默认为创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._NowTime
 
     @NowTime.setter
@@ -3030,6 +3735,10 @@ class ConsoleSharingConfig(AbstractModel):
 
     @property
     def Params(self):
+        """默认的检索分析语句，仅当Type为2时使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ConsoleSharingParam
+        """
         return self._Params
 
     @Params.setter
@@ -3038,6 +3747,9 @@ class ConsoleSharingConfig(AbstractModel):
 
     @property
     def IsLockTimeRange(self):
+        """是否允许访问者自行修改检索分析时间范围。默认不锁定（false）
+        :rtype: bool
+        """
         return self._IsLockTimeRange
 
     @IsLockTimeRange.setter
@@ -3046,6 +3758,9 @@ class ConsoleSharingConfig(AbstractModel):
 
     @property
     def IsLockQuery(self):
+        """是否允许访问者自行修改日志检索语句。在检索页分享中表示检索语句锁定状态；在仪表盘中表示过滤变量锁定状态。默认不锁定（false）
+        :rtype: bool
+        """
         return self._IsLockQuery
 
     @IsLockQuery.setter
@@ -3054,6 +3769,10 @@ class ConsoleSharingConfig(AbstractModel):
 
     @property
     def IsSupportLogExport(self):
+        """检索页分享是否允许访问者下载日志，默认不允许（false）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsSupportLogExport
 
     @IsSupportLogExport.setter
@@ -3109,6 +3828,10 @@ class ConsoleSharingParam(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3117,6 +3840,10 @@ class ConsoleSharingParam(AbstractModel):
 
     @property
     def Value(self):
+        """值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -3185,6 +3912,11 @@ JsonType为1：转义。示例：
 
     @property
     def EnableTag(self):
+        """是否投递 TAG 信息。
+当EnableTag为true时，表示投递TAG元信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._EnableTag
 
     @EnableTag.setter
@@ -3193,6 +3925,10 @@ JsonType为1：转义。示例：
 
     @property
     def MetaFields(self):
+        """需要投递的元数据列表，目前仅支持：\_\_SOURCE\_\_，\_\_FILENAME\_\_，\_\_TIMESTAMP\_\_，\_\_HOSTNAME\_\_和\_\_PKGID\_\_
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._MetaFields
 
     @MetaFields.setter
@@ -3201,6 +3937,19 @@ JsonType为1：转义。示例：
 
     @property
     def TagJsonNotTiled(self):
+        """当EnableTag为true时，必须填写TagJsonNotTiled字段。
+TagJsonNotTiled用于标识tag信息是否json平铺。
+
+TagJsonNotTiled为true时不平铺，示例：
+TAG信息：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
+不平铺：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
+
+TagJsonNotTiled为false时平铺，示例：
+TAG信息：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
+平铺：`{"__TAG__.fieldA":200,"__TAG__.fieldB":"text"}`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._TagJsonNotTiled
 
     @TagJsonNotTiled.setter
@@ -3209,6 +3958,10 @@ JsonType为1：转义。示例：
 
     @property
     def TimestampAccuracy(self):
+        """投递时间戳精度，可选项 [1：秒；2：毫秒] ，默认是1。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TimestampAccuracy
 
     @TimestampAccuracy.setter
@@ -3217,6 +3970,17 @@ JsonType为1：转义。示例：
 
     @property
     def JsonType(self):
+        """投递Json格式。
+JsonType为0：和原始日志一致，不转义。示例：
+日志原文：`{"a":"aa", "b":{"b1":"b1b1", "c1":"c1c1"}}`
+投递到Ckafka：`{"a":"aa", "b":{"b1":"b1b1", "c1":"c1c1"}}`
+
+JsonType为1：转义。示例：
+日志原文：`{"a":"aa", "b":{"b1":"b1b1", "c1":"c1c1"}}`
+投递到Ckafka：`{"a":"aa","b":"{\"b1\":\"b1b1\", \"c1\":\"c1c1\"}"}`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._JsonType
 
     @JsonType.setter
@@ -3286,6 +4050,9 @@ class ContainerFileInfo(AbstractModel):
 
     @property
     def Namespace(self):
+        """namespace可以多个，用分隔号分割,例如A,B
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -3294,6 +4061,9 @@ class ContainerFileInfo(AbstractModel):
 
     @property
     def Container(self):
+        """容器名称
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -3302,6 +4072,9 @@ class ContainerFileInfo(AbstractModel):
 
     @property
     def LogPath(self):
+        """日志文件夹
+        :rtype: str
+        """
         return self._LogPath
 
     @LogPath.setter
@@ -3310,6 +4083,9 @@ class ContainerFileInfo(AbstractModel):
 
     @property
     def FilePattern(self):
+        """日志名称
+        :rtype: str
+        """
         return self._FilePattern
 
     @FilePattern.setter
@@ -3318,6 +4094,9 @@ class ContainerFileInfo(AbstractModel):
 
     @property
     def FilePaths(self):
+        """日志文件信息
+        :rtype: list of FilePathInfo
+        """
         return self._FilePaths
 
     @FilePaths.setter
@@ -3326,6 +4105,10 @@ class ContainerFileInfo(AbstractModel):
 
     @property
     def IncludeLabels(self):
+        """pod标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._IncludeLabels
 
     @IncludeLabels.setter
@@ -3334,6 +4117,10 @@ class ContainerFileInfo(AbstractModel):
 
     @property
     def WorkLoad(self):
+        """工作负载信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ContainerWorkLoadInfo`
+        """
         return self._WorkLoad
 
     @WorkLoad.setter
@@ -3342,6 +4129,10 @@ class ContainerFileInfo(AbstractModel):
 
     @property
     def ExcludeNamespace(self):
+        """需要排除的namespace可以多个，用分隔号分割,例如A,B
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExcludeNamespace
 
     @ExcludeNamespace.setter
@@ -3350,6 +4141,10 @@ class ContainerFileInfo(AbstractModel):
 
     @property
     def ExcludeLabels(self):
+        """需要排除的pod标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ExcludeLabels
 
     @ExcludeLabels.setter
@@ -3358,6 +4153,10 @@ class ContainerFileInfo(AbstractModel):
 
     @property
     def CustomLabels(self):
+        """metadata信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._CustomLabels
 
     @CustomLabels.setter
@@ -3435,6 +4234,9 @@ class ContainerStdoutInfo(AbstractModel):
 
     @property
     def AllContainers(self):
+        """是否所有容器
+        :rtype: bool
+        """
         return self._AllContainers
 
     @AllContainers.setter
@@ -3443,6 +4245,10 @@ class ContainerStdoutInfo(AbstractModel):
 
     @property
     def Container(self):
+        """container为空表所有的，不为空采集指定的容器
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -3451,6 +4257,10 @@ class ContainerStdoutInfo(AbstractModel):
 
     @property
     def Namespace(self):
+        """namespace可以多个，用分隔号分割,例如A,B；为空或者没有这个字段，表示所有namespace
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -3459,6 +4269,10 @@ class ContainerStdoutInfo(AbstractModel):
 
     @property
     def IncludeLabels(self):
+        """pod标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._IncludeLabels
 
     @IncludeLabels.setter
@@ -3467,6 +4281,10 @@ class ContainerStdoutInfo(AbstractModel):
 
     @property
     def WorkLoads(self):
+        """工作负载信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ContainerWorkLoadInfo
+        """
         return self._WorkLoads
 
     @WorkLoads.setter
@@ -3475,6 +4293,10 @@ class ContainerStdoutInfo(AbstractModel):
 
     @property
     def ExcludeNamespace(self):
+        """需要排除的namespace可以多个，用分隔号分割,例如A,B
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExcludeNamespace
 
     @ExcludeNamespace.setter
@@ -3483,6 +4305,10 @@ class ContainerStdoutInfo(AbstractModel):
 
     @property
     def ExcludeLabels(self):
+        """需要排除的pod标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ExcludeLabels
 
     @ExcludeLabels.setter
@@ -3491,6 +4317,10 @@ class ContainerStdoutInfo(AbstractModel):
 
     @property
     def CustomLabels(self):
+        """metadata信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._CustomLabels
 
     @CustomLabels.setter
@@ -3547,6 +4377,9 @@ class ContainerWorkLoadInfo(AbstractModel):
 
     @property
     def Kind(self):
+        """工作负载的类型
+        :rtype: str
+        """
         return self._Kind
 
     @Kind.setter
@@ -3555,6 +4388,9 @@ class ContainerWorkLoadInfo(AbstractModel):
 
     @property
     def Name(self):
+        """工作负载的名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3563,6 +4399,10 @@ class ContainerWorkLoadInfo(AbstractModel):
 
     @property
     def Container(self):
+        """容器名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -3571,6 +4411,10 @@ class ContainerWorkLoadInfo(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -3619,6 +4463,9 @@ class ContentInfo(AbstractModel):
 
     @property
     def Format(self):
+        """内容格式，支持json、csv
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -3627,6 +4474,10 @@ class ContentInfo(AbstractModel):
 
     @property
     def Csv(self):
+        """csv格式内容描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CsvInfo`
+        """
         return self._Csv
 
     @Csv.setter
@@ -3635,6 +4486,10 @@ class ContentInfo(AbstractModel):
 
     @property
     def Json(self):
+        """json格式内容描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.JsonInfo`
+        """
         return self._Json
 
     @Json.setter
@@ -3643,6 +4498,10 @@ class ContentInfo(AbstractModel):
 
     @property
     def Parquet(self):
+        """parquet格式内容描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ParquetInfo`
+        """
         return self._Parquet
 
     @Parquet.setter
@@ -3751,6 +4610,10 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def Id(self):
+        """COS导入配置ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -3759,6 +4622,10 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -3767,6 +4634,10 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def LogsetId(self):
+        """日志集ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogsetId
 
     @LogsetId.setter
@@ -3775,6 +4646,10 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def Name(self):
+        """COS导入任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3783,6 +4658,10 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def Bucket(self):
+        """COS存储桶
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -3791,6 +4670,10 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def BucketRegion(self):
+        """COS存储桶所在地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BucketRegion
 
     @BucketRegion.setter
@@ -3799,6 +4682,10 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def Prefix(self):
+        """COS文件所在文件夹的前缀
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Prefix
 
     @Prefix.setter
@@ -3807,6 +4694,11 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def LogType(self):
+        """采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文；
+默认为minimalist_log
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogType
 
     @LogType.setter
@@ -3815,6 +4707,10 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def Status(self):
+        """状态   status 0: 已创建, 1: 运行中, 2: 已停止, 3: 已完成, 4: 运行失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -3823,6 +4719,10 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def Enable(self):
+        """是否启用:   0： 未启用  ， 1：启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -3831,6 +4731,10 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3839,6 +4743,10 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -3847,6 +4755,10 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def Progress(self):
+        """进度条百分值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -3855,6 +4767,10 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def Compress(self):
+        """supported: "", "gzip", "lzop", "snappy”; 默认空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Compress
 
     @Compress.setter
@@ -3863,6 +4779,10 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def ExtractRuleInfo(self):
+        """见： ExtractRuleInfo 结构描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        """
         return self._ExtractRuleInfo
 
     @ExtractRuleInfo.setter
@@ -3871,6 +4791,10 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def TaskType(self):
+        """COS导入任务类型。1：一次性导入任务；2：持续性导入任务。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -3879,6 +4803,10 @@ class CosRechargeInfo(AbstractModel):
 
     @property
     def Metadata(self):
+        """元数据。支持 bucket，object。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Metadata
 
     @Metadata.setter
@@ -3969,6 +4897,9 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """通知渠道组名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3977,6 +4908,9 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签描述列表，通过指定该参数可以同时绑定标签到相应的通知渠道组。最大支持50个标签键值对，并且不能有重复的键值对。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -3985,6 +4919,13 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def Type(self):
+        """【简易模式】（简易模式/告警模式二选一，分别配置相应参数）
+需要发送通知的告警类型。可选值：
+- Trigger - 告警触发
+- Recovery - 告警恢复
+- All - 告警触发和告警恢复
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3993,6 +4934,10 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def NoticeReceivers(self):
+        """【简易模式】（简易模式/告警模式二选一，分别配置相应参数）
+通知接收对象。
+        :rtype: list of NoticeReceiver
+        """
         return self._NoticeReceivers
 
     @NoticeReceivers.setter
@@ -4001,6 +4946,10 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def WebCallbacks(self):
+        """【简易模式】（简易模式/告警模式二选一，分别配置相应参数）
+接口回调信息（包括企业微信、钉钉、飞书）。
+        :rtype: list of WebCallback
+        """
         return self._WebCallbacks
 
     @WebCallbacks.setter
@@ -4009,6 +4958,10 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def NoticeRules(self):
+        """【高级模式】（简易模式/告警模式二选一，分别配置相应参数）
+通知规则。
+        :rtype: list of NoticeRule
+        """
         return self._NoticeRules
 
     @NoticeRules.setter
@@ -4017,6 +4970,9 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def JumpDomain(self):
+        """查询数据链接。http:// 或者 https:// 开头，不能/结尾
+        :rtype: str
+        """
         return self._JumpDomain
 
     @JumpDomain.setter
@@ -4025,6 +4981,12 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def DeliverStatus(self):
+        """投递日志开关。可取值如下：
+1：关闭（默认值）；
+2：开启 
+投递日志开关开启时， DeliverConfig参数必填。
+        :rtype: int
+        """
         return self._DeliverStatus
 
     @DeliverStatus.setter
@@ -4033,6 +4995,9 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def DeliverConfig(self):
+        """投递日志配置参数。当DeliverStatus开启时，必填。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeliverConfig`
+        """
         return self._DeliverConfig
 
     @DeliverConfig.setter
@@ -4041,6 +5006,11 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def AlarmShieldStatus(self):
+        """免登录操作告警开关。可取值如下：
+-      1：关闭
+-      2：开启（默认值）
+        :rtype: int
+        """
         return self._AlarmShieldStatus
 
     @AlarmShieldStatus.setter
@@ -4108,6 +5078,9 @@ class CreateAlarmNoticeResponse(AbstractModel):
 
     @property
     def AlarmNoticeId(self):
+        """告警模板ID
+        :rtype: str
+        """
         return self._AlarmNoticeId
 
     @AlarmNoticeId.setter
@@ -4116,6 +5089,9 @@ class CreateAlarmNoticeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4218,6 +5194,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Name(self):
+        """告警策略名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4226,6 +5205,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def AlarmTargets(self):
+        """监控对象列表。
+        :rtype: list of AlarmTarget
+        """
         return self._AlarmTargets
 
     @AlarmTargets.setter
@@ -4234,6 +5216,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def MonitorTime(self):
+        """监控任务运行时间点。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MonitorTime`
+        """
         return self._MonitorTime
 
     @MonitorTime.setter
@@ -4242,6 +5227,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def TriggerCount(self):
+        """持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。
+        :rtype: int
+        """
         return self._TriggerCount
 
     @TriggerCount.setter
@@ -4250,6 +5238,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def AlarmPeriod(self):
+        """告警重复的周期，单位是分钟。取值范围是0~1440。
+        :rtype: int
+        """
         return self._AlarmPeriod
 
     @AlarmPeriod.setter
@@ -4258,6 +5249,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def AlarmNoticeIds(self):
+        """关联的告警通知模板列表。
+        :rtype: list of str
+        """
         return self._AlarmNoticeIds
 
     @AlarmNoticeIds.setter
@@ -4266,6 +5260,12 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Condition(self):
+        """触发条件
+ 注意:  
+- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+
+        :rtype: str
+        """
         return self._Condition
 
     @Condition.setter
@@ -4274,6 +5274,13 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def AlarmLevel(self):
+        """告警级别
+0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。
+注意:  
+- 不填则默认为0。
+- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+        :rtype: int
+        """
         return self._AlarmLevel
 
     @AlarmLevel.setter
@@ -4282,6 +5289,14 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def MultiConditions(self):
+        """多触发条件
+ 注意:  
+- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+
+
+
+        :rtype: list of MultiCondition
+        """
         return self._MultiConditions
 
     @MultiConditions.setter
@@ -4290,6 +5305,10 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Status(self):
+        """是否开启告警策略。
+默认值为true
+        :rtype: bool
+        """
         return self._Status
 
     @Status.setter
@@ -4298,6 +5317,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Enable(self):
+        """该参数已废弃，请使用Status参数控制是否开启告警策略。
+        :rtype: bool
+        """
         return self._Enable
 
     @Enable.setter
@@ -4306,6 +5328,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def MessageTemplate(self):
+        """用户自定义告警内容
+        :rtype: str
+        """
         return self._MessageTemplate
 
     @MessageTemplate.setter
@@ -4314,6 +5339,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def CallBack(self):
+        """用户自定义回调
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`
+        """
         return self._CallBack
 
     @CallBack.setter
@@ -4322,6 +5350,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Analysis(self):
+        """多维分析
+        :rtype: list of AnalysisDimensional
+        """
         return self._Analysis
 
     @Analysis.setter
@@ -4330,6 +5361,10 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def GroupTriggerStatus(self):
+        """分组触发状态。
+默认值false
+        :rtype: bool
+        """
         return self._GroupTriggerStatus
 
     @GroupTriggerStatus.setter
@@ -4338,6 +5373,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def GroupTriggerCondition(self):
+        """分组触发条件。
+        :rtype: list of str
+        """
         return self._GroupTriggerCondition
 
     @GroupTriggerCondition.setter
@@ -4346,6 +5384,11 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Tags(self):
+        """标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。
+
+最大支持10个标签键值对，并且不能有重复的键值对。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -4354,6 +5397,12 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def MonitorObjectType(self):
+        """监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
+不填则默认为0。
+当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
+
+        :rtype: int
+        """
         return self._MonitorObjectType
 
     @MonitorObjectType.setter
@@ -4362,6 +5411,12 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Classifications(self):
+        """告警附加分类信息列表。
+Classifications元素个数不能超过20个。
+Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 `^[a-z]([a-z0-9_]{0,49})$`。
+Classifications元素的Value长度不能超过200个字符。
+        :rtype: list of AlarmClassification
+        """
         return self._Classifications
 
     @Classifications.setter
@@ -4445,6 +5500,9 @@ class CreateAlarmResponse(AbstractModel):
 
     @property
     def AlarmId(self):
+        """告警策略ID。
+        :rtype: str
+        """
         return self._AlarmId
 
     @AlarmId.setter
@@ -4453,6 +5511,9 @@ class CreateAlarmResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4494,6 +5555,9 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def AlarmNoticeId(self):
+        """通知渠道组id。
+        :rtype: str
+        """
         return self._AlarmNoticeId
 
     @AlarmNoticeId.setter
@@ -4502,6 +5566,9 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """屏蔽开始时间（秒级时间戳）。
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4510,6 +5577,9 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """屏蔽结束时间（秒级时间戳）。
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4518,6 +5588,9 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def Type(self):
+        """屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -4526,6 +5599,9 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def Reason(self):
+        """屏蔽原因。
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -4534,6 +5610,9 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def Rule(self):
+        """屏蔽规则，当Type为2时必填。规则填写方式详见[产品文档](https://cloud.tencent.com/document/product/614/103178#rule)。
+        :rtype: str
+        """
         return self._Rule
 
     @Rule.setter
@@ -4575,6 +5654,9 @@ class CreateAlarmShieldResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """屏蔽规则ID。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4583,6 +5665,9 @@ class CreateAlarmShieldResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4681,6 +5766,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def Name(self):
+        """采集配置规程名称，最长63个字符，只能包含小写字符、数字及分隔符（“-”），且必须以小写字符开头，数字或小写字符结尾
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4689,6 +5777,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题id
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -4697,6 +5788,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def Type(self):
+        """日志源类型。支持 container_stdout：容器标准输出；container_file：容器文件路径；host_file：节点文件路径。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -4705,6 +5799,16 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def LogType(self):
+        """采集的日志类型，默认为minimalist_log。支持以下类型：
+- json_log代表：JSON-文件日志（详见[使用 JSON 提取模式采集日志](https://cloud.tencent.com/document/product/614/17419)）；
+- delimiter_log代表：分隔符-文件日志（详见[使用分隔符提取模式采集日志](https://cloud.tencent.com/document/product/614/17420)）；
+- minimalist_log代表：单行全文-文件日志（详见[使用单行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17421)）；
+- fullregex_log代表：单行完全正则-文件日志（详见[使用单行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52365)）；
+- multiline_log代表：多行全文-文件日志（详见[使用多行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17422)）；
+- multiline_fullregex_log代表：多行完全正则-文件日志（详见[使用多行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52366)）；
+- user_define_log代表：组合解析（适用于多格式嵌套的日志，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)）。
+        :rtype: str
+        """
         return self._LogType
 
     @LogType.setter
@@ -4713,6 +5817,11 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def ConfigFlag(self):
+        """采集配置标记。
+- 目前只支持label_k8s，用于标记自建k8s集群使用的采集配置
+
+        :rtype: str
+        """
         return self._ConfigFlag
 
     @ConfigFlag.setter
@@ -4721,6 +5830,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def LogsetId(self):
+        """日志集id
+        :rtype: str
+        """
         return self._LogsetId
 
     @LogsetId.setter
@@ -4729,6 +5841,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def LogsetName(self):
+        """日志集name
+        :rtype: str
+        """
         return self._LogsetName
 
     @LogsetName.setter
@@ -4737,6 +5852,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """日志主题名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -4745,6 +5863,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def HostFile(self):
+        """节点文件路径类型配置。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.HostFileInfo`
+        """
         return self._HostFile
 
     @HostFile.setter
@@ -4753,6 +5874,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def ContainerFile(self):
+        """容器文件路径类型配置。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ContainerFileInfo`
+        """
         return self._ContainerFile
 
     @ContainerFile.setter
@@ -4761,6 +5885,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def ContainerStdout(self):
+        """容器标准输出类型配置。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ContainerStdoutInfo`
+        """
         return self._ContainerStdout
 
     @ContainerStdout.setter
@@ -4769,6 +5896,11 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def LogFormat(self):
+        """日志格式化方式，用于容器采集场景。
+- stdout-docker-json：用于docker容器采集场景
+- stdout-containerd：用于containerd容器采集场景
+        :rtype: str
+        """
         return self._LogFormat
 
     @LogFormat.setter
@@ -4777,6 +5909,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def ExtractRule(self):
+        """提取规则，如果设置了ExtractRule，则必须设置LogType
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        """
         return self._ExtractRule
 
     @ExtractRule.setter
@@ -4785,6 +5920,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def ExcludePaths(self):
+        """采集黑名单路径列表
+        :rtype: list of ExcludePathInfo
+        """
         return self._ExcludePaths
 
     @ExcludePaths.setter
@@ -4793,6 +5931,11 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def UserDefineRule(self):
+        """组合解析采集规则，用于复杂场景下的日志采集。
+- 取值参考：[使用组合解析提取模式采集日志
+](https://cloud.tencent.com/document/product/614/61310)
+        :rtype: str
+        """
         return self._UserDefineRule
 
     @UserDefineRule.setter
@@ -4801,6 +5944,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """绑定的机器组id
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -4809,6 +5955,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def GroupIds(self):
+        """绑定的机器组id列表
+        :rtype: list of str
+        """
         return self._GroupIds
 
     @GroupIds.setter
@@ -4817,6 +5966,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def CollectInfos(self):
+        """采集相关配置信息。详情见CollectInfo复杂类型配置。
+        :rtype: list of CollectInfo
+        """
         return self._CollectInfos
 
     @CollectInfos.setter
@@ -4825,6 +5977,14 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def AdvancedConfig(self):
+        """高级采集配置。 Json字符串， Key/Value定义为如下：
+- ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+- ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+- ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+- ClsAgentDefault(自定义默认值，无特殊含义，用于清空其他选项)，建议取值0
+
+        :rtype: str
+        """
         return self._AdvancedConfig
 
     @AdvancedConfig.setter
@@ -4897,6 +6057,9 @@ class CreateConfigExtraResponse(AbstractModel):
 
     @property
     def ConfigExtraId(self):
+        """采集配置扩展信息ID
+        :rtype: str
+        """
         return self._ConfigExtraId
 
     @ConfigExtraId.setter
@@ -4905,6 +6068,9 @@ class CreateConfigExtraResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4968,6 +6134,9 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def Name(self):
+        """采集配置名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4976,6 +6145,9 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def Output(self):
+        """采集配置所属日志主题ID即TopicId
+        :rtype: str
+        """
         return self._Output
 
     @Output.setter
@@ -4984,6 +6156,9 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def Path(self):
+        """日志采集路径，包含文件名，支持多个路径，多个路径之间英文逗号分隔，文件采集情况下必填
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -4992,6 +6167,18 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def LogType(self):
+        """采集的日志类型，默认为minimalist_log。支持以下类型：
+- json_log代表：JSON-文件日志（详见[使用 JSON 提取模式采集日志](https://cloud.tencent.com/document/product/614/17419)）；
+- delimiter_log代表：分隔符-文件日志（详见[使用分隔符提取模式采集日志](https://cloud.tencent.com/document/product/614/17420)）；
+- minimalist_log代表：单行全文-文件日志（详见[使用单行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17421)）；
+- fullregex_log代表：单行完全正则-文件日志（详见[使用单行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52365)）；
+- multiline_log代表：多行全文-文件日志（详见[使用多行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17422)）；
+- multiline_fullregex_log代表：多行完全正则-文件日志（详见[使用多行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52366)）；
+- user_define_log代表：组合解析（适用于多格式嵌套的日志，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)）；
+- service_syslog代表：syslog 采集（详见[采集 Syslog](https://cloud.tencent.com/document/product/614/81454)）；
+- windows_event_log代表：Windows事件日志（详见[采集 Windows 事件日志](https://cloud.tencent.com/document/product/614/96678)）。
+        :rtype: str
+        """
         return self._LogType
 
     @LogType.setter
@@ -5000,6 +6187,9 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def ExtractRule(self):
+        """提取规则，如果设置了ExtractRule，则必须设置LogType
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        """
         return self._ExtractRule
 
     @ExtractRule.setter
@@ -5008,6 +6198,9 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def ExcludePaths(self):
+        """采集黑名单路径列表
+        :rtype: list of ExcludePathInfo
+        """
         return self._ExcludePaths
 
     @ExcludePaths.setter
@@ -5016,6 +6209,9 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def UserDefineRule(self):
+        """用户自定义采集规则，Json格式序列化的字符串。当LogType为user_define_log时，必填。
+        :rtype: str
+        """
         return self._UserDefineRule
 
     @UserDefineRule.setter
@@ -5024,6 +6220,16 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def AdvancedConfig(self):
+        """高级采集配置。 Json字符串， Key/Value定义为如下：
+- ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+- ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+- ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+样例：
+`{\"ClsAgentFileTimeout\":0,\"ClsAgentMaxDepth\":10,\"ClsAgentParseFailMerge\":true}`
+
+控制台默认占位值：`{\"ClsAgentDefault\":0}`
+        :rtype: str
+        """
         return self._AdvancedConfig
 
     @AdvancedConfig.setter
@@ -5074,6 +6280,9 @@ class CreateConfigResponse(AbstractModel):
 
     @property
     def ConfigId(self):
+        """采集配置ID
+        :rtype: str
+        """
         return self._ConfigId
 
     @ConfigId.setter
@@ -5082,6 +6291,9 @@ class CreateConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5108,6 +6320,9 @@ class CreateConsoleSharingRequest(AbstractModel):
 
     @property
     def SharingConfig(self):
+        """免密分享配置
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ConsoleSharingConfig`
+        """
         return self._SharingConfig
 
     @SharingConfig.setter
@@ -5149,6 +6364,9 @@ class CreateConsoleSharingResponse(AbstractModel):
 
     @property
     def SharingUrl(self):
+        """免密分享链接
+        :rtype: str
+        """
         return self._SharingUrl
 
     @SharingUrl.setter
@@ -5157,6 +6375,9 @@ class CreateConsoleSharingResponse(AbstractModel):
 
     @property
     def SharingId(self):
+        """免密分享链接ID
+        :rtype: str
+        """
         return self._SharingId
 
     @SharingId.setter
@@ -5165,6 +6386,9 @@ class CreateConsoleSharingResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5206,6 +6430,9 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """投递任务绑定的日志主题 ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -5214,6 +6441,11 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def NeedContent(self):
+        """是否投递日志的元数据信息，默认为 true。
+当NeedContent为true时：字段Content有效。
+当NeedContent为false时：字段Content无效。
+        :rtype: bool
+        """
         return self._NeedContent
 
     @NeedContent.setter
@@ -5222,6 +6454,9 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def Content(self):
+        """如果需要投递元数据信息，元数据信息的描述
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
+        """
         return self._Content
 
     @Content.setter
@@ -5230,6 +6465,9 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def Ckafka(self):
+        """CKafka的描述
+        :rtype: :class:`tencentcloud.cls.v20201016.models.Ckafka`
+        """
         return self._Ckafka
 
     @Ckafka.setter
@@ -5238,6 +6476,9 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def Compression(self):
+        """投递时压缩方式，取值0，2，3。[0：NONE；2：SNAPPY；3：LZ4]
+        :rtype: int
+        """
         return self._Compression
 
     @Compression.setter
@@ -5279,6 +6520,9 @@ class CreateConsumerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5335,6 +6579,9 @@ class CreateCosRechargeRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题 ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -5343,6 +6590,9 @@ class CreateCosRechargeRequest(AbstractModel):
 
     @property
     def LogsetId(self):
+        """日志集ID
+        :rtype: str
+        """
         return self._LogsetId
 
     @LogsetId.setter
@@ -5351,6 +6601,9 @@ class CreateCosRechargeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """投递任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5359,6 +6612,9 @@ class CreateCosRechargeRequest(AbstractModel):
 
     @property
     def Bucket(self):
+        """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -5367,6 +6623,9 @@ class CreateCosRechargeRequest(AbstractModel):
 
     @property
     def BucketRegion(self):
+        """COS存储桶所在地域，详见产品支持的[地域列表](https://cloud.tencent.com/document/product/436/6224)。
+        :rtype: str
+        """
         return self._BucketRegion
 
     @BucketRegion.setter
@@ -5375,6 +6634,10 @@ class CreateCosRechargeRequest(AbstractModel):
 
     @property
     def LogType(self):
+        """采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文；
+默认为minimalist_log
+        :rtype: str
+        """
         return self._LogType
 
     @LogType.setter
@@ -5383,6 +6646,9 @@ class CreateCosRechargeRequest(AbstractModel):
 
     @property
     def Prefix(self):
+        """COS文件所在文件夹的前缀。默认为空，投递存储桶下所有的文件。
+        :rtype: str
+        """
         return self._Prefix
 
     @Prefix.setter
@@ -5391,6 +6657,9 @@ class CreateCosRechargeRequest(AbstractModel):
 
     @property
     def Compress(self):
+        """supported: "", "gzip", "lzop", "snappy"; 默认空
+        :rtype: str
+        """
         return self._Compress
 
     @Compress.setter
@@ -5399,6 +6668,9 @@ class CreateCosRechargeRequest(AbstractModel):
 
     @property
     def ExtractRuleInfo(self):
+        """提取规则，如果设置了ExtractRule，则必须设置LogType
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        """
         return self._ExtractRuleInfo
 
     @ExtractRuleInfo.setter
@@ -5407,6 +6679,9 @@ class CreateCosRechargeRequest(AbstractModel):
 
     @property
     def TaskType(self):
+        """COS导入任务类型。1：一次性导入任务；2：持续性导入任务。默认为1：一次性导入任务
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -5415,6 +6690,9 @@ class CreateCosRechargeRequest(AbstractModel):
 
     @property
     def Metadata(self):
+        """元数据。
+        :rtype: list of str
+        """
         return self._Metadata
 
     @Metadata.setter
@@ -5464,6 +6742,10 @@ class CreateCosRechargeResponse(AbstractModel):
 
     @property
     def Id(self):
+        """COS导入任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -5472,6 +6754,9 @@ class CreateCosRechargeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5507,6 +6792,9 @@ class CreateDashboardSubscribeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """仪表盘订阅名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5515,6 +6803,9 @@ class CreateDashboardSubscribeRequest(AbstractModel):
 
     @property
     def DashboardId(self):
+        """仪表盘id。
+        :rtype: str
+        """
         return self._DashboardId
 
     @DashboardId.setter
@@ -5523,6 +6814,9 @@ class CreateDashboardSubscribeRequest(AbstractModel):
 
     @property
     def Cron(self):
+        """订阅时间cron表达式，格式为：{秒数} {分钟} {小时} {日期} {月份} {星期}；（有效数据为：{分钟} {小时} {日期} {月份} {星期}）。<br><li/>{秒数} 取值范围： 0 ~ 59 <br><li/>{分钟} 取值范围： 0 ~ 59  <br><li/>{小时} 取值范围： 0 ~ 23  <br><li/>{日期} 取值范围： 1 ~ 31 AND (dayOfMonth最后一天： L) <br><li/>{月份} 取值范围： 1 ~ 12 <br><li/>{星期} 取值范围： 0 ~ 6 【0:星期日， 6星期六】
+        :rtype: str
+        """
         return self._Cron
 
     @Cron.setter
@@ -5531,6 +6825,9 @@ class CreateDashboardSubscribeRequest(AbstractModel):
 
     @property
     def SubscribeData(self):
+        """仪表盘订阅数据。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DashboardSubscribeData`
+        """
         return self._SubscribeData
 
     @SubscribeData.setter
@@ -5569,6 +6866,9 @@ class CreateDashboardSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5624,6 +6924,9 @@ class CreateDataTransformRequest(AbstractModel):
 
     @property
     def FuncType(self):
+        """任务类型. 1: 指定主题；2:动态创建。详情请参考[创建加工任务文档](https://cloud.tencent.com/document/product/614/63940)。
+        :rtype: int
+        """
         return self._FuncType
 
     @FuncType.setter
@@ -5632,6 +6935,9 @@ class CreateDataTransformRequest(AbstractModel):
 
     @property
     def SrcTopicId(self):
+        """源日志主题
+        :rtype: str
+        """
         return self._SrcTopicId
 
     @SrcTopicId.setter
@@ -5640,6 +6946,9 @@ class CreateDataTransformRequest(AbstractModel):
 
     @property
     def Name(self):
+        """加工任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5648,6 +6957,14 @@ class CreateDataTransformRequest(AbstractModel):
 
     @property
     def EtlContent(self):
+        """加工语句。 当FuncType为2时，EtlContent必须使用[log_auto_output](https://cloud.tencent.com/document/product/614/70733#b3c58797-4825-4807-bef4-68106e25024f) 
+
+其他参考文档：
+
+- [创建加工任务](https://cloud.tencent.com/document/product/614/63940) 
+-  [函数总览](https://cloud.tencent.com/document/product/614/70395)
+        :rtype: str
+        """
         return self._EtlContent
 
     @EtlContent.setter
@@ -5656,6 +6973,10 @@ class CreateDataTransformRequest(AbstractModel):
 
     @property
     def TaskType(self):
+        """加工类型。
+1：使用源日志主题中的随机数据，进行加工预览；2：使用用户自定义测试数据，进行加工预览；3：创建真实加工任务。
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -5664,6 +6985,9 @@ class CreateDataTransformRequest(AbstractModel):
 
     @property
     def DstResources(self):
+        """加工任务目的topic_id以及别名,当FuncType=1时，该参数必填，当FuncType=2时，无需填写。
+        :rtype: list of DataTransformResouceInfo
+        """
         return self._DstResources
 
     @DstResources.setter
@@ -5672,6 +6996,9 @@ class CreateDataTransformRequest(AbstractModel):
 
     @property
     def EnableFlag(self):
+        """任务启动状态.   默认为1:开启,  2:关闭
+        :rtype: int
+        """
         return self._EnableFlag
 
     @EnableFlag.setter
@@ -5680,6 +7007,9 @@ class CreateDataTransformRequest(AbstractModel):
 
     @property
     def PreviewLogStatistics(self):
+        """用于预览加工结果的测试数据
+        :rtype: list of PreviewLogStatistic
+        """
         return self._PreviewLogStatistics
 
     @PreviewLogStatistics.setter
@@ -5688,6 +7018,9 @@ class CreateDataTransformRequest(AbstractModel):
 
     @property
     def DataTransformType(self):
+        """数据加工类型。0：标准加工任务； 1：前置加工任务。前置加工任务将采集的日志处理完成后，再写入日志主题。
+        :rtype: int
+        """
         return self._DataTransformType
 
     @DataTransformType.setter
@@ -5742,6 +7075,9 @@ class CreateDataTransformResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -5750,6 +7086,9 @@ class CreateDataTransformResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5791,6 +7130,9 @@ class CreateDeliverCloudFunctionRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """投递规则属于的 topic id
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -5799,6 +7141,9 @@ class CreateDeliverCloudFunctionRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """投递的云函数名字。仅支持[事件函数](https://cloud.tencent.com/document/product/583/9694#scf-.E4.BA.8B.E4.BB.B6.E5.87.BD.E6.95.B0) （[函数类型选型](https://cloud.tencent.com/document/product/583/73483)）
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -5807,6 +7152,9 @@ class CreateDeliverCloudFunctionRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -5815,6 +7163,9 @@ class CreateDeliverCloudFunctionRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """函数版本
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -5823,6 +7174,9 @@ class CreateDeliverCloudFunctionRequest(AbstractModel):
 
     @property
     def Timeout(self):
+        """投递最长等待时间，单位：秒
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -5831,6 +7185,9 @@ class CreateDeliverCloudFunctionRequest(AbstractModel):
 
     @property
     def MaxMsgNum(self):
+        """投递最大消息数
+        :rtype: int
+        """
         return self._MaxMsgNum
 
     @MaxMsgNum.setter
@@ -5869,6 +7226,9 @@ class CreateDeliverCloudFunctionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5919,6 +7279,9 @@ class CreateExportRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -5927,6 +7290,9 @@ class CreateExportRequest(AbstractModel):
 
     @property
     def Count(self):
+        """日志导出数量,  最大值5000万
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -5935,6 +7301,9 @@ class CreateExportRequest(AbstractModel):
 
     @property
     def Query(self):
+        """日志导出检索语句，不支持<a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -5943,6 +7312,9 @@ class CreateExportRequest(AbstractModel):
 
     @property
     def From(self):
+        """日志导出起始时间，毫秒时间戳
+        :rtype: int
+        """
         return self._From
 
     @From.setter
@@ -5951,6 +7323,9 @@ class CreateExportRequest(AbstractModel):
 
     @property
     def To(self):
+        """日志导出结束时间，毫秒时间戳
+        :rtype: int
+        """
         return self._To
 
     @To.setter
@@ -5959,6 +7334,9 @@ class CreateExportRequest(AbstractModel):
 
     @property
     def Order(self):
+        """日志导出时间排序。desc，asc，默认为desc
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -5967,6 +7345,9 @@ class CreateExportRequest(AbstractModel):
 
     @property
     def Format(self):
+        """日志导出数据格式。json，csv，默认为json
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -5975,6 +7356,10 @@ class CreateExportRequest(AbstractModel):
 
     @property
     def SyntaxRule(self):
+        """语法规则,  默认值为0。
+0：Lucene语法，1：CQL语法。
+        :rtype: int
+        """
         return self._SyntaxRule
 
     @SyntaxRule.setter
@@ -5983,6 +7368,9 @@ class CreateExportRequest(AbstractModel):
 
     @property
     def DerivedFields(self):
+        """导出字段
+        :rtype: list of str
+        """
         return self._DerivedFields
 
     @DerivedFields.setter
@@ -6027,6 +7415,9 @@ class CreateExportResponse(AbstractModel):
 
     @property
     def ExportId(self):
+        """日志导出ID。
+        :rtype: str
+        """
         return self._ExportId
 
     @ExportId.setter
@@ -6035,6 +7426,9 @@ class CreateExportResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6078,6 +7472,9 @@ class CreateIndexRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -6086,6 +7483,9 @@ class CreateIndexRequest(AbstractModel):
 
     @property
     def Rule(self):
+        """索引规则
+        :rtype: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
+        """
         return self._Rule
 
     @Rule.setter
@@ -6094,6 +7494,9 @@ class CreateIndexRequest(AbstractModel):
 
     @property
     def Status(self):
+        """是否生效，默认为true
+        :rtype: bool
+        """
         return self._Status
 
     @Status.setter
@@ -6102,6 +7505,11 @@ class CreateIndexRequest(AbstractModel):
 
     @property
     def IncludeInternalFields(self):
+        """内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引，默认为false，推荐设置为true
+* false:不包含
+* true:包含
+        :rtype: bool
+        """
         return self._IncludeInternalFields
 
     @IncludeInternalFields.setter
@@ -6110,6 +7518,12 @@ class CreateIndexRequest(AbstractModel):
 
     @property
     def MetadataFlag(self):
+        """元数据字段（前缀为`__TAG__`的字段）是否包含至全文索引，默认为0，推荐设置为1
+* 0:仅包含开启键值索引的元数据字段
+* 1:包含所有元数据字段
+* 2:不包含任何元数据字段
+        :rtype: int
+        """
         return self._MetadataFlag
 
     @MetadataFlag.setter
@@ -6149,6 +7563,9 @@ class CreateIndexResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6205,6 +7622,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def TopicId(self):
+        """导入CLS目标topic ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -6213,6 +7633,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def Name(self):
+        """Kafka导入配置名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6221,6 +7644,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def KafkaType(self):
+        """导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+        :rtype: int
+        """
         return self._KafkaType
 
     @KafkaType.setter
@@ -6229,6 +7655,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def UserKafkaTopics(self):
+        """用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+        :rtype: str
+        """
         return self._UserKafkaTopics
 
     @UserKafkaTopics.setter
@@ -6237,6 +7666,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def Offset(self):
+        """导入数据位置，-2:最早（默认），-1：最晚
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6245,6 +7677,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def LogRechargeRule(self):
+        """日志导入规则。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
+        """
         return self._LogRechargeRule
 
     @LogRechargeRule.setter
@@ -6253,6 +7688,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def KafkaInstance(self):
+        """腾讯云CKafka实例ID，KafkaType为0时必填。
+        :rtype: str
+        """
         return self._KafkaInstance
 
     @KafkaInstance.setter
@@ -6261,6 +7699,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def ServerAddr(self):
+        """服务地址，KafkaType为1时必填。
+        :rtype: str
+        """
         return self._ServerAddr
 
     @ServerAddr.setter
@@ -6269,6 +7710,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def IsEncryptionAddr(self):
+        """ServerAddr是否为加密连接，KafkaType为1时必填。
+        :rtype: bool
+        """
         return self._IsEncryptionAddr
 
     @IsEncryptionAddr.setter
@@ -6277,6 +7721,10 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def Protocol(self):
+        """加密访问协议。
+KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -6285,6 +7733,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def ConsumerGroupName(self):
+        """用户Kafka消费组名称
+        :rtype: str
+        """
         return self._ConsumerGroupName
 
     @ConsumerGroupName.setter
@@ -6335,6 +7786,9 @@ class CreateKafkaRechargeResponse(AbstractModel):
 
     @property
     def Id(self):
+        """Kafka导入配置ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -6343,6 +7797,9 @@ class CreateKafkaRechargeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6372,6 +7829,9 @@ class CreateLogsetRequest(AbstractModel):
 
     @property
     def LogsetName(self):
+        """日志集名字，不能重名
+        :rtype: str
+        """
         return self._LogsetName
 
     @LogsetName.setter
@@ -6380,6 +7840,9 @@ class CreateLogsetRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签描述列表。最大支持10个标签键值对，并且不能有重复的键值对
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -6422,6 +7885,9 @@ class CreateLogsetResponse(AbstractModel):
 
     @property
     def LogsetId(self):
+        """日志集ID
+        :rtype: str
+        """
         return self._LogsetId
 
     @LogsetId.setter
@@ -6430,6 +7896,9 @@ class CreateLogsetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6487,6 +7956,9 @@ class CreateMachineGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """机器组名字，不能重复
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -6495,6 +7967,11 @@ class CreateMachineGroupRequest(AbstractModel):
 
     @property
     def MachineGroupType(self):
+        """创建机器组类型。取值如下：
+- Type：ip，Values中为ip字符串列表创建机器组
+- Type：label，Values中为标签字符串列表创建机器组
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MachineGroupTypeInfo`
+        """
         return self._MachineGroupType
 
     @MachineGroupType.setter
@@ -6503,6 +7980,9 @@ class CreateMachineGroupRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签描述列表，通过指定该参数可以同时绑定标签到相应的机器组。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -6511,6 +7991,9 @@ class CreateMachineGroupRequest(AbstractModel):
 
     @property
     def AutoUpdate(self):
+        """是否开启机器组自动更新。默认false
+        :rtype: bool
+        """
         return self._AutoUpdate
 
     @AutoUpdate.setter
@@ -6519,6 +8002,9 @@ class CreateMachineGroupRequest(AbstractModel):
 
     @property
     def UpdateStartTime(self):
+        """升级开始时间，建议业务低峰期升级LogListener
+        :rtype: str
+        """
         return self._UpdateStartTime
 
     @UpdateStartTime.setter
@@ -6527,6 +8013,9 @@ class CreateMachineGroupRequest(AbstractModel):
 
     @property
     def UpdateEndTime(self):
+        """升级结束时间，建议业务低峰期升级LogListener
+        :rtype: str
+        """
         return self._UpdateEndTime
 
     @UpdateEndTime.setter
@@ -6535,6 +8024,9 @@ class CreateMachineGroupRequest(AbstractModel):
 
     @property
     def ServiceLogging(self):
+        """是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费。默认false
+        :rtype: bool
+        """
         return self._ServiceLogging
 
     @ServiceLogging.setter
@@ -6543,6 +8035,9 @@ class CreateMachineGroupRequest(AbstractModel):
 
     @property
     def DelayCleanupTime(self):
+        """机器组中机器离线清理时间。单位：天
+        :rtype: int
+        """
         return self._DelayCleanupTime
 
     @DelayCleanupTime.setter
@@ -6551,6 +8046,9 @@ class CreateMachineGroupRequest(AbstractModel):
 
     @property
     def MetaTags(self):
+        """机器组元数据信息列表
+        :rtype: list of MetaTagInfo
+        """
         return self._MetaTags
 
     @MetaTags.setter
@@ -6559,6 +8057,11 @@ class CreateMachineGroupRequest(AbstractModel):
 
     @property
     def OSType(self):
+        """系统类型，取值如下：
+- 0：Linux （默认值）
+- 1：Windows
+        :rtype: int
+        """
         return self._OSType
 
     @OSType.setter
@@ -6616,6 +8119,9 @@ class CreateMachineGroupResponse(AbstractModel):
 
     @property
     def GroupId(self):
+        """机器组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -6624,6 +8130,9 @@ class CreateMachineGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6656,6 +8165,9 @@ class CreateNoticeContentRequest(AbstractModel):
 
     @property
     def Name(self):
+        """模板名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6664,6 +8176,9 @@ class CreateNoticeContentRequest(AbstractModel):
 
     @property
     def Type(self):
+        """模板内容语言。0：中文1：英文
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -6672,6 +8187,9 @@ class CreateNoticeContentRequest(AbstractModel):
 
     @property
     def NoticeContents(self):
+        """模板详细配置。
+        :rtype: list of NoticeContent
+        """
         return self._NoticeContents
 
     @NoticeContents.setter
@@ -6715,6 +8233,9 @@ class CreateNoticeContentResponse(AbstractModel):
 
     @property
     def NoticeContentId(self):
+        """通知内容配置ID
+        :rtype: str
+        """
         return self._NoticeContentId
 
     @NoticeContentId.setter
@@ -6723,6 +8244,9 @@ class CreateNoticeContentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6785,6 +8309,9 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def SrcTopicId(self):
+        """源日志主题
+        :rtype: str
+        """
         return self._SrcTopicId
 
     @SrcTopicId.setter
@@ -6793,6 +8320,9 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def Name(self):
+        """任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6801,6 +8331,9 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def EnableFlag(self):
+        """任务启动状态.  1开启,  2关闭
+        :rtype: int
+        """
         return self._EnableFlag
 
     @EnableFlag.setter
@@ -6809,6 +8342,9 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def DstResource(self):
+        """定时SQL分析目标日志主题
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ScheduledSqlResouceInfo`
+        """
         return self._DstResource
 
     @DstResource.setter
@@ -6817,6 +8353,9 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ScheduledSqlContent(self):
+        """查询语句
+        :rtype: str
+        """
         return self._ScheduledSqlContent
 
     @ScheduledSqlContent.setter
@@ -6825,6 +8364,9 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessStartTime(self):
+        """调度开始时间,Unix时间戳，单位ms
+        :rtype: int
+        """
         return self._ProcessStartTime
 
     @ProcessStartTime.setter
@@ -6833,6 +8375,9 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessType(self):
+        """调度类型，1:持续运行 2:指定时间范围
+        :rtype: int
+        """
         return self._ProcessType
 
     @ProcessType.setter
@@ -6841,6 +8386,9 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessPeriod(self):
+        """调度周期(分钟)
+        :rtype: int
+        """
         return self._ProcessPeriod
 
     @ProcessPeriod.setter
@@ -6849,6 +8397,9 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessTimeWindow(self):
+        """单次查询的时间窗口,如果您的目标主题为指标主题，建议该参数的大小不超过30分钟，否则可能转指标失败。 
+        :rtype: str
+        """
         return self._ProcessTimeWindow
 
     @ProcessTimeWindow.setter
@@ -6857,6 +8408,9 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessDelay(self):
+        """执行延迟(秒)
+        :rtype: int
+        """
         return self._ProcessDelay
 
     @ProcessDelay.setter
@@ -6865,6 +8419,9 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def SrcTopicRegion(self):
+        """源topicId的地域信息
+        :rtype: str
+        """
         return self._SrcTopicRegion
 
     @SrcTopicRegion.setter
@@ -6873,6 +8430,9 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessEndTime(self):
+        """调度结束时间，当ProcessType=2时为必传字段, Unix时间戳，单位ms
+        :rtype: int
+        """
         return self._ProcessEndTime
 
     @ProcessEndTime.setter
@@ -6881,6 +8441,9 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def SyntaxRule(self):
+        """查询语法规则。 默认值为0。0：Lucene语法，1：CQL语法  
+        :rtype: int
+        """
         return self._SyntaxRule
 
     @SyntaxRule.setter
@@ -6931,6 +8494,9 @@ class CreateScheduledSqlResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -6939,6 +8505,9 @@ class CreateScheduledSqlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7016,6 +8585,9 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """创建的投递规则所属的日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -7024,6 +8596,9 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def Bucket(self):
+        """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -7032,6 +8607,11 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def Prefix(self):
+        """投递规则投递的新的目录前缀。
+- 仅支持0-9A-Za-z-_/
+- 最大支持256个字符
+        :rtype: str
+        """
         return self._Prefix
 
     @Prefix.setter
@@ -7040,6 +8620,9 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def ShipperName(self):
+        """投递规则的名字
+        :rtype: str
+        """
         return self._ShipperName
 
     @ShipperName.setter
@@ -7048,6 +8631,9 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def Interval(self):
+        """投递的时间间隔，单位 秒，默认300，范围 300-900
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -7056,6 +8642,9 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def MaxSize(self):
+        """投递的文件的最大值，单位 MB，默认256，范围 5-256
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -7064,6 +8653,9 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def FilterRules(self):
+        """投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递
+        :rtype: list of FilterRuleInfo
+        """
         return self._FilterRules
 
     @FilterRules.setter
@@ -7072,6 +8664,9 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def Partition(self):
+        """投递日志的分区规则，支持strftime的时间格式表示
+        :rtype: str
+        """
         return self._Partition
 
     @Partition.setter
@@ -7080,6 +8675,9 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def Compress(self):
+        """投递日志的压缩配置
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CompressInfo`
+        """
         return self._Compress
 
     @Compress.setter
@@ -7088,6 +8686,9 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def Content(self):
+        """投递日志的内容格式配置
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
+        """
         return self._Content
 
     @Content.setter
@@ -7096,6 +8697,9 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def FilenameMode(self):
+        """投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
+        :rtype: int
+        """
         return self._FilenameMode
 
     @FilenameMode.setter
@@ -7104,6 +8708,10 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """投递数据范围的开始时间点（秒级时间戳），不能超出日志主题的生命周期起点。
+如果用户不填写，默认为用户新建投递任务的时间。
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7112,6 +8720,10 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """投递数据范围的结束时间点（秒级时间戳），不能填写未来时间。
+如果用户不填写，默认为持续投递，即无限。
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7120,6 +8732,17 @@ class CreateShipperRequest(AbstractModel):
 
     @property
     def StorageType(self):
+        """cos桶存储类型。支持：STANDARD_IA、ARCHIVE、DEEP_ARCHIVE、STANDARD、MAZ_STANDARD、MAZ_STANDARD_IA、INTELLIGENT_TIERING。
+
+1. STANDARD_IA：低频存储；
+2. ARCHIVE：归档存储；
+3. DEEP_ARCHIVE：深度归档存储；
+4. STANDARD：标准存储；
+5. MAZ_STANDARD：标准存储（多 AZ）；
+6. MAZ_STANDARD_IA：低频存储（多 AZ）；
+7. INTELLIGENT_TIERING：智能分层存储。
+        :rtype: str
+        """
         return self._StorageType
 
     @StorageType.setter
@@ -7178,6 +8801,9 @@ class CreateShipperResponse(AbstractModel):
 
     @property
     def ShipperId(self):
+        """投递任务ID
+        :rtype: str
+        """
         return self._ShipperId
 
     @ShipperId.setter
@@ -7186,6 +8812,9 @@ class CreateShipperResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7249,6 +8878,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def LogsetId(self):
+        """日志集ID
+        :rtype: str
+        """
         return self._LogsetId
 
     @LogsetId.setter
@@ -7257,6 +8889,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """日志主题名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -7265,6 +8900,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def PartitionCount(self):
+        """日志主题分区个数。默认创建1个，最大支持创建10个分区。
+        :rtype: int
+        """
         return self._PartitionCount
 
     @PartitionCount.setter
@@ -7273,6 +8911,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -7281,6 +8922,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def AutoSplit(self):
+        """是否开启自动分裂，默认值为true
+        :rtype: bool
+        """
         return self._AutoSplit
 
     @AutoSplit.setter
@@ -7289,6 +8933,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def MaxSplitPartitions(self):
+        """开启自动分裂后，每个主题能够允许的最大分区数，默认值为50
+        :rtype: int
+        """
         return self._MaxSplitPartitions
 
     @MaxSplitPartitions.setter
@@ -7297,6 +8944,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def StorageType(self):
+        """日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。
+        :rtype: str
+        """
         return self._StorageType
 
     @StorageType.setter
@@ -7305,6 +8955,10 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Period(self):
+        """生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600天。取值为3640时代表永久保存。
+不传此值，默认获取该日志主题对应日志集的Period值（当获取失败时默认为30天）。
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -7313,6 +8967,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Describes(self):
+        """日志主题描述
+        :rtype: str
+        """
         return self._Describes
 
     @Describes.setter
@@ -7321,6 +8978,11 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def HotPeriod(self):
+        """0：关闭日志沉降。
+非0：开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。
+仅在StorageType为 hot 时生效。
+        :rtype: int
+        """
         return self._HotPeriod
 
     @HotPeriod.setter
@@ -7329,6 +8991,10 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def IsWebTracking(self):
+        """免鉴权开关。 false：关闭； true：开启。默认为false。
+开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
+        :rtype: bool
+        """
         return self._IsWebTracking
 
     @IsWebTracking.setter
@@ -7337,6 +9003,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Extends(self):
+        """日志主题扩展信息
+        :rtype: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
+        """
         return self._Extends
 
     @Extends.setter
@@ -7391,6 +9060,9 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -7399,6 +9071,9 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7438,6 +9113,9 @@ class CsvInfo(AbstractModel):
 
     @property
     def PrintKey(self):
+        """csv首行是否打印key
+        :rtype: bool
+        """
         return self._PrintKey
 
     @PrintKey.setter
@@ -7446,6 +9124,10 @@ class CsvInfo(AbstractModel):
 
     @property
     def Keys(self):
+        """每列key的名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Keys
 
     @Keys.setter
@@ -7454,6 +9136,9 @@ class CsvInfo(AbstractModel):
 
     @property
     def Delimiter(self):
+        """各字段间的分隔符
+        :rtype: str
+        """
         return self._Delimiter
 
     @Delimiter.setter
@@ -7462,6 +9147,9 @@ class CsvInfo(AbstractModel):
 
     @property
     def EscapeChar(self):
+        """若字段内容中包含分隔符，则使用该转义符包裹改字段，只能填写单引号、双引号、空字符串
+        :rtype: str
+        """
         return self._EscapeChar
 
     @EscapeChar.setter
@@ -7470,6 +9158,9 @@ class CsvInfo(AbstractModel):
 
     @property
     def NonExistingField(self):
+        """对于上面指定的不存在字段使用该内容填充
+        :rtype: str
+        """
         return self._NonExistingField
 
     @NonExistingField.setter
@@ -7545,6 +9236,9 @@ class DashboardInfo(AbstractModel):
 
     @property
     def DashboardId(self):
+        """仪表盘id
+        :rtype: str
+        """
         return self._DashboardId
 
     @DashboardId.setter
@@ -7553,6 +9247,9 @@ class DashboardInfo(AbstractModel):
 
     @property
     def DashboardName(self):
+        """仪表盘名字
+        :rtype: str
+        """
         return self._DashboardName
 
     @DashboardName.setter
@@ -7561,6 +9258,10 @@ class DashboardInfo(AbstractModel):
 
     @property
     def Data(self):
+        """仪表盘数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -7569,6 +9270,9 @@ class DashboardInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建仪表盘的时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -7577,6 +9281,10 @@ class DashboardInfo(AbstractModel):
 
     @property
     def AssumerUin(self):
+        """AssumerUin非空则表示创建该日志主题的服务方Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AssumerUin
 
     @AssumerUin.setter
@@ -7585,6 +9293,10 @@ class DashboardInfo(AbstractModel):
 
     @property
     def RoleName(self):
+        """RoleName非空则表示创建该日志主题的服务方使用的角色
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RoleName
 
     @RoleName.setter
@@ -7593,6 +9305,10 @@ class DashboardInfo(AbstractModel):
 
     @property
     def AssumerName(self):
+        """AssumerName非空则表示创建该日志主题的服务方名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssumerName
 
     @AssumerName.setter
@@ -7601,6 +9317,10 @@ class DashboardInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """日志主题绑定的标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -7609,6 +9329,10 @@ class DashboardInfo(AbstractModel):
 
     @property
     def DashboardRegion(self):
+        """仪表盘所在地域： 为了兼容老的地域。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DashboardRegion
 
     @DashboardRegion.setter
@@ -7617,6 +9341,10 @@ class DashboardInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """修改仪表盘的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -7625,6 +9353,10 @@ class DashboardInfo(AbstractModel):
 
     @property
     def DashboardTopicInfos(self):
+        """仪表盘对应的topic相关信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DashboardTopicInfo
+        """
         return self._DashboardTopicInfos
 
     @DashboardTopicInfos.setter
@@ -7698,6 +9430,13 @@ class DashboardNoticeMode(AbstractModel):
 
     @property
     def ReceiverType(self):
+        """仪表盘通知方式。<br>
+<li/>Uin：腾讯云用户<br>
+<li/>Group：腾讯云用户组<br>
+<li/>Email：自定义Email<br>
+<li/>WeCom: 企业微信回调
+        :rtype: str
+        """
         return self._ReceiverType
 
     @ReceiverType.setter
@@ -7706,6 +9445,10 @@ class DashboardNoticeMode(AbstractModel):
 
     @property
     def Values(self):
+        """知方式对应的值。
+<br> <li/> 当ReceiverType不是 Wecom 时，Values必填。
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -7714,6 +9457,12 @@ class DashboardNoticeMode(AbstractModel):
 
     @property
     def ReceiverChannels(self):
+        """仪表盘通知渠道。
+<br><li/> 支持：["Email","Sms","WeChat","Phone"]。
+<br><li/> 当ReceiverType是 Email 或 Wecom 时，ReceiverChannels不能赋值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ReceiverChannels
 
     @ReceiverChannels.setter
@@ -7722,6 +9471,12 @@ class DashboardNoticeMode(AbstractModel):
 
     @property
     def Url(self):
+        """回调Url。
+<br><li/> 当ReceiverType是 Wecom 时，Url必填。
+<br><li/> 当ReceiverType不是 Wecom 时，Url不能填写。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -7782,6 +9537,9 @@ class DashboardSubscribeData(AbstractModel):
 
     @property
     def NoticeModes(self):
+        """仪表盘订阅通知方式。
+        :rtype: list of DashboardNoticeMode
+        """
         return self._NoticeModes
 
     @NoticeModes.setter
@@ -7790,6 +9548,10 @@ class DashboardSubscribeData(AbstractModel):
 
     @property
     def DashboardTime(self):
+        """仪表盘订阅时间，为空标识取仪表盘默认的时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._DashboardTime
 
     @DashboardTime.setter
@@ -7798,6 +9560,10 @@ class DashboardSubscribeData(AbstractModel):
 
     @property
     def TemplateVariables(self):
+        """仪表盘订阅模板变量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DashboardTemplateVariable
+        """
         return self._TemplateVariables
 
     @TemplateVariables.setter
@@ -7806,6 +9572,10 @@ class DashboardSubscribeData(AbstractModel):
 
     @property
     def Timezone(self):
+        """时区。参考：https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#SHANGHAI
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Timezone
 
     @Timezone.setter
@@ -7814,6 +9584,10 @@ class DashboardSubscribeData(AbstractModel):
 
     @property
     def SubscribeLanguage(self):
+        """语言。 zh 中文、en`英文。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubscribeLanguage
 
     @SubscribeLanguage.setter
@@ -7822,6 +9596,10 @@ class DashboardSubscribeData(AbstractModel):
 
     @property
     def JumpDomain(self):
+        """调用链接域名。http:// 或者 https:// 开头，不能/结尾
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._JumpDomain
 
     @JumpDomain.setter
@@ -7830,6 +9608,10 @@ class DashboardSubscribeData(AbstractModel):
 
     @property
     def JumpUrl(self):
+        """自定义跳转链接。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._JumpUrl
 
     @JumpUrl.setter
@@ -7882,6 +9664,9 @@ class DashboardTemplateVariable(AbstractModel):
 
     @property
     def Key(self):
+        """key的值
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -7890,6 +9675,9 @@ class DashboardTemplateVariable(AbstractModel):
 
     @property
     def Values(self):
+        """key对应的values取值values
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -7927,6 +9715,9 @@ class DashboardTopicInfo(AbstractModel):
 
     @property
     def TopicId(self):
+        """主题id
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -7935,6 +9726,9 @@ class DashboardTopicInfo(AbstractModel):
 
     @property
     def Region(self):
+        """topic所在的地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -7972,6 +9766,9 @@ class DataTransformResouceInfo(AbstractModel):
 
     @property
     def TopicId(self):
+        """目标主题id
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -7980,6 +9777,9 @@ class DataTransformResouceInfo(AbstractModel):
 
     @property
     def Alias(self):
+        """别名
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -8036,6 +9836,12 @@ class DataTransformTaskInfo(AbstractModel):
         :param _DataTransformType: 数据加工类型。0：标准加工任务；1：前置加工任务。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataTransformType: int
+        :param _KeepFailureLog: 保留失败日志状态。 1:不保留，2:保留
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeepFailureLog: int
+        :param _FailureLogKey: 失败日志的字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailureLogKey: str
         """
         self._Name = None
         self._TaskId = None
@@ -8051,9 +9857,14 @@ class DataTransformTaskInfo(AbstractModel):
         self._DstResources = None
         self._EtlContent = None
         self._DataTransformType = None
+        self._KeepFailureLog = None
+        self._FailureLogKey = None
 
     @property
     def Name(self):
+        """数据加工任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8062,6 +9873,9 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def TaskId(self):
+        """数据加工任务id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -8070,6 +9884,9 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def EnableFlag(self):
+        """任务启用状态，默认为1，正常开启,  2关闭
+        :rtype: int
+        """
         return self._EnableFlag
 
     @EnableFlag.setter
@@ -8078,6 +9895,9 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def Type(self):
+        """加工任务类型，1： DSL， 2：SQL
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -8086,6 +9906,9 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def SrcTopicId(self):
+        """源日志主题
+        :rtype: str
+        """
         return self._SrcTopicId
 
     @SrcTopicId.setter
@@ -8094,6 +9917,9 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def Status(self):
+        """当前加工任务状态（1准备中/2运行中/3停止中/4已停止）
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -8102,6 +9928,9 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """加工任务创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8110,6 +9939,9 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """最近修改时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -8118,6 +9950,9 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def LastEnableTime(self):
+        """最后启用时间，如果需要重建集群，修改该时间
+        :rtype: str
+        """
         return self._LastEnableTime
 
     @LastEnableTime.setter
@@ -8126,6 +9961,9 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def SrcTopicName(self):
+        """日志主题名称
+        :rtype: str
+        """
         return self._SrcTopicName
 
     @SrcTopicName.setter
@@ -8134,6 +9972,9 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def LogsetId(self):
+        """日志集id
+        :rtype: str
+        """
         return self._LogsetId
 
     @LogsetId.setter
@@ -8142,6 +9983,9 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def DstResources(self):
+        """加工任务目的topic_id以及别名
+        :rtype: list of DataTransformResouceInfo
+        """
         return self._DstResources
 
     @DstResources.setter
@@ -8150,6 +9994,9 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def EtlContent(self):
+        """加工逻辑函数。
+        :rtype: str
+        """
         return self._EtlContent
 
     @EtlContent.setter
@@ -8158,11 +10005,39 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def DataTransformType(self):
+        """数据加工类型。0：标准加工任务；1：前置加工任务。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DataTransformType
 
     @DataTransformType.setter
     def DataTransformType(self, DataTransformType):
         self._DataTransformType = DataTransformType
+
+    @property
+    def KeepFailureLog(self):
+        """保留失败日志状态。 1:不保留，2:保留
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._KeepFailureLog
+
+    @KeepFailureLog.setter
+    def KeepFailureLog(self, KeepFailureLog):
+        self._KeepFailureLog = KeepFailureLog
+
+    @property
+    def FailureLogKey(self):
+        """失败日志的字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FailureLogKey
+
+    @FailureLogKey.setter
+    def FailureLogKey(self, FailureLogKey):
+        self._FailureLogKey = FailureLogKey
 
 
     def _deserialize(self, params):
@@ -8185,6 +10060,8 @@ class DataTransformTaskInfo(AbstractModel):
                 self._DstResources.append(obj)
         self._EtlContent = params.get("EtlContent")
         self._DataTransformType = params.get("DataTransformType")
+        self._KeepFailureLog = params.get("KeepFailureLog")
+        self._FailureLogKey = params.get("FailureLogKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8209,6 +10086,9 @@ class DeleteAlarmNoticeRequest(AbstractModel):
 
     @property
     def AlarmNoticeId(self):
+        """通知渠道组ID
+        :rtype: str
+        """
         return self._AlarmNoticeId
 
     @AlarmNoticeId.setter
@@ -8242,6 +10122,9 @@ class DeleteAlarmNoticeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8267,6 +10150,9 @@ class DeleteAlarmRequest(AbstractModel):
 
     @property
     def AlarmId(self):
+        """告警策略ID。
+        :rtype: str
+        """
         return self._AlarmId
 
     @AlarmId.setter
@@ -8300,6 +10186,9 @@ class DeleteAlarmResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8328,6 +10217,9 @@ class DeleteAlarmShieldRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """屏蔽规则id。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -8336,6 +10228,9 @@ class DeleteAlarmShieldRequest(AbstractModel):
 
     @property
     def AlarmNoticeId(self):
+        """通知渠道组id。
+        :rtype: str
+        """
         return self._AlarmNoticeId
 
     @AlarmNoticeId.setter
@@ -8370,6 +10265,9 @@ class DeleteAlarmShieldResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8395,6 +10293,9 @@ class DeleteConfigExtraRequest(AbstractModel):
 
     @property
     def ConfigExtraId(self):
+        """特殊采集规则扩展配置ID
+        :rtype: str
+        """
         return self._ConfigExtraId
 
     @ConfigExtraId.setter
@@ -8428,6 +10329,9 @@ class DeleteConfigExtraResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8456,6 +10360,9 @@ class DeleteConfigFromMachineGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """机器组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -8464,6 +10371,9 @@ class DeleteConfigFromMachineGroupRequest(AbstractModel):
 
     @property
     def ConfigId(self):
+        """采集配置ID
+        :rtype: str
+        """
         return self._ConfigId
 
     @ConfigId.setter
@@ -8498,6 +10408,9 @@ class DeleteConfigFromMachineGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8523,6 +10436,9 @@ class DeleteConfigRequest(AbstractModel):
 
     @property
     def ConfigId(self):
+        """采集规则配置ID
+        :rtype: str
+        """
         return self._ConfigId
 
     @ConfigId.setter
@@ -8556,6 +10472,9 @@ class DeleteConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8581,6 +10500,9 @@ class DeleteConsoleSharingRequest(AbstractModel):
 
     @property
     def SharingId(self):
+        """免密分享Id
+        :rtype: str
+        """
         return self._SharingId
 
     @SharingId.setter
@@ -8614,6 +10536,9 @@ class DeleteConsoleSharingResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8639,6 +10564,9 @@ class DeleteConsumerRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """投递任务绑定的日志主题 ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -8672,6 +10600,9 @@ class DeleteConsumerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8697,6 +10628,9 @@ class DeleteDashboardSubscribeRequest(AbstractModel):
 
     @property
     def Id(self):
+        """仪表盘订阅记录id。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -8730,6 +10664,9 @@ class DeleteDashboardSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8755,6 +10692,9 @@ class DeleteDataTransformRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """数据加工任务id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -8788,6 +10728,9 @@ class DeleteDataTransformResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8813,6 +10756,9 @@ class DeleteExportRequest(AbstractModel):
 
     @property
     def ExportId(self):
+        """日志导出ID
+        :rtype: str
+        """
         return self._ExportId
 
     @ExportId.setter
@@ -8846,6 +10792,9 @@ class DeleteExportResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8871,6 +10820,9 @@ class DeleteIndexRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -8904,6 +10856,9 @@ class DeleteIndexResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8932,6 +10887,9 @@ class DeleteKafkaRechargeRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Kafka导入配置ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -8940,6 +10898,9 @@ class DeleteKafkaRechargeRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """导入CLS目标topic ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -8974,6 +10935,9 @@ class DeleteKafkaRechargeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8999,6 +10963,9 @@ class DeleteLogsetRequest(AbstractModel):
 
     @property
     def LogsetId(self):
+        """日志集ID
+        :rtype: str
+        """
         return self._LogsetId
 
     @LogsetId.setter
@@ -9032,6 +10999,9 @@ class DeleteLogsetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9061,6 +11031,9 @@ class DeleteMachineGroupInfoRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """机器组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -9069,6 +11042,10 @@ class DeleteMachineGroupInfoRequest(AbstractModel):
 
     @property
     def MachineGroupType(self):
+        """机器组类型
+目前type支持 ip 和 label
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MachineGroupTypeInfo`
+        """
         return self._MachineGroupType
 
     @MachineGroupType.setter
@@ -9105,6 +11082,9 @@ class DeleteMachineGroupInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9130,6 +11110,9 @@ class DeleteMachineGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """机器组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -9163,6 +11146,9 @@ class DeleteMachineGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9188,6 +11174,9 @@ class DeleteNoticeContentRequest(AbstractModel):
 
     @property
     def NoticeContentId(self):
+        """通知内容模板ID
+        :rtype: str
+        """
         return self._NoticeContentId
 
     @NoticeContentId.setter
@@ -9221,6 +11210,9 @@ class DeleteNoticeContentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9249,6 +11241,9 @@ class DeleteScheduledSqlRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -9257,6 +11252,9 @@ class DeleteScheduledSqlRequest(AbstractModel):
 
     @property
     def SrcTopicId(self):
+        """源日志主题ID
+        :rtype: str
+        """
         return self._SrcTopicId
 
     @SrcTopicId.setter
@@ -9291,6 +11289,9 @@ class DeleteScheduledSqlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9316,6 +11317,9 @@ class DeleteShipperRequest(AbstractModel):
 
     @property
     def ShipperId(self):
+        """投递规则ID
+        :rtype: str
+        """
         return self._ShipperId
 
     @ShipperId.setter
@@ -9349,6 +11353,9 @@ class DeleteShipperResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9374,6 +11381,9 @@ class DeleteTopicRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -9407,6 +11417,9 @@ class DeleteTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9450,6 +11463,17 @@ https://cloud.tencent.com/document/product/614/18940
 
     @property
     def Region(self):
+        """地域信息。
+
+示例：
+ ap-guangzhou  广州地域；
+ap-nanjing 南京地域。
+
+详细信息请查看官网：
+
+https://cloud.tencent.com/document/product/614/18940
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -9458,6 +11482,9 @@ https://cloud.tencent.com/document/product/614/18940
 
     @property
     def TopicId(self):
+        """日志主题ID。
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -9466,6 +11493,13 @@ https://cloud.tencent.com/document/product/614/18940
 
     @property
     def Scope(self):
+        """投递数据范围。
+
+0: 全部日志, 包括告警策略日常周期执行的所有日志，也包括告警策略变更产生的日志，默认值
+
+1:仅告警触发及恢复日志
+        :rtype: int
+        """
         return self._Scope
 
     @Scope.setter
@@ -9530,6 +11564,32 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """<li> name
+按照【通知渠道组名称】进行过滤。
+类型：String
+必选：否</li>
+<li> alarmNoticeId
+按照【通知渠道组ID】进行过滤。
+类型：String
+必选：否</li>
+<li> uid
+按照【接收用户ID】进行过滤。
+类型：String
+必选：否</li>
+<li> groupId
+按照【接收用户组ID】进行过滤。
+类型：String
+必选：否</li>
+
+<li> deliverFlag
+按照【投递状态】进行过滤。
+类型：String
+必选：否
+可选值： "1":未启用,  "2": 已启用, "3":投递异常</li>
+
+每次请求的Filters的上限为10，Filter.Values的上限为5。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -9538,6 +11598,9 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页的偏移量，默认值为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -9546,6 +11609,9 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页单页限制数目，默认值为20，最大值100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -9593,6 +11659,10 @@ class DescribeAlarmNoticesResponse(AbstractModel):
 
     @property
     def AlarmNotices(self):
+        """告警通知模板列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AlarmNotice
+        """
         return self._AlarmNotices
 
     @AlarmNotices.setter
@@ -9601,6 +11671,9 @@ class DescribeAlarmNoticesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的告警通知模板总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9609,6 +11682,9 @@ class DescribeAlarmNoticesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9652,6 +11728,9 @@ class DescribeAlarmShieldsRequest(AbstractModel):
 
     @property
     def AlarmNoticeId(self):
+        """通知渠道组id。
+        :rtype: str
+        """
         return self._AlarmNoticeId
 
     @AlarmNoticeId.setter
@@ -9660,6 +11739,11 @@ class DescribeAlarmShieldsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """- taskId:按照【规则id】进行过滤。类型：String  必选：否
+- status:按照【规则状态】进行过滤。类型：String。 支持 0:暂未生效，1:生效中，2:已失效。 必选：否
+每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -9668,6 +11752,9 @@ class DescribeAlarmShieldsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页的偏移量，默认值为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -9676,6 +11763,9 @@ class DescribeAlarmShieldsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页单页限制数目，默认值为20，最大值100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -9723,6 +11813,9 @@ class DescribeAlarmShieldsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的规则总数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9731,6 +11824,9 @@ class DescribeAlarmShieldsResponse(AbstractModel):
 
     @property
     def AlarmShields(self):
+        """告警屏蔽规则详情
+        :rtype: list of AlarmShieldInfo
+        """
         return self._AlarmShields
 
     @AlarmShields.setter
@@ -9739,6 +11835,9 @@ class DescribeAlarmShieldsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9798,6 +11897,30 @@ enable
 
     @property
     def Filters(self):
+        """name
+- 按照【告警策略名称】进行过滤。
+- 类型：String
+- 必选：否
+
+alarmId
+- 按照【告警策略ID】进行过滤。
+- 类型：String
+- 必选：否
+
+topicId
+- 按照【监控对象的日志主题ID】进行过滤。
+- 类型：String
+- 必选：否
+
+enable
+- 按照【启用状态】进行过滤。
+- 类型：String
+- 备注：enable参数值范围: 1, t, T, TRUE, true, True, 0, f, F, FALSE, false, False。 其它值将返回参数错误信息.
+- 必选：否
+
+每次请求的Filters的上限为10，Filter.Values的上限为5。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -9806,6 +11929,9 @@ enable
 
     @property
     def Offset(self):
+        """分页的偏移量，默认值为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -9814,6 +11940,9 @@ enable
 
     @property
     def Limit(self):
+        """分页单页限制数目，默认值为20，最大值100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -9860,6 +11989,9 @@ class DescribeAlarmsResponse(AbstractModel):
 
     @property
     def Alarms(self):
+        """告警策略列表。
+        :rtype: list of AlarmInfo
+        """
         return self._Alarms
 
     @Alarms.setter
@@ -9868,6 +12000,9 @@ class DescribeAlarmsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合查询条件的告警策略数目。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9876,6 +12011,9 @@ class DescribeAlarmsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9925,6 +12063,9 @@ class DescribeAlertRecordHistoryRequest(AbstractModel):
 
     @property
     def From(self):
+        """查询时间范围启始时间，毫秒级unix时间戳
+        :rtype: int
+        """
         return self._From
 
     @From.setter
@@ -9933,6 +12074,9 @@ class DescribeAlertRecordHistoryRequest(AbstractModel):
 
     @property
     def To(self):
+        """查询时间范围结束时间，毫秒级unix时间戳
+        :rtype: int
+        """
         return self._To
 
     @To.setter
@@ -9941,6 +12085,9 @@ class DescribeAlertRecordHistoryRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页的偏移量，默认值为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -9949,6 +12096,9 @@ class DescribeAlertRecordHistoryRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页单页限制数目，最大值100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -9957,6 +12107,14 @@ class DescribeAlertRecordHistoryRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """- alertId：按照告警策略ID进行过滤。类型：String 必选：否
+- topicId：按照监控对象ID进行过滤。类型：String 必选：否
+- status：按照告警状态进行过滤。类型：String 必选：否，0代表未恢复，1代表已恢复，2代表已失效
+- alarmLevel：按照告警等级进行过滤。类型：String 必选：否，0代表警告，1代表提醒，2代表紧急
+
+每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -10005,6 +12163,9 @@ class DescribeAlertRecordHistoryResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """告警历史总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10013,6 +12174,9 @@ class DescribeAlertRecordHistoryResponse(AbstractModel):
 
     @property
     def Records(self):
+        """告警历史详情
+        :rtype: list of AlertHistoryRecord
+        """
         return self._Records
 
     @Records.setter
@@ -10021,6 +12185,9 @@ class DescribeAlertRecordHistoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10076,6 +12243,26 @@ machineGroupId
 
     @property
     def Filters(self):
+        """过滤器，支持如下选项：
+name
+- 按照【特殊采集配置名称】进行模糊匹配过滤。
+- 类型：String
+
+configExtraId
+- 按照【特殊采集配置ID】进行过滤。
+- 类型：String
+
+topicId
+- 按照【日志主题】进行过滤。
+- 类型：String
+
+machineGroupId
+- 按照【机器组ID】进行过滤。
+- 类型：String
+
+每次请求的Filters的上限为10，Filter.Values的上限为5。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -10084,6 +12271,9 @@ machineGroupId
 
     @property
     def Offset(self):
+        """分页的偏移量，默认值为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -10092,6 +12282,9 @@ machineGroupId
 
     @property
     def Limit(self):
+        """分页单页的限制数目，默认值为20，最大值100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -10139,6 +12332,10 @@ class DescribeConfigExtrasResponse(AbstractModel):
 
     @property
     def Configs(self):
+        """采集配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ConfigExtraInfo
+        """
         return self._Configs
 
     @Configs.setter
@@ -10147,6 +12344,9 @@ class DescribeConfigExtrasResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """过滤到的总数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10155,6 +12355,9 @@ class DescribeConfigExtrasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10187,6 +12390,9 @@ class DescribeConfigMachineGroupsRequest(AbstractModel):
 
     @property
     def ConfigId(self):
+        """采集配置ID
+        :rtype: str
+        """
         return self._ConfigId
 
     @ConfigId.setter
@@ -10224,6 +12430,10 @@ class DescribeConfigMachineGroupsResponse(AbstractModel):
 
     @property
     def MachineGroups(self):
+        """采集规则配置绑定的机器组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MachineGroupInfo
+        """
         return self._MachineGroups
 
     @MachineGroups.setter
@@ -10232,6 +12442,9 @@ class DescribeConfigMachineGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10284,6 +12497,24 @@ topicId
 
     @property
     def Filters(self):
+        """configName
+- 按照【采集配置名称】进行模糊匹配过滤。
+- 类型：String
+- 必选：否
+
+configId
+- 按照【采集配置ID】进行过滤。
+- 类型：String
+- 必选：否
+
+topicId
+- 按照【日志主题】进行过滤。
+- 类型：String
+- 必选：否
+
+每次请求的Filters的上限为10，Filter.Values的上限为5。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -10292,6 +12523,9 @@ topicId
 
     @property
     def Offset(self):
+        """分页的偏移量，默认值为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -10300,6 +12534,9 @@ topicId
 
     @property
     def Limit(self):
+        """分页单页的限制数目，默认值为20，最大值100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -10347,6 +12584,10 @@ class DescribeConfigsResponse(AbstractModel):
 
     @property
     def Configs(self):
+        """采集配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ConfigInfo
+        """
         return self._Configs
 
     @Configs.setter
@@ -10355,6 +12596,9 @@ class DescribeConfigsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """过滤到的总数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10363,6 +12607,9 @@ class DescribeConfigsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10404,6 +12651,9 @@ class DescribeConsoleSharingListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """分页的总数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10412,6 +12662,9 @@ class DescribeConsoleSharingListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10438,6 +12691,9 @@ class DescribeConsumerRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """投递任务绑定的日志主题 ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -10488,6 +12744,9 @@ class DescribeConsumerResponse(AbstractModel):
 
     @property
     def Effective(self):
+        """投递任务是否生效
+        :rtype: bool
+        """
         return self._Effective
 
     @Effective.setter
@@ -10496,6 +12755,9 @@ class DescribeConsumerResponse(AbstractModel):
 
     @property
     def NeedContent(self):
+        """是否投递日志的元数据信息
+        :rtype: bool
+        """
         return self._NeedContent
 
     @NeedContent.setter
@@ -10504,6 +12766,10 @@ class DescribeConsumerResponse(AbstractModel):
 
     @property
     def Content(self):
+        """如果需要投递元数据信息，元数据信息的描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
+        """
         return self._Content
 
     @Content.setter
@@ -10512,6 +12778,9 @@ class DescribeConsumerResponse(AbstractModel):
 
     @property
     def Ckafka(self):
+        """CKafka的描述
+        :rtype: :class:`tencentcloud.cls.v20201016.models.Ckafka`
+        """
         return self._Ckafka
 
     @Ckafka.setter
@@ -10520,6 +12789,10 @@ class DescribeConsumerResponse(AbstractModel):
 
     @property
     def Compression(self):
+        """压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Compression
 
     @Compression.setter
@@ -10528,6 +12801,9 @@ class DescribeConsumerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10568,6 +12844,9 @@ class DescribeCosRechargesRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题 ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -10576,6 +12855,9 @@ class DescribeCosRechargesRequest(AbstractModel):
 
     @property
     def Status(self):
+        """状态   status 0: 已创建, 1: 运行中, 2: 已停止, 3: 已完成, 4: 运行失败。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -10584,6 +12866,9 @@ class DescribeCosRechargesRequest(AbstractModel):
 
     @property
     def Enable(self):
+        """是否启用:   0： 未启用  ， 1：启用
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -10623,6 +12908,10 @@ class DescribeCosRechargesResponse(AbstractModel):
 
     @property
     def Data(self):
+        """见: CosRechargeInfo 结构描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CosRechargeInfo
+        """
         return self._Data
 
     @Data.setter
@@ -10631,6 +12920,9 @@ class DescribeCosRechargesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10668,6 +12960,9 @@ class DescribeDashboardSubscribesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """<br><li/> dashboardId：按照【仪表盘id】进行过滤。类型：String必选：否<br><br><li/> 每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -10676,6 +12971,9 @@ class DescribeDashboardSubscribesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页的偏移量，默认值为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -10684,6 +12982,9 @@ class DescribeDashboardSubscribesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页单页限制数目，默认值为20，最大值100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -10724,6 +13025,9 @@ class DescribeDashboardSubscribesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10764,6 +13068,9 @@ class DescribeDashboardsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页的偏移量，默认值为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -10772,6 +13079,9 @@ class DescribeDashboardsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页单页限制数目，默认值为20，最大值100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -10780,6 +13090,15 @@ class DescribeDashboardsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """- dashboardId 按照【仪表盘id】进行过滤，类型：String， 必选：否。
+- dashboardName 按照【仪表盘名字】进行模糊搜索过滤，类型：String，必选：否。
+- dashboardRegion 按照【仪表盘地域】进行过滤，为了兼容老的仪表盘，通过云API创建的仪表盘没有地域属性，类型：String，必选：否。
+- tagKey 按照【标签键】进行过滤，类型：String，必选：否。
+- tag:tagKey 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，类型：String，必选：否，使用请参考[示例2](https://cloud.tencent.com/document/api/614/95636#4.-.E7.A4.BA.E4.BE.8B)。
+
+每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -10788,6 +13107,9 @@ class DescribeDashboardsRequest(AbstractModel):
 
     @property
     def TopicIdRegionFilter(self):
+        """按照topicId和regionId过滤。
+        :rtype: list of TopicIdAndRegion
+        """
         return self._TopicIdRegionFilter
 
     @TopicIdRegionFilter.setter
@@ -10840,6 +13162,9 @@ class DescribeDashboardsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """仪表盘的数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10848,6 +13173,9 @@ class DescribeDashboardsResponse(AbstractModel):
 
     @property
     def DashboardInfos(self):
+        """仪表盘详细明细
+        :rtype: list of DashboardInfo
+        """
         return self._DashboardInfos
 
     @DashboardInfos.setter
@@ -10856,6 +13184,9 @@ class DescribeDashboardsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10927,6 +13258,36 @@ class DescribeDataTransformInfoRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """- taskName
+按照【加工任务名称】进行过滤。
+类型：String
+必选：否
+
+- taskId
+按照【加工任务id】进行过滤。
+类型：String
+必选：否
+
+- topicId
+按照【源topicId】进行过滤。
+类型：String
+必选：否
+- status
+按照【 任务运行状态】进行过滤。 1：准备中，2：运行中，3：停止中，4：已停止
+类型：String
+必选：否
+- hasServiceLog
+按照【是否开启服务日志】进行过滤。 1：未开启，2：已开启
+类型：String
+必选：否
+- dstTopicType
+按照【目标topic类型】进行过滤。  1：固定，2：动态
+类型：String
+必选：否
+
+每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -10935,6 +13296,9 @@ class DescribeDataTransformInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页的偏移量，默认值为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -10943,6 +13307,9 @@ class DescribeDataTransformInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页单页限制数目，默认值为20，最大值100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -10951,6 +13318,9 @@ class DescribeDataTransformInfoRequest(AbstractModel):
 
     @property
     def Type(self):
+        """默认值为2.   1: 获取单个任务的详细信息 2：获取任务列表
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -10959,6 +13329,9 @@ class DescribeDataTransformInfoRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """Type为1， 此参数必填
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -11007,6 +13380,9 @@ class DescribeDataTransformInfoResponse(AbstractModel):
 
     @property
     def DataTransformTaskInfos(self):
+        """数据加工任务列表信息
+        :rtype: list of DataTransformTaskInfo
+        """
         return self._DataTransformTaskInfos
 
     @DataTransformTaskInfos.setter
@@ -11015,6 +13391,9 @@ class DescribeDataTransformInfoResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """任务总次数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -11023,6 +13402,9 @@ class DescribeDataTransformInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11061,6 +13443,9 @@ class DescribeExportsRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -11069,6 +13454,9 @@ class DescribeExportsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页的偏移量，默认值为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -11077,6 +13465,9 @@ class DescribeExportsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页单页限制数目，默认值为20，最大值100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -11118,6 +13509,9 @@ class DescribeExportsResponse(AbstractModel):
 
     @property
     def Exports(self):
+        """日志导出列表
+        :rtype: list of ExportInfo
+        """
         return self._Exports
 
     @Exports.setter
@@ -11126,6 +13520,9 @@ class DescribeExportsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -11134,6 +13531,9 @@ class DescribeExportsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11166,6 +13566,9 @@ class DescribeIndexRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -11225,6 +13628,9 @@ class DescribeIndexResponse(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -11233,6 +13639,9 @@ class DescribeIndexResponse(AbstractModel):
 
     @property
     def Status(self):
+        """是否生效
+        :rtype: bool
+        """
         return self._Status
 
     @Status.setter
@@ -11241,6 +13650,10 @@ class DescribeIndexResponse(AbstractModel):
 
     @property
     def Rule(self):
+        """索引配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
+        """
         return self._Rule
 
     @Rule.setter
@@ -11249,6 +13662,9 @@ class DescribeIndexResponse(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """索引修改时间，初始值为索引创建时间。
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -11257,6 +13673,12 @@ class DescribeIndexResponse(AbstractModel):
 
     @property
     def IncludeInternalFields(self):
+        """内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引
+* false:不包含
+* true:包含
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IncludeInternalFields
 
     @IncludeInternalFields.setter
@@ -11265,6 +13687,13 @@ class DescribeIndexResponse(AbstractModel):
 
     @property
     def MetadataFlag(self):
+        """元数据字段（前缀为`__TAG__`的字段）是否包含至全文索引
+* 0:仅包含开启键值索引的元数据字段
+* 1:包含所有元数据字段
+* 2:不包含任何元数据字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MetadataFlag
 
     @MetadataFlag.setter
@@ -11273,6 +13702,9 @@ class DescribeIndexResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11306,6 +13738,9 @@ class DescribeKafkaConsumerRequest(AbstractModel):
 
     @property
     def FromTopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._FromTopicId
 
     @FromTopicId.setter
@@ -11351,6 +13786,9 @@ class DescribeKafkaConsumerResponse(AbstractModel):
 
     @property
     def Status(self):
+        """Kafka协议消费是否打开
+        :rtype: bool
+        """
         return self._Status
 
     @Status.setter
@@ -11359,6 +13797,9 @@ class DescribeKafkaConsumerResponse(AbstractModel):
 
     @property
     def TopicID(self):
+        """KafkaConsumer 消费时使用的Topic参数
+        :rtype: str
+        """
         return self._TopicID
 
     @TopicID.setter
@@ -11367,6 +13808,9 @@ class DescribeKafkaConsumerResponse(AbstractModel):
 
     @property
     def Compression(self):
+        """压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+        :rtype: int
+        """
         return self._Compression
 
     @Compression.setter
@@ -11375,6 +13819,9 @@ class DescribeKafkaConsumerResponse(AbstractModel):
 
     @property
     def ConsumerContent(self):
+        """kafka协议消费数据格式
+        :rtype: :class:`tencentcloud.cls.v20201016.models.KafkaConsumerContent`
+        """
         return self._ConsumerContent
 
     @ConsumerContent.setter
@@ -11383,6 +13830,9 @@ class DescribeKafkaConsumerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11420,6 +13870,9 @@ class DescribeKafkaRechargesRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题 ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -11428,6 +13881,9 @@ class DescribeKafkaRechargesRequest(AbstractModel):
 
     @property
     def Id(self):
+        """导入配置ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -11436,6 +13892,9 @@ class DescribeKafkaRechargesRequest(AbstractModel):
 
     @property
     def Status(self):
+        """状态   status 1: 运行中, 2: 暂停...
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -11477,6 +13936,9 @@ class DescribeKafkaRechargesResponse(AbstractModel):
 
     @property
     def Infos(self):
+        """KafkaRechargeInfo 信息列表
+        :rtype: list of KafkaRechargeInfo
+        """
         return self._Infos
 
     @Infos.setter
@@ -11485,6 +13947,9 @@ class DescribeKafkaRechargesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Kafka导入信息总条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -11493,6 +13958,9 @@ class DescribeKafkaRechargesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11558,6 +14026,9 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """要查询的日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -11566,6 +14037,9 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def BTime(self):
+        """日志时间,  即SearchLog接口返回信息中Results结构体中的Time，需按照 UTC+8 时区将该毫秒级Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。
+        :rtype: str
+        """
         return self._BTime
 
     @BTime.setter
@@ -11574,6 +14048,9 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def PkgId(self):
+        """日志包序号，即SearchLog接口返回信息中Results结构体中的PkgId。
+        :rtype: str
+        """
         return self._PkgId
 
     @PkgId.setter
@@ -11582,6 +14059,9 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def PkgLogId(self):
+        """日志包内一条日志的序号，即SearchLog接口返回信息中Results结构中的PkgLogId。
+        :rtype: int
+        """
         return self._PkgLogId
 
     @PkgLogId.setter
@@ -11590,6 +14070,9 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def PrevLogs(self):
+        """前${PrevLogs}条日志，默认值10。
+        :rtype: int
+        """
         return self._PrevLogs
 
     @PrevLogs.setter
@@ -11598,6 +14081,9 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def NextLogs(self):
+        """后${NextLogs}条日志，默认值10。
+        :rtype: int
+        """
         return self._NextLogs
 
     @NextLogs.setter
@@ -11606,6 +14092,10 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def Query(self):
+        """检索语句，对日志上下文进行过滤，最大长度为12KB
+语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a>构成，不支持SQL语句
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -11614,6 +14104,13 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def From(self):
+        """上下文检索的开始时间，单位：毫秒级时间戳
+注意：
+- From为空时，表示上下文检索的开始时间不做限制
+- From和To非空时，From < To
+- 暂时仅支持上海 / 弗吉尼亚/ 新加坡地域
+        :rtype: int
+        """
         return self._From
 
     @From.setter
@@ -11622,6 +14119,13 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def To(self):
+        """上下文检索的结束时间，单位：毫秒级时间戳。
+注意：
+- To为空时，表示上下文检索的结束时间不做限制
+- From和To非空时，From < To
+- 暂时仅支持上海 / 弗吉尼亚/ 新加坡地域
+        :rtype: int
+        """
         return self._To
 
     @To.setter
@@ -11672,6 +14176,9 @@ class DescribeLogContextResponse(AbstractModel):
 
     @property
     def LogContextInfos(self):
+        """日志上下文信息集合
+        :rtype: list of LogContextInfo
+        """
         return self._LogContextInfos
 
     @LogContextInfos.setter
@@ -11680,6 +14187,9 @@ class DescribeLogContextResponse(AbstractModel):
 
     @property
     def PrevOver(self):
+        """上文日志是否已经返回完成（当PrevOver为false，表示有上文日志还未全部返回）。
+        :rtype: bool
+        """
         return self._PrevOver
 
     @PrevOver.setter
@@ -11688,6 +14198,9 @@ class DescribeLogContextResponse(AbstractModel):
 
     @property
     def NextOver(self):
+        """下文日志是否已经返回完成（当NextOver为false，表示有下文日志还未全部返回）。
+        :rtype: bool
+        """
         return self._NextOver
 
     @NextOver.setter
@@ -11696,6 +14209,9 @@ class DescribeLogContextResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11746,6 +14262,9 @@ class DescribeLogHistogramRequest(AbstractModel):
 
     @property
     def From(self):
+        """要查询的日志的起始时间，Unix时间戳，单位ms
+        :rtype: int
+        """
         return self._From
 
     @From.setter
@@ -11754,6 +14273,9 @@ class DescribeLogHistogramRequest(AbstractModel):
 
     @property
     def To(self):
+        """要查询的日志的结束时间，Unix时间戳，单位ms
+        :rtype: int
+        """
         return self._To
 
     @To.setter
@@ -11762,6 +14284,9 @@ class DescribeLogHistogramRequest(AbstractModel):
 
     @property
     def Query(self):
+        """查询语句
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -11770,6 +14295,9 @@ class DescribeLogHistogramRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """要查询的日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -11778,6 +14306,9 @@ class DescribeLogHistogramRequest(AbstractModel):
 
     @property
     def Interval(self):
+        """时间间隔: 单位ms  限制性条件：(To-From) / interval <= 200
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -11786,6 +14317,11 @@ class DescribeLogHistogramRequest(AbstractModel):
 
     @property
     def SyntaxRule(self):
+        """检索语法规则，默认值为0。
+0：Lucene语法，1：CQL语法。
+详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+        :rtype: int
+        """
         return self._SyntaxRule
 
     @SyntaxRule.setter
@@ -11833,6 +14369,9 @@ class DescribeLogHistogramResponse(AbstractModel):
 
     @property
     def Interval(self):
+        """统计周期： 单位ms
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -11841,6 +14380,9 @@ class DescribeLogHistogramResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """命中关键字的日志总条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -11849,6 +14391,9 @@ class DescribeLogHistogramResponse(AbstractModel):
 
     @property
     def HistogramInfos(self):
+        """周期内统计结果详情
+        :rtype: list of HistogramInfo
+        """
         return self._HistogramInfos
 
     @HistogramInfos.setter
@@ -11857,6 +14402,9 @@ class DescribeLogHistogramResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11916,6 +14464,29 @@ tag:tagKey
 
     @property
     def Filters(self):
+        """logsetName
+- 按照【日志集名称】进行过滤。
+- 类型：String
+- 必选：否
+
+logsetId
+- 按照【日志集ID】进行过滤。
+- 类型：String
+- 必选：否
+
+tagKey
+- 按照【标签键】进行过滤。
+- 类型：String
+- 必选：否
+
+tag:tagKey
+- 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换。
+- 类型：String
+- 必选：否
+
+每次请求的Filters的上限为10，Filter.Values的上限为5。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -11924,6 +14495,9 @@ tag:tagKey
 
     @property
     def Offset(self):
+        """分页的偏移量，默认值为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -11932,6 +14506,9 @@ tag:tagKey
 
     @property
     def Limit(self):
+        """分页单页的限制数目，默认值为20，最大值100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -11978,6 +14555,9 @@ class DescribeLogsetsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """分页的总数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -11986,6 +14566,9 @@ class DescribeLogsetsResponse(AbstractModel):
 
     @property
     def Logsets(self):
+        """日志集列表
+        :rtype: list of LogsetInfo
+        """
         return self._Logsets
 
     @Logsets.setter
@@ -11994,6 +14577,9 @@ class DescribeLogsetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12026,6 +14612,9 @@ class DescribeMachineGroupConfigsRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """机器组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -12063,6 +14652,10 @@ class DescribeMachineGroupConfigsResponse(AbstractModel):
 
     @property
     def Configs(self):
+        """采集规则配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ConfigInfo
+        """
         return self._Configs
 
     @Configs.setter
@@ -12071,6 +14664,9 @@ class DescribeMachineGroupConfigsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12133,6 +14729,34 @@ tag:tagKey
 
     @property
     def Filters(self):
+        """machineGroupName
+- 按照【机器组名称】进行过滤。
+- 类型：String
+- 必选：否
+
+machineGroupId
+- 按照【机器组ID】进行过滤。
+- 类型：String
+- 必选：否
+
+osType
+- 按照【操作系统类型】进行过滤。
+- 类型：Int
+- 必选：否
+
+tagKey
+- 按照【标签键】进行过滤。
+- 类型：String
+- 必选：否
+
+tag:tagKey
+- 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换。
+- 类型：String
+- 必选：否
+
+每次请求的Filters的上限为10，Filter.Values的上限为5。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -12141,6 +14765,9 @@ tag:tagKey
 
     @property
     def Offset(self):
+        """分页的偏移量，默认值为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -12149,6 +14776,9 @@ tag:tagKey
 
     @property
     def Limit(self):
+        """分页单页的限制数目，默认值为20，最大值100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -12196,6 +14826,10 @@ class DescribeMachineGroupsResponse(AbstractModel):
 
     @property
     def MachineGroups(self):
+        """机器组信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MachineGroupInfo
+        """
         return self._MachineGroups
 
     @MachineGroups.setter
@@ -12204,6 +14838,9 @@ class DescribeMachineGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """分页的总数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -12212,6 +14849,9 @@ class DescribeMachineGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12280,6 +14920,9 @@ offlineTime
 
     @property
     def GroupId(self):
+        """查询的机器组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -12288,6 +14931,36 @@ offlineTime
 
     @property
     def Filters(self):
+        """ip
+- 按照【ip】进行过滤。
+- 类型：String
+- 必选：否
+
+instance
+- 按照【instance】进行过滤。
+- 类型：String
+- 必选：否
+
+version
+- 按照【LogListener版本】进行过滤。
+- 类型：String
+- 必选：否
+
+status
+- 按照【状态】进行过滤。
+- 类型：String
+- 必选：否
+- 可选值：0：离线，1：正常
+
+offlineTime
+- 按照【机器离线时间】进行过滤。
+- 类型：String
+- 必选：否
+- - 可选值：0：无离线时间，12：12小时内，24：一天内，48：两天内，99：两天前
+
+每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -12296,6 +14969,9 @@ offlineTime
 
     @property
     def Offset(self):
+        """分页的偏移量。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -12304,6 +14980,9 @@ offlineTime
 
     @property
     def Limit(self):
+        """分页单页限制数目。最大支持100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -12367,6 +15046,9 @@ class DescribeMachinesResponse(AbstractModel):
 
     @property
     def Machines(self):
+        """机器状态信息组
+        :rtype: list of MachineInfo
+        """
         return self._Machines
 
     @Machines.setter
@@ -12375,6 +15057,9 @@ class DescribeMachinesResponse(AbstractModel):
 
     @property
     def AutoUpdate(self):
+        """机器组是否开启自动升级功能。 0：未开启自动升级；1：开启了自动升级。
+        :rtype: int
+        """
         return self._AutoUpdate
 
     @AutoUpdate.setter
@@ -12383,6 +15068,9 @@ class DescribeMachinesResponse(AbstractModel):
 
     @property
     def UpdateStartTime(self):
+        """机器组自动升级功能预设开始时间
+        :rtype: str
+        """
         return self._UpdateStartTime
 
     @UpdateStartTime.setter
@@ -12391,6 +15079,9 @@ class DescribeMachinesResponse(AbstractModel):
 
     @property
     def UpdateEndTime(self):
+        """机器组自动升级功能预设结束时间
+        :rtype: str
+        """
         return self._UpdateEndTime
 
     @UpdateEndTime.setter
@@ -12399,6 +15090,9 @@ class DescribeMachinesResponse(AbstractModel):
 
     @property
     def LatestAgentVersion(self):
+        """当前用户可用最新的Loglistener版本
+        :rtype: str
+        """
         return self._LatestAgentVersion
 
     @LatestAgentVersion.setter
@@ -12407,6 +15101,9 @@ class DescribeMachinesResponse(AbstractModel):
 
     @property
     def ServiceLogging(self):
+        """是否开启服务日志
+        :rtype: bool
+        """
         return self._ServiceLogging
 
     @ServiceLogging.setter
@@ -12415,6 +15112,10 @@ class DescribeMachinesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -12423,6 +15124,9 @@ class DescribeMachinesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12476,6 +15180,19 @@ class DescribeNoticeContentsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """<li> name
+按照【通知内容模板名称】进行过滤。
+类型：String
+必选：否
+</li>
+<li> noticeContentId
+按照【通知内容模板ID】进行过滤。
+类型：String
+必选：否
+</li>
+每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -12484,6 +15201,9 @@ class DescribeNoticeContentsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页的偏移量，默认值为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -12492,6 +15212,9 @@ class DescribeNoticeContentsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页单页限制数目，默认值为20，最大值100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -12539,6 +15262,10 @@ class DescribeNoticeContentsResponse(AbstractModel):
 
     @property
     def NoticeContents(self):
+        """通知内容模板列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NoticeContentTemplate
+        """
         return self._NoticeContents
 
     @NoticeContents.setter
@@ -12547,6 +15274,9 @@ class DescribeNoticeContentsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的通知内容模板总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -12555,6 +15285,9 @@ class DescribeNoticeContentsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12587,6 +15320,9 @@ class DescribePartitionsRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -12623,6 +15359,9 @@ class DescribePartitionsResponse(AbstractModel):
 
     @property
     def Partitions(self):
+        """分区列表
+        :rtype: list of PartitionInfo
+        """
         return self._Partitions
 
     @Partitions.setter
@@ -12631,6 +15370,9 @@ class DescribePartitionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12682,6 +15424,9 @@ class DescribeScheduledSqlInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页的偏移量，默认值为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -12690,6 +15435,9 @@ class DescribeScheduledSqlInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页单页限制数目，默认值为20，最大值100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -12698,6 +15446,9 @@ class DescribeScheduledSqlInfoRequest(AbstractModel):
 
     @property
     def Name(self):
+        """任务名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12706,6 +15457,9 @@ class DescribeScheduledSqlInfoRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务id。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -12714,6 +15468,17 @@ class DescribeScheduledSqlInfoRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """<li>srcTopicName按照【源日志主题名称】进行过滤，模糊匹配。类型：String。必选：否</li>
+<li>dstTopicName按照【目标日志主题名称】进行过滤，模糊匹配。类型：String。必选：否</li>
+<li>srcTopicId按照【源日志主题ID】进行过滤。类型：String。必选：否</li>
+<li>dstTopicId按照【目标日志主题ID】进行过滤。类型：String。必选：否</li>
+<li>bizType按照【主题类型】进行过滤，0：日志主题；1：指标主题。类型：String。必选：否</li>
+<li>status按照【任务状态】进行过滤，1：运行；2：停止。类型：String。必选：否</li>
+<li>taskName按照【任务名称】进行过滤，模糊匹配。类型：String。必选：否</li>
+<li>taskId按照【任务ID】进行过滤，模糊匹配。类型：String。必选：否</li>
+
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -12762,6 +15527,9 @@ class DescribeScheduledSqlInfoResponse(AbstractModel):
 
     @property
     def ScheduledSqlTaskInfos(self):
+        """ScheduledSQL任务列表信息
+        :rtype: list of ScheduledSqlTaskInfo
+        """
         return self._ScheduledSqlTaskInfos
 
     @ScheduledSqlTaskInfos.setter
@@ -12770,6 +15538,9 @@ class DescribeScheduledSqlInfoResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """任务总次数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -12778,6 +15549,9 @@ class DescribeScheduledSqlInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12818,6 +15592,9 @@ StartTime必须小于EndTime
 
     @property
     def ShipperId(self):
+        """投递规则ID
+        :rtype: str
+        """
         return self._ShipperId
 
     @ShipperId.setter
@@ -12826,6 +15603,10 @@ StartTime必须小于EndTime
 
     @property
     def StartTime(self):
+        """查询的开始时间戳，支持最近3天的查询， 毫秒。
+StartTime必须小于EndTime
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -12834,6 +15615,10 @@ StartTime必须小于EndTime
 
     @property
     def EndTime(self):
+        """查询的结束时间戳， 毫秒。
+StartTime必须小于EndTime
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -12873,6 +15658,10 @@ class DescribeShipperTasksResponse(AbstractModel):
 
     @property
     def Tasks(self):
+        """投递任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ShipperTaskInfo
+        """
         return self._Tasks
 
     @Tasks.setter
@@ -12881,6 +15670,9 @@ class DescribeShipperTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12905,11 +15697,21 @@ class DescribeShippersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: - shipperName：按照【投递规则名称】进行过滤。类型：String。必选：否
-- shipperId：按照【投递规则ID】进行过滤。类型：String。必选：否
-- topicId：按照【日志主题】进行过滤。类型：String。必选：否
+        :param _Filters: - shipperName：按照【投递规则名称】进行过滤。
+    类型：String。
+    必选：否
+- shipperId：按照【投递规则ID】进行过滤。
+    类型：String。
+    必选：否
+- topicId：按照【日志主题】进行过滤。
+    类型：String。
+    必选：否
+- taskStatus
+按照【任务运行状态】进行过滤。 支持`0`：停止，`1`：运行中，`2`：异常
+类型：String
+必选：否
 
-每次请求的Filters的上限为10，Filter.Values的上限为5。
+每次请求的Filters的上限为10，Filter.Values的上限为10。
         :type Filters: list of Filter
         :param _Offset: 分页的偏移量，默认值为0
         :type Offset: int
@@ -12925,6 +15727,23 @@ class DescribeShippersRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """- shipperName：按照【投递规则名称】进行过滤。
+    类型：String。
+    必选：否
+- shipperId：按照【投递规则ID】进行过滤。
+    类型：String。
+    必选：否
+- topicId：按照【日志主题】进行过滤。
+    类型：String。
+    必选：否
+- taskStatus
+按照【任务运行状态】进行过滤。 支持`0`：停止，`1`：运行中，`2`：异常
+类型：String
+必选：否
+
+每次请求的Filters的上限为10，Filter.Values的上限为10。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -12933,6 +15752,9 @@ class DescribeShippersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页的偏移量，默认值为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -12941,6 +15763,9 @@ class DescribeShippersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页单页的限制数目，默认值为20，最大值100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -12949,6 +15774,9 @@ class DescribeShippersRequest(AbstractModel):
 
     @property
     def PreciseSearch(self):
+        """控制Filters相关字段是否为精确匹配。  0: 默认值，shipperName模糊匹配 1: shipperName 精确匹配
+        :rtype: int
+        """
         return self._PreciseSearch
 
     @PreciseSearch.setter
@@ -12997,6 +15825,10 @@ class DescribeShippersResponse(AbstractModel):
 
     @property
     def Shippers(self):
+        """投递规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ShipperInfo
+        """
         return self._Shippers
 
     @Shippers.setter
@@ -13005,6 +15837,9 @@ class DescribeShippersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """本次查询获取到的总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -13013,6 +15848,9 @@ class DescribeShippersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13070,6 +15908,16 @@ class DescribeTopicsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """<ul><li>topicName 按照【日志主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
+<li>logsetName 按照【日志集名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
+<li>topicId 按照【日志主题ID】进行过滤。类型：String。必选：否</li>
+<li>logsetId 按照【日志集ID】进行过滤，可通过调用 DescribeLogsets 查询已创建的日志集列表或登录控制台进行查看；也可以调用 CreateLogset 创建新的日志集。类型：String。必选：否</li>
+<li>tagKey 按照【标签键】进行过滤。类型：String。必选：否</li>
+<li>tag:tagKey 按照【标签键值对】进行过滤。tagKey 使用具体的标签键进行替换，例如 tag:exampleKey。类型：String。必选：否</li>
+<li>storageType 按照【日志主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否</li></ul>
+注意：每次请求的 Filters 的上限为10，Filter.Values 的上限为100。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -13078,6 +15926,9 @@ class DescribeTopicsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页的偏移量，默认值为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -13086,6 +15937,9 @@ class DescribeTopicsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页单页限制数目，默认值为20，最大值100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -13094,6 +15948,13 @@ class DescribeTopicsRequest(AbstractModel):
 
     @property
     def PreciseSearch(self):
+        """控制Filters相关字段是否为精确匹配。
+<ul><li>0: 默认值，topicName 和 logsetName 模糊匹配</li>
+<li>1: topicName   精确匹配</li>
+<li>2: logsetName精确匹配</li>
+<li>3: topicName 和logsetName 都精确匹配</li></ul>
+        :rtype: int
+        """
         return self._PreciseSearch
 
     @PreciseSearch.setter
@@ -13102,6 +15963,11 @@ class DescribeTopicsRequest(AbstractModel):
 
     @property
     def BizType(self):
+        """主题类型
+<ul><li>0:日志主题，默认值</li>
+<li>1:指标主题</li></ul>
+        :rtype: int
+        """
         return self._BizType
 
     @BizType.setter
@@ -13150,6 +16016,9 @@ class DescribeTopicsResponse(AbstractModel):
 
     @property
     def Topics(self):
+        """日志主题列表
+        :rtype: list of TopicInfo
+        """
         return self._Topics
 
     @Topics.setter
@@ -13158,6 +16027,9 @@ class DescribeTopicsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -13166,6 +16038,9 @@ class DescribeTopicsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13199,6 +16074,10 @@ class DynamicIndex(AbstractModel):
 
     @property
     def Status(self):
+        """键值索引自动配置开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Status
 
     @Status.setter
@@ -13254,6 +16133,9 @@ class EscalateNoticeInfo(AbstractModel):
 
     @property
     def NoticeReceivers(self):
+        """告警通知模板接收者信息。
+        :rtype: list of NoticeReceiver
+        """
         return self._NoticeReceivers
 
     @NoticeReceivers.setter
@@ -13262,6 +16144,9 @@ class EscalateNoticeInfo(AbstractModel):
 
     @property
     def WebCallbacks(self):
+        """告警通知模板回调信息。
+        :rtype: list of WebCallback
+        """
         return self._WebCallbacks
 
     @WebCallbacks.setter
@@ -13270,6 +16155,10 @@ class EscalateNoticeInfo(AbstractModel):
 
     @property
     def Escalate(self):
+        """告警升级开关。`true`：开启告警升级、`false`：关闭告警升级，默认：false
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Escalate
 
     @Escalate.setter
@@ -13278,6 +16167,10 @@ class EscalateNoticeInfo(AbstractModel):
 
     @property
     def Interval(self):
+        """告警升级间隔。单位：分钟，范围`[1，14400]`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -13286,6 +16179,13 @@ class EscalateNoticeInfo(AbstractModel):
 
     @property
     def Type(self):
+        """升级条件。`1`：无人认领且未恢复、`2`：未恢复，默认为1
+- 无人认领且未恢复：告警没有恢复并且没有人认领则升级
+- 未恢复：当前告警持续未恢复则升级
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -13294,6 +16194,10 @@ class EscalateNoticeInfo(AbstractModel):
 
     @property
     def EscalateNotice(self):
+        """告警升级后下一个环节的通知渠道配置，最多可配置5个环节。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EscalateNoticeInfo`
+        """
         return self._EscalateNotice
 
     @EscalateNotice.setter
@@ -13354,6 +16258,10 @@ class EventLog(AbstractModel):
 
     @property
     def EventChannel(self):
+        """事件通道，支持Application，Security，Setup，System，ALL
+
+        :rtype: str
+        """
         return self._EventChannel
 
     @EventChannel.setter
@@ -13362,6 +16270,9 @@ class EventLog(AbstractModel):
 
     @property
     def TimeType(self):
+        """时间类型，1:用户自定义，2:当前时间
+        :rtype: int
+        """
         return self._TimeType
 
     @TimeType.setter
@@ -13370,6 +16281,9 @@ class EventLog(AbstractModel):
 
     @property
     def Timestamp(self):
+        """时间，用户选择自定义时间类型时，需要指定时间
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -13378,6 +16292,9 @@ class EventLog(AbstractModel):
 
     @property
     def EventIDs(self):
+        """事件ID过滤列表
+        :rtype: list of str
+        """
         return self._EventIDs
 
     @EventIDs.setter
@@ -13417,6 +16334,9 @@ class ExcludePathInfo(AbstractModel):
 
     @property
     def Type(self):
+        """类型，选填File或Path
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -13425,6 +16345,9 @@ class ExcludePathInfo(AbstractModel):
 
     @property
     def Value(self):
+        """Type对应的具体内容
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -13503,6 +16426,9 @@ class ExportInfo(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -13511,6 +16437,9 @@ class ExportInfo(AbstractModel):
 
     @property
     def ExportId(self):
+        """日志导出任务ID
+        :rtype: str
+        """
         return self._ExportId
 
     @ExportId.setter
@@ -13519,6 +16448,9 @@ class ExportInfo(AbstractModel):
 
     @property
     def Query(self):
+        """日志导出查询语句
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -13527,6 +16459,9 @@ class ExportInfo(AbstractModel):
 
     @property
     def FileName(self):
+        """日志导出文件名
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -13535,6 +16470,9 @@ class ExportInfo(AbstractModel):
 
     @property
     def FileSize(self):
+        """日志文件大小
+        :rtype: int
+        """
         return self._FileSize
 
     @FileSize.setter
@@ -13543,6 +16481,9 @@ class ExportInfo(AbstractModel):
 
     @property
     def Order(self):
+        """日志导出时间排序
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -13551,6 +16492,9 @@ class ExportInfo(AbstractModel):
 
     @property
     def Format(self):
+        """日志导出格式
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -13559,6 +16503,9 @@ class ExportInfo(AbstractModel):
 
     @property
     def Count(self):
+        """日志导出数量
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -13567,6 +16514,9 @@ class ExportInfo(AbstractModel):
 
     @property
     def Status(self):
+        """日志下载状态。Processing:导出正在进行中，Completed:导出完成，Failed:导出失败，Expired:日志导出已过期(三天有效期), Queuing 排队中
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -13575,6 +16525,9 @@ class ExportInfo(AbstractModel):
 
     @property
     def From(self):
+        """日志导出起始时间
+        :rtype: int
+        """
         return self._From
 
     @From.setter
@@ -13583,6 +16536,9 @@ class ExportInfo(AbstractModel):
 
     @property
     def To(self):
+        """日志导出结束时间
+        :rtype: int
+        """
         return self._To
 
     @To.setter
@@ -13591,6 +16547,9 @@ class ExportInfo(AbstractModel):
 
     @property
     def CosPath(self):
+        """日志导出路径,有效期一个小时，请尽快使用该路径下载。
+        :rtype: str
+        """
         return self._CosPath
 
     @CosPath.setter
@@ -13599,6 +16558,9 @@ class ExportInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """日志导出创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -13607,6 +16569,10 @@ class ExportInfo(AbstractModel):
 
     @property
     def SyntaxRule(self):
+        """语法规则。 默认值为0。
+0：Lucene语法，1：CQL语法。
+        :rtype: int
+        """
         return self._SyntaxRule
 
     @SyntaxRule.setter
@@ -13615,6 +16581,10 @@ class ExportInfo(AbstractModel):
 
     @property
     def DerivedFields(self):
+        """导出字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._DerivedFields
 
     @DerivedFields.setter
@@ -13767,6 +16737,10 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 
     @property
     def TimeKey(self):
+        """时间字段的key名字，TikeKey和TimeFormat必须成对出现
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimeKey
 
     @TimeKey.setter
@@ -13775,6 +16749,10 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 
     @property
     def TimeFormat(self):
+        """时间字段的格式，参考c语言的strftime函数对于时间的格式说明输出参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimeFormat
 
     @TimeFormat.setter
@@ -13783,6 +16761,10 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 
     @property
     def Delimiter(self):
+        """分隔符类型日志的分隔符，只有LogType为delimiter_log时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Delimiter
 
     @Delimiter.setter
@@ -13791,6 +16773,10 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 
     @property
     def LogRegex(self):
+        """整条日志匹配规则，只有LogType为fullregex_log时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogRegex
 
     @LogRegex.setter
@@ -13799,6 +16785,10 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 
     @property
     def BeginRegex(self):
+        """行首匹配规则，只有LogType为multiline_log或fullregex_log时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BeginRegex
 
     @BeginRegex.setter
@@ -13807,6 +16797,10 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 
     @property
     def Keys(self):
+        """取的每个字段的key名字，为空的key代表丢弃这个字段，只有LogType为delimiter_log时有效，json_log的日志使用json本身的key。限制100个。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Keys
 
     @Keys.setter
@@ -13815,6 +16809,12 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 
     @property
     def FilterKeyRegex(self):
+        """日志过滤规则列表（旧版），需要过滤日志的key，及其对应的regex。
+ 注意：2.9.3及以上版本LogListener ，建议使用AdvanceFilterRules配置日志过滤规则。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of KeyRegexInfo
+        """
         return self._FilterKeyRegex
 
     @FilterKeyRegex.setter
@@ -13823,6 +16823,10 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 
     @property
     def UnMatchUpLoadSwitch(self):
+        """解析失败日志是否上传，true表示上传，false表示不上传
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._UnMatchUpLoadSwitch
 
     @UnMatchUpLoadSwitch.setter
@@ -13831,6 +16835,10 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 
     @property
     def UnMatchLogKey(self):
+        """失败日志的key，当UnMatchUpLoadSwitch为true时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UnMatchLogKey
 
     @UnMatchLogKey.setter
@@ -13839,6 +16847,12 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 
     @property
     def Backtracking(self):
+        """增量采集模式下的回溯数据量，默认：-1（全量采集）；其他非负数表示增量采集（从最新的位置，往前采集${Backtracking}字节（Byte）的日志）最大支持1073741824（1G）。
+注意：
+- COS导入不支持此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Backtracking
 
     @Backtracking.setter
@@ -13847,6 +16861,13 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 
     @property
     def IsGBK(self):
+        """是否为Gbk编码。 0：否；1：是。
+注意
+- 目前取0值时，表示UTF-8编码
+- COS导入不支持此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsGBK
 
     @IsGBK.setter
@@ -13855,6 +16876,11 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 
     @property
     def JsonStandard(self):
+        """是否为标准json。  0：否； 1：是。
+- 标准json指采集器使用业界标准开源解析器进行json解析，非标json指采集器使用CLS自研json解析器进行解析，两种解析器没有本质区别，建议客户使用标准json进行解析。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._JsonStandard
 
     @JsonStandard.setter
@@ -13863,6 +16889,13 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 
     @property
     def Protocol(self):
+        """syslog传输协议，取值为tcp或者udp，只有在LogType为service_syslog时生效，其余类型无需填写。
+注意：
+- 该字段适用于：创建采集规则配置、修改采集规则配置。
+- COS导入不支持此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -13871,6 +16904,13 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 
     @property
     def Address(self):
+        """syslog系统日志采集指定采集器监听的地址和端口 ，形式：[ip]:[port]，只有在LogType为service_syslog时生效，其余类型无需填写。
+注意：
+- 该字段适用于：创建采集规则配置、修改采集规则配置。
+- COS导入不支持此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -13879,6 +16919,16 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 
     @property
     def ParseProtocol(self):
+        """rfc3164：指定系统日志采集使用RFC3164协议解析日志。
+rfc5424：指定系统日志采集使用RFC5424协议解析日志。
+auto：自动匹配rfc3164或者rfc5424其中一种协议。
+只有在LogType为service_syslog时生效，其余类型无需填写。
+注意：
+- 该字段适用于：创建采集规则配置、修改采集规则配置
+- COS导入不支持此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ParseProtocol
 
     @ParseProtocol.setter
@@ -13887,6 +16937,11 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 
     @property
     def MetadataType(self):
+        """元数据类型。0: 不使用元数据信息；1:使用机器组元数据；2:使用用户自定义元数据；3:使用采集配置路径。
+注意：
+- COS导入不支持此字段。
+        :rtype: int
+        """
         return self._MetadataType
 
     @MetadataType.setter
@@ -13895,6 +16950,13 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 
     @property
     def PathRegex(self):
+        """采集配置路径正则表达式。
+注意：
+- MetadataType为3时必填。
+- COS导入不支持此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PathRegex
 
     @PathRegex.setter
@@ -13903,6 +16965,12 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 
     @property
     def MetaTags(self):
+        """用户自定义元数据信息。
+注意：
+- MetadataType为2时必填。
+- COS导入不支持此字段。
+        :rtype: list of MetaTagInfo
+        """
         return self._MetaTags
 
     @MetaTags.setter
@@ -13911,6 +16979,9 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 
     @property
     def EventLogRules(self):
+        """Windows事件日志采集规则，只有在LogType为windows_event_log时生效，其余类型无需填写。
+        :rtype: list of EventLog
+        """
         return self._EventLogRules
 
     @EventLogRules.setter
@@ -13919,6 +16990,13 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 
     @property
     def AdvanceFilterRules(self):
+        """日志过滤规则列表（新版）。
+注意：
+- 2.9.3以下版本LogListener不支持， 请使用FilterKeyRegex配置日志过滤规则。
+- 自建k8s采集配置（CreateConfigExtra、ModifyConfigExtra）不支持此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AdvanceFilterRuleInfo
+        """
         return self._AdvanceFilterRules
 
     @AdvanceFilterRules.setter
@@ -13994,6 +17072,9 @@ class FilePathInfo(AbstractModel):
 
     @property
     def Path(self):
+        """文件路径
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -14002,6 +17083,9 @@ class FilePathInfo(AbstractModel):
 
     @property
     def File(self):
+        """文件名称
+        :rtype: str
+        """
         return self._File
 
     @File.setter
@@ -14039,6 +17123,9 @@ class Filter(AbstractModel):
 
     @property
     def Key(self):
+        """需要过滤的字段。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -14047,6 +17134,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """需要过滤的值。
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -14087,6 +17177,9 @@ class FilterRuleInfo(AbstractModel):
 
     @property
     def Key(self):
+        """过滤规则Key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -14095,6 +17188,9 @@ class FilterRuleInfo(AbstractModel):
 
     @property
     def Regex(self):
+        """过滤规则
+        :rtype: str
+        """
         return self._Regex
 
     @Regex.setter
@@ -14103,6 +17199,9 @@ class FilterRuleInfo(AbstractModel):
 
     @property
     def Value(self):
+        """过滤规则Value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -14147,6 +17246,9 @@ class FullTextInfo(AbstractModel):
 
     @property
     def CaseSensitive(self):
+        """是否大小写敏感
+        :rtype: bool
+        """
         return self._CaseSensitive
 
     @CaseSensitive.setter
@@ -14155,6 +17257,11 @@ class FullTextInfo(AbstractModel):
 
     @property
     def Tokenizer(self):
+        """全文索引的分词符，其中的每个字符代表一个分词符；
+仅支持英文符号、\n\t\r及转义符\；
+注意：\n\t\r本身已被转义，直接使用双引号包裹即可作为入参，无需再次转义。使用API Explorer进行调试时请使用JSON参数输入方式，以避免\n\t\r被重复转义
+        :rtype: str
+        """
         return self._Tokenizer
 
     @Tokenizer.setter
@@ -14163,6 +17270,10 @@ class FullTextInfo(AbstractModel):
 
     @property
     def ContainZH(self):
+        """是否包含中文
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._ContainZH
 
     @ContainZH.setter
@@ -14228,6 +17339,9 @@ false：代表使用老的检索结果返回方式，输出AnalysisResults和Col
 
     @property
     def From(self):
+        """要查询的执行详情的起始时间，Unix时间戳，单位ms。
+        :rtype: int
+        """
         return self._From
 
     @From.setter
@@ -14236,6 +17350,9 @@ false：代表使用老的检索结果返回方式，输出AnalysisResults和Col
 
     @property
     def To(self):
+        """要查询的执行详情的结束时间，Unix时间戳，单位ms。
+        :rtype: int
+        """
         return self._To
 
     @To.setter
@@ -14244,6 +17361,13 @@ false：代表使用老的检索结果返回方式，输出AnalysisResults和Col
 
     @property
     def Query(self):
+        """查询过滤条件，例如：
+- 按告警策略ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971"`
+- 按监控对象ID查询：`monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b" `
+- 按告警策略ID及监控对象ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971" AND monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b"`
+- 按告警策略ID及监控对象ID查询支持SQL语句：`(alert_id:"alarm-5ce45495-09e8-4d58-xxxx-768134bf330c") AND (monitored_object:"3c514e84-6f1f-46ec-xxxx-05de6163f7fe") AND NOT condition_evaluate_result: "Skip" AND condition_evaluate_result:[* TO *] | SELECT count(*) as top50StatisticsTotalCount, count_if(condition_evaluate_result='ProcessError') as top50StatisticsFailureCount, count_if(notification_send_result!='NotSend') as top50NoticeTotalCount, count_if(notification_send_result='SendPartFail' or notification_send_result='SendFail') as top50NoticeFailureCount, alert_id, alert_name, monitored_object, topic_type, happen_threshold, alert_threshold, notify_template group by alert_id, alert_name, monitored_object,topic_type, happen_threshold, alert_threshold, notify_template order by top50StatisticsTotalCount desc limit 1`
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -14252,6 +17376,9 @@ false：代表使用老的检索结果返回方式，输出AnalysisResults和Col
 
     @property
     def Limit(self):
+        """单次查询返回的执行详情条数，最大值为1000
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -14260,6 +17387,12 @@ false：代表使用老的检索结果返回方式，输出AnalysisResults和Col
 
     @property
     def Context(self):
+        """透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
+注意：
+* 透传该参数时，请勿修改除该参数外的其它参数
+* 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+        :rtype: str
+        """
         return self._Context
 
     @Context.setter
@@ -14268,6 +17401,12 @@ false：代表使用老的检索结果返回方式，输出AnalysisResults和Col
 
     @property
     def Sort(self):
+        """原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+注意：
+* 仅当检索分析语句(Query)不包含SQL时有效
+* SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
+        :rtype: str
+        """
         return self._Sort
 
     @Sort.setter
@@ -14276,6 +17415,11 @@ false：代表使用老的检索结果返回方式，输出AnalysisResults和Col
 
     @property
     def UseNewAnalysis(self):
+        """true：代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效；
+false：代表使用老的检索结果返回方式，输出AnalysisResults和ColNames有效；
+两种返回方式在编码格式上有少量区别，建议使用true。
+        :rtype: bool
+        """
         return self._UseNewAnalysis
 
     @UseNewAnalysis.setter
@@ -14348,6 +17492,9 @@ class GetAlarmLogResponse(AbstractModel):
 
     @property
     def Context(self):
+        """加载后续详情的Context
+        :rtype: str
+        """
         return self._Context
 
     @Context.setter
@@ -14356,6 +17503,9 @@ class GetAlarmLogResponse(AbstractModel):
 
     @property
     def ListOver(self):
+        """指定时间范围内的告警执行详情是否完整返回
+        :rtype: bool
+        """
         return self._ListOver
 
     @ListOver.setter
@@ -14364,6 +17514,9 @@ class GetAlarmLogResponse(AbstractModel):
 
     @property
     def Analysis(self):
+        """返回的结果是否为SQL分析结果
+        :rtype: bool
+        """
         return self._Analysis
 
     @Analysis.setter
@@ -14372,6 +17525,11 @@ class GetAlarmLogResponse(AbstractModel):
 
     @property
     def ColNames(self):
+        """分析结果的列名，如果Query语句有SQL查询，则返回查询字段的列名；
+否则为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ColNames
 
     @ColNames.setter
@@ -14380,6 +17538,12 @@ class GetAlarmLogResponse(AbstractModel):
 
     @property
     def Results(self):
+        """执行详情查询结果。
+当Query字段无SQL语句时，返回查询结果。
+当Query字段有SQL语句时，可能返回null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LogInfo
+        """
         return self._Results
 
     @Results.setter
@@ -14388,6 +17552,11 @@ class GetAlarmLogResponse(AbstractModel):
 
     @property
     def AnalysisResults(self):
+        """执行详情统计分析结果。当Query字段有SQL语句时，返回SQL统计结果，否则可能返回null。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LogItems
+        """
         return self._AnalysisResults
 
     @AnalysisResults.setter
@@ -14396,6 +17565,10 @@ class GetAlarmLogResponse(AbstractModel):
 
     @property
     def AnalysisRecords(self):
+        """执行详情统计分析结果；UseNewAnalysis为true有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AnalysisRecords
 
     @AnalysisRecords.setter
@@ -14404,6 +17577,10 @@ class GetAlarmLogResponse(AbstractModel):
 
     @property
     def Columns(self):
+        """分析结果的列名， UseNewAnalysis为true有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Column
+        """
         return self._Columns
 
     @Columns.setter
@@ -14412,6 +17589,9 @@ class GetAlarmLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14463,6 +17643,9 @@ class GroupTriggerConditionInfo(AbstractModel):
 
     @property
     def Key(self):
+        """分组触发字段名称
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -14471,6 +17654,9 @@ class GroupTriggerConditionInfo(AbstractModel):
 
     @property
     def Value(self):
+        """分组触发字段值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -14508,6 +17694,9 @@ class HighLightItem(AbstractModel):
 
     @property
     def Key(self):
+        """高亮的日志Key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -14516,6 +17705,9 @@ class HighLightItem(AbstractModel):
 
     @property
     def Values(self):
+        """高亮的语法
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -14553,6 +17745,9 @@ class HistogramInfo(AbstractModel):
 
     @property
     def Count(self):
+        """统计周期内的日志条数
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -14561,6 +17756,9 @@ class HistogramInfo(AbstractModel):
 
     @property
     def BTime(self):
+        """按 period 取整后的 unix timestamp： 单位毫秒
+        :rtype: int
+        """
         return self._BTime
 
     @BTime.setter
@@ -14602,6 +17800,9 @@ class HostFileInfo(AbstractModel):
 
     @property
     def LogPath(self):
+        """日志文件夹
+        :rtype: str
+        """
         return self._LogPath
 
     @LogPath.setter
@@ -14610,6 +17811,9 @@ class HostFileInfo(AbstractModel):
 
     @property
     def FilePattern(self):
+        """日志文件名
+        :rtype: str
+        """
         return self._FilePattern
 
     @FilePattern.setter
@@ -14618,6 +17822,10 @@ class HostFileInfo(AbstractModel):
 
     @property
     def CustomLabels(self):
+        """metadata信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._CustomLabels
 
     @CustomLabels.setter
@@ -14661,6 +17869,9 @@ class JsonInfo(AbstractModel):
 
     @property
     def EnableTag(self):
+        """启用标志
+        :rtype: bool
+        """
         return self._EnableTag
 
     @EnableTag.setter
@@ -14669,6 +17880,10 @@ class JsonInfo(AbstractModel):
 
     @property
     def MetaFields(self):
+        """元数据信息列表, 可选值为 __SOURCE__、__FILENAME__、__TIMESTAMP__、__HOSTNAME__。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._MetaFields
 
     @MetaFields.setter
@@ -14677,6 +17892,10 @@ class JsonInfo(AbstractModel):
 
     @property
     def JsonType(self):
+        """投递Json格式，0：字符串方式投递；1:以结构化方式投递
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._JsonType
 
     @JsonType.setter
@@ -14747,6 +17966,9 @@ JsonType为2：转义。示例：
 
     @property
     def Format(self):
+        """消费数据格式。 0：原始内容；1：JSON。
+        :rtype: int
+        """
         return self._Format
 
     @Format.setter
@@ -14755,6 +17977,10 @@ JsonType为2：转义。示例：
 
     @property
     def EnableTag(self):
+        """是否投递 TAG 信息
+Format为0时，此字段不需要赋值
+        :rtype: bool
+        """
         return self._EnableTag
 
     @EnableTag.setter
@@ -14763,6 +17989,11 @@ JsonType为2：转义。示例：
 
     @property
     def MetaFields(self):
+        """元数据信息列表, 可选值为：\_\_SOURCE\_\_、\_\_FILENAME\_\_
+、\_\_TIMESTAMP\_\_、\_\_HOSTNAME\_\_、\_\_PKGID\_\_
+Format为0时，此字段不需要赋值
+        :rtype: list of str
+        """
         return self._MetaFields
 
     @MetaFields.setter
@@ -14771,6 +18002,18 @@ JsonType为2：转义。示例：
 
     @property
     def TagTransaction(self):
+        """tag数据处理方式：1:不平铺（默认值）；2:平铺。
+
+不平铺示例：
+TAG信息：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
+不平铺：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
+
+平铺示例：
+TAG信息：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
+平铺：`{"__TAG__.fieldA":200,"__TAG__.fieldB":"text"}`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TagTransaction
 
     @TagTransaction.setter
@@ -14779,6 +18022,20 @@ JsonType为2：转义。示例：
 
     @property
     def JsonType(self):
+        """消费数据Json格式：
+1：不转义（默认格式）
+2：转义
+
+投递Json格式。
+JsonType为1：和原始日志一致，不转义。示例：
+日志原文：`{"a":"aa", "b":{"b1":"b1b1", "c1":"c1c1"}}`
+投递到Ckafka：`{"a":"aa", "b":{"b1":"b1b1", "c1":"c1c1"}}`
+
+JsonType为2：转义。示例：
+日志原文：`{"a":"aa", "b":{"b1":"b1b1", "c1":"c1c1"}}`
+投递到Ckafka：`{"a":"aa","b":"{\"b1\":\"b1b1\", \"c1\":\"c1c1\"}"}`
+        :rtype: int
+        """
         return self._JsonType
 
     @JsonType.setter
@@ -14833,6 +18090,11 @@ class KafkaProtocolInfo(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议类型，支持的协议类型包括 plaintext、sasl_plaintext 或 sasl_ssl。建议使用 sasl_ssl，此协议会进行连接加密同时需要用户认证。
+入参必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -14841,6 +18103,11 @@ class KafkaProtocolInfo(AbstractModel):
 
     @property
     def Mechanism(self):
+        """加密类型，支持 PLAIN、SCRAM-SHA-256 或 SCRAM-SHA-512。
+当Protocol为sasl_plaintext或sasl_ssl时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Mechanism
 
     @Mechanism.setter
@@ -14849,6 +18116,11 @@ class KafkaProtocolInfo(AbstractModel):
 
     @property
     def UserName(self):
+        """用户名。
+当Protocol为sasl_plaintext或sasl_ssl时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -14857,6 +18129,11 @@ class KafkaProtocolInfo(AbstractModel):
 
     @property
     def Password(self):
+        """用户密码。
+当Protocol为sasl_plaintext或sasl_ssl时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -14949,6 +18226,10 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def Id(self):
+        """Kafka数据订阅配置的ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -14957,6 +18238,10 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -14965,6 +18250,10 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def Name(self):
+        """Kafka导入任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14973,6 +18262,10 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def KafkaType(self):
+        """导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._KafkaType
 
     @KafkaType.setter
@@ -14981,6 +18274,10 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def KafkaInstance(self):
+        """腾讯云CKafka实例ID，KafkaType为0时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._KafkaInstance
 
     @KafkaInstance.setter
@@ -14989,6 +18286,10 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def ServerAddr(self):
+        """服务地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServerAddr
 
     @ServerAddr.setter
@@ -14997,6 +18298,10 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def IsEncryptionAddr(self):
+        """ServerAddr是否为加密连接	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsEncryptionAddr
 
     @IsEncryptionAddr.setter
@@ -15005,6 +18310,9 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def Protocol(self):
+        """加密访问协议，IsEncryptionAddr参数为true时必填
+        :rtype: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -15013,6 +18321,10 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def UserKafkaTopics(self):
+        """用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserKafkaTopics
 
     @UserKafkaTopics.setter
@@ -15021,6 +18333,10 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def ConsumerGroupName(self):
+        """用户Kafka消费组名称	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ConsumerGroupName
 
     @ConsumerGroupName.setter
@@ -15029,6 +18345,10 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def Status(self):
+        """状态 ，1：运行中；2：暂停。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -15037,6 +18357,10 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def Offset(self):
+        """导入数据位置，-2:最早（默认），-1：最晚
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -15045,6 +18369,10 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -15053,6 +18381,10 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -15061,6 +18393,10 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def LogRechargeRule(self):
+        """日志导入规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
+        """
         return self._LogRechargeRule
 
     @LogRechargeRule.setter
@@ -15115,6 +18451,9 @@ class KeyRegexInfo(AbstractModel):
 
     @property
     def Key(self):
+        """需要过滤日志的key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -15123,6 +18462,9 @@ class KeyRegexInfo(AbstractModel):
 
     @property
     def Regex(self):
+        """key对应的过滤规则regex
+        :rtype: str
+        """
         return self._Regex
 
     @Regex.setter
@@ -15166,6 +18508,15 @@ class KeyValueInfo(AbstractModel):
 
     @property
     def Key(self):
+        """需要配置键值或者元字段索引的字段名称，仅支持字母、数字、下划线和-./@，且不能以下划线开头
+
+注意：
+1，元字段（tag）的Key无需额外添加`__TAG__.`前缀，与上传日志时对应的字段Key一致即可，腾讯云控制台展示时将自动添加`__TAG__.`前缀
+2，键值索引（KeyValue）及元字段索引（Tag）中的Key总数不能超过300
+3，Key的层级不能超过10层，例如a.b.c.d.e.f.g.h.j.k
+4，不允许同时包含json父子级字段，例如a及a.b
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -15174,6 +18525,9 @@ class KeyValueInfo(AbstractModel):
 
     @property
     def Value(self):
+        """字段的索引描述信息
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ValueInfo`
+        """
         return self._Value
 
     @Value.setter
@@ -15241,6 +18595,9 @@ class LogContextInfo(AbstractModel):
 
     @property
     def Source(self):
+        """日志来源设备
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -15249,6 +18606,9 @@ class LogContextInfo(AbstractModel):
 
     @property
     def Filename(self):
+        """采集路径
+        :rtype: str
+        """
         return self._Filename
 
     @Filename.setter
@@ -15257,6 +18617,9 @@ class LogContextInfo(AbstractModel):
 
     @property
     def Content(self):
+        """日志内容
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -15265,6 +18628,9 @@ class LogContextInfo(AbstractModel):
 
     @property
     def PkgId(self):
+        """日志包序号
+        :rtype: str
+        """
         return self._PkgId
 
     @PkgId.setter
@@ -15273,6 +18639,9 @@ class LogContextInfo(AbstractModel):
 
     @property
     def PkgLogId(self):
+        """日志包内一条日志的序号
+        :rtype: int
+        """
         return self._PkgLogId
 
     @PkgLogId.setter
@@ -15281,6 +18650,9 @@ class LogContextInfo(AbstractModel):
 
     @property
     def BTime(self):
+        """日志时间戳
+        :rtype: int
+        """
         return self._BTime
 
     @BTime.setter
@@ -15289,6 +18661,10 @@ class LogContextInfo(AbstractModel):
 
     @property
     def HostName(self):
+        """日志来源主机名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._HostName
 
     @HostName.setter
@@ -15297,6 +18673,10 @@ class LogContextInfo(AbstractModel):
 
     @property
     def RawLog(self):
+        """原始日志(仅在日志创建索引异常时有值)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RawLog
 
     @RawLog.setter
@@ -15305,6 +18685,10 @@ class LogContextInfo(AbstractModel):
 
     @property
     def IndexStatus(self):
+        """日志创建索引异常原因(仅在日志创建索引异常时有值)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IndexStatus
 
     @IndexStatus.setter
@@ -15313,6 +18697,10 @@ class LogContextInfo(AbstractModel):
 
     @property
     def HighLights(self):
+        """日志内容的高亮描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of HighLightItem
+        """
         return self._HighLights
 
     @HighLights.setter
@@ -15394,6 +18782,9 @@ class LogInfo(AbstractModel):
 
     @property
     def Time(self):
+        """日志时间，单位ms
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -15402,6 +18793,9 @@ class LogInfo(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -15410,6 +18804,9 @@ class LogInfo(AbstractModel):
 
     @property
     def TopicName(self):
+        """日志主题名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -15418,6 +18815,9 @@ class LogInfo(AbstractModel):
 
     @property
     def Source(self):
+        """日志来源IP
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -15426,6 +18826,9 @@ class LogInfo(AbstractModel):
 
     @property
     def FileName(self):
+        """日志文件名称
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -15434,6 +18837,9 @@ class LogInfo(AbstractModel):
 
     @property
     def PkgId(self):
+        """日志上报请求包的ID
+        :rtype: str
+        """
         return self._PkgId
 
     @PkgId.setter
@@ -15442,6 +18848,9 @@ class LogInfo(AbstractModel):
 
     @property
     def PkgLogId(self):
+        """请求包内日志的ID
+        :rtype: str
+        """
         return self._PkgLogId
 
     @PkgLogId.setter
@@ -15450,6 +18859,10 @@ class LogInfo(AbstractModel):
 
     @property
     def LogJson(self):
+        """日志内容的Json序列化字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogJson
 
     @LogJson.setter
@@ -15458,6 +18871,10 @@ class LogInfo(AbstractModel):
 
     @property
     def HostName(self):
+        """日志来源主机名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._HostName
 
     @HostName.setter
@@ -15466,6 +18883,10 @@ class LogInfo(AbstractModel):
 
     @property
     def RawLog(self):
+        """原始日志(仅在日志创建索引异常时有值)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RawLog
 
     @RawLog.setter
@@ -15474,6 +18895,10 @@ class LogInfo(AbstractModel):
 
     @property
     def IndexStatus(self):
+        """日志创建索引异常原因(仅在日志创建索引异常时有值)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IndexStatus
 
     @IndexStatus.setter
@@ -15520,6 +18945,9 @@ class LogItem(AbstractModel):
 
     @property
     def Key(self):
+        """日志Key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -15528,6 +18956,9 @@ class LogItem(AbstractModel):
 
     @property
     def Value(self):
+        """日志Value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -15562,6 +18993,9 @@ class LogItems(AbstractModel):
 
     @property
     def Data(self):
+        """分析结果返回的KV数据对
+        :rtype: list of LogItem
+        """
         return self._Data
 
     @Data.setter
@@ -15649,6 +19083,9 @@ class LogRechargeRuleInfo(AbstractModel):
 
     @property
     def RechargeType(self):
+        """导入类型，支持json_log：json格式日志，minimalist_log: 单行全文，fullregex_log: 单行完全正则
+        :rtype: str
+        """
         return self._RechargeType
 
     @RechargeType.setter
@@ -15657,6 +19094,9 @@ class LogRechargeRuleInfo(AbstractModel):
 
     @property
     def EncodingFormat(self):
+        """解析编码格式，0: UTF-8（默认值），1: GBK
+        :rtype: int
+        """
         return self._EncodingFormat
 
     @EncodingFormat.setter
@@ -15665,6 +19105,9 @@ class LogRechargeRuleInfo(AbstractModel):
 
     @property
     def DefaultTimeSwitch(self):
+        """使用默认时间，true：开启（默认值）， flase：关闭
+        :rtype: bool
+        """
         return self._DefaultTimeSwitch
 
     @DefaultTimeSwitch.setter
@@ -15673,6 +19116,10 @@ class LogRechargeRuleInfo(AbstractModel):
 
     @property
     def LogRegex(self):
+        """整条日志匹配规则，只有RechargeType为fullregex_log时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogRegex
 
     @LogRegex.setter
@@ -15681,6 +19128,9 @@ class LogRechargeRuleInfo(AbstractModel):
 
     @property
     def UnMatchLogSwitch(self):
+        """解析失败日志是否上传，true表示上传，false表示不上传
+        :rtype: bool
+        """
         return self._UnMatchLogSwitch
 
     @UnMatchLogSwitch.setter
@@ -15689,6 +19139,10 @@ class LogRechargeRuleInfo(AbstractModel):
 
     @property
     def UnMatchLogKey(self):
+        """解析失败日志的键名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UnMatchLogKey
 
     @UnMatchLogKey.setter
@@ -15697,6 +19151,10 @@ class LogRechargeRuleInfo(AbstractModel):
 
     @property
     def UnMatchLogTimeSrc(self):
+        """解析失败日志时间来源，0: 系统当前时间，1: Kafka消息时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UnMatchLogTimeSrc
 
     @UnMatchLogTimeSrc.setter
@@ -15705,6 +19163,10 @@ class LogRechargeRuleInfo(AbstractModel):
 
     @property
     def DefaultTimeSrc(self):
+        """默认时间来源，0: 系统当前时间，1: Kafka消息时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DefaultTimeSrc
 
     @DefaultTimeSrc.setter
@@ -15713,6 +19175,10 @@ class LogRechargeRuleInfo(AbstractModel):
 
     @property
     def TimeKey(self):
+        """时间字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimeKey
 
     @TimeKey.setter
@@ -15721,6 +19187,10 @@ class LogRechargeRuleInfo(AbstractModel):
 
     @property
     def TimeRegex(self):
+        """时间提取正则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimeRegex
 
     @TimeRegex.setter
@@ -15729,6 +19199,10 @@ class LogRechargeRuleInfo(AbstractModel):
 
     @property
     def TimeFormat(self):
+        """时间字段格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimeFormat
 
     @TimeFormat.setter
@@ -15737,6 +19211,10 @@ class LogRechargeRuleInfo(AbstractModel):
 
     @property
     def TimeZone(self):
+        """时间字段时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimeZone
 
     @TimeZone.setter
@@ -15745,6 +19223,10 @@ class LogRechargeRuleInfo(AbstractModel):
 
     @property
     def Metadata(self):
+        """元数据信息，Kafka导入支持kafka_topic,kafka_partition,kafka_offset,kafka_timestamp
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Metadata
 
     @Metadata.setter
@@ -15753,6 +19235,10 @@ class LogRechargeRuleInfo(AbstractModel):
 
     @property
     def Keys(self):
+        """日志Key列表，RechargeType为full_regex_log时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Keys
 
     @Keys.setter
@@ -15819,6 +19305,9 @@ class LogsetInfo(AbstractModel):
 
     @property
     def LogsetId(self):
+        """日志集ID
+        :rtype: str
+        """
         return self._LogsetId
 
     @LogsetId.setter
@@ -15827,6 +19316,9 @@ class LogsetInfo(AbstractModel):
 
     @property
     def LogsetName(self):
+        """日志集名称
+        :rtype: str
+        """
         return self._LogsetName
 
     @LogsetName.setter
@@ -15835,6 +19327,9 @@ class LogsetInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -15843,6 +19338,10 @@ class LogsetInfo(AbstractModel):
 
     @property
     def AssumerName(self):
+        """云产品标识，日志集由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssumerName
 
     @AssumerName.setter
@@ -15851,6 +19350,10 @@ class LogsetInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """日志集绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -15859,6 +19362,9 @@ class LogsetInfo(AbstractModel):
 
     @property
     def TopicCount(self):
+        """日志集下日志主题的数目
+        :rtype: int
+        """
         return self._TopicCount
 
     @TopicCount.setter
@@ -15867,6 +19373,9 @@ class LogsetInfo(AbstractModel):
 
     @property
     def RoleName(self):
+        """若AssumerName非空，则表示创建该日志集的服务方角色
+        :rtype: str
+        """
         return self._RoleName
 
     @RoleName.setter
@@ -15950,6 +19459,9 @@ class MachineGroupInfo(AbstractModel):
 
     @property
     def GroupId(self):
+        """机器组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -15958,6 +19470,9 @@ class MachineGroupInfo(AbstractModel):
 
     @property
     def GroupName(self):
+        """机器组名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -15966,6 +19481,9 @@ class MachineGroupInfo(AbstractModel):
 
     @property
     def MachineGroupType(self):
+        """机器组类型
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MachineGroupTypeInfo`
+        """
         return self._MachineGroupType
 
     @MachineGroupType.setter
@@ -15974,6 +19492,9 @@ class MachineGroupInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -15982,6 +19503,10 @@ class MachineGroupInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """机器组绑定的标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -15990,6 +19515,10 @@ class MachineGroupInfo(AbstractModel):
 
     @property
     def AutoUpdate(self):
+        """是否开启机器组自动更新
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AutoUpdate
 
     @AutoUpdate.setter
@@ -15998,6 +19527,10 @@ class MachineGroupInfo(AbstractModel):
 
     @property
     def UpdateStartTime(self):
+        """升级开始时间，建议业务低峰期升级LogListener
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateStartTime
 
     @UpdateStartTime.setter
@@ -16006,6 +19539,10 @@ class MachineGroupInfo(AbstractModel):
 
     @property
     def UpdateEndTime(self):
+        """升级结束时间，建议业务低峰期升级LogListener
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateEndTime
 
     @UpdateEndTime.setter
@@ -16014,6 +19551,10 @@ class MachineGroupInfo(AbstractModel):
 
     @property
     def ServiceLogging(self):
+        """是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._ServiceLogging
 
     @ServiceLogging.setter
@@ -16022,6 +19563,10 @@ class MachineGroupInfo(AbstractModel):
 
     @property
     def DelayCleanupTime(self):
+        """机器组中机器离线定期清理时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DelayCleanupTime
 
     @DelayCleanupTime.setter
@@ -16030,6 +19575,9 @@ class MachineGroupInfo(AbstractModel):
 
     @property
     def MetaTags(self):
+        """机器组元数据信息列表
+        :rtype: list of MetaTagInfo
+        """
         return self._MetaTags
 
     @MetaTags.setter
@@ -16038,6 +19586,9 @@ class MachineGroupInfo(AbstractModel):
 
     @property
     def OSType(self):
+        """操作系统类型，0: Linux，1: windows
+        :rtype: int
+        """
         return self._OSType
 
     @OSType.setter
@@ -16099,6 +19650,11 @@ class MachineGroupTypeInfo(AbstractModel):
 
     @property
     def Type(self):
+        """机器组类型。支持 ip 和 label。
+- ip：表示该机器组Values中存的是采集机器的ip地址
+- label：表示该机器组Values中存储的是机器的标签
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -16107,6 +19663,9 @@ class MachineGroupTypeInfo(AbstractModel):
 
     @property
     def Values(self):
+        """机器描述列表。
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -16168,6 +19727,9 @@ class MachineInfo(AbstractModel):
 
     @property
     def Ip(self):
+        """机器的IP
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -16176,6 +19738,10 @@ class MachineInfo(AbstractModel):
 
     @property
     def InstanceID(self):
+        """机器实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceID
 
     @InstanceID.setter
@@ -16184,6 +19750,9 @@ class MachineInfo(AbstractModel):
 
     @property
     def Status(self):
+        """机器状态，0:异常，1:正常
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -16192,6 +19761,9 @@ class MachineInfo(AbstractModel):
 
     @property
     def OfflineTime(self):
+        """机器离线时间，空为正常，异常返回具体时间
+        :rtype: str
+        """
         return self._OfflineTime
 
     @OfflineTime.setter
@@ -16200,6 +19772,9 @@ class MachineInfo(AbstractModel):
 
     @property
     def AutoUpdate(self):
+        """机器是否开启自动升级。0:关闭，1:开启
+        :rtype: int
+        """
         return self._AutoUpdate
 
     @AutoUpdate.setter
@@ -16208,6 +19783,9 @@ class MachineInfo(AbstractModel):
 
     @property
     def Version(self):
+        """机器当前版本号。
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -16216,6 +19794,9 @@ class MachineInfo(AbstractModel):
 
     @property
     def UpdateStatus(self):
+        """机器升级功能状态。 0：升级成功；1：升级中；-1：升级失败。
+        :rtype: int
+        """
         return self._UpdateStatus
 
     @UpdateStatus.setter
@@ -16224,6 +19805,10 @@ class MachineInfo(AbstractModel):
 
     @property
     def ErrCode(self):
+        """机器升级结果标识。
+0：成功；1200：升级成功；其他值表示异常。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -16232,6 +19817,10 @@ class MachineInfo(AbstractModel):
 
     @property
     def ErrMsg(self):
+        """机器升级结果信息。
+“ok”：成功；“update success”：升级成功；其他值为失败原因。
+        :rtype: str
+        """
         return self._ErrMsg
 
     @ErrMsg.setter
@@ -16280,6 +19869,9 @@ class MergePartitionRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -16288,6 +19880,13 @@ class MergePartitionRequest(AbstractModel):
 
     @property
     def PartitionId(self):
+        """合并的PartitionId（找到下一个分区InclusiveBeginKey与入参PartitionId对应的ExclusiveEndKey相等，且找到的分区必须是读写分区（Staus:readwrite），入参PartitionId与找到的PartitionId设置为只读分区（Status:readonly）,再新建一个新的读写分区） 。[获取分区列表](https://cloud.tencent.com/document/product/614/56469)
+
+1. 入参PartitionId只能是读写分区（Status的值有readonly，readwrite），且能找到入参PartitionId的下一个可读写分区（找到下一个分区InclusiveBeginKey与入参PartitionId对应的ExclusiveEndKey相等）；
+2. 入参PartitionId不能是最后一个分区（PartitionId的ExclusiveEndKey不能是ffffffffffffffffffffffffffffffff）；
+3. topic的分区数量是有限制的（默认50个），合并之后不能超过最大分区，否则不能合并。
+        :rtype: int
+        """
         return self._PartitionId
 
     @PartitionId.setter
@@ -16325,6 +19924,9 @@ class MergePartitionResponse(AbstractModel):
 
     @property
     def Partitions(self):
+        """合并结果集
+        :rtype: list of PartitionInfo
+        """
         return self._Partitions
 
     @Partitions.setter
@@ -16333,6 +19935,9 @@ class MergePartitionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16367,6 +19972,9 @@ class MetaTagInfo(AbstractModel):
 
     @property
     def Key(self):
+        """元数据key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -16375,6 +19983,9 @@ class MetaTagInfo(AbstractModel):
 
     @property
     def Value(self):
+        """元数据value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -16414,6 +20025,10 @@ class MetricLabel(AbstractModel):
 
     @property
     def Key(self):
+        """指标名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -16422,6 +20037,10 @@ class MetricLabel(AbstractModel):
 
     @property
     def Value(self):
+        """指标内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -16479,6 +20098,9 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def AlarmNoticeId(self):
+        """通知渠道组ID。
+        :rtype: str
+        """
         return self._AlarmNoticeId
 
     @AlarmNoticeId.setter
@@ -16487,6 +20109,9 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """通知渠道组名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -16495,6 +20120,12 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def Type(self):
+        """通知类型。可选值：
+<li> Trigger - 告警触发</li>
+<li> Recovery - 告警恢复</li>
+<li> All - 告警触发和告警恢复</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -16503,6 +20134,9 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def NoticeReceivers(self):
+        """通知接收对象。
+        :rtype: list of NoticeReceiver
+        """
         return self._NoticeReceivers
 
     @NoticeReceivers.setter
@@ -16511,6 +20145,9 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def WebCallbacks(self):
+        """接口回调信息（包括企业微信）。
+        :rtype: list of WebCallback
+        """
         return self._WebCallbacks
 
     @WebCallbacks.setter
@@ -16519,6 +20156,14 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def NoticeRules(self):
+        """通知规则。
+
+注意: 
+
+- Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，2组配置互斥。
+- 传其中一组数据，则另一组数据置空。
+        :rtype: list of NoticeRule
+        """
         return self._NoticeRules
 
     @NoticeRules.setter
@@ -16572,6 +20217,9 @@ class ModifyAlarmNoticeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16670,6 +20318,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def AlarmId(self):
+        """告警策略ID。
+        :rtype: str
+        """
         return self._AlarmId
 
     @AlarmId.setter
@@ -16678,6 +20329,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Name(self):
+        """告警策略名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -16686,6 +20340,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def MonitorTime(self):
+        """监控任务运行时间点。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MonitorTime`
+        """
         return self._MonitorTime
 
     @MonitorTime.setter
@@ -16694,6 +20351,12 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Condition(self):
+        """触发条件。
+
+注意:  
+- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+        :rtype: str
+        """
         return self._Condition
 
     @Condition.setter
@@ -16702,6 +20365,14 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def AlarmLevel(self):
+        """告警级别。
+
+0:警告(Warn);1:提醒(Info);2:紧急 (Critical)
+
+注意:  
+- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+        :rtype: int
+        """
         return self._AlarmLevel
 
     @AlarmLevel.setter
@@ -16710,6 +20381,12 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def MultiConditions(self):
+        """多触发条件。 
+
+注意:  
+- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+        :rtype: list of MultiCondition
+        """
         return self._MultiConditions
 
     @MultiConditions.setter
@@ -16718,6 +20395,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def TriggerCount(self):
+        """持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。
+        :rtype: int
+        """
         return self._TriggerCount
 
     @TriggerCount.setter
@@ -16726,6 +20406,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def AlarmPeriod(self):
+        """告警重复的周期。单位是分钟。取值范围是0~1440。
+        :rtype: int
+        """
         return self._AlarmPeriod
 
     @AlarmPeriod.setter
@@ -16734,6 +20417,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def AlarmNoticeIds(self):
+        """关联的告警通知模板列表。
+        :rtype: list of str
+        """
         return self._AlarmNoticeIds
 
     @AlarmNoticeIds.setter
@@ -16742,6 +20428,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def AlarmTargets(self):
+        """监控对象列表。
+        :rtype: list of AlarmTarget
+        """
         return self._AlarmTargets
 
     @AlarmTargets.setter
@@ -16750,6 +20439,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Status(self):
+        """是否开启告警策略。
+        :rtype: bool
+        """
         return self._Status
 
     @Status.setter
@@ -16758,6 +20450,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Enable(self):
+        """该参数已废弃，请使用Status参数控制是否开启告警策略。
+        :rtype: bool
+        """
         return self._Enable
 
     @Enable.setter
@@ -16766,6 +20461,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def MessageTemplate(self):
+        """用户自定义告警内容
+        :rtype: str
+        """
         return self._MessageTemplate
 
     @MessageTemplate.setter
@@ -16774,6 +20472,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def CallBack(self):
+        """用户自定义回调
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`
+        """
         return self._CallBack
 
     @CallBack.setter
@@ -16782,6 +20483,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Analysis(self):
+        """多维分析
+        :rtype: list of AnalysisDimensional
+        """
         return self._Analysis
 
     @Analysis.setter
@@ -16790,6 +20494,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def GroupTriggerStatus(self):
+        """分组触发状态。true：开启，false：关闭（默认）
+        :rtype: bool
+        """
         return self._GroupTriggerStatus
 
     @GroupTriggerStatus.setter
@@ -16798,6 +20505,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def GroupTriggerCondition(self):
+        """分组触发条件。
+        :rtype: list of str
+        """
         return self._GroupTriggerCondition
 
     @GroupTriggerCondition.setter
@@ -16806,6 +20516,9 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Tags(self):
+        """标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。最大支持10个标签键值对，并且不能有重复的键值对。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -16814,6 +20527,11 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def MonitorObjectType(self):
+        """监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
+当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
+
+        :rtype: int
+        """
         return self._MonitorObjectType
 
     @MonitorObjectType.setter
@@ -16822,6 +20540,12 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Classifications(self):
+        """告警附加分类信息列表。
+Classifications元素个数不能超过20个。
+Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 `^[a-z]([a-z0-9_]{0,49})$`。
+Classifications元素的Value长度不能超过200个字符。
+        :rtype: list of AlarmClassification
+        """
         return self._Classifications
 
     @Classifications.setter
@@ -16903,6 +20627,9 @@ class ModifyAlarmResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16949,6 +20676,9 @@ class ModifyAlarmShieldRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """屏蔽规则ID。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -16957,6 +20687,9 @@ class ModifyAlarmShieldRequest(AbstractModel):
 
     @property
     def AlarmNoticeId(self):
+        """通知渠道组id。
+        :rtype: str
+        """
         return self._AlarmNoticeId
 
     @AlarmNoticeId.setter
@@ -16965,6 +20698,9 @@ class ModifyAlarmShieldRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """屏蔽开始时间（秒级时间戳）。
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -16973,6 +20709,9 @@ class ModifyAlarmShieldRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """屏蔽结束时间（秒级时间戳）。
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -16981,6 +20720,9 @@ class ModifyAlarmShieldRequest(AbstractModel):
 
     @property
     def Type(self):
+        """屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -16989,6 +20731,9 @@ class ModifyAlarmShieldRequest(AbstractModel):
 
     @property
     def Rule(self):
+        """屏蔽规则，当Type为2时必填。规则填写方式详见[产品文档](https://cloud.tencent.com/document/product/614/103178#rule)。
+        :rtype: str
+        """
         return self._Rule
 
     @Rule.setter
@@ -16997,6 +20742,9 @@ class ModifyAlarmShieldRequest(AbstractModel):
 
     @property
     def Reason(self):
+        """屏蔽原因。
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -17005,6 +20753,9 @@ class ModifyAlarmShieldRequest(AbstractModel):
 
     @property
     def Status(self):
+        """规则状态。只有规则状态为生效中（status:1）时，才能将其修改为已失效（status:2）。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -17045,6 +20796,9 @@ class ModifyAlarmShieldResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17138,6 +20892,9 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def ConfigExtraId(self):
+        """采集配置扩展信息id
+        :rtype: str
+        """
         return self._ConfigExtraId
 
     @ConfigExtraId.setter
@@ -17146,6 +20903,9 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def Name(self):
+        """采集配置规程名称，最长63个字符，只能包含小写字符、数字及分隔符（“-”），且必须以小写字符开头，数字或小写字符结尾
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -17154,6 +20914,9 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题id
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -17162,6 +20925,9 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def HostFile(self):
+        """节点文件配置信息
+        :rtype: :class:`tencentcloud.cls.v20201016.models.HostFileInfo`
+        """
         return self._HostFile
 
     @HostFile.setter
@@ -17170,6 +20936,10 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def ContainerFile(self):
+        """采集配置标记。
+- 目前只支持label_k8s，用于标记自建k8s集群使用的采集配置
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ContainerFileInfo`
+        """
         return self._ContainerFile
 
     @ContainerFile.setter
@@ -17178,6 +20948,9 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def ContainerStdout(self):
+        """容器标准输出信息
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ContainerStdoutInfo`
+        """
         return self._ContainerStdout
 
     @ContainerStdout.setter
@@ -17186,6 +20959,16 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def LogType(self):
+        """采集的日志类型，默认为minimalist_log。支持以下类型：
+- json_log代表：JSON-文件日志（详见[使用 JSON 提取模式采集日志](https://cloud.tencent.com/document/product/614/17419)）；
+- delimiter_log代表：分隔符-文件日志（详见[使用分隔符提取模式采集日志](https://cloud.tencent.com/document/product/614/17420)）；
+- minimalist_log代表：单行全文-文件日志（详见[使用单行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17421)）；
+- fullregex_log代表：单行完全正则-文件日志（详见[使用单行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52365)）；
+- multiline_log代表：多行全文-文件日志（详见[使用多行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17422)）；
+- multiline_fullregex_log代表：多行完全正则-文件日志（详见[使用多行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52366)）；
+- user_define_log代表：组合解析（适用于多格式嵌套的日志，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)）。
+        :rtype: str
+        """
         return self._LogType
 
     @LogType.setter
@@ -17194,6 +20977,11 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def LogFormat(self):
+        """日志格式化方式，用于容器采集场景。
+- stdout-docker-json：用于docker容器采集场景
+- stdout-containerd：用于containerd容器采集场景
+        :rtype: str
+        """
         return self._LogFormat
 
     @LogFormat.setter
@@ -17202,6 +20990,9 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def ExtractRule(self):
+        """提取规则，如果设置了ExtractRule，则必须设置LogType
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        """
         return self._ExtractRule
 
     @ExtractRule.setter
@@ -17210,6 +21001,9 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def ExcludePaths(self):
+        """采集黑名单路径列表
+        :rtype: list of ExcludePathInfo
+        """
         return self._ExcludePaths
 
     @ExcludePaths.setter
@@ -17218,6 +21012,11 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def UserDefineRule(self):
+        """组合解析采集规则，用于复杂场景下的日志采集。
+- 取值参考：[使用组合解析提取模式采集日志
+](https://cloud.tencent.com/document/product/614/61310)
+        :rtype: str
+        """
         return self._UserDefineRule
 
     @UserDefineRule.setter
@@ -17226,6 +21025,9 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def Type(self):
+        """类型：container_stdout、container_file、host_file
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -17234,6 +21036,9 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """机器组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -17242,6 +21047,9 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def ConfigFlag(self):
+        """自建采集配置标
+        :rtype: str
+        """
         return self._ConfigFlag
 
     @ConfigFlag.setter
@@ -17250,6 +21058,9 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def LogsetId(self):
+        """日志集ID
+        :rtype: str
+        """
         return self._LogsetId
 
     @LogsetId.setter
@@ -17258,6 +21069,9 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def LogsetName(self):
+        """日志集name
+        :rtype: str
+        """
         return self._LogsetName
 
     @LogsetName.setter
@@ -17266,6 +21080,9 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """日志主题name
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -17274,6 +21091,14 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def AdvancedConfig(self):
+        """高级采集配置。 Json字符串， Key/Value定义为如下：
+- ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+- ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+- ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+- ClsAgentDefault(自定义默认值，无特殊含义，用于清空其他选项)，建议取值0
+
+        :rtype: str
+        """
         return self._AdvancedConfig
 
     @AdvancedConfig.setter
@@ -17337,6 +21162,9 @@ class ModifyConfigExtraResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17402,6 +21230,9 @@ class ModifyConfigRequest(AbstractModel):
 
     @property
     def ConfigId(self):
+        """采集规则配置ID，通过[获取采集规则配置](https://cloud.tencent.com/document/product/614/58616)返回信息获取。
+        :rtype: str
+        """
         return self._ConfigId
 
     @ConfigId.setter
@@ -17410,6 +21241,9 @@ class ModifyConfigRequest(AbstractModel):
 
     @property
     def Name(self):
+        """采集规则配置名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -17418,6 +21252,9 @@ class ModifyConfigRequest(AbstractModel):
 
     @property
     def Path(self):
+        """日志采集路径，包含文件名
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -17426,6 +21263,20 @@ class ModifyConfigRequest(AbstractModel):
 
     @property
     def LogType(self):
+        """采集的日志类型。支持以下类型：
+- json_log代表：JSON-文件日志（详见[使用 JSON 提取模式采集日志](https://cloud.tencent.com/document/product/614/17419)）；
+- delimiter_log代表：分隔符-文件日志（详见[使用分隔符提取模式采集日志](https://cloud.tencent.com/document/product/614/17420)）；
+- minimalist_log代表：单行全文-文件日志（详见[使用单行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17421)）；
+- fullregex_log代表：单行完全正则-文件日志（详见[使用单行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52365)）；
+- multiline_log代表：多行全文-文件日志（详见[使用多行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17422)）；
+- multiline_fullregex_log代表：多行完全正则-文件日志（详见[使用多行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52366)）；
+- user_define_log代表：组合解析（适用于多格式嵌套的日志，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)）；
+- service_syslog代表：syslog 采集（详见[采集 Syslog](https://cloud.tencent.com/document/product/614/81454)）；
+- windows_event_log代表：Windows事件日志（详见[采集 Windows 事件日志](https://cloud.tencent.com/document/product/614/96678)）。
+
+
+        :rtype: str
+        """
         return self._LogType
 
     @LogType.setter
@@ -17434,6 +21285,9 @@ class ModifyConfigRequest(AbstractModel):
 
     @property
     def ExtractRule(self):
+        """提取规则，如果设置了ExtractRule，则必须设置LogType
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        """
         return self._ExtractRule
 
     @ExtractRule.setter
@@ -17442,6 +21296,9 @@ class ModifyConfigRequest(AbstractModel):
 
     @property
     def ExcludePaths(self):
+        """采集黑名单路径列表
+        :rtype: list of ExcludePathInfo
+        """
         return self._ExcludePaths
 
     @ExcludePaths.setter
@@ -17450,6 +21307,9 @@ class ModifyConfigRequest(AbstractModel):
 
     @property
     def Output(self):
+        """采集配置关联的日志主题（TopicId）
+        :rtype: str
+        """
         return self._Output
 
     @Output.setter
@@ -17458,6 +21318,9 @@ class ModifyConfigRequest(AbstractModel):
 
     @property
     def UserDefineRule(self):
+        """用户自定义解析字符串，Json格式序列化的字符串。
+        :rtype: str
+        """
         return self._UserDefineRule
 
     @UserDefineRule.setter
@@ -17466,6 +21329,14 @@ class ModifyConfigRequest(AbstractModel):
 
     @property
     def AdvancedConfig(self):
+        """高级采集配置。 Json字符串， Key/Value定义为如下：
+- ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+- ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+- ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+样例：
+`{\"ClsAgentFileTimeout\":0,\"ClsAgentMaxDepth\":10,\"ClsAgentParseFailMerge\":true}`
+        :rtype: str
+        """
         return self._AdvancedConfig
 
     @AdvancedConfig.setter
@@ -17514,6 +21385,9 @@ class ModifyConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17542,6 +21416,9 @@ class ModifyConsoleSharingRequest(AbstractModel):
 
     @property
     def SharingId(self):
+        """免密分享链接Id
+        :rtype: str
+        """
         return self._SharingId
 
     @SharingId.setter
@@ -17550,6 +21427,9 @@ class ModifyConsoleSharingRequest(AbstractModel):
 
     @property
     def DurationMilliseconds(self):
+        """指定分享链接有效期，单位：毫秒，最长可设定有效期为30天
+        :rtype: int
+        """
         return self._DurationMilliseconds
 
     @DurationMilliseconds.setter
@@ -17584,6 +21464,9 @@ class ModifyConsoleSharingResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17626,6 +21509,9 @@ class ModifyConsumerRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """投递任务绑定的日志主题 ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -17634,6 +21520,9 @@ class ModifyConsumerRequest(AbstractModel):
 
     @property
     def Effective(self):
+        """投递任务是否生效，默认不生效
+        :rtype: bool
+        """
         return self._Effective
 
     @Effective.setter
@@ -17642,6 +21531,11 @@ class ModifyConsumerRequest(AbstractModel):
 
     @property
     def NeedContent(self):
+        """是否投递日志的元数据信息，默认为 true。
+当NeedContent为true时：字段Content有效。
+当NeedContent为false时：字段Content无效。
+        :rtype: bool
+        """
         return self._NeedContent
 
     @NeedContent.setter
@@ -17650,6 +21544,9 @@ class ModifyConsumerRequest(AbstractModel):
 
     @property
     def Content(self):
+        """如果需要投递元数据信息，元数据信息的描述
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
+        """
         return self._Content
 
     @Content.setter
@@ -17658,6 +21555,9 @@ class ModifyConsumerRequest(AbstractModel):
 
     @property
     def Ckafka(self):
+        """CKafka的描述
+        :rtype: :class:`tencentcloud.cls.v20201016.models.Ckafka`
+        """
         return self._Ckafka
 
     @Ckafka.setter
@@ -17666,6 +21566,9 @@ class ModifyConsumerRequest(AbstractModel):
 
     @property
     def Compression(self):
+        """投递时压缩方式，取值0，2，3。[0：NONE；2：SNAPPY；3：LZ4]
+        :rtype: int
+        """
         return self._Compression
 
     @Compression.setter
@@ -17708,6 +21611,9 @@ class ModifyConsumerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17766,6 +21672,9 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     @property
     def Id(self):
+        """COS导入配置Id
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -17774,6 +21683,9 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题Id
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -17782,6 +21694,9 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """COS导入任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -17790,6 +21705,9 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     @property
     def Enable(self):
+        """任务状态   0： 停用 ， 1：启用
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -17798,6 +21716,9 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     @property
     def Bucket(self):
+        """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -17806,6 +21727,9 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     @property
     def BucketRegion(self):
+        """COS存储桶所在地域，详见产品支持的[地域列表](https://cloud.tencent.com/document/product/436/6224)。
+        :rtype: str
+        """
         return self._BucketRegion
 
     @BucketRegion.setter
@@ -17814,6 +21738,9 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     @property
     def Prefix(self):
+        """COS文件所在文件夹的前缀。为空串时投递存储桶下所有的文件。
+        :rtype: str
+        """
         return self._Prefix
 
     @Prefix.setter
@@ -17822,6 +21749,9 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     @property
     def LogType(self):
+        """采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文； 默认为minimalist_log
+        :rtype: str
+        """
         return self._LogType
 
     @LogType.setter
@@ -17830,6 +21760,9 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     @property
     def Compress(self):
+        """解析格式。supported: "", "gzip", "lzop", "snappy"; 默认空
+        :rtype: str
+        """
         return self._Compress
 
     @Compress.setter
@@ -17838,6 +21771,9 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     @property
     def ExtractRuleInfo(self):
+        """提取规则，如果设置了ExtractRule，则必须设置LogType
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        """
         return self._ExtractRuleInfo
 
     @ExtractRuleInfo.setter
@@ -17846,6 +21782,9 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     @property
     def TaskType(self):
+        """COS导入任务类型。1：一次性导入任务；2：持续性导入任务。
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -17854,6 +21793,9 @@ class ModifyCosRechargeRequest(AbstractModel):
 
     @property
     def Metadata(self):
+        """元数据。支持 bucket，object。
+        :rtype: list of str
+        """
         return self._Metadata
 
     @Metadata.setter
@@ -17900,6 +21842,9 @@ class ModifyCosRechargeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17937,6 +21882,9 @@ class ModifyDashboardSubscribeRequest(AbstractModel):
 
     @property
     def Id(self):
+        """仪表盘订阅id。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -17945,6 +21893,9 @@ class ModifyDashboardSubscribeRequest(AbstractModel):
 
     @property
     def DashboardId(self):
+        """仪表盘id。
+        :rtype: str
+        """
         return self._DashboardId
 
     @DashboardId.setter
@@ -17953,6 +21904,9 @@ class ModifyDashboardSubscribeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """仪表盘订阅名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -17961,6 +21915,9 @@ class ModifyDashboardSubscribeRequest(AbstractModel):
 
     @property
     def Cron(self):
+        """订阅时间cron表达式，格式为：{秒数} {分钟} {小时} {日期} {月份} {星期}；（有效数据为：{分钟} {小时} {日期} {月份} {星期}）。
+        :rtype: str
+        """
         return self._Cron
 
     @Cron.setter
@@ -17969,6 +21926,9 @@ class ModifyDashboardSubscribeRequest(AbstractModel):
 
     @property
     def SubscribeData(self):
+        """仪表盘订阅数据。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DashboardSubscribeData`
+        """
         return self._SubscribeData
 
     @SubscribeData.setter
@@ -18008,6 +21968,9 @@ class ModifyDashboardSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18053,6 +22016,9 @@ class ModifyDataTransformRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """加工任务id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -18061,6 +22027,9 @@ class ModifyDataTransformRequest(AbstractModel):
 
     @property
     def Name(self):
+        """加工任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -18069,6 +22038,14 @@ class ModifyDataTransformRequest(AbstractModel):
 
     @property
     def EtlContent(self):
+        """加工语句。 当FuncType为2时，EtlContent必须使用[log_auto_output](https://cloud.tencent.com/document/product/614/70733#b3c58797-4825-4807-bef4-68106e25024f) 
+
+其他参考文档：
+
+- [创建加工任务](https://cloud.tencent.com/document/product/614/63940) 
+-  [函数总览](https://cloud.tencent.com/document/product/614/70395)
+        :rtype: str
+        """
         return self._EtlContent
 
     @EtlContent.setter
@@ -18077,6 +22054,9 @@ class ModifyDataTransformRequest(AbstractModel):
 
     @property
     def EnableFlag(self):
+        """任务启动状态. 默认为1，开启,  2关闭
+        :rtype: int
+        """
         return self._EnableFlag
 
     @EnableFlag.setter
@@ -18085,6 +22065,9 @@ class ModifyDataTransformRequest(AbstractModel):
 
     @property
     def DstResources(self):
+        """加工任务目的topic_id以及别名
+        :rtype: list of DataTransformResouceInfo
+        """
         return self._DstResources
 
     @DstResources.setter
@@ -18093,6 +22076,9 @@ class ModifyDataTransformRequest(AbstractModel):
 
     @property
     def HasServicesLog(self):
+        """是否开启投递服务日志。1关闭，2开启
+        :rtype: int
+        """
         return self._HasServicesLog
 
     @HasServicesLog.setter
@@ -18136,6 +22122,9 @@ class ModifyDataTransformResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18178,6 +22167,9 @@ class ModifyIndexRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -18186,6 +22178,9 @@ class ModifyIndexRequest(AbstractModel):
 
     @property
     def Status(self):
+        """默认不生效
+        :rtype: bool
+        """
         return self._Status
 
     @Status.setter
@@ -18194,6 +22189,9 @@ class ModifyIndexRequest(AbstractModel):
 
     @property
     def Rule(self):
+        """索引规则
+        :rtype: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
+        """
         return self._Rule
 
     @Rule.setter
@@ -18202,6 +22200,11 @@ class ModifyIndexRequest(AbstractModel):
 
     @property
     def IncludeInternalFields(self):
+        """内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引，默认为false，推荐设置为true
+* false:不包含
+* true:包含
+        :rtype: bool
+        """
         return self._IncludeInternalFields
 
     @IncludeInternalFields.setter
@@ -18210,6 +22213,12 @@ class ModifyIndexRequest(AbstractModel):
 
     @property
     def MetadataFlag(self):
+        """元数据字段（前缀为`__TAG__`的字段）是否包含至全文索引，默认为0，推荐设置为1
+* 0:仅包含开启键值索引的元数据字段
+* 1:包含所有元数据字段
+* 2:不包含任何元数据字段
+        :rtype: int
+        """
         return self._MetadataFlag
 
     @MetadataFlag.setter
@@ -18249,6 +22258,9 @@ class ModifyIndexResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18280,6 +22292,9 @@ class ModifyKafkaConsumerRequest(AbstractModel):
 
     @property
     def FromTopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._FromTopicId
 
     @FromTopicId.setter
@@ -18288,6 +22303,9 @@ class ModifyKafkaConsumerRequest(AbstractModel):
 
     @property
     def Compression(self):
+        """压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+        :rtype: int
+        """
         return self._Compression
 
     @Compression.setter
@@ -18296,6 +22314,9 @@ class ModifyKafkaConsumerRequest(AbstractModel):
 
     @property
     def ConsumerContent(self):
+        """kafka协议消费数据格式
+        :rtype: :class:`tencentcloud.cls.v20201016.models.KafkaConsumerContent`
+        """
         return self._ConsumerContent
 
     @ConsumerContent.setter
@@ -18333,6 +22354,9 @@ class ModifyKafkaConsumerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18391,6 +22415,9 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Kafka导入配置ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -18399,6 +22426,9 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """导入CLS目标topic ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -18407,6 +22437,9 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Kafka导入配置名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -18415,6 +22448,9 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def KafkaType(self):
+        """导入Kafka类型，0：腾讯云CKafka：1：用户自建Kafka。
+        :rtype: int
+        """
         return self._KafkaType
 
     @KafkaType.setter
@@ -18423,6 +22459,9 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def KafkaInstance(self):
+        """腾讯云CKafka实例ID，KafkaType为0时必填。
+        :rtype: str
+        """
         return self._KafkaInstance
 
     @KafkaInstance.setter
@@ -18431,6 +22470,9 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def ServerAddr(self):
+        """服务地址，KafkaType为1时必填。
+        :rtype: str
+        """
         return self._ServerAddr
 
     @ServerAddr.setter
@@ -18439,6 +22481,9 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def IsEncryptionAddr(self):
+        """ServerAddr是否为加密连接，KafkaType为1时必填。
+        :rtype: bool
+        """
         return self._IsEncryptionAddr
 
     @IsEncryptionAddr.setter
@@ -18447,6 +22492,9 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def Protocol(self):
+        """加密访问协议，KafkaType参数为1并且IsEncryptionAddr参数为true时必填。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -18455,6 +22503,9 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def UserKafkaTopics(self):
+        """用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+        :rtype: str
+        """
         return self._UserKafkaTopics
 
     @UserKafkaTopics.setter
@@ -18463,6 +22514,9 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def ConsumerGroupName(self):
+        """用户Kafka消费组名称
+        :rtype: str
+        """
         return self._ConsumerGroupName
 
     @ConsumerGroupName.setter
@@ -18471,6 +22525,9 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def LogRechargeRule(self):
+        """日志导入规则
+        :rtype: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
+        """
         return self._LogRechargeRule
 
     @LogRechargeRule.setter
@@ -18479,6 +22536,9 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def StatusControl(self):
+        """导入控制，1：暂停；2：继续。
+        :rtype: int
+        """
         return self._StatusControl
 
     @StatusControl.setter
@@ -18527,6 +22587,9 @@ class ModifyKafkaRechargeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18558,6 +22621,9 @@ class ModifyLogsetRequest(AbstractModel):
 
     @property
     def LogsetId(self):
+        """日志集ID
+        :rtype: str
+        """
         return self._LogsetId
 
     @LogsetId.setter
@@ -18566,6 +22632,9 @@ class ModifyLogsetRequest(AbstractModel):
 
     @property
     def LogsetName(self):
+        """日志集名称
+        :rtype: str
+        """
         return self._LogsetName
 
     @LogsetName.setter
@@ -18574,6 +22643,9 @@ class ModifyLogsetRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """日志集的绑定的标签键值对。最大支持10个标签键值对，同一个资源只能同时绑定一个标签键。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -18614,6 +22686,9 @@ class ModifyLogsetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18666,6 +22741,9 @@ class ModifyMachineGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """机器组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -18674,6 +22752,9 @@ class ModifyMachineGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """机器组名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -18682,6 +22763,9 @@ class ModifyMachineGroupRequest(AbstractModel):
 
     @property
     def MachineGroupType(self):
+        """机器组类型。Type：ip，Values中为ip字符串列表机器组；Type：label，Values中为标签字符串列表机器组。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MachineGroupTypeInfo`
+        """
         return self._MachineGroupType
 
     @MachineGroupType.setter
@@ -18690,6 +22774,9 @@ class ModifyMachineGroupRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -18698,6 +22785,9 @@ class ModifyMachineGroupRequest(AbstractModel):
 
     @property
     def AutoUpdate(self):
+        """是否开启机器组自动更新
+        :rtype: bool
+        """
         return self._AutoUpdate
 
     @AutoUpdate.setter
@@ -18706,6 +22796,9 @@ class ModifyMachineGroupRequest(AbstractModel):
 
     @property
     def UpdateStartTime(self):
+        """升级开始时间，建议业务低峰期升级LogListener
+        :rtype: str
+        """
         return self._UpdateStartTime
 
     @UpdateStartTime.setter
@@ -18714,6 +22807,9 @@ class ModifyMachineGroupRequest(AbstractModel):
 
     @property
     def UpdateEndTime(self):
+        """升级结束时间，建议业务低峰期升级LogListener
+        :rtype: str
+        """
         return self._UpdateEndTime
 
     @UpdateEndTime.setter
@@ -18722,6 +22818,9 @@ class ModifyMachineGroupRequest(AbstractModel):
 
     @property
     def ServiceLogging(self):
+        """是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
+        :rtype: bool
+        """
         return self._ServiceLogging
 
     @ServiceLogging.setter
@@ -18730,6 +22829,9 @@ class ModifyMachineGroupRequest(AbstractModel):
 
     @property
     def DelayCleanupTime(self):
+        """机器组中机器定期离线清理时间。单位：天
+        :rtype: int
+        """
         return self._DelayCleanupTime
 
     @DelayCleanupTime.setter
@@ -18738,6 +22840,9 @@ class ModifyMachineGroupRequest(AbstractModel):
 
     @property
     def MetaTags(self):
+        """机器组元数据信息列表
+        :rtype: list of MetaTagInfo
+        """
         return self._MetaTags
 
     @MetaTags.setter
@@ -18792,6 +22897,9 @@ class ModifyMachineGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18828,6 +22936,9 @@ class ModifyNoticeContentRequest(AbstractModel):
 
     @property
     def NoticeContentId(self):
+        """通知内容模板ID。
+        :rtype: str
+        """
         return self._NoticeContentId
 
     @NoticeContentId.setter
@@ -18836,6 +22947,9 @@ class ModifyNoticeContentRequest(AbstractModel):
 
     @property
     def Name(self):
+        """通知内容模板名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -18844,6 +22958,11 @@ class ModifyNoticeContentRequest(AbstractModel):
 
     @property
     def Type(self):
+        """通知内容语言。
+
+0：中文 1：英文
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -18852,6 +22971,9 @@ class ModifyNoticeContentRequest(AbstractModel):
 
     @property
     def NoticeContents(self):
+        """通知内容模板详细信息。
+        :rtype: list of NoticeContent
+        """
         return self._NoticeContents
 
     @NoticeContents.setter
@@ -18893,6 +23015,9 @@ class ModifyNoticeContentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18948,6 +23073,9 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -18956,6 +23084,9 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def SrcTopicId(self):
+        """源日志主题
+        :rtype: str
+        """
         return self._SrcTopicId
 
     @SrcTopicId.setter
@@ -18964,6 +23095,9 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def EnableFlag(self):
+        """任务启动状态.   1开启,  2关闭
+        :rtype: int
+        """
         return self._EnableFlag
 
     @EnableFlag.setter
@@ -18972,6 +23106,9 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def DstResource(self):
+        """定时SQL分析的目标日志主题
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ScheduledSqlResouceInfo`
+        """
         return self._DstResource
 
     @DstResource.setter
@@ -18980,6 +23117,9 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def ScheduledSqlContent(self):
+        """查询语句
+        :rtype: str
+        """
         return self._ScheduledSqlContent
 
     @ScheduledSqlContent.setter
@@ -18988,6 +23128,9 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessPeriod(self):
+        """调度周期(分钟)
+        :rtype: int
+        """
         return self._ProcessPeriod
 
     @ProcessPeriod.setter
@@ -18996,6 +23139,9 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessTimeWindow(self):
+        """单次查询的时间窗口. 例子中为近15分钟
+        :rtype: str
+        """
         return self._ProcessTimeWindow
 
     @ProcessTimeWindow.setter
@@ -19004,6 +23150,9 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessDelay(self):
+        """执行延迟(秒)
+        :rtype: int
+        """
         return self._ProcessDelay
 
     @ProcessDelay.setter
@@ -19012,6 +23161,9 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def SrcTopicRegion(self):
+        """源topicId的地域信息
+        :rtype: str
+        """
         return self._SrcTopicRegion
 
     @SrcTopicRegion.setter
@@ -19020,6 +23172,9 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def Name(self):
+        """任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -19028,6 +23183,9 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def SyntaxRule(self):
+        """语法规则。 默认值为0。 0：Lucene语法，1：CQL语法
+        :rtype: int
+        """
         return self._SyntaxRule
 
     @SyntaxRule.setter
@@ -19073,6 +23231,9 @@ class ModifyScheduledSqlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19144,6 +23305,9 @@ class ModifyShipperRequest(AbstractModel):
 
     @property
     def ShipperId(self):
+        """投递规则ID
+        :rtype: str
+        """
         return self._ShipperId
 
     @ShipperId.setter
@@ -19152,6 +23316,9 @@ class ModifyShipperRequest(AbstractModel):
 
     @property
     def Bucket(self):
+        """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -19160,6 +23327,11 @@ class ModifyShipperRequest(AbstractModel):
 
     @property
     def Prefix(self):
+        """投递规则投递的新的目录前缀。
+- 仅支持0-9A-Za-z-_/
+- 最大支持256个字符
+        :rtype: str
+        """
         return self._Prefix
 
     @Prefix.setter
@@ -19168,6 +23340,9 @@ class ModifyShipperRequest(AbstractModel):
 
     @property
     def Status(self):
+        """投递规则的开关状态。true：开启投递任务；false：关闭投递任务。
+        :rtype: bool
+        """
         return self._Status
 
     @Status.setter
@@ -19176,6 +23351,9 @@ class ModifyShipperRequest(AbstractModel):
 
     @property
     def ShipperName(self):
+        """投递规则的名字
+        :rtype: str
+        """
         return self._ShipperName
 
     @ShipperName.setter
@@ -19184,6 +23362,9 @@ class ModifyShipperRequest(AbstractModel):
 
     @property
     def Interval(self):
+        """投递的时间间隔，单位 秒，默认300，范围 300-900
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -19192,6 +23373,9 @@ class ModifyShipperRequest(AbstractModel):
 
     @property
     def MaxSize(self):
+        """投递的文件的最大值，单位 MB，默认256，范围 5-256
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -19200,6 +23384,9 @@ class ModifyShipperRequest(AbstractModel):
 
     @property
     def FilterRules(self):
+        """投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递
+        :rtype: list of FilterRuleInfo
+        """
         return self._FilterRules
 
     @FilterRules.setter
@@ -19208,6 +23395,9 @@ class ModifyShipperRequest(AbstractModel):
 
     @property
     def Partition(self):
+        """投递日志的分区规则，支持strftime的时间格式表示
+        :rtype: str
+        """
         return self._Partition
 
     @Partition.setter
@@ -19216,6 +23406,9 @@ class ModifyShipperRequest(AbstractModel):
 
     @property
     def Compress(self):
+        """投递日志的压缩配置
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CompressInfo`
+        """
         return self._Compress
 
     @Compress.setter
@@ -19224,6 +23417,9 @@ class ModifyShipperRequest(AbstractModel):
 
     @property
     def Content(self):
+        """投递日志的内容格式配置
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
+        """
         return self._Content
 
     @Content.setter
@@ -19232,6 +23428,9 @@ class ModifyShipperRequest(AbstractModel):
 
     @property
     def FilenameMode(self):
+        """投递文件命名配置，0：随机数命名，1：投递时间命名。
+        :rtype: int
+        """
         return self._FilenameMode
 
     @FilenameMode.setter
@@ -19240,6 +23439,17 @@ class ModifyShipperRequest(AbstractModel):
 
     @property
     def StorageType(self):
+        """cos桶存储类型。支持：STANDARD_IA、ARCHIVE、DEEP_ARCHIVE、STANDARD、MAZ_STANDARD、MAZ_STANDARD_IA、INTELLIGENT_TIERING。
+
+1. STANDARD_IA：低频存储；
+2. ARCHIVE：归档存储；
+3. DEEP_ARCHIVE：深度归档存储；
+4. STANDARD：标准存储；
+5. MAZ_STANDARD：标准存储（多 AZ）；
+6. MAZ_STANDARD_IA：低频存储（多 AZ）；
+7. INTELLIGENT_TIERING：智能分层存储。
+        :rtype: str
+        """
         return self._StorageType
 
     @StorageType.setter
@@ -19294,6 +23504,9 @@ class ModifyShipperResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19358,6 +23571,9 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -19366,6 +23582,9 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """日志主题名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -19374,6 +23593,9 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，并且不能有重复的键值对。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -19382,6 +23604,10 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Status(self):
+        """主题是否开启采集，true：开启采集；false：关闭采集。
+控制台目前不支持修改此参数。
+        :rtype: bool
+        """
         return self._Status
 
     @Status.setter
@@ -19390,6 +23616,9 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def AutoSplit(self):
+        """是否开启自动分裂
+        :rtype: bool
+        """
         return self._AutoSplit
 
     @AutoSplit.setter
@@ -19398,6 +23627,9 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def MaxSplitPartitions(self):
+        """若开启最大分裂，该主题能够能够允许的最大分区数
+        :rtype: int
+        """
         return self._MaxSplitPartitions
 
     @MaxSplitPartitions.setter
@@ -19406,6 +23638,9 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Period(self):
+        """生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600。取值为3640时代表永久保存
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -19414,6 +23649,9 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Describes(self):
+        """日志主题描述
+        :rtype: str
+        """
         return self._Describes
 
     @Describes.setter
@@ -19422,6 +23660,10 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def HotPeriod(self):
+        """0：关闭日志沉降。
+非0：开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。仅在StorageType为 hot 时生效
+        :rtype: int
+        """
         return self._HotPeriod
 
     @HotPeriod.setter
@@ -19430,6 +23672,10 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def IsWebTracking(self):
+        """免鉴权开关。 false：关闭； true：开启。
+开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
+        :rtype: bool
+        """
         return self._IsWebTracking
 
     @IsWebTracking.setter
@@ -19438,6 +23684,9 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Extends(self):
+        """日志主题扩展信息
+        :rtype: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
+        """
         return self._Extends
 
     @Extends.setter
@@ -19446,6 +23695,9 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def PartitionCount(self):
+        """日志主题分区数量
+        :rtype: int
+        """
         return self._PartitionCount
 
     @PartitionCount.setter
@@ -19454,6 +23706,9 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def CancelTopicAsyncTaskID(self):
+        """取消切换存储任务的id
+        :rtype: str
+        """
         return self._CancelTopicAsyncTaskID
 
     @CancelTopicAsyncTaskID.setter
@@ -19506,6 +23761,9 @@ class ModifyTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19544,6 +23802,13 @@ class MonitorTime(AbstractModel):
 
     @property
     def Type(self):
+        """执行周期， 可选值：`Period`、`Fixed`、`Cron`。
+
+- Period：固定频率
+- Fixed：固定时间
+- Cron：Cron表达式
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -19552,6 +23817,10 @@ class MonitorTime(AbstractModel):
 
     @property
     def Time(self):
+        """执行的周期，或者定制执行的时间节点。单位为分钟，取值范围为1~1440。
+当type为`Period`,`Fixed`时，time字段生效。
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -19560,6 +23829,11 @@ class MonitorTime(AbstractModel):
 
     @property
     def CronExpression(self):
+        """执行的周期cron表达式。示例：`"*/1 * * * *"` 从左到右每个field的含义 Minutes field, Hours field,Day of month field,Month field,Day of week field， 不支持秒级别。
+当type为`Cron`时，CronExpression字段生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CronExpression
 
     @CronExpression.setter
@@ -19601,6 +23875,10 @@ class MultiCondition(AbstractModel):
 
     @property
     def Condition(self):
+        """触发条件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Condition
 
     @Condition.setter
@@ -19609,6 +23887,11 @@ class MultiCondition(AbstractModel):
 
     @property
     def AlarmLevel(self):
+        """告警级别。0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。
+<li> 不填则默认为0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AlarmLevel
 
     @AlarmLevel.setter
@@ -19646,6 +23929,9 @@ class MultiTopicSearchInformation(AbstractModel):
 
     @property
     def TopicId(self):
+        """要检索分析的日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -19654,6 +23940,9 @@ class MultiTopicSearchInformation(AbstractModel):
 
     @property
     def Context(self):
+        """透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时
+        :rtype: str
+        """
         return self._Context
 
     @Context.setter
@@ -19698,6 +23987,11 @@ Email:邮件;Sms:短信;WeChat:微信;Phone:电话;WeCom:企业微信;DingTalk:�
 
     @property
     def Type(self):
+        """渠道类型
+
+Email:邮件;Sms:短信;WeChat:微信;Phone:电话;WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -19706,6 +24000,10 @@ Email:邮件;Sms:短信;WeChat:微信;Phone:电话;WeCom:企业微信;DingTalk:�
 
     @property
     def TriggerContent(self):
+        """告警触发通知内容模板。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.NoticeContentInfo`
+        """
         return self._TriggerContent
 
     @TriggerContent.setter
@@ -19714,6 +24012,10 @@ Email:邮件;Sms:短信;WeChat:微信;Phone:电话;WeCom:企业微信;DingTalk:�
 
     @property
     def RecoveryContent(self):
+        """告警恢复通知内容模板。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.NoticeContentInfo`
+        """
         return self._RecoveryContent
 
     @RecoveryContent.setter
@@ -19764,6 +24066,11 @@ class NoticeContentInfo(AbstractModel):
 
     @property
     def Title(self):
+        """通知内容模板标题信息。
+部分通知渠道类型不支持“标题”，请参照腾讯云控制台页面。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -19772,6 +24079,10 @@ class NoticeContentInfo(AbstractModel):
 
     @property
     def Content(self):
+        """通知内容模板正文信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -19780,6 +24091,11 @@ class NoticeContentInfo(AbstractModel):
 
     @property
     def Headers(self):
+        """请求头（Request Headers）：在HTTP请求中，请求头包含了客户端向服务器发送的附加信息，如用户代理、授权凭证、期望的响应格式等。
+仅“自定义回调”支持该配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Headers
 
     @Headers.setter
@@ -19854,6 +24170,10 @@ class NoticeContentTemplate(AbstractModel):
 
     @property
     def NoticeContentId(self):
+        """通知内容模板ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NoticeContentId
 
     @NoticeContentId.setter
@@ -19862,6 +24182,10 @@ class NoticeContentTemplate(AbstractModel):
 
     @property
     def Name(self):
+        """通知内容模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -19870,6 +24194,13 @@ class NoticeContentTemplate(AbstractModel):
 
     @property
     def Type(self):
+        """语言类型。
+
+0： 中文
+1： 英文
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -19878,6 +24209,10 @@ class NoticeContentTemplate(AbstractModel):
 
     @property
     def NoticeContents(self):
+        """通知内容模板信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NoticeContent
+        """
         return self._NoticeContents
 
     @NoticeContents.setter
@@ -19886,6 +24221,13 @@ class NoticeContentTemplate(AbstractModel):
 
     @property
     def Flag(self):
+        """通知内容模板标记。
+
+0： 用户自定义
+1： 系统内置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Flag
 
     @Flag.setter
@@ -19894,6 +24236,10 @@ class NoticeContentTemplate(AbstractModel):
 
     @property
     def Uin(self):
+        """创建者主账号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Uin
 
     @Uin.setter
@@ -19902,6 +24248,10 @@ class NoticeContentTemplate(AbstractModel):
 
     @property
     def SubUin(self):
+        """创建/修改者子账号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SubUin
 
     @SubUin.setter
@@ -19910,6 +24260,10 @@ class NoticeContentTemplate(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间 秒级时间戳。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -19918,6 +24272,10 @@ class NoticeContentTemplate(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间 秒级时间戳。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -19995,6 +24353,12 @@ class NoticeReceiver(AbstractModel):
 
     @property
     def ReceiverType(self):
+        """接受者类型。可选值：
+-  Uin - 用户ID
+- Group - 用户组ID
+暂不支持其余接收者类型。
+        :rtype: str
+        """
         return self._ReceiverType
 
     @ReceiverType.setter
@@ -20003,6 +24367,11 @@ class NoticeReceiver(AbstractModel):
 
     @property
     def ReceiverIds(self):
+        """接收者。
+当ReceiverType为Uin时，ReceiverIds的值为用户uid。[子用户信息查询](https://cloud.tencent.com/document/api/598/53486)
+当ReceiverType为Group时，ReceiverIds的值为用户组id。[CAM用户组](https://cloud.tencent.com/document/product/598/14985)
+        :rtype: list of int
+        """
         return self._ReceiverIds
 
     @ReceiverIds.setter
@@ -20011,6 +24380,13 @@ class NoticeReceiver(AbstractModel):
 
     @property
     def ReceiverChannels(self):
+        """通知接收渠道。
+- Email - 邮件
+- Sms - 短信
+- WeChat - 微信
+- Phone - 电话
+        :rtype: list of str
+        """
         return self._ReceiverChannels
 
     @ReceiverChannels.setter
@@ -20019,6 +24395,10 @@ class NoticeReceiver(AbstractModel):
 
     @property
     def NoticeContentId(self):
+        """通知内容模板ID，使用Default-zh引用默认模板（中文），使用Default-en引用DefaultTemplate(English)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NoticeContentId
 
     @NoticeContentId.setter
@@ -20027,6 +24407,9 @@ class NoticeReceiver(AbstractModel):
 
     @property
     def StartTime(self):
+        """允许接收信息的开始时间。格式：`15:04:05`。必填
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -20035,6 +24418,9 @@ class NoticeReceiver(AbstractModel):
 
     @property
     def EndTime(self):
+        """允许接收信息的结束时间。格式：`15:04:05`。必填
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -20043,6 +24429,12 @@ class NoticeReceiver(AbstractModel):
 
     @property
     def Index(self):
+        """位序。
+
+- 入参时无效。
+- 出参时有效。
+        :rtype: int
+        """
         return self._Index
 
     @Index.setter
@@ -20167,6 +24559,67 @@ class NoticeRule(AbstractModel):
 
     @property
     def Rule(self):
+        """匹配规则 JSON串。
+**rule规则树格式为嵌套结构体JSON字符串**
+`{"Value":"AND","Type":"Operation","Children":[{"Value":"OR","Type":"Operation","Children":[{"Type":"Condition","Value":"Level","Children":[{"Value":"In","Type":"Compare"},{"Value":"[1,0]","Type":"Value"}]},{"Type":"Condition","Value":"Level","Children":[{"Value":"NotIn","Type":"Compare"},{"Value":"[2]","Type":"Value"}]}]}]}`
+
+**rule规则树限制规则如下**：
+- 顶层rule中Type可取值：`Condition`，`Operation`
+- Type为`Operation`的子节点支持的Type可取值：`Condition`，`Operation`
+- Type为`Condition`的子节点支持的Type可取值：`String`，`Compare`，`Array`，`TimeRange`，`Value`，`Key`
+- 其他Type无子节点
+- 当rule Type为`Operation`时，value可取值：`AND`，`OR`
+- 当rule Type为`Condition`时，value不可为空，子节点个数不能小于2
+    - 当子节点Type为  `Compare` 时，value可取值：`>`，`<`，`>=`，`<=`，`=`，`!=`，`Between`，`NotBetween`，`=~`，`!=~`，`In`，`NotIn`
+    - value为`Between`，`NotBetween`时，下一个子节点value必须是长度为2的数组
+    - value为`=~`，`!=~`时，下一个子节点value必须是一个正则表达式
+    - value为`In`，`NotIn`时， 下一个子节点value必须是一个数组
+
+**业务参数含义**：
+- Type：Condition 表示是规则条件，Value：Level 表示告警等级
+    - 子节点Type支持`Compare`，Value支持`In`，`NotIn`
+    - 下一个子节点value支持的值：0（警告），1（提醒），2 （紧急）
+以下示例表示：告警等级属于提醒
+`{\"Value\":\"AND\",\"Type\":\"Operation\",\"Children\":[{\"Type\":\"Condition\",\"Value\":\"Level\",\"Children\":[{\"Value\":\"In\",\"Type\":\"Compare\"},{\"Value\":\"[1]\",\"Type\":\"Value\"}]}]}`
+
+- Type：Condition 表示是规则条件，Value：NotifyType 表示通知类型
+    - 子节点Type支持`Compare`，Value支持`In`，`NotIn`
+    - 下一个子节点value支持的值：1（告警通知），2 （恢复通知）
+以下示例表示：通知类型属于告警通知或通知类型不属于恢复通知
+`{\"Value\":\"AND\",\"Type\":\"Operation\",\"Children\":[{\"Value\":\"OR\",\"Type\":\"Operation\",\"Children\":[{\"Type\":\"Condition\",\"Value\":\"NotifyType\",\"Children\":[{\"Value\":\"In\",\"Type\":\"Compare\"},{\"Value\":\"[1]\",\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"NotifyType\",\"Children\":[{\"Value\":\"NotIn\",\"Type\":\"Compare\"},{\"Value\":\"[2]\",\"Type\":\"Value\"}]}]}]}`
+
+- Type：Condition 表示是规则条件，Value：AlarmID 表示告警策略
+    - 子节点Type支持`Compare`，Value支持`In`，`NotIn`
+    - 下一个子节点value支持的值：告警策略id数组
+以下示例表示：告警策略属于alarm-53af048c-254b-4c73-bb48-xxx,alarm-6dfa8bc5-08da-4d64-b6cb-xxx或告警策略不属于alarm-1036314c-1e49-4cee-a8fb-xxx
+`"{\"Value\":\"AND\",\"Type\":\"Operation\",\"Children\":[{\"Value\":\"OR\",\"Type\":\"Operation\",\"Children\":[{\"Type\":\"Condition\",\"Value\":\"AlarmID\",\"Children\":[{\"Value\":\"In\",\"Type\":\"Compare\"},{\"Value\":\"[\\\"alarm-53af048c-254b-4c73-bb48-xxx\\\",\\\"alarm-6dfa8bc5-08da-4d64-b6cb-xxx\\\"]\",\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"AlarmID\",\"Children\":[{\"Value\":\"NotIn\",\"Type\":\"Compare\"},{\"Value\":\"[\\\"alarm-1036314c-1e49-4cee-a8fb-xxx\\\"]\",\"Type\":\"Value\"}]}]}]}"`
+
+- Type：Condition 表示是规则条件，Value：AlarmName 表示告警策略名称
+    - 子节点Type支持`Compare`，Value支持`=~`，`!=~`
+    - 下一个子节点value支持的值：必须是正则表达式
+以下示例表示：告警策略名称正则匹配^test$或告警策略名称正则不匹配^hahaha$
+`{\"Value\":\"AND\",\"Type\":\"Operation\",\"Children\":[{\"Value\":\"OR\",\"Type\":\"Operation\",\"Children\":[{\"Type\":\"Condition\",\"Value\":\"AlarmName\",\"Children\":[{\"Value\":\"=~\",\"Type\":\"Compare\"},{\"Value\":\"^test$\",\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"AlarmName\",\"Children\":[{\"Value\":\"!=~\",\"Type\":\"Compare\"},{\"Value\":\"^hahaha$\",\"Type\":\"Value\"}]}]}]}`
+
+- Type：Condition 表示是规则条件，Value：Label 表示告警分类字段
+    - 子节点Type支持`Compare`，Value支持`In`，`NotIn`，`=~`，`!=~`
+    - 下一个子节点value支持的值：`In`，`NotIn` 时value是数组，`=~`，`!=~`时value是正则表达式
+以下示例表示：告警分类字段key1属于v1或告警分类字段key2不属于v2或告警分类字段key3正则匹配^test$或告警分类字段key4正则不匹配^hahaha$
+`{\"Value\":\"AND\",\"Type\":\"Operation\",\"Children\":[{\"Value\":\"OR\",\"Type\":\"Operation\",\"Children\":[{\"Type\":\"Condition\",\"Value\":\"Label\",\"Children\":[{\"Value\":\"key1\",\"Type\":\"Key\"},{\"Value\":\"In\",\"Type\":\"Compare\"},{\"Value\":\"[\\\"v1\\\"]\",\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"Label\",\"Children\":[{\"Value\":\"key2\",\"Type\":\"Key\"},{\"Value\":\"NotIn\",\"Type\":\"Compare\"},{\"Value\":\"[\\\"v2\\\"]\",\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"Label\",\"Children\":[{\"Value\":\"key3\",\"Type\":\"Key\"},{\"Value\":\"=~\",\"Type\":\"Compare\"},{\"Value\":\"^test$\",\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"Label\",\"Children\":[{\"Value\":\"key4\",\"Type\":\"Key\"},{\"Value\":\"!=~\",\"Type\":\"Compare\"},{\"Value\":\"^hahaha$\",\"Type\":\"Value\"}]}]}]}`
+
+- Type：Condition 表示是规则条件，Value：NotifyTime 表示通知时间
+    - 子节点Type支持`Compare`，Value支持`Between `，`NotBetween `
+    - 下一个子节点value支持的值：长度为2，格式为`14:20:36`的字符串数组
+以下示例表示：通知时间在指定范围内14:18:36至14:33:36或通知时间不在指定范围内14:20:36至14:30:36
+`{\"Value\":\"AND\",\"Type\":\"Operation\",\"Children\":[{\"Value\":\"OR\",\"Type\":\"Operation\",\"Children\":[{\"Type\":\"Condition\",\"Value\":\"NotifyTime\",\"Children\":[{\"Value\":\"Between\",\"Type\":\"Compare\"},{\"Value\":\"[\\\"14:18:36\\\",\\\"14:33:36\\\"]\",\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"NotifyTime\",\"Children\":[{\"Value\":\"NotBetween\",\"Type\":\"Compare\"},{\"Value\":\"[\\\"14:20:36\\\",\\\"14:30:36\\\"]\",\"Type\":\"Value\"}]}]}]}`
+
+- Type：Condition 表示是规则条件，Value：Duration 表示告警持续时间
+    - 子节点Type支持`Compare`，Value支持`>`，`<`，`>=`，`<=`
+    - 下一个子节点value支持的值：整型值单位分钟
+以下示例表示：告警持续时间大于1分钟或告警持续时间大于等于2分钟或告警持续时间小于3分钟或告警持续时间小于等于4分钟
+`{\"Value\":\"AND\",\"Type\":\"Operation\",\"Children\":[{\"Value\":\"OR\",\"Type\":\"Operation\",\"Children\":[{\"Type\":\"Condition\",\"Value\":\"Duration\",\"Children\":[{\"Value\":\">\",\"Type\":\"Compare\"},{\"Value\":1,\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"Duration\",\"Children\":[{\"Value\":\">=\",\"Type\":\"Compare\"},{\"Value\":2,\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"Duration\",\"Children\":[{\"Value\":\"<\",\"Type\":\"Compare\"},{\"Value\":3,\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"Duration\",\"Children\":[{\"Value\":\"<=\",\"Type\":\"Compare\"},{\"Value\":4,\"Type\":\"Value\"}]}]}]}`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Rule
 
     @Rule.setter
@@ -20175,6 +24628,10 @@ class NoticeRule(AbstractModel):
 
     @property
     def NoticeReceivers(self):
+        """告警通知接收者信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NoticeReceiver
+        """
         return self._NoticeReceivers
 
     @NoticeReceivers.setter
@@ -20183,6 +24640,10 @@ class NoticeRule(AbstractModel):
 
     @property
     def WebCallbacks(self):
+        """告警通知模板回调信息，包括企业微信、钉钉、飞书。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of WebCallback
+        """
         return self._WebCallbacks
 
     @WebCallbacks.setter
@@ -20191,6 +24652,10 @@ class NoticeRule(AbstractModel):
 
     @property
     def Escalate(self):
+        """告警升级开关。`true`：开启告警升级、`false`：关闭告警升级，默认：false
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Escalate
 
     @Escalate.setter
@@ -20199,6 +24664,13 @@ class NoticeRule(AbstractModel):
 
     @property
     def Type(self):
+        """告警升级条件。`1`：无人认领且未恢复、`2`：未恢复，默认为1
+- 无人认领且未恢复：告警没有恢复并且没有人认领则升级
+- 未恢复：当前告警持续未恢复则升级
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -20207,6 +24679,10 @@ class NoticeRule(AbstractModel):
 
     @property
     def Interval(self):
+        """告警升级间隔。单位：分钟，范围`[1，14400]`
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -20215,6 +24691,10 @@ class NoticeRule(AbstractModel):
 
     @property
     def EscalateNotice(self):
+        """告警升级后下一个环节的通知渠道配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EscalateNoticeInfo`
+        """
         return self._EscalateNotice
 
     @EscalateNotice.setter
@@ -20272,6 +24752,9 @@ class OpenKafkaConsumerRequest(AbstractModel):
 
     @property
     def FromTopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._FromTopicId
 
     @FromTopicId.setter
@@ -20280,6 +24763,9 @@ class OpenKafkaConsumerRequest(AbstractModel):
 
     @property
     def Compression(self):
+        """压缩方式[0:NONE；2:SNAPPY；3:LZ4]，默认：0
+        :rtype: int
+        """
         return self._Compression
 
     @Compression.setter
@@ -20288,6 +24774,9 @@ class OpenKafkaConsumerRequest(AbstractModel):
 
     @property
     def ConsumerContent(self):
+        """kafka协议消费数据格式
+        :rtype: :class:`tencentcloud.cls.v20201016.models.KafkaConsumerContent`
+        """
         return self._ConsumerContent
 
     @ConsumerContent.setter
@@ -20328,6 +24817,9 @@ class OpenKafkaConsumerResponse(AbstractModel):
 
     @property
     def TopicID(self):
+        """KafkaConsumer 消费时使用的Topic参数
+        :rtype: str
+        """
         return self._TopicID
 
     @TopicID.setter
@@ -20336,6 +24828,9 @@ class OpenKafkaConsumerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20362,6 +24857,9 @@ class ParquetInfo(AbstractModel):
 
     @property
     def ParquetKeyInfo(self):
+        """ParquetKeyInfo数组
+        :rtype: list of ParquetKeyInfo
+        """
         return self._ParquetKeyInfo
 
     @ParquetKeyInfo.setter
@@ -20407,6 +24905,9 @@ class ParquetKeyInfo(AbstractModel):
 
     @property
     def KeyName(self):
+        """键值名称
+        :rtype: str
+        """
         return self._KeyName
 
     @KeyName.setter
@@ -20415,6 +24916,9 @@ class ParquetKeyInfo(AbstractModel):
 
     @property
     def KeyType(self):
+        """数据类型，目前支持6种类型：string、boolean、int32、int64、float、double
+        :rtype: str
+        """
         return self._KeyType
 
     @KeyType.setter
@@ -20423,6 +24927,10 @@ class ParquetKeyInfo(AbstractModel):
 
     @property
     def KeyNonExistingField(self):
+        """解析失败赋值信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._KeyNonExistingField
 
     @KeyNonExistingField.setter
@@ -20474,6 +24982,9 @@ class PartitionInfo(AbstractModel):
 
     @property
     def PartitionId(self):
+        """分区ID
+        :rtype: int
+        """
         return self._PartitionId
 
     @PartitionId.setter
@@ -20482,6 +24993,9 @@ class PartitionInfo(AbstractModel):
 
     @property
     def Status(self):
+        """分区的状态（readwrite或者是readonly）
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -20490,6 +25004,9 @@ class PartitionInfo(AbstractModel):
 
     @property
     def InclusiveBeginKey(self):
+        """分区哈希键起始key
+        :rtype: str
+        """
         return self._InclusiveBeginKey
 
     @InclusiveBeginKey.setter
@@ -20498,6 +25015,9 @@ class PartitionInfo(AbstractModel):
 
     @property
     def ExclusiveEndKey(self):
+        """分区哈希键结束key
+        :rtype: str
+        """
         return self._ExclusiveEndKey
 
     @ExclusiveEndKey.setter
@@ -20506,6 +25026,9 @@ class PartitionInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """分区创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -20514,6 +25037,10 @@ class PartitionInfo(AbstractModel):
 
     @property
     def LastWriteTime(self):
+        """只读分区数据停止写入时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastWriteTime
 
     @LastWriteTime.setter
@@ -20583,6 +25110,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def PreviewType(self):
+        """预览类型，1：源数据预览；2：导出结果预览。
+        :rtype: int
+        """
         return self._PreviewType
 
     @PreviewType.setter
@@ -20591,6 +25121,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def KafkaType(self):
+        """导入Kafka类型，0：腾讯云CKafka；1：用户自建Kafka。
+        :rtype: int
+        """
         return self._KafkaType
 
     @KafkaType.setter
@@ -20599,6 +25132,10 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def UserKafkaTopics(self):
+        """用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。
+最多支持100个。
+        :rtype: str
+        """
         return self._UserKafkaTopics
 
     @UserKafkaTopics.setter
@@ -20607,6 +25144,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def Offset(self):
+        """导入数据位置，-2：最早；-1：最晚。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -20615,6 +25155,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def KafkaInstance(self):
+        """腾讯云CKafka实例ID，当KafkaType为0时参数KafkaInstance有效且必填。
+        :rtype: str
+        """
         return self._KafkaInstance
 
     @KafkaInstance.setter
@@ -20623,6 +25166,10 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def ServerAddr(self):
+        """服务地址。
+KafkaType为1时ServerAddr必填。
+        :rtype: str
+        """
         return self._ServerAddr
 
     @ServerAddr.setter
@@ -20631,6 +25178,10 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def IsEncryptionAddr(self):
+        """ServerAddr是否为加密连接。
+KafkaType为1时有效。
+        :rtype: bool
+        """
         return self._IsEncryptionAddr
 
     @IsEncryptionAddr.setter
@@ -20639,6 +25190,10 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def Protocol(self):
+        """加密访问协议。
+KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -20647,6 +25202,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def ConsumerGroupName(self):
+        """用户Kafka消费组
+        :rtype: str
+        """
         return self._ConsumerGroupName
 
     @ConsumerGroupName.setter
@@ -20655,6 +25213,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def LogRechargeRule(self):
+        """日志导入规则
+        :rtype: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
+        """
         return self._LogRechargeRule
 
     @LogRechargeRule.setter
@@ -20708,6 +25269,9 @@ class PreviewKafkaRechargeResponse(AbstractModel):
 
     @property
     def LogSample(self):
+        """日志样例，PreviewType为2时返回
+        :rtype: str
+        """
         return self._LogSample
 
     @LogSample.setter
@@ -20716,6 +25280,10 @@ class PreviewKafkaRechargeResponse(AbstractModel):
 
     @property
     def LogData(self):
+        """日志预览结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogData
 
     @LogData.setter
@@ -20724,6 +25292,9 @@ class PreviewKafkaRechargeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20770,6 +25341,9 @@ class PreviewLogStatistic(AbstractModel):
 
     @property
     def LogContent(self):
+        """日志内容
+        :rtype: str
+        """
         return self._LogContent
 
     @LogContent.setter
@@ -20778,6 +25352,9 @@ class PreviewLogStatistic(AbstractModel):
 
     @property
     def LineNum(self):
+        """行号。从0开始
+        :rtype: int
+        """
         return self._LineNum
 
     @LineNum.setter
@@ -20786,6 +25363,9 @@ class PreviewLogStatistic(AbstractModel):
 
     @property
     def DstTopicId(self):
+        """目标日志主题
+        :rtype: str
+        """
         return self._DstTopicId
 
     @DstTopicId.setter
@@ -20794,6 +25374,9 @@ class PreviewLogStatistic(AbstractModel):
 
     @property
     def FailReason(self):
+        """失败错误信息， 空字符串""表示正常
+        :rtype: str
+        """
         return self._FailReason
 
     @FailReason.setter
@@ -20802,6 +25385,12 @@ class PreviewLogStatistic(AbstractModel):
 
     @property
     def Time(self):
+        """日志时间，格式：`2024-05-07 17:13:17.105`
+
+- 入参时无效
+- 出参时有效，为日志中的时间格式
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -20812,6 +25401,10 @@ class PreviewLogStatistic(AbstractModel):
     def DstTopicName(self):
         warnings.warn("parameter `DstTopicName` is deprecated", DeprecationWarning) 
 
+        """目标topic-name
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DstTopicName
 
     @DstTopicName.setter
@@ -20859,6 +25452,9 @@ class QueryMetricRequest(AbstractModel):
 
     @property
     def Query(self):
+        """查询语句，使用PromQL语法	
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -20867,6 +25463,9 @@ class QueryMetricRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """指标主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -20875,6 +25474,10 @@ class QueryMetricRequest(AbstractModel):
 
     @property
     def Time(self):
+        """查询时间，秒级Unix时间戳。为空时代表当前时间戳。
+
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -20916,6 +25519,9 @@ class QueryMetricResponse(AbstractModel):
 
     @property
     def ResultType(self):
+        """指标查询结果类型
+        :rtype: str
+        """
         return self._ResultType
 
     @ResultType.setter
@@ -20924,6 +25530,9 @@ class QueryMetricResponse(AbstractModel):
 
     @property
     def Result(self):
+        """指标查询结果
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -20932,6 +25541,9 @@ class QueryMetricResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20971,6 +25583,9 @@ class QueryRangeMetricRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """指标主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -20979,6 +25594,9 @@ class QueryRangeMetricRequest(AbstractModel):
 
     @property
     def Query(self):
+        """查询语句，使用PromQL语法
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -20987,6 +25605,9 @@ class QueryRangeMetricRequest(AbstractModel):
 
     @property
     def Start(self):
+        """查询起始时间，秒级Unix时间戳
+        :rtype: int
+        """
         return self._Start
 
     @Start.setter
@@ -20995,6 +25616,9 @@ class QueryRangeMetricRequest(AbstractModel):
 
     @property
     def End(self):
+        """查询结束时间，秒级Unix时间戳
+        :rtype: int
+        """
         return self._End
 
     @End.setter
@@ -21003,6 +25627,9 @@ class QueryRangeMetricRequest(AbstractModel):
 
     @property
     def Step(self):
+        """查询时间间隔，单位秒
+        :rtype: int
+        """
         return self._Step
 
     @Step.setter
@@ -21046,6 +25673,9 @@ class QueryRangeMetricResponse(AbstractModel):
 
     @property
     def ResultType(self):
+        """指标查询结果类型
+        :rtype: str
+        """
         return self._ResultType
 
     @ResultType.setter
@@ -21054,6 +25684,9 @@ class QueryRangeMetricResponse(AbstractModel):
 
     @property
     def Result(self):
+        """指标查询结果
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -21062,6 +25695,9 @@ class QueryRangeMetricResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21092,6 +25728,9 @@ class RetryShipperTaskRequest(AbstractModel):
 
     @property
     def ShipperId(self):
+        """投递规则ID
+        :rtype: str
+        """
         return self._ShipperId
 
     @ShipperId.setter
@@ -21100,6 +25739,9 @@ class RetryShipperTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """投递任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -21134,6 +25776,9 @@ class RetryShipperTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21173,6 +25818,10 @@ class RuleInfo(AbstractModel):
 
     @property
     def FullText(self):
+        """全文索引配置, 为空时代表未开启全文索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.FullTextInfo`
+        """
         return self._FullText
 
     @FullText.setter
@@ -21181,6 +25830,10 @@ class RuleInfo(AbstractModel):
 
     @property
     def KeyValue(self):
+        """键值索引配置，为空时代表未开启键值索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.RuleKeyValueInfo`
+        """
         return self._KeyValue
 
     @KeyValue.setter
@@ -21189,6 +25842,10 @@ class RuleInfo(AbstractModel):
 
     @property
     def Tag(self):
+        """元字段索引配置，为空时代表未开启元字段索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.RuleTagInfo`
+        """
         return self._Tag
 
     @Tag.setter
@@ -21197,6 +25854,11 @@ class RuleInfo(AbstractModel):
 
     @property
     def DynamicIndex(self):
+        """键值索引自动配置，为空时代表未开启该功能。
+启用后自动将日志内的字段添加到键值索引中，包括日志中后续新增的字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DynamicIndex`
+        """
         return self._DynamicIndex
 
     @DynamicIndex.setter
@@ -21244,6 +25906,9 @@ class RuleKeyValueInfo(AbstractModel):
 
     @property
     def CaseSensitive(self):
+        """是否大小写敏感
+        :rtype: bool
+        """
         return self._CaseSensitive
 
     @CaseSensitive.setter
@@ -21252,6 +25917,9 @@ class RuleKeyValueInfo(AbstractModel):
 
     @property
     def KeyValues(self):
+        """需要建立索引的键值对信息
+        :rtype: list of KeyValueInfo
+        """
         return self._KeyValues
 
     @KeyValues.setter
@@ -21294,6 +25962,9 @@ class RuleTagInfo(AbstractModel):
 
     @property
     def CaseSensitive(self):
+        """是否大小写敏感
+        :rtype: bool
+        """
         return self._CaseSensitive
 
     @CaseSensitive.setter
@@ -21302,6 +25973,9 @@ class RuleTagInfo(AbstractModel):
 
     @property
     def KeyValues(self):
+        """元字段索引配置中的字段信息
+        :rtype: list of KeyValueInfo
+        """
         return self._KeyValues
 
     @KeyValues.setter
@@ -21364,6 +26038,9 @@ BizType为1时，优先使用MetricNames字段多指标只能填充到MetricName
 
     @property
     def TopicId(self):
+        """目标主题id
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -21372,6 +26049,9 @@ BizType为1时，优先使用MetricNames字段多指标只能填充到MetricName
 
     @property
     def Region(self):
+        """主题的地域信息
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -21380,6 +26060,9 @@ BizType为1时，优先使用MetricNames字段多指标只能填充到MetricName
 
     @property
     def BizType(self):
+        """主题类型：0为日志主题，1为指标主题
+        :rtype: int
+        """
         return self._BizType
 
     @BizType.setter
@@ -21388,6 +26071,9 @@ BizType为1时，优先使用MetricNames字段多指标只能填充到MetricName
 
     @property
     def MetricName(self):
+        """指标名称。当BizType为1时，MetricName需要填写
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -21396,6 +26082,10 @@ BizType为1时，优先使用MetricNames字段多指标只能填充到MetricName
 
     @property
     def MetricNames(self):
+        """指标名称
+BizType为1时，优先使用MetricNames字段多指标只能填充到MetricNames字段，单指标建议填充到MetricName字段
+        :rtype: list of str
+        """
         return self._MetricNames
 
     @MetricNames.setter
@@ -21404,6 +26094,9 @@ BizType为1时，优先使用MetricNames字段多指标只能填充到MetricName
 
     @property
     def MetricLabels(self):
+        """指标维度，不接受时间类型。
+        :rtype: list of str
+        """
         return self._MetricLabels
 
     @MetricLabels.setter
@@ -21412,6 +26105,9 @@ BizType为1时，优先使用MetricNames字段多指标只能填充到MetricName
 
     @property
     def CustomTime(self):
+        """指标时间戳，默认值为SQL查询时间范围的左侧时间点，您也可以指定其他字段（类型为uinx时间、TimeStamp，精度毫秒）为指标时间戳。
+        :rtype: str
+        """
         return self._CustomTime
 
     @CustomTime.setter
@@ -21420,6 +26116,10 @@ BizType为1时，优先使用MetricNames字段多指标只能填充到MetricName
 
     @property
     def CustomMetricLabels(self):
+        """除了MetricLabels，您还可以使用该参数，为指标补充静态的维度。
+维度名以字母或下划线开头，后面可以跟字母、数字或下划线，长度小于等于1024 字节
+        :rtype: list of MetricLabel
+        """
         return self._CustomMetricLabels
 
     @CustomMetricLabels.setter
@@ -21523,6 +26223,9 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def TaskId(self):
+        """ScheduledSql任务id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -21531,6 +26234,9 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def Name(self):
+        """ScheduledSql任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -21539,6 +26245,9 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def SrcTopicId(self):
+        """源日志主题id
+        :rtype: str
+        """
         return self._SrcTopicId
 
     @SrcTopicId.setter
@@ -21547,6 +26256,9 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def SrcTopicName(self):
+        """源日志主题名称
+        :rtype: str
+        """
         return self._SrcTopicName
 
     @SrcTopicName.setter
@@ -21555,6 +26267,9 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def DstResource(self):
+        """定时SQL分析目标主题
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ScheduledSqlResouceInfo`
+        """
         return self._DstResource
 
     @DstResource.setter
@@ -21563,6 +26278,9 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """任务创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -21571,6 +26289,9 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """任务更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -21579,6 +26300,11 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，1:运行 2:停止 3:异常-找不到源日志主题 4:异常-找不到目标主题
+
+5: 访问权限问题 6:内部故障 7:其他故障
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -21587,6 +26313,9 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def EnableFlag(self):
+        """任务启用状态，1开启,  2关闭
+        :rtype: int
+        """
         return self._EnableFlag
 
     @EnableFlag.setter
@@ -21595,6 +26324,9 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def ScheduledSqlContent(self):
+        """查询语句
+        :rtype: str
+        """
         return self._ScheduledSqlContent
 
     @ScheduledSqlContent.setter
@@ -21603,6 +26335,9 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def ProcessStartTime(self):
+        """调度开始时间
+        :rtype: str
+        """
         return self._ProcessStartTime
 
     @ProcessStartTime.setter
@@ -21611,6 +26346,9 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def ProcessType(self):
+        """调度类型，1:持续运行 2:指定时间范围
+        :rtype: int
+        """
         return self._ProcessType
 
     @ProcessType.setter
@@ -21619,6 +26357,9 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def ProcessEndTime(self):
+        """调度结束时间，当process_type=2时为必传字段
+        :rtype: str
+        """
         return self._ProcessEndTime
 
     @ProcessEndTime.setter
@@ -21627,6 +26368,9 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def ProcessPeriod(self):
+        """调度周期(分钟)
+        :rtype: int
+        """
         return self._ProcessPeriod
 
     @ProcessPeriod.setter
@@ -21635,6 +26379,9 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def ProcessTimeWindow(self):
+        """查询的时间窗口. @m-15m, @m，意为近15分钟
+        :rtype: str
+        """
         return self._ProcessTimeWindow
 
     @ProcessTimeWindow.setter
@@ -21643,6 +26390,9 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def ProcessDelay(self):
+        """执行延迟(秒)
+        :rtype: int
+        """
         return self._ProcessDelay
 
     @ProcessDelay.setter
@@ -21651,6 +26401,9 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def SrcTopicRegion(self):
+        """源topicId的地域信息
+        :rtype: str
+        """
         return self._SrcTopicRegion
 
     @SrcTopicRegion.setter
@@ -21659,6 +26412,10 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def SyntaxRule(self):
+        """语法规则，0：Lucene语法，1：CQL语法
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SyntaxRule
 
     @SyntaxRule.setter
@@ -21667,6 +26424,10 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def HasServicesLog(self):
+        """是否开启投递服务日志。1：关闭，2：开启。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HasServicesLog
 
     @HasServicesLog.setter
@@ -21738,6 +26499,9 @@ class SearchCosRechargeInfoRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题 ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -21746,6 +26510,9 @@ class SearchCosRechargeInfoRequest(AbstractModel):
 
     @property
     def LogsetId(self):
+        """日志集ID
+        :rtype: str
+        """
         return self._LogsetId
 
     @LogsetId.setter
@@ -21754,6 +26521,9 @@ class SearchCosRechargeInfoRequest(AbstractModel):
 
     @property
     def Name(self):
+        """投递任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -21762,6 +26532,9 @@ class SearchCosRechargeInfoRequest(AbstractModel):
 
     @property
     def Bucket(self):
+        """COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -21770,6 +26543,9 @@ class SearchCosRechargeInfoRequest(AbstractModel):
 
     @property
     def BucketRegion(self):
+        """COS存储桶所在地域，详见产品支持的[地域列表](https://cloud.tencent.com/document/product/436/6224)。
+        :rtype: str
+        """
         return self._BucketRegion
 
     @BucketRegion.setter
@@ -21778,6 +26554,9 @@ class SearchCosRechargeInfoRequest(AbstractModel):
 
     @property
     def Prefix(self):
+        """COS文件所在文件夹的前缀。默认为空，投递存储桶下所有的文件。
+        :rtype: str
+        """
         return self._Prefix
 
     @Prefix.setter
@@ -21786,6 +26565,9 @@ class SearchCosRechargeInfoRequest(AbstractModel):
 
     @property
     def Compress(self):
+        """压缩模式:   "", "gzip", "lzop", "snappy";   默认""
+        :rtype: str
+        """
         return self._Compress
 
     @Compress.setter
@@ -21843,6 +26625,10 @@ class SearchCosRechargeInfoResponse(AbstractModel):
 
     @property
     def Data(self):
+        """匹配到的存储桶下的某个文件的前几行数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Data
 
     @Data.setter
@@ -21851,6 +26637,9 @@ class SearchCosRechargeInfoResponse(AbstractModel):
 
     @property
     def Sum(self):
+        """匹配到的存储桶下的文件个数
+        :rtype: int
+        """
         return self._Sum
 
     @Sum.setter
@@ -21859,6 +26648,10 @@ class SearchCosRechargeInfoResponse(AbstractModel):
 
     @property
     def Path(self):
+        """当前预览文件路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -21867,6 +26660,10 @@ class SearchCosRechargeInfoResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """预览获取数据失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -21875,6 +26672,9 @@ class SearchCosRechargeInfoResponse(AbstractModel):
 
     @property
     def Status(self):
+        """状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -21883,6 +26683,9 @@ class SearchCosRechargeInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21922,6 +26725,9 @@ class SearchDashboardSubscribeRequest(AbstractModel):
 
     @property
     def DashboardId(self):
+        """仪表盘id。
+        :rtype: str
+        """
         return self._DashboardId
 
     @DashboardId.setter
@@ -21930,6 +26736,9 @@ class SearchDashboardSubscribeRequest(AbstractModel):
 
     @property
     def SubscribeData(self):
+        """仪表盘订阅数据。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DashboardSubscribeData`
+        """
         return self._SubscribeData
 
     @SubscribeData.setter
@@ -21938,6 +26747,9 @@ class SearchDashboardSubscribeRequest(AbstractModel):
 
     @property
     def Id(self):
+        """仪表盘订阅Id。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -21946,6 +26758,9 @@ class SearchDashboardSubscribeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """仪表盘订阅名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -21984,6 +26799,9 @@ class SearchDashboardSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22018,6 +26836,10 @@ class SearchLogErrors(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -22026,6 +26848,10 @@ class SearchLogErrors(AbstractModel):
 
     @property
     def ErrorMsg(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -22034,6 +26860,10 @@ class SearchLogErrors(AbstractModel):
 
     @property
     def ErrorCodeStr(self):
+        """错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorCodeStr
 
     @ErrorCodeStr.setter
@@ -22076,6 +26906,9 @@ class SearchLogInfos(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -22084,6 +26917,9 @@ class SearchLogInfos(AbstractModel):
 
     @property
     def Period(self):
+        """日志存储生命周期
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -22092,6 +26928,10 @@ class SearchLogInfos(AbstractModel):
 
     @property
     def Context(self):
+        """透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Context
 
     @Context.setter
@@ -22192,6 +27032,9 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def From(self):
+        """要检索分析的日志的起始时间，Unix时间戳（毫秒）
+        :rtype: int
+        """
         return self._From
 
     @From.setter
@@ -22200,6 +27043,9 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def To(self):
+        """要检索分析的日志的结束时间，Unix时间戳（毫秒）
+        :rtype: int
+        """
         return self._To
 
     @To.setter
@@ -22208,6 +27054,11 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Query(self):
+        """检索分析语句，最大长度为12KB
+语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
+使用*或空字符串可查询所有日志
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -22216,6 +27067,11 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def SyntaxRule(self):
+        """检索语法规则，默认值为0，推荐使用1 (CQL语法)。
+0：Lucene语法，1：CQL语法。
+详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+        :rtype: int
+        """
         return self._SyntaxRule
 
     @SyntaxRule.setter
@@ -22224,6 +27080,11 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """- 要检索分析的日志主题ID，仅能指定一个日志主题。
+- 如需同时检索多个日志主题，请使用Topics参数。
+- TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -22232,6 +27093,11 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Topics(self):
+        """- 要检索分析的日志主题列表，最大支持20个日志主题。
+- 检索单个日志主题时请使用TopicId。
+- TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
+        :rtype: list of MultiTopicSearchInformation
+        """
         return self._Topics
 
     @Topics.setter
@@ -22240,6 +27106,12 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Sort(self):
+        """原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+注意：
+* 仅当检索分析语句(Query)不包含SQL时有效
+* SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
+        :rtype: str
+        """
         return self._Sort
 
     @Sort.setter
@@ -22248,6 +27120,16 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """表示单次查询返回的原始日志条数，默认为100，最大值为1000。
+注意：
+* 仅当检索分析语句(Query)不包含SQL时有效
+* SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+
+可通过两种方式获取后续更多日志：
+* Context:透传上次接口返回的Context值，获取后续更多日志，总计最多可获取1万条原始日志
+* Offset:偏移量，表示从第几行开始返回原始日志，无日志条数限制
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -22256,6 +27138,13 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询原始日志的偏移量，表示从第几行开始返回原始日志，默认为0。 
+注意：
+* 仅当检索分析语句(Query)不包含SQL时有效
+* 不能与Context参数同时使用
+* 仅适用于单日志主题检索
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -22264,6 +27153,13 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Context(self):
+        """透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
+注意：
+* 透传该参数时，请勿修改除该参数外的其它参数
+* 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
+* 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+        :rtype: str
+        """
         return self._Context
 
     @Context.setter
@@ -22272,6 +27168,13 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def SamplingRate(self):
+        """执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。
+0：自动采样;
+0～1：按指定采样率采样，例如0.02;
+1：不采样，即精确分析
+默认值为1
+        :rtype: float
+        """
         return self._SamplingRate
 
     @SamplingRate.setter
@@ -22280,6 +27183,11 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def UseNewAnalysis(self):
+        """为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效
+为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
+两种返回方式在编码格式上有少量区别，建议使用true
+        :rtype: bool
+        """
         return self._UseNewAnalysis
 
     @UseNewAnalysis.setter
@@ -22373,6 +27281,11 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Context(self):
+        """透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时。
+注意：
+* 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
+        :rtype: str
+        """
         return self._Context
 
     @Context.setter
@@ -22381,6 +27294,10 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def ListOver(self):
+        """符合检索条件的日志是否已全部返回，如未全部返回可使用Context参数获取后续更多日志
+注意：仅当检索分析语句(Query)不包含SQL时有效
+        :rtype: bool
+        """
         return self._ListOver
 
     @ListOver.setter
@@ -22389,6 +27306,9 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Analysis(self):
+        """返回的是否为统计分析（即SQL）结果
+        :rtype: bool
+        """
         return self._Analysis
 
     @Analysis.setter
@@ -22397,6 +27317,10 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Results(self):
+        """匹配检索条件的原始日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LogInfo
+        """
         return self._Results
 
     @Results.setter
@@ -22405,6 +27329,11 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def ColNames(self):
+        """日志统计分析结果的列名
+当UseNewAnalysis为false时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ColNames
 
     @ColNames.setter
@@ -22413,6 +27342,11 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def AnalysisResults(self):
+        """日志统计分析结果
+当UseNewAnalysis为false时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LogItems
+        """
         return self._AnalysisResults
 
     @AnalysisResults.setter
@@ -22421,6 +27355,11 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def AnalysisRecords(self):
+        """日志统计分析结果
+当UseNewAnalysis为true时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AnalysisRecords
 
     @AnalysisRecords.setter
@@ -22429,6 +27368,11 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Columns(self):
+        """日志统计分析结果的列属性
+当UseNewAnalysis为true时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Column
+        """
         return self._Columns
 
     @Columns.setter
@@ -22437,6 +27381,10 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def SamplingRate(self):
+        """本次统计分析使用的采样率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._SamplingRate
 
     @SamplingRate.setter
@@ -22445,6 +27393,10 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Topics(self):
+        """使用多日志主题检索时，各个日志主题的基本信息，例如报错信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.SearchLogTopics`
+        """
         return self._Topics
 
     @Topics.setter
@@ -22453,6 +27405,9 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22510,6 +27465,10 @@ class SearchLogTopics(AbstractModel):
 
     @property
     def Errors(self):
+        """多日志主题检索对应的错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SearchLogErrors
+        """
         return self._Errors
 
     @Errors.setter
@@ -22518,6 +27477,10 @@ class SearchLogTopics(AbstractModel):
 
     @property
     def Infos(self):
+        """多日志主题检索各日志主题信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SearchLogInfos
+        """
         return self._Infos
 
     @Infos.setter
@@ -22634,6 +27597,9 @@ class ShipperInfo(AbstractModel):
 
     @property
     def ShipperId(self):
+        """投递规则ID
+        :rtype: str
+        """
         return self._ShipperId
 
     @ShipperId.setter
@@ -22642,6 +27608,9 @@ class ShipperInfo(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -22650,6 +27619,9 @@ class ShipperInfo(AbstractModel):
 
     @property
     def Bucket(self):
+        """投递的bucket地址
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -22658,6 +27630,9 @@ class ShipperInfo(AbstractModel):
 
     @property
     def Prefix(self):
+        """投递的前缀目录
+        :rtype: str
+        """
         return self._Prefix
 
     @Prefix.setter
@@ -22666,6 +27641,9 @@ class ShipperInfo(AbstractModel):
 
     @property
     def ShipperName(self):
+        """投递规则的名字
+        :rtype: str
+        """
         return self._ShipperName
 
     @ShipperName.setter
@@ -22674,6 +27652,9 @@ class ShipperInfo(AbstractModel):
 
     @property
     def Interval(self):
+        """投递的时间间隔，单位 秒
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -22682,6 +27663,9 @@ class ShipperInfo(AbstractModel):
 
     @property
     def MaxSize(self):
+        """投递的文件的最大值，单位 MB
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -22690,6 +27674,9 @@ class ShipperInfo(AbstractModel):
 
     @property
     def Status(self):
+        """是否生效
+        :rtype: bool
+        """
         return self._Status
 
     @Status.setter
@@ -22698,6 +27685,10 @@ class ShipperInfo(AbstractModel):
 
     @property
     def FilterRules(self):
+        """投递日志的过滤规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FilterRuleInfo
+        """
         return self._FilterRules
 
     @FilterRules.setter
@@ -22706,6 +27697,9 @@ class ShipperInfo(AbstractModel):
 
     @property
     def Partition(self):
+        """投递日志的分区规则，支持strftime的时间格式表示
+        :rtype: str
+        """
         return self._Partition
 
     @Partition.setter
@@ -22714,6 +27708,10 @@ class ShipperInfo(AbstractModel):
 
     @property
     def Compress(self):
+        """投递日志的压缩配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CompressInfo`
+        """
         return self._Compress
 
     @Compress.setter
@@ -22722,6 +27720,10 @@ class ShipperInfo(AbstractModel):
 
     @property
     def Content(self):
+        """投递日志的内容格式配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
+        """
         return self._Content
 
     @Content.setter
@@ -22730,6 +27732,9 @@ class ShipperInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """投递日志的创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -22738,6 +27743,10 @@ class ShipperInfo(AbstractModel):
 
     @property
     def FilenameMode(self):
+        """投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FilenameMode
 
     @FilenameMode.setter
@@ -22746,6 +27755,10 @@ class ShipperInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """投递数据范围的开始时间点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -22754,6 +27767,10 @@ class ShipperInfo(AbstractModel):
 
     @property
     def EndTime(self):
+        """投递数据范围的结束时间点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -22762,6 +27779,10 @@ class ShipperInfo(AbstractModel):
 
     @property
     def Progress(self):
+        """历史数据投递的进度（仅当用户选择的数据内中历史数据时才有效）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Progress
 
     @Progress.setter
@@ -22770,6 +27791,10 @@ class ShipperInfo(AbstractModel):
 
     @property
     def RemainTime(self):
+        """历史数据全部投递完成剩余的时间（仅当用户选择的数据中有历史数据时才有效）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RemainTime
 
     @RemainTime.setter
@@ -22778,6 +27803,15 @@ class ShipperInfo(AbstractModel):
 
     @property
     def HistoryStatus(self):
+        """历史任务状态：
+0：实时任务
+1：任务准备中
+2：任务运行中
+3：任务运行异常
+4：任务运行结束
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HistoryStatus
 
     @HistoryStatus.setter
@@ -22786,6 +27820,10 @@ class ShipperInfo(AbstractModel):
 
     @property
     def StorageType(self):
+        """cos桶类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StorageType
 
     @StorageType.setter
@@ -22871,6 +27909,9 @@ class ShipperTaskInfo(AbstractModel):
 
     @property
     def TaskId(self):
+        """投递任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -22879,6 +27920,9 @@ class ShipperTaskInfo(AbstractModel):
 
     @property
     def ShipperId(self):
+        """投递信息ID
+        :rtype: str
+        """
         return self._ShipperId
 
     @ShipperId.setter
@@ -22887,6 +27931,9 @@ class ShipperTaskInfo(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -22895,6 +27942,9 @@ class ShipperTaskInfo(AbstractModel):
 
     @property
     def RangeStart(self):
+        """本批投递的日志的开始时间戳，毫秒
+        :rtype: int
+        """
         return self._RangeStart
 
     @RangeStart.setter
@@ -22903,6 +27953,9 @@ class ShipperTaskInfo(AbstractModel):
 
     @property
     def RangeEnd(self):
+        """本批投递的日志的结束时间戳， 毫秒
+        :rtype: int
+        """
         return self._RangeEnd
 
     @RangeEnd.setter
@@ -22911,6 +27964,9 @@ class ShipperTaskInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """本次投递任务的开始时间戳， 毫秒
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -22919,6 +27975,9 @@ class ShipperTaskInfo(AbstractModel):
 
     @property
     def EndTime(self):
+        """本次投递任务的结束时间戳， 毫秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -22927,6 +27986,9 @@ class ShipperTaskInfo(AbstractModel):
 
     @property
     def Status(self):
+        """本次投递的结果，"success","running","failed"
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -22935,6 +27997,9 @@ class ShipperTaskInfo(AbstractModel):
 
     @property
     def Message(self):
+        """结果的详细信息
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -22985,6 +28050,9 @@ class SplitPartitionRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -22993,6 +28061,9 @@ class SplitPartitionRequest(AbstractModel):
 
     @property
     def PartitionId(self):
+        """待分裂分区ID
+        :rtype: int
+        """
         return self._PartitionId
 
     @PartitionId.setter
@@ -23001,6 +28072,9 @@ class SplitPartitionRequest(AbstractModel):
 
     @property
     def SplitKey(self):
+        """分区切分的哈希key的位置，只在Number=2时有意义
+        :rtype: str
+        """
         return self._SplitKey
 
     @SplitKey.setter
@@ -23009,6 +28083,9 @@ class SplitPartitionRequest(AbstractModel):
 
     @property
     def Number(self):
+        """分区分裂个数(可选)，默认等于2
+        :rtype: int
+        """
         return self._Number
 
     @Number.setter
@@ -23048,6 +28125,9 @@ class SplitPartitionResponse(AbstractModel):
 
     @property
     def Partitions(self):
+        """分裂结果集
+        :rtype: list of PartitionInfo
+        """
         return self._Partitions
 
     @Partitions.setter
@@ -23056,6 +28136,9 @@ class SplitPartitionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23092,6 +28175,10 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
+        """标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -23100,6 +28187,10 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
+        """标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -23135,6 +28226,10 @@ class TopicExtendInfo(AbstractModel):
 
     @property
     def AnonymousAccess(self):
+        """日志主题免鉴权配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.AnonymousInfo`
+        """
         return self._AnonymousAccess
 
     @AnonymousAccess.setter
@@ -23195,6 +28290,9 @@ id,地域,简称信息如下：
 
     @property
     def TopicId(self):
+        """日志主题id
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -23203,6 +28301,31 @@ id,地域,简称信息如下：
 
     @property
     def RegionId(self):
+        """日志主题id所在的地域id。
+
+id,地域,简称信息如下：
+- 1,   广州,ap-guangzhou
+- 4,   上海,ap-shanghai
+- 5,   中国香港,ap-hongkong
+- 7,   上海金融,ap-shanghai-fsi
+- 8,   北京,ap-beijing
+- 9,   新加坡,ap-singapore
+- 11,  深圳金融,ap-shenzhen-fsi
+- 15,  硅谷,na-siliconvalley
+- 16,  成都,ap-chengdu
+- 17,  法兰克福,eu-frankfurt
+- 18,  首尔,ap-seoul
+- 19,  重庆,ap-chongqing
+- 21,  孟买,ap-mumbai
+- 22,  弗吉尼亚,na-ashburn
+- 23,  曼谷,ap-bangkok
+- 25,  东京,ap-tokyo
+- 33,  南京,ap-nanjing
+- 46,  北京金融,ap-beijing-fsi
+- 72,  雅加达,ap-jakarta
+- 74,  圣保罗,sa-saopaulo
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -23322,6 +28445,9 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def LogsetId(self):
+        """日志集ID
+        :rtype: str
+        """
         return self._LogsetId
 
     @LogsetId.setter
@@ -23330,6 +28456,9 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def TopicId(self):
+        """主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -23338,6 +28467,9 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def TopicName(self):
+        """主题名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -23346,6 +28478,9 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def PartitionCount(self):
+        """主题分区个数
+        :rtype: int
+        """
         return self._PartitionCount
 
     @PartitionCount.setter
@@ -23354,6 +28489,9 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def Index(self):
+        """主题是否开启索引（主题类型需为日志主题）
+        :rtype: bool
+        """
         return self._Index
 
     @Index.setter
@@ -23362,6 +28500,10 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def AssumerName(self):
+        """云产品标识，主题由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssumerName
 
     @AssumerName.setter
@@ -23370,6 +28512,9 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -23378,6 +28523,11 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def Status(self):
+        """主题是否开启采集，true：开启采集；false：关闭采集。
+创建日志主题时默认开启，可通过SDK调用ModifyTopic修改此字段。
+控制台目前不支持修改此参数。
+        :rtype: bool
+        """
         return self._Status
 
     @Status.setter
@@ -23386,6 +28536,10 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def Tags(self):
+        """主题绑定的标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -23394,6 +28548,10 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def AutoSplit(self):
+        """该主题是否开启自动分裂
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._AutoSplit
 
     @AutoSplit.setter
@@ -23402,6 +28560,10 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def MaxSplitPartitions(self):
+        """若开启自动分裂的话，该主题能够允许的最大分区数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxSplitPartitions
 
     @MaxSplitPartitions.setter
@@ -23410,6 +28572,10 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def StorageType(self):
+        """主题的存储类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StorageType
 
     @StorageType.setter
@@ -23418,6 +28584,10 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def Period(self):
+        """生命周期，单位天，可取值范围1~3600。取值为3640时代表永久保存
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -23426,6 +28596,10 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def SubAssumerName(self):
+        """云产品二级标识，日志主题由其它云产品创建时，该字段会显示云产品名称及其日志类型的二级分类，例如TKE-Audit、TKE-Event。部分云产品仅有云产品标识(AssumerName)，无该字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubAssumerName
 
     @SubAssumerName.setter
@@ -23434,6 +28608,10 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def Describes(self):
+        """主题描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Describes
 
     @Describes.setter
@@ -23442,6 +28620,12 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def HotPeriod(self):
+        """开启日志沉降，标准存储的生命周期， hotPeriod < Period。
+标准存储为 hotPeriod, 低频存储则为 Period-hotPeriod。（主题类型需为日志主题）
+HotPeriod=0为没有开启日志沉降。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HotPeriod
 
     @HotPeriod.setter
@@ -23450,6 +28634,12 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def BizType(self):
+        """主题类型。
+- 0: 日志主题 
+- 1: 指标主题
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BizType
 
     @BizType.setter
@@ -23458,6 +28648,11 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def IsWebTracking(self):
+        """免鉴权开关。 false：关闭； true：开启。
+开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsWebTracking
 
     @IsWebTracking.setter
@@ -23466,6 +28661,10 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def Extends(self):
+        """日志主题扩展信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
+        """
         return self._Extends
 
     @Extends.setter
@@ -23474,6 +28673,10 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def TopicAsyncTaskID(self):
+        """异步迁移任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicAsyncTaskID
 
     @TopicAsyncTaskID.setter
@@ -23482,6 +28685,10 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def MigrationStatus(self):
+        """异步迁移状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MigrationStatus
 
     @MigrationStatus.setter
@@ -23490,6 +28697,10 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def EffectiveDate(self):
+        """异步迁移完成后，预计生效日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EffectiveDate
 
     @EffectiveDate.setter
@@ -23557,6 +28768,9 @@ class UploadLogRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """主题id
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -23567,6 +28781,9 @@ class UploadLogRequest(AbstractModel):
     def HashKey(self):
         warnings.warn("parameter `HashKey` is deprecated", DeprecationWarning) 
 
+        """该参数已废弃，请勿使用
+        :rtype: str
+        """
         return self._HashKey
 
     @HashKey.setter
@@ -23577,6 +28794,9 @@ class UploadLogRequest(AbstractModel):
 
     @property
     def CompressType(self):
+        """压缩方法
+        :rtype: str
+        """
         return self._CompressType
 
     @CompressType.setter
@@ -23612,6 +28832,9 @@ class UploadLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23650,6 +28873,9 @@ long及double类型字段需为空；
 
     @property
     def Type(self):
+        """字段类型，目前支持的类型有：long、text、double
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -23658,6 +28884,12 @@ long及double类型字段需为空；
 
     @property
     def Tokenizer(self):
+        """字段的分词符，其中的每个字符代表一个分词符；
+仅支持英文符号、\n\t\r及转义符\；
+long及double类型字段需为空；
+注意：\n\t\r本身已被转义，直接使用双引号包裹即可作为入参，无需再次转义。使用API Explorer进行调试时请使用JSON参数输入方式，以避免\n\t\r被重复转义
+        :rtype: str
+        """
         return self._Tokenizer
 
     @Tokenizer.setter
@@ -23666,6 +28898,9 @@ long及double类型字段需为空；
 
     @property
     def SqlFlag(self):
+        """字段是否开启分析功能
+        :rtype: bool
+        """
         return self._SqlFlag
 
     @SqlFlag.setter
@@ -23674,6 +28909,10 @@ long及double类型字段需为空；
 
     @property
     def ContainZH(self):
+        """是否包含中文，long及double类型字段需为false
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._ContainZH
 
     @ContainZH.setter
@@ -23762,6 +29001,13 @@ class WebCallback(AbstractModel):
 
     @property
     def CallbackType(self):
+        """回调的类型。可选值：
+- Http
+- WeCom
+- DingTalk
+- Lark
+        :rtype: str
+        """
         return self._CallbackType
 
     @CallbackType.setter
@@ -23770,6 +29016,10 @@ class WebCallback(AbstractModel):
 
     @property
     def Url(self):
+        """回调地址，最大支持1024个字节。
+也可使用WebCallbackId引用集成配置中的URL，此时该字段请填写为空字符串。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -23778,6 +29028,10 @@ class WebCallback(AbstractModel):
 
     @property
     def WebCallbackId(self):
+        """集成配置ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WebCallbackId
 
     @WebCallbackId.setter
@@ -23786,6 +29040,15 @@ class WebCallback(AbstractModel):
 
     @property
     def Method(self):
+        """回调方法。可选值：
+- POST（默认值）
+- PUT
+
+注意：
+- 参数CallbackType为Http时为必选，其它回调方式无需填写。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -23794,6 +29057,10 @@ class WebCallback(AbstractModel):
 
     @property
     def NoticeContentId(self):
+        """通知内容模板ID，使用Default-zh引用默认模板（中文），使用Default-en引用DefaultTemplate(English)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NoticeContentId
 
     @NoticeContentId.setter
@@ -23802,6 +29069,12 @@ class WebCallback(AbstractModel):
 
     @property
     def RemindType(self):
+        """提醒类型。
+
+0：不提醒；1：指定人；2：所有人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RemindType
 
     @RemindType.setter
@@ -23810,6 +29083,10 @@ class WebCallback(AbstractModel):
 
     @property
     def Mobiles(self):
+        """电话列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Mobiles
 
     @Mobiles.setter
@@ -23818,6 +29095,10 @@ class WebCallback(AbstractModel):
 
     @property
     def UserIds(self):
+        """用户ID列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._UserIds
 
     @UserIds.setter
@@ -23826,6 +29107,10 @@ class WebCallback(AbstractModel):
 
     @property
     def Headers(self):
+        """该参数已废弃，请使用NoticeContentId。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Headers
 
     @Headers.setter
@@ -23834,6 +29119,10 @@ class WebCallback(AbstractModel):
 
     @property
     def Body(self):
+        """该参数已废弃，请使用NoticeContentId。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Body
 
     @Body.setter
@@ -23842,6 +29131,11 @@ class WebCallback(AbstractModel):
 
     @property
     def Index(self):
+        """序号。
+- 入参无效。
+- 出参有效。
+        :rtype: int
+        """
         return self._Index
 
     @Index.setter

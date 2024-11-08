@@ -56,6 +56,9 @@ class AIAssistantRequest(AbstractModel):
 
     @property
     def FileContent(self):
+        """输入分析对象内容，输入数据格式参考FileType参数释义
+        :rtype: str
+        """
         return self._FileContent
 
     @FileContent.setter
@@ -64,6 +67,9 @@ class AIAssistantRequest(AbstractModel):
 
     @property
     def FileType(self):
+        """输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，audio_url: 音频文件，picture：图片二进制数据的BASE64编码
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -72,6 +78,9 @@ class AIAssistantRequest(AbstractModel):
 
     @property
     def Lang(self):
+        """音频源的语言，默认0为英文，1为中文
+        :rtype: int
+        """
         return self._Lang
 
     @Lang.setter
@@ -80,6 +89,9 @@ class AIAssistantRequest(AbstractModel):
 
     @property
     def LibrarySet(self):
+        """查询人员库列表
+        :rtype: list of str
+        """
         return self._LibrarySet
 
     @LibrarySet.setter
@@ -88,6 +100,9 @@ class AIAssistantRequest(AbstractModel):
 
     @property
     def MaxVideoDuration(self):
+        """视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :rtype: int
+        """
         return self._MaxVideoDuration
 
     @MaxVideoDuration.setter
@@ -96,6 +111,9 @@ class AIAssistantRequest(AbstractModel):
 
     @property
     def Template(self):
+        """标准化模板选择：0：AI助教基础版本，1：AI评教基础版本，2：AI评教标准版本。AI 助教基础版本功能包括：人脸检索、人脸检测、人脸表情识别、学生动作选项，音频信息分析，微笑识别。AI 评教基础版本功能包括：人脸检索、人脸检测、人脸表情识别、音频信息分析。AI 评教标准版功能包括人脸检索、人脸检测、人脸表情识别、手势识别、音频信息分析、音频关键词分析、视频精彩集锦分析。
+        :rtype: int
+        """
         return self._Template
 
     @Template.setter
@@ -104,6 +122,9 @@ class AIAssistantRequest(AbstractModel):
 
     @property
     def VocabLibNameList(self):
+        """识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
+        :rtype: list of str
+        """
         return self._VocabLibNameList
 
     @VocabLibNameList.setter
@@ -112,6 +133,9 @@ class AIAssistantRequest(AbstractModel):
 
     @property
     def VoiceEncodeType(self):
+        """语音编码类型 1:pcm
+        :rtype: int
+        """
         return self._VoiceEncodeType
 
     @VoiceEncodeType.setter
@@ -120,6 +144,9 @@ class AIAssistantRequest(AbstractModel):
 
     @property
     def VoiceFileType(self):
+        """语音文件类型 1:raw, 2:wav, 3:mp3，10:视频（三种音频格式目前仅支持16k采样率16bit）
+        :rtype: int
+        """
         return self._VoiceFileType
 
     @VoiceFileType.setter
@@ -167,6 +194,9 @@ class AIAssistantResponse(AbstractModel):
 
     @property
     def ImageResults(self):
+        """图像任务直接返回结果
+        :rtype: list of ImageTaskResult
+        """
         return self._ImageResults
 
     @ImageResults.setter
@@ -175,6 +205,9 @@ class AIAssistantResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -183,6 +216,9 @@ class AIAssistantResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -239,6 +275,9 @@ class ASRStat(AbstractModel):
 
     @property
     def AvgSpeed(self):
+        """当前音频的平均语速
+        :rtype: float
+        """
         return self._AvgSpeed
 
     @AvgSpeed.setter
@@ -247,6 +286,9 @@ class ASRStat(AbstractModel):
 
     @property
     def AvgVolume(self):
+        """Vad的平均音量
+        :rtype: float
+        """
         return self._AvgVolume
 
     @AvgVolume.setter
@@ -255,6 +297,9 @@ class ASRStat(AbstractModel):
 
     @property
     def MaxVolume(self):
+        """Vad的最大音量
+        :rtype: float
+        """
         return self._MaxVolume
 
     @MaxVolume.setter
@@ -263,6 +308,9 @@ class ASRStat(AbstractModel):
 
     @property
     def MinVolume(self):
+        """Vad的最小音量
+        :rtype: float
+        """
         return self._MinVolume
 
     @MinVolume.setter
@@ -271,6 +319,9 @@ class ASRStat(AbstractModel):
 
     @property
     def MuteDuration(self):
+        """当前音频的非发音时长
+        :rtype: int
+        """
         return self._MuteDuration
 
     @MuteDuration.setter
@@ -279,6 +330,9 @@ class ASRStat(AbstractModel):
 
     @property
     def SoundDuration(self):
+        """当前音频的发音时长
+        :rtype: int
+        """
         return self._SoundDuration
 
     @SoundDuration.setter
@@ -287,6 +341,9 @@ class ASRStat(AbstractModel):
 
     @property
     def TotalDuration(self):
+        """当前音频的总时长
+        :rtype: int
+        """
         return self._TotalDuration
 
     @TotalDuration.setter
@@ -295,6 +352,9 @@ class ASRStat(AbstractModel):
 
     @property
     def VadNum(self):
+        """当前音频的句子总数
+        :rtype: int
+        """
         return self._VadNum
 
     @VadNum.setter
@@ -303,6 +363,9 @@ class ASRStat(AbstractModel):
 
     @property
     def WordNum(self):
+        """当前音频的单词总数
+        :rtype: int
+        """
         return self._WordNum
 
     @WordNum.setter
@@ -347,6 +410,9 @@ class AbsenceInfo(AbstractModel):
 
     @property
     def LibraryIds(self):
+        """识别到的人员所在的库id
+        :rtype: str
+        """
         return self._LibraryIds
 
     @LibraryIds.setter
@@ -355,6 +421,9 @@ class AbsenceInfo(AbstractModel):
 
     @property
     def PersonId(self):
+        """识别到的人员id
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -392,6 +461,9 @@ class ActionCountStatistic(AbstractModel):
 
     @property
     def Count(self):
+        """数量
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -400,6 +472,9 @@ class ActionCountStatistic(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -437,6 +512,9 @@ class ActionDurationRatioStatistic(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -445,6 +523,9 @@ class ActionDurationRatioStatistic(AbstractModel):
 
     @property
     def Ratio(self):
+        """比例
+        :rtype: float
+        """
         return self._Ratio
 
     @Ratio.setter
@@ -482,6 +563,9 @@ class ActionDurationStatistic(AbstractModel):
 
     @property
     def Duration(self):
+        """时长
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -490,6 +574,9 @@ class ActionDurationStatistic(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -545,6 +632,9 @@ class ActionInfo(AbstractModel):
 
     @property
     def BodyPosture(self):
+        """躯体动作识别结果，包含坐着（sit）、站立（stand）和趴睡（sleep）
+        :rtype: :class:`tencentcloud.tci.v20190318.models.ActionType`
+        """
         return self._BodyPosture
 
     @BodyPosture.setter
@@ -553,6 +643,9 @@ class ActionInfo(AbstractModel):
 
     @property
     def Handup(self):
+        """举手识别结果，包含举手（hand）和未检测到举手（nothand）
+        :rtype: :class:`tencentcloud.tci.v20190318.models.ActionType`
+        """
         return self._Handup
 
     @Handup.setter
@@ -561,6 +654,9 @@ class ActionInfo(AbstractModel):
 
     @property
     def LookHead(self):
+        """是否低头识别结果，包含抬头（lookingahead）和未检测到抬头（notlookingahead）
+        :rtype: :class:`tencentcloud.tci.v20190318.models.ActionType`
+        """
         return self._LookHead
 
     @LookHead.setter
@@ -569,6 +665,9 @@ class ActionInfo(AbstractModel):
 
     @property
     def Writing(self):
+        """是否写字识别结果，包含写字（write）和未检测到写字（notlookingahead）
+        :rtype: :class:`tencentcloud.tci.v20190318.models.ActionType`
+        """
         return self._Writing
 
     @Writing.setter
@@ -577,6 +676,9 @@ class ActionInfo(AbstractModel):
 
     @property
     def Height(self):
+        """动作图像高度
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -585,6 +687,9 @@ class ActionInfo(AbstractModel):
 
     @property
     def Left(self):
+        """动作出现图像的左侧起始坐标位置
+        :rtype: int
+        """
         return self._Left
 
     @Left.setter
@@ -593,6 +698,9 @@ class ActionInfo(AbstractModel):
 
     @property
     def Top(self):
+        """动作出现图像的上侧起始侧坐标位置
+        :rtype: int
+        """
         return self._Top
 
     @Top.setter
@@ -601,6 +709,9 @@ class ActionInfo(AbstractModel):
 
     @property
     def Width(self):
+        """动作图像宽度
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -655,6 +766,9 @@ class ActionStatistic(AbstractModel):
 
     @property
     def ActionCount(self):
+        """数量统计
+        :rtype: list of ActionCountStatistic
+        """
         return self._ActionCount
 
     @ActionCount.setter
@@ -663,6 +777,9 @@ class ActionStatistic(AbstractModel):
 
     @property
     def ActionDuration(self):
+        """时长统计
+        :rtype: list of ActionDurationStatistic
+        """
         return self._ActionDuration
 
     @ActionDuration.setter
@@ -671,6 +788,9 @@ class ActionStatistic(AbstractModel):
 
     @property
     def ActionDurationRatio(self):
+        """时长比例统计
+        :rtype: list of ActionDurationRatioStatistic
+        """
         return self._ActionDurationRatio
 
     @ActionDurationRatio.setter
@@ -724,6 +844,9 @@ class ActionType(AbstractModel):
 
     @property
     def Confidence(self):
+        """置信度
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -732,6 +855,9 @@ class ActionType(AbstractModel):
 
     @property
     def Type(self):
+        """动作类别
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -772,6 +898,9 @@ class AllMuteSlice(AbstractModel):
 
     @property
     def MuteSlice(self):
+        """所有静音片段。
+        :rtype: list of MuteSlice
+        """
         return self._MuteSlice
 
     @MuteSlice.setter
@@ -780,6 +909,9 @@ class AllMuteSlice(AbstractModel):
 
     @property
     def MuteRatio(self):
+        """静音时长占比。
+        :rtype: float
+        """
         return self._MuteRatio
 
     @MuteRatio.setter
@@ -788,6 +920,9 @@ class AllMuteSlice(AbstractModel):
 
     @property
     def TotalMuteDuration(self):
+        """静音总时长。
+        :rtype: int
+        """
         return self._TotalMuteDuration
 
     @TotalMuteDuration.setter
@@ -831,6 +966,9 @@ class AttendanceInfo(AbstractModel):
 
     @property
     def Face(self):
+        """识别到的人员信息
+        :rtype: :class:`tencentcloud.tci.v20190318.models.FrameInfo`
+        """
         return self._Face
 
     @Face.setter
@@ -839,6 +977,9 @@ class AttendanceInfo(AbstractModel):
 
     @property
     def PersonId(self):
+        """识别到的人员id
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -894,6 +1035,9 @@ class BodyMovementResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """置信度
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -902,6 +1046,9 @@ class BodyMovementResult(AbstractModel):
 
     @property
     def Height(self):
+        """识别结果高度
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -910,6 +1057,9 @@ class BodyMovementResult(AbstractModel):
 
     @property
     def Left(self):
+        """识别结果左坐标
+        :rtype: int
+        """
         return self._Left
 
     @Left.setter
@@ -918,6 +1068,13 @@ class BodyMovementResult(AbstractModel):
 
     @property
     def Movements(self):
+        """老师动作识别结果，包含
+1、teach_on_positive_attitude 正面讲解
+2、point_to_the_blackboard 指黑板
+3、writing_blackboard 写板书
+4、other 其他
+        :rtype: str
+        """
         return self._Movements
 
     @Movements.setter
@@ -926,6 +1083,9 @@ class BodyMovementResult(AbstractModel):
 
     @property
     def Top(self):
+        """识别结果顶坐标
+        :rtype: int
+        """
         return self._Top
 
     @Top.setter
@@ -934,6 +1094,9 @@ class BodyMovementResult(AbstractModel):
 
     @property
     def Width(self):
+        """识别结果宽度
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -972,6 +1135,9 @@ class CancelTaskRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """待取消任务标志符。
+        :rtype: int
+        """
         return self._JobId
 
     @JobId.setter
@@ -1008,6 +1174,9 @@ class CancelTaskResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """取消任务标志符。
+        :rtype: int
+        """
         return self._JobId
 
     @JobId.setter
@@ -1016,6 +1185,9 @@ class CancelTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1045,6 +1217,9 @@ class CheckFacePhotoRequest(AbstractModel):
 
     @property
     def FileContent(self):
+        """输入分析对象内容
+        :rtype: str
+        """
         return self._FileContent
 
     @FileContent.setter
@@ -1053,6 +1228,9 @@ class CheckFacePhotoRequest(AbstractModel):
 
     @property
     def FileType(self):
+        """输入分析对象类型，picture_url:图片地址
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -1090,6 +1268,9 @@ class CheckFacePhotoResponse(AbstractModel):
 
     @property
     def CheckResult(self):
+        """人脸检查结果，0：通过检查，1：图片模糊
+        :rtype: int
+        """
         return self._CheckResult
 
     @CheckResult.setter
@@ -1098,6 +1279,9 @@ class CheckFacePhotoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1133,6 +1317,9 @@ class CreateFaceRequest(AbstractModel):
 
     @property
     def PersonId(self):
+        """人员唯一标识符
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -1141,6 +1328,9 @@ class CreateFaceRequest(AbstractModel):
 
     @property
     def Images(self):
+        """图片数据 base64 字符串，与 Urls 参数选择一个输入
+        :rtype: list of str
+        """
         return self._Images
 
     @Images.setter
@@ -1149,6 +1339,9 @@ class CreateFaceRequest(AbstractModel):
 
     @property
     def LibraryId(self):
+        """人员库唯一标识符
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -1157,6 +1350,9 @@ class CreateFaceRequest(AbstractModel):
 
     @property
     def Urls(self):
+        """图片下载地址，与 Images 参数选择一个输入
+        :rtype: list of str
+        """
         return self._Urls
 
     @Urls.setter
@@ -1196,6 +1392,9 @@ class CreateFaceResponse(AbstractModel):
 
     @property
     def FaceInfoSet(self):
+        """人脸操作结果信息
+        :rtype: list of FaceInfo
+        """
         return self._FaceInfoSet
 
     @FaceInfoSet.setter
@@ -1204,6 +1403,9 @@ class CreateFaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1238,6 +1440,9 @@ class CreateLibraryRequest(AbstractModel):
 
     @property
     def LibraryName(self):
+        """人员库名称
+        :rtype: str
+        """
         return self._LibraryName
 
     @LibraryName.setter
@@ -1246,6 +1451,9 @@ class CreateLibraryRequest(AbstractModel):
 
     @property
     def LibraryId(self):
+        """人员库唯一标志符，为空则系统自动生成。
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -1286,6 +1494,9 @@ class CreateLibraryResponse(AbstractModel):
 
     @property
     def LibraryId(self):
+        """人员库唯一标识符
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -1294,6 +1505,9 @@ class CreateLibraryResponse(AbstractModel):
 
     @property
     def LibraryName(self):
+        """人员库名称
+        :rtype: str
+        """
         return self._LibraryName
 
     @LibraryName.setter
@@ -1302,6 +1516,9 @@ class CreateLibraryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1356,6 +1573,9 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def LibraryId(self):
+        """人员库唯一标识符
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -1364,6 +1584,9 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def PersonName(self):
+        """人员名称
+        :rtype: str
+        """
         return self._PersonName
 
     @PersonName.setter
@@ -1372,6 +1595,9 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def Images(self):
+        """图片数据 base64 字符串，与 Urls 参数选择一个输入
+        :rtype: list of str
+        """
         return self._Images
 
     @Images.setter
@@ -1380,6 +1606,9 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def JobNumber(self):
+        """人员工作号码
+        :rtype: str
+        """
         return self._JobNumber
 
     @JobNumber.setter
@@ -1388,6 +1617,9 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def Mail(self):
+        """人员邮箱
+        :rtype: str
+        """
         return self._Mail
 
     @Mail.setter
@@ -1396,6 +1628,9 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def Male(self):
+        """人员性别，0：未知 1：男性，2：女性
+        :rtype: int
+        """
         return self._Male
 
     @Male.setter
@@ -1404,6 +1639,9 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def PersonId(self):
+        """自定义人员 ID，注意不能使用 tci_person_ 前缀
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -1412,6 +1650,9 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """人员电话号码
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -1420,6 +1661,9 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def StudentNumber(self):
+        """人员学生号码
+        :rtype: str
+        """
         return self._StudentNumber
 
     @StudentNumber.setter
@@ -1428,6 +1672,9 @@ class CreatePersonRequest(AbstractModel):
 
     @property
     def Urls(self):
+        """图片下载地址，与 Images 参数选择一个输入
+        :rtype: list of str
+        """
         return self._Urls
 
     @Urls.setter
@@ -1482,6 +1729,9 @@ class CreatePersonResponse(AbstractModel):
 
     @property
     def FaceInfoSet(self):
+        """人脸操作结果信息
+        :rtype: list of FaceInfo
+        """
         return self._FaceInfoSet
 
     @FaceInfoSet.setter
@@ -1490,6 +1740,9 @@ class CreatePersonResponse(AbstractModel):
 
     @property
     def LibraryId(self):
+        """人员库唯一标识符
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -1498,6 +1751,9 @@ class CreatePersonResponse(AbstractModel):
 
     @property
     def PersonId(self):
+        """人员唯一标识符
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -1506,6 +1762,9 @@ class CreatePersonResponse(AbstractModel):
 
     @property
     def PersonName(self):
+        """人员名称
+        :rtype: str
+        """
         return self._PersonName
 
     @PersonName.setter
@@ -1514,6 +1773,9 @@ class CreatePersonResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1548,6 +1810,9 @@ class CreateVocabLibRequest(AbstractModel):
 
     @property
     def VocabLibName(self):
+        """词汇库名称
+        :rtype: str
+        """
         return self._VocabLibName
 
     @VocabLibName.setter
@@ -1581,6 +1846,9 @@ class CreateVocabLibResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1609,6 +1877,9 @@ class CreateVocabRequest(AbstractModel):
 
     @property
     def VocabLibName(self):
+        """要添加词汇的词汇库名
+        :rtype: str
+        """
         return self._VocabLibName
 
     @VocabLibName.setter
@@ -1617,6 +1888,9 @@ class CreateVocabRequest(AbstractModel):
 
     @property
     def VocabList(self):
+        """要添加的词汇列表
+        :rtype: list of str
+        """
         return self._VocabList
 
     @VocabList.setter
@@ -1651,6 +1925,9 @@ class CreateVocabResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1682,6 +1959,9 @@ class DeleteFaceRequest(AbstractModel):
 
     @property
     def FaceIdSet(self):
+        """人脸标识符数组
+        :rtype: list of str
+        """
         return self._FaceIdSet
 
     @FaceIdSet.setter
@@ -1690,6 +1970,9 @@ class DeleteFaceRequest(AbstractModel):
 
     @property
     def PersonId(self):
+        """人员唯一标识符
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -1698,6 +1981,9 @@ class DeleteFaceRequest(AbstractModel):
 
     @property
     def LibraryId(self):
+        """人员库唯一标识符
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -1736,6 +2022,9 @@ class DeleteFaceResponse(AbstractModel):
 
     @property
     def FaceInfoSet(self):
+        """人脸操作结果
+        :rtype: list of FaceInfo
+        """
         return self._FaceInfoSet
 
     @FaceInfoSet.setter
@@ -1744,6 +2033,9 @@ class DeleteFaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1775,6 +2067,9 @@ class DeleteLibraryRequest(AbstractModel):
 
     @property
     def LibraryId(self):
+        """人员库唯一标识符
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -1814,6 +2109,9 @@ class DeleteLibraryResponse(AbstractModel):
 
     @property
     def LibraryId(self):
+        """人员库唯一标识符
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -1822,6 +2120,9 @@ class DeleteLibraryResponse(AbstractModel):
 
     @property
     def LibraryName(self):
+        """人员库名称
+        :rtype: str
+        """
         return self._LibraryName
 
     @LibraryName.setter
@@ -1830,6 +2131,9 @@ class DeleteLibraryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1860,6 +2164,9 @@ class DeletePersonRequest(AbstractModel):
 
     @property
     def LibraryId(self):
+        """人员库唯一标识符
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -1868,6 +2175,9 @@ class DeletePersonRequest(AbstractModel):
 
     @property
     def PersonId(self):
+        """人员唯一标识符
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -1914,6 +2224,9 @@ class DeletePersonResponse(AbstractModel):
 
     @property
     def FaceInfoSet(self):
+        """人脸信息
+        :rtype: list of FaceInfo
+        """
         return self._FaceInfoSet
 
     @FaceInfoSet.setter
@@ -1922,6 +2235,9 @@ class DeletePersonResponse(AbstractModel):
 
     @property
     def LibraryId(self):
+        """人员库唯一标识符
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -1930,6 +2246,9 @@ class DeletePersonResponse(AbstractModel):
 
     @property
     def PersonId(self):
+        """人员唯一标识符
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -1938,6 +2257,9 @@ class DeletePersonResponse(AbstractModel):
 
     @property
     def PersonName(self):
+        """人员名称
+        :rtype: str
+        """
         return self._PersonName
 
     @PersonName.setter
@@ -1946,6 +2268,9 @@ class DeletePersonResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1980,6 +2305,9 @@ class DeleteVocabLibRequest(AbstractModel):
 
     @property
     def VocabLibName(self):
+        """词汇库名称
+        :rtype: str
+        """
         return self._VocabLibName
 
     @VocabLibName.setter
@@ -2013,6 +2341,9 @@ class DeleteVocabLibResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2041,6 +2372,9 @@ class DeleteVocabRequest(AbstractModel):
 
     @property
     def VocabLibName(self):
+        """要删除词汇的词汇库名
+        :rtype: str
+        """
         return self._VocabLibName
 
     @VocabLibName.setter
@@ -2049,6 +2383,9 @@ class DeleteVocabRequest(AbstractModel):
 
     @property
     def VocabList(self):
+        """要删除的词汇列表
+        :rtype: list of str
+        """
         return self._VocabList
 
     @VocabList.setter
@@ -2083,6 +2420,9 @@ class DeleteVocabResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2114,6 +2454,9 @@ class DescribeAITaskResultRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务唯一标识符。在URL方式时提交请求后会返回一个任务标识符，后续查询该url的结果时使用这个标识符进行查询。
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2122,6 +2465,9 @@ class DescribeAITaskResultRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2130,6 +2476,9 @@ class DescribeAITaskResultRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2180,6 +2529,9 @@ class DescribeAITaskResultResponse(AbstractModel):
 
     @property
     def AudioResult(self):
+        """音频分析结果
+        :rtype: :class:`tencentcloud.tci.v20190318.models.StandardAudioResult`
+        """
         return self._AudioResult
 
     @AudioResult.setter
@@ -2188,6 +2540,9 @@ class DescribeAITaskResultResponse(AbstractModel):
 
     @property
     def ImageResult(self):
+        """图像分析结果
+        :rtype: :class:`tencentcloud.tci.v20190318.models.StandardImageResult`
+        """
         return self._ImageResult
 
     @ImageResult.setter
@@ -2196,6 +2551,9 @@ class DescribeAITaskResultResponse(AbstractModel):
 
     @property
     def VideoResult(self):
+        """视频分析结果
+        :rtype: :class:`tencentcloud.tci.v20190318.models.StandardVideoResult`
+        """
         return self._VideoResult
 
     @VideoResult.setter
@@ -2204,6 +2562,9 @@ class DescribeAITaskResultResponse(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2212,6 +2573,9 @@ class DescribeAITaskResultResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务唯一id。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2220,6 +2584,9 @@ class DescribeAITaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2256,6 +2623,9 @@ class DescribeAttendanceResultRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """任务唯一标识符
+        :rtype: int
+        """
         return self._JobId
 
     @JobId.setter
@@ -2304,6 +2674,9 @@ class DescribeAttendanceResultResponse(AbstractModel):
 
     @property
     def AbsenceSetInLibs(self):
+        """缺失人员的ID列表(只针对请求中的libids字段)
+        :rtype: list of AbsenceInfo
+        """
         return self._AbsenceSetInLibs
 
     @AbsenceSetInLibs.setter
@@ -2312,6 +2685,9 @@ class DescribeAttendanceResultResponse(AbstractModel):
 
     @property
     def AttendanceSet(self):
+        """确定出勤人员列表
+        :rtype: list of AttendanceInfo
+        """
         return self._AttendanceSet
 
     @AttendanceSet.setter
@@ -2320,6 +2696,9 @@ class DescribeAttendanceResultResponse(AbstractModel):
 
     @property
     def SuspectedSet(self):
+        """疑似出勤人员列表
+        :rtype: list of SuspectedInfo
+        """
         return self._SuspectedSet
 
     @SuspectedSet.setter
@@ -2328,6 +2707,9 @@ class DescribeAttendanceResultResponse(AbstractModel):
 
     @property
     def AbsenceSet(self):
+        """缺失人员的ID列表(只针对请求中的personids字段)
+        :rtype: list of str
+        """
         return self._AbsenceSet
 
     @AbsenceSet.setter
@@ -2336,6 +2718,9 @@ class DescribeAttendanceResultResponse(AbstractModel):
 
     @property
     def Progress(self):
+        """请求处理进度
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -2344,6 +2729,9 @@ class DescribeAttendanceResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2395,6 +2783,9 @@ class DescribeAudioTaskRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """音频任务唯一id。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
+        :rtype: int
+        """
         return self._JobId
 
     @JobId.setter
@@ -2403,6 +2794,9 @@ class DescribeAudioTaskRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2411,6 +2805,9 @@ class DescribeAudioTaskRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2473,6 +2870,9 @@ class DescribeAudioTaskResponse(AbstractModel):
 
     @property
     def AllMuteSlice(self):
+        """如果请求中开启了静音检测开关，则会返回所有的静音片段（静音时长超过阈值的片段）。
+        :rtype: :class:`tencentcloud.tci.v20190318.models.AllMuteSlice`
+        """
         return self._AllMuteSlice
 
     @AllMuteSlice.setter
@@ -2481,6 +2881,9 @@ class DescribeAudioTaskResponse(AbstractModel):
 
     @property
     def AsrStat(self):
+        """返回的当前音频的统计信息。当进度为100时返回。
+        :rtype: :class:`tencentcloud.tci.v20190318.models.ASRStat`
+        """
         return self._AsrStat
 
     @AsrStat.setter
@@ -2489,6 +2892,9 @@ class DescribeAudioTaskResponse(AbstractModel):
 
     @property
     def Texts(self):
+        """返回当前音频流的详细信息，如果是流模式，返回的是对应流的详细信息，如果是 URL模式，返回的是查询的那一段seq对应的音频的详细信息。
+        :rtype: list of WholeTextItem
+        """
         return self._Texts
 
     @Texts.setter
@@ -2497,6 +2903,9 @@ class DescribeAudioTaskResponse(AbstractModel):
 
     @property
     def VocabAnalysisDetailInfo(self):
+        """返回词汇库中的单词出现的详细时间信息。
+        :rtype: list of VocabDetailInfomation
+        """
         return self._VocabAnalysisDetailInfo
 
     @VocabAnalysisDetailInfo.setter
@@ -2505,6 +2914,9 @@ class DescribeAudioTaskResponse(AbstractModel):
 
     @property
     def VocabAnalysisStatInfo(self):
+        """返回词汇库中的单词出现的次数信息。
+        :rtype: list of VocabStatInfomation
+        """
         return self._VocabAnalysisStatInfo
 
     @VocabAnalysisStatInfo.setter
@@ -2513,6 +2925,9 @@ class DescribeAudioTaskResponse(AbstractModel):
 
     @property
     def AllTexts(self):
+        """返回音频全部文本。
+        :rtype: str
+        """
         return self._AllTexts
 
     @AllTexts.setter
@@ -2521,6 +2936,9 @@ class DescribeAudioTaskResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """音频任务唯一id。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
+        :rtype: int
+        """
         return self._JobId
 
     @JobId.setter
@@ -2529,6 +2947,9 @@ class DescribeAudioTaskResponse(AbstractModel):
 
     @property
     def Progress(self):
+        """返回的当前处理进度。
+        :rtype: float
+        """
         return self._Progress
 
     @Progress.setter
@@ -2537,6 +2958,9 @@ class DescribeAudioTaskResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """结果总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2545,6 +2969,9 @@ class DescribeAudioTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2607,6 +3034,9 @@ class DescribeConversationTaskRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """音频任务唯一id。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
+        :rtype: int
+        """
         return self._JobId
 
     @JobId.setter
@@ -2615,6 +3045,9 @@ class DescribeConversationTaskRequest(AbstractModel):
 
     @property
     def Identity(self):
+        """要查询明细的流的身份，1 老师 2 学生
+        :rtype: int
+        """
         return self._Identity
 
     @Identity.setter
@@ -2623,6 +3056,9 @@ class DescribeConversationTaskRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2631,6 +3067,9 @@ class DescribeConversationTaskRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2691,6 +3130,9 @@ class DescribeConversationTaskResponse(AbstractModel):
 
     @property
     def AsrStat(self):
+        """返回的当前音频的统计信息。当进度为100时返回。
+        :rtype: :class:`tencentcloud.tci.v20190318.models.ASRStat`
+        """
         return self._AsrStat
 
     @AsrStat.setter
@@ -2699,6 +3141,9 @@ class DescribeConversationTaskResponse(AbstractModel):
 
     @property
     def Texts(self):
+        """返回当前音频流的详细信息，如果是流模式，返回的是对应流的详细信息，如果是 URL模式，返回的是查询的那一段seq对应的音频的详细信息。
+        :rtype: list of WholeTextItem
+        """
         return self._Texts
 
     @Texts.setter
@@ -2707,6 +3152,9 @@ class DescribeConversationTaskResponse(AbstractModel):
 
     @property
     def VocabAnalysisDetailInfo(self):
+        """返回词汇库中的单词出现的详细时间信息。
+        :rtype: list of VocabDetailInfomation
+        """
         return self._VocabAnalysisDetailInfo
 
     @VocabAnalysisDetailInfo.setter
@@ -2715,6 +3163,9 @@ class DescribeConversationTaskResponse(AbstractModel):
 
     @property
     def VocabAnalysisStatInfo(self):
+        """返回词汇库中的单词出现的次数信息。
+        :rtype: list of VocabStatInfomation
+        """
         return self._VocabAnalysisStatInfo
 
     @VocabAnalysisStatInfo.setter
@@ -2723,6 +3174,9 @@ class DescribeConversationTaskResponse(AbstractModel):
 
     @property
     def AllTexts(self):
+        """整个音频流的全部文本
+        :rtype: str
+        """
         return self._AllTexts
 
     @AllTexts.setter
@@ -2731,6 +3185,9 @@ class DescribeConversationTaskResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """音频任务唯一id。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
+        :rtype: int
+        """
         return self._JobId
 
     @JobId.setter
@@ -2739,6 +3196,9 @@ class DescribeConversationTaskResponse(AbstractModel):
 
     @property
     def Progress(self):
+        """返回的当前处理进度。
+        :rtype: float
+        """
         return self._Progress
 
     @Progress.setter
@@ -2747,6 +3207,9 @@ class DescribeConversationTaskResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """结果总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2755,6 +3218,9 @@ class DescribeConversationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2805,6 +3271,9 @@ class DescribeHighlightResultRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """精彩集锦任务唯一id。在URL方式时提交请求后会返回一个JobId，后续查询该url的结果时使用这个JobId进行查询。
+        :rtype: int
+        """
         return self._JobId
 
     @JobId.setter
@@ -2847,6 +3316,9 @@ class DescribeHighlightResultResponse(AbstractModel):
 
     @property
     def HighlightsInfo(self):
+        """精彩集锦详细信息。
+        :rtype: list of HighlightsInfomation
+        """
         return self._HighlightsInfo
 
     @HighlightsInfo.setter
@@ -2855,6 +3327,9 @@ class DescribeHighlightResultResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """精彩集锦任务唯一id。在URL方式时提交请求后会返回一个JobId，后续查询该url的结果时使用这个JobId进行查询。
+        :rtype: int
+        """
         return self._JobId
 
     @JobId.setter
@@ -2863,6 +3338,9 @@ class DescribeHighlightResultResponse(AbstractModel):
 
     @property
     def Progress(self):
+        """任务的进度百分比，100表示任务已完成。
+        :rtype: float
+        """
         return self._Progress
 
     @Progress.setter
@@ -2871,6 +3349,9 @@ class DescribeHighlightResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2910,6 +3391,9 @@ class DescribeImageTaskRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """任务标识符
+        :rtype: int
+        """
         return self._JobId
 
     @JobId.setter
@@ -2918,6 +3402,9 @@ class DescribeImageTaskRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2926,6 +3413,9 @@ class DescribeImageTaskRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2973,6 +3463,9 @@ class DescribeImageTaskResponse(AbstractModel):
 
     @property
     def ResultSet(self):
+        """任务处理结果
+        :rtype: list of ImageTaskResult
+        """
         return self._ResultSet
 
     @ResultSet.setter
@@ -2981,6 +3474,9 @@ class DescribeImageTaskResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """任务唯一标识
+        :rtype: int
+        """
         return self._JobId
 
     @JobId.setter
@@ -2989,6 +3485,9 @@ class DescribeImageTaskResponse(AbstractModel):
 
     @property
     def Progress(self):
+        """任务执行进度
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -2997,6 +3496,9 @@ class DescribeImageTaskResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """任务结果数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3005,6 +3507,9 @@ class DescribeImageTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3039,6 +3544,9 @@ class DescribeImageTaskStatisticRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """图像任务标识符
+        :rtype: int
+        """
         return self._JobId
 
     @JobId.setter
@@ -3078,6 +3586,9 @@ class DescribeImageTaskStatisticResponse(AbstractModel):
 
     @property
     def Statistic(self):
+        """任务统计信息
+        :rtype: :class:`tencentcloud.tci.v20190318.models.ImageTaskStatistic`
+        """
         return self._Statistic
 
     @Statistic.setter
@@ -3086,6 +3597,9 @@ class DescribeImageTaskStatisticResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """图像任务唯一标识符
+        :rtype: int
+        """
         return self._JobId
 
     @JobId.setter
@@ -3094,6 +3608,9 @@ class DescribeImageTaskStatisticResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3135,6 +3652,9 @@ class DescribeLibrariesResponse(AbstractModel):
 
     @property
     def LibrarySet(self):
+        """人员库列表
+        :rtype: list of Library
+        """
         return self._LibrarySet
 
     @LibrarySet.setter
@@ -3143,6 +3663,9 @@ class DescribeLibrariesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """人员库总数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3151,6 +3674,9 @@ class DescribeLibrariesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3186,6 +3712,9 @@ class DescribePersonRequest(AbstractModel):
 
     @property
     def LibraryId(self):
+        """人员库唯一标识符
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -3194,6 +3723,9 @@ class DescribePersonRequest(AbstractModel):
 
     @property
     def PersonId(self):
+        """人员唯一标识符
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -3261,6 +3793,9 @@ class DescribePersonResponse(AbstractModel):
 
     @property
     def FaceSet(self):
+        """人员人脸列表
+        :rtype: list of Face
+        """
         return self._FaceSet
 
     @FaceSet.setter
@@ -3269,6 +3804,9 @@ class DescribePersonResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3277,6 +3815,9 @@ class DescribePersonResponse(AbstractModel):
 
     @property
     def JobNumber(self):
+        """工作号码
+        :rtype: str
+        """
         return self._JobNumber
 
     @JobNumber.setter
@@ -3285,6 +3826,9 @@ class DescribePersonResponse(AbstractModel):
 
     @property
     def LibraryId(self):
+        """人员库唯一标识符
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -3293,6 +3837,9 @@ class DescribePersonResponse(AbstractModel):
 
     @property
     def Mail(self):
+        """邮箱
+        :rtype: str
+        """
         return self._Mail
 
     @Mail.setter
@@ -3301,6 +3848,9 @@ class DescribePersonResponse(AbstractModel):
 
     @property
     def Male(self):
+        """性别
+        :rtype: int
+        """
         return self._Male
 
     @Male.setter
@@ -3309,6 +3859,9 @@ class DescribePersonResponse(AbstractModel):
 
     @property
     def PersonId(self):
+        """人员唯一标识符
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -3317,6 +3870,9 @@ class DescribePersonResponse(AbstractModel):
 
     @property
     def PersonName(self):
+        """人员名称
+        :rtype: str
+        """
         return self._PersonName
 
     @PersonName.setter
@@ -3325,6 +3881,9 @@ class DescribePersonResponse(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """电话号码
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -3333,6 +3892,9 @@ class DescribePersonResponse(AbstractModel):
 
     @property
     def StudentNumber(self):
+        """学生号码
+        :rtype: str
+        """
         return self._StudentNumber
 
     @StudentNumber.setter
@@ -3341,6 +3903,9 @@ class DescribePersonResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """修改时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -3349,6 +3914,9 @@ class DescribePersonResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3396,6 +3964,9 @@ class DescribePersonsRequest(AbstractModel):
 
     @property
     def LibraryId(self):
+        """人员库唯一标识符
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -3404,6 +3975,9 @@ class DescribePersonsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3412,6 +3986,9 @@ class DescribePersonsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3453,6 +4030,9 @@ class DescribePersonsResponse(AbstractModel):
 
     @property
     def PersonSet(self):
+        """人员列表
+        :rtype: list of Person
+        """
         return self._PersonSet
 
     @PersonSet.setter
@@ -3461,6 +4041,9 @@ class DescribePersonsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """人员总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3469,6 +4052,9 @@ class DescribePersonsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3510,6 +4096,9 @@ class DescribeVocabLibResponse(AbstractModel):
 
     @property
     def VocabLibNameSet(self):
+        """返回该appid下的所有词汇库名
+        :rtype: list of str
+        """
         return self._VocabLibNameSet
 
     @VocabLibNameSet.setter
@@ -3518,6 +4107,9 @@ class DescribeVocabLibResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3544,6 +4136,9 @@ class DescribeVocabRequest(AbstractModel):
 
     @property
     def VocabLibName(self):
+        """要查询词汇的词汇库名
+        :rtype: str
+        """
         return self._VocabLibName
 
     @VocabLibName.setter
@@ -3580,6 +4175,9 @@ class DescribeVocabResponse(AbstractModel):
 
     @property
     def VocabNameSet(self):
+        """词汇列表
+        :rtype: list of str
+        """
         return self._VocabNameSet
 
     @VocabNameSet.setter
@@ -3588,6 +4186,9 @@ class DescribeVocabResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3617,6 +4218,9 @@ class DetailInfo(AbstractModel):
 
     @property
     def Value(self):
+        """单词出现在该音频中的那个句子的时间戳，出现了几次， 就返回对应次数的起始和结束时间戳
+        :rtype: list of WordTimePair
+        """
         return self._Value
 
     @Value.setter
@@ -3625,6 +4229,9 @@ class DetailInfo(AbstractModel):
 
     @property
     def Keyword(self):
+        """词汇库中的单词
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -3664,6 +4271,9 @@ class DoubleVideoFunction(AbstractModel):
 
     @property
     def EnableCoverPictures(self):
+        """片头片尾增加图片开关
+        :rtype: bool
+        """
         return self._EnableCoverPictures
 
     @EnableCoverPictures.setter
@@ -3706,6 +4316,9 @@ class ExpressRatioStatistic(AbstractModel):
 
     @property
     def Count(self):
+        """出现次数
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -3714,6 +4327,9 @@ class ExpressRatioStatistic(AbstractModel):
 
     @property
     def Express(self):
+        """表情
+        :rtype: str
+        """
         return self._Express
 
     @Express.setter
@@ -3722,6 +4338,9 @@ class ExpressRatioStatistic(AbstractModel):
 
     @property
     def Ratio(self):
+        """该表情时长占所有表情时长的比例
+        :rtype: float
+        """
         return self._Ratio
 
     @Ratio.setter
@@ -3730,6 +4349,9 @@ class ExpressRatioStatistic(AbstractModel):
 
     @property
     def RatioUseDuration(self):
+        """该表情时长占视频总时长的比例
+        :rtype: float
+        """
         return self._RatioUseDuration
 
     @RatioUseDuration.setter
@@ -3772,6 +4394,9 @@ class Face(AbstractModel):
 
     @property
     def FaceId(self):
+        """人脸唯一标识符
+        :rtype: str
+        """
         return self._FaceId
 
     @FaceId.setter
@@ -3780,6 +4405,9 @@ class Face(AbstractModel):
 
     @property
     def FaceUrl(self):
+        """人脸图片 URL
+        :rtype: str
+        """
         return self._FaceUrl
 
     @FaceUrl.setter
@@ -3788,6 +4416,9 @@ class Face(AbstractModel):
 
     @property
     def PersonId(self):
+        """人员唯一标识符
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -3826,6 +4457,9 @@ class FaceAttrResult(AbstractModel):
 
     @property
     def Age(self):
+        """年龄
+        :rtype: int
+        """
         return self._Age
 
     @Age.setter
@@ -3834,6 +4468,9 @@ class FaceAttrResult(AbstractModel):
 
     @property
     def Sex(self):
+        """性别
+        :rtype: str
+        """
         return self._Sex
 
     @Sex.setter
@@ -3889,6 +4526,9 @@ class FaceDetectStatistic(AbstractModel):
 
     @property
     def FaceSizeRatio(self):
+        """人脸大小占画面平均占比
+        :rtype: float
+        """
         return self._FaceSizeRatio
 
     @FaceSizeRatio.setter
@@ -3897,6 +4537,9 @@ class FaceDetectStatistic(AbstractModel):
 
     @property
     def FrontalFaceCount(self):
+        """检测到正脸次数
+        :rtype: int
+        """
         return self._FrontalFaceCount
 
     @FrontalFaceCount.setter
@@ -3905,6 +4548,9 @@ class FaceDetectStatistic(AbstractModel):
 
     @property
     def FrontalFaceRatio(self):
+        """正脸时长占比
+        :rtype: float
+        """
         return self._FrontalFaceRatio
 
     @FrontalFaceRatio.setter
@@ -3913,6 +4559,9 @@ class FaceDetectStatistic(AbstractModel):
 
     @property
     def FrontalFaceRealRatio(self):
+        """正脸时长在总出现时常占比
+        :rtype: float
+        """
         return self._FrontalFaceRealRatio
 
     @FrontalFaceRealRatio.setter
@@ -3921,6 +4570,9 @@ class FaceDetectStatistic(AbstractModel):
 
     @property
     def PersonId(self):
+        """人员唯一标识符
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -3929,6 +4581,9 @@ class FaceDetectStatistic(AbstractModel):
 
     @property
     def SideFaceCount(self):
+        """检测到侧脸次数
+        :rtype: int
+        """
         return self._SideFaceCount
 
     @SideFaceCount.setter
@@ -3937,6 +4592,9 @@ class FaceDetectStatistic(AbstractModel):
 
     @property
     def SideFaceRatio(self):
+        """侧脸时长占比
+        :rtype: float
+        """
         return self._SideFaceRatio
 
     @SideFaceRatio.setter
@@ -3945,6 +4603,9 @@ class FaceDetectStatistic(AbstractModel):
 
     @property
     def SideFaceRealRatio(self):
+        """侧脸时长在总出现时常占比
+        :rtype: float
+        """
         return self._SideFaceRealRatio
 
     @SideFaceRealRatio.setter
@@ -3988,6 +4649,9 @@ class FaceExpressStatistic(AbstractModel):
 
     @property
     def PersonId(self):
+        """人员唯一标识符
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -3996,6 +4660,9 @@ class FaceExpressStatistic(AbstractModel):
 
     @property
     def ExpressRatio(self):
+        """表情统计结果
+        :rtype: list of ExpressRatioStatistic
+        """
         return self._ExpressRatio
 
     @ExpressRatio.setter
@@ -4038,6 +4705,9 @@ class FaceExpressionResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """表情置信度
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -4046,6 +4716,9 @@ class FaceExpressionResult(AbstractModel):
 
     @property
     def Expression(self):
+        """表情识别结果，包括"neutral":中性,"happiness":开心，"angry":"生气"，"disgust":厌恶，"fear":"恐惧"，"sadness":"悲伤"，"surprise":"惊讶"，"contempt":"蔑视"
+        :rtype: str
+        """
         return self._Expression
 
     @Expression.setter
@@ -4089,6 +4762,9 @@ class FaceIdentifyResult(AbstractModel):
 
     @property
     def FaceId(self):
+        """人脸标识符
+        :rtype: str
+        """
         return self._FaceId
 
     @FaceId.setter
@@ -4097,6 +4773,9 @@ class FaceIdentifyResult(AbstractModel):
 
     @property
     def LibraryId(self):
+        """人员库标识符
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -4105,6 +4784,9 @@ class FaceIdentifyResult(AbstractModel):
 
     @property
     def PersonId(self):
+        """人员标识符
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -4113,6 +4795,9 @@ class FaceIdentifyResult(AbstractModel):
 
     @property
     def Similarity(self):
+        """相似度
+        :rtype: float
+        """
         return self._Similarity
 
     @Similarity.setter
@@ -4161,6 +4846,9 @@ class FaceIdentifyStatistic(AbstractModel):
 
     @property
     def Duration(self):
+        """持续时间
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -4169,6 +4857,9 @@ class FaceIdentifyStatistic(AbstractModel):
 
     @property
     def EndTs(self):
+        """结束时间
+        :rtype: int
+        """
         return self._EndTs
 
     @EndTs.setter
@@ -4177,6 +4868,9 @@ class FaceIdentifyStatistic(AbstractModel):
 
     @property
     def PersonId(self):
+        """人员唯一标识符
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -4185,6 +4879,9 @@ class FaceIdentifyStatistic(AbstractModel):
 
     @property
     def Similarity(self):
+        """相似度
+        :rtype: float
+        """
         return self._Similarity
 
     @Similarity.setter
@@ -4193,6 +4890,9 @@ class FaceIdentifyStatistic(AbstractModel):
 
     @property
     def StartTs(self):
+        """开始时间
+        :rtype: int
+        """
         return self._StartTs
 
     @StartTs.setter
@@ -4242,6 +4942,9 @@ class FaceInfo(AbstractModel):
 
     @property
     def ErrorCode(self):
+        """人脸操作错误码
+        :rtype: str
+        """
         return self._ErrorCode
 
     @ErrorCode.setter
@@ -4250,6 +4953,9 @@ class FaceInfo(AbstractModel):
 
     @property
     def ErrorMsg(self):
+        """人脸操作结果信息
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -4258,6 +4964,9 @@ class FaceInfo(AbstractModel):
 
     @property
     def FaceId(self):
+        """人脸唯一标识符
+        :rtype: str
+        """
         return self._FaceId
 
     @FaceId.setter
@@ -4266,6 +4975,9 @@ class FaceInfo(AbstractModel):
 
     @property
     def FaceUrl(self):
+        """人脸保存地址
+        :rtype: str
+        """
         return self._FaceUrl
 
     @FaceUrl.setter
@@ -4274,6 +4986,9 @@ class FaceInfo(AbstractModel):
 
     @property
     def PersonId(self):
+        """人员唯一标识
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -4329,6 +5044,9 @@ class FaceInfoResult(AbstractModel):
 
     @property
     def FaceRatio(self):
+        """人脸尺寸的占比
+        :rtype: float
+        """
         return self._FaceRatio
 
     @FaceRatio.setter
@@ -4337,6 +5055,9 @@ class FaceInfoResult(AbstractModel):
 
     @property
     def FrameHeight(self):
+        """帧高度
+        :rtype: int
+        """
         return self._FrameHeight
 
     @FrameHeight.setter
@@ -4345,6 +5066,9 @@ class FaceInfoResult(AbstractModel):
 
     @property
     def FrameWidth(self):
+        """帧宽度
+        :rtype: int
+        """
         return self._FrameWidth
 
     @FrameWidth.setter
@@ -4353,6 +5077,9 @@ class FaceInfoResult(AbstractModel):
 
     @property
     def Height(self):
+        """人脸高度
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -4361,6 +5088,9 @@ class FaceInfoResult(AbstractModel):
 
     @property
     def Left(self):
+        """人脸左坐标
+        :rtype: int
+        """
         return self._Left
 
     @Left.setter
@@ -4369,6 +5099,9 @@ class FaceInfoResult(AbstractModel):
 
     @property
     def Top(self):
+        """人脸顶坐标
+        :rtype: int
+        """
         return self._Top
 
     @Top.setter
@@ -4377,6 +5110,9 @@ class FaceInfoResult(AbstractModel):
 
     @property
     def Width(self):
+        """人脸宽度
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -4425,6 +5161,9 @@ class FacePoseResult(AbstractModel):
 
     @property
     def Direction(self):
+        """正脸或侧脸的消息
+        :rtype: str
+        """
         return self._Direction
 
     @Direction.setter
@@ -4433,6 +5172,9 @@ class FacePoseResult(AbstractModel):
 
     @property
     def Pitch(self):
+        """围绕Z轴旋转角度，俯仰角
+        :rtype: float
+        """
         return self._Pitch
 
     @Pitch.setter
@@ -4441,6 +5183,9 @@ class FacePoseResult(AbstractModel):
 
     @property
     def Roll(self):
+        """围绕X轴旋转角度，翻滚角
+        :rtype: float
+        """
         return self._Roll
 
     @Roll.setter
@@ -4449,6 +5194,9 @@ class FacePoseResult(AbstractModel):
 
     @property
     def Yaw(self):
+        """围绕Y轴旋转角度，偏航角
+        :rtype: float
+        """
         return self._Yaw
 
     @Yaw.setter
@@ -4491,6 +5239,9 @@ class FrameInfo(AbstractModel):
 
     @property
     def Similarity(self):
+        """相似度
+        :rtype: float
+        """
         return self._Similarity
 
     @Similarity.setter
@@ -4499,6 +5250,9 @@ class FrameInfo(AbstractModel):
 
     @property
     def SnapshotUrl(self):
+        """截图的存储地址
+        :rtype: str
+        """
         return self._SnapshotUrl
 
     @SnapshotUrl.setter
@@ -4507,6 +5261,9 @@ class FrameInfo(AbstractModel):
 
     @property
     def Ts(self):
+        """相对于视频起始时间的时间戳，单位秒
+        :rtype: int
+        """
         return self._Ts
 
     @Ts.setter
@@ -4554,6 +5311,9 @@ class Function(AbstractModel):
 
     @property
     def EnableAllText(self):
+        """输出全部文本标识，当该值设置为true时，会输出当前音频的全部文本
+        :rtype: bool
+        """
         return self._EnableAllText
 
     @EnableAllText.setter
@@ -4562,6 +5322,9 @@ class Function(AbstractModel):
 
     @property
     def EnableKeyword(self):
+        """输出关键词信息标识，当该值设置为true时，会输出当前音频的关键词信息。
+        :rtype: bool
+        """
         return self._EnableKeyword
 
     @EnableKeyword.setter
@@ -4570,6 +5333,9 @@ class Function(AbstractModel):
 
     @property
     def EnableMuteDetect(self):
+        """静音检测标识，当设置为 true 时，需要设置静音时间阈值字段mute_threshold，统计结果中会返回静音片段。
+        :rtype: bool
+        """
         return self._EnableMuteDetect
 
     @EnableMuteDetect.setter
@@ -4578,6 +5344,9 @@ class Function(AbstractModel):
 
     @property
     def EnableVadInfo(self):
+        """输出音频统计信息标识，当设置为 true 时，任务查询结果会输出音频的统计信息（AsrStat）
+        :rtype: bool
+        """
         return self._EnableVadInfo
 
     @EnableVadInfo.setter
@@ -4586,6 +5355,9 @@ class Function(AbstractModel):
 
     @property
     def EnableVolume(self):
+        """输出音频音量信息标识，当设置为 true 时，会输出当前音频音量信息。
+        :rtype: bool
+        """
         return self._EnableVolume
 
     @EnableVolume.setter
@@ -4638,6 +5410,9 @@ class GestureResult(AbstractModel):
 
     @property
     def Class(self):
+        """识别结果，包含"USPEAK":听你说，"LISTEN":听我说，"GOOD":GOOD，"TOOLS":拿教具，"OTHERS":其他
+        :rtype: str
+        """
         return self._Class
 
     @Class.setter
@@ -4646,6 +5421,9 @@ class GestureResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """置信度
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -4654,6 +5432,9 @@ class GestureResult(AbstractModel):
 
     @property
     def Height(self):
+        """识别结果高度
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -4662,6 +5443,9 @@ class GestureResult(AbstractModel):
 
     @property
     def Left(self):
+        """识别结果左坐标
+        :rtype: int
+        """
         return self._Left
 
     @Left.setter
@@ -4670,6 +5454,9 @@ class GestureResult(AbstractModel):
 
     @property
     def Top(self):
+        """识别结果顶坐标
+        :rtype: int
+        """
         return self._Top
 
     @Top.setter
@@ -4678,6 +5465,9 @@ class GestureResult(AbstractModel):
 
     @property
     def Width(self):
+        """识别结果宽度
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -4728,6 +5518,9 @@ class HLFunction(AbstractModel):
 
     @property
     def EnableFaceDetect(self):
+        """是否开启人脸检测
+        :rtype: bool
+        """
         return self._EnableFaceDetect
 
     @EnableFaceDetect.setter
@@ -4736,6 +5529,9 @@ class HLFunction(AbstractModel):
 
     @property
     def EnableFaceExpression(self):
+        """是否开启表情识别
+        :rtype: bool
+        """
         return self._EnableFaceExpression
 
     @EnableFaceExpression.setter
@@ -4744,6 +5540,9 @@ class HLFunction(AbstractModel):
 
     @property
     def EnableFaceIdent(self):
+        """是否开启人脸检索
+        :rtype: bool
+        """
         return self._EnableFaceIdent
 
     @EnableFaceIdent.setter
@@ -4752,6 +5551,9 @@ class HLFunction(AbstractModel):
 
     @property
     def EnableKeywordWonderfulTime(self):
+        """是否开启视频集锦-老师关键字识别
+        :rtype: bool
+        """
         return self._EnableKeywordWonderfulTime
 
     @EnableKeywordWonderfulTime.setter
@@ -4760,6 +5562,9 @@ class HLFunction(AbstractModel):
 
     @property
     def EnableSmileWonderfulTime(self):
+        """是否开启视频集锦-微笑识别
+        :rtype: bool
+        """
         return self._EnableSmileWonderfulTime
 
     @EnableSmileWonderfulTime.setter
@@ -4812,6 +5617,9 @@ class HandTrackingResult(AbstractModel):
 
     @property
     def Class(self):
+        """识别结果
+        :rtype: str
+        """
         return self._Class
 
     @Class.setter
@@ -4820,6 +5628,9 @@ class HandTrackingResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """置信度
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -4828,6 +5639,9 @@ class HandTrackingResult(AbstractModel):
 
     @property
     def Height(self):
+        """识别结果高度
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -4836,6 +5650,9 @@ class HandTrackingResult(AbstractModel):
 
     @property
     def Left(self):
+        """识别结果左坐标
+        :rtype: int
+        """
         return self._Left
 
     @Left.setter
@@ -4844,6 +5661,9 @@ class HandTrackingResult(AbstractModel):
 
     @property
     def Top(self):
+        """识别结果顶坐标
+        :rtype: int
+        """
         return self._Top
 
     @Top.setter
@@ -4852,6 +5672,9 @@ class HandTrackingResult(AbstractModel):
 
     @property
     def Width(self):
+        """识别结果宽度
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -4899,6 +5722,9 @@ class HighlightsInfomation(AbstractModel):
 
     @property
     def Concentration(self):
+        """专注的起始与终止时间信息。
+        :rtype: list of TimeType
+        """
         return self._Concentration
 
     @Concentration.setter
@@ -4907,6 +5733,9 @@ class HighlightsInfomation(AbstractModel):
 
     @property
     def Smile(self):
+        """微笑的起始与终止时间信息。
+        :rtype: list of TimeType
+        """
         return self._Smile
 
     @Smile.setter
@@ -4915,6 +5744,9 @@ class HighlightsInfomation(AbstractModel):
 
     @property
     def HighlightsUrl(self):
+        """高光集锦视频地址，保存剪辑好的视频地址。
+        :rtype: str
+        """
         return self._HighlightsUrl
 
     @HighlightsUrl.setter
@@ -4923,6 +5755,9 @@ class HighlightsInfomation(AbstractModel):
 
     @property
     def PersonId(self):
+        """片段中识别出来的人脸ID。
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -4996,6 +5831,9 @@ class ImageTaskFunction(AbstractModel):
 
     @property
     def EnableActionClass(self):
+        """大教室场景学生肢体动作识别选项
+        :rtype: bool
+        """
         return self._EnableActionClass
 
     @EnableActionClass.setter
@@ -5004,6 +5842,9 @@ class ImageTaskFunction(AbstractModel):
 
     @property
     def EnableFaceDetect(self):
+        """人脸检测选项（默认为true，目前不可编辑）
+        :rtype: bool
+        """
         return self._EnableFaceDetect
 
     @EnableFaceDetect.setter
@@ -5012,6 +5853,9 @@ class ImageTaskFunction(AbstractModel):
 
     @property
     def EnableFaceExpression(self):
+        """人脸表情识别选项
+        :rtype: bool
+        """
         return self._EnableFaceExpression
 
     @EnableFaceExpression.setter
@@ -5020,6 +5864,9 @@ class ImageTaskFunction(AbstractModel):
 
     @property
     def EnableFaceIdentify(self):
+        """人脸检索选项（默认为true，目前不可编辑）
+        :rtype: bool
+        """
         return self._EnableFaceIdentify
 
     @EnableFaceIdentify.setter
@@ -5028,6 +5875,9 @@ class ImageTaskFunction(AbstractModel):
 
     @property
     def EnableGesture(self):
+        """手势选项
+        :rtype: bool
+        """
         return self._EnableGesture
 
     @EnableGesture.setter
@@ -5036,6 +5886,9 @@ class ImageTaskFunction(AbstractModel):
 
     @property
     def EnableHandTracking(self):
+        """优图手势选项（该功能尚未支持）
+        :rtype: bool
+        """
         return self._EnableHandTracking
 
     @EnableHandTracking.setter
@@ -5044,6 +5897,9 @@ class ImageTaskFunction(AbstractModel):
 
     @property
     def EnableLightJudge(self):
+        """光照选项
+        :rtype: bool
+        """
         return self._EnableLightJudge
 
     @EnableLightJudge.setter
@@ -5052,6 +5908,9 @@ class ImageTaskFunction(AbstractModel):
 
     @property
     def EnableStudentBodyMovements(self):
+        """小班课场景学生肢体动作识别选项
+        :rtype: bool
+        """
         return self._EnableStudentBodyMovements
 
     @EnableStudentBodyMovements.setter
@@ -5060,6 +5919,9 @@ class ImageTaskFunction(AbstractModel):
 
     @property
     def EnableTeacherBodyMovements(self):
+        """教师动作选项（该功能尚未支持）
+        :rtype: bool
+        """
         return self._EnableTeacherBodyMovements
 
     @EnableTeacherBodyMovements.setter
@@ -5068,6 +5930,9 @@ class ImageTaskFunction(AbstractModel):
 
     @property
     def EnableTeacherOutScreen(self):
+        """判断老师是否在屏幕中（该功能尚未支持）
+        :rtype: bool
+        """
         return self._EnableTeacherOutScreen
 
     @EnableTeacherOutScreen.setter
@@ -5146,6 +6011,9 @@ class ImageTaskResult(AbstractModel):
 
     @property
     def ActionInfo(self):
+        """大教室场景学生肢体动作识别信息
+        :rtype: :class:`tencentcloud.tci.v20190318.models.ActionInfo`
+        """
         return self._ActionInfo
 
     @ActionInfo.setter
@@ -5154,6 +6022,9 @@ class ImageTaskResult(AbstractModel):
 
     @property
     def FaceAttr(self):
+        """属性识别结果
+        :rtype: :class:`tencentcloud.tci.v20190318.models.FaceAttrResult`
+        """
         return self._FaceAttr
 
     @FaceAttr.setter
@@ -5162,6 +6033,9 @@ class ImageTaskResult(AbstractModel):
 
     @property
     def FaceExpression(self):
+        """表情识别结果
+        :rtype: :class:`tencentcloud.tci.v20190318.models.FaceExpressionResult`
+        """
         return self._FaceExpression
 
     @FaceExpression.setter
@@ -5170,6 +6044,9 @@ class ImageTaskResult(AbstractModel):
 
     @property
     def FaceIdentify(self):
+        """人脸检索结果
+        :rtype: :class:`tencentcloud.tci.v20190318.models.FaceIdentifyResult`
+        """
         return self._FaceIdentify
 
     @FaceIdentify.setter
@@ -5178,6 +6055,9 @@ class ImageTaskResult(AbstractModel):
 
     @property
     def FaceInfo(self):
+        """人脸检测结果
+        :rtype: :class:`tencentcloud.tci.v20190318.models.FaceInfoResult`
+        """
         return self._FaceInfo
 
     @FaceInfo.setter
@@ -5186,6 +6066,9 @@ class ImageTaskResult(AbstractModel):
 
     @property
     def FacePose(self):
+        """姿势识别结果
+        :rtype: :class:`tencentcloud.tci.v20190318.models.FacePoseResult`
+        """
         return self._FacePose
 
     @FacePose.setter
@@ -5194,6 +6077,9 @@ class ImageTaskResult(AbstractModel):
 
     @property
     def Gesture(self):
+        """动作分类结果
+        :rtype: :class:`tencentcloud.tci.v20190318.models.GestureResult`
+        """
         return self._Gesture
 
     @Gesture.setter
@@ -5202,6 +6088,9 @@ class ImageTaskResult(AbstractModel):
 
     @property
     def HandTracking(self):
+        """手势分类结果
+        :rtype: :class:`tencentcloud.tci.v20190318.models.HandTrackingResult`
+        """
         return self._HandTracking
 
     @HandTracking.setter
@@ -5210,6 +6099,9 @@ class ImageTaskResult(AbstractModel):
 
     @property
     def Light(self):
+        """光照识别结果
+        :rtype: :class:`tencentcloud.tci.v20190318.models.LightResult`
+        """
         return self._Light
 
     @Light.setter
@@ -5218,6 +6110,9 @@ class ImageTaskResult(AbstractModel):
 
     @property
     def StudentBodyMovement(self):
+        """学生肢体动作识别结果
+        :rtype: :class:`tencentcloud.tci.v20190318.models.StudentBodyMovementResult`
+        """
         return self._StudentBodyMovement
 
     @StudentBodyMovement.setter
@@ -5226,6 +6121,9 @@ class ImageTaskResult(AbstractModel):
 
     @property
     def TeacherBodyMovement(self):
+        """老师肢体动作识别结果
+        :rtype: :class:`tencentcloud.tci.v20190318.models.BodyMovementResult`
+        """
         return self._TeacherBodyMovement
 
     @TeacherBodyMovement.setter
@@ -5234,6 +6132,9 @@ class ImageTaskResult(AbstractModel):
 
     @property
     def TeacherOutScreen(self):
+        """教师是否在屏幕内判断结果
+        :rtype: :class:`tencentcloud.tci.v20190318.models.TeacherOutScreenResult`
+        """
         return self._TeacherOutScreen
 
     @TeacherOutScreen.setter
@@ -5242,6 +6143,9 @@ class ImageTaskResult(AbstractModel):
 
     @property
     def TimeInfo(self):
+        """时间统计结果
+        :rtype: :class:`tencentcloud.tci.v20190318.models.TimeInfoResult`
+        """
         return self._TimeInfo
 
     @TimeInfo.setter
@@ -5334,6 +6238,9 @@ class ImageTaskStatistic(AbstractModel):
 
     @property
     def FaceDetect(self):
+        """人员检测统计信息
+        :rtype: list of FaceDetectStatistic
+        """
         return self._FaceDetect
 
     @FaceDetect.setter
@@ -5342,6 +6249,9 @@ class ImageTaskStatistic(AbstractModel):
 
     @property
     def FaceExpression(self):
+        """人脸表情统计信息
+        :rtype: list of FaceExpressStatistic
+        """
         return self._FaceExpression
 
     @FaceExpression.setter
@@ -5350,6 +6260,9 @@ class ImageTaskStatistic(AbstractModel):
 
     @property
     def FaceIdentify(self):
+        """人脸检索统计信息
+        :rtype: list of FaceIdentifyStatistic
+        """
         return self._FaceIdentify
 
     @FaceIdentify.setter
@@ -5358,6 +6271,9 @@ class ImageTaskStatistic(AbstractModel):
 
     @property
     def Gesture(self):
+        """姿势识别统计信息
+        :rtype: :class:`tencentcloud.tci.v20190318.models.ActionStatistic`
+        """
         return self._Gesture
 
     @Gesture.setter
@@ -5366,6 +6282,9 @@ class ImageTaskStatistic(AbstractModel):
 
     @property
     def Handtracking(self):
+        """手势识别统计信息
+        :rtype: :class:`tencentcloud.tci.v20190318.models.ActionStatistic`
+        """
         return self._Handtracking
 
     @Handtracking.setter
@@ -5374,6 +6293,9 @@ class ImageTaskStatistic(AbstractModel):
 
     @property
     def Light(self):
+        """光照统计信息
+        :rtype: :class:`tencentcloud.tci.v20190318.models.LightStatistic`
+        """
         return self._Light
 
     @Light.setter
@@ -5382,6 +6304,9 @@ class ImageTaskStatistic(AbstractModel):
 
     @property
     def StudentMovement(self):
+        """学生动作统计信息
+        :rtype: :class:`tencentcloud.tci.v20190318.models.ActionStatistic`
+        """
         return self._StudentMovement
 
     @StudentMovement.setter
@@ -5390,6 +6315,9 @@ class ImageTaskStatistic(AbstractModel):
 
     @property
     def TeacherMovement(self):
+        """教师动作统计信息
+        :rtype: :class:`tencentcloud.tci.v20190318.models.ActionStatistic`
+        """
         return self._TeacherMovement
 
     @TeacherMovement.setter
@@ -5467,6 +6395,9 @@ class Library(AbstractModel):
 
     @property
     def CreateTime(self):
+        """人员库创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -5475,6 +6406,9 @@ class Library(AbstractModel):
 
     @property
     def LibraryId(self):
+        """人员库唯一标识符
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -5483,6 +6417,9 @@ class Library(AbstractModel):
 
     @property
     def LibraryName(self):
+        """人员库名称
+        :rtype: str
+        """
         return self._LibraryName
 
     @LibraryName.setter
@@ -5491,6 +6428,9 @@ class Library(AbstractModel):
 
     @property
     def PersonCount(self):
+        """人员库人员数量
+        :rtype: int
+        """
         return self._PersonCount
 
     @PersonCount.setter
@@ -5499,6 +6439,9 @@ class Library(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """人员库修改时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -5539,6 +6482,9 @@ class LightDistributionStatistic(AbstractModel):
 
     @property
     def Time(self):
+        """时间点
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -5547,6 +6493,9 @@ class LightDistributionStatistic(AbstractModel):
 
     @property
     def Value(self):
+        """光线值
+        :rtype: int
+        """
         return self._Value
 
     @Value.setter
@@ -5584,6 +6533,9 @@ class LightLevelRatioStatistic(AbstractModel):
 
     @property
     def Level(self):
+        """名称
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -5592,6 +6544,9 @@ class LightLevelRatioStatistic(AbstractModel):
 
     @property
     def Ratio(self):
+        """比例
+        :rtype: float
+        """
         return self._Ratio
 
     @Ratio.setter
@@ -5629,6 +6584,9 @@ class LightResult(AbstractModel):
 
     @property
     def LightLevel(self):
+        """光照程度，参考提交任务时的LightStandard指定的Name参数
+        :rtype: str
+        """
         return self._LightLevel
 
     @LightLevel.setter
@@ -5637,6 +6595,9 @@ class LightResult(AbstractModel):
 
     @property
     def LightValue(self):
+        """光照亮度
+        :rtype: float
+        """
         return self._LightValue
 
     @LightValue.setter
@@ -5679,6 +6640,9 @@ class LightStandard(AbstractModel):
 
     @property
     def Name(self):
+        """光照名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5687,6 +6651,9 @@ class LightStandard(AbstractModel):
 
     @property
     def Range(self):
+        """范围
+        :rtype: list of float
+        """
         return self._Range
 
     @Range.setter
@@ -5724,6 +6691,9 @@ class LightStatistic(AbstractModel):
 
     @property
     def LightDistribution(self):
+        """各个时间点的光线值
+        :rtype: list of LightDistributionStatistic
+        """
         return self._LightDistribution
 
     @LightDistribution.setter
@@ -5732,6 +6702,9 @@ class LightStatistic(AbstractModel):
 
     @property
     def LightLevelRatio(self):
+        """光照程度比例统计结果
+        :rtype: list of LightLevelRatioStatistic
+        """
         return self._LightLevelRatio
 
     @LightLevelRatio.setter
@@ -5779,6 +6752,9 @@ class ModifyLibraryRequest(AbstractModel):
 
     @property
     def LibraryId(self):
+        """人员库唯一标识符
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -5787,6 +6763,9 @@ class ModifyLibraryRequest(AbstractModel):
 
     @property
     def LibraryName(self):
+        """人员库名称
+        :rtype: str
+        """
         return self._LibraryName
 
     @LibraryName.setter
@@ -5827,6 +6806,9 @@ class ModifyLibraryResponse(AbstractModel):
 
     @property
     def LibraryId(self):
+        """人员库唯一标识符
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -5835,6 +6817,9 @@ class ModifyLibraryResponse(AbstractModel):
 
     @property
     def LibraryName(self):
+        """人员库名称
+        :rtype: str
+        """
         return self._LibraryName
 
     @LibraryName.setter
@@ -5843,6 +6828,9 @@ class ModifyLibraryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5891,6 +6879,9 @@ class ModifyPersonRequest(AbstractModel):
 
     @property
     def LibraryId(self):
+        """人员库唯一标识符
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -5899,6 +6890,9 @@ class ModifyPersonRequest(AbstractModel):
 
     @property
     def PersonId(self):
+        """人员唯一标识符
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -5907,6 +6901,9 @@ class ModifyPersonRequest(AbstractModel):
 
     @property
     def JobNumber(self):
+        """人员工作号码
+        :rtype: str
+        """
         return self._JobNumber
 
     @JobNumber.setter
@@ -5915,6 +6912,9 @@ class ModifyPersonRequest(AbstractModel):
 
     @property
     def Mail(self):
+        """人员邮箱
+        :rtype: str
+        """
         return self._Mail
 
     @Mail.setter
@@ -5923,6 +6923,9 @@ class ModifyPersonRequest(AbstractModel):
 
     @property
     def Male(self):
+        """人员性别
+        :rtype: int
+        """
         return self._Male
 
     @Male.setter
@@ -5931,6 +6934,9 @@ class ModifyPersonRequest(AbstractModel):
 
     @property
     def PersonName(self):
+        """人员名称
+        :rtype: str
+        """
         return self._PersonName
 
     @PersonName.setter
@@ -5939,6 +6945,9 @@ class ModifyPersonRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """人员电话号码
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -5947,6 +6956,9 @@ class ModifyPersonRequest(AbstractModel):
 
     @property
     def StudentNumber(self):
+        """人员学生号码
+        :rtype: str
+        """
         return self._StudentNumber
 
     @StudentNumber.setter
@@ -5999,6 +7011,9 @@ class ModifyPersonResponse(AbstractModel):
 
     @property
     def FaceInfoSet(self):
+        """人脸信息
+        :rtype: list of FaceInfo
+        """
         return self._FaceInfoSet
 
     @FaceInfoSet.setter
@@ -6007,6 +7022,9 @@ class ModifyPersonResponse(AbstractModel):
 
     @property
     def LibraryId(self):
+        """人员所属人员库标识符
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -6015,6 +7033,9 @@ class ModifyPersonResponse(AbstractModel):
 
     @property
     def PersonId(self):
+        """人员唯一标识符
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -6023,6 +7044,9 @@ class ModifyPersonResponse(AbstractModel):
 
     @property
     def PersonName(self):
+        """人员名称
+        :rtype: str
+        """
         return self._PersonName
 
     @PersonName.setter
@@ -6031,6 +7055,9 @@ class ModifyPersonResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6068,6 +7095,9 @@ class MuteSlice(AbstractModel):
 
     @property
     def MuteBtm(self):
+        """起始时间。
+        :rtype: int
+        """
         return self._MuteBtm
 
     @MuteBtm.setter
@@ -6076,6 +7106,9 @@ class MuteSlice(AbstractModel):
 
     @property
     def MuteEtm(self):
+        """终止时间。
+        :rtype: int
+        """
         return self._MuteEtm
 
     @MuteEtm.setter
@@ -6137,6 +7170,9 @@ class Person(AbstractModel):
 
     @property
     def LibraryId(self):
+        """人员库唯一标识符
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -6145,6 +7181,9 @@ class Person(AbstractModel):
 
     @property
     def PersonId(self):
+        """人员唯一标识符
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -6153,6 +7192,9 @@ class Person(AbstractModel):
 
     @property
     def PersonName(self):
+        """人员名称
+        :rtype: str
+        """
         return self._PersonName
 
     @PersonName.setter
@@ -6161,6 +7203,9 @@ class Person(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -6169,6 +7214,9 @@ class Person(AbstractModel):
 
     @property
     def JobNumber(self):
+        """工作号码
+        :rtype: str
+        """
         return self._JobNumber
 
     @JobNumber.setter
@@ -6177,6 +7225,9 @@ class Person(AbstractModel):
 
     @property
     def Mail(self):
+        """邮箱
+        :rtype: str
+        """
         return self._Mail
 
     @Mail.setter
@@ -6185,6 +7236,9 @@ class Person(AbstractModel):
 
     @property
     def Male(self):
+        """性别
+        :rtype: int
+        """
         return self._Male
 
     @Male.setter
@@ -6193,6 +7247,9 @@ class Person(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """电话号码
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -6201,6 +7258,9 @@ class Person(AbstractModel):
 
     @property
     def StudentNumber(self):
+        """学生号码
+        :rtype: str
+        """
         return self._StudentNumber
 
     @StudentNumber.setter
@@ -6209,6 +7269,9 @@ class Person(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """修改时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -6257,6 +7320,9 @@ class PersonInfo(AbstractModel):
 
     @property
     def PersonId(self):
+        """需要匹配的人员的ID列表。
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -6265,6 +7331,9 @@ class PersonInfo(AbstractModel):
 
     @property
     def CoverBeginUrl(self):
+        """视频集锦开始封面照片。
+        :rtype: str
+        """
         return self._CoverBeginUrl
 
     @CoverBeginUrl.setter
@@ -6273,6 +7342,9 @@ class PersonInfo(AbstractModel):
 
     @property
     def CoverEndUrl(self):
+        """视频集锦结束封面照片。
+        :rtype: str
+        """
         return self._CoverEndUrl
 
     @CoverEndUrl.setter
@@ -6326,6 +7398,9 @@ class StandardAudioResult(AbstractModel):
 
     @property
     def AsrStat(self):
+        """返回的当前音频的统计信息。当进度为100时返回。
+        :rtype: :class:`tencentcloud.tci.v20190318.models.ASRStat`
+        """
         return self._AsrStat
 
     @AsrStat.setter
@@ -6334,6 +7409,9 @@ class StandardAudioResult(AbstractModel):
 
     @property
     def Texts(self):
+        """返回当前音频流的详细信息，如果是流模式，返回的是对应流的详细信息，如果是 URL模式，返回的是查询的那一段seq对应的音频的详细信息。
+        :rtype: list of WholeTextItem
+        """
         return self._Texts
 
     @Texts.setter
@@ -6342,6 +7420,9 @@ class StandardAudioResult(AbstractModel):
 
     @property
     def VocabAnalysisDetailInfo(self):
+        """返回词汇库中的单词出现的详细时间信息。
+        :rtype: list of VocabDetailInfomation
+        """
         return self._VocabAnalysisDetailInfo
 
     @VocabAnalysisDetailInfo.setter
@@ -6350,6 +7431,9 @@ class StandardAudioResult(AbstractModel):
 
     @property
     def VocabAnalysisStatInfo(self):
+        """返回词汇库中的单词出现的次数信息。
+        :rtype: list of VocabStatInfomation
+        """
         return self._VocabAnalysisStatInfo
 
     @VocabAnalysisStatInfo.setter
@@ -6358,6 +7442,9 @@ class StandardAudioResult(AbstractModel):
 
     @property
     def Message(self):
+        """状态描述
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -6366,6 +7453,9 @@ class StandardAudioResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -6374,6 +7464,9 @@ class StandardAudioResult(AbstractModel):
 
     @property
     def TotalCount(self):
+        """结果数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6442,6 +7535,9 @@ class StandardImageResult(AbstractModel):
 
     @property
     def ResultSet(self):
+        """详细结果
+        :rtype: list of ImageTaskResult
+        """
         return self._ResultSet
 
     @ResultSet.setter
@@ -6450,6 +7546,9 @@ class StandardImageResult(AbstractModel):
 
     @property
     def Statistic(self):
+        """分析完成后的统计结果
+        :rtype: :class:`tencentcloud.tci.v20190318.models.ImageTaskStatistic`
+        """
         return self._Statistic
 
     @Statistic.setter
@@ -6458,6 +7557,9 @@ class StandardImageResult(AbstractModel):
 
     @property
     def Message(self):
+        """状态描述
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -6466,6 +7568,9 @@ class StandardImageResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -6474,6 +7579,9 @@ class StandardImageResult(AbstractModel):
 
     @property
     def TotalCount(self):
+        """结果总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6524,6 +7632,9 @@ class StandardVideoResult(AbstractModel):
 
     @property
     def HighlightsInfo(self):
+        """分析完成后的统计结果
+        :rtype: list of HighlightsInfomation
+        """
         return self._HighlightsInfo
 
     @HighlightsInfo.setter
@@ -6532,6 +7643,9 @@ class StandardVideoResult(AbstractModel):
 
     @property
     def Message(self):
+        """状态描述
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -6540,6 +7654,9 @@ class StandardVideoResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -6583,6 +7700,9 @@ class StatInfo(AbstractModel):
 
     @property
     def Keyword(self):
+        """词汇库中的单词
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -6591,6 +7711,9 @@ class StatInfo(AbstractModel):
 
     @property
     def Value(self):
+        """单词出现在该音频中总次数
+        :rtype: int
+        """
         return self._Value
 
     @Value.setter
@@ -6652,6 +7775,9 @@ class StudentBodyMovementResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """置信度（已废弃）
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -6660,6 +7786,9 @@ class StudentBodyMovementResult(AbstractModel):
 
     @property
     def HandupConfidence(self):
+        """举手识别结果置信度
+        :rtype: float
+        """
         return self._HandupConfidence
 
     @HandupConfidence.setter
@@ -6668,6 +7797,9 @@ class StudentBodyMovementResult(AbstractModel):
 
     @property
     def HandupStatus(self):
+        """举手识别结果，包含举手（handup）和未举手（nothandup）
+        :rtype: str
+        """
         return self._HandupStatus
 
     @HandupStatus.setter
@@ -6676,6 +7808,9 @@ class StudentBodyMovementResult(AbstractModel):
 
     @property
     def Height(self):
+        """识别结果高度
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -6684,6 +7819,9 @@ class StudentBodyMovementResult(AbstractModel):
 
     @property
     def Left(self):
+        """识别结果左坐标
+        :rtype: int
+        """
         return self._Left
 
     @Left.setter
@@ -6692,6 +7830,9 @@ class StudentBodyMovementResult(AbstractModel):
 
     @property
     def Movements(self):
+        """动作识别结果（已废弃）
+        :rtype: str
+        """
         return self._Movements
 
     @Movements.setter
@@ -6700,6 +7841,9 @@ class StudentBodyMovementResult(AbstractModel):
 
     @property
     def StandConfidence(self):
+        """站立识别结果置信度
+        :rtype: float
+        """
         return self._StandConfidence
 
     @StandConfidence.setter
@@ -6708,6 +7852,9 @@ class StudentBodyMovementResult(AbstractModel):
 
     @property
     def StandStatus(self):
+        """站立识别结果，包含站立（stand）和坐着（sit）
+        :rtype: str
+        """
         return self._StandStatus
 
     @StandStatus.setter
@@ -6716,6 +7863,9 @@ class StudentBodyMovementResult(AbstractModel):
 
     @property
     def Top(self):
+        """识别结果顶坐标
+        :rtype: int
+        """
         return self._Top
 
     @Top.setter
@@ -6724,6 +7874,9 @@ class StudentBodyMovementResult(AbstractModel):
 
     @property
     def Width(self):
+        """识别结果宽度
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -6787,6 +7940,9 @@ class SubmitAudioTaskRequest(AbstractModel):
 
     @property
     def Lang(self):
+        """音频源的语言，默认0为英文，1为中文
+        :rtype: int
+        """
         return self._Lang
 
     @Lang.setter
@@ -6795,6 +7951,9 @@ class SubmitAudioTaskRequest(AbstractModel):
 
     @property
     def Url(self):
+        """音频URL。客户请求为URL方式时必须带此字段指名音频的url。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -6803,6 +7962,9 @@ class SubmitAudioTaskRequest(AbstractModel):
 
     @property
     def VoiceEncodeType(self):
+        """语音编码类型 1:pcm
+        :rtype: int
+        """
         return self._VoiceEncodeType
 
     @VoiceEncodeType.setter
@@ -6811,6 +7973,9 @@ class SubmitAudioTaskRequest(AbstractModel):
 
     @property
     def VoiceFileType(self):
+        """语音文件类型 1:raw, 2:wav, 3:mp3，10:视频（三种音频格式目前仅支持16k采样率16bit）
+        :rtype: int
+        """
         return self._VoiceFileType
 
     @VoiceFileType.setter
@@ -6819,6 +7984,9 @@ class SubmitAudioTaskRequest(AbstractModel):
 
     @property
     def Functions(self):
+        """功能开关列表，表示是否需要打开相应的功能，返回相应的信息
+        :rtype: :class:`tencentcloud.tci.v20190318.models.Function`
+        """
         return self._Functions
 
     @Functions.setter
@@ -6827,6 +7995,9 @@ class SubmitAudioTaskRequest(AbstractModel):
 
     @property
     def FileType(self):
+        """视频文件类型，默认点播，直播填 live_url
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -6835,6 +8006,9 @@ class SubmitAudioTaskRequest(AbstractModel):
 
     @property
     def MuteThreshold(self):
+        """静音阈值设置，如果静音检测开关开启，则静音时间超过这个阈值认为是静音片段，在结果中会返回, 没给的话默认值为3s
+        :rtype: int
+        """
         return self._MuteThreshold
 
     @MuteThreshold.setter
@@ -6843,6 +8017,9 @@ class SubmitAudioTaskRequest(AbstractModel):
 
     @property
     def VocabLibNameList(self):
+        """识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
+        :rtype: list of str
+        """
         return self._VocabLibNameList
 
     @VocabLibNameList.setter
@@ -6888,6 +8065,9 @@ class SubmitAudioTaskResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """	查询结果时指名的jobid。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
+        :rtype: int
+        """
         return self._JobId
 
     @JobId.setter
@@ -6896,6 +8076,9 @@ class SubmitAudioTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6948,6 +8131,9 @@ class SubmitCheckAttendanceTaskPlusRequest(AbstractModel):
 
     @property
     def FileContent(self):
+        """输入数据
+        :rtype: list of str
+        """
         return self._FileContent
 
     @FileContent.setter
@@ -6956,6 +8142,9 @@ class SubmitCheckAttendanceTaskPlusRequest(AbstractModel):
 
     @property
     def FileType(self):
+        """视频流类型，vod_url表示点播URL，live_url表示直播URL，默认vod_url
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -6964,6 +8153,9 @@ class SubmitCheckAttendanceTaskPlusRequest(AbstractModel):
 
     @property
     def LibraryIds(self):
+        """人员库 ID列表
+        :rtype: list of str
+        """
         return self._LibraryIds
 
     @LibraryIds.setter
@@ -6972,6 +8164,9 @@ class SubmitCheckAttendanceTaskPlusRequest(AbstractModel):
 
     @property
     def AttendanceThreshold(self):
+        """确定出勤阈值；默认为0.92
+        :rtype: float
+        """
         return self._AttendanceThreshold
 
     @AttendanceThreshold.setter
@@ -6980,6 +8175,9 @@ class SubmitCheckAttendanceTaskPlusRequest(AbstractModel):
 
     @property
     def EnableStranger(self):
+        """是否开启陌生人模式，陌生人模式是指在任务中发现的非注册人脸库中的人脸也返回相关统计信息，默认不开启
+        :rtype: bool
+        """
         return self._EnableStranger
 
     @EnableStranger.setter
@@ -6988,6 +8186,10 @@ class SubmitCheckAttendanceTaskPlusRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """考勤结束时间（到视频的第几秒结束考勤），单位秒；默认为900 
+对于直播场景，使用绝对时间戳，单位秒，默认当前时间往后12小时
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6996,6 +8198,9 @@ class SubmitCheckAttendanceTaskPlusRequest(AbstractModel):
 
     @property
     def NoticeUrl(self):
+        """通知回调地址，要求方法为post，application/json格式
+        :rtype: str
+        """
         return self._NoticeUrl
 
     @NoticeUrl.setter
@@ -7004,6 +8209,10 @@ class SubmitCheckAttendanceTaskPlusRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """考勤开始时间（从视频的第几秒开始考勤），单位秒；默认为0 
+对于直播场景，使用绝对时间戳，单位秒，默认当前时间
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7012,6 +8221,9 @@ class SubmitCheckAttendanceTaskPlusRequest(AbstractModel):
 
     @property
     def Threshold(self):
+        """识别阈值；默认为0.8
+        :rtype: float
+        """
         return self._Threshold
 
     @Threshold.setter
@@ -7059,6 +8271,9 @@ class SubmitCheckAttendanceTaskPlusResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """任务标识符
+        :rtype: int
+        """
         return self._JobId
 
     @JobId.setter
@@ -7067,6 +8282,9 @@ class SubmitCheckAttendanceTaskPlusResponse(AbstractModel):
 
     @property
     def NotRegisteredSet(self):
+        """没有注册的人的ID列表
+        :rtype: str
+        """
         return self._NotRegisteredSet
 
     @NotRegisteredSet.setter
@@ -7075,6 +8293,9 @@ class SubmitCheckAttendanceTaskPlusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7128,6 +8349,9 @@ class SubmitCheckAttendanceTaskRequest(AbstractModel):
 
     @property
     def FileContent(self):
+        """输入数据
+        :rtype: str
+        """
         return self._FileContent
 
     @FileContent.setter
@@ -7136,6 +8360,9 @@ class SubmitCheckAttendanceTaskRequest(AbstractModel):
 
     @property
     def FileType(self):
+        """视频流类型，vod_url表示点播URL，live_url表示直播URL，默认vod_url
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -7144,6 +8371,9 @@ class SubmitCheckAttendanceTaskRequest(AbstractModel):
 
     @property
     def LibraryIds(self):
+        """人员库 ID列表
+        :rtype: list of str
+        """
         return self._LibraryIds
 
     @LibraryIds.setter
@@ -7152,6 +8382,9 @@ class SubmitCheckAttendanceTaskRequest(AbstractModel):
 
     @property
     def AttendanceThreshold(self):
+        """确定出勤阈值；默认为0.92
+        :rtype: float
+        """
         return self._AttendanceThreshold
 
     @AttendanceThreshold.setter
@@ -7160,6 +8393,9 @@ class SubmitCheckAttendanceTaskRequest(AbstractModel):
 
     @property
     def EnableStranger(self):
+        """是否开启陌生人模式，陌生人模式是指在任务中发现的非注册人脸库中的人脸也返回相关统计信息，默认不开启
+        :rtype: bool
+        """
         return self._EnableStranger
 
     @EnableStranger.setter
@@ -7168,6 +8404,10 @@ class SubmitCheckAttendanceTaskRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """考勤结束时间（到视频的第几秒结束考勤），单位秒；默认为900 
+对于直播场景，使用绝对时间戳，单位秒，默认当前时间往后12小时
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7176,6 +8416,9 @@ class SubmitCheckAttendanceTaskRequest(AbstractModel):
 
     @property
     def NoticeUrl(self):
+        """通知回调地址，要求方法为post，application/json格式
+        :rtype: str
+        """
         return self._NoticeUrl
 
     @NoticeUrl.setter
@@ -7184,6 +8427,10 @@ class SubmitCheckAttendanceTaskRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """考勤开始时间（从视频的第几秒开始考勤），单位秒；默认为0 
+对于直播场景，使用绝对时间戳，单位秒，默认当前时间
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7192,6 +8439,9 @@ class SubmitCheckAttendanceTaskRequest(AbstractModel):
 
     @property
     def Threshold(self):
+        """识别阈值；默认为0.8
+        :rtype: float
+        """
         return self._Threshold
 
     @Threshold.setter
@@ -7239,6 +8489,9 @@ class SubmitCheckAttendanceTaskResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """任务标识符
+        :rtype: int
+        """
         return self._JobId
 
     @JobId.setter
@@ -7247,6 +8500,9 @@ class SubmitCheckAttendanceTaskResponse(AbstractModel):
 
     @property
     def NotRegisteredSet(self):
+        """没有注册的人的ID列表
+        :rtype: list of str
+        """
         return self._NotRegisteredSet
 
     @NotRegisteredSet.setter
@@ -7255,6 +8511,9 @@ class SubmitCheckAttendanceTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7300,6 +8559,9 @@ class SubmitConversationTaskRequest(AbstractModel):
 
     @property
     def Lang(self):
+        """音频源的语言，默认0为英文，1为中文
+        :rtype: int
+        """
         return self._Lang
 
     @Lang.setter
@@ -7308,6 +8570,9 @@ class SubmitConversationTaskRequest(AbstractModel):
 
     @property
     def StudentUrl(self):
+        """学生音频流
+        :rtype: str
+        """
         return self._StudentUrl
 
     @StudentUrl.setter
@@ -7316,6 +8581,9 @@ class SubmitConversationTaskRequest(AbstractModel):
 
     @property
     def TeacherUrl(self):
+        """教师音频流
+        :rtype: str
+        """
         return self._TeacherUrl
 
     @TeacherUrl.setter
@@ -7324,6 +8592,9 @@ class SubmitConversationTaskRequest(AbstractModel):
 
     @property
     def VoiceEncodeType(self):
+        """语音编码类型 1:pcm
+        :rtype: int
+        """
         return self._VoiceEncodeType
 
     @VoiceEncodeType.setter
@@ -7332,6 +8603,9 @@ class SubmitConversationTaskRequest(AbstractModel):
 
     @property
     def VoiceFileType(self):
+        """语音文件类型 1:raw, 2:wav, 3:mp3（三种格式目前仅支持16k采样率16bit）
+        :rtype: int
+        """
         return self._VoiceFileType
 
     @VoiceFileType.setter
@@ -7340,6 +8614,9 @@ class SubmitConversationTaskRequest(AbstractModel):
 
     @property
     def Functions(self):
+        """功能开关列表，表示是否需要打开相应的功能，返回相应的信息
+        :rtype: :class:`tencentcloud.tci.v20190318.models.Function`
+        """
         return self._Functions
 
     @Functions.setter
@@ -7348,6 +8625,9 @@ class SubmitConversationTaskRequest(AbstractModel):
 
     @property
     def VocabLibNameList(self):
+        """识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
+        :rtype: list of str
+        """
         return self._VocabLibNameList
 
     @VocabLibNameList.setter
@@ -7392,6 +8672,9 @@ class SubmitConversationTaskResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """	查询结果时指名的jobid。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
+        :rtype: int
+        """
         return self._JobId
 
     @JobId.setter
@@ -7400,6 +8683,9 @@ class SubmitConversationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7447,6 +8733,9 @@ class SubmitDoubleVideoHighlightsRequest(AbstractModel):
 
     @property
     def FileContent(self):
+        """学生视频url
+        :rtype: str
+        """
         return self._FileContent
 
     @FileContent.setter
@@ -7455,6 +8744,9 @@ class SubmitDoubleVideoHighlightsRequest(AbstractModel):
 
     @property
     def LibIds(self):
+        """需要检索的人脸合集库，不在库中的人脸将不参与精彩集锦；目前仅支持输入一个人脸库。
+        :rtype: list of str
+        """
         return self._LibIds
 
     @LibIds.setter
@@ -7463,6 +8755,9 @@ class SubmitDoubleVideoHighlightsRequest(AbstractModel):
 
     @property
     def Functions(self):
+        """详细功能开关配置项
+        :rtype: :class:`tencentcloud.tci.v20190318.models.DoubleVideoFunction`
+        """
         return self._Functions
 
     @Functions.setter
@@ -7471,6 +8766,9 @@ class SubmitDoubleVideoHighlightsRequest(AbstractModel):
 
     @property
     def PersonInfoList(self):
+        """需要匹配的人员信息列表。
+        :rtype: list of PersonInfo
+        """
         return self._PersonInfoList
 
     @PersonInfoList.setter
@@ -7479,6 +8777,9 @@ class SubmitDoubleVideoHighlightsRequest(AbstractModel):
 
     @property
     def FrameInterval(self):
+        """视频处理的抽帧间隔，单位毫秒。建议留空。
+        :rtype: int
+        """
         return self._FrameInterval
 
     @FrameInterval.setter
@@ -7487,6 +8788,9 @@ class SubmitDoubleVideoHighlightsRequest(AbstractModel):
 
     @property
     def PersonIds(self):
+        """旧版本需要匹配的人员信息列表。
+        :rtype: list of str
+        """
         return self._PersonIds
 
     @PersonIds.setter
@@ -7495,6 +8799,9 @@ class SubmitDoubleVideoHighlightsRequest(AbstractModel):
 
     @property
     def SimThreshold(self):
+        """人脸检索的相似度阈值，默认值0.89。建议留空。
+        :rtype: float
+        """
         return self._SimThreshold
 
     @SimThreshold.setter
@@ -7503,6 +8810,9 @@ class SubmitDoubleVideoHighlightsRequest(AbstractModel):
 
     @property
     def TeacherFileContent(self):
+        """老师视频url
+        :rtype: str
+        """
         return self._TeacherFileContent
 
     @TeacherFileContent.setter
@@ -7556,6 +8866,9 @@ class SubmitDoubleVideoHighlightsResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """视频拆条任务ID，用来唯一标识视频拆条任务。
+        :rtype: int
+        """
         return self._JobId
 
     @JobId.setter
@@ -7564,6 +8877,9 @@ class SubmitDoubleVideoHighlightsResponse(AbstractModel):
 
     @property
     def NotRegistered(self):
+        """未注册的人员ID列表。若出现此项，代表评估出现了问题，输入的PersonId中有不在库中的人员ID。
+        :rtype: list of str
+        """
         return self._NotRegistered
 
     @NotRegistered.setter
@@ -7572,6 +8888,9 @@ class SubmitDoubleVideoHighlightsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7620,6 +8939,9 @@ class SubmitFullBodyClassTaskRequest(AbstractModel):
 
     @property
     def FileContent(self):
+        """输入分析对象内容，输入数据格式参考FileType参数释义
+        :rtype: str
+        """
         return self._FileContent
 
     @FileContent.setter
@@ -7628,6 +8950,9 @@ class SubmitFullBodyClassTaskRequest(AbstractModel):
 
     @property
     def FileType(self):
+        """输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture: 图片二进制数据的BASE64编码
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -7636,6 +8961,9 @@ class SubmitFullBodyClassTaskRequest(AbstractModel):
 
     @property
     def Lang(self):
+        """音频源的语言，默认0为英文，1为中文
+        :rtype: int
+        """
         return self._Lang
 
     @Lang.setter
@@ -7644,6 +8972,9 @@ class SubmitFullBodyClassTaskRequest(AbstractModel):
 
     @property
     def LibrarySet(self):
+        """查询人员库列表，可填写老师的注册照所在人员库
+        :rtype: list of str
+        """
         return self._LibrarySet
 
     @LibrarySet.setter
@@ -7652,6 +8983,9 @@ class SubmitFullBodyClassTaskRequest(AbstractModel):
 
     @property
     def MaxVideoDuration(self):
+        """视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :rtype: int
+        """
         return self._MaxVideoDuration
 
     @MaxVideoDuration.setter
@@ -7660,6 +8994,9 @@ class SubmitFullBodyClassTaskRequest(AbstractModel):
 
     @property
     def VocabLibNameList(self):
+        """识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
+        :rtype: list of str
+        """
         return self._VocabLibNameList
 
     @VocabLibNameList.setter
@@ -7668,6 +9005,9 @@ class SubmitFullBodyClassTaskRequest(AbstractModel):
 
     @property
     def VoiceEncodeType(self):
+        """语音编码类型 1:pcm，当FileType为vod_url或live_url时为必填
+        :rtype: int
+        """
         return self._VoiceEncodeType
 
     @VoiceEncodeType.setter
@@ -7676,6 +9016,9 @@ class SubmitFullBodyClassTaskRequest(AbstractModel):
 
     @property
     def VoiceFileType(self):
+        """语音文件类型 10:视频（三种音频格式目前仅支持16k采样率16bit），当FileType为vod_url或live_url时为必填
+        :rtype: int
+        """
         return self._VoiceFileType
 
     @VoiceFileType.setter
@@ -7722,6 +9065,9 @@ class SubmitFullBodyClassTaskResponse(AbstractModel):
 
     @property
     def ImageResults(self):
+        """图像任务直接返回结果，包括： FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 TeacherBodyMovement、TimeInfo
+        :rtype: list of ImageTaskResult
+        """
         return self._ImageResults
 
     @ImageResults.setter
@@ -7730,6 +9076,9 @@ class SubmitFullBodyClassTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -7738,6 +9087,9 @@ class SubmitFullBodyClassTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7794,6 +9146,9 @@ class SubmitHighlightsRequest(AbstractModel):
 
     @property
     def Functions(self):
+        """表情配置开关项。
+        :rtype: :class:`tencentcloud.tci.v20190318.models.HLFunction`
+        """
         return self._Functions
 
     @Functions.setter
@@ -7802,6 +9157,9 @@ class SubmitHighlightsRequest(AbstractModel):
 
     @property
     def FileContent(self):
+        """视频url。
+        :rtype: str
+        """
         return self._FileContent
 
     @FileContent.setter
@@ -7810,6 +9168,9 @@ class SubmitHighlightsRequest(AbstractModel):
 
     @property
     def FileType(self):
+        """视频类型及来源，目前只支持点播类型："vod_url"。
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -7818,6 +9179,9 @@ class SubmitHighlightsRequest(AbstractModel):
 
     @property
     def LibIds(self):
+        """需要检索的人脸合集库，不在库中的人脸将不参与精彩集锦。
+        :rtype: list of str
+        """
         return self._LibIds
 
     @LibIds.setter
@@ -7826,6 +9190,9 @@ class SubmitHighlightsRequest(AbstractModel):
 
     @property
     def FrameInterval(self):
+        """视频处理的抽帧间隔，单位毫秒。建议留空。
+        :rtype: int
+        """
         return self._FrameInterval
 
     @FrameInterval.setter
@@ -7834,6 +9201,9 @@ class SubmitHighlightsRequest(AbstractModel):
 
     @property
     def KeywordsLanguage(self):
+        """关键词语言类型，0为英文，1为中文。
+        :rtype: int
+        """
         return self._KeywordsLanguage
 
     @KeywordsLanguage.setter
@@ -7842,6 +9212,9 @@ class SubmitHighlightsRequest(AbstractModel):
 
     @property
     def KeywordsStrings(self):
+        """关键词数组，当且仅当Funtions中的EnableKeywordWonderfulTime为true时有意义，匹配相应的关键字。
+        :rtype: list of str
+        """
         return self._KeywordsStrings
 
     @KeywordsStrings.setter
@@ -7850,6 +9223,9 @@ class SubmitHighlightsRequest(AbstractModel):
 
     @property
     def MaxVideoDuration(self):
+        """处理视频的总时长，单位毫秒。该值为0或未设置时，默认值两小时生效；当该值大于视频实际时长时，视频实际时长生效；当该值小于视频实际时长时，该值生效；当获取视频实际时长失败时，若该值设置则生效，否则默认值生效。建议留空。
+        :rtype: int
+        """
         return self._MaxVideoDuration
 
     @MaxVideoDuration.setter
@@ -7858,6 +9234,9 @@ class SubmitHighlightsRequest(AbstractModel):
 
     @property
     def SimThreshold(self):
+        """人脸检索的相似度阈值，默认值0.89。建议留空。
+        :rtype: float
+        """
         return self._SimThreshold
 
     @SimThreshold.setter
@@ -7904,6 +9283,9 @@ class SubmitHighlightsResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """视频拆条任务ID，用来唯一标识视频拆条任务。
+        :rtype: int
+        """
         return self._JobId
 
     @JobId.setter
@@ -7912,6 +9294,9 @@ class SubmitHighlightsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7959,6 +9344,9 @@ class SubmitImageTaskPlusRequest(AbstractModel):
 
     @property
     def FileContent(self):
+        """输入分析对象内容，输入数据格式参考FileType参数释义
+        :rtype: list of str
+        """
         return self._FileContent
 
     @FileContent.setter
@@ -7967,6 +9355,9 @@ class SubmitImageTaskPlusRequest(AbstractModel):
 
     @property
     def FileType(self):
+        """输入分析对象类型，picture：二进制图片的 base64 编码字符串，picture_url:图片地址，vod_url：视频地址，live_url：直播地址
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -7975,6 +9366,9 @@ class SubmitImageTaskPlusRequest(AbstractModel):
 
     @property
     def Functions(self):
+        """任务控制选项
+        :rtype: :class:`tencentcloud.tci.v20190318.models.ImageTaskFunction`
+        """
         return self._Functions
 
     @Functions.setter
@@ -7983,6 +9377,9 @@ class SubmitImageTaskPlusRequest(AbstractModel):
 
     @property
     def LightStandardSet(self):
+        """光照标准列表
+        :rtype: list of LightStandard
+        """
         return self._LightStandardSet
 
     @LightStandardSet.setter
@@ -7991,6 +9388,9 @@ class SubmitImageTaskPlusRequest(AbstractModel):
 
     @property
     def FrameInterval(self):
+        """抽帧的时间间隔，单位毫秒，默认值1000，保留字段，当前不支持填写。
+        :rtype: int
+        """
         return self._FrameInterval
 
     @FrameInterval.setter
@@ -7999,6 +9399,9 @@ class SubmitImageTaskPlusRequest(AbstractModel):
 
     @property
     def LibrarySet(self):
+        """查询人员库列表
+        :rtype: list of str
+        """
         return self._LibrarySet
 
     @LibrarySet.setter
@@ -8007,6 +9410,9 @@ class SubmitImageTaskPlusRequest(AbstractModel):
 
     @property
     def MaxVideoDuration(self):
+        """视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :rtype: int
+        """
         return self._MaxVideoDuration
 
     @MaxVideoDuration.setter
@@ -8015,6 +9421,9 @@ class SubmitImageTaskPlusRequest(AbstractModel):
 
     @property
     def SimThreshold(self):
+        """人脸识别中的相似度阈值，默认值为0.89，保留字段，当前不支持填写。
+        :rtype: float
+        """
         return self._SimThreshold
 
     @SimThreshold.setter
@@ -8074,6 +9483,9 @@ class SubmitImageTaskPlusResponse(AbstractModel):
 
     @property
     def ResultSet(self):
+        """识别结果
+        :rtype: list of ImageTaskResult
+        """
         return self._ResultSet
 
     @ResultSet.setter
@@ -8082,6 +9494,9 @@ class SubmitImageTaskPlusResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """任务标识符
+        :rtype: int
+        """
         return self._JobId
 
     @JobId.setter
@@ -8090,6 +9505,9 @@ class SubmitImageTaskPlusResponse(AbstractModel):
 
     @property
     def Progress(self):
+        """任务进度
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -8098,6 +9516,9 @@ class SubmitImageTaskPlusResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """结果总数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8106,6 +9527,9 @@ class SubmitImageTaskPlusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8164,6 +9588,9 @@ class SubmitImageTaskRequest(AbstractModel):
 
     @property
     def FileContent(self):
+        """输入分析对象内容，输入数据格式参考FileType参数释义
+        :rtype: str
+        """
         return self._FileContent
 
     @FileContent.setter
@@ -8172,6 +9599,9 @@ class SubmitImageTaskRequest(AbstractModel):
 
     @property
     def FileType(self):
+        """输入分析对象类型，picture：二进制图片的 base64 编码字符串，picture_url:图片地址，vod_url：视频地址，live_url：直播地址
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -8180,6 +9610,9 @@ class SubmitImageTaskRequest(AbstractModel):
 
     @property
     def Functions(self):
+        """任务控制选项
+        :rtype: :class:`tencentcloud.tci.v20190318.models.ImageTaskFunction`
+        """
         return self._Functions
 
     @Functions.setter
@@ -8188,6 +9621,9 @@ class SubmitImageTaskRequest(AbstractModel):
 
     @property
     def LightStandardSet(self):
+        """光照标准列表
+        :rtype: list of LightStandard
+        """
         return self._LightStandardSet
 
     @LightStandardSet.setter
@@ -8196,6 +9632,9 @@ class SubmitImageTaskRequest(AbstractModel):
 
     @property
     def EventsCallBack(self):
+        """结果更新回调地址。
+        :rtype: str
+        """
         return self._EventsCallBack
 
     @EventsCallBack.setter
@@ -8204,6 +9643,9 @@ class SubmitImageTaskRequest(AbstractModel):
 
     @property
     def FrameInterval(self):
+        """抽帧的时间间隔，单位毫秒，默认值1000，保留字段，当前不支持填写。
+        :rtype: int
+        """
         return self._FrameInterval
 
     @FrameInterval.setter
@@ -8212,6 +9654,9 @@ class SubmitImageTaskRequest(AbstractModel):
 
     @property
     def LibrarySet(self):
+        """查询人员库列表
+        :rtype: list of str
+        """
         return self._LibrarySet
 
     @LibrarySet.setter
@@ -8220,6 +9665,9 @@ class SubmitImageTaskRequest(AbstractModel):
 
     @property
     def MaxVideoDuration(self):
+        """视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :rtype: int
+        """
         return self._MaxVideoDuration
 
     @MaxVideoDuration.setter
@@ -8228,6 +9676,9 @@ class SubmitImageTaskRequest(AbstractModel):
 
     @property
     def SimThreshold(self):
+        """人脸识别中的相似度阈值，默认值为0.89，保留字段，当前不支持填写。
+        :rtype: float
+        """
         return self._SimThreshold
 
     @SimThreshold.setter
@@ -8288,6 +9739,9 @@ class SubmitImageTaskResponse(AbstractModel):
 
     @property
     def ResultSet(self):
+        """识别结果
+        :rtype: list of ImageTaskResult
+        """
         return self._ResultSet
 
     @ResultSet.setter
@@ -8296,6 +9750,9 @@ class SubmitImageTaskResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """任务标识符
+        :rtype: int
+        """
         return self._JobId
 
     @JobId.setter
@@ -8304,6 +9761,9 @@ class SubmitImageTaskResponse(AbstractModel):
 
     @property
     def Progress(self):
+        """任务进度
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -8312,6 +9772,9 @@ class SubmitImageTaskResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """结果总数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8320,6 +9783,9 @@ class SubmitImageTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8375,6 +9841,9 @@ class SubmitOneByOneClassTaskRequest(AbstractModel):
 
     @property
     def FileContent(self):
+        """输入分析对象内容，输入数据格式参考FileType参数释义
+        :rtype: str
+        """
         return self._FileContent
 
     @FileContent.setter
@@ -8383,6 +9852,9 @@ class SubmitOneByOneClassTaskRequest(AbstractModel):
 
     @property
     def FileType(self):
+        """输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture: 图片二进制数据的BASE64编码
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -8391,6 +9863,9 @@ class SubmitOneByOneClassTaskRequest(AbstractModel):
 
     @property
     def Lang(self):
+        """音频源的语言，默认0为英文，1为中文 
+        :rtype: int
+        """
         return self._Lang
 
     @Lang.setter
@@ -8399,6 +9874,9 @@ class SubmitOneByOneClassTaskRequest(AbstractModel):
 
     @property
     def LibrarySet(self):
+        """查询人员库列表，可填写学生的注册照所在人员库
+        :rtype: list of str
+        """
         return self._LibrarySet
 
     @LibrarySet.setter
@@ -8407,6 +9885,9 @@ class SubmitOneByOneClassTaskRequest(AbstractModel):
 
     @property
     def MaxVideoDuration(self):
+        """视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :rtype: int
+        """
         return self._MaxVideoDuration
 
     @MaxVideoDuration.setter
@@ -8415,6 +9896,9 @@ class SubmitOneByOneClassTaskRequest(AbstractModel):
 
     @property
     def VocabLibNameList(self):
+        """识别词库名列表，这些词汇库用来维护关键词，评估学生对这些关键词的使用情况
+        :rtype: list of str
+        """
         return self._VocabLibNameList
 
     @VocabLibNameList.setter
@@ -8423,6 +9907,9 @@ class SubmitOneByOneClassTaskRequest(AbstractModel):
 
     @property
     def VoiceEncodeType(self):
+        """语音编码类型 1:pcm，当FileType为vod_url或live_url时为必填
+        :rtype: int
+        """
         return self._VoiceEncodeType
 
     @VoiceEncodeType.setter
@@ -8431,6 +9918,9 @@ class SubmitOneByOneClassTaskRequest(AbstractModel):
 
     @property
     def VoiceFileType(self):
+        """语音文件类型10:视频（三种音频格式目前仅支持16k采样率16bit），当FileType为vod_url或live_url时为必填
+        :rtype: int
+        """
         return self._VoiceFileType
 
     @VoiceFileType.setter
@@ -8477,6 +9967,9 @@ class SubmitOneByOneClassTaskResponse(AbstractModel):
 
     @property
     def ImageResults(self):
+        """图像任务直接返回结果，包括：FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、TimeInfo
+        :rtype: list of ImageTaskResult
+        """
         return self._ImageResults
 
     @ImageResults.setter
@@ -8485,6 +9978,9 @@ class SubmitOneByOneClassTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -8493,6 +9989,9 @@ class SubmitOneByOneClassTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8534,6 +10033,9 @@ class SubmitOpenClassTaskRequest(AbstractModel):
 
     @property
     def FileContent(self):
+        """输入分析对象内容，输入数据格式参考FileType参数释义
+        :rtype: str
+        """
         return self._FileContent
 
     @FileContent.setter
@@ -8542,6 +10044,9 @@ class SubmitOpenClassTaskRequest(AbstractModel):
 
     @property
     def FileType(self):
+        """输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址,picture: 图片二进制数据的BASE64编码
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -8550,6 +10055,9 @@ class SubmitOpenClassTaskRequest(AbstractModel):
 
     @property
     def LibrarySet(self):
+        """查询人员库列表，可填写学生们的注册照所在人员库
+        :rtype: list of str
+        """
         return self._LibrarySet
 
     @LibrarySet.setter
@@ -8558,6 +10066,9 @@ class SubmitOpenClassTaskRequest(AbstractModel):
 
     @property
     def MaxVideoDuration(self):
+        """视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :rtype: int
+        """
         return self._MaxVideoDuration
 
     @MaxVideoDuration.setter
@@ -8600,6 +10111,9 @@ class SubmitOpenClassTaskResponse(AbstractModel):
 
     @property
     def ImageResults(self):
+        """图像任务直接返回结果，包括：FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 StudentBodyMovement、TimeInfo
+        :rtype: list of ImageTaskResult
+        """
         return self._ImageResults
 
     @ImageResults.setter
@@ -8608,6 +10122,9 @@ class SubmitOpenClassTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -8616,6 +10133,9 @@ class SubmitOpenClassTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8669,6 +10189,9 @@ class SubmitPartialBodyClassTaskRequest(AbstractModel):
 
     @property
     def FileContent(self):
+        """输入分析对象内容，输入数据格式参考FileType参数释义
+        :rtype: str
+        """
         return self._FileContent
 
     @FileContent.setter
@@ -8677,6 +10200,9 @@ class SubmitPartialBodyClassTaskRequest(AbstractModel):
 
     @property
     def FileType(self):
+        """输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture: 图片二进制数据的BASE64编码
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -8685,6 +10211,9 @@ class SubmitPartialBodyClassTaskRequest(AbstractModel):
 
     @property
     def Lang(self):
+        """音频源的语言，默认0为英文，1为中文
+        :rtype: int
+        """
         return self._Lang
 
     @Lang.setter
@@ -8693,6 +10222,9 @@ class SubmitPartialBodyClassTaskRequest(AbstractModel):
 
     @property
     def LibrarySet(self):
+        """查询人员库列表，可填写老师的注册照所在人员库
+        :rtype: list of str
+        """
         return self._LibrarySet
 
     @LibrarySet.setter
@@ -8701,6 +10233,9 @@ class SubmitPartialBodyClassTaskRequest(AbstractModel):
 
     @property
     def MaxVideoDuration(self):
+        """视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :rtype: int
+        """
         return self._MaxVideoDuration
 
     @MaxVideoDuration.setter
@@ -8709,6 +10244,9 @@ class SubmitPartialBodyClassTaskRequest(AbstractModel):
 
     @property
     def VocabLibNameList(self):
+        """识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
+        :rtype: list of str
+        """
         return self._VocabLibNameList
 
     @VocabLibNameList.setter
@@ -8717,6 +10255,9 @@ class SubmitPartialBodyClassTaskRequest(AbstractModel):
 
     @property
     def VoiceEncodeType(self):
+        """语音编码类型 1:pcm，当FileType为vod_url或live_url时为必填
+        :rtype: int
+        """
         return self._VoiceEncodeType
 
     @VoiceEncodeType.setter
@@ -8725,6 +10266,9 @@ class SubmitPartialBodyClassTaskRequest(AbstractModel):
 
     @property
     def VoiceFileType(self):
+        """语音文件类型 10:视频（三种音频格式目前仅支持16k采样率16bit），当FileType为vod_url或live_url时为必填
+        :rtype: int
+        """
         return self._VoiceFileType
 
     @VoiceFileType.setter
@@ -8771,6 +10315,9 @@ class SubmitPartialBodyClassTaskResponse(AbstractModel):
 
     @property
     def ImageResults(self):
+        """图像任务直接返回结果，包括： FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 Gesture 、 Light、 TimeInfo
+        :rtype: list of ImageTaskResult
+        """
         return self._ImageResults
 
     @ImageResults.setter
@@ -8779,6 +10326,9 @@ class SubmitPartialBodyClassTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -8787,6 +10337,9 @@ class SubmitPartialBodyClassTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8828,6 +10381,9 @@ class SubmitTraditionalClassTaskRequest(AbstractModel):
 
     @property
     def FileContent(self):
+        """输入分析对象内容，输入数据格式参考FileType参数释义
+        :rtype: str
+        """
         return self._FileContent
 
     @FileContent.setter
@@ -8836,6 +10392,9 @@ class SubmitTraditionalClassTaskRequest(AbstractModel):
 
     @property
     def FileType(self):
+        """输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture：图片二进制数据的BASE64编码
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -8844,6 +10403,9 @@ class SubmitTraditionalClassTaskRequest(AbstractModel):
 
     @property
     def LibrarySet(self):
+        """查询人员库列表，可填写学生们的注册照所在人员库
+        :rtype: list of str
+        """
         return self._LibrarySet
 
     @LibrarySet.setter
@@ -8852,6 +10414,9 @@ class SubmitTraditionalClassTaskRequest(AbstractModel):
 
     @property
     def MaxVideoDuration(self):
+        """视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :rtype: int
+        """
         return self._MaxVideoDuration
 
     @MaxVideoDuration.setter
@@ -8894,6 +10459,9 @@ class SubmitTraditionalClassTaskResponse(AbstractModel):
 
     @property
     def ImageResults(self):
+        """图像任务直接返回结果，包括： ActionInfo、FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 TimeInfo
+        :rtype: list of ImageTaskResult
+        """
         return self._ImageResults
 
     @ImageResults.setter
@@ -8902,6 +10470,9 @@ class SubmitTraditionalClassTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -8910,6 +10481,9 @@ class SubmitTraditionalClassTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8945,6 +10519,9 @@ class SuspectedInfo(AbstractModel):
 
     @property
     def FaceSet(self):
+        """TopN匹配信息列表
+        :rtype: list of FrameInfo
+        """
         return self._FaceSet
 
     @FaceSet.setter
@@ -8953,6 +10530,9 @@ class SuspectedInfo(AbstractModel):
 
     @property
     def PersonId(self):
+        """识别到的人员id
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -9005,6 +10585,10 @@ OutScreen：不在屏幕内
 
     @property
     def Class(self):
+        """动作识别结果，InScreen：在屏幕内
+OutScreen：不在屏幕内
+        :rtype: str
+        """
         return self._Class
 
     @Class.setter
@@ -9013,6 +10597,9 @@ OutScreen：不在屏幕内
 
     @property
     def Height(self):
+        """识别结果高度
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -9021,6 +10608,9 @@ OutScreen：不在屏幕内
 
     @property
     def Left(self):
+        """识别结果左坐标
+        :rtype: int
+        """
         return self._Left
 
     @Left.setter
@@ -9029,6 +10619,9 @@ OutScreen：不在屏幕内
 
     @property
     def Top(self):
+        """识别结果顶坐标
+        :rtype: int
+        """
         return self._Top
 
     @Top.setter
@@ -9037,6 +10630,9 @@ OutScreen：不在屏幕内
 
     @property
     def Width(self):
+        """识别结果宽度
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -9092,6 +10688,9 @@ class TextItem(AbstractModel):
 
     @property
     def Words(self):
+        """当前句子包含的所有单词信息
+        :rtype: list of Word
+        """
         return self._Words
 
     @Words.setter
@@ -9100,6 +10699,9 @@ class TextItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """当前句子的置信度
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -9108,6 +10710,9 @@ class TextItem(AbstractModel):
 
     @property
     def Mbtm(self):
+        """当前句子语音的起始时间点，单位为ms
+        :rtype: int
+        """
         return self._Mbtm
 
     @Mbtm.setter
@@ -9116,6 +10721,9 @@ class TextItem(AbstractModel):
 
     @property
     def Metm(self):
+        """当前句子语音的终止时间点，单位为ms
+        :rtype: int
+        """
         return self._Metm
 
     @Metm.setter
@@ -9124,6 +10732,9 @@ class TextItem(AbstractModel):
 
     @property
     def Tag(self):
+        """保留参数，暂无意义
+        :rtype: int
+        """
         return self._Tag
 
     @Tag.setter
@@ -9132,6 +10743,9 @@ class TextItem(AbstractModel):
 
     @property
     def Text(self):
+        """当前句子
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -9140,6 +10754,9 @@ class TextItem(AbstractModel):
 
     @property
     def TextSize(self):
+        """当前句子的字节数
+        :rtype: int
+        """
         return self._TextSize
 
     @TextSize.setter
@@ -9190,6 +10807,9 @@ class TimeInfoResult(AbstractModel):
 
     @property
     def Duration(self):
+        """持续时间，单位毫秒
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -9198,6 +10818,9 @@ class TimeInfoResult(AbstractModel):
 
     @property
     def EndTs(self):
+        """结束时间戳，单位毫秒
+        :rtype: int
+        """
         return self._EndTs
 
     @EndTs.setter
@@ -9206,6 +10829,9 @@ class TimeInfoResult(AbstractModel):
 
     @property
     def StartTs(self):
+        """开始时间戳，单位毫秒
+        :rtype: int
+        """
         return self._StartTs
 
     @StartTs.setter
@@ -9244,6 +10870,9 @@ class TimeType(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间戳
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9252,6 +10881,9 @@ class TimeType(AbstractModel):
 
     @property
     def StartTime(self):
+        """起始时间戳
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9313,6 +10945,9 @@ class TransmitAudioStreamRequest(AbstractModel):
 
     @property
     def Functions(self):
+        """功能开关列表，表示是否需要打开相应的功能，返回相应的信息
+        :rtype: :class:`tencentcloud.tci.v20190318.models.Function`
+        """
         return self._Functions
 
     @Functions.setter
@@ -9321,6 +10956,9 @@ class TransmitAudioStreamRequest(AbstractModel):
 
     @property
     def SeqId(self):
+        """流式数据包的序号，从1开始，当IsEnd字段为1后后续序号无意义。
+        :rtype: int
+        """
         return self._SeqId
 
     @SeqId.setter
@@ -9329,6 +10967,9 @@ class TransmitAudioStreamRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """语音段唯一标识，一个完整语音一个SessionId。
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -9337,6 +10978,9 @@ class TransmitAudioStreamRequest(AbstractModel):
 
     @property
     def UserVoiceData(self):
+        """当前数据包数据, 流式模式下数据包大小可以按需设置，在网络良好的情况下，建议设置为0.5k，且必须保证分片帧完整（16bit的数据必须保证音频长度为偶数），编码格式要求为BASE64。
+        :rtype: str
+        """
         return self._UserVoiceData
 
     @UserVoiceData.setter
@@ -9345,6 +10989,9 @@ class TransmitAudioStreamRequest(AbstractModel):
 
     @property
     def VoiceEncodeType(self):
+        """语音编码类型 1:pcm。
+        :rtype: int
+        """
         return self._VoiceEncodeType
 
     @VoiceEncodeType.setter
@@ -9353,6 +11000,9 @@ class TransmitAudioStreamRequest(AbstractModel):
 
     @property
     def VoiceFileType(self):
+        """语音文件类型 	1: raw, 2: wav, 3: mp3 (语言文件格式目前仅支持 16k 采样率 16bit 编码单声道，如有不一致可能导致评估不准确或失败)。
+        :rtype: int
+        """
         return self._VoiceFileType
 
     @VoiceFileType.setter
@@ -9361,6 +11011,9 @@ class TransmitAudioStreamRequest(AbstractModel):
 
     @property
     def IsEnd(self):
+        """是否传输完毕标志，若为0表示未完毕，若为1则传输完毕开始评估，非流式模式下无意义。
+        :rtype: int
+        """
         return self._IsEnd
 
     @IsEnd.setter
@@ -9369,6 +11022,9 @@ class TransmitAudioStreamRequest(AbstractModel):
 
     @property
     def Lang(self):
+        """音频源的语言，默认0为英文，1为中文
+        :rtype: int
+        """
         return self._Lang
 
     @Lang.setter
@@ -9377,6 +11033,9 @@ class TransmitAudioStreamRequest(AbstractModel):
 
     @property
     def StorageMode(self):
+        """是否临时保存 音频链接
+        :rtype: int
+        """
         return self._StorageMode
 
     @StorageMode.setter
@@ -9385,6 +11044,9 @@ class TransmitAudioStreamRequest(AbstractModel):
 
     @property
     def VocabLibNameList(self):
+        """识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
+        :rtype: list of str
+        """
         return self._VocabLibNameList
 
     @VocabLibNameList.setter
@@ -9447,6 +11109,9 @@ class TransmitAudioStreamResponse(AbstractModel):
 
     @property
     def AsrStat(self):
+        """返回的当前音频的统计信息。当进度为100时返回。
+        :rtype: :class:`tencentcloud.tci.v20190318.models.ASRStat`
+        """
         return self._AsrStat
 
     @AsrStat.setter
@@ -9455,6 +11120,9 @@ class TransmitAudioStreamResponse(AbstractModel):
 
     @property
     def Texts(self):
+        """返回当前音频流的详细信息，如果是流模式，返回的是对应流的详细信息，如果是 URL模式，返回的是查询的那一段seq对应的音频的详细信息。
+        :rtype: list of WholeTextItem
+        """
         return self._Texts
 
     @Texts.setter
@@ -9463,6 +11131,9 @@ class TransmitAudioStreamResponse(AbstractModel):
 
     @property
     def VocabAnalysisDetailInfo(self):
+        """返回词汇库中的单词出现的详细时间信息。
+        :rtype: list of VocabDetailInfomation
+        """
         return self._VocabAnalysisDetailInfo
 
     @VocabAnalysisDetailInfo.setter
@@ -9471,6 +11142,9 @@ class TransmitAudioStreamResponse(AbstractModel):
 
     @property
     def VocabAnalysisStatInfo(self):
+        """返回词汇库中的单词出现的次数信息。
+        :rtype: list of VocabStatInfomation
+        """
         return self._VocabAnalysisStatInfo
 
     @VocabAnalysisStatInfo.setter
@@ -9479,6 +11153,9 @@ class TransmitAudioStreamResponse(AbstractModel):
 
     @property
     def AllTexts(self):
+        """音频全部文本。
+        :rtype: str
+        """
         return self._AllTexts
 
     @AllTexts.setter
@@ -9487,6 +11164,9 @@ class TransmitAudioStreamResponse(AbstractModel):
 
     @property
     def AudioUrl(self):
+        """临时保存的音频链接
+        :rtype: str
+        """
         return self._AudioUrl
 
     @AudioUrl.setter
@@ -9495,6 +11175,9 @@ class TransmitAudioStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9546,6 +11229,9 @@ class VocabDetailInfomation(AbstractModel):
 
     @property
     def VocabDetailInfo(self):
+        """词汇库中的单词出现在该音频中的那个句子的时间戳，出现了几次，就返回对应次数的起始和结束时间戳
+        :rtype: list of DetailInfo
+        """
         return self._VocabDetailInfo
 
     @VocabDetailInfo.setter
@@ -9554,6 +11240,9 @@ class VocabDetailInfomation(AbstractModel):
 
     @property
     def VocabLibName(self):
+        """词汇库名
+        :rtype: str
+        """
         return self._VocabLibName
 
     @VocabLibName.setter
@@ -9596,6 +11285,9 @@ class VocabStatInfomation(AbstractModel):
 
     @property
     def VocabDetailInfo(self):
+        """单词出现在该音频中总次数
+        :rtype: list of StatInfo
+        """
         return self._VocabDetailInfo
 
     @VocabDetailInfo.setter
@@ -9604,6 +11296,9 @@ class VocabStatInfomation(AbstractModel):
 
     @property
     def VocabLibName(self):
+        """词汇库名称
+        :rtype: str
+        """
         return self._VocabLibName
 
     @VocabLibName.setter
@@ -9655,6 +11350,9 @@ class WholeTextItem(AbstractModel):
 
     @property
     def TextItem(self):
+        """当前句子的信息
+        :rtype: :class:`tencentcloud.tci.v20190318.models.TextItem`
+        """
         return self._TextItem
 
     @TextItem.setter
@@ -9663,6 +11361,9 @@ class WholeTextItem(AbstractModel):
 
     @property
     def AvgVolume(self):
+        """Vad的平均音量
+        :rtype: float
+        """
         return self._AvgVolume
 
     @AvgVolume.setter
@@ -9671,6 +11372,9 @@ class WholeTextItem(AbstractModel):
 
     @property
     def MaxVolume(self):
+        """Vad的最大音量
+        :rtype: float
+        """
         return self._MaxVolume
 
     @MaxVolume.setter
@@ -9679,6 +11383,9 @@ class WholeTextItem(AbstractModel):
 
     @property
     def MinVolume(self):
+        """Vad的最小音量
+        :rtype: float
+        """
         return self._MinVolume
 
     @MinVolume.setter
@@ -9687,6 +11394,9 @@ class WholeTextItem(AbstractModel):
 
     @property
     def Speed(self):
+        """当前句子的语速
+        :rtype: float
+        """
         return self._Speed
 
     @Speed.setter
@@ -9738,6 +11448,9 @@ class Word(AbstractModel):
 
     @property
     def Confidence(self):
+        """当前词的置信度
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -9746,6 +11459,9 @@ class Word(AbstractModel):
 
     @property
     def Mbtm(self):
+        """当前单词语音的起始时间点，单位为ms
+        :rtype: int
+        """
         return self._Mbtm
 
     @Mbtm.setter
@@ -9754,6 +11470,9 @@ class Word(AbstractModel):
 
     @property
     def Metm(self):
+        """当前单词语音的终止时间点，单位为ms
+        :rtype: int
+        """
         return self._Metm
 
     @Metm.setter
@@ -9762,6 +11481,9 @@ class Word(AbstractModel):
 
     @property
     def Text(self):
+        """当前词
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -9770,6 +11492,9 @@ class Word(AbstractModel):
 
     @property
     def Wsize(self):
+        """当前词的字节数
+        :rtype: int
+        """
         return self._Wsize
 
     @Wsize.setter
@@ -9810,6 +11535,9 @@ class WordTimePair(AbstractModel):
 
     @property
     def Mbtm(self):
+        """单词出现的那个句子的起始时间
+        :rtype: int
+        """
         return self._Mbtm
 
     @Mbtm.setter
@@ -9818,6 +11546,9 @@ class WordTimePair(AbstractModel):
 
     @property
     def Metm(self):
+        """	单词出现的那个句子的结束时间
+        :rtype: int
+        """
         return self._Metm
 
     @Metm.setter

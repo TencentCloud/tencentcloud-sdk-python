@@ -36,6 +36,9 @@ class AbnormalEvent(AbstractModel):
 
     @property
     def AbnormalEventId(self):
+        """异常事件ID，具体值查看附录：异常体验ID映射表：https://cloud.tencent.com/document/product/647/44916
+        :rtype: int
+        """
         return self._AbnormalEventId
 
     @AbnormalEventId.setter
@@ -44,6 +47,10 @@ class AbnormalEvent(AbstractModel):
 
     @property
     def PeerId(self):
+        """远端用户ID,""：表示异常事件不是由远端用户产生
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PeerId
 
     @PeerId.setter
@@ -90,6 +97,9 @@ class AbnormalExperience(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -98,6 +108,9 @@ class AbnormalExperience(AbstractModel):
 
     @property
     def ExperienceId(self):
+        """异常体验ID
+        :rtype: int
+        """
         return self._ExperienceId
 
     @ExperienceId.setter
@@ -106,6 +119,9 @@ class AbnormalExperience(AbstractModel):
 
     @property
     def RoomId(self):
+        """字符串房间号
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -114,6 +130,9 @@ class AbnormalExperience(AbstractModel):
 
     @property
     def AbnormalEventList(self):
+        """异常事件数组
+        :rtype: list of AbnormalEvent
+        """
         return self._AbnormalEventList
 
     @AbnormalEventList.setter
@@ -122,6 +141,9 @@ class AbnormalExperience(AbstractModel):
 
     @property
     def EventTime(self):
+        """异常事件的上报时间
+        :rtype: int
+        """
         return self._EventTime
 
     @EventTime.setter
@@ -182,6 +204,9 @@ class AgentConfig(AbstractModel):
 
     @property
     def UserId(self):
+        """机器人的UserId，用于进房发起任务。【注意】这个UserId不能与当前房间内的主播观众[UserId](https://cloud.tencent.com/document/product/647/46351#userid)重复。如果一个房间发起多个任务时，机器人的UserId也不能相互重复，否则会中断前一个任务。需要保证机器人UserId在房间内唯一。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -190,6 +215,9 @@ class AgentConfig(AbstractModel):
 
     @property
     def UserSig(self):
+        """机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+        :rtype: str
+        """
         return self._UserSig
 
     @UserSig.setter
@@ -198,6 +226,9 @@ class AgentConfig(AbstractModel):
 
     @property
     def TargetUserId(self):
+        """机器人拉流的UserId, 填写后，机器人会拉取该UserId的流进行实时处理
+        :rtype: str
+        """
         return self._TargetUserId
 
     @TargetUserId.setter
@@ -206,6 +237,9 @@ class AgentConfig(AbstractModel):
 
     @property
     def MaxIdleTime(self):
+        """房间内超过MaxIdleTime 没有推流，后台自动关闭任务，默认值是60s。
+        :rtype: int
+        """
         return self._MaxIdleTime
 
     @MaxIdleTime.setter
@@ -214,6 +248,9 @@ class AgentConfig(AbstractModel):
 
     @property
     def WelcomeMessage(self):
+        """机器人的欢迎语
+        :rtype: str
+        """
         return self._WelcomeMessage
 
     @WelcomeMessage.setter
@@ -222,6 +259,9 @@ class AgentConfig(AbstractModel):
 
     @property
     def InterruptMode(self):
+        """智能打断模式，默认为0，0表示服务端自动打断，1表示服务端不打断，由端上发送打断信令进行打断
+        :rtype: int
+        """
         return self._InterruptMode
 
     @InterruptMode.setter
@@ -230,6 +270,9 @@ class AgentConfig(AbstractModel):
 
     @property
     def InterruptSpeechDuration(self):
+        """InterruptMode为0时使用，单位为毫秒，默认为500ms。表示服务端检测到持续InterruptSpeechDuration毫秒的人声则进行打断。
+        :rtype: int
+        """
         return self._InterruptSpeechDuration
 
     @InterruptSpeechDuration.setter
@@ -275,6 +318,9 @@ class AgentParams(AbstractModel):
 
     @property
     def UserId(self):
+        """转推服务在TRTC房间使用的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个userId不能与其他TRTC或者转推服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -283,6 +329,9 @@ class AgentParams(AbstractModel):
 
     @property
     def UserSig(self):
+        """转推服务加入TRTC房间的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+        :rtype: str
+        """
         return self._UserSig
 
     @UserSig.setter
@@ -291,6 +340,9 @@ class AgentParams(AbstractModel):
 
     @property
     def MaxIdleTime(self):
+        """所有参与混流转推的主播持续离开TRTC房间或切换成观众超过MaxIdleTime的时长，自动停止转推，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。
+        :rtype: int
+        """
         return self._MaxIdleTime
 
     @MaxIdleTime.setter
@@ -335,6 +387,9 @@ class AudioEncode(AbstractModel):
 
     @property
     def SampleRate(self):
+        """输出流音频采样率。取值为[48000, 44100, 32000, 24000, 16000, 8000]，单位是Hz。
+        :rtype: int
+        """
         return self._SampleRate
 
     @SampleRate.setter
@@ -343,6 +398,9 @@ class AudioEncode(AbstractModel):
 
     @property
     def Channel(self):
+        """输出流音频声道数，取值范围[1,2]，1表示混流输出音频为单声道，2表示混流输出音频为双声道。
+        :rtype: int
+        """
         return self._Channel
 
     @Channel.setter
@@ -351,6 +409,9 @@ class AudioEncode(AbstractModel):
 
     @property
     def BitRate(self):
+        """输出流音频码率。取值范围[8,500]，单位为kbps。
+        :rtype: int
+        """
         return self._BitRate
 
     @BitRate.setter
@@ -359,6 +420,9 @@ class AudioEncode(AbstractModel):
 
     @property
     def Codec(self):
+        """输出流音频编码类型，取值范围[0, 1, 2]，0为LC-AAC，1为HE-AAC，2为HE-AACv2。默认值为0。当音频编码设置为HE-AACv2时，只支持输出流音频声道数为双声道。HE-AAC和HE-AACv2支持的输出流音频采样率范围为[48000, 44100, 32000, 24000, 16000]。
+        :rtype: int
+        """
         return self._Codec
 
     @Codec.setter
@@ -404,6 +468,9 @@ class AudioEncodeParams(AbstractModel):
 
     @property
     def SampleRate(self):
+        """音频采样率，取值为[48000, 44100]，单位是Hz。
+        :rtype: int
+        """
         return self._SampleRate
 
     @SampleRate.setter
@@ -412,6 +479,9 @@ class AudioEncodeParams(AbstractModel):
 
     @property
     def Channel(self):
+        """音频声道数，取值范围[1,2]，1表示音频为单声道，2表示音频为双声道。
+        :rtype: int
+        """
         return self._Channel
 
     @Channel.setter
@@ -420,6 +490,9 @@ class AudioEncodeParams(AbstractModel):
 
     @property
     def BitRate(self):
+        """音频码率，取值范围[8,500]，单位为kbps。
+        :rtype: int
+        """
         return self._BitRate
 
     @BitRate.setter
@@ -428,6 +501,9 @@ class AudioEncodeParams(AbstractModel):
 
     @property
     def Volume(self):
+        """音量，取值范围[0,300]。默认100，表示原始音量；0表示静音。
+        :rtype: int
+        """
         return self._Volume
 
     @Volume.setter
@@ -475,6 +551,12 @@ class AudioParams(AbstractModel):
 
     @property
     def SampleRate(self):
+        """音频采样率枚举值:(注意1 代表48000HZ, 2 代表44100HZ, 3 代表16000HZ)
+1：48000Hz（默认）;
+2：44100Hz
+3：16000Hz。
+        :rtype: int
+        """
         return self._SampleRate
 
     @SampleRate.setter
@@ -483,6 +565,11 @@ class AudioParams(AbstractModel):
 
     @property
     def Channel(self):
+        """声道数枚举值:
+1：单声道;
+2：双声道（默认）。
+        :rtype: int
+        """
         return self._Channel
 
     @Channel.setter
@@ -491,6 +578,9 @@ class AudioParams(AbstractModel):
 
     @property
     def BitRate(self):
+        """音频码率: 取值范围[32000, 128000] ，单位bps，默认64000bps。
+        :rtype: int
+        """
         return self._BitRate
 
     @BitRate.setter
@@ -549,6 +639,12 @@ AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using
 
     @property
     def Vendor(self):
+        """腾讯云对象存储COS以及第三方云存储账号信息
+0：腾讯云对象存储 COS
+1：AWS
+【注意】目前第三方云存储仅支持AWS，更多第三方云存储陆续支持中
+        :rtype: int
+        """
         return self._Vendor
 
     @Vendor.setter
@@ -557,6 +653,12 @@ AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using
 
     @property
     def Region(self):
+        """腾讯云对象存储的[地域信息]（https://cloud.tencent.com/document/product/436/6224#.E5.9C.B0.E5.9F.9F）。
+示例值：cn-shanghai-1
+
+AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions）
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -565,6 +667,9 @@ AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using
 
     @property
     def Bucket(self):
+        """云存储桶名称。
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -573,6 +678,10 @@ AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using
 
     @property
     def AccessKey(self):
+        """云存储的access_key账号信息。
+若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretId值。
+        :rtype: str
+        """
         return self._AccessKey
 
     @AccessKey.setter
@@ -581,6 +690,10 @@ AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using
 
     @property
     def SecretKey(self):
+        """云存储的secret_key账号信息。
+若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretKey值。
+        :rtype: str
+        """
         return self._SecretKey
 
     @SecretKey.setter
@@ -589,6 +702,9 @@ AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using
 
     @property
     def FileNamePrefix(self):
+        """云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围az,AZ,0~9,'_'和'-'，举个例子，录制文件xxx.m3u8在 ["prefix1", "prefix2"]作用下，会变成prefix1/prefix2/TaskId/xxx.m3u8。
+        :rtype: list of str
+        """
         return self._FileNamePrefix
 
     @FileNamePrefix.setter
@@ -627,6 +743,9 @@ class CloudVod(AbstractModel):
 
     @property
     def TencentVod(self):
+        """腾讯云点播相关参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TencentVod`
+        """
         return self._TencentVod
 
     @TencentVod.setter
@@ -670,6 +789,9 @@ class ControlAIConversationRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务唯一标识
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -678,6 +800,11 @@ class ControlAIConversationRequest(AbstractModel):
 
     @property
     def Command(self):
+        """控制命令，目前支持命令如下：
+
+- ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -686,6 +813,9 @@ class ControlAIConversationRequest(AbstractModel):
 
     @property
     def ServerPushText(self):
+        """服务端发送播报文本命令，当Command为ServerPushText时必填
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.ServerPushText`
+        """
         return self._ServerPushText
 
     @ServerPushText.setter
@@ -723,6 +853,9 @@ class ControlAIConversationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -784,6 +917,9 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和录制的房间所对应的SdkAppId相同。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -792,6 +928,11 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，录制的TRTC房间所对应的RoomId。
+注：房间号类型默认为整型，若房间号类型为字符串，请通过RoomIdType指定。
+
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -800,6 +941,10 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """录制机器人的UserId，用于进房发起录制任务。
+【*注意】这个UserId不能与当前房间内的主播观众[UserId](https://cloud.tencent.com/document/product/647/46351#userid)重复。如果一个房间发起多个录制任务时，机器人的userid也不能相互重复，否则会中断前一个录制任务。建议可以把房间ID作为UserId的标识的一部分，即录制机器人UserId在房间内唯一。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -808,6 +953,9 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def UserSig(self):
+        """录制机器人UserId对应的校验签名，即UserId和UserSig相当于录制机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+        :rtype: str
+        """
         return self._UserSig
 
     @UserSig.setter
@@ -816,6 +964,9 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def RecordParams(self):
+        """云端录制控制参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.RecordParams`
+        """
         return self._RecordParams
 
     @RecordParams.setter
@@ -824,6 +975,9 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def StorageParams(self):
+        """云端录制文件上传到云存储的参数（不支持同时设置云点播VOD和对象存储COS）
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.StorageParams`
+        """
         return self._StorageParams
 
     @StorageParams.setter
@@ -832,6 +986,12 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def RoomIdType(self):
+        """TRTC房间号的类型。
+【*注意】必须和录制的房间所对应的RoomId类型相同:
+0: 字符串类型的RoomId
+1: 32位整型的RoomId（默认）
+        :rtype: int
+        """
         return self._RoomIdType
 
     @RoomIdType.setter
@@ -840,6 +1000,9 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def MixTranscodeParams(self):
+        """合流的转码参数，录制模式为合流的时候可以设置。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.MixTranscodeParams`
+        """
         return self._MixTranscodeParams
 
     @MixTranscodeParams.setter
@@ -848,6 +1011,9 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def MixLayoutParams(self):
+        """合流的布局参数，录制模式为合流的时候可以设置。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.MixLayoutParams`
+        """
         return self._MixLayoutParams
 
     @MixLayoutParams.setter
@@ -856,6 +1022,9 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def ResourceExpiredHour(self):
+        """接口可以调用的时效性，从成功开启录制并获得任务ID后开始计算，超时后无法调用查询、更新和停止等接口，但是录制任务不会停止。 参数的单位是小时，默认72小时（3天），最大可设置720小时（30天），最小设置6小时。举例说明：如果不设置该参数，那么开始录制成功后，查询、更新和停止录制的调用时效为72个小时。
+        :rtype: int
+        """
         return self._ResourceExpiredHour
 
     @ResourceExpiredHour.setter
@@ -864,6 +1033,9 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def PrivateMapKey(self):
+        """TRTC房间权限加密串，只有在TRTC控制台启用了高级权限控制的时候需要携带，在TRTC控制台如果开启高级权限控制后，TRTC 的后台服务系统会校验一个叫做 [PrivateMapKey] 的“权限票据”，权限票据中包含了一个加密后的 RoomId 和一个加密后的“权限位列表”。由于 PrivateMapKey 中包含 RoomId，所以只提供了 UserSig 没有提供 PrivateMapKey 时，并不能进入指定的房间。
+        :rtype: str
+        """
         return self._PrivateMapKey
 
     @PrivateMapKey.setter
@@ -918,6 +1090,9 @@ class CreateCloudRecordingResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """云录制服务分配的任务 ID。任务 ID 是对一次录制生命周期过程的唯一标识，结束录制时会失去意义。任务 ID需要业务保存下来，作为下次针对这个录制任务操作的参数。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -926,6 +1101,9 @@ class CreateCloudRecordingResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -970,6 +1148,9 @@ class CreatePictureRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用id
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -978,6 +1159,9 @@ class CreatePictureRequest(AbstractModel):
 
     @property
     def Content(self):
+        """图片内容经base64编码后的string格式,最大长度为2M
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -986,6 +1170,9 @@ class CreatePictureRequest(AbstractModel):
 
     @property
     def Suffix(self):
+        """图片后缀名
+        :rtype: str
+        """
         return self._Suffix
 
     @Suffix.setter
@@ -994,6 +1181,9 @@ class CreatePictureRequest(AbstractModel):
 
     @property
     def Height(self):
+        """图片长度
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -1002,6 +1192,9 @@ class CreatePictureRequest(AbstractModel):
 
     @property
     def Width(self):
+        """图片宽度
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -1010,6 +1203,9 @@ class CreatePictureRequest(AbstractModel):
 
     @property
     def XPosition(self):
+        """显示位置x轴方向
+        :rtype: int
+        """
         return self._XPosition
 
     @XPosition.setter
@@ -1018,6 +1214,9 @@ class CreatePictureRequest(AbstractModel):
 
     @property
     def YPosition(self):
+        """显示位置y轴方向
+        :rtype: int
+        """
         return self._YPosition
 
     @YPosition.setter
@@ -1060,6 +1259,9 @@ class CreatePictureResponse(AbstractModel):
 
     @property
     def PictureId(self):
+        """图片id
+        :rtype: int
+        """
         return self._PictureId
 
     @PictureId.setter
@@ -1068,6 +1270,9 @@ class CreatePictureResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1097,6 +1302,9 @@ class DeleteCloudRecordingRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1105,6 +1313,9 @@ class DeleteCloudRecordingRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """录制任务的唯一Id，在启动录制成功后会返回。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1142,6 +1353,9 @@ class DeleteCloudRecordingResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """云录制服务分配的任务 ID。任务 ID 是对一次录制生命周期过程的唯一标识，结束录制时会失去意义。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1150,6 +1364,9 @@ class DeleteCloudRecordingResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1179,6 +1396,9 @@ class DeletePictureRequest(AbstractModel):
 
     @property
     def PictureId(self):
+        """图片id
+        :rtype: int
+        """
         return self._PictureId
 
     @PictureId.setter
@@ -1187,6 +1407,9 @@ class DeletePictureRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用id
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1221,6 +1444,9 @@ class DeletePictureResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1252,6 +1478,9 @@ class DescribeAIConversationRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和开启转录任务的房间使用的SdkAppId相同。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1260,6 +1489,9 @@ class DescribeAIConversationRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """唯一标识一次任务。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1268,6 +1500,9 @@ class DescribeAIConversationRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """开启任务时填写的SessionId，如果没写则不返回。
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -1315,6 +1550,9 @@ class DescribeAIConversationResponse(AbstractModel):
 
     @property
     def StartTime(self):
+        """任务开始时间。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1323,6 +1561,9 @@ class DescribeAIConversationResponse(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态。有4个值：1、Idle表示任务未开始2、Preparing表示任务准备中3、InProgress表示任务正在运行4、Stopped表示任务已停止，正在清理资源中
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1331,6 +1572,9 @@ class DescribeAIConversationResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务的唯一标识，在启动任务时生成
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1339,6 +1583,9 @@ class DescribeAIConversationResponse(AbstractModel):
 
     @property
     def SessionId(self):
+        """开启对话任务时填写的SessionId，如果没写则不返回。
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -1347,6 +1594,9 @@ class DescribeAIConversationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1385,6 +1635,12 @@ class DescribeAITranscriptionRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """查询任务状态，不使用时传入空字符串。
+有两种查询方式：
+1、只填写TaskId，这种方式使用TaskId来查询任务
+2、TaskId为空字符串，填写SdkAppId和SessionId，这种方式不需要使用TaskId查询任务
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1393,6 +1649,9 @@ class DescribeAITranscriptionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的SdkAppId，和SessionId配合使用。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1401,6 +1660,9 @@ class DescribeAITranscriptionRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """开启转录任务时传入的SessionId，和SdkAppId配合使用。
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -1453,6 +1715,9 @@ class DescribeAITranscriptionResponse(AbstractModel):
 
     @property
     def StartTime(self):
+        """任务开始时间。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1461,6 +1726,14 @@ class DescribeAITranscriptionResponse(AbstractModel):
 
     @property
     def Status(self):
+        """转录任务状态。
+有4个值：
+1、Idle表示任务未开始
+2、Preparing表示任务准备中
+3、InProgress表示任务正在运行
+4、Stopped表示任务已停止，正在清理资源中
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1469,6 +1742,9 @@ class DescribeAITranscriptionResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """唯一标识一次任务。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1477,6 +1753,9 @@ class DescribeAITranscriptionResponse(AbstractModel):
 
     @property
     def SessionId(self):
+        """开启转录任务时填写的SessionId，如果没写则不返回。
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -1485,6 +1764,9 @@ class DescribeAITranscriptionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1557,6 +1839,9 @@ DataType 为null，UserIds长度不超过100，PageSize最大不超过100。
 
     @property
     def CommId(self):
+        """通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
+        :rtype: str
+        """
         return self._CommId
 
     @CommId.setter
@@ -1565,6 +1850,10 @@ DataType 为null，UserIds长度不超过100，PageSize最大不超过100。
 
     @property
     def StartTime(self):
+        """查询开始时间，本地unix时间戳，单位为秒（如：1590065777），
+注意：支持查询14天内的数据。
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1573,6 +1862,10 @@ DataType 为null，UserIds长度不超过100，PageSize最大不超过100。
 
     @property
     def EndTime(self):
+        """查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
+注意：查询起止时间需小于1小时，超过则返回null，即与StartTime间隔时间不超过1小时。
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1581,6 +1874,9 @@ DataType 为null，UserIds长度不超过100，PageSize最大不超过100。
 
     @property
     def SdkAppId(self):
+        """用户SdkAppId（如：1400xxxxxx）。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1589,6 +1885,9 @@ DataType 为null，UserIds长度不超过100，PageSize最大不超过100。
 
     @property
     def UserIds(self):
+        """需查询的用户数组，默认不填返回6个用户。
+        :rtype: list of str
+        """
         return self._UserIds
 
     @UserIds.setter
@@ -1597,6 +1896,25 @@ DataType 为null，UserIds长度不超过100，PageSize最大不超过100。
 
     @property
     def DataType(self):
+        """需查询的指标，不填则只返回用户列表，填all则返回所有指标。
+appCpu：APP CPU使用率；
+sysCpu：系统 CPU使用率；
+aBit：上/下行音频码率；单位：bps
+aBlock：音频卡顿时长；单位：ms
+bigvBit：上/下行视频码率；单位：bps
+bigvCapFps：视频采集帧率；
+bigvEncFps：视频发送帧率；
+bigvDecFps：渲染帧率；
+bigvBlock：视频卡顿时长；单位：ms
+aLoss：上/下行音频丢包率；
+bigvLoss：上/下行视频丢包率；
+bigvWidth：上/下行分辨率宽；
+bigvHeight：上/下行分辨率高；
+aCapEnergy：音频采集能量；
+aPlayEnergy：音频播放能量；
+rtt：SDK到云端的往返延时；单位: ms
+        :rtype: list of str
+        """
         return self._DataType
 
     @DataType.setter
@@ -1605,6 +1923,10 @@ DataType 为null，UserIds长度不超过100，PageSize最大不超过100。
 
     @property
     def PageNumber(self):
+        """当前页数，默认为0，
+注意：PageNumber和PageSize 其中一个不填均默认返回6条数据。
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -1613,6 +1935,12 @@ DataType 为null，UserIds长度不超过100，PageSize最大不超过100。
 
     @property
     def PageSize(self):
+        """每页个数，默认为6，
+范围：[1，100]
+注意：DataType不为null，UserIds长度不能超过6，PageSize最大值不超过6；
+DataType 为null，UserIds长度不超过100，PageSize最大不超过100。
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1664,6 +1992,9 @@ class DescribeCallDetailInfoResponse(AbstractModel):
 
     @property
     def Total(self):
+        """返回的用户总条数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -1672,6 +2003,10 @@ class DescribeCallDetailInfoResponse(AbstractModel):
 
     @property
     def UserList(self):
+        """用户信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UserInformation
+        """
         return self._UserList
 
     @UserList.setter
@@ -1680,6 +2015,10 @@ class DescribeCallDetailInfoResponse(AbstractModel):
 
     @property
     def Data(self):
+        """质量数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QualityData
+        """
         return self._Data
 
     @Data.setter
@@ -1688,6 +2027,9 @@ class DescribeCallDetailInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1729,6 +2071,9 @@ class DescribeCloudRecordingRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1737,6 +2082,9 @@ class DescribeCloudRecordingRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """录制任务的唯一Id，在启动录制成功后会返回。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1784,6 +2132,9 @@ Exited：表示当前录制任务正在退出的过程中。
 
     @property
     def TaskId(self):
+        """录制任务的唯一Id。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1792,6 +2143,12 @@ Exited：表示当前录制任务正在退出的过程中。
 
     @property
     def Status(self):
+        """云端录制任务的状态信息。
+Idle：表示当前录制任务空闲中
+InProgress：表示当前录制任务正在进行中。
+Exited：表示当前录制任务正在退出的过程中。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1800,6 +2157,10 @@ Exited：表示当前录制任务正在退出的过程中。
 
     @property
     def StorageFileList(self):
+        """录制文件信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of StorageFile
+        """
         return self._StorageFileList
 
     @StorageFileList.setter
@@ -1808,6 +2169,9 @@ Exited：表示当前录制任务正在退出的过程中。
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1848,6 +2212,9 @@ class DescribeMixTranscodingUsageRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询开始时间，格式为YYYY-MM-DD。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1856,6 +2223,10 @@ class DescribeMixTranscodingUsageRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间，格式为YYYY-MM-DD。
+单次查询统计区间最多不能超过31天。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1864,6 +2235,9 @@ class DescribeMixTranscodingUsageRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的SdkAppId，和房间所对应的SdkAppId相同。如果没有这个参数，返回用户下全部实时音视频应用的汇总。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1905,6 +2279,9 @@ class DescribeMixTranscodingUsageResponse(AbstractModel):
 
     @property
     def UsageKey(self):
+        """用量类型，与UsageValue中各个位置的值对应。
+        :rtype: list of str
+        """
         return self._UsageKey
 
     @UsageKey.setter
@@ -1913,6 +2290,9 @@ class DescribeMixTranscodingUsageResponse(AbstractModel):
 
     @property
     def UsageList(self):
+        """各个时间点用量明细。
+        :rtype: list of TrtcUsage
+        """
         return self._UsageList
 
     @UsageList.setter
@@ -1921,6 +2301,9 @@ class DescribeMixTranscodingUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1962,6 +2345,9 @@ class DescribePictureRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用ID
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1970,6 +2356,9 @@ class DescribePictureRequest(AbstractModel):
 
     @property
     def PictureId(self):
+        """图片ID，不填时返回该应用下所有图片
+        :rtype: int
+        """
         return self._PictureId
 
     @PictureId.setter
@@ -1978,6 +2367,9 @@ class DescribePictureRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页数量，不填时默认为10
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1986,6 +2378,9 @@ class DescribePictureRequest(AbstractModel):
 
     @property
     def PageNo(self):
+        """页码，不填时默认为1
+        :rtype: int
+        """
         return self._PageNo
 
     @PageNo.setter
@@ -2028,6 +2423,9 @@ class DescribePictureResponse(AbstractModel):
 
     @property
     def Total(self):
+        """返回的图片记录数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -2036,6 +2434,9 @@ class DescribePictureResponse(AbstractModel):
 
     @property
     def PictureInfo(self):
+        """图片信息列表
+        :rtype: list of PictureInfo
+        """
         return self._PictureInfo
 
     @PictureInfo.setter
@@ -2044,6 +2445,9 @@ class DescribePictureResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2083,6 +2487,9 @@ class DescribeRecordStatisticRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询开始日期，格式为YYYY-MM-DD。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2091,6 +2498,10 @@ class DescribeRecordStatisticRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束日期，格式为YYYY-MM-DD。
+单次查询统计区间最多不能超过31天。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2099,6 +2510,9 @@ class DescribeRecordStatisticRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回多个应用的合计值。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2137,6 +2551,9 @@ class DescribeRecordStatisticResponse(AbstractModel):
 
     @property
     def SdkAppIdUsages(self):
+        """应用的用量信息数组。
+        :rtype: list of SdkAppIdRecordUsage
+        """
         return self._SdkAppIdUsages
 
     @SdkAppIdUsages.setter
@@ -2145,6 +2562,9 @@ class DescribeRecordStatisticResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2186,6 +2606,9 @@ class DescribeRecordingUsageRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询开始时间，格式为YYYY-MM-DD。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2194,6 +2617,10 @@ class DescribeRecordingUsageRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间，格式为YYYY-MM-DD。
+单次查询统计区间最多不能超过31天。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2202,6 +2629,9 @@ class DescribeRecordingUsageRequest(AbstractModel):
 
     @property
     def MixType(self):
+        """查询单流录制或合流录制，值为"single"或"multi"。
+        :rtype: str
+        """
         return self._MixType
 
     @MixType.setter
@@ -2210,6 +2640,9 @@ class DescribeRecordingUsageRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的SdkAppId，和房间所对应的SdkAppId相同。如果没有这个参数，返回用户下全部实时音视频应用的汇总。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2252,6 +2685,9 @@ class DescribeRecordingUsageResponse(AbstractModel):
 
     @property
     def UsageKey(self):
+        """用量类型，与UsageValue中各个位置的值对应。
+        :rtype: list of str
+        """
         return self._UsageKey
 
     @UsageKey.setter
@@ -2260,6 +2696,9 @@ class DescribeRecordingUsageResponse(AbstractModel):
 
     @property
     def UsageList(self):
+        """各个时间点用量明细。
+        :rtype: list of TrtcUsage
+        """
         return self._UsageList
 
     @UsageList.setter
@@ -2268,6 +2707,9 @@ class DescribeRecordingUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2307,6 +2749,9 @@ class DescribeRelayUsageRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询开始时间，格式为YYYY-MM-DD。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2315,6 +2760,10 @@ class DescribeRelayUsageRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间，格式为YYYY-MM-DD。
+单次查询统计区间最多不能超过31天。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2323,6 +2772,9 @@ class DescribeRelayUsageRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的SdkAppId，和房间所对应的SdkAppId相同。如果没有这个参数，返回用户下全部实时音视频应用的汇总。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2364,6 +2816,9 @@ class DescribeRelayUsageResponse(AbstractModel):
 
     @property
     def UsageKey(self):
+        """用量类型，与UsageValue中各个位置的值对应。
+        :rtype: list of str
+        """
         return self._UsageKey
 
     @UsageKey.setter
@@ -2372,6 +2827,9 @@ class DescribeRelayUsageResponse(AbstractModel):
 
     @property
     def UsageList(self):
+        """各个时间点用量明细。
+        :rtype: list of TrtcUsage
+        """
         return self._UsageList
 
     @UsageList.setter
@@ -2380,6 +2838,9 @@ class DescribeRelayUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2430,6 +2891,9 @@ class DescribeRoomInfoRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """用户SdkAppId（如：1400xxxxxx）
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2438,6 +2902,9 @@ class DescribeRoomInfoRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询开始时间，本地unix时间戳，单位为秒（如：1590065777）注意：最大支持查询14天内的数据
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2446,6 +2913,10 @@ class DescribeRoomInfoRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
+注意：与StartTime间隔时间不超过24小时。
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2454,6 +2925,9 @@ class DescribeRoomInfoRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间号（如：223)
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -2462,6 +2936,10 @@ class DescribeRoomInfoRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """当前页数，默认为0，
+注意：PageNumber和PageSize 其中一个不填均默认返回10条数据。
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -2470,6 +2948,10 @@ class DescribeRoomInfoRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页个数，默认为10，
+范围：[1，100]
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -2514,6 +2996,9 @@ class DescribeRoomInfoResponse(AbstractModel):
 
     @property
     def Total(self):
+        """返回当页数据总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -2522,6 +3007,9 @@ class DescribeRoomInfoResponse(AbstractModel):
 
     @property
     def RoomList(self):
+        """房间信息列表
+        :rtype: list of RoomState
+        """
         return self._RoomList
 
     @RoomList.setter
@@ -2530,6 +3018,9 @@ class DescribeRoomInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2570,6 +3061,9 @@ class DescribeScaleInfoRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """用户SdkAppId（如：1400xxxxxx）
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2578,6 +3072,10 @@ class DescribeScaleInfoRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
+注意：支持查询14天内的数据。
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2586,6 +3084,10 @@ class DescribeScaleInfoRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间，本地unix时间戳，单位为秒（如：1590065877），建议与StartTime间隔时间超过24小时。
+注意：按天统计，结束时间大于前一天，否则查询数据为空（如：需查询20号数据，结束时间需晚于20号0点）。
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2628,6 +3130,9 @@ class DescribeScaleInfoResponse(AbstractModel):
 
     @property
     def Total(self):
+        """返回的数据条数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -2636,6 +3141,10 @@ class DescribeScaleInfoResponse(AbstractModel):
 
     @property
     def ScaleList(self):
+        """返回的数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ScaleInfomation
+        """
         return self._ScaleList
 
     @ScaleList.setter
@@ -2644,6 +3153,9 @@ class DescribeScaleInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2679,6 +3191,9 @@ class DescribeStreamIngestRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的SDKAppId，和任务的房间所对应的SDKAppId相同
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2687,6 +3202,9 @@ class DescribeStreamIngestRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务的唯一Id，在启动任务成功后会返回。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2727,6 +3245,12 @@ NotExist：表示当前任务不存在。
 
     @property
     def Status(self):
+        """任务的状态信息。
+InProgress：表示当前任务正在进行中。
+NotExist：表示当前任务不存在。
+示例值：InProgress
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2735,6 +3259,9 @@ NotExist：表示当前任务不存在。
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2772,6 +3299,9 @@ h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数�
 
     @property
     def SdkAppId(self):
+        """用户SdkAppId（如：1400xxxxxx）
+        :rtype: str
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2780,6 +3310,9 @@ h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数�
 
     @property
     def StartTime(self):
+        """查询开始时间，格式为YYYY-MM-DD。（查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天）
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2788,6 +3321,9 @@ h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数�
 
     @property
     def EndTime(self):
+        """查询结束时间，格式为YYYY-MM-DD。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2796,6 +3332,11 @@ h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数�
 
     @property
     def Period(self):
+        """返回数据的粒度，支持设为以下值：
+d：按天。此时返回查询时间范围内 UTC 时间为零点的数据。
+h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数据。
+        :rtype: str
+        """
         return self._Period
 
     @Period.setter
@@ -2836,6 +3377,10 @@ class DescribeTRTCMarketQualityDataResponse(AbstractModel):
 
     @property
     def Data(self):
+        """TRTC监控数据出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResult`
+        """
         return self._Data
 
     @Data.setter
@@ -2844,6 +3389,9 @@ class DescribeTRTCMarketQualityDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2883,6 +3431,9 @@ h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数�
 
     @property
     def SdkAppId(self):
+        """用户SdkAppId（如：1400xxxxxx）
+        :rtype: str
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2891,6 +3442,9 @@ h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数�
 
     @property
     def StartTime(self):
+        """查询开始时间，格式为YYYY-MM-DD。（查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天）
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2899,6 +3453,9 @@ h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数�
 
     @property
     def EndTime(self):
+        """查询结束时间，格式为YYYY-MM-DD。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2907,6 +3464,11 @@ h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数�
 
     @property
     def Period(self):
+        """返回数据的粒度，支持设为以下值：
+d：按天。此时返回查询时间范围内 UTC 时间为零点的数据。
+h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数据。
+        :rtype: str
+        """
         return self._Period
 
     @Period.setter
@@ -2947,6 +3509,10 @@ class DescribeTRTCMarketQualityMetricDataResponse(AbstractModel):
 
     @property
     def Data(self):
+        """TRTC监控数据出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResp`
+        """
         return self._Data
 
     @Data.setter
@@ -2955,6 +3521,9 @@ class DescribeTRTCMarketQualityMetricDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2994,6 +3563,9 @@ h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数�
 
     @property
     def SdkAppId(self):
+        """用户SdkAppId
+        :rtype: str
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3002,6 +3574,9 @@ h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数�
 
     @property
     def StartTime(self):
+        """查询开始时间，格式为YYYY-MM-DD。（查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天）
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3010,6 +3585,9 @@ h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数�
 
     @property
     def EndTime(self):
+        """查询结束时间，格式为YYYY-MM-DD。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3018,6 +3596,11 @@ h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数�
 
     @property
     def Period(self):
+        """返回数据的粒度，支持设为以下值：
+d：按天。此时返回查询时间范围内 UTC 时间为零点的数据。
+h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数据。
+        :rtype: str
+        """
         return self._Period
 
     @Period.setter
@@ -3058,6 +3641,10 @@ class DescribeTRTCMarketScaleDataResponse(AbstractModel):
 
     @property
     def Data(self):
+        """TRTC监控数据出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResult`
+        """
         return self._Data
 
     @Data.setter
@@ -3066,6 +3653,9 @@ class DescribeTRTCMarketScaleDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3105,6 +3695,9 @@ h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数�
 
     @property
     def SdkAppId(self):
+        """用户SdkAppId
+        :rtype: str
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3113,6 +3706,9 @@ h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数�
 
     @property
     def StartTime(self):
+        """查询开始时间，格式为YYYY-MM-DD。（查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天）
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3121,6 +3717,9 @@ h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数�
 
     @property
     def EndTime(self):
+        """查询结束时间，格式为YYYY-MM-DD。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3129,6 +3728,11 @@ h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数�
 
     @property
     def Period(self):
+        """返回数据的粒度，支持设为以下值：
+d：按天。此时返回查询时间范围内 UTC 时间为零点的数据。
+h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数据。
+        :rtype: str
+        """
         return self._Period
 
     @Period.setter
@@ -3169,6 +3773,10 @@ class DescribeTRTCMarketScaleMetricDataResponse(AbstractModel):
 
     @property
     def Data(self):
+        """TRTC监控数据出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResp`
+        """
         return self._Data
 
     @Data.setter
@@ -3177,6 +3785,9 @@ class DescribeTRTCMarketScaleMetricDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3214,6 +3825,9 @@ class DescribeTRTCRealTimeQualityDataRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """用户SdkAppId（如：1400xxxxxx）
+        :rtype: str
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3222,6 +3836,9 @@ class DescribeTRTCRealTimeQualityDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间，unix时间戳，单位：秒（查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时）
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3230,6 +3847,9 @@ class DescribeTRTCRealTimeQualityDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，unix时间戳，单位：秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3238,6 +3858,9 @@ class DescribeTRTCRealTimeQualityDataRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间ID
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -3278,6 +3901,10 @@ class DescribeTRTCRealTimeQualityDataResponse(AbstractModel):
 
     @property
     def Data(self):
+        """TRTC监控数据出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResult`
+        """
         return self._Data
 
     @Data.setter
@@ -3286,6 +3913,9 @@ class DescribeTRTCRealTimeQualityDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3323,6 +3953,9 @@ class DescribeTRTCRealTimeQualityMetricDataRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """用户SdkAppId（如：1400xxxxxx）
+        :rtype: str
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3331,6 +3964,9 @@ class DescribeTRTCRealTimeQualityMetricDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间，unix时间戳，单位：秒（查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时）
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3339,6 +3975,9 @@ class DescribeTRTCRealTimeQualityMetricDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，unix时间戳，单位：秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3347,6 +3986,9 @@ class DescribeTRTCRealTimeQualityMetricDataRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间ID
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -3387,6 +4029,10 @@ class DescribeTRTCRealTimeQualityMetricDataResponse(AbstractModel):
 
     @property
     def Data(self):
+        """TRTC监控数据出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResp`
+        """
         return self._Data
 
     @Data.setter
@@ -3395,6 +4041,9 @@ class DescribeTRTCRealTimeQualityMetricDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3432,6 +4081,9 @@ class DescribeTRTCRealTimeScaleDataRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """用户SdkAppId（如：1400xxxxxx）
+        :rtype: str
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3440,6 +4092,9 @@ class DescribeTRTCRealTimeScaleDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间，unix时间戳，单位：秒（查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时）
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3448,6 +4103,9 @@ class DescribeTRTCRealTimeScaleDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，unix时间戳，单位：秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3456,6 +4114,9 @@ class DescribeTRTCRealTimeScaleDataRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间ID
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -3496,6 +4157,10 @@ class DescribeTRTCRealTimeScaleDataResponse(AbstractModel):
 
     @property
     def Data(self):
+        """TRTC监控数据出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResult`
+        """
         return self._Data
 
     @Data.setter
@@ -3504,6 +4169,9 @@ class DescribeTRTCRealTimeScaleDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3541,6 +4209,9 @@ class DescribeTRTCRealTimeScaleMetricDataRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """用户SdkAppId（如：1400xxxxxx）
+        :rtype: str
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3549,6 +4220,9 @@ class DescribeTRTCRealTimeScaleMetricDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间，unix时间戳，单位：秒（查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时）
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3557,6 +4231,9 @@ class DescribeTRTCRealTimeScaleMetricDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，unix时间戳，单位：秒
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3565,6 +4242,9 @@ class DescribeTRTCRealTimeScaleMetricDataRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间ID
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -3605,6 +4285,10 @@ class DescribeTRTCRealTimeScaleMetricDataResponse(AbstractModel):
 
     @property
     def Data(self):
+        """TRTC监控数据出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResp`
+        """
         return self._Data
 
     @Data.setter
@@ -3613,6 +4297,9 @@ class DescribeTRTCRealTimeScaleMetricDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3648,6 +4335,9 @@ class DescribeTrtcMcuTranscodeTimeRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询开始时间，格式为YYYY-MM-DD。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3656,6 +4346,10 @@ class DescribeTrtcMcuTranscodeTimeRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间，格式为YYYY-MM-DD。
+单次查询统计区间最多不能超过31天。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3664,6 +4358,9 @@ class DescribeTrtcMcuTranscodeTimeRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回多个应用的合计值。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3702,6 +4399,9 @@ class DescribeTrtcMcuTranscodeTimeResponse(AbstractModel):
 
     @property
     def Usages(self):
+        """应用的用量信息数组。
+        :rtype: list of OneSdkAppIdTranscodeTimeUsagesInfo
+        """
         return self._Usages
 
     @Usages.setter
@@ -3710,6 +4410,9 @@ class DescribeTrtcMcuTranscodeTimeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3747,6 +4450,9 @@ class DescribeTrtcRoomUsageRequest(AbstractModel):
 
     @property
     def SdkAppid(self):
+        """TRTC的SdkAppId，和房间所对应的SdkAppId相同。
+        :rtype: int
+        """
         return self._SdkAppid
 
     @SdkAppid.setter
@@ -3755,6 +4461,9 @@ class DescribeTrtcRoomUsageRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询开始时间，格式为YYYY-MM-DD HH:MM，精确到分钟级。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3763,6 +4472,9 @@ class DescribeTrtcRoomUsageRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间，格式为YYYY-MM-DD HH:MM，单次查询不超过24h。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3801,6 +4513,9 @@ class DescribeTrtcRoomUsageResponse(AbstractModel):
 
     @property
     def Data(self):
+        """房间维度用量数据，csv文件格式，单位：秒。
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -3809,6 +4524,9 @@ class DescribeTrtcRoomUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3842,6 +4560,9 @@ class DescribeTrtcUsageRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询开始时间，格式为YYYY-MM-DD。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3850,6 +4571,10 @@ class DescribeTrtcUsageRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间，格式为YYYY-MM-DD。
+单次查询统计区间最多不能超过31天。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3858,6 +4583,9 @@ class DescribeTrtcUsageRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的SdkAppId，和房间所对应的SdkAppId相同。如果没有这个参数，返回用户下全部实时音视频应用的汇总。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3899,6 +4627,9 @@ class DescribeTrtcUsageResponse(AbstractModel):
 
     @property
     def UsageKey(self):
+        """用量类型，与UsageValue中各个位置的值对应。
+        :rtype: list of str
+        """
         return self._UsageKey
 
     @UsageKey.setter
@@ -3907,6 +4638,9 @@ class DescribeTrtcUsageResponse(AbstractModel):
 
     @property
     def UsageList(self):
+        """各个时间点用量明细，单位:分钟
+        :rtype: list of TrtcUsage
+        """
         return self._UsageList
 
     @UsageList.setter
@@ -3915,6 +4649,9 @@ class DescribeTrtcUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3957,6 +4694,9 @@ class DescribeUnusualEventRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """用户SdkAppId（如：1400xxxxxx）
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3965,6 +4705,10 @@ class DescribeUnusualEventRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
+注意：支持查询14天内的数据
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3973,6 +4717,9 @@ class DescribeUnusualEventRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间，本地unix时间戳，单位为秒（如：1590065877）注意：与StartTime间隔时间不超过1小时。
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3981,6 +4728,9 @@ class DescribeUnusualEventRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间号，查询房间内任意20条以内异常体验事件
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -4024,6 +4774,10 @@ class DescribeUnusualEventResponse(AbstractModel):
 
     @property
     def Total(self):
+        """返回的数据总条数
+范围：[0，20]
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -4032,6 +4786,9 @@ class DescribeUnusualEventResponse(AbstractModel):
 
     @property
     def AbnormalExperienceList(self):
+        """异常体验列表
+        :rtype: list of AbnormalExperience
+        """
         return self._AbnormalExperienceList
 
     @AbnormalExperienceList.setter
@@ -4040,6 +4797,9 @@ class DescribeUnusualEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4089,6 +4849,9 @@ class DescribeUserEventRequest(AbstractModel):
 
     @property
     def CommId(self):
+        """通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
+        :rtype: str
+        """
         return self._CommId
 
     @CommId.setter
@@ -4097,6 +4860,10 @@ class DescribeUserEventRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
+注意：支持查询14天内的数据
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4105,6 +4872,10 @@ class DescribeUserEventRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
+注意：查询时间大于房间结束时间，以房间结束时间为准。
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4113,6 +4884,9 @@ class DescribeUserEventRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户UserId
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -4121,6 +4895,9 @@ class DescribeUserEventRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间号（如：223）
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -4129,6 +4906,9 @@ class DescribeUserEventRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """用户SdkAppId（如：1400xxxxxx）
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -4170,6 +4950,9 @@ class DescribeUserEventResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回的事件列表，若没有数据，会返回空数组。
+        :rtype: list of EventList
+        """
         return self._Data
 
     @Data.setter
@@ -4178,6 +4961,9 @@ class DescribeUserEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4231,6 +5017,9 @@ class DescribeUserInfoRequest(AbstractModel):
 
     @property
     def CommId(self):
+        """通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
+        :rtype: str
+        """
         return self._CommId
 
     @CommId.setter
@@ -4239,6 +5028,9 @@ class DescribeUserInfoRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询开始时间，本地unix时间戳，单位为秒（如：1590065777）注意：最大支持查询14天内的数据
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4247,6 +5039,10 @@ class DescribeUserInfoRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
+注意：与StartTime间隔时间不超过4小时。
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4255,6 +5051,9 @@ class DescribeUserInfoRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """用户SdkAppId（如：1400xxxxxx）
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -4263,6 +5062,10 @@ class DescribeUserInfoRequest(AbstractModel):
 
     @property
     def UserIds(self):
+        """需查询的用户数组，不填默认返回6个用户
+范围：[1，100]。
+        :rtype: list of str
+        """
         return self._UserIds
 
     @UserIds.setter
@@ -4271,6 +5074,10 @@ class DescribeUserInfoRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """当前页数，默认为0，
+注意：PageNumber和PageSize 其中一个不填均默认返回6条数据。
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -4279,6 +5086,10 @@ class DescribeUserInfoRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页个数，默认为6，
+范围：[1，100]。
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -4325,6 +5136,9 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def Total(self):
+        """返回的用户总条数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -4333,6 +5147,10 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def UserList(self):
+        """用户信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UserInformation
+        """
         return self._UserList
 
     @UserList.setter
@@ -4341,6 +5159,9 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4379,6 +5200,9 @@ class DescribeWebRecordRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """开始页面录制时返回的任务id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4387,6 +5211,9 @@ class DescribeWebRecordRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """发起页面录制时传递的SdkAppId
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -4395,6 +5222,9 @@ class DescribeWebRecordRequest(AbstractModel):
 
     @property
     def RecordId(self):
+        """发起录制时传递的RecordId, 传入此值时需要传递SdkAppId
+        :rtype: str
+        """
         return self._RecordId
 
     @RecordId.setter
@@ -4441,6 +5271,9 @@ class DescribeWebRecordResponse(AbstractModel):
 
     @property
     def Status(self):
+        """1: 正在录制中
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -4449,6 +5282,10 @@ class DescribeWebRecordResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """在使用RecordId查询时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4457,6 +5294,10 @@ class DescribeWebRecordResponse(AbstractModel):
 
     @property
     def RecordId(self):
+        """在使用TaskId查询时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RecordId
 
     @RecordId.setter
@@ -4465,6 +5306,9 @@ class DescribeWebRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4497,6 +5341,9 @@ class DismissRoomByStrRoomIdRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的SDKAppId。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -4505,6 +5352,10 @@ class DismissRoomByStrRoomIdRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """字符串类型房间号。
+本接口仅支持解散字符串类型房间号，如需解散数字类型房间号，请使用：DismissRoom
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -4539,6 +5390,9 @@ class DismissRoomByStrRoomIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4567,6 +5421,9 @@ class DismissRoomRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的SDKAppId。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -4575,6 +5432,9 @@ class DismissRoomRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """数字房间号。本接口仅支持解散数字类型房间号，如需解散字符串类型房间号，请使用DismissRoomByStrRoomId。
+        :rtype: int
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -4609,6 +5469,9 @@ class DismissRoomResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4674,6 +5537,9 @@ class EncodeParams(AbstractModel):
 
     @property
     def AudioSampleRate(self):
+        """混流-输出流音频采样率。取值为[48000, 44100, 32000, 24000, 16000, 8000]，单位是Hz。混流任务发起过程中，为了保持CDN链接的稳定，不要修改音频参数（codec、采样率、码率、声道数）。
+        :rtype: int
+        """
         return self._AudioSampleRate
 
     @AudioSampleRate.setter
@@ -4682,6 +5548,9 @@ class EncodeParams(AbstractModel):
 
     @property
     def AudioBitrate(self):
+        """混流-输出流音频码率。取值范围[8,500]，单位为kbps。混流任务发起过程中，为了保持CDN链接的稳定，不要修改音频参数（codec、采样率、码率、声道数）。
+        :rtype: int
+        """
         return self._AudioBitrate
 
     @AudioBitrate.setter
@@ -4690,6 +5559,9 @@ class EncodeParams(AbstractModel):
 
     @property
     def AudioChannels(self):
+        """混流-输出流音频声道数，取值范围[1,2]，1表示混流输出音频为单声道，2表示混流输出音频为双声道。混流任务发起过程中，为了保持CDN链接的稳定，不要修改音频参数（codec、采样率、码率、声道数）。
+        :rtype: int
+        """
         return self._AudioChannels
 
     @AudioChannels.setter
@@ -4698,6 +5570,9 @@ class EncodeParams(AbstractModel):
 
     @property
     def VideoWidth(self):
+        """混流-输出流宽，音视频输出时必填。取值范围[0,1920]，单位为像素值。
+        :rtype: int
+        """
         return self._VideoWidth
 
     @VideoWidth.setter
@@ -4706,6 +5581,9 @@ class EncodeParams(AbstractModel):
 
     @property
     def VideoHeight(self):
+        """混流-输出流高，音视频输出时必填。取值范围[0,1080]，单位为像素值。
+        :rtype: int
+        """
         return self._VideoHeight
 
     @VideoHeight.setter
@@ -4714,6 +5592,9 @@ class EncodeParams(AbstractModel):
 
     @property
     def VideoBitrate(self):
+        """混流-输出流码率，音视频输出时必填。取值范围[1,10000]，单位为kbps。
+        :rtype: int
+        """
         return self._VideoBitrate
 
     @VideoBitrate.setter
@@ -4722,6 +5603,9 @@ class EncodeParams(AbstractModel):
 
     @property
     def VideoFramerate(self):
+        """混流-输出流帧率，音视频输出时必填。取值范围[1,60]，表示混流的输出帧率可选范围为1到60fps。
+        :rtype: int
+        """
         return self._VideoFramerate
 
     @VideoFramerate.setter
@@ -4730,6 +5614,9 @@ class EncodeParams(AbstractModel):
 
     @property
     def VideoGop(self):
+        """混流-输出流gop，音视频输出时必填。取值范围[1,5]，单位为秒。
+        :rtype: int
+        """
         return self._VideoGop
 
     @VideoGop.setter
@@ -4738,6 +5625,16 @@ class EncodeParams(AbstractModel):
 
     @property
     def BackgroundColor(self):
+        """混流-输出流背景色，取值是十进制整数。常用的颜色有：
+红色：0xff0000，对应的十进制整数是16724736。
+黄色：0xffff00。对应的十进制整数是16776960。
+绿色：0x33cc00。对应的十进制整数是3394560。
+蓝色：0x0066ff。对应的十进制整数是26367。
+黑色：0x000000。对应的十进制整数是0。
+白色：0xFFFFFF。对应的十进制整数是16777215。
+灰色：0x999999。对应的十进制整数是10066329。
+        :rtype: int
+        """
         return self._BackgroundColor
 
     @BackgroundColor.setter
@@ -4746,6 +5643,9 @@ class EncodeParams(AbstractModel):
 
     @property
     def BackgroundImageId(self):
+        """混流-输出流背景图片，取值为实时音视频控制台上传的图片ID。
+        :rtype: int
+        """
         return self._BackgroundImageId
 
     @BackgroundImageId.setter
@@ -4754,6 +5654,9 @@ class EncodeParams(AbstractModel):
 
     @property
     def AudioCodec(self):
+        """混流-输出流音频编码类型，取值范围[0,1, 2]，0为LC-AAC，1为HE-AAC，2为HE-AACv2。默认值为0。当音频编码设置为HE-AACv2时，只支持输出流音频声道数为双声道。HE-AAC和HE-AACv2支持的输出流音频采样率范围为[48000, 44100, 32000, 24000, 16000]。混流任务发起过程中，为了保持CDN链接的稳定，不要修改音频参数（codec、采样率、码率、声道数）。
+        :rtype: int
+        """
         return self._AudioCodec
 
     @AudioCodec.setter
@@ -4762,6 +5665,9 @@ class EncodeParams(AbstractModel):
 
     @property
     def BackgroundImageUrl(self):
+        """混流-输出流背景图片URL地址，支持png、jpg、jpeg、bmp格式，暂不支持透明通道。URL链接长度限制为512字节。BackgroundImageUrl和BackgroundImageId参数都填时，以BackgroundImageUrl为准。图片大小限制不超过2MB。
+        :rtype: str
+        """
         return self._BackgroundImageUrl
 
     @BackgroundImageUrl.setter
@@ -4809,6 +5715,9 @@ class EventList(AbstractModel):
 
     @property
     def Content(self):
+        """数据内容
+        :rtype: list of EventMessage
+        """
         return self._Content
 
     @Content.setter
@@ -4817,6 +5726,9 @@ class EventList(AbstractModel):
 
     @property
     def PeerId(self):
+        """发送端的userId
+        :rtype: str
+        """
         return self._PeerId
 
     @PeerId.setter
@@ -4872,6 +5784,13 @@ class EventMessage(AbstractModel):
 
     @property
     def Type(self):
+        """视频流类型：
+0：与视频无关的事件；
+2：视频为大画面；
+3：视频为小画面；
+7：视频为旁路画面；
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -4880,6 +5799,9 @@ class EventMessage(AbstractModel):
 
     @property
     def Time(self):
+        """事件上报的时间戳，unix时间（1589891188801ms)
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -4888,6 +5810,9 @@ class EventMessage(AbstractModel):
 
     @property
     def EventId(self):
+        """事件Id：分为sdk的事件和webrtc的事件，详情见：附录/事件 ID 映射表：https://cloud.tencent.com/document/product/647/44916
+        :rtype: int
+        """
         return self._EventId
 
     @EventId.setter
@@ -4896,6 +5821,9 @@ class EventMessage(AbstractModel):
 
     @property
     def ParamOne(self):
+        """事件的第一个参数，如视频分辨率宽
+        :rtype: int
+        """
         return self._ParamOne
 
     @ParamOne.setter
@@ -4904,6 +5832,9 @@ class EventMessage(AbstractModel):
 
     @property
     def ParamTwo(self):
+        """事件的第二个参数，如视频分辨率高
+        :rtype: int
+        """
         return self._ParamTwo
 
     @ParamTwo.setter
@@ -4971,6 +5902,9 @@ class LayoutParams(AbstractModel):
 
     @property
     def Template(self):
+        """混流布局模板ID，0为悬浮模板(默认);1为九宫格模板;2为屏幕分享模板;3为画中画模板;4为自定义模板。
+        :rtype: int
+        """
         return self._Template
 
     @Template.setter
@@ -4979,6 +5913,9 @@ class LayoutParams(AbstractModel):
 
     @property
     def MainVideoUserId(self):
+        """屏幕分享模板、悬浮模板、画中画模板中有效，代表大画面对应的用户ID。
+        :rtype: str
+        """
         return self._MainVideoUserId
 
     @MainVideoUserId.setter
@@ -4987,6 +5924,9 @@ class LayoutParams(AbstractModel):
 
     @property
     def MainVideoStreamType(self):
+        """屏幕分享模板、悬浮模板、画中画模板中有效，代表大画面对应的流类型，0为摄像头，1为屏幕分享。左侧大画面为web用户时此值填0。
+        :rtype: int
+        """
         return self._MainVideoStreamType
 
     @MainVideoStreamType.setter
@@ -4995,6 +5935,9 @@ class LayoutParams(AbstractModel):
 
     @property
     def SmallVideoLayoutParams(self):
+        """画中画模板中有效，代表小画面的布局参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SmallVideoLayoutParams`
+        """
         return self._SmallVideoLayoutParams
 
     @SmallVideoLayoutParams.setter
@@ -5003,6 +5946,9 @@ class LayoutParams(AbstractModel):
 
     @property
     def MainVideoRightAlign(self):
+        """屏幕分享模板有效。设置为1时代表大画面居右，小画面居左布局。默认为0。
+        :rtype: int
+        """
         return self._MainVideoRightAlign
 
     @MainVideoRightAlign.setter
@@ -5011,6 +5957,9 @@ class LayoutParams(AbstractModel):
 
     @property
     def MixVideoUids(self):
+        """指定混视频的用户ID列表。设置此参数后，输出流混合此参数中包含用户的音视频，以及其他用户的纯音频。悬浮模板、九宫格、屏幕分享模板有效，最多可设置16个用户。
+        :rtype: list of str
+        """
         return self._MixVideoUids
 
     @MixVideoUids.setter
@@ -5019,6 +5968,9 @@ class LayoutParams(AbstractModel):
 
     @property
     def PresetLayoutConfig(self):
+        """自定义模板中有效，指定用户视频在混合画面中的位置。
+        :rtype: list of PresetLayoutConfig
+        """
         return self._PresetLayoutConfig
 
     @PresetLayoutConfig.setter
@@ -5027,6 +5979,9 @@ class LayoutParams(AbstractModel):
 
     @property
     def PlaceHolderMode(self):
+        """自定义模板中有效，设置为1时代表启用占位图功能，0时代表不启用占位图功能，默认为0。启用占位图功能时，在预设位置的用户没有上行视频时可显示对应的占位图。
+        :rtype: int
+        """
         return self._PlaceHolderMode
 
     @PlaceHolderMode.setter
@@ -5035,6 +5990,9 @@ class LayoutParams(AbstractModel):
 
     @property
     def PureAudioHoldPlaceMode(self):
+        """悬浮模板、九宫格、屏幕分享模板生效，用于控制纯音频上行是否占用画面布局位置。设置为0是代表后台默认处理方式，悬浮小画面占布局位置，九宫格画面占布局位置、屏幕分享小画面不占布局位置；设置为1时代表纯音频上行占布局位置；设置为2时代表纯音频上行不占布局位置。默认为0。
+        :rtype: int
+        """
         return self._PureAudioHoldPlaceMode
 
     @PureAudioHoldPlaceMode.setter
@@ -5043,6 +6001,9 @@ class LayoutParams(AbstractModel):
 
     @property
     def WaterMarkParams(self):
+        """水印参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.WaterMarkParams`
+        """
         return self._WaterMarkParams
 
     @WaterMarkParams.setter
@@ -5051,6 +6012,9 @@ class LayoutParams(AbstractModel):
 
     @property
     def RenderMode(self):
+        """屏幕分享模板、悬浮模板、九宫格模板、画中画模版有效，画面在输出时的显示模式：0为裁剪，1为缩放，2为缩放并显示黑底，不填采用后台的默认渲染方式（屏幕分享大画面为缩放，其他为裁剪）。若此参数不生效，请提交工单寻求帮助。
+        :rtype: int
+        """
         return self._RenderMode
 
     @RenderMode.setter
@@ -5103,6 +6067,9 @@ class MaxVideoUser(AbstractModel):
 
     @property
     def UserMediaStream(self):
+        """用户媒体流参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.UserMediaStream`
+        """
         return self._UserMediaStream
 
     @UserMediaStream.setter
@@ -5146,6 +6113,9 @@ class McuAudioParams(AbstractModel):
 
     @property
     def AudioEncode(self):
+        """音频编码参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.AudioEncode`
+        """
         return self._AudioEncode
 
     @AudioEncode.setter
@@ -5154,6 +6124,10 @@ class McuAudioParams(AbstractModel):
 
     @property
     def SubscribeAudioList(self):
+        """音频用户白名单，start时，为空或不填表示混所有主播音频，填具体值表示混指定主播音频；update时，不填表示不更新，为空表示更新为混所有主播音频，填具体值表示更新为混指定主播音频。
+使用黑白名单时，黑白名单必须同时填写。都不填写时表示不更新。同一个用户同时在黑白名单时，以黑名单为主。
+        :rtype: list of McuUserInfoParams
+        """
         return self._SubscribeAudioList
 
     @SubscribeAudioList.setter
@@ -5162,6 +6136,10 @@ class McuAudioParams(AbstractModel):
 
     @property
     def UnSubscribeAudioList(self):
+        """音频用户黑名单，为空或不填表示无黑名单，填具体值表示不混指定主播音频。update时，不填表示不更新，为空表示更新为清空黑名单，填具体值表示更新为不混指定主播音频。
+使用黑白名单时，黑白名单必须同时填写。都不填写时表示不更新。同一个用户同时在黑白名单时，以黑名单为主。
+        :rtype: list of McuUserInfoParams
+        """
         return self._UnSubscribeAudioList
 
     @UnSubscribeAudioList.setter
@@ -5215,6 +6193,9 @@ class McuBackgroundCustomRender(AbstractModel):
 
     @property
     def Width(self):
+        """自定义渲染画面的宽度，单位为像素值，需大于0，且不能超过子布局的宽。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -5223,6 +6204,9 @@ class McuBackgroundCustomRender(AbstractModel):
 
     @property
     def Height(self):
+        """自定义渲染画面的高度，单位为像素值，需大于0，且不能超过子布局的高。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -5231,6 +6215,9 @@ class McuBackgroundCustomRender(AbstractModel):
 
     @property
     def Radius(self):
+        """自定义渲染画面的圆角半径，单位为像素值，不能超过渲染画面Width和Height最小值的一半，不指定默认为0，表示直角。
+        :rtype: int
+        """
         return self._Radius
 
     @Radius.setter
@@ -5266,6 +6253,9 @@ class McuCloudVod(AbstractModel):
 
     @property
     def McuTencentVod(self):
+        """腾讯云点播相关参数。	
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuTencentVod`
+        """
         return self._McuTencentVod
 
     @McuTencentVod.setter
@@ -5310,6 +6300,9 @@ class McuCustomCrop(AbstractModel):
 
     @property
     def LocationX(self):
+        """自定义裁剪起始位置的X偏移，单位为像素值，大于等于0。
+        :rtype: int
+        """
         return self._LocationX
 
     @LocationX.setter
@@ -5318,6 +6311,9 @@ class McuCustomCrop(AbstractModel):
 
     @property
     def LocationY(self):
+        """自定义裁剪起始位置的Y偏移，单位为像素值，大于等于0。
+        :rtype: int
+        """
         return self._LocationY
 
     @LocationY.setter
@@ -5326,6 +6322,9 @@ class McuCustomCrop(AbstractModel):
 
     @property
     def Width(self):
+        """自定义裁剪画面的宽度，单位为像素值，大于0，且LocationX+Width不超过10000
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -5334,6 +6333,9 @@ class McuCustomCrop(AbstractModel):
 
     @property
     def Height(self):
+        """自定义裁剪画面的高度，单位为像素值，大于0，且LocationY+Height不超过10000
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -5379,6 +6381,9 @@ class McuFeedBackRoomParams(AbstractModel):
 
     @property
     def RoomId(self):
+        """回推房间的RoomId。
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -5387,6 +6392,9 @@ class McuFeedBackRoomParams(AbstractModel):
 
     @property
     def RoomIdType(self):
+        """房间类型，必须和回推房间所对应的RoomId类型相同，0为整形房间号，1为字符串房间号。
+        :rtype: int
+        """
         return self._RoomIdType
 
     @RoomIdType.setter
@@ -5395,6 +6403,9 @@ class McuFeedBackRoomParams(AbstractModel):
 
     @property
     def UserId(self):
+        """回推房间使用的UserId(https://cloud.tencent.com/document/product/647/46351#userid)，注意这个userId不能与其他TRTC或者转推服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -5403,6 +6414,9 @@ class McuFeedBackRoomParams(AbstractModel):
 
     @property
     def UserSig(self):
+        """回推房间UserId对应的用户签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+        :rtype: str
+        """
         return self._UserSig
 
     @UserSig.setter
@@ -5495,6 +6509,9 @@ bit1:上行流缩放是否生效。
 
     @property
     def UserMediaStream(self):
+        """用户媒体流参数。不填时腾讯云后台按照上行主播的进房顺序自动填充。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.UserMediaStream`
+        """
         return self._UserMediaStream
 
     @UserMediaStream.setter
@@ -5503,6 +6520,9 @@ bit1:上行流缩放是否生效。
 
     @property
     def ImageWidth(self):
+        """子画面在输出时的宽度，单位为像素值，不填默认为0。
+        :rtype: int
+        """
         return self._ImageWidth
 
     @ImageWidth.setter
@@ -5511,6 +6531,9 @@ bit1:上行流缩放是否生效。
 
     @property
     def ImageHeight(self):
+        """子画面在输出时的高度，单位为像素值，不填默认为0。
+        :rtype: int
+        """
         return self._ImageHeight
 
     @ImageHeight.setter
@@ -5519,6 +6542,9 @@ bit1:上行流缩放是否生效。
 
     @property
     def LocationX(self):
+        """子画面在输出时的X偏移，单位为像素值，LocationX与ImageWidth之和不能超过混流输出的总宽度，不填默认为0。
+        :rtype: int
+        """
         return self._LocationX
 
     @LocationX.setter
@@ -5527,6 +6553,9 @@ bit1:上行流缩放是否生效。
 
     @property
     def LocationY(self):
+        """子画面在输出时的Y偏移，单位为像素值，LocationY与ImageHeight之和不能超过混流输出的总高度，不填默认为0。
+        :rtype: int
+        """
         return self._LocationY
 
     @LocationY.setter
@@ -5535,6 +6564,9 @@ bit1:上行流缩放是否生效。
 
     @property
     def ZOrder(self):
+        """子画面在输出时的层级，不填默认为0。
+        :rtype: int
+        """
         return self._ZOrder
 
     @ZOrder.setter
@@ -5543,6 +6575,9 @@ bit1:上行流缩放是否生效。
 
     @property
     def RenderMode(self):
+        """子画面在输出时的显示模式：0为裁剪，1为缩放并显示背景，2为缩放并显示黑底。不填默认为0。
+        :rtype: int
+        """
         return self._RenderMode
 
     @RenderMode.setter
@@ -5551,6 +6586,16 @@ bit1:上行流缩放是否生效。
 
     @property
     def BackGroundColor(self):
+        """【此参数配置无效，暂不支持】子画面的背景颜色，常用的颜色有：
+红色：0xcc0033。
+黄色：0xcc9900。
+绿色：0xcccc33。
+蓝色：0x99CCFF。
+黑色：0x000000。
+白色：0xFFFFFF。
+灰色：0x999999。
+        :rtype: str
+        """
         return self._BackGroundColor
 
     @BackGroundColor.setter
@@ -5559,6 +6604,10 @@ bit1:上行流缩放是否生效。
 
     @property
     def BackgroundImageUrl(self):
+        """子画面的背景图url，填写该参数，当用户关闭摄像头或未进入TRTC房间时，会在布局位置填充为指定图片。若指定图片与布局位置尺寸比例不一致，则会对图片进行拉伸处理，优先级高于BackGroundColor。支持png、jpg、jpeg、bmp、gif、webm格式。图片大小限制不超过5MB。
+注：您需要确保图片链接的可访问性，后台单次下载超时时间为10秒，最多重试3次，若最终图片下载失败，子画面的背景图将不会生效。
+        :rtype: str
+        """
         return self._BackgroundImageUrl
 
     @BackgroundImageUrl.setter
@@ -5567,6 +6616,9 @@ bit1:上行流缩放是否生效。
 
     @property
     def CustomCrop(self):
+        """客户自定义裁剪，针对原始输入流裁剪
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuCustomCrop`
+        """
         return self._CustomCrop
 
     @CustomCrop.setter
@@ -5575,6 +6627,9 @@ bit1:上行流缩放是否生效。
 
     @property
     def BackgroundRenderMode(self):
+        """子背景图在输出时的显示模式：0为裁剪，1为缩放并显示背景，2为缩放并显示黑底，3为变比例伸缩，4为自定义渲染。不填默认为3。
+        :rtype: int
+        """
         return self._BackgroundRenderMode
 
     @BackgroundRenderMode.setter
@@ -5583,6 +6638,10 @@ bit1:上行流缩放是否生效。
 
     @property
     def TransparentUrl(self):
+        """子画面的透明模版url，指向一张包含透明通道的模板图片。填写该参数，后台混流时会提取该模板图片的透明通道，将其缩放作为目标画面的透明通道，再和其他画面进行混合。您可以通过透明模版实现目标画面的半透明效果和任意形状裁剪（如圆角、星形、心形等）。 支持png格式。图片大小限制不超过5MB。
+注：1，模板图片宽高比应接近目标画面宽高比，以避免缩放适配目标画面时出现模板效果变形；2，透明模版只有RenderMode为0（裁剪）时才生效；3，您需要确保图片链接的可访问性，后台单次下载超时时间为10秒，最多重试3次，若最终图片下载失败，透明模版将不会生效。
+        :rtype: str
+        """
         return self._TransparentUrl
 
     @TransparentUrl.setter
@@ -5591,6 +6650,9 @@ bit1:上行流缩放是否生效。
 
     @property
     def BackgroundCustomRender(self):
+        """子背景图的自定义渲染参数，当BackgroundRenderMode为4时必须配置。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuBackgroundCustomRender`
+        """
         return self._BackgroundCustomRender
 
     @BackgroundCustomRender.setter
@@ -5599,6 +6661,17 @@ bit1:上行流缩放是否生效。
 
     @property
     def BackGroundColorMode(self):
+        """子背景色生效模式，默认值为0表示均不生效。
+bit0:占位图缩放是否生效。
+bit1:上行流缩放是否生效。
+您可以将相应bit位置1启动生效，例如：
+0(00)表示子背景色不生效。
+1(01)表示子背景色只在占位图缩放时生效。
+2(10)表示子背景色只在上行流缩放时生效。
+3(11)表示子背景色在占位图缩放和上行流缩放时均生效。
+
+        :rtype: int
+        """
         return self._BackGroundColorMode
 
     @BackGroundColorMode.setter
@@ -5663,6 +6736,9 @@ class McuLayoutParams(AbstractModel):
 
     @property
     def MixLayoutMode(self):
+        """布局模式：动态布局（1：悬浮布局（默认），2：屏幕分享布局，3：九宫格布局），静态布局（4：自定义布局）。最多支持混入16路音视频流，如果用户只上行音频，也会被算作一路；自定义布局中，如果子画面只设置占位图，也被算作一路。
+        :rtype: int
+        """
         return self._MixLayoutMode
 
     @MixLayoutMode.setter
@@ -5671,6 +6747,9 @@ class McuLayoutParams(AbstractModel):
 
     @property
     def PureAudioHoldPlaceMode(self):
+        """纯音频上行是否占布局位置，只在动态布局中有效。0表示纯音频不占布局位置，1表示纯音频占布局位置，不填默认为0。
+        :rtype: int
+        """
         return self._PureAudioHoldPlaceMode
 
     @PureAudioHoldPlaceMode.setter
@@ -5679,6 +6758,9 @@ class McuLayoutParams(AbstractModel):
 
     @property
     def MixLayoutList(self):
+        """自定义模板中有效，指定用户视频在混合画面中的位置，最多支持设置16个输入流。
+        :rtype: list of McuLayout
+        """
         return self._MixLayoutList
 
     @MixLayoutList.setter
@@ -5687,6 +6769,9 @@ class McuLayoutParams(AbstractModel):
 
     @property
     def MaxVideoUser(self):
+        """指定动态布局中悬浮布局和屏幕分享布局的大画面信息，只在悬浮布局和屏幕分享布局有效。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.MaxVideoUser`
+        """
         return self._MaxVideoUser
 
     @MaxVideoUser.setter
@@ -5695,6 +6780,9 @@ class McuLayoutParams(AbstractModel):
 
     @property
     def RenderMode(self):
+        """屏幕分享模板、悬浮模板、九宫格模版有效，画面在输出时的显示模式：0为裁剪，1为缩放，2为缩放并显示黑底
+        :rtype: int
+        """
         return self._RenderMode
 
     @RenderMode.setter
@@ -5749,6 +6837,9 @@ class McuLayoutVolume(AbstractModel):
 
     @property
     def AppData(self):
+        """AppData的内容，会被写入自定义SEI中的app_data字段，长度需小于4096。
+        :rtype: str
+        """
         return self._AppData
 
     @AppData.setter
@@ -5757,6 +6848,9 @@ class McuLayoutVolume(AbstractModel):
 
     @property
     def PayloadType(self):
+        """SEI消息的payload_type，默认值100，取值范围100-254（244除外，244为我们内部自定义的时间戳SEI）
+        :rtype: int
+        """
         return self._PayloadType
 
     @PayloadType.setter
@@ -5765,6 +6859,9 @@ class McuLayoutVolume(AbstractModel):
 
     @property
     def Interval(self):
+        """SEI发送间隔，单位毫秒，默认值为1000。
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -5773,6 +6870,9 @@ class McuLayoutVolume(AbstractModel):
 
     @property
     def FollowIdr(self):
+        """取值范围[0,1]，填1：发送关键帧时会确保带SEI；填0：发送关键帧时不确保带SEI。默认值为0。
+        :rtype: int
+        """
         return self._FollowIdr
 
     @FollowIdr.setter
@@ -5821,6 +6921,9 @@ class McuPassThrough(AbstractModel):
 
     @property
     def PayloadContent(self):
+        """透传SEI的payload内容。
+        :rtype: str
+        """
         return self._PayloadContent
 
     @PayloadContent.setter
@@ -5829,6 +6932,9 @@ class McuPassThrough(AbstractModel):
 
     @property
     def PayloadType(self):
+        """SEI消息的payload_type，取值范围5、100-254（244除外，244为我们内部自定义的时间戳SEI）。
+        :rtype: int
+        """
         return self._PayloadType
 
     @PayloadType.setter
@@ -5837,6 +6943,9 @@ class McuPassThrough(AbstractModel):
 
     @property
     def PayloadUuid(self):
+        """PayloadType为5，PayloadUuid必须填写。PayloadType不是5时，不需要填写，填写会被后台忽略。该值必须是32长度的十六进制。
+        :rtype: str
+        """
         return self._PayloadUuid
 
     @PayloadUuid.setter
@@ -5845,6 +6954,9 @@ class McuPassThrough(AbstractModel):
 
     @property
     def Interval(self):
+        """SEI发送间隔，单位毫秒，默认值为1000。
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -5853,6 +6965,9 @@ class McuPassThrough(AbstractModel):
 
     @property
     def FollowIdr(self):
+        """取值范围[0,1]，填1：发送关键帧时会确保带SEI；填0：发送关键帧时不确保带SEI。默认值为0。
+        :rtype: int
+        """
         return self._FollowIdr
 
     @FollowIdr.setter
@@ -5894,6 +7009,10 @@ class McuPublishCdnParam(AbstractModel):
 
     @property
     def PublishCdnUrl(self):
+        """CDN转推URL，只支持rtmp链接。
+注：若更新转推时，URL有任何变化，都会断流重推。
+        :rtype: str
+        """
         return self._PublishCdnUrl
 
     @PublishCdnUrl.setter
@@ -5902,6 +7021,9 @@ class McuPublishCdnParam(AbstractModel):
 
     @property
     def IsTencentCdn(self):
+        """是否是腾讯云CDN，0为转推非腾讯云CDN，1为转推腾讯CDN，不携带该参数默认为1。注意：1，为避免误产生转推费用，该参数建议明确填写，转推非腾讯云CDN时会产生转推费用，详情参见接口文档说明；2，国内站默认只支持转推腾讯云CDN，如您有转推第三方CDN需求，请联系腾讯云技术支持。
+        :rtype: int
+        """
         return self._IsTencentCdn
 
     @IsTencentCdn.setter
@@ -5969,6 +7091,13 @@ class McuRecordParams(AbstractModel):
 
     @property
     def UniRecord(self):
+        """转推录制模式， 
+0/不填: 暂不支持，行为未定义；
+1: 不开启录制；
+2: 开启录制（使用控制台自动录制模板参数，参考：[跳转文档](https://cloud.tencent.com/document/product/647/111748#.E5.BD.95.E5.88.B6.E6.8E.A7.E5.88.B6.E6.96.B9.E6.A1.88)）；
+3: 开启录制（使用API指定参数）。
+        :rtype: int
+        """
         return self._UniRecord
 
     @UniRecord.setter
@@ -5977,6 +7106,10 @@ class McuRecordParams(AbstractModel):
 
     @property
     def RecordKey(self):
+        """录制任务 key，标识一个录制任务；您可以通过该参数，将多个转推任务录制成一个文件。不指定该参数时，只录制当前转推任务。
+【限制长度为128字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线(_)和连词符(-)】
+        :rtype: str
+        """
         return self._RecordKey
 
     @RecordKey.setter
@@ -5985,6 +7118,10 @@ class McuRecordParams(AbstractModel):
 
     @property
     def RecordWaitTime(self):
+        """【仅当UniRecord=3时此参数有效】
+续录等待时间，对应录制模板“续录等待时长”，单位：秒。该值需大于等于 5，且小于等于 86400(24小时)，默认值为 30。启用续录时，录制任务空闲超过RecordWaitTime的时长，自动结束。
+        :rtype: int
+        """
         return self._RecordWaitTime
 
     @RecordWaitTime.setter
@@ -5993,6 +7130,11 @@ class McuRecordParams(AbstractModel):
 
     @property
     def RecordFormat(self):
+        """【仅当UniRecord=3时此参数有效】
+录制输出文件格式列表，对应录制模板“文件格式”，支持“hls”、"mp4"、"aac"三种格式，默认值为"mp4"。其中"mp4"和"aac"格式，不能同时指定。
+只录制 mp4格式，示例值：["mp4"]。同时录制mp4 和 HLS 格式，示例值：["mp4","hls"]。
+        :rtype: list of str
+        """
         return self._RecordFormat
 
     @RecordFormat.setter
@@ -6001,6 +7143,10 @@ class McuRecordParams(AbstractModel):
 
     @property
     def MaxMediaFileDuration(self):
+        """【仅当UniRecord=3时此参数有效】
+单个文件录制时长，对应录制模板“单个录制文件时长”，单位：分钟。该值需大于等于 1，且小于等于 1440(24小时)，默认值为 1440。只对"mp4"或"aac"格式生效。实际单文件录制时长还受单文件大小不超过 2G 限制，超过2G则强制拆分。
+        :rtype: int
+        """
         return self._MaxMediaFileDuration
 
     @MaxMediaFileDuration.setter
@@ -6009,6 +7155,10 @@ class McuRecordParams(AbstractModel):
 
     @property
     def StreamType(self):
+        """【仅当UniRecord=3时此参数有效】
+录制的音视频类型，对应录制模板“录制格式”，0:音视频，1：纯音频，2：纯视频。最终录制文件内容是录制指定类型和转推内容的交集。
+        :rtype: int
+        """
         return self._StreamType
 
     @StreamType.setter
@@ -6017,6 +7167,10 @@ class McuRecordParams(AbstractModel):
 
     @property
     def UserDefineRecordPrefix(self):
+        """录制文件名前缀，不超过64字符。只有存储为vod时生效。
+【限制长度为64字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线(_)和连词符(-)】
+        :rtype: str
+        """
         return self._UserDefineRecordPrefix
 
     @UserDefineRecordPrefix.setter
@@ -6025,6 +7179,10 @@ class McuRecordParams(AbstractModel):
 
     @property
     def McuStorageParams(self):
+        """【仅当UniRecord=3时此参数有效】
+录制文件存储参数，对应控制台“存储位置”及相关参数。目前支持云点播VOD和对象存储COS两种存储方式，只能填写一种。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuStorageParams`
+        """
         return self._McuStorageParams
 
     @McuStorageParams.setter
@@ -6070,6 +7228,9 @@ class McuSeiParams(AbstractModel):
 
     @property
     def LayoutVolume(self):
+        """音量布局SEI
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuLayoutVolume`
+        """
         return self._LayoutVolume
 
     @LayoutVolume.setter
@@ -6078,6 +7239,9 @@ class McuSeiParams(AbstractModel):
 
     @property
     def PassThrough(self):
+        """透传SEI
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuPassThrough`
+        """
         return self._PassThrough
 
     @PassThrough.setter
@@ -6119,6 +7283,9 @@ class McuStorageParams(AbstractModel):
 
     @property
     def CloudStorage(self):
+        """第三方云存储的账号信息（特别说明：若您选择存储至对象存储COS将会收取录制文件投递至COS的费用，详见云端录制收费说明，存储至VOD将不收取此项费用。）。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CloudStorage`
+        """
         return self._CloudStorage
 
     @CloudStorage.setter
@@ -6127,6 +7294,9 @@ class McuStorageParams(AbstractModel):
 
     @property
     def McuCloudVod(self):
+        """腾讯云云点播的账号信息。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuCloudVod`
+        """
         return self._McuCloudVod
 
     @McuCloudVod.setter
@@ -6184,6 +7354,9 @@ class McuTencentVod(AbstractModel):
 
     @property
     def Procedure(self):
+        """媒体后续任务处理操作，即完成媒体上传后，可自动发起任务流操作。参数值为任务流模板名，云点播支持 创建任务流模板 并为模板命名。
+        :rtype: str
+        """
         return self._Procedure
 
     @Procedure.setter
@@ -6192,6 +7365,9 @@ class McuTencentVod(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """媒体文件过期时间，为当前时间的绝对过期时间；保存一天，就填"86400"，永久保存就填"0"，默认永久保存。
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -6200,6 +7376,9 @@ class McuTencentVod(AbstractModel):
 
     @property
     def StorageRegion(self):
+        """指定上传园区，仅适用于对上传地域有特殊需求的用户。
+        :rtype: str
+        """
         return self._StorageRegion
 
     @StorageRegion.setter
@@ -6208,6 +7387,10 @@ class McuTencentVod(AbstractModel):
 
     @property
     def ClassId(self):
+        """分类ID，用于对媒体进行分类管理，可通过 创建分类 接口，创建分类，获得分类 ID。
+默认值：0，表示其他分类。
+        :rtype: int
+        """
         return self._ClassId
 
     @ClassId.setter
@@ -6216,6 +7399,9 @@ class McuTencentVod(AbstractModel):
 
     @property
     def SubAppId(self):
+        """点播 子应用 ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :rtype: int
+        """
         return self._SubAppId
 
     @SubAppId.setter
@@ -6224,6 +7410,9 @@ class McuTencentVod(AbstractModel):
 
     @property
     def SessionContext(self):
+        """任务流上下文，任务完成回调时透传。
+        :rtype: str
+        """
         return self._SessionContext
 
     @SessionContext.setter
@@ -6232,6 +7421,9 @@ class McuTencentVod(AbstractModel):
 
     @property
     def SourceContext(self):
+        """上传上下文，上传完成回调时透传。
+        :rtype: str
+        """
         return self._SourceContext
 
     @SourceContext.setter
@@ -6275,6 +7467,9 @@ class McuUserInfoParams(AbstractModel):
 
     @property
     def UserInfo(self):
+        """用户参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.MixUserInfo`
+        """
         return self._UserInfo
 
     @UserInfo.setter
@@ -6283,6 +7478,10 @@ class McuUserInfoParams(AbstractModel):
 
     @property
     def SoundLevel(self):
+        """混音的音量调整：取值范围是0到100，100为原始上行音量，不填默认为100，值越小则音量越低。
+注：该参数只在音量白名单下配置生效，其他场景配置无效。
+        :rtype: int
+        """
         return self._SoundLevel
 
     @SoundLevel.setter
@@ -6342,6 +7541,9 @@ class McuVideoParams(AbstractModel):
 
     @property
     def VideoEncode(self):
+        """输出流视频编码参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VideoEncode`
+        """
         return self._VideoEncode
 
     @VideoEncode.setter
@@ -6350,6 +7552,9 @@ class McuVideoParams(AbstractModel):
 
     @property
     def LayoutParams(self):
+        """混流布局参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuLayoutParams`
+        """
         return self._LayoutParams
 
     @LayoutParams.setter
@@ -6358,6 +7563,16 @@ class McuVideoParams(AbstractModel):
 
     @property
     def BackGroundColor(self):
+        """整个画布背景颜色，常用的颜色有：
+红色：0xcc0033。
+黄色：0xcc9900。
+绿色：0xcccc33。
+蓝色：0x99CCFF。
+黑色：0x000000。
+白色：0xFFFFFF。
+灰色：0x999999。
+        :rtype: str
+        """
         return self._BackGroundColor
 
     @BackGroundColor.setter
@@ -6366,6 +7581,10 @@ class McuVideoParams(AbstractModel):
 
     @property
     def BackgroundImageUrl(self):
+        """整个画布的背景图url，优先级高于BackGroundColor。支持png、jpg、jpeg格式。图片大小限制不超过5MB。
+注：您需要确保图片链接的可访问性，后台单次下载超时时间为10秒，最多重试3次，若最终图片下载失败，背景图将不会生效。
+        :rtype: str
+        """
         return self._BackgroundImageUrl
 
     @BackgroundImageUrl.setter
@@ -6374,6 +7593,9 @@ class McuVideoParams(AbstractModel):
 
     @property
     def WaterMarkList(self):
+        """混流布局的水印参数。
+        :rtype: list of McuWaterMarkParams
+        """
         return self._WaterMarkList
 
     @WaterMarkList.setter
@@ -6382,6 +7604,9 @@ class McuVideoParams(AbstractModel):
 
     @property
     def BackgroundRenderMode(self):
+        """背景图在输出时的显示模式：0为裁剪，1为缩放并显示黑底，2为变比例伸缩。后台默认为变比例伸缩。
+        :rtype: int
+        """
         return self._BackgroundRenderMode
 
     @BackgroundRenderMode.setter
@@ -6448,6 +7673,10 @@ class McuWaterMarkImage(AbstractModel):
 
     @property
     def WaterMarkUrl(self):
+        """水印图片URL地址，支持png、jpg、jpeg格式。图片大小限制不超过5MB。
+注：您需要确保图片链接的可访问性，后台单次下载超时时间为10秒，最多重试3次，若最终图片下载失败，水印图片将不会生效。
+        :rtype: str
+        """
         return self._WaterMarkUrl
 
     @WaterMarkUrl.setter
@@ -6456,6 +7685,9 @@ class McuWaterMarkImage(AbstractModel):
 
     @property
     def WaterMarkWidth(self):
+        """水印在输出时的宽。单位为像素值。
+        :rtype: int
+        """
         return self._WaterMarkWidth
 
     @WaterMarkWidth.setter
@@ -6464,6 +7696,9 @@ class McuWaterMarkImage(AbstractModel):
 
     @property
     def WaterMarkHeight(self):
+        """水印在输出时的高。单位为像素值。
+        :rtype: int
+        """
         return self._WaterMarkHeight
 
     @WaterMarkHeight.setter
@@ -6472,6 +7707,9 @@ class McuWaterMarkImage(AbstractModel):
 
     @property
     def LocationX(self):
+        """水印在输出时的X偏移。单位为像素值。
+        :rtype: int
+        """
         return self._LocationX
 
     @LocationX.setter
@@ -6480,6 +7718,9 @@ class McuWaterMarkImage(AbstractModel):
 
     @property
     def LocationY(self):
+        """水印在输出时的Y偏移。单位为像素值。
+        :rtype: int
+        """
         return self._LocationY
 
     @LocationY.setter
@@ -6488,6 +7729,9 @@ class McuWaterMarkImage(AbstractModel):
 
     @property
     def ZOrder(self):
+        """水印在输出时的层级，不填默认为0。
+        :rtype: int
+        """
         return self._ZOrder
 
     @ZOrder.setter
@@ -6496,6 +7740,9 @@ class McuWaterMarkImage(AbstractModel):
 
     @property
     def DynamicPosType(self):
+        """动态水印类型，默认为0。0:关闭；1:随机位置，每秒变动一次；2:边界扫描反弹，每帧变动一次。
+        :rtype: int
+        """
         return self._DynamicPosType
 
     @DynamicPosType.setter
@@ -6541,6 +7788,9 @@ class McuWaterMarkParams(AbstractModel):
 
     @property
     def WaterMarkType(self):
+        """水印类型，0为图片（默认），1为文字。
+        :rtype: int
+        """
         return self._WaterMarkType
 
     @WaterMarkType.setter
@@ -6549,6 +7799,9 @@ class McuWaterMarkParams(AbstractModel):
 
     @property
     def WaterMarkImage(self):
+        """图片水印参数。WaterMarkType为0指定。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuWaterMarkImage`
+        """
         return self._WaterMarkImage
 
     @WaterMarkImage.setter
@@ -6557,6 +7810,9 @@ class McuWaterMarkParams(AbstractModel):
 
     @property
     def WaterMarkText(self):
+        """文字水印参数。WaterMarkType为1指定。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuWaterMarkText`
+        """
         return self._WaterMarkText
 
     @WaterMarkText.setter
@@ -6626,6 +7882,9 @@ class McuWaterMarkText(AbstractModel):
 
     @property
     def Text(self):
+        """文字水印内容。
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -6634,6 +7893,9 @@ class McuWaterMarkText(AbstractModel):
 
     @property
     def WaterMarkWidth(self):
+        """水印在输出时的宽。单位为像素值。
+        :rtype: int
+        """
         return self._WaterMarkWidth
 
     @WaterMarkWidth.setter
@@ -6642,6 +7904,9 @@ class McuWaterMarkText(AbstractModel):
 
     @property
     def WaterMarkHeight(self):
+        """水印在输出时的高。单位为像素值。
+        :rtype: int
+        """
         return self._WaterMarkHeight
 
     @WaterMarkHeight.setter
@@ -6650,6 +7915,9 @@ class McuWaterMarkText(AbstractModel):
 
     @property
     def LocationX(self):
+        """水印在输出时的X偏移。单位为像素值。
+        :rtype: int
+        """
         return self._LocationX
 
     @LocationX.setter
@@ -6658,6 +7926,9 @@ class McuWaterMarkText(AbstractModel):
 
     @property
     def LocationY(self):
+        """水印在输出时的Y偏移。单位为像素值。
+        :rtype: int
+        """
         return self._LocationY
 
     @LocationY.setter
@@ -6666,6 +7937,9 @@ class McuWaterMarkText(AbstractModel):
 
     @property
     def FontSize(self):
+        """字体大小
+        :rtype: int
+        """
         return self._FontSize
 
     @FontSize.setter
@@ -6674,6 +7948,9 @@ class McuWaterMarkText(AbstractModel):
 
     @property
     def FontColor(self):
+        """字体颜色，默认为白色。常用的颜色有： 红色：0xcc0033。 黄色：0xcc9900。 绿色：0xcccc33。 蓝色：0x99CCFF。 黑色：0x000000。 白色：0xFFFFFF。 灰色：0x999999。	
+        :rtype: str
+        """
         return self._FontColor
 
     @FontColor.setter
@@ -6682,6 +7959,9 @@ class McuWaterMarkText(AbstractModel):
 
     @property
     def BackGroundColor(self):
+        """字体背景色，不配置默认为透明。常用的颜色有： 红色：0xcc0033。 黄色：0xcc9900。 绿色：0xcccc33。 蓝色：0x99CCFF。 黑色：0x000000。 白色：0xFFFFFF。 灰色：0x999999。	
+        :rtype: str
+        """
         return self._BackGroundColor
 
     @BackGroundColor.setter
@@ -6690,6 +7970,9 @@ class McuWaterMarkText(AbstractModel):
 
     @property
     def DynamicPosType(self):
+        """动态水印类型，默认为0。0:关闭；1:随机位置，每秒变动一次；2:边界扫描反弹，每帧变动一次。
+        :rtype: int
+        """
         return self._DynamicPosType
 
     @DynamicPosType.setter
@@ -6698,6 +7981,9 @@ class McuWaterMarkText(AbstractModel):
 
     @property
     def ZOrder(self):
+        """水印在输出时的层级，不填默认为0。
+        :rtype: int
+        """
         return self._ZOrder
 
     @ZOrder.setter
@@ -6706,6 +7992,9 @@ class McuWaterMarkText(AbstractModel):
 
     @property
     def Font(self):
+        """水印字体，不填默认为Tencent。支持设置以下值： Tencent （默认） SourceHanSans
+        :rtype: str
+        """
         return self._Font
 
     @Font.setter
@@ -6784,6 +8073,9 @@ class MixLayout(AbstractModel):
 
     @property
     def Top(self):
+        """画布上该画面左上角的 y 轴坐标，取值范围 [0, 1920]，不能超过画布的高。
+        :rtype: int
+        """
         return self._Top
 
     @Top.setter
@@ -6792,6 +8084,9 @@ class MixLayout(AbstractModel):
 
     @property
     def Left(self):
+        """画布上该画面左上角的 x 轴坐标，取值范围 [0, 1920]，不能超过画布的宽。
+        :rtype: int
+        """
         return self._Left
 
     @Left.setter
@@ -6800,6 +8095,9 @@ class MixLayout(AbstractModel):
 
     @property
     def Width(self):
+        """画布上该画面宽度的相对值，取值范围 [0, 1920]，与Left相加不应超过画布的宽。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -6808,6 +8106,9 @@ class MixLayout(AbstractModel):
 
     @property
     def Height(self):
+        """画布上该画面高度的相对值，取值范围 [0, 1920]，与Top相加不应超过画布的高。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -6816,6 +8117,9 @@ class MixLayout(AbstractModel):
 
     @property
     def UserId(self):
+        """字符串内容为待显示在该画面的主播对应的UserId，如果不指定，会按照主播加入房间的顺序匹配。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -6824,6 +8128,9 @@ class MixLayout(AbstractModel):
 
     @property
     def Alpha(self):
+        """画布的透明度值，取值范围[0, 255]。0表示不透明，255表示全透明。默认值为0。
+        :rtype: int
+        """
         return self._Alpha
 
     @Alpha.setter
@@ -6832,6 +8139,15 @@ class MixLayout(AbstractModel):
 
     @property
     def RenderMode(self):
+        """0 ：拉伸模式，这个模式下整个视频内容会全部显示，并填满子画面，在源视频和目的视频宽高比不一致的时候，画面不会缺少内容，但是画面可能产生形变；
+
+1 ：剪裁模式（默认），这个模式下会严格按照目的视频的宽高比对源视频剪裁之后再拉伸，并填满子画面画布，在源视频和目的视频宽高比不一致的时候，画面保持不变形，但是会被剪裁；
+
+2 ：填黑模式，这个模式下会严格保持源视频的宽高比进行等比缩放，在源视频和目的视频宽高比不一致的时候，画面的上下侧边缘或者左右侧边缘会露出子画面画布的背景；
+
+3 ：智能拉伸模式，这个模式类似剪裁模式，区别是在源视频和目的视频宽高比不一致的时候，限制了最大剪裁比例为画面的宽度或者高度的20%；
+        :rtype: int
+        """
         return self._RenderMode
 
     @RenderMode.setter
@@ -6840,6 +8156,11 @@ class MixLayout(AbstractModel):
 
     @property
     def MediaId(self):
+        """对应订阅流的主辅路标识：
+0：主流（默认）；
+1：辅流；
+        :rtype: int
+        """
         return self._MediaId
 
     @MediaId.setter
@@ -6848,6 +8169,9 @@ class MixLayout(AbstractModel):
 
     @property
     def ImageLayer(self):
+        """该画布的图层顺序, 这个值越小表示图层越靠后。默认值为0。
+        :rtype: int
+        """
         return self._ImageLayer
 
     @ImageLayer.setter
@@ -6856,6 +8180,9 @@ class MixLayout(AbstractModel):
 
     @property
     def SubBackgroundImage(self):
+        """图片的url地址， 只支持jpg, png, jpeg，大小限制不超过5M。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
+        :rtype: str
+        """
         return self._SubBackgroundImage
 
     @SubBackgroundImage.setter
@@ -6946,6 +8273,21 @@ class MixLayoutParams(AbstractModel):
 
     @property
     def MixLayoutMode(self):
+        """布局模式:
+1：悬浮布局；
+2：屏幕分享布局；
+3：九宫格布局；
+4：自定义布局；
+
+悬浮布局：默认第一个进入房间的主播（也可以指定一个主播）的视频画面会铺满整个屏幕。其他主播的视频画面从左下角开始依次按照进房顺序水平排列，显示为小画面，小画面悬浮于大画面之上。当画面数量小于等于17个时，每行4个（4 x 4排列）。当画面数量大于17个时，重新布局小画面为每行5个（5 x 5）排列。最多支持25个画面，如果用户只发送音频，仍然会占用画面位置。
+
+屏幕分享布局：指定一个主播在屏幕左侧的大画面位置（如果不指定，那么大画面位置为背景色），其他主播自上而下依次垂直排列于右侧。当画面数量少于17个的时候，右侧每列最多8人，最多占据两列。当画面数量多于17个的时候，超过17个画面的主播从左下角开始依次水平排列。最多支持25个画面，如果主播只发送音频，仍然会占用画面位置。
+
+九宫格布局：根据主播的数量自动调整每个画面的大小，每个主播的画面大小一致，最多支持25个画面。
+
+自定义布局：根据需要在MixLayoutList内定制每个主播画面的布局。
+        :rtype: int
+        """
         return self._MixLayoutMode
 
     @MixLayoutMode.setter
@@ -6954,6 +8296,9 @@ class MixLayoutParams(AbstractModel):
 
     @property
     def MixLayoutList(self):
+        """如果MixLayoutMode 选择为4自定义布局模式的话，设置此参数为每个主播所对应的布局画面的详细信息，最大不超过25个。
+        :rtype: list of MixLayout
+        """
         return self._MixLayoutList
 
     @MixLayoutList.setter
@@ -6962,6 +8307,9 @@ class MixLayoutParams(AbstractModel):
 
     @property
     def BackGroundColor(self):
+        """录制背景颜色，RGB的颜色表的16进制表示，每个颜色通过8bit长度标识，默认为黑色。比如橙色对应的RGB为 R:255 G:165 B:0, 那么对应的字符串描述为#FFA500，格式规范：‘#‘开头，后面跟固定RGB的颜色值
+        :rtype: str
+        """
         return self._BackGroundColor
 
     @BackGroundColor.setter
@@ -6970,6 +8318,9 @@ class MixLayoutParams(AbstractModel):
 
     @property
     def MaxResolutionUserId(self):
+        """在布局模式为1：悬浮布局和 2：屏幕分享布局时，设定为显示大视频画面的UserId。不填的话：悬浮布局默认是第一个进房间的主播，屏幕分享布局默认是背景色
+        :rtype: str
+        """
         return self._MaxResolutionUserId
 
     @MaxResolutionUserId.setter
@@ -6978,6 +8329,12 @@ class MixLayoutParams(AbstractModel):
 
     @property
     def MediaId(self):
+        """主辅路标识，
+0：主流（默认）；
+1：辅流（屏幕分享）；
+这个位置的MediaId代表的是对应MaxResolutionUserId的主辅路，MixLayoutList内代表的是自定义用户的主辅路。
+        :rtype: int
+        """
         return self._MediaId
 
     @MediaId.setter
@@ -6986,6 +8343,9 @@ class MixLayoutParams(AbstractModel):
 
     @property
     def BackgroundImageUrl(self):
+        """图片的url地址，只支持jpg, png, jpeg，大小限制不超过5M。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
+        :rtype: str
+        """
         return self._BackgroundImageUrl
 
     @BackgroundImageUrl.setter
@@ -6994,6 +8354,9 @@ class MixLayoutParams(AbstractModel):
 
     @property
     def PlaceHolderMode(self):
+        """设置为1时代表启用占位图功能，0时代表不启用占位图功能，默认为0。启用占位图功能时，在预设位置的用户没有上行视频时可显示对应的占位图。
+        :rtype: int
+        """
         return self._PlaceHolderMode
 
     @PlaceHolderMode.setter
@@ -7002,6 +8365,9 @@ class MixLayoutParams(AbstractModel):
 
     @property
     def BackgroundImageRenderMode(self):
+        """背景画面宽高比不一致的时候处理方案，与MixLayoufList定义的RenderMode一致。
+        :rtype: int
+        """
         return self._BackgroundImageRenderMode
 
     @BackgroundImageRenderMode.setter
@@ -7010,6 +8376,9 @@ class MixLayoutParams(AbstractModel):
 
     @property
     def DefaultSubBackgroundImage(self):
+        """子画面占位图url地址，只支持jpg, png, jpeg，大小限制不超过5M。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
+        :rtype: str
+        """
         return self._DefaultSubBackgroundImage
 
     @DefaultSubBackgroundImage.setter
@@ -7018,6 +8387,9 @@ class MixLayoutParams(AbstractModel):
 
     @property
     def WaterMarkList(self):
+        """水印布局参数， 最多支持25个。
+        :rtype: list of WaterMark
+        """
         return self._WaterMarkList
 
     @WaterMarkList.setter
@@ -7026,6 +8398,9 @@ class MixLayoutParams(AbstractModel):
 
     @property
     def RenderMode(self):
+        """模板布局下，背景画面宽高比不一致的时候处理方案。自定义布局不生效，与MixLayoufList定义的RenderMode一致。
+        :rtype: int
+        """
         return self._RenderMode
 
     @RenderMode.setter
@@ -7034,6 +8409,9 @@ class MixLayoutParams(AbstractModel):
 
     @property
     def MaxResolutionUserAlign(self):
+        """屏幕分享模板有效。设置为1时代表大画面居右，小画面居左布局。默认为0。
+        :rtype: int
+        """
         return self._MaxResolutionUserAlign
 
     @MaxResolutionUserAlign.setter
@@ -7091,6 +8469,9 @@ class MixTranscodeParams(AbstractModel):
 
     @property
     def VideoParams(self):
+        """录制视频转码参数，注意如果设置了这个参数，那么里面的字段都是必填的，没有默认值，如果不填这个参数，那么取值为默认值。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VideoParams`
+        """
         return self._VideoParams
 
     @VideoParams.setter
@@ -7099,6 +8480,9 @@ class MixTranscodeParams(AbstractModel):
 
     @property
     def AudioParams(self):
+        """录制音频转码参数，注意如果设置了这个参数，那么里面的字段都是必填的，没有默认值，如果不填这个参数，那么取值为默认值。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.AudioParams`
+        """
         return self._AudioParams
 
     @AudioParams.setter
@@ -7143,6 +8527,9 @@ class MixUserInfo(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -7151,6 +8538,9 @@ class MixUserInfo(AbstractModel):
 
     @property
     def RoomId(self):
+        """动态布局时房间信息必须和主房间信息保持一致，自定义布局时房间信息必须和MixLayoutList中对应用户的房间信息保持一致，不填时默认与主房间信息一致。
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -7159,6 +8549,9 @@ class MixUserInfo(AbstractModel):
 
     @property
     def RoomIdType(self):
+        """房间号类型，0为整型房间号，1为字符串房间号。
+        :rtype: int
+        """
         return self._RoomIdType
 
     @RoomIdType.setter
@@ -7203,6 +8596,9 @@ class ModifyCloudRecordingRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -7211,6 +8607,9 @@ class ModifyCloudRecordingRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """录制任务的唯一Id，在启动录制成功后会返回。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -7219,6 +8618,9 @@ class ModifyCloudRecordingRequest(AbstractModel):
 
     @property
     def MixLayoutParams(self):
+        """需要更新的混流的布局参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.MixLayoutParams`
+        """
         return self._MixLayoutParams
 
     @MixLayoutParams.setter
@@ -7227,6 +8629,9 @@ class ModifyCloudRecordingRequest(AbstractModel):
 
     @property
     def SubscribeStreamUserIds(self):
+        """指定订阅流白名单或者黑名单。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
+        """
         return self._SubscribeStreamUserIds
 
     @SubscribeStreamUserIds.setter
@@ -7270,6 +8675,9 @@ class ModifyCloudRecordingResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """云录制服务分配的任务 ID。任务 ID 是对一次录制生命周期过程的唯一标识，结束录制时会失去意义。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -7278,6 +8686,9 @@ class ModifyCloudRecordingResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7319,6 +8730,9 @@ class ModifyPictureRequest(AbstractModel):
 
     @property
     def PictureId(self):
+        """图片id
+        :rtype: int
+        """
         return self._PictureId
 
     @PictureId.setter
@@ -7327,6 +8741,9 @@ class ModifyPictureRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用id
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -7335,6 +8752,9 @@ class ModifyPictureRequest(AbstractModel):
 
     @property
     def Height(self):
+        """图片长度
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -7343,6 +8763,9 @@ class ModifyPictureRequest(AbstractModel):
 
     @property
     def Width(self):
+        """图片宽度
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -7351,6 +8774,9 @@ class ModifyPictureRequest(AbstractModel):
 
     @property
     def XPosition(self):
+        """显示位置x轴方向
+        :rtype: int
+        """
         return self._XPosition
 
     @XPosition.setter
@@ -7359,6 +8785,9 @@ class ModifyPictureRequest(AbstractModel):
 
     @property
     def YPosition(self):
+        """显示位置y轴方向
+        :rtype: int
+        """
         return self._YPosition
 
     @YPosition.setter
@@ -7397,6 +8826,9 @@ class ModifyPictureResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7428,6 +8860,9 @@ class OneSdkAppIdTranscodeTimeUsagesInfo(AbstractModel):
 
     @property
     def SdkAppIdTranscodeTimeUsages(self):
+        """旁路转码时长查询结果数组
+        :rtype: list of SdkAppIdTrtcMcuTranscodeTimeUsage
+        """
         return self._SdkAppIdTranscodeTimeUsages
 
     @SdkAppIdTranscodeTimeUsages.setter
@@ -7436,6 +8871,9 @@ class OneSdkAppIdTranscodeTimeUsagesInfo(AbstractModel):
 
     @property
     def TotalNum(self):
+        """查询记录数量
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -7444,6 +8882,9 @@ class OneSdkAppIdTranscodeTimeUsagesInfo(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """所查询的应用ID，可能值为:1-应用的应用ID，2-total，显示为total则表示查询的是所有应用的用量合计值。
+        :rtype: str
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -7494,6 +8935,9 @@ class OutputParams(AbstractModel):
 
     @property
     def StreamId(self):
+        """直播流 ID，由用户自定义设置，该流 ID 不能与用户旁路的流 ID 相同，限制64字节。
+        :rtype: str
+        """
         return self._StreamId
 
     @StreamId.setter
@@ -7502,6 +8946,9 @@ class OutputParams(AbstractModel):
 
     @property
     def PureAudioStream(self):
+        """取值范围[0,1]， 填0：直播流为音视频(默认); 填1：直播流为纯音频
+        :rtype: int
+        """
         return self._PureAudioStream
 
     @PureAudioStream.setter
@@ -7510,6 +8957,10 @@ class OutputParams(AbstractModel):
 
     @property
     def RecordId(self):
+        """自定义录制文件名称前缀。请先在实时音视频控制台开通录制功能，https://cloud.tencent.com/document/product/647/50768。
+【注意】该方式仅对旧版云端录制功能的应用生效，新版云端录制功能的应用请用接口CreateCloudRecording发起录制。新、旧云端录制类型判断方式请见：https://cloud.tencent.com/document/product/647/50768#record
+        :rtype: str
+        """
         return self._RecordId
 
     @RecordId.setter
@@ -7518,6 +8969,9 @@ class OutputParams(AbstractModel):
 
     @property
     def RecordAudioOnly(self):
+        """取值范围[0,1]，填0无实际含义; 填1：指定录制文件格式为mp3。此参数不建议使用，建议在实时音视频控制台配置纯音频录制模板。
+        :rtype: int
+        """
         return self._RecordAudioOnly
 
     @RecordAudioOnly.setter
@@ -7569,6 +9023,9 @@ class PictureInfo(AbstractModel):
 
     @property
     def Height(self):
+        """图片长度
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -7577,6 +9034,9 @@ class PictureInfo(AbstractModel):
 
     @property
     def Width(self):
+        """图片宽度
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -7585,6 +9045,9 @@ class PictureInfo(AbstractModel):
 
     @property
     def XPosition(self):
+        """显示位置x轴方向
+        :rtype: int
+        """
         return self._XPosition
 
     @XPosition.setter
@@ -7593,6 +9056,9 @@ class PictureInfo(AbstractModel):
 
     @property
     def YPosition(self):
+        """显示位置y轴方向
+        :rtype: int
+        """
         return self._YPosition
 
     @YPosition.setter
@@ -7601,6 +9067,9 @@ class PictureInfo(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """应用id
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -7609,6 +9078,9 @@ class PictureInfo(AbstractModel):
 
     @property
     def PictureId(self):
+        """图片id
+        :rtype: int
+        """
         return self._PictureId
 
     @PictureId.setter
@@ -7674,6 +9146,9 @@ class PresetLayoutConfig(AbstractModel):
 
     @property
     def UserId(self):
+        """指定显示在该画面上的用户ID。如果不指定用户ID，会按照用户加入房间的顺序自动匹配PresetLayoutConfig中的画面设置。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -7682,6 +9157,9 @@ class PresetLayoutConfig(AbstractModel):
 
     @property
     def StreamType(self):
+        """当该画面指定用户时，代表用户的流类型。0为摄像头，1为屏幕分享。小画面为web用户时此值填0。
+        :rtype: int
+        """
         return self._StreamType
 
     @StreamType.setter
@@ -7690,6 +9168,9 @@ class PresetLayoutConfig(AbstractModel):
 
     @property
     def ImageWidth(self):
+        """该画面在输出时的宽度，单位为像素值，不填默认为0。
+        :rtype: int
+        """
         return self._ImageWidth
 
     @ImageWidth.setter
@@ -7698,6 +9179,9 @@ class PresetLayoutConfig(AbstractModel):
 
     @property
     def ImageHeight(self):
+        """该画面在输出时的高度，单位为像素值，不填默认为0。
+        :rtype: int
+        """
         return self._ImageHeight
 
     @ImageHeight.setter
@@ -7706,6 +9190,9 @@ class PresetLayoutConfig(AbstractModel):
 
     @property
     def LocationX(self):
+        """该画面在输出时的X偏移，单位为像素值，LocationX与ImageWidth之和不能超过混流输出的总宽度，不填默认为0。
+        :rtype: int
+        """
         return self._LocationX
 
     @LocationX.setter
@@ -7714,6 +9201,9 @@ class PresetLayoutConfig(AbstractModel):
 
     @property
     def LocationY(self):
+        """该画面在输出时的Y偏移，单位为像素值，LocationY与ImageHeight之和不能超过混流输出的总高度，不填默认为0。
+        :rtype: int
+        """
         return self._LocationY
 
     @LocationY.setter
@@ -7722,6 +9212,9 @@ class PresetLayoutConfig(AbstractModel):
 
     @property
     def ZOrder(self):
+        """该画面在输出时的层级，不填默认为0。
+        :rtype: int
+        """
         return self._ZOrder
 
     @ZOrder.setter
@@ -7730,6 +9223,9 @@ class PresetLayoutConfig(AbstractModel):
 
     @property
     def RenderMode(self):
+        """该画面在输出时的显示模式：0为裁剪，1为缩放，2为缩放并显示黑底。不填默认为0。
+        :rtype: int
+        """
         return self._RenderMode
 
     @RenderMode.setter
@@ -7738,6 +9234,9 @@ class PresetLayoutConfig(AbstractModel):
 
     @property
     def MixInputType(self):
+        """该当前位置用户混入的流类型：0为混入音视频，1为只混入视频，2为只混入音频。默认为0，建议配合指定用户ID使用。
+        :rtype: int
+        """
         return self._MixInputType
 
     @MixInputType.setter
@@ -7746,6 +9245,9 @@ class PresetLayoutConfig(AbstractModel):
 
     @property
     def PlaceImageId(self):
+        """占位图ID。启用占位图功能时，在当前位置的用户没有上行视频时显示占位图。占位图大小不能超过2M，在实时音视频控制台上传并生成，https://cloud.tencent.com/document/product/647/50769
+        :rtype: int
+        """
         return self._PlaceImageId
 
     @PlaceImageId.setter
@@ -7791,6 +9293,9 @@ class PublishCdnParams(AbstractModel):
 
     @property
     def BizId(self):
+        """腾讯云直播BizId。
+        :rtype: int
+        """
         return self._BizId
 
     @BizId.setter
@@ -7799,6 +9304,9 @@ class PublishCdnParams(AbstractModel):
 
     @property
     def PublishCdnUrls(self):
+        """第三方CDN转推的目的地址，同时只支持转推一个第三方CDN地址。
+        :rtype: list of str
+        """
         return self._PublishCdnUrls
 
     @PublishCdnUrls.setter
@@ -7843,6 +9351,9 @@ class QualityData(AbstractModel):
 
     @property
     def Content(self):
+        """数据内容
+        :rtype: list of TimeValue
+        """
         return self._Content
 
     @Content.setter
@@ -7851,6 +9362,9 @@ class QualityData(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -7859,6 +9373,10 @@ class QualityData(AbstractModel):
 
     @property
     def PeerId(self):
+        """对端Id,为空时表示上行数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PeerId
 
     @PeerId.setter
@@ -7867,6 +9385,9 @@ class QualityData(AbstractModel):
 
     @property
     def DataType(self):
+        """数据类型
+        :rtype: str
+        """
         return self._DataType
 
     @DataType.setter
@@ -7947,6 +9468,38 @@ class RecognizeConfig(AbstractModel):
 
     @property
     def Language(self):
+        """语音转文字支持识别的语言，默认是"zh" 中文
+目前全量支持的语言如下，等号左面是语言英文名，右面是Language字段需要填写的值，该值遵循[ISO639](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes)：
+可通过购买「语音转文本时长包」解锁或领取包月套餐体验版解锁此功能。
+
+语音转文本支持语言类型如下：
+- Chinese = "zh" # 中文
+- Chinese_TW = "zh-TW" # 中国台湾
+- English = "en" # 英语
+- Chinese_YUE = "zh-yue" # 中国粤语
+- Chinese_DIALECT = "zh-dialect" # 中国方言
+- English = "en" # 英语
+- Vietnamese = "vi" # 越南语
+- Japanese = "ja" # 日语
+- Korean = "ko" # 韩语
+- Indonesia = "id" # 印度尼西亚语
+- Thai = "th" # 泰语
+- Portuguese = "pt" # 葡萄牙语
+- Turkish = "tr" # 土耳其语
+- Arabic = "ar" # 阿拉伯语
+- Spanish = "es" # 西班牙语
+- Hindi = "hi" # 印地语
+- French = "fr" # 法语
+- Malay = "ms" # 马来语
+- Filipino = "fil" # 菲律宾语
+- German = "de" # 德语
+- Italian = "it" # 意大利语
+- Russian = "ru" # 俄语
+
+注意：
+如果缺少满足您需求的语言，请联系我们技术人员。
+        :rtype: str
+        """
         return self._Language
 
     @Language.setter
@@ -7955,6 +9508,10 @@ class RecognizeConfig(AbstractModel):
 
     @property
     def AlternativeLanguage(self):
+        """发起模糊识别额外可能替代语言类型,最多填写3种语言类型。
+注：Language指定为"zh-dialect" # 中国方言 时，不支持模糊识别，该字段无效
+        :rtype: list of str
+        """
         return self._AlternativeLanguage
 
     @AlternativeLanguage.setter
@@ -7965,6 +9522,9 @@ class RecognizeConfig(AbstractModel):
     def Model(self):
         warnings.warn("parameter `Model` is deprecated", DeprecationWarning) 
 
+        """目前已不支持
+        :rtype: str
+        """
         return self._Model
 
     @Model.setter
@@ -7977,6 +9537,9 @@ class RecognizeConfig(AbstractModel):
     def TranslationLanguage(self):
         warnings.warn("parameter `TranslationLanguage` is deprecated", DeprecationWarning) 
 
+        """目前已不支持
+        :rtype: str
+        """
         return self._TranslationLanguage
 
     @TranslationLanguage.setter
@@ -8047,6 +9610,11 @@ Hls 格式录制此参数不生效。
 
     @property
     def RecordMode(self):
+        """录制模式：
+1：单流录制，分别录制房间的订阅UserId的音频和视频，将录制文件上传至云存储；
+2：合流录制，将房间内订阅UserId的音视频混录成一个音视频文件，将录制文件上传至云存储；
+        :rtype: int
+        """
         return self._RecordMode
 
     @RecordMode.setter
@@ -8055,6 +9623,9 @@ Hls 格式录制此参数不生效。
 
     @property
     def MaxIdleTime(self):
+        """房间内持续没有用户（主播）上行推流的状态超过MaxIdleTime的时长，自动停止录制，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。
+        :rtype: int
+        """
         return self._MaxIdleTime
 
     @MaxIdleTime.setter
@@ -8063,6 +9634,12 @@ Hls 格式录制此参数不生效。
 
     @property
     def StreamType(self):
+        """录制的媒体流类型：
+0：录制音频+视频流（默认）;
+1：仅录制音频流；
+2：仅录制视频流，
+        :rtype: int
+        """
         return self._StreamType
 
     @StreamType.setter
@@ -8071,6 +9648,9 @@ Hls 格式录制此参数不生效。
 
     @property
     def SubscribeStreamUserIds(self):
+        """指定订阅流白名单或者黑名单。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
+        """
         return self._SubscribeStreamUserIds
 
     @SubscribeStreamUserIds.setter
@@ -8079,6 +9659,11 @@ Hls 格式录制此参数不生效。
 
     @property
     def OutputFormat(self):
+        """输出文件的格式（存储至COS等第三方存储时有效）。0：(默认)输出文件为hls格式。1：输出文件格式为hls+mp4。2：输出文件格式为hls+aac 。3：输出文件格式为mp4。4：输出文件格式为aac。
+
+存储到云点播VOD时此参数无效，存储到VOD时请通过TencentVod（https://cloud.tencent.com/document/api/647/44055#TencentVod）内的MediaType设置。
+        :rtype: int
+        """
         return self._OutputFormat
 
     @OutputFormat.setter
@@ -8087,6 +9672,9 @@ Hls 格式录制此参数不生效。
 
     @property
     def AvMerge(self):
+        """单流录制模式下，用户的音视频是否合并，0：单流音视频不合并（默认）。1：单流音视频合并成一个ts。合流录制此参数无需设置，默认音视频合并。
+        :rtype: int
+        """
         return self._AvMerge
 
     @AvMerge.setter
@@ -8095,6 +9683,10 @@ Hls 格式录制此参数不生效。
 
     @property
     def MaxMediaFileDuration(self):
+        """如果是aac或者mp4文件格式，超过长度限制后，系统会自动拆分视频文件。单位：分钟。默认为1440min（24h），取值范围为1-1440。【单文件限制最大为2G，满足文件大小 >2G 或录制时长度 > 24h任意一个条件，文件都会自动切分】
+Hls 格式录制此参数不生效。
+        :rtype: int
+        """
         return self._MaxMediaFileDuration
 
     @MaxMediaFileDuration.setter
@@ -8103,6 +9695,9 @@ Hls 格式录制此参数不生效。
 
     @property
     def MediaId(self):
+        """指定录制主辅流，0：主流+辅流（默认）；1:主流；2:辅流。
+        :rtype: int
+        """
         return self._MediaId
 
     @MediaId.setter
@@ -8111,6 +9706,9 @@ Hls 格式录制此参数不生效。
 
     @property
     def FillType(self):
+        """上行视频停止时，录制的补帧类型，0：补最后一帧 1：补黑帧
+        :rtype: int
+        """
         return self._FillType
 
     @FillType.setter
@@ -8166,6 +9764,9 @@ class RecordUsage(AbstractModel):
 
     @property
     def TimeKey(self):
+        """本组数据对应的时间点，格式如:2020-09-07或2020-09-07 00:05:05。
+        :rtype: str
+        """
         return self._TimeKey
 
     @TimeKey.setter
@@ -8174,6 +9775,9 @@ class RecordUsage(AbstractModel):
 
     @property
     def Class1VideoTime(self):
+        """视频时长-标清SD，单位：秒。
+        :rtype: int
+        """
         return self._Class1VideoTime
 
     @Class1VideoTime.setter
@@ -8182,6 +9786,9 @@ class RecordUsage(AbstractModel):
 
     @property
     def Class2VideoTime(self):
+        """视频时长-高清HD，单位：秒。
+        :rtype: int
+        """
         return self._Class2VideoTime
 
     @Class2VideoTime.setter
@@ -8190,6 +9797,9 @@ class RecordUsage(AbstractModel):
 
     @property
     def Class3VideoTime(self):
+        """视频时长-超清HD，单位：秒。
+        :rtype: int
+        """
         return self._Class3VideoTime
 
     @Class3VideoTime.setter
@@ -8198,6 +9808,9 @@ class RecordUsage(AbstractModel):
 
     @property
     def AudioTime(self):
+        """语音时长，单位：秒。
+        :rtype: int
+        """
         return self._AudioTime
 
     @AudioTime.setter
@@ -8241,6 +9854,9 @@ class RemoveUserByStrRoomIdRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的SDKAppId。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -8249,6 +9865,9 @@ class RemoveUserByStrRoomIdRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间号。
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -8257,6 +9876,9 @@ class RemoveUserByStrRoomIdRequest(AbstractModel):
 
     @property
     def UserIds(self):
+        """要移出的用户列表，最多10个。
+        :rtype: list of str
+        """
         return self._UserIds
 
     @UserIds.setter
@@ -8292,6 +9914,9 @@ class RemoveUserByStrRoomIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8323,6 +9948,9 @@ class RemoveUserRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的SDKAppId。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -8331,6 +9959,9 @@ class RemoveUserRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间号。
+        :rtype: int
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -8339,6 +9970,9 @@ class RemoveUserRequest(AbstractModel):
 
     @property
     def UserIds(self):
+        """要移出的用户列表，最多10个。
+        :rtype: list of str
+        """
         return self._UserIds
 
     @UserIds.setter
@@ -8374,6 +10008,9 @@ class RemoveUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8414,6 +10051,9 @@ class RoomState(AbstractModel):
 
     @property
     def CommId(self):
+        """通话ID（唯一标识一次通话）
+        :rtype: str
+        """
         return self._CommId
 
     @CommId.setter
@@ -8422,6 +10062,9 @@ class RoomState(AbstractModel):
 
     @property
     def RoomString(self):
+        """房间号
+        :rtype: str
+        """
         return self._RoomString
 
     @RoomString.setter
@@ -8430,6 +10073,9 @@ class RoomState(AbstractModel):
 
     @property
     def CreateTime(self):
+        """房间创建时间
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8438,6 +10084,9 @@ class RoomState(AbstractModel):
 
     @property
     def DestroyTime(self):
+        """房间销毁时间
+        :rtype: int
+        """
         return self._DestroyTime
 
     @DestroyTime.setter
@@ -8446,6 +10095,9 @@ class RoomState(AbstractModel):
 
     @property
     def IsFinished(self):
+        """房间是否已经结束
+        :rtype: bool
+        """
         return self._IsFinished
 
     @IsFinished.setter
@@ -8454,6 +10106,9 @@ class RoomState(AbstractModel):
 
     @property
     def UserId(self):
+        """房间创建者Id
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -8493,6 +10148,10 @@ class RowValues(AbstractModel):
 
     @property
     def RowValue(self):
+        """数据值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._RowValue
 
     @RowValue.setter
@@ -8561,6 +10220,36 @@ class STTConfig(AbstractModel):
 
     @property
     def Language(self):
+        """语音识别支持的语言，默认是"zh" 中文
+目前全量支持的语言如下，等号左面是语言英文名，右面是Language字段需要填写的值，该值遵循[ISO639](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes)：
+1.     Chinese = "zh" # 中文
+2.     Chinese_TW = "zh-TW" # 中国台湾
+3.     Chinese_DIALECT = "zh-dialect" # 中国方言
+4.     English = "en" # 英语
+5.     Vietnamese = "vi" # 越南语
+6.     Japanese = "ja" # 日语
+7.     Korean = "ko" # 韩语
+8.     Indonesia = "id" # 印度尼西亚语
+9.     Thai = "th" # 泰语
+10.     Portuguese = "pt" # 葡萄牙语
+11.     Turkish = "tr" # 土耳其语
+12.     Arabic = "ar" # 阿拉伯语
+13.     Spanish = "es" # 西班牙语
+14.     Hindi = "hi" # 印地语
+15.     French = "fr" # 法语
+16.     Malay = "ms" # 马来语
+17.     Filipino = "fil" # 菲律宾语
+18.     German = "de" # 德语
+19.     Italian = "it" # 意大利语
+20.     Russian = "ru" # 俄语
+21.     Swedish = "sv" # 瑞典语
+22.     Danish = "da" # 丹麦语
+23.     Norwegian = "no" # 挪威语
+
+注意：
+如果缺少满足您需求的语言，请联系我们技术人员。
+        :rtype: str
+        """
         return self._Language
 
     @Language.setter
@@ -8569,6 +10258,11 @@ class STTConfig(AbstractModel):
 
     @property
     def AlternativeLanguage(self):
+        """发起模糊识别额外可能替代语言类型,最多填写3种语言类型, 
+注：Language指定为"zh-dialect" # 中国方言 时，不支持模糊识别，该字段无效
+
+        :rtype: list of str
+        """
         return self._AlternativeLanguage
 
     @AlternativeLanguage.setter
@@ -8577,6 +10271,9 @@ class STTConfig(AbstractModel):
 
     @property
     def VadSilenceTime(self):
+        """语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
+        :rtype: int
+        """
         return self._VadSilenceTime
 
     @VadSilenceTime.setter
@@ -8624,6 +10321,9 @@ class ScaleInfomation(AbstractModel):
 
     @property
     def Time(self):
+        """每天开始的时间
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -8632,6 +10332,10 @@ class ScaleInfomation(AbstractModel):
 
     @property
     def UserNumber(self):
+        """房间人数，用户重复进入同一个房间为1次
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UserNumber
 
     @UserNumber.setter
@@ -8640,6 +10344,10 @@ class ScaleInfomation(AbstractModel):
 
     @property
     def UserCount(self):
+        """房间人次，用户每次进入房间为一次
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UserCount
 
     @UserCount.setter
@@ -8648,6 +10356,10 @@ class ScaleInfomation(AbstractModel):
 
     @property
     def RoomNumbers(self):
+        """sdkappid下一天内的房间数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RoomNumbers
 
     @RoomNumbers.setter
@@ -8687,6 +10399,9 @@ class SdkAppIdRecordUsage(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId的值。
+        :rtype: str
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -8695,6 +10410,9 @@ class SdkAppIdRecordUsage(AbstractModel):
 
     @property
     def Usages(self):
+        """统计的时间点数据。
+        :rtype: list of RecordUsage
+        """
         return self._Usages
 
     @Usages.setter
@@ -8750,6 +10468,9 @@ class SdkAppIdTrtcMcuTranscodeTimeUsage(AbstractModel):
 
     @property
     def TimeKey(self):
+        """本组数据对应的时间点，格式如：2020-09-07或2020-09-07 00:05:05。
+        :rtype: str
+        """
         return self._TimeKey
 
     @TimeKey.setter
@@ -8758,6 +10479,9 @@ class SdkAppIdTrtcMcuTranscodeTimeUsage(AbstractModel):
 
     @property
     def AudioTime(self):
+        """语音时长，单位：秒。
+        :rtype: int
+        """
         return self._AudioTime
 
     @AudioTime.setter
@@ -8766,6 +10490,9 @@ class SdkAppIdTrtcMcuTranscodeTimeUsage(AbstractModel):
 
     @property
     def VideoTimeSd(self):
+        """视频时长-标清SD，单位：秒。
+        :rtype: int
+        """
         return self._VideoTimeSd
 
     @VideoTimeSd.setter
@@ -8774,6 +10501,9 @@ class SdkAppIdTrtcMcuTranscodeTimeUsage(AbstractModel):
 
     @property
     def VideoTimeHd(self):
+        """视频时长-高清HD，单位：秒。
+        :rtype: int
+        """
         return self._VideoTimeHd
 
     @VideoTimeHd.setter
@@ -8782,6 +10512,9 @@ class SdkAppIdTrtcMcuTranscodeTimeUsage(AbstractModel):
 
     @property
     def VideoTimeFhd(self):
+        """视频时长-全高清FHD，单位：秒。
+        :rtype: int
+        """
         return self._VideoTimeFhd
 
     @VideoTimeFhd.setter
@@ -8790,6 +10523,9 @@ class SdkAppIdTrtcMcuTranscodeTimeUsage(AbstractModel):
 
     @property
     def Flux(self):
+        """带宽，单位：Mbps。
+        :rtype: float
+        """
         return self._Flux
 
     @Flux.setter
@@ -8833,6 +10569,10 @@ class SeriesInfo(AbstractModel):
 
     @property
     def Columns(self):
+        """数据列
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Columns
 
     @Columns.setter
@@ -8841,6 +10581,10 @@ class SeriesInfo(AbstractModel):
 
     @property
     def Values(self):
+        """数据值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._Values
 
     @Values.setter
@@ -8880,6 +10624,10 @@ class SeriesInfos(AbstractModel):
 
     @property
     def Columns(self):
+        """数据列
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Columns
 
     @Columns.setter
@@ -8888,6 +10636,10 @@ class SeriesInfos(AbstractModel):
 
     @property
     def Values(self):
+        """数据值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RowValues
+        """
         return self._Values
 
     @Values.setter
@@ -8933,6 +10685,9 @@ class ServerPushText(AbstractModel):
 
     @property
     def Text(self):
+        """服务端推送播报文本
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -8941,6 +10696,9 @@ class ServerPushText(AbstractModel):
 
     @property
     def Interrupt(self):
+        """是否允许该文本打断机器人说话
+        :rtype: bool
+        """
         return self._Interrupt
 
     @Interrupt.setter
@@ -8949,6 +10707,9 @@ class ServerPushText(AbstractModel):
 
     @property
     def StopAfterPlay(self):
+        """播报完文本后，是否自动关闭对话任务
+        :rtype: bool
+        """
         return self._StopAfterPlay
 
     @StopAfterPlay.setter
@@ -8984,6 +10745,9 @@ class SingleSubscribeParams(AbstractModel):
 
     @property
     def UserMediaStream(self):
+        """用户媒体流参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.UserMediaStream`
+        """
         return self._UserMediaStream
 
     @UserMediaStream.setter
@@ -9034,6 +10798,9 @@ class SmallVideoLayoutParams(AbstractModel):
 
     @property
     def UserId(self):
+        """代表小画面对应的用户ID。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -9042,6 +10809,9 @@ class SmallVideoLayoutParams(AbstractModel):
 
     @property
     def StreamType(self):
+        """代表小画面对应的流类型，0为摄像头，1为屏幕分享。小画面为web用户时此值填0。
+        :rtype: int
+        """
         return self._StreamType
 
     @StreamType.setter
@@ -9050,6 +10820,9 @@ class SmallVideoLayoutParams(AbstractModel):
 
     @property
     def ImageWidth(self):
+        """小画面在输出时的宽度，单位为像素值，不填默认为0。
+        :rtype: int
+        """
         return self._ImageWidth
 
     @ImageWidth.setter
@@ -9058,6 +10831,9 @@ class SmallVideoLayoutParams(AbstractModel):
 
     @property
     def ImageHeight(self):
+        """小画面在输出时的高度，单位为像素值，不填默认为0。
+        :rtype: int
+        """
         return self._ImageHeight
 
     @ImageHeight.setter
@@ -9066,6 +10842,9 @@ class SmallVideoLayoutParams(AbstractModel):
 
     @property
     def LocationX(self):
+        """小画面在输出时的X偏移，单位为像素值，LocationX与ImageWidth之和不能超过混流输出的总宽度，不填默认为0。
+        :rtype: int
+        """
         return self._LocationX
 
     @LocationX.setter
@@ -9074,6 +10853,9 @@ class SmallVideoLayoutParams(AbstractModel):
 
     @property
     def LocationY(self):
+        """小画面在输出时的Y偏移，单位为像素值，LocationY与ImageHeight之和不能超过混流输出的总高度，不填默认为0。
+        :rtype: int
+        """
         return self._LocationY
 
     @LocationY.setter
@@ -9136,6 +10918,9 @@ class StartAIConversationRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和开启转录任务的房间使用的SdkAppId相同。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -9144,6 +10929,9 @@ class StartAIConversationRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，表示开启对话任务的房间号。
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -9152,6 +10940,9 @@ class StartAIConversationRequest(AbstractModel):
 
     @property
     def AgentConfig(self):
+        """机器人参数
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.AgentConfig`
+        """
         return self._AgentConfig
 
     @AgentConfig.setter
@@ -9160,6 +10951,9 @@ class StartAIConversationRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """调用方传入的唯一Id，可用于客户侧防止重复发起任务以及可以通过该字段查询任务状态。
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -9168,6 +10962,9 @@ class StartAIConversationRequest(AbstractModel):
 
     @property
     def RoomIdType(self):
+        """TRTC房间号的类型，0代表数字房间号，1代表字符串房间号。不填默认是数字房间号。
+        :rtype: int
+        """
         return self._RoomIdType
 
     @RoomIdType.setter
@@ -9176,6 +10973,9 @@ class StartAIConversationRequest(AbstractModel):
 
     @property
     def STTConfig(self):
+        """语音识别配置。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.STTConfig`
+        """
         return self._STTConfig
 
     @STTConfig.setter
@@ -9184,6 +10984,11 @@ class StartAIConversationRequest(AbstractModel):
 
     @property
     def LLMConfig(self):
+        """LLM配置。需符合openai规范，为JSON字符串，示例如下：
+<pre> { <br> &emsp;  "LLMType": “大模型类型"，  // String 必填，如："openai" <br> &emsp;  "Model": "您的模型名称", // String 必填，指定使用的模型<br>    "APIKey": "您的LLM API密钥", // String 必填 <br> &emsp;  "APIUrl": "https://api.xxx.com/chat/completions", // String 必填，LLM API访问的URL<br> &emsp;  "Streaming": true // Boolean 非必填，指定是否使用流式传输<br> &emsp;} </pre>
+
+        :rtype: str
+        """
         return self._LLMConfig
 
     @LLMConfig.setter
@@ -9192,6 +10997,10 @@ class StartAIConversationRequest(AbstractModel):
 
     @property
     def TTSConfig(self):
+        """TTS配置，为JSON字符串，腾讯云TTS示例如下：
+ <pre>{ <br> &emsp; "AppId": 您的应用ID, // Integer 必填<br> &emsp; "TTSType": "TTS类型", // String TTS类型, 固定为"tencent"<br> &emsp; "SecretId": "您的密钥ID", // String 必填<br> &emsp; "SecretKey":  "您的密钥Key", // String 必填<br> &emsp; "VoiceType": 101001, // Integer  必填，音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见<a href="https://cloud.tencent.com/document/product/1073/34112">语音合成计费概述</a>。完整的音色 ID 列表请参见<a href="https://cloud.tencent.com/document/product/1073/92668#55924b56-1a73-4663-a7a1-a8dd82d6e823">语音合成音色列表</a>。<br> &emsp; "Speed": 1.25, // Integer 非必填，语速，范围：[-2，6]，分别对应不同语速： -2: 代表0.6倍 -1: 代表0.8倍 0: 代表1.0倍（默认） 1: 代表1.2倍 2: 代表1.5倍  6: 代表2.5倍  如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。 参数值与实际语速转换，可参考 <a href="https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz">语速转换</a><br> &emsp; "Volume": 5, // Integer 非必填，音量大小，范围：[0，10]，分别对应11个等级的音量，默认值为0，代表正常音量。<br> &emsp; "PrimaryLanguage": "zh-CN" // String 非必填，主要语言<br> &emsp;}</pre>
+        :rtype: str
+        """
         return self._TTSConfig
 
     @TTSConfig.setter
@@ -9239,6 +11048,9 @@ class StartAIConversationResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """用于唯一标识对话任务。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -9247,6 +11059,9 @@ class StartAIConversationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9293,6 +11108,9 @@ class StartAITranscriptionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和开启转录任务的房间使用的SdkAppId相同。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -9301,6 +11119,9 @@ class StartAITranscriptionRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，表示开启转录任务的房间号。
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -9309,6 +11130,9 @@ class StartAITranscriptionRequest(AbstractModel):
 
     @property
     def TranscriptionParams(self):
+        """转录机器人的参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TranscriptionParams`
+        """
         return self._TranscriptionParams
 
     @TranscriptionParams.setter
@@ -9317,6 +11141,14 @@ class StartAITranscriptionRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """调用方传入的唯一Id，服务端用来去重。
+注意：
+如果传入该参数，服务端优先使用该参数来去重。
+如果不传该参数，服务端的去重策略如下：
+- 如果TranscriptionMode字段是0，则一个房间只能开启一个任务
+- 如果TranscriptionMode字段是1，则一个TargetUserId只能开启一个任务
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -9325,6 +11157,9 @@ class StartAITranscriptionRequest(AbstractModel):
 
     @property
     def RoomIdType(self):
+        """TRTC房间号的类型，0代表数字房间号，1代表字符串房间号。不填默认是数字房间号。
+        :rtype: int
+        """
         return self._RoomIdType
 
     @RoomIdType.setter
@@ -9333,6 +11168,9 @@ class StartAITranscriptionRequest(AbstractModel):
 
     @property
     def RecognizeConfig(self):
+        """语音识别配置。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.RecognizeConfig`
+        """
         return self._RecognizeConfig
 
     @RecognizeConfig.setter
@@ -9378,6 +11216,9 @@ class StartAITranscriptionResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """用于唯一标识转录任务。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -9386,6 +11227,9 @@ class StartAITranscriptionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9427,6 +11271,9 @@ class StartMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的SDKAppId。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -9435,6 +11282,9 @@ class StartMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
 
     @property
     def StrRoomId(self):
+        """字符串房间号。
+        :rtype: str
+        """
         return self._StrRoomId
 
     @StrRoomId.setter
@@ -9443,6 +11293,9 @@ class StartMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
 
     @property
     def OutputParams(self):
+        """混流输出控制参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.OutputParams`
+        """
         return self._OutputParams
 
     @OutputParams.setter
@@ -9451,6 +11304,9 @@ class StartMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
 
     @property
     def EncodeParams(self):
+        """混流输出编码参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.EncodeParams`
+        """
         return self._EncodeParams
 
     @EncodeParams.setter
@@ -9459,6 +11315,9 @@ class StartMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
 
     @property
     def LayoutParams(self):
+        """混流输出布局参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.LayoutParams`
+        """
         return self._LayoutParams
 
     @LayoutParams.setter
@@ -9467,6 +11326,9 @@ class StartMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
 
     @property
     def PublishCdnParams(self):
+        """第三方CDN转推参数。如需转推至腾讯云云直播，此参数无需填写，会默认转推
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.PublishCdnParams`
+        """
         return self._PublishCdnParams
 
     @PublishCdnParams.setter
@@ -9513,6 +11375,9 @@ class StartMCUMixTranscodeByStrRoomIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9553,6 +11418,9 @@ class StartMCUMixTranscodeRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的SDKAppId。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -9561,6 +11429,9 @@ class StartMCUMixTranscodeRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间号。
+        :rtype: int
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -9569,6 +11440,9 @@ class StartMCUMixTranscodeRequest(AbstractModel):
 
     @property
     def OutputParams(self):
+        """混流输出控制参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.OutputParams`
+        """
         return self._OutputParams
 
     @OutputParams.setter
@@ -9577,6 +11451,9 @@ class StartMCUMixTranscodeRequest(AbstractModel):
 
     @property
     def EncodeParams(self):
+        """混流输出编码参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.EncodeParams`
+        """
         return self._EncodeParams
 
     @EncodeParams.setter
@@ -9585,6 +11462,9 @@ class StartMCUMixTranscodeRequest(AbstractModel):
 
     @property
     def LayoutParams(self):
+        """混流输出布局参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.LayoutParams`
+        """
         return self._LayoutParams
 
     @LayoutParams.setter
@@ -9593,6 +11473,9 @@ class StartMCUMixTranscodeRequest(AbstractModel):
 
     @property
     def PublishCdnParams(self):
+        """第三方CDN转推参数。如需转推至腾讯云云直播，此参数无需填写，会默认转推
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.PublishCdnParams`
+        """
         return self._PublishCdnParams
 
     @PublishCdnParams.setter
@@ -9639,6 +11522,9 @@ class StartMCUMixTranscodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9697,6 +11583,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转推的房间所对应的SdkAppId相同。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -9705,6 +11594,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """主房间信息RoomId，转推的TRTC房间所对应的RoomId。
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -9713,6 +11605,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def RoomIdType(self):
+        """主房间信息RoomType，必须和转推的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。
+        :rtype: int
+        """
         return self._RoomIdType
 
     @RoomIdType.setter
@@ -9721,6 +11616,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def AgentParams(self):
+        """转推服务加入TRTC房间的机器人参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.AgentParams`
+        """
         return self._AgentParams
 
     @AgentParams.setter
@@ -9729,6 +11627,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def WithTranscoding(self):
+        """是否转码，0表示无需转码，1表示需要转码。是否收取转码费是由WithTranscoding参数决定的，WithTranscoding为0，表示旁路转推，不会收取转码费用，WithTranscoding为1，表示混流转推，会收取转码费用。
+        :rtype: int
+        """
         return self._WithTranscoding
 
     @WithTranscoding.setter
@@ -9737,6 +11638,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def AudioParams(self):
+        """转推流的音频编码参数。由于音频是必转码的（不会收取转码费用），所以启动任务的时候，必须填写。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuAudioParams`
+        """
         return self._AudioParams
 
     @AudioParams.setter
@@ -9745,6 +11649,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def VideoParams(self):
+        """转推流的视频编码参数，不填表示纯音频转推。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuVideoParams`
+        """
         return self._VideoParams
 
     @VideoParams.setter
@@ -9753,6 +11660,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def SingleSubscribeParams(self):
+        """需要单流旁路转推的用户上行参数，单流旁路转推时，WithTranscoding需要设置为0。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SingleSubscribeParams`
+        """
         return self._SingleSubscribeParams
 
     @SingleSubscribeParams.setter
@@ -9761,6 +11671,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def PublishCdnParams(self):
+        """转推的CDN参数，一个任务最多支持10个推流URL。和回推房间参数必须要有一个。
+        :rtype: list of McuPublishCdnParam
+        """
         return self._PublishCdnParams
 
     @PublishCdnParams.setter
@@ -9769,6 +11682,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def SeiParams(self):
+        """混流SEI参数
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuSeiParams`
+        """
         return self._SeiParams
 
     @SeiParams.setter
@@ -9777,6 +11693,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def FeedBackRoomParams(self):
+        """回推房间信息，一个任务最多支持回推10个房间，和转推CDN参数必须要有一个。注：回推房间需使用10.4及以上SDK版本，如您有需求，请联系腾讯云技术支持。
+        :rtype: list of McuFeedBackRoomParams
+        """
         return self._FeedBackRoomParams
 
     @FeedBackRoomParams.setter
@@ -9785,6 +11704,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def RecordParams(self):
+        """转推录制参数，[参考文档](https://cloud.tencent.com/document/product/647/111748)。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuRecordParams`
+        """
         return self._RecordParams
 
     @RecordParams.setter
@@ -9854,6 +11776,9 @@ class StartPublishCdnStreamResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """用于唯一标识转推任务，由腾讯云服务端生成，后续更新和停止请求都需要携带TaskiD参数。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -9862,6 +11787,9 @@ class StartPublishCdnStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9933,6 +11861,9 @@ class StartStreamIngestRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和TRTC的房间所对应的SdkAppId相同。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -9941,6 +11872,9 @@ class StartStreamIngestRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，录制的TRTC房间所对应的RoomId。
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -9949,6 +11883,12 @@ class StartStreamIngestRequest(AbstractModel):
 
     @property
     def RoomIdType(self):
+        """TRTC房间号的类型。
+【*注意】必须和录制的房间所对应的RoomId类型相同:
+0: 字符串类型的RoomId
+1: 32位整型的RoomId（默认）
+        :rtype: int
+        """
         return self._RoomIdType
 
     @RoomIdType.setter
@@ -9957,6 +11897,9 @@ class StartStreamIngestRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """输入在线媒体流机器人的UserId，用于进房发起拉流转推任务。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -9965,6 +11908,9 @@ class StartStreamIngestRequest(AbstractModel):
 
     @property
     def UserSig(self):
+        """输入在线媒体流机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+        :rtype: str
+        """
         return self._UserSig
 
     @UserSig.setter
@@ -9973,6 +11919,9 @@ class StartStreamIngestRequest(AbstractModel):
 
     @property
     def StreamUrl(self):
+        """源流URL【必填】。如果是视频流，分辨率请保持不变。
+        :rtype: str
+        """
         return self._StreamUrl
 
     @StreamUrl.setter
@@ -9981,6 +11930,9 @@ class StartStreamIngestRequest(AbstractModel):
 
     @property
     def PrivateMapKey(self):
+        """TRTC房间权限加密串，只有在TRTC控制台启用了高级权限控制的时候需要携带，在TRTC控制台如果开启高级权限控制后，TRTC 的后台服务系统会校验一个叫做 [PrivateMapKey] 的“权限票据”，权限票据中包含了一个加密后的 RoomId 和一个加密后的“权限位列表”。由于 PrivateMapKey 中包含 RoomId，所以只提供了 UserSig 没有提供 PrivateMapKey 时，并不能进入指定的房间。
+        :rtype: str
+        """
         return self._PrivateMapKey
 
     @PrivateMapKey.setter
@@ -9991,6 +11943,9 @@ class StartStreamIngestRequest(AbstractModel):
     def VideoEncodeParams(self):
         warnings.warn("parameter `VideoEncodeParams` is deprecated", DeprecationWarning) 
 
+        """【本字段已废弃】视频编码参数。可选，如果不填，保持原始流的参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VideoEncodeParams`
+        """
         return self._VideoEncodeParams
 
     @VideoEncodeParams.setter
@@ -10003,6 +11958,9 @@ class StartStreamIngestRequest(AbstractModel):
     def AudioEncodeParams(self):
         warnings.warn("parameter `AudioEncodeParams` is deprecated", DeprecationWarning) 
 
+        """【本字段已废弃】音频编码参数。可选，如果不填，保持原始流的参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.AudioEncodeParams`
+        """
         return self._AudioEncodeParams
 
     @AudioEncodeParams.setter
@@ -10015,6 +11973,9 @@ class StartStreamIngestRequest(AbstractModel):
     def SourceUrl(self):
         warnings.warn("parameter `SourceUrl` is deprecated", DeprecationWarning) 
 
+        """【本字段已废弃，请使用 StreamUrl 字段】源流URL，支持一个地址。
+        :rtype: list of str
+        """
         return self._SourceUrl
 
     @SourceUrl.setter
@@ -10025,6 +11986,9 @@ class StartStreamIngestRequest(AbstractModel):
 
     @property
     def SeekSecond(self):
+        """指定视频从某个秒时间戳播放
+        :rtype: int
+        """
         return self._SeekSecond
 
     @SeekSecond.setter
@@ -10033,6 +11997,9 @@ class StartStreamIngestRequest(AbstractModel):
 
     @property
     def AutoPush(self):
+        """开启自动旁路推流，请确认控制台已经开启该功能。
+        :rtype: bool
+        """
         return self._AutoPush
 
     @AutoPush.setter
@@ -10041,6 +12008,12 @@ class StartStreamIngestRequest(AbstractModel):
 
     @property
     def RepeatNum(self):
+        """循环播放次数, 取值范围[-1, 1000],  默认1次。
+ - 0 无效值
+ - -1 循环播放, 需要主动调用停止接口或设置MaxDuration
+
+        :rtype: int
+        """
         return self._RepeatNum
 
     @RepeatNum.setter
@@ -10049,6 +12022,9 @@ class StartStreamIngestRequest(AbstractModel):
 
     @property
     def MaxDuration(self):
+        """循环播放最大时长,仅支持RepeatNum设置-1时生效，取值范围[1, 10080]，单位分钟。
+        :rtype: int
+        """
         return self._MaxDuration
 
     @MaxDuration.setter
@@ -10102,6 +12078,9 @@ class StartStreamIngestResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """输入在线媒体流的任务 ID。任务 ID 是对一次输入在线媒体流生命周期过程的唯一标识，结束任务时会失去意义。任务 ID 需要业务保存下来，作为下次针对这个任务操作的参数。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -10110,6 +12089,9 @@ class StartStreamIngestResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10160,6 +12142,10 @@ class StartWebRecordRequest(AbstractModel):
 
     @property
     def RecordUrl(self):
+        """需要录制的网页URL
+
+        :rtype: str
+        """
         return self._RecordUrl
 
     @RecordUrl.setter
@@ -10168,6 +12154,10 @@ class StartWebRecordRequest(AbstractModel):
 
     @property
     def MaxDurationLimit(self):
+        """录制最大时长限制， 单位 s, 合法取值范围[1800, 36000], 默认 36000s(10 小时)
+
+        :rtype: int
+        """
         return self._MaxDurationLimit
 
     @MaxDurationLimit.setter
@@ -10176,6 +12166,9 @@ class StartWebRecordRequest(AbstractModel):
 
     @property
     def StorageParams(self):
+        """【必填】云存储相关的参数，目前支持腾讯云对象存储以及腾讯云云点播VOD，不支持第三方云存储；输出文件的存储格式仅支持hls或mp4
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.StorageParams`
+        """
         return self._StorageParams
 
     @StorageParams.setter
@@ -10184,6 +12177,9 @@ class StartWebRecordRequest(AbstractModel):
 
     @property
     def WebRecordVideoParams(self):
+        """页面录制视频参数
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.WebRecordVideoParams`
+        """
         return self._WebRecordVideoParams
 
     @WebRecordVideoParams.setter
@@ -10192,6 +12188,9 @@ class StartWebRecordRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """【必填】TRTC的SdkAppId
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -10200,6 +12199,10 @@ class StartWebRecordRequest(AbstractModel):
 
     @property
     def RecordId(self):
+        """当对重复任务敏感时，请关注此值： 为了避免任务在短时间内重复发起，导致任务重复
+传入录制RecordId来标识此次任务， 小于32字节，若携带RecordId发起两次以上的开始录制请求，任务只会启动一个，第二个报错FailedOperation.TaskExist。注意StartWebRecord调用失败时而非FailedOperation.TaskExist错误，请更换RecordId重新发起。
+        :rtype: str
+        """
         return self._RecordId
 
     @RecordId.setter
@@ -10208,6 +12211,9 @@ class StartWebRecordRequest(AbstractModel):
 
     @property
     def PublishCdnParams(self):
+        """若您想要推流到CDN，可以使用PublishCdnParams.N参数设置，支持最多同时推流到10个CDN地址。若转推地址是腾讯云CDN时，请将IsTencentCdn明确设置为1
+        :rtype: list of McuPublishCdnParam
+        """
         return self._PublishCdnParams
 
     @PublishCdnParams.setter
@@ -10216,6 +12222,9 @@ class StartWebRecordRequest(AbstractModel):
 
     @property
     def ReadyTimeout(self):
+        """录制页面资源加载的超时时间，单位：秒。默认值为 0 秒，该值需大于等于 0秒，且小于等于 60秒。录制页面未启用页面加载超时检测时，请勿设置此参数。
+        :rtype: int
+        """
         return self._ReadyTimeout
 
     @ReadyTimeout.setter
@@ -10268,6 +12277,9 @@ class StartWebRecordResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """录制任务的唯一Id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -10276,6 +12288,9 @@ class StartWebRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10302,6 +12317,9 @@ class StopAIConversationRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """唯一标识任务。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -10335,6 +12353,9 @@ class StopAIConversationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10360,6 +12381,9 @@ class StopAITranscriptionRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """唯一标识转录任务。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -10393,6 +12417,9 @@ class StopAITranscriptionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10421,6 +12448,9 @@ class StopMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的SDKAppId。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -10429,6 +12459,9 @@ class StopMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
 
     @property
     def StrRoomId(self):
+        """字符串房间号。
+        :rtype: str
+        """
         return self._StrRoomId
 
     @StrRoomId.setter
@@ -10463,6 +12496,9 @@ class StopMCUMixTranscodeByStrRoomIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10491,6 +12527,9 @@ class StopMCUMixTranscodeRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的SDKAppId。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -10499,6 +12538,9 @@ class StopMCUMixTranscodeRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """房间号。
+        :rtype: int
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -10533,6 +12575,9 @@ class StopMCUMixTranscodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10566,6 +12611,9 @@ class StopPublishCdnStreamRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转推的房间所对应的SdkAppId相同。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -10574,6 +12622,9 @@ class StopPublishCdnStreamRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """唯一标识转推任务。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -10582,6 +12633,11 @@ class StopPublishCdnStreamRequest(AbstractModel):
 
     @property
     def RecordKey(self):
+        """录制任务 key，标识一个录制任务，对应转推任务发起时指定 RecordKey；
+如果填写该参数，表示调用者希望立即结束该录制任务。当RecordKey 指定的录制任务正在录制当前转推任务时，录制任务立即结束，否则录制任务不受影响。
+如果没有填写该参数，但是转推任务发起时填写了 RecordKey，则表示在续录等待时间结束后才结束录制任务，续录等待期间可以使用相同的 RecordKey 发起新的转推任务，和当前转推任务录制到同一文件。
+        :rtype: str
+        """
         return self._RecordKey
 
     @RecordKey.setter
@@ -10620,6 +12676,9 @@ class StopPublishCdnStreamResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """转推任务唯一的String Id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -10628,6 +12687,9 @@ class StopPublishCdnStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10657,6 +12719,9 @@ class StopStreamIngestRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的SDKAppId，和任务的房间所对应的SDKAppId相同。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -10665,6 +12730,9 @@ class StopStreamIngestRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务的唯一Id，在启动任务成功后会返回。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -10699,6 +12767,9 @@ class StopStreamIngestResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10724,6 +12795,9 @@ class StopWebRecordRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """需要停止的任务Id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -10757,6 +12831,9 @@ class StopWebRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10796,6 +12873,10 @@ audio_video：音视频录制文件
 
     @property
     def UserId(self):
+        """录制文件对应的UserId，如果是混流的话的这里返回的是空串。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -10804,6 +12885,9 @@ audio_video：音视频录制文件
 
     @property
     def FileName(self):
+        """录制索引文件名。
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -10812,6 +12896,13 @@ audio_video：音视频录制文件
 
     @property
     def TrackType(self):
+        """录制文件流信息。
+video：视频录制文件
+audio：音频录制文件
+audio_video：音视频录制文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TrackType
 
     @TrackType.setter
@@ -10820,6 +12911,9 @@ audio_video：音视频录制文件
 
     @property
     def BeginTimeStamp(self):
+        """录制文件开始Unix时间戳。
+        :rtype: int
+        """
         return self._BeginTimeStamp
 
     @BeginTimeStamp.setter
@@ -10859,6 +12953,9 @@ class StorageParams(AbstractModel):
 
     @property
     def CloudStorage(self):
+        """腾讯云对象存储COS以及第三方云存储的账号信息
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CloudStorage`
+        """
         return self._CloudStorage
 
     @CloudStorage.setter
@@ -10867,6 +12964,9 @@ class StorageParams(AbstractModel):
 
     @property
     def CloudVod(self):
+        """腾讯云云点播Vod的存储信息
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CloudVod`
+        """
         return self._CloudVod
 
     @CloudVod.setter
@@ -10914,6 +13014,9 @@ class SubscribeStreamUserIds(AbstractModel):
 
     @property
     def SubscribeAudioUserIds(self):
+        """订阅音频流白名单，指定订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表订阅UserId 1，2，3的音频流；["1.*$"], 代表订阅UserId前缀为1的音频流。默认不填订阅房间内所有的音频流，订阅列表用户数不超过32。
+        :rtype: list of str
+        """
         return self._SubscribeAudioUserIds
 
     @SubscribeAudioUserIds.setter
@@ -10922,6 +13025,9 @@ class SubscribeStreamUserIds(AbstractModel):
 
     @property
     def UnSubscribeAudioUserIds(self):
+        """订阅音频流黑名单，指定不订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表不订阅UserId 1，2，3的音频流；["1.*$"], 代表不订阅UserId前缀为1的音频流。默认不填订阅房间内所有音频流，订阅列表用户数不超过32。
+        :rtype: list of str
+        """
         return self._UnSubscribeAudioUserIds
 
     @UnSubscribeAudioUserIds.setter
@@ -10930,6 +13036,9 @@ class SubscribeStreamUserIds(AbstractModel):
 
     @property
     def SubscribeVideoUserIds(self):
+        """订阅视频流白名单，指定订阅哪几个UserId的视频流，例如["1", "2", "3"], 代表订阅UserId  1，2，3的视频流；["1.*$"], 代表订阅UserId前缀为1的视频流。默认不填订阅房间内所有视频流，订阅列表用户数不超过32。
+        :rtype: list of str
+        """
         return self._SubscribeVideoUserIds
 
     @SubscribeVideoUserIds.setter
@@ -10938,6 +13047,9 @@ class SubscribeStreamUserIds(AbstractModel):
 
     @property
     def UnSubscribeVideoUserIds(self):
+        """订阅视频流黑名单，指定不订阅哪几个UserId的视频流，例如["1", "2", "3"], 代表不订阅UserId  1，2，3的视频流；["1.*$"], 代表不订阅UserId前缀为1的视频流。默认不填订阅房间内所有视频流，订阅列表用户数不超过32。
+        :rtype: list of str
+        """
         return self._UnSubscribeVideoUserIds
 
     @UnSubscribeVideoUserIds.setter
@@ -10983,6 +13095,10 @@ class TRTCDataResp(AbstractModel):
 
     @property
     def StatementID(self):
+        """StatementID值，监控仪表盘下固定为0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._StatementID
 
     @StatementID.setter
@@ -10991,6 +13107,10 @@ class TRTCDataResp(AbstractModel):
 
     @property
     def Series(self):
+        """查询结果数据，以Columns-Values形式返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SeriesInfo
+        """
         return self._Series
 
     @Series.setter
@@ -10999,6 +13119,10 @@ class TRTCDataResp(AbstractModel):
 
     @property
     def Total(self):
+        """Total值，监控仪表盘功能下固定为1。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -11048,6 +13172,10 @@ class TRTCDataResult(AbstractModel):
 
     @property
     def StatementID(self):
+        """StatementID值，监控仪表盘下固定为0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._StatementID
 
     @StatementID.setter
@@ -11056,6 +13184,10 @@ class TRTCDataResult(AbstractModel):
 
     @property
     def Series(self):
+        """查询结果数据，以Columns-Values形式返回。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SeriesInfos
+        """
         return self._Series
 
     @Series.setter
@@ -11064,6 +13196,10 @@ class TRTCDataResult(AbstractModel):
 
     @property
     def Total(self):
+        """Total值，监控仪表盘功能下固定为1。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -11130,6 +13266,9 @@ class TencentVod(AbstractModel):
 
     @property
     def Procedure(self):
+        """媒体后续任务处理操作，即完成媒体上传后，可自动发起任务流操作。参数值为任务流模板名，云点播支持 创建任务流模板 并为模板命名。
+        :rtype: str
+        """
         return self._Procedure
 
     @Procedure.setter
@@ -11138,6 +13277,9 @@ class TencentVod(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """媒体文件过期时间，为当前时间的绝对过期时间；保存一天，就填"86400"，永久保存就填"0"，默认永久保存。
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -11146,6 +13288,9 @@ class TencentVod(AbstractModel):
 
     @property
     def StorageRegion(self):
+        """指定上传园区，仅适用于对上传地域有特殊需求的用户。
+        :rtype: str
+        """
         return self._StorageRegion
 
     @StorageRegion.setter
@@ -11154,6 +13299,10 @@ class TencentVod(AbstractModel):
 
     @property
     def ClassId(self):
+        """分类ID，用于对媒体进行分类管理，可通过 创建分类 接口，创建分类，获得分类 ID。
+默认值：0，表示其他分类。
+        :rtype: int
+        """
         return self._ClassId
 
     @ClassId.setter
@@ -11162,6 +13311,9 @@ class TencentVod(AbstractModel):
 
     @property
     def SubAppId(self):
+        """点播 子应用 ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :rtype: int
+        """
         return self._SubAppId
 
     @SubAppId.setter
@@ -11170,6 +13322,9 @@ class TencentVod(AbstractModel):
 
     @property
     def SessionContext(self):
+        """任务流上下文，任务完成回调时透传。
+        :rtype: str
+        """
         return self._SessionContext
 
     @SessionContext.setter
@@ -11178,6 +13333,9 @@ class TencentVod(AbstractModel):
 
     @property
     def SourceContext(self):
+        """上传上下文，上传完成回调时透传。
+        :rtype: str
+        """
         return self._SourceContext
 
     @SourceContext.setter
@@ -11186,6 +13344,10 @@ class TencentVod(AbstractModel):
 
     @property
     def MediaType(self):
+        """上传到vod平台的录制文件格式类型，0：mp4(默认), 1: hls, 2:aac(StreamType=1纯音频录制时有效),
+3: hls+mp4, 4: hls+aac(StreamType=1纯音频录制时有效)。
+        :rtype: int
+        """
         return self._MediaType
 
     @MediaType.setter
@@ -11194,6 +13356,9 @@ class TencentVod(AbstractModel):
 
     @property
     def UserDefineRecordId(self):
+        """仅支持API录制上传vod，该参数表示用户可以自定义录制文件名前缀，【限制长度为64字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线和连词符】。前缀与自动生成的录制文件名之间用`__UserDefine_u_` 分开。
+        :rtype: str
+        """
         return self._UserDefineRecordId
 
     @UserDefineRecordId.setter
@@ -11238,6 +13403,9 @@ class TimeValue(AbstractModel):
 
     @property
     def Time(self):
+        """时间，unix时间戳（1590065877s)
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -11246,6 +13414,9 @@ class TimeValue(AbstractModel):
 
     @property
     def Value(self):
+        """当前时间返回参数取值，如（bigvCapFps在1590065877取值为0，则Value：0 ）
+        :rtype: float
+        """
         return self._Value
 
     @Value.setter
@@ -11302,6 +13473,9 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
 
     @property
     def UserId(self):
+        """转录机器人的UserId，用于进房发起转录任务。【注意】这个UserId不能与当前房间内的主播观众[UserId](https://cloud.tencent.com/document/product/647/46351#userid)重复。如果一个房间发起多个转录任务时，机器人的userid也不能相互重复，否则会中断前一个任务。需要保证转录机器人UserId在房间内唯一。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -11310,6 +13484,9 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
 
     @property
     def UserSig(self):
+        """转录机器人UserId对应的校验签名，即UserId和UserSig相当于转录机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+        :rtype: str
+        """
         return self._UserSig
 
     @UserSig.setter
@@ -11320,6 +13497,10 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
     def IMAdminUserId(self):
         warnings.warn("parameter `IMAdminUserId` is deprecated", DeprecationWarning) 
 
+        """IM[管理员账户](
+https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.91.98)，如果填写，后台下发消息会使用IM通道，而不是TRTC自定义消息。
+        :rtype: str
+        """
         return self._IMAdminUserId
 
     @IMAdminUserId.setter
@@ -11332,6 +13513,9 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
     def IMAdminUserSig(self):
         warnings.warn("parameter `IMAdminUserSig` is deprecated", DeprecationWarning) 
 
+        """IM管理员账户生成的签名，用于向特定群组发送消息。如果填写，后台下发消息会使用IM通道，而不是TRTC自定义消息。必须和IM管理员的UserId一起填写。
+        :rtype: str
+        """
         return self._IMAdminUserSig
 
     @IMAdminUserSig.setter
@@ -11342,6 +13526,9 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
 
     @property
     def MaxIdleTime(self):
+        """房间内推流用户全部退出后超过MaxIdleTime秒，后台自动关闭转录任务，默认值是60s。
+        :rtype: int
+        """
         return self._MaxIdleTime
 
     @MaxIdleTime.setter
@@ -11350,6 +13537,9 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
 
     @property
     def TranscriptionMode(self):
+        """1表示机器人只订阅单个人的流，0表示机器人订阅整个房间的流，如果不填默认订阅整个房间的流。
+        :rtype: int
+        """
         return self._TranscriptionMode
 
     @TranscriptionMode.setter
@@ -11358,6 +13548,9 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
 
     @property
     def TargetUserId(self):
+        """TranscriptionMode为1时必填，机器人只会拉该userid的流，忽略房间里其他用户。
+        :rtype: str
+        """
         return self._TargetUserId
 
     @TargetUserId.setter
@@ -11366,6 +13559,9 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
 
     @property
     def TargetUserIdList(self):
+        """机器人订阅的用户列表
+        :rtype: list of str
+        """
         return self._TargetUserIdList
 
     @TargetUserIdList.setter
@@ -11412,6 +13608,9 @@ class TrtcUsage(AbstractModel):
 
     @property
     def TimeKey(self):
+        """时间点，格式为YYYY-MM-DD HH:mm:ss。多天查询时，HH:mm:ss为00:00:00。
+        :rtype: str
+        """
         return self._TimeKey
 
     @TimeKey.setter
@@ -11420,6 +13619,9 @@ class TrtcUsage(AbstractModel):
 
     @property
     def TimeStampKey(self):
+        """时间点时间戳
+        :rtype: int
+        """
         return self._TimeStampKey
 
     @TimeStampKey.setter
@@ -11428,6 +13630,9 @@ class TrtcUsage(AbstractModel):
 
     @property
     def UsageValue(self):
+        """用量数组。每个数值含义与UsageKey对应。单位:分钟。
+        :rtype: list of float
+        """
         return self._UsageValue
 
     @UsageValue.setter
@@ -11478,6 +13683,9 @@ class UpdateAIConversationRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """唯一标识一个任务
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -11486,6 +13694,9 @@ class UpdateAIConversationRequest(AbstractModel):
 
     @property
     def WelcomeMessage(self):
+        """不填写则不进行更新，机器人的欢迎语
+        :rtype: str
+        """
         return self._WelcomeMessage
 
     @WelcomeMessage.setter
@@ -11494,6 +13705,9 @@ class UpdateAIConversationRequest(AbstractModel):
 
     @property
     def InterruptMode(self):
+        """不填写则不进行更新。智能打断模式，0表示服务端自动打断，1表示服务端不打断，由端上发送打断信令进行打断
+        :rtype: int
+        """
         return self._InterruptMode
 
     @InterruptMode.setter
@@ -11502,6 +13716,9 @@ class UpdateAIConversationRequest(AbstractModel):
 
     @property
     def InterruptSpeechDuration(self):
+        """不填写则不进行更新。InterruptMode为0时使用，单位为毫秒，默认为500ms。表示服务端检测到持续InterruptSpeechDuration毫秒的人声则进行打断
+        :rtype: int
+        """
         return self._InterruptSpeechDuration
 
     @InterruptSpeechDuration.setter
@@ -11510,6 +13727,9 @@ class UpdateAIConversationRequest(AbstractModel):
 
     @property
     def LLMConfig(self):
+        """不填写则不进行更新，LLM配置，详情见StartAIConversation接口
+        :rtype: str
+        """
         return self._LLMConfig
 
     @LLMConfig.setter
@@ -11518,6 +13738,9 @@ class UpdateAIConversationRequest(AbstractModel):
 
     @property
     def TTSConfig(self):
+        """不填写则不进行更新，TTS配置，详情见StartAIConversation接口
+        :rtype: str
+        """
         return self._TTSConfig
 
     @TTSConfig.setter
@@ -11556,6 +13779,9 @@ class UpdateAIConversationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11608,6 +13834,9 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转推的房间所对应的SdkAppId相同。
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -11616,6 +13845,9 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """唯一标识转推任务。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -11624,6 +13856,9 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def SequenceNumber(self):
+        """客户保证同一个任务，每次更新请求中的SequenceNumber递增，防止请求乱序。
+        :rtype: int
+        """
         return self._SequenceNumber
 
     @SequenceNumber.setter
@@ -11632,6 +13867,9 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def WithTranscoding(self):
+        """是否转码，0表示无需转码，1表示需要转码。
+        :rtype: int
+        """
         return self._WithTranscoding
 
     @WithTranscoding.setter
@@ -11640,6 +13878,9 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def AudioParams(self):
+        """更新相关参数，只支持更新参与混音的主播列表参数，不支持更新Codec、采样率、码率和声道数。不填表示不更新此参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuAudioParams`
+        """
         return self._AudioParams
 
     @AudioParams.setter
@@ -11648,6 +13889,9 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def VideoParams(self):
+        """更新视频相关参数，转码时支持更新除编码类型之外的编码参数，视频布局参数，背景图片和背景颜色参数，水印参数。不填表示不更新此参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuVideoParams`
+        """
         return self._VideoParams
 
     @VideoParams.setter
@@ -11656,6 +13900,9 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def SingleSubscribeParams(self):
+        """更新单流转推的用户上行参数，仅在非转码时有效。不填表示不更新此参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SingleSubscribeParams`
+        """
         return self._SingleSubscribeParams
 
     @SingleSubscribeParams.setter
@@ -11664,6 +13911,9 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def PublishCdnParams(self):
+        """更新转推的CDN参数。不填表示不更新此参数。
+        :rtype: list of McuPublishCdnParam
+        """
         return self._PublishCdnParams
 
     @PublishCdnParams.setter
@@ -11672,6 +13922,9 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def SeiParams(self):
+        """混流SEI参数
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuSeiParams`
+        """
         return self._SeiParams
 
     @SeiParams.setter
@@ -11680,6 +13933,9 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def FeedBackRoomParams(self):
+        """回推房间信息
+        :rtype: list of McuFeedBackRoomParams
+        """
         return self._FeedBackRoomParams
 
     @FeedBackRoomParams.setter
@@ -11743,6 +13999,9 @@ class UpdatePublishCdnStreamResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """转推任务唯一的String Id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -11751,6 +14010,9 @@ class UpdatePublishCdnStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11783,6 +14045,9 @@ class UpdateStreamIngestRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """TRTC的SDKAppId，和任务的房间所对应的SDKAppId相同
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -11791,6 +14056,9 @@ class UpdateStreamIngestRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务的唯一Id，在启动任务成功后会返回。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -11799,6 +14067,9 @@ class UpdateStreamIngestRequest(AbstractModel):
 
     @property
     def StreamUrl(self):
+        """源流URL【必填】。
+        :rtype: str
+        """
         return self._StreamUrl
 
     @StreamUrl.setter
@@ -11837,6 +14108,9 @@ class UpdateStreamIngestResponse(AbstractModel):
 
     @property
     def Status(self):
+        """任务的状态信息。InProgress：表示当前任务正在进行中。NotExist：表示当前任务不存在。示例值：InProgress
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -11845,6 +14119,9 @@ class UpdateStreamIngestResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11892,6 +14169,9 @@ class UserInformation(AbstractModel):
 
     @property
     def RoomStr(self):
+        """房间号
+        :rtype: str
+        """
         return self._RoomStr
 
     @RoomStr.setter
@@ -11900,6 +14180,9 @@ class UserInformation(AbstractModel):
 
     @property
     def UserId(self):
+        """用户Id
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -11908,6 +14191,9 @@ class UserInformation(AbstractModel):
 
     @property
     def JoinTs(self):
+        """用户进房时间
+        :rtype: int
+        """
         return self._JoinTs
 
     @JoinTs.setter
@@ -11916,6 +14202,9 @@ class UserInformation(AbstractModel):
 
     @property
     def LeaveTs(self):
+        """用户退房时间，用户没有退房则返回当前时间
+        :rtype: int
+        """
         return self._LeaveTs
 
     @LeaveTs.setter
@@ -11924,6 +14213,9 @@ class UserInformation(AbstractModel):
 
     @property
     def DeviceType(self):
+        """终端类型
+        :rtype: str
+        """
         return self._DeviceType
 
     @DeviceType.setter
@@ -11932,6 +14224,9 @@ class UserInformation(AbstractModel):
 
     @property
     def SdkVersion(self):
+        """Sdk版本号
+        :rtype: str
+        """
         return self._SdkVersion
 
     @SdkVersion.setter
@@ -11940,6 +14235,9 @@ class UserInformation(AbstractModel):
 
     @property
     def ClientIp(self):
+        """客户端IP地址
+        :rtype: str
+        """
         return self._ClientIp
 
     @ClientIp.setter
@@ -11948,6 +14246,9 @@ class UserInformation(AbstractModel):
 
     @property
     def Finished(self):
+        """判断用户是否已经离开房间
+        :rtype: bool
+        """
         return self._Finished
 
     @Finished.setter
@@ -11991,6 +14292,9 @@ class UserMediaStream(AbstractModel):
 
     @property
     def UserInfo(self):
+        """TRTC用户参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.MixUserInfo`
+        """
         return self._UserInfo
 
     @UserInfo.setter
@@ -11999,6 +14303,9 @@ class UserMediaStream(AbstractModel):
 
     @property
     def StreamType(self):
+        """主辅路流类型，0为摄像头，1为屏幕分享，不填默认为0。
+        :rtype: int
+        """
         return self._StreamType
 
     @StreamType.setter
@@ -12047,6 +14354,9 @@ class VideoEncode(AbstractModel):
 
     @property
     def Width(self):
+        """输出流宽，音视频输出时必填。取值范围[0,1920]，单位为像素值。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -12055,6 +14365,9 @@ class VideoEncode(AbstractModel):
 
     @property
     def Height(self):
+        """输出流高，音视频输出时必填。取值范围[0,1080]，单位为像素值。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -12063,6 +14376,9 @@ class VideoEncode(AbstractModel):
 
     @property
     def Fps(self):
+        """输出流帧率，音视频输出时必填。取值范围[1,60]，表示混流的输出帧率可选范围为1到60fps。
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -12071,6 +14387,9 @@ class VideoEncode(AbstractModel):
 
     @property
     def BitRate(self):
+        """输出流码率，音视频输出时必填。取值范围[1,10000]，单位为kbps。
+        :rtype: int
+        """
         return self._BitRate
 
     @BitRate.setter
@@ -12079,6 +14398,9 @@ class VideoEncode(AbstractModel):
 
     @property
     def Gop(self):
+        """输出流gop，音视频输出时必填。取值范围[1,5]，单位为秒。
+        :rtype: int
+        """
         return self._Gop
 
     @Gop.setter
@@ -12128,6 +14450,9 @@ class VideoEncodeParams(AbstractModel):
 
     @property
     def Width(self):
+        """宽。取值范围[0,1920]，单位为像素值。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -12136,6 +14461,9 @@ class VideoEncodeParams(AbstractModel):
 
     @property
     def Height(self):
+        """高。取值范围[0,1080]，单位为像素值。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -12144,6 +14472,9 @@ class VideoEncodeParams(AbstractModel):
 
     @property
     def Fps(self):
+        """帧率。取值范围[1,60]，表示帧率可选范围为1到60fps。
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -12152,6 +14483,9 @@ class VideoEncodeParams(AbstractModel):
 
     @property
     def BitRate(self):
+        """码率。取值范围[1,10000]，单位为kbps。
+        :rtype: int
+        """
         return self._BitRate
 
     @BitRate.setter
@@ -12160,6 +14494,9 @@ class VideoEncodeParams(AbstractModel):
 
     @property
     def Gop(self):
+        """gop。取值范围[1,2]，单位为秒。
+        :rtype: int
+        """
         return self._Gop
 
     @Gop.setter
@@ -12209,6 +14546,9 @@ class VideoParams(AbstractModel):
 
     @property
     def Width(self):
+        """视频的宽度值，单位为像素，默认值360。不能超过1920，与height的乘积不能超过1920*1080。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -12217,6 +14557,9 @@ class VideoParams(AbstractModel):
 
     @property
     def Height(self):
+        """视频的高度值，单位为像素，默认值640。不能超过1920，与width的乘积不能超过1920*1080。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -12225,6 +14568,9 @@ class VideoParams(AbstractModel):
 
     @property
     def Fps(self):
+        """视频的帧率，范围[1, 60]，默认15。
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -12233,6 +14579,9 @@ class VideoParams(AbstractModel):
 
     @property
     def BitRate(self):
+        """视频的码率,单位是bps，范围[64000, 8192000]，默认550000bps。
+        :rtype: int
+        """
         return self._BitRate
 
     @BitRate.setter
@@ -12241,6 +14590,9 @@ class VideoParams(AbstractModel):
 
     @property
     def Gop(self):
+        """视频关键帧时间间隔，单位秒，默认值10秒。
+        :rtype: int
+        """
         return self._Gop
 
     @Gop.setter
@@ -12287,6 +14639,9 @@ class WaterMark(AbstractModel):
 
     @property
     def WaterMarkType(self):
+        """水印类型，0为图片（默认），1为文字，2为时间戳。
+        :rtype: int
+        """
         return self._WaterMarkType
 
     @WaterMarkType.setter
@@ -12295,6 +14650,9 @@ class WaterMark(AbstractModel):
 
     @property
     def WaterMarkImage(self):
+        """水印为图片时的参数列表，水印为图片时校验必填。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.WaterMarkImage`
+        """
         return self._WaterMarkImage
 
     @WaterMarkImage.setter
@@ -12303,6 +14661,9 @@ class WaterMark(AbstractModel):
 
     @property
     def WaterMarkChar(self):
+        """水印为文字时的参数列表，水印为文字时校验必填。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.WaterMarkChar`
+        """
         return self._WaterMarkChar
 
     @WaterMarkChar.setter
@@ -12311,6 +14672,9 @@ class WaterMark(AbstractModel):
 
     @property
     def WaterMarkTimestamp(self):
+        """水印为时间戳时的参数列表，水印为时间戳时校验必填。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.WaterMarkTimestamp`
+        """
         return self._WaterMarkTimestamp
 
     @WaterMarkTimestamp.setter
@@ -12379,6 +14743,9 @@ class WaterMarkChar(AbstractModel):
 
     @property
     def Top(self):
+        """文字水印的起始坐标Y值，从左上角开始
+        :rtype: int
+        """
         return self._Top
 
     @Top.setter
@@ -12387,6 +14754,9 @@ class WaterMarkChar(AbstractModel):
 
     @property
     def Left(self):
+        """文字水印的起始坐标X值，从左上角开始
+        :rtype: int
+        """
         return self._Left
 
     @Left.setter
@@ -12395,6 +14765,9 @@ class WaterMarkChar(AbstractModel):
 
     @property
     def Width(self):
+        """文字水印的宽度，单位像素值
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -12403,6 +14776,9 @@ class WaterMarkChar(AbstractModel):
 
     @property
     def Height(self):
+        """文字水印的高度，单位像素值
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -12411,6 +14787,9 @@ class WaterMarkChar(AbstractModel):
 
     @property
     def Chars(self):
+        """水印文字的内容
+        :rtype: str
+        """
         return self._Chars
 
     @Chars.setter
@@ -12419,6 +14798,9 @@ class WaterMarkChar(AbstractModel):
 
     @property
     def FontSize(self):
+        """水印文字的大小，单位像素，默认14
+        :rtype: int
+        """
         return self._FontSize
 
     @FontSize.setter
@@ -12427,6 +14809,9 @@ class WaterMarkChar(AbstractModel):
 
     @property
     def FontColor(self):
+        """水印文字的颜色，默认白色
+        :rtype: str
+        """
         return self._FontColor
 
     @FontColor.setter
@@ -12435,6 +14820,9 @@ class WaterMarkChar(AbstractModel):
 
     @property
     def BackGroundColor(self):
+        """水印文字的背景色，为空代表背景透明，默认为空
+        :rtype: str
+        """
         return self._BackGroundColor
 
     @BackGroundColor.setter
@@ -12443,6 +14831,11 @@ class WaterMarkChar(AbstractModel):
 
     @property
     def Font(self):
+        """文字水印的字体，支持设置以下值：
+1. Tencent （默认）
+2. SourceHanSans
+        :rtype: str
+        """
         return self._Font
 
     @Font.setter
@@ -12496,6 +14889,9 @@ class WaterMarkImage(AbstractModel):
 
     @property
     def WaterMarkUrl(self):
+        """下载的url地址， 只支持jpg, png, jpeg，大小限制不超过5M。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
+        :rtype: str
+        """
         return self._WaterMarkUrl
 
     @WaterMarkUrl.setter
@@ -12504,6 +14900,9 @@ class WaterMarkImage(AbstractModel):
 
     @property
     def Top(self):
+        """画布上该画面左上角的 y 轴坐标，取值范围 [0, 2560]，不能超过画布的高。
+        :rtype: int
+        """
         return self._Top
 
     @Top.setter
@@ -12512,6 +14911,9 @@ class WaterMarkImage(AbstractModel):
 
     @property
     def Left(self):
+        """画布上该画面左上角的 x 轴坐标，取值范围 [0, 2560]，不能超过画布的宽。
+        :rtype: int
+        """
         return self._Left
 
     @Left.setter
@@ -12520,6 +14922,9 @@ class WaterMarkImage(AbstractModel):
 
     @property
     def Width(self):
+        """画布上该画面宽度的相对值，取值范围 [0, 2560]，与Left相加不应超过画布的宽。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -12528,6 +14933,9 @@ class WaterMarkImage(AbstractModel):
 
     @property
     def Height(self):
+        """画布上该画面高度的相对值，取值范围 [0, 2560]，与Top相加不应超过画布的高。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -12580,6 +14988,9 @@ class WaterMarkParams(AbstractModel):
 
     @property
     def WaterMarkId(self):
+        """混流-水印图片ID。取值为实时音视频控制台上传的图片ID。
+        :rtype: int
+        """
         return self._WaterMarkId
 
     @WaterMarkId.setter
@@ -12588,6 +14999,9 @@ class WaterMarkParams(AbstractModel):
 
     @property
     def WaterMarkWidth(self):
+        """混流-水印宽。单位为像素值。水印宽+X偏移不能超过整个画布宽。
+        :rtype: int
+        """
         return self._WaterMarkWidth
 
     @WaterMarkWidth.setter
@@ -12596,6 +15010,9 @@ class WaterMarkParams(AbstractModel):
 
     @property
     def WaterMarkHeight(self):
+        """混流-水印高。单位为像素值。水印高+Y偏移不能超过整个画布高。
+        :rtype: int
+        """
         return self._WaterMarkHeight
 
     @WaterMarkHeight.setter
@@ -12604,6 +15021,9 @@ class WaterMarkParams(AbstractModel):
 
     @property
     def LocationX(self):
+        """水印在输出时的X偏移。单位为像素值。水印宽+X偏移不能超过整个画布宽。
+        :rtype: int
+        """
         return self._LocationX
 
     @LocationX.setter
@@ -12612,6 +15032,9 @@ class WaterMarkParams(AbstractModel):
 
     @property
     def LocationY(self):
+        """水印在输出时的Y偏移。单位为像素值。水印高+Y偏移不能超过整个画布高。
+        :rtype: int
+        """
         return self._LocationY
 
     @LocationY.setter
@@ -12620,6 +15043,9 @@ class WaterMarkParams(AbstractModel):
 
     @property
     def WaterMarkUrl(self):
+        """混流-水印图片URL地址，支持png、jpg、jpeg、bmp格式，暂不支持透明通道。URL链接长度限制为512字节。WaterMarkUrl和WaterMarkId参数都填时，以WaterMarkUrl为准。图片大小限制不超过2MB。
+        :rtype: str
+        """
         return self._WaterMarkUrl
 
     @WaterMarkUrl.setter
@@ -12666,6 +15092,9 @@ class WaterMarkTimestamp(AbstractModel):
 
     @property
     def Pos(self):
+        """时间戳的位置，取值范围0-6，分别代表上左，上右，下左，下右，上居中，下居中，居中
+        :rtype: int
+        """
         return self._Pos
 
     @Pos.setter
@@ -12674,6 +15103,9 @@ class WaterMarkTimestamp(AbstractModel):
 
     @property
     def TimeZone(self):
+        """显示时间戳的时区，默认东八区
+        :rtype: int
+        """
         return self._TimeZone
 
     @TimeZone.setter
@@ -12682,6 +15114,11 @@ class WaterMarkTimestamp(AbstractModel):
 
     @property
     def Font(self):
+        """文字水印的字体，支持设置以下值：
+1. Tencent （默认）
+2. SourceHanSans
+        :rtype: str
+        """
         return self._Font
 
     @Font.setter
@@ -12729,6 +15166,9 @@ Hls 格式录制此参数不生效。
 
     @property
     def Width(self):
+        """录制画面宽度，默认为1280，取值范围[0, 1920]
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -12737,6 +15177,9 @@ Hls 格式录制此参数不生效。
 
     @property
     def Height(self):
+        """录制画面高度，默认为720，取值范围[0, 1080]
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -12745,6 +15188,10 @@ Hls 格式录制此参数不生效。
 
     @property
     def Format(self):
+        """指定输出格式，可选hls,mp4。存储到云点播VOD时此参数无效，存储到VOD时请通过TencentVod（https://cloud.tencent.com/document/api/647/44055#TencentVod）内的MediaType设置。
+
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -12753,6 +15200,11 @@ Hls 格式录制此参数不生效。
 
     @property
     def MaxMediaFileDuration(self):
+        """如果是aac或者mp4文件格式，超过长度限制后，系统会自动拆分视频文件。单位：分钟。默认为1440min（24h），取值范围为1-1440。【单文件限制最大为2G，满足文件大小 >2G 或录制时长度 > 24h任意一个条件，文件都会自动切分】
+Hls 格式录制此参数不生效。
+示例值：1440
+        :rtype: int
+        """
         return self._MaxMediaFileDuration
 
     @MaxMediaFileDuration.setter

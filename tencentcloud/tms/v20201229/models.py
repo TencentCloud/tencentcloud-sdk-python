@@ -68,6 +68,9 @@ class DetailResults(AbstractModel):
 
     @property
     def Label(self):
+        """该字段用于返回检测结果所对应的全部恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型。
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -76,6 +79,10 @@ class DetailResults(AbstractModel):
 
     @property
     def Suggestion(self):
+        """该字段用于返回对应当前标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -84,6 +91,10 @@ class DetailResults(AbstractModel):
 
     @property
     def Keywords(self):
+        """该字段用于返回检测文本命中的关键词信息，用于标注文本违规的具体原因（如：*加我微信*）。该参数可能会有多个返回值，代表命中的多个关键词；如返回值为空且Score不为空，则代表识别结果所对应的恶意标签（Label）是来自于语义模型判断的返回值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Keywords
 
     @Keywords.setter
@@ -92,6 +103,10 @@ class DetailResults(AbstractModel):
 
     @property
     def Score(self):
+        """该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Score
 
     @Score.setter
@@ -100,6 +115,10 @@ class DetailResults(AbstractModel):
 
     @property
     def LibType(self):
+        """该字段用于返回自定义关键词对应的词库类型，取值为**1**（黑白库）和**2**（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LibType
 
     @LibType.setter
@@ -108,6 +127,10 @@ class DetailResults(AbstractModel):
 
     @property
     def LibId(self):
+        """该字段用于返回自定义库的ID，以方便自定义库管理和配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LibId
 
     @LibId.setter
@@ -116,6 +139,10 @@ class DetailResults(AbstractModel):
 
     @property
     def LibName(self):
+        """该字段用于返回自定义库的名称,以方便自定义库管理和配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LibName
 
     @LibName.setter
@@ -124,6 +151,10 @@ class DetailResults(AbstractModel):
 
     @property
     def SubLabel(self):
+        """该字段用于返回当前标签（Label）下的二级标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubLabel
 
     @SubLabel.setter
@@ -132,6 +163,10 @@ class DetailResults(AbstractModel):
 
     @property
     def Tags(self):
+        """该字段用于返回当前一级标签（Label）下的关键词、子标签及分数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -140,6 +175,10 @@ class DetailResults(AbstractModel):
 
     @property
     def HitInfos(self):
+        """该字段用于返回违规文本命中信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of HitInfo
+        """
         return self._HitInfos
 
     @HitInfos.setter
@@ -212,6 +251,10 @@ class Device(AbstractModel):
 
     @property
     def IP(self):
+        """该字段表示业务用户对应设备的IP地址。<br>
+备注:目前仅支持IPv4地址记录，不支持IPv6地址记录。
+        :rtype: str
+        """
         return self._IP
 
     @IP.setter
@@ -220,6 +263,9 @@ class Device(AbstractModel):
 
     @property
     def Mac(self):
+        """该字段表示业务用户对应的MAC地址，以方便设备识别与管理；其格式与取值与标准MAC地址一致。
+        :rtype: str
+        """
         return self._Mac
 
     @Mac.setter
@@ -228,6 +274,9 @@ class Device(AbstractModel):
 
     @property
     def TokenId(self):
+        """*内测中，敬请期待。*
+        :rtype: str
+        """
         return self._TokenId
 
     @TokenId.setter
@@ -236,6 +285,9 @@ class Device(AbstractModel):
 
     @property
     def DeviceId(self):
+        """*内测中，敬请期待。*
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -244,6 +296,9 @@ class Device(AbstractModel):
 
     @property
     def IMEI(self):
+        """该字段表示业务用户对应设备的**IMEI码**（国际移动设备识别码），该识别码可用于识别每一部独立的手机等移动通信设备，方便设备识别与管理。<br>备注：格式为**15-17位纯数字**。
+        :rtype: str
+        """
         return self._IMEI
 
     @IMEI.setter
@@ -252,6 +307,10 @@ class Device(AbstractModel):
 
     @property
     def IDFA(self):
+        """**iOS设备专用**，该字段表示业务用户对应的**IDFA**(广告标识符),这是由苹果公司提供的用于标识用户的广告标识符，由一串16进制的32位数字和字母组成。<br>
+备注：苹果公司自2021年iOS14更新后允许用户手动关闭或者开启IDFA，故此字符串标记有效性可能有所降低。
+        :rtype: str
+        """
         return self._IDFA
 
     @IDFA.setter
@@ -260,6 +319,9 @@ class Device(AbstractModel):
 
     @property
     def IDFV(self):
+        """**iOS设备专用**，该字段表示业务用户对应的**IDFV**(应用开发商标识符),这是由苹果公司提供的用于标注应用开发商的标识符，由一串16进制的32位数字和字母组成，可被用于唯一标识设备。
+        :rtype: str
+        """
         return self._IDFV
 
     @IDFV.setter
@@ -312,6 +374,10 @@ class HitInfo(AbstractModel):
 
     @property
     def Type(self):
+        """标识模型命中还是关键词命中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -320,6 +386,10 @@ class HitInfo(AbstractModel):
 
     @property
     def Keyword(self):
+        """命中关键词
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -328,6 +398,10 @@ class HitInfo(AbstractModel):
 
     @property
     def LibName(self):
+        """自定义词库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LibName
 
     @LibName.setter
@@ -336,6 +410,10 @@ class HitInfo(AbstractModel):
 
     @property
     def Positions(self):
+        """位置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Positions
+        """
         return self._Positions
 
     @Positions.setter
@@ -382,6 +460,10 @@ class Positions(AbstractModel):
 
     @property
     def Start(self):
+        """关键词起始位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Start
 
     @Start.setter
@@ -390,6 +472,10 @@ class Positions(AbstractModel):
 
     @property
     def End(self):
+        """关键词结束位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._End
 
     @End.setter
@@ -427,6 +513,9 @@ class RiskDetails(AbstractModel):
 
     @property
     def Label(self):
+        """该字段用于返回账号信息检测对应的风险类别，取值为：**RiskAccount**（账号存在风险）、**RiskIP**（IP地址存在风险）、**RiskIMEI**（移动设备识别码存在风险）。
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -435,6 +524,9 @@ class RiskDetails(AbstractModel):
 
     @property
     def Level(self):
+        """该字段用于返回账号信息检测对应的风险等级，取值为：**1**（疑似存在风险）和**2**（存在恶意风险）。
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -485,6 +577,10 @@ class SentimentAnalysis(AbstractModel):
 
     @property
     def Label(self):
+        """情感标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -493,6 +589,10 @@ class SentimentAnalysis(AbstractModel):
 
     @property
     def Score(self):
+        """标签分数，取值范围0到100
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Score
 
     @Score.setter
@@ -501,6 +601,10 @@ class SentimentAnalysis(AbstractModel):
 
     @property
     def Detail(self):
+        """情感分析明细
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tms.v20201229.models.SentimentDetail`
+        """
         return self._Detail
 
     @Detail.setter
@@ -509,6 +613,9 @@ class SentimentAnalysis(AbstractModel):
 
     @property
     def Code(self):
+        """响应码，成功为"OK"，失败为"InternalError"
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -517,6 +624,10 @@ class SentimentAnalysis(AbstractModel):
 
     @property
     def Message(self):
+        """异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -561,6 +672,10 @@ class SentimentDetail(AbstractModel):
 
     @property
     def Positive(self):
+        """正向分数，取值范围0到100
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Positive
 
     @Positive.setter
@@ -569,6 +684,10 @@ class SentimentDetail(AbstractModel):
 
     @property
     def Negative(self):
+        """负向分数，取值范围0到100
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Negative
 
     @Negative.setter
@@ -612,6 +731,10 @@ class Tag(AbstractModel):
 
     @property
     def Keyword(self):
+        """该字段用于返回命中的关键词
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -620,6 +743,10 @@ class Tag(AbstractModel):
 
     @property
     def SubLabel(self):
+        """该字段用于返回子标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubLabel
 
     @SubLabel.setter
@@ -628,6 +755,10 @@ class Tag(AbstractModel):
 
     @property
     def Score(self):
+        """该字段用于返回子标签对应的分数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Score
 
     @Score.setter
@@ -675,6 +806,9 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def Content(self):
+        """该字段表示待检测对象的文本内容，文本需要按utf-8格式编码，长度不能超过10000个字符（按unicode编码计算），并进行 Base64加密
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -683,6 +817,9 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def BizType(self):
+        """该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。<br>备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype
+        :rtype: str
+        """
         return self._BizType
 
     @BizType.setter
@@ -691,6 +828,9 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def DataId(self):
+        """该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**
+        :rtype: str
+        """
         return self._DataId
 
     @DataId.setter
@@ -699,6 +839,9 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def User(self):
+        """该字段表示待检测对象对应的用户相关信息，传入后可便于甄别相应违规风险用户
+        :rtype: :class:`tencentcloud.tms.v20201229.models.User`
+        """
         return self._User
 
     @User.setter
@@ -707,6 +850,9 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def Device(self):
+        """该字段表示待检测对象对应的设备相关信息，传入后可便于甄别相应违规风险设备
+        :rtype: :class:`tencentcloud.tms.v20201229.models.Device`
+        """
         return self._Device
 
     @Device.setter
@@ -792,6 +938,9 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def BizType(self):
+        """该字段用于返回请求参数中的BizType参数
+        :rtype: str
+        """
         return self._BizType
 
     @BizType.setter
@@ -800,6 +949,9 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def Label(self):
+        """该字段用于返回检测结果（DetailResults）中所对应的**优先级最高的恶意标签**，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -808,6 +960,9 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def Suggestion(self):
+        """该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -816,6 +971,10 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def Keywords(self):
+        """该字段用于返回当前标签（Label）下被检测文本命中的关键词信息，用于标注文本违规的具体原因（如：*加我微信*）。该参数可能会有多个返回值，代表命中的多个关键词；如返回值为空且Score不为空，则代表识别结果所对应的恶意标签（Label）是来自于语义模型判断的返回值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Keywords
 
     @Keywords.setter
@@ -824,6 +983,9 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def Score(self):
+        """该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容
+        :rtype: int
+        """
         return self._Score
 
     @Score.setter
@@ -832,6 +994,10 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def DetailResults(self):
+        """该字段用于返回基于文本风险库审核的详细结果，返回值信息可参阅对应数据结构（DetailResults）的详细描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DetailResults
+        """
         return self._DetailResults
 
     @DetailResults.setter
@@ -840,6 +1006,10 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def RiskDetails(self):
+        """该字段用于返回文本检测中存在违规风险的账号检测结果，主要包括违规风险类别和风险等级信息，具体内容可参阅对应数据结构（RiskDetails）的详细描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RiskDetails
+        """
         return self._RiskDetails
 
     @RiskDetails.setter
@@ -848,6 +1018,10 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """该字段用于返回根据您的需求配置的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -856,6 +1030,10 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def DataId(self):
+        """该字段用于返回检测对象对应请求参数中的DataId，与输入的DataId字段中的内容对应
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataId
 
     @DataId.setter
@@ -864,6 +1042,10 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def SubLabel(self):
+        """该字段用于返回当前标签（Label）下的二级标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubLabel
 
     @SubLabel.setter
@@ -872,6 +1054,10 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def ContextText(self):
+        """该字段用于返回上下文关联文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ContextText
 
     @ContextText.setter
@@ -880,6 +1066,10 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def SentimentAnalysis(self):
+        """情感分析结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tms.v20201229.models.SentimentAnalysis`
+        """
         return self._SentimentAnalysis
 
     @SentimentAnalysis.setter
@@ -888,6 +1078,9 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -977,6 +1170,10 @@ class User(AbstractModel):
 
     @property
     def UserId(self):
+        """该字段表示业务用户ID,填写后，系统可根据账号过往违规历史优化审核结果判定，有利于存在可疑违规风险时的辅助判断。<br>
+备注：该字段可传入微信openid、QQopenid、字符串等账号信息，与账号类别参数（AccountType）配合使用可确定唯一账号。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -985,6 +1182,9 @@ class User(AbstractModel):
 
     @property
     def Nickname(self):
+        """该字段表示业务用户对应的账号昵称信息。
+        :rtype: str
+        """
         return self._Nickname
 
     @Nickname.setter
@@ -993,6 +1193,10 @@ class User(AbstractModel):
 
     @property
     def AccountType(self):
+        """该字段表示业务用户ID对应的账号类型，取值：**1**-微信uin，**2**-QQ号，**3**-微信群uin，**4**-qq群号，**5**-微信openid，**6**-QQopenid，**7**-其它string。<br>
+该字段与账号ID参数（UserId）配合使用可确定唯一账号。
+        :rtype: int
+        """
         return self._AccountType
 
     @AccountType.setter
@@ -1001,6 +1205,10 @@ class User(AbstractModel):
 
     @property
     def Gender(self):
+        """该字段表示业务用户对应账号的性别信息。<br>
+取值：**0**（默认值，代表性别未知）、**1**（男性）、**2**（女性）。
+        :rtype: int
+        """
         return self._Gender
 
     @Gender.setter
@@ -1009,6 +1217,10 @@ class User(AbstractModel):
 
     @property
     def Age(self):
+        """该字段表示业务用户对应账号的年龄信息。<br>
+取值：**0**（默认值，代表年龄未知）-（**自定义年龄上限**）之间的整数。
+        :rtype: int
+        """
         return self._Age
 
     @Age.setter
@@ -1017,6 +1229,10 @@ class User(AbstractModel):
 
     @property
     def Level(self):
+        """该字段表示业务用户对应账号的等级信息。<br>
+取值：**0**（默认值，代表等级未知）、**1**（等级较低）、**2**（等级中等）、**3**（等级较高），目前**暂不支持自定义等级**。
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -1025,6 +1241,10 @@ class User(AbstractModel):
 
     @property
     def Phone(self):
+        """该字段表示业务用户对应账号的手机号信息，支持全球各地区手机号的记录。<br>
+备注：请保持手机号格式的统一，如区号格式（086/+86）等。
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -1033,6 +1253,10 @@ class User(AbstractModel):
 
     @property
     def HeadUrl(self):
+        """该字段表示业务用户头像图片的访问链接(URL)，支持PNG、JPG、JPEG、BMP、GIF、WEBP格式。
+备注：头像图片大小不超过5MB，建议分辨率不低于256x256；图片下载时间限制为3秒，超过则会返回下载超时。
+        :rtype: str
+        """
         return self._HeadUrl
 
     @HeadUrl.setter
@@ -1041,6 +1265,9 @@ class User(AbstractModel):
 
     @property
     def Desc(self):
+        """该字段表示业务用户的简介信息，支持汉字、英文及特殊符号，长度不超过5000个汉字字符。
+        :rtype: str
+        """
         return self._Desc
 
     @Desc.setter
@@ -1049,6 +1276,9 @@ class User(AbstractModel):
 
     @property
     def RoomId(self):
+        """该字段表示业务群聊场景时的房间ID。
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -1057,6 +1287,9 @@ class User(AbstractModel):
 
     @property
     def ReceiverId(self):
+        """该字段表示消息接受者ID
+        :rtype: str
+        """
         return self._ReceiverId
 
     @ReceiverId.setter
@@ -1065,6 +1298,9 @@ class User(AbstractModel):
 
     @property
     def SendTime(self):
+        """消息生成时间，精确到毫秒
+        :rtype: int
+        """
         return self._SendTime
 
     @SendTime.setter

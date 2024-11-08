@@ -41,6 +41,9 @@ class DescribeSdkAppidResponse(AbstractModel):
 
     @property
     def SdkAppids(self):
+        """表示 appid 对应的 SdkAppid 的数据
+        :rtype: list of int
+        """
         return self._SdkAppids
 
     @SdkAppids.setter
@@ -49,6 +52,9 @@ class DescribeSdkAppidResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

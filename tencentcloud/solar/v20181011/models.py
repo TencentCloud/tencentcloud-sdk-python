@@ -57,6 +57,10 @@ class ActivityInfo(AbstractModel):
 
     @property
     def TemplateId(self):
+        """活动使用模板id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -65,6 +69,10 @@ class ActivityInfo(AbstractModel):
 
     @property
     def ActivityTitle(self):
+        """活动标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ActivityTitle
 
     @ActivityTitle.setter
@@ -73,6 +81,10 @@ class ActivityInfo(AbstractModel):
 
     @property
     def ActivityDesc(self):
+        """活动描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ActivityDesc
 
     @ActivityDesc.setter
@@ -81,6 +93,10 @@ class ActivityInfo(AbstractModel):
 
     @property
     def ActivityCover(self):
+        """活动封面地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ActivityCover
 
     @ActivityCover.setter
@@ -89,6 +105,10 @@ class ActivityInfo(AbstractModel):
 
     @property
     def ActivityType(self):
+        """活动类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ActivityType
 
     @ActivityType.setter
@@ -97,6 +117,10 @@ class ActivityInfo(AbstractModel):
 
     @property
     def ActivityId(self):
+        """活动id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -105,6 +129,10 @@ class ActivityInfo(AbstractModel):
 
     @property
     def PersonalConfig(self):
+        """活动模板自定义配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PersonalConfig
 
     @PersonalConfig.setter
@@ -147,6 +175,9 @@ class CheckStaffChUserRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """员工ID
+        :rtype: list of str
+        """
         return self._UserId
 
     @UserId.setter
@@ -155,6 +186,9 @@ class CheckStaffChUserRequest(AbstractModel):
 
     @property
     def OperateType(self):
+        """渠道状态：checkpass审核通过, checkreject审核拒绝, enableoperate启用, stopoperate停用
+        :rtype: str
+        """
         return self._OperateType
 
     @OperateType.setter
@@ -189,6 +223,9 @@ class CheckStaffChUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -220,6 +257,9 @@ class CopyActivityChannelRequest(AbstractModel):
 
     @property
     def ActivityId(self):
+        """活动ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -228,6 +268,9 @@ class CopyActivityChannelRequest(AbstractModel):
 
     @property
     def ChannelFrom(self):
+        """来源渠道ID
+        :rtype: str
+        """
         return self._ChannelFrom
 
     @ChannelFrom.setter
@@ -236,6 +279,9 @@ class CopyActivityChannelRequest(AbstractModel):
 
     @property
     def ChannelTo(self):
+        """目的渠道id
+        :rtype: list of str
+        """
         return self._ChannelTo
 
     @ChannelTo.setter
@@ -271,6 +317,9 @@ class CopyActivityChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -308,6 +357,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def ProjectName(self):
+        """项目名称
+        :rtype: str
+        """
         return self._ProjectName
 
     @ProjectName.setter
@@ -316,6 +368,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def ProjectOrg(self):
+        """项目机构
+        :rtype: str
+        """
         return self._ProjectOrg
 
     @ProjectOrg.setter
@@ -324,6 +379,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def ProjectBudget(self):
+        """项目预算
+        :rtype: str
+        """
         return self._ProjectBudget
 
     @ProjectBudget.setter
@@ -332,6 +390,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def ProjectIntroduction(self):
+        """项目简介
+        :rtype: str
+        """
         return self._ProjectIntroduction
 
     @ProjectIntroduction.setter
@@ -340,6 +401,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def ProjectOrgId(self):
+        """所属部门ID
+        :rtype: str
+        """
         return self._ProjectOrgId
 
     @ProjectOrgId.setter
@@ -380,6 +444,9 @@ class CreateProjectResponse(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -388,6 +455,9 @@ class CreateProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -417,6 +487,9 @@ class CreateSubProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """所属项目id
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -425,6 +498,9 @@ class CreateSubProjectRequest(AbstractModel):
 
     @property
     def SubProjectName(self):
+        """子项目名称
+        :rtype: str
+        """
         return self._SubProjectName
 
     @SubProjectName.setter
@@ -462,6 +538,9 @@ class CreateSubProjectResponse(AbstractModel):
 
     @property
     def SubProjectId(self):
+        """子项目id
+        :rtype: str
+        """
         return self._SubProjectId
 
     @SubProjectId.setter
@@ -470,6 +549,9 @@ class CreateSubProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -572,6 +654,10 @@ class CustomerInfo(AbstractModel):
 
     @property
     def Activity(self):
+        """总活跃度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Activity
 
     @Activity.setter
@@ -580,6 +666,9 @@ class CustomerInfo(AbstractModel):
 
     @property
     def AudienceUserId(self):
+        """客户ID
+        :rtype: str
+        """
         return self._AudienceUserId
 
     @AudienceUserId.setter
@@ -588,6 +677,10 @@ class CustomerInfo(AbstractModel):
 
     @property
     def Avatar(self):
+        """头像
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Avatar
 
     @Avatar.setter
@@ -596,6 +689,10 @@ class CustomerInfo(AbstractModel):
 
     @property
     def City(self):
+        """最近记录城市
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -604,6 +701,10 @@ class CustomerInfo(AbstractModel):
 
     @property
     def LastActiveTime(self):
+        """最活跃时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastActiveTime
 
     @LastActiveTime.setter
@@ -612,6 +713,10 @@ class CustomerInfo(AbstractModel):
 
     @property
     def MarkFlag(self):
+        """是否星标客户
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MarkFlag
 
     @MarkFlag.setter
@@ -620,6 +725,10 @@ class CustomerInfo(AbstractModel):
 
     @property
     def MonthActive(self):
+        """30天活跃度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MonthActive
 
     @MonthActive.setter
@@ -628,6 +737,10 @@ class CustomerInfo(AbstractModel):
 
     @property
     def MonthRecommend(self):
+        """30天推荐度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MonthRecommend
 
     @MonthRecommend.setter
@@ -636,6 +749,10 @@ class CustomerInfo(AbstractModel):
 
     @property
     def Phone(self):
+        """手机号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -644,6 +761,10 @@ class CustomerInfo(AbstractModel):
 
     @property
     def Province(self):
+        """最近记录省份
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Province
 
     @Province.setter
@@ -652,6 +773,10 @@ class CustomerInfo(AbstractModel):
 
     @property
     def RealName(self):
+        """姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RealName
 
     @RealName.setter
@@ -660,6 +785,10 @@ class CustomerInfo(AbstractModel):
 
     @property
     def RelChannelFlag(self):
+        """员工标识 0 未关联 1 已关联
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RelChannelFlag
 
     @RelChannelFlag.setter
@@ -668,6 +797,10 @@ class CustomerInfo(AbstractModel):
 
     @property
     def Sex(self):
+        """性别 1男 2女
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Sex
 
     @Sex.setter
@@ -676,6 +809,10 @@ class CustomerInfo(AbstractModel):
 
     @property
     def Spread(self):
+        """传播力（好友数）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Spread
 
     @Spread.setter
@@ -684,6 +821,10 @@ class CustomerInfo(AbstractModel):
 
     @property
     def WeekActive(self):
+        """7天活跃度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._WeekActive
 
     @WeekActive.setter
@@ -692,6 +833,10 @@ class CustomerInfo(AbstractModel):
 
     @property
     def WeekRecommend(self):
+        """7天推荐度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._WeekRecommend
 
     @WeekRecommend.setter
@@ -700,6 +845,10 @@ class CustomerInfo(AbstractModel):
 
     @property
     def WxCity(self):
+        """微信城市
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WxCity
 
     @WxCity.setter
@@ -708,6 +857,10 @@ class CustomerInfo(AbstractModel):
 
     @property
     def WxCountry(self):
+        """微信国家或地区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WxCountry
 
     @WxCountry.setter
@@ -716,6 +869,10 @@ class CustomerInfo(AbstractModel):
 
     @property
     def WxNickname(self):
+        """微信呢称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WxNickname
 
     @WxNickname.setter
@@ -724,6 +881,10 @@ class CustomerInfo(AbstractModel):
 
     @property
     def WxProvince(self):
+        """微信省份
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WxProvince
 
     @WxProvince.setter
@@ -776,6 +937,9 @@ class DeleteProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -809,6 +973,9 @@ class DeleteProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -834,6 +1001,9 @@ class DescribeCustomerRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -983,6 +1153,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def AddressList(self):
+        """地址列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AddressList
 
     @AddressList.setter
@@ -991,6 +1165,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def UserId(self):
+        """用户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -999,6 +1177,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def Avatar(self):
+        """头像
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Avatar
 
     @Avatar.setter
@@ -1007,6 +1189,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def Birthday(self):
+        """生日
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Birthday
 
     @Birthday.setter
@@ -1015,6 +1201,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def City(self):
+        """城市
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -1023,6 +1213,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1031,6 +1225,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def Device(self):
+        """设备
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Device
 
     @Device.setter
@@ -1039,6 +1237,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def Industrys(self):
+        """行业
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Industrys
 
     @Industrys.setter
@@ -1047,6 +1249,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def LastActiveTime(self):
+        """上次登录时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastActiveTime
 
     @LastActiveTime.setter
@@ -1055,6 +1261,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def MarkFlag(self):
+        """是否星标 1是 0否
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MarkFlag
 
     @MarkFlag.setter
@@ -1063,6 +1273,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def Model(self):
+        """手机型号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Model
 
     @Model.setter
@@ -1071,6 +1285,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def OpenId(self):
+        """微信openid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OpenId
 
     @OpenId.setter
@@ -1079,6 +1297,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def PayFeature(self):
+        """消费特点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PayFeature
 
     @PayFeature.setter
@@ -1087,6 +1309,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def Phone(self):
+        """手机号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -1095,6 +1321,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def PhoneList(self):
+        """手机号码列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PhoneList
 
     @PhoneList.setter
@@ -1103,6 +1333,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def Province(self):
+        """最近记录省份
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Province
 
     @Province.setter
@@ -1111,6 +1345,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def RealName(self):
+        """姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RealName
 
     @RealName.setter
@@ -1119,6 +1357,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def RelChannelFlag(self):
+        """员工标识 0：非员工 1：员工
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RelChannelFlag
 
     @RelChannelFlag.setter
@@ -1127,6 +1369,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1135,6 +1381,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def Sex(self):
+        """性别 1男 2女
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Sex
 
     @Sex.setter
@@ -1143,6 +1393,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def SourceAudienceVo(self):
+        """最初来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SourceAudienceVo
 
     @SourceAudienceVo.setter
@@ -1151,6 +1405,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def SubWechats(self):
+        """关注公众号列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SubWechats
 
     @SubWechats.setter
@@ -1159,6 +1417,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def UnionId(self):
+        """微信unionid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UnionId
 
     @UnionId.setter
@@ -1167,6 +1429,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -1175,6 +1441,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def UserTypes(self):
+        """用户类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._UserTypes
 
     @UserTypes.setter
@@ -1183,6 +1453,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def WxCity(self):
+        """城市
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WxCity
 
     @WxCity.setter
@@ -1191,6 +1465,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def WxCountry(self):
+        """国家
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WxCountry
 
     @WxCountry.setter
@@ -1199,6 +1477,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def WxNickname(self):
+        """昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WxNickname
 
     @WxNickname.setter
@@ -1207,6 +1489,10 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def WxProvince(self):
+        """省份
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WxProvince
 
     @WxProvince.setter
@@ -1215,6 +1501,9 @@ class DescribeCustomerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1305,6 +1594,9 @@ class DescribeCustomersRequest(AbstractModel):
 
     @property
     def QueryType(self):
+        """查询类型，0.个人，1负责部门，2.指定部门
+        :rtype: str
+        """
         return self._QueryType
 
     @QueryType.setter
@@ -1313,6 +1605,9 @@ class DescribeCustomersRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """分组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -1321,6 +1616,9 @@ class DescribeCustomersRequest(AbstractModel):
 
     @property
     def MarkFlag(self):
+        """是否星级标记 1是 0否
+        :rtype: int
+        """
         return self._MarkFlag
 
     @MarkFlag.setter
@@ -1329,6 +1627,9 @@ class DescribeCustomersRequest(AbstractModel):
 
     @property
     def TagIds(self):
+        """客户标签，多个标签用逗号隔开
+        :rtype: str
+        """
         return self._TagIds
 
     @TagIds.setter
@@ -1337,6 +1638,9 @@ class DescribeCustomersRequest(AbstractModel):
 
     @property
     def RelChannelFlag(self):
+        """员工标识筛选，0：非员工，1：员工
+        :rtype: str
+        """
         return self._RelChannelFlag
 
     @RelChannelFlag.setter
@@ -1345,6 +1649,9 @@ class DescribeCustomersRequest(AbstractModel):
 
     @property
     def NeedPhoneFlag(self):
+        """必须存在手机 1是 0否
+        :rtype: int
+        """
         return self._NeedPhoneFlag
 
     @NeedPhoneFlag.setter
@@ -1353,6 +1660,9 @@ class DescribeCustomersRequest(AbstractModel):
 
     @property
     def Province(self):
+        """省份
+        :rtype: str
+        """
         return self._Province
 
     @Province.setter
@@ -1361,6 +1671,9 @@ class DescribeCustomersRequest(AbstractModel):
 
     @property
     def City(self):
+        """城市
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -1369,6 +1682,9 @@ class DescribeCustomersRequest(AbstractModel):
 
     @property
     def Sex(self):
+        """性别 1男 2女
+        :rtype: str
+        """
         return self._Sex
 
     @Sex.setter
@@ -1377,6 +1693,9 @@ class DescribeCustomersRequest(AbstractModel):
 
     @property
     def KeyWord(self):
+        """城市
+        :rtype: str
+        """
         return self._KeyWord
 
     @KeyWord.setter
@@ -1385,6 +1704,9 @@ class DescribeCustomersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询开始位置
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1393,6 +1715,9 @@ class DescribeCustomersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页记录条数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1401,6 +1726,9 @@ class DescribeCustomersRequest(AbstractModel):
 
     @property
     def SubProjectId(self):
+        """子项目ID
+        :rtype: str
+        """
         return self._SubProjectId
 
     @SubProjectId.setter
@@ -1453,6 +1781,9 @@ class DescribeCustomersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总记录条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1461,6 +1792,10 @@ class DescribeCustomersResponse(AbstractModel):
 
     @property
     def UserList(self):
+        """数据列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CustomerInfo
+        """
         return self._UserList
 
     @UserList.setter
@@ -1469,6 +1804,9 @@ class DescribeCustomersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1501,6 +1839,9 @@ class DescribeProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1559,6 +1900,9 @@ class DescribeProjectResponse(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1567,6 +1911,9 @@ class DescribeProjectResponse(AbstractModel):
 
     @property
     def ProjectName(self):
+        """项目名称
+        :rtype: str
+        """
         return self._ProjectName
 
     @ProjectName.setter
@@ -1575,6 +1922,9 @@ class DescribeProjectResponse(AbstractModel):
 
     @property
     def ProjectBudget(self):
+        """项目预算
+        :rtype: float
+        """
         return self._ProjectBudget
 
     @ProjectBudget.setter
@@ -1583,6 +1933,9 @@ class DescribeProjectResponse(AbstractModel):
 
     @property
     def ProjectOrg(self):
+        """项目机构
+        :rtype: str
+        """
         return self._ProjectOrg
 
     @ProjectOrg.setter
@@ -1591,6 +1944,9 @@ class DescribeProjectResponse(AbstractModel):
 
     @property
     def ProjectIntroduction(self):
+        """项目简介
+        :rtype: str
+        """
         return self._ProjectIntroduction
 
     @ProjectIntroduction.setter
@@ -1599,6 +1955,9 @@ class DescribeProjectResponse(AbstractModel):
 
     @property
     def SubProjectList(self):
+        """子项目列表
+        :rtype: list of SubProjectInfo
+        """
         return self._SubProjectList
 
     @SubProjectList.setter
@@ -1607,6 +1966,9 @@ class DescribeProjectResponse(AbstractModel):
 
     @property
     def ProjectStatus(self):
+        """项目状态
+        :rtype: str
+        """
         return self._ProjectStatus
 
     @ProjectStatus.setter
@@ -1615,6 +1977,10 @@ class DescribeProjectResponse(AbstractModel):
 
     @property
     def ProjectOrgId(self):
+        """项目机构Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProjectOrgId
 
     @ProjectOrgId.setter
@@ -1623,6 +1989,9 @@ class DescribeProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1661,6 +2030,9 @@ class DescribeProjectStockRequest(AbstractModel):
 
     @property
     def SubProjectId(self):
+        """子项目id
+        :rtype: str
+        """
         return self._SubProjectId
 
     @SubProjectId.setter
@@ -1697,6 +2069,9 @@ class DescribeProjectStockResponse(AbstractModel):
 
     @property
     def ProjectStocks(self):
+        """项目库存列表
+        :rtype: list of ProjectStock
+        """
         return self._ProjectStocks
 
     @ProjectStocks.setter
@@ -1705,6 +2080,9 @@ class DescribeProjectStockResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1748,6 +2126,9 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def PageNo(self):
+        """页码
+        :rtype: int
+        """
         return self._PageNo
 
     @PageNo.setter
@@ -1756,6 +2137,9 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """页面大小
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1764,6 +2148,9 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """过滤规则
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -1772,6 +2159,9 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """部门范围过滤
+        :rtype: :class:`tencentcloud.solar.v20181011.models.Filters`
+        """
         return self._Filters
 
     @Filters.setter
@@ -1780,6 +2170,9 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def ProjectStatus(self):
+        """项目状态, 0:编辑中 1:运营中 2:已下线 3:已删除 4:审批中
+        :rtype: int
+        """
         return self._ProjectStatus
 
     @ProjectStatus.setter
@@ -1825,6 +2218,9 @@ class DescribeProjectsResponse(AbstractModel):
 
     @property
     def ProjectList(self):
+        """项目列表
+        :rtype: list of ProjectInfo
+        """
         return self._ProjectList
 
     @ProjectList.setter
@@ -1833,6 +2229,9 @@ class DescribeProjectsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """项目数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1841,6 +2240,9 @@ class DescribeProjectsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1873,6 +2275,9 @@ class DescribeResourceTemplateHeadersRequest(AbstractModel):
 
     @property
     def WxAppId(self):
+        """微信公众号appId
+        :rtype: str
+        """
         return self._WxAppId
 
     @WxAppId.setter
@@ -1913,6 +2318,9 @@ class DescribeResourceTemplateHeadersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """记录条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1921,6 +2329,10 @@ class DescribeResourceTemplateHeadersResponse(AbstractModel):
 
     @property
     def TmplList(self):
+        """模板列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ResourceTemplateHeader
+        """
         return self._TmplList
 
     @TmplList.setter
@@ -1929,6 +2341,9 @@ class DescribeResourceTemplateHeadersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1961,6 +2376,9 @@ class DescribeSubProjectRequest(AbstractModel):
 
     @property
     def SubProjectId(self):
+        """子项目id
+        :rtype: str
+        """
         return self._SubProjectId
 
     @SubProjectId.setter
@@ -2030,6 +2448,10 @@ class DescribeSubProjectResponse(AbstractModel):
 
     @property
     def ProductInfo(self):
+        """作品信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.solar.v20181011.models.ProductInfo`
+        """
         return self._ProductInfo
 
     @ProductInfo.setter
@@ -2038,6 +2460,10 @@ class DescribeSubProjectResponse(AbstractModel):
 
     @property
     def ActivityInfo(self):
+        """活动信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.solar.v20181011.models.ActivityInfo`
+        """
         return self._ActivityInfo
 
     @ActivityInfo.setter
@@ -2046,6 +2472,10 @@ class DescribeSubProjectResponse(AbstractModel):
 
     @property
     def ShareTitle(self):
+        """分享标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ShareTitle
 
     @ShareTitle.setter
@@ -2054,6 +2484,10 @@ class DescribeSubProjectResponse(AbstractModel):
 
     @property
     def ShareDesc(self):
+        """分享描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ShareDesc
 
     @ShareDesc.setter
@@ -2062,6 +2496,10 @@ class DescribeSubProjectResponse(AbstractModel):
 
     @property
     def ShareImg(self):
+        """分享图标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ShareImg
 
     @ShareImg.setter
@@ -2070,6 +2508,10 @@ class DescribeSubProjectResponse(AbstractModel):
 
     @property
     def HasStrategy(self):
+        """是否已创建策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HasStrategy
 
     @HasStrategy.setter
@@ -2078,6 +2520,10 @@ class DescribeSubProjectResponse(AbstractModel):
 
     @property
     def SubProjectStatus(self):
+        """子项目状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubProjectStatus
 
     @SubProjectStatus.setter
@@ -2086,6 +2532,10 @@ class DescribeSubProjectResponse(AbstractModel):
 
     @property
     def ShareAppId(self):
+        """分享公众号的appId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ShareAppId
 
     @ShareAppId.setter
@@ -2094,6 +2544,10 @@ class DescribeSubProjectResponse(AbstractModel):
 
     @property
     def ShareWsId(self):
+        """分享公众号的wsId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ShareWsId
 
     @ShareWsId.setter
@@ -2102,6 +2556,9 @@ class DescribeSubProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2140,6 +2597,9 @@ class ExpireFlowRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """工单ID
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -2173,6 +2633,9 @@ class ExpireFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2204,6 +2667,9 @@ class Filters(AbstractModel):
 
     @property
     def Type(self):
+        """过滤类型, 0: 默认(可见部门+自创) 1: 自创 2: 指定部门(部门在可见范围内)
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -2212,6 +2678,9 @@ class Filters(AbstractModel):
 
     @property
     def DeptIds(self):
+        """指定部门Id, 类型2使用
+        :rtype: list of str
+        """
         return self._DeptIds
 
     @DeptIds.setter
@@ -2220,6 +2689,9 @@ class Filters(AbstractModel):
 
     @property
     def UserIds(self):
+        """用户Id列表
+        :rtype: list of str
+        """
         return self._UserIds
 
     @UserIds.setter
@@ -2270,6 +2742,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -2278,6 +2753,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ProjectName(self):
+        """项目名称
+        :rtype: str
+        """
         return self._ProjectName
 
     @ProjectName.setter
@@ -2286,6 +2764,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ProjectBudget(self):
+        """项目预算
+        :rtype: str
+        """
         return self._ProjectBudget
 
     @ProjectBudget.setter
@@ -2294,6 +2775,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ProjectOrg(self):
+        """项目机构
+        :rtype: str
+        """
         return self._ProjectOrg
 
     @ProjectOrg.setter
@@ -2302,6 +2786,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ProjectIntroduction(self):
+        """项目简介
+        :rtype: str
+        """
         return self._ProjectIntroduction
 
     @ProjectIntroduction.setter
@@ -2310,6 +2797,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ProjectOrgId(self):
+        """项目机构Id
+        :rtype: str
+        """
         return self._ProjectOrgId
 
     @ProjectOrgId.setter
@@ -2348,6 +2838,9 @@ class ModifyProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2373,6 +2866,9 @@ class OffLineProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -2406,6 +2902,9 @@ class OffLineProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2456,6 +2955,10 @@ class ProductInfo(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -2464,6 +2967,10 @@ class ProductInfo(AbstractModel):
 
     @property
     def ProductTitle(self):
+        """模板主题
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductTitle
 
     @ProductTitle.setter
@@ -2472,6 +2979,10 @@ class ProductInfo(AbstractModel):
 
     @property
     def ProductDesc(self):
+        """模板描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductDesc
 
     @ProductDesc.setter
@@ -2480,6 +2991,10 @@ class ProductInfo(AbstractModel):
 
     @property
     def ProductCover(self):
+        """模板封面地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductCover
 
     @ProductCover.setter
@@ -2488,6 +3003,10 @@ class ProductInfo(AbstractModel):
 
     @property
     def ProductId(self):
+        """内容作品id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -2496,6 +3015,10 @@ class ProductInfo(AbstractModel):
 
     @property
     def ProductUrl(self):
+        """作品预览链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductUrl
 
     @ProductUrl.setter
@@ -2504,6 +3027,10 @@ class ProductInfo(AbstractModel):
 
     @property
     def ProductName(self):
+        """作品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -2565,6 +3092,9 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -2573,6 +3103,9 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectName(self):
+        """项目名称
+        :rtype: str
+        """
         return self._ProjectName
 
     @ProjectName.setter
@@ -2581,6 +3114,9 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectOrg(self):
+        """项目所属机构
+        :rtype: str
+        """
         return self._ProjectOrg
 
     @ProjectOrg.setter
@@ -2589,6 +3125,9 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectBudget(self):
+        """项目预算
+        :rtype: float
+        """
         return self._ProjectBudget
 
     @ProjectBudget.setter
@@ -2597,6 +3136,9 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectStatus(self):
+        """项目状态
+        :rtype: str
+        """
         return self._ProjectStatus
 
     @ProjectStatus.setter
@@ -2605,6 +3147,9 @@ class ProjectInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """项目创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2613,6 +3158,9 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectIntroduction(self):
+        """项目简介
+        :rtype: str
+        """
         return self._ProjectIntroduction
 
     @ProjectIntroduction.setter
@@ -2621,6 +3169,10 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectOrgId(self):
+        """项目所属机构Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProjectOrgId
 
     @ProjectOrgId.setter
@@ -2679,6 +3231,9 @@ class ProjectStock(AbstractModel):
 
     @property
     def PrizeId(self):
+        """奖品id
+        :rtype: str
+        """
         return self._PrizeId
 
     @PrizeId.setter
@@ -2687,6 +3242,9 @@ class ProjectStock(AbstractModel):
 
     @property
     def PrizeBat(self):
+        """奖品批次
+        :rtype: int
+        """
         return self._PrizeBat
 
     @PrizeBat.setter
@@ -2695,6 +3253,9 @@ class ProjectStock(AbstractModel):
 
     @property
     def PrizeName(self):
+        """奖品名称
+        :rtype: str
+        """
         return self._PrizeName
 
     @PrizeName.setter
@@ -2703,6 +3264,9 @@ class ProjectStock(AbstractModel):
 
     @property
     def UsedStock(self):
+        """已分配奖品数量
+        :rtype: int
+        """
         return self._UsedStock
 
     @UsedStock.setter
@@ -2711,6 +3275,9 @@ class ProjectStock(AbstractModel):
 
     @property
     def RemainStock(self):
+        """该奖品剩余库存数量
+        :rtype: int
+        """
         return self._RemainStock
 
     @RemainStock.setter
@@ -2719,6 +3286,9 @@ class ProjectStock(AbstractModel):
 
     @property
     def PoolIdx(self):
+        """奖品所在奖池index
+        :rtype: int
+        """
         return self._PoolIdx
 
     @PoolIdx.setter
@@ -2727,6 +3297,9 @@ class ProjectStock(AbstractModel):
 
     @property
     def PoolName(self):
+        """奖品所在奖池名称
+        :rtype: str
+        """
         return self._PoolName
 
     @PoolName.setter
@@ -2778,6 +3351,9 @@ class ReplenishProjectStockRequest(AbstractModel):
 
     @property
     def SubProjectId(self):
+        """项目id
+        :rtype: str
+        """
         return self._SubProjectId
 
     @SubProjectId.setter
@@ -2786,6 +3362,9 @@ class ReplenishProjectStockRequest(AbstractModel):
 
     @property
     def PrizeId(self):
+        """奖品id
+        :rtype: str
+        """
         return self._PrizeId
 
     @PrizeId.setter
@@ -2794,6 +3373,9 @@ class ReplenishProjectStockRequest(AbstractModel):
 
     @property
     def PrizeNum(self):
+        """奖品数量
+        :rtype: int
+        """
         return self._PrizeNum
 
     @PrizeNum.setter
@@ -2802,6 +3384,9 @@ class ReplenishProjectStockRequest(AbstractModel):
 
     @property
     def PoolIndex(self):
+        """奖池索引
+        :rtype: int
+        """
         return self._PoolIndex
 
     @PoolIndex.setter
@@ -2810,6 +3395,9 @@ class ReplenishProjectStockRequest(AbstractModel):
 
     @property
     def PoolName(self):
+        """奖池名称
+        :rtype: str
+        """
         return self._PoolName
 
     @PoolName.setter
@@ -2847,6 +3435,9 @@ class ReplenishProjectStockResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2888,6 +3479,10 @@ class ResourceTemplateHeader(AbstractModel):
 
     @property
     def Content(self):
+        """模板预览区内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -2896,6 +3491,10 @@ class ResourceTemplateHeader(AbstractModel):
 
     @property
     def Example(self):
+        """模板预览示例
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Example
 
     @Example.setter
@@ -2904,6 +3503,10 @@ class ResourceTemplateHeader(AbstractModel):
 
     @property
     def KeyArray(self):
+        """模板预览区域键数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._KeyArray
 
     @KeyArray.setter
@@ -2912,6 +3515,9 @@ class ResourceTemplateHeader(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板id
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -2920,6 +3526,10 @@ class ResourceTemplateHeader(AbstractModel):
 
     @property
     def Title(self):
+        """模板标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -2990,6 +3600,9 @@ class SendWxTouchTaskRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """客户分组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -2998,6 +3611,9 @@ class SendWxTouchTaskRequest(AbstractModel):
 
     @property
     def DistinctFlag(self):
+        """去除今日已发送的客户
+        :rtype: bool
+        """
         return self._DistinctFlag
 
     @DistinctFlag.setter
@@ -3006,6 +3622,9 @@ class SendWxTouchTaskRequest(AbstractModel):
 
     @property
     def IsSendNow(self):
+        """是否立马发送
+        :rtype: bool
+        """
         return self._IsSendNow
 
     @IsSendNow.setter
@@ -3014,6 +3633,9 @@ class SendWxTouchTaskRequest(AbstractModel):
 
     @property
     def SendDate(self):
+        """发送时间，一般为0
+        :rtype: int
+        """
         return self._SendDate
 
     @SendDate.setter
@@ -3022,6 +3644,9 @@ class SendWxTouchTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -3030,6 +3655,9 @@ class SendWxTouchTaskRequest(AbstractModel):
 
     @property
     def WxTouchType(self):
+        """微信触达类型，text, news, smallapp, tmplmsg
+        :rtype: str
+        """
         return self._WxTouchType
 
     @WxTouchType.setter
@@ -3038,6 +3666,9 @@ class SendWxTouchTaskRequest(AbstractModel):
 
     @property
     def Title(self):
+        """标题
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -3046,6 +3677,9 @@ class SendWxTouchTaskRequest(AbstractModel):
 
     @property
     def Content(self):
+        """文本内容
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -3054,6 +3688,9 @@ class SendWxTouchTaskRequest(AbstractModel):
 
     @property
     def NewsId(self):
+        """图文素材ID
+        :rtype: str
+        """
         return self._NewsId
 
     @NewsId.setter
@@ -3062,6 +3699,9 @@ class SendWxTouchTaskRequest(AbstractModel):
 
     @property
     def SmallProgramId(self):
+        """小程序卡片ID
+        :rtype: str
+        """
         return self._SmallProgramId
 
     @SmallProgramId.setter
@@ -3070,6 +3710,9 @@ class SendWxTouchTaskRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板消息ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -3078,6 +3721,9 @@ class SendWxTouchTaskRequest(AbstractModel):
 
     @property
     def WxAppId(self):
+        """微信公众号appId
+        :rtype: str
+        """
         return self._WxAppId
 
     @WxAppId.setter
@@ -3122,6 +3768,9 @@ class SendWxTouchTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3153,6 +3802,9 @@ class SubProjectInfo(AbstractModel):
 
     @property
     def SubProjectId(self):
+        """子项目id
+        :rtype: str
+        """
         return self._SubProjectId
 
     @SubProjectId.setter
@@ -3161,6 +3813,9 @@ class SubProjectInfo(AbstractModel):
 
     @property
     def SubProjectName(self):
+        """子项目名称
+        :rtype: str
+        """
         return self._SubProjectName
 
     @SubProjectName.setter
@@ -3169,6 +3824,9 @@ class SubProjectInfo(AbstractModel):
 
     @property
     def SubProjectStatus(self):
+        """子项目状态
+        :rtype: str
+        """
         return self._SubProjectStatus
 
     @SubProjectStatus.setter

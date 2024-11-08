@@ -49,6 +49,9 @@ class CertificateIdentityUser(AbstractModel):
 
     @property
     def Name(self):
+        """姓名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -57,6 +60,9 @@ class CertificateIdentityUser(AbstractModel):
 
     @property
     def IdentityUniqueId(self):
+        """唯一身份id
+        :rtype: str
+        """
         return self._IdentityUniqueId
 
     @IdentityUniqueId.setter
@@ -65,6 +71,9 @@ class CertificateIdentityUser(AbstractModel):
 
     @property
     def IdCardNumber(self):
+        """身份证号
+        :rtype: str
+        """
         return self._IdCardNumber
 
     @IdCardNumber.setter
@@ -73,6 +82,10 @@ class CertificateIdentityUser(AbstractModel):
 
     @property
     def IdentificationType(self):
+        """身份鉴别类型
+1：授权金融机构身份鉴别
+        :rtype: str
+        """
         return self._IdentificationType
 
     @IdentificationType.setter
@@ -81,6 +94,13 @@ class CertificateIdentityUser(AbstractModel):
 
     @property
     def IdentificationMeasures(self):
+        """身份鉴别措施
+1、身份证鉴别
+2、银行卡鉴别
+3、支付账户密码验证
+4、人脸识别验证
+        :rtype: list of str
+        """
         return self._IdentificationMeasures
 
     @IdentificationMeasures.setter
@@ -136,6 +156,9 @@ class CreateVerifyReportRequest(AbstractModel):
 
     @property
     def ApplyCustomerType(self):
+        """申请者类型 1:个人，2:企业
+        :rtype: str
+        """
         return self._ApplyCustomerType
 
     @ApplyCustomerType.setter
@@ -144,6 +167,9 @@ class CreateVerifyReportRequest(AbstractModel):
 
     @property
     def ApplyCustomerName(self):
+        """申请企业 or 自然人名称
+        :rtype: str
+        """
         return self._ApplyCustomerName
 
     @ApplyCustomerName.setter
@@ -152,6 +178,9 @@ class CreateVerifyReportRequest(AbstractModel):
 
     @property
     def ApplyName(self):
+        """验签申请经办人姓名
+        :rtype: str
+        """
         return self._ApplyName
 
     @ApplyName.setter
@@ -160,6 +189,9 @@ class CreateVerifyReportRequest(AbstractModel):
 
     @property
     def ApplyMobile(self):
+        """验签申请经办人电话
+        :rtype: str
+        """
         return self._ApplyMobile
 
     @ApplyMobile.setter
@@ -168,6 +200,9 @@ class CreateVerifyReportRequest(AbstractModel):
 
     @property
     def FileId(self):
+        """验签文件id
+        :rtype: str
+        """
         return self._FileId
 
     @FileId.setter
@@ -176,6 +211,9 @@ class CreateVerifyReportRequest(AbstractModel):
 
     @property
     def ApplyEmail(self):
+        """验签申请经办人邮箱
+        :rtype: str
+        """
         return self._ApplyEmail
 
     @ApplyEmail.setter
@@ -184,6 +222,9 @@ class CreateVerifyReportRequest(AbstractModel):
 
     @property
     def CertificateIdentityUsers(self):
+        """证书用户身份及身份鉴别信息
+        :rtype: list of CertificateIdentityUser
+        """
         return self._CertificateIdentityUsers
 
     @CertificateIdentityUsers.setter
@@ -237,6 +278,9 @@ class CreateVerifyReportResponse(AbstractModel):
 
     @property
     def SignatureId(self):
+        """签名id
+        :rtype: str
+        """
         return self._SignatureId
 
     @SignatureId.setter
@@ -245,6 +289,9 @@ class CreateVerifyReportResponse(AbstractModel):
 
     @property
     def Code(self):
+        """code
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -253,6 +300,9 @@ class CreateVerifyReportResponse(AbstractModel):
 
     @property
     def Message(self):
+        """message
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -261,6 +311,9 @@ class CreateVerifyReportResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -289,6 +342,9 @@ class DescribeVerifyReportRequest(AbstractModel):
 
     @property
     def SignatureId(self):
+        """签名id
+        :rtype: str
+        """
         return self._SignatureId
 
     @SignatureId.setter
@@ -331,6 +387,9 @@ class DescribeVerifyReportResponse(AbstractModel):
 
     @property
     def ReportUrl(self):
+        """下载url
+        :rtype: str
+        """
         return self._ReportUrl
 
     @ReportUrl.setter
@@ -339,6 +398,9 @@ class DescribeVerifyReportResponse(AbstractModel):
 
     @property
     def Code(self):
+        """code
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -347,6 +409,9 @@ class DescribeVerifyReportResponse(AbstractModel):
 
     @property
     def Message(self):
+        """message
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -355,6 +420,9 @@ class DescribeVerifyReportResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -386,6 +454,9 @@ class FileInfo(AbstractModel):
 
     @property
     def FileBody(self):
+        """BASE64编码后的文件内容
+        :rtype: str
+        """
         return self._FileBody
 
     @FileBody.setter
@@ -394,6 +465,9 @@ class FileInfo(AbstractModel):
 
     @property
     def FileName(self):
+        """文件名及类型，最大长度不超过200字符
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -428,6 +502,9 @@ class UploadFileRequest(AbstractModel):
 
     @property
     def FileInfos(self):
+        """验签源文件信息列表
+        :rtype: list of FileInfo
+        """
         return self._FileInfos
 
     @FileInfos.setter
@@ -472,6 +549,9 @@ class UploadFileResponse(AbstractModel):
 
     @property
     def FileIds(self):
+        """文件id列表
+        :rtype: list of str
+        """
         return self._FileIds
 
     @FileIds.setter
@@ -480,6 +560,9 @@ class UploadFileResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """文件id总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -488,6 +571,9 @@ class UploadFileResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

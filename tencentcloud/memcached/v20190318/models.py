@@ -62,6 +62,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """枚举范围： AddTimeStamp, InstanceName, ProjectId
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -70,6 +73,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def SearchKeys(self):
+        """查找的关键字
+        :rtype: list of str
+        """
         return self._SearchKeys
 
     @SearchKeys.setter
@@ -78,6 +84,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def UniqSubnetIds(self):
+        """子网ID列表
+        :rtype: list of str
+        """
         return self._UniqSubnetIds
 
     @UniqSubnetIds.setter
@@ -86,6 +95,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Vips(self):
+        """VIP列表
+        :rtype: list of str
+        """
         return self._Vips
 
     @Vips.setter
@@ -94,6 +106,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def OrderType(self):
+        """0倒序，1正序，默认倒序
+        :rtype: int
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -102,6 +117,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceNames(self):
+        """实例名称列表
+        :rtype: list of str
+        """
         return self._InstanceNames
 
     @InstanceNames.setter
@@ -110,6 +128,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def UniqVpcIds(self):
+        """VPC ID列表
+        :rtype: list of str
+        """
         return self._UniqVpcIds
 
     @UniqVpcIds.setter
@@ -118,6 +139,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def ProjectIds(self):
+        """项目ID列表
+        :rtype: list of int
+        """
         return self._ProjectIds
 
     @ProjectIds.setter
@@ -126,6 +150,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，取Limit整数倍
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -134,6 +161,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """实例列表的大小，参数默认值100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -142,6 +172,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例ID列表
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -191,6 +224,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def InstanceList(self):
+        """实例详细信息列表
+        :rtype: list of InstanceListInfo
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -199,6 +235,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def TotalNum(self):
+        """实例数量
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -207,6 +246,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -309,6 +351,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def ModTimeStamp(self):
+        """实例修改时间
+        :rtype: str
+        """
         return self._ModTimeStamp
 
     @ModTimeStamp.setter
@@ -317,6 +362,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def IsolateTimeStamp(self):
+        """实例隔离时间
+        :rtype: str
+        """
         return self._IsolateTimeStamp
 
     @IsolateTimeStamp.setter
@@ -325,6 +373,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """实例是否设置自动续费标识，1：设置自动续费；0：未设置自动续费
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -333,6 +384,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def SetId(self):
+        """仓库ID
+        :rtype: int
+        """
         return self._SetId
 
     @SetId.setter
@@ -341,6 +395,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def Status(self):
+        """实例当前状态，0：发货中；1：运行中；2：创建失败；4：销毁中；5：隔离中；6：下线中
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -349,6 +406,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def CmemId(self):
+        """实例内置ID
+        :rtype: int
+        """
         return self._CmemId
 
     @CmemId.setter
@@ -357,6 +417,10 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """实例关联的标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TagInfo
+        """
         return self._Tags
 
     @Tags.setter
@@ -365,6 +429,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -373,6 +440,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def RegionId(self):
+        """地域id 1--广州 4--上海 5-- 香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）16--成都 17--德国 18--韩国 19--重庆 21--印度 22--美东（弗吉尼亚）23--泰国   25--日本
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -381,6 +451,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def InstanceDesc(self):
+        """实例描述信息
+        :rtype: str
+        """
         return self._InstanceDesc
 
     @InstanceDesc.setter
@@ -389,6 +462,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def Expire(self):
+        """过期策略
+        :rtype: int
+        """
         return self._Expire
 
     @Expire.setter
@@ -397,6 +473,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def SubnetId(self):
+        """vpc网络下子网id 如：46315
+        :rtype: int
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -405,6 +484,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -413,6 +495,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def AddTimeStamp(self):
+        """实例创建时间
+        :rtype: str
+        """
         return self._AddTimeStamp
 
     @AddTimeStamp.setter
@@ -421,6 +506,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def ZoneId(self):
+        """区域ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -429,6 +517,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def PayMode(self):
+        """计费模式：0-按量计费，1-包年包月
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -437,6 +528,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def VpcId(self):
+        """vpc网络id 如：75101
+        :rtype: int
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -445,6 +539,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -453,6 +550,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def DeadlineTimeStamp(self):
+        """实例截止时间
+        :rtype: str
+        """
         return self._DeadlineTimeStamp
 
     @DeadlineTimeStamp.setter
@@ -461,6 +561,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """vpc网络id 如：vpc-fk33jsf43kgv
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -469,6 +572,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def Vip(self):
+        """实例vip
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -477,6 +583,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def UniqSubnetId(self):
+        """vpc网络下子网id 如：subnet-fd3j6l35mm0
+        :rtype: str
+        """
         return self._UniqSubnetId
 
     @UniqSubnetId.setter
@@ -485,6 +594,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def AppId(self):
+        """用户AppID
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -493,6 +605,9 @@ class InstanceListInfo(AbstractModel):
 
     @property
     def Vport(self):
+        """实例端口号
+        :rtype: int
+        """
         return self._Vport
 
     @Vport.setter
@@ -559,6 +674,10 @@ class TagInfo(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -567,6 +686,10 @@ class TagInfo(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter

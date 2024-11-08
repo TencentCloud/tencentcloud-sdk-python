@@ -210,6 +210,29 @@ class PrivatednsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteForwardRule(self, request):
+        """删除转发规则并停止转发
+
+        :param request: Request instance for DeleteForwardRule.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DeleteForwardRuleRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DeleteForwardRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteForwardRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteForwardRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeletePrivateDNSAccount(self, request):
         """删除私有域解析账号
 
@@ -394,6 +417,52 @@ class PrivatednsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeEndPointRegion(self, request):
+        """查询终端节点已经启用了的地域
+
+        :param request: Request instance for DescribeEndPointRegion.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeEndPointRegionRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DescribeEndPointRegionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEndPointRegion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEndPointRegionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeForwardRule(self, request):
+        """查询转发规则
+
+        :param request: Request instance for DescribeForwardRule.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeForwardRuleRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DescribeForwardRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeForwardRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeForwardRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeForwardRuleList(self, request):
         """查询转发规则列表
 
@@ -569,6 +638,29 @@ class PrivatednsClient(AbstractClient):
             body = self.call("DescribeRequestData", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRequestDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyForwardRule(self, request):
+        """修改转发规则
+
+        :param request: Request instance for ModifyForwardRule.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.ModifyForwardRuleRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.ModifyForwardRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyForwardRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyForwardRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

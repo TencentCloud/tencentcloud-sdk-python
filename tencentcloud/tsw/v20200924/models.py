@@ -61,6 +61,10 @@ class AgentShell(AbstractModel):
 
     @property
     def Token(self):
+        """鉴权token
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Token
 
     @Token.setter
@@ -69,6 +73,10 @@ class AgentShell(AbstractModel):
 
     @property
     def EtlIp(self):
+        """数据接收Ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EtlIp
 
     @EtlIp.setter
@@ -77,6 +85,10 @@ class AgentShell(AbstractModel):
 
     @property
     def EtlPort(self):
+        """数据接收port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EtlPort
 
     @EtlPort.setter
@@ -85,6 +97,10 @@ class AgentShell(AbstractModel):
 
     @property
     def ByHandAccess(self):
+        """手动接入脚本串
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ByHandAccess
 
     @ByHandAccess.setter
@@ -93,6 +109,10 @@ class AgentShell(AbstractModel):
 
     @property
     def ByShellAccess(self):
+        """自动接入脚本串
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ByShellAccess
 
     @ByShellAccess.setter
@@ -101,6 +121,10 @@ class AgentShell(AbstractModel):
 
     @property
     def SkyWalkingPort(self):
+        """SkyWalking数据接收port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SkyWalkingPort
 
     @SkyWalkingPort.setter
@@ -109,6 +133,10 @@ class AgentShell(AbstractModel):
 
     @property
     def ZipkinPort(self):
+        """Zipkin数据接收port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ZipkinPort
 
     @ZipkinPort.setter
@@ -117,6 +145,10 @@ class AgentShell(AbstractModel):
 
     @property
     def JaegerPort(self):
+        """Jaeger数据接收port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._JaegerPort
 
     @JaegerPort.setter
@@ -167,6 +199,10 @@ class DescribeAgentShellResponse(AbstractModel):
 
     @property
     def Result(self):
+        """接入信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tsw.v20200924.models.AgentShell`
+        """
         return self._Result
 
     @Result.setter
@@ -175,6 +211,9 @@ class DescribeAgentShellResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

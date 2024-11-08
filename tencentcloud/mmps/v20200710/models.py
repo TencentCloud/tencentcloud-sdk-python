@@ -75,6 +75,9 @@ class AppInfoItem(AbstractModel):
 
     @property
     def AppPackage(self):
+        """小程序apiiid
+        :rtype: str
+        """
         return self._AppPackage
 
     @AppPackage.setter
@@ -83,6 +86,10 @@ class AppInfoItem(AbstractModel):
 
     @property
     def AppName(self):
+        """小程序应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -91,6 +98,10 @@ class AppInfoItem(AbstractModel):
 
     @property
     def AppVersion(self):
+        """小程序应用版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AppVersion
 
     @AppVersion.setter
@@ -99,6 +110,9 @@ class AppInfoItem(AbstractModel):
 
     @property
     def Platform(self):
+        """应用平台, 0:android, 1:ios, 2:小程序
+        :rtype: int
+        """
         return self._Platform
 
     @Platform.setter
@@ -107,6 +121,10 @@ class AppInfoItem(AbstractModel):
 
     @property
     def ReportUrl(self):
+        """小程序隐私诊断报告下载链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReportUrl
 
     @ReportUrl.setter
@@ -115,6 +133,10 @@ class AppInfoItem(AbstractModel):
 
     @property
     def ReportTitle(self):
+        """小程序隐私诊断报告名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReportTitle
 
     @ReportTitle.setter
@@ -123,6 +145,10 @@ class AppInfoItem(AbstractModel):
 
     @property
     def BehaviorUrl(self):
+        """小程序隐私诊断堆栈报告下载链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BehaviorUrl
 
     @BehaviorUrl.setter
@@ -131,6 +157,10 @@ class AppInfoItem(AbstractModel):
 
     @property
     def BehaviorTitle(self):
+        """小程序隐私诊断堆栈报告名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BehaviorTitle
 
     @BehaviorTitle.setter
@@ -139,6 +169,10 @@ class AppInfoItem(AbstractModel):
 
     @property
     def HighRiskCount(self):
+        """诊断风险项数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HighRiskCount
 
     @HighRiskCount.setter
@@ -147,6 +181,10 @@ class AppInfoItem(AbstractModel):
 
     @property
     def PrivacyTextName(self):
+        """隐私申明文件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PrivacyTextName
 
     @PrivacyTextName.setter
@@ -155,6 +193,10 @@ class AppInfoItem(AbstractModel):
 
     @property
     def SoftwareMD5(self):
+        """软件MD5
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SoftwareMD5
 
     @SoftwareMD5.setter
@@ -163,6 +205,10 @@ class AppInfoItem(AbstractModel):
 
     @property
     def PrivacyTextMD5(self):
+        """隐私文本MD5
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PrivacyTextMD5
 
     @PrivacyTextMD5.setter
@@ -233,6 +279,9 @@ class AppTaskData(AbstractModel):
 
     @property
     def TaskID(self):
+        """任务id
+        :rtype: str
+        """
         return self._TaskID
 
     @TaskID.setter
@@ -241,6 +290,9 @@ class AppTaskData(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型, 0:基础版, 1:专家版, 2:本地化
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -249,6 +301,9 @@ class AppTaskData(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """0:默认值(待检测/待咨询), 1.检测中, 2:待评估, 3:评估中, 4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
+        :rtype: int
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -257,6 +312,10 @@ class AppTaskData(AbstractModel):
 
     @property
     def TaskErrMsg(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskErrMsg
 
     @TaskErrMsg.setter
@@ -265,6 +324,9 @@ class AppTaskData(AbstractModel):
 
     @property
     def Source(self):
+        """任务来源,0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+        :rtype: int
+        """
         return self._Source
 
     @Source.setter
@@ -273,6 +335,9 @@ class AppTaskData(AbstractModel):
 
     @property
     def AppInfo(self):
+        """应用信息
+        :rtype: :class:`tencentcloud.mmps.v20200710.models.AppInfoItem`
+        """
         return self._AppInfo
 
     @AppInfo.setter
@@ -281,6 +346,9 @@ class AppTaskData(AbstractModel):
 
     @property
     def StartTime(self):
+        """任务启动时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -289,6 +357,9 @@ class AppTaskData(AbstractModel):
 
     @property
     def EndTime(self):
+        """任务完成时间(更新时间)
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -297,6 +368,10 @@ class AppTaskData(AbstractModel):
 
     @property
     def ContactName(self):
+        """联系人信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ContactName
 
     @ContactName.setter
@@ -352,6 +427,9 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型, 0:基础版, 1:专家版, 2:本地化
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -360,6 +438,9 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def Source(self):
+        """任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+        :rtype: int
+        """
         return self._Source
 
     @Source.setter
@@ -368,6 +449,9 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def AppPackage(self):
+        """小程序AppID
+        :rtype: str
+        """
         return self._AppPackage
 
     @AppPackage.setter
@@ -376,6 +460,9 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """应用平台, 0:android, 1:ios, 2:小程序
+        :rtype: int
+        """
         return self._Platform
 
     @Platform.setter
@@ -384,6 +471,9 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def OrgTaskID(self):
+        """原诊断任务ID
+        :rtype: str
+        """
         return self._OrgTaskID
 
     @OrgTaskID.setter
@@ -427,6 +517,9 @@ class CreateAppScanTaskRepeatResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回值, 0:成功, 其他值请查看“返回值”定义
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -435,6 +528,9 @@ class CreateAppScanTaskRepeatResponse(AbstractModel):
 
     @property
     def TaskID(self):
+        """任务id
+        :rtype: str
+        """
         return self._TaskID
 
     @TaskID.setter
@@ -443,6 +539,9 @@ class CreateAppScanTaskRepeatResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -500,6 +599,9 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型, 0:基础版, 1:专家版, 2:本地化
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -508,6 +610,9 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def Source(self):
+        """任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+        :rtype: int
+        """
         return self._Source
 
     @Source.setter
@@ -516,6 +621,9 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def AppPackage(self):
+        """小程序AppID
+        :rtype: str
+        """
         return self._AppPackage
 
     @AppPackage.setter
@@ -524,6 +632,9 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """应用平台, 0:android, 1:ios, 2:小程序
+        :rtype: int
+        """
         return self._Platform
 
     @Platform.setter
@@ -532,6 +643,9 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """小程序名称
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -540,6 +654,9 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def AppVersion(self):
+        """小程序版本
+        :rtype: str
+        """
         return self._AppVersion
 
     @AppVersion.setter
@@ -548,6 +665,9 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def ContactName(self):
+        """联系人信息
+        :rtype: str
+        """
         return self._ContactName
 
     @ContactName.setter
@@ -556,6 +676,9 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def TelNumber(self):
+        """联系电话
+        :rtype: str
+        """
         return self._TelNumber
 
     @TelNumber.setter
@@ -564,6 +687,9 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def CorpName(self):
+        """公司名称
+        :rtype: str
+        """
         return self._CorpName
 
     @CorpName.setter
@@ -572,6 +698,9 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def SalesPerson(self):
+        """商务对接人员
+        :rtype: str
+        """
         return self._SalesPerson
 
     @SalesPerson.setter
@@ -580,6 +709,9 @@ class CreateAppScanTaskRequest(AbstractModel):
 
     @property
     def Email(self):
+        """公司邮箱
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -629,6 +761,9 @@ class CreateAppScanTaskResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回值, 0:成功, 其他值请查看“返回值”定义
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -637,6 +772,9 @@ class CreateAppScanTaskResponse(AbstractModel):
 
     @property
     def TaskID(self):
+        """任务id
+        :rtype: str
+        """
         return self._TaskID
 
     @TaskID.setter
@@ -645,6 +783,9 @@ class CreateAppScanTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -690,6 +831,9 @@ class CreateFlySecMiniAppProfessionalScanTaskRequest(AbstractModel):
 
     @property
     def MiniAppID(self):
+        """小程序AppID
+        :rtype: str
+        """
         return self._MiniAppID
 
     @MiniAppID.setter
@@ -698,6 +842,9 @@ class CreateFlySecMiniAppProfessionalScanTaskRequest(AbstractModel):
 
     @property
     def MiniAppName(self):
+        """小程序名称
+        :rtype: str
+        """
         return self._MiniAppName
 
     @MiniAppName.setter
@@ -706,6 +853,9 @@ class CreateFlySecMiniAppProfessionalScanTaskRequest(AbstractModel):
 
     @property
     def Mode(self):
+        """诊断模式 2:深度诊断
+        :rtype: int
+        """
         return self._Mode
 
     @Mode.setter
@@ -714,6 +864,9 @@ class CreateFlySecMiniAppProfessionalScanTaskRequest(AbstractModel):
 
     @property
     def CorpName(self):
+        """公司名称
+        :rtype: str
+        """
         return self._CorpName
 
     @CorpName.setter
@@ -722,6 +875,9 @@ class CreateFlySecMiniAppProfessionalScanTaskRequest(AbstractModel):
 
     @property
     def Mobile(self):
+        """手机号码
+        :rtype: str
+        """
         return self._Mobile
 
     @Mobile.setter
@@ -730,6 +886,9 @@ class CreateFlySecMiniAppProfessionalScanTaskRequest(AbstractModel):
 
     @property
     def Email(self):
+        """电子邮箱
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -738,6 +897,9 @@ class CreateFlySecMiniAppProfessionalScanTaskRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注信息
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -780,6 +942,9 @@ class CreateFlySecMiniAppProfessionalScanTaskResponse(AbstractModel):
 
     @property
     def Ret(self):
+        """返回值, 0:成功, 其他值请查看“返回值”定义
+        :rtype: int
+        """
         return self._Ret
 
     @Ret.setter
@@ -788,6 +953,9 @@ class CreateFlySecMiniAppProfessionalScanTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -829,6 +997,9 @@ class CreateFlySecMiniAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def MiniAppID(self):
+        """小程序AppID
+        :rtype: str
+        """
         return self._MiniAppID
 
     @MiniAppID.setter
@@ -837,6 +1008,9 @@ class CreateFlySecMiniAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def Mode(self):
+        """诊断模式 1:基础诊断
+        :rtype: int
+        """
         return self._Mode
 
     @Mode.setter
@@ -845,6 +1019,9 @@ class CreateFlySecMiniAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def OrgTaskID(self):
+        """原任务id
+        :rtype: str
+        """
         return self._OrgTaskID
 
     @OrgTaskID.setter
@@ -853,6 +1030,9 @@ class CreateFlySecMiniAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def MiniAppTestAccount(self):
+        """小程序测试账号(自有账号体系需提供,其他情况不需要)
+        :rtype: str
+        """
         return self._MiniAppTestAccount
 
     @MiniAppTestAccount.setter
@@ -861,6 +1041,9 @@ class CreateFlySecMiniAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def MiniAppTestPwd(self):
+        """小程序测试密码(自有账号体系需提供,其他情况不需要)
+        :rtype: str
+        """
         return self._MiniAppTestPwd
 
     @MiniAppTestPwd.setter
@@ -869,6 +1052,9 @@ class CreateFlySecMiniAppScanTaskRepeatRequest(AbstractModel):
 
     @property
     def ScanVersion(self):
+        """诊断扫描版本 0:正式版 1:体验版
+        :rtype: int
+        """
         return self._ScanVersion
 
     @ScanVersion.setter
@@ -913,6 +1099,9 @@ class CreateFlySecMiniAppScanTaskRepeatResponse(AbstractModel):
 
     @property
     def Ret(self):
+        """返回值, 0:成功, 其他值请查看“返回值”定义
+        :rtype: int
+        """
         return self._Ret
 
     @Ret.setter
@@ -921,6 +1110,9 @@ class CreateFlySecMiniAppScanTaskRepeatResponse(AbstractModel):
 
     @property
     def TaskID(self):
+        """任务id
+        :rtype: str
+        """
         return self._TaskID
 
     @TaskID.setter
@@ -929,6 +1121,9 @@ class CreateFlySecMiniAppScanTaskRepeatResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -983,6 +1178,9 @@ class CreateFlySecMiniAppScanTaskRequest(AbstractModel):
 
     @property
     def MiniAppID(self):
+        """小程序AppID
+        :rtype: str
+        """
         return self._MiniAppID
 
     @MiniAppID.setter
@@ -991,6 +1189,9 @@ class CreateFlySecMiniAppScanTaskRequest(AbstractModel):
 
     @property
     def Mode(self):
+        """诊断模式 1:基础诊断
+        :rtype: int
+        """
         return self._Mode
 
     @Mode.setter
@@ -999,6 +1200,9 @@ class CreateFlySecMiniAppScanTaskRequest(AbstractModel):
 
     @property
     def MiniAppTestAccount(self):
+        """小程序测试账号(自有账号体系需提供,其他情况不需要)
+        :rtype: str
+        """
         return self._MiniAppTestAccount
 
     @MiniAppTestAccount.setter
@@ -1007,6 +1211,9 @@ class CreateFlySecMiniAppScanTaskRequest(AbstractModel):
 
     @property
     def MiniAppTestPwd(self):
+        """小程序测试密码(自有账号体系需提供,其他情况不需要)
+        :rtype: str
+        """
         return self._MiniAppTestPwd
 
     @MiniAppTestPwd.setter
@@ -1015,6 +1222,9 @@ class CreateFlySecMiniAppScanTaskRequest(AbstractModel):
 
     @property
     def Industry(self):
+        """小程序所属行业
+        :rtype: str
+        """
         return self._Industry
 
     @Industry.setter
@@ -1023,6 +1233,9 @@ class CreateFlySecMiniAppScanTaskRequest(AbstractModel):
 
     @property
     def SurveyContent(self):
+        """小程序调查问卷json字符串
+        :rtype: str
+        """
         return self._SurveyContent
 
     @SurveyContent.setter
@@ -1031,6 +1244,9 @@ class CreateFlySecMiniAppScanTaskRequest(AbstractModel):
 
     @property
     def Mobile(self):
+        """手机号码
+        :rtype: str
+        """
         return self._Mobile
 
     @Mobile.setter
@@ -1039,6 +1255,9 @@ class CreateFlySecMiniAppScanTaskRequest(AbstractModel):
 
     @property
     def Email(self):
+        """邮箱地址
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -1047,6 +1266,9 @@ class CreateFlySecMiniAppScanTaskRequest(AbstractModel):
 
     @property
     def SalesPerson(self):
+        """商务合作接口人
+        :rtype: str
+        """
         return self._SalesPerson
 
     @SalesPerson.setter
@@ -1055,6 +1277,9 @@ class CreateFlySecMiniAppScanTaskRequest(AbstractModel):
 
     @property
     def ScanVersion(self):
+        """诊断扫描版本 0:正式版 1:体验版
+        :rtype: int
+        """
         return self._ScanVersion
 
     @ScanVersion.setter
@@ -1103,6 +1328,9 @@ class CreateFlySecMiniAppScanTaskResponse(AbstractModel):
 
     @property
     def Ret(self):
+        """返回值, 0:成功, 其他值请查看“返回值”定义
+        :rtype: int
+        """
         return self._Ret
 
     @Ret.setter
@@ -1111,6 +1339,9 @@ class CreateFlySecMiniAppScanTaskResponse(AbstractModel):
 
     @property
     def TaskID(self):
+        """任务id
+        :rtype: str
+        """
         return self._TaskID
 
     @TaskID.setter
@@ -1119,6 +1350,9 @@ class CreateFlySecMiniAppScanTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1146,6 +1380,9 @@ class DescribeBasicDiagnosisResourceUsageInfoRequest(AbstractModel):
 
     @property
     def Mode(self):
+        """诊断模式 1:基础诊断，2:深度诊断
+        :rtype: int
+        """
         return self._Mode
 
     @Mode.setter
@@ -1191,6 +1428,9 @@ class DescribeBasicDiagnosisResourceUsageInfoResponse(AbstractModel):
 
     @property
     def Ret(self):
+        """返回值, 0:成功, 其他值请查看“返回值”定义
+        :rtype: int
+        """
         return self._Ret
 
     @Ret.setter
@@ -1199,6 +1439,9 @@ class DescribeBasicDiagnosisResourceUsageInfoResponse(AbstractModel):
 
     @property
     def ResourceName(self):
+        """资源类型
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -1207,6 +1450,9 @@ class DescribeBasicDiagnosisResourceUsageInfoResponse(AbstractModel):
 
     @property
     def Total(self):
+        """资源总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -1215,6 +1461,9 @@ class DescribeBasicDiagnosisResourceUsageInfoResponse(AbstractModel):
 
     @property
     def UnusedCount(self):
+        """资源未使用次数
+        :rtype: int
+        """
         return self._UnusedCount
 
     @UnusedCount.setter
@@ -1223,6 +1472,9 @@ class DescribeBasicDiagnosisResourceUsageInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1261,6 +1513,9 @@ class DescribeFlySecMiniAppReportUrlRequest(AbstractModel):
 
     @property
     def TaskID(self):
+        """任务id
+        :rtype: str
+        """
         return self._TaskID
 
     @TaskID.setter
@@ -1269,6 +1524,9 @@ class DescribeFlySecMiniAppReportUrlRequest(AbstractModel):
 
     @property
     def MiniAppID(self):
+        """小程序appid
+        :rtype: str
+        """
         return self._MiniAppID
 
     @MiniAppID.setter
@@ -1277,6 +1535,9 @@ class DescribeFlySecMiniAppReportUrlRequest(AbstractModel):
 
     @property
     def Mode(self):
+        """诊断方式 1:基础诊断，2:深度诊断
+        :rtype: int
+        """
         return self._Mode
 
     @Mode.setter
@@ -1285,6 +1546,9 @@ class DescribeFlySecMiniAppReportUrlRequest(AbstractModel):
 
     @property
     def ReportType(self):
+        """诊断报告类型 0:基础诊断报告，1:总裁版诊断报告，2:诊断报告json结果
+        :rtype: int
+        """
         return self._ReportType
 
     @ReportType.setter
@@ -1328,6 +1592,9 @@ class DescribeFlySecMiniAppReportUrlResponse(AbstractModel):
 
     @property
     def Ret(self):
+        """返回值, 0:成功, 其他值请查看“返回值”定义
+        :rtype: int
+        """
         return self._Ret
 
     @Ret.setter
@@ -1336,6 +1603,10 @@ class DescribeFlySecMiniAppReportUrlResponse(AbstractModel):
 
     @property
     def Url(self):
+        """诊断报告下载链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -1344,6 +1615,9 @@ class DescribeFlySecMiniAppReportUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1383,6 +1657,9 @@ class DescribeFlySecMiniAppScanReportListRequest(AbstractModel):
 
     @property
     def MiniAppID(self):
+        """小程序AppID
+        :rtype: str
+        """
         return self._MiniAppID
 
     @MiniAppID.setter
@@ -1391,6 +1668,9 @@ class DescribeFlySecMiniAppScanReportListRequest(AbstractModel):
 
     @property
     def Mode(self):
+        """诊断方式 1:基础诊断，2:深度诊断
+        :rtype: int
+        """
         return self._Mode
 
     @Mode.setter
@@ -1399,6 +1679,9 @@ class DescribeFlySecMiniAppScanReportListRequest(AbstractModel):
 
     @property
     def Status(self):
+        """诊断状态 -1:查询全部, 0:排队中, 1:成功, 2:失败, 3:进行中
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1407,6 +1690,9 @@ class DescribeFlySecMiniAppScanReportListRequest(AbstractModel):
 
     @property
     def Size(self):
+        """查询数量, 0:查询所有, 其他值:最近几次的诊断数量
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -1415,6 +1701,9 @@ class DescribeFlySecMiniAppScanReportListRequest(AbstractModel):
 
     @property
     def MiniAppVersion(self):
+        """小程序版本
+        :rtype: str
+        """
         return self._MiniAppVersion
 
     @MiniAppVersion.setter
@@ -1463,6 +1752,9 @@ class DescribeFlySecMiniAppScanReportListResponse(AbstractModel):
 
     @property
     def Ret(self):
+        """返回值, 0:成功, 其他值请查看“返回值”定义
+        :rtype: int
+        """
         return self._Ret
 
     @Ret.setter
@@ -1471,6 +1763,10 @@ class DescribeFlySecMiniAppScanReportListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """诊断报告数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FlySecMiniAppReportData
+        """
         return self._Data
 
     @Data.setter
@@ -1479,6 +1775,10 @@ class DescribeFlySecMiniAppScanReportListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """诊断任务数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -1487,6 +1787,9 @@ class DescribeFlySecMiniAppScanReportListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1529,6 +1832,9 @@ class DescribeFlySecMiniAppScanTaskListRequest(AbstractModel):
 
     @property
     def Mode(self):
+        """诊断方式 1:基础诊断，2:深度诊断
+        :rtype: int
+        """
         return self._Mode
 
     @Mode.setter
@@ -1537,6 +1843,9 @@ class DescribeFlySecMiniAppScanTaskListRequest(AbstractModel):
 
     @property
     def Status(self):
+        """诊断状态 -1:查询全部, 0:排队中, 1:成功, 2:失败, 3:进行中
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1545,6 +1854,9 @@ class DescribeFlySecMiniAppScanTaskListRequest(AbstractModel):
 
     @property
     def Size(self):
+        """查询数量, 0:查询所有, 其他值:最近几次的诊断数量
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -1553,6 +1865,9 @@ class DescribeFlySecMiniAppScanTaskListRequest(AbstractModel):
 
     @property
     def MiniAppID(self):
+        """小程序appid(为空的时候,则查询当前用户诊断的所有小程序)
+        :rtype: str
+        """
         return self._MiniAppID
 
     @MiniAppID.setter
@@ -1600,6 +1915,9 @@ class DescribeFlySecMiniAppScanTaskListResponse(AbstractModel):
 
     @property
     def Ret(self):
+        """返回值, 0:成功, 其他值请查看“返回值”定义
+        :rtype: int
+        """
         return self._Ret
 
     @Ret.setter
@@ -1608,6 +1926,10 @@ class DescribeFlySecMiniAppScanTaskListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """诊断任务数据列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FlySecMiniAppTaskData
+        """
         return self._Data
 
     @Data.setter
@@ -1616,6 +1938,10 @@ class DescribeFlySecMiniAppScanTaskListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """诊断任务数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -1624,6 +1950,9 @@ class DescribeFlySecMiniAppScanTaskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1657,6 +1986,9 @@ class DescribeFlySecMiniAppScanTaskParamRequest(AbstractModel):
 
     @property
     def TaskID(self):
+        """任务id
+        :rtype: str
+        """
         return self._TaskID
 
     @TaskID.setter
@@ -1711,6 +2043,9 @@ class DescribeFlySecMiniAppScanTaskParamResponse(AbstractModel):
 
     @property
     def Ret(self):
+        """返回值, 0:成功, 其他值请查看“返回值”定义
+        :rtype: int
+        """
         return self._Ret
 
     @Ret.setter
@@ -1719,6 +2054,9 @@ class DescribeFlySecMiniAppScanTaskParamResponse(AbstractModel):
 
     @property
     def MiniAppID(self):
+        """小程序AppID
+        :rtype: str
+        """
         return self._MiniAppID
 
     @MiniAppID.setter
@@ -1727,6 +2065,9 @@ class DescribeFlySecMiniAppScanTaskParamResponse(AbstractModel):
 
     @property
     def Mode(self):
+        """诊断模式 1:基础诊断，2:深度诊断
+        :rtype: int
+        """
         return self._Mode
 
     @Mode.setter
@@ -1735,6 +2076,10 @@ class DescribeFlySecMiniAppScanTaskParamResponse(AbstractModel):
 
     @property
     def MiniAppTestAccount(self):
+        """小程序测试账号(自有账号体系需提供,其他情况不需要)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MiniAppTestAccount
 
     @MiniAppTestAccount.setter
@@ -1743,6 +2088,10 @@ class DescribeFlySecMiniAppScanTaskParamResponse(AbstractModel):
 
     @property
     def MiniAppTestPwd(self):
+        """小程序测试密码(自有账号体系需提供,其他情况不需要)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MiniAppTestPwd
 
     @MiniAppTestPwd.setter
@@ -1751,6 +2100,10 @@ class DescribeFlySecMiniAppScanTaskParamResponse(AbstractModel):
 
     @property
     def ScanVersion(self):
+        """诊断扫描版本 0:正式版 1:体验版
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ScanVersion
 
     @ScanVersion.setter
@@ -1759,6 +2112,9 @@ class DescribeFlySecMiniAppScanTaskParamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1790,6 +2146,9 @@ class DescribeFlySecMiniAppScanTaskStatusRequest(AbstractModel):
 
     @property
     def TaskID(self):
+        """任务id
+        :rtype: str
+        """
         return self._TaskID
 
     @TaskID.setter
@@ -1841,6 +2200,9 @@ class DescribeFlySecMiniAppScanTaskStatusResponse(AbstractModel):
 
     @property
     def Ret(self):
+        """返回值, 0:成功, 其他值请查看“返回值”定义
+        :rtype: int
+        """
         return self._Ret
 
     @Ret.setter
@@ -1849,6 +2211,9 @@ class DescribeFlySecMiniAppScanTaskStatusResponse(AbstractModel):
 
     @property
     def Status(self):
+        """诊断状态, 0:排队中, 1:成功, 2:失败, 3:进行中
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1857,6 +2222,10 @@ class DescribeFlySecMiniAppScanTaskStatusResponse(AbstractModel):
 
     @property
     def Errno(self):
+        """诊断失败错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Errno
 
     @Errno.setter
@@ -1865,6 +2234,10 @@ class DescribeFlySecMiniAppScanTaskStatusResponse(AbstractModel):
 
     @property
     def MiniAppName(self):
+        """小程序名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MiniAppName
 
     @MiniAppName.setter
@@ -1873,6 +2246,10 @@ class DescribeFlySecMiniAppScanTaskStatusResponse(AbstractModel):
 
     @property
     def MiniAppVersion(self):
+        """小程序版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MiniAppVersion
 
     @MiniAppVersion.setter
@@ -1881,6 +2258,9 @@ class DescribeFlySecMiniAppScanTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1926,6 +2306,9 @@ class DescribeResourceUsageInfoResponse(AbstractModel):
 
     @property
     def Ret(self):
+        """返回值, 0:成功, 其他值请查看“返回值”定义
+        :rtype: int
+        """
         return self._Ret
 
     @Ret.setter
@@ -1934,6 +2317,9 @@ class DescribeResourceUsageInfoResponse(AbstractModel):
 
     @property
     def Data(self):
+        """安全资源数据列表
+        :rtype: list of ResourceUsageInfoData
+        """
         return self._Data
 
     @Data.setter
@@ -1942,6 +2328,9 @@ class DescribeResourceUsageInfoResponse(AbstractModel):
 
     @property
     def Total(self):
+        """安全资源数量
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -1950,6 +2339,9 @@ class DescribeResourceUsageInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2007,6 +2399,9 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     @property
     def Source(self):
+        """任务来源, -1:所有, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+        :rtype: int
+        """
         return self._Source
 
     @Source.setter
@@ -2015,6 +2410,9 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """应用平台, 0:android, 1:ios, 2:小程序
+        :rtype: int
+        """
         return self._Platform
 
     @Platform.setter
@@ -2023,6 +2421,9 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     @property
     def TaskStatuses(self):
+        """任务状态,可多值查询,例如:"1,2,3" 0:默认值(待检测/待咨询), 1.检测中, 2:待评估, 3:评估中, 4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
+        :rtype: str
+        """
         return self._TaskStatuses
 
     @TaskStatuses.setter
@@ -2031,6 +2432,9 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     @property
     def TaskTypes(self):
+        """任务类型,可多值查询,采用逗号分隔,例如:"0,1" 0:基础版, 1:专家版, 2:本地化
+        :rtype: str
+        """
         return self._TaskTypes
 
     @TaskTypes.setter
@@ -2039,6 +2443,9 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     @property
     def PageNo(self):
+        """页码
+        :rtype: int
+        """
         return self._PageNo
 
     @PageNo.setter
@@ -2047,6 +2454,9 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """页码大小
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -2055,6 +2465,9 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """应用名称或小程序名称(可选参数)
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -2063,6 +2476,9 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询时间范围, 查询开始时间(2021-09-30 或 2021-09-30 10:57:34)
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2071,6 +2487,9 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询时间范围, 查询结束时间(2021-09-30 或 2021-09-30 10:57:34)
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2123,6 +2542,9 @@ class DescribeScanTaskListResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回值, 0:成功, 其他值请查看“返回值”定义
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -2131,6 +2553,10 @@ class DescribeScanTaskListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """诊断任务数据列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AppTaskData
+        """
         return self._Data
 
     @Data.setter
@@ -2139,6 +2565,10 @@ class DescribeScanTaskListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """任务总数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -2147,6 +2577,9 @@ class DescribeScanTaskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2192,6 +2625,9 @@ class DescribeScanTaskReportUrlRequest(AbstractModel):
 
     @property
     def Source(self):
+        """任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+        :rtype: int
+        """
         return self._Source
 
     @Source.setter
@@ -2200,6 +2636,9 @@ class DescribeScanTaskReportUrlRequest(AbstractModel):
 
     @property
     def TaskID(self):
+        """任务id
+        :rtype: str
+        """
         return self._TaskID
 
     @TaskID.setter
@@ -2208,6 +2647,9 @@ class DescribeScanTaskReportUrlRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """应用平台, 0:android, 1:ios, 2:小程序
+        :rtype: int
+        """
         return self._Platform
 
     @Platform.setter
@@ -2216,6 +2658,9 @@ class DescribeScanTaskReportUrlRequest(AbstractModel):
 
     @property
     def ReportType(self):
+        """报告类型, 0:诊断报告, 1:堆栈报告(预留), 2:视频证据(预留), 3:报告json结果
+        :rtype: int
+        """
         return self._ReportType
 
     @ReportType.setter
@@ -2224,6 +2669,9 @@ class DescribeScanTaskReportUrlRequest(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型, 0:基础版, 1:专家版, 2:本地化
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -2275,6 +2723,9 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回值, 0:成功, 其他值请查看“返回值”定义
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -2283,6 +2734,9 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
 
     @property
     def ReportUrl(self):
+        """诊断报告/堆栈信息下载链接
+        :rtype: str
+        """
         return self._ReportUrl
 
     @ReportUrl.setter
@@ -2291,6 +2745,10 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
 
     @property
     def ReportTitle(self):
+        """诊断报告/堆栈名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReportTitle
 
     @ReportTitle.setter
@@ -2299,6 +2757,10 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
 
     @property
     def ReportResult(self):
+        """诊断json结果内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReportResult
 
     @ReportResult.setter
@@ -2307,6 +2769,9 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2345,6 +2810,9 @@ class DescribeScanTaskStatusRequest(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型, 0:基础版, 1:专家版, 2:本地化
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -2353,6 +2821,9 @@ class DescribeScanTaskStatusRequest(AbstractModel):
 
     @property
     def Source(self):
+        """任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+        :rtype: int
+        """
         return self._Source
 
     @Source.setter
@@ -2361,6 +2832,9 @@ class DescribeScanTaskStatusRequest(AbstractModel):
 
     @property
     def TaskID(self):
+        """任务id
+        :rtype: str
+        """
         return self._TaskID
 
     @TaskID.setter
@@ -2369,6 +2843,9 @@ class DescribeScanTaskStatusRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """应用平台, 0:android, 1:ios, 2:小程序
+        :rtype: int
+        """
         return self._Platform
 
     @Platform.setter
@@ -2419,6 +2896,9 @@ class DescribeScanTaskStatusResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回值, 0:成功, 其他值请查看“返回值”定义
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -2427,6 +2907,9 @@ class DescribeScanTaskStatusResponse(AbstractModel):
 
     @property
     def Status(self):
+        """0:默认值(待检测/待咨询), 1.检测中,  4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2435,6 +2918,10 @@ class DescribeScanTaskStatusResponse(AbstractModel):
 
     @property
     def ErrMsg(self):
+        """诊断失败的错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrMsg
 
     @ErrMsg.setter
@@ -2443,6 +2930,10 @@ class DescribeScanTaskStatusResponse(AbstractModel):
 
     @property
     def FlowSteps(self):
+        """任务流详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TaskFlowStepsInfo
+        """
         return self._FlowSteps
 
     @FlowSteps.setter
@@ -2451,6 +2942,9 @@ class DescribeScanTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2512,6 +3006,9 @@ class FlySecMiniAppReportData(AbstractModel):
 
     @property
     def TaskID(self):
+        """任务id
+        :rtype: str
+        """
         return self._TaskID
 
     @TaskID.setter
@@ -2520,6 +3017,9 @@ class FlySecMiniAppReportData(AbstractModel):
 
     @property
     def MiniAppID(self):
+        """小程序appid
+        :rtype: str
+        """
         return self._MiniAppID
 
     @MiniAppID.setter
@@ -2528,6 +3028,9 @@ class FlySecMiniAppReportData(AbstractModel):
 
     @property
     def MiniAppName(self):
+        """小程序名称
+        :rtype: str
+        """
         return self._MiniAppName
 
     @MiniAppName.setter
@@ -2536,6 +3039,9 @@ class FlySecMiniAppReportData(AbstractModel):
 
     @property
     def MiniAppVersion(self):
+        """小程序版本
+        :rtype: str
+        """
         return self._MiniAppVersion
 
     @MiniAppVersion.setter
@@ -2544,6 +3050,9 @@ class FlySecMiniAppReportData(AbstractModel):
 
     @property
     def Mode(self):
+        """诊断模式 1:基础诊断，2:深度诊断
+        :rtype: int
+        """
         return self._Mode
 
     @Mode.setter
@@ -2552,6 +3061,9 @@ class FlySecMiniAppReportData(AbstractModel):
 
     @property
     def Status(self):
+        """诊断状态, 0:排队中, 1:成功, 2:失败, 3:进行中
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2560,6 +3072,9 @@ class FlySecMiniAppReportData(AbstractModel):
 
     @property
     def CreateTime(self):
+        """诊断时间
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2568,6 +3083,9 @@ class FlySecMiniAppReportData(AbstractModel):
 
     @property
     def RiskScore(self):
+        """诊断得分
+        :rtype: str
+        """
         return self._RiskScore
 
     @RiskScore.setter
@@ -2576,6 +3094,9 @@ class FlySecMiniAppReportData(AbstractModel):
 
     @property
     def RiskLevel(self):
+        """诊断风险等级 1:高风险 2:中风险 3:低风险
+        :rtype: int
+        """
         return self._RiskLevel
 
     @RiskLevel.setter
@@ -2584,6 +3105,9 @@ class FlySecMiniAppReportData(AbstractModel):
 
     @property
     def RiskItems(self):
+        """诊断8大维度得分情况(每项总分100分)
+        :rtype: :class:`tencentcloud.mmps.v20200710.models.FlySecMiniAppRiskItems`
+        """
         return self._RiskItems
 
     @RiskItems.setter
@@ -2649,6 +3173,9 @@ class FlySecMiniAppRiskItems(AbstractModel):
 
     @property
     def RiskItem1Score(self):
+        """代码防护(基础诊断)
+        :rtype: int
+        """
         return self._RiskItem1Score
 
     @RiskItem1Score.setter
@@ -2657,6 +3184,9 @@ class FlySecMiniAppRiskItems(AbstractModel):
 
     @property
     def RiskItem2Score(self):
+        """开发测试信息泄露(基础诊断)
+        :rtype: int
+        """
         return self._RiskItem2Score
 
     @RiskItem2Score.setter
@@ -2665,6 +3195,9 @@ class FlySecMiniAppRiskItems(AbstractModel):
 
     @property
     def RiskItem3Score(self):
+        """编码规范(基础诊断)
+        :rtype: int
+        """
         return self._RiskItem3Score
 
     @RiskItem3Score.setter
@@ -2673,6 +3206,9 @@ class FlySecMiniAppRiskItems(AbstractModel):
 
     @property
     def RiskItem4Score(self):
+        """配置风险(基础诊断)
+        :rtype: int
+        """
         return self._RiskItem4Score
 
     @RiskItem4Score.setter
@@ -2681,6 +3217,9 @@ class FlySecMiniAppRiskItems(AbstractModel):
 
     @property
     def RiskItem5Score(self):
+        """账号安全(基础诊断)
+        :rtype: int
+        """
         return self._RiskItem5Score
 
     @RiskItem5Score.setter
@@ -2689,6 +3228,9 @@ class FlySecMiniAppRiskItems(AbstractModel):
 
     @property
     def RiskItem6Score(self):
+        """用户信息安全(基础诊断)
+        :rtype: int
+        """
         return self._RiskItem6Score
 
     @RiskItem6Score.setter
@@ -2697,6 +3239,9 @@ class FlySecMiniAppRiskItems(AbstractModel):
 
     @property
     def RiskItem7Score(self):
+        """内部信息泄露(基础诊断)
+        :rtype: int
+        """
         return self._RiskItem7Score
 
     @RiskItem7Score.setter
@@ -2705,6 +3250,9 @@ class FlySecMiniAppRiskItems(AbstractModel):
 
     @property
     def RiskItem8Score(self):
+        """其他安全(基础诊断)
+        :rtype: int
+        """
         return self._RiskItem8Score
 
     @RiskItem8Score.setter
@@ -2766,6 +3314,9 @@ class FlySecMiniAppTaskData(AbstractModel):
 
     @property
     def TaskID(self):
+        """任务id
+        :rtype: str
+        """
         return self._TaskID
 
     @TaskID.setter
@@ -2774,6 +3325,9 @@ class FlySecMiniAppTaskData(AbstractModel):
 
     @property
     def MiniAppID(self):
+        """小程序appid
+        :rtype: str
+        """
         return self._MiniAppID
 
     @MiniAppID.setter
@@ -2782,6 +3336,9 @@ class FlySecMiniAppTaskData(AbstractModel):
 
     @property
     def MiniAppName(self):
+        """小程序名称
+        :rtype: str
+        """
         return self._MiniAppName
 
     @MiniAppName.setter
@@ -2790,6 +3347,9 @@ class FlySecMiniAppTaskData(AbstractModel):
 
     @property
     def MiniAppVersion(self):
+        """小程序版本
+        :rtype: str
+        """
         return self._MiniAppVersion
 
     @MiniAppVersion.setter
@@ -2798,6 +3358,9 @@ class FlySecMiniAppTaskData(AbstractModel):
 
     @property
     def Mode(self):
+        """诊断模式 1:基础诊断，2:深度诊断
+        :rtype: int
+        """
         return self._Mode
 
     @Mode.setter
@@ -2806,6 +3369,9 @@ class FlySecMiniAppTaskData(AbstractModel):
 
     @property
     def CreateTime(self):
+        """诊断时间
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2814,6 +3380,9 @@ class FlySecMiniAppTaskData(AbstractModel):
 
     @property
     def Status(self):
+        """诊断状态, 0:排队中, 1:成功, 2:失败, 3:进行中
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2822,6 +3391,9 @@ class FlySecMiniAppTaskData(AbstractModel):
 
     @property
     def Error(self):
+        """诊断失败错误码
+        :rtype: int
+        """
         return self._Error
 
     @Error.setter
@@ -2868,6 +3440,9 @@ class ResourceUsageInfoData(AbstractModel):
 
     @property
     def ResourceName(self):
+        """资源名称, 具体名称请查看产品配置
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -2876,6 +3451,9 @@ class ResourceUsageInfoData(AbstractModel):
 
     @property
     def Total(self):
+        """资源总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -2884,6 +3462,9 @@ class ResourceUsageInfoData(AbstractModel):
 
     @property
     def UnusedCount(self):
+        """资源未使用次数
+        :rtype: int
+        """
         return self._UnusedCount
 
     @UnusedCount.setter
@@ -2938,6 +3519,10 @@ class TaskFlowStepsInfo(AbstractModel):
 
     @property
     def FlowNo(self):
+        """流程编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FlowNo
 
     @FlowNo.setter
@@ -2946,6 +3531,9 @@ class TaskFlowStepsInfo(AbstractModel):
 
     @property
     def FlowName(self):
+        """流程名称
+        :rtype: str
+        """
         return self._FlowName
 
     @FlowName.setter
@@ -2954,6 +3542,9 @@ class TaskFlowStepsInfo(AbstractModel):
 
     @property
     def FlowStatus(self):
+        """流程状态, 其他值:进行中, 2:成功, 3:失败
+        :rtype: int
+        """
         return self._FlowStatus
 
     @FlowStatus.setter
@@ -2962,6 +3553,10 @@ class TaskFlowStepsInfo(AbstractModel):
 
     @property
     def FlowStateDesc(self):
+        """流程状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FlowStateDesc
 
     @FlowStateDesc.setter
@@ -2970,6 +3565,10 @@ class TaskFlowStepsInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """流程启动时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2978,6 +3577,10 @@ class TaskFlowStepsInfo(AbstractModel):
 
     @property
     def EndTime(self):
+        """流程完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter

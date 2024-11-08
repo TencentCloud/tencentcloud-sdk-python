@@ -41,6 +41,10 @@ class AppAssociatedUserGroupIds(AbstractModel):
 
     @property
     def UserGroupId(self):
+        """用户组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserGroupId
 
     @UserGroupId.setter
@@ -49,6 +53,10 @@ class AppAssociatedUserGroupIds(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """应用id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -57,6 +65,10 @@ class AppAssociatedUserGroupIds(AbstractModel):
 
     @property
     def ApplicationName(self):
+        """应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApplicationName
 
     @ApplicationName.setter
@@ -95,6 +107,9 @@ class CreateApiImportUserJobRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户目录ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -103,6 +118,9 @@ class CreateApiImportUserJobRequest(AbstractModel):
 
     @property
     def DataFlowUserCreateList(self):
+        """导入的用户数据
+        :rtype: list of ImportUser
+        """
         return self._DataFlowUserCreateList
 
     @DataFlowUserCreateList.setter
@@ -145,6 +163,9 @@ class CreateApiImportUserJobResponse(AbstractModel):
 
     @property
     def Job(self):
+        """数据流任务
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.Job`
+        """
         return self._Job
 
     @Job.setter
@@ -153,6 +174,9 @@ class CreateApiImportUserJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -196,6 +220,9 @@ class CreateFileExportUserJobRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户目录ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -204,6 +231,12 @@ class CreateFileExportUserJobRequest(AbstractModel):
 
     @property
     def Format(self):
+        """导出的数据类型
+
+<li> **NDJSON** </li>  New-line Delimited JSON
+<li> **CSV** </li>  Comma-Separated Values
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -212,6 +245,12 @@ class CreateFileExportUserJobRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Key可选值为condition、userGroupId
+
+<li> **condition** </li>	Values = 查询条件，用户ID，用户名称，手机或邮箱
+<li> **userGroupId** </li>	Values = 用户组ID
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -220,6 +259,9 @@ class CreateFileExportUserJobRequest(AbstractModel):
 
     @property
     def ExportPropertyMaps(self):
+        """导出用户包含的属性和映射名称，为空时包含所有的属性
+        :rtype: list of ExportPropertyMap
+        """
         return self._ExportPropertyMaps
 
     @ExportPropertyMaps.setter
@@ -269,6 +311,9 @@ class CreateFileExportUserJobResponse(AbstractModel):
 
     @property
     def Job(self):
+        """数据流任务
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.Job`
+        """
         return self._Job
 
     @Job.setter
@@ -277,6 +322,9 @@ class CreateFileExportUserJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -311,6 +359,9 @@ class CreateUserGroupRequest(AbstractModel):
 
     @property
     def DisplayName(self):
+        """用户组名称
+        :rtype: str
+        """
         return self._DisplayName
 
     @DisplayName.setter
@@ -319,6 +370,9 @@ class CreateUserGroupRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户目录ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -327,6 +381,9 @@ class CreateUserGroupRequest(AbstractModel):
 
     @property
     def Description(self):
+        """用户组描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -365,6 +422,9 @@ class CreateUserGroupResponse(AbstractModel):
 
     @property
     def UserGroupId(self):
+        """用户组ID
+        :rtype: str
+        """
         return self._UserGroupId
 
     @UserGroupId.setter
@@ -373,6 +433,9 @@ class CreateUserGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -441,6 +504,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户目录ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -449,6 +515,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """手机号码
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -457,6 +526,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Email(self):
+        """邮箱
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -465,6 +537,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Password(self):
+        """密码
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -473,6 +548,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def UserName(self):
+        """用户名
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -481,6 +559,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Nickname(self):
+        """昵称
+        :rtype: str
+        """
         return self._Nickname
 
     @Nickname.setter
@@ -489,6 +570,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Address(self):
+        """地址
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -497,6 +581,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def UserGroup(self):
+        """用户组ID
+        :rtype: list of str
+        """
         return self._UserGroup
 
     @UserGroup.setter
@@ -505,6 +592,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Birthdate(self):
+        """生日
+        :rtype: int
+        """
         return self._Birthdate
 
     @Birthdate.setter
@@ -513,6 +603,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def CustomizationAttributes(self):
+        """自定义属性
+        :rtype: list of MemberMap
+        """
         return self._CustomizationAttributes
 
     @CustomizationAttributes.setter
@@ -521,6 +614,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def IndexedAttribute1(self):
+        """索引字段1
+        :rtype: str
+        """
         return self._IndexedAttribute1
 
     @IndexedAttribute1.setter
@@ -529,6 +625,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def IndexedAttribute2(self):
+        """索引字段2
+        :rtype: str
+        """
         return self._IndexedAttribute2
 
     @IndexedAttribute2.setter
@@ -537,6 +636,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def IndexedAttribute3(self):
+        """索引字段3
+        :rtype: str
+        """
         return self._IndexedAttribute3
 
     @IndexedAttribute3.setter
@@ -545,6 +647,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def IndexedAttribute4(self):
+        """索引字段4
+        :rtype: str
+        """
         return self._IndexedAttribute4
 
     @IndexedAttribute4.setter
@@ -553,6 +658,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def IndexedAttribute5(self):
+        """索引字段5
+        :rtype: str
+        """
         return self._IndexedAttribute5
 
     @IndexedAttribute5.setter
@@ -609,6 +717,10 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def User(self):
+        """创建的用户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.User`
+        """
         return self._User
 
     @User.setter
@@ -617,6 +729,9 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -651,6 +766,9 @@ class CreateUserStoreRequest(AbstractModel):
 
     @property
     def UserPoolName(self):
+        """用户池名字
+        :rtype: str
+        """
         return self._UserPoolName
 
     @UserPoolName.setter
@@ -659,6 +777,9 @@ class CreateUserStoreRequest(AbstractModel):
 
     @property
     def UserPoolDesc(self):
+        """用户池描述
+        :rtype: str
+        """
         return self._UserPoolDesc
 
     @UserPoolDesc.setter
@@ -667,6 +788,9 @@ class CreateUserStoreRequest(AbstractModel):
 
     @property
     def UserPoolLogo(self):
+        """用户池logo
+        :rtype: str
+        """
         return self._UserPoolLogo
 
     @UserPoolLogo.setter
@@ -705,6 +829,9 @@ class CreateUserStoreResponse(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户目录ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -713,6 +840,9 @@ class CreateUserStoreResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -742,6 +872,9 @@ class DeleteUserGroupsRequest(AbstractModel):
 
     @property
     def UserGroupIds(self):
+        """用户组ID数组
+        :rtype: list of str
+        """
         return self._UserGroupIds
 
     @UserGroupIds.setter
@@ -750,6 +883,9 @@ class DeleteUserGroupsRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户目录ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -788,6 +924,10 @@ class DeleteUserGroupsResponse(AbstractModel):
 
     @property
     def UserGroupDeletedInfo(self):
+        """删除的用户组关联的应用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.UserGroupDeleteResp`
+        """
         return self._UserGroupDeletedInfo
 
     @UserGroupDeletedInfo.setter
@@ -796,6 +936,9 @@ class DeleteUserGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -824,6 +967,9 @@ class DeleteUserStoreRequest(AbstractModel):
 
     @property
     def UserPoolId(self):
+        """用户池ID
+        :rtype: str
+        """
         return self._UserPoolId
 
     @UserPoolId.setter
@@ -857,6 +1003,9 @@ class DeleteUserStoreResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -885,6 +1034,9 @@ class DeleteUsersRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户目录ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -893,6 +1045,9 @@ class DeleteUsersRequest(AbstractModel):
 
     @property
     def UserIds(self):
+        """用户ID数组
+        :rtype: list of str
+        """
         return self._UserIds
 
     @UserIds.setter
@@ -927,6 +1082,9 @@ class DeleteUsersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -961,6 +1119,9 @@ class DescribeUserByIdRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户目录ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -969,6 +1130,9 @@ class DescribeUserByIdRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -977,6 +1141,12 @@ class DescribeUserByIdRequest(AbstractModel):
 
     @property
     def Original(self):
+        """返回信息是否为原文
+
+<li> **false** </li>	默认，返回信息为脱敏信息
+<li> **true** </li>	返回用户信息原文
+        :rtype: bool
+        """
         return self._Original
 
     @Original.setter
@@ -1016,6 +1186,10 @@ class DescribeUserByIdResponse(AbstractModel):
 
     @property
     def User(self):
+        """用户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.User`
+        """
         return self._User
 
     @User.setter
@@ -1024,6 +1198,9 @@ class DescribeUserByIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1064,6 +1241,9 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户目录ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -1072,6 +1252,9 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def Pageable(self):
+        """分页数据
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.Pageable`
+        """
         return self._Pageable
 
     @Pageable.setter
@@ -1080,6 +1263,9 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """查询条件，根据propertycode和propertykey
+        :rtype: list of QueryUserFilter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1088,6 +1274,9 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def Original(self):
+        """是否返回明文
+        :rtype: bool
+        """
         return self._Original
 
     @Original.setter
@@ -1096,6 +1285,9 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def Sort(self):
+        """排序设置
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.Sort`
+        """
         return self._Sort
 
     @Sort.setter
@@ -1154,6 +1346,10 @@ class DescribeUserResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -1162,6 +1358,10 @@ class DescribeUserResponse(AbstractModel):
 
     @property
     def Pageable(self):
+        """分页对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.Pageable`
+        """
         return self._Pageable
 
     @Pageable.setter
@@ -1170,6 +1370,10 @@ class DescribeUserResponse(AbstractModel):
 
     @property
     def Content(self):
+        """用户列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of User
+        """
         return self._Content
 
     @Content.setter
@@ -1178,6 +1382,9 @@ class DescribeUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1217,6 +1424,10 @@ class ErrorDetails(AbstractModel):
 
     @property
     def UserId(self):
+        """用户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -1225,6 +1436,9 @@ class ErrorDetails(AbstractModel):
 
     @property
     def Error(self):
+        """失败原因
+        :rtype: str
+        """
         return self._Error
 
     @Error.setter
@@ -1262,6 +1476,9 @@ class ExportPropertyMap(AbstractModel):
 
     @property
     def UserPropertyCode(self):
+        """用户属性code
+        :rtype: str
+        """
         return self._UserPropertyCode
 
     @UserPropertyCode.setter
@@ -1270,6 +1487,9 @@ class ExportPropertyMap(AbstractModel):
 
     @property
     def ColumnName(self):
+        """用户属性映射名称
+        :rtype: str
+        """
         return self._ColumnName
 
     @ColumnName.setter
@@ -1309,6 +1529,10 @@ class FailedUsers(AbstractModel):
 
     @property
     def FailedUserIdentification(self):
+        """失败用户标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FailedUserIdentification
 
     @FailedUserIdentification.setter
@@ -1317,6 +1541,10 @@ class FailedUsers(AbstractModel):
 
     @property
     def FailedReason(self):
+        """导入的用户失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FailedReason
 
     @FailedReason.setter
@@ -1357,6 +1585,9 @@ class Filter(AbstractModel):
 
     @property
     def Key(self):
+        """key值
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -1365,6 +1596,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """value值
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -1373,6 +1607,9 @@ class Filter(AbstractModel):
 
     @property
     def Logic(self):
+        """逻辑值
+        :rtype: bool
+        """
         return self._Logic
 
     @Logic.setter
@@ -1507,6 +1744,9 @@ class ImportUser(AbstractModel):
 
     @property
     def UserName(self):
+        """用户名
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -1515,6 +1755,9 @@ class ImportUser(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """手机号
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -1523,6 +1766,9 @@ class ImportUser(AbstractModel):
 
     @property
     def Email(self):
+        """邮箱
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -1531,6 +1777,9 @@ class ImportUser(AbstractModel):
 
     @property
     def ResidentIdentityCard(self):
+        """身份证号
+        :rtype: str
+        """
         return self._ResidentIdentityCard
 
     @ResidentIdentityCard.setter
@@ -1539,6 +1788,9 @@ class ImportUser(AbstractModel):
 
     @property
     def Nickname(self):
+        """昵称
+        :rtype: str
+        """
         return self._Nickname
 
     @Nickname.setter
@@ -1547,6 +1799,9 @@ class ImportUser(AbstractModel):
 
     @property
     def Address(self):
+        """地址
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -1555,6 +1810,9 @@ class ImportUser(AbstractModel):
 
     @property
     def UserGroup(self):
+        """用户组ID
+        :rtype: list of str
+        """
         return self._UserGroup
 
     @UserGroup.setter
@@ -1563,6 +1821,9 @@ class ImportUser(AbstractModel):
 
     @property
     def QqOpenId(self):
+        """QQ qqOpenId
+        :rtype: str
+        """
         return self._QqOpenId
 
     @QqOpenId.setter
@@ -1571,6 +1832,9 @@ class ImportUser(AbstractModel):
 
     @property
     def QqUnionId(self):
+        """QQ qqUnionId
+        :rtype: str
+        """
         return self._QqUnionId
 
     @QqUnionId.setter
@@ -1579,6 +1843,9 @@ class ImportUser(AbstractModel):
 
     @property
     def WechatOpenId(self):
+        """微信wechatOpenId
+        :rtype: str
+        """
         return self._WechatOpenId
 
     @WechatOpenId.setter
@@ -1587,6 +1854,9 @@ class ImportUser(AbstractModel):
 
     @property
     def WechatUnionId(self):
+        """微信wechatUnionId
+        :rtype: str
+        """
         return self._WechatUnionId
 
     @WechatUnionId.setter
@@ -1595,6 +1865,9 @@ class ImportUser(AbstractModel):
 
     @property
     def AlipayUserId(self):
+        """支付宝alipayUserId
+        :rtype: str
+        """
         return self._AlipayUserId
 
     @AlipayUserId.setter
@@ -1603,6 +1876,9 @@ class ImportUser(AbstractModel):
 
     @property
     def WeComUserId(self):
+        """企业微信weComUserId
+        :rtype: str
+        """
         return self._WeComUserId
 
     @WeComUserId.setter
@@ -1611,6 +1887,9 @@ class ImportUser(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1619,6 +1898,9 @@ class ImportUser(AbstractModel):
 
     @property
     def Birthdate(self):
+        """生日
+        :rtype: str
+        """
         return self._Birthdate
 
     @Birthdate.setter
@@ -1627,6 +1909,9 @@ class ImportUser(AbstractModel):
 
     @property
     def Name(self):
+        """姓名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1635,6 +1920,9 @@ class ImportUser(AbstractModel):
 
     @property
     def Locale(self):
+        """坐标
+        :rtype: str
+        """
         return self._Locale
 
     @Locale.setter
@@ -1643,6 +1931,9 @@ class ImportUser(AbstractModel):
 
     @property
     def Gender(self):
+        """性别（MALE;FEMALE;UNKNOWN）
+        :rtype: str
+        """
         return self._Gender
 
     @Gender.setter
@@ -1651,6 +1942,9 @@ class ImportUser(AbstractModel):
 
     @property
     def IdentityVerificationMethod(self):
+        """实名核验方式
+        :rtype: str
+        """
         return self._IdentityVerificationMethod
 
     @IdentityVerificationMethod.setter
@@ -1659,6 +1953,9 @@ class ImportUser(AbstractModel):
 
     @property
     def IdentityVerified(self):
+        """是否已实名核验
+        :rtype: bool
+        """
         return self._IdentityVerified
 
     @IdentityVerified.setter
@@ -1667,6 +1964,9 @@ class ImportUser(AbstractModel):
 
     @property
     def Job(self):
+        """工作
+        :rtype: str
+        """
         return self._Job
 
     @Job.setter
@@ -1675,6 +1975,9 @@ class ImportUser(AbstractModel):
 
     @property
     def Nationality(self):
+        """国家
+        :rtype: str
+        """
         return self._Nationality
 
     @Nationality.setter
@@ -1683,6 +1986,9 @@ class ImportUser(AbstractModel):
 
     @property
     def Zone(self):
+        """时区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -1691,6 +1997,9 @@ class ImportUser(AbstractModel):
 
     @property
     def Password(self):
+        """密码密文
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -1699,6 +2008,9 @@ class ImportUser(AbstractModel):
 
     @property
     def CustomizationAttributes(self):
+        """自定义属性
+        :rtype: list of MemberMap
+        """
         return self._CustomizationAttributes
 
     @CustomizationAttributes.setter
@@ -1707,6 +2019,9 @@ class ImportUser(AbstractModel):
 
     @property
     def Salt(self):
+        """密码盐
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.Salt`
+        """
         return self._Salt
 
     @Salt.setter
@@ -1715,6 +2030,9 @@ class ImportUser(AbstractModel):
 
     @property
     def PasswordEncryptTypeEnum(self):
+        """密码加密方式（SHA1;BCRYPT）
+        :rtype: str
+        """
         return self._PasswordEncryptTypeEnum
 
     @PasswordEncryptTypeEnum.setter
@@ -1723,6 +2041,9 @@ class ImportUser(AbstractModel):
 
     @property
     def IndexedAttribute1(self):
+        """索引字段1
+        :rtype: str
+        """
         return self._IndexedAttribute1
 
     @IndexedAttribute1.setter
@@ -1731,6 +2052,9 @@ class ImportUser(AbstractModel):
 
     @property
     def IndexedAttribute2(self):
+        """索引字段2
+        :rtype: str
+        """
         return self._IndexedAttribute2
 
     @IndexedAttribute2.setter
@@ -1739,6 +2063,9 @@ class ImportUser(AbstractModel):
 
     @property
     def IndexedAttribute3(self):
+        """索引字段3
+        :rtype: str
+        """
         return self._IndexedAttribute3
 
     @IndexedAttribute3.setter
@@ -1747,6 +2074,9 @@ class ImportUser(AbstractModel):
 
     @property
     def IndexedAttribute4(self):
+        """索引字段4
+        :rtype: str
+        """
         return self._IndexedAttribute4
 
     @IndexedAttribute4.setter
@@ -1755,6 +2085,9 @@ class ImportUser(AbstractModel):
 
     @property
     def IndexedAttribute5(self):
+        """索引字段5
+        :rtype: str
+        """
         return self._IndexedAttribute5
 
     @IndexedAttribute5.setter
@@ -1862,6 +2195,9 @@ class Job(AbstractModel):
 
     @property
     def Id(self):
+        """任务ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -1870,6 +2206,14 @@ class Job(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态
+
+<li> **PENDING** </li>  待执行
+<li> **PROCESSING** </li>  执行中
+<li> **COMPLETED** </li>  完成
+<li> **FAILED** </li>  失败
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1878,6 +2222,12 @@ class Job(AbstractModel):
 
     @property
     def Type(self):
+        """任务类型
+
+<li> **IMPORT_USER** </li>  用户导入
+<li> **EXPORT_USER** </li>  用户导出
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1886,6 +2236,9 @@ class Job(AbstractModel):
 
     @property
     def CreatedDate(self):
+        """任务创建时间
+        :rtype: int
+        """
         return self._CreatedDate
 
     @CreatedDate.setter
@@ -1894,6 +2247,13 @@ class Job(AbstractModel):
 
     @property
     def Format(self):
+        """任务的数据类型
+
+<li> **NDJSON** </li>  New-line Delimited JSON
+<li> **CSV** </li>  Comma-Separated Values
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -1902,6 +2262,10 @@ class Job(AbstractModel):
 
     @property
     def Location(self):
+        """任务结果下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Location
 
     @Location.setter
@@ -1910,6 +2274,10 @@ class Job(AbstractModel):
 
     @property
     def ErrorDetails(self):
+        """失败详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ErrorDetails
+        """
         return self._ErrorDetails
 
     @ErrorDetails.setter
@@ -1918,6 +2286,10 @@ class Job(AbstractModel):
 
     @property
     def FailedUsers(self):
+        """失败的用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FailedUsers
+        """
         return self._FailedUsers
 
     @FailedUsers.setter
@@ -1980,6 +2352,9 @@ class LinkAccountRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户目录ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -1988,6 +2363,9 @@ class LinkAccountRequest(AbstractModel):
 
     @property
     def PrimaryUserId(self):
+        """主用户ID
+        :rtype: str
+        """
         return self._PrimaryUserId
 
     @PrimaryUserId.setter
@@ -1996,6 +2374,9 @@ class LinkAccountRequest(AbstractModel):
 
     @property
     def SecondaryUserId(self):
+        """从用户ID
+        :rtype: str
+        """
         return self._SecondaryUserId
 
     @SecondaryUserId.setter
@@ -2004,6 +2385,12 @@ class LinkAccountRequest(AbstractModel):
 
     @property
     def UserLinkedOnAttribute(self):
+        """融合属性
+
+<li> **PHONENUMBER** </li>	  手机号码
+<li> **EMAIL** </li>  邮箱
+        :rtype: str
+        """
         return self._UserLinkedOnAttribute
 
     @UserLinkedOnAttribute.setter
@@ -2040,6 +2427,9 @@ class LinkAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2068,6 +2458,9 @@ class ListJobsRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户目录ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -2076,6 +2469,9 @@ class ListJobsRequest(AbstractModel):
 
     @property
     def JobIds(self):
+        """任务ID列表，为空时返回全部任务
+        :rtype: list of str
+        """
         return self._JobIds
 
     @JobIds.setter
@@ -2114,6 +2510,10 @@ class ListJobsResponse(AbstractModel):
 
     @property
     def JobSet(self):
+        """任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Job
+        """
         return self._JobSet
 
     @JobSet.setter
@@ -2122,6 +2522,9 @@ class ListJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2164,6 +2567,9 @@ class ListLogMessageByConditionRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户池ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -2172,6 +2578,9 @@ class ListLogMessageByConditionRequest(AbstractModel):
 
     @property
     def Pageable(self):
+        """分页数据
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.Pageable`
+        """
         return self._Pageable
 
     @Pageable.setter
@@ -2180,6 +2589,9 @@ class ListLogMessageByConditionRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间，时间戳精确到毫秒
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2188,6 +2600,11 @@ class ListLogMessageByConditionRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Key可选值为events
+
+<li> **events** </li>	Values为["SIGNUP", "USER_UPDATE", "USER_DELETE", "USER_CREATE", "ACCOUNT_LINKING"] 中的一个或多个
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2241,6 +2658,9 @@ class ListLogMessageByConditionResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总条数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -2249,6 +2669,9 @@ class ListLogMessageByConditionResponse(AbstractModel):
 
     @property
     def Pageable(self):
+        """分页对象
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.Pageable`
+        """
         return self._Pageable
 
     @Pageable.setter
@@ -2257,6 +2680,10 @@ class ListLogMessageByConditionResponse(AbstractModel):
 
     @property
     def Content(self):
+        """日志列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LogMessage
+        """
         return self._Content
 
     @Content.setter
@@ -2265,6 +2692,9 @@ class ListLogMessageByConditionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2312,6 +2742,9 @@ class ListUserByPropertyRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户目录ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -2320,6 +2753,12 @@ class ListUserByPropertyRequest(AbstractModel):
 
     @property
     def PropertyCode(self):
+        """查询的属性
+
+<li> **phoneNumber** </li>	  手机号码
+<li> **email** </li>  邮箱
+        :rtype: str
+        """
         return self._PropertyCode
 
     @PropertyCode.setter
@@ -2328,6 +2767,9 @@ class ListUserByPropertyRequest(AbstractModel):
 
     @property
     def PropertyValue(self):
+        """属性值
+        :rtype: str
+        """
         return self._PropertyValue
 
     @PropertyValue.setter
@@ -2336,6 +2778,9 @@ class ListUserByPropertyRequest(AbstractModel):
 
     @property
     def Original(self):
+        """返回信息是否为原文
+        :rtype: bool
+        """
         return self._Original
 
     @Original.setter
@@ -2376,6 +2821,10 @@ class ListUserByPropertyResponse(AbstractModel):
 
     @property
     def Users(self):
+        """用户列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of User
+        """
         return self._Users
 
     @Users.setter
@@ -2384,6 +2833,9 @@ class ListUserByPropertyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2423,6 +2875,9 @@ class ListUserGroupsRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户目录ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -2431,6 +2886,9 @@ class ListUserGroupsRequest(AbstractModel):
 
     @property
     def Pageable(self):
+        """分页数据
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.Pageable`
+        """
         return self._Pageable
 
     @Pageable.setter
@@ -2439,6 +2897,11 @@ class ListUserGroupsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Key可选值为condition
+
+<li> **condition** </li>	Values = 查询条件，用户组ID或用户组名称
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2493,6 +2956,10 @@ class ListUserGroupsResponse(AbstractModel):
 
     @property
     def Content(self):
+        """用户组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UserGroup
+        """
         return self._Content
 
     @Content.setter
@@ -2501,6 +2968,10 @@ class ListUserGroupsResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -2509,6 +2980,10 @@ class ListUserGroupsResponse(AbstractModel):
 
     @property
     def Pageable(self):
+        """分页
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.Pageable`
+        """
         return self._Pageable
 
     @Pageable.setter
@@ -2517,6 +2992,9 @@ class ListUserGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2564,6 +3042,9 @@ class ListUserRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户目录ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -2572,6 +3053,9 @@ class ListUserRequest(AbstractModel):
 
     @property
     def Pageable(self):
+        """分页数据
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.Pageable`
+        """
         return self._Pageable
 
     @Pageable.setter
@@ -2580,6 +3064,12 @@ class ListUserRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Key可选值为condition、userGroupId
+
+<li> **condition** </li>	Values = 查询条件，用户ID，用户名称，手机或邮箱
+<li> **userGroupId** </li>	Values = 用户组ID
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2588,6 +3078,9 @@ class ListUserRequest(AbstractModel):
 
     @property
     def Original(self):
+        """返回信息是否为原文
+        :rtype: bool
+        """
         return self._Original
 
     @Original.setter
@@ -2643,6 +3136,10 @@ class ListUserResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -2651,6 +3148,10 @@ class ListUserResponse(AbstractModel):
 
     @property
     def Pageable(self):
+        """分页对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.Pageable`
+        """
         return self._Pageable
 
     @Pageable.setter
@@ -2659,6 +3160,10 @@ class ListUserResponse(AbstractModel):
 
     @property
     def Content(self):
+        """用户列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of User
+        """
         return self._Content
 
     @Content.setter
@@ -2667,6 +3172,9 @@ class ListUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2712,6 +3220,10 @@ class ListUserStoreResponse(AbstractModel):
 
     @property
     def UserStoreSet(self):
+        """用户目录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UserStore
+        """
         return self._UserStoreSet
 
     @UserStoreSet.setter
@@ -2720,6 +3232,9 @@ class ListUserStoreResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2822,6 +3337,9 @@ class LogMessage(AbstractModel):
 
     @property
     def LogId(self):
+        """日志标识
+        :rtype: str
+        """
         return self._LogId
 
     @LogId.setter
@@ -2830,6 +3348,10 @@ class LogMessage(AbstractModel):
 
     @property
     def TenantId(self):
+        """租户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TenantId
 
     @TenantId.setter
@@ -2838,6 +3360,10 @@ class LogMessage(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户池ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -2846,6 +3372,10 @@ class LogMessage(AbstractModel):
 
     @property
     def EventCode(self):
+        """事件编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EventCode
 
     @EventCode.setter
@@ -2854,6 +3384,10 @@ class LogMessage(AbstractModel):
 
     @property
     def EventDate(self):
+        """事件发生时间戳，单位：毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EventDate
 
     @EventDate.setter
@@ -2862,6 +3396,10 @@ class LogMessage(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2870,6 +3408,13 @@ class LogMessage(AbstractModel):
 
     @property
     def Participant(self):
+        """事件参与者
+
+<li> **TENANT** </li>  租户
+<li> **USER** </li>  用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Participant
 
     @Participant.setter
@@ -2878,6 +3423,10 @@ class LogMessage(AbstractModel):
 
     @property
     def ApplicationClientId(self):
+        """应用clientId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApplicationClientId
 
     @ApplicationClientId.setter
@@ -2886,6 +3435,10 @@ class LogMessage(AbstractModel):
 
     @property
     def ApplicationName(self):
+        """应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApplicationName
 
     @ApplicationName.setter
@@ -2894,6 +3447,10 @@ class LogMessage(AbstractModel):
 
     @property
     def AuthSourceId(self):
+        """认证源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AuthSourceId
 
     @AuthSourceId.setter
@@ -2902,6 +3459,10 @@ class LogMessage(AbstractModel):
 
     @property
     def AuthSourceName(self):
+        """认证源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AuthSourceName
 
     @AuthSourceName.setter
@@ -2910,6 +3471,10 @@ class LogMessage(AbstractModel):
 
     @property
     def AuthSourceType(self):
+        """认证源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AuthSourceType
 
     @AuthSourceType.setter
@@ -2918,6 +3483,10 @@ class LogMessage(AbstractModel):
 
     @property
     def AuthSourceCategory(self):
+        """认证源类别
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AuthSourceCategory
 
     @AuthSourceCategory.setter
@@ -2926,6 +3495,10 @@ class LogMessage(AbstractModel):
 
     @property
     def Ip(self):
+        """IP地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -2934,6 +3507,10 @@ class LogMessage(AbstractModel):
 
     @property
     def UserAgent(self):
+        """用户代理
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserAgent
 
     @UserAgent.setter
@@ -2942,6 +3519,10 @@ class LogMessage(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -2950,6 +3531,10 @@ class LogMessage(AbstractModel):
 
     @property
     def Detail(self):
+        """详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Detail
 
     @Detail.setter
@@ -2958,6 +3543,10 @@ class LogMessage(AbstractModel):
 
     @property
     def ActionResult(self):
+        """日志结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ActionResult
 
     @ActionResult.setter
@@ -3015,6 +3604,9 @@ class MemberMap(AbstractModel):
 
     @property
     def Name(self):
+        """健
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3023,6 +3615,9 @@ class MemberMap(AbstractModel):
 
     @property
     def Value(self):
+        """值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -3031,6 +3626,10 @@ class MemberMap(AbstractModel):
 
     @property
     def Type(self):
+        """类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3069,6 +3668,9 @@ class Pageable(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页数量
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -3077,6 +3679,9 @@ class Pageable(AbstractModel):
 
     @property
     def PageNumber(self):
+        """当前页码
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -3120,6 +3725,9 @@ class QueryUserFilter(AbstractModel):
 
     @property
     def PropertyKey(self):
+        """属性key
+        :rtype: str
+        """
         return self._PropertyKey
 
     @PropertyKey.setter
@@ -3128,6 +3736,9 @@ class QueryUserFilter(AbstractModel):
 
     @property
     def PropertyValue(self):
+        """属性value
+        :rtype: str
+        """
         return self._PropertyValue
 
     @PropertyValue.setter
@@ -3136,6 +3747,9 @@ class QueryUserFilter(AbstractModel):
 
     @property
     def Logic(self):
+        """逻辑值，等于true，不等于false
+        :rtype: bool
+        """
         return self._Logic
 
     @Logic.setter
@@ -3144,6 +3758,9 @@ class QueryUserFilter(AbstractModel):
 
     @property
     def OperateLogic(self):
+        """操作逻辑符（支持> < = >= <=  != between）
+        :rtype: str
+        """
         return self._OperateLogic
 
     @OperateLogic.setter
@@ -3183,6 +3800,9 @@ class ResetPasswordRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -3191,6 +3811,9 @@ class ResetPasswordRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户目录ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -3228,6 +3851,9 @@ class ResetPasswordResponse(AbstractModel):
 
     @property
     def Password(self):
+        """重置后的用户密码
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -3236,6 +3862,9 @@ class ResetPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3265,6 +3894,9 @@ class Salt(AbstractModel):
 
     @property
     def SaltValue(self):
+        """盐值
+        :rtype: str
+        """
         return self._SaltValue
 
     @SaltValue.setter
@@ -3273,6 +3905,9 @@ class Salt(AbstractModel):
 
     @property
     def SaltLocation(self):
+        """盐值位置
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.SaltLocation`
+        """
         return self._SaltLocation
 
     @SaltLocation.setter
@@ -3312,6 +3947,9 @@ class SaltLocation(AbstractModel):
 
     @property
     def SaltLocationTypeEnum(self):
+        """密码加盐的类型（HEAD，TAIL，OTHER）
+        :rtype: str
+        """
         return self._SaltLocationTypeEnum
 
     @SaltLocationTypeEnum.setter
@@ -3320,6 +3958,9 @@ class SaltLocation(AbstractModel):
 
     @property
     def SaltLocationRule(self):
+        """加盐规则
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.SaltLocationRule`
+        """
         return self._SaltLocationRule
 
     @SaltLocationRule.setter
@@ -3356,6 +3997,9 @@ class SaltLocationRule(AbstractModel):
 
     @property
     def Regex(self):
+        """表达式
+        :rtype: str
+        """
         return self._Regex
 
     @Regex.setter
@@ -3395,6 +4039,9 @@ class SetPasswordRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户目录ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -3403,6 +4050,9 @@ class SetPasswordRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -3411,6 +4061,9 @@ class SetPasswordRequest(AbstractModel):
 
     @property
     def Password(self):
+        """密码
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -3446,6 +4099,9 @@ class SetPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3474,6 +4130,9 @@ class Sort(AbstractModel):
 
     @property
     def PropertyKey(self):
+        """排序字段的key，参考自定义属性
+        :rtype: str
+        """
         return self._PropertyKey
 
     @PropertyKey.setter
@@ -3482,6 +4141,9 @@ class Sort(AbstractModel):
 
     @property
     def Order(self):
+        """升序或者降序，ASC/DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -3525,6 +4187,9 @@ class UpdateUserGroupRequest(AbstractModel):
 
     @property
     def UserGroupId(self):
+        """用户组ID
+        :rtype: str
+        """
         return self._UserGroupId
 
     @UserGroupId.setter
@@ -3533,6 +4198,9 @@ class UpdateUserGroupRequest(AbstractModel):
 
     @property
     def DisplayName(self):
+        """用户组名称
+        :rtype: str
+        """
         return self._DisplayName
 
     @DisplayName.setter
@@ -3541,6 +4209,9 @@ class UpdateUserGroupRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户目录ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -3549,6 +4220,9 @@ class UpdateUserGroupRequest(AbstractModel):
 
     @property
     def Description(self):
+        """用户组描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3585,6 +4259,9 @@ class UpdateUserGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3652,6 +4329,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -3660,6 +4340,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户目录ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -3668,6 +4351,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def UserName(self):
+        """用户名称
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -3676,6 +4362,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """手机号码
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -3684,6 +4373,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def Email(self):
+        """邮箱
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -3692,6 +4384,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def Nickname(self):
+        """昵称
+        :rtype: str
+        """
         return self._Nickname
 
     @Nickname.setter
@@ -3700,6 +4395,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def Address(self):
+        """地址
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -3708,6 +4406,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def UserGroup(self):
+        """用户组
+        :rtype: list of str
+        """
         return self._UserGroup
 
     @UserGroup.setter
@@ -3716,6 +4417,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def Birthdate(self):
+        """生日
+        :rtype: int
+        """
         return self._Birthdate
 
     @Birthdate.setter
@@ -3724,6 +4428,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def CustomizationAttributes(self):
+        """自定义属性
+        :rtype: list of MemberMap
+        """
         return self._CustomizationAttributes
 
     @CustomizationAttributes.setter
@@ -3732,6 +4439,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def IndexedAttribute1(self):
+        """索引字段1
+        :rtype: str
+        """
         return self._IndexedAttribute1
 
     @IndexedAttribute1.setter
@@ -3740,6 +4450,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def IndexedAttribute2(self):
+        """索引字段2
+        :rtype: str
+        """
         return self._IndexedAttribute2
 
     @IndexedAttribute2.setter
@@ -3748,6 +4461,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def IndexedAttribute3(self):
+        """索引字段3
+        :rtype: str
+        """
         return self._IndexedAttribute3
 
     @IndexedAttribute3.setter
@@ -3756,6 +4472,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def IndexedAttribute4(self):
+        """索引字段4
+        :rtype: str
+        """
         return self._IndexedAttribute4
 
     @IndexedAttribute4.setter
@@ -3764,6 +4483,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def IndexedAttribute5(self):
+        """索引字段5
+        :rtype: str
+        """
         return self._IndexedAttribute5
 
     @IndexedAttribute5.setter
@@ -3820,6 +4542,10 @@ class UpdateUserResponse(AbstractModel):
 
     @property
     def User(self):
+        """更新之后的用户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.User`
+        """
         return self._User
 
     @User.setter
@@ -3828,6 +4554,9 @@ class UpdateUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3866,6 +4595,9 @@ class UpdateUserStatusRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户目录ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -3874,6 +4606,9 @@ class UpdateUserStatusRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -3882,6 +4617,13 @@ class UpdateUserStatusRequest(AbstractModel):
 
     @property
     def Status(self):
+        """用户状态
+
+<li> **NORMAL** </li>	  正常
+<li> **LOCK** </li>  锁定
+<li> **FREEZE** </li>	  冻结
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3917,6 +4659,9 @@ class UpdateUserStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3951,6 +4696,9 @@ class UpdateUserStoreRequest(AbstractModel):
 
     @property
     def UserPoolId(self):
+        """用户池ID
+        :rtype: str
+        """
         return self._UserPoolId
 
     @UserPoolId.setter
@@ -3959,6 +4707,9 @@ class UpdateUserStoreRequest(AbstractModel):
 
     @property
     def UserPoolName(self):
+        """用户池名字
+        :rtype: str
+        """
         return self._UserPoolName
 
     @UserPoolName.setter
@@ -3967,6 +4718,9 @@ class UpdateUserStoreRequest(AbstractModel):
 
     @property
     def UserPoolDesc(self):
+        """用户池描述
+        :rtype: str
+        """
         return self._UserPoolDesc
 
     @UserPoolDesc.setter
@@ -3975,6 +4729,9 @@ class UpdateUserStoreRequest(AbstractModel):
 
     @property
     def UserPoolLogo(self):
+        """用户池logo
+        :rtype: str
+        """
         return self._UserPoolLogo
 
     @UserPoolLogo.setter
@@ -4011,6 +4768,9 @@ class UpdateUserStoreResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4197,6 +4957,9 @@ class User(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -4205,6 +4968,10 @@ class User(AbstractModel):
 
     @property
     def UserName(self):
+        """用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -4213,6 +4980,10 @@ class User(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """手机号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -4221,6 +4992,10 @@ class User(AbstractModel):
 
     @property
     def Email(self):
+        """邮箱
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -4229,6 +5004,10 @@ class User(AbstractModel):
 
     @property
     def LastSignOn(self):
+        """上次登录时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LastSignOn
 
     @LastSignOn.setter
@@ -4237,6 +5016,9 @@ class User(AbstractModel):
 
     @property
     def CreatedDate(self):
+        """创建时间
+        :rtype: int
+        """
         return self._CreatedDate
 
     @CreatedDate.setter
@@ -4245,6 +5027,9 @@ class User(AbstractModel):
 
     @property
     def Status(self):
+        """状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -4253,6 +5038,9 @@ class User(AbstractModel):
 
     @property
     def UserDataSourceEnum(self):
+        """用户来源
+        :rtype: str
+        """
         return self._UserDataSourceEnum
 
     @UserDataSourceEnum.setter
@@ -4261,6 +5049,10 @@ class User(AbstractModel):
 
     @property
     def Nickname(self):
+        """昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Nickname
 
     @Nickname.setter
@@ -4269,6 +5061,10 @@ class User(AbstractModel):
 
     @property
     def Address(self):
+        """地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -4277,6 +5073,10 @@ class User(AbstractModel):
 
     @property
     def Birthdate(self):
+        """生日
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Birthdate
 
     @Birthdate.setter
@@ -4285,6 +5085,10 @@ class User(AbstractModel):
 
     @property
     def UserGroups(self):
+        """用户组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._UserGroups
 
     @UserGroups.setter
@@ -4293,6 +5097,10 @@ class User(AbstractModel):
 
     @property
     def LastModifiedDate(self):
+        """上次修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LastModifiedDate
 
     @LastModifiedDate.setter
@@ -4301,6 +5109,10 @@ class User(AbstractModel):
 
     @property
     def CustomAttributes(self):
+        """自定义属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MemberMap
+        """
         return self._CustomAttributes
 
     @CustomAttributes.setter
@@ -4309,6 +5121,10 @@ class User(AbstractModel):
 
     @property
     def ResidentIdentityCard(self):
+        """身份证号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResidentIdentityCard
 
     @ResidentIdentityCard.setter
@@ -4317,6 +5133,10 @@ class User(AbstractModel):
 
     @property
     def QqOpenId(self):
+        """QQ的OpenId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._QqOpenId
 
     @QqOpenId.setter
@@ -4325,6 +5145,10 @@ class User(AbstractModel):
 
     @property
     def QqUnionId(self):
+        """QQ的UnionId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._QqUnionId
 
     @QqUnionId.setter
@@ -4333,6 +5157,10 @@ class User(AbstractModel):
 
     @property
     def WechatOpenId(self):
+        """微信的WechatOpenId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WechatOpenId
 
     @WechatOpenId.setter
@@ -4341,6 +5169,10 @@ class User(AbstractModel):
 
     @property
     def WechatUnionId(self):
+        """微信的WechatUnionId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WechatUnionId
 
     @WechatUnionId.setter
@@ -4349,6 +5181,10 @@ class User(AbstractModel):
 
     @property
     def AlipayUserId(self):
+        """支付宝的AlipayUserId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AlipayUserId
 
     @AlipayUserId.setter
@@ -4357,6 +5193,10 @@ class User(AbstractModel):
 
     @property
     def WeComUserId(self):
+        """企业微信的WeComUserId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WeComUserId
 
     @WeComUserId.setter
@@ -4365,6 +5205,10 @@ class User(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4373,6 +5217,10 @@ class User(AbstractModel):
 
     @property
     def Name(self):
+        """姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4381,6 +5229,10 @@ class User(AbstractModel):
 
     @property
     def Locale(self):
+        """坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Locale
 
     @Locale.setter
@@ -4389,6 +5241,10 @@ class User(AbstractModel):
 
     @property
     def Gender(self):
+        """性别
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Gender
 
     @Gender.setter
@@ -4397,6 +5253,10 @@ class User(AbstractModel):
 
     @property
     def IdentityVerificationMethod(self):
+        """实名核验方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IdentityVerificationMethod
 
     @IdentityVerificationMethod.setter
@@ -4405,6 +5265,10 @@ class User(AbstractModel):
 
     @property
     def IdentityVerified(self):
+        """是否已经实名核验
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IdentityVerified
 
     @IdentityVerified.setter
@@ -4413,6 +5277,10 @@ class User(AbstractModel):
 
     @property
     def Job(self):
+        """工作
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Job
 
     @Job.setter
@@ -4421,6 +5289,10 @@ class User(AbstractModel):
 
     @property
     def Nationality(self):
+        """国家
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Nationality
 
     @Nationality.setter
@@ -4429,6 +5301,10 @@ class User(AbstractModel):
 
     @property
     def Primary(self):
+        """是否主账号（进行过账号融合后，主账号为true，从账号为false）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Primary
 
     @Primary.setter
@@ -4437,6 +5313,10 @@ class User(AbstractModel):
 
     @property
     def Zone(self):
+        """时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -4445,6 +5325,10 @@ class User(AbstractModel):
 
     @property
     def AlreadyFirstLogin(self):
+        """是否已经首次登录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._AlreadyFirstLogin
 
     @AlreadyFirstLogin.setter
@@ -4453,6 +5337,10 @@ class User(AbstractModel):
 
     @property
     def TenantId(self):
+        """租户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TenantId
 
     @TenantId.setter
@@ -4461,6 +5349,10 @@ class User(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户目录id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -4469,6 +5361,10 @@ class User(AbstractModel):
 
     @property
     def Version(self):
+        """版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Version
 
     @Version.setter
@@ -4477,6 +5373,10 @@ class User(AbstractModel):
 
     @property
     def LockType(self):
+        """锁定类型（分为管理员锁定，和登录策略锁定）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LockType
 
     @LockType.setter
@@ -4485,6 +5385,10 @@ class User(AbstractModel):
 
     @property
     def LockTime(self):
+        """锁定时间点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LockTime
 
     @LockTime.setter
@@ -4493,6 +5397,10 @@ class User(AbstractModel):
 
     @property
     def IndexedAttribute1(self):
+        """索引字段1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IndexedAttribute1
 
     @IndexedAttribute1.setter
@@ -4501,6 +5409,10 @@ class User(AbstractModel):
 
     @property
     def IndexedAttribute2(self):
+        """索引字段2
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IndexedAttribute2
 
     @IndexedAttribute2.setter
@@ -4509,6 +5421,10 @@ class User(AbstractModel):
 
     @property
     def IndexedAttribute3(self):
+        """索引字段3
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IndexedAttribute3
 
     @IndexedAttribute3.setter
@@ -4517,6 +5433,10 @@ class User(AbstractModel):
 
     @property
     def IndexedAttribute4(self):
+        """索引字段4
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IndexedAttribute4
 
     @IndexedAttribute4.setter
@@ -4525,6 +5445,10 @@ class User(AbstractModel):
 
     @property
     def IndexedAttribute5(self):
+        """索引字段5
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IndexedAttribute5
 
     @IndexedAttribute5.setter
@@ -4623,6 +5547,9 @@ class UserGroup(AbstractModel):
 
     @property
     def UserGroupId(self):
+        """用户组ID
+        :rtype: str
+        """
         return self._UserGroupId
 
     @UserGroupId.setter
@@ -4631,6 +5558,9 @@ class UserGroup(AbstractModel):
 
     @property
     def DisplayName(self):
+        """用户组名称
+        :rtype: str
+        """
         return self._DisplayName
 
     @DisplayName.setter
@@ -4639,6 +5569,10 @@ class UserGroup(AbstractModel):
 
     @property
     def Description(self):
+        """用户组描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4647,6 +5581,9 @@ class UserGroup(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户目录ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -4655,6 +5592,9 @@ class UserGroup(AbstractModel):
 
     @property
     def TenantId(self):
+        """租户ID
+        :rtype: str
+        """
         return self._TenantId
 
     @TenantId.setter
@@ -4663,6 +5603,9 @@ class UserGroup(AbstractModel):
 
     @property
     def CreatedDate(self):
+        """创建时间
+        :rtype: int
+        """
         return self._CreatedDate
 
     @CreatedDate.setter
@@ -4671,6 +5614,9 @@ class UserGroup(AbstractModel):
 
     @property
     def LastModifyDate(self):
+        """最近更新时间
+        :rtype: int
+        """
         return self._LastModifyDate
 
     @LastModifyDate.setter
@@ -4715,6 +5661,10 @@ class UserGroupDeleteResp(AbstractModel):
 
     @property
     def ErrorMessage(self):
+        """错误详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorMessage
 
     @ErrorMessage.setter
@@ -4723,6 +5673,10 @@ class UserGroupDeleteResp(AbstractModel):
 
     @property
     def AppAssociatedUserGroupIds(self):
+        """用户组关联的应用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AppAssociatedUserGroupIds
+        """
         return self._AppAssociatedUserGroupIds
 
     @AppAssociatedUserGroupIds.setter
@@ -4802,6 +5756,9 @@ class UserStore(AbstractModel):
 
     @property
     def TenantId(self):
+        """租户ID
+        :rtype: str
+        """
         return self._TenantId
 
     @TenantId.setter
@@ -4810,6 +5767,10 @@ class UserStore(AbstractModel):
 
     @property
     def UserStoreLogo(self):
+        """用户池logo
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserStoreLogo
 
     @UserStoreLogo.setter
@@ -4818,6 +5779,10 @@ class UserStore(AbstractModel):
 
     @property
     def UserStoreDesc(self):
+        """用户池描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserStoreDesc
 
     @UserStoreDesc.setter
@@ -4826,6 +5791,9 @@ class UserStore(AbstractModel):
 
     @property
     def UserStoreName(self):
+        """用户池名称
+        :rtype: str
+        """
         return self._UserStoreName
 
     @UserStoreName.setter
@@ -4834,6 +5802,9 @@ class UserStore(AbstractModel):
 
     @property
     def UserNum(self):
+        """用户数量
+        :rtype: int
+        """
         return self._UserNum
 
     @UserNum.setter
@@ -4842,6 +5813,9 @@ class UserStore(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """用户池ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -4850,6 +5824,9 @@ class UserStore(AbstractModel):
 
     @property
     def AppNum(self):
+        """应用数量
+        :rtype: int
+        """
         return self._AppNum
 
     @AppNum.setter
@@ -4858,6 +5835,10 @@ class UserStore(AbstractModel):
 
     @property
     def LastStatus(self):
+        """上次切换的用户池
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._LastStatus
 
     @LastStatus.setter
@@ -4866,6 +5847,10 @@ class UserStore(AbstractModel):
 
     @property
     def DefaultStatus(self):
+        """默认用户池
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._DefaultStatus
 
     @DefaultStatus.setter
@@ -4874,6 +5859,10 @@ class UserStore(AbstractModel):
 
     @property
     def CreateDate(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CreateDate
 
     @CreateDate.setter
@@ -4882,6 +5871,10 @@ class UserStore(AbstractModel):
 
     @property
     def LastStatusTime(self):
+        """上次切换时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LastStatusTime
 
     @LastStatusTime.setter
@@ -4890,6 +5883,10 @@ class UserStore(AbstractModel):
 
     @property
     def UserStoreProtocolHost(self):
+        """用户目录域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserStoreProtocolHost
 
     @UserStoreProtocolHost.setter

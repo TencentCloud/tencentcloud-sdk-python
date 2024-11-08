@@ -257,7 +257,7 @@ class CloudauditClient(AbstractClient):
 
 
     def ListCmqEnableRegion(self, request):
-        """查询云审计支持的cmq的可用区
+        """查询操作审计支持的cmq的可用区
 
         :param request: Request instance for ListCmqEnableRegion.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ListCmqEnableRegionRequest`
@@ -280,7 +280,7 @@ class CloudauditClient(AbstractClient):
 
 
     def ListCosEnableRegion(self, request):
-        """查询云审计支持的cos可用区
+        """查询操作审计支持的cos可用区
 
         :param request: Request instance for ListCosEnableRegion.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ListCosEnableRegionRequest`

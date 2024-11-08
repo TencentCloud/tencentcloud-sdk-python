@@ -35,6 +35,9 @@ class ApplyChainMakerBatchUserCertRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -43,6 +46,9 @@ class ApplyChainMakerBatchUserCertRequest(AbstractModel):
 
     @property
     def SignUserCsrList(self):
+        """证书标识和证书请求文件，可参考TBaaS证书生成相关文档生成证书请求文件
+        :rtype: list of SignCertCsr
+        """
         return self._SignUserCsrList
 
     @SignUserCsrList.setter
@@ -86,6 +92,10 @@ class ApplyChainMakerBatchUserCertResponse(AbstractModel):
 
     @property
     def SignUserCrtList(self):
+        """成功生成的用户证书的base64编码字符串列表，与SignUserCsrList一一对应
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SignUserCrtList
 
     @SignUserCrtList.setter
@@ -94,6 +104,9 @@ class ApplyChainMakerBatchUserCertResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -144,6 +157,9 @@ class ApplyUserCertRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，固定字段：cert_mng
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -152,6 +168,9 @@ class ApplyUserCertRequest(AbstractModel):
 
     @property
     def Operation(self):
+        """操作名，固定字段：cert_apply_for_user
+        :rtype: str
+        """
         return self._Operation
 
     @Operation.setter
@@ -160,6 +179,9 @@ class ApplyUserCertRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """区块链网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -168,6 +190,9 @@ class ApplyUserCertRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """申请证书的组织名称，可以在组织管理列表中获取当前组织的名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -176,6 +201,9 @@ class ApplyUserCertRequest(AbstractModel):
 
     @property
     def UserIdentity(self):
+        """用户证书标识，用于标识用户证书，要求由纯小写字母组成，长度小于10
+        :rtype: str
+        """
         return self._UserIdentity
 
     @UserIdentity.setter
@@ -184,6 +212,9 @@ class ApplyUserCertRequest(AbstractModel):
 
     @property
     def Applicant(self):
+        """证书申请实体，使用腾讯云账号实名认证的名称
+        :rtype: str
+        """
         return self._Applicant
 
     @Applicant.setter
@@ -192,6 +223,9 @@ class ApplyUserCertRequest(AbstractModel):
 
     @property
     def IdentityNum(self):
+        """证件号码。如果腾讯云账号对应的实名认证类型为企业认证，填入“0”；如果腾讯云账号对应的实名认证类型为个人认证，填入个人身份证号码
+        :rtype: str
+        """
         return self._IdentityNum
 
     @IdentityNum.setter
@@ -200,6 +234,9 @@ class ApplyUserCertRequest(AbstractModel):
 
     @property
     def CsrData(self):
+        """csr p10证书文件。需要用户根据文档生成证书的CSR文件
+        :rtype: str
+        """
         return self._CsrData
 
     @CsrData.setter
@@ -208,6 +245,9 @@ class ApplyUserCertRequest(AbstractModel):
 
     @property
     def Notes(self):
+        """证书备注信息
+        :rtype: str
+        """
         return self._Notes
 
     @Notes.setter
@@ -255,6 +295,9 @@ class ApplyUserCertResponse(AbstractModel):
 
     @property
     def CertId(self):
+        """证书ID
+        :rtype: int
+        """
         return self._CertId
 
     @CertId.setter
@@ -263,6 +306,9 @@ class ApplyUserCertResponse(AbstractModel):
 
     @property
     def CertDn(self):
+        """证书DN
+        :rtype: str
+        """
         return self._CertDn
 
     @CertDn.setter
@@ -271,6 +317,9 @@ class ApplyUserCertResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -310,6 +359,9 @@ class Block(AbstractModel):
 
     @property
     def BlockNum(self):
+        """区块编号
+        :rtype: int
+        """
         return self._BlockNum
 
     @BlockNum.setter
@@ -318,6 +370,9 @@ class Block(AbstractModel):
 
     @property
     def DataHash(self):
+        """区块数据Hash数值
+        :rtype: str
+        """
         return self._DataHash
 
     @DataHash.setter
@@ -326,6 +381,9 @@ class Block(AbstractModel):
 
     @property
     def BlockId(self):
+        """区块ID，与区块编号一致
+        :rtype: int
+        """
         return self._BlockId
 
     @BlockId.setter
@@ -334,6 +392,9 @@ class Block(AbstractModel):
 
     @property
     def PreHash(self):
+        """前一个区块Hash
+        :rtype: str
+        """
         return self._PreHash
 
     @PreHash.setter
@@ -342,6 +403,9 @@ class Block(AbstractModel):
 
     @property
     def TxCount(self):
+        """区块内的交易数量
+        :rtype: int
+        """
         return self._TxCount
 
     @TxCount.setter
@@ -399,6 +463,9 @@ class ChainMakerContractResult(AbstractModel):
 
     @property
     def Code(self):
+        """交易结果码
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -407,6 +474,10 @@ class ChainMakerContractResult(AbstractModel):
 
     @property
     def CodeMessage(self):
+        """交易结果码含义
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CodeMessage
 
     @CodeMessage.setter
@@ -415,6 +486,10 @@ class ChainMakerContractResult(AbstractModel):
 
     @property
     def TxId(self):
+        """交易ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TxId
 
     @TxId.setter
@@ -423,6 +498,10 @@ class ChainMakerContractResult(AbstractModel):
 
     @property
     def GasUsed(self):
+        """Gas使用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._GasUsed
 
     @GasUsed.setter
@@ -431,6 +510,10 @@ class ChainMakerContractResult(AbstractModel):
 
     @property
     def Message(self):
+        """合约返回消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -439,6 +522,10 @@ class ChainMakerContractResult(AbstractModel):
 
     @property
     def Result(self):
+        """合约函数返回，base64编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -505,6 +592,9 @@ class ChainMakerTransactionResult(AbstractModel):
 
     @property
     def Code(self):
+        """交易结果码
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -513,6 +603,10 @@ class ChainMakerTransactionResult(AbstractModel):
 
     @property
     def CodeMessage(self):
+        """交易结果码含义
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CodeMessage
 
     @CodeMessage.setter
@@ -521,6 +615,10 @@ class ChainMakerTransactionResult(AbstractModel):
 
     @property
     def TxId(self):
+        """交易ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TxId
 
     @TxId.setter
@@ -529,6 +627,10 @@ class ChainMakerTransactionResult(AbstractModel):
 
     @property
     def GasUsed(self):
+        """Gas使用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._GasUsed
 
     @GasUsed.setter
@@ -537,6 +639,10 @@ class ChainMakerTransactionResult(AbstractModel):
 
     @property
     def BlockHeight(self):
+        """区块高度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BlockHeight
 
     @BlockHeight.setter
@@ -545,6 +651,10 @@ class ChainMakerTransactionResult(AbstractModel):
 
     @property
     def ContractEvent(self):
+        """合约执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ContractEvent
 
     @ContractEvent.setter
@@ -553,6 +663,10 @@ class ChainMakerTransactionResult(AbstractModel):
 
     @property
     def Message(self):
+        """合约返回信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -561,6 +675,10 @@ class ChainMakerTransactionResult(AbstractModel):
 
     @property
     def Timestamp(self):
+        """交易时间，单位是秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -607,6 +725,9 @@ class DescribeFabricBlockRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -615,6 +736,9 @@ class DescribeFabricBlockRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道ID，可在通道列表或通道详情获取
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -623,6 +747,9 @@ class DescribeFabricBlockRequest(AbstractModel):
 
     @property
     def BlockHeight(self):
+        """区块高度，从0开始
+        :rtype: int
+        """
         return self._BlockHeight
 
     @BlockHeight.setter
@@ -679,6 +806,9 @@ class DescribeFabricBlockResponse(AbstractModel):
 
     @property
     def BlockHeight(self):
+        """区块高度
+        :rtype: int
+        """
         return self._BlockHeight
 
     @BlockHeight.setter
@@ -687,6 +817,9 @@ class DescribeFabricBlockResponse(AbstractModel):
 
     @property
     def BlockHash(self):
+        """区块Hash
+        :rtype: str
+        """
         return self._BlockHash
 
     @BlockHash.setter
@@ -695,6 +828,9 @@ class DescribeFabricBlockResponse(AbstractModel):
 
     @property
     def PreBlockHash(self):
+        """前置区块Hash
+        :rtype: str
+        """
         return self._PreBlockHash
 
     @PreBlockHash.setter
@@ -703,6 +839,9 @@ class DescribeFabricBlockResponse(AbstractModel):
 
     @property
     def TxCount(self):
+        """区块中交易数量
+        :rtype: int
+        """
         return self._TxCount
 
     @TxCount.setter
@@ -711,6 +850,9 @@ class DescribeFabricBlockResponse(AbstractModel):
 
     @property
     def TransactionList(self):
+        """区块中交易列表
+        :rtype: list of Transaction
+        """
         return self._TransactionList
 
     @TransactionList.setter
@@ -719,6 +861,9 @@ class DescribeFabricBlockResponse(AbstractModel):
 
     @property
     def CreateTimestamp(self):
+        """创建时间戳
+        :rtype: str
+        """
         return self._CreateTimestamp
 
     @CreateTimestamp.setter
@@ -727,6 +872,9 @@ class DescribeFabricBlockResponse(AbstractModel):
 
     @property
     def ProposerOrg(self):
+        """提案组织
+        :rtype: str
+        """
         return self._ProposerOrg
 
     @ProposerOrg.setter
@@ -735,6 +883,9 @@ class DescribeFabricBlockResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -778,6 +929,9 @@ class DescribeFabricTransactionRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -786,6 +940,9 @@ class DescribeFabricTransactionRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道ID，可在通道列表或通道详情获取
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -794,6 +951,9 @@ class DescribeFabricTransactionRequest(AbstractModel):
 
     @property
     def TxId(self):
+        """交易ID
+        :rtype: str
+        """
         return self._TxId
 
     @TxId.setter
@@ -856,6 +1016,9 @@ class DescribeFabricTransactionResponse(AbstractModel):
 
     @property
     def TxId(self):
+        """交易ID
+        :rtype: str
+        """
         return self._TxId
 
     @TxId.setter
@@ -864,6 +1027,9 @@ class DescribeFabricTransactionResponse(AbstractModel):
 
     @property
     def TxHash(self):
+        """交易Hash
+        :rtype: str
+        """
         return self._TxHash
 
     @TxHash.setter
@@ -872,6 +1038,9 @@ class DescribeFabricTransactionResponse(AbstractModel):
 
     @property
     def TxStatus(self):
+        """交易状态
+        :rtype: str
+        """
         return self._TxStatus
 
     @TxStatus.setter
@@ -880,6 +1049,9 @@ class DescribeFabricTransactionResponse(AbstractModel):
 
     @property
     def JoinOrgList(self):
+        """参与的组织列表
+        :rtype: list of str
+        """
         return self._JoinOrgList
 
     @JoinOrgList.setter
@@ -888,6 +1060,9 @@ class DescribeFabricTransactionResponse(AbstractModel):
 
     @property
     def Sender(self):
+        """交易发送者
+        :rtype: str
+        """
         return self._Sender
 
     @Sender.setter
@@ -896,6 +1071,9 @@ class DescribeFabricTransactionResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -904,6 +1082,9 @@ class DescribeFabricTransactionResponse(AbstractModel):
 
     @property
     def BlockHeight(self):
+        """区块高度
+        :rtype: int
+        """
         return self._BlockHeight
 
     @BlockHeight.setter
@@ -912,6 +1093,9 @@ class DescribeFabricTransactionResponse(AbstractModel):
 
     @property
     def ChaincodeName(self):
+        """交易所属合约
+        :rtype: str
+        """
         return self._ChaincodeName
 
     @ChaincodeName.setter
@@ -920,6 +1104,9 @@ class DescribeFabricTransactionResponse(AbstractModel):
 
     @property
     def TransactionData(self):
+        """交易数据，base64编码，解码后为json化的字符串
+        :rtype: str
+        """
         return self._TransactionData
 
     @TransactionData.setter
@@ -928,6 +1115,9 @@ class DescribeFabricTransactionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -977,6 +1167,9 @@ class DownloadUserCertRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，固定字段：cert_mng
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -985,6 +1178,9 @@ class DownloadUserCertRequest(AbstractModel):
 
     @property
     def Operation(self):
+        """操作名，固定字段：cert_download_for_user
+        :rtype: str
+        """
         return self._Operation
 
     @Operation.setter
@@ -993,6 +1189,9 @@ class DownloadUserCertRequest(AbstractModel):
 
     @property
     def CertId(self):
+        """证书ID，可以在证书详情页面获取
+        :rtype: int
+        """
         return self._CertId
 
     @CertId.setter
@@ -1001,6 +1200,9 @@ class DownloadUserCertRequest(AbstractModel):
 
     @property
     def CertDn(self):
+        """证书DN，可以在证书详情页面获取
+        :rtype: str
+        """
         return self._CertDn
 
     @CertDn.setter
@@ -1009,6 +1211,9 @@ class DownloadUserCertRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """区块链网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1017,6 +1222,9 @@ class DownloadUserCertRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """下载证书的组织名称，可以在组织管理列表中获取当前组织的名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -1064,6 +1272,9 @@ class DownloadUserCertResponse(AbstractModel):
 
     @property
     def CertName(self):
+        """证书名称
+        :rtype: str
+        """
         return self._CertName
 
     @CertName.setter
@@ -1074,6 +1285,9 @@ class DownloadUserCertResponse(AbstractModel):
     def CertCtx(self):
         warnings.warn("parameter `CertCtx` is deprecated", DeprecationWarning) 
 
+        """证书内容
+        :rtype: str
+        """
         return self._CertCtx
 
     @CertCtx.setter
@@ -1084,6 +1298,9 @@ class DownloadUserCertResponse(AbstractModel):
 
     @property
     def Cert(self):
+        """证书内容
+        :rtype: str
+        """
         return self._Cert
 
     @Cert.setter
@@ -1092,6 +1309,9 @@ class DownloadUserCertResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1123,6 +1343,9 @@ class EndorserGroup(AbstractModel):
 
     @property
     def EndorserGroupName(self):
+        """背书组织名称
+        :rtype: str
+        """
         return self._EndorserGroupName
 
     @EndorserGroupName.setter
@@ -1131,6 +1354,9 @@ class EndorserGroup(AbstractModel):
 
     @property
     def EndorserPeerList(self):
+        """背书节点列表
+        :rtype: list of str
+        """
         return self._EndorserPeerList
 
     @EndorserPeerList.setter
@@ -1189,6 +1415,9 @@ class GetBlockListRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名称，固定字段：block
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -1197,6 +1426,9 @@ class GetBlockListRequest(AbstractModel):
 
     @property
     def Operation(self):
+        """操作名称，固定字段：block_list
+        :rtype: str
+        """
         return self._Operation
 
     @Operation.setter
@@ -1205,6 +1437,9 @@ class GetBlockListRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道ID，固定字段：0
+        :rtype: int
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -1213,6 +1448,9 @@ class GetBlockListRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """组织ID，固定字段：0
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -1221,6 +1459,9 @@ class GetBlockListRequest(AbstractModel):
 
     @property
     def ChannelName(self):
+        """需要查询的通道名称，可在通道详情或列表中获取
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -1229,6 +1470,9 @@ class GetBlockListRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """调用接口的组织名称，可以在组织管理列表中获取当前组织的名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -1237,6 +1481,9 @@ class GetBlockListRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """区块链网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1245,6 +1492,9 @@ class GetBlockListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """需要获取的起始交易偏移
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1253,6 +1503,9 @@ class GetBlockListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """需要获取的交易数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1300,6 +1553,9 @@ class GetBlockListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """区块数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1308,6 +1564,9 @@ class GetBlockListResponse(AbstractModel):
 
     @property
     def BlockList(self):
+        """区块列表
+        :rtype: list of Block
+        """
         return self._BlockList
 
     @BlockList.setter
@@ -1316,6 +1575,9 @@ class GetBlockListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1369,6 +1631,9 @@ class GetBlockTransactionListForUserRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，固定字段：transaction
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -1377,6 +1642,9 @@ class GetBlockTransactionListForUserRequest(AbstractModel):
 
     @property
     def Operation(self):
+        """操作名，固定字段：block_transaction_list_for_user
+        :rtype: str
+        """
         return self._Operation
 
     @Operation.setter
@@ -1385,6 +1653,9 @@ class GetBlockTransactionListForUserRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """区块链网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1393,6 +1664,9 @@ class GetBlockTransactionListForUserRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """参与交易的组织名称，可以在组织管理列表中获取当前组织的名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -1401,6 +1675,9 @@ class GetBlockTransactionListForUserRequest(AbstractModel):
 
     @property
     def ChannelName(self):
+        """业务所属通道名称，可在通道详情或列表中获取
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -1409,6 +1686,9 @@ class GetBlockTransactionListForUserRequest(AbstractModel):
 
     @property
     def BlockId(self):
+        """区块ID，通过GetInvokeTx接口可以获取交易所在的区块ID
+        :rtype: int
+        """
         return self._BlockId
 
     @BlockId.setter
@@ -1417,6 +1697,9 @@ class GetBlockTransactionListForUserRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询的交易列表起始偏移地址
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1425,6 +1708,9 @@ class GetBlockTransactionListForUserRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询的交易列表数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1471,6 +1757,9 @@ class GetBlockTransactionListForUserResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """交易总数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1479,6 +1768,9 @@ class GetBlockTransactionListForUserResponse(AbstractModel):
 
     @property
     def TransactionList(self):
+        """交易列表
+        :rtype: list of TransactionItem
+        """
         return self._TransactionList
 
     @TransactionList.setter
@@ -1487,6 +1779,9 @@ class GetBlockTransactionListForUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1531,6 +1826,9 @@ class GetClusterSummaryRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名称，固定字段：cluster_mng
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -1539,6 +1837,9 @@ class GetClusterSummaryRequest(AbstractModel):
 
     @property
     def Operation(self):
+        """操作名称，固定字段：cluster_summary
+        :rtype: str
+        """
         return self._Operation
 
     @Operation.setter
@@ -1547,6 +1848,9 @@ class GetClusterSummaryRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """区块链网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1555,6 +1859,9 @@ class GetClusterSummaryRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """组织ID，固定字段：0
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -1563,6 +1870,9 @@ class GetClusterSummaryRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """调用接口的组织名称，可以在组织管理列表中获取当前组织的名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -1645,6 +1955,9 @@ class GetClusterSummaryResponse(AbstractModel):
 
     @property
     def TotalChannelCount(self):
+        """网络通道总数量
+        :rtype: int
+        """
         return self._TotalChannelCount
 
     @TotalChannelCount.setter
@@ -1653,6 +1966,9 @@ class GetClusterSummaryResponse(AbstractModel):
 
     @property
     def MyChannelCount(self):
+        """当前组织创建的通道数量
+        :rtype: int
+        """
         return self._MyChannelCount
 
     @MyChannelCount.setter
@@ -1661,6 +1977,9 @@ class GetClusterSummaryResponse(AbstractModel):
 
     @property
     def JoinChannelCount(self):
+        """当前组织加入的通道数量
+        :rtype: int
+        """
         return self._JoinChannelCount
 
     @JoinChannelCount.setter
@@ -1669,6 +1988,9 @@ class GetClusterSummaryResponse(AbstractModel):
 
     @property
     def TotalPeerCount(self):
+        """网络节点总数量
+        :rtype: int
+        """
         return self._TotalPeerCount
 
     @TotalPeerCount.setter
@@ -1677,6 +1999,9 @@ class GetClusterSummaryResponse(AbstractModel):
 
     @property
     def MyPeerCount(self):
+        """当前组织创建的节点数量
+        :rtype: int
+        """
         return self._MyPeerCount
 
     @MyPeerCount.setter
@@ -1685,6 +2010,9 @@ class GetClusterSummaryResponse(AbstractModel):
 
     @property
     def OrderCount(self):
+        """其他组织创建的节点数量
+        :rtype: int
+        """
         return self._OrderCount
 
     @OrderCount.setter
@@ -1693,6 +2021,9 @@ class GetClusterSummaryResponse(AbstractModel):
 
     @property
     def TotalGroupCount(self):
+        """网络组织总数量
+        :rtype: int
+        """
         return self._TotalGroupCount
 
     @TotalGroupCount.setter
@@ -1701,6 +2032,9 @@ class GetClusterSummaryResponse(AbstractModel):
 
     @property
     def MyGroupCount(self):
+        """当前组织创建的组织数量
+        :rtype: int
+        """
         return self._MyGroupCount
 
     @MyGroupCount.setter
@@ -1709,6 +2043,9 @@ class GetClusterSummaryResponse(AbstractModel):
 
     @property
     def TotalChaincodeCount(self):
+        """网络智能合约总数量
+        :rtype: int
+        """
         return self._TotalChaincodeCount
 
     @TotalChaincodeCount.setter
@@ -1717,6 +2054,9 @@ class GetClusterSummaryResponse(AbstractModel):
 
     @property
     def RecentChaincodeCount(self):
+        """最近7天发起的智能合约数量
+        :rtype: int
+        """
         return self._RecentChaincodeCount
 
     @RecentChaincodeCount.setter
@@ -1725,6 +2065,9 @@ class GetClusterSummaryResponse(AbstractModel):
 
     @property
     def MyChaincodeCount(self):
+        """当前组织发起的智能合约数量
+        :rtype: int
+        """
         return self._MyChaincodeCount
 
     @MyChaincodeCount.setter
@@ -1733,6 +2076,9 @@ class GetClusterSummaryResponse(AbstractModel):
 
     @property
     def TotalCertCount(self):
+        """当前组织的证书总数量
+        :rtype: int
+        """
         return self._TotalCertCount
 
     @TotalCertCount.setter
@@ -1741,6 +2087,9 @@ class GetClusterSummaryResponse(AbstractModel):
 
     @property
     def TlsCertCount(self):
+        """颁发给当前组织的证书数量
+        :rtype: int
+        """
         return self._TlsCertCount
 
     @TlsCertCount.setter
@@ -1749,6 +2098,9 @@ class GetClusterSummaryResponse(AbstractModel):
 
     @property
     def PeerCertCount(self):
+        """网络背书节点证书数量
+        :rtype: int
+        """
         return self._PeerCertCount
 
     @PeerCertCount.setter
@@ -1757,6 +2109,9 @@ class GetClusterSummaryResponse(AbstractModel):
 
     @property
     def ClientCertCount(self):
+        """当前组织业务证书数量
+        :rtype: int
+        """
         return self._ClientCertCount
 
     @ClientCertCount.setter
@@ -1765,6 +2120,9 @@ class GetClusterSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1826,6 +2184,9 @@ class GetInvokeTxRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，固定字段：transaction
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -1834,6 +2195,9 @@ class GetInvokeTxRequest(AbstractModel):
 
     @property
     def Operation(self):
+        """操作名，固定字段：query_txid
+        :rtype: str
+        """
         return self._Operation
 
     @Operation.setter
@@ -1842,6 +2206,9 @@ class GetInvokeTxRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """区块链网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1850,6 +2217,9 @@ class GetInvokeTxRequest(AbstractModel):
 
     @property
     def ChannelName(self):
+        """业务所属通道名称，可在通道详情或列表中获取
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -1858,6 +2228,9 @@ class GetInvokeTxRequest(AbstractModel):
 
     @property
     def PeerName(self):
+        """执行该查询交易的节点名称，可以在通道详情中获取该通道上的节点名称及其所属组织名称
+        :rtype: str
+        """
         return self._PeerName
 
     @PeerName.setter
@@ -1866,6 +2239,9 @@ class GetInvokeTxRequest(AbstractModel):
 
     @property
     def PeerGroup(self):
+        """执行该查询交易的节点所属组织名称，可以在通道详情中获取该通道上的节点名称及其所属组织名称
+        :rtype: str
+        """
         return self._PeerGroup
 
     @PeerGroup.setter
@@ -1874,6 +2250,9 @@ class GetInvokeTxRequest(AbstractModel):
 
     @property
     def TxId(self):
+        """交易ID
+        :rtype: str
+        """
         return self._TxId
 
     @TxId.setter
@@ -1882,6 +2261,9 @@ class GetInvokeTxRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """调用合约的组织名称，可以在组织管理列表中获取当前组织的名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -1931,6 +2313,9 @@ class GetInvokeTxResponse(AbstractModel):
 
     @property
     def TxValidationCode(self):
+        """交易执行状态码
+        :rtype: int
+        """
         return self._TxValidationCode
 
     @TxValidationCode.setter
@@ -1939,6 +2324,9 @@ class GetInvokeTxResponse(AbstractModel):
 
     @property
     def TxValidationMsg(self):
+        """交易执行消息
+        :rtype: str
+        """
         return self._TxValidationMsg
 
     @TxValidationMsg.setter
@@ -1947,6 +2335,9 @@ class GetInvokeTxResponse(AbstractModel):
 
     @property
     def BlockId(self):
+        """交易所在区块ID
+        :rtype: int
+        """
         return self._BlockId
 
     @BlockId.setter
@@ -1955,6 +2346,9 @@ class GetInvokeTxResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2010,6 +2404,9 @@ class GetLatesdTransactionListRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名称，固定字段：transaction
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -2018,6 +2415,9 @@ class GetLatesdTransactionListRequest(AbstractModel):
 
     @property
     def Operation(self):
+        """操作名称，固定字段：latest_transaction_list
+        :rtype: str
+        """
         return self._Operation
 
     @Operation.setter
@@ -2026,6 +2426,9 @@ class GetLatesdTransactionListRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """组织ID，固定字段：0
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -2034,6 +2437,9 @@ class GetLatesdTransactionListRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道ID，固定字段：0
+        :rtype: int
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -2042,6 +2448,9 @@ class GetLatesdTransactionListRequest(AbstractModel):
 
     @property
     def LatestBlockNumber(self):
+        """获取的最新交易的区块数量，取值范围1~5
+        :rtype: int
+        """
         return self._LatestBlockNumber
 
     @LatestBlockNumber.setter
@@ -2050,6 +2459,9 @@ class GetLatesdTransactionListRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """调用接口的组织名称，可以在组织管理列表中获取当前组织的名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -2058,6 +2470,9 @@ class GetLatesdTransactionListRequest(AbstractModel):
 
     @property
     def ChannelName(self):
+        """需要查询的通道名称，可在通道详情或列表中获取
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -2066,6 +2481,9 @@ class GetLatesdTransactionListRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """区块链网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2074,6 +2492,9 @@ class GetLatesdTransactionListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """需要获取的起始交易偏移
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2082,6 +2503,9 @@ class GetLatesdTransactionListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """需要获取的交易数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2130,6 +2554,9 @@ class GetLatesdTransactionListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """交易总数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2138,6 +2565,9 @@ class GetLatesdTransactionListResponse(AbstractModel):
 
     @property
     def TransactionList(self):
+        """交易列表
+        :rtype: list of TransactionItem
+        """
         return self._TransactionList
 
     @TransactionList.setter
@@ -2146,6 +2576,9 @@ class GetLatesdTransactionListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2205,6 +2638,9 @@ class GetLatestTransactionListRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名称，固定字段：transaction
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -2213,6 +2649,9 @@ class GetLatestTransactionListRequest(AbstractModel):
 
     @property
     def Operation(self):
+        """操作名称，固定字段：latest_transaction_list
+        :rtype: str
+        """
         return self._Operation
 
     @Operation.setter
@@ -2221,6 +2660,9 @@ class GetLatestTransactionListRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """组织ID，固定字段：0
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -2229,6 +2671,9 @@ class GetLatestTransactionListRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道ID，固定字段：0
+        :rtype: int
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -2237,6 +2682,9 @@ class GetLatestTransactionListRequest(AbstractModel):
 
     @property
     def LatestBlockNumber(self):
+        """获取的最新交易的区块数量，取值范围1~5
+        :rtype: int
+        """
         return self._LatestBlockNumber
 
     @LatestBlockNumber.setter
@@ -2245,6 +2693,9 @@ class GetLatestTransactionListRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """调用接口的组织名称，可以在组织管理列表中获取当前组织的名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -2253,6 +2704,9 @@ class GetLatestTransactionListRequest(AbstractModel):
 
     @property
     def ChannelName(self):
+        """需要查询的通道名称，可在通道详情或列表中获取
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -2261,6 +2715,9 @@ class GetLatestTransactionListRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """区块链网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2269,6 +2726,9 @@ class GetLatestTransactionListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """需要获取的起始交易偏移
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2277,6 +2737,9 @@ class GetLatestTransactionListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """需要获取的交易数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2325,6 +2788,9 @@ class GetLatestTransactionListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """交易总数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2333,6 +2799,9 @@ class GetLatestTransactionListResponse(AbstractModel):
 
     @property
     def TransactionList(self):
+        """交易列表
+        :rtype: list of TransactionItem
+        """
         return self._TransactionList
 
     @TransactionList.setter
@@ -2341,6 +2810,9 @@ class GetLatestTransactionListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2391,6 +2863,9 @@ class GetTransactionDetailForUserRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，固定字段：transaction
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -2399,6 +2874,9 @@ class GetTransactionDetailForUserRequest(AbstractModel):
 
     @property
     def Operation(self):
+        """操作名，固定字段：transaction_detail_for_user
+        :rtype: str
+        """
         return self._Operation
 
     @Operation.setter
@@ -2407,6 +2885,9 @@ class GetTransactionDetailForUserRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """区块链网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2415,6 +2896,9 @@ class GetTransactionDetailForUserRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """参与交易的组织名称，可以在组织管理列表中获取当前组织的名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -2423,6 +2907,9 @@ class GetTransactionDetailForUserRequest(AbstractModel):
 
     @property
     def ChannelName(self):
+        """业务所属通道名称，可在通道详情或列表中获取
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -2431,6 +2918,9 @@ class GetTransactionDetailForUserRequest(AbstractModel):
 
     @property
     def BlockId(self):
+        """区块ID，通过GetInvokeTx接口可以获取交易所在的区块ID
+        :rtype: int
+        """
         return self._BlockId
 
     @BlockId.setter
@@ -2439,6 +2929,9 @@ class GetTransactionDetailForUserRequest(AbstractModel):
 
     @property
     def TransactionId(self):
+        """交易ID，需要查询的详情的交易ID
+        :rtype: str
+        """
         return self._TransactionId
 
     @TransactionId.setter
@@ -2517,6 +3010,9 @@ class GetTransactionDetailForUserResponse(AbstractModel):
 
     @property
     def TransactionId(self):
+        """交易ID
+        :rtype: str
+        """
         return self._TransactionId
 
     @TransactionId.setter
@@ -2525,6 +3021,9 @@ class GetTransactionDetailForUserResponse(AbstractModel):
 
     @property
     def TransactionHash(self):
+        """交易hash
+        :rtype: str
+        """
         return self._TransactionHash
 
     @TransactionHash.setter
@@ -2533,6 +3032,9 @@ class GetTransactionDetailForUserResponse(AbstractModel):
 
     @property
     def CreateOrgName(self):
+        """创建交易的组织名
+        :rtype: str
+        """
         return self._CreateOrgName
 
     @CreateOrgName.setter
@@ -2541,6 +3043,9 @@ class GetTransactionDetailForUserResponse(AbstractModel):
 
     @property
     def TransactionType(self):
+        """交易类型（普通交易和配置交易）
+        :rtype: str
+        """
         return self._TransactionType
 
     @TransactionType.setter
@@ -2549,6 +3054,9 @@ class GetTransactionDetailForUserResponse(AbstractModel):
 
     @property
     def TransactionStatus(self):
+        """交易状态
+        :rtype: str
+        """
         return self._TransactionStatus
 
     @TransactionStatus.setter
@@ -2557,6 +3065,9 @@ class GetTransactionDetailForUserResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """交易创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2565,6 +3076,9 @@ class GetTransactionDetailForUserResponse(AbstractModel):
 
     @property
     def TransactionData(self):
+        """交易数据
+        :rtype: str
+        """
         return self._TransactionData
 
     @TransactionData.setter
@@ -2573,6 +3087,9 @@ class GetTransactionDetailForUserResponse(AbstractModel):
 
     @property
     def BlockId(self):
+        """交易所在区块号
+        :rtype: int
+        """
         return self._BlockId
 
     @BlockId.setter
@@ -2581,6 +3098,9 @@ class GetTransactionDetailForUserResponse(AbstractModel):
 
     @property
     def BlockHash(self):
+        """交易所在区块哈希
+        :rtype: str
+        """
         return self._BlockHash
 
     @BlockHash.setter
@@ -2589,6 +3109,9 @@ class GetTransactionDetailForUserResponse(AbstractModel):
 
     @property
     def BlockHeight(self):
+        """交易所在区块高度
+        :rtype: int
+        """
         return self._BlockHeight
 
     @BlockHeight.setter
@@ -2597,6 +3120,9 @@ class GetTransactionDetailForUserResponse(AbstractModel):
 
     @property
     def ChannelName(self):
+        """通道名称
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -2605,6 +3131,9 @@ class GetTransactionDetailForUserResponse(AbstractModel):
 
     @property
     def ContractName(self):
+        """交易所在合约名称
+        :rtype: str
+        """
         return self._ContractName
 
     @ContractName.setter
@@ -2613,6 +3142,9 @@ class GetTransactionDetailForUserResponse(AbstractModel):
 
     @property
     def EndorserOrgList(self):
+        """背书组织列表
+        :rtype: list of EndorserGroup
+        """
         return self._EndorserOrgList
 
     @EndorserOrgList.setter
@@ -2621,6 +3153,9 @@ class GetTransactionDetailForUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2679,6 +3214,9 @@ class InvokeChainMakerContractRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2687,6 +3225,9 @@ class InvokeChainMakerContractRequest(AbstractModel):
 
     @property
     def ChainId(self):
+        """业务链ID，可在网络概览页获取
+        :rtype: str
+        """
         return self._ChainId
 
     @ChainId.setter
@@ -2695,6 +3236,9 @@ class InvokeChainMakerContractRequest(AbstractModel):
 
     @property
     def ContractName(self):
+        """合约名称，可在合约管理中获取
+        :rtype: str
+        """
         return self._ContractName
 
     @ContractName.setter
@@ -2703,6 +3247,9 @@ class InvokeChainMakerContractRequest(AbstractModel):
 
     @property
     def FuncName(self):
+        """合约方法名
+        :rtype: str
+        """
         return self._FuncName
 
     @FuncName.setter
@@ -2711,6 +3258,9 @@ class InvokeChainMakerContractRequest(AbstractModel):
 
     @property
     def FuncParam(self):
+        """合约方法入参，json格式字符串，key/value都是string类型的map
+        :rtype: str
+        """
         return self._FuncParam
 
     @FuncParam.setter
@@ -2719,6 +3269,9 @@ class InvokeChainMakerContractRequest(AbstractModel):
 
     @property
     def AsyncFlag(self):
+        """是否异步执行，1为是，否则为0；如果异步执行，可使用返回值中的交易TxID查询执行结果
+        :rtype: int
+        """
         return self._AsyncFlag
 
     @AsyncFlag.setter
@@ -2761,6 +3314,10 @@ class InvokeChainMakerContractResponse(AbstractModel):
 
     @property
     def Result(self):
+        """交易结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerContractResult`
+        """
         return self._Result
 
     @Result.setter
@@ -2769,6 +3326,9 @@ class InvokeChainMakerContractResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2812,6 +3372,9 @@ class InvokeChainMakerDemoContractRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2820,6 +3383,9 @@ class InvokeChainMakerDemoContractRequest(AbstractModel):
 
     @property
     def ChainId(self):
+        """业务链ID，可在网络概览页获取
+        :rtype: str
+        """
         return self._ChainId
 
     @ChainId.setter
@@ -2828,6 +3394,9 @@ class InvokeChainMakerDemoContractRequest(AbstractModel):
 
     @property
     def ContractName(self):
+        """合约名称，可在合约管理中获取
+        :rtype: str
+        """
         return self._ContractName
 
     @ContractName.setter
@@ -2836,6 +3405,9 @@ class InvokeChainMakerDemoContractRequest(AbstractModel):
 
     @property
     def FuncName(self):
+        """合约方法名
+        :rtype: str
+        """
         return self._FuncName
 
     @FuncName.setter
@@ -2844,6 +3416,9 @@ class InvokeChainMakerDemoContractRequest(AbstractModel):
 
     @property
     def FuncParam(self):
+        """合约方法入参，json格式字符串，key/value都是string类型的map
+        :rtype: str
+        """
         return self._FuncParam
 
     @FuncParam.setter
@@ -2852,6 +3427,9 @@ class InvokeChainMakerDemoContractRequest(AbstractModel):
 
     @property
     def AsyncFlag(self):
+        """是否异步执行，1为是，否则为0；如果异步执行，可使用返回值中的交易TxID查询执行结果
+        :rtype: int
+        """
         return self._AsyncFlag
 
     @AsyncFlag.setter
@@ -2894,6 +3472,10 @@ class InvokeChainMakerDemoContractResponse(AbstractModel):
 
     @property
     def Result(self):
+        """交易结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerContractResult`
+        """
         return self._Result
 
     @Result.setter
@@ -2902,6 +3484,9 @@ class InvokeChainMakerDemoContractResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2945,6 +3530,9 @@ class InvokeFabricChaincodeRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """网络ID，可在区块链网络详情获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2953,6 +3541,9 @@ class InvokeFabricChaincodeRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道ID，可在通道列表或通道详情获取
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -2961,6 +3552,9 @@ class InvokeFabricChaincodeRequest(AbstractModel):
 
     @property
     def ChaincodeName(self):
+        """合约名称，可在合约列表或合约详情获取
+        :rtype: str
+        """
         return self._ChaincodeName
 
     @ChaincodeName.setter
@@ -2969,6 +3563,9 @@ class InvokeFabricChaincodeRequest(AbstractModel):
 
     @property
     def FuncName(self):
+        """合约方法
+        :rtype: str
+        """
         return self._FuncName
 
     @FuncName.setter
@@ -2977,6 +3574,9 @@ class InvokeFabricChaincodeRequest(AbstractModel):
 
     @property
     def FuncParam(self):
+        """合约方法入参
+        :rtype: list of str
+        """
         return self._FuncParam
 
     @FuncParam.setter
@@ -2985,6 +3585,9 @@ class InvokeFabricChaincodeRequest(AbstractModel):
 
     @property
     def WithAsyncResult(self):
+        """是否异步执行，如果异步执行，可使用返回值中的交易TxID查询执行结果
+        :rtype: bool
+        """
         return self._WithAsyncResult
 
     @WithAsyncResult.setter
@@ -3032,6 +3635,9 @@ class InvokeFabricChaincodeResponse(AbstractModel):
 
     @property
     def TxId(self):
+        """交易ID
+        :rtype: str
+        """
         return self._TxId
 
     @TxId.setter
@@ -3040,6 +3646,9 @@ class InvokeFabricChaincodeResponse(AbstractModel):
 
     @property
     def TxStatus(self):
+        """交易状态
+        :rtype: str
+        """
         return self._TxStatus
 
     @TxStatus.setter
@@ -3048,6 +3657,9 @@ class InvokeFabricChaincodeResponse(AbstractModel):
 
     @property
     def TxResult(self):
+        """交易结果
+        :rtype: str
+        """
         return self._TxResult
 
     @TxResult.setter
@@ -3056,6 +3668,9 @@ class InvokeFabricChaincodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3111,6 +3726,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，固定字段：transaction
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -3119,6 +3737,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def Operation(self):
+        """操作名，固定字段：invoke
+        :rtype: str
+        """
         return self._Operation
 
     @Operation.setter
@@ -3127,6 +3748,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """区块链网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3135,6 +3759,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def ChaincodeName(self):
+        """业务所属智能合约名称，可在智能合约详情或列表中获取
+        :rtype: str
+        """
         return self._ChaincodeName
 
     @ChaincodeName.setter
@@ -3143,6 +3770,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def ChannelName(self):
+        """业务所属通道名称，可在通道详情或列表中获取
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -3151,6 +3781,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def Peers(self):
+        """对该笔交易进行背书的节点列表（包括节点名称和节点所属组织名称，详见数据结构一节），可以在通道详情中获取该通道上的节点名称及其所属组织名称
+        :rtype: list of PeerSet
+        """
         return self._Peers
 
     @Peers.setter
@@ -3159,6 +3792,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def FuncName(self):
+        """该笔交易需要调用的智能合约中的函数名称
+        :rtype: str
+        """
         return self._FuncName
 
     @FuncName.setter
@@ -3167,6 +3803,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """调用合约的组织名称，可以在组织管理列表中获取当前组织的名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -3175,6 +3814,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def Args(self):
+        """被调用的函数参数列表，参数列表大小总和要求小于2M
+        :rtype: list of str
+        """
         return self._Args
 
     @Args.setter
@@ -3183,6 +3825,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def AsyncFlag(self):
+        """同步调用标识，可选参数，值为0或者不传表示使用同步方法调用，调用后会等待交易执行后再返回执行结果；值为1时表示使用异步方式调用Invoke，执行后会立即返回交易对应的Txid，后续需要通过GetInvokeTx这个API查询该交易的执行结果。（对于逻辑较为简单的交易，可以使用同步模式；对于逻辑较为复杂的交易，建议使用异步模式，否则容易导致API因等待时间过长，返回等待超时）
+        :rtype: int
+        """
         return self._AsyncFlag
 
     @AsyncFlag.setter
@@ -3241,6 +3886,9 @@ class InvokeResponse(AbstractModel):
     def Txid(self):
         warnings.warn("parameter `Txid` is deprecated", DeprecationWarning) 
 
+        """交易ID
+        :rtype: str
+        """
         return self._Txid
 
     @Txid.setter
@@ -3251,6 +3899,9 @@ class InvokeResponse(AbstractModel):
 
     @property
     def Events(self):
+        """交易执行结果
+        :rtype: str
+        """
         return self._Events
 
     @Events.setter
@@ -3259,6 +3910,9 @@ class InvokeResponse(AbstractModel):
 
     @property
     def TxId(self):
+        """交易ID
+        :rtype: str
+        """
         return self._TxId
 
     @TxId.setter
@@ -3267,6 +3921,9 @@ class InvokeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3298,6 +3955,9 @@ class PeerSet(AbstractModel):
 
     @property
     def PeerName(self):
+        """节点名称
+        :rtype: str
+        """
         return self._PeerName
 
     @PeerName.setter
@@ -3306,6 +3966,9 @@ class PeerSet(AbstractModel):
 
     @property
     def OrgName(self):
+        """组织名称
+        :rtype: str
+        """
         return self._OrgName
 
     @OrgName.setter
@@ -3346,6 +4009,9 @@ class QueryChainMakerBlockTransactionRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3354,6 +4020,9 @@ class QueryChainMakerBlockTransactionRequest(AbstractModel):
 
     @property
     def ChainId(self):
+        """业务链ID，可在网络概览页获取
+        :rtype: str
+        """
         return self._ChainId
 
     @ChainId.setter
@@ -3362,6 +4031,9 @@ class QueryChainMakerBlockTransactionRequest(AbstractModel):
 
     @property
     def BlockHeight(self):
+        """区块高度
+        :rtype: int
+        """
         return self._BlockHeight
 
     @BlockHeight.setter
@@ -3411,6 +4083,10 @@ class QueryChainMakerBlockTransactionResponse(AbstractModel):
 
     @property
     def Result(self):
+        """区块交易
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ChainMakerTransactionResult
+        """
         return self._Result
 
     @Result.setter
@@ -3419,6 +4095,9 @@ class QueryChainMakerBlockTransactionResponse(AbstractModel):
 
     @property
     def BlockHeight(self):
+        """区块高度
+        :rtype: int
+        """
         return self._BlockHeight
 
     @BlockHeight.setter
@@ -3427,6 +4106,10 @@ class QueryChainMakerBlockTransactionResponse(AbstractModel):
 
     @property
     def TxCount(self):
+        """交易数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TxCount
 
     @TxCount.setter
@@ -3435,6 +4118,9 @@ class QueryChainMakerBlockTransactionResponse(AbstractModel):
 
     @property
     def BlockTimestamp(self):
+        """区块时间戳，单位是秒
+        :rtype: int
+        """
         return self._BlockTimestamp
 
     @BlockTimestamp.setter
@@ -3443,6 +4129,9 @@ class QueryChainMakerBlockTransactionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3489,6 +4178,9 @@ class QueryChainMakerContractRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3497,6 +4189,9 @@ class QueryChainMakerContractRequest(AbstractModel):
 
     @property
     def ChainId(self):
+        """业务链ID，可在网络概览页获取
+        :rtype: str
+        """
         return self._ChainId
 
     @ChainId.setter
@@ -3505,6 +4200,9 @@ class QueryChainMakerContractRequest(AbstractModel):
 
     @property
     def ContractName(self):
+        """合约名称，可在合约管理中获取
+        :rtype: str
+        """
         return self._ContractName
 
     @ContractName.setter
@@ -3513,6 +4211,9 @@ class QueryChainMakerContractRequest(AbstractModel):
 
     @property
     def FuncName(self):
+        """合约方法名
+        :rtype: str
+        """
         return self._FuncName
 
     @FuncName.setter
@@ -3521,6 +4222,9 @@ class QueryChainMakerContractRequest(AbstractModel):
 
     @property
     def FuncParam(self):
+        """合约方法入参，json格式字符串，key/value都是string类型的map
+        :rtype: str
+        """
         return self._FuncParam
 
     @FuncParam.setter
@@ -3562,6 +4266,10 @@ class QueryChainMakerContractResponse(AbstractModel):
 
     @property
     def Result(self):
+        """交易结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerContractResult`
+        """
         return self._Result
 
     @Result.setter
@@ -3570,6 +4278,9 @@ class QueryChainMakerContractResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3604,6 +4315,9 @@ class QueryChainMakerDemoBlockTransactionRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3612,6 +4326,9 @@ class QueryChainMakerDemoBlockTransactionRequest(AbstractModel):
 
     @property
     def ChainId(self):
+        """业务链ID，可在网络概览页获取
+        :rtype: str
+        """
         return self._ChainId
 
     @ChainId.setter
@@ -3620,6 +4337,9 @@ class QueryChainMakerDemoBlockTransactionRequest(AbstractModel):
 
     @property
     def BlockHeight(self):
+        """区块高度
+        :rtype: int
+        """
         return self._BlockHeight
 
     @BlockHeight.setter
@@ -3669,6 +4389,10 @@ class QueryChainMakerDemoBlockTransactionResponse(AbstractModel):
 
     @property
     def Result(self):
+        """区块交易
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ChainMakerTransactionResult
+        """
         return self._Result
 
     @Result.setter
@@ -3677,6 +4401,9 @@ class QueryChainMakerDemoBlockTransactionResponse(AbstractModel):
 
     @property
     def BlockHeight(self):
+        """区块高度
+        :rtype: int
+        """
         return self._BlockHeight
 
     @BlockHeight.setter
@@ -3685,6 +4412,10 @@ class QueryChainMakerDemoBlockTransactionResponse(AbstractModel):
 
     @property
     def TxCount(self):
+        """交易数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TxCount
 
     @TxCount.setter
@@ -3693,6 +4424,9 @@ class QueryChainMakerDemoBlockTransactionResponse(AbstractModel):
 
     @property
     def BlockTimestamp(self):
+        """区块时间戳，单位是秒
+        :rtype: int
+        """
         return self._BlockTimestamp
 
     @BlockTimestamp.setter
@@ -3701,6 +4435,9 @@ class QueryChainMakerDemoBlockTransactionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3747,6 +4484,9 @@ class QueryChainMakerDemoContractRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3755,6 +4495,9 @@ class QueryChainMakerDemoContractRequest(AbstractModel):
 
     @property
     def ChainId(self):
+        """业务链ID，可在网络概览页获取
+        :rtype: str
+        """
         return self._ChainId
 
     @ChainId.setter
@@ -3763,6 +4506,9 @@ class QueryChainMakerDemoContractRequest(AbstractModel):
 
     @property
     def ContractName(self):
+        """合约名称，可在合约管理中获取
+        :rtype: str
+        """
         return self._ContractName
 
     @ContractName.setter
@@ -3771,6 +4517,9 @@ class QueryChainMakerDemoContractRequest(AbstractModel):
 
     @property
     def FuncName(self):
+        """合约方法名
+        :rtype: str
+        """
         return self._FuncName
 
     @FuncName.setter
@@ -3779,6 +4528,9 @@ class QueryChainMakerDemoContractRequest(AbstractModel):
 
     @property
     def FuncParam(self):
+        """合约方法入参，json格式字符串，key/value都是string类型的map
+        :rtype: str
+        """
         return self._FuncParam
 
     @FuncParam.setter
@@ -3820,6 +4572,10 @@ class QueryChainMakerDemoContractResponse(AbstractModel):
 
     @property
     def Result(self):
+        """交易结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerContractResult`
+        """
         return self._Result
 
     @Result.setter
@@ -3828,6 +4584,9 @@ class QueryChainMakerDemoContractResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3862,6 +4621,9 @@ class QueryChainMakerDemoTransactionRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3870,6 +4632,9 @@ class QueryChainMakerDemoTransactionRequest(AbstractModel):
 
     @property
     def ChainId(self):
+        """业务链ID，可在网络概览页获取
+        :rtype: str
+        """
         return self._ChainId
 
     @ChainId.setter
@@ -3878,6 +4643,9 @@ class QueryChainMakerDemoTransactionRequest(AbstractModel):
 
     @property
     def TxID(self):
+        """交易ID，通过调用合约的返回值获取
+        :rtype: str
+        """
         return self._TxID
 
     @TxID.setter
@@ -3917,6 +4685,10 @@ class QueryChainMakerDemoTransactionResponse(AbstractModel):
 
     @property
     def Result(self):
+        """交易结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerTransactionResult`
+        """
         return self._Result
 
     @Result.setter
@@ -3925,6 +4697,9 @@ class QueryChainMakerDemoTransactionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3959,6 +4734,9 @@ class QueryChainMakerTransactionRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3967,6 +4745,9 @@ class QueryChainMakerTransactionRequest(AbstractModel):
 
     @property
     def ChainId(self):
+        """业务链ID，可在网络概览页获取
+        :rtype: str
+        """
         return self._ChainId
 
     @ChainId.setter
@@ -3975,6 +4756,9 @@ class QueryChainMakerTransactionRequest(AbstractModel):
 
     @property
     def TxID(self):
+        """交易ID，通过调用合约的返回值获取
+        :rtype: str
+        """
         return self._TxID
 
     @TxID.setter
@@ -4014,6 +4798,10 @@ class QueryChainMakerTransactionResponse(AbstractModel):
 
     @property
     def Result(self):
+        """交易结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerTransactionResult`
+        """
         return self._Result
 
     @Result.setter
@@ -4022,6 +4810,9 @@ class QueryChainMakerTransactionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4062,6 +4853,9 @@ class QueryFabricChaincodeRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """网络ID，可在区块链网络详情获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -4070,6 +4864,9 @@ class QueryFabricChaincodeRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道ID，可在通道列表或通道详情获取
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -4078,6 +4875,9 @@ class QueryFabricChaincodeRequest(AbstractModel):
 
     @property
     def ChaincodeName(self):
+        """合约名称，可在合约列表或合约详情获取
+        :rtype: str
+        """
         return self._ChaincodeName
 
     @ChaincodeName.setter
@@ -4086,6 +4886,9 @@ class QueryFabricChaincodeRequest(AbstractModel):
 
     @property
     def FuncName(self):
+        """合约方法
+        :rtype: str
+        """
         return self._FuncName
 
     @FuncName.setter
@@ -4094,6 +4897,9 @@ class QueryFabricChaincodeRequest(AbstractModel):
 
     @property
     def FuncParam(self):
+        """合约方法入参
+        :rtype: list of str
+        """
         return self._FuncParam
 
     @FuncParam.setter
@@ -4140,6 +4946,9 @@ class QueryFabricChaincodeResponse(AbstractModel):
 
     @property
     def TxId(self):
+        """交易ID
+        :rtype: str
+        """
         return self._TxId
 
     @TxId.setter
@@ -4148,6 +4957,9 @@ class QueryFabricChaincodeResponse(AbstractModel):
 
     @property
     def TxStatus(self):
+        """交易状态
+        :rtype: str
+        """
         return self._TxStatus
 
     @TxStatus.setter
@@ -4156,6 +4968,9 @@ class QueryFabricChaincodeResponse(AbstractModel):
 
     @property
     def TxResult(self):
+        """交易结果
+        :rtype: str
+        """
         return self._TxResult
 
     @TxResult.setter
@@ -4164,6 +4979,9 @@ class QueryFabricChaincodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4216,6 +5034,9 @@ class QueryRequest(AbstractModel):
 
     @property
     def Module(self):
+        """模块名，固定字段：transaction
+        :rtype: str
+        """
         return self._Module
 
     @Module.setter
@@ -4224,6 +5045,9 @@ class QueryRequest(AbstractModel):
 
     @property
     def Operation(self):
+        """操作名，固定字段：query
+        :rtype: str
+        """
         return self._Operation
 
     @Operation.setter
@@ -4232,6 +5056,9 @@ class QueryRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """区块链网络ID，可在区块链网络详情或列表中获取
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -4240,6 +5067,9 @@ class QueryRequest(AbstractModel):
 
     @property
     def ChaincodeName(self):
+        """业务所属智能合约名称，可在智能合约详情或列表中获取
+        :rtype: str
+        """
         return self._ChaincodeName
 
     @ChaincodeName.setter
@@ -4248,6 +5078,9 @@ class QueryRequest(AbstractModel):
 
     @property
     def ChannelName(self):
+        """业务所属通道名称，可在通道详情或列表中获取
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -4256,6 +5089,9 @@ class QueryRequest(AbstractModel):
 
     @property
     def Peers(self):
+        """执行该查询交易的节点列表（包括节点名称和节点所属组织名称，详见数据结构一节），可以在通道详情中获取该通道上的节点名称及其所属组织名称
+        :rtype: list of PeerSet
+        """
         return self._Peers
 
     @Peers.setter
@@ -4264,6 +5100,9 @@ class QueryRequest(AbstractModel):
 
     @property
     def FuncName(self):
+        """该笔交易查询需要调用的智能合约中的函数名称
+        :rtype: str
+        """
         return self._FuncName
 
     @FuncName.setter
@@ -4272,6 +5111,9 @@ class QueryRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """调用合约的组织名称，可以在组织管理列表中获取当前组织的名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -4280,6 +5122,9 @@ class QueryRequest(AbstractModel):
 
     @property
     def Args(self):
+        """被调用的函数参数列表
+        :rtype: list of str
+        """
         return self._Args
 
     @Args.setter
@@ -4329,6 +5174,9 @@ class QueryResponse(AbstractModel):
 
     @property
     def Data(self):
+        """查询结果数据
+        :rtype: list of str
+        """
         return self._Data
 
     @Data.setter
@@ -4337,6 +5185,9 @@ class QueryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4366,6 +5217,9 @@ class SignCertCsr(AbstractModel):
 
     @property
     def CertMark(self):
+        """用户签名证书的标识，会存在于用户申请的证书中
+        :rtype: str
+        """
         return self._CertMark
 
     @CertMark.setter
@@ -4374,6 +5228,9 @@ class SignCertCsr(AbstractModel):
 
     @property
     def SignCsrContent(self):
+        """用户申请签名证书所需要的证书请求文件的base64编码
+        :rtype: str
+        """
         return self._SignCsrContent
 
     @SignCsrContent.setter
@@ -4414,6 +5271,9 @@ class SrvInvokeRequest(AbstractModel):
 
     @property
     def Service(self):
+        """服务类型，iss或者dam
+        :rtype: str
+        """
         return self._Service
 
     @Service.setter
@@ -4422,6 +5282,9 @@ class SrvInvokeRequest(AbstractModel):
 
     @property
     def Method(self):
+        """服务接口，要调用的方法函数名
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -4430,6 +5293,9 @@ class SrvInvokeRequest(AbstractModel):
 
     @property
     def Param(self):
+        """用户自定义json字符串
+        :rtype: str
+        """
         return self._Param
 
     @Param.setter
@@ -4474,6 +5340,9 @@ class SrvInvokeResponse(AbstractModel):
 
     @property
     def RetCode(self):
+        """返回码
+        :rtype: int
+        """
         return self._RetCode
 
     @RetCode.setter
@@ -4482,6 +5351,9 @@ class SrvInvokeResponse(AbstractModel):
 
     @property
     def RetMsg(self):
+        """返回消息
+        :rtype: str
+        """
         return self._RetMsg
 
     @RetMsg.setter
@@ -4490,6 +5362,9 @@ class SrvInvokeResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -4498,6 +5373,9 @@ class SrvInvokeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4547,6 +5425,10 @@ class Transaction(AbstractModel):
 
     @property
     def TxId(self):
+        """交易ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TxId
 
     @TxId.setter
@@ -4555,6 +5437,10 @@ class Transaction(AbstractModel):
 
     @property
     def ChaincodeName(self):
+        """合约名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChaincodeName
 
     @ChaincodeName.setter
@@ -4563,6 +5449,10 @@ class Transaction(AbstractModel):
 
     @property
     def Sender(self):
+        """交易发送者
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Sender
 
     @Sender.setter
@@ -4571,6 +5461,10 @@ class Transaction(AbstractModel):
 
     @property
     def CreateTime(self):
+        """交易创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -4579,6 +5473,10 @@ class Transaction(AbstractModel):
 
     @property
     def BlockHeight(self):
+        """交易所在区块高度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BlockHeight
 
     @BlockHeight.setter
@@ -4587,6 +5485,10 @@ class Transaction(AbstractModel):
 
     @property
     def TxIndex(self):
+        """交易在区块中的序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TxIndex
 
     @TxIndex.setter
@@ -4646,6 +5548,9 @@ class TransactionItem(AbstractModel):
 
     @property
     def TransactionId(self):
+        """交易ID
+        :rtype: str
+        """
         return self._TransactionId
 
     @TransactionId.setter
@@ -4654,6 +5559,9 @@ class TransactionItem(AbstractModel):
 
     @property
     def TransactionHash(self):
+        """交易hash
+        :rtype: str
+        """
         return self._TransactionHash
 
     @TransactionHash.setter
@@ -4662,6 +5570,9 @@ class TransactionItem(AbstractModel):
 
     @property
     def CreateOrgName(self):
+        """创建交易的组织名
+        :rtype: str
+        """
         return self._CreateOrgName
 
     @CreateOrgName.setter
@@ -4670,6 +5581,9 @@ class TransactionItem(AbstractModel):
 
     @property
     def BlockId(self):
+        """交易所在区块号
+        :rtype: int
+        """
         return self._BlockId
 
     @BlockId.setter
@@ -4678,6 +5592,9 @@ class TransactionItem(AbstractModel):
 
     @property
     def TransactionType(self):
+        """交易类型（普通交易和配置交易）
+        :rtype: str
+        """
         return self._TransactionType
 
     @TransactionType.setter
@@ -4686,6 +5603,9 @@ class TransactionItem(AbstractModel):
 
     @property
     def CreateTime(self):
+        """交易创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -4694,6 +5614,9 @@ class TransactionItem(AbstractModel):
 
     @property
     def BlockHeight(self):
+        """交易所在区块高度
+        :rtype: int
+        """
         return self._BlockHeight
 
     @BlockHeight.setter
@@ -4702,6 +5625,9 @@ class TransactionItem(AbstractModel):
 
     @property
     def TransactionStatus(self):
+        """交易状态
+        :rtype: str
+        """
         return self._TransactionStatus
 
     @TransactionStatus.setter

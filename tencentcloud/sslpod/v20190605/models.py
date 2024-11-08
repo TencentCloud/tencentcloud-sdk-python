@@ -63,6 +63,9 @@ class CertInfo(AbstractModel):
 
     @property
     def Hash(self):
+        """证书sha1
+        :rtype: str
+        """
         return self._Hash
 
     @Hash.setter
@@ -71,6 +74,9 @@ class CertInfo(AbstractModel):
 
     @property
     def CN(self):
+        """证书通用名称
+        :rtype: str
+        """
         return self._CN
 
     @CN.setter
@@ -79,6 +85,9 @@ class CertInfo(AbstractModel):
 
     @property
     def SANs(self):
+        """备用名称
+        :rtype: str
+        """
         return self._SANs
 
     @SANs.setter
@@ -87,6 +96,9 @@ class CertInfo(AbstractModel):
 
     @property
     def KeyAlgo(self):
+        """公钥算法
+        :rtype: str
+        """
         return self._KeyAlgo
 
     @KeyAlgo.setter
@@ -95,6 +107,9 @@ class CertInfo(AbstractModel):
 
     @property
     def Issuer(self):
+        """颁发者
+        :rtype: str
+        """
         return self._Issuer
 
     @Issuer.setter
@@ -103,6 +118,9 @@ class CertInfo(AbstractModel):
 
     @property
     def BeginTime(self):
+        """有效期开始
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -111,6 +129,9 @@ class CertInfo(AbstractModel):
 
     @property
     def EndTime(self):
+        """有效期结束
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -119,6 +140,9 @@ class CertInfo(AbstractModel):
 
     @property
     def Days(self):
+        """剩余天数
+        :rtype: int
+        """
         return self._Days
 
     @Days.setter
@@ -127,6 +151,9 @@ class CertInfo(AbstractModel):
 
     @property
     def Brand(self):
+        """品牌
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -135,6 +162,9 @@ class CertInfo(AbstractModel):
 
     @property
     def TrustStatus(self):
+        """信任状态
+        :rtype: str
+        """
         return self._TrustStatus
 
     @TrustStatus.setter
@@ -143,6 +173,10 @@ class CertInfo(AbstractModel):
 
     @property
     def CertType(self):
+        """证书类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertType
 
     @CertType.setter
@@ -189,6 +223,9 @@ class ChartHistogram(AbstractModel):
 
     @property
     def Name(self):
+        """项目名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -197,6 +234,9 @@ class ChartHistogram(AbstractModel):
 
     @property
     def Children(self):
+        """项目值
+        :rtype: list of ChartNameValue
+        """
         return self._Children
 
     @Children.setter
@@ -239,6 +279,9 @@ class ChartNameValue(AbstractModel):
 
     @property
     def Name(self):
+        """图表项名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -247,6 +290,9 @@ class ChartNameValue(AbstractModel):
 
     @property
     def Value(self):
+        """图表项值
+        :rtype: int
+        """
         return self._Value
 
     @Value.setter
@@ -296,6 +342,9 @@ class CreateDomainRequest(AbstractModel):
 
     @property
     def ServerType(self):
+        """监控的服务器类型（0：web，1：smtp，2：imap，3：pops）
+        :rtype: int
+        """
         return self._ServerType
 
     @ServerType.setter
@@ -304,6 +353,9 @@ class CreateDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """添加的域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -312,6 +364,9 @@ class CreateDomainRequest(AbstractModel):
 
     @property
     def Port(self):
+        """添加的端口
+        :rtype: str
+        """
         return self._Port
 
     @Port.setter
@@ -320,6 +375,9 @@ class CreateDomainRequest(AbstractModel):
 
     @property
     def IP(self):
+        """指定域名的IP
+        :rtype: str
+        """
         return self._IP
 
     @IP.setter
@@ -328,6 +386,9 @@ class CreateDomainRequest(AbstractModel):
 
     @property
     def Notice(self):
+        """是否开启通知告警；true：开启通知告警，false：关闭通知告警
+        :rtype: bool
+        """
         return self._Notice
 
     @Notice.setter
@@ -336,6 +397,9 @@ class CreateDomainRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """给域名添加标签，多个以逗号隔开
+        :rtype: str
+        """
         return self._Tags
 
     @Tags.setter
@@ -374,6 +438,9 @@ class CreateDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -414,6 +481,9 @@ class DashboardResult(AbstractModel):
 
     @property
     def SecurityLevelPie(self):
+        """安全等级图表
+        :rtype: list of ChartNameValue
+        """
         return self._SecurityLevelPie
 
     @SecurityLevelPie.setter
@@ -422,6 +492,9 @@ class DashboardResult(AbstractModel):
 
     @property
     def CertBrandsPie(self):
+        """证书品牌图表
+        :rtype: list of ChartNameValue
+        """
         return self._CertBrandsPie
 
     @CertBrandsPie.setter
@@ -430,6 +503,9 @@ class DashboardResult(AbstractModel):
 
     @property
     def CertValidTimePie(self):
+        """证书有效时间图表
+        :rtype: list of ChartNameValue
+        """
         return self._CertValidTimePie
 
     @CertValidTimePie.setter
@@ -438,6 +514,9 @@ class DashboardResult(AbstractModel):
 
     @property
     def CertTypePie(self):
+        """证书类型图表
+        :rtype: list of ChartNameValue
+        """
         return self._CertTypePie
 
     @CertTypePie.setter
@@ -446,6 +525,9 @@ class DashboardResult(AbstractModel):
 
     @property
     def SSLBugsLoopholeHistogram(self):
+        """ssl bugs图表
+        :rtype: list of ChartHistogram
+        """
         return self._SSLBugsLoopholeHistogram
 
     @SSLBugsLoopholeHistogram.setter
@@ -454,6 +536,9 @@ class DashboardResult(AbstractModel):
 
     @property
     def ComplianceHistogram(self):
+        """合规图表
+        :rtype: list of ChartHistogram
+        """
         return self._ComplianceHistogram
 
     @ComplianceHistogram.setter
@@ -522,6 +607,9 @@ class DeleteDomainRequest(AbstractModel):
 
     @property
     def DomainId(self):
+        """域名ID，可通过<a href="https://cloud.tencent.com/document/api/1084/49339">搜索域名</a>接口获得
+        :rtype: int
+        """
         return self._DomainId
 
     @DomainId.setter
@@ -555,6 +643,9 @@ class DeleteDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -590,6 +681,10 @@ class DescribeDashboardResponse(AbstractModel):
 
     @property
     def Data(self):
+        """dashboard面板数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.sslpod.v20190605.models.DashboardResult`
+        """
         return self._Data
 
     @Data.setter
@@ -598,6 +693,9 @@ class DescribeDashboardResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -626,6 +724,9 @@ class DescribeDomainCertsRequest(AbstractModel):
 
     @property
     def DomainId(self):
+        """域名ID，可通过搜索域名接口获得
+        :rtype: int
+        """
         return self._DomainId
 
     @DomainId.setter
@@ -662,6 +763,9 @@ class DescribeDomainCertsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """证书信息
+        :rtype: list of CertInfo
+        """
         return self._Data
 
     @Data.setter
@@ -670,6 +774,9 @@ class DescribeDomainCertsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -710,6 +817,9 @@ class DescribeDomainTagsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """Tag数组
+        :rtype: list of str
+        """
         return self._Data
 
     @Data.setter
@@ -718,6 +828,9 @@ class DescribeDomainTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -760,6 +873,10 @@ class DescribeDomains(AbstractModel):
 
     @property
     def Result(self):
+        """列表数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DomainSiteInfo
+        """
         return self._Result
 
     @Result.setter
@@ -768,6 +885,9 @@ class DescribeDomains(AbstractModel):
 
     @property
     def SearchTotal(self):
+        """搜索出来的数量
+        :rtype: int
+        """
         return self._SearchTotal
 
     @SearchTotal.setter
@@ -776,6 +896,9 @@ class DescribeDomains(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -784,6 +907,9 @@ class DescribeDomains(AbstractModel):
 
     @property
     def AllowMonitoringCount(self):
+        """允许的监控数量
+        :rtype: int
+        """
         return self._AllowMonitoringCount
 
     @AllowMonitoringCount.setter
@@ -792,6 +918,9 @@ class DescribeDomains(AbstractModel):
 
     @property
     def CurrentMonitoringCount(self):
+        """当前监控的数量
+        :rtype: int
+        """
         return self._CurrentMonitoringCount
 
     @CurrentMonitoringCount.setter
@@ -800,6 +929,9 @@ class DescribeDomains(AbstractModel):
 
     @property
     def AllowMaxAddDomain(self):
+        """允许添加域名总数
+        :rtype: int
+        """
         return self._AllowMaxAddDomain
 
     @AllowMaxAddDomain.setter
@@ -880,6 +1012,9 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -888,6 +1023,9 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """获取数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -896,6 +1034,16 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def SearchType(self):
+        """搜索的类型有：none，tags，grade，brand，code，hash，limit，domain。
+选tags，入参请填Tag，
+选grade，入参请填Grade，
+选brand，入参请填Brand，
+选code，入参请填Code，
+选hash，入参请填Hash
+选limit，标识只返回数量信息
+选domain，入参请填Domain
+        :rtype: str
+        """
         return self._SearchType
 
     @SearchType.setter
@@ -904,6 +1052,9 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Tag(self):
+        """标签，多个标签用逗号分隔
+        :rtype: str
+        """
         return self._Tag
 
     @Tag.setter
@@ -912,6 +1063,9 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Grade(self):
+        """等级
+        :rtype: str
+        """
         return self._Grade
 
     @Grade.setter
@@ -920,6 +1074,9 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Brand(self):
+        """品牌
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -928,6 +1085,9 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Code(self):
+        """混合搜索
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -936,6 +1096,9 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Hash(self):
+        """证书指纹
+        :rtype: str
+        """
         return self._Hash
 
     @Hash.setter
@@ -944,6 +1107,9 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Item(self):
+        """搜索图标类型
+        :rtype: str
+        """
         return self._Item
 
     @Item.setter
@@ -952,6 +1118,9 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Status(self):
+        """搜索图标值
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -960,6 +1129,9 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """搜索域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -1006,6 +1178,9 @@ class DescribeDomainsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """列表数据
+        :rtype: :class:`tencentcloud.sslpod.v20190605.models.DescribeDomains`
+        """
         return self._Data
 
     @Data.setter
@@ -1014,6 +1189,9 @@ class DescribeDomainsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1051,6 +1229,9 @@ class DescribeNoticeInfoResponse(AbstractModel):
 
     @property
     def Data(self):
+        """通知信息结果
+        :rtype: :class:`tencentcloud.sslpod.v20190605.models.NoticeInfoResult`
+        """
         return self._Data
 
     @Data.setter
@@ -1059,6 +1240,9 @@ class DescribeNoticeInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1158,6 +1342,9 @@ class DomainSiteInfo(AbstractModel):
 
     @property
     def Id(self):
+        """ID标识
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -1166,6 +1353,9 @@ class DomainSiteInfo(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -1174,6 +1364,9 @@ class DomainSiteInfo(AbstractModel):
 
     @property
     def Ip(self):
+        """IP地址
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -1182,6 +1375,9 @@ class DomainSiteInfo(AbstractModel):
 
     @property
     def AutoIP(self):
+        """是否自动获取IP：true：是，false:否
+        :rtype: bool
+        """
         return self._AutoIP
 
     @AutoIP.setter
@@ -1190,6 +1386,18 @@ class DomainSiteInfo(AbstractModel):
 
     @property
     def Grade(self):
+        """评级
+"A+"，
+ "A"，
+"A-"，
+"B"，
+"C"，
+"D"，
+ "E"，
+ "F"，
+"T"，
+        :rtype: str
+        """
         return self._Grade
 
     @Grade.setter
@@ -1198,6 +1406,9 @@ class DomainSiteInfo(AbstractModel):
 
     @property
     def Brand(self):
+        """证书品牌
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -1206,6 +1417,13 @@ class DomainSiteInfo(AbstractModel):
 
     @property
     def ServerType(self):
+        """监控服务类型
+0 :Web
+1: SMTP
+2: IMAP
+3: POP3
+        :rtype: int
+        """
         return self._ServerType
 
     @ServerType.setter
@@ -1214,6 +1432,19 @@ class DomainSiteInfo(AbstractModel):
 
     @property
     def GradeCode(self):
+        """评级Code
+0："unknown"，
+1："A+"，
+2： "A"，
+3："A-"，
+4："B"，
+5："C"，
+6："D"，
+7： "E"，
+8： "F"，
+9："T"，
+        :rtype: int
+        """
         return self._GradeCode
 
     @GradeCode.setter
@@ -1222,6 +1453,9 @@ class DomainSiteInfo(AbstractModel):
 
     @property
     def Notice(self):
+        """是否监控告警；true：是，false:否
+        :rtype: bool
+        """
         return self._Notice
 
     @Notice.setter
@@ -1230,6 +1464,9 @@ class DomainSiteInfo(AbstractModel):
 
     @property
     def AccountDomainId(self):
+        """账号域名关系ID
+        :rtype: int
+        """
         return self._AccountDomainId
 
     @AccountDomainId.setter
@@ -1238,6 +1475,10 @@ class DomainSiteInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Tags
 
     @Tags.setter
@@ -1246,6 +1487,20 @@ class DomainSiteInfo(AbstractModel):
 
     @property
     def Status(self):
+        """域名状态:
+连接异常，
+证书已过期，
+证书已吊销，
+证书黑名单，
+证书域名不匹配，
+证书不可信，
+证书密钥弱，
+证书即将过期，少于7天，
+证书即将过期，少于30天，
+正常，
+部分异常
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1254,6 +1509,9 @@ class DomainSiteInfo(AbstractModel):
 
     @property
     def Port(self):
+        """域名端口
+        :rtype: str
+        """
         return self._Port
 
     @Port.setter
@@ -1308,6 +1566,12 @@ limit_phone：手机
 
     @property
     def Type(self):
+        """通知类型：
+limit_emai：邮件
+limit_wechat：微信
+limit_phone：手机
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1316,6 +1580,9 @@ limit_phone：手机
 
     @property
     def Total(self):
+        """总量
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -1324,6 +1591,9 @@ limit_phone：手机
 
     @property
     def Sent(self):
+        """已发送
+        :rtype: int
+        """
         return self._Sent
 
     @Sent.setter
@@ -1362,6 +1632,9 @@ class ModifyDomainTagsRequest(AbstractModel):
 
     @property
     def AccountDomainId(self):
+        """账号下域名ID
+        :rtype: int
+        """
         return self._AccountDomainId
 
     @AccountDomainId.setter
@@ -1370,6 +1643,9 @@ class ModifyDomainTagsRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """更新后的tag，多个以逗号隔开
+        :rtype: str
+        """
         return self._Tags
 
     @Tags.setter
@@ -1404,6 +1680,9 @@ class ModifyDomainTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1435,6 +1714,9 @@ class NoticeInfoResult(AbstractModel):
 
     @property
     def Id(self):
+        """通知ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -1443,6 +1725,9 @@ class NoticeInfoResult(AbstractModel):
 
     @property
     def NoticeType(self):
+        """通知开关信息；0：关闭；15开启
+        :rtype: int
+        """
         return self._NoticeType
 
     @NoticeType.setter
@@ -1451,6 +1736,9 @@ class NoticeInfoResult(AbstractModel):
 
     @property
     def LimitInfos(self):
+        """额度信息
+        :rtype: list of LimitInfo
+        """
         return self._LimitInfos
 
     @LimitInfos.setter
@@ -1491,6 +1779,9 @@ class RefreshDomainRequest(AbstractModel):
 
     @property
     def DomainId(self):
+        """域名列表中的ID，可通过搜索域名接口获得
+        :rtype: int
+        """
         return self._DomainId
 
     @DomainId.setter
@@ -1524,6 +1815,9 @@ class RefreshDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1549,6 +1843,9 @@ class ResolveDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -1585,6 +1882,9 @@ class ResolveDomainResponse(AbstractModel):
 
     @property
     def Data(self):
+        """响应数据
+        :rtype: list of str
+        """
         return self._Data
 
     @Data.setter
@@ -1593,6 +1893,9 @@ class ResolveDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

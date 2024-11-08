@@ -87,6 +87,9 @@ class Activity(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID。
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -95,6 +98,9 @@ class Activity(AbstractModel):
 
     @property
     def ActivityId(self):
+        """伸缩活动ID。
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -103,6 +109,13 @@ class Activity(AbstractModel):
 
     @property
     def ActivityType(self):
+        """伸缩活动类型。取值如下：<br>
+<li>SCALE_OUT：扩容活动<li>SCALE_IN：缩容活动<li>ATTACH_INSTANCES：添加实例<li>REMOVE_INSTANCES：销毁实例<li>DETACH_INSTANCES：移出实例<li>TERMINATE_INSTANCES_UNEXPECTEDLY：实例在CVM控制台被销毁<li>REPLACE_UNHEALTHY_INSTANCE：替换不健康实例
+<li>START_INSTANCES：开启实例
+<li>STOP_INSTANCES：关闭实例
+<li>INVOKE_COMMAND：执行命令
+        :rtype: str
+        """
         return self._ActivityType
 
     @ActivityType.setter
@@ -111,6 +124,15 @@ class Activity(AbstractModel):
 
     @property
     def StatusCode(self):
+        """伸缩活动状态。取值如下：<br>
+<li>INIT：初始化中
+<li>RUNNING：运行中
+<li>SUCCESSFUL：活动成功
+<li>PARTIALLY_SUCCESSFUL：活动部分成功
+<li>FAILED：活动失败
+<li>CANCELLED：活动取消
+        :rtype: str
+        """
         return self._StatusCode
 
     @StatusCode.setter
@@ -119,6 +141,9 @@ class Activity(AbstractModel):
 
     @property
     def StatusMessage(self):
+        """伸缩活动状态描述。
+        :rtype: str
+        """
         return self._StatusMessage
 
     @StatusMessage.setter
@@ -127,6 +152,9 @@ class Activity(AbstractModel):
 
     @property
     def Cause(self):
+        """伸缩活动起因。
+        :rtype: str
+        """
         return self._Cause
 
     @Cause.setter
@@ -135,6 +163,9 @@ class Activity(AbstractModel):
 
     @property
     def Description(self):
+        """伸缩活动描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -143,6 +174,9 @@ class Activity(AbstractModel):
 
     @property
     def StartTime(self):
+        """伸缩活动开始时间。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -151,6 +185,9 @@ class Activity(AbstractModel):
 
     @property
     def EndTime(self):
+        """伸缩活动结束时间。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -159,6 +196,9 @@ class Activity(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """伸缩活动创建时间。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -169,6 +209,9 @@ class Activity(AbstractModel):
     def ActivityRelatedInstanceSet(self):
         warnings.warn("parameter `ActivityRelatedInstanceSet` is deprecated", DeprecationWarning) 
 
+        """该参数已废弃，请勿使用。
+        :rtype: list of ActivtyRelatedInstance
+        """
         return self._ActivityRelatedInstanceSet
 
     @ActivityRelatedInstanceSet.setter
@@ -179,6 +222,9 @@ class Activity(AbstractModel):
 
     @property
     def StatusMessageSimplified(self):
+        """伸缩活动状态简要描述。
+        :rtype: str
+        """
         return self._StatusMessageSimplified
 
     @StatusMessageSimplified.setter
@@ -187,6 +233,9 @@ class Activity(AbstractModel):
 
     @property
     def LifecycleActionResultSet(self):
+        """伸缩活动中生命周期挂钩的执行结果。
+        :rtype: list of LifecycleActionResultInfo
+        """
         return self._LifecycleActionResultSet
 
     @LifecycleActionResultSet.setter
@@ -195,6 +244,9 @@ class Activity(AbstractModel):
 
     @property
     def DetailedStatusMessageSet(self):
+        """伸缩活动状态详细描述。
+        :rtype: list of DetailedStatusMessage
+        """
         return self._DetailedStatusMessageSet
 
     @DetailedStatusMessageSet.setter
@@ -203,6 +255,9 @@ class Activity(AbstractModel):
 
     @property
     def InvocationResultSet(self):
+        """执行命令结果。
+        :rtype: list of InvocationResult
+        """
         return self._InvocationResultSet
 
     @InvocationResultSet.setter
@@ -211,6 +266,9 @@ class Activity(AbstractModel):
 
     @property
     def RelatedInstanceSet(self):
+        """伸缩活动相关实例信息集合。
+        :rtype: list of RelatedInstance
+        """
         return self._RelatedInstanceSet
 
     @RelatedInstanceSet.setter
@@ -291,6 +349,9 @@ class ActivtyRelatedInstance(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -299,6 +360,13 @@ class ActivtyRelatedInstance(AbstractModel):
 
     @property
     def InstanceStatus(self):
+        """实例在伸缩活动中的状态。取值如下：
+<li>INIT：初始化中
+<li>RUNNING：实例操作中
+<li>SUCCESSFUL：活动成功
+<li>FAILED：活动失败
+        :rtype: str
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -344,6 +412,9 @@ class Advice(AbstractModel):
 
     @property
     def Problem(self):
+        """问题描述。
+        :rtype: str
+        """
         return self._Problem
 
     @Problem.setter
@@ -352,6 +423,9 @@ class Advice(AbstractModel):
 
     @property
     def Detail(self):
+        """问题详情。
+        :rtype: str
+        """
         return self._Detail
 
     @Detail.setter
@@ -360,6 +434,9 @@ class Advice(AbstractModel):
 
     @property
     def Solution(self):
+        """建议解决方案。
+        :rtype: str
+        """
         return self._Solution
 
     @Solution.setter
@@ -368,6 +445,11 @@ class Advice(AbstractModel):
 
     @property
     def Level(self):
+        """伸缩建议警告级别。取值范围：<br>
+<li>WARNING：警告级别<br>
+<li>CRITICAL：严重级别<br>
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -407,6 +489,9 @@ class AttachInstancesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -415,6 +500,9 @@ class AttachInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """CVM实例ID列表
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -452,6 +540,9 @@ class AttachInstancesResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """伸缩活动ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -460,6 +551,9 @@ class AttachInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -492,6 +586,9 @@ class AttachLoadBalancersRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -500,6 +597,9 @@ class AttachLoadBalancersRequest(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
+        """传统型负载均衡器ID列表，每个伸缩组绑定传统型负载均衡器数量上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+        :rtype: list of str
+        """
         return self._LoadBalancerIds
 
     @LoadBalancerIds.setter
@@ -508,6 +608,9 @@ class AttachLoadBalancersRequest(AbstractModel):
 
     @property
     def ForwardLoadBalancers(self):
+        """应用型负载均衡器列表，每个伸缩组绑定应用型负载均衡器数量上限为100，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+        :rtype: list of ForwardLoadBalancer
+        """
         return self._ForwardLoadBalancers
 
     @ForwardLoadBalancers.setter
@@ -551,6 +654,9 @@ class AttachLoadBalancersResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """伸缩活动ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -559,6 +665,9 @@ class AttachLoadBalancersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -594,6 +703,9 @@ class AutoScalingAdvice(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID。
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -602,6 +714,12 @@ class AutoScalingAdvice(AbstractModel):
 
     @property
     def Level(self):
+        """伸缩组警告级别。取值范围：<br>
+<li>NORMAL：正常<br>
+<li>WARNING：警告级别<br>
+<li>CRITICAL：严重级别<br>
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -610,6 +728,9 @@ class AutoScalingAdvice(AbstractModel):
 
     @property
     def Advices(self):
+        """伸缩组配置建议集合。
+        :rtype: list of Advice
+        """
         return self._Advices
 
     @Advices.setter
@@ -761,6 +882,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -769,6 +893,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def AutoScalingGroupName(self):
+        """伸缩组名称
+        :rtype: str
+        """
         return self._AutoScalingGroupName
 
     @AutoScalingGroupName.setter
@@ -777,6 +904,19 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def AutoScalingGroupStatus(self):
+        """伸缩组当前状态。取值范围：<br>
+<li>NORMAL：正常<br>
+<li>CVM_ABNORMAL：启动配置异常<br>
+<li>LB_ABNORMAL：负载均衡器异常<br>
+<li>LB_LISTENER_ABNORMAL：负载均衡器监听器异常<br>
+<li>LB_LOCATION_ABNORMAL：负载均衡器监听器转发配置异常<br>
+<li>VPC_ABNORMAL：VPC网络异常<br>
+<li>SUBNET_ABNORMAL：VPC子网异常<br>
+<li>INSUFFICIENT_BALANCE：余额不足<br>
+<li>LB_BACKEND_REGION_NOT_MATCH：CLB实例后端地域与AS服务所在地域不匹配<br>
+<li>LB_BACKEND_VPC_NOT_MATCH：CLB实例VPC与伸缩组VPC不匹配
+        :rtype: str
+        """
         return self._AutoScalingGroupStatus
 
     @AutoScalingGroupStatus.setter
@@ -785,6 +925,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """创建时间，采用UTC标准计时
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -793,6 +936,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def DefaultCooldown(self):
+        """默认冷却时间，单位秒
+        :rtype: int
+        """
         return self._DefaultCooldown
 
     @DefaultCooldown.setter
@@ -801,6 +947,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def DesiredCapacity(self):
+        """期望实例数
+        :rtype: int
+        """
         return self._DesiredCapacity
 
     @DesiredCapacity.setter
@@ -809,6 +958,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def EnabledStatus(self):
+        """启用状态，取值包括`ENABLED`和`DISABLED`
+        :rtype: str
+        """
         return self._EnabledStatus
 
     @EnabledStatus.setter
@@ -817,6 +969,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def ForwardLoadBalancerSet(self):
+        """应用型负载均衡器列表
+        :rtype: list of ForwardLoadBalancer
+        """
         return self._ForwardLoadBalancerSet
 
     @ForwardLoadBalancerSet.setter
@@ -825,6 +980,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def InstanceCount(self):
+        """实例数量
+        :rtype: int
+        """
         return self._InstanceCount
 
     @InstanceCount.setter
@@ -833,6 +991,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def InServiceInstanceCount(self):
+        """状态为`IN_SERVICE`实例的数量
+        :rtype: int
+        """
         return self._InServiceInstanceCount
 
     @InServiceInstanceCount.setter
@@ -841,6 +1002,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def LaunchConfigurationId(self):
+        """启动配置ID
+        :rtype: str
+        """
         return self._LaunchConfigurationId
 
     @LaunchConfigurationId.setter
@@ -849,6 +1013,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def LaunchConfigurationName(self):
+        """启动配置名称
+        :rtype: str
+        """
         return self._LaunchConfigurationName
 
     @LaunchConfigurationName.setter
@@ -857,6 +1024,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def LoadBalancerIdSet(self):
+        """传统型负载均衡器ID列表
+        :rtype: list of str
+        """
         return self._LoadBalancerIdSet
 
     @LoadBalancerIdSet.setter
@@ -865,6 +1035,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def MaxSize(self):
+        """最大实例数
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -873,6 +1046,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def MinSize(self):
+        """最小实例数
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -881,6 +1057,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -889,6 +1068,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def SubnetIdSet(self):
+        """子网ID列表
+        :rtype: list of str
+        """
         return self._SubnetIdSet
 
     @SubnetIdSet.setter
@@ -897,6 +1079,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def TerminationPolicySet(self):
+        """销毁策略
+        :rtype: list of str
+        """
         return self._TerminationPolicySet
 
     @TerminationPolicySet.setter
@@ -905,6 +1090,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC标识
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -913,6 +1101,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def ZoneSet(self):
+        """可用区列表
+        :rtype: list of str
+        """
         return self._ZoneSet
 
     @ZoneSet.setter
@@ -921,6 +1112,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def RetryPolicy(self):
+        """重试策略
+        :rtype: str
+        """
         return self._RetryPolicy
 
     @RetryPolicy.setter
@@ -929,6 +1123,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def InActivityStatus(self):
+        """伸缩组是否处于伸缩活动中，`IN_ACTIVITY`表示处于伸缩活动中，`NOT_IN_ACTIVITY`表示不处于伸缩活动中。
+        :rtype: str
+        """
         return self._InActivityStatus
 
     @InActivityStatus.setter
@@ -937,6 +1134,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def Tags(self):
+        """伸缩组标签列表
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -945,6 +1145,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def ServiceSettings(self):
+        """服务设置
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
+        """
         return self._ServiceSettings
 
     @ServiceSettings.setter
@@ -953,6 +1156,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def Ipv6AddressCount(self):
+        """实例具有IPv6地址数量的配置
+        :rtype: int
+        """
         return self._Ipv6AddressCount
 
     @Ipv6AddressCount.setter
@@ -961,6 +1167,11 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def MultiZoneSubnetPolicy(self):
+        """多可用区/子网策略。
+<br><li> PRIORITY，按照可用区/子网列表的顺序，作为优先级来尝试创建实例，如果优先级最高的可用区/子网可以创建成功，则总在该可用区/子网创建。
+<br><li> EQUALITY：每次选择当前实例数最少的可用区/子网进行扩容，使得每个可用区/子网都有机会发生扩容，多次扩容出的实例会打散到多个可用区/子网。
+        :rtype: str
+        """
         return self._MultiZoneSubnetPolicy
 
     @MultiZoneSubnetPolicy.setter
@@ -969,6 +1180,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def HealthCheckType(self):
+        """伸缩组实例健康检查类型，取值如下：<br><li>CVM：根据实例网络状态判断实例是否处于不健康状态，不健康的网络状态即发生实例 PING 不可达事件，详细判断标准可参考[实例健康检查](https://cloud.tencent.com/document/product/377/8553)<br><li>CLB：根据 CLB 的健康检查状态判断实例是否处于不健康状态，CLB健康检查原理可参考[健康检查](https://cloud.tencent.com/document/product/214/6097)
+        :rtype: str
+        """
         return self._HealthCheckType
 
     @HealthCheckType.setter
@@ -977,6 +1191,9 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def LoadBalancerHealthCheckGracePeriod(self):
+        """CLB健康检查宽限期
+        :rtype: int
+        """
         return self._LoadBalancerHealthCheckGracePeriod
 
     @LoadBalancerHealthCheckGracePeriod.setter
@@ -985,6 +1202,11 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def InstanceAllocationPolicy(self):
+        """实例分配策略，取值包括 LAUNCH_CONFIGURATION 和 SPOT_MIXED。
+<br><li> LAUNCH_CONFIGURATION，代表传统的按照启动配置模式。
+<br><li> SPOT_MIXED，代表竞价混合模式。目前仅支持启动配置为按量计费模式时使用混合模式，混合模式下，伸缩组将根据设定扩容按量或竞价机型。使用混合模式时，关联的启动配置的计费类型不可被修改。
+        :rtype: str
+        """
         return self._InstanceAllocationPolicy
 
     @InstanceAllocationPolicy.setter
@@ -993,6 +1215,10 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def SpotMixedAllocationPolicy(self):
+        """竞价混合模式下，各计费类型实例的分配策略。
+仅当 InstanceAllocationPolicy 取 SPOT_MIXED 时才会返回有效值。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SpotMixedAllocationPolicy`
+        """
         return self._SpotMixedAllocationPolicy
 
     @SpotMixedAllocationPolicy.setter
@@ -1001,6 +1227,11 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def CapacityRebalance(self):
+        """容量重平衡功能，仅对伸缩组内的竞价实例有效。取值范围：
+<br><li> TRUE，开启该功能，当伸缩组内的竞价实例即将被竞价实例服务自动回收前，AS 主动发起竞价实例销毁流程，如果有配置过缩容 hook，则销毁前 hook 会生效。销毁流程启动后，AS 会异步开启一个扩容活动，用于补齐期望实例数。
+<br><li> FALSE，不开启该功能，则 AS 等待竞价实例被销毁后才会去扩容补齐伸缩组期望实例数。
+        :rtype: bool
+        """
         return self._CapacityRebalance
 
     @CapacityRebalance.setter
@@ -1009,6 +1240,10 @@ class AutoScalingGroup(AbstractModel):
 
     @property
     def InstanceNameIndexSettings(self):
+        """实例名称序号相关设置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
+        """
         return self._InstanceNameIndexSettings
 
     @InstanceNameIndexSettings.setter
@@ -1092,6 +1327,9 @@ class AutoScalingGroupAbstract(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID。
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -1100,6 +1338,9 @@ class AutoScalingGroupAbstract(AbstractModel):
 
     @property
     def AutoScalingGroupName(self):
+        """伸缩组名称。
+        :rtype: str
+        """
         return self._AutoScalingGroupName
 
     @AutoScalingGroupName.setter
@@ -1152,6 +1393,9 @@ class AutoScalingNotification(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID。
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -1160,6 +1404,9 @@ class AutoScalingNotification(AbstractModel):
 
     @property
     def NotificationUserGroupIds(self):
+        """用户组ID列表。
+        :rtype: list of str
+        """
         return self._NotificationUserGroupIds
 
     @NotificationUserGroupIds.setter
@@ -1168,6 +1415,9 @@ class AutoScalingNotification(AbstractModel):
 
     @property
     def NotificationTypes(self):
+        """通知事件列表。
+        :rtype: list of str
+        """
         return self._NotificationTypes
 
     @NotificationTypes.setter
@@ -1176,6 +1426,9 @@ class AutoScalingNotification(AbstractModel):
 
     @property
     def AutoScalingNotificationId(self):
+        """事件通知ID。
+        :rtype: str
+        """
         return self._AutoScalingNotificationId
 
     @AutoScalingNotificationId.setter
@@ -1184,6 +1437,9 @@ class AutoScalingNotification(AbstractModel):
 
     @property
     def TargetType(self):
+        """通知接收端类型。
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -1192,6 +1448,9 @@ class AutoScalingNotification(AbstractModel):
 
     @property
     def QueueName(self):
+        """CMQ 队列名。
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -1200,6 +1459,9 @@ class AutoScalingNotification(AbstractModel):
 
     @property
     def TopicName(self):
+        """CMQ 主题名。
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -1242,6 +1504,9 @@ class CancelInstanceRefreshRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID。
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -1250,6 +1515,9 @@ class CancelInstanceRefreshRequest(AbstractModel):
 
     @property
     def RefreshActivityId(self):
+        """刷新活动ID。
+        :rtype: str
+        """
         return self._RefreshActivityId
 
     @RefreshActivityId.setter
@@ -1284,6 +1552,9 @@ class CancelInstanceRefreshResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1329,6 +1600,9 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
 
     @property
     def LaunchConfigurationId(self):
+        """启动配置ID。
+        :rtype: str
+        """
         return self._LaunchConfigurationId
 
     @LaunchConfigurationId.setter
@@ -1337,6 +1611,10 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
 
     @property
     def ClearDataDisks(self):
+        """是否清空数据盘信息，非必填，默认为 false。
+填 true 代表清空“数据盘”信息，清空后基于此新创建的云主机将不含有任何数据盘。
+        :rtype: bool
+        """
         return self._ClearDataDisks
 
     @ClearDataDisks.setter
@@ -1345,6 +1623,10 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
 
     @property
     def ClearHostNameSettings(self):
+        """是否清空云服务器主机名相关设置信息，非必填，默认为 false。
+填 true 代表清空主机名设置信息，清空后基于此新创建的云主机将不设置主机名。
+        :rtype: bool
+        """
         return self._ClearHostNameSettings
 
     @ClearHostNameSettings.setter
@@ -1353,6 +1635,10 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
 
     @property
     def ClearInstanceNameSettings(self):
+        """是否清空云服务器实例名相关设置信息，非必填，默认为 false。
+填 true 代表清空主机名设置信息，清空后基于此新创建的云主机将按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置。
+        :rtype: bool
+        """
         return self._ClearInstanceNameSettings
 
     @ClearInstanceNameSettings.setter
@@ -1361,6 +1647,10 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
 
     @property
     def ClearDisasterRecoverGroupIds(self):
+        """是否清空置放群组信息，非必填，默认为 false。
+填 true 代表清空置放群组信息，清空后基于此新创建的云主机将不指定任何置放群组。
+        :rtype: bool
+        """
         return self._ClearDisasterRecoverGroupIds
 
     @ClearDisasterRecoverGroupIds.setter
@@ -1369,6 +1659,10 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
 
     @property
     def ClearInstanceTags(self):
+        """是否清空实例标签列表，非必填，默认为 false。
+填 true 代表清空实例标签列表，清空后基于此新创建的云主机将不会绑定列表中的标签。
+        :rtype: bool
+        """
         return self._ClearInstanceTags
 
     @ClearInstanceTags.setter
@@ -1407,6 +1701,9 @@ class ClearLaunchConfigurationAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1441,6 +1738,9 @@ class CompleteLifecycleActionRequest(AbstractModel):
 
     @property
     def LifecycleHookId(self):
+        """生命周期挂钩ID
+        :rtype: str
+        """
         return self._LifecycleHookId
 
     @LifecycleHookId.setter
@@ -1449,6 +1749,9 @@ class CompleteLifecycleActionRequest(AbstractModel):
 
     @property
     def LifecycleActionResult(self):
+        """生命周期动作的结果，取值范围为“CONTINUE”或“ABANDON”
+        :rtype: str
+        """
         return self._LifecycleActionResult
 
     @LifecycleActionResult.setter
@@ -1457,6 +1760,9 @@ class CompleteLifecycleActionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID，“InstanceId”和“LifecycleActionToken”必须填充其中一个
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1465,6 +1771,9 @@ class CompleteLifecycleActionRequest(AbstractModel):
 
     @property
     def LifecycleActionToken(self):
+        """“InstanceId”和“LifecycleActionToken”必须填充其中一个
+        :rtype: str
+        """
         return self._LifecycleActionToken
 
     @LifecycleActionToken.setter
@@ -1501,6 +1810,9 @@ class CompleteLifecycleActionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1541,6 +1853,9 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
 
     @property
     def AutoScalingGroupName(self):
+        """伸缩组名称，在您账号中必须唯一。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超55个字节。
+        :rtype: str
+        """
         return self._AutoScalingGroupName
 
     @AutoScalingGroupName.setter
@@ -1549,6 +1864,9 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1557,6 +1875,9 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
 
     @property
     def MinSize(self):
+        """最小实例数，取值范围为0-2000。
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -1565,6 +1886,9 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
 
     @property
     def MaxSize(self):
+        """最大实例数，取值范围为0-2000。
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -1573,6 +1897,9 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
 
     @property
     def DesiredCapacity(self):
+        """期望实例数，大小介于最小实例数和最大实例数之间。
+        :rtype: int
+        """
         return self._DesiredCapacity
 
     @DesiredCapacity.setter
@@ -1581,6 +1908,9 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
 
     @property
     def InheritInstanceTag(self):
+        """是否继承实例标签，默认值为False
+        :rtype: bool
+        """
         return self._InheritInstanceTag
 
     @InheritInstanceTag.setter
@@ -1622,6 +1952,9 @@ class CreateAutoScalingGroupFromInstanceResponse(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -1630,6 +1963,9 @@ class CreateAutoScalingGroupFromInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1752,6 +2088,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def AutoScalingGroupName(self):
+        """伸缩组名称，在您账号中必须唯一。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超55个字节。
+        :rtype: str
+        """
         return self._AutoScalingGroupName
 
     @AutoScalingGroupName.setter
@@ -1760,6 +2099,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def LaunchConfigurationId(self):
+        """启动配置ID
+        :rtype: str
+        """
         return self._LaunchConfigurationId
 
     @LaunchConfigurationId.setter
@@ -1768,6 +2110,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def MaxSize(self):
+        """最大实例数，取值范围为0-2000。
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -1776,6 +2121,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def MinSize(self):
+        """最小实例数，取值范围为0-2000。
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -1784,6 +2132,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID，基础网络则填空字符串
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1792,6 +2143,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def DefaultCooldown(self):
+        """默认冷却时间，单位秒，默认值为300
+        :rtype: int
+        """
         return self._DefaultCooldown
 
     @DefaultCooldown.setter
@@ -1800,6 +2154,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def DesiredCapacity(self):
+        """期望实例数，大小介于最小实例数和最大实例数之间
+        :rtype: int
+        """
         return self._DesiredCapacity
 
     @DesiredCapacity.setter
@@ -1808,6 +2165,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
+        """传统负载均衡器ID列表，目前长度上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+        :rtype: list of str
+        """
         return self._LoadBalancerIds
 
     @LoadBalancerIds.setter
@@ -1816,6 +2176,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """伸缩组内实例所属项目ID。不填为默认项目。
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1824,6 +2187,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def ForwardLoadBalancers(self):
+        """应用型负载均衡器列表，目前长度上限为100，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+        :rtype: list of ForwardLoadBalancer
+        """
         return self._ForwardLoadBalancers
 
     @ForwardLoadBalancers.setter
@@ -1832,6 +2198,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def SubnetIds(self):
+        """子网ID列表，VPC场景下必须指定子网。多个子网以填写顺序为优先级，依次进行尝试，直至可以成功创建实例。
+        :rtype: list of str
+        """
         return self._SubnetIds
 
     @SubnetIds.setter
@@ -1840,6 +2209,11 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def TerminationPolicies(self):
+        """销毁策略，目前长度上限为1。取值包括 OLDEST_INSTANCE 和 NEWEST_INSTANCE，默认取值为 OLDEST_INSTANCE。
+<br><li> OLDEST_INSTANCE 优先销毁伸缩组中最旧的实例。
+<br><li> NEWEST_INSTANCE，优先销毁伸缩组中最新的实例。
+        :rtype: list of str
+        """
         return self._TerminationPolicies
 
     @TerminationPolicies.setter
@@ -1848,6 +2222,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def Zones(self):
+        """可用区列表，基础网络场景下必须指定可用区。多个可用区以填写顺序为优先级，依次进行尝试，直至可以成功创建实例。
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -1856,6 +2233,12 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def RetryPolicy(self):
+        """重试策略，取值包括 IMMEDIATE_RETRY、 INCREMENTAL_INTERVALS、NO_RETRY，默认取值为 IMMEDIATE_RETRY。部分成功的伸缩活动判定为一次失败活动。
+<br><li> IMMEDIATE_RETRY，立即重试，在较短时间内快速重试，连续失败超过一定次数（5次）后不再重试。
+<br><li> INCREMENTAL_INTERVALS，间隔递增重试，随着连续失败次数的增加，重试间隔逐渐增大，重试间隔从秒级到1天不等。
+<br><li> NO_RETRY，不进行重试，直到再次收到用户调用或者告警信息后才会重试。
+        :rtype: str
+        """
         return self._RetryPolicy
 
     @RetryPolicy.setter
@@ -1864,6 +2247,14 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def ZonesCheckPolicy(self):
+        """可用区校验策略，取值包括 ALL 和 ANY，默认取值为ANY。
+<br><li> ALL，所有可用区（Zone）或子网（SubnetId）都可用则通过校验，否则校验报错。
+<br><li> ANY，存在任何一个可用区（Zone）或子网（SubnetId）可用则通过校验，否则校验报错。
+
+可用区或子网不可用的常见原因包括该可用区CVM实例类型售罄、该可用区CBS云盘售罄、该可用区配额不足、该子网IP不足等。
+如果 Zones/SubnetIds 中可用区或者子网不存在，则无论 ZonesCheckPolicy 采用何种取值，都会校验报错。
+        :rtype: str
+        """
         return self._ZonesCheckPolicy
 
     @ZonesCheckPolicy.setter
@@ -1872,6 +2263,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签描述列表。通过指定该参数可以支持绑定标签到伸缩组。同时绑定标签到相应的资源实例。每个伸缩组最多支持30个标签。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1880,6 +2274,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def ServiceSettings(self):
+        """服务设置，包括云监控不健康替换等服务设置。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
+        """
         return self._ServiceSettings
 
     @ServiceSettings.setter
@@ -1888,6 +2285,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def Ipv6AddressCount(self):
+        """实例具有IPv6地址数量的配置，取值包括 0、1，默认值为0。
+        :rtype: int
+        """
         return self._Ipv6AddressCount
 
     @Ipv6AddressCount.setter
@@ -1896,6 +2296,16 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def MultiZoneSubnetPolicy(self):
+        """多可用区/子网策略，取值包括 PRIORITY 和 EQUALITY，默认为 PRIORITY。
+<br><li> PRIORITY，按照可用区/子网列表的顺序，作为优先级来尝试创建实例，如果优先级最高的可用区/子网可以创建成功，则总在该可用区/子网创建。
+<br><li> EQUALITY：扩容出的实例会打散到多个可用区/子网，保证扩容后的各个可用区/子网实例数相对均衡。
+
+与本策略相关的注意点：
+<br><li> 当伸缩组为基础网络时，本策略适用于多可用区；当伸缩组为VPC网络时，本策略适用于多子网，此时不再考虑可用区因素，例如四个子网ABCD，其中ABC处于可用区1，D处于可用区2，此时考虑子网ABCD进行排序，而不考虑可用区1、2。
+<br><li> 本策略适用于多可用区/子网，不适用于启动配置的多机型。多机型按照优先级策略进行选择。
+<br><li> 按照 PRIORITY 策略创建实例时，先保证多机型的策略，后保证多可用区/子网的策略。例如多机型A、B，多子网1、2、3，会按照A1、A2、A3、B1、B2、B3 进行尝试，如果A1售罄，会尝试A2（而非B1）。
+        :rtype: str
+        """
         return self._MultiZoneSubnetPolicy
 
     @MultiZoneSubnetPolicy.setter
@@ -1904,6 +2314,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def HealthCheckType(self):
+        """伸缩组实例健康检查类型，取值如下：<br><li>CVM：根据实例网络状态判断实例是否处于不健康状态，不健康的网络状态即发生实例 PING 不可达事件，详细判断标准可参考[实例健康检查](https://cloud.tencent.com/document/product/377/8553)<br><li>CLB：根据 CLB 的健康检查状态判断实例是否处于不健康状态，CLB健康检查原理可参考[健康检查](https://cloud.tencent.com/document/product/214/6097) <br>如果选择了`CLB`类型，伸缩组将同时检查实例网络状态与CLB健康检查状态，如果出现实例网络状态不健康，实例将被标记为 UNHEALTHY 状态；如果出现 CLB 健康检查状态异常，实例将被标记为CLB_UNHEALTHY 状态，如果两个异常状态同时出现，实例`HealthStatus`字段将返回 UNHEALTHY|CLB_UNHEALTHY。默认值：CLB
+        :rtype: str
+        """
         return self._HealthCheckType
 
     @HealthCheckType.setter
@@ -1912,6 +2325,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def LoadBalancerHealthCheckGracePeriod(self):
+        """CLB健康检查宽限期，当扩容的实例进入`IN_SERVICE`后，在宽限期时间范围内将不会被标记为不健康`CLB_UNHEALTHY`。<br>默认值：0。取值范围[0, 7200]，单位：秒。
+        :rtype: int
+        """
         return self._LoadBalancerHealthCheckGracePeriod
 
     @LoadBalancerHealthCheckGracePeriod.setter
@@ -1920,6 +2336,11 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def InstanceAllocationPolicy(self):
+        """实例分配策略，取值包括 LAUNCH_CONFIGURATION 和 SPOT_MIXED，默认取 LAUNCH_CONFIGURATION。
+<br><li> LAUNCH_CONFIGURATION，代表传统的按照启动配置模式。
+<br><li> SPOT_MIXED，代表竞价混合模式。目前仅支持启动配置为按量计费模式时使用混合模式，混合模式下，伸缩组将根据设定扩容按量或竞价机型。使用混合模式时，关联的启动配置的计费类型不可被修改。
+        :rtype: str
+        """
         return self._InstanceAllocationPolicy
 
     @InstanceAllocationPolicy.setter
@@ -1928,6 +2349,10 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def SpotMixedAllocationPolicy(self):
+        """竞价混合模式下，各计费类型实例的分配策略。
+仅当 InstanceAllocationPolicy 取 SPOT_MIXED 时可用。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SpotMixedAllocationPolicy`
+        """
         return self._SpotMixedAllocationPolicy
 
     @SpotMixedAllocationPolicy.setter
@@ -1936,6 +2361,13 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def CapacityRebalance(self):
+        """容量重平衡功能，仅对伸缩组内的竞价实例有效。取值范围：
+<br><li> TRUE，开启该功能，当伸缩组内的竞价实例即将被竞价实例服务自动回收前，AS 主动发起竞价实例销毁流程，如果有配置过缩容 hook，则销毁前 hook 会生效。销毁流程启动后，AS 会异步开启一个扩容活动，用于补齐期望实例数。
+<br><li> FALSE，不开启该功能，则 AS 等待竞价实例被销毁后才会去扩容补齐伸缩组期望实例数。
+
+默认取 FALSE。
+        :rtype: bool
+        """
         return self._CapacityRebalance
 
     @CapacityRebalance.setter
@@ -1944,6 +2376,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
     @property
     def InstanceNameIndexSettings(self):
+        """实例名称序号相关设置。若不指定该参数，则默认不开启。开启后为伸缩组内自动创建的实例名称添加递增的数字序号。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
+        """
         return self._InstanceNameIndexSettings
 
     @InstanceNameIndexSettings.setter
@@ -2020,6 +2455,9 @@ class CreateAutoScalingGroupResponse(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -2028,6 +2466,9 @@ class CreateAutoScalingGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2144,6 +2585,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def LaunchConfigurationName(self):
+        """启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
+        :rtype: str
+        """
         return self._LaunchConfigurationName
 
     @LaunchConfigurationName.setter
@@ -2152,6 +2596,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def ImageId(self):
+        """指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像Id与镜像族名称，二者必填一个且只能填写一个。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -2160,6 +2607,10 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """启动配置所属项目ID。不填为默认项目。
+注意：伸缩组内实例所属项目ID取伸缩组项目ID，与这里取值无关。
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -2168,6 +2619,10 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InstanceType(self):
+        """实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口 [DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749) 来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。
+`InstanceType`和`InstanceTypes`参数互斥，二者必填一个且只能填写一个。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -2176,6 +2631,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def SystemDisk(self):
+        """实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
+        """
         return self._SystemDisk
 
     @SystemDisk.setter
@@ -2184,6 +2642,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def DataDisks(self):
+        """实例数据盘配置信息。若不指定该参数，则默认不购买数据盘，最多支持指定11块数据盘。
+        :rtype: list of DataDisk
+        """
         return self._DataDisks
 
     @DataDisks.setter
@@ -2192,6 +2653,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InternetAccessible(self):
+        """公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
+        """
         return self._InternetAccessible
 
     @InternetAccessible.setter
@@ -2200,6 +2664,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def LoginSettings(self):
+        """实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。默认情况下会随机生成密码，并以站内信方式知会到用户。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
+        """
         return self._LoginSettings
 
     @LoginSettings.setter
@@ -2208,6 +2675,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的`SecurityGroupId`字段来获取。若不指定该参数，则默认不绑定安全组。
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -2216,6 +2686,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def EnhancedService(self):
+        """增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
+        """
         return self._EnhancedService
 
     @EnhancedService.setter
@@ -2224,6 +2697,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def UserData(self):
+        """经过 Base64 编码后的自定义数据，最大长度不超过16KB。
+        :rtype: str
+        """
         return self._UserData
 
     @UserData.setter
@@ -2232,6 +2708,12 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。
+<li>POSTPAID_BY_HOUR：按小时后付费</li>
+<li>SPOTPAID：竞价付费</li>
+<li>PREPAID：预付费，即包年包月</li>
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -2240,6 +2722,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InstanceMarketOptions(self):
+        """实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
+        """
         return self._InstanceMarketOptions
 
     @InstanceMarketOptions.setter
@@ -2248,6 +2733,10 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InstanceTypes(self):
+        """实例机型列表，不同实例机型指定了不同的资源规格，最多支持10种实例机型。
+`InstanceType`和`InstanceTypes`参数互斥，二者必填一个且只能填写一个。
+        :rtype: list of str
+        """
         return self._InstanceTypes
 
     @InstanceTypes.setter
@@ -2256,6 +2745,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def CamRoleName(self):
+        """CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
+        :rtype: str
+        """
         return self._CamRoleName
 
     @CamRoleName.setter
@@ -2264,6 +2756,14 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InstanceTypesCheckPolicy(self):
+        """实例类型校验策略，取值包括 ALL 和 ANY，默认取值为ANY。
+<li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。</li>
+<li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。</li>
+
+实例类型不可用的常见原因包括该实例类型售罄、对应云盘售罄等。
+如果 InstanceTypes 中一款机型不存在或者已下线，则无论 InstanceTypesCheckPolicy 采用何种取值，都会校验报错。
+        :rtype: str
+        """
         return self._InstanceTypesCheckPolicy
 
     @InstanceTypesCheckPolicy.setter
@@ -2272,6 +2772,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InstanceTags(self):
+        """标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。
+        :rtype: list of InstanceTag
+        """
         return self._InstanceTags
 
     @InstanceTags.setter
@@ -2280,6 +2783,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签描述列表。通过指定该参数可以支持绑定标签到启动配置。每个启动配置最多支持30个标签。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -2288,6 +2794,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def HostNameSettings(self):
+        """云服务器主机名（HostName）的相关设置。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
+        """
         return self._HostNameSettings
 
     @HostNameSettings.setter
@@ -2296,6 +2805,10 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InstanceNameSettings(self):
+        """云服务器实例名（InstanceName）的相关设置。
+如果用户在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 参照此字段进行设置，并传递给 CVM；如果用户未在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置，并传递给 CVM。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
+        """
         return self._InstanceNameSettings
 
     @InstanceNameSettings.setter
@@ -2304,6 +2817,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
+        """预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -2312,6 +2828,11 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def DiskTypePolicy(self):
+        """云盘类型选择策略，默认取值 ORIGINAL，取值范围：
+<li>ORIGINAL：使用设置的云盘类型</li>
+<li>AUTOMATIC：自动选择当前可用的云盘类型</li>
+        :rtype: str
+        """
         return self._DiskTypePolicy
 
     @DiskTypePolicy.setter
@@ -2320,6 +2841,10 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def HpcClusterId(self):
+        """高性能计算集群ID。<br>
+注意：此字段默认为空。
+        :rtype: str
+        """
         return self._HpcClusterId
 
     @HpcClusterId.setter
@@ -2328,6 +2853,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def IPv6InternetAccessible(self):
+        """IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
+        """
         return self._IPv6InternetAccessible
 
     @IPv6InternetAccessible.setter
@@ -2336,6 +2864,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def DisasterRecoverGroupIds(self):
+        """置放群组id，仅支持指定一个。
+        :rtype: list of str
+        """
         return self._DisasterRecoverGroupIds
 
     @DisasterRecoverGroupIds.setter
@@ -2344,6 +2875,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def ImageFamily(self):
+        """镜像族名称。镜像Id与镜像族名称，二者必填一个且只能填写一个。
+        :rtype: str
+        """
         return self._ImageFamily
 
     @ImageFamily.setter
@@ -2438,6 +2972,9 @@ class CreateLaunchConfigurationResponse(AbstractModel):
 
     @property
     def LaunchConfigurationId(self):
+        """当通过本接口来创建启动配置时会返回该参数，表示启动配置ID。
+        :rtype: str
+        """
         return self._LaunchConfigurationId
 
     @LaunchConfigurationId.setter
@@ -2446,6 +2983,9 @@ class CreateLaunchConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2496,6 +3036,9 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -2504,6 +3047,9 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleHookName(self):
+        """生命周期挂钩名称。名称仅支持中文、英文、数字、下划线（_）、短横线（-）、小数点（.），最大长度不能超128个字节。
+        :rtype: str
+        """
         return self._LifecycleHookName
 
     @LifecycleHookName.setter
@@ -2512,6 +3058,9 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleTransition(self):
+        """进行生命周期挂钩的场景，取值范围包括 INSTANCE_LAUNCHING 和 INSTANCE_TERMINATING
+        :rtype: str
+        """
         return self._LifecycleTransition
 
     @LifecycleTransition.setter
@@ -2520,6 +3069,9 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def DefaultResult(self):
+        """定义伸缩组在生命周期挂钩超时的情况下应采取的操作，取值范围是 CONTINUE 或 ABANDON，默认值为 CONTINUE
+        :rtype: str
+        """
         return self._DefaultResult
 
     @DefaultResult.setter
@@ -2528,6 +3080,9 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def HeartbeatTimeout(self):
+        """生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到7200秒，默认值为300秒
+        :rtype: int
+        """
         return self._HeartbeatTimeout
 
     @HeartbeatTimeout.setter
@@ -2536,6 +3091,9 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def NotificationMetadata(self):
+        """弹性伸缩向通知目标发送的附加信息，配置通知时使用,默认值为空字符串""。最大长度不能超过1024个字节。
+        :rtype: str
+        """
         return self._NotificationMetadata
 
     @NotificationMetadata.setter
@@ -2544,6 +3102,9 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def NotificationTarget(self):
+        """通知目标。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
+        """
         return self._NotificationTarget
 
     @NotificationTarget.setter
@@ -2552,6 +3113,9 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleTransitionType(self):
+        """进行生命周期挂钩的场景类型，取值范围包括NORMAL 和 EXTENSION。说明：设置为EXTENSION值，在AttachInstances、DetachInstances、RemoveInstaces接口时会触发生命周期挂钩操作，值为NORMAL则不会在这些接口中触发生命周期挂钩。
+        :rtype: str
+        """
         return self._LifecycleTransitionType
 
     @LifecycleTransitionType.setter
@@ -2560,6 +3124,9 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleCommand(self):
+        """远程命令执行对象。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
+        """
         return self._LifecycleCommand
 
     @LifecycleCommand.setter
@@ -2608,6 +3175,9 @@ class CreateLifecycleHookResponse(AbstractModel):
 
     @property
     def LifecycleHookId(self):
+        """生命周期挂钩ID
+        :rtype: str
+        """
         return self._LifecycleHookId
 
     @LifecycleHookId.setter
@@ -2616,6 +3186,9 @@ class CreateLifecycleHookResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2670,6 +3243,9 @@ class CreateNotificationConfigurationRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID。
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -2678,6 +3254,15 @@ class CreateNotificationConfigurationRequest(AbstractModel):
 
     @property
     def NotificationTypes(self):
+        """通知类型，即为需要订阅的通知类型集合，取值范围如下：
+<li>SCALE_OUT_SUCCESSFUL：扩容成功</li>
+<li>SCALE_OUT_FAILED：扩容失败</li>
+<li>SCALE_IN_SUCCESSFUL：缩容成功</li>
+<li>SCALE_IN_FAILED：缩容失败</li>
+<li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL：替换不健康子机成功</li>
+<li>REPLACE_UNHEALTHY_INSTANCE_FAILED：替换不健康子机失败</li>
+        :rtype: list of str
+        """
         return self._NotificationTypes
 
     @NotificationTypes.setter
@@ -2686,6 +3271,9 @@ class CreateNotificationConfigurationRequest(AbstractModel):
 
     @property
     def NotificationUserGroupIds(self):
+        """通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
+        :rtype: list of str
+        """
         return self._NotificationUserGroupIds
 
     @NotificationUserGroupIds.setter
@@ -2694,6 +3282,16 @@ class CreateNotificationConfigurationRequest(AbstractModel):
 
     @property
     def TargetType(self):
+        """通知接收端类型，取值如下
+<br><li>USER_GROUP：用户组
+<br><li>CMQ_QUEUE：CMQ 队列
+<br><li>CMQ_TOPIC：CMQ 主题
+<br><li>TDMQ_CMQ_TOPIC：TDMQ CMQ 主题
+<br><li>TDMQ_CMQ_QUEUE：TDMQ CMQ 队列
+
+默认值为：`USER_GROUP`。
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -2702,6 +3300,9 @@ class CreateNotificationConfigurationRequest(AbstractModel):
 
     @property
     def QueueName(self):
+        """CMQ 队列名称，如 TargetType 取值为 `CMQ_QUEUE` 或 `TDMQ_CMQ_QUEUE` 时，该字段必填。
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -2710,6 +3311,9 @@ class CreateNotificationConfigurationRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """CMQ 主题名称，如 TargetType 取值为 `CMQ_TOPIC` 或 `TDMQ_CMQ_TOPIC` 时，该字段必填。
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -2751,6 +3355,9 @@ class CreateNotificationConfigurationResponse(AbstractModel):
 
     @property
     def AutoScalingNotificationId(self):
+        """通知ID。
+        :rtype: str
+        """
         return self._AutoScalingNotificationId
 
     @AutoScalingNotificationId.setter
@@ -2759,6 +3366,9 @@ class CreateNotificationConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2819,6 +3429,9 @@ class CreateScalingPolicyRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID。
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -2827,6 +3440,9 @@ class CreateScalingPolicyRequest(AbstractModel):
 
     @property
     def ScalingPolicyName(self):
+        """告警触发策略名称。
+        :rtype: str
+        """
         return self._ScalingPolicyName
 
     @ScalingPolicyName.setter
@@ -2835,6 +3451,9 @@ class CreateScalingPolicyRequest(AbstractModel):
 
     @property
     def ScalingPolicyType(self):
+        """告警触发策略类型，默认类型为SIMPLE。取值范围：<br><li>SIMPLE：简单策略</li><li>TARGET_TRACKING：目标追踪策略</li>
+        :rtype: str
+        """
         return self._ScalingPolicyType
 
     @ScalingPolicyType.setter
@@ -2843,6 +3462,9 @@ class CreateScalingPolicyRequest(AbstractModel):
 
     @property
     def AdjustmentType(self):
+        """告警触发后，期望实例数修改方式，仅适用于简单策略。取值范围：<br><li>CHANGE_IN_CAPACITY：增加或减少若干期望实例数</li><li>EXACT_CAPACITY：调整至指定期望实例数</li> <li>PERCENT_CHANGE_IN_CAPACITY：按百分比调整期望实例数</li>
+        :rtype: str
+        """
         return self._AdjustmentType
 
     @AdjustmentType.setter
@@ -2851,6 +3473,9 @@ class CreateScalingPolicyRequest(AbstractModel):
 
     @property
     def AdjustmentValue(self):
+        """告警触发后，期望实例数的调整值，仅适用于简单策略。<br><li>当 AdjustmentType 为 CHANGE_IN_CAPACITY 时，AdjustmentValue 为正数表示告警触发后增加实例，为负数表示告警触发后减少实例 </li> <li> 当 AdjustmentType 为 EXACT_CAPACITY 时，AdjustmentValue 的值即为告警触发后新的期望实例数，需要大于或等于0 </li> <li> 当 AdjustmentType 为 PERCENT_CHANGE_IN_CAPACITY 时，AdjusmentValue 为正数表示告警触发后按百分比增加实例，为负数表示告警触发后按百分比减少实例，单位是：%。
+        :rtype: int
+        """
         return self._AdjustmentValue
 
     @AdjustmentValue.setter
@@ -2859,6 +3484,9 @@ class CreateScalingPolicyRequest(AbstractModel):
 
     @property
     def Cooldown(self):
+        """冷却时间，单位为秒，仅适用于简单策略。默认冷却时间300秒。
+        :rtype: int
+        """
         return self._Cooldown
 
     @Cooldown.setter
@@ -2867,6 +3495,9 @@ class CreateScalingPolicyRequest(AbstractModel):
 
     @property
     def MetricAlarm(self):
+        """告警监控指标，仅适用于简单策略。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
+        """
         return self._MetricAlarm
 
     @MetricAlarm.setter
@@ -2875,6 +3506,9 @@ class CreateScalingPolicyRequest(AbstractModel):
 
     @property
     def PredefinedMetricType(self):
+        """预定义监控项，仅适用于目标追踪策略。取值范围：<br><li>ASG_AVG_CPU_UTILIZATION：平均CPU使用率</li><li>ASG_AVG_LAN_TRAFFIC_OUT：平均内网出带宽</li><li>ASG_AVG_LAN_TRAFFIC_IN：平均内网入带宽</li><li>ASG_AVG_WAN_TRAFFIC_OUT：平均外网出带宽</li><li>ASG_AVG_WAN_TRAFFIC_IN：平均外网出带宽</li>
+        :rtype: str
+        """
         return self._PredefinedMetricType
 
     @PredefinedMetricType.setter
@@ -2883,6 +3517,9 @@ class CreateScalingPolicyRequest(AbstractModel):
 
     @property
     def TargetValue(self):
+        """目标值，仅适用于目标追踪策略。<br><li>ASG_AVG_CPU_UTILIZATION：[1, 100)，单位：%</li><li>ASG_AVG_LAN_TRAFFIC_OUT：>0，单位：Mbps</li><li>ASG_AVG_LAN_TRAFFIC_IN：>0，单位：Mbps</li><li>ASG_AVG_WAN_TRAFFIC_OUT：>0，单位：Mbps</li><li>ASG_AVG_WAN_TRAFFIC_IN：>0，单位：Mbps</li>
+        :rtype: int
+        """
         return self._TargetValue
 
     @TargetValue.setter
@@ -2891,6 +3528,9 @@ class CreateScalingPolicyRequest(AbstractModel):
 
     @property
     def EstimatedInstanceWarmup(self):
+        """实例预热时间，单位为秒，仅适用于目标追踪策略。取值范围为0-3600，默认预热时间300秒。
+        :rtype: int
+        """
         return self._EstimatedInstanceWarmup
 
     @EstimatedInstanceWarmup.setter
@@ -2899,6 +3539,9 @@ class CreateScalingPolicyRequest(AbstractModel):
 
     @property
     def DisableScaleIn(self):
+        """是否禁用缩容，仅适用于目标追踪策略，默认值为 false。取值范围：<br><li>true：目标追踪策略仅触发扩容</li><li>false：目标追踪策略触发扩容和缩容</li>
+        :rtype: bool
+        """
         return self._DisableScaleIn
 
     @DisableScaleIn.setter
@@ -2907,6 +3550,10 @@ class CreateScalingPolicyRequest(AbstractModel):
 
     @property
     def NotificationUserGroupIds(self):
+        """此参数已不再生效，请使用[创建通知](https://cloud.tencent.com/document/api/377/33185)。
+通知组ID，即为用户组ID集合。
+        :rtype: list of str
+        """
         return self._NotificationUserGroupIds
 
     @NotificationUserGroupIds.setter
@@ -2956,6 +3603,9 @@ class CreateScalingPolicyResponse(AbstractModel):
 
     @property
     def AutoScalingPolicyId(self):
+        """告警触发策略ID。
+        :rtype: str
+        """
         return self._AutoScalingPolicyId
 
     @AutoScalingPolicyId.setter
@@ -2964,6 +3614,9 @@ class CreateScalingPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3011,6 +3664,9 @@ class CreateScheduledActionRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -3019,6 +3675,9 @@ class CreateScheduledActionRequest(AbstractModel):
 
     @property
     def ScheduledActionName(self):
+        """定时任务名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。同一伸缩组下必须唯一。
+        :rtype: str
+        """
         return self._ScheduledActionName
 
     @ScheduledActionName.setter
@@ -3027,6 +3686,9 @@ class CreateScheduledActionRequest(AbstractModel):
 
     @property
     def MaxSize(self):
+        """当定时任务触发时，设置的伸缩组最大实例数。
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -3035,6 +3697,9 @@ class CreateScheduledActionRequest(AbstractModel):
 
     @property
     def MinSize(self):
+        """当定时任务触发时，设置的伸缩组最小实例数。
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -3043,6 +3708,9 @@ class CreateScheduledActionRequest(AbstractModel):
 
     @property
     def DesiredCapacity(self):
+        """当定时任务触发时，设置的伸缩组期望实例数。
+        :rtype: int
+        """
         return self._DesiredCapacity
 
     @DesiredCapacity.setter
@@ -3051,6 +3719,9 @@ class CreateScheduledActionRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """定时任务的首次触发时间，取值为`北京时间`（UTC+8），按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ss+08:00`。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3059,6 +3730,9 @@ class CreateScheduledActionRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """定时任务的结束时间，取值为`北京时间`（UTC+8），按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ss+08:00`。<br><br>此参数与`Recurrence`需要同时指定，到达结束时间之后，定时任务将不再生效。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3067,6 +3741,9 @@ class CreateScheduledActionRequest(AbstractModel):
 
     @property
     def Recurrence(self):
+        """定时任务的重复方式。为标准 Cron 格式<br><br>此参数与`EndTime`需要同时指定。
+        :rtype: str
+        """
         return self._Recurrence
 
     @Recurrence.setter
@@ -3110,6 +3787,9 @@ class CreateScheduledActionResponse(AbstractModel):
 
     @property
     def ScheduledActionId(self):
+        """定时任务ID
+        :rtype: str
+        """
         return self._ScheduledActionId
 
     @ScheduledActionId.setter
@@ -3118,6 +3798,9 @@ class CreateScheduledActionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3184,6 +3867,18 @@ class DataDisk(AbstractModel):
 
     @property
     def DiskType(self):
+        """数据盘类型。数据盘类型限制详见[云硬盘类型](https://cloud.tencent.com/document/product/362/2353)。取值范围：
+<li>LOCAL_BASIC：本地硬盘</li>
+<li>LOCAL_SSD：本地SSD硬盘</li>
+<li>CLOUD_BASIC：普通云硬盘</li>
+<li>CLOUD_PREMIUM：高性能云硬盘</li>
+<li>CLOUD_SSD：SSD云硬盘</li>
+<li>CLOUD_HSSD：增强型SSD云硬盘</li>
+<li>CLOUD_TSSD：极速型SSD云硬盘</li>
+默认取值与系统盘类型（SystemDisk.DiskType）保持一致。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -3192,6 +3887,10 @@ class DataDisk(AbstractModel):
 
     @property
     def DiskSize(self):
+        """数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -3200,6 +3899,10 @@ class DataDisk(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """数据盘快照 ID，类似 `snap-l8psqwnt`。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -3208,6 +3911,12 @@ class DataDisk(AbstractModel):
 
     @property
     def DeleteWithInstance(self):
+        """数据盘是否随子机销毁。取值范围：
+<li>TRUE：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li>
+<li>FALSE：子机销毁时，保留数据盘</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._DeleteWithInstance
 
     @DeleteWithInstance.setter
@@ -3216,6 +3925,12 @@ class DataDisk(AbstractModel):
 
     @property
     def Encrypt(self):
+        """数据盘是否加密。取值范围：
+<li>TRUE：加密</li>
+<li>FALSE：不加密</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Encrypt
 
     @Encrypt.setter
@@ -3224,6 +3939,11 @@ class DataDisk(AbstractModel):
 
     @property
     def ThroughputPerformance(self):
+        """云硬盘性能，单位：MB/s。使用此参数可给云硬盘购买额外的性能，功能介绍和类型限制详见：[增强型 SSD 云硬盘额外性能说明](https://cloud.tencent.com/document/product/362/51896#.E5.A2.9E.E5.BC.BA.E5.9E.8B-ssd-.E4.BA.91.E7.A1.AC.E7.9B.98.E9.A2.9D.E5.A4.96.E6.80.A7.E8.83.BD)。
+当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）且 需容量 > 460GB。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ThroughputPerformance
 
     @ThroughputPerformance.setter
@@ -3232,6 +3952,12 @@ class DataDisk(AbstractModel):
 
     @property
     def BurstPerformance(self):
+        """突发性能。是否开启突发性能，默认取值为 false。
+
+注：内测中，需提单申请后使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._BurstPerformance
 
     @BurstPerformance.setter
@@ -3271,6 +3997,9 @@ class DeleteAutoScalingGroupRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -3304,6 +4033,9 @@ class DeleteAutoScalingGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3329,6 +4061,9 @@ class DeleteLaunchConfigurationRequest(AbstractModel):
 
     @property
     def LaunchConfigurationId(self):
+        """需要删除的启动配置ID。
+        :rtype: str
+        """
         return self._LaunchConfigurationId
 
     @LaunchConfigurationId.setter
@@ -3362,6 +4097,9 @@ class DeleteLaunchConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3387,6 +4125,9 @@ class DeleteLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleHookId(self):
+        """生命周期挂钩ID
+        :rtype: str
+        """
         return self._LifecycleHookId
 
     @LifecycleHookId.setter
@@ -3420,6 +4161,9 @@ class DeleteLifecycleHookResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3445,6 +4189,9 @@ class DeleteNotificationConfigurationRequest(AbstractModel):
 
     @property
     def AutoScalingNotificationId(self):
+        """待删除的通知ID。
+        :rtype: str
+        """
         return self._AutoScalingNotificationId
 
     @AutoScalingNotificationId.setter
@@ -3478,6 +4225,9 @@ class DeleteNotificationConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3503,6 +4253,9 @@ class DeleteScalingPolicyRequest(AbstractModel):
 
     @property
     def AutoScalingPolicyId(self):
+        """待删除的告警策略ID。
+        :rtype: str
+        """
         return self._AutoScalingPolicyId
 
     @AutoScalingPolicyId.setter
@@ -3536,6 +4289,9 @@ class DeleteScalingPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3561,6 +4317,9 @@ class DeleteScheduledActionRequest(AbstractModel):
 
     @property
     def ScheduledActionId(self):
+        """待删除的定时任务ID。
+        :rtype: str
+        """
         return self._ScheduledActionId
 
     @ScheduledActionId.setter
@@ -3594,6 +4353,9 @@ class DeleteScheduledActionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3637,6 +4399,9 @@ class DescribeAccountLimitsResponse(AbstractModel):
 
     @property
     def MaxNumberOfLaunchConfigurations(self):
+        """用户账户被允许创建的启动配置最大数量
+        :rtype: int
+        """
         return self._MaxNumberOfLaunchConfigurations
 
     @MaxNumberOfLaunchConfigurations.setter
@@ -3645,6 +4410,9 @@ class DescribeAccountLimitsResponse(AbstractModel):
 
     @property
     def NumberOfLaunchConfigurations(self):
+        """用户账户启动配置的当前数量
+        :rtype: int
+        """
         return self._NumberOfLaunchConfigurations
 
     @NumberOfLaunchConfigurations.setter
@@ -3653,6 +4421,9 @@ class DescribeAccountLimitsResponse(AbstractModel):
 
     @property
     def MaxNumberOfAutoScalingGroups(self):
+        """用户账户被允许创建的伸缩组最大数量
+        :rtype: int
+        """
         return self._MaxNumberOfAutoScalingGroups
 
     @MaxNumberOfAutoScalingGroups.setter
@@ -3661,6 +4432,9 @@ class DescribeAccountLimitsResponse(AbstractModel):
 
     @property
     def NumberOfAutoScalingGroups(self):
+        """用户账户伸缩组的当前数量
+        :rtype: int
+        """
         return self._NumberOfAutoScalingGroups
 
     @NumberOfAutoScalingGroups.setter
@@ -3669,6 +4443,9 @@ class DescribeAccountLimitsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3718,6 +4495,9 @@ class DescribeAutoScalingActivitiesRequest(AbstractModel):
 
     @property
     def ActivityIds(self):
+        """按照一个或者多个伸缩活动ID查询。伸缩活动ID形如：`asa-5l2ejpfo`。每次请求的上限为100。参数不支持同时指定`ActivityIds`和`Filters`。
+        :rtype: list of str
+        """
         return self._ActivityIds
 
     @ActivityIds.setter
@@ -3726,6 +4506,14 @@ class DescribeAutoScalingActivitiesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+<li> activity-status-code - String - 是否必填：否 -（过滤条件）按照伸缩活动状态过滤。（INIT：初始化中|RUNNING：运行中|SUCCESSFUL：活动成功|PARTIALLY_SUCCESSFUL：活动部分成功|FAILED：活动失败|CANCELLED：活动取消）</li>
+<li> activity-type - String - 是否必填：否 -（过滤条件）按照伸缩活动类型过滤。（SCALE_OUT：扩容活动|SCALE_IN：缩容活动|ATTACH_INSTANCES：添加实例|REMOVE_INSTANCES：销毁实例|DETACH_INSTANCES：移出实例|TERMINATE_INSTANCES_UNEXPECTEDLY：实例在CVM控制台被销毁|REPLACE_UNHEALTHY_INSTANCE：替换不健康实例|UPDATE_LOAD_BALANCERS：更新负载均衡器）</li>
+<li> activity-id - String - 是否必填：否 -（过滤条件）按照伸缩活动ID过滤。</li>
+每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`ActivityIds`和`Filters`。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3734,6 +4522,9 @@ class DescribeAutoScalingActivitiesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3742,6 +4533,9 @@ class DescribeAutoScalingActivitiesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3750,6 +4544,9 @@ class DescribeAutoScalingActivitiesRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """伸缩活动最早的开始时间，如果指定了ActivityIds，此参数将被忽略。取值为`UTC`时间，按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ssZ`。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3758,6 +4555,9 @@ class DescribeAutoScalingActivitiesRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """伸缩活动最晚的结束时间，如果指定了ActivityIds，此参数将被忽略。取值为`UTC`时间，按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ssZ`。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3807,6 +4607,9 @@ class DescribeAutoScalingActivitiesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的伸缩活动数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3815,6 +4618,9 @@ class DescribeAutoScalingActivitiesResponse(AbstractModel):
 
     @property
     def ActivitySet(self):
+        """符合条件的伸缩活动信息集合。
+        :rtype: list of Activity
+        """
         return self._ActivitySet
 
     @ActivitySet.setter
@@ -3823,6 +4629,9 @@ class DescribeAutoScalingActivitiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3855,6 +4664,9 @@ class DescribeAutoScalingAdvicesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupIds(self):
+        """待查询的伸缩组列表，上限100。
+        :rtype: list of str
+        """
         return self._AutoScalingGroupIds
 
     @AutoScalingGroupIds.setter
@@ -3891,6 +4703,9 @@ class DescribeAutoScalingAdvicesResponse(AbstractModel):
 
     @property
     def AutoScalingAdviceSet(self):
+        """伸缩组配置建议集合。
+        :rtype: list of AutoScalingAdvice
+        """
         return self._AutoScalingAdviceSet
 
     @AutoScalingAdviceSet.setter
@@ -3899,6 +4714,9 @@ class DescribeAutoScalingAdvicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3930,6 +4748,9 @@ class DescribeAutoScalingGroupLastActivitiesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupIds(self):
+        """伸缩组ID列表
+        :rtype: list of str
+        """
         return self._AutoScalingGroupIds
 
     @AutoScalingGroupIds.setter
@@ -3966,6 +4787,9 @@ class DescribeAutoScalingGroupLastActivitiesResponse(AbstractModel):
 
     @property
     def ActivitySet(self):
+        """符合条件的伸缩活动信息集合。说明：伸缩组伸缩活动不存在的则不返回，如传50个伸缩组ID，返回45条数据，说明其中有5个伸缩组伸缩活动不存在。
+        :rtype: list of Activity
+        """
         return self._ActivitySet
 
     @ActivitySet.setter
@@ -3974,6 +4798,9 @@ class DescribeAutoScalingGroupLastActivitiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4022,6 +4849,9 @@ class DescribeAutoScalingGroupsRequest(AbstractModel):
 
     @property
     def AutoScalingGroupIds(self):
+        """按照一个或者多个伸缩组ID查询。伸缩组ID形如：`asg-nkdwoui0`。每次请求的上限为100。参数不支持同时指定`AutoScalingGroupIds`和`Filters`。
+        :rtype: list of str
+        """
         return self._AutoScalingGroupIds
 
     @AutoScalingGroupIds.setter
@@ -4030,6 +4860,17 @@ class DescribeAutoScalingGroupsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+<li> auto-scaling-group-name - String - 是否必填：否 -（过滤条件）按照伸缩组名称过滤。</li>
+<li> vague-auto-scaling-group-name - String - 是否必填：否 -（过滤条件）按照伸缩组名称模糊搜索。</li>
+<li> launch-configuration-id - String - 是否必填：否 -（过滤条件）按照启动配置ID过滤。</li>
+<li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
+<li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
+<li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2</li>
+每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AutoScalingGroupIds`和`Filters`。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4038,6 +4879,9 @@ class DescribeAutoScalingGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4046,6 +4890,9 @@ class DescribeAutoScalingGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4093,6 +4940,9 @@ class DescribeAutoScalingGroupsResponse(AbstractModel):
 
     @property
     def AutoScalingGroupSet(self):
+        """伸缩组详细信息列表。
+        :rtype: list of AutoScalingGroup
+        """
         return self._AutoScalingGroupSet
 
     @AutoScalingGroupSet.setter
@@ -4101,6 +4951,9 @@ class DescribeAutoScalingGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的伸缩组数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4109,6 +4962,9 @@ class DescribeAutoScalingGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4153,6 +5009,9 @@ class DescribeAutoScalingInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """待查询云服务器（CVM）的实例ID。每次请求的上限为100。参数不支持同时指定InstanceIds和Filters。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -4161,6 +5020,12 @@ class DescribeAutoScalingInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li> instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。</li>
+<li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`InstanceIds`和`Filters`。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4169,6 +5034,9 @@ class DescribeAutoScalingInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4177,6 +5045,9 @@ class DescribeAutoScalingInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4224,6 +5095,9 @@ class DescribeAutoScalingInstancesResponse(AbstractModel):
 
     @property
     def AutoScalingInstanceSet(self):
+        """实例详细信息列表。
+        :rtype: list of Instance
+        """
         return self._AutoScalingInstanceSet
 
     @AutoScalingInstanceSet.setter
@@ -4232,6 +5106,9 @@ class DescribeAutoScalingInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的实例数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4240,6 +5117,9 @@ class DescribeAutoScalingInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4288,6 +5168,9 @@ class DescribeLaunchConfigurationsRequest(AbstractModel):
 
     @property
     def LaunchConfigurationIds(self):
+        """按照一个或者多个启动配置ID查询。启动配置ID形如：`asc-ouy1ax38`。每次请求的上限为100。参数不支持同时指定`LaunchConfigurationIds`和`Filters`
+        :rtype: list of str
+        """
         return self._LaunchConfigurationIds
 
     @LaunchConfigurationIds.setter
@@ -4296,6 +5179,16 @@ class DescribeLaunchConfigurationsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li> launch-configuration-id - String - 是否必填：否 -（过滤条件）按照启动配置ID过滤。</li>
+<li> launch-configuration-name - String - 是否必填：否 -（过滤条件）按照启动配置名称过滤。</li>
+<li> vague-launch-configuration-name - String - 是否必填：否 -（过滤条件）按照启动配置名称模糊搜索。</li>
+<li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
+<li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
+<li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3</li>
+每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`LaunchConfigurationIds`和`Filters`。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4304,6 +5197,9 @@ class DescribeLaunchConfigurationsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4312,6 +5208,9 @@ class DescribeLaunchConfigurationsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4359,6 +5258,9 @@ class DescribeLaunchConfigurationsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的启动配置数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4367,6 +5269,9 @@ class DescribeLaunchConfigurationsResponse(AbstractModel):
 
     @property
     def LaunchConfigurationSet(self):
+        """启动配置详细信息列表。
+        :rtype: list of LaunchConfiguration
+        """
         return self._LaunchConfigurationSet
 
     @LaunchConfigurationSet.setter
@@ -4375,6 +5280,9 @@ class DescribeLaunchConfigurationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4420,6 +5328,9 @@ class DescribeLifecycleHooksRequest(AbstractModel):
 
     @property
     def LifecycleHookIds(self):
+        """按照一个或者多个生命周期挂钩ID查询。生命周期挂钩ID形如：`ash-8azjzxcl`。每次请求的上限为100。参数不支持同时指定`LifecycleHookIds`和`Filters`。
+        :rtype: list of str
+        """
         return self._LifecycleHookIds
 
     @LifecycleHookIds.setter
@@ -4428,6 +5339,13 @@ class DescribeLifecycleHooksRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li> lifecycle-hook-id - String - 是否必填：否 -（过滤条件）按照生命周期挂钩ID过滤。</li>
+<li> lifecycle-hook-name - String - 是否必填：否 -（过滤条件）按照生命周期挂钩名称过滤。</li>
+<li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`LifecycleHookIds `和`Filters`。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4436,6 +5354,9 @@ class DescribeLifecycleHooksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4444,6 +5365,9 @@ class DescribeLifecycleHooksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4491,6 +5415,9 @@ class DescribeLifecycleHooksResponse(AbstractModel):
 
     @property
     def LifecycleHookSet(self):
+        """生命周期挂钩数组
+        :rtype: list of LifecycleHook
+        """
         return self._LifecycleHookSet
 
     @LifecycleHookSet.setter
@@ -4499,6 +5426,9 @@ class DescribeLifecycleHooksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总体数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4507,6 +5437,9 @@ class DescribeLifecycleHooksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4551,6 +5484,9 @@ class DescribeNotificationConfigurationsRequest(AbstractModel):
 
     @property
     def AutoScalingNotificationIds(self):
+        """按照一个或者多个通知ID查询。实例ID形如：asn-2sestqbr。每次请求的实例的上限为100。参数不支持同时指定`AutoScalingNotificationIds`和`Filters`。
+        :rtype: list of str
+        """
         return self._AutoScalingNotificationIds
 
     @AutoScalingNotificationIds.setter
@@ -4559,6 +5495,12 @@ class DescribeNotificationConfigurationsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li> auto-scaling-notification-id - String - 是否必填：否 -（过滤条件）按照通知ID过滤。</li>
+<li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AutoScalingNotificationIds`和`Filters`。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4567,6 +5509,9 @@ class DescribeNotificationConfigurationsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4575,6 +5520,9 @@ class DescribeNotificationConfigurationsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4622,6 +5570,9 @@ class DescribeNotificationConfigurationsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的通知数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4630,6 +5581,9 @@ class DescribeNotificationConfigurationsResponse(AbstractModel):
 
     @property
     def AutoScalingNotificationSet(self):
+        """弹性伸缩事件通知详细信息列表。
+        :rtype: list of AutoScalingNotification
+        """
         return self._AutoScalingNotificationSet
 
     @AutoScalingNotificationSet.setter
@@ -4638,6 +5592,9 @@ class DescribeNotificationConfigurationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4684,6 +5641,9 @@ class DescribeRefreshActivitiesRequest(AbstractModel):
 
     @property
     def RefreshActivityIds(self):
+        """刷新活动ID列表。ID形如：`asr-5l2ejpfo`。每次请求的上限为100。参数不支持同时指定`RefreshActivityIds`和`Filters`。
+        :rtype: list of str
+        """
         return self._RefreshActivityIds
 
     @RefreshActivityIds.setter
@@ -4692,6 +5652,14 @@ class DescribeRefreshActivitiesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+<li> refresh-activity-status-code - String - 是否必填：否 -（过滤条件）按照刷新活动状态过滤。（INIT：初始化中 | RUNNING：运行中 | SUCCESSFUL：活动成功 | FAILED_PAUSE：失败暂停 | AUTO_PAUSE：自动暂停 | MANUAL_PAUSE：手动暂停 | CANCELLED：活动取消 | FAILED：活动失败）</li>
+<li> refresh-activity-type - String - 是否必填：否 -（过滤条件）按照刷新活动类型过滤。（NORMAL：正常刷新活动 | ROLLBACK：回滚刷新活动）</li>
+<li> refresh-activity-id - String - 是否必填：否 -（过滤条件）按照刷新活动ID过滤。</li>
+<li> 每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定RefreshActivityIds和Filters。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4700,6 +5668,9 @@ class DescribeRefreshActivitiesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4708,6 +5679,9 @@ class DescribeRefreshActivitiesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4755,6 +5729,9 @@ class DescribeRefreshActivitiesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的刷新活动数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4763,6 +5740,9 @@ class DescribeRefreshActivitiesResponse(AbstractModel):
 
     @property
     def RefreshActivitySet(self):
+        """符合条件的刷新活动信息集合。
+        :rtype: list of RefreshActivity
+        """
         return self._RefreshActivitySet
 
     @RefreshActivitySet.setter
@@ -4771,6 +5751,9 @@ class DescribeRefreshActivitiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4817,6 +5800,9 @@ class DescribeScalingPoliciesRequest(AbstractModel):
 
     @property
     def AutoScalingPolicyIds(self):
+        """按照一个或者多个告警策略ID查询。告警策略ID形如：asp-i9vkg894。每次请求的实例的上限为100。参数不支持同时指定`AutoScalingPolicyIds`和`Filters`。
+        :rtype: list of str
+        """
         return self._AutoScalingPolicyIds
 
     @AutoScalingPolicyIds.setter
@@ -4825,6 +5811,14 @@ class DescribeScalingPoliciesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li> auto-scaling-policy-id - String - 是否必填：否 -（过滤条件）按照告警策略ID过滤。</li>
+<li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+<li> scaling-policy-name - String - 是否必填：否 -（过滤条件）按照告警策略名称过滤。</li>
+<li> scaling-policy-type - String - 是否必填：否 -（过滤条件）按照告警策略类型过滤，取值范围为SIMPLE，TARGET_TRACKING。</li>
+每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AutoScalingPolicyIds`和`Filters`。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4833,6 +5827,9 @@ class DescribeScalingPoliciesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4841,6 +5838,9 @@ class DescribeScalingPoliciesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4888,6 +5888,9 @@ class DescribeScalingPoliciesResponse(AbstractModel):
 
     @property
     def ScalingPolicySet(self):
+        """弹性伸缩告警触发策略详细信息列表。
+        :rtype: list of ScalingPolicy
+        """
         return self._ScalingPolicySet
 
     @ScalingPolicySet.setter
@@ -4896,6 +5899,9 @@ class DescribeScalingPoliciesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的通知数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4904,6 +5910,9 @@ class DescribeScalingPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4948,6 +5957,9 @@ class DescribeScheduledActionsRequest(AbstractModel):
 
     @property
     def ScheduledActionIds(self):
+        """按照一个或者多个定时任务ID查询。实例ID形如：asst-am691zxo。每次请求的实例的上限为100。参数不支持同时指定ScheduledActionIds和Filters。
+        :rtype: list of str
+        """
         return self._ScheduledActionIds
 
     @ScheduledActionIds.setter
@@ -4956,6 +5968,12 @@ class DescribeScheduledActionsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li> scheduled-action-id - String - 是否必填：否 -（过滤条件）按照定时任务ID过滤。</li>
+<li> scheduled-action-name - String - 是否必填：否 - （过滤条件） 按照定时任务名称过滤。</li>
+<li> auto-scaling-group-id - String - 是否必填：否 - （过滤条件） 按照伸缩组ID过滤。</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4964,6 +5982,9 @@ class DescribeScheduledActionsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4972,6 +5993,9 @@ class DescribeScheduledActionsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5019,6 +6043,9 @@ class DescribeScheduledActionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的定时任务数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5027,6 +6054,9 @@ class DescribeScheduledActionsResponse(AbstractModel):
 
     @property
     def ScheduledActionSet(self):
+        """定时任务详细信息列表。
+        :rtype: list of ScheduledAction
+        """
         return self._ScheduledActionSet
 
     @ScheduledActionSet.setter
@@ -5035,6 +6065,9 @@ class DescribeScheduledActionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5070,6 +6103,9 @@ class DetachInstancesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -5078,6 +6114,9 @@ class DetachInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """CVM实例ID列表
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -5115,6 +6154,9 @@ class DetachInstancesResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """伸缩活动ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -5123,6 +6165,9 @@ class DetachInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5155,6 +6200,9 @@ class DetachLoadBalancersRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -5163,6 +6211,9 @@ class DetachLoadBalancersRequest(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
+        """传统负载均衡器ID列表，列表长度上限为20，LoadBalancerIds 和 ForwardLoadBalancerIdentifications 二者同时最多只能指定一个
+        :rtype: list of str
+        """
         return self._LoadBalancerIds
 
     @LoadBalancerIds.setter
@@ -5171,6 +6222,9 @@ class DetachLoadBalancersRequest(AbstractModel):
 
     @property
     def ForwardLoadBalancerIdentifications(self):
+        """应用型负载均衡器标识信息列表，列表长度上限为100，LoadBalancerIds 和 ForwardLoadBalancerIdentifications二者同时最多只能指定一个
+        :rtype: list of ForwardLoadBalancerIdentification
+        """
         return self._ForwardLoadBalancerIdentifications
 
     @ForwardLoadBalancerIdentifications.setter
@@ -5214,6 +6268,9 @@ class DetachLoadBalancersResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """伸缩活动ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -5222,6 +6279,9 @@ class DetachLoadBalancersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5266,6 +6326,9 @@ class DetailedStatusMessage(AbstractModel):
 
     @property
     def Code(self):
+        """错误类型。
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -5274,6 +6337,9 @@ class DetailedStatusMessage(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区信息。
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -5282,6 +6348,9 @@ class DetailedStatusMessage(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5290,6 +6359,9 @@ class DetailedStatusMessage(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """实例计费类型。
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -5298,6 +6370,9 @@ class DetailedStatusMessage(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网ID。
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -5306,6 +6381,9 @@ class DetailedStatusMessage(AbstractModel):
 
     @property
     def Message(self):
+        """错误描述。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -5314,6 +6392,9 @@ class DetailedStatusMessage(AbstractModel):
 
     @property
     def InstanceType(self):
+        """实例类型。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -5353,6 +6434,9 @@ class DisableAutoScalingGroupRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -5386,6 +6470,9 @@ class DisableAutoScalingGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5411,6 +6498,9 @@ class EnableAutoScalingGroupRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -5444,6 +6534,9 @@ class EnableAutoScalingGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5478,6 +6571,9 @@ class EnhancedService(AbstractModel):
 
     @property
     def SecurityService(self):
+        """开启云安全服务。若不指定该参数，则默认开启云安全服务。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.RunSecurityServiceEnabled`
+        """
         return self._SecurityService
 
     @SecurityService.setter
@@ -5486,6 +6582,9 @@ class EnhancedService(AbstractModel):
 
     @property
     def MonitorService(self):
+        """开启云监控服务。若不指定该参数，则默认开启云监控服务。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.RunMonitorServiceEnabled`
+        """
         return self._MonitorService
 
     @MonitorService.setter
@@ -5496,6 +6595,9 @@ class EnhancedService(AbstractModel):
     def AutomationService(self):
         warnings.warn("parameter `AutomationService` is deprecated", DeprecationWarning) 
 
+        """该参数已废弃，查询时会返回空值，请勿使用。
+        :rtype: list of RunAutomationServiceEnabled
+        """
         return self._AutomationService
 
     @AutomationService.setter
@@ -5506,6 +6608,9 @@ class EnhancedService(AbstractModel):
 
     @property
     def AutomationToolsService(self):
+        """开启自动化助手服务。若不指定该参数，则默认逻辑与CVM保持一致。注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.RunAutomationServiceEnabled`
+        """
         return self._AutomationToolsService
 
     @AutomationToolsService.setter
@@ -5559,6 +6664,9 @@ class ExecuteScalingPolicyRequest(AbstractModel):
 
     @property
     def AutoScalingPolicyId(self):
+        """告警伸缩策略ID，不支持目标追踪策略。
+        :rtype: str
+        """
         return self._AutoScalingPolicyId
 
     @AutoScalingPolicyId.setter
@@ -5567,6 +6675,9 @@ class ExecuteScalingPolicyRequest(AbstractModel):
 
     @property
     def HonorCooldown(self):
+        """是否检查伸缩组活动处于冷却时间内，默认值为false
+        :rtype: bool
+        """
         return self._HonorCooldown
 
     @HonorCooldown.setter
@@ -5575,6 +6686,9 @@ class ExecuteScalingPolicyRequest(AbstractModel):
 
     @property
     def TriggerSource(self):
+        """执行伸缩策略的触发来源，取值包括 API 和 CLOUD_MONITOR，默认值为 API。CLOUD_MONITOR 专门供云监控触发调用。
+        :rtype: str
+        """
         return self._TriggerSource
 
     @TriggerSource.setter
@@ -5613,6 +6727,9 @@ class ExecuteScalingPolicyResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """伸缩活动ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -5621,6 +6738,9 @@ class ExecuteScalingPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5650,6 +6770,9 @@ class ExitStandbyRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组 ID。
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -5658,6 +6781,9 @@ class ExitStandbyRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """备用中状态 CVM 实例列表。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -5696,6 +6822,10 @@ class ExitStandbyResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """伸缩活动ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -5704,6 +6834,9 @@ class ExitStandbyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5744,6 +6877,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """需要过滤的字段。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5752,6 +6888,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """字段的过滤值。
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -5798,6 +6937,9 @@ class ForwardLoadBalancer(AbstractModel):
 
     @property
     def LoadBalancerId(self):
+        """负载均衡器ID
+        :rtype: str
+        """
         return self._LoadBalancerId
 
     @LoadBalancerId.setter
@@ -5806,6 +6948,9 @@ class ForwardLoadBalancer(AbstractModel):
 
     @property
     def ListenerId(self):
+        """应用型负载均衡监听器 ID
+        :rtype: str
+        """
         return self._ListenerId
 
     @ListenerId.setter
@@ -5814,6 +6959,9 @@ class ForwardLoadBalancer(AbstractModel):
 
     @property
     def TargetAttributes(self):
+        """目标规则属性列表
+        :rtype: list of TargetAttribute
+        """
         return self._TargetAttributes
 
     @TargetAttributes.setter
@@ -5822,6 +6970,9 @@ class ForwardLoadBalancer(AbstractModel):
 
     @property
     def LocationId(self):
+        """转发规则ID，注意：针对七层监听器此参数必填
+        :rtype: str
+        """
         return self._LocationId
 
     @LocationId.setter
@@ -5830,6 +6981,9 @@ class ForwardLoadBalancer(AbstractModel):
 
     @property
     def Region(self):
+        """负载均衡实例所属地域，默认取AS服务所在地域。格式与公共参数Region相同，如："ap-guangzhou"。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -5878,6 +7032,9 @@ class ForwardLoadBalancerIdentification(AbstractModel):
 
     @property
     def LoadBalancerId(self):
+        """负载均衡器ID
+        :rtype: str
+        """
         return self._LoadBalancerId
 
     @LoadBalancerId.setter
@@ -5886,6 +7043,9 @@ class ForwardLoadBalancerIdentification(AbstractModel):
 
     @property
     def ListenerId(self):
+        """应用型负载均衡监听器 ID
+        :rtype: str
+        """
         return self._ListenerId
 
     @ListenerId.setter
@@ -5894,6 +7054,9 @@ class ForwardLoadBalancerIdentification(AbstractModel):
 
     @property
     def LocationId(self):
+        """转发规则ID，注意：针对七层监听器此参数必填
+        :rtype: str
+        """
         return self._LocationId
 
     @LocationId.setter
@@ -5947,6 +7110,13 @@ class HostNameSettings(AbstractModel):
 
     @property
     def HostName(self):
+        """云服务器的主机名。
+<li> 点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。</li> 
+<li> 不支持 Windows 实例。</li> 
+<li> 其他类型（Linux 等）实例：字符长度为[2, 40]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。不允许为纯数字。</li> 
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._HostName
 
     @HostName.setter
@@ -5955,6 +7125,12 @@ class HostNameSettings(AbstractModel):
 
     @property
     def HostNameStyle(self):
+        """云服务器主机名的风格，取值范围包括 ORIGINAL 和  UNIQUE，默认为 ORIGINAL。
+<li> ORIGINAL，AS 直接将入参中所填的 HostName 传递给 CVM，CVM 可能会对 HostName 追加序列号，伸缩组中实例的 HostName 会出现冲突的情况。</li> 
+<li> UNIQUE，入参所填的 HostName 相当于主机名前缀，AS 和 CVM 会对其进行拓展，伸缩组中实例的 HostName 可以保证唯一。</li> 
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._HostNameStyle
 
     @HostNameStyle.setter
@@ -5963,6 +7139,14 @@ class HostNameSettings(AbstractModel):
 
     @property
     def HostNameSuffix(self):
+        """云服务器的主机名后缀。
+<li> 点号（.）和短横线（-）不能作为 HostNameSuffix 的首尾字符，不能连续使用。</li> 
+<li> 不支持 Windows 实例。</li> 
+<li>其他类型（Linux 等）实例：字符长度为[1, 37]，且与 HostName 的长度和不能超过 39，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li> 
+假设后缀名称为 suffix，原主机名为 test.0，最终主机名为 test.0.suffix。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._HostNameSuffix
 
     @HostNameSuffix.setter
@@ -6009,6 +7193,12 @@ class IPv6InternetAccessible(AbstractModel):
 
     @property
     def InternetChargeType(self):
+        """网络计费模式。取值包括TRAFFIC_POSTPAID_BY_HOUR、BANDWIDTH_PACKAGE，默认取值为TRAFFIC_POSTPAID_BY_HOUR。查看当前账户类型可参考[账户类型说明](https://cloud.tencent.com/document/product/1199/49090#judge)。
+<br><li> IPv6对标准账户类型支持TRAFFIC_POSTPAID_BY_HOUR。
+<br><li> IPv6对传统账户类型支持BANDWIDTH_PACKAGE。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InternetChargeType
 
     @InternetChargeType.setter
@@ -6017,6 +7207,10 @@ class IPv6InternetAccessible(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
+        """公网出带宽上限，单位：Mbps。<br>默认值：0，此时不为IPv6分配公网带宽。不同机型、可用区、计费模式的带宽上限范围不一致，具体限制详见[公网带宽上限](https://cloud.tencent.com/document/product/213/12523)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -6025,6 +7219,10 @@ class IPv6InternetAccessible(AbstractModel):
 
     @property
     def BandwidthPackageId(self):
+        """带宽包ID。可通过[DescribeBandwidthPackages](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BandwidthPackageId
 
     @BandwidthPackageId.setter
@@ -6126,6 +7324,9 @@ class Instance(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6134,6 +7335,9 @@ class Instance(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -6142,6 +7346,9 @@ class Instance(AbstractModel):
 
     @property
     def LaunchConfigurationId(self):
+        """启动配置ID
+        :rtype: str
+        """
         return self._LaunchConfigurationId
 
     @LaunchConfigurationId.setter
@@ -6150,6 +7357,9 @@ class Instance(AbstractModel):
 
     @property
     def LaunchConfigurationName(self):
+        """启动配置名称
+        :rtype: str
+        """
         return self._LaunchConfigurationName
 
     @LaunchConfigurationName.setter
@@ -6158,6 +7368,28 @@ class Instance(AbstractModel):
 
     @property
     def LifeCycleState(self):
+        """生命周期状态，取值如下：<br>
+<li>IN_SERVICE：运行中
+<li>CREATING：创建中
+<li>CREATION_FAILED：创建失败
+<li>TERMINATING：中止中
+<li>TERMINATION_FAILED：中止失败
+<li>ATTACHING：绑定中
+<li>ATTACH_FAILED：绑定失败
+<li>DETACHING：解绑中
+<li>DETACH_FAILED：解绑失败
+<li>ATTACHING_LB：绑定LB中
+<li>DETACHING_LB：解绑LB中
+<li>MODIFYING_LB：修改LB中
+<li>STARTING：开机中
+<li>START_FAILED：开机失败
+<li>STOPPING：关机中
+<li>STOP_FAILED：关机失败
+<li>STOPPED：已关机
+<li>IN_LAUNCHING_HOOK：扩容生命周期挂钩中
+<li>IN_TERMINATING_HOOK：缩容生命周期挂钩中
+        :rtype: str
+        """
         return self._LifeCycleState
 
     @LifeCycleState.setter
@@ -6166,6 +7398,9 @@ class Instance(AbstractModel):
 
     @property
     def HealthStatus(self):
+        """健康状态，取值包括HEALTHY和UNHEALTHY
+        :rtype: str
+        """
         return self._HealthStatus
 
     @HealthStatus.setter
@@ -6174,6 +7409,9 @@ class Instance(AbstractModel):
 
     @property
     def ProtectedFromScaleIn(self):
+        """是否加入缩容保护
+        :rtype: bool
+        """
         return self._ProtectedFromScaleIn
 
     @ProtectedFromScaleIn.setter
@@ -6182,6 +7420,9 @@ class Instance(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -6190,6 +7431,9 @@ class Instance(AbstractModel):
 
     @property
     def CreationType(self):
+        """创建类型，取值包括AUTO_CREATION, MANUAL_ATTACHING。
+        :rtype: str
+        """
         return self._CreationType
 
     @CreationType.setter
@@ -6198,6 +7442,9 @@ class Instance(AbstractModel):
 
     @property
     def AddTime(self):
+        """实例加入时间
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -6206,6 +7453,9 @@ class Instance(AbstractModel):
 
     @property
     def InstanceType(self):
+        """实例类型
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -6214,6 +7464,9 @@ class Instance(AbstractModel):
 
     @property
     def VersionNumber(self):
+        """版本号
+        :rtype: int
+        """
         return self._VersionNumber
 
     @VersionNumber.setter
@@ -6222,6 +7475,9 @@ class Instance(AbstractModel):
 
     @property
     def AutoScalingGroupName(self):
+        """伸缩组名称
+        :rtype: str
+        """
         return self._AutoScalingGroupName
 
     @AutoScalingGroupName.setter
@@ -6230,6 +7486,13 @@ class Instance(AbstractModel):
 
     @property
     def WarmupStatus(self):
+        """预热状态，取值如下：
+<li>WAITING_ENTER_WARMUP：等待进入预热
+<li>NO_NEED_WARMUP：无需预热
+<li>IN_WARMUP：预热中
+<li>AFTER_WARMUP：完成预热
+        :rtype: str
+        """
         return self._WarmupStatus
 
     @WarmupStatus.setter
@@ -6238,6 +7501,10 @@ class Instance(AbstractModel):
 
     @property
     def DisasterRecoverGroupIds(self):
+        """置放群组id，仅支持指定一个。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._DisasterRecoverGroupIds
 
     @DisasterRecoverGroupIds.setter
@@ -6288,6 +7555,9 @@ class InstanceChargePrepaid(AbstractModel):
 
     @property
     def Period(self):
+        """购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -6296,6 +7566,9 @@ class InstanceChargePrepaid(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """自动续费标识。取值范围：<li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -6334,6 +7607,9 @@ class InstanceMarketOptionsRequest(AbstractModel):
 
     @property
     def SpotOptions(self):
+        """竞价相关选项
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SpotMarketOptions`
+        """
         return self._SpotOptions
 
     @SpotOptions.setter
@@ -6342,6 +7618,10 @@ class InstanceMarketOptionsRequest(AbstractModel):
 
     @property
     def MarketType(self):
+        """市场选项类型，当前只支持取值：spot
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MarketType
 
     @MarketType.setter
@@ -6383,6 +7663,10 @@ class InstanceNameIndexSettings(AbstractModel):
 
     @property
     def Enabled(self):
+        """是否开启实例创建序号，默认不开启。取值范围：<li>TRUE：表示开启实例创建序号<li>FALSE：表示不开启实例创建序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -6391,6 +7675,10 @@ class InstanceNameIndexSettings(AbstractModel):
 
     @property
     def BeginIndex(self):
+        """初始序号，取值范围为 [0, 99999999]。当序号递增后超出取值范围时，扩容活动会失败。<li>首次开启实例名称序号：默认值为 0。<li>非首次开启实例名称序号：若不指定该参数，沿用历史序号。下调初始序号可能会造成伸缩组内实例名称序号重复。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BeginIndex
 
     @BeginIndex.setter
@@ -6438,6 +7726,9 @@ UNIQUE，入参所填的 InstanceName 相当于实例名前缀，AS 和 CVM 会�
 
     @property
     def InstanceName(self):
+        """云服务器的实例名。字符长度为[2, 108]。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -6446,6 +7737,13 @@ UNIQUE，入参所填的 InstanceName 相当于实例名前缀，AS 和 CVM 会�
 
     @property
     def InstanceNameStyle(self):
+        """云服务器实例名的风格，取值范围包括 ORIGINAL 和 UNIQUE，默认为 ORIGINAL。
+
+ORIGINAL，AS 直接将入参中所填的 InstanceName 传递给 CVM，CVM 可能会对 InstanceName 追加序列号，伸缩组中实例的 InstanceName 会出现冲突的情况。
+
+UNIQUE，入参所填的 InstanceName 相当于实例名前缀，AS 和 CVM 会对其进行拓展，伸缩组中实例的 InstanceName 可以保证唯一。
+        :rtype: str
+        """
         return self._InstanceNameStyle
 
     @InstanceNameStyle.setter
@@ -6454,6 +7752,12 @@ UNIQUE，入参所填的 InstanceName 相当于实例名前缀，AS 和 CVM 会�
 
     @property
     def InstanceNameSuffix(self):
+        """云服务器实例名后缀。字符长度为[1,105]，且与 InstanceName 的长度和不能超过107。
+
+假设后缀名称为 suffix，原实例名为 test.0，最终实例名为 test.0.suffix。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceNameSuffix
 
     @InstanceNameSuffix.setter
@@ -6492,6 +7796,9 @@ class InstanceTag(AbstractModel):
 
     @property
     def Key(self):
+        """标签键
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -6500,6 +7807,9 @@ class InstanceTag(AbstractModel):
 
     @property
     def Value(self):
+        """标签值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -6527,13 +7837,13 @@ class InternetAccessible(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InternetChargeType: 网络计费类型。取值范围：<br><li>BANDWIDTH_PREPAID：预付费按带宽结算<br><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费<br><li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费<br><li>BANDWIDTH_PACKAGE：带宽包用户<br>默认取值：TRAFFIC_POSTPAID_BY_HOUR。
+        :param _InternetChargeType: 网络计费类型。取值范围：<li>BANDWIDTH_PREPAID：预付费按带宽结算</li><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li><li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费</li><li>BANDWIDTH_PACKAGE：带宽包用户</li>默认取值：TRAFFIC_POSTPAID_BY_HOUR。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternetChargeType: str
         :param _InternetMaxBandwidthOut: 公网出带宽上限，单位：Mbps。默认值：0Mbps。不同机型带宽上限范围不一致，具体限制详见[购买网络带宽](https://cloud.tencent.com/document/product/213/509)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternetMaxBandwidthOut: int
-        :param _PublicIpAssigned: 是否分配公网IP。取值范围：<br><li>TRUE：表示分配公网IP<br><li>FALSE：表示不分配公网IP<br><br>当公网带宽大于0Mbps时，可自由选择开通与否，默认开通公网IP；当公网带宽为0，则不允许分配公网IP。
+        :param _PublicIpAssigned: 是否分配公网IP。取值范围：<li>TRUE：表示分配公网IP</li><li>FALSE：表示不分配公网IP</li>当公网带宽大于0Mbps时，可自由选择开通与否，默认开通公网IP；当公网带宽为0，则不允许分配公网IP。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIpAssigned: bool
         :param _BandwidthPackageId: 带宽包ID。可通过[DescribeBandwidthPackages](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。
@@ -6547,6 +7857,10 @@ class InternetAccessible(AbstractModel):
 
     @property
     def InternetChargeType(self):
+        """网络计费类型。取值范围：<li>BANDWIDTH_PREPAID：预付费按带宽结算</li><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li><li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费</li><li>BANDWIDTH_PACKAGE：带宽包用户</li>默认取值：TRAFFIC_POSTPAID_BY_HOUR。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InternetChargeType
 
     @InternetChargeType.setter
@@ -6555,6 +7869,10 @@ class InternetAccessible(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
+        """公网出带宽上限，单位：Mbps。默认值：0Mbps。不同机型带宽上限范围不一致，具体限制详见[购买网络带宽](https://cloud.tencent.com/document/product/213/509)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -6563,6 +7881,10 @@ class InternetAccessible(AbstractModel):
 
     @property
     def PublicIpAssigned(self):
+        """是否分配公网IP。取值范围：<li>TRUE：表示分配公网IP</li><li>FALSE：表示不分配公网IP</li>当公网带宽大于0Mbps时，可自由选择开通与否，默认开通公网IP；当公网带宽为0，则不允许分配公网IP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._PublicIpAssigned
 
     @PublicIpAssigned.setter
@@ -6571,6 +7893,10 @@ class InternetAccessible(AbstractModel):
 
     @property
     def BandwidthPackageId(self):
+        """带宽包ID。可通过[DescribeBandwidthPackages](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BandwidthPackageId
 
     @BandwidthPackageId.setter
@@ -6628,6 +7954,10 @@ class InvocationResult(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6636,6 +7966,10 @@ class InvocationResult(AbstractModel):
 
     @property
     def InvocationId(self):
+        """执行活动ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InvocationId
 
     @InvocationId.setter
@@ -6644,6 +7978,10 @@ class InvocationResult(AbstractModel):
 
     @property
     def InvocationTaskId(self):
+        """执行任务ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InvocationTaskId
 
     @InvocationTaskId.setter
@@ -6652,6 +7990,10 @@ class InvocationResult(AbstractModel):
 
     @property
     def CommandId(self):
+        """命令ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -6660,6 +8002,10 @@ class InvocationResult(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """执行任务状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -6668,6 +8014,10 @@ class InvocationResult(AbstractModel):
 
     @property
     def ErrorMessage(self):
+        """执行异常信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorMessage
 
     @ErrorMessage.setter
@@ -6804,6 +8154,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def ProjectId(self):
+        """实例所属项目ID。
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -6812,6 +8165,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def LaunchConfigurationId(self):
+        """启动配置ID。
+        :rtype: str
+        """
         return self._LaunchConfigurationId
 
     @LaunchConfigurationId.setter
@@ -6820,6 +8176,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def LaunchConfigurationName(self):
+        """启动配置名称。
+        :rtype: str
+        """
         return self._LaunchConfigurationName
 
     @LaunchConfigurationName.setter
@@ -6828,6 +8187,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def InstanceType(self):
+        """实例机型。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -6836,6 +8198,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def SystemDisk(self):
+        """实例系统盘配置信息。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
+        """
         return self._SystemDisk
 
     @SystemDisk.setter
@@ -6844,6 +8209,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def DataDisks(self):
+        """实例数据盘配置信息。
+        :rtype: list of DataDisk
+        """
         return self._DataDisks
 
     @DataDisks.setter
@@ -6852,6 +8220,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def LoginSettings(self):
+        """实例登录设置。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LimitedLoginSettings`
+        """
         return self._LoginSettings
 
     @LoginSettings.setter
@@ -6860,6 +8231,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def InternetAccessible(self):
+        """公网带宽相关信息设置。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
+        """
         return self._InternetAccessible
 
     @InternetAccessible.setter
@@ -6868,6 +8242,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """实例所属安全组。
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -6876,6 +8253,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def AutoScalingGroupAbstractSet(self):
+        """启动配置关联的伸缩组。
+        :rtype: list of AutoScalingGroupAbstract
+        """
         return self._AutoScalingGroupAbstractSet
 
     @AutoScalingGroupAbstractSet.setter
@@ -6884,6 +8264,10 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def UserData(self):
+        """自定义数据。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserData
 
     @UserData.setter
@@ -6892,6 +8276,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """启动配置创建时间。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -6900,6 +8287,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def EnhancedService(self):
+        """实例的增强服务启用情况与其设置。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
+        """
         return self._EnhancedService
 
     @EnhancedService.setter
@@ -6908,6 +8298,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def ImageId(self):
+        """镜像ID。
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -6916,6 +8309,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def LaunchConfigurationStatus(self):
+        """启动配置当前状态。取值范围：<li>NORMAL：正常</li><li>IMAGE_ABNORMAL：启动配置镜像异常</li><li>CBS_SNAP_ABNORMAL：启动配置数据盘快照异常</li><li>SECURITY_GROUP_ABNORMAL：启动配置安全组异常</li>
+        :rtype: str
+        """
         return self._LaunchConfigurationStatus
 
     @LaunchConfigurationStatus.setter
@@ -6924,6 +8320,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。<li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li>
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -6932,6 +8331,10 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def InstanceMarketOptions(self):
+        """实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
+        """
         return self._InstanceMarketOptions
 
     @InstanceMarketOptions.setter
@@ -6940,6 +8343,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def InstanceTypes(self):
+        """实例机型列表。
+        :rtype: list of str
+        """
         return self._InstanceTypes
 
     @InstanceTypes.setter
@@ -6948,6 +8354,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def InstanceTags(self):
+        """实例标签列表。扩容出来的实例会自动带上标签，最多支持10个标签。
+        :rtype: list of InstanceTag
+        """
         return self._InstanceTags
 
     @InstanceTags.setter
@@ -6956,6 +8365,10 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -6964,6 +8377,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def VersionNumber(self):
+        """版本号。
+        :rtype: int
+        """
         return self._VersionNumber
 
     @VersionNumber.setter
@@ -6972,6 +8388,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def UpdatedTime(self):
+        """更新时间。
+        :rtype: str
+        """
         return self._UpdatedTime
 
     @UpdatedTime.setter
@@ -6980,6 +8399,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def CamRoleName(self):
+        """CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
+        :rtype: str
+        """
         return self._CamRoleName
 
     @CamRoleName.setter
@@ -6988,6 +8410,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def LastOperationInstanceTypesCheckPolicy(self):
+        """上次操作时，InstanceTypesCheckPolicy 取值。
+        :rtype: str
+        """
         return self._LastOperationInstanceTypesCheckPolicy
 
     @LastOperationInstanceTypesCheckPolicy.setter
@@ -6996,6 +8421,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def HostNameSettings(self):
+        """云服务器主机名（HostName）的相关设置。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
+        """
         return self._HostNameSettings
 
     @HostNameSettings.setter
@@ -7004,6 +8432,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def InstanceNameSettings(self):
+        """云服务器实例名（InstanceName）的相关设置。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
+        """
         return self._InstanceNameSettings
 
     @InstanceNameSettings.setter
@@ -7012,6 +8443,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
+        """预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -7020,6 +8454,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def DiskTypePolicy(self):
+        """云盘类型选择策略。取值范围：<li>ORIGINAL：使用设置的云盘类型</li><li>AUTOMATIC：自动选择当前可用区下可用的云盘类型</li>
+        :rtype: str
+        """
         return self._DiskTypePolicy
 
     @DiskTypePolicy.setter
@@ -7028,6 +8465,10 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def HpcClusterId(self):
+        """高性能计算集群ID。<br>
+注意：此字段默认为空。
+        :rtype: str
+        """
         return self._HpcClusterId
 
     @HpcClusterId.setter
@@ -7036,6 +8477,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def IPv6InternetAccessible(self):
+        """IPv6公网带宽相关信息设置。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
+        """
         return self._IPv6InternetAccessible
 
     @IPv6InternetAccessible.setter
@@ -7044,6 +8488,9 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def DisasterRecoverGroupIds(self):
+        """置放群组id，仅支持指定一个。
+        :rtype: list of str
+        """
         return self._DisasterRecoverGroupIds
 
     @DisasterRecoverGroupIds.setter
@@ -7052,6 +8499,10 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def ImageFamily(self):
+        """镜像族名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ImageFamily
 
     @ImageFamily.setter
@@ -7186,6 +8637,9 @@ class LifecycleActionResultInfo(AbstractModel):
 
     @property
     def LifecycleHookId(self):
+        """生命周期挂钩标识。
+        :rtype: str
+        """
         return self._LifecycleHookId
 
     @LifecycleHookId.setter
@@ -7194,6 +8648,9 @@ class LifecycleActionResultInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例标识。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7202,6 +8659,9 @@ class LifecycleActionResultInfo(AbstractModel):
 
     @property
     def InvocationId(self):
+        """执行活动ID。可通过TAT的[查询执行活动](https://cloud.tencent.com/document/api/1340/52679)API查询具体的执行结果。
+        :rtype: str
+        """
         return self._InvocationId
 
     @InvocationId.setter
@@ -7210,6 +8670,12 @@ class LifecycleActionResultInfo(AbstractModel):
 
     @property
     def InvokeCommandResult(self):
+        """命令调用的结果，表示执行TAT命令是否成功。<br>
+<li>SUCCESSFUL 命令调用成功，不代表命令执行成功，执行的具体情况可根据InvocationId进行查询</li>
+<li>FAILED 命令调用失败</li>
+<li>NONE</li>
+        :rtype: str
+        """
         return self._InvokeCommandResult
 
     @InvokeCommandResult.setter
@@ -7218,6 +8684,12 @@ class LifecycleActionResultInfo(AbstractModel):
 
     @property
     def NotificationResult(self):
+        """通知的结果，表示通知CMQ/TDMQ是否成功。<br>
+<li>SUCCESSFUL 通知成功</li>
+<li>FAILED 通知失败</li>
+<li>NONE</li>
+        :rtype: str
+        """
         return self._NotificationResult
 
     @NotificationResult.setter
@@ -7226,6 +8698,9 @@ class LifecycleActionResultInfo(AbstractModel):
 
     @property
     def LifecycleActionResult(self):
+        """生命周期挂钩动作的执行结果，取值包括 CONTINUE、ABANDON。
+        :rtype: str
+        """
         return self._LifecycleActionResult
 
     @LifecycleActionResult.setter
@@ -7234,6 +8709,17 @@ class LifecycleActionResultInfo(AbstractModel):
 
     @property
     def ResultReason(self):
+        """结果的原因。<br>
+<li>HEARTBEAT_TIMEOUT 由于心跳超时，结果根据DefaultResult设置。</li>
+<li>NOTIFICATION_FAILURE 由于发送通知失败，结果根据DefaultResult设置。</li>
+<li>CALL_INTERFACE 调用了接口CompleteLifecycleAction设置结果。</li>
+<li>ANOTHER_ACTION_ABANDON 另一个生命周期操作的结果已设置为“ABANDON”。</li>
+<li>COMMAND_CALL_FAILURE  由于命令调用失败，结果根据DefaultResult设置。</li>
+<li>COMMAND_EXEC_FINISH  命令执行完成。</li>
+<li>COMMAND_EXEC_FAILURE 由于命令执行失败，结果根据DefaultResult设置。</li>
+<li>COMMAND_EXEC_RESULT_CHECK_FAILURE 由于命令结果检查失败，结果根据DefaultResult设置。</li>
+        :rtype: str
+        """
         return self._ResultReason
 
     @ResultReason.setter
@@ -7281,6 +8767,10 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def CommandId(self):
+        """远程命令ID。若选择执行命令，则此项必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -7289,6 +8779,13 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def Parameters(self):
+        """自定义参数。字段类型为 json encoded string。如：{"varA": "222"}。
+key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
+如果未提供该参数取值，将使用 Command 的 DefaultParameters 进行替换。
+自定义参数最多20个。自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Parameters
 
     @Parameters.setter
@@ -7354,6 +8851,9 @@ class LifecycleHook(AbstractModel):
 
     @property
     def LifecycleHookId(self):
+        """生命周期挂钩ID
+        :rtype: str
+        """
         return self._LifecycleHookId
 
     @LifecycleHookId.setter
@@ -7362,6 +8862,9 @@ class LifecycleHook(AbstractModel):
 
     @property
     def LifecycleHookName(self):
+        """生命周期挂钩名称
+        :rtype: str
+        """
         return self._LifecycleHookName
 
     @LifecycleHookName.setter
@@ -7370,6 +8873,9 @@ class LifecycleHook(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -7378,6 +8884,9 @@ class LifecycleHook(AbstractModel):
 
     @property
     def DefaultResult(self):
+        """生命周期挂钩默认结果
+        :rtype: str
+        """
         return self._DefaultResult
 
     @DefaultResult.setter
@@ -7386,6 +8895,9 @@ class LifecycleHook(AbstractModel):
 
     @property
     def HeartbeatTimeout(self):
+        """生命周期挂钩等待超时时间
+        :rtype: int
+        """
         return self._HeartbeatTimeout
 
     @HeartbeatTimeout.setter
@@ -7394,6 +8906,9 @@ class LifecycleHook(AbstractModel):
 
     @property
     def LifecycleTransition(self):
+        """生命周期挂钩适用场景
+        :rtype: str
+        """
         return self._LifecycleTransition
 
     @LifecycleTransition.setter
@@ -7402,6 +8917,9 @@ class LifecycleHook(AbstractModel):
 
     @property
     def NotificationMetadata(self):
+        """通知目标的附加信息
+        :rtype: str
+        """
         return self._NotificationMetadata
 
     @NotificationMetadata.setter
@@ -7410,6 +8928,9 @@ class LifecycleHook(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -7418,6 +8939,9 @@ class LifecycleHook(AbstractModel):
 
     @property
     def NotificationTarget(self):
+        """通知目标
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
+        """
         return self._NotificationTarget
 
     @NotificationTarget.setter
@@ -7426,6 +8950,9 @@ class LifecycleHook(AbstractModel):
 
     @property
     def LifecycleTransitionType(self):
+        """生命周期挂钩适用场景
+        :rtype: str
+        """
         return self._LifecycleTransitionType
 
     @LifecycleTransitionType.setter
@@ -7434,6 +8961,10 @@ class LifecycleHook(AbstractModel):
 
     @property
     def LifecycleCommand(self):
+        """远程命令执行对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
+        """
         return self._LifecycleCommand
 
     @LifecycleCommand.setter
@@ -7481,6 +9012,9 @@ class LimitedLoginSettings(AbstractModel):
 
     @property
     def KeyIds(self):
+        """密钥ID列表。
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -7520,6 +9054,9 @@ class LoginSettings(AbstractModel):
 
     @property
     def Password(self):
+        """实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -7528,6 +9065,9 @@ class LoginSettings(AbstractModel):
 
     @property
     def KeyIds(self):
+        """密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口DescribeKeyPairs获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。当前仅支持购买的时候指定一个密钥。
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -7536,6 +9076,9 @@ class LoginSettings(AbstractModel):
 
     @property
     def KeepImageLogin(self):
+        """保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<br><li>TRUE：表示保持镜像的登录设置<br><li>FALSE：表示不保持镜像的登录设置<br><br>默认取值：FALSE。
+        :rtype: bool
+        """
         return self._KeepImageLogin
 
     @KeepImageLogin.setter
@@ -7589,6 +9132,9 @@ class MetricAlarm(AbstractModel):
 
     @property
     def ComparisonOperator(self):
+        """比较运算符，可选值：<br><li>GREATER_THAN：大于</li><li>GREATER_THAN_OR_EQUAL_TO：大于或等于</li><li>LESS_THAN：小于</li><li> LESS_THAN_OR_EQUAL_TO：小于或等于</li><li> EQUAL_TO：等于</li> <li>NOT_EQUAL_TO：不等于</li>
+        :rtype: str
+        """
         return self._ComparisonOperator
 
     @ComparisonOperator.setter
@@ -7597,6 +9143,9 @@ class MetricAlarm(AbstractModel):
 
     @property
     def MetricName(self):
+        """指标名称，可选字段如下：<br><li>CPU_UTILIZATION：CPU利用率</li><li>MEM_UTILIZATION：内存利用率</li><li>LAN_TRAFFIC_OUT：内网出带宽</li><li>LAN_TRAFFIC_IN：内网入带宽</li><li>WAN_TRAFFIC_OUT：外网出带宽</li><li>WAN_TRAFFIC_IN：外网入带宽</li><li>TCP_CURR_ESTAB：TCP连接数</li>
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -7605,6 +9154,9 @@ class MetricAlarm(AbstractModel):
 
     @property
     def Threshold(self):
+        """告警阈值：<br><li>CPU_UTILIZATION：[1, 100]，单位：%</li><li>MEM_UTILIZATION：[1, 100]，单位：%</li><li>LAN_TRAFFIC_OUT：>0，单位：Mbps </li><li>LAN_TRAFFIC_IN：>0，单位：Mbps</li><li>WAN_TRAFFIC_OUT：>0，单位：Mbps</li><li>WAN_TRAFFIC_IN：>0，单位：Mbps</li><li>TCP_CURR_ESTAB：>0, 单位：Count</li>
+        :rtype: int
+        """
         return self._Threshold
 
     @Threshold.setter
@@ -7613,6 +9165,9 @@ class MetricAlarm(AbstractModel):
 
     @property
     def Period(self):
+        """时间周期，单位：秒，取值枚举值为60、300。
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -7621,6 +9176,9 @@ class MetricAlarm(AbstractModel):
 
     @property
     def ContinuousTime(self):
+        """重复次数。取值范围 [1, 10]
+        :rtype: int
+        """
         return self._ContinuousTime
 
     @ContinuousTime.setter
@@ -7629,6 +9187,9 @@ class MetricAlarm(AbstractModel):
 
     @property
     def Statistic(self):
+        """统计类型，可选字段如下：<br><li>AVERAGE：平均值</li><li>MAXIMUM：最大值<li>MINIMUM：最小值</li><br> 默认取值：AVERAGE
+        :rtype: str
+        """
         return self._Statistic
 
     @Statistic.setter
@@ -7637,6 +9198,9 @@ class MetricAlarm(AbstractModel):
 
     @property
     def PreciseThreshold(self):
+        """精确告警阈值，本参数不作为入参输入，仅用作查询接口出参：<br><li>CPU_UTILIZATION：(0, 100]，单位：%</li><li>MEM_UTILIZATION：(0, 100]，单位：%</li><li>LAN_TRAFFIC_OUT：>0，单位：Mbps </li><li>LAN_TRAFFIC_IN：>0，单位：Mbps</li><li>WAN_TRAFFIC_OUT：>0，单位：Mbps</li><li>WAN_TRAFFIC_IN：>0，单位：Mbps</li><li>TCP_CURR_ESTAB：>0, 单位：Count</li>
+        :rtype: float
+        """
         return self._PreciseThreshold
 
     @PreciseThreshold.setter
@@ -7766,6 +9330,9 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -7774,6 +9341,9 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def AutoScalingGroupName(self):
+        """伸缩组名称，在您账号中必须唯一。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超55个字节。
+        :rtype: str
+        """
         return self._AutoScalingGroupName
 
     @AutoScalingGroupName.setter
@@ -7782,6 +9352,9 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def DefaultCooldown(self):
+        """默认冷却时间，单位秒，默认值为300
+        :rtype: int
+        """
         return self._DefaultCooldown
 
     @DefaultCooldown.setter
@@ -7790,6 +9363,9 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def DesiredCapacity(self):
+        """期望实例数，大小介于最小实例数和最大实例数之间
+        :rtype: int
+        """
         return self._DesiredCapacity
 
     @DesiredCapacity.setter
@@ -7798,6 +9374,9 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def LaunchConfigurationId(self):
+        """启动配置ID
+        :rtype: str
+        """
         return self._LaunchConfigurationId
 
     @LaunchConfigurationId.setter
@@ -7806,6 +9385,9 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def MaxSize(self):
+        """最大实例数，取值范围为0-2000。
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -7814,6 +9396,9 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def MinSize(self):
+        """最小实例数，取值范围为0-2000。
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -7822,6 +9407,9 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -7830,6 +9418,9 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def SubnetIds(self):
+        """子网ID列表
+        :rtype: list of str
+        """
         return self._SubnetIds
 
     @SubnetIds.setter
@@ -7838,6 +9429,11 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def TerminationPolicies(self):
+        """销毁策略，目前长度上限为1。取值包括 OLDEST_INSTANCE 和 NEWEST_INSTANCE。
+<li> OLDEST_INSTANCE 优先销毁伸缩组中最旧的实例。</li>
+<li> NEWEST_INSTANCE，优先销毁伸缩组中最新的实例。</li>
+        :rtype: list of str
+        """
         return self._TerminationPolicies
 
     @TerminationPolicies.setter
@@ -7846,6 +9442,9 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID，基础网络则填空字符串。修改为具体VPC ID时，需指定相应的SubnetIds；修改为基础网络时，需指定相应的Zones。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -7854,6 +9453,9 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def Zones(self):
+        """可用区列表
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -7862,6 +9464,12 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def RetryPolicy(self):
+        """重试策略，取值包括 IMMEDIATE_RETRY、 INCREMENTAL_INTERVALS、NO_RETRY，默认取值为 IMMEDIATE_RETRY。部分成功的伸缩活动判定为一次失败活动。
+<li>IMMEDIATE_RETRY，立即重试，在较短时间内快速重试，连续失败超过一定次数（5次）后不再重试。</li>
+<li>INCREMENTAL_INTERVALS，间隔递增重试，随着连续失败次数的增加，重试间隔逐渐增大，重试间隔从秒级到1天不等。</li>
+<li> NO_RETRY，不进行重试，直到再次收到用户调用或者告警信息后才会重试。</li>
+        :rtype: str
+        """
         return self._RetryPolicy
 
     @RetryPolicy.setter
@@ -7870,6 +9478,14 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def ZonesCheckPolicy(self):
+        """可用区校验策略，取值包括 ALL 和 ANY，默认取值为ANY。在伸缩组实际变更资源相关字段时（启动配置、可用区、子网）发挥作用。
+<li> ALL，所有可用区（Zone）或子网（SubnetId）都可用则通过校验，否则校验报错。</li>
+<li> ANY，存在任何一个可用区（Zone）或子网（SubnetId）可用则通过校验，否则校验报错。</li>
+
+可用区或子网不可用的常见原因包括该可用区CVM实例类型售罄、该可用区CBS云盘售罄、该可用区配额不足、该子网IP不足等。
+如果 Zones/SubnetIds 中可用区或者子网不存在，则无论 ZonesCheckPolicy 采用何种取值，都会校验报错。
+        :rtype: str
+        """
         return self._ZonesCheckPolicy
 
     @ZonesCheckPolicy.setter
@@ -7878,6 +9494,9 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def ServiceSettings(self):
+        """服务设置，包括云监控不健康替换等服务设置。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
+        """
         return self._ServiceSettings
 
     @ServiceSettings.setter
@@ -7886,6 +9505,9 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def Ipv6AddressCount(self):
+        """实例具有IPv6地址数量的配置，取值包括0、1。
+        :rtype: int
+        """
         return self._Ipv6AddressCount
 
     @Ipv6AddressCount.setter
@@ -7894,6 +9516,16 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def MultiZoneSubnetPolicy(self):
+        """多可用区/子网策略，取值包括 PRIORITY 和 EQUALITY，默认为 PRIORITY。
+<li> PRIORITY，按照可用区/子网列表的顺序，作为优先级来尝试创建实例，如果优先级最高的可用区/子网可以创建成功，则总在该可用区/子网创建。</li> 
+<li> EQUALITY：扩容出的实例会打散到多个可用区/子网，保证扩容后的各个可用区/子网实例数相对均衡。</li> 
+
+与本策略相关的注意点：
+<li> 当伸缩组为基础网络时，本策略适用于多可用区；当伸缩组为VPC网络时，本策略适用于多子网，此时不再考虑可用区因素，例如四个子网ABCD，其中ABC处于可用区1，D处于可用区2，此时考虑子网ABCD进行排序，而不考虑可用区1、2。</li> 
+<li> 本策略适用于多可用区/子网，不适用于启动配置的多机型。多机型按照优先级策略进行选择。</li> 
+<li> 按照 PRIORITY 策略创建实例时，先保证多机型的策略，后保证多可用区/子网的策略。例如多机型A、B，多子网1、2、3，会按照A1、A2、A3、B1、B2、B3 进行尝试，如果A1售罄，会尝试A2（而非B1）。</li> 
+        :rtype: str
+        """
         return self._MultiZoneSubnetPolicy
 
     @MultiZoneSubnetPolicy.setter
@@ -7902,6 +9534,11 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def HealthCheckType(self):
+        """伸缩组实例健康检查类型，取值如下：
+<li>CVM：根据实例网络状态判断实例是否处于不健康状态，不健康的网络状态即发生实例 PING 不可达事件，详细判断标准可参考[实例健康检查](https://cloud.tencent.com/document/product/377/8553)</li>
+<li>CLB：根据 CLB 的健康检查状态判断实例是否处于不健康状态，CLB健康检查原理可参考[健康检查](https://cloud.tencent.com/document/product/214/6097)</li>
+        :rtype: str
+        """
         return self._HealthCheckType
 
     @HealthCheckType.setter
@@ -7910,6 +9547,9 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def LoadBalancerHealthCheckGracePeriod(self):
+        """CLB健康检查宽限期。
+        :rtype: int
+        """
         return self._LoadBalancerHealthCheckGracePeriod
 
     @LoadBalancerHealthCheckGracePeriod.setter
@@ -7918,6 +9558,11 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def InstanceAllocationPolicy(self):
+        """实例分配策略，取值包括 LAUNCH_CONFIGURATION 和 SPOT_MIXED。
+<li> LAUNCH_CONFIGURATION，代表传统的按照启动配置模式。</li>
+<li> SPOT_MIXED，代表竞价混合模式。目前仅支持启动配置为按量计费模式时使用混合模式，混合模式下，伸缩组将根据设定扩容按量或竞价机型。使用混合模式时，关联的启动配置的计费类型不可被修改。</li>
+        :rtype: str
+        """
         return self._InstanceAllocationPolicy
 
     @InstanceAllocationPolicy.setter
@@ -7926,6 +9571,10 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def SpotMixedAllocationPolicy(self):
+        """竞价混合模式下，各计费类型实例的分配策略。
+仅当 InstanceAllocationPolicy 取 SPOT_MIXED 时可用。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SpotMixedAllocationPolicy`
+        """
         return self._SpotMixedAllocationPolicy
 
     @SpotMixedAllocationPolicy.setter
@@ -7934,6 +9583,11 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def CapacityRebalance(self):
+        """容量重平衡功能，仅对伸缩组内的竞价实例有效。取值范围：
+<li> TRUE，开启该功能，当伸缩组内的竞价实例即将被竞价实例服务自动回收前，AS 主动发起竞价实例销毁流程，如果有配置过缩容 hook，则销毁前 hook 会生效。销毁流程启动后，AS 会异步开启一个扩容活动，用于补齐期望实例数。</li> 
+<li> FALSE，不开启该功能，则 AS 等待竞价实例被销毁后才会去扩容补齐伸缩组期望实例数。</li> 
+        :rtype: bool
+        """
         return self._CapacityRebalance
 
     @CapacityRebalance.setter
@@ -7942,6 +9596,9 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def InstanceNameIndexSettings(self):
+        """实例名称序号相关设置。开启后为伸缩组内自动创建的实例名称添加递增的数字序号。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
+        """
         return self._InstanceNameIndexSettings
 
     @InstanceNameIndexSettings.setter
@@ -8003,6 +9660,9 @@ class ModifyAutoScalingGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8037,6 +9697,9 @@ class ModifyDesiredCapacityRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -8045,6 +9708,9 @@ class ModifyDesiredCapacityRequest(AbstractModel):
 
     @property
     def DesiredCapacity(self):
+        """期望实例数
+        :rtype: int
+        """
         return self._DesiredCapacity
 
     @DesiredCapacity.setter
@@ -8053,6 +9719,9 @@ class ModifyDesiredCapacityRequest(AbstractModel):
 
     @property
     def MinSize(self):
+        """最小实例数，取值范围为0-2000。
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -8061,6 +9730,9 @@ class ModifyDesiredCapacityRequest(AbstractModel):
 
     @property
     def MaxSize(self):
+        """最大实例数，取值范围为0-2000。
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -8097,6 +9769,9 @@ class ModifyDesiredCapacityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8217,6 +9892,9 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def LaunchConfigurationId(self):
+        """启动配置ID
+        :rtype: str
+        """
         return self._LaunchConfigurationId
 
     @LaunchConfigurationId.setter
@@ -8225,6 +9903,9 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def ImageId(self):
+        """指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -8233,6 +9914,10 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def InstanceTypes(self):
+        """实例类型列表，不同实例机型指定了不同的资源规格，最多支持10种实例机型。
+InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定多实例类型，并使原有的InstanceType失效。
+        :rtype: list of str
+        """
         return self._InstanceTypes
 
     @InstanceTypes.setter
@@ -8241,6 +9926,13 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def InstanceTypesCheckPolicy(self):
+        """实例类型校验策略，在实际修改 InstanceTypes 时发挥作用，取值包括 ALL 和 ANY，默认取值为ANY。
+<li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。</li> 
+<li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。</li> 
+实例类型不可用的常见原因包括该实例类型售罄、对应云盘售罄等。
+如果 InstanceTypes 中一款机型不存在或者已下线，则无论 InstanceTypesCheckPolicy 采用何种取值，都会校验报错。
+        :rtype: str
+        """
         return self._InstanceTypesCheckPolicy
 
     @InstanceTypesCheckPolicy.setter
@@ -8249,6 +9941,9 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def LaunchConfigurationName(self):
+        """启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
+        :rtype: str
+        """
         return self._LaunchConfigurationName
 
     @LaunchConfigurationName.setter
@@ -8257,6 +9952,9 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def UserData(self):
+        """经过 Base64 编码后的自定义数据，最大长度不超过16KB。如果要清空UserData，则指定其为空字符串。
+        :rtype: str
+        """
         return self._UserData
 
     @UserData.setter
@@ -8265,6 +9963,10 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def SecurityGroupIds(self):
+        """实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的`SecurityGroupId`字段来获取。
+若指定该参数，请至少提供一个安全组，列表顺序有先后。
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -8273,6 +9975,10 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def InternetAccessible(self):
+        """公网带宽相关信息设置。
+当公网出带宽上限为0Mbps时，不支持修改为开通分配公网IP；相应的，当前为开通分配公网IP时，修改的公网出带宽上限值必须大于0Mbps。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
+        """
         return self._InternetAccessible
 
     @InternetAccessible.setter
@@ -8281,6 +9987,12 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def InstanceChargeType(self):
+        """实例计费类型。具体取值范围如下：
+<li>POSTPAID_BY_HOUR：按小时后付费</li>
+<li>SPOTPAID：竞价付费</li>
+<li>PREPAID：预付费，即包年包月</li>
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -8289,6 +10001,12 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def InstanceChargePrepaid(self):
+        """预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
+若修改实例的付费模式为预付费，则该参数必传；从预付费修改为其他付费模式时，本字段原信息会自动丢弃。
+当新增该字段时，必须传递购买实例的时长，其它未传递字段会设置为默认值。
+当修改本字段时，当前付费模式必须为预付费。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -8297,6 +10015,12 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def InstanceMarketOptions(self):
+        """实例的市场相关选项，如竞价实例相关参数。
+若修改实例的付费模式为竞价付费，则该参数必传；从竞价付费修改为其他付费模式时，本字段原信息会自动丢弃。
+当新增该字段时，必须传递竞价相关选项下的竞价出价，其它未传递字段会设置为默认值。
+当修改本字段时，当前付费模式必须为竞价付费。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
+        """
         return self._InstanceMarketOptions
 
     @InstanceMarketOptions.setter
@@ -8305,6 +10029,11 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def DiskTypePolicy(self):
+        """云盘类型选择策略，取值范围：
+<li>ORIGINAL：使用设置的云盘类型。</li>
+<li>AUTOMATIC：自动选择当前可用的云盘类型。</li>
+        :rtype: str
+        """
         return self._DiskTypePolicy
 
     @DiskTypePolicy.setter
@@ -8313,6 +10042,9 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def SystemDisk(self):
+        """实例系统盘配置信息。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
+        """
         return self._SystemDisk
 
     @SystemDisk.setter
@@ -8321,6 +10053,11 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def DataDisks(self):
+        """实例数据盘配置信息。
+最多支持指定11块数据盘。采取整体修改，因此请提供修改后的全部值。
+数据盘类型默认与系统盘类型保持一致。
+        :rtype: list of DataDisk
+        """
         return self._DataDisks
 
     @DataDisks.setter
@@ -8329,6 +10066,11 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def HostNameSettings(self):
+        """云服务器主机名（HostName）的相关设置。
+不支持windows实例设置主机名。
+新增该属性时，必须传递云服务器的主机名，其它未传递字段会设置为默认值。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
+        """
         return self._HostNameSettings
 
     @HostNameSettings.setter
@@ -8337,6 +10079,11 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def InstanceNameSettings(self):
+        """云服务器（InstanceName）实例名的相关设置。 
+如果用户在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 参照此字段进行设置，并传递给 CVM；如果用户未在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置，并传递给 CVM。
+新增该属性时，必须传递云服务器的实例名称，其它未传递字段会设置为默认值。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
+        """
         return self._InstanceNameSettings
 
     @InstanceNameSettings.setter
@@ -8345,6 +10092,9 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def EnhancedService(self):
+        """增强服务。通过该参数可以指定是否开启云安全、云监控等服务。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
+        """
         return self._EnhancedService
 
     @EnhancedService.setter
@@ -8353,6 +10103,9 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def CamRoleName(self):
+        """CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
+        :rtype: str
+        """
         return self._CamRoleName
 
     @CamRoleName.setter
@@ -8361,6 +10114,10 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def HpcClusterId(self):
+        """高性能计算集群ID。<br>
+注意：此字段默认为空。
+        :rtype: str
+        """
         return self._HpcClusterId
 
     @HpcClusterId.setter
@@ -8369,6 +10126,9 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def IPv6InternetAccessible(self):
+        """IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
+        """
         return self._IPv6InternetAccessible
 
     @IPv6InternetAccessible.setter
@@ -8377,6 +10137,9 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def DisasterRecoverGroupIds(self):
+        """置放群组id，仅支持指定一个。
+        :rtype: list of str
+        """
         return self._DisasterRecoverGroupIds
 
     @DisasterRecoverGroupIds.setter
@@ -8385,6 +10148,9 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def LoginSettings(self):
+        """实例登录设置，包括密码、密钥或保持镜像的原始登录设置。<br>请注意，指定新的登录设置会覆盖原有登录设置。例如，如果您之前使用密码登录，使用该参数将登录设置修改为密钥，则原有密码被清除。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
+        """
         return self._LoginSettings
 
     @LoginSettings.setter
@@ -8393,6 +10159,10 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def InstanceTags(self):
+        """实例标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。
+该参数会覆盖原有的实例标签列表，如需新增标签，需将新标签和原有标签一并传入。
+        :rtype: list of InstanceTag
+        """
         return self._InstanceTags
 
     @InstanceTags.setter
@@ -8401,6 +10171,9 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def ImageFamily(self):
+        """镜像族名称。
+        :rtype: str
+        """
         return self._ImageFamily
 
     @ImageFamily.setter
@@ -8485,6 +10258,9 @@ class ModifyLaunchConfigurationAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8538,6 +10314,9 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleHookId(self):
+        """生命周期挂钩ID。
+        :rtype: str
+        """
         return self._LifecycleHookId
 
     @LifecycleHookId.setter
@@ -8546,6 +10325,9 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleHookName(self):
+        """生命周期挂钩名称。
+        :rtype: str
+        """
         return self._LifecycleHookName
 
     @LifecycleHookName.setter
@@ -8554,6 +10336,11 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleTransition(self):
+        """进入生命周期挂钩场景，取值包括：
+<li> INSTANCE_LAUNCHING：实例启动后
+<li> INSTANCE_TERMINATING：实例销毁前
+        :rtype: str
+        """
         return self._LifecycleTransition
 
     @LifecycleTransition.setter
@@ -8562,6 +10349,11 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def DefaultResult(self):
+        """定义伸缩组在生命周期挂钩超时的情况下应采取的操作，取值包括：
+<li> CONTINUE： 超时后继续伸缩活动
+<li> ABANDON：超时后终止伸缩活动
+        :rtype: str
+        """
         return self._DefaultResult
 
     @DefaultResult.setter
@@ -8570,6 +10362,9 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def HeartbeatTimeout(self):
+        """生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从 30 到 7200 秒。
+        :rtype: int
+        """
         return self._HeartbeatTimeout
 
     @HeartbeatTimeout.setter
@@ -8578,6 +10373,9 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def NotificationMetadata(self):
+        """弹性伸缩向通知目标发送的附加信息。
+        :rtype: str
+        """
         return self._NotificationMetadata
 
     @NotificationMetadata.setter
@@ -8586,6 +10384,9 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleTransitionType(self):
+        """进行生命周期挂钩的场景类型，取值范围包括`NORMAL`和 `EXTENSION`。说明：设置为`EXTENSION`值，在AttachInstances、DetachInstances、RemoveInstances 接口时会触发生命周期挂钩操作，值为`NORMAL`则不会在这些接口中触发生命周期挂钩。
+        :rtype: str
+        """
         return self._LifecycleTransitionType
 
     @LifecycleTransitionType.setter
@@ -8594,6 +10395,9 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def NotificationTarget(self):
+        """通知目标信息。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
+        """
         return self._NotificationTarget
 
     @NotificationTarget.setter
@@ -8602,6 +10406,9 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleCommand(self):
+        """远程命令执行对象。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
+        """
         return self._LifecycleCommand
 
     @LifecycleCommand.setter
@@ -8647,6 +10454,9 @@ class ModifyLifecycleHookResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8675,6 +10485,9 @@ class ModifyLoadBalancerTargetAttributesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -8683,6 +10496,9 @@ class ModifyLoadBalancerTargetAttributesRequest(AbstractModel):
 
     @property
     def ForwardLoadBalancers(self):
+        """需修改目标规则属性的应用型负载均衡器列表，列表长度上限为100
+        :rtype: list of ForwardLoadBalancer
+        """
         return self._ForwardLoadBalancers
 
     @ForwardLoadBalancers.setter
@@ -8725,6 +10541,9 @@ class ModifyLoadBalancerTargetAttributesResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """伸缩活动ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -8733,6 +10552,9 @@ class ModifyLoadBalancerTargetAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8770,6 +10592,9 @@ class ModifyLoadBalancersRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -8778,6 +10603,9 @@ class ModifyLoadBalancersRequest(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
+        """传统负载均衡器ID列表，目前长度上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+        :rtype: list of str
+        """
         return self._LoadBalancerIds
 
     @LoadBalancerIds.setter
@@ -8786,6 +10614,9 @@ class ModifyLoadBalancersRequest(AbstractModel):
 
     @property
     def ForwardLoadBalancers(self):
+        """应用型负载均衡器列表，目前长度上限为100，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+        :rtype: list of ForwardLoadBalancer
+        """
         return self._ForwardLoadBalancers
 
     @ForwardLoadBalancers.setter
@@ -8794,6 +10625,11 @@ class ModifyLoadBalancersRequest(AbstractModel):
 
     @property
     def LoadBalancersCheckPolicy(self):
+        """负载均衡器校验策略，取值包括 ALL 和 DIFF，默认取值为 ALL。
+<br><li> ALL，所有负载均衡器都合法则通过校验，否则校验报错。
+<br><li> DIFF，仅校验负载均衡器参数中实际变化的部分，如果合法则通过校验，否则校验报错。
+        :rtype: str
+        """
         return self._LoadBalancersCheckPolicy
 
     @LoadBalancersCheckPolicy.setter
@@ -8838,6 +10674,9 @@ class ModifyLoadBalancersResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """伸缩活动ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -8846,6 +10685,9 @@ class ModifyLoadBalancersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8890,6 +10732,9 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
 
     @property
     def AutoScalingNotificationId(self):
+        """待修改的通知ID。
+        :rtype: str
+        """
         return self._AutoScalingNotificationId
 
     @AutoScalingNotificationId.setter
@@ -8898,6 +10743,15 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
 
     @property
     def NotificationTypes(self):
+        """通知类型，即为需要订阅的通知类型集合，取值范围如下：
+<li>SCALE_OUT_SUCCESSFUL：扩容成功</li>
+<li>SCALE_OUT_FAILED：扩容失败</li>
+<li>SCALE_IN_SUCCESSFUL：缩容成功</li>
+<li>SCALE_IN_FAILED：缩容失败</li>
+<li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL：替换不健康子机成功</li>
+<li>REPLACE_UNHEALTHY_INSTANCE_FAILED：替换不健康子机失败</li>
+        :rtype: list of str
+        """
         return self._NotificationTypes
 
     @NotificationTypes.setter
@@ -8906,6 +10760,9 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
 
     @property
     def NotificationUserGroupIds(self):
+        """通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
+        :rtype: list of str
+        """
         return self._NotificationUserGroupIds
 
     @NotificationUserGroupIds.setter
@@ -8914,6 +10771,9 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
 
     @property
     def QueueName(self):
+        """CMQ 队列或 TDMQ CMQ 队列名。
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -8922,6 +10782,9 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """CMQ 主题或 TDMQ CMQ 主题名。
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -8959,6 +10822,9 @@ class ModifyNotificationConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9015,6 +10881,9 @@ class ModifyScalingPolicyRequest(AbstractModel):
 
     @property
     def AutoScalingPolicyId(self):
+        """告警策略ID。
+        :rtype: str
+        """
         return self._AutoScalingPolicyId
 
     @AutoScalingPolicyId.setter
@@ -9023,6 +10892,9 @@ class ModifyScalingPolicyRequest(AbstractModel):
 
     @property
     def ScalingPolicyName(self):
+        """告警策略名称。
+        :rtype: str
+        """
         return self._ScalingPolicyName
 
     @ScalingPolicyName.setter
@@ -9031,6 +10903,9 @@ class ModifyScalingPolicyRequest(AbstractModel):
 
     @property
     def AdjustmentType(self):
+        """告警触发后，期望实例数修改方式，仅适用于简单策略。取值范围：<br><li>CHANGE_IN_CAPACITY：增加或减少若干期望实例数</li><li>EXACT_CAPACITY：调整至指定期望实例数</li> <li>PERCENT_CHANGE_IN_CAPACITY：按百分比调整期望实例数</li>
+        :rtype: str
+        """
         return self._AdjustmentType
 
     @AdjustmentType.setter
@@ -9039,6 +10914,9 @@ class ModifyScalingPolicyRequest(AbstractModel):
 
     @property
     def AdjustmentValue(self):
+        """告警触发后，期望实例数的调整值，仅适用于简单策略。<li>当 AdjustmentType 为 CHANGE_IN_CAPACITY 时，AdjustmentValue 为正数表示告警触发后增加实例，为负数表示告警触发后减少实例 </li> <li> 当 AdjustmentType 为 EXACT_CAPACITY 时，AdjustmentValue 的值即为告警触发后新的期望实例数，需要大于或等于0 </li> <li> 当 AdjustmentType 为 PERCENT_CHANGE_IN_CAPACITY 时，AdjusmentValue 为正数表示告警触发后按百分比增加实例，为负数表示告警触发后按百分比减少实例，单位是：%。</li>
+        :rtype: int
+        """
         return self._AdjustmentValue
 
     @AdjustmentValue.setter
@@ -9047,6 +10925,9 @@ class ModifyScalingPolicyRequest(AbstractModel):
 
     @property
     def Cooldown(self):
+        """冷却时间，仅适用于简单策略，单位为秒。
+        :rtype: int
+        """
         return self._Cooldown
 
     @Cooldown.setter
@@ -9055,6 +10936,9 @@ class ModifyScalingPolicyRequest(AbstractModel):
 
     @property
     def MetricAlarm(self):
+        """告警监控指标，仅适用于简单策略。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
+        """
         return self._MetricAlarm
 
     @MetricAlarm.setter
@@ -9063,6 +10947,9 @@ class ModifyScalingPolicyRequest(AbstractModel):
 
     @property
     def PredefinedMetricType(self):
+        """预定义监控项，仅适用于目标追踪策略。取值范围：<br><li>ASG_AVG_CPU_UTILIZATION：平均CPU使用率</li><li>ASG_AVG_LAN_TRAFFIC_OUT：平均内网出带宽</li><li>ASG_AVG_LAN_TRAFFIC_IN：平均内网入带宽</li><li>ASG_AVG_WAN_TRAFFIC_OUT：平均外网出带宽</li><li>ASG_AVG_WAN_TRAFFIC_IN：平均外网出带宽</li>
+        :rtype: str
+        """
         return self._PredefinedMetricType
 
     @PredefinedMetricType.setter
@@ -9071,6 +10958,9 @@ class ModifyScalingPolicyRequest(AbstractModel):
 
     @property
     def TargetValue(self):
+        """目标值，仅适用于目标追踪策略。<br><li>ASG_AVG_CPU_UTILIZATION：[1, 100)，单位：%</li><li>ASG_AVG_LAN_TRAFFIC_OUT：>0，单位：Mbps</li><li>ASG_AVG_LAN_TRAFFIC_IN：>0，单位：Mbps</li><li>ASG_AVG_WAN_TRAFFIC_OUT：>0，单位：Mbps</li><li>ASG_AVG_WAN_TRAFFIC_IN：>0，单位：Mbps</li>
+        :rtype: int
+        """
         return self._TargetValue
 
     @TargetValue.setter
@@ -9079,6 +10969,9 @@ class ModifyScalingPolicyRequest(AbstractModel):
 
     @property
     def EstimatedInstanceWarmup(self):
+        """实例预热时间，单位为秒，仅适用于目标追踪策略。取值范围为0-3600。
+        :rtype: int
+        """
         return self._EstimatedInstanceWarmup
 
     @EstimatedInstanceWarmup.setter
@@ -9087,6 +10980,9 @@ class ModifyScalingPolicyRequest(AbstractModel):
 
     @property
     def DisableScaleIn(self):
+        """是否禁用缩容，仅适用于目标追踪策略。取值范围：<br><li>true：目标追踪策略仅触发扩容</li><li>false：目标追踪策略触发扩容和缩容</li>
+        :rtype: bool
+        """
         return self._DisableScaleIn
 
     @DisableScaleIn.setter
@@ -9095,6 +10991,10 @@ class ModifyScalingPolicyRequest(AbstractModel):
 
     @property
     def NotificationUserGroupIds(self):
+        """此参数已不再生效，请使用[创建通知](https://cloud.tencent.com/document/api/377/33185)。
+通知组ID，即为用户组ID集合。
+        :rtype: list of str
+        """
         return self._NotificationUserGroupIds
 
     @NotificationUserGroupIds.setter
@@ -9140,6 +11040,9 @@ class ModifyScalingPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9186,6 +11089,9 @@ class ModifyScheduledActionRequest(AbstractModel):
 
     @property
     def ScheduledActionId(self):
+        """待修改的定时任务ID
+        :rtype: str
+        """
         return self._ScheduledActionId
 
     @ScheduledActionId.setter
@@ -9194,6 +11100,9 @@ class ModifyScheduledActionRequest(AbstractModel):
 
     @property
     def ScheduledActionName(self):
+        """定时任务名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。同一伸缩组下必须唯一。
+        :rtype: str
+        """
         return self._ScheduledActionName
 
     @ScheduledActionName.setter
@@ -9202,6 +11111,9 @@ class ModifyScheduledActionRequest(AbstractModel):
 
     @property
     def MaxSize(self):
+        """当定时任务触发时，设置的伸缩组最大实例数。
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -9210,6 +11122,9 @@ class ModifyScheduledActionRequest(AbstractModel):
 
     @property
     def MinSize(self):
+        """当定时任务触发时，设置的伸缩组最小实例数。
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -9218,6 +11133,9 @@ class ModifyScheduledActionRequest(AbstractModel):
 
     @property
     def DesiredCapacity(self):
+        """当定时任务触发时，设置的伸缩组期望实例数。
+        :rtype: int
+        """
         return self._DesiredCapacity
 
     @DesiredCapacity.setter
@@ -9226,6 +11144,9 @@ class ModifyScheduledActionRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """定时任务的首次触发时间，取值为`北京时间`（UTC+8），按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ss+08:00`。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9234,6 +11155,9 @@ class ModifyScheduledActionRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """定时任务的结束时间，取值为`北京时间`（UTC+8），按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ss+08:00`。<br>此参数与`Recurrence`需要同时指定，到达结束时间之后，定时任务将不再生效。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9242,6 +11166,9 @@ class ModifyScheduledActionRequest(AbstractModel):
 
     @property
     def Recurrence(self):
+        """定时任务的重复方式。为标准 Cron 格式<br>此参数与`EndTime`需要同时指定。
+        :rtype: str
+        """
         return self._Recurrence
 
     @Recurrence.setter
@@ -9282,6 +11209,9 @@ class ModifyScheduledActionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9317,6 +11247,13 @@ class NotificationTarget(AbstractModel):
 
     @property
     def TargetType(self):
+        """目标类型，取值范围包括`CMQ_QUEUE`、`CMQ_TOPIC`、`TDMQ_CMQ_QUEUE`、`TDMQ_CMQ_TOPIC`。
+<li> CMQ_QUEUE，指腾讯云消息队列-队列模型。</li>
+<li> CMQ_TOPIC，指腾讯云消息队列-主题模型。</li>
+<li> TDMQ_CMQ_QUEUE，指腾讯云 TDMQ 消息队列-队列模型。</li>
+<li> TDMQ_CMQ_TOPIC，指腾讯云 TDMQ 消息队列-主题模型。</li>
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -9325,6 +11262,9 @@ class NotificationTarget(AbstractModel):
 
     @property
     def QueueName(self):
+        """队列名称，如果`TargetType`取值为`CMQ_QUEUE` 或 `TDMQ_CMQ_QUEUE`，则本字段必填。
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -9333,6 +11273,9 @@ class NotificationTarget(AbstractModel):
 
     @property
     def TopicName(self):
+        """主题名称，如果`TargetType`取值为`CMQ_TOPIC` 或 `TDMQ_CMQ_TOPIC`，则本字段必填。
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -9406,6 +11349,9 @@ class RefreshActivity(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组 ID。
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -9414,6 +11360,9 @@ class RefreshActivity(AbstractModel):
 
     @property
     def RefreshActivityId(self):
+        """刷新活动 ID。
+        :rtype: str
+        """
         return self._RefreshActivityId
 
     @RefreshActivityId.setter
@@ -9422,6 +11371,10 @@ class RefreshActivity(AbstractModel):
 
     @property
     def OriginRefreshActivityId(self):
+        """原始刷新活动ID，仅在回滚刷新活动中存在。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OriginRefreshActivityId
 
     @OriginRefreshActivityId.setter
@@ -9430,6 +11383,9 @@ class RefreshActivity(AbstractModel):
 
     @property
     def RefreshBatchSet(self):
+        """刷新批次信息列表。
+        :rtype: list of RefreshBatch
+        """
         return self._RefreshBatchSet
 
     @RefreshBatchSet.setter
@@ -9438,6 +11394,9 @@ class RefreshActivity(AbstractModel):
 
     @property
     def RefreshMode(self):
+        """刷新模式。
+        :rtype: str
+        """
         return self._RefreshMode
 
     @RefreshMode.setter
@@ -9446,6 +11405,9 @@ class RefreshActivity(AbstractModel):
 
     @property
     def RefreshSettings(self):
+        """实例更新设置参数。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.RefreshSettings`
+        """
         return self._RefreshSettings
 
     @RefreshSettings.setter
@@ -9454,6 +11416,9 @@ class RefreshActivity(AbstractModel):
 
     @property
     def ActivityType(self):
+        """刷新活动类型。取值如下：<br><li>NORMAL：正常刷新活动</li><li>ROLLBACK：回滚刷新活动
+        :rtype: str
+        """
         return self._ActivityType
 
     @ActivityType.setter
@@ -9462,6 +11427,9 @@ class RefreshActivity(AbstractModel):
 
     @property
     def Status(self):
+        """刷新活动状态。取值如下：<br><li>INIT：初始化中</li><li>RUNNING：运行中</li><li>SUCCESSFUL：活动成功</li><li>FAILED_PAUSE：因刷新批次失败暂停</li><li>AUTO_PAUSE：因暂停策略自动暂停</li><li>MANUAL_PAUSE：手动暂停</li><li>CANCELLED：活动取消</li><li>FAILED：活动失败
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -9470,6 +11438,10 @@ class RefreshActivity(AbstractModel):
 
     @property
     def CurrentRefreshBatchNum(self):
+        """当前刷新批次序号。例如，2 表示当前活动正在刷新第二批次的实例。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CurrentRefreshBatchNum
 
     @CurrentRefreshBatchNum.setter
@@ -9478,6 +11450,10 @@ class RefreshActivity(AbstractModel):
 
     @property
     def StartTime(self):
+        """刷新活动开始时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9486,6 +11462,10 @@ class RefreshActivity(AbstractModel):
 
     @property
     def EndTime(self):
+        """刷新活动结束时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9494,6 +11474,10 @@ class RefreshActivity(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """刷新活动创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -9559,6 +11543,9 @@ class RefreshBatch(AbstractModel):
 
     @property
     def RefreshBatchNum(self):
+        """刷新批次序号。例如，2 表示当前批次实例会在第二批次进行实例刷新。
+        :rtype: int
+        """
         return self._RefreshBatchNum
 
     @RefreshBatchNum.setter
@@ -9567,6 +11554,9 @@ class RefreshBatch(AbstractModel):
 
     @property
     def RefreshBatchStatus(self):
+        """刷新批次状态。取值如下：<br><li>WAITING：待刷新</li><li>INIT：初始化中</li><li>RUNNING：刷新中</li><li>FAILED:  刷新失败</li><li>PARTIALLY_SUCCESSFUL：批次部分成功</li><li>CANCELLED：已取消</li><li>SUCCESSFUL：刷新成功
+        :rtype: str
+        """
         return self._RefreshBatchStatus
 
     @RefreshBatchStatus.setter
@@ -9575,6 +11565,9 @@ class RefreshBatch(AbstractModel):
 
     @property
     def RefreshBatchRelatedInstanceSet(self):
+        """刷新批次关联实例列表。
+        :rtype: list of RefreshBatchRelatedInstance
+        """
         return self._RefreshBatchRelatedInstanceSet
 
     @RefreshBatchRelatedInstanceSet.setter
@@ -9583,6 +11576,10 @@ class RefreshBatch(AbstractModel):
 
     @property
     def StartTime(self):
+        """刷新批次开始时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9591,6 +11588,10 @@ class RefreshBatch(AbstractModel):
 
     @property
     def EndTime(self):
+        """刷新批次结束时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9645,6 +11646,9 @@ class RefreshBatchRelatedInstance(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -9653,6 +11657,9 @@ class RefreshBatchRelatedInstance(AbstractModel):
 
     @property
     def InstanceStatus(self):
+        """刷新实例状态。如果在刷新时实例被移出或销毁，状态会更新为 NOT_FOUND。取值如下：<br><li>WAITING：待刷新</li><li>INIT：初始化中</li><li>RUNNING：刷新中</li><li>FAILED：刷新失败</li><li>CANCELLED：已取消</li><li>SUCCESSFUL：刷新成功</li><li>NOT_FOUND：实例不存在
+        :rtype: str
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -9661,6 +11668,11 @@ class RefreshBatchRelatedInstance(AbstractModel):
 
     @property
     def LastActivityId(self):
+        """实例刷新中最近一次伸缩活动 ID，可通过 DescribeAutoScalingActivities 接口查询。
+需注意伸缩活动与实例刷新活动不同，一次实例刷新活动可能包括多次伸缩活动。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastActivityId
 
     @LastActivityId.setter
@@ -9669,6 +11681,10 @@ class RefreshBatchRelatedInstance(AbstractModel):
 
     @property
     def InstanceStatusMessage(self):
+        """实例刷新状态信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceStatusMessage
 
     @InstanceStatusMessage.setter
@@ -9709,6 +11725,10 @@ class RefreshSettings(AbstractModel):
 
     @property
     def RollingUpdateSettings(self):
+        """滚动更新设置参数。RefreshMode 为滚动更新该参数必须填写。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.RollingUpdateSettings`
+        """
         return self._RollingUpdateSettings
 
     @RollingUpdateSettings.setter
@@ -9717,6 +11737,9 @@ class RefreshSettings(AbstractModel):
 
     @property
     def CheckInstanceTargetHealth(self):
+        """实例后端服务健康状态检查，默认为 FALSE。仅针对绑定应用型负载均衡器的伸缩组生效，开启该检查后，如刷新后实例未通过检查，负载均衡器端口权重始终为 0，且标记为刷新失败。取值范围如下：<br><li>TRUE：开启检查</li><li>FALSE：不开启检查
+        :rtype: bool
+        """
         return self._CheckInstanceTargetHealth
 
     @CheckInstanceTargetHealth.setter
@@ -9760,6 +11783,9 @@ FAILED：活动失败
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -9768,6 +11794,13 @@ FAILED：活动失败
 
     @property
     def InstanceStatus(self):
+        """实例在伸缩活动中的状态。取值如下：
+INIT：初始化中
+RUNNING：实例操作中
+SUCCESSFUL：活动成功
+FAILED：活动失败
+        :rtype: str
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -9805,6 +11838,9 @@ class RemoveInstancesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -9813,6 +11849,9 @@ class RemoveInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """CVM实例ID列表
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -9850,6 +11889,9 @@ class RemoveInstancesResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """伸缩活动ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -9858,6 +11900,9 @@ class RemoveInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9890,6 +11935,9 @@ class ResumeInstanceRefreshRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID。
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -9898,6 +11946,9 @@ class ResumeInstanceRefreshRequest(AbstractModel):
 
     @property
     def RefreshActivityId(self):
+        """刷新活动ID。
+        :rtype: str
+        """
         return self._RefreshActivityId
 
     @RefreshActivityId.setter
@@ -9906,6 +11957,9 @@ class ResumeInstanceRefreshRequest(AbstractModel):
 
     @property
     def ResumeMode(self):
+        """当前批次刷新失败实例的恢复方式，如不存在失败实例，该参数无效。默认值为RETRY，取值范围如下：<li>RETRY: 重试当前批次刷新失败实例</li><li>CONTINUE: 跳过当前批次刷新失败实例</li>
+        :rtype: str
+        """
         return self._ResumeMode
 
     @ResumeMode.setter
@@ -9941,6 +11995,9 @@ class ResumeInstanceRefreshResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9975,6 +12032,9 @@ class RollbackInstanceRefreshRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID。
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -9983,6 +12043,9 @@ class RollbackInstanceRefreshRequest(AbstractModel):
 
     @property
     def RefreshSettings(self):
+        """刷新设置。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.RefreshSettings`
+        """
         return self._RefreshSettings
 
     @RefreshSettings.setter
@@ -9991,6 +12054,9 @@ class RollbackInstanceRefreshRequest(AbstractModel):
 
     @property
     def OriginRefreshActivityId(self):
+        """原始刷新活动 ID。
+        :rtype: str
+        """
         return self._OriginRefreshActivityId
 
     @OriginRefreshActivityId.setter
@@ -9999,6 +12065,9 @@ class RollbackInstanceRefreshRequest(AbstractModel):
 
     @property
     def RefreshMode(self):
+        """刷新模式，目前仅支持滚动更新，默认值为 ROLLING_UPDATE_RESET。
+        :rtype: str
+        """
         return self._RefreshMode
 
     @RefreshMode.setter
@@ -10040,6 +12109,9 @@ class RollbackInstanceRefreshResponse(AbstractModel):
 
     @property
     def RefreshActivityId(self):
+        """刷新活动 ID。
+        :rtype: str
+        """
         return self._RefreshActivityId
 
     @RefreshActivityId.setter
@@ -10048,6 +12120,9 @@ class RollbackInstanceRefreshResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10084,6 +12159,9 @@ class RollingUpdateSettings(AbstractModel):
 
     @property
     def BatchNumber(self):
+        """批次数量。批次数量为大于 0 的正整数，但不能大于待刷新实例数量。
+        :rtype: int
+        """
         return self._BatchNumber
 
     @BatchNumber.setter
@@ -10092,6 +12170,12 @@ class RollingUpdateSettings(AbstractModel):
 
     @property
     def BatchPause(self):
+        """批次间暂停策略。默认值为 Automatic，取值范围如下：
+<li>FIRST_BATCH_PAUSE：第一批次更新完成后暂停</li>
+<li>BATCH_INTERVAL_PAUSE：批次间暂停</li>
+<li>AUTOMATIC：不暂停</li>
+        :rtype: str
+        """
         return self._BatchPause
 
     @BatchPause.setter
@@ -10100,6 +12184,10 @@ class RollingUpdateSettings(AbstractModel):
 
     @property
     def MaxSurge(self):
+        """最大额外数量。设置该参数后，在滚动更新开始前根据启动配置创建一批按量计费的额外实例，滚动更新完成后销毁额外实例。
+该参数用于保证滚动更新过程中可用实例的数量，最大额外数量不能超过滚动更新单个批次的刷新实例数。回滚流程暂不支持该参数。
+        :rtype: int
+        """
         return self._MaxSurge
 
     @MaxSurge.setter
@@ -10136,6 +12224,10 @@ class RunAutomationServiceEnabled(AbstractModel):
 
     @property
     def Enabled(self):
+        """是否开启[自动化助手](https://cloud.tencent.com/document/product/1340)服务。取值范围：<br><li>TRUE：表示开启自动化助手服务<br><li>FALSE：表示不开启自动化助手服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -10170,6 +12262,10 @@ class RunMonitorServiceEnabled(AbstractModel):
 
     @property
     def Enabled(self):
+        """是否开启[云监控](https://cloud.tencent.com/document/product/248)服务。取值范围：<br><li>TRUE：表示开启云监控服务<br><li>FALSE：表示不开启云监控服务<br><br>默认取值：TRUE。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -10204,6 +12300,10 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     @property
     def Enabled(self):
+        """是否开启[云安全](https://cloud.tencent.com/document/product/296)服务。取值范围：<br><li>TRUE：表示开启云安全服务<br><li>FALSE：表示不开启云安全服务<br><br>默认取值：TRUE。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -10240,6 +12340,9 @@ class ScaleInInstancesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID。
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -10248,6 +12351,9 @@ class ScaleInInstancesRequest(AbstractModel):
 
     @property
     def ScaleInNumber(self):
+        """希望缩容的实例数量。
+        :rtype: int
+        """
         return self._ScaleInNumber
 
     @ScaleInNumber.setter
@@ -10285,6 +12391,9 @@ class ScaleInInstancesResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """伸缩活动ID。
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -10293,6 +12402,9 @@ class ScaleInInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10322,6 +12434,9 @@ class ScaleOutInstancesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID。
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -10330,6 +12445,9 @@ class ScaleOutInstancesRequest(AbstractModel):
 
     @property
     def ScaleOutNumber(self):
+        """希望扩容的实例数量。
+        :rtype: int
+        """
         return self._ScaleOutNumber
 
     @ScaleOutNumber.setter
@@ -10367,6 +12485,9 @@ class ScaleOutInstancesResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """伸缩活动ID。
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -10375,6 +12496,9 @@ class ScaleOutInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10447,6 +12571,9 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID。
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -10455,6 +12582,9 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def AutoScalingPolicyId(self):
+        """告警触发策略ID。
+        :rtype: str
+        """
         return self._AutoScalingPolicyId
 
     @AutoScalingPolicyId.setter
@@ -10463,6 +12593,11 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def ScalingPolicyType(self):
+        """告警触发策略类型。取值：
+- SIMPLE：简单策略
+- TARGET_TRACKING：目标追踪策略
+        :rtype: str
+        """
         return self._ScalingPolicyType
 
     @ScalingPolicyType.setter
@@ -10471,6 +12606,9 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def ScalingPolicyName(self):
+        """告警触发策略名称。
+        :rtype: str
+        """
         return self._ScalingPolicyName
 
     @ScalingPolicyName.setter
@@ -10479,6 +12617,9 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def AdjustmentType(self):
+        """告警触发后，期望实例数修改方式，仅适用于简单策略。取值范围：<br><li>CHANGE_IN_CAPACITY：增加或减少若干期望实例数</li><li>EXACT_CAPACITY：调整至指定期望实例数</li> <li>PERCENT_CHANGE_IN_CAPACITY：按百分比调整期望实例数</li>
+        :rtype: str
+        """
         return self._AdjustmentType
 
     @AdjustmentType.setter
@@ -10487,6 +12628,9 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def AdjustmentValue(self):
+        """告警触发后，期望实例数的调整值，仅适用于简单策略。
+        :rtype: int
+        """
         return self._AdjustmentValue
 
     @AdjustmentValue.setter
@@ -10495,6 +12639,9 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def Cooldown(self):
+        """冷却时间，仅适用于简单策略。
+        :rtype: int
+        """
         return self._Cooldown
 
     @Cooldown.setter
@@ -10503,6 +12650,9 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def MetricAlarm(self):
+        """简单告警触发策略告警监控指标，仅适用于简单策略。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
+        """
         return self._MetricAlarm
 
     @MetricAlarm.setter
@@ -10511,6 +12661,10 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def PredefinedMetricType(self):
+        """预定义监控项，仅适用于目标追踪策略。取值范围：<br><li>ASG_AVG_CPU_UTILIZATION：平均CPU使用率</li><li>ASG_AVG_LAN_TRAFFIC_OUT：平均内网出带宽</li><li>ASG_AVG_LAN_TRAFFIC_IN：平均内网入带宽</li><li>ASG_AVG_WAN_TRAFFIC_OUT：平均外网出带宽</li><li>ASG_AVG_WAN_TRAFFIC_IN：平均外网出带宽</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PredefinedMetricType
 
     @PredefinedMetricType.setter
@@ -10519,6 +12673,10 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def TargetValue(self):
+        """目标值，仅适用于目标追踪策略。<br><li>ASG_AVG_CPU_UTILIZATION：[1, 100)，单位：%</li><li>ASG_AVG_LAN_TRAFFIC_OUT：>0，单位：Mbps</li><li>ASG_AVG_LAN_TRAFFIC_IN：>0，单位：Mbps</li><li>ASG_AVG_WAN_TRAFFIC_OUT：>0，单位：Mbps</li><li>ASG_AVG_WAN_TRAFFIC_IN：>0，单位：Mbps</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TargetValue
 
     @TargetValue.setter
@@ -10527,6 +12685,10 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def EstimatedInstanceWarmup(self):
+        """实例预热时间，单位为秒，仅适用于目标追踪策略。取值范围为0-3600。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EstimatedInstanceWarmup
 
     @EstimatedInstanceWarmup.setter
@@ -10535,6 +12697,10 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def DisableScaleIn(self):
+        """是否禁用缩容，仅适用于目标追踪策略。取值范围：<br><li>true：目标追踪策略仅触发扩容</li><li>false：目标追踪策略触发扩容和缩容</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._DisableScaleIn
 
     @DisableScaleIn.setter
@@ -10543,6 +12709,10 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def MetricAlarms(self):
+        """告警监控指标列表，仅适用于目标追踪策略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MetricAlarm
+        """
         return self._MetricAlarms
 
     @MetricAlarms.setter
@@ -10551,6 +12721,9 @@ class ScalingPolicy(AbstractModel):
 
     @property
     def NotificationUserGroupIds(self):
+        """通知组ID，即为用户组ID集合。
+        :rtype: list of str
+        """
         return self._NotificationUserGroupIds
 
     @NotificationUserGroupIds.setter
@@ -10634,6 +12807,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def ScheduledActionId(self):
+        """定时任务ID。
+        :rtype: str
+        """
         return self._ScheduledActionId
 
     @ScheduledActionId.setter
@@ -10642,6 +12818,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def ScheduledActionName(self):
+        """定时任务名称。
+        :rtype: str
+        """
         return self._ScheduledActionName
 
     @ScheduledActionName.setter
@@ -10650,6 +12829,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """定时任务所在伸缩组ID。
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -10658,6 +12840,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def StartTime(self):
+        """定时任务的开始时间。取值为`北京时间`（UTC+8），按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ss+08:00`。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -10666,6 +12851,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def Recurrence(self):
+        """定时任务的重复方式。
+        :rtype: str
+        """
         return self._Recurrence
 
     @Recurrence.setter
@@ -10674,6 +12862,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def EndTime(self):
+        """定时任务的结束时间。取值为`北京时间`（UTC+8），按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ss+08:00`。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -10682,6 +12873,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def MaxSize(self):
+        """定时任务设置的最大实例数。
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -10690,6 +12884,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def DesiredCapacity(self):
+        """定时任务设置的期望实例数。
+        :rtype: int
+        """
         return self._DesiredCapacity
 
     @DesiredCapacity.setter
@@ -10698,6 +12895,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def MinSize(self):
+        """定时任务设置的最小实例数。
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -10706,6 +12906,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """定时任务的创建时间。取值为`UTC`时间，按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ssZ`。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -10714,6 +12917,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def ScheduledType(self):
+        """定时任务的执行类型。取值范围：<br><li>CRONTAB：代表定时任务为重复执行。<br><li>ONCE：代表定时任务为单次执行。
+        :rtype: str
+        """
         return self._ScheduledType
 
     @ScheduledType.setter
@@ -10773,6 +12979,9 @@ RESET：对原有不健康实例进行重装系统操作，可保持数据盘、
 
     @property
     def ReplaceMonitorUnhealthy(self):
+        """开启监控不健康替换服务。若开启则对于云监控标记为不健康的实例，弹性伸缩服务会进行替换。若不指定该参数，则默认为 False。
+        :rtype: bool
+        """
         return self._ReplaceMonitorUnhealthy
 
     @ReplaceMonitorUnhealthy.setter
@@ -10781,6 +12990,12 @@ RESET：对原有不健康实例进行重装系统操作，可保持数据盘、
 
     @property
     def ScalingMode(self):
+        """取值范围： 
+CLASSIC_SCALING：经典方式，使用创建、销毁实例来实现扩缩容； 
+WAKE_UP_STOPPED_SCALING：扩容优先开机。扩容时优先对已关机的实例执行开机操作，若开机后实例数仍低于期望实例数，则创建实例，缩容仍采用销毁实例的方式。用户可以使用StopAutoScalingInstances接口来关闭伸缩组内的实例。监控告警触发的扩容仍将创建实例
+默认取值：CLASSIC_SCALING
+        :rtype: str
+        """
         return self._ScalingMode
 
     @ScalingMode.setter
@@ -10789,6 +13004,9 @@ RESET：对原有不健康实例进行重装系统操作，可保持数据盘、
 
     @property
     def ReplaceLoadBalancerUnhealthy(self):
+        """开启负载均衡不健康替换服务。若开启则对于负载均衡健康检查判断不健康的实例，弹性伸缩服务会进行替换。若不指定该参数，则默认为 False。
+        :rtype: bool
+        """
         return self._ReplaceLoadBalancerUnhealthy
 
     @ReplaceLoadBalancerUnhealthy.setter
@@ -10797,6 +13015,13 @@ RESET：对原有不健康实例进行重装系统操作，可保持数据盘、
 
     @property
     def ReplaceMode(self):
+        """不健康替换服务的替换模式。取值范围：
+RECREATE：重建实例替代原有不健康实例；
+RESET：对原有不健康实例进行重装系统操作，可保持数据盘、内网IP、实例id等信息不发生变化，实例登录设置、主机名、增强服务和 UserData 与当前启动配置保持一致。
+默认取值：RECREATE
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReplaceMode
 
     @ReplaceMode.setter
@@ -10839,6 +13064,9 @@ class SetInstancesProtectionRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID。
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -10847,6 +13075,9 @@ class SetInstancesProtectionRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例ID。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -10855,6 +13086,9 @@ class SetInstancesProtectionRequest(AbstractModel):
 
     @property
     def ProtectedFromScaleIn(self):
+        """实例是否需要设置保护。
+        :rtype: bool
+        """
         return self._ProtectedFromScaleIn
 
     @ProtectedFromScaleIn.setter
@@ -10890,6 +13124,9 @@ class SetInstancesProtectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10919,6 +13156,9 @@ class SpotMarketOptions(AbstractModel):
 
     @property
     def MaxPrice(self):
+        """竞价出价，例如“1.05”
+        :rtype: str
+        """
         return self._MaxPrice
 
     @MaxPrice.setter
@@ -10927,6 +13167,10 @@ class SpotMarketOptions(AbstractModel):
 
     @property
     def SpotInstanceType(self):
+        """竞价请求类型，当前仅支持类型：one-time，默认值为one-time
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SpotInstanceType
 
     @SpotInstanceType.setter
@@ -10981,6 +13225,10 @@ class SpotMixedAllocationPolicy(AbstractModel):
 
     @property
     def BaseCapacity(self):
+        """混合模式下，基础容量的大小，基础容量部分固定为按量计费实例。默认值 0，最大不可超过伸缩组的最大实例数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BaseCapacity
 
     @BaseCapacity.setter
@@ -10989,6 +13237,11 @@ class SpotMixedAllocationPolicy(AbstractModel):
 
     @property
     def OnDemandPercentageAboveBaseCapacity(self):
+        """超出基础容量部分，按量计费实例所占的比例。取值范围 [0, 100]，0 代表超出基础容量的部分仅生产竞价实例，100 代表仅生产按量实例，默认值为 70。按百分比计算按量实例数时，向上取整。
+比如，总期望实例数取 3，基础容量取 1，超基础部分按量百分比取 1，则最终按量 2 台（1 台来自基础容量，1 台按百分比向上取整得到），竞价 1台。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._OnDemandPercentageAboveBaseCapacity
 
     @OnDemandPercentageAboveBaseCapacity.setter
@@ -10997,6 +13250,12 @@ class SpotMixedAllocationPolicy(AbstractModel):
 
     @property
     def SpotAllocationStrategy(self):
+        """混合模式下，竞价实例的分配策略。取值包括 COST_OPTIMIZED 和 CAPACITY_OPTIMIZED，默认取 COST_OPTIMIZED。
+<br><li> COST_OPTIMIZED，成本优化策略。对于启动配置内的所有机型，按照各机型在各可用区的每核单价由小到大依次尝试。优先尝试购买每核单价最便宜的，如果购买失败则尝试购买次便宜的，以此类推。
+<br><li> CAPACITY_OPTIMIZED，容量优化策略。对于启动配置内的所有机型，按照各机型在各可用区的库存情况由大到小依次尝试。优先尝试购买剩余库存最大的机型，这样可尽量降低竞价实例被动回收的发生概率。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SpotAllocationStrategy
 
     @SpotAllocationStrategy.setter
@@ -11005,6 +13264,14 @@ class SpotMixedAllocationPolicy(AbstractModel):
 
     @property
     def CompensateWithBaseInstance(self):
+        """按量实例替补功能。取值范围：
+<br><li> TRUE，开启该功能，当所有竞价机型因库存不足等原因全部购买失败后，尝试购买按量实例。
+<br><li> FALSE，不开启该功能，伸缩组在需要扩容竞价实例时仅尝试所配置的竞价机型。
+
+默认取值： TRUE。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._CompensateWithBaseInstance
 
     @CompensateWithBaseInstance.setter
@@ -11044,6 +13311,9 @@ class StartAutoScalingInstancesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -11052,6 +13322,9 @@ class StartAutoScalingInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """待开启的CVM实例ID列表
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -11089,6 +13362,9 @@ class StartAutoScalingInstancesResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """伸缩活动ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -11097,6 +13373,9 @@ class StartAutoScalingInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11129,6 +13408,9 @@ class StartInstanceRefreshRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID。
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -11137,6 +13419,9 @@ class StartInstanceRefreshRequest(AbstractModel):
 
     @property
     def RefreshSettings(self):
+        """刷新设置。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.RefreshSettings`
+        """
         return self._RefreshSettings
 
     @RefreshSettings.setter
@@ -11145,6 +13430,9 @@ class StartInstanceRefreshRequest(AbstractModel):
 
     @property
     def RefreshMode(self):
+        """刷新模式，目前仅支持滚动更新，默认值为 ROLLING_UPDATE_RESET。
+        :rtype: str
+        """
         return self._RefreshMode
 
     @RefreshMode.setter
@@ -11185,6 +13473,9 @@ class StartInstanceRefreshResponse(AbstractModel):
 
     @property
     def RefreshActivityId(self):
+        """刷新活动 ID。
+        :rtype: str
+        """
         return self._RefreshActivityId
 
     @RefreshActivityId.setter
@@ -11193,6 +13484,9 @@ class StartInstanceRefreshResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11228,6 +13522,9 @@ STOP_CHARGING：关机停止收费
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -11236,6 +13533,9 @@ STOP_CHARGING：关机停止收费
 
     @property
     def InstanceIds(self):
+        """待关闭的CVM实例ID列表
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -11244,6 +13544,12 @@ STOP_CHARGING：关机停止收费
 
     @property
     def StoppedMode(self):
+        """关闭的实例是否收费，取值为：  
+KEEP_CHARGING：关机继续收费  
+STOP_CHARGING：关机停止收费
+默认为 KEEP_CHARGING
+        :rtype: str
+        """
         return self._StoppedMode
 
     @StoppedMode.setter
@@ -11282,6 +13588,9 @@ class StopAutoScalingInstancesResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """伸缩活动ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -11290,6 +13599,9 @@ class StopAutoScalingInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11319,6 +13631,9 @@ class StopInstanceRefreshRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """伸缩组ID。
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -11327,6 +13642,9 @@ class StopInstanceRefreshRequest(AbstractModel):
 
     @property
     def RefreshActivityId(self):
+        """刷新活动ID。
+        :rtype: str
+        """
         return self._RefreshActivityId
 
     @RefreshActivityId.setter
@@ -11361,6 +13679,9 @@ class StopInstanceRefreshResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11391,6 +13712,10 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskType(self):
+        """系统盘类型。系统盘类型限制详见[云硬盘类型](https://cloud.tencent.com/document/product/362/2353)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：CLOUD_PREMIUM。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -11399,6 +13724,10 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskSize(self):
+        """系统盘大小，单位：GB。默认值为 50
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -11440,6 +13769,9 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
+        """标签键
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -11448,6 +13780,9 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
+        """标签值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -11456,6 +13791,10 @@ class Tag(AbstractModel):
 
     @property
     def ResourceType(self):
+        """标签绑定的资源类型，当前支持类型："auto-scaling-group
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -11494,6 +13833,9 @@ class TargetAttribute(AbstractModel):
 
     @property
     def Port(self):
+        """端口
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -11502,6 +13844,9 @@ class TargetAttribute(AbstractModel):
 
     @property
     def Weight(self):
+        """权重
+        :rtype: int
+        """
         return self._Weight
 
     @Weight.setter
@@ -11609,6 +13954,9 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def LaunchConfigurationId(self):
+        """启动配置ID。
+        :rtype: str
+        """
         return self._LaunchConfigurationId
 
     @LaunchConfigurationId.setter
@@ -11617,6 +13965,9 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def ImageId(self):
+        """指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -11625,6 +13976,9 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InstanceTypes(self):
+        """实例机型列表，不同实例机型指定了不同的资源规格，最多支持5种实例机型。
+        :rtype: list of str
+        """
         return self._InstanceTypes
 
     @InstanceTypes.setter
@@ -11633,6 +13987,9 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def LaunchConfigurationName(self):
+        """启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
+        :rtype: str
+        """
         return self._LaunchConfigurationName
 
     @LaunchConfigurationName.setter
@@ -11641,6 +13998,9 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def DataDisks(self):
+        """实例数据盘配置信息。若不指定该参数，则默认不购买数据盘，最多支持指定11块数据盘。
+        :rtype: list of DataDisk
+        """
         return self._DataDisks
 
     @DataDisks.setter
@@ -11649,6 +14009,9 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def EnhancedService(self):
+        """增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
+        """
         return self._EnhancedService
 
     @EnhancedService.setter
@@ -11657,6 +14020,12 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。
+<br><li>POSTPAID_BY_HOUR：按小时后付费
+<br><li>SPOTPAID：竞价付费
+<br><li>PREPAID：预付费，即包年包月
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -11665,6 +14034,9 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InstanceMarketOptions(self):
+        """实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
+        """
         return self._InstanceMarketOptions
 
     @InstanceMarketOptions.setter
@@ -11673,6 +14045,14 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InstanceTypesCheckPolicy(self):
+        """实例类型校验策略，取值包括 ALL 和 ANY，默认取值为ANY。
+<br><li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。
+<br><li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。
+
+实例类型不可用的常见原因包括该实例类型售罄、对应云盘售罄等。
+如果 InstanceTypes 中一款机型不存在或者已下线，则无论 InstanceTypesCheckPolicy 采用何种取值，都会校验报错。
+        :rtype: str
+        """
         return self._InstanceTypesCheckPolicy
 
     @InstanceTypesCheckPolicy.setter
@@ -11681,6 +14061,9 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InternetAccessible(self):
+        """公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
+        """
         return self._InternetAccessible
 
     @InternetAccessible.setter
@@ -11689,6 +14072,9 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def LoginSettings(self):
+        """该参数已失效，请勿使用。升级启动配置接口无法修改或覆盖 LoginSettings 参数，升级后 LoginSettings 不会发生变化。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
+        """
         return self._LoginSettings
 
     @LoginSettings.setter
@@ -11697,6 +14083,9 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """实例所属项目ID。不填为默认项目。
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -11705,6 +14094,9 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的`SecurityGroupId`字段来获取。若不指定该参数，则默认不绑定安全组。
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -11713,6 +14105,9 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def SystemDisk(self):
+        """实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
+        """
         return self._SystemDisk
 
     @SystemDisk.setter
@@ -11721,6 +14116,9 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def UserData(self):
+        """经过 Base64 编码后的自定义数据，最大长度不超过16KB。
+        :rtype: str
+        """
         return self._UserData
 
     @UserData.setter
@@ -11729,6 +14127,9 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InstanceTags(self):
+        """标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。
+        :rtype: list of InstanceTag
+        """
         return self._InstanceTags
 
     @InstanceTags.setter
@@ -11737,6 +14138,9 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def CamRoleName(self):
+        """CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
+        :rtype: str
+        """
         return self._CamRoleName
 
     @CamRoleName.setter
@@ -11745,6 +14149,9 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def HostNameSettings(self):
+        """云服务器主机名（HostName）的相关设置。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
+        """
         return self._HostNameSettings
 
     @HostNameSettings.setter
@@ -11753,6 +14160,9 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InstanceNameSettings(self):
+        """云服务器实例名（InstanceName）的相关设置。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
+        """
         return self._InstanceNameSettings
 
     @InstanceNameSettings.setter
@@ -11761,6 +14171,9 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
+        """预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -11769,6 +14182,11 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def DiskTypePolicy(self):
+        """云盘类型选择策略，取值范围：
+<br><li>ORIGINAL：使用设置的云盘类型
+<br><li>AUTOMATIC：自动选择当前可用的云盘类型
+        :rtype: str
+        """
         return self._DiskTypePolicy
 
     @DiskTypePolicy.setter
@@ -11777,6 +14195,9 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 
     @property
     def IPv6InternetAccessible(self):
+        """IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
+        """
         return self._IPv6InternetAccessible
 
     @IPv6InternetAccessible.setter
@@ -11859,6 +14280,9 @@ class UpgradeLaunchConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11908,6 +14332,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleHookId(self):
+        """生命周期挂钩ID
+        :rtype: str
+        """
         return self._LifecycleHookId
 
     @LifecycleHookId.setter
@@ -11916,6 +14343,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleHookName(self):
+        """生命周期挂钩名称
+        :rtype: str
+        """
         return self._LifecycleHookName
 
     @LifecycleHookName.setter
@@ -11924,6 +14354,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleTransition(self):
+        """进行生命周期挂钩的场景，取值范围包括“INSTANCE_LAUNCHING”和“INSTANCE_TERMINATING”
+        :rtype: str
+        """
         return self._LifecycleTransition
 
     @LifecycleTransition.setter
@@ -11932,6 +14365,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def DefaultResult(self):
+        """定义伸缩组在生命周期挂钩超时的情况下应采取的操作，取值范围是“CONTINUE”或“ABANDON”，默认值为“CONTINUE”
+        :rtype: str
+        """
         return self._DefaultResult
 
     @DefaultResult.setter
@@ -11940,6 +14376,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def HeartbeatTimeout(self):
+        """生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到7200秒，默认值为300秒
+        :rtype: int
+        """
         return self._HeartbeatTimeout
 
     @HeartbeatTimeout.setter
@@ -11948,6 +14387,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def NotificationMetadata(self):
+        """弹性伸缩向通知目标发送的附加信息，配置通知时使用，默认值为空字符串""
+        :rtype: str
+        """
         return self._NotificationMetadata
 
     @NotificationMetadata.setter
@@ -11956,6 +14398,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def NotificationTarget(self):
+        """通知目标。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
+        """
         return self._NotificationTarget
 
     @NotificationTarget.setter
@@ -11964,6 +14409,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleTransitionType(self):
+        """进行生命周期挂钩的场景类型，取值范围包括NORMAL 和 EXTENSION。说明：设置为EXTENSION值，在AttachInstances、DetachInstances、RemoveInstaces接口时会触发生命周期挂钩操作，值为NORMAL则不会在这些接口中触发生命周期挂钩。
+        :rtype: str
+        """
         return self._LifecycleTransitionType
 
     @LifecycleTransitionType.setter
@@ -11972,6 +14420,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleCommand(self):
+        """远程命令执行对象。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
+        """
         return self._LifecycleCommand
 
     @LifecycleCommand.setter
@@ -12017,6 +14468,9 @@ class UpgradeLifecycleHookResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

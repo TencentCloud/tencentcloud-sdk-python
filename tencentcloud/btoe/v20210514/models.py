@@ -50,6 +50,9 @@ class CreateAudioDepositRequest(AbstractModel):
 
     @property
     def EvidenceName(self):
+        """存证名称(长度最大30)
+        :rtype: str
+        """
         return self._EvidenceName
 
     @EvidenceName.setter
@@ -58,6 +61,9 @@ class CreateAudioDepositRequest(AbstractModel):
 
     @property
     def FileContent(self):
+        """数据Base64编码，大小不超过5M
+        :rtype: str
+        """
         return self._FileContent
 
     @FileContent.setter
@@ -66,6 +72,9 @@ class CreateAudioDepositRequest(AbstractModel):
 
     @property
     def FileName(self):
+        """带后缀的文件名称，如music.mp3
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -74,6 +83,9 @@ class CreateAudioDepositRequest(AbstractModel):
 
     @property
     def EvidenceHash(self):
+        """文件hash
+        :rtype: str
+        """
         return self._EvidenceHash
 
     @EvidenceHash.setter
@@ -82,6 +94,9 @@ class CreateAudioDepositRequest(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID 透传 长度最大不超过64
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -90,6 +105,9 @@ class CreateAudioDepositRequest(AbstractModel):
 
     @property
     def HashType(self):
+        """算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
+        :rtype: int
+        """
         return self._HashType
 
     @HashType.setter
@@ -98,6 +116,9 @@ class CreateAudioDepositRequest(AbstractModel):
 
     @property
     def EvidenceDescription(self):
+        """存证描述
+        :rtype: str
+        """
         return self._EvidenceDescription
 
     @EvidenceDescription.setter
@@ -144,6 +165,10 @@ class CreateAudioDepositResponse(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID 透传 长度最大不超过64
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -152,6 +177,9 @@ class CreateAudioDepositResponse(AbstractModel):
 
     @property
     def EvidenceId(self):
+        """请求成功，返回存证编码,用于查询存证后续业务数据
+        :rtype: str
+        """
         return self._EvidenceId
 
     @EvidenceId.setter
@@ -160,6 +188,9 @@ class CreateAudioDepositResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -199,6 +230,9 @@ class CreateDataDepositRequest(AbstractModel):
 
     @property
     def EvidenceInfo(self):
+        """业务数据明文(json格式字符串)，最大256kb
+        :rtype: str
+        """
         return self._EvidenceInfo
 
     @EvidenceInfo.setter
@@ -207,6 +241,9 @@ class CreateDataDepositRequest(AbstractModel):
 
     @property
     def EvidenceName(self):
+        """存证名称(长度最大30)
+        :rtype: str
+        """
         return self._EvidenceName
 
     @EvidenceName.setter
@@ -215,6 +252,9 @@ class CreateDataDepositRequest(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID 透传 长度最大不超过64
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -223,6 +263,9 @@ class CreateDataDepositRequest(AbstractModel):
 
     @property
     def HashType(self):
+        """算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
+        :rtype: int
+        """
         return self._HashType
 
     @HashType.setter
@@ -231,6 +274,9 @@ class CreateDataDepositRequest(AbstractModel):
 
     @property
     def EvidenceDescription(self):
+        """存证描述
+        :rtype: str
+        """
         return self._EvidenceDescription
 
     @EvidenceDescription.setter
@@ -275,6 +321,10 @@ class CreateDataDepositResponse(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID 透传 长度最大不超过64
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -283,6 +333,9 @@ class CreateDataDepositResponse(AbstractModel):
 
     @property
     def EvidenceId(self):
+        """请求成功，返回存证编码,用于查询存证后续业务数据
+        :rtype: str
+        """
         return self._EvidenceId
 
     @EvidenceId.setter
@@ -291,6 +344,9 @@ class CreateDataDepositResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -336,6 +392,9 @@ class CreateDocDepositRequest(AbstractModel):
 
     @property
     def EvidenceName(self):
+        """存证名称(长度最大30)
+        :rtype: str
+        """
         return self._EvidenceName
 
     @EvidenceName.setter
@@ -344,6 +403,9 @@ class CreateDocDepositRequest(AbstractModel):
 
     @property
     def FileContent(self):
+        """数据Base64编码，大小不超过5M
+        :rtype: str
+        """
         return self._FileContent
 
     @FileContent.setter
@@ -352,6 +414,9 @@ class CreateDocDepositRequest(AbstractModel):
 
     @property
     def FileName(self):
+        """带后缀的文件名称，如 test.doc
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -360,6 +425,9 @@ class CreateDocDepositRequest(AbstractModel):
 
     @property
     def EvidenceHash(self):
+        """文件hash
+        :rtype: str
+        """
         return self._EvidenceHash
 
     @EvidenceHash.setter
@@ -368,6 +436,9 @@ class CreateDocDepositRequest(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID 透传 长度最大不超过64
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -376,6 +447,9 @@ class CreateDocDepositRequest(AbstractModel):
 
     @property
     def HashType(self):
+        """算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
+        :rtype: int
+        """
         return self._HashType
 
     @HashType.setter
@@ -384,6 +458,9 @@ class CreateDocDepositRequest(AbstractModel):
 
     @property
     def EvidenceDescription(self):
+        """存证描述
+        :rtype: str
+        """
         return self._EvidenceDescription
 
     @EvidenceDescription.setter
@@ -430,6 +507,10 @@ class CreateDocDepositResponse(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID 透传 长度最大不超过64
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -438,6 +519,9 @@ class CreateDocDepositResponse(AbstractModel):
 
     @property
     def EvidenceId(self):
+        """请求成功，返回存证编码,用于查询存证后续业务数据
+        :rtype: str
+        """
         return self._EvidenceId
 
     @EvidenceId.setter
@@ -446,6 +530,9 @@ class CreateDocDepositResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -479,6 +566,9 @@ class CreateHashDepositNoCertRequest(AbstractModel):
 
     @property
     def EvidenceHash(self):
+        """数据hash
+        :rtype: str
+        """
         return self._EvidenceHash
 
     @EvidenceHash.setter
@@ -487,6 +577,9 @@ class CreateHashDepositNoCertRequest(AbstractModel):
 
     @property
     def BusinessId(self):
+        """该字段为透传字段，方便调用方做业务处理， 长度最大不超过64
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -495,6 +588,9 @@ class CreateHashDepositNoCertRequest(AbstractModel):
 
     @property
     def EvidenceInfo(self):
+        """业务扩展信息
+        :rtype: str
+        """
         return self._EvidenceInfo
 
     @EvidenceInfo.setter
@@ -537,6 +633,10 @@ class CreateHashDepositNoCertResponse(AbstractModel):
 
     @property
     def BusinessId(self):
+        """透传字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -545,6 +645,9 @@ class CreateHashDepositNoCertResponse(AbstractModel):
 
     @property
     def EvidenceId(self):
+        """存证编码
+        :rtype: str
+        """
         return self._EvidenceId
 
     @EvidenceId.setter
@@ -553,6 +656,9 @@ class CreateHashDepositNoCertResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -586,6 +692,9 @@ class CreateHashDepositNoSealRequest(AbstractModel):
 
     @property
     def EvidenceHash(self):
+        """数据hash
+        :rtype: str
+        """
         return self._EvidenceHash
 
     @EvidenceHash.setter
@@ -594,6 +703,9 @@ class CreateHashDepositNoSealRequest(AbstractModel):
 
     @property
     def BusinessId(self):
+        """该字段为透传字段，方便调用方做业务处理， 长度最大不超过64
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -602,6 +714,9 @@ class CreateHashDepositNoSealRequest(AbstractModel):
 
     @property
     def EvidenceInfo(self):
+        """业务扩展信息
+        :rtype: str
+        """
         return self._EvidenceInfo
 
     @EvidenceInfo.setter
@@ -644,6 +759,10 @@ class CreateHashDepositNoSealResponse(AbstractModel):
 
     @property
     def BusinessId(self):
+        """透传字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -652,6 +771,9 @@ class CreateHashDepositNoSealResponse(AbstractModel):
 
     @property
     def EvidenceId(self):
+        """存证编码
+        :rtype: str
+        """
         return self._EvidenceId
 
     @EvidenceId.setter
@@ -660,6 +782,9 @@ class CreateHashDepositNoSealResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -696,6 +821,9 @@ class CreateHashDepositRequest(AbstractModel):
 
     @property
     def EvidenceName(self):
+        """存证名称(长度最大30)
+        :rtype: str
+        """
         return self._EvidenceName
 
     @EvidenceName.setter
@@ -704,6 +832,9 @@ class CreateHashDepositRequest(AbstractModel):
 
     @property
     def EvidenceHash(self):
+        """数据hash
+        :rtype: str
+        """
         return self._EvidenceHash
 
     @EvidenceHash.setter
@@ -712,6 +843,9 @@ class CreateHashDepositRequest(AbstractModel):
 
     @property
     def BusinessId(self):
+        """该字段为透传字段，方便调用方做业务处理， 长度最大不超过64
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -720,6 +854,9 @@ class CreateHashDepositRequest(AbstractModel):
 
     @property
     def EvidenceDescription(self):
+        """存证描述
+        :rtype: str
+        """
         return self._EvidenceDescription
 
     @EvidenceDescription.setter
@@ -763,6 +900,10 @@ class CreateHashDepositResponse(AbstractModel):
 
     @property
     def BusinessId(self):
+        """透传字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -771,6 +912,9 @@ class CreateHashDepositResponse(AbstractModel):
 
     @property
     def EvidenceId(self):
+        """存证编码
+        :rtype: str
+        """
         return self._EvidenceId
 
     @EvidenceId.setter
@@ -779,6 +923,9 @@ class CreateHashDepositResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -824,6 +971,9 @@ class CreateImageDepositRequest(AbstractModel):
 
     @property
     def EvidenceName(self):
+        """存证名称(长度最大30)
+        :rtype: str
+        """
         return self._EvidenceName
 
     @EvidenceName.setter
@@ -832,6 +982,9 @@ class CreateImageDepositRequest(AbstractModel):
 
     @property
     def FileContent(self):
+        """数据Base64编码，大小不超过5M
+        :rtype: str
+        """
         return self._FileContent
 
     @FileContent.setter
@@ -840,6 +993,9 @@ class CreateImageDepositRequest(AbstractModel):
 
     @property
     def FileName(self):
+        """带后缀的文件名称，如 test.png
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -848,6 +1004,9 @@ class CreateImageDepositRequest(AbstractModel):
 
     @property
     def EvidenceHash(self):
+        """文件hash
+        :rtype: str
+        """
         return self._EvidenceHash
 
     @EvidenceHash.setter
@@ -856,6 +1015,9 @@ class CreateImageDepositRequest(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID 透传 长度最大不超过64
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -864,6 +1026,9 @@ class CreateImageDepositRequest(AbstractModel):
 
     @property
     def HashType(self):
+        """算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
+        :rtype: int
+        """
         return self._HashType
 
     @HashType.setter
@@ -872,6 +1037,9 @@ class CreateImageDepositRequest(AbstractModel):
 
     @property
     def EvidenceDescription(self):
+        """存证描述
+        :rtype: str
+        """
         return self._EvidenceDescription
 
     @EvidenceDescription.setter
@@ -918,6 +1086,10 @@ class CreateImageDepositResponse(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID 透传 长度最大不超过64
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -926,6 +1098,9 @@ class CreateImageDepositResponse(AbstractModel):
 
     @property
     def EvidenceId(self):
+        """请求成功，返回存证编码,用于查询存证后续业务数据
+        :rtype: str
+        """
         return self._EvidenceId
 
     @EvidenceId.setter
@@ -934,6 +1109,9 @@ class CreateImageDepositResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -979,6 +1157,9 @@ class CreateVideoDepositRequest(AbstractModel):
 
     @property
     def EvidenceName(self):
+        """存证名称(长度最大30)
+        :rtype: str
+        """
         return self._EvidenceName
 
     @EvidenceName.setter
@@ -987,6 +1168,9 @@ class CreateVideoDepositRequest(AbstractModel):
 
     @property
     def FileContent(self):
+        """数据Base64编码，大小不超过5M
+        :rtype: str
+        """
         return self._FileContent
 
     @FileContent.setter
@@ -995,6 +1179,9 @@ class CreateVideoDepositRequest(AbstractModel):
 
     @property
     def FileName(self):
+        """带后缀的文件名称，如music.mkv
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -1003,6 +1190,9 @@ class CreateVideoDepositRequest(AbstractModel):
 
     @property
     def EvidenceHash(self):
+        """文件hash
+        :rtype: str
+        """
         return self._EvidenceHash
 
     @EvidenceHash.setter
@@ -1011,6 +1201,9 @@ class CreateVideoDepositRequest(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID 透传 长度最大不超过64
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -1019,6 +1212,9 @@ class CreateVideoDepositRequest(AbstractModel):
 
     @property
     def HashType(self):
+        """算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
+        :rtype: int
+        """
         return self._HashType
 
     @HashType.setter
@@ -1027,6 +1223,9 @@ class CreateVideoDepositRequest(AbstractModel):
 
     @property
     def EvidenceDescription(self):
+        """存证描述
+        :rtype: str
+        """
         return self._EvidenceDescription
 
     @EvidenceDescription.setter
@@ -1073,6 +1272,10 @@ class CreateVideoDepositResponse(AbstractModel):
 
     @property
     def BusinessId(self):
+        """业务ID 透传 长度最大不超过64
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -1081,6 +1284,9 @@ class CreateVideoDepositResponse(AbstractModel):
 
     @property
     def EvidenceId(self):
+        """请求成功，返回存证编码,用于查询存证后续业务数据
+        :rtype: str
+        """
         return self._EvidenceId
 
     @EvidenceId.setter
@@ -1089,6 +1295,9 @@ class CreateVideoDepositResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1116,6 +1325,9 @@ class GetDepositCertRequest(AbstractModel):
 
     @property
     def EvidenceId(self):
+        """存证编码
+        :rtype: str
+        """
         return self._EvidenceId
 
     @EvidenceId.setter
@@ -1155,6 +1367,9 @@ class GetDepositCertResponse(AbstractModel):
 
     @property
     def EvidenceId(self):
+        """存证编码
+        :rtype: str
+        """
         return self._EvidenceId
 
     @EvidenceId.setter
@@ -1163,6 +1378,9 @@ class GetDepositCertResponse(AbstractModel):
 
     @property
     def EvidenceCert(self):
+        """存证证书文件临时链接
+        :rtype: str
+        """
         return self._EvidenceCert
 
     @EvidenceCert.setter
@@ -1171,6 +1389,9 @@ class GetDepositCertResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1198,6 +1419,9 @@ class GetDepositFileRequest(AbstractModel):
 
     @property
     def EvidenceId(self):
+        """存证编码
+        :rtype: str
+        """
         return self._EvidenceId
 
     @EvidenceId.setter
@@ -1237,6 +1461,9 @@ class GetDepositFileResponse(AbstractModel):
 
     @property
     def EvidenceId(self):
+        """存证编号
+        :rtype: str
+        """
         return self._EvidenceId
 
     @EvidenceId.setter
@@ -1245,6 +1472,9 @@ class GetDepositFileResponse(AbstractModel):
 
     @property
     def EvidenceFile(self):
+        """存证文件临时链接
+        :rtype: str
+        """
         return self._EvidenceFile
 
     @EvidenceFile.setter
@@ -1253,6 +1483,9 @@ class GetDepositFileResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1280,6 +1513,9 @@ class GetDepositInfoRequest(AbstractModel):
 
     @property
     def EvidenceId(self):
+        """存证编码
+        :rtype: str
+        """
         return self._EvidenceId
 
     @EvidenceId.setter
@@ -1322,6 +1558,9 @@ class GetDepositInfoResponse(AbstractModel):
 
     @property
     def EvidenceId(self):
+        """存证编号
+        :rtype: str
+        """
         return self._EvidenceId
 
     @EvidenceId.setter
@@ -1330,6 +1569,9 @@ class GetDepositInfoResponse(AbstractModel):
 
     @property
     def EvidenceTime(self):
+        """上链时间
+        :rtype: str
+        """
         return self._EvidenceTime
 
     @EvidenceTime.setter
@@ -1338,6 +1580,9 @@ class GetDepositInfoResponse(AbstractModel):
 
     @property
     def EvidenceTxHash(self):
+        """区块链交易哈希
+        :rtype: str
+        """
         return self._EvidenceTxHash
 
     @EvidenceTxHash.setter
@@ -1346,6 +1591,9 @@ class GetDepositInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1374,6 +1622,9 @@ class VerifyEvidenceBlockChainTxHashRequest(AbstractModel):
 
     @property
     def EvidenceTxHash(self):
+        """区块链交易 hash，在“存证基本信息查询（GetDepositInfo）”接口中可以获取。
+        :rtype: str
+        """
         return self._EvidenceTxHash
 
     @EvidenceTxHash.setter
@@ -1418,6 +1669,9 @@ class VerifyEvidenceBlockChainTxHashResponse(AbstractModel):
 
     @property
     def Result(self):
+        """核验结果，true为核验成功，fals为核验失败
+        :rtype: bool
+        """
         return self._Result
 
     @Result.setter
@@ -1426,6 +1680,10 @@ class VerifyEvidenceBlockChainTxHashResponse(AbstractModel):
 
     @property
     def EvidenceTime(self):
+        """存证时间，仅当核验结果为true时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EvidenceTime
 
     @EvidenceTime.setter
@@ -1434,6 +1692,10 @@ class VerifyEvidenceBlockChainTxHashResponse(AbstractModel):
 
     @property
     def EvidenceId(self):
+        """存证编码，仅当核验结果为true时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EvidenceId
 
     @EvidenceId.setter
@@ -1442,6 +1704,9 @@ class VerifyEvidenceBlockChainTxHashResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1470,6 +1735,9 @@ class VerifyEvidenceHashRequest(AbstractModel):
 
     @property
     def EvidenceHash(self):
+        """存证内容hash，hash类型即为用户在存证时所用或所选的hash类型
+        :rtype: str
+        """
         return self._EvidenceHash
 
     @EvidenceHash.setter
@@ -1506,6 +1774,9 @@ class VerifyEvidenceHashResponse(AbstractModel):
 
     @property
     def Result(self):
+        """核验结果，true为核验成功，false为核验失败
+        :rtype: bool
+        """
         return self._Result
 
     @Result.setter
@@ -1514,6 +1785,9 @@ class VerifyEvidenceHashResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

@@ -35,6 +35,9 @@ class CbsInfo(AbstractModel):
 
     @property
     def Size(self):
+        """cbs存储大小，单位TB
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -43,6 +46,9 @@ class CbsInfo(AbstractModel):
 
     @property
     def Type(self):
+        """cbs存储类型，默认为SSD
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -83,6 +89,9 @@ class CosCapacity(AbstractModel):
 
     @property
     def TotalCapacity(self):
+        """已购cos的总容量大小，单位GB
+        :rtype: float
+        """
         return self._TotalCapacity
 
     @TotalCapacity.setter
@@ -91,6 +100,9 @@ class CosCapacity(AbstractModel):
 
     @property
     def TotalFreeCapacity(self):
+        """剩余可用cos的容量大小，单位GB
+        :rtype: float
+        """
         return self._TotalFreeCapacity
 
     @TotalFreeCapacity.setter
@@ -99,6 +111,9 @@ class CosCapacity(AbstractModel):
 
     @property
     def TotalUsedCapacity(self):
+        """已用cos的容量大小，单位GB
+        :rtype: float
+        """
         return self._TotalUsedCapacity
 
     @TotalUsedCapacity.setter
@@ -137,6 +152,9 @@ class CosInfo(AbstractModel):
 
     @property
     def Size(self):
+        """COS存储大小，单位TB
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -145,6 +163,9 @@ class CosInfo(AbstractModel):
 
     @property
     def Type(self):
+        """COS存储类型，默认为cos
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -194,6 +215,9 @@ class CreateDedicatedClusterOrderRequest(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
+        """专用集群id
+        :rtype: str
+        """
         return self._DedicatedClusterId
 
     @DedicatedClusterId.setter
@@ -202,6 +226,9 @@ class CreateDedicatedClusterOrderRequest(AbstractModel):
 
     @property
     def DedicatedClusterTypes(self):
+        """order关联的专用集群类型数组
+        :rtype: list of DedicatedClusterTypeInfo
+        """
         return self._DedicatedClusterTypes
 
     @DedicatedClusterTypes.setter
@@ -210,6 +237,9 @@ class CreateDedicatedClusterOrderRequest(AbstractModel):
 
     @property
     def CosInfo(self):
+        """order关联的cos存储信息
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.CosInfo`
+        """
         return self._CosInfo
 
     @CosInfo.setter
@@ -218,6 +248,9 @@ class CreateDedicatedClusterOrderRequest(AbstractModel):
 
     @property
     def CbsInfo(self):
+        """order关联的cbs存储信息
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.CbsInfo`
+        """
         return self._CbsInfo
 
     @CbsInfo.setter
@@ -226,6 +259,9 @@ class CreateDedicatedClusterOrderRequest(AbstractModel):
 
     @property
     def PurchaseSource(self):
+        """购买来源，默认为cloudApi
+        :rtype: str
+        """
         return self._PurchaseSource
 
     @PurchaseSource.setter
@@ -234,6 +270,9 @@ class CreateDedicatedClusterOrderRequest(AbstractModel):
 
     @property
     def DedicatedClusterOrderId(self):
+        """当调用API接口提交订单时，需要提交DedicatedClusterOrderId
+        :rtype: str
+        """
         return self._DedicatedClusterOrderId
 
     @DedicatedClusterOrderId.setter
@@ -285,6 +324,10 @@ class CreateDedicatedClusterOrderResponse(AbstractModel):
 
     @property
     def DedicatedClusterOrderId(self):
+        """专用集群订单id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DedicatedClusterOrderId
 
     @DedicatedClusterOrderId.setter
@@ -293,6 +336,9 @@ class CreateDedicatedClusterOrderResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -328,6 +374,9 @@ class CreateDedicatedClusterRequest(AbstractModel):
 
     @property
     def SiteId(self):
+        """专用集群所属的SiteId
+        :rtype: str
+        """
         return self._SiteId
 
     @SiteId.setter
@@ -336,6 +385,9 @@ class CreateDedicatedClusterRequest(AbstractModel):
 
     @property
     def Name(self):
+        """专用集群的名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -344,6 +396,9 @@ class CreateDedicatedClusterRequest(AbstractModel):
 
     @property
     def Zone(self):
+        """专用集群所属的可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -352,6 +407,9 @@ class CreateDedicatedClusterRequest(AbstractModel):
 
     @property
     def Description(self):
+        """专用集群的描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -391,6 +449,9 @@ class CreateDedicatedClusterResponse(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
+        """创建的专用集群id
+        :rtype: str
+        """
         return self._DedicatedClusterId
 
     @DedicatedClusterId.setter
@@ -399,6 +460,9 @@ class CreateDedicatedClusterResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -499,6 +563,9 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def Name(self):
+        """站点名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -507,6 +574,9 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def Country(self):
+        """站点所在国家
+        :rtype: str
+        """
         return self._Country
 
     @Country.setter
@@ -515,6 +585,9 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def Province(self):
+        """站点所在省份
+        :rtype: str
+        """
         return self._Province
 
     @Province.setter
@@ -523,6 +596,9 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def City(self):
+        """站点所在城市
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -531,6 +607,9 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def AddressLine(self):
+        """站点所在地区的详细地址信息
+        :rtype: str
+        """
         return self._AddressLine
 
     @AddressLine.setter
@@ -539,6 +618,9 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def Description(self):
+        """站点描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -547,6 +629,9 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def Note(self):
+        """注意事项
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -555,6 +640,9 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def FiberType(self):
+        """您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。
+        :rtype: str
+        """
         return self._FiberType
 
     @FiberType.setter
@@ -563,6 +651,9 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def OpticalStandard(self):
+        """您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。
+        :rtype: str
+        """
         return self._OpticalStandard
 
     @OpticalStandard.setter
@@ -571,6 +662,9 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def PowerConnectors(self):
+        """电源连接器类型
+        :rtype: str
+        """
         return self._PowerConnectors
 
     @PowerConnectors.setter
@@ -579,6 +673,9 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def PowerFeedDrop(self):
+        """从机架上方还是下方供电。
+        :rtype: str
+        """
         return self._PowerFeedDrop
 
     @PowerFeedDrop.setter
@@ -587,6 +684,9 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def MaxWeight(self):
+        """最大承重(KG)
+        :rtype: int
+        """
         return self._MaxWeight
 
     @MaxWeight.setter
@@ -595,6 +695,9 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def PowerDrawKva(self):
+        """功耗(KW)
+        :rtype: int
+        """
         return self._PowerDrawKva
 
     @PowerDrawKva.setter
@@ -603,6 +706,9 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def UplinkSpeedGbps(self):
+        """网络到腾讯云Region区域的上行链路速度
+        :rtype: int
+        """
         return self._UplinkSpeedGbps
 
     @UplinkSpeedGbps.setter
@@ -611,6 +717,9 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def UplinkCount(self):
+        """将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
+        :rtype: int
+        """
         return self._UplinkCount
 
     @UplinkCount.setter
@@ -619,6 +728,14 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def ConditionRequirement(self):
+        """是否满足下面环境条件：
+1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。
+2、确定的机架位置包含:
+温度范围为 41 到 104°F (5 到 40°C)。
+湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。
+机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)。CFM 必须是 CDC 配置的 kVA 功耗值的 145.8 倍。
+        :rtype: bool
+        """
         return self._ConditionRequirement
 
     @ConditionRequirement.setter
@@ -627,6 +744,12 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def DimensionRequirement(self):
+        """是否满足下面的尺寸条件：
+您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。
+您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。
+在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。
+        :rtype: bool
+        """
         return self._DimensionRequirement
 
     @DimensionRequirement.setter
@@ -635,6 +758,9 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def RedundantNetworking(self):
+        """是否提供冗余的上游设备(交换机或路由器)，以便两台  网络设备都能连接到网络设备。
+        :rtype: bool
+        """
         return self._RedundantNetworking
 
     @RedundantNetworking.setter
@@ -643,6 +769,9 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def PostalCode(self):
+        """站点所在地区的邮编
+        :rtype: int
+        """
         return self._PostalCode
 
     @PostalCode.setter
@@ -651,6 +780,9 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def OptionalAddressLine(self):
+        """站点所在地区的详细地址信息（补充）
+        :rtype: str
+        """
         return self._OptionalAddressLine
 
     @OptionalAddressLine.setter
@@ -659,6 +791,9 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def NeedHelp(self):
+        """是否需要腾讯云团队协助完成机架支撑工作
+        :rtype: bool
+        """
         return self._NeedHelp
 
     @NeedHelp.setter
@@ -667,6 +802,9 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def RedundantPower(self):
+        """是否电源冗余
+        :rtype: bool
+        """
         return self._RedundantPower
 
     @RedundantPower.setter
@@ -675,6 +813,9 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def BreakerRequirement(self):
+        """上游断路器是否具备
+        :rtype: bool
+        """
         return self._BreakerRequirement
 
     @BreakerRequirement.setter
@@ -733,6 +874,9 @@ class CreateSiteResponse(AbstractModel):
 
     @property
     def SiteId(self):
+        """创建Site生成的id
+        :rtype: str
+        """
         return self._SiteId
 
     @SiteId.setter
@@ -741,6 +885,9 @@ class CreateSiteResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -786,6 +933,9 @@ class DedicatedCluster(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
+        """专用集群id。如"cluster-xxxxx"。
+        :rtype: str
+        """
         return self._DedicatedClusterId
 
     @DedicatedClusterId.setter
@@ -794,6 +944,9 @@ class DedicatedCluster(AbstractModel):
 
     @property
     def Zone(self):
+        """专用集群所属可用区名称。
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -802,6 +955,10 @@ class DedicatedCluster(AbstractModel):
 
     @property
     def Description(self):
+        """专用集群的描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -810,6 +967,9 @@ class DedicatedCluster(AbstractModel):
 
     @property
     def Name(self):
+        """专用集群的名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -818,6 +978,9 @@ class DedicatedCluster(AbstractModel):
 
     @property
     def LifecycleStatus(self):
+        """专用集群的生命周期。如"PENDING"。
+        :rtype: str
+        """
         return self._LifecycleStatus
 
     @LifecycleStatus.setter
@@ -826,6 +989,9 @@ class DedicatedCluster(AbstractModel):
 
     @property
     def CreateTime(self):
+        """专用集群的创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -834,6 +1000,9 @@ class DedicatedCluster(AbstractModel):
 
     @property
     def SiteId(self):
+        """专用集群所属的站点id。
+        :rtype: str
+        """
         return self._SiteId
 
     @SiteId.setter
@@ -915,6 +1084,9 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -923,6 +1095,9 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def InstanceType(self):
+        """规格名称
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -931,6 +1106,9 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def NetworkCard(self):
+        """网卡类型，例如：25代表25G网卡
+        :rtype: int
+        """
         return self._NetworkCard
 
     @NetworkCard.setter
@@ -939,6 +1117,9 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def Cpu(self):
+        """实例的CPU核数，单位：核。
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -947,6 +1128,9 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def Memory(self):
+        """实例内存容量，单位：`GB`。
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -955,6 +1139,9 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def InstanceFamily(self):
+        """实例机型系列。
+        :rtype: str
+        """
         return self._InstanceFamily
 
     @InstanceFamily.setter
@@ -963,6 +1150,9 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def TypeName(self):
+        """机型名称。
+        :rtype: str
+        """
         return self._TypeName
 
     @TypeName.setter
@@ -971,6 +1161,9 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def StorageBlockAmount(self):
+        """本地存储块数量。
+        :rtype: int
+        """
         return self._StorageBlockAmount
 
     @StorageBlockAmount.setter
@@ -979,6 +1172,9 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def InstanceBandwidth(self):
+        """内网带宽，单位Gbps。
+        :rtype: float
+        """
         return self._InstanceBandwidth
 
     @InstanceBandwidth.setter
@@ -987,6 +1183,9 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def InstancePps(self):
+        """网络收发包能力，单位万PPS。
+        :rtype: int
+        """
         return self._InstancePps
 
     @InstancePps.setter
@@ -995,6 +1194,9 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def CpuType(self):
+        """处理器型号。
+        :rtype: str
+        """
         return self._CpuType
 
     @CpuType.setter
@@ -1003,6 +1205,9 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def Gpu(self):
+        """实例的GPU数量。
+        :rtype: int
+        """
         return self._Gpu
 
     @Gpu.setter
@@ -1011,6 +1216,9 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def Fpga(self):
+        """实例的FPGA数量。
+        :rtype: int
+        """
         return self._Fpga
 
     @Fpga.setter
@@ -1019,6 +1227,9 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def Remark(self):
+        """机型描述
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1027,6 +1238,9 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def Status(self):
+        """实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br><li>SOLD_OUT：表示实例已售罄。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1168,6 +1382,9 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
+        """专用集群id
+        :rtype: str
+        """
         return self._DedicatedClusterId
 
     @DedicatedClusterId.setter
@@ -1176,6 +1393,9 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def DedicatedClusterTypeId(self):
+        """专用集群类型id（移到下一层级，已经废弃，后续将删除）
+        :rtype: str
+        """
         return self._DedicatedClusterTypeId
 
     @DedicatedClusterTypeId.setter
@@ -1184,6 +1404,9 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def SupportedStorageType(self):
+        """支持的存储类型列表（移到下一层级，已经废弃，后续将删除）
+        :rtype: list of str
+        """
         return self._SupportedStorageType
 
     @SupportedStorageType.setter
@@ -1192,6 +1415,9 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def SupportedUplinkSpeed(self):
+        """支持的上连交换机的链路传输速率(GiB)（移到下一层级，已经废弃，后续将删除）
+        :rtype: list of int
+        """
         return self._SupportedUplinkSpeed
 
     @SupportedUplinkSpeed.setter
@@ -1200,6 +1426,9 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def SupportedInstanceFamily(self):
+        """支持的实例族列表（移到下一层级，已经废弃，后续将删除）
+        :rtype: list of str
+        """
         return self._SupportedInstanceFamily
 
     @SupportedInstanceFamily.setter
@@ -1208,6 +1437,9 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def Weight(self):
+        """地板承重要求(KG)
+        :rtype: int
+        """
         return self._Weight
 
     @Weight.setter
@@ -1216,6 +1448,9 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def PowerDraw(self):
+        """功率要求(KW)
+        :rtype: float
+        """
         return self._PowerDraw
 
     @PowerDraw.setter
@@ -1224,6 +1459,9 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def OrderStatus(self):
+        """订单状态
+        :rtype: str
+        """
         return self._OrderStatus
 
     @OrderStatus.setter
@@ -1232,6 +1470,9 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def CreateTime(self):
+        """订单创建的时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1240,6 +1481,9 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def DedicatedClusterOrderId(self):
+        """大订单ID
+        :rtype: str
+        """
         return self._DedicatedClusterOrderId
 
     @DedicatedClusterOrderId.setter
@@ -1248,6 +1492,9 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def Action(self):
+        """订单类型，创建CREATE或扩容EXTEND
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -1256,6 +1503,10 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def DedicatedClusterOrderItems(self):
+        """子订单详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DedicatedClusterOrderItem
+        """
         return self._DedicatedClusterOrderItems
 
     @DedicatedClusterOrderItems.setter
@@ -1264,6 +1515,10 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def Cpu(self):
+        """cpu值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -1272,6 +1527,10 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def Mem(self):
+        """mem值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Mem
 
     @Mem.setter
@@ -1280,6 +1539,10 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def Gpu(self):
+        """gpu值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Gpu
 
     @Gpu.setter
@@ -1288,6 +1551,10 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def PayStatus(self):
+        """0代表未支付，1代表已支付
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PayStatus
 
     @PayStatus.setter
@@ -1296,6 +1563,10 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def PayType(self):
+        """支付方式，一次性、按月、按年
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PayType
 
     @PayType.setter
@@ -1304,6 +1575,10 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def TimeUnit(self):
+        """购买时长的单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -1312,6 +1587,10 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def TimeSpan(self):
+        """购买时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -1320,6 +1599,10 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def OrderType(self):
+        """订单类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -1328,6 +1611,10 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def CheckStatus(self):
+        """验收状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CheckStatus
 
     @CheckStatus.setter
@@ -1336,6 +1623,10 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def DeliverExpectTime(self):
+        """交付预期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeliverExpectTime
 
     @DeliverExpectTime.setter
@@ -1344,6 +1635,10 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def DeliverFinishTime(self):
+        """交付实际完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeliverFinishTime
 
     @DeliverFinishTime.setter
@@ -1352,6 +1647,10 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def CheckExpectTime(self):
+        """验收预期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CheckExpectTime
 
     @CheckExpectTime.setter
@@ -1360,6 +1659,10 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def CheckFinishTime(self):
+        """验收实际完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CheckFinishTime
 
     @CheckFinishTime.setter
@@ -1368,6 +1671,10 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def OrderSLA(self):
+        """订单SLA
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrderSLA
 
     @OrderSLA.setter
@@ -1376,6 +1683,10 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def OrderPayPlan(self):
+        """订单支付计划
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrderPayPlan
 
     @OrderPayPlan.setter
@@ -1497,6 +1808,9 @@ class DedicatedClusterOrderItem(AbstractModel):
 
     @property
     def DedicatedClusterTypeId(self):
+        """专用集群类型id
+        :rtype: str
+        """
         return self._DedicatedClusterTypeId
 
     @DedicatedClusterTypeId.setter
@@ -1505,6 +1819,9 @@ class DedicatedClusterOrderItem(AbstractModel):
 
     @property
     def SupportedStorageType(self):
+        """支持的存储类型列表
+        :rtype: list of str
+        """
         return self._SupportedStorageType
 
     @SupportedStorageType.setter
@@ -1513,6 +1830,9 @@ class DedicatedClusterOrderItem(AbstractModel):
 
     @property
     def SupportedUplinkSpeed(self):
+        """支持的上连交换机的链路传输速率(GiB)
+        :rtype: list of int
+        """
         return self._SupportedUplinkSpeed
 
     @SupportedUplinkSpeed.setter
@@ -1521,6 +1841,9 @@ class DedicatedClusterOrderItem(AbstractModel):
 
     @property
     def SupportedInstanceFamily(self):
+        """支持的实例族列表
+        :rtype: list of str
+        """
         return self._SupportedInstanceFamily
 
     @SupportedInstanceFamily.setter
@@ -1529,6 +1852,9 @@ class DedicatedClusterOrderItem(AbstractModel):
 
     @property
     def Weight(self):
+        """地板承重要求(KG)
+        :rtype: int
+        """
         return self._Weight
 
     @Weight.setter
@@ -1537,6 +1863,9 @@ class DedicatedClusterOrderItem(AbstractModel):
 
     @property
     def PowerDraw(self):
+        """功率要求(KW)
+        :rtype: float
+        """
         return self._PowerDraw
 
     @PowerDraw.setter
@@ -1545,6 +1874,9 @@ class DedicatedClusterOrderItem(AbstractModel):
 
     @property
     def SubOrderStatus(self):
+        """订单状态
+        :rtype: str
+        """
         return self._SubOrderStatus
 
     @SubOrderStatus.setter
@@ -1553,6 +1885,9 @@ class DedicatedClusterOrderItem(AbstractModel):
 
     @property
     def CreateTime(self):
+        """订单创建的时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1561,6 +1896,9 @@ class DedicatedClusterOrderItem(AbstractModel):
 
     @property
     def SubOrderId(self):
+        """子订单ID
+        :rtype: str
+        """
         return self._SubOrderId
 
     @SubOrderId.setter
@@ -1569,6 +1907,9 @@ class DedicatedClusterOrderItem(AbstractModel):
 
     @property
     def Count(self):
+        """关联的集群规格数量
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -1577,6 +1918,9 @@ class DedicatedClusterOrderItem(AbstractModel):
 
     @property
     def Name(self):
+        """规格简单描述
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1585,6 +1929,9 @@ class DedicatedClusterOrderItem(AbstractModel):
 
     @property
     def Description(self):
+        """规格详细描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1593,6 +1940,9 @@ class DedicatedClusterOrderItem(AbstractModel):
 
     @property
     def TotalCpu(self):
+        """CPU数
+        :rtype: int
+        """
         return self._TotalCpu
 
     @TotalCpu.setter
@@ -1601,6 +1951,9 @@ class DedicatedClusterOrderItem(AbstractModel):
 
     @property
     def TotalMem(self):
+        """内存数
+        :rtype: int
+        """
         return self._TotalMem
 
     @TotalMem.setter
@@ -1609,6 +1962,9 @@ class DedicatedClusterOrderItem(AbstractModel):
 
     @property
     def TotalGpu(self):
+        """GPU数
+        :rtype: int
+        """
         return self._TotalGpu
 
     @TotalGpu.setter
@@ -1617,6 +1973,9 @@ class DedicatedClusterOrderItem(AbstractModel):
 
     @property
     def TypeName(self):
+        """规格英文名
+        :rtype: str
+        """
         return self._TypeName
 
     @TypeName.setter
@@ -1625,6 +1984,10 @@ class DedicatedClusterOrderItem(AbstractModel):
 
     @property
     def ComputeFormat(self):
+        """规格展示
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ComputeFormat
 
     @ComputeFormat.setter
@@ -1633,6 +1996,10 @@ class DedicatedClusterOrderItem(AbstractModel):
 
     @property
     def TypeFamily(self):
+        """规格类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TypeFamily
 
     @TypeFamily.setter
@@ -1641,6 +2008,10 @@ class DedicatedClusterOrderItem(AbstractModel):
 
     @property
     def SubOrderPayStatus(self):
+        """0未支付，1已支付
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SubOrderPayStatus
 
     @SubOrderPayStatus.setter
@@ -1720,6 +2091,9 @@ class DedicatedClusterType(AbstractModel):
 
     @property
     def DedicatedClusterTypeId(self):
+        """配置id
+        :rtype: str
+        """
         return self._DedicatedClusterTypeId
 
     @DedicatedClusterTypeId.setter
@@ -1728,6 +2102,10 @@ class DedicatedClusterType(AbstractModel):
 
     @property
     def Description(self):
+        """配置描述，对应描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1736,6 +2114,9 @@ class DedicatedClusterType(AbstractModel):
 
     @property
     def Name(self):
+        """配置名称，对应计算资源类型
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1744,6 +2125,9 @@ class DedicatedClusterType(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建配置的时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1752,6 +2136,9 @@ class DedicatedClusterType(AbstractModel):
 
     @property
     def SupportedStorageType(self):
+        """支持的存储类型列表
+        :rtype: list of str
+        """
         return self._SupportedStorageType
 
     @SupportedStorageType.setter
@@ -1760,6 +2147,9 @@ class DedicatedClusterType(AbstractModel):
 
     @property
     def SupportedUplinkGiB(self):
+        """支持的上连交换机的链路传输速率
+        :rtype: list of int
+        """
         return self._SupportedUplinkGiB
 
     @SupportedUplinkGiB.setter
@@ -1768,6 +2158,9 @@ class DedicatedClusterType(AbstractModel):
 
     @property
     def SupportedInstanceFamily(self):
+        """支持的实例族列表
+        :rtype: list of str
+        """
         return self._SupportedInstanceFamily
 
     @SupportedInstanceFamily.setter
@@ -1776,6 +2169,9 @@ class DedicatedClusterType(AbstractModel):
 
     @property
     def Weight(self):
+        """地板承重要求(KG)
+        :rtype: int
+        """
         return self._Weight
 
     @Weight.setter
@@ -1784,6 +2180,9 @@ class DedicatedClusterType(AbstractModel):
 
     @property
     def PowerDrawKva(self):
+        """功率要求(KW)
+        :rtype: float
+        """
         return self._PowerDrawKva
 
     @PowerDrawKva.setter
@@ -1792,6 +2191,9 @@ class DedicatedClusterType(AbstractModel):
 
     @property
     def ComputeFormatDesc(self):
+        """显示计算资源规格详情，存储等资源不显示
+        :rtype: str
+        """
         return self._ComputeFormatDesc
 
     @ComputeFormatDesc.setter
@@ -1837,6 +2239,9 @@ class DedicatedClusterTypeInfo(AbstractModel):
 
     @property
     def Id(self):
+        """集群类型Id
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -1845,6 +2250,9 @@ class DedicatedClusterTypeInfo(AbstractModel):
 
     @property
     def Count(self):
+        """集群类型个数
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -1879,6 +2287,9 @@ class DeleteDedicatedClustersRequest(AbstractModel):
 
     @property
     def DedicatedClusterIds(self):
+        """要删除的专用集群id
+        :rtype: list of str
+        """
         return self._DedicatedClusterIds
 
     @DedicatedClusterIds.setter
@@ -1912,6 +2323,9 @@ class DeleteDedicatedClustersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1937,6 +2351,9 @@ class DeleteSitesRequest(AbstractModel):
 
     @property
     def SiteIds(self):
+        """要删除的站点id列表
+        :rtype: list of str
+        """
         return self._SiteIds
 
     @SiteIds.setter
@@ -1970,6 +2387,9 @@ class DeleteSitesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2013,6 +2433,9 @@ class DescribeDedicatedClusterCbsStatisticsRequest(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
+        """查询的专用集群id
+        :rtype: str
+        """
         return self._DedicatedClusterId
 
     @DedicatedClusterId.setter
@@ -2021,6 +2444,9 @@ class DescribeDedicatedClusterCbsStatisticsRequest(AbstractModel):
 
     @property
     def SetId(self):
+        """云硬盘仓库id
+        :rtype: str
+        """
         return self._SetId
 
     @SetId.setter
@@ -2029,6 +2455,9 @@ class DescribeDedicatedClusterCbsStatisticsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2037,6 +2466,9 @@ class DescribeDedicatedClusterCbsStatisticsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2045,6 +2477,9 @@ class DescribeDedicatedClusterCbsStatisticsRequest(AbstractModel):
 
     @property
     def Period(self):
+        """时间范围精度，1分钟/5分钟
+        :rtype: str
+        """
         return self._Period
 
     @Period.setter
@@ -2053,6 +2488,9 @@ class DescribeDedicatedClusterCbsStatisticsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2061,6 +2499,9 @@ class DescribeDedicatedClusterCbsStatisticsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2108,6 +2549,10 @@ class DescribeDedicatedClusterCbsStatisticsResponse(AbstractModel):
 
     @property
     def SetList(self):
+        """云硬盘仓库信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SetInfo
+        """
         return self._SetList
 
     @SetList.setter
@@ -2116,6 +2561,10 @@ class DescribeDedicatedClusterCbsStatisticsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2124,6 +2573,9 @@ class DescribeDedicatedClusterCbsStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2156,6 +2608,9 @@ class DescribeDedicatedClusterCosCapacityRequest(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
+        """查询的专用集群id
+        :rtype: str
+        """
         return self._DedicatedClusterId
 
     @DedicatedClusterId.setter
@@ -2192,6 +2647,9 @@ class DescribeDedicatedClusterCosCapacityResponse(AbstractModel):
 
     @property
     def CosCapacity(self):
+        """本集群内cos容量信息，单位：‘GB’
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.CosCapacity`
+        """
         return self._CosCapacity
 
     @CosCapacity.setter
@@ -2200,6 +2658,9 @@ class DescribeDedicatedClusterCosCapacityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2240,6 +2701,9 @@ class DescribeDedicatedClusterHostStatisticsRequest(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
+        """查询的专用集群id
+        :rtype: str
+        """
         return self._DedicatedClusterId
 
     @DedicatedClusterId.setter
@@ -2248,6 +2712,9 @@ class DescribeDedicatedClusterHostStatisticsRequest(AbstractModel):
 
     @property
     def HostId(self):
+        """宿主机id
+        :rtype: str
+        """
         return self._HostId
 
     @HostId.setter
@@ -2256,6 +2723,9 @@ class DescribeDedicatedClusterHostStatisticsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2264,6 +2734,9 @@ class DescribeDedicatedClusterHostStatisticsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2272,6 +2745,9 @@ class DescribeDedicatedClusterHostStatisticsRequest(AbstractModel):
 
     @property
     def Period(self):
+        """时间范围精度，1分钟/5分钟
+        :rtype: str
+        """
         return self._Period
 
     @Period.setter
@@ -2312,6 +2788,9 @@ class DescribeDedicatedClusterHostStatisticsResponse(AbstractModel):
 
     @property
     def HostStatisticSet(self):
+        """该集群内宿主机的统计信息列表
+        :rtype: list of HostStatistic
+        """
         return self._HostStatisticSet
 
     @HostStatisticSet.setter
@@ -2320,6 +2799,9 @@ class DescribeDedicatedClusterHostStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2357,6 +2839,9 @@ class DescribeDedicatedClusterHostsRequest(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
+        """集群id
+        :rtype: str
+        """
         return self._DedicatedClusterId
 
     @DedicatedClusterId.setter
@@ -2365,6 +2850,9 @@ class DescribeDedicatedClusterHostsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2373,6 +2861,9 @@ class DescribeDedicatedClusterHostsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2415,6 +2906,10 @@ class DescribeDedicatedClusterHostsResponse(AbstractModel):
 
     @property
     def HostInfoSet(self):
+        """宿主机信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of HostInfo
+        """
         return self._HostInfoSet
 
     @HostInfoSet.setter
@@ -2423,6 +2918,9 @@ class DescribeDedicatedClusterHostsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """宿主机总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2431,6 +2929,9 @@ class DescribeDedicatedClusterHostsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2463,6 +2964,9 @@ class DescribeDedicatedClusterInstanceTypesRequest(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
+        """查询的专用集群id
+        :rtype: str
+        """
         return self._DedicatedClusterId
 
     @DedicatedClusterId.setter
@@ -2499,6 +3003,9 @@ class DescribeDedicatedClusterInstanceTypesResponse(AbstractModel):
 
     @property
     def DedicatedClusterInstanceTypeSet(self):
+        """支持的实例规格列表
+        :rtype: list of DedicatedClusterInstanceType
+        """
         return self._DedicatedClusterInstanceTypeSet
 
     @DedicatedClusterInstanceTypeSet.setter
@@ -2507,6 +3014,9 @@ class DescribeDedicatedClusterInstanceTypesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2556,6 +3066,9 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
 
     @property
     def DedicatedClusterIds(self):
+        """按照专用集群id过滤
+        :rtype: list of str
+        """
         return self._DedicatedClusterIds
 
     @DedicatedClusterIds.setter
@@ -2564,6 +3077,9 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
 
     @property
     def DedicatedClusterOrderIds(self):
+        """按照专用集群订单id过滤
+        :rtype: str
+        """
         return self._DedicatedClusterOrderIds
 
     @DedicatedClusterOrderIds.setter
@@ -2572,6 +3088,9 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2580,6 +3099,9 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2588,6 +3110,9 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
 
     @property
     def Status(self):
+        """订单状态为过滤条件：PENDING INCONSTRUCTION DELIVERING DELIVERED EXPIRED CANCELLED  OFFLINE
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2596,6 +3121,9 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
 
     @property
     def ActionType(self):
+        """订单类型为过滤条件：CREATE  EXTEND
+        :rtype: str
+        """
         return self._ActionType
 
     @ActionType.setter
@@ -2604,6 +3132,9 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
 
     @property
     def OrderTypes(self):
+        """订单类型列表
+        :rtype: list of str
+        """
         return self._OrderTypes
 
     @OrderTypes.setter
@@ -2649,6 +3180,9 @@ class DescribeDedicatedClusterOrdersResponse(AbstractModel):
 
     @property
     def DedicatedClusterOrderSet(self):
+        """专用集群订单列表
+        :rtype: list of DedicatedClusterOrder
+        """
         return self._DedicatedClusterOrderSet
 
     @DedicatedClusterOrderSet.setter
@@ -2657,6 +3191,9 @@ class DescribeDedicatedClusterOrdersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的专用集群订单总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2665,6 +3202,9 @@ class DescribeDedicatedClusterOrdersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2697,6 +3237,9 @@ class DescribeDedicatedClusterOverviewRequest(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
+        """集群id
+        :rtype: str
+        """
         return self._DedicatedClusterId
 
     @DedicatedClusterId.setter
@@ -2764,6 +3307,9 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
 
     @property
     def CvmCount(self):
+        """云服务器数量
+        :rtype: int
+        """
         return self._CvmCount
 
     @CvmCount.setter
@@ -2772,6 +3318,9 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
 
     @property
     def HostCount(self):
+        """宿主机数量
+        :rtype: int
+        """
         return self._HostCount
 
     @HostCount.setter
@@ -2780,6 +3329,10 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
 
     @property
     def VpnConnectionState(self):
+        """vpn通道状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpnConnectionState
 
     @VpnConnectionState.setter
@@ -2788,6 +3341,10 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
 
     @property
     def VpngwBandwidthData(self):
+        """vpn网关监控数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.VpngwBandwidthData`
+        """
         return self._VpngwBandwidthData
 
     @VpngwBandwidthData.setter
@@ -2796,6 +3353,10 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
 
     @property
     def LocalNetInfo(self):
+        """本地网关信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.LocalNetInfo`
+        """
         return self._LocalNetInfo
 
     @LocalNetInfo.setter
@@ -2804,6 +3365,10 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
 
     @property
     def VpnConnectionBandwidthData(self):
+        """vpn网关通道监控数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VpngwBandwidthData
+        """
         return self._VpnConnectionBandwidthData
 
     @VpnConnectionBandwidthData.setter
@@ -2812,6 +3377,10 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
 
     @property
     def HostDetailInfo(self):
+        """宿主机资源概览信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of HostDetailInfo
+        """
         return self._HostDetailInfo
 
     @HostDetailInfo.setter
@@ -2820,6 +3389,10 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
 
     @property
     def HostStandbyCount(self):
+        """热备宿主机数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HostStandbyCount
 
     @HostStandbyCount.setter
@@ -2828,6 +3401,10 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
 
     @property
     def HostNormalCount(self):
+        """普通宿主机数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HostNormalCount
 
     @HostNormalCount.setter
@@ -2836,6 +3413,9 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2896,6 +3476,9 @@ class DescribeDedicatedClusterTypesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """模糊匹配专用集群配置名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2904,6 +3487,9 @@ class DescribeDedicatedClusterTypesRequest(AbstractModel):
 
     @property
     def DedicatedClusterTypeIds(self):
+        """待查询的专用集群配置id列表
+        :rtype: list of str
+        """
         return self._DedicatedClusterTypeIds
 
     @DedicatedClusterTypeIds.setter
@@ -2912,6 +3498,9 @@ class DescribeDedicatedClusterTypesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2920,6 +3509,9 @@ class DescribeDedicatedClusterTypesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2928,6 +3520,9 @@ class DescribeDedicatedClusterTypesRequest(AbstractModel):
 
     @property
     def IsCompute(self):
+        """是否只查询计算规格类型
+        :rtype: bool
+        """
         return self._IsCompute
 
     @IsCompute.setter
@@ -2971,6 +3566,9 @@ class DescribeDedicatedClusterTypesResponse(AbstractModel):
 
     @property
     def DedicatedClusterTypeSet(self):
+        """专用集群配置列表
+        :rtype: list of DedicatedClusterType
+        """
         return self._DedicatedClusterTypeSet
 
     @DedicatedClusterTypeSet.setter
@@ -2979,6 +3577,9 @@ class DescribeDedicatedClusterTypesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的个数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2987,6 +3588,9 @@ class DescribeDedicatedClusterTypesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3037,6 +3641,9 @@ class DescribeDedicatedClustersRequest(AbstractModel):
 
     @property
     def DedicatedClusterIds(self):
+        """按照一个或者多个实例ID查询。实例ID形如：`cluster-xxxxxxxx`
+        :rtype: list of str
+        """
         return self._DedicatedClusterIds
 
     @DedicatedClusterIds.setter
@@ -3045,6 +3652,9 @@ class DescribeDedicatedClustersRequest(AbstractModel):
 
     @property
     def Zones(self):
+        """按照可用区名称过滤
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -3053,6 +3663,9 @@ class DescribeDedicatedClustersRequest(AbstractModel):
 
     @property
     def SiteIds(self):
+        """按照站点id过滤
+        :rtype: list of str
+        """
         return self._SiteIds
 
     @SiteIds.setter
@@ -3061,6 +3674,9 @@ class DescribeDedicatedClustersRequest(AbstractModel):
 
     @property
     def LifecycleStatuses(self):
+        """按照专用集群生命周期过滤
+        :rtype: list of str
+        """
         return self._LifecycleStatuses
 
     @LifecycleStatuses.setter
@@ -3069,6 +3685,9 @@ class DescribeDedicatedClustersRequest(AbstractModel):
 
     @property
     def Name(self):
+        """模糊匹配专用集群名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3077,6 +3696,9 @@ class DescribeDedicatedClustersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3085,6 +3707,9 @@ class DescribeDedicatedClustersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3130,6 +3755,9 @@ class DescribeDedicatedClustersResponse(AbstractModel):
 
     @property
     def DedicatedClusterSet(self):
+        """符合查询条件的专用集群列表
+        :rtype: list of DedicatedCluster
+        """
         return self._DedicatedClusterSet
 
     @DedicatedClusterSet.setter
@@ -3138,6 +3766,9 @@ class DescribeDedicatedClustersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的专用集群数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3146,6 +3777,9 @@ class DescribeDedicatedClustersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3178,6 +3812,9 @@ class DescribeDedicatedSupportedZonesRequest(AbstractModel):
 
     @property
     def Regions(self):
+        """传入region列表
+        :rtype: list of int
+        """
         return self._Regions
 
     @Regions.setter
@@ -3214,6 +3851,9 @@ class DescribeDedicatedSupportedZonesResponse(AbstractModel):
 
     @property
     def ZoneSet(self):
+        """支持的可用区列表
+        :rtype: list of RegionZoneInfo
+        """
         return self._ZoneSet
 
     @ZoneSet.setter
@@ -3222,6 +3862,9 @@ class DescribeDedicatedSupportedZonesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3262,6 +3905,9 @@ class DescribeSitesDetailRequest(AbstractModel):
 
     @property
     def SiteIds(self):
+        """按照站点id过滤
+        :rtype: list of str
+        """
         return self._SiteIds
 
     @SiteIds.setter
@@ -3270,6 +3916,9 @@ class DescribeSitesDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3278,6 +3927,9 @@ class DescribeSitesDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3286,6 +3938,9 @@ class DescribeSitesDetailRequest(AbstractModel):
 
     @property
     def Name(self):
+        """按照站定名称模糊匹配
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3328,6 +3983,9 @@ class DescribeSitesDetailResponse(AbstractModel):
 
     @property
     def SiteDetailSet(self):
+        """站点详情
+        :rtype: list of SiteDetail
+        """
         return self._SiteDetailSet
 
     @SiteDetailSet.setter
@@ -3336,6 +3994,9 @@ class DescribeSitesDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的站点总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3344,6 +4005,9 @@ class DescribeSitesDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3385,6 +4049,9 @@ class DescribeSitesRequest(AbstractModel):
 
     @property
     def SiteIds(self):
+        """按照站点id过滤
+        :rtype: list of str
+        """
         return self._SiteIds
 
     @SiteIds.setter
@@ -3393,6 +4060,9 @@ class DescribeSitesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """模糊匹配站点名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3401,6 +4071,9 @@ class DescribeSitesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3409,6 +4082,9 @@ class DescribeSitesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3451,6 +4127,9 @@ class DescribeSitesResponse(AbstractModel):
 
     @property
     def SiteSet(self):
+        """符合查询条件的站点列表
+        :rtype: list of Site
+        """
         return self._SiteSet
 
     @SiteSet.setter
@@ -3459,6 +4138,9 @@ class DescribeSitesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的站点数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3467,6 +4149,9 @@ class DescribeSitesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3504,6 +4189,10 @@ class DetailData(AbstractModel):
 
     @property
     def Timestamps(self):
+        """时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of float
+        """
         return self._Timestamps
 
     @Timestamps.setter
@@ -3512,6 +4201,10 @@ class DetailData(AbstractModel):
 
     @property
     def Values(self):
+        """对应的具体值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of float
+        """
         return self._Values
 
     @Values.setter
@@ -3563,6 +4256,10 @@ class HostDetailInfo(AbstractModel):
 
     @property
     def HostTypeFamily(self):
+        """类型族
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._HostTypeFamily
 
     @HostTypeFamily.setter
@@ -3571,6 +4268,10 @@ class HostDetailInfo(AbstractModel):
 
     @property
     def CpuTotal(self):
+        """总CPU
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._CpuTotal
 
     @CpuTotal.setter
@@ -3579,6 +4280,10 @@ class HostDetailInfo(AbstractModel):
 
     @property
     def CpuAvailable(self):
+        """可用CPU
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._CpuAvailable
 
     @CpuAvailable.setter
@@ -3587,6 +4292,10 @@ class HostDetailInfo(AbstractModel):
 
     @property
     def MemTotal(self):
+        """总内存
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._MemTotal
 
     @MemTotal.setter
@@ -3595,6 +4304,10 @@ class HostDetailInfo(AbstractModel):
 
     @property
     def MemAvailable(self):
+        """可用内存
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._MemAvailable
 
     @MemAvailable.setter
@@ -3663,6 +4376,9 @@ class HostInfo(AbstractModel):
 
     @property
     def HostIp(self):
+        """宿主机IP（废弃）
+        :rtype: str
+        """
         return self._HostIp
 
     @HostIp.setter
@@ -3671,6 +4387,9 @@ class HostInfo(AbstractModel):
 
     @property
     def ServiceType(self):
+        """云服务类型
+        :rtype: str
+        """
         return self._ServiceType
 
     @ServiceType.setter
@@ -3679,6 +4398,9 @@ class HostInfo(AbstractModel):
 
     @property
     def HostStatus(self):
+        """宿主机运行状态
+        :rtype: str
+        """
         return self._HostStatus
 
     @HostStatus.setter
@@ -3687,6 +4409,9 @@ class HostInfo(AbstractModel):
 
     @property
     def HostType(self):
+        """宿主机类型
+        :rtype: str
+        """
         return self._HostType
 
     @HostType.setter
@@ -3695,6 +4420,9 @@ class HostInfo(AbstractModel):
 
     @property
     def CpuAvailable(self):
+        """cpu可用数
+        :rtype: int
+        """
         return self._CpuAvailable
 
     @CpuAvailable.setter
@@ -3703,6 +4431,9 @@ class HostInfo(AbstractModel):
 
     @property
     def CpuTotal(self):
+        """cpu总数
+        :rtype: int
+        """
         return self._CpuTotal
 
     @CpuTotal.setter
@@ -3711,6 +4442,9 @@ class HostInfo(AbstractModel):
 
     @property
     def MemAvailable(self):
+        """内存可用数
+        :rtype: int
+        """
         return self._MemAvailable
 
     @MemAvailable.setter
@@ -3719,6 +4453,9 @@ class HostInfo(AbstractModel):
 
     @property
     def MemTotal(self):
+        """内存总数
+        :rtype: int
+        """
         return self._MemTotal
 
     @MemTotal.setter
@@ -3727,6 +4464,9 @@ class HostInfo(AbstractModel):
 
     @property
     def RunTime(self):
+        """运行时间
+        :rtype: str
+        """
         return self._RunTime
 
     @RunTime.setter
@@ -3735,6 +4475,9 @@ class HostInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """到期时间
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -3743,6 +4486,10 @@ class HostInfo(AbstractModel):
 
     @property
     def HostId(self):
+        """宿主机id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._HostId
 
     @HostId.setter
@@ -3826,6 +4573,9 @@ class HostStatistic(AbstractModel):
 
     @property
     def HostType(self):
+        """宿主机规格
+        :rtype: str
+        """
         return self._HostType
 
     @HostType.setter
@@ -3834,6 +4584,9 @@ class HostStatistic(AbstractModel):
 
     @property
     def HostFamily(self):
+        """宿主机机型系列
+        :rtype: str
+        """
         return self._HostFamily
 
     @HostFamily.setter
@@ -3842,6 +4595,9 @@ class HostStatistic(AbstractModel):
 
     @property
     def Cpu(self):
+        """宿主机的CPU核数，单位：核
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -3850,6 +4606,9 @@ class HostStatistic(AbstractModel):
 
     @property
     def Memory(self):
+        """宿主机内存大小，单位：GB
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -3858,6 +4617,9 @@ class HostStatistic(AbstractModel):
 
     @property
     def Count(self):
+        """该规格宿主机的数量
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -3866,6 +4628,10 @@ class HostStatistic(AbstractModel):
 
     @property
     def CpuAverage(self):
+        """平均cpu负载百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._CpuAverage
 
     @CpuAverage.setter
@@ -3874,6 +4640,10 @@ class HostStatistic(AbstractModel):
 
     @property
     def MemAverage(self):
+        """平均内存使用率百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._MemAverage
 
     @MemAverage.setter
@@ -3882,6 +4652,10 @@ class HostStatistic(AbstractModel):
 
     @property
     def NetAverage(self):
+        """平均网络流量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._NetAverage
 
     @NetAverage.setter
@@ -3890,6 +4664,10 @@ class HostStatistic(AbstractModel):
 
     @property
     def CpuDetailData(self):
+        """cpu详细监控数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
+        """
         return self._CpuDetailData
 
     @CpuDetailData.setter
@@ -3898,6 +4676,10 @@ class HostStatistic(AbstractModel):
 
     @property
     def MemDetailData(self):
+        """内存详细数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
+        """
         return self._MemDetailData
 
     @MemDetailData.setter
@@ -3906,6 +4688,10 @@ class HostStatistic(AbstractModel):
 
     @property
     def NetRateDetailData(self):
+        """网络速率详细数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
+        """
         return self._NetRateDetailData
 
     @NetRateDetailData.setter
@@ -3914,6 +4700,10 @@ class HostStatistic(AbstractModel):
 
     @property
     def NetPacketDetailData(self):
+        """网速包详细数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
+        """
         return self._NetPacketDetailData
 
     @NetPacketDetailData.setter
@@ -3971,6 +4761,10 @@ class InBandwidth(AbstractModel):
 
     @property
     def Timestamps(self):
+        """时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of float
+        """
         return self._Timestamps
 
     @Timestamps.setter
@@ -3979,6 +4773,10 @@ class InBandwidth(AbstractModel):
 
     @property
     def Values(self):
+        """时间对应的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of float
+        """
         return self._Values
 
     @Values.setter
@@ -4026,6 +4824,10 @@ class LocalNetInfo(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -4034,6 +4836,10 @@ class LocalNetInfo(AbstractModel):
 
     @property
     def VpcId(self):
+        """网络id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -4042,6 +4848,10 @@ class LocalNetInfo(AbstractModel):
 
     @property
     def BGPRoute(self):
+        """路由信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BGPRoute
 
     @BGPRoute.setter
@@ -4050,6 +4860,10 @@ class LocalNetInfo(AbstractModel):
 
     @property
     def LocalIp(self):
+        """本地IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LocalIp
 
     @LocalIp.setter
@@ -4098,6 +4912,9 @@ class ModifyDedicatedClusterInfoRequest(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
+        """本地专用集群ID
+        :rtype: str
+        """
         return self._DedicatedClusterId
 
     @DedicatedClusterId.setter
@@ -4106,6 +4923,9 @@ class ModifyDedicatedClusterInfoRequest(AbstractModel):
 
     @property
     def Name(self):
+        """集群的新名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4114,6 +4934,9 @@ class ModifyDedicatedClusterInfoRequest(AbstractModel):
 
     @property
     def Zone(self):
+        """集群的新可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -4122,6 +4945,9 @@ class ModifyDedicatedClusterInfoRequest(AbstractModel):
 
     @property
     def Description(self):
+        """集群的新描述信息
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4130,6 +4956,9 @@ class ModifyDedicatedClusterInfoRequest(AbstractModel):
 
     @property
     def SiteId(self):
+        """集群所在站点
+        :rtype: str
+        """
         return self._SiteId
 
     @SiteId.setter
@@ -4167,6 +4996,9 @@ class ModifyDedicatedClusterInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4198,6 +5030,9 @@ class ModifyOrderStatusRequest(AbstractModel):
 
     @property
     def Status(self):
+        """要更新成的状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -4206,6 +5041,9 @@ class ModifyOrderStatusRequest(AbstractModel):
 
     @property
     def DedicatedClusterOrderId(self):
+        """大订单ID
+        :rtype: str
+        """
         return self._DedicatedClusterOrderId
 
     @DedicatedClusterOrderId.setter
@@ -4214,6 +5052,9 @@ class ModifyOrderStatusRequest(AbstractModel):
 
     @property
     def SubOrderIds(self):
+        """小订单ID
+        :rtype: list of str
+        """
         return self._SubOrderIds
 
     @SubOrderIds.setter
@@ -4249,6 +5090,9 @@ class ModifyOrderStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4324,6 +5168,9 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def SiteId(self):
+        """机房ID
+        :rtype: str
+        """
         return self._SiteId
 
     @SiteId.setter
@@ -4332,6 +5179,9 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def FiberType(self):
+        """您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。
+        :rtype: str
+        """
         return self._FiberType
 
     @FiberType.setter
@@ -4340,6 +5190,9 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def OpticalStandard(self):
+        """您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。
+        :rtype: str
+        """
         return self._OpticalStandard
 
     @OpticalStandard.setter
@@ -4348,6 +5201,9 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def PowerConnectors(self):
+        """电源连接器类型
+        :rtype: str
+        """
         return self._PowerConnectors
 
     @PowerConnectors.setter
@@ -4356,6 +5212,9 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def PowerFeedDrop(self):
+        """从机架上方还是下方供电。
+        :rtype: str
+        """
         return self._PowerFeedDrop
 
     @PowerFeedDrop.setter
@@ -4364,6 +5223,9 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def MaxWeight(self):
+        """最大承重(KG)
+        :rtype: int
+        """
         return self._MaxWeight
 
     @MaxWeight.setter
@@ -4372,6 +5234,9 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def PowerDrawKva(self):
+        """功耗(KW)
+        :rtype: int
+        """
         return self._PowerDrawKva
 
     @PowerDrawKva.setter
@@ -4380,6 +5245,9 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def UplinkSpeedGbps(self):
+        """网络到腾讯云Region区域的上行链路速度
+        :rtype: int
+        """
         return self._UplinkSpeedGbps
 
     @UplinkSpeedGbps.setter
@@ -4388,6 +5256,9 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def UplinkCount(self):
+        """将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
+        :rtype: int
+        """
         return self._UplinkCount
 
     @UplinkCount.setter
@@ -4396,6 +5267,14 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def ConditionRequirement(self):
+        """是否满足下面环境条件：
+1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。
+2、确定的机架位置包含:
+温度范围为 41 到 104°F (5 到 40°C)。
+湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。
+机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)，散热功率须达到CDC运行功率值的 145.8 倍以上。
+        :rtype: bool
+        """
         return self._ConditionRequirement
 
     @ConditionRequirement.setter
@@ -4404,6 +5283,12 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def DimensionRequirement(self):
+        """是否满足下面的尺寸条件：
+您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。
+您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。
+在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。
+        :rtype: bool
+        """
         return self._DimensionRequirement
 
     @DimensionRequirement.setter
@@ -4412,6 +5297,9 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def RedundantNetworking(self):
+        """是否提供冗余的上游设备(交换机或路由器)，以便实现网络出口的高可用。
+        :rtype: bool
+        """
         return self._RedundantNetworking
 
     @RedundantNetworking.setter
@@ -4420,6 +5308,9 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def NeedHelp(self):
+        """是否需要腾讯云团队协助完成机架支撑工作
+        :rtype: bool
+        """
         return self._NeedHelp
 
     @NeedHelp.setter
@@ -4428,6 +5319,9 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def RedundantPower(self):
+        """是否电源冗余
+        :rtype: bool
+        """
         return self._RedundantPower
 
     @RedundantPower.setter
@@ -4436,6 +5330,9 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def BreakerRequirement(self):
+        """上游断路器是否具备
+        :rtype: bool
+        """
         return self._BreakerRequirement
 
     @BreakerRequirement.setter
@@ -4483,6 +5380,9 @@ class ModifySiteDeviceInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4532,6 +5432,9 @@ class ModifySiteInfoRequest(AbstractModel):
 
     @property
     def SiteId(self):
+        """机房ID
+        :rtype: str
+        """
         return self._SiteId
 
     @SiteId.setter
@@ -4540,6 +5443,9 @@ class ModifySiteInfoRequest(AbstractModel):
 
     @property
     def Name(self):
+        """站点名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4548,6 +5454,9 @@ class ModifySiteInfoRequest(AbstractModel):
 
     @property
     def Description(self):
+        """站点描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4556,6 +5465,9 @@ class ModifySiteInfoRequest(AbstractModel):
 
     @property
     def Note(self):
+        """注意事项
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -4564,6 +5476,9 @@ class ModifySiteInfoRequest(AbstractModel):
 
     @property
     def Country(self):
+        """站点所在国家
+        :rtype: str
+        """
         return self._Country
 
     @Country.setter
@@ -4572,6 +5487,9 @@ class ModifySiteInfoRequest(AbstractModel):
 
     @property
     def Province(self):
+        """站点所在省份
+        :rtype: str
+        """
         return self._Province
 
     @Province.setter
@@ -4580,6 +5498,9 @@ class ModifySiteInfoRequest(AbstractModel):
 
     @property
     def City(self):
+        """站点所在城市
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -4588,6 +5509,9 @@ class ModifySiteInfoRequest(AbstractModel):
 
     @property
     def PostalCode(self):
+        """站点所在地区的邮编
+        :rtype: str
+        """
         return self._PostalCode
 
     @PostalCode.setter
@@ -4596,6 +5520,9 @@ class ModifySiteInfoRequest(AbstractModel):
 
     @property
     def AddressLine(self):
+        """站点所在地区的详细地址信息
+        :rtype: str
+        """
         return self._AddressLine
 
     @AddressLine.setter
@@ -4637,6 +5564,9 @@ class ModifySiteInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4667,6 +5597,10 @@ class OutBandwidth(AbstractModel):
 
     @property
     def Timestamps(self):
+        """时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of float
+        """
         return self._Timestamps
 
     @Timestamps.setter
@@ -4675,6 +5609,10 @@ class OutBandwidth(AbstractModel):
 
     @property
     def Values(self):
+        """对应时间的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of float
+        """
         return self._Values
 
     @Values.setter
@@ -4712,6 +5650,9 @@ class RegionZoneInfo(AbstractModel):
 
     @property
     def RegionId(self):
+        """Region id
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -4720,6 +5661,9 @@ class RegionZoneInfo(AbstractModel):
 
     @property
     def Zones(self):
+        """ZoneInfo数组
+        :rtype: list of ZoneInfo
+        """
         return self._Zones
 
     @Zones.setter
@@ -4804,6 +5748,10 @@ class SetInfo(AbstractModel):
 
     @property
     def SetId(self):
+        """云硬盘仓库id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SetId
 
     @SetId.setter
@@ -4812,6 +5760,10 @@ class SetInfo(AbstractModel):
 
     @property
     def SetName(self):
+        """云硬盘仓库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SetName
 
     @SetName.setter
@@ -4820,6 +5772,10 @@ class SetInfo(AbstractModel):
 
     @property
     def SetType(self):
+        """云硬盘仓库类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SetType
 
     @SetType.setter
@@ -4828,6 +5784,10 @@ class SetInfo(AbstractModel):
 
     @property
     def SetSize(self):
+        """云硬盘仓库容量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._SetSize
 
     @SetSize.setter
@@ -4836,6 +5796,10 @@ class SetInfo(AbstractModel):
 
     @property
     def SetStatus(self):
+        """云硬盘仓库状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SetStatus
 
     @SetStatus.setter
@@ -4844,6 +5808,10 @@ class SetInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """云硬盘仓库创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -4852,6 +5820,10 @@ class SetInfo(AbstractModel):
 
     @property
     def ReadTraffic(self):
+        """读流量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
+        """
         return self._ReadTraffic
 
     @ReadTraffic.setter
@@ -4860,6 +5832,10 @@ class SetInfo(AbstractModel):
 
     @property
     def WriteTraffic(self):
+        """写流量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
+        """
         return self._WriteTraffic
 
     @WriteTraffic.setter
@@ -4868,6 +5844,10 @@ class SetInfo(AbstractModel):
 
     @property
     def ReadIO(self):
+        """读IO
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
+        """
         return self._ReadIO
 
     @ReadIO.setter
@@ -4876,6 +5856,10 @@ class SetInfo(AbstractModel):
 
     @property
     def WriteIO(self):
+        """写IO
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
+        """
         return self._WriteIO
 
     @WriteIO.setter
@@ -4884,6 +5868,10 @@ class SetInfo(AbstractModel):
 
     @property
     def Await(self):
+        """平均等待时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
+        """
         return self._Await
 
     @Await.setter
@@ -4892,6 +5880,10 @@ class SetInfo(AbstractModel):
 
     @property
     def Util(self):
+        """利用率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
+        """
         return self._Util
 
     @Util.setter
@@ -4958,6 +5950,9 @@ class Site(AbstractModel):
 
     @property
     def Name(self):
+        """站点名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4966,6 +5961,9 @@ class Site(AbstractModel):
 
     @property
     def SiteId(self):
+        """站点id
+        :rtype: str
+        """
         return self._SiteId
 
     @SiteId.setter
@@ -4974,6 +5972,10 @@ class Site(AbstractModel):
 
     @property
     def Description(self):
+        """站点描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4982,6 +5984,9 @@ class Site(AbstractModel):
 
     @property
     def CreateTime(self):
+        """站点创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -5095,6 +6100,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def SiteId(self):
+        """站点id
+        :rtype: str
+        """
         return self._SiteId
 
     @SiteId.setter
@@ -5103,6 +6111,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def Name(self):
+        """站点名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5111,6 +6122,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def Description(self):
+        """站点描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -5119,6 +6133,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def CreateTime(self):
+        """站点创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -5127,6 +6144,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def FiberType(self):
+        """光纤类型
+        :rtype: str
+        """
         return self._FiberType
 
     @FiberType.setter
@@ -5135,6 +6155,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def UplinkSpeedGbps(self):
+        """网络到腾讯云Region区域的上行链路速度
+        :rtype: int
+        """
         return self._UplinkSpeedGbps
 
     @UplinkSpeedGbps.setter
@@ -5143,6 +6166,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def UplinkCount(self):
+        """将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
+        :rtype: int
+        """
         return self._UplinkCount
 
     @UplinkCount.setter
@@ -5151,6 +6177,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def OpticalStandard(self):
+        """将CDC连接到网络时采用的光学标准
+        :rtype: str
+        """
         return self._OpticalStandard
 
     @OpticalStandard.setter
@@ -5159,6 +6188,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def RedundantNetworking(self):
+        """是否提供冗余的上游设备(交换机或路由器)，以便两台  网络设备都能连接到网络设备。
+        :rtype: bool
+        """
         return self._RedundantNetworking
 
     @RedundantNetworking.setter
@@ -5167,6 +6199,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def PowerConnectors(self):
+        """电源连接器类型
+        :rtype: str
+        """
         return self._PowerConnectors
 
     @PowerConnectors.setter
@@ -5175,6 +6210,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def PowerFeedDrop(self):
+        """从机架上方还是下方供电。
+        :rtype: str
+        """
         return self._PowerFeedDrop
 
     @PowerFeedDrop.setter
@@ -5183,6 +6221,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def PowerDrawKva(self):
+        """功耗(KW)
+        :rtype: float
+        """
         return self._PowerDrawKva
 
     @PowerDrawKva.setter
@@ -5191,6 +6232,14 @@ class SiteDetail(AbstractModel):
 
     @property
     def ConditionRequirement(self):
+        """是否满足下面环境条件：
+1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。
+2、确定的机架位置包含:
+温度范围为 41 到 104°F (5 到 40°C)。
+湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。
+机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)。CFM 必须是 CDC 配置的 kVA 功耗值的 145.8 倍。
+        :rtype: bool
+        """
         return self._ConditionRequirement
 
     @ConditionRequirement.setter
@@ -5199,6 +6248,12 @@ class SiteDetail(AbstractModel):
 
     @property
     def DimensionRequirement(self):
+        """是否满足下面的尺寸条件：
+您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。
+您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。
+在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。
+        :rtype: bool
+        """
         return self._DimensionRequirement
 
     @DimensionRequirement.setter
@@ -5207,6 +6262,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def MaxWeight(self):
+        """最大承重(KG)
+        :rtype: int
+        """
         return self._MaxWeight
 
     @MaxWeight.setter
@@ -5215,6 +6273,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def AddressLine(self):
+        """站点地址
+        :rtype: str
+        """
         return self._AddressLine
 
     @AddressLine.setter
@@ -5223,6 +6284,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def OptionalAddressLine(self):
+        """站点所在地区的详细地址信息（补充）
+        :rtype: str
+        """
         return self._OptionalAddressLine
 
     @OptionalAddressLine.setter
@@ -5231,6 +6295,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def NeedHelp(self):
+        """是否需要腾讯云团队协助完成机架支撑工作
+        :rtype: bool
+        """
         return self._NeedHelp
 
     @NeedHelp.setter
@@ -5239,6 +6306,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def BreakerRequirement(self):
+        """上游断路器是否具备
+        :rtype: bool
+        """
         return self._BreakerRequirement
 
     @BreakerRequirement.setter
@@ -5247,6 +6317,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def RedundantPower(self):
+        """是否电源冗余
+        :rtype: bool
+        """
         return self._RedundantPower
 
     @RedundantPower.setter
@@ -5255,6 +6328,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def Country(self):
+        """站点所在国家
+        :rtype: str
+        """
         return self._Country
 
     @Country.setter
@@ -5263,6 +6339,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def Province(self):
+        """站点所在省份
+        :rtype: str
+        """
         return self._Province
 
     @Province.setter
@@ -5271,6 +6350,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def City(self):
+        """站点所在城市
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -5279,6 +6361,9 @@ class SiteDetail(AbstractModel):
 
     @property
     def PostalCode(self):
+        """站点所在地区的邮编
+        :rtype: int
+        """
         return self._PostalCode
 
     @PostalCode.setter
@@ -5339,6 +6424,10 @@ class VpngwBandwidthData(AbstractModel):
 
     @property
     def OutBandwidth(self):
+        """出带宽流量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.OutBandwidth`
+        """
         return self._OutBandwidth
 
     @OutBandwidth.setter
@@ -5347,6 +6436,9 @@ class VpngwBandwidthData(AbstractModel):
 
     @property
     def InBandwidth(self):
+        """入带宽流量
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.InBandwidth`
+        """
         return self._InBandwidth
 
     @InBandwidth.setter
@@ -5394,6 +6486,9 @@ class ZoneInfo(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区名称
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -5402,6 +6497,9 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneName(self):
+        """可用区描述
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -5410,6 +6508,9 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneId(self):
+        """可用区ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -5418,6 +6519,9 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneState(self):
+        """可用区状态，包含AVAILABLE和UNAVAILABLE。AVAILABLE代表可用，UNAVAILABLE代表不可用。
+        :rtype: str
+        """
         return self._ZoneState
 
     @ZoneState.setter

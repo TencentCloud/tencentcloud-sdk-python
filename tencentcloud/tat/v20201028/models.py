@@ -49,6 +49,9 @@ Online：在线，Offline：离线
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -57,6 +60,9 @@ Online：在线，Offline：离线
 
     @property
     def Version(self):
+        """Agent 版本号。
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -65,6 +71,9 @@ Online：在线，Offline：离线
 
     @property
     def LastHeartbeatTime(self):
+        """上次心跳时间
+        :rtype: str
+        """
         return self._LastHeartbeatTime
 
     @LastHeartbeatTime.setter
@@ -73,6 +82,11 @@ Online：在线，Offline：离线
 
     @property
     def AgentStatus(self):
+        """Agent状态，取值范围：
+Online：在线，Offline：离线
+
+        :rtype: str
+        """
         return self._AgentStatus
 
     @AgentStatus.setter
@@ -81,6 +95,9 @@ Online：在线，Offline：离线
 
     @property
     def Environment(self):
+        """Agent运行环境，取值范围：Linux：Linux实例Windows：Windows实例
+        :rtype: str
+        """
         return self._Environment
 
     @Environment.setter
@@ -89,6 +106,9 @@ Online：在线，Offline：离线
 
     @property
     def SupportFeatures(self):
+        """Agent 支持的功能列表。
+        :rtype: list of str
+        """
         return self._SupportFeatures
 
     @SupportFeatures.setter
@@ -132,6 +152,9 @@ class CancelInvocationRequest(AbstractModel):
 
     @property
     def InvocationId(self):
+        """执行活动ID
+        :rtype: str
+        """
         return self._InvocationId
 
     @InvocationId.setter
@@ -140,6 +163,11 @@ class CancelInvocationRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例ID列表，上限100。支持实例类型：
+<li> CVM </li>
+<li> LIGHTHOUSE </li>
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -174,6 +202,9 @@ class CancelInvocationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -255,6 +286,9 @@ class Command(AbstractModel):
 
     @property
     def CommandId(self):
+        """命令ID。
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -263,6 +297,9 @@ class Command(AbstractModel):
 
     @property
     def CommandName(self):
+        """命令名称。
+        :rtype: str
+        """
         return self._CommandName
 
     @CommandName.setter
@@ -271,6 +308,9 @@ class Command(AbstractModel):
 
     @property
     def Description(self):
+        """命令描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -279,6 +319,9 @@ class Command(AbstractModel):
 
     @property
     def Content(self):
+        """Base64编码后的命令内容。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -287,6 +330,9 @@ class Command(AbstractModel):
 
     @property
     def CommandType(self):
+        """命令类型。
+        :rtype: str
+        """
         return self._CommandType
 
     @CommandType.setter
@@ -295,6 +341,9 @@ class Command(AbstractModel):
 
     @property
     def WorkingDirectory(self):
+        """命令执行路径。
+        :rtype: str
+        """
         return self._WorkingDirectory
 
     @WorkingDirectory.setter
@@ -303,6 +352,9 @@ class Command(AbstractModel):
 
     @property
     def Timeout(self):
+        """命令超时时间。
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -311,6 +363,9 @@ class Command(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """命令创建时间。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -319,6 +374,9 @@ class Command(AbstractModel):
 
     @property
     def UpdatedTime(self):
+        """命令更新时间。
+        :rtype: str
+        """
         return self._UpdatedTime
 
     @UpdatedTime.setter
@@ -327,6 +385,9 @@ class Command(AbstractModel):
 
     @property
     def EnableParameter(self):
+        """是否启用自定义参数功能。
+        :rtype: bool
+        """
         return self._EnableParameter
 
     @EnableParameter.setter
@@ -335,6 +396,9 @@ class Command(AbstractModel):
 
     @property
     def DefaultParameters(self):
+        """自定义参数的默认取值。
+        :rtype: str
+        """
         return self._DefaultParameters
 
     @DefaultParameters.setter
@@ -343,6 +407,10 @@ class Command(AbstractModel):
 
     @property
     def DefaultParameterConfs(self):
+        """自定义参数的默认取值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DefaultParameterConf
+        """
         return self._DefaultParameterConfs
 
     @DefaultParameterConfs.setter
@@ -351,6 +419,10 @@ class Command(AbstractModel):
 
     @property
     def Scenes(self):
+        """命令关联的场景
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Scenes
 
     @Scenes.setter
@@ -359,6 +431,9 @@ class Command(AbstractModel):
 
     @property
     def FormattedDescription(self):
+        """命令的结构化描述。公共命令有值，用户命令为空字符串。
+        :rtype: str
+        """
         return self._FormattedDescription
 
     @FormattedDescription.setter
@@ -367,6 +442,9 @@ class Command(AbstractModel):
 
     @property
     def CreatedBy(self):
+        """命令创建者。TAT 代表公共命令，USER 代表个人命令。
+        :rtype: str
+        """
         return self._CreatedBy
 
     @CreatedBy.setter
@@ -375,6 +453,9 @@ class Command(AbstractModel):
 
     @property
     def Tags(self):
+        """命令关联的标签列表。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -383,6 +464,9 @@ class Command(AbstractModel):
 
     @property
     def Username(self):
+        """在实例上执行命令的用户名。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -391,6 +475,9 @@ class Command(AbstractModel):
 
     @property
     def OutputCOSBucketUrl(self):
+        """日志上传的cos bucket 地址。
+        :rtype: str
+        """
         return self._OutputCOSBucketUrl
 
     @OutputCOSBucketUrl.setter
@@ -399,6 +486,9 @@ class Command(AbstractModel):
 
     @property
     def OutputCOSKeyPrefix(self):
+        """日志在cos bucket中的目录。
+        :rtype: str
+        """
         return self._OutputCOSKeyPrefix
 
     @OutputCOSKeyPrefix.setter
@@ -478,6 +568,9 @@ class CommandDocument(AbstractModel):
 
     @property
     def Content(self):
+        """Base64 编码后的执行命令。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -486,6 +579,9 @@ class CommandDocument(AbstractModel):
 
     @property
     def CommandType(self):
+        """命令类型。
+        :rtype: str
+        """
         return self._CommandType
 
     @CommandType.setter
@@ -494,6 +590,9 @@ class CommandDocument(AbstractModel):
 
     @property
     def Timeout(self):
+        """超时时间。
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -502,6 +601,9 @@ class CommandDocument(AbstractModel):
 
     @property
     def WorkingDirectory(self):
+        """执行路径。
+        :rtype: str
+        """
         return self._WorkingDirectory
 
     @WorkingDirectory.setter
@@ -510,6 +612,9 @@ class CommandDocument(AbstractModel):
 
     @property
     def Username(self):
+        """执行用户。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -518,6 +623,9 @@ class CommandDocument(AbstractModel):
 
     @property
     def OutputCOSBucketUrl(self):
+        """保存输出的 COS Bucket 链接。
+        :rtype: str
+        """
         return self._OutputCOSBucketUrl
 
     @OutputCOSBucketUrl.setter
@@ -526,6 +634,9 @@ class CommandDocument(AbstractModel):
 
     @property
     def OutputCOSKeyPrefix(self):
+        """保存输出的文件名称前缀。
+        :rtype: str
+        """
         return self._OutputCOSKeyPrefix
 
     @OutputCOSKeyPrefix.setter
@@ -613,6 +724,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def CommandName(self):
+        """命令名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
+        :rtype: str
+        """
         return self._CommandName
 
     @CommandName.setter
@@ -621,6 +735,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def Content(self):
+        """Base64编码后的命令内容，长度不可超过64KB。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -629,6 +746,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def Description(self):
+        """命令描述。不超过120字符。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -637,6 +757,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def CommandType(self):
+        """命令类型，目前支持取值：SHELL、POWERSHELL。默认：SHELL。
+        :rtype: str
+        """
         return self._CommandType
 
     @CommandType.setter
@@ -645,6 +768,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def WorkingDirectory(self):
+        """命令执行路径，对于 SHELL 命令默认为 /root，对于 POWERSHELL 命令默认为 C:\Program Files\qcloud\tat_agent\workdir。
+        :rtype: str
+        """
         return self._WorkingDirectory
 
     @WorkingDirectory.setter
@@ -653,6 +779,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def Timeout(self):
+        """命令超时时间，默认60秒。取值范围[1, 86400]。
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -661,6 +790,11 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def EnableParameter(self):
+        """是否启用自定义参数功能。
+一旦创建，此值不提供修改。
+默认值：false。
+        :rtype: bool
+        """
         return self._EnableParameter
 
     @EnableParameter.setter
@@ -669,6 +803,13 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def DefaultParameters(self):
+        """启用自定义参数功能时，自定义参数的默认取值。字段类型为json encoded string。如：{\"varA\": \"222\"}。
+key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
+如果InvokeCommand时未提供参数取值，将使用这里的默认值进行替换。
+自定义参数最多20个。
+自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
+        :rtype: str
+        """
         return self._DefaultParameters
 
     @DefaultParameters.setter
@@ -677,6 +818,11 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def DefaultParameterConfs(self):
+        """自定义参数数组。
+如果InvokeCommand时未提供参数取值，将使用这里的默认值进行替换。
+自定义参数最多20个。
+        :rtype: list of DefaultParameterConf
+        """
         return self._DefaultParameterConfs
 
     @DefaultParameterConfs.setter
@@ -685,6 +831,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def Tags(self):
+        """为命令关联的标签，列表长度不超过10。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -693,6 +842,10 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def Username(self):
+        """在 CVM 或 Lighthouse 实例中执行命令的用户名称。
+使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在 Linux 实例中以 root 用户执行命令；在Windows 实例中以 System 用户执行命令。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -701,6 +854,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def OutputCOSBucketUrl(self):
+        """指定日志上传的cos bucket 地址，必须以https开头，如 https://BucketName-123454321.cos.ap-beijing.myqcloud.com。
+        :rtype: str
+        """
         return self._OutputCOSBucketUrl
 
     @OutputCOSBucketUrl.setter
@@ -709,6 +865,12 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def OutputCOSKeyPrefix(self):
+        """指定日志在cos bucket中的目录，目录命名有如下规则：
+1. 可用数字、中英文和可见字符的组合，长度最多为60。
+2. 用 / 分割路径，可快速创建子目录。
+3. 不允许连续 / ；不允许以 / 开头；不允许以..作为文件夹名称
+        :rtype: str
+        """
         return self._OutputCOSKeyPrefix
 
     @OutputCOSKeyPrefix.setter
@@ -767,6 +929,9 @@ class CreateCommandResponse(AbstractModel):
 
     @property
     def CommandId(self):
+        """命令ID。
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -775,6 +940,9 @@ class CreateCommandResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -819,6 +987,9 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def Name(self):
+        """执行器名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -827,6 +998,9 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def Type(self):
+        """执行器类型，当前仅支持周期类型执行器，取值：`SCHEDULE` 。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -835,6 +1009,9 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def CommandId(self):
+        """远程命令ID。
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -843,6 +1020,9 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """触发器关联的实例ID。列表上限 100。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -851,6 +1031,9 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def Username(self):
+        """命令执行用户。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -859,6 +1042,9 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def Parameters(self):
+        """命令自定义参数。
+        :rtype: str
+        """
         return self._Parameters
 
     @Parameters.setter
@@ -867,6 +1053,9 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def ScheduleSettings(self):
+        """周期执行器设置，当创建周期执行器时，必须指定此参数。
+        :rtype: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
+        """
         return self._ScheduleSettings
 
     @ScheduleSettings.setter
@@ -911,6 +1100,9 @@ class CreateInvokerResponse(AbstractModel):
 
     @property
     def InvokerId(self):
+        """执行器ID。
+        :rtype: str
+        """
         return self._InvokerId
 
     @InvokerId.setter
@@ -919,6 +1111,9 @@ class CreateInvokerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -957,6 +1152,9 @@ class CreateRegisterCodeRequest(AbstractModel):
 
     @property
     def Description(self):
+        """注册码描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -965,6 +1163,9 @@ class CreateRegisterCodeRequest(AbstractModel):
 
     @property
     def InstanceNamePrefix(self):
+        """注册实例名称前缀。
+        :rtype: str
+        """
         return self._InstanceNamePrefix
 
     @InstanceNamePrefix.setter
@@ -973,6 +1174,9 @@ class CreateRegisterCodeRequest(AbstractModel):
 
     @property
     def RegisterLimit(self):
+        """该注册码允许注册的实例数目。默认限制为10个。
+        :rtype: int
+        """
         return self._RegisterLimit
 
     @RegisterLimit.setter
@@ -981,6 +1185,9 @@ class CreateRegisterCodeRequest(AbstractModel):
 
     @property
     def EffectiveTime(self):
+        """该注册码的有效时间，单位为小时。默认为4小时。
+        :rtype: int
+        """
         return self._EffectiveTime
 
     @EffectiveTime.setter
@@ -989,6 +1196,9 @@ class CreateRegisterCodeRequest(AbstractModel):
 
     @property
     def IpAddressRange(self):
+        """该注册码限制tat_agent只能从IpAddressRange所描述公网出口进行注册。默认不做限制。
+        :rtype: str
+        """
         return self._IpAddressRange
 
     @IpAddressRange.setter
@@ -1032,6 +1242,9 @@ class CreateRegisterCodeResponse(AbstractModel):
 
     @property
     def RegisterCodeId(self):
+        """注册码ID。
+        :rtype: str
+        """
         return self._RegisterCodeId
 
     @RegisterCodeId.setter
@@ -1040,6 +1253,9 @@ class CreateRegisterCodeResponse(AbstractModel):
 
     @property
     def RegisterCodeValue(self):
+        """注册码值。
+        :rtype: str
+        """
         return self._RegisterCodeValue
 
     @RegisterCodeValue.setter
@@ -1048,6 +1264,9 @@ class CreateRegisterCodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1084,6 +1303,10 @@ class DefaultParameterConf(AbstractModel):
 
     @property
     def ParameterName(self):
+        """参数名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ParameterName
 
     @ParameterName.setter
@@ -1092,6 +1315,10 @@ class DefaultParameterConf(AbstractModel):
 
     @property
     def ParameterValue(self):
+        """参数默认值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ParameterValue
 
     @ParameterValue.setter
@@ -1100,6 +1327,10 @@ class DefaultParameterConf(AbstractModel):
 
     @property
     def ParameterDescription(self):
+        """参数描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ParameterDescription
 
     @ParameterDescription.setter
@@ -1135,6 +1366,9 @@ class DeleteCommandRequest(AbstractModel):
 
     @property
     def CommandId(self):
+        """待删除的命令ID。
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -1168,6 +1402,9 @@ class DeleteCommandResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1193,6 +1430,9 @@ class DeleteCommandsRequest(AbstractModel):
 
     @property
     def CommandIds(self):
+        """待删除命令id
+        :rtype: list of str
+        """
         return self._CommandIds
 
     @CommandIds.setter
@@ -1226,6 +1466,9 @@ class DeleteCommandsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1251,6 +1494,9 @@ class DeleteInvokerRequest(AbstractModel):
 
     @property
     def InvokerId(self):
+        """待删除的执行器ID。
+        :rtype: str
+        """
         return self._InvokerId
 
     @InvokerId.setter
@@ -1284,6 +1530,9 @@ class DeleteInvokerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1309,6 +1558,9 @@ class DeleteRegisterCodesRequest(AbstractModel):
 
     @property
     def RegisterCodeIds(self):
+        """注册码ID列表。限制输入的注册码ID数量大于0小于100。
+        :rtype: list of str
+        """
         return self._RegisterCodeIds
 
     @RegisterCodeIds.setter
@@ -1342,6 +1594,9 @@ class DeleteRegisterCodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1367,6 +1622,9 @@ class DeleteRegisterInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1400,6 +1658,9 @@ class DeleteRegisterInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1434,6 +1695,9 @@ class DescribeAutomationAgentStatusRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """待查询的实例ID列表。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -1442,6 +1706,9 @@ class DescribeAutomationAgentStatusRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """<li>agent-status - String - 是否必填：否 -（过滤条件）按照agent状态过滤，取值：Online 在线，Offline 离线。</li><br><li>environment - String - 是否必填：否 -（过滤条件）按照agent运行环境查询，取值：Linux, Windows。</li><br><li>instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1450,6 +1717,9 @@ class DescribeAutomationAgentStatusRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于 `Limit` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1458,6 +1728,9 @@ class DescribeAutomationAgentStatusRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于 `Offset` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1505,6 +1778,9 @@ class DescribeAutomationAgentStatusResponse(AbstractModel):
 
     @property
     def AutomationAgentSet(self):
+        """Agent 信息列表。
+        :rtype: list of AutomationAgentInfo
+        """
         return self._AutomationAgentSet
 
     @AutomationAgentSet.setter
@@ -1513,6 +1789,9 @@ class DescribeAutomationAgentStatusResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的 Agent 总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1521,6 +1800,9 @@ class DescribeAutomationAgentStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1572,6 +1854,9 @@ class DescribeCommandsRequest(AbstractModel):
 
     @property
     def CommandIds(self):
+        """命令ID列表，每次请求的上限为100。参数不支持同时指定 `CommandIds` 和 `Filters` 。
+        :rtype: list of str
+        """
         return self._CommandIds
 
     @CommandIds.setter
@@ -1580,6 +1865,19 @@ class DescribeCommandsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。</li>
+<li> command-name - String - 是否必填：否 -（过滤条件）按照命令名称过滤。</li>
+<li> command-type - String - 是否必填：否 -（过滤条件）按照命令类型过滤，取值为 SHELL 或 POWERSHELL。</li>
+<li> scene-id - String - 是否必填：否 -（过滤条件）按照场景ID过滤。</li>
+<li> created-by - String - 是否必填：否 -（过滤条件）按照命令创建者过滤，取值为 TAT 或 USER，TAT 代表公共命令，USER 代表由用户创建的命令。</li>
+<li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
+<li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
+<li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例4</li>
+
+每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `CommandIds` 和 `Filters` 。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1588,6 +1886,9 @@ class DescribeCommandsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于 `Limit` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1596,6 +1897,9 @@ class DescribeCommandsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于 `Offset` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1643,6 +1947,9 @@ class DescribeCommandsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的命令总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1651,6 +1958,9 @@ class DescribeCommandsResponse(AbstractModel):
 
     @property
     def CommandSet(self):
+        """命令详情列表。
+        :rtype: list of Command
+        """
         return self._CommandSet
 
     @CommandSet.setter
@@ -1659,6 +1969,9 @@ class DescribeCommandsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1707,6 +2020,9 @@ class DescribeInvocationTasksRequest(AbstractModel):
 
     @property
     def InvocationTaskIds(self):
+        """执行任务ID列表，每次请求的上限为100。参数不支持同时指定 `InvocationTaskIds` 和 `Filters`。
+        :rtype: list of str
+        """
         return self._InvocationTaskIds
 
     @InvocationTaskIds.setter
@@ -1715,6 +2031,11 @@ class DescribeInvocationTasksRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。<br>
+
+<li> invocation-id - String - 是否必填：否 -（过滤条件）按照执行活动ID过滤。</li> <li> invocation-task-id - String - 是否必填：否 -（过滤条件）按照执行任务ID过滤。</li> <li> instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。</li> <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。</li> <br>每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `InvocationTaskIds` 和 `Filters` 。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1723,6 +2044,9 @@ class DescribeInvocationTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于 `Limit` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1731,6 +2055,9 @@ class DescribeInvocationTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于 `Offset` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1739,6 +2066,11 @@ class DescribeInvocationTasksRequest(AbstractModel):
 
     @property
     def HideOutput(self):
+        """是否隐藏输出，取值范围：
+
+<ul> <li>true：隐藏输出</li> <li>false：不隐藏</li> </ul> 默认为 true。
+        :rtype: bool
+        """
         return self._HideOutput
 
     @HideOutput.setter
@@ -1787,6 +2119,9 @@ class DescribeInvocationTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的执行任务总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1795,6 +2130,9 @@ class DescribeInvocationTasksResponse(AbstractModel):
 
     @property
     def InvocationTaskSet(self):
+        """执行任务列表。
+        :rtype: list of InvocationTask
+        """
         return self._InvocationTaskSet
 
     @InvocationTaskSet.setter
@@ -1803,6 +2141,9 @@ class DescribeInvocationTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1850,6 +2191,9 @@ class DescribeInvocationsRequest(AbstractModel):
 
     @property
     def InvocationIds(self):
+        """执行活动ID列表，每次请求的上限为100。参数不支持同时指定 `InvocationIds` 和 `Filters`。
+        :rtype: list of str
+        """
         return self._InvocationIds
 
     @InvocationIds.setter
@@ -1858,6 +2202,15 @@ class DescribeInvocationsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。<br>
+
+<li> invocation-id - String - 是否必填：否 -（过滤条件）按照执行活动ID过滤。</li>
+ <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。</li> 
+<li> command-created-by - String - 是否必填：否 -（过滤条件）按照执行的命令类型过滤，取值为 TAT 或 USER，TAT 代表公共命令，USER 代表由用户创建的命令。</li>
+ <li> instance-kind - String - 是否必填：否 -（过滤条件）按照运行实例类型过滤，取值为 CVM 或 LIGHTHOUSE，CVM 代表实例为云服务器， LIGHTHOUSE 代表实例为轻量应用服务器。</li>
+ <br>每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `InvocationIds` 和 `Filters` 。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1866,6 +2219,9 @@ class DescribeInvocationsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于 `Limit` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1874,6 +2230,9 @@ class DescribeInvocationsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于 `Offset` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1921,6 +2280,9 @@ class DescribeInvocationsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的执行活动总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1929,6 +2291,9 @@ class DescribeInvocationsResponse(AbstractModel):
 
     @property
     def InvocationSet(self):
+        """执行活动列表。
+        :rtype: list of Invocation
+        """
         return self._InvocationSet
 
     @InvocationSet.setter
@@ -1937,6 +2302,9 @@ class DescribeInvocationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1975,6 +2343,9 @@ class DescribeInvokerRecordsRequest(AbstractModel):
 
     @property
     def InvokerIds(self):
+        """执行器ID列表。列表上限 100。
+        :rtype: list of str
+        """
         return self._InvokerIds
 
     @InvokerIds.setter
@@ -1983,6 +2354,9 @@ class DescribeInvokerRecordsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1991,6 +2365,9 @@ class DescribeInvokerRecordsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2032,6 +2409,9 @@ class DescribeInvokerRecordsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的历史记录数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2040,6 +2420,9 @@ class DescribeInvokerRecordsResponse(AbstractModel):
 
     @property
     def InvokerRecordSet(self):
+        """执行器执行历史记录。
+        :rtype: list of InvokerRecord
+        """
         return self._InvokerRecordSet
 
     @InvokerRecordSet.setter
@@ -2048,6 +2431,9 @@ class DescribeInvokerRecordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2093,6 +2479,9 @@ class DescribeInvokersRequest(AbstractModel):
 
     @property
     def InvokerIds(self):
+        """执行器ID列表。
+        :rtype: list of str
+        """
         return self._InvokerIds
 
     @InvokerIds.setter
@@ -2101,6 +2490,13 @@ class DescribeInvokersRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件：
+
+<li> invoker-id - String - 是否必填：否 - （过滤条件）按执行器ID过滤。
+<li> command-id - String - 是否必填：否 - （过滤条件）按命令ID过滤。
+<li> type - String - 是否必填：否 - （过滤条件）按执行器类型过滤。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2109,6 +2505,9 @@ class DescribeInvokersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2117,6 +2516,9 @@ class DescribeInvokersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2164,6 +2566,9 @@ class DescribeInvokersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """满足条件的执行器数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2172,6 +2577,9 @@ class DescribeInvokersResponse(AbstractModel):
 
     @property
     def InvokerSet(self):
+        """执行器信息。
+        :rtype: list of Invoker
+        """
         return self._InvokerSet
 
     @InvokerSet.setter
@@ -2180,6 +2588,9 @@ class DescribeInvokersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2212,6 +2623,9 @@ class DescribeQuotasRequest(AbstractModel):
 
     @property
     def ResourceNames(self):
+        """资源名称，目前有"COMMAND","REGISTER_CODE" 这两个指标
+        :rtype: list of str
+        """
         return self._ResourceNames
 
     @ResourceNames.setter
@@ -2248,6 +2662,9 @@ class DescribeQuotasResponse(AbstractModel):
 
     @property
     def GeneralResourceQuotaSet(self):
+        """资源额度列表
+        :rtype: list of GeneralResourceQuotaSet
+        """
         return self._GeneralResourceQuotaSet
 
     @GeneralResourceQuotaSet.setter
@@ -2256,6 +2673,9 @@ class DescribeQuotasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2299,6 +2719,9 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """地域数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2307,6 +2730,9 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RegionSet(self):
+        """地域信息列表
+        :rtype: list of RegionInfo
+        """
         return self._RegionSet
 
     @RegionSet.setter
@@ -2315,6 +2741,9 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2353,6 +2782,9 @@ class DescribeRegisterCodesRequest(AbstractModel):
 
     @property
     def RegisterCodeIds(self):
+        """注册码ID。
+        :rtype: list of str
+        """
         return self._RegisterCodeIds
 
     @RegisterCodeIds.setter
@@ -2361,6 +2793,9 @@ class DescribeRegisterCodesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2369,6 +2804,9 @@ class DescribeRegisterCodesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2411,6 +2849,9 @@ class DescribeRegisterCodesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """查询到的注册码总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2419,6 +2860,10 @@ class DescribeRegisterCodesResponse(AbstractModel):
 
     @property
     def RegisterCodeSet(self):
+        """注册码信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RegisterCodeInfo
+        """
         return self._RegisterCodeSet
 
     @RegisterCodeSet.setter
@@ -2427,6 +2872,9 @@ class DescribeRegisterCodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2494,6 +2942,9 @@ class DescribeRegisterInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例id。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -2502,6 +2953,35 @@ class DescribeRegisterInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤器列表。
+
+- instance-name
+
+按照【实例名称】进行过滤。
+类型：String
+必选：否
+
+- instance-id
+
+按照【实例ID】进行过滤。
+类型：String
+必选：否
+
+- register-code-id
+
+按照【注册码ID】进行过滤。
+类型：String
+必选：否
+
+- sys-name
+
+按照【操作系统类型】进行过滤，取值：Linux | Windows。
+类型：String
+必选：否
+
+
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2510,6 +2990,9 @@ class DescribeRegisterInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为 0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2518,6 +3001,9 @@ class DescribeRegisterInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为 20，最大值为 100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2565,6 +3051,9 @@ class DescribeRegisterInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """该实例注册过的注册码总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2573,6 +3062,9 @@ class DescribeRegisterInstancesResponse(AbstractModel):
 
     @property
     def RegisterInstanceSet(self):
+        """被托管的实例信息的列表。
+        :rtype: list of RegisterInstanceInfo
+        """
         return self._RegisterInstanceSet
 
     @RegisterInstanceSet.setter
@@ -2581,6 +3073,9 @@ class DescribeRegisterInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2627,6 +3122,9 @@ class DescribeScenesRequest(AbstractModel):
 
     @property
     def SceneIds(self):
+        """场景 ID 数组
+        :rtype: list of str
+        """
         return self._SceneIds
 
     @SceneIds.setter
@@ -2635,6 +3133,14 @@ class DescribeScenesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li> scene-id - String - 是否必填：否 -（过滤条件）按照场景 ID 过滤。</li>
+<li> scene-name - String - 是否必填：否 -（过滤条件）按照场景名称过滤。</li>
+<li> created-by - String - 是否必填：否 -（过滤条件）按照场景创建者过滤，取值为 TAT 或 USER。TAT 代表公共命令，USER 代表由用户创建的命令。</li>
+
+每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `SceneIds` 和 `Filters` 。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2643,6 +3149,9 @@ class DescribeScenesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于 `Limit` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2651,6 +3160,9 @@ class DescribeScenesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于 `Offset` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2698,6 +3210,9 @@ class DescribeScenesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的场景总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2706,6 +3221,9 @@ class DescribeScenesResponse(AbstractModel):
 
     @property
     def SceneSet(self):
+        """场景详情列表。
+        :rtype: list of Scene
+        """
         return self._SceneSet
 
     @SceneSet.setter
@@ -2714,6 +3232,9 @@ class DescribeScenesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2746,6 +3267,9 @@ class DisableInvokerRequest(AbstractModel):
 
     @property
     def InvokerId(self):
+        """待停止的执行器ID。
+        :rtype: str
+        """
         return self._InvokerId
 
     @InvokerId.setter
@@ -2779,6 +3303,9 @@ class DisableInvokerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2804,6 +3331,9 @@ class DisableRegisterCodesRequest(AbstractModel):
 
     @property
     def RegisterCodeIds(self):
+        """注册码ID。
+        :rtype: list of str
+        """
         return self._RegisterCodeIds
 
     @RegisterCodeIds.setter
@@ -2837,6 +3367,9 @@ class DisableRegisterCodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2862,6 +3395,9 @@ class EnableInvokerRequest(AbstractModel):
 
     @property
     def InvokerId(self):
+        """待启用的执行器ID。
+        :rtype: str
+        """
         return self._InvokerId
 
     @InvokerId.setter
@@ -2895,6 +3431,9 @@ class EnableInvokerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2935,6 +3474,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """需要过滤的字段。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2943,6 +3485,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """字段的过滤值。
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -2983,6 +3528,9 @@ class GeneralResourceQuotaSet(AbstractModel):
 
     @property
     def ResourceName(self):
+        """资源名称
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -2991,6 +3539,9 @@ class GeneralResourceQuotaSet(AbstractModel):
 
     @property
     def ResourceQuotaUsed(self):
+        """已使用额度
+        :rtype: int
+        """
         return self._ResourceQuotaUsed
 
     @ResourceQuotaUsed.setter
@@ -2999,6 +3550,9 @@ class GeneralResourceQuotaSet(AbstractModel):
 
     @property
     def ResourceQuotaTotal(self):
+        """总额度
+        :rtype: int
+        """
         return self._ResourceQuotaTotal
 
     @ResourceQuotaTotal.setter
@@ -3094,6 +3648,9 @@ class Invocation(AbstractModel):
 
     @property
     def InvocationId(self):
+        """执行活动ID。
+        :rtype: str
+        """
         return self._InvocationId
 
     @InvocationId.setter
@@ -3102,6 +3659,9 @@ class Invocation(AbstractModel):
 
     @property
     def CommandId(self):
+        """命令ID。
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -3110,6 +3670,12 @@ class Invocation(AbstractModel):
 
     @property
     def InvocationStatus(self):
+        """执行任务状态。取值范围：
+
+<ul> <li>PENDING：等待下发</li> <li>RUNNING：命令运行中</li> <li>SUCCESS：命令成功</li> <li>FAILED：命令失败</li> <li>TIMEOUT：命令超时</li> <li>PARTIAL_FAILED：命令部分失败</li> <li>PARTIAL_CANCELLED：任务部分取消</li> <li>CANCELLED：任务全部取消</li> <li>CANCELLING：任务取消中</li> </ul>
+
+        :rtype: str
+        """
         return self._InvocationStatus
 
     @InvocationStatus.setter
@@ -3118,6 +3684,9 @@ class Invocation(AbstractModel):
 
     @property
     def InvocationTaskBasicInfoSet(self):
+        """执行任务信息列表。
+        :rtype: list of InvocationTaskBasicInfo
+        """
         return self._InvocationTaskBasicInfoSet
 
     @InvocationTaskBasicInfoSet.setter
@@ -3126,6 +3695,9 @@ class Invocation(AbstractModel):
 
     @property
     def Description(self):
+        """执行活动描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3134,6 +3706,9 @@ class Invocation(AbstractModel):
 
     @property
     def StartTime(self):
+        """执行活动开始时间。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3142,6 +3717,9 @@ class Invocation(AbstractModel):
 
     @property
     def EndTime(self):
+        """执行活动结束时间。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3150,6 +3728,9 @@ class Invocation(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """执行活动创建时间。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -3158,6 +3739,9 @@ class Invocation(AbstractModel):
 
     @property
     def UpdatedTime(self):
+        """执行活动更新时间。
+        :rtype: str
+        """
         return self._UpdatedTime
 
     @UpdatedTime.setter
@@ -3166,6 +3750,9 @@ class Invocation(AbstractModel):
 
     @property
     def Parameters(self):
+        """自定义参数取值。
+        :rtype: str
+        """
         return self._Parameters
 
     @Parameters.setter
@@ -3174,6 +3761,9 @@ class Invocation(AbstractModel):
 
     @property
     def DefaultParameters(self):
+        """自定义参数的默认取值。
+        :rtype: str
+        """
         return self._DefaultParameters
 
     @DefaultParameters.setter
@@ -3182,6 +3772,9 @@ class Invocation(AbstractModel):
 
     @property
     def InstanceKind(self):
+        """执行命令的实例类型，取值范围：CVM、LIGHTHOUSE。
+        :rtype: str
+        """
         return self._InstanceKind
 
     @InstanceKind.setter
@@ -3190,6 +3783,9 @@ class Invocation(AbstractModel):
 
     @property
     def Username(self):
+        """在实例上执行命令时使用的用户名。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -3198,6 +3794,9 @@ class Invocation(AbstractModel):
 
     @property
     def InvocationSource(self):
+        """调用来源。
+        :rtype: str
+        """
         return self._InvocationSource
 
     @InvocationSource.setter
@@ -3206,6 +3805,9 @@ class Invocation(AbstractModel):
 
     @property
     def CommandContent(self):
+        """base64编码的命令内容
+        :rtype: str
+        """
         return self._CommandContent
 
     @CommandContent.setter
@@ -3214,6 +3816,9 @@ class Invocation(AbstractModel):
 
     @property
     def CommandType(self):
+        """命令类型
+        :rtype: str
+        """
         return self._CommandType
 
     @CommandType.setter
@@ -3222,6 +3827,9 @@ class Invocation(AbstractModel):
 
     @property
     def Timeout(self):
+        """执行命令过期时间， 单位秒
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -3230,6 +3838,9 @@ class Invocation(AbstractModel):
 
     @property
     def WorkingDirectory(self):
+        """执行命令的工作路径
+        :rtype: str
+        """
         return self._WorkingDirectory
 
     @WorkingDirectory.setter
@@ -3238,6 +3849,9 @@ class Invocation(AbstractModel):
 
     @property
     def OutputCOSBucketUrl(self):
+        """日志上传的cos bucket 地址。
+        :rtype: str
+        """
         return self._OutputCOSBucketUrl
 
     @OutputCOSBucketUrl.setter
@@ -3246,6 +3860,9 @@ class Invocation(AbstractModel):
 
     @property
     def OutputCOSKeyPrefix(self):
+        """日志在cos bucket中的目录。
+        :rtype: str
+        """
         return self._OutputCOSKeyPrefix
 
     @OutputCOSKeyPrefix.setter
@@ -3343,6 +3960,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def InvocationId(self):
+        """执行活动ID。
+        :rtype: str
+        """
         return self._InvocationId
 
     @InvocationId.setter
@@ -3351,6 +3971,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def InvocationTaskId(self):
+        """执行任务ID。
+        :rtype: str
+        """
         return self._InvocationTaskId
 
     @InvocationTaskId.setter
@@ -3359,6 +3982,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def CommandId(self):
+        """命令ID。
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -3367,6 +3993,11 @@ class InvocationTask(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """执行任务状态。取值范围：
+
+<ul> <li>PENDING：等待下发</li> <li>DELIVERING：下发中</li> <li>DELIVER_DELAYED：延时下发</li> <li>DELIVER_FAILED：下发失败</li> <li>START_FAILED：命令启动失败</li> <li>RUNNING：命令运行中</li> <li>SUCCESS：命令成功</li> <li>FAILED：命令执行失败，执行完退出码不为 0</li> <li>TIMEOUT：命令超时</li> <li>TASK_TIMEOUT：执行任务超时</li> <li>CANCELLING：取消中</li> <li>CANCELLED：已取消（命令启动前就被取消）</li> <li>TERMINATED：已中止（命令执行期间被取消）</li> </ul>
+        :rtype: str
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -3375,6 +4006,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3383,6 +4017,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def TaskResult(self):
+        """执行结果。
+        :rtype: :class:`tencentcloud.tat.v20201028.models.TaskResult`
+        """
         return self._TaskResult
 
     @TaskResult.setter
@@ -3391,6 +4028,10 @@ class InvocationTask(AbstractModel):
 
     @property
     def StartTime(self):
+        """执行任务开始时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3399,6 +4040,10 @@ class InvocationTask(AbstractModel):
 
     @property
     def EndTime(self):
+        """执行任务结束时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3407,6 +4052,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """创建时间。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -3415,6 +4063,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def UpdatedTime(self):
+        """更新时间。
+        :rtype: str
+        """
         return self._UpdatedTime
 
     @UpdatedTime.setter
@@ -3423,6 +4074,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def CommandDocument(self):
+        """执行任务所执行的命令详情。
+        :rtype: :class:`tencentcloud.tat.v20201028.models.CommandDocument`
+        """
         return self._CommandDocument
 
     @CommandDocument.setter
@@ -3431,6 +4085,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """执行任务失败时的错误信息。
+        :rtype: str
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -3439,6 +4096,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def InvocationSource(self):
+        """调用来源。
+        :rtype: str
+        """
         return self._InvocationSource
 
     @InvocationSource.setter
@@ -3507,6 +4167,9 @@ class InvocationTaskBasicInfo(AbstractModel):
 
     @property
     def InvocationTaskId(self):
+        """执行任务ID。
+        :rtype: str
+        """
         return self._InvocationTaskId
 
     @InvocationTaskId.setter
@@ -3515,6 +4178,22 @@ class InvocationTaskBasicInfo(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """执行任务状态。取值范围：
+<li> PENDING：等待下发 
+<li> DELIVERING：下发中
+<li> DELIVER_DELAYED：延时下发 
+<li> DELIVER_FAILED：下发失败
+<li> START_FAILED：命令启动失败
+<li> RUNNING：命令运行中
+<li> SUCCESS：命令成功
+<li> FAILED：命令执行失败，执行完退出码不为 0
+<li> TIMEOUT：命令超时
+<li> TASK_TIMEOUT：执行任务超时
+<li> CANCELLING：取消中
+<li> CANCELLED：已取消（命令启动前就被取消）
+<li> TERMINATED：已中止（命令执行期间被取消）
+        :rtype: str
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -3523,6 +4202,9 @@ class InvocationTaskBasicInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3587,6 +4269,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def CommandId(self):
+        """待触发的命令ID。
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -3595,6 +4280,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def InstanceIds(self):
+        """待执行命令的实例ID列表，上限200。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -3603,6 +4291,13 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def Parameters(self):
+        """Command 的自定义参数。字段类型为json encoded string。如：{\"varA\": \"222\"}。
+key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
+如果未提供该参数取值，将使用 Command 的 DefaultParameters 进行替换。
+自定义参数最多20个。
+自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
+        :rtype: str
+        """
         return self._Parameters
 
     @Parameters.setter
@@ -3611,6 +4306,10 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def Username(self):
+        """在 CVM 或 Lighthouse 实例中执行命令的用户名称。
+使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。若不填，默认以 Command 配置的 Username 执行。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -3619,6 +4318,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def WorkingDirectory(self):
+        """命令执行路径, 默认以Command配置的WorkingDirectory执行。
+        :rtype: str
+        """
         return self._WorkingDirectory
 
     @WorkingDirectory.setter
@@ -3627,6 +4329,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def Timeout(self):
+        """命令超时时间，取值范围[1, 86400]。默认以Command配置的Timeout执行。
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -3635,6 +4340,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def OutputCOSBucketUrl(self):
+        """指定日志上传的cos bucket 地址，必须以https开头，如 https://BucketName-123454321.cos.ap-beijing.myqcloud.com。
+        :rtype: str
+        """
         return self._OutputCOSBucketUrl
 
     @OutputCOSBucketUrl.setter
@@ -3643,6 +4351,12 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def OutputCOSKeyPrefix(self):
+        """指定日志在cos bucket中的目录，目录命名有如下规则：
+1. 可用数字、中英文和可见字符的组合，长度最多为60。
+2. 用 / 分割路径，可快速创建子目录。
+3. 不允许连续 / ；不允许以 / 开头；不允许以..作为文件夹名称。
+        :rtype: str
+        """
         return self._OutputCOSKeyPrefix
 
     @OutputCOSKeyPrefix.setter
@@ -3686,6 +4400,9 @@ class InvokeCommandResponse(AbstractModel):
 
     @property
     def InvocationId(self):
+        """执行活动ID。
+        :rtype: str
+        """
         return self._InvocationId
 
     @InvocationId.setter
@@ -3694,6 +4411,9 @@ class InvokeCommandResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3751,6 +4471,9 @@ class Invoker(AbstractModel):
 
     @property
     def InvokerId(self):
+        """执行器ID。
+        :rtype: str
+        """
         return self._InvokerId
 
     @InvokerId.setter
@@ -3759,6 +4482,9 @@ class Invoker(AbstractModel):
 
     @property
     def Name(self):
+        """执行器名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3767,6 +4493,9 @@ class Invoker(AbstractModel):
 
     @property
     def Type(self):
+        """执行器类型。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3775,6 +4504,9 @@ class Invoker(AbstractModel):
 
     @property
     def CommandId(self):
+        """命令ID。
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -3783,6 +4515,9 @@ class Invoker(AbstractModel):
 
     @property
     def Username(self):
+        """用户名。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -3791,6 +4526,9 @@ class Invoker(AbstractModel):
 
     @property
     def Parameters(self):
+        """自定义参数。
+        :rtype: str
+        """
         return self._Parameters
 
     @Parameters.setter
@@ -3799,6 +4537,9 @@ class Invoker(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例ID列表。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -3807,6 +4548,9 @@ class Invoker(AbstractModel):
 
     @property
     def Enable(self):
+        """执行器是否启用。
+        :rtype: bool
+        """
         return self._Enable
 
     @Enable.setter
@@ -3815,6 +4559,10 @@ class Invoker(AbstractModel):
 
     @property
     def ScheduleSettings(self):
+        """执行器周期计划。周期执行器会返回此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
+        """
         return self._ScheduleSettings
 
     @ScheduleSettings.setter
@@ -3823,6 +4571,9 @@ class Invoker(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """创建时间。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -3831,6 +4582,9 @@ class Invoker(AbstractModel):
 
     @property
     def UpdatedTime(self):
+        """修改时间。
+        :rtype: str
+        """
         return self._UpdatedTime
 
     @UpdatedTime.setter
@@ -3888,6 +4642,9 @@ class InvokerRecord(AbstractModel):
 
     @property
     def InvokerId(self):
+        """执行器ID。
+        :rtype: str
+        """
         return self._InvokerId
 
     @InvokerId.setter
@@ -3896,6 +4653,9 @@ class InvokerRecord(AbstractModel):
 
     @property
     def InvokeTime(self):
+        """执行时间。
+        :rtype: str
+        """
         return self._InvokeTime
 
     @InvokeTime.setter
@@ -3904,6 +4664,9 @@ class InvokerRecord(AbstractModel):
 
     @property
     def Reason(self):
+        """执行原因。
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -3912,6 +4675,9 @@ class InvokerRecord(AbstractModel):
 
     @property
     def InvocationId(self):
+        """命令执行ID。
+        :rtype: str
+        """
         return self._InvocationId
 
     @InvocationId.setter
@@ -3920,6 +4686,9 @@ class InvokerRecord(AbstractModel):
 
     @property
     def Result(self):
+        """触发结果。
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -4001,6 +4770,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def CommandId(self):
+        """命令ID。
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -4009,6 +4781,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def CommandName(self):
+        """命令名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
+        :rtype: str
+        """
         return self._CommandName
 
     @CommandName.setter
@@ -4017,6 +4792,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def Description(self):
+        """命令描述。不超过120字符。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4025,6 +4803,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def Content(self):
+        """Base64编码后的命令内容，长度不可超过64KB。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -4033,6 +4814,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def CommandType(self):
+        """命令类型，目前支持取值：SHELL、POWERSHELL。
+        :rtype: str
+        """
         return self._CommandType
 
     @CommandType.setter
@@ -4041,6 +4825,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def WorkingDirectory(self):
+        """命令执行路径。
+        :rtype: str
+        """
         return self._WorkingDirectory
 
     @WorkingDirectory.setter
@@ -4049,6 +4836,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def Timeout(self):
+        """命令超时时间。取值范围[1, 86400]。
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -4057,6 +4847,14 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def DefaultParameters(self):
+        """启用自定义参数功能时，自定义参数的默认取值。字段类型为json encoded string。如：{\"varA\": \"222\"}。
+采取整体全覆盖式修改，即修改时必须提供所有新默认值。
+必须 Command 的 EnableParameter 为 true 时，才允许修改这个值。
+key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
+自定义参数最多20个。
+自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
+        :rtype: str
+        """
         return self._DefaultParameters
 
     @DefaultParameters.setter
@@ -4065,6 +4863,11 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def DefaultParameterConfs(self):
+        """自定义参数数组。
+如果InvokeCommand时未提供参数取值，将使用这里的默认值进行替换。
+自定义参数最多20个。
+        :rtype: list of DefaultParameterConf
+        """
         return self._DefaultParameterConfs
 
     @DefaultParameterConfs.setter
@@ -4073,6 +4876,10 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def Username(self):
+        """在 CVM 或 Lighthouse 实例中执行命令的用户名称。
+使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -4081,6 +4888,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def OutputCOSBucketUrl(self):
+        """指定日志上传的cos bucket 地址，必须以https开头，如 https://BucketName-123454321.cos.ap-beijing.myqcloud.com。
+        :rtype: str
+        """
         return self._OutputCOSBucketUrl
 
     @OutputCOSBucketUrl.setter
@@ -4089,6 +4899,12 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def OutputCOSKeyPrefix(self):
+        """指定日志在cos bucket中的目录，目录命名有如下规则：
+1. 可用数字、中英文和可见字符的组合，长度最多为60。
+2. 用 / 分割路径，可快速创建子目录。
+3. 不允许连续 / ；不允许以 / 开头；不允许以..作为文件夹名称。
+        :rtype: str
+        """
         return self._OutputCOSKeyPrefix
 
     @OutputCOSKeyPrefix.setter
@@ -4138,6 +4954,9 @@ class ModifyCommandResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4184,6 +5003,9 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def InvokerId(self):
+        """待修改的执行器ID。
+        :rtype: str
+        """
         return self._InvokerId
 
     @InvokerId.setter
@@ -4192,6 +5014,9 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def Name(self):
+        """待修改的执行器名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4200,6 +5025,9 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def Type(self):
+        """执行器类型，当前仅支持周期类型执行器，取值：`SCHEDULE` 。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -4208,6 +5036,9 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def CommandId(self):
+        """待修改的命令ID。
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -4216,6 +5047,9 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def Username(self):
+        """待修改的用户名。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -4224,6 +5058,9 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def Parameters(self):
+        """待修改的自定义参数。
+        :rtype: str
+        """
         return self._Parameters
 
     @Parameters.setter
@@ -4232,6 +5069,9 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """待修改的实例ID列表。列表长度上限100。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -4240,6 +5080,9 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def ScheduleSettings(self):
+        """待修改的周期执行器设置。
+        :rtype: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
+        """
         return self._ScheduleSettings
 
     @ScheduleSettings.setter
@@ -4282,6 +5125,9 @@ class ModifyInvokerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4310,6 +5156,9 @@ class ModifyRegisterInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4318,6 +5167,9 @@ class ModifyRegisterInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称。有效长度为 1～60 字符。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -4352,6 +5204,9 @@ class ModifyRegisterInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4389,6 +5244,13 @@ CommandId 与 Content，必须且只能提供一个。
 
     @property
     def Parameters(self):
+        """本次预览采用的自定义参数。字段类型为 json encoded string，如：{\"varA\": \"222\"}。
+key 为自定义参数名称，value 为该参数的取值。kv 均为字符串型。
+自定义参数最多 20 个。
+自定义参数名称需符合以下规范：字符数目上限 64，可选范围【a-zA-Z0-9-_】。
+如果将预览的 CommandId 设置过 DefaultParameters，本参数可以为空。
+        :rtype: str
+        """
         return self._Parameters
 
     @Parameters.setter
@@ -4397,6 +5259,10 @@ CommandId 与 Content，必须且只能提供一个。
 
     @property
     def CommandId(self):
+        """要进行替换预览的命令，如果有设置过 DefaultParameters，会与 Parameters 进行叠加，后者覆盖前者。
+CommandId 与 Content，必须且只能提供一个。
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -4405,6 +5271,10 @@ CommandId 与 Content，必须且只能提供一个。
 
     @property
     def Content(self):
+        """要预览的命令内容，经 Base64 编码，长度不可超过 64KB。
+CommandId 与 Content，必须且只能提供一个。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -4443,6 +5313,9 @@ class PreviewReplacedCommandContentResponse(AbstractModel):
 
     @property
     def ReplacedContent(self):
+        """自定义参数替换后的，经Base64编码的命令内容。
+        :rtype: str
+        """
         return self._ReplacedContent
 
     @ReplacedContent.setter
@@ -4451,6 +5324,9 @@ class PreviewReplacedCommandContentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4483,6 +5359,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def Region(self):
+        """地域名称，例如，ap-guangzhou
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -4491,6 +5370,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionName(self):
+        """地域描述，例如: 广州
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -4499,6 +5381,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionState(self):
+        """地域是否可用状态，AVAILABLE 代表可用
+        :rtype: str
+        """
         return self._RegionState
 
     @RegionState.setter
@@ -4567,6 +5452,9 @@ class RegisterCodeInfo(AbstractModel):
 
     @property
     def RegisterCodeId(self):
+        """注册码ID。
+        :rtype: str
+        """
         return self._RegisterCodeId
 
     @RegisterCodeId.setter
@@ -4575,6 +5463,9 @@ class RegisterCodeInfo(AbstractModel):
 
     @property
     def Description(self):
+        """注册码描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4583,6 +5474,9 @@ class RegisterCodeInfo(AbstractModel):
 
     @property
     def InstanceNamePrefix(self):
+        """注册实例名称前缀。
+        :rtype: str
+        """
         return self._InstanceNamePrefix
 
     @InstanceNamePrefix.setter
@@ -4591,6 +5485,9 @@ class RegisterCodeInfo(AbstractModel):
 
     @property
     def RegisterLimit(self):
+        """该注册码允许注册的实例数目。
+        :rtype: int
+        """
         return self._RegisterLimit
 
     @RegisterLimit.setter
@@ -4599,6 +5496,11 @@ class RegisterCodeInfo(AbstractModel):
 
     @property
     def ExpiredTime(self):
+        """该注册码的过期时间，按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpiredTime
 
     @ExpiredTime.setter
@@ -4607,6 +5509,9 @@ class RegisterCodeInfo(AbstractModel):
 
     @property
     def IpAddressRange(self):
+        """该注册码限制tat_agent只能从IpAddressRange所描述公网出口进行注册。
+        :rtype: str
+        """
         return self._IpAddressRange
 
     @IpAddressRange.setter
@@ -4615,6 +5520,9 @@ class RegisterCodeInfo(AbstractModel):
 
     @property
     def Enabled(self):
+        """该注册码是否可用。
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -4623,6 +5531,9 @@ class RegisterCodeInfo(AbstractModel):
 
     @property
     def RegisteredCount(self):
+        """该注册码已注册数目。
+        :rtype: int
+        """
         return self._RegisteredCount
 
     @RegisteredCount.setter
@@ -4631,6 +5542,11 @@ class RegisterCodeInfo(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """注册码创建时间，按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -4639,6 +5555,11 @@ class RegisterCodeInfo(AbstractModel):
 
     @property
     def UpdatedTime(self):
+        """注册码最近一次更新时间，按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdatedTime
 
     @UpdatedTime.setter
@@ -4712,6 +5633,9 @@ class RegisterInstanceInfo(AbstractModel):
 
     @property
     def RegisterCodeId(self):
+        """注册码ID。
+        :rtype: str
+        """
         return self._RegisterCodeId
 
     @RegisterCodeId.setter
@@ -4720,6 +5644,9 @@ class RegisterInstanceInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4728,6 +5655,9 @@ class RegisterInstanceInfo(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -4736,6 +5666,9 @@ class RegisterInstanceInfo(AbstractModel):
 
     @property
     def MachineId(self):
+        """机器ID。
+        :rtype: str
+        """
         return self._MachineId
 
     @MachineId.setter
@@ -4744,6 +5677,9 @@ class RegisterInstanceInfo(AbstractModel):
 
     @property
     def SystemName(self):
+        """系统名。
+        :rtype: str
+        """
         return self._SystemName
 
     @SystemName.setter
@@ -4752,6 +5688,9 @@ class RegisterInstanceInfo(AbstractModel):
 
     @property
     def HostName(self):
+        """主机名。
+        :rtype: str
+        """
         return self._HostName
 
     @HostName.setter
@@ -4760,6 +5699,9 @@ class RegisterInstanceInfo(AbstractModel):
 
     @property
     def LocalIp(self):
+        """内网IP。
+        :rtype: str
+        """
         return self._LocalIp
 
     @LocalIp.setter
@@ -4768,6 +5710,9 @@ class RegisterInstanceInfo(AbstractModel):
 
     @property
     def PublicKey(self):
+        """公钥。
+        :rtype: str
+        """
         return self._PublicKey
 
     @PublicKey.setter
@@ -4776,6 +5721,10 @@ class RegisterInstanceInfo(AbstractModel):
 
     @property
     def Status(self):
+        """托管状态。
+返回Online表示实例正在托管，返回Offline表示实例未托管。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -4784,6 +5733,9 @@ class RegisterInstanceInfo(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """创建时间。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -4792,6 +5744,9 @@ class RegisterInstanceInfo(AbstractModel):
 
     @property
     def UpdatedTime(self):
+        """上次更新时间。
+        :rtype: str
+        """
         return self._UpdatedTime
 
     @UpdatedTime.setter
@@ -4902,6 +5857,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def Content(self):
+        """Base64编码后的命令内容，长度不可超过64KB。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -4910,6 +5868,11 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def InstanceIds(self):
+        """待执行命令的实例ID列表，上限200。支持实例类型：
+<li> CVM </li>
+<li> LIGHTHOUSE </li>
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -4918,6 +5881,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def CommandName(self):
+        """命令名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
+        :rtype: str
+        """
         return self._CommandName
 
     @CommandName.setter
@@ -4926,6 +5892,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def Description(self):
+        """命令描述。不超过120字符。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4934,6 +5903,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def CommandType(self):
+        """命令类型，目前支持取值：SHELL、POWERSHELL。默认：SHELL。
+        :rtype: str
+        """
         return self._CommandType
 
     @CommandType.setter
@@ -4942,6 +5914,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def WorkingDirectory(self):
+        """命令执行路径，对于 SHELL 命令默认为 /root，对于 POWERSHELL 命令默认为 C:\Program Files\qcloud\tat_agent\workdir。
+        :rtype: str
+        """
         return self._WorkingDirectory
 
     @WorkingDirectory.setter
@@ -4950,6 +5925,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def Timeout(self):
+        """命令超时时间，默认60秒。取值范围[1, 86400]。
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -4958,6 +5936,12 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def SaveCommand(self):
+        """是否保存命令，取值范围：
+<li> true：保存</li>
+<li> false：不保存</li>
+默认为 false。
+        :rtype: bool
+        """
         return self._SaveCommand
 
     @SaveCommand.setter
@@ -4966,6 +5950,14 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def EnableParameter(self):
+        """是否启用自定义参数功能。
+一旦创建，此值不提供修改。
+取值范围：
+<li> true：启用 </li>
+<li> false：不启用 </li>
+默认值：false。 
+        :rtype: bool
+        """
         return self._EnableParameter
 
     @EnableParameter.setter
@@ -4974,6 +5966,13 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def DefaultParameters(self):
+        """启用自定义参数功能时，自定义参数的默认取值。字段类型为json encoded string。如：{\"varA\": \"222\"}。
+key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
+如果 Parameters 未提供，将使用这里的默认值进行替换。
+自定义参数最多20个。
+自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
+        :rtype: str
+        """
         return self._DefaultParameters
 
     @DefaultParameters.setter
@@ -4982,6 +5981,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def DefaultParameterConfs(self):
+        """自定义参数数组。 如果 Parameters 未提供，将使用这里的默认值进行替换。 自定义参数最多20个。
+        :rtype: list of DefaultParameterConf
+        """
         return self._DefaultParameterConfs
 
     @DefaultParameterConfs.setter
@@ -4990,6 +5992,13 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def Parameters(self):
+        """Command 的自定义参数。字段类型为json encoded string。如：{\"varA\": \"222\"}。
+key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
+如果未提供该参数取值，将使用 DefaultParameters 进行替换。
+自定义参数最多20个。
+自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
+        :rtype: str
+        """
         return self._Parameters
 
     @Parameters.setter
@@ -4998,6 +6007,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def Tags(self):
+        """如果保存命令，可为命令设置标签。列表长度不超过10。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -5006,6 +6018,10 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def Username(self):
+        """在 CVM 或 Lighthouse 实例中执行命令的用户名称。
+使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在 Linux 实例中以 root 用户执行命令；在Windows 实例中以 System 用户执行命令。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -5014,6 +6030,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def OutputCOSBucketUrl(self):
+        """指定日志上传的cos bucket 地址，必须以https开头，如 https://BucketName-123454321.cos.ap-beijing.myqcloud.com。
+        :rtype: str
+        """
         return self._OutputCOSBucketUrl
 
     @OutputCOSBucketUrl.setter
@@ -5022,6 +6041,12 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
     @property
     def OutputCOSKeyPrefix(self):
+        """指定日志在cos bucket中的目录，目录命名有如下规则：
+1. 可用数字、中英文和可见字符的组合，长度最多为60。
+2. 用 / 分割路径，可快速创建子目录。
+3. 不允许连续 / ；不允许以 / 开头；不允许以..作为文件夹名称。
+        :rtype: str
+        """
         return self._OutputCOSKeyPrefix
 
     @OutputCOSKeyPrefix.setter
@@ -5086,6 +6111,9 @@ class RunCommandResponse(AbstractModel):
 
     @property
     def CommandId(self):
+        """命令ID。
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -5094,6 +6122,9 @@ class RunCommandResponse(AbstractModel):
 
     @property
     def InvocationId(self):
+        """执行活动ID。
+        :rtype: str
+        """
         return self._InvocationId
 
     @InvocationId.setter
@@ -5102,6 +6133,9 @@ class RunCommandResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5141,6 +6175,9 @@ class Scene(AbstractModel):
 
     @property
     def SceneId(self):
+        """场景 ID 。
+        :rtype: str
+        """
         return self._SceneId
 
     @SceneId.setter
@@ -5149,6 +6186,9 @@ class Scene(AbstractModel):
 
     @property
     def SceneName(self):
+        """场景名称。
+        :rtype: str
+        """
         return self._SceneName
 
     @SceneName.setter
@@ -5157,6 +6197,9 @@ class Scene(AbstractModel):
 
     @property
     def CreatedBy(self):
+        """场景创建者。
+        :rtype: str
+        """
         return self._CreatedBy
 
     @CreatedBy.setter
@@ -5165,6 +6208,9 @@ class Scene(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """创建时间。
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -5173,6 +6219,9 @@ class Scene(AbstractModel):
 
     @property
     def UpdatedTime(self):
+        """更新时间。
+        :rtype: str
+        """
         return self._UpdatedTime
 
     @UpdatedTime.setter
@@ -5218,6 +6267,11 @@ class ScheduleSettings(AbstractModel):
 
     @property
     def Policy(self):
+        """执行策略：
+<br><li>ONCE：单次执行
+<br><li>RECURRENCE：周期执行
+        :rtype: str
+        """
         return self._Policy
 
     @Policy.setter
@@ -5226,6 +6280,9 @@ class ScheduleSettings(AbstractModel):
 
     @property
     def Recurrence(self):
+        """触发 Crontab 表达式。Policy 为 RECURRENCE 时，需要指定此字段。Crontab 按北京时间解析。
+        :rtype: str
+        """
         return self._Recurrence
 
     @Recurrence.setter
@@ -5234,6 +6291,9 @@ class ScheduleSettings(AbstractModel):
 
     @property
     def InvokeTime(self):
+        """执行器下次执行时间。Policy 为 ONCE 时，需要指定此字段。
+        :rtype: str
+        """
         return self._InvokeTime
 
     @InvokeTime.setter
@@ -5272,6 +6332,9 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
+        """标签键。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -5280,6 +6343,9 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
+        """标签值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -5334,6 +6400,9 @@ class TaskResult(AbstractModel):
 
     @property
     def ExitCode(self):
+        """命令执行ExitCode。
+        :rtype: int
+        """
         return self._ExitCode
 
     @ExitCode.setter
@@ -5342,6 +6411,9 @@ class TaskResult(AbstractModel):
 
     @property
     def Output(self):
+        """Base64编码后的命令输出。最大长度24KB。
+        :rtype: str
+        """
         return self._Output
 
     @Output.setter
@@ -5350,6 +6422,10 @@ class TaskResult(AbstractModel):
 
     @property
     def ExecStartTime(self):
+        """命令执行开始时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExecStartTime
 
     @ExecStartTime.setter
@@ -5358,6 +6434,10 @@ class TaskResult(AbstractModel):
 
     @property
     def ExecEndTime(self):
+        """命令执行结束时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExecEndTime
 
     @ExecEndTime.setter
@@ -5366,6 +6446,9 @@ class TaskResult(AbstractModel):
 
     @property
     def Dropped(self):
+        """命令最终输出被截断的字节数。
+        :rtype: int
+        """
         return self._Dropped
 
     @Dropped.setter
@@ -5374,6 +6457,9 @@ class TaskResult(AbstractModel):
 
     @property
     def OutputUrl(self):
+        """日志在cos中的地址
+        :rtype: str
+        """
         return self._OutputUrl
 
     @OutputUrl.setter
@@ -5382,6 +6468,9 @@ class TaskResult(AbstractModel):
 
     @property
     def OutputUploadCOSErrorInfo(self):
+        """日志上传cos的错误信息。
+        :rtype: str
+        """
         return self._OutputUploadCOSErrorInfo
 
     @OutputUploadCOSErrorInfo.setter

@@ -68,6 +68,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """域名。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -76,6 +79,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def Origin(self):
+        """源站配置。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Origin`
+        """
         return self._Origin
 
     @Origin.setter
@@ -84,6 +90,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def Area(self):
+        """域名加速区域，mainland，overseas或global，分别表示中国境内加速，海外加速或全球加速。
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -92,6 +101,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目id，默认0。
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -100,6 +112,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def IpFilter(self):
+        """IP黑白名单配置。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.IpFilter`
+        """
         return self._IpFilter
 
     @IpFilter.setter
@@ -108,6 +123,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def IpFreqLimit(self):
+        """IP限频配置。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.IpFreqLimit`
+        """
         return self._IpFreqLimit
 
     @IpFreqLimit.setter
@@ -116,6 +134,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def ResponseHeader(self):
+        """源站响应头部配置。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.ResponseHeader`
+        """
         return self._ResponseHeader
 
     @ResponseHeader.setter
@@ -124,6 +145,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def CacheKey(self):
+        """节点缓存配置。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.CacheKey`
+        """
         return self._CacheKey
 
     @CacheKey.setter
@@ -132,6 +156,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def Cache(self):
+        """缓存规则配置。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Cache`
+        """
         return self._Cache
 
     @Cache.setter
@@ -140,6 +167,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def Https(self):
+        """Https配置。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Https`
+        """
         return self._Https
 
     @Https.setter
@@ -148,6 +178,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def ForceRedirect(self):
+        """访问协议强制跳转配置。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.ForceRedirect`
+        """
         return self._ForceRedirect
 
     @ForceRedirect.setter
@@ -156,6 +189,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def Tag(self):
+        """域名绑定的标签
+        :rtype: list of Tag
+        """
         return self._Tag
 
     @Tag.setter
@@ -164,6 +200,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def WebSocket(self):
+        """WebSocket配置
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`
+        """
         return self._WebSocket
 
     @WebSocket.setter
@@ -232,6 +271,9 @@ class AddEcdnDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -281,6 +323,10 @@ twoWay - 双向校验
 
     @property
     def CustomTlsStatus(self):
+        """自定义Tls数据开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CustomTlsStatus
 
     @CustomTlsStatus.setter
@@ -289,6 +335,10 @@ twoWay - 双向校验
 
     @property
     def TlsVersion(self):
+        """Tls版本列表，支持设置 TLSv1, TLSV1.1, TLSV1.2, TLSv1.3，修改时必须开启连续的版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._TlsVersion
 
     @TlsVersion.setter
@@ -297,6 +347,10 @@ twoWay - 双向校验
 
     @property
     def Cipher(self):
+        """自定义加密套件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Cipher
 
     @Cipher.setter
@@ -305,6 +359,13 @@ twoWay - 双向校验
 
     @property
     def VerifyOriginType(self):
+        """回源双向校验开启状态
+off - 关闭校验
+oneWay - 校验源站
+twoWay - 双向校验
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VerifyOriginType
 
     @VerifyOriginType.setter
@@ -313,6 +374,10 @@ twoWay - 双向校验
 
     @property
     def CertInfo(self):
+        """回源层证书配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.ServerCert`
+        """
         return self._CertInfo
 
     @CertInfo.setter
@@ -321,6 +386,10 @@ twoWay - 双向校验
 
     @property
     def OriginCertInfo(self):
+        """源站证书配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.ClientCert`
+        """
         return self._OriginCertInfo
 
     @OriginCertInfo.setter
@@ -370,6 +439,9 @@ off：关闭
 
     @property
     def CacheRules(self):
+        """缓存配置规则数组。
+        :rtype: list of CacheRule
+        """
         return self._CacheRules
 
     @CacheRules.setter
@@ -378,6 +450,13 @@ off：关闭
 
     @property
     def FollowOrigin(self):
+        """遵循源站 Cache-Control: max-age 配置，白名单功能。
+on：开启
+off：关闭
+开启后，未能匹配 CacheRules 规则的资源将根据源站返回的 max-age 值进行节点缓存；匹配了 CacheRules 规则的资源将按照 CacheRules 中设置的缓存过期时间在节点进行缓存
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FollowOrigin
 
     @FollowOrigin.setter
@@ -417,6 +496,9 @@ class CacheKey(AbstractModel):
 
     @property
     def FullUrlCache(self):
+        """是否开启全路径缓存，on或off。
+        :rtype: str
+        """
         return self._FullUrlCache
 
     @FullUrlCache.setter
@@ -456,6 +538,9 @@ class CacheRule(AbstractModel):
 
     @property
     def CacheType(self):
+        """缓存类型，支持all，file，directory，path，index，分别表示全部文件，后缀类型，目录，完整路径，首页。
+        :rtype: str
+        """
         return self._CacheType
 
     @CacheType.setter
@@ -464,6 +549,9 @@ class CacheRule(AbstractModel):
 
     @property
     def CacheContents(self):
+        """缓存内容列表。
+        :rtype: list of str
+        """
         return self._CacheContents
 
     @CacheContents.setter
@@ -472,6 +560,9 @@ class CacheRule(AbstractModel):
 
     @property
     def CacheTime(self):
+        """缓存时间，单位秒。
+        :rtype: int
+        """
         return self._CacheTime
 
     @CacheTime.setter
@@ -520,6 +611,10 @@ class ClientCert(AbstractModel):
 
     @property
     def Certificate(self):
+        """客户端证书，pem格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Certificate
 
     @Certificate.setter
@@ -528,6 +623,10 @@ class ClientCert(AbstractModel):
 
     @property
     def CertName(self):
+        """客户端证书名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertName
 
     @CertName.setter
@@ -536,6 +635,10 @@ class ClientCert(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """证书过期时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -544,6 +647,10 @@ class ClientCert(AbstractModel):
 
     @property
     def DeployTime(self):
+        """证书颁发时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeployTime
 
     @DeployTime.setter
@@ -580,6 +687,9 @@ class CreateVerifyRecordRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """要取回的域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -622,6 +732,9 @@ class CreateVerifyRecordResponse(AbstractModel):
 
     @property
     def SubDomain(self):
+        """子解析
+        :rtype: str
+        """
         return self._SubDomain
 
     @SubDomain.setter
@@ -630,6 +743,9 @@ class CreateVerifyRecordResponse(AbstractModel):
 
     @property
     def Record(self):
+        """解析值
+        :rtype: str
+        """
         return self._Record
 
     @Record.setter
@@ -638,6 +754,9 @@ class CreateVerifyRecordResponse(AbstractModel):
 
     @property
     def RecordType(self):
+        """解析类型
+        :rtype: str
+        """
         return self._RecordType
 
     @RecordType.setter
@@ -646,6 +765,9 @@ class CreateVerifyRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -674,6 +796,9 @@ class DeleteEcdnDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """待删除域名。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -707,6 +832,9 @@ class DeleteEcdnDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -741,6 +869,9 @@ class DescribeDomainsConfigRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页查询的偏移地址，默认0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -749,6 +880,9 @@ class DescribeDomainsConfigRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页查询的域名个数，默认100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -757,6 +891,9 @@ class DescribeDomainsConfigRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """查询条件过滤器。
+        :rtype: list of DomainFilter
+        """
         return self._Filters
 
     @Filters.setter
@@ -765,6 +902,9 @@ class DescribeDomainsConfigRequest(AbstractModel):
 
     @property
     def Sort(self):
+        """查询结果排序规则。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Sort`
+        """
         return self._Sort
 
     @Sort.setter
@@ -814,6 +954,9 @@ class DescribeDomainsConfigResponse(AbstractModel):
 
     @property
     def Domains(self):
+        """域名列表。
+        :rtype: list of DomainDetailInfo
+        """
         return self._Domains
 
     @Domains.setter
@@ -822,6 +965,9 @@ class DescribeDomainsConfigResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合查询条件的域名总数，用于分页查询。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -830,6 +976,9 @@ class DescribeDomainsConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -868,6 +1017,9 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页查询的偏移地址，默认0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -876,6 +1028,9 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页查询的域名个数，默认100，最大支持1000。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -884,6 +1039,9 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """查询条件过滤器。
+        :rtype: list of DomainFilter
+        """
         return self._Filters
 
     @Filters.setter
@@ -930,6 +1088,9 @@ class DescribeDomainsResponse(AbstractModel):
 
     @property
     def Domains(self):
+        """域名信息列表。
+        :rtype: list of DomainBriefInfo
+        """
         return self._Domains
 
     @Domains.setter
@@ -938,6 +1099,9 @@ class DescribeDomainsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """域名总个数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -946,6 +1110,9 @@ class DescribeDomainsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -990,6 +1157,9 @@ class DescribeEcdnDomainLogsRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """待查询域名。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -998,6 +1168,9 @@ class DescribeEcdnDomainLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """日志起始时间。如：2019-10-01 00:00:00
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1006,6 +1179,9 @@ class DescribeEcdnDomainLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """日志结束时间，只支持最近30天内日志查询。2019-10-02 00:00:00
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1014,6 +1190,9 @@ class DescribeEcdnDomainLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """日志链接列表分页起始地址，默认0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1022,6 +1201,9 @@ class DescribeEcdnDomainLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """日志链接列表分页记录条数，默认100，最大1000。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1066,6 +1248,10 @@ class DescribeEcdnDomainLogsResponse(AbstractModel):
 
     @property
     def DomainLogs(self):
+        """日志链接列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DomainLogs
+        """
         return self._DomainLogs
 
     @DomainLogs.setter
@@ -1074,6 +1260,9 @@ class DescribeEcdnDomainLogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """日志链接总条数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1082,6 +1271,9 @@ class DescribeEcdnDomainLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1145,6 +1337,10 @@ global: 全部
 
     @property
     def StartTime(self):
+        """查询起始时间，如：2019-12-13 00:00:00。
+起止时间不超过90天。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1153,6 +1349,10 @@ global: 全部
 
     @property
     def EndTime(self):
+        """查询结束时间，如：2019-12-13 23:59:59。
+起止时间不超过90天。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1161,6 +1361,12 @@ global: 全部
 
     @property
     def Metrics(self):
+        """统计指标名称:
+flux：流量，单位为 byte
+bandwidth：带宽，单位为 bps
+request：请求数，单位为 次
+        :rtype: list of str
+        """
         return self._Metrics
 
     @Metrics.setter
@@ -1169,6 +1375,9 @@ global: 全部
 
     @property
     def Domains(self):
+        """指定查询域名列表
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -1177,6 +1386,10 @@ global: 全部
 
     @property
     def Projects(self):
+        """指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
+未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
+        :rtype: list of int
+        """
         return self._Projects
 
     @Projects.setter
@@ -1185,6 +1398,9 @@ global: 全部
 
     @property
     def Offset(self):
+        """列表分页起始地址，默认0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1193,6 +1409,9 @@ global: 全部
 
     @property
     def Limit(self):
+        """列表分页记录条数，默认1000，最大3000。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1201,6 +1420,13 @@ global: 全部
 
     @property
     def Area(self):
+        """统计区域:
+mainland: 境内
+oversea: 境外
+global: 全部
+默认 global
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -1247,6 +1473,9 @@ class DescribeEcdnDomainStatisticsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """域名数据
+        :rtype: list of DomainData
+        """
         return self._Data
 
     @Data.setter
@@ -1255,6 +1484,9 @@ class DescribeEcdnDomainStatisticsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1263,6 +1495,9 @@ class DescribeEcdnDomainStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1331,6 +1566,9 @@ global: 全部
 
     @property
     def StartTime(self):
+        """查询起始时间，如：2019-12-13 00:00:00
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1339,6 +1577,9 @@ global: 全部
 
     @property
     def EndTime(self):
+        """查询结束时间，如：2019-12-13 23:59:59
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1347,6 +1588,16 @@ global: 全部
 
     @property
     def Metrics(self):
+        """指定查询指标，支持的类型有：
+flux：流量，单位为 byte
+bandwidth：带宽，单位为 bps
+request：请求数，单位为 次
+2xx：返回 2xx 状态码汇总或者 2 开头状态码数据，单位为 个
+3xx：返回 3xx 状态码汇总或者 3 开头状态码数据，单位为 个
+4xx：返回 4xx 状态码汇总或者 4 开头状态码数据，单位为 个
+5xx：返回 5xx 状态码汇总或者 5 开头状态码数据，单位为 个
+        :rtype: list of str
+        """
         return self._Metrics
 
     @Metrics.setter
@@ -1355,6 +1606,13 @@ global: 全部
 
     @property
     def Interval(self):
+        """时间粒度，支持以下几种模式：
+1 天	 1，5，15，30，60，120，240，1440 
+2 ~ 3 天	15，30，60，120，240，1440
+4 ~ 7 天	30，60，120，240，1440
+8 ~ 31 天	 60，120，240，1440
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -1363,6 +1621,11 @@ global: 全部
 
     @property
     def Domains(self):
+        """指定查询域名列表
+
+最多可一次性查询30个加速域名。
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -1371,6 +1634,10 @@ global: 全部
 
     @property
     def Projects(self):
+        """指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
+未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
+        :rtype: list of int
+        """
         return self._Projects
 
     @Projects.setter
@@ -1379,6 +1646,13 @@ global: 全部
 
     @property
     def Area(self):
+        """统计区域:
+mainland: 境内
+oversea: 境外
+global: 全部
+默认 global
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -1421,6 +1695,9 @@ class DescribeEcdnStatisticsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """指定条件查询得到的数据明细
+        :rtype: list of ResourceData
+        """
         return self._Data
 
     @Data.setter
@@ -1429,6 +1706,9 @@ class DescribeEcdnStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1466,6 +1746,9 @@ global: 全球节点
 
     @property
     def Domain(self):
+        """加速域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -1474,6 +1757,12 @@ global: 全球节点
 
     @property
     def Area(self):
+        """查询区域：
+mainland: 国内节点
+overseas: 海外节点
+global: 全球节点
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -1514,6 +1803,9 @@ class DescribeIpStatusResponse(AbstractModel):
 
     @property
     def Ips(self):
+        """节点列表
+        :rtype: list of IpStatus
+        """
         return self._Ips
 
     @Ips.setter
@@ -1522,6 +1814,9 @@ class DescribeIpStatusResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """节点总个数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1530,6 +1825,9 @@ class DescribeIpStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1574,6 +1872,9 @@ class DescribePurgeQuotaResponse(AbstractModel):
 
     @property
     def UrlPurge(self):
+        """Url刷新用量及配额。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Quota`
+        """
         return self._UrlPurge
 
     @UrlPurge.setter
@@ -1582,6 +1883,9 @@ class DescribePurgeQuotaResponse(AbstractModel):
 
     @property
     def PathPurge(self):
+        """目录刷新用量及配额。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Quota`
+        """
         return self._PathPurge
 
     @PathPurge.setter
@@ -1590,6 +1894,9 @@ class DescribePurgeQuotaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1642,6 +1949,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def PurgeType(self):
+        """查询刷新类型。url：查询 url 刷新记录；path：查询目录刷新记录。
+        :rtype: str
+        """
         return self._PurgeType
 
     @PurgeType.setter
@@ -1650,6 +1960,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间，如2018-08-08 00:00:00。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1658,6 +1971,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，如2018-08-08 23:59:59。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1666,6 +1982,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """提交时返回的任务 Id，查询时 TaskId 和起始时间必须指定一项。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1674,6 +1993,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页查询偏移量，默认为0（从第0条开始）。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1682,6 +2004,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页查询限制数目，默认为20。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1690,6 +2015,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def Keyword(self):
+        """查询关键字，请输入域名或 http(s):// 开头完整 URL。
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -1698,6 +2026,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def Status(self):
+        """查询指定任务状态，fail表示失败，done表示成功，process表示刷新中。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1744,6 +2075,9 @@ class DescribePurgeTasksResponse(AbstractModel):
 
     @property
     def PurgeLogs(self):
+        """刷新历史记录。
+        :rtype: list of PurgeTask
+        """
         return self._PurgeLogs
 
     @PurgeLogs.setter
@@ -1752,6 +2086,9 @@ class DescribePurgeTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """任务总数，用于分页。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1760,6 +2097,9 @@ class DescribePurgeTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1795,6 +2135,9 @@ class DetailData(AbstractModel):
 
     @property
     def Name(self):
+        """数据类型的名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1803,6 +2146,9 @@ class DetailData(AbstractModel):
 
     @property
     def Value(self):
+        """数据值
+        :rtype: float
+        """
         return self._Value
 
     @Value.setter
@@ -1874,6 +2220,9 @@ class DomainBriefInfo(AbstractModel):
 
     @property
     def ResourceId(self):
+        """域名ID。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -1882,6 +2231,9 @@ class DomainBriefInfo(AbstractModel):
 
     @property
     def AppId(self):
+        """腾讯云账号ID。
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -1890,6 +2242,9 @@ class DomainBriefInfo(AbstractModel):
 
     @property
     def Domain(self):
+        """CDN加速域名。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -1898,6 +2253,9 @@ class DomainBriefInfo(AbstractModel):
 
     @property
     def Cname(self):
+        """域名CName。
+        :rtype: str
+        """
         return self._Cname
 
     @Cname.setter
@@ -1906,6 +2264,9 @@ class DomainBriefInfo(AbstractModel):
 
     @property
     def Status(self):
+        """域名状态，pending，rejected，processing， online，offline，deleted分别表示审核中，审核未通过，审核通过部署中，已开启，已关闭，已删除。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1914,6 +2275,9 @@ class DomainBriefInfo(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID。
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1922,6 +2286,9 @@ class DomainBriefInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """域名创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1930,6 +2297,9 @@ class DomainBriefInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """域名更新时间。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -1938,6 +2308,9 @@ class DomainBriefInfo(AbstractModel):
 
     @property
     def Origin(self):
+        """源站配置详情。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Origin`
+        """
         return self._Origin
 
     @Origin.setter
@@ -1946,6 +2319,9 @@ class DomainBriefInfo(AbstractModel):
 
     @property
     def Disable(self):
+        """域名封禁状态，normal，overdue，quota，malicious，ddos，idle，unlicensed，capping，readonly分别表示 正常，欠费停服，试用客户流量包耗尽，恶意用户，ddos攻击，无流量域名，未备案，带宽封顶，只读
+        :rtype: str
+        """
         return self._Disable
 
     @Disable.setter
@@ -1954,6 +2330,9 @@ class DomainBriefInfo(AbstractModel):
 
     @property
     def Area(self):
+        """加速区域，mainland，oversea或global。
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -1962,6 +2341,9 @@ class DomainBriefInfo(AbstractModel):
 
     @property
     def Readonly(self):
+        """域名锁定状态，normal、global，分别表示未被锁定、全球锁定。
+        :rtype: str
+        """
         return self._Readonly
 
     @Readonly.setter
@@ -1970,6 +2352,10 @@ class DomainBriefInfo(AbstractModel):
 
     @property
     def Tag(self):
+        """域名标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tag
 
     @Tag.setter
@@ -2025,6 +2411,9 @@ class DomainData(AbstractModel):
 
     @property
     def Resource(self):
+        """域名
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -2033,6 +2422,9 @@ class DomainData(AbstractModel):
 
     @property
     def DetailData(self):
+        """结果详情
+        :rtype: list of DetailData
+        """
         return self._DetailData
 
     @DetailData.setter
@@ -2145,6 +2537,9 @@ class DomainDetailInfo(AbstractModel):
 
     @property
     def ResourceId(self):
+        """域名ID。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -2153,6 +2548,9 @@ class DomainDetailInfo(AbstractModel):
 
     @property
     def AppId(self):
+        """腾讯云账号ID。
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -2161,6 +2559,9 @@ class DomainDetailInfo(AbstractModel):
 
     @property
     def Domain(self):
+        """加速域名。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -2169,6 +2570,10 @@ class DomainDetailInfo(AbstractModel):
 
     @property
     def Cname(self):
+        """域名CName。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Cname
 
     @Cname.setter
@@ -2177,6 +2582,9 @@ class DomainDetailInfo(AbstractModel):
 
     @property
     def Status(self):
+        """域名状态，pending，rejected，processing， online，offline，deleted分别表示审核中，审核未通过，审核通过部署中，已开启，已关闭，已删除。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2185,6 +2593,9 @@ class DomainDetailInfo(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID。
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -2193,6 +2604,9 @@ class DomainDetailInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """域名创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2201,6 +2615,9 @@ class DomainDetailInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """域名更新时间。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -2209,6 +2626,9 @@ class DomainDetailInfo(AbstractModel):
 
     @property
     def Origin(self):
+        """源站配置。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Origin`
+        """
         return self._Origin
 
     @Origin.setter
@@ -2217,6 +2637,10 @@ class DomainDetailInfo(AbstractModel):
 
     @property
     def IpFilter(self):
+        """IP黑白名单配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.IpFilter`
+        """
         return self._IpFilter
 
     @IpFilter.setter
@@ -2225,6 +2649,10 @@ class DomainDetailInfo(AbstractModel):
 
     @property
     def IpFreqLimit(self):
+        """IP限频配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.IpFreqLimit`
+        """
         return self._IpFreqLimit
 
     @IpFreqLimit.setter
@@ -2233,6 +2661,10 @@ class DomainDetailInfo(AbstractModel):
 
     @property
     def ResponseHeader(self):
+        """源站响应头部配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.ResponseHeader`
+        """
         return self._ResponseHeader
 
     @ResponseHeader.setter
@@ -2241,6 +2673,10 @@ class DomainDetailInfo(AbstractModel):
 
     @property
     def CacheKey(self):
+        """节点缓存配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.CacheKey`
+        """
         return self._CacheKey
 
     @CacheKey.setter
@@ -2249,6 +2685,10 @@ class DomainDetailInfo(AbstractModel):
 
     @property
     def Cache(self):
+        """缓存规则配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Cache`
+        """
         return self._Cache
 
     @Cache.setter
@@ -2257,6 +2697,10 @@ class DomainDetailInfo(AbstractModel):
 
     @property
     def Https(self):
+        """Https配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Https`
+        """
         return self._Https
 
     @Https.setter
@@ -2265,6 +2709,10 @@ class DomainDetailInfo(AbstractModel):
 
     @property
     def Disable(self):
+        """域名封禁状态，normal，overdue，quota，malicious，ddos，idle，unlicensed，capping，readonly分别表示 正常，欠费停服，试用客户流量包耗尽，恶意用户，ddos攻击，无流量域名，未备案，带宽封顶，只读。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Disable
 
     @Disable.setter
@@ -2273,6 +2721,10 @@ class DomainDetailInfo(AbstractModel):
 
     @property
     def ForceRedirect(self):
+        """访问协议强制跳转配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.ForceRedirect`
+        """
         return self._ForceRedirect
 
     @ForceRedirect.setter
@@ -2281,6 +2733,10 @@ class DomainDetailInfo(AbstractModel):
 
     @property
     def Area(self):
+        """加速区域，mainland，overseas或global。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -2289,6 +2745,10 @@ class DomainDetailInfo(AbstractModel):
 
     @property
     def Readonly(self):
+        """域名锁定状态，normal、global 分别表示未被锁定，全球锁定。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Readonly
 
     @Readonly.setter
@@ -2297,6 +2757,10 @@ class DomainDetailInfo(AbstractModel):
 
     @property
     def Tag(self):
+        """域名标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tag
 
     @Tag.setter
@@ -2305,6 +2769,10 @@ class DomainDetailInfo(AbstractModel):
 
     @property
     def WebSocket(self):
+        """WebSocket配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`
+        """
         return self._WebSocket
 
     @WebSocket.setter
@@ -2398,6 +2866,20 @@ class DomainFilter(AbstractModel):
 
     @property
     def Name(self):
+        """过滤字段名，支持的列表如下：
+- origin：主源站。
+- domain：域名。
+- resourceId：域名id。
+- status：域名状态，online，offline，processing。
+- disable：域名封禁状态，normal，unlicensed。
+- projectId：项目ID。
+- fullUrlCache：全路径缓存，on或off。
+- https：是否配置https，on，off或processing。
+- originPullProtocol：回源协议类型，支持http，follow或https。
+- area：加速区域，支持mainland，overseas或global。
+- tagKey：标签键。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2406,6 +2888,9 @@ class DomainFilter(AbstractModel):
 
     @property
     def Value(self):
+        """过滤字段值。
+        :rtype: list of str
+        """
         return self._Value
 
     @Value.setter
@@ -2414,6 +2899,9 @@ class DomainFilter(AbstractModel):
 
     @property
     def Fuzzy(self):
+        """是否启用模糊查询，仅支持过滤字段名为origin，domain。
+        :rtype: bool
+        """
         return self._Fuzzy
 
     @Fuzzy.setter
@@ -2455,6 +2943,9 @@ class DomainLogs(AbstractModel):
 
     @property
     def StartTime(self):
+        """日志起始时间。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2463,6 +2954,9 @@ class DomainLogs(AbstractModel):
 
     @property
     def EndTime(self):
+        """日志结束时间。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2471,6 +2965,9 @@ class DomainLogs(AbstractModel):
 
     @property
     def LogPath(self):
+        """日志下载路径。
+        :rtype: str
+        """
         return self._LogPath
 
     @LogPath.setter
@@ -2509,6 +3006,9 @@ class EcdnData(AbstractModel):
 
     @property
     def Metrics(self):
+        """查询指定的指标名称：Bandwidth，Flux，Request，Delay，状态码，LogBandwidth，LogFlux，LogRequest
+        :rtype: list of str
+        """
         return self._Metrics
 
     @Metrics.setter
@@ -2517,6 +3017,9 @@ class EcdnData(AbstractModel):
 
     @property
     def DetailData(self):
+        """明细数据组合
+        :rtype: list of TimestampData
+        """
         return self._DetailData
 
     @DetailData.setter
@@ -2565,6 +3068,10 @@ class ForceRedirect(AbstractModel):
 
     @property
     def Switch(self):
+        """访问协议强制跳转配置开关，on或off。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -2573,6 +3080,10 @@ class ForceRedirect(AbstractModel):
 
     @property
     def RedirectType(self):
+        """强制跳转访问协议类型，支持http，https，分别表示请求强制跳转http协议，请求强制跳转https协议。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RedirectType
 
     @RedirectType.setter
@@ -2581,6 +3092,10 @@ class ForceRedirect(AbstractModel):
 
     @property
     def RedirectStatusCode(self):
+        """强制跳转开启时返回的http状态码，支持301或302。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RedirectStatusCode
 
     @RedirectStatusCode.setter
@@ -2624,6 +3139,9 @@ class Hsts(AbstractModel):
 
     @property
     def Switch(self):
+        """是否开启，on或off。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -2632,6 +3150,10 @@ class Hsts(AbstractModel):
 
     @property
     def MaxAge(self):
+        """MaxAge数值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxAge
 
     @MaxAge.setter
@@ -2640,6 +3162,10 @@ class Hsts(AbstractModel):
 
     @property
     def IncludeSubDomains(self):
+        """是否包含子域名，on或off。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IncludeSubDomains
 
     @IncludeSubDomains.setter
@@ -2693,6 +3219,11 @@ class HttpHeaderPathRule(AbstractModel):
 
     @property
     def HeaderMode(self):
+        """http头部设置方式，支持add，set或del，分别表示新增，设置或删除头部。
+请求头部暂不支持set。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._HeaderMode
 
     @HeaderMode.setter
@@ -2701,6 +3232,10 @@ class HttpHeaderPathRule(AbstractModel):
 
     @property
     def HeaderName(self):
+        """http头部名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._HeaderName
 
     @HeaderName.setter
@@ -2709,6 +3244,10 @@ class HttpHeaderPathRule(AbstractModel):
 
     @property
     def HeaderValue(self):
+        """http头部值。del时可不填写该字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._HeaderValue
 
     @HeaderValue.setter
@@ -2717,6 +3256,10 @@ class HttpHeaderPathRule(AbstractModel):
 
     @property
     def RuleType(self):
+        """生效的url路径规则类型，支持all，file，directory或path，分别表示全部路径，文件后缀类型，目录或绝对路径生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RuleType
 
     @RuleType.setter
@@ -2725,6 +3268,10 @@ class HttpHeaderPathRule(AbstractModel):
 
     @property
     def RulePaths(self):
+        """url路径或文件类型列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._RulePaths
 
     @RulePaths.setter
@@ -2795,6 +3342,10 @@ class Https(AbstractModel):
 
     @property
     def Switch(self):
+        """https配置开关，on或off。开启https配置的域名在部署中状态，开关保持off。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -2803,6 +3354,10 @@ class Https(AbstractModel):
 
     @property
     def Http2(self):
+        """是否开启http2，on或off。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Http2
 
     @Http2.setter
@@ -2811,6 +3366,10 @@ class Https(AbstractModel):
 
     @property
     def OcspStapling(self):
+        """是否开启OCSP功能，on或off。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OcspStapling
 
     @OcspStapling.setter
@@ -2819,6 +3378,10 @@ class Https(AbstractModel):
 
     @property
     def VerifyClient(self):
+        """是否开启客户端证书校验功能，on或off，开启时必选上传客户端证书信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VerifyClient
 
     @VerifyClient.setter
@@ -2827,6 +3390,10 @@ class Https(AbstractModel):
 
     @property
     def CertInfo(self):
+        """服务器证书配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.ServerCert`
+        """
         return self._CertInfo
 
     @CertInfo.setter
@@ -2835,6 +3402,10 @@ class Https(AbstractModel):
 
     @property
     def ClientCertInfo(self):
+        """客户端证书配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.ClientCert`
+        """
         return self._ClientCertInfo
 
     @ClientCertInfo.setter
@@ -2843,6 +3414,10 @@ class Https(AbstractModel):
 
     @property
     def Spdy(self):
+        """是否开启Spdy，on或off。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Spdy
 
     @Spdy.setter
@@ -2851,6 +3426,10 @@ class Https(AbstractModel):
 
     @property
     def SslStatus(self):
+        """https证书部署状态，closed，deploying，deployed，failed分别表示已关闭，部署中，部署成功，部署失败。不可作为入参使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SslStatus
 
     @SslStatus.setter
@@ -2859,6 +3438,10 @@ class Https(AbstractModel):
 
     @property
     def Hsts(self):
+        """Hsts配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Hsts`
+        """
         return self._Hsts
 
     @Hsts.setter
@@ -2914,6 +3497,9 @@ class IpFilter(AbstractModel):
 
     @property
     def Switch(self):
+        """IP黑白名单开关，on或off。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -2922,6 +3508,10 @@ class IpFilter(AbstractModel):
 
     @property
     def FilterType(self):
+        """IP黑白名单类型，whitelist或blacklist。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FilterType
 
     @FilterType.setter
@@ -2930,6 +3520,10 @@ class IpFilter(AbstractModel):
 
     @property
     def Filters(self):
+        """IP黑白名单列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Filters
 
     @Filters.setter
@@ -2969,6 +3563,9 @@ class IpFreqLimit(AbstractModel):
 
     @property
     def Switch(self):
+        """IP限频配置开关，on或off。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -2977,6 +3574,10 @@ class IpFreqLimit(AbstractModel):
 
     @property
     def Qps(self):
+        """每秒请求数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Qps
 
     @Qps.setter
@@ -3028,6 +3629,9 @@ offline：下线状态
 
     @property
     def Ip(self):
+        """节点 IP
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -3036,6 +3640,9 @@ offline：下线状态
 
     @property
     def District(self):
+        """节点所属区域
+        :rtype: str
+        """
         return self._District
 
     @District.setter
@@ -3044,6 +3651,9 @@ offline：下线状态
 
     @property
     def Isp(self):
+        """节点所属运营商
+        :rtype: str
+        """
         return self._Isp
 
     @Isp.setter
@@ -3052,6 +3662,9 @@ offline：下线状态
 
     @property
     def City(self):
+        """节点所在城市
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -3060,6 +3673,11 @@ offline：下线状态
 
     @property
     def Status(self):
+        """节点状态
+online：上线状态，正常调度服务中
+offline：下线状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3068,6 +3686,9 @@ offline：下线状态
 
     @property
     def CreateTime(self):
+        """节点 IP 添加时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3132,6 +3753,9 @@ class Origin(AbstractModel):
 
     @property
     def Origins(self):
+        """主源站列表，IP与域名源站不可混填。配置源站端口["origin1:port1", "origin2:port2"]，配置回源权重["origin1::weight1", "origin2::weight2"]，同时配置端口与权重 ["origin1:port1:weight1", "origin2:port2:weight2"]，权重值有效范围为0-100。
+        :rtype: list of str
+        """
         return self._Origins
 
     @Origins.setter
@@ -3140,6 +3764,11 @@ class Origin(AbstractModel):
 
     @property
     def OriginType(self):
+        """主源站类型，支持domain，ip，分别表示域名源站，ip源站。
+设置Origins时必须填写。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OriginType
 
     @OriginType.setter
@@ -3148,6 +3777,10 @@ class Origin(AbstractModel):
 
     @property
     def ServerName(self):
+        """回源时Host头部值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServerName
 
     @ServerName.setter
@@ -3156,6 +3789,11 @@ class Origin(AbstractModel):
 
     @property
     def OriginPullProtocol(self):
+        """回源协议类型，支持http，follow，https，分别表示强制http回源，协议跟随回源，https回源。
+不传入的情况下默认为http回源.
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OriginPullProtocol
 
     @OriginPullProtocol.setter
@@ -3164,6 +3802,9 @@ class Origin(AbstractModel):
 
     @property
     def BackupOrigins(self):
+        """备份源站列表。
+        :rtype: list of str
+        """
         return self._BackupOrigins
 
     @BackupOrigins.setter
@@ -3172,6 +3813,11 @@ class Origin(AbstractModel):
 
     @property
     def BackupOriginType(self):
+        """备份源站类型，同OriginType。
+设置BackupOrigins时必须填写。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BackupOriginType
 
     @BackupOriginType.setter
@@ -3180,6 +3826,10 @@ class Origin(AbstractModel):
 
     @property
     def AdvanceHttps(self):
+        """HTTPS回源高级配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.AdvanceHttps`
+        """
         return self._AdvanceHttps
 
     @AdvanceHttps.setter
@@ -3224,6 +3874,9 @@ class PurgePathCacheRequest(AbstractModel):
 
     @property
     def Paths(self):
+        """要刷新的目录列表，必须包含协议头部。
+        :rtype: list of str
+        """
         return self._Paths
 
     @Paths.setter
@@ -3232,6 +3885,9 @@ class PurgePathCacheRequest(AbstractModel):
 
     @property
     def FlushType(self):
+        """刷新类型，flush 代表刷新有更新的资源，delete 表示刷新全部资源。
+        :rtype: str
+        """
         return self._FlushType
 
     @FlushType.setter
@@ -3269,6 +3925,9 @@ class PurgePathCacheResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """刷新任务Id。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -3277,6 +3936,9 @@ class PurgePathCacheResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3318,6 +3980,9 @@ class PurgeTask(AbstractModel):
 
     @property
     def TaskId(self):
+        """刷新任务ID。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -3326,6 +3991,9 @@ class PurgeTask(AbstractModel):
 
     @property
     def Url(self):
+        """刷新Url。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -3334,6 +4002,9 @@ class PurgeTask(AbstractModel):
 
     @property
     def Status(self):
+        """刷新任务状态，fail表示失败，done表示成功，process表示刷新中。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3342,6 +4013,9 @@ class PurgeTask(AbstractModel):
 
     @property
     def PurgeType(self):
+        """刷新类型，url表示url刷新，path表示目录刷新。
+        :rtype: str
+        """
         return self._PurgeType
 
     @PurgeType.setter
@@ -3350,6 +4024,9 @@ class PurgeTask(AbstractModel):
 
     @property
     def FlushType(self):
+        """刷新资源方式，flush代表刷新更新资源，delete代表刷新全部资源。
+        :rtype: str
+        """
         return self._FlushType
 
     @FlushType.setter
@@ -3358,6 +4035,9 @@ class PurgeTask(AbstractModel):
 
     @property
     def CreateTime(self):
+        """刷新任务提交时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3396,6 +4076,9 @@ class PurgeUrlsCacheRequest(AbstractModel):
 
     @property
     def Urls(self):
+        """要刷新的Url列表，必须包含协议头部。
+        :rtype: list of str
+        """
         return self._Urls
 
     @Urls.setter
@@ -3432,6 +4115,9 @@ class PurgeUrlsCacheResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """刷新任务Id。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -3440,6 +4126,9 @@ class PurgeUrlsCacheResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3472,6 +4161,9 @@ class Quota(AbstractModel):
 
     @property
     def Batch(self):
+        """单次批量提交配额上限。
+        :rtype: int
+        """
         return self._Batch
 
     @Batch.setter
@@ -3480,6 +4172,9 @@ class Quota(AbstractModel):
 
     @property
     def Total(self):
+        """每日提交配额上限。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -3488,6 +4183,9 @@ class Quota(AbstractModel):
 
     @property
     def Available(self):
+        """每日剩余的可提交配额。
+        :rtype: int
+        """
         return self._Available
 
     @Available.setter
@@ -3530,6 +4228,13 @@ all：账号维度明细数据
 
     @property
     def Resource(self):
+        """资源名称，根据查询条件不同分为以下几类：
+具体域名：表示该域名明细数据
+multiDomains：表示多域名汇总明细数据
+项目 ID：指定项目查询时，显示为项目 ID
+all：账号维度明细数据
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -3538,6 +4243,9 @@ all：账号维度明细数据
 
     @property
     def EcdnData(self):
+        """资源对应的数据明细
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.EcdnData`
+        """
         return self._EcdnData
 
     @EcdnData.setter
@@ -3578,6 +4286,9 @@ class ResponseHeader(AbstractModel):
 
     @property
     def Switch(self):
+        """自定义响应头开关，on或off。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -3586,6 +4297,10 @@ class ResponseHeader(AbstractModel):
 
     @property
     def HeaderRules(self):
+        """自定义响应头规则数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of HttpHeaderPathRule
+        """
         return self._HeaderRules
 
     @HeaderRules.setter
@@ -3650,6 +4365,10 @@ class ServerCert(AbstractModel):
 
     @property
     def CertId(self):
+        """服务器证书id，当证书为腾讯云托管证书时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -3658,6 +4377,10 @@ class ServerCert(AbstractModel):
 
     @property
     def CertName(self):
+        """服务器证书名称，当证书为腾讯云托管证书时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertName
 
     @CertName.setter
@@ -3666,6 +4389,10 @@ class ServerCert(AbstractModel):
 
     @property
     def Certificate(self):
+        """服务器证书信息，上传自有证书时必填，必须包含完整的证书链信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Certificate
 
     @Certificate.setter
@@ -3674,6 +4401,10 @@ class ServerCert(AbstractModel):
 
     @property
     def PrivateKey(self):
+        """服务器密钥信息，上传自有证书时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PrivateKey
 
     @PrivateKey.setter
@@ -3682,6 +4413,10 @@ class ServerCert(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """证书过期时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -3690,6 +4425,10 @@ class ServerCert(AbstractModel):
 
     @property
     def DeployTime(self):
+        """证书颁发时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeployTime
 
     @DeployTime.setter
@@ -3698,6 +4437,10 @@ class ServerCert(AbstractModel):
 
     @property
     def Message(self):
+        """证书备注信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -3742,6 +4485,11 @@ certExpireTime，证书过期时间
 
     @property
     def Key(self):
+        """排序字段，当前支持：
+createTime，域名创建时间
+certExpireTime，证书过期时间
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -3750,6 +4498,9 @@ certExpireTime，证书过期时间
 
     @property
     def Sequence(self):
+        """asc/desc，默认desc。
+        :rtype: str
+        """
         return self._Sequence
 
     @Sequence.setter
@@ -3784,6 +4535,9 @@ class StartEcdnDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """待启用域名。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -3817,6 +4571,9 @@ class StartEcdnDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3842,6 +4599,9 @@ class StopEcdnDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """待停用域名。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -3875,6 +4635,9 @@ class StopEcdnDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3905,6 +4668,10 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -3913,6 +4680,10 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -3951,6 +4722,10 @@ class TimestampData(AbstractModel):
 
     @property
     def Time(self):
+        """数据统计时间点，采用向前汇总模式
+以 5 分钟粒度为例，13:35:00 时间点代表的统计数据区间为 13:35:00 至 13:39:59
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -3959,6 +4734,9 @@ class TimestampData(AbstractModel):
 
     @property
     def Value(self):
+        """数据值
+        :rtype: list of float
+        """
         return self._Value
 
     @Value.setter
@@ -4026,6 +4804,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """域名。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -4034,6 +4815,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def Origin(self):
+        """源站配置。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Origin`
+        """
         return self._Origin
 
     @Origin.setter
@@ -4042,6 +4826,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目id。
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -4050,6 +4837,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def IpFilter(self):
+        """IP黑白名单配置。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.IpFilter`
+        """
         return self._IpFilter
 
     @IpFilter.setter
@@ -4058,6 +4848,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def IpFreqLimit(self):
+        """IP限频配置。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.IpFreqLimit`
+        """
         return self._IpFreqLimit
 
     @IpFreqLimit.setter
@@ -4066,6 +4859,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def ResponseHeader(self):
+        """源站响应头部配置。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.ResponseHeader`
+        """
         return self._ResponseHeader
 
     @ResponseHeader.setter
@@ -4074,6 +4870,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def CacheKey(self):
+        """节点缓存配置。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.CacheKey`
+        """
         return self._CacheKey
 
     @CacheKey.setter
@@ -4082,6 +4881,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def Cache(self):
+        """缓存规则配置。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Cache`
+        """
         return self._Cache
 
     @Cache.setter
@@ -4090,6 +4892,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def Https(self):
+        """Https配置。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Https`
+        """
         return self._Https
 
     @Https.setter
@@ -4098,6 +4903,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def ForceRedirect(self):
+        """访问协议强制跳转配置。
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.ForceRedirect`
+        """
         return self._ForceRedirect
 
     @ForceRedirect.setter
@@ -4106,6 +4914,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def Area(self):
+        """域名加速区域，mainland，overseas或global，分别表示中国境内加速，海外加速或全球加速。
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -4114,6 +4925,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def WebSocket(self):
+        """WebSocket配置
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`
+        """
         return self._WebSocket
 
     @WebSocket.setter
@@ -4176,6 +4990,9 @@ class UpdateDomainConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4207,6 +5024,11 @@ class WebSocket(AbstractModel):
 
     @property
     def Switch(self):
+        """WebSocket 超时配置开关, 开关为off时，平台仍支持WebSocket连接，此时超时时间默认为15秒，若需要调整超时时间，将开关置为on.
+
+* WebSocket 为内测功能,如需使用,请联系腾讯云工程师开白.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -4215,6 +5037,10 @@ class WebSocket(AbstractModel):
 
     @property
     def Timeout(self):
+        """设置超时时间，单位为秒，最大超时时间65秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter

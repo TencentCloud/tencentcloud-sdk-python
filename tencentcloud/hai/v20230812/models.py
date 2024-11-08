@@ -68,6 +68,11 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """应用id
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -76,6 +81,10 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def ApplicationName(self):
+        """应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApplicationName
 
     @ApplicationName.setter
@@ -84,6 +93,11 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def Description(self):
+        """应用描述
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -92,6 +106,10 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def ConfigEnvironment(self):
+        """应用的环境配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ConfigEnvironment
 
     @ConfigEnvironment.setter
@@ -100,6 +118,10 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def MinSystemDiskSize(self):
+        """系统盘大小下限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MinSystemDiskSize
 
     @MinSystemDiskSize.setter
@@ -108,6 +130,10 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def ApplicationType(self):
+        """应用类型，目前该项取值可以为PRIVATE_APPLICATION或者PUBLIC_APPLICATION
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApplicationType
 
     @ApplicationType.setter
@@ -116,6 +142,11 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def ApplicationState(self):
+        """应用状态：CREATING-创建中；ONLINE -正常在线；DELETING -删除中；ARREARS - 欠费隔离
+示例值：ONLINE
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApplicationState
 
     @ApplicationState.setter
@@ -124,6 +155,10 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """应用创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -132,6 +167,10 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def ApplicationSize(self):
+        """应用大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ApplicationSize
 
     @ApplicationSize.setter
@@ -195,6 +234,9 @@ MC：1000
 
     @property
     def ApplicationIds(self):
+        """应用id列表
+        :rtype: list of str
+        """
         return self._ApplicationIds
 
     @ApplicationIds.setter
@@ -203,6 +245,13 @@ MC：1000
 
     @property
     def Filters(self):
+        """过滤器，跟ApplicationIds不能共用，支持的filter主要有：
+application-id: 精确匹配;
+scene-id: 精确匹配;
+application-name: 模糊匹配;
+application-type: 精确匹配;
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -211,6 +260,9 @@ MC：1000
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -219,6 +271,12 @@ MC：1000
 
     @property
     def Limit(self):
+        """返回量，默认为20
+MC：1000
+用户：100
+
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -227,6 +285,9 @@ MC：1000
 
     @property
     def OrderField(self):
+        """应用列表排序的依据字段。取值范围："CREATED_TIME"：依据应用的创建时间排序。 "APPLICATION_SIZE"：依据应用的大小排序。默认按应用的创建时间排序。
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -235,6 +296,9 @@ MC：1000
 
     @property
     def Order(self):
+        """输出应用列表的排列顺序。取值范围："ASC"：升序排列。 "DESC"：降序排列。默认按降序排列。
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -286,6 +350,10 @@ class DescribeApplicationsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """应用总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -294,6 +362,10 @@ class DescribeApplicationsResponse(AbstractModel):
 
     @property
     def ApplicationSet(self):
+        """分页返回的应用列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ApplicationInfo
+        """
         return self._ApplicationSet
 
     @ApplicationSet.setter
@@ -302,6 +374,9 @@ class DescribeApplicationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -334,6 +409,9 @@ class DescribeInstanceNetworkStatusRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例ID数组，单次请求最多不超过100个实例
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -374,6 +452,9 @@ class DescribeInstanceNetworkStatusResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """查询结果集长度
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -382,6 +463,10 @@ class DescribeInstanceNetworkStatusResponse(AbstractModel):
 
     @property
     def NetworkStatusSet(self):
+        """查询结果集
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NetworkStatus
+        """
         return self._NetworkStatusSet
 
     @NetworkStatusSet.setter
@@ -390,6 +475,9 @@ class DescribeInstanceNetworkStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -432,6 +520,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例元组
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -440,6 +531,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有：instance-id，实例id；instance-state，实例状态
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -448,6 +542,10 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -456,6 +554,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回量，默认为20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -507,6 +608,11 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """实例总数
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -515,6 +621,11 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
+        """分页实例详情
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Instance
+        """
         return self._InstanceSet
 
     @InstanceSet.setter
@@ -523,6 +634,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -565,6 +679,10 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RegionSet(self):
+        """地域列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RegionInfo
+        """
         return self._RegionSet
 
     @RegionSet.setter
@@ -573,6 +691,9 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -604,6 +725,9 @@ class DescribeScenesRequest(AbstractModel):
 
     @property
     def SceneIds(self):
+        """场景id列表
+        :rtype: list of str
+        """
         return self._SceneIds
 
     @SceneIds.setter
@@ -641,6 +765,10 @@ class DescribeScenesResponse(AbstractModel):
 
     @property
     def SceneSet(self):
+        """场景详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SceneInfo
+        """
         return self._SceneSet
 
     @SceneSet.setter
@@ -649,6 +777,9 @@ class DescribeScenesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -683,6 +814,9 @@ class DescribeServiceLoginSettingsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -691,6 +825,9 @@ class DescribeServiceLoginSettingsRequest(AbstractModel):
 
     @property
     def ServiceName(self):
+        """服务名称
+        :rtype: str
+        """
         return self._ServiceName
 
     @ServiceName.setter
@@ -729,6 +866,10 @@ class DescribeServiceLoginSettingsResponse(AbstractModel):
 
     @property
     def LoginSettings(self):
+        """服务登录配置详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LoginSetting
+        """
         return self._LoginSettings
 
     @LoginSettings.setter
@@ -737,6 +878,9 @@ class DescribeServiceLoginSettingsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -774,6 +918,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """需要过滤的字段。	
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -782,6 +929,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """字段的过滤值。
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -834,6 +984,9 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """应用ID
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -842,6 +995,9 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
     @property
     def BundleType(self):
+        """算力套餐类型
+        :rtype: str
+        """
         return self._BundleType
 
     @BundleType.setter
@@ -850,6 +1006,9 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
     @property
     def SystemDisk(self):
+        """实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
+        :rtype: :class:`tencentcloud.hai.v20230812.models.SystemDisk`
+        """
         return self._SystemDisk
 
     @SystemDisk.setter
@@ -858,6 +1017,9 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
     @property
     def InstanceCount(self):
+        """购买实例数量。
+        :rtype: int
+        """
         return self._InstanceCount
 
     @InstanceCount.setter
@@ -866,6 +1028,9 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例显示名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -874,6 +1039,9 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
     @property
     def ClientToken(self):
+        """幂等请求token
+        :rtype: str
+        """
         return self._ClientToken
 
     @ClientToken.setter
@@ -882,6 +1050,9 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
     @property
     def DryRun(self):
+        """DryRun为True就是只验接口连通性，默认为False
+        :rtype: bool
+        """
         return self._DryRun
 
     @DryRun.setter
@@ -927,6 +1098,10 @@ class InquirePriceRunInstancesResponse(AbstractModel):
 
     @property
     def Price(self):
+        """发货参数对应的价格组合，当DryRun=True，会返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.hai.v20230812.models.Price`
+        """
         return self._Price
 
     @Price.setter
@@ -935,6 +1110,9 @@ class InquirePriceRunInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1063,6 +1241,10 @@ FAILED：表示操作失败
 
     @property
     def InstanceId(self):
+        """实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1071,6 +1253,10 @@ FAILED：表示操作失败
 
     @property
     def InstanceName(self):
+        """实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -1079,6 +1265,16 @@ FAILED：表示操作失败
 
     @property
     def InstanceState(self):
+        """实例状态：
+PENDING：表示创建中
+LAUNCH_FAILED：表示创建失败
+RUNNING：表示运行中
+ARREAR：表示欠费隔离
+TERMINATING：表示销毁中。
+TERMINATED：表示已销毁
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceState
 
     @InstanceState.setter
@@ -1087,6 +1283,11 @@ FAILED：表示操作失败
 
     @property
     def ApplicationName(self):
+        """应用名称
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApplicationName
 
     @ApplicationName.setter
@@ -1095,6 +1296,11 @@ FAILED：表示操作失败
 
     @property
     def BundleName(self):
+        """算力套餐名称
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BundleName
 
     @BundleName.setter
@@ -1103,6 +1309,10 @@ FAILED：表示操作失败
 
     @property
     def GPUCount(self):
+        """实例所包含的GPU卡数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._GPUCount
 
     @GPUCount.setter
@@ -1111,6 +1321,11 @@ FAILED：表示操作失败
 
     @property
     def GPUPerformance(self):
+        """算力
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GPUPerformance
 
     @GPUPerformance.setter
@@ -1119,6 +1334,10 @@ FAILED：表示操作失败
 
     @property
     def GPUMemory(self):
+        """显存
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GPUMemory
 
     @GPUMemory.setter
@@ -1127,6 +1346,10 @@ FAILED：表示操作失败
 
     @property
     def CPU(self):
+        """CPU核数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CPU
 
     @CPU.setter
@@ -1135,6 +1358,11 @@ FAILED：表示操作失败
 
     @property
     def Memory(self):
+        """内存
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Memory
 
     @Memory.setter
@@ -1143,6 +1371,10 @@ FAILED：表示操作失败
 
     @property
     def SystemDisk(self):
+        """系统盘数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.hai.v20230812.models.SystemDisk`
+        """
         return self._SystemDisk
 
     @SystemDisk.setter
@@ -1151,6 +1383,10 @@ FAILED：表示操作失败
 
     @property
     def PrivateIpAddresses(self):
+        """内网ip地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._PrivateIpAddresses
 
     @PrivateIpAddresses.setter
@@ -1159,6 +1395,10 @@ FAILED：表示操作失败
 
     @property
     def PublicIpAddresses(self):
+        """公网ip地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._PublicIpAddresses
 
     @PublicIpAddresses.setter
@@ -1167,6 +1407,11 @@ FAILED：表示操作失败
 
     @property
     def SecurityGroupIds(self):
+        """安全组ID
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -1175,6 +1420,10 @@ FAILED：表示操作失败
 
     @property
     def LatestOperation(self):
+        """实例最新操作
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LatestOperation
 
     @LatestOperation.setter
@@ -1183,6 +1432,14 @@ FAILED：表示操作失败
 
     @property
     def LatestOperationState(self):
+        """实例最新操作状态：
+SUCCESS：表示操作成功
+OPERATING：表示操作执行中
+FAILED：表示操作失败
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LatestOperationState
 
     @LatestOperationState.setter
@@ -1191,6 +1448,10 @@ FAILED：表示操作失败
 
     @property
     def CreateTime(self):
+        """实例创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1199,6 +1460,10 @@ FAILED：表示操作失败
 
     @property
     def MaxOutBandwidth(self):
+        """公网出带宽上限，默认10Mbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MaxOutBandwidth
 
     @MaxOutBandwidth.setter
@@ -1207,6 +1472,10 @@ FAILED：表示操作失败
 
     @property
     def MaxFreeTraffic(self):
+        """每月免费流量，默认500G
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MaxFreeTraffic
 
     @MaxFreeTraffic.setter
@@ -1215,6 +1484,10 @@ FAILED：表示操作失败
 
     @property
     def ConfigurationEnvironment(self):
+        """应用配置环境
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ConfigurationEnvironment
 
     @ConfigurationEnvironment.setter
@@ -1223,6 +1496,10 @@ FAILED：表示操作失败
 
     @property
     def LoginServices(self):
+        """实例包含的登录服务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LoginService
+        """
         return self._LoginServices
 
     @LoginServices.setter
@@ -1231,6 +1508,10 @@ FAILED：表示操作失败
 
     @property
     def OSType(self):
+        """应用服务的操作系统类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OSType
 
     @OSType.setter
@@ -1310,6 +1591,10 @@ class ItemPrice(AbstractModel):
 
     @property
     def UnitPrice(self):
+        """原单价
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._UnitPrice
 
     @UnitPrice.setter
@@ -1318,6 +1603,10 @@ class ItemPrice(AbstractModel):
 
     @property
     def DiscountUnitPrice(self):
+        """折扣后单价
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._DiscountUnitPrice
 
     @DiscountUnitPrice.setter
@@ -1326,6 +1615,10 @@ class ItemPrice(AbstractModel):
 
     @property
     def Discount(self):
+        """折扣
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Discount
 
     @Discount.setter
@@ -1334,6 +1627,11 @@ class ItemPrice(AbstractModel):
 
     @property
     def ChargeUnit(self):
+        """单位：时
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChargeUnit
 
     @ChargeUnit.setter
@@ -1342,6 +1640,10 @@ class ItemPrice(AbstractModel):
 
     @property
     def Amount(self):
+        """商品数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Amount
 
     @Amount.setter
@@ -1380,6 +1682,10 @@ class LoginService(AbstractModel):
 
     @property
     def ServiceName(self):
+        """登录方式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceName
 
     @ServiceName.setter
@@ -1418,6 +1724,10 @@ class LoginSetting(AbstractModel):
 
     @property
     def ServiceName(self):
+        """服务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceName
 
     @ServiceName.setter
@@ -1426,6 +1736,10 @@ class LoginSetting(AbstractModel):
 
     @property
     def Url(self):
+        """服务登录url
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -1477,6 +1791,10 @@ class NetworkStatus(AbstractModel):
 
     @property
     def InstanceId(self):
+        """HAI 的实例 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1485,6 +1803,10 @@ class NetworkStatus(AbstractModel):
 
     @property
     def AddressIp(self):
+        """公网 IP 地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AddressIp
 
     @AddressIp.setter
@@ -1493,6 +1815,10 @@ class NetworkStatus(AbstractModel):
 
     @property
     def Bandwidth(self):
+        """出带宽上限，单位Mbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -1501,6 +1827,10 @@ class NetworkStatus(AbstractModel):
 
     @property
     def TotalTrafficAmount(self):
+        """流量包总量，单位GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._TotalTrafficAmount
 
     @TotalTrafficAmount.setter
@@ -1509,6 +1839,10 @@ class NetworkStatus(AbstractModel):
 
     @property
     def RemainingTrafficAmount(self):
+        """流量包剩余量，单位GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._RemainingTrafficAmount
 
     @RemainingTrafficAmount.setter
@@ -1551,6 +1885,10 @@ class Price(AbstractModel):
 
     @property
     def InstancePrice(self):
+        """实例价格信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
+        """
         return self._InstancePrice
 
     @InstancePrice.setter
@@ -1559,6 +1897,10 @@ class Price(AbstractModel):
 
     @property
     def CloudDiskPrice(self):
+        """云盘价格信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
+        """
         return self._CloudDiskPrice
 
     @CloudDiskPrice.setter
@@ -1614,6 +1956,11 @@ NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_
 
     @property
     def Region(self):
+        """ap-guangzhou
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -1622,6 +1969,10 @@ NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_
 
     @property
     def RegionName(self):
+        """华南地区(广州)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -1630,6 +1981,12 @@ NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_
 
     @property
     def RegionState(self):
+        """地域是否可用状态
+AVAILABLE：可用
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegionState
 
     @RegionState.setter
@@ -1638,6 +1995,11 @@ NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_
 
     @property
     def ScholarRocketSupportState(self):
+        """学术加速是否支持：
+NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_SUPPORT表示已经支持。对于ALREADY_SUPPORT的地域才需进一步调用DescribeScholarRocketStatus查看学术加速是开启还是关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ScholarRocketSupportState
 
     @ScholarRocketSupportState.setter
@@ -1692,6 +2054,9 @@ class RunInstancesRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """应用ID
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -1700,6 +2065,9 @@ class RunInstancesRequest(AbstractModel):
 
     @property
     def BundleType(self):
+        """算力套餐类型
+        :rtype: str
+        """
         return self._BundleType
 
     @BundleType.setter
@@ -1708,6 +2076,9 @@ class RunInstancesRequest(AbstractModel):
 
     @property
     def SystemDisk(self):
+        """实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
+        :rtype: :class:`tencentcloud.hai.v20230812.models.SystemDisk`
+        """
         return self._SystemDisk
 
     @SystemDisk.setter
@@ -1716,6 +2087,9 @@ class RunInstancesRequest(AbstractModel):
 
     @property
     def InstanceCount(self):
+        """购买实例数量。
+        :rtype: int
+        """
         return self._InstanceCount
 
     @InstanceCount.setter
@@ -1724,6 +2098,9 @@ class RunInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例显示名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -1732,6 +2109,9 @@ class RunInstancesRequest(AbstractModel):
 
     @property
     def ClientToken(self):
+        """幂等请求的token
+        :rtype: str
+        """
         return self._ClientToken
 
     @ClientToken.setter
@@ -1740,6 +2120,9 @@ class RunInstancesRequest(AbstractModel):
 
     @property
     def DryRun(self):
+        """DryRun为True就是只验接口连通性，默认为False
+        :rtype: bool
+        """
         return self._DryRun
 
     @DryRun.setter
@@ -1784,6 +2167,9 @@ class RunInstancesResponse(AbstractModel):
 
     @property
     def InstanceIdSet(self):
+        """实例ID列表
+        :rtype: list of str
+        """
         return self._InstanceIdSet
 
     @InstanceIdSet.setter
@@ -1792,6 +2178,9 @@ class RunInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1825,6 +2214,11 @@ class SceneInfo(AbstractModel):
 
     @property
     def SceneId(self):
+        """场景id
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SceneId
 
     @SceneId.setter
@@ -1833,6 +2227,11 @@ class SceneInfo(AbstractModel):
 
     @property
     def SceneName(self):
+        """场景名
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SceneName
 
     @SceneName.setter
@@ -1870,6 +2269,9 @@ class StartInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1878,6 +2280,9 @@ class StartInstanceRequest(AbstractModel):
 
     @property
     def DryRun(self):
+        """默认为False，True代表只验证接口连通性
+        :rtype: bool
+        """
         return self._DryRun
 
     @DryRun.setter
@@ -1915,6 +2320,9 @@ class StartInstanceResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """task任务id
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1923,6 +2331,9 @@ class StartInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1957,6 +2368,9 @@ STOP_CHARGE -- 关闭hai实例，释放计算资源，停止收取计算资源�
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1965,6 +2379,11 @@ STOP_CHARGE -- 关闭hai实例，释放计算资源，停止收取计算资源�
 
     @property
     def StopMode(self):
+        """hai实例关机的模式，目前仅支持关机不收费：
+STOP_CHARGE -- 关闭hai实例，释放计算资源，停止收取计算资源的费用。
+注意：默认值为STOP_CHARGE
+        :rtype: str
+        """
         return self._StopMode
 
     @StopMode.setter
@@ -1973,6 +2392,9 @@ STOP_CHARGE -- 关闭hai实例，释放计算资源，停止收取计算资源�
 
     @property
     def DryRun(self):
+        """默认为False，True代表只验证接口连通性
+        :rtype: bool
+        """
         return self._DryRun
 
     @DryRun.setter
@@ -2011,6 +2433,9 @@ class StopInstanceResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """task任务id
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2019,6 +2444,9 @@ class StopInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2054,6 +2482,10 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskType(self):
+        """系统盘类型。系统盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_BSSD：通用性SSD云硬盘<br><br>默认取值：当前有库存的硬盘类型。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -2062,6 +2494,10 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskSize(self):
+        """系统盘大小，单位：GB。默认值为 80
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -2070,6 +2506,10 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskName(self):
+        """系统盘分区盘符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DiskName
 
     @DiskName.setter
@@ -2108,6 +2548,9 @@ class TerminateInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """实例ID列表
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -2116,6 +2559,9 @@ class TerminateInstancesRequest(AbstractModel):
 
     @property
     def DryRun(self):
+        """默认为False，True代表只验证接口连通性
+        :rtype: bool
+        """
         return self._DryRun
 
     @DryRun.setter
@@ -2150,6 +2596,9 @@ class TerminateInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

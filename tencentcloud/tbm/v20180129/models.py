@@ -35,6 +35,9 @@ class AgePortrait(AbstractModel):
 
     @property
     def AgeRange(self):
+        """年龄区间
+        :rtype: str
+        """
         return self._AgeRange
 
     @AgeRange.setter
@@ -43,6 +46,9 @@ class AgePortrait(AbstractModel):
 
     @property
     def Percent(self):
+        """百分比
+        :rtype: float
+        """
         return self._Percent
 
     @Percent.setter
@@ -77,6 +83,9 @@ class AgePortraitInfo(AbstractModel):
 
     @property
     def PortraitSet(self):
+        """用户年龄画像数组
+        :rtype: list of AgePortrait
+        """
         return self._PortraitSet
 
     @PortraitSet.setter
@@ -139,6 +148,9 @@ class BrandReportArticle(AbstractModel):
 
     @property
     def Title(self):
+        """文章标题
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -147,6 +159,9 @@ class BrandReportArticle(AbstractModel):
 
     @property
     def Url(self):
+        """文章url地址
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -155,6 +170,9 @@ class BrandReportArticle(AbstractModel):
 
     @property
     def FromSite(self):
+        """文章来源
+        :rtype: str
+        """
         return self._FromSite
 
     @FromSite.setter
@@ -163,6 +181,9 @@ class BrandReportArticle(AbstractModel):
 
     @property
     def PubTime(self):
+        """文章发表日期
+        :rtype: str
+        """
         return self._PubTime
 
     @PubTime.setter
@@ -171,6 +192,9 @@ class BrandReportArticle(AbstractModel):
 
     @property
     def Flag(self):
+        """文章标识
+        :rtype: int
+        """
         return self._Flag
 
     @Flag.setter
@@ -179,6 +203,9 @@ class BrandReportArticle(AbstractModel):
 
     @property
     def Hot(self):
+        """文章热度值
+        :rtype: int
+        """
         return self._Hot
 
     @Hot.setter
@@ -187,6 +214,9 @@ class BrandReportArticle(AbstractModel):
 
     @property
     def Level(self):
+        """文章来源等级
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -195,6 +225,9 @@ class BrandReportArticle(AbstractModel):
 
     @property
     def Abstract(self):
+        """文章摘要
+        :rtype: str
+        """
         return self._Abstract
 
     @Abstract.setter
@@ -203,6 +236,9 @@ class BrandReportArticle(AbstractModel):
 
     @property
     def ArticleId(self):
+        """文章ID
+        :rtype: str
+        """
         return self._ArticleId
 
     @ArticleId.setter
@@ -250,6 +286,9 @@ class Comment(AbstractModel):
 
     @property
     def Date(self):
+        """评论的日期
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -258,6 +297,9 @@ class Comment(AbstractModel):
 
     @property
     def NegCommentCount(self):
+        """差评的个数
+        :rtype: int
+        """
         return self._NegCommentCount
 
     @NegCommentCount.setter
@@ -266,6 +308,9 @@ class Comment(AbstractModel):
 
     @property
     def PosCommentCount(self):
+        """好评的个数
+        :rtype: int
+        """
         return self._PosCommentCount
 
     @PosCommentCount.setter
@@ -304,6 +349,9 @@ class CommentInfo(AbstractModel):
 
     @property
     def Comment(self):
+        """用户评论内容
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -312,6 +360,9 @@ class CommentInfo(AbstractModel):
 
     @property
     def Date(self):
+        """评论的时间
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -349,6 +400,9 @@ class DateCount(AbstractModel):
 
     @property
     def Date(self):
+        """统计日期
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -357,6 +411,9 @@ class DateCount(AbstractModel):
 
     @property
     def Count(self):
+        """统计值
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -397,6 +454,9 @@ class DescribeBrandCommentCountRequest(AbstractModel):
 
     @property
     def BrandId(self):
+        """品牌ID
+        :rtype: str
+        """
         return self._BrandId
 
     @BrandId.setter
@@ -405,6 +465,9 @@ class DescribeBrandCommentCountRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """查询开始日期
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -413,6 +476,9 @@ class DescribeBrandCommentCountRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """查询结束日期
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -451,6 +517,9 @@ class DescribeBrandCommentCountResponse(AbstractModel):
 
     @property
     def CommentSet(self):
+        """按天统计好评/差评数
+        :rtype: list of Comment
+        """
         return self._CommentSet
 
     @CommentSet.setter
@@ -459,6 +528,9 @@ class DescribeBrandCommentCountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -496,6 +568,9 @@ class DescribeBrandExposureRequest(AbstractModel):
 
     @property
     def BrandId(self):
+        """品牌ID
+        :rtype: str
+        """
         return self._BrandId
 
     @BrandId.setter
@@ -504,6 +579,9 @@ class DescribeBrandExposureRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """查询开始时间
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -512,6 +590,9 @@ class DescribeBrandExposureRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """查询结束时间
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -553,6 +634,9 @@ class DescribeBrandExposureResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """累计曝光量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -561,6 +645,9 @@ class DescribeBrandExposureResponse(AbstractModel):
 
     @property
     def DateCountSet(self):
+        """按天计算的统计数据
+        :rtype: list of DateCount
+        """
         return self._DateCountSet
 
     @DateCountSet.setter
@@ -569,6 +656,9 @@ class DescribeBrandExposureResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -607,6 +697,9 @@ class DescribeBrandMediaReportRequest(AbstractModel):
 
     @property
     def BrandId(self):
+        """品牌ID
+        :rtype: str
+        """
         return self._BrandId
 
     @BrandId.setter
@@ -615,6 +708,9 @@ class DescribeBrandMediaReportRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """查询开始时间
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -623,6 +719,9 @@ class DescribeBrandMediaReportRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """查询结束时间
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -664,6 +763,9 @@ class DescribeBrandMediaReportResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """查询范围内文章总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -672,6 +774,9 @@ class DescribeBrandMediaReportResponse(AbstractModel):
 
     @property
     def DateCountSet(self):
+        """按天计算的每天文章数
+        :rtype: list of DateCount
+        """
         return self._DateCountSet
 
     @DateCountSet.setter
@@ -680,6 +785,9 @@ class DescribeBrandMediaReportResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -724,6 +832,9 @@ class DescribeBrandNegCommentsRequest(AbstractModel):
 
     @property
     def BrandId(self):
+        """品牌ID
+        :rtype: str
+        """
         return self._BrandId
 
     @BrandId.setter
@@ -732,6 +843,9 @@ class DescribeBrandNegCommentsRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """查询开始时间
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -740,6 +854,9 @@ class DescribeBrandNegCommentsRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """查询结束时间
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -748,6 +865,9 @@ class DescribeBrandNegCommentsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询条数上限，默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -756,6 +876,9 @@ class DescribeBrandNegCommentsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询偏移，默认从0开始
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -799,6 +922,9 @@ class DescribeBrandNegCommentsResponse(AbstractModel):
 
     @property
     def BrandCommentSet(self):
+        """评论列表
+        :rtype: list of CommentInfo
+        """
         return self._BrandCommentSet
 
     @BrandCommentSet.setter
@@ -807,6 +933,9 @@ class DescribeBrandNegCommentsResponse(AbstractModel):
 
     @property
     def TotalComments(self):
+        """总的差评个数
+        :rtype: int
+        """
         return self._TotalComments
 
     @TotalComments.setter
@@ -815,6 +944,9 @@ class DescribeBrandNegCommentsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -859,6 +991,9 @@ class DescribeBrandPosCommentsRequest(AbstractModel):
 
     @property
     def BrandId(self):
+        """品牌ID
+        :rtype: str
+        """
         return self._BrandId
 
     @BrandId.setter
@@ -867,6 +1002,9 @@ class DescribeBrandPosCommentsRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """查询开始时间
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -875,6 +1013,9 @@ class DescribeBrandPosCommentsRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """查询结束时间
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -883,6 +1024,9 @@ class DescribeBrandPosCommentsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询条数上限，默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -891,6 +1035,9 @@ class DescribeBrandPosCommentsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询偏移，从0开始
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -934,6 +1081,9 @@ class DescribeBrandPosCommentsResponse(AbstractModel):
 
     @property
     def BrandCommentSet(self):
+        """评论列表
+        :rtype: list of CommentInfo
+        """
         return self._BrandCommentSet
 
     @BrandCommentSet.setter
@@ -942,6 +1092,9 @@ class DescribeBrandPosCommentsResponse(AbstractModel):
 
     @property
     def TotalComments(self):
+        """总的好评个数
+        :rtype: int
+        """
         return self._TotalComments
 
     @TotalComments.setter
@@ -950,6 +1103,9 @@ class DescribeBrandPosCommentsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -997,6 +1153,9 @@ class DescribeBrandSocialOpinionRequest(AbstractModel):
 
     @property
     def BrandId(self):
+        """品牌ID
+        :rtype: str
+        """
         return self._BrandId
 
     @BrandId.setter
@@ -1005,6 +1164,9 @@ class DescribeBrandSocialOpinionRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """检索开始时间
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -1013,6 +1175,9 @@ class DescribeBrandSocialOpinionRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """检索结束时间
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -1021,6 +1186,9 @@ class DescribeBrandSocialOpinionRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询偏移，默认从0开始
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1029,6 +1197,9 @@ class DescribeBrandSocialOpinionRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询条数上限，默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1037,6 +1208,9 @@ class DescribeBrandSocialOpinionRequest(AbstractModel):
 
     @property
     def ShowList(self):
+        """列表显示标记，若为true，则返回文章列表详情
+        :rtype: bool
+        """
         return self._ShowList
 
     @ShowList.setter
@@ -1087,6 +1261,9 @@ class DescribeBrandSocialOpinionResponse(AbstractModel):
 
     @property
     def ArticleCount(self):
+        """文章总数
+        :rtype: int
+        """
         return self._ArticleCount
 
     @ArticleCount.setter
@@ -1095,6 +1272,9 @@ class DescribeBrandSocialOpinionResponse(AbstractModel):
 
     @property
     def FromCount(self):
+        """来源统计总数
+        :rtype: int
+        """
         return self._FromCount
 
     @FromCount.setter
@@ -1103,6 +1283,9 @@ class DescribeBrandSocialOpinionResponse(AbstractModel):
 
     @property
     def AdverseCount(self):
+        """疑似负面报道总数
+        :rtype: int
+        """
         return self._AdverseCount
 
     @AdverseCount.setter
@@ -1111,6 +1294,9 @@ class DescribeBrandSocialOpinionResponse(AbstractModel):
 
     @property
     def ArticleSet(self):
+        """文章列表详情
+        :rtype: list of BrandReportArticle
+        """
         return self._ArticleSet
 
     @ArticleSet.setter
@@ -1119,6 +1305,9 @@ class DescribeBrandSocialOpinionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1159,6 +1348,9 @@ class DescribeBrandSocialReportRequest(AbstractModel):
 
     @property
     def BrandId(self):
+        """品牌ID
+        :rtype: str
+        """
         return self._BrandId
 
     @BrandId.setter
@@ -1167,6 +1359,9 @@ class DescribeBrandSocialReportRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """查询开始时间
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -1175,6 +1370,9 @@ class DescribeBrandSocialReportRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """查询结束时间
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -1216,6 +1414,9 @@ class DescribeBrandSocialReportResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """累计统计数据
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1224,6 +1425,9 @@ class DescribeBrandSocialReportResponse(AbstractModel):
 
     @property
     def DateCountSet(self):
+        """按天计算的统计数据
+        :rtype: list of DateCount
+        """
         return self._DateCountSet
 
     @DateCountSet.setter
@@ -1232,6 +1436,9 @@ class DescribeBrandSocialReportResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1279,6 +1486,9 @@ class DescribeIndustryNewsRequest(AbstractModel):
 
     @property
     def IndustryId(self):
+        """行业ID
+        :rtype: str
+        """
         return self._IndustryId
 
     @IndustryId.setter
@@ -1287,6 +1497,9 @@ class DescribeIndustryNewsRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """查询开始时间
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -1295,6 +1508,9 @@ class DescribeIndustryNewsRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """查询结束时间
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -1303,6 +1519,9 @@ class DescribeIndustryNewsRequest(AbstractModel):
 
     @property
     def ShowList(self):
+        """是否显示列表，若为 true，则返回文章列表
+        :rtype: bool
+        """
         return self._ShowList
 
     @ShowList.setter
@@ -1311,6 +1530,9 @@ class DescribeIndustryNewsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询偏移，默认从0开始
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1319,6 +1541,9 @@ class DescribeIndustryNewsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询条数上限，默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1372,6 +1597,9 @@ class DescribeIndustryNewsResponse(AbstractModel):
 
     @property
     def NewsCount(self):
+        """总计文章数量
+        :rtype: int
+        """
         return self._NewsCount
 
     @NewsCount.setter
@@ -1380,6 +1608,9 @@ class DescribeIndustryNewsResponse(AbstractModel):
 
     @property
     def FromCount(self):
+        """总计来源数量
+        :rtype: int
+        """
         return self._FromCount
 
     @FromCount.setter
@@ -1388,6 +1619,9 @@ class DescribeIndustryNewsResponse(AbstractModel):
 
     @property
     def AdverseCount(self):
+        """总计疑似负面数量
+        :rtype: int
+        """
         return self._AdverseCount
 
     @AdverseCount.setter
@@ -1396,6 +1630,9 @@ class DescribeIndustryNewsResponse(AbstractModel):
 
     @property
     def NewsSet(self):
+        """文章列表
+        :rtype: list of IndustryNews
+        """
         return self._NewsSet
 
     @NewsSet.setter
@@ -1404,6 +1641,9 @@ class DescribeIndustryNewsResponse(AbstractModel):
 
     @property
     def DateCountSet(self):
+        """按天统计的数量列表
+        :rtype: list of DateCount
+        """
         return self._DateCountSet
 
     @DateCountSet.setter
@@ -1412,6 +1652,9 @@ class DescribeIndustryNewsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1452,6 +1695,9 @@ class DescribeUserPortraitRequest(AbstractModel):
 
     @property
     def BrandId(self):
+        """品牌ID
+        :rtype: str
+        """
         return self._BrandId
 
     @BrandId.setter
@@ -1500,6 +1746,9 @@ class DescribeUserPortraitResponse(AbstractModel):
 
     @property
     def Age(self):
+        """年龄画像
+        :rtype: :class:`tencentcloud.tbm.v20180129.models.AgePortraitInfo`
+        """
         return self._Age
 
     @Age.setter
@@ -1508,6 +1757,9 @@ class DescribeUserPortraitResponse(AbstractModel):
 
     @property
     def Gender(self):
+        """性别画像
+        :rtype: :class:`tencentcloud.tbm.v20180129.models.GenderPortraitInfo`
+        """
         return self._Gender
 
     @Gender.setter
@@ -1516,6 +1768,9 @@ class DescribeUserPortraitResponse(AbstractModel):
 
     @property
     def Province(self):
+        """省份画像
+        :rtype: :class:`tencentcloud.tbm.v20180129.models.ProvincePortraitInfo`
+        """
         return self._Province
 
     @Province.setter
@@ -1524,6 +1779,9 @@ class DescribeUserPortraitResponse(AbstractModel):
 
     @property
     def Movie(self):
+        """电影喜好画像
+        :rtype: :class:`tencentcloud.tbm.v20180129.models.MoviePortraitInfo`
+        """
         return self._Movie
 
     @Movie.setter
@@ -1532,6 +1790,9 @@ class DescribeUserPortraitResponse(AbstractModel):
 
     @property
     def Star(self):
+        """明星喜好画像
+        :rtype: :class:`tencentcloud.tbm.v20180129.models.StarPortraitInfo`
+        """
         return self._Star
 
     @Star.setter
@@ -1540,6 +1801,9 @@ class DescribeUserPortraitResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1583,6 +1847,9 @@ class GenderPortrait(AbstractModel):
 
     @property
     def Gender(self):
+        """性别
+        :rtype: str
+        """
         return self._Gender
 
     @Gender.setter
@@ -1591,6 +1858,9 @@ class GenderPortrait(AbstractModel):
 
     @property
     def Percent(self):
+        """百分比
+        :rtype: int
+        """
         return self._Percent
 
     @Percent.setter
@@ -1625,6 +1895,9 @@ class GenderPortraitInfo(AbstractModel):
 
     @property
     def PortraitSet(self):
+        """用户性别画像数组
+        :rtype: list of GenderPortrait
+        """
         return self._PortraitSet
 
     @PortraitSet.setter
@@ -1687,6 +1960,9 @@ class IndustryNews(AbstractModel):
 
     @property
     def IndustryId(self):
+        """行业报道ID
+        :rtype: str
+        """
         return self._IndustryId
 
     @IndustryId.setter
@@ -1695,6 +1971,9 @@ class IndustryNews(AbstractModel):
 
     @property
     def PubTime(self):
+        """报道发表时间
+        :rtype: str
+        """
         return self._PubTime
 
     @PubTime.setter
@@ -1703,6 +1982,9 @@ class IndustryNews(AbstractModel):
 
     @property
     def FromSite(self):
+        """报道来源
+        :rtype: str
+        """
         return self._FromSite
 
     @FromSite.setter
@@ -1711,6 +1993,9 @@ class IndustryNews(AbstractModel):
 
     @property
     def Title(self):
+        """报道标题
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -1719,6 +2004,9 @@ class IndustryNews(AbstractModel):
 
     @property
     def Url(self):
+        """报道来源url
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -1727,6 +2015,9 @@ class IndustryNews(AbstractModel):
 
     @property
     def Level(self):
+        """报道来源等级
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -1735,6 +2026,9 @@ class IndustryNews(AbstractModel):
 
     @property
     def Hot(self):
+        """热度值
+        :rtype: int
+        """
         return self._Hot
 
     @Hot.setter
@@ -1743,6 +2037,9 @@ class IndustryNews(AbstractModel):
 
     @property
     def Flag(self):
+        """报道标识
+        :rtype: int
+        """
         return self._Flag
 
     @Flag.setter
@@ -1751,6 +2048,9 @@ class IndustryNews(AbstractModel):
 
     @property
     def Abstract(self):
+        """报道摘要
+        :rtype: str
+        """
         return self._Abstract
 
     @Abstract.setter
@@ -1795,6 +2095,9 @@ class MoviePortrait(AbstractModel):
 
     @property
     def Name(self):
+        """电影名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1803,6 +2106,9 @@ class MoviePortrait(AbstractModel):
 
     @property
     def Percent(self):
+        """百分比
+        :rtype: float
+        """
         return self._Percent
 
     @Percent.setter
@@ -1837,6 +2143,9 @@ class MoviePortraitInfo(AbstractModel):
 
     @property
     def PortraitSet(self):
+        """用户喜好电影画像数组
+        :rtype: list of MoviePortrait
+        """
         return self._PortraitSet
 
     @PortraitSet.setter
@@ -1878,6 +2187,9 @@ class ProvincePortrait(AbstractModel):
 
     @property
     def Province(self):
+        """省份名称
+        :rtype: str
+        """
         return self._Province
 
     @Province.setter
@@ -1886,6 +2198,9 @@ class ProvincePortrait(AbstractModel):
 
     @property
     def Percent(self):
+        """百分比
+        :rtype: float
+        """
         return self._Percent
 
     @Percent.setter
@@ -1920,6 +2235,9 @@ class ProvincePortraitInfo(AbstractModel):
 
     @property
     def PortraitSet(self):
+        """用户省份画像数组
+        :rtype: list of ProvincePortrait
+        """
         return self._PortraitSet
 
     @PortraitSet.setter
@@ -1961,6 +2279,9 @@ class StarPortrait(AbstractModel):
 
     @property
     def Name(self):
+        """喜欢的明星名字
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1969,6 +2290,9 @@ class StarPortrait(AbstractModel):
 
     @property
     def Percent(self):
+        """百分比
+        :rtype: float
+        """
         return self._Percent
 
     @Percent.setter
@@ -2003,6 +2327,9 @@ class StarPortraitInfo(AbstractModel):
 
     @property
     def PortraitSet(self):
+        """用户喜好的明星画像数组
+        :rtype: list of StarPortrait
+        """
         return self._PortraitSet
 
     @PortraitSet.setter

@@ -45,6 +45,9 @@ class ApiGatewayInstanceDetail(AbstractModel):
 
     @property
     def ServiceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -53,6 +56,9 @@ class ApiGatewayInstanceDetail(AbstractModel):
 
     @property
     def ServiceName(self):
+        """实例名称
+        :rtype: str
+        """
         return self._ServiceName
 
     @ServiceName.setter
@@ -61,6 +67,9 @@ class ApiGatewayInstanceDetail(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -69,6 +78,10 @@ class ApiGatewayInstanceDetail(AbstractModel):
 
     @property
     def CertId(self):
+        """证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -77,6 +90,9 @@ class ApiGatewayInstanceDetail(AbstractModel):
 
     @property
     def Protocol(self):
+        """使用协议
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -125,6 +141,9 @@ class ApiGatewayInstanceList(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -133,6 +152,10 @@ class ApiGatewayInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
+        """apigateway实例详情	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ApiGatewayInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -141,6 +164,9 @@ class ApiGatewayInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
+        """该地域下apigateway实例总数	
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -149,6 +175,10 @@ class ApiGatewayInstanceList(AbstractModel):
 
     @property
     def Error(self):
+        """是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Error
 
     @Error.setter
@@ -232,6 +262,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def DvAuthMethod(self):
+        """验证方式：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证。
+        :rtype: str
+        """
         return self._DvAuthMethod
 
     @DvAuthMethod.setter
@@ -240,6 +273,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """域名。
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -248,6 +284,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目 ID。
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -256,6 +295,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def PackageType(self):
+        """证书类型，目前仅支持类型83。83 = TrustAsia C1 DV Free。
+        :rtype: str
+        """
         return self._PackageType
 
     @PackageType.setter
@@ -264,6 +306,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def ContactEmail(self):
+        """邮箱。
+        :rtype: str
+        """
         return self._ContactEmail
 
     @ContactEmail.setter
@@ -272,6 +317,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def ContactPhone(self):
+        """手机。
+        :rtype: str
+        """
         return self._ContactPhone
 
     @ContactPhone.setter
@@ -280,6 +328,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def ValidityPeriod(self):
+        """有效期，默认3个月，目前仅支持3个月。
+        :rtype: str
+        """
         return self._ValidityPeriod
 
     @ValidityPeriod.setter
@@ -288,6 +339,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def CsrEncryptAlgo(self):
+        """加密算法，支持 RSA及ECC。
+        :rtype: str
+        """
         return self._CsrEncryptAlgo
 
     @CsrEncryptAlgo.setter
@@ -296,6 +350,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def CsrKeyParameter(self):
+        """密钥对参数，RSA仅支持2048。ECC仅支持prime256v1。加密算法选择ECC时，此参数必填
+        :rtype: str
+        """
         return self._CsrKeyParameter
 
     @CsrKeyParameter.setter
@@ -304,6 +361,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def CsrKeyPassword(self):
+        """CSR 的加密密码。
+        :rtype: str
+        """
         return self._CsrKeyPassword
 
     @CsrKeyPassword.setter
@@ -312,6 +372,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def Alias(self):
+        """备注名称。
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -320,6 +383,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
+        """原证书 ID，用于重新申请。
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -328,6 +394,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def PackageId(self):
+        """权益包ID，用于免费证书扩容包使用
+        :rtype: str
+        """
         return self._PackageId
 
     @PackageId.setter
@@ -336,6 +405,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def DeleteDnsAutoRecord(self):
+        """签发后是否删除自动域名验证记录， 默认为否；仅域名为DNS_AUTO验证类型支持传参
+        :rtype: bool
+        """
         return self._DeleteDnsAutoRecord
 
     @DeleteDnsAutoRecord.setter
@@ -344,6 +416,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def DnsNames(self):
+        """域名数组（多域名证书可以上传）。	
+        :rtype: list of str
+        """
         return self._DnsNames
 
     @DnsNames.setter
@@ -394,6 +469,9 @@ class ApplyCertificateResponse(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书 ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -402,6 +480,9 @@ class ApplyCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -433,6 +514,10 @@ class BatchDeleteFail(AbstractModel):
 
     @property
     def CertId(self):
+        """失败的证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -441,6 +526,10 @@ class BatchDeleteFail(AbstractModel):
 
     @property
     def Msg(self):
+        """失败的原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -483,6 +572,10 @@ class BindResourceRegionResult(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -491,6 +584,9 @@ class BindResourceRegionResult(AbstractModel):
 
     @property
     def TotalCount(self):
+        """关联资源总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -499,6 +595,10 @@ class BindResourceRegionResult(AbstractModel):
 
     @property
     def Error(self):
+        """是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Error
 
     @Error.setter
@@ -537,6 +637,9 @@ class BindResourceResult(AbstractModel):
 
     @property
     def ResourceType(self):
+        """资源类型：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -545,6 +648,9 @@ class BindResourceResult(AbstractModel):
 
     @property
     def BindResourceRegionResult(self):
+        """绑定资源地域结果
+        :rtype: list of BindResourceRegionResult
+        """
         return self._BindResourceRegionResult
 
     @BindResourceRegionResult.setter
@@ -597,6 +703,10 @@ class COSInstanceList(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -605,6 +715,10 @@ class COSInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
+        """实例详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CosInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -613,6 +727,10 @@ class COSInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
+        """地域下总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -621,6 +739,10 @@ class COSInstanceList(AbstractModel):
 
     @property
     def Error(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Error
 
     @Error.setter
@@ -662,6 +784,9 @@ class CancelAuditCertificateRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -698,6 +823,9 @@ class CancelAuditCertificateResponse(AbstractModel):
 
     @property
     def Result(self):
+        """操作是否成功
+        :rtype: bool
+        """
         return self._Result
 
     @Result.setter
@@ -706,6 +834,9 @@ class CancelAuditCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -732,6 +863,9 @@ class CancelCertificateOrderRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书 ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -768,6 +902,9 @@ class CancelCertificateOrderResponse(AbstractModel):
 
     @property
     def CertificateId(self):
+        """取消订单成功的证书 ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -776,6 +913,9 @@ class CancelCertificateOrderResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -811,6 +951,9 @@ class CdnInstanceDetail(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -819,6 +962,9 @@ class CdnInstanceDetail(AbstractModel):
 
     @property
     def CertId(self):
+        """已部署证书ID
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -827,6 +973,9 @@ class CdnInstanceDetail(AbstractModel):
 
     @property
     def Status(self):
+        """域名状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -835,6 +984,9 @@ class CdnInstanceDetail(AbstractModel):
 
     @property
     def HttpsBillingSwitch(self):
+        """域名计费状态
+        :rtype: str
+        """
         return self._HttpsBillingSwitch
 
     @HttpsBillingSwitch.setter
@@ -879,6 +1031,9 @@ class CdnInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
+        """该地域下CDN域名总数	
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -887,6 +1042,10 @@ class CdnInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
+        """cdn域名详情	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CdnInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -895,6 +1054,10 @@ class CdnInstanceList(AbstractModel):
 
     @property
     def Error(self):
+        """是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Error
 
     @Error.setter
@@ -938,6 +1101,9 @@ class CertTaskId(AbstractModel):
 
     @property
     def CertId(self):
+        """证书ID
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -946,6 +1112,9 @@ class CertTaskId(AbstractModel):
 
     @property
     def TaskId(self):
+        """异步任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -991,6 +1160,9 @@ class Certificate(AbstractModel):
 
     @property
     def CertId(self):
+        """证书ID
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -999,6 +1171,9 @@ class Certificate(AbstractModel):
 
     @property
     def DnsNames(self):
+        """证书绑定的域名
+        :rtype: list of str
+        """
         return self._DnsNames
 
     @DnsNames.setter
@@ -1007,6 +1182,10 @@ class Certificate(AbstractModel):
 
     @property
     def CertCaId(self):
+        """根证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertCaId
 
     @CertCaId.setter
@@ -1015,6 +1194,10 @@ class Certificate(AbstractModel):
 
     @property
     def SSLMode(self):
+        """证书认证模式：UNIDIRECTIONAL单向认证，MUTUAL双向认证
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SSLMode
 
     @SSLMode.setter
@@ -1076,6 +1259,10 @@ class CertificateExtra(AbstractModel):
 
     @property
     def DomainNumber(self):
+        """证书可配置域名数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DomainNumber
 
     @DomainNumber.setter
@@ -1084,6 +1271,10 @@ class CertificateExtra(AbstractModel):
 
     @property
     def OriginCertificateId(self):
+        """原始证书 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OriginCertificateId
 
     @OriginCertificateId.setter
@@ -1092,6 +1283,10 @@ class CertificateExtra(AbstractModel):
 
     @property
     def ReplacedBy(self):
+        """重颁发证书原始 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReplacedBy
 
     @ReplacedBy.setter
@@ -1100,6 +1295,10 @@ class CertificateExtra(AbstractModel):
 
     @property
     def ReplacedFor(self):
+        """重颁发证书新 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReplacedFor
 
     @ReplacedFor.setter
@@ -1108,6 +1307,10 @@ class CertificateExtra(AbstractModel):
 
     @property
     def RenewOrder(self):
+        """新订单证书 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RenewOrder
 
     @RenewOrder.setter
@@ -1116,6 +1319,10 @@ class CertificateExtra(AbstractModel):
 
     @property
     def SMCert(self):
+        """是否是国密证书
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SMCert
 
     @SMCert.setter
@@ -1124,6 +1331,10 @@ class CertificateExtra(AbstractModel):
 
     @property
     def CompanyType(self):
+        """公司类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CompanyType
 
     @CompanyType.setter
@@ -1385,6 +1596,10 @@ class Certificates(AbstractModel):
 
     @property
     def OwnerUin(self):
+        """用户 UIN。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -1393,6 +1608,10 @@ class Certificates(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1401,6 +1620,10 @@ class Certificates(AbstractModel):
 
     @property
     def From(self):
+        """证书来源。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -1409,6 +1632,11 @@ class Certificates(AbstractModel):
 
     @property
     def PackageType(self):
+        """证书套餐类型：
+2 = TrustAsia TLS RSA CA，3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = Wotrus 国密域名型证书，34 = Wotrus 国密域名型多域名证书，35 = Wotrus 国密域名型通配符证书，37 = Wotrus 国密企业型证书，38 = Wotrus 国密企业型多域名证书，39 = Wotrus 国密企业型通配符证书，40 = Wotrus 国密增强型证书，41 = Wotrus 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书，43 = DNSPod-企业型(OV)SSL证书，44 = DNSPod-企业型(OV)通配符SSL证书，45 = DNSPod-企业型(OV)多域名SSL证书， 46 = DNSPod-增强型(EV)SSL证书，47 = DNSPod-增强型(EV)多域名SSL证书，48 = DNSPod-域名型(DV)SSL证书，49 = DNSPod-域名型(DV)通配符SSL证书，50 = DNSPod-域名型(DV)多域名SSL证书，51 = DNSPod（国密）-企业型(OV)SSL证书，52 = DNSPod（国密）-企业型(OV)通配符SSL证书，53 = DNSPod（国密）-企业型(OV)多域名SSL证书，54 = DNSPod（国密）-域名型(DV)SSL证书，55 = DNSPod（国密）-域名型(DV)通配符SSL证书， 56 = DNSPod（国密）-域名型(DV)多域名SSL证书，57 = SecureSite 企业型专业版多域名(OV Pro)，58 = SecureSite 企业型多域名(OV)，59 = SecureSite 增强型专业版多域名(EV Pro)，60 = SecureSite 增强型多域名(EV)，61 = Geotrust 增强型多域名(EV)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PackageType
 
     @PackageType.setter
@@ -1417,6 +1645,10 @@ class Certificates(AbstractModel):
 
     @property
     def CertificateType(self):
+        """证书类型：CA = 客户端证书，SVR = 服务器证书。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertificateType
 
     @CertificateType.setter
@@ -1425,6 +1657,10 @@ class Certificates(AbstractModel):
 
     @property
     def ProductZhName(self):
+        """颁发者。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductZhName
 
     @ProductZhName.setter
@@ -1433,6 +1669,10 @@ class Certificates(AbstractModel):
 
     @property
     def Domain(self):
+        """主域名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -1441,6 +1681,10 @@ class Certificates(AbstractModel):
 
     @property
     def Alias(self):
+        """备注名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -1449,6 +1693,10 @@ class Certificates(AbstractModel):
 
     @property
     def Status(self):
+        """状态。0：审核中，1：已通过，2：审核失败，3：已过期，4：验证方式为 DNS_AUTO 类型的证书， 已添加DNS记录，5：企业证书，待提交，6：订单取消中，7：已取消，8：已提交资料， 待上传确认函，9：证书吊销中，10：已吊销，11：重颁发中，12：待上传吊销确认函，13：免费证书待提交资料状态，14：已退款，
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1457,6 +1705,10 @@ class Certificates(AbstractModel):
 
     @property
     def CertificateExtra(self):
+        """证书扩展信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
+        """
         return self._CertificateExtra
 
     @CertificateExtra.setter
@@ -1465,6 +1717,10 @@ class Certificates(AbstractModel):
 
     @property
     def VulnerabilityStatus(self):
+        """漏洞扫描状态：INACTIVE = 未开启，ACTIVE = 已开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VulnerabilityStatus
 
     @VulnerabilityStatus.setter
@@ -1473,6 +1729,10 @@ class Certificates(AbstractModel):
 
     @property
     def StatusMsg(self):
+        """状态信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StatusMsg
 
     @StatusMsg.setter
@@ -1481,6 +1741,10 @@ class Certificates(AbstractModel):
 
     @property
     def VerifyType(self):
+        """验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，EMAIL = 邮件验证。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VerifyType
 
     @VerifyType.setter
@@ -1489,6 +1753,10 @@ class Certificates(AbstractModel):
 
     @property
     def CertBeginTime(self):
+        """证书生效时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertBeginTime
 
     @CertBeginTime.setter
@@ -1497,6 +1765,10 @@ class Certificates(AbstractModel):
 
     @property
     def CertEndTime(self):
+        """证书过期时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertEndTime
 
     @CertEndTime.setter
@@ -1505,6 +1777,10 @@ class Certificates(AbstractModel):
 
     @property
     def ValidityPeriod(self):
+        """证书有效期，单位（月）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ValidityPeriod
 
     @ValidityPeriod.setter
@@ -1513,6 +1789,10 @@ class Certificates(AbstractModel):
 
     @property
     def InsertTime(self):
+        """创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InsertTime
 
     @InsertTime.setter
@@ -1521,6 +1801,10 @@ class Certificates(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -1529,6 +1813,10 @@ class Certificates(AbstractModel):
 
     @property
     def SubjectAltName(self):
+        """证书包含的多个域名（包含主域名）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SubjectAltName
 
     @SubjectAltName.setter
@@ -1537,6 +1825,10 @@ class Certificates(AbstractModel):
 
     @property
     def PackageTypeName(self):
+        """证书类型名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PackageTypeName
 
     @PackageTypeName.setter
@@ -1545,6 +1837,10 @@ class Certificates(AbstractModel):
 
     @property
     def StatusName(self):
+        """状态名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StatusName
 
     @StatusName.setter
@@ -1553,6 +1849,10 @@ class Certificates(AbstractModel):
 
     @property
     def IsVip(self):
+        """是否为 VIP 客户。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsVip
 
     @IsVip.setter
@@ -1561,6 +1861,10 @@ class Certificates(AbstractModel):
 
     @property
     def IsDv(self):
+        """是否为 DV 版证书。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsDv
 
     @IsDv.setter
@@ -1569,6 +1873,10 @@ class Certificates(AbstractModel):
 
     @property
     def IsWildcard(self):
+        """是否为泛域名证书。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsWildcard
 
     @IsWildcard.setter
@@ -1577,6 +1885,10 @@ class Certificates(AbstractModel):
 
     @property
     def IsVulnerability(self):
+        """是否启用了漏洞扫描功能。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsVulnerability
 
     @IsVulnerability.setter
@@ -1585,6 +1897,10 @@ class Certificates(AbstractModel):
 
     @property
     def RenewAble(self):
+        """是否可续费。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._RenewAble
 
     @RenewAble.setter
@@ -1593,6 +1909,10 @@ class Certificates(AbstractModel):
 
     @property
     def ProjectInfo(self):
+        """项目信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.ProjectInfo`
+        """
         return self._ProjectInfo
 
     @ProjectInfo.setter
@@ -1601,6 +1921,10 @@ class Certificates(AbstractModel):
 
     @property
     def BoundResource(self):
+        """关联的云资源，暂不可用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._BoundResource
 
     @BoundResource.setter
@@ -1609,6 +1933,10 @@ class Certificates(AbstractModel):
 
     @property
     def Deployable(self):
+        """是否可部署。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Deployable
 
     @Deployable.setter
@@ -1617,6 +1945,10 @@ class Certificates(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tags
+        """
         return self._Tags
 
     @Tags.setter
@@ -1625,6 +1957,10 @@ class Certificates(AbstractModel):
 
     @property
     def IsIgnore(self):
+        """是否已忽略到期通知
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsIgnore
 
     @IsIgnore.setter
@@ -1633,6 +1969,10 @@ class Certificates(AbstractModel):
 
     @property
     def IsSM(self):
+        """是否国密证书
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsSM
 
     @IsSM.setter
@@ -1641,6 +1981,10 @@ class Certificates(AbstractModel):
 
     @property
     def EncryptAlgorithm(self):
+        """证书算法
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EncryptAlgorithm
 
     @EncryptAlgorithm.setter
@@ -1649,6 +1993,10 @@ class Certificates(AbstractModel):
 
     @property
     def CAEncryptAlgorithms(self):
+        """上传CA证书的加密算法
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._CAEncryptAlgorithms
 
     @CAEncryptAlgorithms.setter
@@ -1657,6 +2005,10 @@ class Certificates(AbstractModel):
 
     @property
     def CAEndTimes(self):
+        """上传CA证书的过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._CAEndTimes
 
     @CAEndTimes.setter
@@ -1665,6 +2017,10 @@ class Certificates(AbstractModel):
 
     @property
     def CACommonNames(self):
+        """上传CA证书的通用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._CACommonNames
 
     @CACommonNames.setter
@@ -1673,6 +2029,10 @@ class Certificates(AbstractModel):
 
     @property
     def PreAuditInfo(self):
+        """证书预审核信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.PreAuditInfo`
+        """
         return self._PreAuditInfo
 
     @PreAuditInfo.setter
@@ -1681,6 +2041,10 @@ class Certificates(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """是否自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -1689,6 +2053,10 @@ class Certificates(AbstractModel):
 
     @property
     def HostingStatus(self):
+        """托管状态，0，托管中，5，资源替换中， 10， 托管完成， -1未托管 
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HostingStatus
 
     @HostingStatus.setter
@@ -1697,6 +2065,10 @@ class Certificates(AbstractModel):
 
     @property
     def HostingCompleteTime(self):
+        """托管完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._HostingCompleteTime
 
     @HostingCompleteTime.setter
@@ -1705,6 +2077,10 @@ class Certificates(AbstractModel):
 
     @property
     def HostingRenewCertId(self):
+        """托管新证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._HostingRenewCertId
 
     @HostingRenewCertId.setter
@@ -1713,6 +2089,10 @@ class Certificates(AbstractModel):
 
     @property
     def HasRenewOrder(self):
+        """存在的续费证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._HasRenewOrder
 
     @HasRenewOrder.setter
@@ -1721,6 +2101,10 @@ class Certificates(AbstractModel):
 
     @property
     def ReplaceOriCertIsDelete(self):
+        """重颁发证书原证书是否删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._ReplaceOriCertIsDelete
 
     @ReplaceOriCertIsDelete.setter
@@ -1729,6 +2113,10 @@ class Certificates(AbstractModel):
 
     @property
     def IsExpiring(self):
+        """是否即将过期， 证书即将到期的30天内为即将过期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsExpiring
 
     @IsExpiring.setter
@@ -1737,6 +2125,10 @@ class Certificates(AbstractModel):
 
     @property
     def DVAuthDeadline(self):
+        """DV证书添加验证截止时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DVAuthDeadline
 
     @DVAuthDeadline.setter
@@ -1745,6 +2137,10 @@ class Certificates(AbstractModel):
 
     @property
     def ValidationPassedTime(self):
+        """域名验证通过时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ValidationPassedTime
 
     @ValidationPassedTime.setter
@@ -1753,6 +2149,10 @@ class Certificates(AbstractModel):
 
     @property
     def CertSANs(self):
+        """证书关联的多域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._CertSANs
 
     @CertSANs.setter
@@ -1761,6 +2161,10 @@ class Certificates(AbstractModel):
 
     @property
     def AwaitingValidationMsg(self):
+        """域名验证驳回信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AwaitingValidationMsg
 
     @AwaitingValidationMsg.setter
@@ -1769,6 +2173,10 @@ class Certificates(AbstractModel):
 
     @property
     def AllowDownload(self):
+        """是否允许下载
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._AllowDownload
 
     @AllowDownload.setter
@@ -1777,6 +2185,10 @@ class Certificates(AbstractModel):
 
     @property
     def IsDNSPODResolve(self):
+        """证书域名是否全部在DNSPOD托管解析
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsDNSPODResolve
 
     @IsDNSPODResolve.setter
@@ -1785,6 +2197,10 @@ class Certificates(AbstractModel):
 
     @property
     def IsPackage(self):
+        """是否是权益点购买的证书
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsPackage
 
     @IsPackage.setter
@@ -1793,6 +2209,10 @@ class Certificates(AbstractModel):
 
     @property
     def KeyPasswordCustomFlag(self):
+        """是否存在私钥密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._KeyPasswordCustomFlag
 
     @KeyPasswordCustomFlag.setter
@@ -1801,6 +2221,10 @@ class Certificates(AbstractModel):
 
     @property
     def SupportDownloadType(self):
+        """支持下载的WEB服务器类型： nginx、apache、iis、tomcat、jks、root、other
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.SupportDownloadType`
+        """
         return self._SupportDownloadType
 
     @SupportDownloadType.setter
@@ -1809,6 +2233,10 @@ class Certificates(AbstractModel):
 
     @property
     def CertRevokedTime(self):
+        """证书吊销完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertRevokedTime
 
     @CertRevokedTime.setter
@@ -1817,6 +2245,10 @@ class Certificates(AbstractModel):
 
     @property
     def HostingResourceTypes(self):
+        """托管资源类型列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._HostingResourceTypes
 
     @HostingResourceTypes.setter
@@ -1825,6 +2257,10 @@ class Certificates(AbstractModel):
 
     @property
     def HostingConfig(self):
+        """托管配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.HostingConfig`
+        """
         return self._HostingConfig
 
     @HostingConfig.setter
@@ -1928,6 +2364,9 @@ class CheckCertificateChainRequest(AbstractModel):
 
     @property
     def CertificateChain(self):
+        """待检查的证书链
+        :rtype: str
+        """
         return self._CertificateChain
 
     @CertificateChain.setter
@@ -1970,6 +2409,9 @@ class CheckCertificateChainResponse(AbstractModel):
 
     @property
     def IsValid(self):
+        """true为通过检查，false为未通过检查。
+        :rtype: bool
+        """
         return self._IsValid
 
     @IsValid.setter
@@ -1978,6 +2420,9 @@ class CheckCertificateChainResponse(AbstractModel):
 
     @property
     def IsTrustedCA(self):
+        """true为可信CA，false为不可信CA。
+        :rtype: bool
+        """
         return self._IsTrustedCA
 
     @IsTrustedCA.setter
@@ -1986,6 +2431,9 @@ class CheckCertificateChainResponse(AbstractModel):
 
     @property
     def Chains(self):
+        """包含证书链中每一段证书的通用名称。
+        :rtype: list of str
+        """
         return self._Chains
 
     @Chains.setter
@@ -1994,6 +2442,9 @@ class CheckCertificateChainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2022,6 +2473,9 @@ class CheckCertificateDomainVerificationRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -2059,6 +2513,10 @@ class CheckCertificateDomainVerificationResponse(AbstractModel):
 
     @property
     def VerificationResults(self):
+        """域名验证结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DomainValidationResult
+        """
         return self._VerificationResults
 
     @VerificationResults.setter
@@ -2067,6 +2525,9 @@ class CheckCertificateDomainVerificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2105,6 +2566,9 @@ class ClbInstanceDetail(AbstractModel):
 
     @property
     def LoadBalancerId(self):
+        """CLB实例ID
+        :rtype: str
+        """
         return self._LoadBalancerId
 
     @LoadBalancerId.setter
@@ -2113,6 +2577,9 @@ class ClbInstanceDetail(AbstractModel):
 
     @property
     def LoadBalancerName(self):
+        """CLB实例名称
+        :rtype: str
+        """
         return self._LoadBalancerName
 
     @LoadBalancerName.setter
@@ -2121,6 +2588,10 @@ class ClbInstanceDetail(AbstractModel):
 
     @property
     def Listeners(self):
+        """CLB监听器列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ClbListener
+        """
         return self._Listeners
 
     @Listeners.setter
@@ -2172,6 +2643,9 @@ class ClbInstanceList(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -2180,6 +2654,10 @@ class ClbInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
+        """clb实例详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ClbInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -2188,6 +2666,9 @@ class ClbInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
+        """该地域下Clb实例总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2196,6 +2677,10 @@ class ClbInstanceList(AbstractModel):
 
     @property
     def Error(self):
+        """是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Error
 
     @Error.setter
@@ -2258,6 +2743,9 @@ class ClbListener(AbstractModel):
 
     @property
     def ListenerId(self):
+        """监听器ID
+        :rtype: str
+        """
         return self._ListenerId
 
     @ListenerId.setter
@@ -2266,6 +2754,9 @@ class ClbListener(AbstractModel):
 
     @property
     def ListenerName(self):
+        """监听器名称
+        :rtype: str
+        """
         return self._ListenerName
 
     @ListenerName.setter
@@ -2274,6 +2765,9 @@ class ClbListener(AbstractModel):
 
     @property
     def SniSwitch(self):
+        """是否开启SNI，1为开启，0为关闭
+        :rtype: int
+        """
         return self._SniSwitch
 
     @SniSwitch.setter
@@ -2282,6 +2776,9 @@ class ClbListener(AbstractModel):
 
     @property
     def Protocol(self):
+        """监听器协议类型， HTTPS|TCP_SSL
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -2290,6 +2787,10 @@ class ClbListener(AbstractModel):
 
     @property
     def Certificate(self):
+        """监听器绑定的证书数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.Certificate`
+        """
         return self._Certificate
 
     @Certificate.setter
@@ -2298,6 +2799,10 @@ class ClbListener(AbstractModel):
 
     @property
     def Rules(self):
+        """监听器规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ClbListenerRule
+        """
         return self._Rules
 
     @Rules.setter
@@ -2306,6 +2811,10 @@ class ClbListener(AbstractModel):
 
     @property
     def NoMatchDomains(self):
+        """不匹配域名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._NoMatchDomains
 
     @NoMatchDomains.setter
@@ -2370,6 +2879,9 @@ class ClbListenerRule(AbstractModel):
 
     @property
     def LocationId(self):
+        """规则ID
+        :rtype: str
+        """
         return self._LocationId
 
     @LocationId.setter
@@ -2378,6 +2890,9 @@ class ClbListenerRule(AbstractModel):
 
     @property
     def Domain(self):
+        """规则绑定的域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -2386,6 +2901,9 @@ class ClbListenerRule(AbstractModel):
 
     @property
     def IsMatch(self):
+        """规则是否匹配待绑定证书的域名
+        :rtype: bool
+        """
         return self._IsMatch
 
     @IsMatch.setter
@@ -2394,6 +2912,10 @@ class ClbListenerRule(AbstractModel):
 
     @property
     def Certificate(self):
+        """规则已绑定的证书数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.Certificate`
+        """
         return self._Certificate
 
     @Certificate.setter
@@ -2402,6 +2924,10 @@ class ClbListenerRule(AbstractModel):
 
     @property
     def NoMatchDomains(self):
+        """不匹配域名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._NoMatchDomains
 
     @NoMatchDomains.setter
@@ -2410,6 +2936,10 @@ class ClbListenerRule(AbstractModel):
 
     @property
     def Url(self):
+        """规则绑定的路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -2453,6 +2983,9 @@ class CommitCertificateInformationRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书 ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -2461,6 +2994,9 @@ class CommitCertificateInformationRequest(AbstractModel):
 
     @property
     def VerifyType(self):
+        """域名验证方式
+        :rtype: str
+        """
         return self._VerifyType
 
     @VerifyType.setter
@@ -2501,6 +3037,9 @@ class CommitCertificateInformationResponse(AbstractModel):
 
     @property
     def OrderId(self):
+        """CA机构侧订单号。
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -2509,6 +3048,9 @@ class CommitCertificateInformationResponse(AbstractModel):
 
     @property
     def Status(self):
+        """证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2517,6 +3059,9 @@ class CommitCertificateInformationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2574,6 +3119,9 @@ class CompanyInfo(AbstractModel):
 
     @property
     def CompanyName(self):
+        """公司名称
+        :rtype: str
+        """
         return self._CompanyName
 
     @CompanyName.setter
@@ -2582,6 +3130,9 @@ class CompanyInfo(AbstractModel):
 
     @property
     def CompanyId(self):
+        """公司ID
+        :rtype: int
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -2590,6 +3141,9 @@ class CompanyInfo(AbstractModel):
 
     @property
     def CompanyCountry(self):
+        """公司所在国家
+        :rtype: str
+        """
         return self._CompanyCountry
 
     @CompanyCountry.setter
@@ -2598,6 +3152,9 @@ class CompanyInfo(AbstractModel):
 
     @property
     def CompanyProvince(self):
+        """公司所在省份
+        :rtype: str
+        """
         return self._CompanyProvince
 
     @CompanyProvince.setter
@@ -2606,6 +3163,9 @@ class CompanyInfo(AbstractModel):
 
     @property
     def CompanyCity(self):
+        """公司所在城市
+        :rtype: str
+        """
         return self._CompanyCity
 
     @CompanyCity.setter
@@ -2614,6 +3174,9 @@ class CompanyInfo(AbstractModel):
 
     @property
     def CompanyAddress(self):
+        """公司所在详细地址
+        :rtype: str
+        """
         return self._CompanyAddress
 
     @CompanyAddress.setter
@@ -2622,6 +3185,9 @@ class CompanyInfo(AbstractModel):
 
     @property
     def CompanyPhone(self):
+        """公司电话
+        :rtype: str
+        """
         return self._CompanyPhone
 
     @CompanyPhone.setter
@@ -2630,6 +3196,10 @@ class CompanyInfo(AbstractModel):
 
     @property
     def IdType(self):
+        """类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IdType
 
     @IdType.setter
@@ -2638,6 +3208,10 @@ class CompanyInfo(AbstractModel):
 
     @property
     def IdNumber(self):
+        """ID号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IdNumber
 
     @IdNumber.setter
@@ -2646,6 +3220,10 @@ class CompanyInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tags
+        """
         return self._Tags
 
     @Tags.setter
@@ -2693,6 +3271,9 @@ class CompleteCertificateRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -2729,6 +3310,9 @@ class CompleteCertificateResponse(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -2737,6 +3321,9 @@ class CompleteCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2779,6 +3366,9 @@ DISABLED:域名下线状态
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -2787,6 +3377,10 @@ DISABLED:域名下线状态
 
     @property
     def CertId(self):
+        """已绑定的证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -2795,6 +3389,10 @@ DISABLED:域名下线状态
 
     @property
     def Status(self):
+        """ENABLED: 域名上线状态
+DISABLED:域名下线状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2803,6 +3401,10 @@ DISABLED:域名下线状态
 
     @property
     def Bucket(self):
+        """存储桶名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -2811,6 +3413,10 @@ DISABLED:域名下线状态
 
     @property
     def Region(self):
+        """存储桶地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -2851,6 +3457,9 @@ class CreateCertificateBindResourceSyncTaskRequest(AbstractModel):
 
     @property
     def CertificateIds(self):
+        """证书ID列表，总数不能超过100
+        :rtype: list of str
+        """
         return self._CertificateIds
 
     @CertificateIds.setter
@@ -2859,6 +3468,9 @@ class CreateCertificateBindResourceSyncTaskRequest(AbstractModel):
 
     @property
     def IsCache(self):
+        """是否使用缓存， 1使用缓存，0不使用缓存； 默认为1使用缓存； 若当前证书ID存在半小时已完成的任务， 则使用缓存的情况下， 会读取半小时内离当前时间最近的查询结果
+        :rtype: int
+        """
         return self._IsCache
 
     @IsCache.setter
@@ -2896,6 +3508,9 @@ class CreateCertificateBindResourceSyncTaskResponse(AbstractModel):
 
     @property
     def CertTaskIds(self):
+        """证书关联云资源异步任务ID列表
+        :rtype: list of CertTaskId
+        """
         return self._CertTaskIds
 
     @CertTaskIds.setter
@@ -2904,6 +3519,9 @@ class CreateCertificateBindResourceSyncTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2986,6 +3604,9 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def ProductPid(self):
+        """证书产品PID。
+        :rtype: int
+        """
         return self._ProductPid
 
     @ProductPid.setter
@@ -2994,6 +3615,9 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def PackageIds(self):
+        """要消耗的权益包ID。
+        :rtype: list of str
+        """
         return self._PackageIds
 
     @PackageIds.setter
@@ -3002,6 +3626,9 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def DomainCount(self):
+        """证书域名数量。
+        :rtype: str
+        """
         return self._DomainCount
 
     @DomainCount.setter
@@ -3010,6 +3637,9 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def Period(self):
+        """多年期证书年限。
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -3018,6 +3648,9 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
+        """要续费的原证书ID（续费时填写）。
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -3026,6 +3659,9 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def RenewGenCsrMethod(self):
+        """续费时CSR生成方式（original、upload、online）。
+        :rtype: str
+        """
         return self._RenewGenCsrMethod
 
     @RenewGenCsrMethod.setter
@@ -3034,6 +3670,9 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def RenewCsr(self):
+        """续费时选择上传CSR时填写CSR。
+        :rtype: str
+        """
         return self._RenewCsr
 
     @RenewCsr.setter
@@ -3042,6 +3681,9 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def RenewAlgorithmType(self):
+        """续费证书CSR的算法类型。
+        :rtype: str
+        """
         return self._RenewAlgorithmType
 
     @RenewAlgorithmType.setter
@@ -3050,6 +3692,9 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def RenewAlgorithmParam(self):
+        """续费证书CSR的算法参数。
+        :rtype: str
+        """
         return self._RenewAlgorithmParam
 
     @RenewAlgorithmParam.setter
@@ -3058,6 +3703,9 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目ID。
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -3066,6 +3714,9 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签。
+        :rtype: list of Tags
+        """
         return self._Tags
 
     @Tags.setter
@@ -3074,6 +3725,9 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def RenewKeyPass(self):
+        """续费证书的私钥密码。
+        :rtype: str
+        """
         return self._RenewKeyPass
 
     @RenewKeyPass.setter
@@ -3082,6 +3736,9 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def DomainNames(self):
+        """批量购买证书时预填写的域名。
+        :rtype: str
+        """
         return self._DomainNames
 
     @DomainNames.setter
@@ -3090,6 +3747,9 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def CertificateCount(self):
+        """批量购买证书数量。
+        :rtype: int
+        """
         return self._CertificateCount
 
     @CertificateCount.setter
@@ -3098,6 +3758,9 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def ManagerId(self):
+        """预填写的管理人ID。
+        :rtype: int
+        """
         return self._ManagerId
 
     @ManagerId.setter
@@ -3106,6 +3769,9 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """预填写的公司ID。
+        :rtype: int
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -3114,6 +3780,9 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def VerifyType(self):
+        """验证方式
+        :rtype: str
+        """
         return self._VerifyType
 
     @VerifyType.setter
@@ -3122,6 +3791,9 @@ class CreateCertificateByPackageRequest(AbstractModel):
 
     @property
     def PriceKey(self):
+        """询价参数
+        :rtype: str
+        """
         return self._PriceKey
 
     @PriceKey.setter
@@ -3183,6 +3855,9 @@ class CreateCertificateByPackageResponse(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -3191,6 +3866,9 @@ class CreateCertificateByPackageResponse(AbstractModel):
 
     @property
     def CertificateIds(self):
+        """批量购买证书时返回多个证书ID。
+        :rtype: list of str
+        """
         return self._CertificateIds
 
     @CertificateIds.setter
@@ -3199,6 +3877,9 @@ class CreateCertificateByPackageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3238,6 +3919,9 @@ class CreateCertificateRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """证书商品ID，3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = Wotrus 国密域名型证书，34 = Wotrus 国密域名型多域名证书，35 = Wotrus 国密域名型通配符证书，37 = Wotrus 国密企业型证书，38 = Wotrus 国密企业型多域名证书，39 = Wotrus 国密企业型通配符证书，40 = Wotrus 国密增强型证书，41 = Wotrus 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书，43 = DNSPod-企业型(OV)SSL证书，44 = DNSPod-企业型(OV)通配符SSL证书，45 = DNSPod-企业型(OV)多域名SSL证书， 46 = DNSPod-增强型(EV)SSL证书，47 = DNSPod-增强型(EV)多域名SSL证书，48 = DNSPod-域名型(DV)SSL证书，49 = DNSPod-域名型(DV)通配符SSL证书，50 = DNSPod-域名型(DV)多域名SSL证书，51 = DNSPod（国密）-企业型(OV)SSL证书，52 = DNSPod（国密）-企业型(OV)通配符SSL证书，53 = DNSPod（国密）-企业型(OV)多域名SSL证书，54 = DNSPod（国密）-域名型(DV)SSL证书，55 = DNSPod（国密）-域名型(DV)通配符SSL证书， 56 = DNSPod（国密）-域名型(DV)多域名SSL证书，57 = SecureSite 企业型专业版多域名(OV Pro)，58 = SecureSite 企业型多域名(OV)，59 = SecureSite 增强型专业版多域名(EV Pro)，60 = SecureSite 增强型多域名(EV)，61 = Geotrust 增强型多域名(EV)
+        :rtype: int
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -3246,6 +3930,9 @@ class CreateCertificateRequest(AbstractModel):
 
     @property
     def DomainNum(self):
+        """证书包含的域名数量
+        :rtype: int
+        """
         return self._DomainNum
 
     @DomainNum.setter
@@ -3254,6 +3941,9 @@ class CreateCertificateRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
+        """证书年限
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -3262,6 +3952,9 @@ class CreateCertificateRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
+        """是否自动使用代金券：1是，0否；默认为1
+        :rtype: int
+        """
         return self._AutoVoucher
 
     @AutoVoucher.setter
@@ -3270,6 +3963,9 @@ class CreateCertificateRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签， 生成证书打标签
+        :rtype: list of Tags
+        """
         return self._Tags
 
     @Tags.setter
@@ -3318,6 +4014,9 @@ class CreateCertificateResponse(AbstractModel):
 
     @property
     def CertificateIds(self):
+        """证书ID列表
+        :rtype: list of str
+        """
         return self._CertificateIds
 
     @CertificateIds.setter
@@ -3326,6 +4025,9 @@ class CreateCertificateResponse(AbstractModel):
 
     @property
     def DealIds(self):
+        """订单号列表
+        :rtype: list of str
+        """
         return self._DealIds
 
     @DealIds.setter
@@ -3334,6 +4036,9 @@ class CreateCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3374,6 +4079,9 @@ class DdosInstanceDetail(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -3382,6 +4090,9 @@ class DdosInstanceDetail(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3390,6 +4101,9 @@ class DdosInstanceDetail(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议类型
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -3398,6 +4112,10 @@ class DdosInstanceDetail(AbstractModel):
 
     @property
     def CertId(self):
+        """证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -3406,6 +4124,9 @@ class DdosInstanceDetail(AbstractModel):
 
     @property
     def VirtualPort(self):
+        """转发端口
+        :rtype: str
+        """
         return self._VirtualPort
 
     @VirtualPort.setter
@@ -3451,6 +4172,9 @@ class DdosInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
+        """该地域下ddos域名总数	
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3459,6 +4183,10 @@ class DdosInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
+        """ddos实例详情	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DdosInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -3467,6 +4195,10 @@ class DdosInstanceList(AbstractModel):
 
     @property
     def Error(self):
+        """是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Error
 
     @Error.setter
@@ -3510,6 +4242,9 @@ class DeleteCertificateRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书 ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -3518,6 +4253,9 @@ class DeleteCertificateRequest(AbstractModel):
 
     @property
     def IsCheckResource(self):
+        """删除时是否检查证书关联了云资源。默认不检查。如选择检查(需要授权服务角色SSL_QCSLinkedRoleInReplaceLoadCertificate)删除将变成异步,接口会返回异步任务ID。需使用DescribeDeleteCertificatesTaskResult接口查询删除是否成功。
+        :rtype: bool
+        """
         return self._IsCheckResource
 
     @IsCheckResource.setter
@@ -3559,6 +4297,9 @@ class DeleteCertificateResponse(AbstractModel):
 
     @property
     def DeleteResult(self):
+        """删除结果（true：删除成功，false：删除失败）
+        :rtype: bool
+        """
         return self._DeleteResult
 
     @DeleteResult.setter
@@ -3567,6 +4308,10 @@ class DeleteCertificateResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """异步删除的任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -3575,6 +4320,9 @@ class DeleteCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3605,6 +4353,9 @@ class DeleteCertificatesRequest(AbstractModel):
 
     @property
     def CertificateIds(self):
+        """要删除的证书ID。单次最多100个
+        :rtype: list of str
+        """
         return self._CertificateIds
 
     @CertificateIds.setter
@@ -3613,6 +4364,9 @@ class DeleteCertificatesRequest(AbstractModel):
 
     @property
     def IsSync(self):
+        """删除时是否检查证书关联了云资源。默认不检查。如需要检查关联云资源 (需授权服务角色SSL_QCSLinkedRoleInReplaceLoadCertificate)，完成授权后，删除将变成异步任务，接口会返回异步任务ID。需搭配 DescribeDeleteCertificatesTaskResult接口使用，查询删除任务是否成功。
+        :rtype: bool
+        """
         return self._IsSync
 
     @IsSync.setter
@@ -3656,6 +4410,9 @@ class DeleteCertificatesResponse(AbstractModel):
 
     @property
     def Success(self):
+        """成功的ID
+        :rtype: list of str
+        """
         return self._Success
 
     @Success.setter
@@ -3664,6 +4421,9 @@ class DeleteCertificatesResponse(AbstractModel):
 
     @property
     def Fail(self):
+        """失败的ID和原因
+        :rtype: list of BatchDeleteFail
+        """
         return self._Fail
 
     @Fail.setter
@@ -3672,6 +4432,9 @@ class DeleteCertificatesResponse(AbstractModel):
 
     @property
     def CertTaskIds(self):
+        """证书ID和异步任务的ID
+        :rtype: list of CertTaskId
+        """
         return self._CertTaskIds
 
     @CertTaskIds.setter
@@ -3680,6 +4443,9 @@ class DeleteCertificatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3718,6 +4484,9 @@ class DeleteManagerRequest(AbstractModel):
 
     @property
     def ManagerId(self):
+        """管理人ID
+        :rtype: int
+        """
         return self._ManagerId
 
     @ManagerId.setter
@@ -3754,6 +4523,9 @@ class DeleteManagerResponse(AbstractModel):
 
     @property
     def ManagerId(self):
+        """管理人ID
+        :rtype: int
+        """
         return self._ManagerId
 
     @ManagerId.setter
@@ -3762,6 +4534,9 @@ class DeleteManagerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3806,6 +4581,9 @@ class DeleteTaskResult(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -3814,6 +4592,9 @@ class DeleteTaskResult(AbstractModel):
 
     @property
     def CertId(self):
+        """证书ID
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -3822,6 +4603,9 @@ class DeleteTaskResult(AbstractModel):
 
     @property
     def Status(self):
+        """异步查询结果： 0表示任务进行中、 1表示任务成功、 2表示任务失败、3表示未授权服务角色导致任务失败、4表示有未解绑的云资源导致任务失败、5表示查询关联云资源超时导致任务失败
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -3830,6 +4614,10 @@ class DeleteTaskResult(AbstractModel):
 
     @property
     def Error(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Error
 
     @Error.setter
@@ -3838,6 +4626,10 @@ class DeleteTaskResult(AbstractModel):
 
     @property
     def CacheTime(self):
+        """当前结果缓存时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CacheTime
 
     @CacheTime.setter
@@ -3846,6 +4638,10 @@ class DeleteTaskResult(AbstractModel):
 
     @property
     def Domains(self):
+        """包含的域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -3900,6 +4696,9 @@ class DeployCertificateInstanceRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """待部署的证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -3908,6 +4707,9 @@ class DeployCertificateInstanceRequest(AbstractModel):
 
     @property
     def InstanceIdList(self):
+        """需要部署实例列表
+        :rtype: list of str
+        """
         return self._InstanceIdList
 
     @InstanceIdList.setter
@@ -3916,6 +4718,9 @@ class DeployCertificateInstanceRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """部署的云资源类型
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -3924,6 +4729,13 @@ class DeployCertificateInstanceRequest(AbstractModel):
 
     @property
     def Status(self):
+        """部署云资源状态：
+云直播：
+-1：域名未关联证书。
+1： 域名https已开启。
+0： 域名https已关闭。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -3932,6 +4744,9 @@ class DeployCertificateInstanceRequest(AbstractModel):
 
     @property
     def IsCache(self):
+        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :rtype: int
+        """
         return self._IsCache
 
     @IsCache.setter
@@ -3976,6 +4791,10 @@ class DeployCertificateInstanceResponse(AbstractModel):
 
     @property
     def DeployRecordId(self):
+        """云资源部署任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DeployRecordId
 
     @DeployRecordId.setter
@@ -3984,6 +4803,9 @@ class DeployCertificateInstanceResponse(AbstractModel):
 
     @property
     def DeployStatus(self):
+        """部署状态，1表示部署成功，0表示部署失败
+        :rtype: int
+        """
         return self._DeployStatus
 
     @DeployStatus.setter
@@ -3992,6 +4814,9 @@ class DeployCertificateInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4022,6 +4847,9 @@ class DeployCertificateRecordRetryRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
+        """待重试部署记录ID
+        :rtype: int
+        """
         return self._DeployRecordId
 
     @DeployRecordId.setter
@@ -4030,6 +4858,9 @@ class DeployCertificateRecordRetryRequest(AbstractModel):
 
     @property
     def DeployRecordDetailId(self):
+        """待重试部署记录详情ID
+        :rtype: int
+        """
         return self._DeployRecordDetailId
 
     @DeployRecordDetailId.setter
@@ -4064,6 +4895,9 @@ class DeployCertificateRecordRetryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4089,6 +4923,9 @@ class DeployCertificateRecordRollbackRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
+        """待重试部署记录ID
+        :rtype: int
+        """
         return self._DeployRecordId
 
     @DeployRecordId.setter
@@ -4125,6 +4962,9 @@ class DeployCertificateRecordRollbackResponse(AbstractModel):
 
     @property
     def DeployRecordId(self):
+        """回滚部署记录ID
+        :rtype: int
+        """
         return self._DeployRecordId
 
     @DeployRecordId.setter
@@ -4133,6 +4973,9 @@ class DeployCertificateRecordRollbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4234,6 +5077,9 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def Id(self):
+        """部署记录详情ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -4242,6 +5088,9 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def CertId(self):
+        """部署证书ID
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -4250,6 +5099,10 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def OldCertId(self):
+        """原绑定证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OldCertId
 
     @OldCertId.setter
@@ -4258,6 +5111,9 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def InstanceId(self):
+        """部署实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4266,6 +5122,9 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def InstanceName(self):
+        """部署实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -4274,6 +5133,10 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def ListenerId(self):
+        """部署监听器ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ListenerId
 
     @ListenerId.setter
@@ -4282,6 +5145,9 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def Domains(self):
+        """部署域名列表
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -4290,6 +5156,10 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def Protocol(self):
+        """部署监听器协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -4298,6 +5168,9 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def Status(self):
+        """部署状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -4306,6 +5179,10 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def ErrorMsg(self):
+        """部署错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -4314,6 +5191,9 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def CreateTime(self):
+        """部署记录详情创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -4322,6 +5202,9 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """部署记录详情最后一次更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -4330,6 +5213,9 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def ListenerName(self):
+        """部署监听器名称
+        :rtype: str
+        """
         return self._ListenerName
 
     @ListenerName.setter
@@ -4338,6 +5224,9 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def SniSwitch(self):
+        """是否开启SNI
+        :rtype: int
+        """
         return self._SniSwitch
 
     @SniSwitch.setter
@@ -4346,6 +5235,10 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def Bucket(self):
+        """COS存储桶名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -4354,6 +5247,10 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -4362,6 +5259,10 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def SecretName(self):
+        """secret名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -4370,6 +5271,10 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def Port(self):
+        """端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -4378,6 +5283,10 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def EnvId(self):
+        """TCB环境ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -4386,6 +5295,10 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def TCBType(self):
+        """部署的TCB类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TCBType
 
     @TCBType.setter
@@ -4394,6 +5307,10 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def Region(self):
+        """部署的TCB地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -4402,6 +5319,10 @@ class DeployRecordDetail(AbstractModel):
 
     @property
     def Url(self):
+        """部署CLB监听器的Url
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Url
 
     @Url.setter
@@ -4474,6 +5395,9 @@ class DeployRecordInfo(AbstractModel):
 
     @property
     def Id(self):
+        """部署记录ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -4482,6 +5406,9 @@ class DeployRecordInfo(AbstractModel):
 
     @property
     def CertId(self):
+        """部署证书ID
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -4490,6 +5417,9 @@ class DeployRecordInfo(AbstractModel):
 
     @property
     def ResourceType(self):
+        """部署资源类型
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -4498,6 +5428,9 @@ class DeployRecordInfo(AbstractModel):
 
     @property
     def Region(self):
+        """部署地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -4506,6 +5439,9 @@ class DeployRecordInfo(AbstractModel):
 
     @property
     def Status(self):
+        """部署状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -4514,6 +5450,9 @@ class DeployRecordInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """部署时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -4522,6 +5461,9 @@ class DeployRecordInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """最近一次更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -4575,6 +5517,9 @@ class DeployedResources(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -4583,6 +5528,9 @@ class DeployedResources(AbstractModel):
 
     @property
     def Count(self):
+        """数量
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -4591,6 +5539,9 @@ class DeployedResources(AbstractModel):
 
     @property
     def Type(self):
+        """资源标识:clb,cdn,live,waf,antiddos
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -4599,6 +5550,10 @@ class DeployedResources(AbstractModel):
 
     @property
     def ResourceIds(self):
+        """不建议使用。字段返回和Resources相同。本字段后续只返回null
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ResourceIds
 
     @ResourceIds.setter
@@ -4607,6 +5562,10 @@ class DeployedResources(AbstractModel):
 
     @property
     def Resources(self):
+        """关联资源ID或关联域名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Resources
 
     @Resources.setter
@@ -4656,6 +5615,9 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID，根据任务ID查询绑定云资源结果
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4664,6 +5626,9 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页展示数量， 默认10，最大值100; 分页总数为云资源地域下实例总数， 即第一页会拉群每个云资源的地域下面Limit数量实例
+        :rtype: str
+        """
         return self._Limit
 
     @Limit.setter
@@ -4672,6 +5637,9 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """当前偏移量
+        :rtype: str
+        """
         return self._Offset
 
     @Offset.setter
@@ -4680,6 +5648,9 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def ResourceTypes(self):
+        """查询资源类型的结果详情， 不传则查询所有
+        :rtype: list of str
+        """
         return self._ResourceTypes
 
     @ResourceTypes.setter
@@ -4688,6 +5659,9 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def Regions(self):
+        """查询地域列表的数据，CLB、TKE、WAF、APIGATEWAY、TCB支持地域查询， 其他资源类型不支持
+        :rtype: list of str
+        """
         return self._Regions
 
     @Regions.setter
@@ -4779,6 +5753,10 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def CLB(self):
+        """关联clb资源详情	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ClbInstanceList
+        """
         return self._CLB
 
     @CLB.setter
@@ -4787,6 +5765,10 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def CDN(self):
+        """关联cdn资源详情	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CdnInstanceList
+        """
         return self._CDN
 
     @CDN.setter
@@ -4795,6 +5777,10 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def WAF(self):
+        """关联waf资源详情	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of WafInstanceList
+        """
         return self._WAF
 
     @WAF.setter
@@ -4803,6 +5789,10 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def DDOS(self):
+        """关联ddos资源详情	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DdosInstanceList
+        """
         return self._DDOS
 
     @DDOS.setter
@@ -4811,6 +5801,10 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def LIVE(self):
+        """关联live资源详情	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LiveInstanceList
+        """
         return self._LIVE
 
     @LIVE.setter
@@ -4819,6 +5813,10 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def VOD(self):
+        """关联vod资源详情	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VODInstanceList
+        """
         return self._VOD
 
     @VOD.setter
@@ -4827,6 +5825,10 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def TKE(self):
+        """关联tke资源详情	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TkeInstanceList
+        """
         return self._TKE
 
     @TKE.setter
@@ -4835,6 +5837,10 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def APIGATEWAY(self):
+        """关联apigateway资源详情	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ApiGatewayInstanceList
+        """
         return self._APIGATEWAY
 
     @APIGATEWAY.setter
@@ -4843,6 +5849,10 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def TCB(self):
+        """关联tcb资源详情	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TCBInstanceList
+        """
         return self._TCB
 
     @TCB.setter
@@ -4851,6 +5861,10 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def TEO(self):
+        """关联teo资源详情	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TeoInstanceList
+        """
         return self._TEO
 
     @TEO.setter
@@ -4859,6 +5873,9 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def Status(self):
+        """关联云资源异步查询结果： 0表示查询中， 1表示查询成功。 2表示查询异常； 若状态为1，则查看BindResourceResult结果；若状态为2，则查看Error原因
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -4867,6 +5884,9 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def CacheTime(self):
+        """当前结果缓存时间
+        :rtype: str
+        """
         return self._CacheTime
 
     @CacheTime.setter
@@ -4875,6 +5895,10 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def TSE(self):
+        """关联tse资源详情	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TSEInstanceList
+        """
         return self._TSE
 
     @TSE.setter
@@ -4883,6 +5907,10 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def COS(self):
+        """关联的COS资源详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of COSInstanceList
+        """
         return self._COS
 
     @COS.setter
@@ -4891,6 +5919,9 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4990,6 +6021,9 @@ class DescribeCertificateBindResourceTaskResultRequest(AbstractModel):
 
     @property
     def TaskIds(self):
+        """任务ID，根据任务ID查询绑定云资源结果， 最大支持100个
+        :rtype: list of str
+        """
         return self._TaskIds
 
     @TaskIds.setter
@@ -5027,6 +6061,10 @@ class DescribeCertificateBindResourceTaskResultResponse(AbstractModel):
 
     @property
     def SyncTaskBindResourceResult(self):
+        """异步任务绑定关联云资源结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SyncTaskBindResourceResult
+        """
         return self._SyncTaskBindResourceResult
 
     @SyncTaskBindResourceResult.setter
@@ -5035,6 +6073,9 @@ class DescribeCertificateBindResourceTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5066,6 +6107,9 @@ class DescribeCertificateDetailRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书 ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -5263,6 +6307,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def OwnerUin(self):
+        """用户 UIN。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -5271,6 +6319,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -5279,6 +6331,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def From(self):
+        """证书来源：trustasia = 亚洲诚信，upload = 用户上传。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -5287,6 +6343,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def CertificateType(self):
+        """证书类型：CA = 客户端证书，SVR = 服务器证书。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertificateType
 
     @CertificateType.setter
@@ -5295,6 +6355,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def PackageType(self):
+        """证书套餐类型：null = 用户上传证书（没有套餐类型），1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = DNSPod 国密域名型证书，34 = DNSPod 国密域名型多域名证书，35 = DNSPod 国密域名型通配符证书，37 = DNSPod 国密企业型证书，38 = DNSPod 国密企业型多域名证书，39 = DNSPod 国密企业型通配符证书，40 = DNSPod 国密增强型证书，41 = DNSPod 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PackageType
 
     @PackageType.setter
@@ -5303,6 +6367,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def ProductZhName(self):
+        """颁发者。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductZhName
 
     @ProductZhName.setter
@@ -5311,6 +6379,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def Domain(self):
+        """域名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -5319,6 +6391,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def Alias(self):
+        """备注名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -5327,6 +6403,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def Status(self):
+        """证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -5335,6 +6415,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def StatusMsg(self):
+        """状态信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StatusMsg
 
     @StatusMsg.setter
@@ -5343,6 +6427,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def VerifyType(self):
+        """验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，EMAIL = 邮件验证。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VerifyType
 
     @VerifyType.setter
@@ -5351,6 +6439,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def VulnerabilityStatus(self):
+        """漏洞扫描状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VulnerabilityStatus
 
     @VulnerabilityStatus.setter
@@ -5359,6 +6451,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def CertBeginTime(self):
+        """证书生效时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertBeginTime
 
     @CertBeginTime.setter
@@ -5367,6 +6463,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def CertEndTime(self):
+        """证书失效时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertEndTime
 
     @CertEndTime.setter
@@ -5375,6 +6475,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def ValidityPeriod(self):
+        """证书有效期：单位（月）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ValidityPeriod
 
     @ValidityPeriod.setter
@@ -5383,6 +6487,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def InsertTime(self):
+        """申请时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InsertTime
 
     @InsertTime.setter
@@ -5391,6 +6499,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def OrderId(self):
+        """订单 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -5399,6 +6511,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def CertificateExtra(self):
+        """证书扩展信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
+        """
         return self._CertificateExtra
 
     @CertificateExtra.setter
@@ -5407,6 +6523,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def CertificatePrivateKey(self):
+        """证书私钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertificatePrivateKey
 
     @CertificatePrivateKey.setter
@@ -5415,6 +6535,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def CertificatePublicKey(self):
+        """证书公钥（即证书内容）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertificatePublicKey
 
     @CertificatePublicKey.setter
@@ -5423,6 +6547,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def DvAuthDetail(self):
+        """DV 认证信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DvAuthDetail`
+        """
         return self._DvAuthDetail
 
     @DvAuthDetail.setter
@@ -5431,6 +6559,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def VulnerabilityReport(self):
+        """漏洞扫描评估报告。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VulnerabilityReport
 
     @VulnerabilityReport.setter
@@ -5439,6 +6571,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -5447,6 +6583,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def TypeName(self):
+        """证书类型名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TypeName
 
     @TypeName.setter
@@ -5455,6 +6595,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def StatusName(self):
+        """状态描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StatusName
 
     @StatusName.setter
@@ -5463,6 +6607,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def SubjectAltName(self):
+        """证书包含的多个域名（不包含主域名，主域名使用Domain字段）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SubjectAltName
 
     @SubjectAltName.setter
@@ -5471,6 +6619,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def IsVip(self):
+        """是否为付费证书。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsVip
 
     @IsVip.setter
@@ -5479,6 +6631,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def IsWildcard(self):
+        """是否为泛域名证书。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsWildcard
 
     @IsWildcard.setter
@@ -5487,6 +6643,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def IsDv(self):
+        """是否为 DV 版证书。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsDv
 
     @IsDv.setter
@@ -5495,6 +6655,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def IsVulnerability(self):
+        """是否启用了漏洞扫描功能。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsVulnerability
 
     @IsVulnerability.setter
@@ -5503,6 +6667,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def SubmittedData(self):
+        """提交的资料信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.SubmittedData`
+        """
         return self._SubmittedData
 
     @SubmittedData.setter
@@ -5511,6 +6679,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def RenewAble(self):
+        """是否可续费。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._RenewAble
 
     @RenewAble.setter
@@ -5519,6 +6691,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def Deployable(self):
+        """是否可部署。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Deployable
 
     @Deployable.setter
@@ -5527,6 +6703,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def Tags(self):
+        """关联标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tags
+        """
         return self._Tags
 
     @Tags.setter
@@ -5535,6 +6715,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def RootCert(self):
+        """根证书。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.RootCertificates`
+        """
         return self._RootCert
 
     @RootCert.setter
@@ -5543,6 +6727,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def EncryptCert(self):
+        """国密加密证书
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EncryptCert
 
     @EncryptCert.setter
@@ -5551,6 +6739,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def EncryptPrivateKey(self):
+        """国密加密私钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EncryptPrivateKey
 
     @EncryptPrivateKey.setter
@@ -5559,6 +6751,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def CertFingerprint(self):
+        """签名证书 SHA1指纹
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertFingerprint
 
     @CertFingerprint.setter
@@ -5567,6 +6763,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def EncryptCertFingerprint(self):
+        """加密证书 SHA1指纹 （国密证书特有）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EncryptCertFingerprint
 
     @EncryptCertFingerprint.setter
@@ -5575,6 +6775,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def EncryptAlgorithm(self):
+        """证书算法
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EncryptAlgorithm
 
     @EncryptAlgorithm.setter
@@ -5583,6 +6787,10 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def DvRevokeAuthDetail(self):
+        """DV证书吊销验证值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DvAuths
+        """
         return self._DvRevokeAuthDetail
 
     @DvRevokeAuthDetail.setter
@@ -5591,6 +6799,9 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5684,6 +6895,9 @@ class DescribeCertificateOperateLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5692,6 +6906,9 @@ class DescribeCertificateOperateLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """请求日志数量，默认为20。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5700,6 +6917,9 @@ class DescribeCertificateOperateLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间，默认15天前。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -5708,6 +6928,9 @@ class DescribeCertificateOperateLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，默认现在时间。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -5754,6 +6977,9 @@ class DescribeCertificateOperateLogsResponse(AbstractModel):
 
     @property
     def AllTotal(self):
+        """当前查询条件日志总数。
+        :rtype: int
+        """
         return self._AllTotal
 
     @AllTotal.setter
@@ -5762,6 +6988,9 @@ class DescribeCertificateOperateLogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """本次请求返回的日志数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5770,6 +6999,10 @@ class DescribeCertificateOperateLogsResponse(AbstractModel):
 
     @property
     def OperateLogs(self):
+        """证书操作日志列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OperationLog
+        """
         return self._OperateLogs
 
     @OperateLogs.setter
@@ -5778,6 +7011,9 @@ class DescribeCertificateOperateLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5811,6 +7047,9 @@ class DescribeCertificateRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书 ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -5988,6 +7227,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def OwnerUin(self):
+        """用户 UIN。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -5996,6 +7239,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -6004,6 +7251,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def From(self):
+        """证书来源：trustasia = 亚洲诚信，upload = 用户上传。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -6012,6 +7263,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def CertificateType(self):
+        """证书类型：CA = 客户端证书，SVR = 服务器证书。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertificateType
 
     @CertificateType.setter
@@ -6020,6 +7275,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def PackageType(self):
+        """证书套餐类型： 2 = TrustAsia TLS RSA CA，3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = Wotrus 国密域名型证书，34 = Wotrus 国密域名型多域名证书，35 = Wotrus 国密域名型通配符证书，37 = Wotrus 国密企业型证书，38 = Wotrus 国密企业型多域名证书，39 = Wotrus 国密企业型通配符证书，40 = Wotrus 国密增强型证书，41 = Wotrus 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书，43 = DNSPod-企业型(OV)SSL证书，44 = DNSPod-企业型(OV)通配符SSL证书，45 = DNSPod-企业型(OV)多域名SSL证书， 46 = DNSPod-增强型(EV)SSL证书，47 = DNSPod-增强型(EV)多域名SSL证书，48 = DNSPod-域名型(DV)SSL证书，49 = DNSPod-域名型(DV)通配符SSL证书，50 = DNSPod-域名型(DV)多域名SSL证书，51 = DNSPod（国密）-企业型(OV)SSL证书，52 = DNSPod（国密）-企业型(OV)通配符SSL证书，53 = DNSPod（国密）-企业型(OV)多域名SSL证书，54 = DNSPod（国密）-域名型(DV)SSL证书，55 = DNSPod（国密）-域名型(DV)通配符SSL证书， 56 = DNSPod（国密）-域名型(DV)多域名SSL证书，57 = SecureSite 企业型专业版多域名(OV Pro)，58 = SecureSite 企业型多域名(OV)，59 = SecureSite 增强型专业版多域名(EV Pro)，60 = SecureSite 增强型多域名(EV)，61 = Geotrust 增强型多域名(EV)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PackageType
 
     @PackageType.setter
@@ -6028,6 +7287,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def ProductZhName(self):
+        """证书颁发者名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductZhName
 
     @ProductZhName.setter
@@ -6036,6 +7299,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def Domain(self):
+        """域名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -6044,6 +7311,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def Alias(self):
+        """备注名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -6052,6 +7323,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def Status(self):
+        """证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -6060,6 +7335,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def StatusMsg(self):
+        """状态信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StatusMsg
 
     @StatusMsg.setter
@@ -6068,6 +7347,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def VerifyType(self):
+        """验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，EMAIL = 邮件验证。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VerifyType
 
     @VerifyType.setter
@@ -6076,6 +7359,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def VulnerabilityStatus(self):
+        """漏洞扫描状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VulnerabilityStatus
 
     @VulnerabilityStatus.setter
@@ -6084,6 +7371,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def CertBeginTime(self):
+        """证书生效时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertBeginTime
 
     @CertBeginTime.setter
@@ -6092,6 +7383,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def CertEndTime(self):
+        """证书失效时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertEndTime
 
     @CertEndTime.setter
@@ -6100,6 +7395,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def ValidityPeriod(self):
+        """证书有效期：单位(月)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ValidityPeriod
 
     @ValidityPeriod.setter
@@ -6108,6 +7407,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def InsertTime(self):
+        """申请时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InsertTime
 
     @InsertTime.setter
@@ -6116,6 +7419,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def OrderId(self):
+        """订单 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -6124,6 +7431,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def CertificateExtra(self):
+        """证书扩展信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
+        """
         return self._CertificateExtra
 
     @CertificateExtra.setter
@@ -6132,6 +7443,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def DvAuthDetail(self):
+        """DV 认证信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DvAuthDetail`
+        """
         return self._DvAuthDetail
 
     @DvAuthDetail.setter
@@ -6140,6 +7455,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def VulnerabilityReport(self):
+        """漏洞扫描评估报告。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VulnerabilityReport
 
     @VulnerabilityReport.setter
@@ -6148,6 +7467,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -6156,6 +7479,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def PackageTypeName(self):
+        """证书类型名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PackageTypeName
 
     @PackageTypeName.setter
@@ -6164,6 +7491,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def StatusName(self):
+        """状态描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StatusName
 
     @StatusName.setter
@@ -6172,6 +7503,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def SubjectAltName(self):
+        """证书包含的多个域名（包含主域名）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SubjectAltName
 
     @SubjectAltName.setter
@@ -6180,6 +7515,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def IsVip(self):
+        """是否为 VIP 客户。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsVip
 
     @IsVip.setter
@@ -6188,6 +7527,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def IsWildcard(self):
+        """是否为泛域名证书。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsWildcard
 
     @IsWildcard.setter
@@ -6196,6 +7539,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def IsDv(self):
+        """是否为 DV 版证书。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsDv
 
     @IsDv.setter
@@ -6204,6 +7551,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def IsVulnerability(self):
+        """是否启用了漏洞扫描功能。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsVulnerability
 
     @IsVulnerability.setter
@@ -6212,6 +7563,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def RenewAble(self):
+        """是否可重颁发证书。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._RenewAble
 
     @RenewAble.setter
@@ -6220,6 +7575,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def SubmittedData(self):
+        """提交的资料信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.SubmittedData`
+        """
         return self._SubmittedData
 
     @SubmittedData.setter
@@ -6228,6 +7587,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def Deployable(self):
+        """是否可部署。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Deployable
 
     @Deployable.setter
@@ -6236,6 +7599,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tags
+        """
         return self._Tags
 
     @Tags.setter
@@ -6244,6 +7611,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def CAEncryptAlgorithms(self):
+        """CA证书的所有加密方式	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._CAEncryptAlgorithms
 
     @CAEncryptAlgorithms.setter
@@ -6252,6 +7623,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def CACommonNames(self):
+        """CA证书的所有通用名称	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._CACommonNames
 
     @CACommonNames.setter
@@ -6260,6 +7635,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def CAEndTimes(self):
+        """CA证书所有的到期时间	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._CAEndTimes
 
     @CAEndTimes.setter
@@ -6268,6 +7647,10 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def DvRevokeAuthDetail(self):
+        """DV证书吊销验证值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DvAuths
+        """
         return self._DvRevokeAuthDetail
 
     @DvRevokeAuthDetail.setter
@@ -6276,6 +7659,9 @@ class DescribeCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6398,6 +7784,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，从0开始。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6406,6 +7795,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页数量，默认10。最大1000
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6414,6 +7806,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def SearchKey(self):
+        """搜索关键词，可搜索证书 ID、备注名称、域名。例如： a8xHcaIs。
+        :rtype: str
+        """
         return self._SearchKey
 
     @SearchKey.setter
@@ -6422,6 +7817,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def CertificateType(self):
+        """证书类型：CA = 客户端证书，SVR = 服务器证书。
+        :rtype: str
+        """
         return self._CertificateType
 
     @CertificateType.setter
@@ -6430,6 +7828,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目 ID。
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -6438,6 +7839,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def ExpirationSort(self):
+        """按到期时间排序：DESC = 降序， ASC = 升序。
+        :rtype: str
+        """
         return self._ExpirationSort
 
     @ExpirationSort.setter
@@ -6446,6 +7850,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def CertificateStatus(self):
+        """证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
+        :rtype: list of int non-negative
+        """
         return self._CertificateStatus
 
     @CertificateStatus.setter
@@ -6454,6 +7861,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Deployable(self):
+        """是否可部署，可选值：1 = 可部署，0 =  不可部署。
+        :rtype: int
+        """
         return self._Deployable
 
     @Deployable.setter
@@ -6462,6 +7872,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Upload(self):
+        """是否筛选上传托管的 1筛选，0不筛选
+        :rtype: int
+        """
         return self._Upload
 
     @Upload.setter
@@ -6470,6 +7883,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Renew(self):
+        """是否筛选可续期证书 1筛选 0不筛选
+        :rtype: int
+        """
         return self._Renew
 
     @Renew.setter
@@ -6478,6 +7894,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def FilterSource(self):
+        """筛选来源， upload：上传证书， buy：腾讯云证书， 不传默认全部
+        :rtype: str
+        """
         return self._FilterSource
 
     @FilterSource.setter
@@ -6486,6 +7905,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def IsSM(self):
+        """是否筛选国密证书。1:筛选  0:不筛选
+        :rtype: int
+        """
         return self._IsSM
 
     @IsSM.setter
@@ -6494,6 +7916,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def FilterExpiring(self):
+        """筛选证书是否即将过期，传1是筛选，0不筛选
+        :rtype: int
+        """
         return self._FilterExpiring
 
     @FilterExpiring.setter
@@ -6502,6 +7927,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Hostable(self):
+        """是否可托管，可选值：1 = 可托管，0 =  不可托管。
+        :rtype: int
+        """
         return self._Hostable
 
     @Hostable.setter
@@ -6510,6 +7938,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """筛选指定标签的证书
+        :rtype: list of Tags
+        """
         return self._Tags
 
     @Tags.setter
@@ -6518,6 +7949,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def IsPendingIssue(self):
+        """//是否筛选等待签发的证书，传1是筛选，0和null不筛选
+        :rtype: int
+        """
         return self._IsPendingIssue
 
     @IsPendingIssue.setter
@@ -6579,6 +8013,10 @@ class DescribeCertificatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6587,6 +8025,10 @@ class DescribeCertificatesResponse(AbstractModel):
 
     @property
     def Certificates(self):
+        """列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Certificates
+        """
         return self._Certificates
 
     @Certificates.setter
@@ -6595,6 +8037,9 @@ class DescribeCertificatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6633,6 +8078,9 @@ class DescribeCompaniesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6641,6 +8089,9 @@ class DescribeCompaniesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页每页限制数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6649,6 +8100,9 @@ class DescribeCompaniesRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """公司ID
+        :rtype: int
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -6690,6 +8144,9 @@ class DescribeCompaniesResponse(AbstractModel):
 
     @property
     def Companies(self):
+        """公司列表
+        :rtype: list of CompanyInfo
+        """
         return self._Companies
 
     @Companies.setter
@@ -6698,6 +8155,9 @@ class DescribeCompaniesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """公司总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6706,6 +8166,9 @@ class DescribeCompaniesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6738,6 +8201,9 @@ class DescribeDeleteCertificatesTaskResultRequest(AbstractModel):
 
     @property
     def TaskIds(self):
+        """DeleteCertificates接口返回的任务ID， 最大支持100个
+        :rtype: list of str
+        """
         return self._TaskIds
 
     @TaskIds.setter
@@ -6775,6 +8241,10 @@ class DescribeDeleteCertificatesTaskResultResponse(AbstractModel):
 
     @property
     def DeleteTaskResult(self):
+        """批量删除证书异步任务结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DeleteTaskResult
+        """
         return self._DeleteTaskResult
 
     @DeleteTaskResult.setter
@@ -6783,6 +8253,9 @@ class DescribeDeleteCertificatesTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6817,6 +8290,9 @@ class DescribeDeployedResourcesRequest(AbstractModel):
 
     @property
     def CertificateIds(self):
+        """证书ID
+        :rtype: list of str
+        """
         return self._CertificateIds
 
     @CertificateIds.setter
@@ -6825,6 +8301,9 @@ class DescribeDeployedResourcesRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """资源类型:clb,cdn,live,waf,antiddos
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -6862,6 +8341,9 @@ class DescribeDeployedResourcesResponse(AbstractModel):
 
     @property
     def DeployedResources(self):
+        """资源详情
+        :rtype: list of DeployedResources
+        """
         return self._DeployedResources
 
     @DeployedResources.setter
@@ -6870,6 +8352,9 @@ class DescribeDeployedResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6904,6 +8389,9 @@ class DescribeDownloadCertificateUrlRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -6912,6 +8400,9 @@ class DescribeDownloadCertificateUrlRequest(AbstractModel):
 
     @property
     def ServiceType(self):
+        """下载的服务类型: nginx tomcat apache iis jks other root
+        :rtype: str
+        """
         return self._ServiceType
 
     @ServiceType.setter
@@ -6952,6 +8443,9 @@ class DescribeDownloadCertificateUrlResponse(AbstractModel):
 
     @property
     def DownloadCertificateUrl(self):
+        """下载链接
+        :rtype: str
+        """
         return self._DownloadCertificateUrl
 
     @DownloadCertificateUrl.setter
@@ -6960,6 +8454,9 @@ class DescribeDownloadCertificateUrlResponse(AbstractModel):
 
     @property
     def DownloadFilename(self):
+        """下载文件的名称
+        :rtype: str
+        """
         return self._DownloadFilename
 
     @DownloadFilename.setter
@@ -6968,6 +8465,9 @@ class DescribeDownloadCertificateUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7007,6 +8507,9 @@ class DescribeHostApiGatewayInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """待部署的证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -7015,6 +8518,9 @@ class DescribeHostApiGatewayInstanceListRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """部署资源类型
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -7023,6 +8529,9 @@ class DescribeHostApiGatewayInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
+        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :rtype: int
+        """
         return self._IsCache
 
     @IsCache.setter
@@ -7031,6 +8540,9 @@ class DescribeHostApiGatewayInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -7039,6 +8551,9 @@ class DescribeHostApiGatewayInstanceListRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
+        """已部署的证书ID
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -7088,6 +8603,10 @@ class DescribeHostApiGatewayInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
+        """apiGateway实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ApiGatewayInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -7096,6 +8615,9 @@ class DescribeHostApiGatewayInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7104,6 +8626,9 @@ class DescribeHostApiGatewayInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7157,6 +8682,9 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """待部署的证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -7165,6 +8693,9 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """部署资源类型
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -7173,6 +8704,9 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
+        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :rtype: int
+        """
         return self._IsCache
 
     @IsCache.setter
@@ -7181,6 +8715,9 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -7189,6 +8726,9 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
+        """原证书ID
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -7197,6 +8737,9 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，从0开始。	
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7205,6 +8748,9 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页数量，默认10。	
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7213,6 +8759,9 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
 
     @property
     def AsyncCache(self):
+        """是否异步
+        :rtype: int
+        """
         return self._AsyncCache
 
     @AsyncCache.setter
@@ -7278,6 +8827,10 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
+        """CDN实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CdnInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -7286,6 +8839,10 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """CDN域名总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7294,6 +8851,10 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
 
     @property
     def AsyncTotalNum(self):
+        """异步刷新总数	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AsyncTotalNum
 
     @AsyncTotalNum.setter
@@ -7302,6 +8863,10 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
 
     @property
     def AsyncOffset(self):
+        """异步刷新当前执行数	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AsyncOffset
 
     @AsyncOffset.setter
@@ -7310,6 +8875,10 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
 
     @property
     def AsyncCacheTime(self):
+        """当前缓存读取时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AsyncCacheTime
 
     @AsyncCacheTime.setter
@@ -7318,6 +8887,9 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7371,6 +8943,9 @@ class DescribeHostClbInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """待部署的证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -7379,6 +8954,9 @@ class DescribeHostClbInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，从0开始。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7387,6 +8965,9 @@ class DescribeHostClbInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页数量，默认10。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7395,6 +8976,9 @@ class DescribeHostClbInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
+        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :rtype: int
+        """
         return self._IsCache
 
     @IsCache.setter
@@ -7403,6 +8987,9 @@ class DescribeHostClbInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -7411,6 +8998,9 @@ class DescribeHostClbInstanceListRequest(AbstractModel):
 
     @property
     def AsyncCache(self):
+        """是否异步缓存
+        :rtype: int
+        """
         return self._AsyncCache
 
     @AsyncCache.setter
@@ -7419,6 +9009,9 @@ class DescribeHostClbInstanceListRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
+        """原证书ID
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -7483,6 +9076,10 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7491,6 +9088,10 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
+        """CLB实例监听器列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ClbInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -7499,6 +9100,10 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
 
     @property
     def AsyncTotalNum(self):
+        """异步刷新总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AsyncTotalNum
 
     @AsyncTotalNum.setter
@@ -7507,6 +9112,10 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
 
     @property
     def AsyncOffset(self):
+        """异步刷新当前执行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AsyncOffset
 
     @AsyncOffset.setter
@@ -7515,6 +9124,10 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
 
     @property
     def AsyncCacheTime(self):
+        """当前缓存读取时间	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AsyncCacheTime
 
     @AsyncCacheTime.setter
@@ -7523,6 +9136,9 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7579,6 +9195,9 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """待部署的证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -7587,6 +9206,9 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
+        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :rtype: int
+        """
         return self._IsCache
 
     @IsCache.setter
@@ -7595,6 +9217,9 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤参数列表
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -7603,6 +9228,9 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """部署资源类型 cos
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -7611,6 +9239,9 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
+        """原证书ID	
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -7619,6 +9250,9 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，从0开始。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7627,6 +9261,9 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页数量，默认10。	
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7635,6 +9272,9 @@ class DescribeHostCosInstanceListRequest(AbstractModel):
 
     @property
     def AsyncCache(self):
+        """是否异步	
+        :rtype: int
+        """
         return self._AsyncCache
 
     @AsyncCache.setter
@@ -7700,6 +9340,10 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
+        """COS实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CosInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -7708,6 +9352,10 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7716,6 +9364,10 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
 
     @property
     def AsyncTotalNum(self):
+        """异步刷新总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AsyncTotalNum
 
     @AsyncTotalNum.setter
@@ -7724,6 +9376,10 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
 
     @property
     def AsyncOffset(self):
+        """异步刷新当前执行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AsyncOffset
 
     @AsyncOffset.setter
@@ -7732,6 +9388,10 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
 
     @property
     def AsyncCacheTime(self):
+        """当前缓存读取时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AsyncCacheTime
 
     @AsyncCacheTime.setter
@@ -7740,6 +9400,9 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7787,6 +9450,9 @@ class DescribeHostDdosInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """待部署的证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -7795,6 +9461,9 @@ class DescribeHostDdosInstanceListRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """部署资源类型
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -7803,6 +9472,9 @@ class DescribeHostDdosInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
+        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :rtype: int
+        """
         return self._IsCache
 
     @IsCache.setter
@@ -7811,6 +9483,9 @@ class DescribeHostDdosInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -7819,6 +9494,9 @@ class DescribeHostDdosInstanceListRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
+        """已部署的证书ID
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -7865,6 +9543,10 @@ class DescribeHostDdosInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
+        """DDOS实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DdosInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -7873,6 +9555,9 @@ class DescribeHostDdosInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7910,6 +9595,9 @@ class DescribeHostDeployRecordDetailRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
+        """部署记录ID
+        :rtype: str
+        """
         return self._DeployRecordId
 
     @DeployRecordId.setter
@@ -7918,6 +9606,9 @@ class DescribeHostDeployRecordDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，从0开始。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7926,6 +9617,9 @@ class DescribeHostDeployRecordDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页数量，默认10。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7981,6 +9675,10 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7989,6 +9687,10 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
 
     @property
     def DeployRecordDetailList(self):
+        """证书部署记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DeployRecordDetail
+        """
         return self._DeployRecordDetailList
 
     @DeployRecordDetailList.setter
@@ -7997,6 +9699,10 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
 
     @property
     def SuccessTotalCount(self):
+        """成功总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SuccessTotalCount
 
     @SuccessTotalCount.setter
@@ -8005,6 +9711,10 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
 
     @property
     def FailedTotalCount(self):
+        """失败总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FailedTotalCount
 
     @FailedTotalCount.setter
@@ -8013,6 +9723,10 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
 
     @property
     def RunningTotalCount(self):
+        """部署中总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RunningTotalCount
 
     @RunningTotalCount.setter
@@ -8021,6 +9735,9 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8065,6 +9782,9 @@ class DescribeHostDeployRecordRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """待部署的证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -8073,6 +9793,9 @@ class DescribeHostDeployRecordRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，从0开始。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8081,6 +9804,9 @@ class DescribeHostDeployRecordRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页数量，默认10。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8089,6 +9815,9 @@ class DescribeHostDeployRecordRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """资源类型
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -8133,6 +9862,10 @@ class DescribeHostDeployRecordResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8141,6 +9874,10 @@ class DescribeHostDeployRecordResponse(AbstractModel):
 
     @property
     def DeployRecordList(self):
+        """证书部署记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DeployRecordInfo
+        """
         return self._DeployRecordList
 
     @DeployRecordList.setter
@@ -8149,6 +9886,9 @@ class DescribeHostDeployRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8190,6 +9930,9 @@ class DescribeHostLighthouseInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """待部署的证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -8198,6 +9941,9 @@ class DescribeHostLighthouseInstanceListRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """部署资源类型 lighthouse
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -8206,6 +9952,9 @@ class DescribeHostLighthouseInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
+        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :rtype: int
+        """
         return self._IsCache
 
     @IsCache.setter
@@ -8214,6 +9963,9 @@ class DescribeHostLighthouseInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤参数列表
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -8263,6 +10015,10 @@ class DescribeHostLighthouseInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
+        """Lighthouse实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LighthouseInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -8271,6 +10027,10 @@ class DescribeHostLighthouseInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8279,6 +10039,9 @@ class DescribeHostLighthouseInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8323,6 +10086,9 @@ class DescribeHostLiveInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """待部署的证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -8331,6 +10097,9 @@ class DescribeHostLiveInstanceListRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """部署资源类型
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -8339,6 +10108,9 @@ class DescribeHostLiveInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
+        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :rtype: int
+        """
         return self._IsCache
 
     @IsCache.setter
@@ -8347,6 +10119,9 @@ class DescribeHostLiveInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -8355,6 +10130,9 @@ class DescribeHostLiveInstanceListRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
+        """已部署的证书ID
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -8401,6 +10179,10 @@ class DescribeHostLiveInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
+        """live实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LiveInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -8409,6 +10191,9 @@ class DescribeHostLiveInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8461,6 +10246,9 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """待部署的证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -8469,6 +10257,9 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """部署资源类型
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -8477,6 +10268,9 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
+        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :rtype: int
+        """
         return self._IsCache
 
     @IsCache.setter
@@ -8485,6 +10279,9 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -8493,6 +10290,9 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
+        """已部署的证书ID
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -8501,6 +10301,9 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，从0开始。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8509,6 +10312,9 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页数量，默认10。	
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8517,6 +10323,9 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def AsyncCache(self):
+        """是否异步
+        :rtype: int
+        """
         return self._AsyncCache
 
     @AsyncCache.setter
@@ -8569,6 +10378,10 @@ class DescribeHostTeoInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
+        """teo实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TeoInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -8577,6 +10390,9 @@ class DescribeHostTeoInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8585,6 +10401,9 @@ class DescribeHostTeoInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8635,6 +10454,9 @@ class DescribeHostTkeInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """待部署的证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -8643,6 +10465,9 @@ class DescribeHostTkeInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，从0开始。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8651,6 +10476,9 @@ class DescribeHostTkeInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页数量，默认10。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8659,6 +10487,9 @@ class DescribeHostTkeInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
+        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :rtype: int
+        """
         return self._IsCache
 
     @IsCache.setter
@@ -8667,6 +10498,9 @@ class DescribeHostTkeInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -8675,6 +10509,9 @@ class DescribeHostTkeInstanceListRequest(AbstractModel):
 
     @property
     def AsyncCache(self):
+        """是否异步缓存
+        :rtype: int
+        """
         return self._AsyncCache
 
     @AsyncCache.setter
@@ -8683,6 +10520,9 @@ class DescribeHostTkeInstanceListRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
+        """原证书ID
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -8747,6 +10587,10 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8755,6 +10599,10 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
+        """CLB实例监听器列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TkeInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -8763,6 +10611,10 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
 
     @property
     def AsyncTotalNum(self):
+        """异步刷新总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AsyncTotalNum
 
     @AsyncTotalNum.setter
@@ -8771,6 +10623,10 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
 
     @property
     def AsyncOffset(self):
+        """异步刷新当前执行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AsyncOffset
 
     @AsyncOffset.setter
@@ -8779,6 +10635,10 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
 
     @property
     def AsyncCacheTime(self):
+        """当前缓存读取时间	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AsyncCacheTime
 
     @AsyncCacheTime.setter
@@ -8787,6 +10647,9 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8828,6 +10691,9 @@ class DescribeHostUpdateRecordDetailRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
+        """一键更新记录ID
+        :rtype: str
+        """
         return self._DeployRecordId
 
     @DeployRecordId.setter
@@ -8836,6 +10702,9 @@ class DescribeHostUpdateRecordDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页数量，默认10。
+        :rtype: str
+        """
         return self._Limit
 
     @Limit.setter
@@ -8844,6 +10713,9 @@ class DescribeHostUpdateRecordDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，从0开始。
+        :rtype: str
+        """
         return self._Offset
 
     @Offset.setter
@@ -8899,6 +10771,10 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8907,6 +10783,10 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
 
     @property
     def RecordDetailList(self):
+        """证书部署记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UpdateRecordDetails
+        """
         return self._RecordDetailList
 
     @RecordDetailList.setter
@@ -8915,6 +10795,10 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
 
     @property
     def SuccessTotalCount(self):
+        """成功总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SuccessTotalCount
 
     @SuccessTotalCount.setter
@@ -8923,6 +10807,10 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
 
     @property
     def FailedTotalCount(self):
+        """失败总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FailedTotalCount
 
     @FailedTotalCount.setter
@@ -8931,6 +10819,10 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
 
     @property
     def RunningTotalCount(self):
+        """部署中总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RunningTotalCount
 
     @RunningTotalCount.setter
@@ -8939,6 +10831,9 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8983,6 +10878,9 @@ class DescribeHostUpdateRecordRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，从0开始。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8991,6 +10889,9 @@ class DescribeHostUpdateRecordRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页数量，默认10。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8999,6 +10900,9 @@ class DescribeHostUpdateRecordRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """新证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -9007,6 +10911,9 @@ class DescribeHostUpdateRecordRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
+        """原证书ID
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -9051,6 +10958,10 @@ class DescribeHostUpdateRecordResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9059,6 +10970,10 @@ class DescribeHostUpdateRecordResponse(AbstractModel):
 
     @property
     def DeployRecordList(self):
+        """证书部署记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UpdateRecordInfo
+        """
         return self._DeployRecordList
 
     @DeployRecordList.setter
@@ -9067,6 +10982,9 @@ class DescribeHostUpdateRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9111,6 +11029,9 @@ class DescribeHostVodInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """待部署的证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -9119,6 +11040,9 @@ class DescribeHostVodInstanceListRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """部署资源类型 vod
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -9127,6 +11051,9 @@ class DescribeHostVodInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
+        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :rtype: int
+        """
         return self._IsCache
 
     @IsCache.setter
@@ -9135,6 +11062,9 @@ class DescribeHostVodInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤参数列表
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -9143,6 +11073,9 @@ class DescribeHostVodInstanceListRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
+        """已部署的证书ID
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -9193,6 +11126,10 @@ class DescribeHostVodInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
+        """Vod实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VodInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -9201,6 +11138,10 @@ class DescribeHostVodInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9209,6 +11150,9 @@ class DescribeHostVodInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9253,6 +11197,9 @@ class DescribeHostWafInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """待部署的证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -9261,6 +11208,9 @@ class DescribeHostWafInstanceListRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """部署资源类型
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -9269,6 +11219,9 @@ class DescribeHostWafInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
+        """是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :rtype: int
+        """
         return self._IsCache
 
     @IsCache.setter
@@ -9277,6 +11230,9 @@ class DescribeHostWafInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -9285,6 +11241,9 @@ class DescribeHostWafInstanceListRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
+        """已部署的证书ID
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -9331,6 +11290,10 @@ class DescribeHostWafInstanceListResponse(AbstractModel):
 
     @property
     def InstanceList(self):
+        """WAF实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LiveInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -9339,6 +11302,9 @@ class DescribeHostWafInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9376,6 +11342,9 @@ class DescribeManagerDetailRequest(AbstractModel):
 
     @property
     def ManagerId(self):
+        """管理人ID
+        :rtype: int
+        """
         return self._ManagerId
 
     @ManagerId.setter
@@ -9386,6 +11355,9 @@ class DescribeManagerDetailRequest(AbstractModel):
     def Limit(self):
         warnings.warn("parameter `Limit` is deprecated", DeprecationWarning) 
 
+        """分页每页数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -9398,6 +11370,9 @@ class DescribeManagerDetailRequest(AbstractModel):
     def Offset(self):
         warnings.warn("parameter `Offset` is deprecated", DeprecationWarning) 
 
+        """分页偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -9494,6 +11469,9 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def Status(self):
+        """状态: audit: 审核中 ok: 审核通过 invalid: 失效 expiring: 即将过期 expired: 已过期
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -9502,6 +11480,9 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ManagerFirstName(self):
+        """管理人姓名
+        :rtype: str
+        """
         return self._ManagerFirstName
 
     @ManagerFirstName.setter
@@ -9510,6 +11491,9 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ManagerMail(self):
+        """管理人邮箱
+        :rtype: str
+        """
         return self._ManagerMail
 
     @ManagerMail.setter
@@ -9518,6 +11502,9 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ContactFirstName(self):
+        """联系人姓名
+        :rtype: str
+        """
         return self._ContactFirstName
 
     @ContactFirstName.setter
@@ -9526,6 +11513,9 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ManagerLastName(self):
+        """管理人姓名
+        :rtype: str
+        """
         return self._ManagerLastName
 
     @ManagerLastName.setter
@@ -9534,6 +11524,9 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ContactPosition(self):
+        """联系人职位
+        :rtype: str
+        """
         return self._ContactPosition
 
     @ContactPosition.setter
@@ -9542,6 +11535,9 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ManagerPosition(self):
+        """管理人职位
+        :rtype: str
+        """
         return self._ManagerPosition
 
     @ManagerPosition.setter
@@ -9550,6 +11546,10 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def VerifyTime(self):
+        """核验通过时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VerifyTime
 
     @VerifyTime.setter
@@ -9558,6 +11558,9 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -9566,6 +11569,10 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """核验过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -9574,6 +11581,9 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ContactLastName(self):
+        """联系人姓名
+        :rtype: str
+        """
         return self._ContactLastName
 
     @ContactLastName.setter
@@ -9582,6 +11592,9 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ManagerPhone(self):
+        """管理人电话
+        :rtype: str
+        """
         return self._ManagerPhone
 
     @ManagerPhone.setter
@@ -9590,6 +11603,9 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ContactPhone(self):
+        """联系人电话
+        :rtype: str
+        """
         return self._ContactPhone
 
     @ContactPhone.setter
@@ -9598,6 +11614,9 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ContactMail(self):
+        """联系人邮箱
+        :rtype: str
+        """
         return self._ContactMail
 
     @ContactMail.setter
@@ -9606,6 +11625,9 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ManagerDepartment(self):
+        """管理人所属部门
+        :rtype: str
+        """
         return self._ManagerDepartment
 
     @ManagerDepartment.setter
@@ -9614,6 +11636,9 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def CompanyInfo(self):
+        """管理人所属公司信息
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.CompanyInfo`
+        """
         return self._CompanyInfo
 
     @CompanyInfo.setter
@@ -9622,6 +11647,9 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def CompanyId(self):
+        """管理人公司ID
+        :rtype: int
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -9630,6 +11658,9 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def ManagerId(self):
+        """管理人ID
+        :rtype: int
+        """
         return self._ManagerId
 
     @ManagerId.setter
@@ -9638,6 +11669,9 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def StatusInfo(self):
+        """审核状态详细信息
+        :rtype: list of ManagerStatusInfo
+        """
         return self._StatusInfo
 
     @StatusInfo.setter
@@ -9646,6 +11680,9 @@ class DescribeManagerDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9722,6 +11759,9 @@ class DescribeManagersRequest(AbstractModel):
 
     @property
     def CompanyId(self):
+        """公司ID
+        :rtype: int
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -9730,6 +11770,9 @@ class DescribeManagersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -9738,6 +11781,9 @@ class DescribeManagersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页每页数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -9746,6 +11792,9 @@ class DescribeManagersRequest(AbstractModel):
 
     @property
     def ManagerName(self):
+        """管理人姓名（将废弃），请使用SearchKey
+        :rtype: str
+        """
         return self._ManagerName
 
     @ManagerName.setter
@@ -9754,6 +11803,9 @@ class DescribeManagersRequest(AbstractModel):
 
     @property
     def ManagerMail(self):
+        """模糊查询管理人邮箱（将废弃），请使用SearchKey
+        :rtype: str
+        """
         return self._ManagerMail
 
     @ManagerMail.setter
@@ -9762,6 +11814,16 @@ class DescribeManagersRequest(AbstractModel):
 
     @property
     def Status(self):
+        """根据管理人状态进行筛选，取值有
+'none' 未提交审核
+'audit', 亚信审核中
+'CAaudit' CA审核中
+'ok' 已审核
+'invalid'  审核失败
+'expiring'  即将过期
+'expired' 已过期
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -9770,6 +11832,9 @@ class DescribeManagersRequest(AbstractModel):
 
     @property
     def SearchKey(self):
+        """管理人姓/管理人名/邮箱/部门精准匹配
+        :rtype: str
+        """
         return self._SearchKey
 
     @SearchKey.setter
@@ -9815,6 +11880,9 @@ class DescribeManagersResponse(AbstractModel):
 
     @property
     def Managers(self):
+        """公司管理人列表
+        :rtype: list of ManagerInfo
+        """
         return self._Managers
 
     @Managers.setter
@@ -9823,6 +11891,9 @@ class DescribeManagersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """公司管理人总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9831,6 +11902,9 @@ class DescribeManagersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9881,6 +11955,9 @@ class DescribePackagesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -9889,6 +11966,9 @@ class DescribePackagesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目，默认20。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -9897,6 +11977,9 @@ class DescribePackagesRequest(AbstractModel):
 
     @property
     def Status(self):
+        """按状态筛选。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -9905,6 +11988,9 @@ class DescribePackagesRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """按过期时间升序或降序排列。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -9913,6 +11999,9 @@ class DescribePackagesRequest(AbstractModel):
 
     @property
     def PackageId(self):
+        """按权益包ID搜索。
+        :rtype: str
+        """
         return self._PackageId
 
     @PackageId.setter
@@ -9921,6 +12010,9 @@ class DescribePackagesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """按权益包类型搜索。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -9929,6 +12021,9 @@ class DescribePackagesRequest(AbstractModel):
 
     @property
     def Pid(self):
+        """子产品编号
+        :rtype: int
+        """
         return self._Pid
 
     @Pid.setter
@@ -9977,6 +12072,9 @@ class DescribePackagesResponse(AbstractModel):
 
     @property
     def Packages(self):
+        """权益包列表。
+        :rtype: list of PackageInfo
+        """
         return self._Packages
 
     @Packages.setter
@@ -9985,6 +12083,9 @@ class DescribePackagesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总条数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9993,6 +12094,9 @@ class DescribePackagesResponse(AbstractModel):
 
     @property
     def TotalBalance(self):
+        """权益点总余额。
+        :rtype: int
+        """
         return self._TotalBalance
 
     @TotalBalance.setter
@@ -10001,6 +12105,9 @@ class DescribePackagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10058,6 +12165,9 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def Domain(self):
+        """域名。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -10066,6 +12176,10 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def VerifyType(self):
+        """验证类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VerifyType
 
     @VerifyType.setter
@@ -10074,6 +12188,9 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def LocalCheck(self):
+        """本地检查结果。
+        :rtype: int
+        """
         return self._LocalCheck
 
     @LocalCheck.setter
@@ -10082,6 +12199,9 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def CaCheck(self):
+        """CA检查结果。
+        :rtype: int
+        """
         return self._CaCheck
 
     @CaCheck.setter
@@ -10090,6 +12210,10 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def LocalCheckFailReason(self):
+        """检查失败原因。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LocalCheckFailReason
 
     @LocalCheckFailReason.setter
@@ -10098,6 +12222,10 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def CheckValue(self):
+        """检查到的值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._CheckValue
 
     @CheckValue.setter
@@ -10106,6 +12234,9 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def Frequently(self):
+        """是否频繁请求。
+        :rtype: bool
+        """
         return self._Frequently
 
     @Frequently.setter
@@ -10114,6 +12245,9 @@ class DomainValidationResult(AbstractModel):
 
     @property
     def Issued(self):
+        """是否已经签发。
+        :rtype: bool
+        """
         return self._Issued
 
     @Issued.setter
@@ -10154,6 +12288,9 @@ class DownloadCertificateRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书 ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -10195,6 +12332,10 @@ class DownloadCertificateResponse(AbstractModel):
 
     @property
     def Content(self):
+        """ZIP base64 编码内容，base64 解码后可保存为 ZIP 文件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -10203,6 +12344,10 @@ class DownloadCertificateResponse(AbstractModel):
 
     @property
     def ContentType(self):
+        """MIME 类型：application/zip = ZIP 压缩文件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ContentType
 
     @ContentType.setter
@@ -10211,6 +12356,9 @@ class DownloadCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10259,6 +12407,10 @@ class DvAuthDetail(AbstractModel):
 
     @property
     def DvAuthKey(self):
+        """DV 认证密钥。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DvAuthKey
 
     @DvAuthKey.setter
@@ -10267,6 +12419,10 @@ class DvAuthDetail(AbstractModel):
 
     @property
     def DvAuthValue(self):
+        """DV 认证值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DvAuthValue
 
     @DvAuthValue.setter
@@ -10275,6 +12431,10 @@ class DvAuthDetail(AbstractModel):
 
     @property
     def DvAuthDomain(self):
+        """DV 认证值域名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DvAuthDomain
 
     @DvAuthDomain.setter
@@ -10283,6 +12443,10 @@ class DvAuthDetail(AbstractModel):
 
     @property
     def DvAuthPath(self):
+        """DV 认证值路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DvAuthPath
 
     @DvAuthPath.setter
@@ -10291,6 +12455,10 @@ class DvAuthDetail(AbstractModel):
 
     @property
     def DvAuthKeySubDomain(self):
+        """DV 认证子域名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DvAuthKeySubDomain
 
     @DvAuthKeySubDomain.setter
@@ -10299,6 +12467,10 @@ class DvAuthDetail(AbstractModel):
 
     @property
     def DvAuths(self):
+        """DV 认证信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DvAuths
+        """
         return self._DvAuths
 
     @DvAuths.setter
@@ -10363,6 +12535,10 @@ class DvAuths(AbstractModel):
 
     @property
     def DvAuthKey(self):
+        """DV 认证密钥。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DvAuthKey
 
     @DvAuthKey.setter
@@ -10371,6 +12547,10 @@ class DvAuths(AbstractModel):
 
     @property
     def DvAuthValue(self):
+        """DV 认证值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DvAuthValue
 
     @DvAuthValue.setter
@@ -10379,6 +12559,10 @@ class DvAuths(AbstractModel):
 
     @property
     def DvAuthDomain(self):
+        """DV 认证值域名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DvAuthDomain
 
     @DvAuthDomain.setter
@@ -10387,6 +12571,10 @@ class DvAuths(AbstractModel):
 
     @property
     def DvAuthPath(self):
+        """DV 认证值路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DvAuthPath
 
     @DvAuthPath.setter
@@ -10395,6 +12583,10 @@ class DvAuths(AbstractModel):
 
     @property
     def DvAuthSubDomain(self):
+        """DV 认证子域名，
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DvAuthSubDomain
 
     @DvAuthSubDomain.setter
@@ -10403,6 +12595,10 @@ class DvAuths(AbstractModel):
 
     @property
     def DvAuthVerifyType(self):
+        """DV 认证类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DvAuthVerifyType
 
     @DvAuthVerifyType.setter
@@ -10446,6 +12642,10 @@ class Error(AbstractModel):
 
     @property
     def Code(self):
+        """异常错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -10454,6 +12654,10 @@ class Error(AbstractModel):
 
     @property
     def Message(self):
+        """异常错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -10491,6 +12695,9 @@ class Filter(AbstractModel):
 
     @property
     def FilterKey(self):
+        """过滤参数key
+        :rtype: str
+        """
         return self._FilterKey
 
     @FilterKey.setter
@@ -10499,6 +12706,9 @@ class Filter(AbstractModel):
 
     @property
     def FilterValue(self):
+        """过滤参数值
+        :rtype: str
+        """
         return self._FilterValue
 
     @FilterValue.setter
@@ -10550,6 +12760,10 @@ class GatewayCertificate(AbstractModel):
 
     @property
     def Id(self):
+        """网关证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -10558,6 +12772,10 @@ class GatewayCertificate(AbstractModel):
 
     @property
     def Name(self):
+        """网关证书名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10566,6 +12784,10 @@ class GatewayCertificate(AbstractModel):
 
     @property
     def BindDomains(self):
+        """绑定域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._BindDomains
 
     @BindDomains.setter
@@ -10574,6 +12796,10 @@ class GatewayCertificate(AbstractModel):
 
     @property
     def CertSource(self):
+        """证书来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertSource
 
     @CertSource.setter
@@ -10582,6 +12808,10 @@ class GatewayCertificate(AbstractModel):
 
     @property
     def CertId(self):
+        """当前绑定的SSL证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -10624,6 +12854,10 @@ class HostingConfig(AbstractModel):
 
     @property
     def ReplaceTime(self):
+        """托管资源替换时间， 默认为证书过期前30天存在续费证书则替换
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReplaceTime
 
     @ReplaceTime.setter
@@ -10632,6 +12866,10 @@ class HostingConfig(AbstractModel):
 
     @property
     def MessageTypes(self):
+        """托管发送消息类型：0，托管开始前消息提醒（没有续费证书也会收到该提示消息）； 1， 托管开始消息提醒（存在续费证书才会收到消息提醒）； 2， 托管资源替换失败消息提醒； 3 托管资源替换成功消息提醒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._MessageTypes
 
     @MessageTypes.setter
@@ -10675,6 +12913,9 @@ class LighthouseInstanceDetail(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -10683,6 +12924,9 @@ class LighthouseInstanceDetail(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -10691,6 +12935,9 @@ class LighthouseInstanceDetail(AbstractModel):
 
     @property
     def IP(self):
+        """IP地址
+        :rtype: list of str
+        """
         return self._IP
 
     @IP.setter
@@ -10699,6 +12946,9 @@ class LighthouseInstanceDetail(AbstractModel):
 
     @property
     def Domain(self):
+        """可选择域名
+        :rtype: list of str
+        """
         return self._Domain
 
     @Domain.setter
@@ -10744,6 +12994,9 @@ class LiveInstanceDetail(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -10752,6 +13005,10 @@ class LiveInstanceDetail(AbstractModel):
 
     @property
     def CertId(self):
+        """已绑定的证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -10760,6 +13017,11 @@ class LiveInstanceDetail(AbstractModel):
 
     @property
     def Status(self):
+        """-1：域名未关联证书。
+1： 域名https已开启。
+0： 域名https已关闭。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -10803,6 +13065,9 @@ class LiveInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
+        """该地域下live实例总数	
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10811,6 +13076,10 @@ class LiveInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
+        """live实例详情	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LiveInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -10819,6 +13088,10 @@ class LiveInstanceList(AbstractModel):
 
     @property
     def Error(self):
+        """是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Error
 
     @Error.setter
@@ -10910,6 +13183,9 @@ class ManagerInfo(AbstractModel):
 
     @property
     def Status(self):
+        """状态: audit: 审核中 ok: 审核通过 invalid: 失效 expiring: 即将过期 expired: 已过期
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -10918,6 +13194,9 @@ class ManagerInfo(AbstractModel):
 
     @property
     def ManagerFirstName(self):
+        """管理人姓名
+        :rtype: str
+        """
         return self._ManagerFirstName
 
     @ManagerFirstName.setter
@@ -10926,6 +13205,9 @@ class ManagerInfo(AbstractModel):
 
     @property
     def ManagerLastName(self):
+        """管理人姓名
+        :rtype: str
+        """
         return self._ManagerLastName
 
     @ManagerLastName.setter
@@ -10934,6 +13216,9 @@ class ManagerInfo(AbstractModel):
 
     @property
     def ManagerPosition(self):
+        """管理人职位
+        :rtype: str
+        """
         return self._ManagerPosition
 
     @ManagerPosition.setter
@@ -10942,6 +13227,9 @@ class ManagerInfo(AbstractModel):
 
     @property
     def ManagerPhone(self):
+        """管理人电话
+        :rtype: str
+        """
         return self._ManagerPhone
 
     @ManagerPhone.setter
@@ -10950,6 +13238,9 @@ class ManagerInfo(AbstractModel):
 
     @property
     def ManagerMail(self):
+        """管理人邮箱
+        :rtype: str
+        """
         return self._ManagerMail
 
     @ManagerMail.setter
@@ -10958,6 +13249,9 @@ class ManagerInfo(AbstractModel):
 
     @property
     def ManagerDepartment(self):
+        """管理人所属部门
+        :rtype: str
+        """
         return self._ManagerDepartment
 
     @ManagerDepartment.setter
@@ -10966,6 +13260,10 @@ class ManagerInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -10974,6 +13272,9 @@ class ManagerInfo(AbstractModel):
 
     @property
     def DomainCount(self):
+        """管理人域名数量
+        :rtype: int
+        """
         return self._DomainCount
 
     @DomainCount.setter
@@ -10982,6 +13283,9 @@ class ManagerInfo(AbstractModel):
 
     @property
     def CertCount(self):
+        """管理人证书数量
+        :rtype: int
+        """
         return self._CertCount
 
     @CertCount.setter
@@ -10990,6 +13294,9 @@ class ManagerInfo(AbstractModel):
 
     @property
     def ManagerId(self):
+        """管理人ID
+        :rtype: int
+        """
         return self._ManagerId
 
     @ManagerId.setter
@@ -10998,6 +13305,10 @@ class ManagerInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """审核有效到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -11006,6 +13317,10 @@ class ManagerInfo(AbstractModel):
 
     @property
     def SubmitAuditTime(self):
+        """最近一次提交审核时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubmitAuditTime
 
     @SubmitAuditTime.setter
@@ -11014,6 +13329,10 @@ class ManagerInfo(AbstractModel):
 
     @property
     def VerifyTime(self):
+        """审核通过时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VerifyTime
 
     @VerifyTime.setter
@@ -11022,6 +13341,10 @@ class ManagerInfo(AbstractModel):
 
     @property
     def StatusInfo(self):
+        """具体审核状态信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ManagerStatusInfo
+        """
         return self._StatusInfo
 
     @StatusInfo.setter
@@ -11030,6 +13353,10 @@ class ManagerInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tags
+        """
         return self._Tags
 
     @Tags.setter
@@ -11101,6 +13428,10 @@ class ManagerStatusInfo(AbstractModel):
 
     @property
     def Type(self):
+        """审核类型，枚举值：ov,ev,cs,ev_cs
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -11109,6 +13440,10 @@ class ManagerStatusInfo(AbstractModel):
 
     @property
     def Status(self):
+        """审核状态，枚举值：pending,completed,invalid,submitted,expiring,expired
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -11117,6 +13452,10 @@ class ManagerStatusInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -11125,6 +13464,10 @@ class ManagerStatusInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -11164,6 +13507,9 @@ class ModifyCertificateAliasRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书 ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -11172,6 +13518,9 @@ class ModifyCertificateAliasRequest(AbstractModel):
 
     @property
     def Alias(self):
+        """备注名称。
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -11209,6 +13558,9 @@ class ModifyCertificateAliasResponse(AbstractModel):
 
     @property
     def CertificateId(self):
+        """修改成功的证书 ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -11217,6 +13569,9 @@ class ModifyCertificateAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11246,6 +13601,9 @@ class ModifyCertificateProjectRequest(AbstractModel):
 
     @property
     def CertificateIdList(self):
+        """需要修改所属项目的证书 ID 集合，最多100个证书。
+        :rtype: list of str
+        """
         return self._CertificateIdList
 
     @CertificateIdList.setter
@@ -11254,6 +13612,9 @@ class ModifyCertificateProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目 ID。
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -11296,6 +13657,10 @@ class ModifyCertificateProjectResponse(AbstractModel):
 
     @property
     def SuccessCertificates(self):
+        """修改所属项目成功的证书集合。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SuccessCertificates
 
     @SuccessCertificates.setter
@@ -11304,6 +13669,10 @@ class ModifyCertificateProjectResponse(AbstractModel):
 
     @property
     def FailCertificates(self):
+        """修改所属项目失败的证书集合。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._FailCertificates
 
     @FailCertificates.setter
@@ -11312,6 +13681,9 @@ class ModifyCertificateProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11339,6 +13711,9 @@ class ModifyCertificateResubmitRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -11375,6 +13750,9 @@ class ModifyCertificateResubmitResponse(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -11383,6 +13761,9 @@ class ModifyCertificateResubmitResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11412,6 +13793,9 @@ class ModifyCertificatesExpiringNotificationSwitchRequest(AbstractModel):
 
     @property
     def CertificateIds(self):
+        """证书ID列表。最多50个
+        :rtype: list of str
+        """
         return self._CertificateIds
 
     @CertificateIds.setter
@@ -11420,6 +13804,9 @@ class ModifyCertificatesExpiringNotificationSwitchRequest(AbstractModel):
 
     @property
     def SwitchStatus(self):
+        """0:不忽略通知。1:忽略通知
+        :rtype: int
+        """
         return self._SwitchStatus
 
     @SwitchStatus.setter
@@ -11457,6 +13844,9 @@ class ModifyCertificatesExpiringNotificationSwitchResponse(AbstractModel):
 
     @property
     def CertificateIds(self):
+        """证书ID列表
+        :rtype: list of str
+        """
         return self._CertificateIds
 
     @CertificateIds.setter
@@ -11465,6 +13855,9 @@ class ModifyCertificatesExpiringNotificationSwitchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11510,6 +13903,9 @@ class OperationLog(AbstractModel):
 
     @property
     def Action(self):
+        """操作证书动作。
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -11518,6 +13914,9 @@ class OperationLog(AbstractModel):
 
     @property
     def CreatedOn(self):
+        """操作时间。
+        :rtype: str
+        """
         return self._CreatedOn
 
     @CreatedOn.setter
@@ -11526,6 +13925,10 @@ class OperationLog(AbstractModel):
 
     @property
     def Uin(self):
+        """主账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -11534,6 +13937,10 @@ class OperationLog(AbstractModel):
 
     @property
     def SubAccountUin(self):
+        """子账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubAccountUin
 
     @SubAccountUin.setter
@@ -11542,6 +13949,10 @@ class OperationLog(AbstractModel):
 
     @property
     def CertId(self):
+        """证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -11550,6 +13961,10 @@ class OperationLog(AbstractModel):
 
     @property
     def Type(self):
+        """操作
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -11620,6 +14035,9 @@ class PackageInfo(AbstractModel):
 
     @property
     def PackageId(self):
+        """权益包ID。
+        :rtype: str
+        """
         return self._PackageId
 
     @PackageId.setter
@@ -11628,6 +14046,9 @@ class PackageInfo(AbstractModel):
 
     @property
     def Total(self):
+        """权益包内权益点总量。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -11636,6 +14057,9 @@ class PackageInfo(AbstractModel):
 
     @property
     def Balance(self):
+        """权益包内权益点余量。
+        :rtype: int
+        """
         return self._Balance
 
     @Balance.setter
@@ -11644,6 +14068,9 @@ class PackageInfo(AbstractModel):
 
     @property
     def Type(self):
+        """权益包名称。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -11652,6 +14079,10 @@ class PackageInfo(AbstractModel):
 
     @property
     def SourceUin(self):
+        """权益点是转入时，来源信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SourceUin
 
     @SourceUin.setter
@@ -11660,6 +14091,9 @@ class PackageInfo(AbstractModel):
 
     @property
     def Status(self):
+        """权益点状态。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -11668,6 +14102,9 @@ class PackageInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """过期时间。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -11676,6 +14113,9 @@ class PackageInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -11684,6 +14124,9 @@ class PackageInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """生成时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -11692,6 +14135,9 @@ class PackageInfo(AbstractModel):
 
     @property
     def SourceType(self):
+        """来源类型。
+        :rtype: str
+        """
         return self._SourceType
 
     @SourceType.setter
@@ -11700,6 +14146,10 @@ class PackageInfo(AbstractModel):
 
     @property
     def TransferOutInfos(self):
+        """转移信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PackageTransferOutInfo
+        """
         return self._TransferOutInfos
 
     @TransferOutInfos.setter
@@ -11778,6 +14228,9 @@ class PackageTransferOutInfo(AbstractModel):
 
     @property
     def PackageId(self):
+        """权益包ID。
+        :rtype: str
+        """
         return self._PackageId
 
     @PackageId.setter
@@ -11786,6 +14239,9 @@ class PackageTransferOutInfo(AbstractModel):
 
     @property
     def TransferCode(self):
+        """转移码。
+        :rtype: str
+        """
         return self._TransferCode
 
     @TransferCode.setter
@@ -11794,6 +14250,9 @@ class PackageTransferOutInfo(AbstractModel):
 
     @property
     def TransferCount(self):
+        """本次转移点数。
+        :rtype: int
+        """
         return self._TransferCount
 
     @TransferCount.setter
@@ -11802,6 +14261,10 @@ class PackageTransferOutInfo(AbstractModel):
 
     @property
     def ReceivePackageId(self):
+        """转入的PackageID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReceivePackageId
 
     @ReceivePackageId.setter
@@ -11810,6 +14273,9 @@ class PackageTransferOutInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """本次转移过期时间。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -11818,6 +14284,9 @@ class PackageTransferOutInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """本次转移生成时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -11826,6 +14295,9 @@ class PackageTransferOutInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """本次转移更新时间。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -11834,6 +14306,9 @@ class PackageTransferOutInfo(AbstractModel):
 
     @property
     def TransferStatus(self):
+        """转移状态。
+        :rtype: str
+        """
         return self._TransferStatus
 
     @TransferStatus.setter
@@ -11842,6 +14317,10 @@ class PackageTransferOutInfo(AbstractModel):
 
     @property
     def ReceiverUin(self):
+        """接收者uin。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReceiverUin
 
     @ReceiverUin.setter
@@ -11850,6 +14329,10 @@ class PackageTransferOutInfo(AbstractModel):
 
     @property
     def ReceiveTime(self):
+        """接收时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReceiveTime
 
     @ReceiveTime.setter
@@ -11901,6 +14384,10 @@ class PreAuditInfo(AbstractModel):
 
     @property
     def TotalPeriod(self):
+        """证书总年限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalPeriod
 
     @TotalPeriod.setter
@@ -11909,6 +14396,10 @@ class PreAuditInfo(AbstractModel):
 
     @property
     def NowPeriod(self):
+        """证书当前年限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._NowPeriod
 
     @NowPeriod.setter
@@ -11917,6 +14408,10 @@ class PreAuditInfo(AbstractModel):
 
     @property
     def ManagerId(self):
+        """证书预审核管理人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ManagerId
 
     @ManagerId.setter
@@ -11973,6 +14468,10 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectName(self):
+        """项目名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProjectName
 
     @ProjectName.setter
@@ -11981,6 +14480,10 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectCreatorUin(self):
+        """项目创建用户 UIN。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ProjectCreatorUin
 
     @ProjectCreatorUin.setter
@@ -11989,6 +14492,10 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectCreateTime(self):
+        """项目创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProjectCreateTime
 
     @ProjectCreateTime.setter
@@ -11997,6 +14504,10 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectResume(self):
+        """项目信息简述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProjectResume
 
     @ProjectResume.setter
@@ -12005,6 +14516,10 @@ class ProjectInfo(AbstractModel):
 
     @property
     def OwnerUin(self):
+        """用户 UIN。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -12013,6 +14528,10 @@ class ProjectInfo(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -12073,6 +14592,9 @@ class ReplaceCertificateRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书 ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -12081,6 +14603,9 @@ class ReplaceCertificateRequest(AbstractModel):
 
     @property
     def ValidType(self):
+        """验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
+        :rtype: str
+        """
         return self._ValidType
 
     @ValidType.setter
@@ -12089,6 +14614,9 @@ class ReplaceCertificateRequest(AbstractModel):
 
     @property
     def CsrType(self):
+        """类型，默认 Original。可选项：Original = 原证书 CSR，Upload = 手动上传，Online = 在线生成。
+        :rtype: str
+        """
         return self._CsrType
 
     @CsrType.setter
@@ -12097,6 +14625,9 @@ class ReplaceCertificateRequest(AbstractModel):
 
     @property
     def CsrContent(self):
+        """CSR 内容。
+        :rtype: str
+        """
         return self._CsrContent
 
     @CsrContent.setter
@@ -12105,6 +14636,9 @@ class ReplaceCertificateRequest(AbstractModel):
 
     @property
     def CsrkeyPassword(self):
+        """KEY 密码。
+        :rtype: str
+        """
         return self._CsrkeyPassword
 
     @CsrkeyPassword.setter
@@ -12113,6 +14647,9 @@ class ReplaceCertificateRequest(AbstractModel):
 
     @property
     def Reason(self):
+        """重颁发原因。
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -12121,6 +14658,10 @@ class ReplaceCertificateRequest(AbstractModel):
 
     @property
     def CertCSREncryptAlgo(self):
+        """CSR加密方式，可选：RSA、ECC、SM2
+（CsrType为Online才可选）， 默认为RSA
+        :rtype: str
+        """
         return self._CertCSREncryptAlgo
 
     @CertCSREncryptAlgo.setter
@@ -12129,6 +14670,9 @@ class ReplaceCertificateRequest(AbstractModel):
 
     @property
     def CertCSRKeyParameter(self):
+        """CSR加密参数，CsrEncryptAlgo为RSA时， 可选2048、4096等默认为2048；CsrEncryptAlgo为ECC时，可选prime256v1，secp384r1等，默认为prime256v1; 
+        :rtype: str
+        """
         return self._CertCSRKeyParameter
 
     @CertCSRKeyParameter.setter
@@ -12172,6 +14716,9 @@ class ReplaceCertificateResponse(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书 ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -12180,6 +14727,9 @@ class ReplaceCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12209,6 +14759,9 @@ class ResourceTypeRegions(AbstractModel):
 
     @property
     def ResourceType(self):
+        """云资源类型
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -12217,6 +14770,9 @@ class ResourceTypeRegions(AbstractModel):
 
     @property
     def Regions(self):
+        """地域列表
+        :rtype: list of str
+        """
         return self._Regions
 
     @Regions.setter
@@ -12254,6 +14810,9 @@ class RevokeCertificateRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书 ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -12262,6 +14821,9 @@ class RevokeCertificateRequest(AbstractModel):
 
     @property
     def Reason(self):
+        """吊销证书原因。
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -12300,6 +14862,10 @@ class RevokeCertificateResponse(AbstractModel):
 
     @property
     def RevokeDomainValidateAuths(self):
+        """吊销证书域名验证信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RevokeDomainValidateAuths
+        """
         return self._RevokeDomainValidateAuths
 
     @RevokeDomainValidateAuths.setter
@@ -12308,6 +14874,9 @@ class RevokeCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12352,6 +14921,10 @@ class RevokeDomainValidateAuths(AbstractModel):
 
     @property
     def DomainValidateAuthPath(self):
+        """DV 认证值路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DomainValidateAuthPath
 
     @DomainValidateAuthPath.setter
@@ -12360,6 +14933,10 @@ class RevokeDomainValidateAuths(AbstractModel):
 
     @property
     def DomainValidateAuthKey(self):
+        """DV 认证 KEY。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DomainValidateAuthKey
 
     @DomainValidateAuthKey.setter
@@ -12368,6 +14945,10 @@ class RevokeDomainValidateAuths(AbstractModel):
 
     @property
     def DomainValidateAuthValue(self):
+        """DV 认证值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DomainValidateAuthValue
 
     @DomainValidateAuthValue.setter
@@ -12376,6 +14957,10 @@ class RevokeDomainValidateAuths(AbstractModel):
 
     @property
     def DomainValidateAuthDomain(self):
+        """DV 认证域名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DomainValidateAuthDomain
 
     @DomainValidateAuthDomain.setter
@@ -12421,6 +15006,10 @@ class RootCertificates(AbstractModel):
 
     @property
     def Sign(self):
+        """国密签名证书
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Sign
 
     @Sign.setter
@@ -12429,6 +15018,10 @@ class RootCertificates(AbstractModel):
 
     @property
     def Encrypt(self):
+        """国密加密证书
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Encrypt
 
     @Encrypt.setter
@@ -12437,6 +15030,10 @@ class RootCertificates(AbstractModel):
 
     @property
     def Standard(self):
+        """标准证书
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Standard
 
     @Standard.setter
@@ -12472,6 +15069,9 @@ class SubmitAuditManagerRequest(AbstractModel):
 
     @property
     def ManagerId(self):
+        """管理人ID
+        :rtype: int
+        """
         return self._ManagerId
 
     @ManagerId.setter
@@ -12508,6 +15108,9 @@ class SubmitAuditManagerResponse(AbstractModel):
 
     @property
     def ManagerId(self):
+        """管理人ID
+        :rtype: int
+        """
         return self._ManagerId
 
     @ManagerId.setter
@@ -12516,6 +15119,9 @@ class SubmitAuditManagerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12617,6 +15223,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书 ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -12625,6 +15234,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def CsrType(self):
+        """CSR 生成方式：online = 在线生成, parse = 手动上传。
+        :rtype: str
+        """
         return self._CsrType
 
     @CsrType.setter
@@ -12633,6 +15245,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def CsrContent(self):
+        """上传的 CSR 内容。
+        :rtype: str
+        """
         return self._CsrContent
 
     @CsrContent.setter
@@ -12641,6 +15256,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def CertificateDomain(self):
+        """绑定证书的域名。
+        :rtype: str
+        """
         return self._CertificateDomain
 
     @CertificateDomain.setter
@@ -12649,6 +15267,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def DomainList(self):
+        """上传的域名数组（多域名证书可以上传）。
+        :rtype: list of str
+        """
         return self._DomainList
 
     @DomainList.setter
@@ -12657,6 +15278,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def KeyPassword(self):
+        """私钥密码（非必填）。
+        :rtype: str
+        """
         return self._KeyPassword
 
     @KeyPassword.setter
@@ -12665,6 +15289,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def OrganizationName(self):
+        """公司名称。
+        :rtype: str
+        """
         return self._OrganizationName
 
     @OrganizationName.setter
@@ -12673,6 +15300,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def OrganizationDivision(self):
+        """部门名称。
+        :rtype: str
+        """
         return self._OrganizationDivision
 
     @OrganizationDivision.setter
@@ -12681,6 +15311,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def OrganizationAddress(self):
+        """公司详细地址。
+        :rtype: str
+        """
         return self._OrganizationAddress
 
     @OrganizationAddress.setter
@@ -12689,6 +15322,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def OrganizationCountry(self):
+        """国家名称，如中国：CN 。
+        :rtype: str
+        """
         return self._OrganizationCountry
 
     @OrganizationCountry.setter
@@ -12697,6 +15333,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def OrganizationCity(self):
+        """公司所在城市。
+        :rtype: str
+        """
         return self._OrganizationCity
 
     @OrganizationCity.setter
@@ -12705,6 +15344,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def OrganizationRegion(self):
+        """公司所在省份。
+        :rtype: str
+        """
         return self._OrganizationRegion
 
     @OrganizationRegion.setter
@@ -12713,6 +15355,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def PostalCode(self):
+        """公司邮编。
+        :rtype: str
+        """
         return self._PostalCode
 
     @PostalCode.setter
@@ -12721,6 +15366,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def PhoneAreaCode(self):
+        """公司座机区号。
+        :rtype: str
+        """
         return self._PhoneAreaCode
 
     @PhoneAreaCode.setter
@@ -12729,6 +15377,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """公司座机号码。
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -12737,6 +15388,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def VerifyType(self):
+        """证书验证方式。验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
+        :rtype: str
+        """
         return self._VerifyType
 
     @VerifyType.setter
@@ -12745,6 +15399,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def AdminFirstName(self):
+        """管理人名。
+        :rtype: str
+        """
         return self._AdminFirstName
 
     @AdminFirstName.setter
@@ -12753,6 +15410,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def AdminLastName(self):
+        """管理人姓。
+        :rtype: str
+        """
         return self._AdminLastName
 
     @AdminLastName.setter
@@ -12761,6 +15421,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def AdminPhoneNum(self):
+        """管理人手机号码。
+        :rtype: str
+        """
         return self._AdminPhoneNum
 
     @AdminPhoneNum.setter
@@ -12769,6 +15432,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def AdminEmail(self):
+        """管理人邮箱地址。
+        :rtype: str
+        """
         return self._AdminEmail
 
     @AdminEmail.setter
@@ -12777,6 +15443,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def AdminPosition(self):
+        """管理人职位。
+        :rtype: str
+        """
         return self._AdminPosition
 
     @AdminPosition.setter
@@ -12785,6 +15454,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def ContactFirstName(self):
+        """联系人名。
+        :rtype: str
+        """
         return self._ContactFirstName
 
     @ContactFirstName.setter
@@ -12793,6 +15465,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def ContactLastName(self):
+        """联系人姓。
+        :rtype: str
+        """
         return self._ContactLastName
 
     @ContactLastName.setter
@@ -12801,6 +15476,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def ContactEmail(self):
+        """联系人邮箱地址。
+        :rtype: str
+        """
         return self._ContactEmail
 
     @ContactEmail.setter
@@ -12809,6 +15487,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def ContactNumber(self):
+        """联系人手机号码。
+        :rtype: str
+        """
         return self._ContactNumber
 
     @ContactNumber.setter
@@ -12817,6 +15498,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def ContactPosition(self):
+        """联系人职位。
+        :rtype: str
+        """
         return self._ContactPosition
 
     @ContactPosition.setter
@@ -12878,6 +15562,9 @@ class SubmitCertificateInformationResponse(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书 ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -12886,6 +15573,9 @@ class SubmitCertificateInformationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13009,6 +15699,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def CsrType(self):
+        """CSR 类型，（online = 在线生成CSR，parse = 粘贴 CSR）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CsrType
 
     @CsrType.setter
@@ -13017,6 +15711,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def CsrContent(self):
+        """CSR 内容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CsrContent
 
     @CsrContent.setter
@@ -13025,6 +15723,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def CertificateDomain(self):
+        """域名信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertificateDomain
 
     @CertificateDomain.setter
@@ -13033,6 +15735,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def DomainList(self):
+        """DNS 信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._DomainList
 
     @DomainList.setter
@@ -13041,6 +15747,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def KeyPassword(self):
+        """私钥密码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._KeyPassword
 
     @KeyPassword.setter
@@ -13049,6 +15759,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def OrganizationName(self):
+        """企业或单位名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrganizationName
 
     @OrganizationName.setter
@@ -13057,6 +15771,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def OrganizationDivision(self):
+        """部门。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrganizationDivision
 
     @OrganizationDivision.setter
@@ -13065,6 +15783,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def OrganizationAddress(self):
+        """地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrganizationAddress
 
     @OrganizationAddress.setter
@@ -13073,6 +15795,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def OrganizationCountry(self):
+        """国家。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrganizationCountry
 
     @OrganizationCountry.setter
@@ -13081,6 +15807,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def OrganizationCity(self):
+        """市。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrganizationCity
 
     @OrganizationCity.setter
@@ -13089,6 +15819,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def OrganizationRegion(self):
+        """省。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrganizationRegion
 
     @OrganizationRegion.setter
@@ -13097,6 +15831,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def PostalCode(self):
+        """邮政编码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PostalCode
 
     @PostalCode.setter
@@ -13105,6 +15843,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def PhoneAreaCode(self):
+        """座机区号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PhoneAreaCode
 
     @PhoneAreaCode.setter
@@ -13113,6 +15855,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """座机号码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -13121,6 +15867,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def AdminFirstName(self):
+        """管理员名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AdminFirstName
 
     @AdminFirstName.setter
@@ -13129,6 +15879,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def AdminLastName(self):
+        """管理员姓。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AdminLastName
 
     @AdminLastName.setter
@@ -13137,6 +15891,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def AdminPhoneNum(self):
+        """管理员电话号码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AdminPhoneNum
 
     @AdminPhoneNum.setter
@@ -13145,6 +15903,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def AdminEmail(self):
+        """管理员邮箱地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AdminEmail
 
     @AdminEmail.setter
@@ -13153,6 +15915,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def AdminPosition(self):
+        """管理员职位。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AdminPosition
 
     @AdminPosition.setter
@@ -13161,6 +15927,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def ContactFirstName(self):
+        """联系人名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ContactFirstName
 
     @ContactFirstName.setter
@@ -13169,6 +15939,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def ContactLastName(self):
+        """联系人姓。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ContactLastName
 
     @ContactLastName.setter
@@ -13177,6 +15951,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def ContactNumber(self):
+        """联系人电话号码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ContactNumber
 
     @ContactNumber.setter
@@ -13185,6 +15963,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def ContactEmail(self):
+        """联系人邮箱地址，
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ContactEmail
 
     @ContactEmail.setter
@@ -13193,6 +15975,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def ContactPosition(self):
+        """联系人职位。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ContactPosition
 
     @ContactPosition.setter
@@ -13201,6 +15987,10 @@ class SubmittedData(AbstractModel):
 
     @property
     def VerifyType(self):
+        """验证类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VerifyType
 
     @VerifyType.setter
@@ -13276,6 +16066,9 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def NGINX(self):
+        """是否可以下载nginx可用格式
+        :rtype: bool
+        """
         return self._NGINX
 
     @NGINX.setter
@@ -13284,6 +16077,9 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def APACHE(self):
+        """是否可以下载apache可用格式
+        :rtype: bool
+        """
         return self._APACHE
 
     @APACHE.setter
@@ -13292,6 +16088,9 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def TOMCAT(self):
+        """是否可以下载tomcat可用格式
+        :rtype: bool
+        """
         return self._TOMCAT
 
     @TOMCAT.setter
@@ -13300,6 +16099,9 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def IIS(self):
+        """是否可以下载iis可用格式
+        :rtype: bool
+        """
         return self._IIS
 
     @IIS.setter
@@ -13308,6 +16110,9 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def JKS(self):
+        """是否可以下载JKS可用格式
+        :rtype: bool
+        """
         return self._JKS
 
     @JKS.setter
@@ -13316,6 +16121,9 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def OTHER(self):
+        """是否可以下载其他格式
+        :rtype: bool
+        """
         return self._OTHER
 
     @OTHER.setter
@@ -13324,6 +16132,9 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def ROOT(self):
+        """是否可以下载根证书
+        :rtype: bool
+        """
         return self._ROOT
 
     @ROOT.setter
@@ -13377,6 +16188,9 @@ class SyncTaskBindResourceResult(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -13385,6 +16199,10 @@ class SyncTaskBindResourceResult(AbstractModel):
 
     @property
     def BindResourceResult(self):
+        """关联云资源结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BindResourceResult
+        """
         return self._BindResourceResult
 
     @BindResourceResult.setter
@@ -13393,6 +16211,9 @@ class SyncTaskBindResourceResult(AbstractModel):
 
     @property
     def Status(self):
+        """关联云资源异步查询结果： 0表示查询中， 1表示查询成功。 2表示查询异常； 若状态为1，则查看BindResourceResult结果；若状态为2，则查看Error原因
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -13401,6 +16222,10 @@ class SyncTaskBindResourceResult(AbstractModel):
 
     @property
     def Error(self):
+        """关联云资源错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.Error`
+        """
         return self._Error
 
     @Error.setter
@@ -13409,6 +16234,9 @@ class SyncTaskBindResourceResult(AbstractModel):
 
     @property
     def CacheTime(self):
+        """当前结果缓存时间
+        :rtype: str
+        """
         return self._CacheTime
 
     @CacheTime.setter
@@ -13477,6 +16305,10 @@ class TCBAccessInstance(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -13485,6 +16317,10 @@ class TCBAccessInstance(AbstractModel):
 
     @property
     def Status(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -13493,6 +16329,11 @@ class TCBAccessInstance(AbstractModel):
 
     @property
     def UnionStatus(self):
+        """统一域名状态
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UnionStatus
 
     @UnionStatus.setter
@@ -13501,6 +16342,11 @@ class TCBAccessInstance(AbstractModel):
 
     @property
     def IsPreempted(self):
+        """是否被抢占, 被抢占表示域名被其他环境绑定了，需要解绑或者重新绑定。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsPreempted
 
     @IsPreempted.setter
@@ -13509,6 +16355,11 @@ class TCBAccessInstance(AbstractModel):
 
     @property
     def ICPStatus(self):
+        """icp黑名单封禁状态，0-未封禁，1-封禁
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ICPStatus
 
     @ICPStatus.setter
@@ -13517,6 +16368,10 @@ class TCBAccessInstance(AbstractModel):
 
     @property
     def OldCertificateId(self):
+        """已绑定证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -13560,6 +16415,10 @@ class TCBAccessService(AbstractModel):
 
     @property
     def InstanceList(self):
+        """实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TCBAccessInstance
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -13568,6 +16427,10 @@ class TCBAccessService(AbstractModel):
 
     @property
     def TotalCount(self):
+        """数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -13620,6 +16483,10 @@ class TCBEnvironment(AbstractModel):
 
     @property
     def ID(self):
+        """唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ID
 
     @ID.setter
@@ -13628,6 +16495,10 @@ class TCBEnvironment(AbstractModel):
 
     @property
     def Source(self):
+        """来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -13636,6 +16507,10 @@ class TCBEnvironment(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -13644,6 +16519,10 @@ class TCBEnvironment(AbstractModel):
 
     @property
     def Status(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -13689,6 +16568,10 @@ class TCBEnvironments(AbstractModel):
 
     @property
     def Environment(self):
+        """tcb环境	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.TCBEnvironment`
+        """
         return self._Environment
 
     @Environment.setter
@@ -13697,6 +16580,10 @@ class TCBEnvironments(AbstractModel):
 
     @property
     def AccessService(self):
+        """访问服务	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.TCBAccessService`
+        """
         return self._AccessService
 
     @AccessService.setter
@@ -13705,6 +16592,10 @@ class TCBEnvironments(AbstractModel):
 
     @property
     def HostService(self):
+        """静态托管	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.TCBHostService`
+        """
         return self._HostService
 
     @HostService.setter
@@ -13759,6 +16650,10 @@ class TCBHostInstance(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -13767,6 +16662,10 @@ class TCBHostInstance(AbstractModel):
 
     @property
     def Status(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -13775,6 +16674,10 @@ class TCBHostInstance(AbstractModel):
 
     @property
     def DNSStatus(self):
+        """解析状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DNSStatus
 
     @DNSStatus.setter
@@ -13783,6 +16686,10 @@ class TCBHostInstance(AbstractModel):
 
     @property
     def OldCertificateId(self):
+        """已绑定证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -13824,6 +16731,10 @@ class TCBHostService(AbstractModel):
 
     @property
     def InstanceList(self):
+        """实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TCBHostInstance
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -13832,6 +16743,10 @@ class TCBHostService(AbstractModel):
 
     @property
     def TotalCount(self):
+        """数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -13879,6 +16794,9 @@ class TCBInstanceList(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -13887,6 +16805,10 @@ class TCBInstanceList(AbstractModel):
 
     @property
     def Environments(self):
+        """tcb环境实例详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TCBEnvironments
+        """
         return self._Environments
 
     @Environments.setter
@@ -13895,6 +16817,10 @@ class TCBInstanceList(AbstractModel):
 
     @property
     def Error(self):
+        """是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Error
 
     @Error.setter
@@ -13944,6 +16870,10 @@ class TSEInstanceDetail(AbstractModel):
 
     @property
     def GatewayId(self):
+        """网关ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -13952,6 +16882,10 @@ class TSEInstanceDetail(AbstractModel):
 
     @property
     def GatewayName(self):
+        """网关名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GatewayName
 
     @GatewayName.setter
@@ -13960,6 +16894,10 @@ class TSEInstanceDetail(AbstractModel):
 
     @property
     def CertificateList(self):
+        """网关证书列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GatewayCertificate
+        """
         return self._CertificateList
 
     @CertificateList.setter
@@ -14011,6 +16949,10 @@ class TSEInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
+        """TSE实例详情	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TSEInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -14019,6 +16961,9 @@ class TSEInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
+        """该地域下TSE实例总数	
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -14027,6 +16972,9 @@ class TSEInstanceList(AbstractModel):
 
     @property
     def Region(self):
+        """地域	
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -14035,6 +16983,10 @@ class TSEInstanceList(AbstractModel):
 
     @property
     def Error(self):
+        """是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Error
 
     @Error.setter
@@ -14079,6 +17031,9 @@ class Tags(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -14087,6 +17042,9 @@ class Tags(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签值
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -14131,6 +17089,9 @@ class TeoInstanceDetail(AbstractModel):
 
     @property
     def Host(self):
+        """域名
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -14139,6 +17100,9 @@ class TeoInstanceDetail(AbstractModel):
 
     @property
     def CertId(self):
+        """证书ID
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -14147,6 +17111,10 @@ class TeoInstanceDetail(AbstractModel):
 
     @property
     def ZoneId(self):
+        """区域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -14155,6 +17123,9 @@ class TeoInstanceDetail(AbstractModel):
 
     @property
     def Status(self):
+        """域名状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -14199,6 +17170,10 @@ class TeoInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
+        """edgeone实例详情	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TeoInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -14207,6 +17182,9 @@ class TeoInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
+        """edgeone实例总数	
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -14215,6 +17193,10 @@ class TeoInstanceList(AbstractModel):
 
     @property
     def Error(self):
+        """是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Error
 
     @Error.setter
@@ -14261,6 +17243,9 @@ class TkeIngressDetail(AbstractModel):
 
     @property
     def IngressName(self):
+        """ingress名称
+        :rtype: str
+        """
         return self._IngressName
 
     @IngressName.setter
@@ -14269,6 +17254,9 @@ class TkeIngressDetail(AbstractModel):
 
     @property
     def TlsDomains(self):
+        """tls域名列表
+        :rtype: list of str
+        """
         return self._TlsDomains
 
     @TlsDomains.setter
@@ -14277,6 +17265,9 @@ class TkeIngressDetail(AbstractModel):
 
     @property
     def Domains(self):
+        """ingress域名列表
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -14324,6 +17315,9 @@ class TkeInstanceDetail(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -14332,6 +17326,9 @@ class TkeInstanceDetail(AbstractModel):
 
     @property
     def ClusterName(self):
+        """集群名称
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -14340,6 +17337,9 @@ class TkeInstanceDetail(AbstractModel):
 
     @property
     def NamespaceList(self):
+        """集群命名空间列表
+        :rtype: list of TkeNameSpaceDetail
+        """
         return self._NamespaceList
 
     @NamespaceList.setter
@@ -14348,6 +17348,9 @@ class TkeInstanceDetail(AbstractModel):
 
     @property
     def ClusterType(self):
+        """集群类型
+        :rtype: str
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -14356,6 +17359,9 @@ class TkeInstanceDetail(AbstractModel):
 
     @property
     def ClusterVersion(self):
+        """集群版本
+        :rtype: str
+        """
         return self._ClusterVersion
 
     @ClusterVersion.setter
@@ -14409,6 +17415,9 @@ class TkeInstanceList(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -14417,6 +17426,10 @@ class TkeInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
+        """tke实例详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TkeInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -14425,6 +17438,9 @@ class TkeInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
+        """该地域下tke实例总数	
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -14433,6 +17449,10 @@ class TkeInstanceList(AbstractModel):
 
     @property
     def Error(self):
+        """是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Error
 
     @Error.setter
@@ -14477,6 +17497,9 @@ class TkeNameSpaceDetail(AbstractModel):
 
     @property
     def Name(self):
+        """namespace名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14485,6 +17508,9 @@ class TkeNameSpaceDetail(AbstractModel):
 
     @property
     def SecretList(self):
+        """secret列表
+        :rtype: list of TkeSecretDetail
+        """
         return self._SecretList
 
     @SecretList.setter
@@ -14534,6 +17560,9 @@ class TkeSecretDetail(AbstractModel):
 
     @property
     def Name(self):
+        """secret名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14542,6 +17571,9 @@ class TkeSecretDetail(AbstractModel):
 
     @property
     def CertId(self):
+        """证书ID
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -14550,6 +17582,9 @@ class TkeSecretDetail(AbstractModel):
 
     @property
     def IngressList(self):
+        """ingress列表
+        :rtype: list of TkeIngressDetail
+        """
         return self._IngressList
 
     @IngressList.setter
@@ -14558,6 +17593,10 @@ class TkeSecretDetail(AbstractModel):
 
     @property
     def NoMatchDomains(self):
+        """和新证书不匹配的域名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._NoMatchDomains
 
     @NoMatchDomains.setter
@@ -14632,6 +17671,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
+        """一键更新原证书ID， 查询绑定该证书的云资源然后进行证书更新
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -14640,6 +17682,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ResourceTypes(self):
+        """需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse、cos
+        :rtype: list of str
+        """
         return self._ResourceTypes
 
     @ResourceTypes.setter
@@ -14648,6 +17693,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """一键更新新证书ID，不传则证书公钥和私钥必传
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -14658,6 +17706,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
     def Regions(self):
         warnings.warn("parameter `Regions` is deprecated", DeprecationWarning) 
 
+        """需要部署的地域列表（废弃）
+        :rtype: list of str
+        """
         return self._Regions
 
     @Regions.setter
@@ -14668,6 +17719,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ResourceTypesRegions(self):
+        """云资源需要部署的地域列表，支持地域的云资源类型必传，如：clb、tke、apigateway、waf、tcb、tse等
+        :rtype: list of ResourceTypeRegions
+        """
         return self._ResourceTypesRegions
 
     @ResourceTypesRegions.setter
@@ -14676,6 +17730,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def CertificatePublicKey(self):
+        """证书公钥， 若上传证书公钥， 则CertificateId不用传
+        :rtype: str
+        """
         return self._CertificatePublicKey
 
     @CertificatePublicKey.setter
@@ -14684,6 +17741,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def CertificatePrivateKey(self):
+        """证书私钥，若上传证书公钥， 则CertificateId不用传
+        :rtype: str
+        """
         return self._CertificatePrivateKey
 
     @CertificatePrivateKey.setter
@@ -14692,6 +17752,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ExpiringNotificationSwitch(self):
+        """旧证书是否忽略到期提醒  0:不忽略通知。1:忽略通知，忽略OldCertificateId到期提醒
+        :rtype: int
+        """
         return self._ExpiringNotificationSwitch
 
     @ExpiringNotificationSwitch.setter
@@ -14700,6 +17763,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def Repeatable(self):
+        """相同的证书是否允许重复上传，若选择上传证书， 则可以配置该参数
+        :rtype: bool
+        """
         return self._Repeatable
 
     @Repeatable.setter
@@ -14708,6 +17774,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def AllowDownload(self):
+        """是否允许下载，若选择上传证书， 则可以配置该参数
+        :rtype: bool
+        """
         return self._AllowDownload
 
     @AllowDownload.setter
@@ -14716,6 +17785,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表，若选择上传证书， 则可以配置该参数
+        :rtype: list of Tags
+        """
         return self._Tags
 
     @Tags.setter
@@ -14724,6 +17796,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目 ID，若选择上传证书， 则可以配置该参数
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -14789,6 +17864,10 @@ class UpdateCertificateInstanceResponse(AbstractModel):
 
     @property
     def DeployRecordId(self):
+        """云资源部署任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DeployRecordId
 
     @DeployRecordId.setter
@@ -14797,6 +17876,9 @@ class UpdateCertificateInstanceResponse(AbstractModel):
 
     @property
     def DeployStatus(self):
+        """部署状态，1表示部署成功，0表示部署失败
+        :rtype: int
+        """
         return self._DeployStatus
 
     @DeployStatus.setter
@@ -14805,6 +17887,10 @@ class UpdateCertificateInstanceResponse(AbstractModel):
 
     @property
     def UpdateSyncProgress(self):
+        """更新异步创建任务进度详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UpdateSyncProgress
+        """
         return self._UpdateSyncProgress
 
     @UpdateSyncProgress.setter
@@ -14813,6 +17899,9 @@ class UpdateCertificateInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14849,6 +17938,9 @@ class UpdateCertificateRecordRetryRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
+        """待重试部署记录ID
+        :rtype: int
+        """
         return self._DeployRecordId
 
     @DeployRecordId.setter
@@ -14857,6 +17949,9 @@ class UpdateCertificateRecordRetryRequest(AbstractModel):
 
     @property
     def DeployRecordDetailId(self):
+        """待重试部署记录详情ID
+        :rtype: int
+        """
         return self._DeployRecordDetailId
 
     @DeployRecordDetailId.setter
@@ -14891,6 +17986,9 @@ class UpdateCertificateRecordRetryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14916,6 +18014,9 @@ class UpdateCertificateRecordRollbackRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
+        """待重试部署记录ID
+        :rtype: int
+        """
         return self._DeployRecordId
 
     @DeployRecordId.setter
@@ -14952,6 +18053,9 @@ class UpdateCertificateRecordRollbackResponse(AbstractModel):
 
     @property
     def DeployRecordId(self):
+        """回滚部署记录ID
+        :rtype: int
+        """
         return self._DeployRecordId
 
     @DeployRecordId.setter
@@ -14960,6 +18064,9 @@ class UpdateCertificateRecordRollbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15068,6 +18175,9 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def Id(self):
+        """详情记录id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -15076,6 +18186,9 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def CertId(self):
+        """新证书ID
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -15084,6 +18197,9 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def OldCertId(self):
+        """旧证书ID
+        :rtype: str
+        """
         return self._OldCertId
 
     @OldCertId.setter
@@ -15092,6 +18208,10 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def Domains(self):
+        """部署域名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -15100,6 +18220,9 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def ResourceType(self):
+        """部署资源类型
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -15108,6 +18231,10 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def Region(self):
+        """部署地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -15116,6 +18243,9 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def Status(self):
+        """部署状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -15124,6 +18254,10 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def ErrorMsg(self):
+        """部署错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -15132,6 +18266,9 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def CreateTime(self):
+        """部署时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -15140,6 +18277,9 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """最后一次更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -15148,6 +18288,10 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def InstanceId(self):
+        """部署实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -15156,6 +18300,10 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def InstanceName(self):
+        """部署实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -15164,6 +18312,10 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def ListenerId(self):
+        """部署监听器ID（CLB专用）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ListenerId
 
     @ListenerId.setter
@@ -15172,6 +18324,10 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def ListenerName(self):
+        """部署监听器名称（CLB专用）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ListenerName
 
     @ListenerName.setter
@@ -15180,6 +18336,10 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -15188,6 +18348,10 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def SniSwitch(self):
+        """是否开启SNI（CLB专用）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SniSwitch
 
     @SniSwitch.setter
@@ -15196,6 +18360,10 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def Bucket(self):
+        """bucket名称（COS专用）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -15204,6 +18372,10 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def Port(self):
+        """端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -15212,6 +18384,10 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间（TKE专用）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -15220,6 +18396,10 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def SecretName(self):
+        """secret名称（TKE专用）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -15228,6 +18408,10 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def EnvId(self):
+        """环境ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -15236,6 +18420,10 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def TCBType(self):
+        """TCB部署类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TCBType
 
     @TCBType.setter
@@ -15244,6 +18432,10 @@ class UpdateRecordDetail(AbstractModel):
 
     @property
     def Url(self):
+        """监听器Url(clb专属)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -15305,6 +18497,9 @@ class UpdateRecordDetails(AbstractModel):
 
     @property
     def ResourceType(self):
+        """部署资源类型
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -15313,6 +18508,9 @@ class UpdateRecordDetails(AbstractModel):
 
     @property
     def List(self):
+        """部署资源详情列表
+        :rtype: list of UpdateRecordDetail
+        """
         return self._List
 
     @List.setter
@@ -15321,6 +18519,9 @@ class UpdateRecordDetails(AbstractModel):
 
     @property
     def TotalCount(self):
+        """该部署资源总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -15383,6 +18584,9 @@ class UpdateRecordInfo(AbstractModel):
 
     @property
     def Id(self):
+        """记录ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -15391,6 +18595,9 @@ class UpdateRecordInfo(AbstractModel):
 
     @property
     def CertId(self):
+        """新证书ID
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -15399,6 +18606,9 @@ class UpdateRecordInfo(AbstractModel):
 
     @property
     def OldCertId(self):
+        """原证书ID
+        :rtype: str
+        """
         return self._OldCertId
 
     @OldCertId.setter
@@ -15407,6 +18617,9 @@ class UpdateRecordInfo(AbstractModel):
 
     @property
     def ResourceTypes(self):
+        """部署资源类型列表
+        :rtype: list of str
+        """
         return self._ResourceTypes
 
     @ResourceTypes.setter
@@ -15415,6 +18628,10 @@ class UpdateRecordInfo(AbstractModel):
 
     @property
     def Regions(self):
+        """部署地域列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Regions
 
     @Regions.setter
@@ -15423,6 +18640,9 @@ class UpdateRecordInfo(AbstractModel):
 
     @property
     def Status(self):
+        """部署状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -15431,6 +18651,9 @@ class UpdateRecordInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """部署时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -15439,6 +18662,9 @@ class UpdateRecordInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """最后一次更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -15488,6 +18714,10 @@ class UpdateSyncProgress(AbstractModel):
 
     @property
     def ResourceType(self):
+        """资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -15496,6 +18726,10 @@ class UpdateSyncProgress(AbstractModel):
 
     @property
     def UpdateSyncProgressRegions(self):
+        """地域结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UpdateSyncProgressRegion
+        """
         return self._UpdateSyncProgressRegions
 
     @UpdateSyncProgressRegions.setter
@@ -15504,6 +18738,10 @@ class UpdateSyncProgress(AbstractModel):
 
     @property
     def Status(self):
+        """异步更新进度状态：0， 待处理， 1 已处理， 3 处理中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -15557,6 +18795,10 @@ class UpdateSyncProgressRegion(AbstractModel):
 
     @property
     def Region(self):
+        """资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -15565,6 +18807,10 @@ class UpdateSyncProgressRegion(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -15573,6 +18819,10 @@ class UpdateSyncProgressRegion(AbstractModel):
 
     @property
     def OffsetCount(self):
+        """执行完成数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._OffsetCount
 
     @OffsetCount.setter
@@ -15581,6 +18831,10 @@ class UpdateSyncProgressRegion(AbstractModel):
 
     @property
     def Status(self):
+        """异步更新进度状态：0， 待处理， 1 已处理， 3 处理中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -15638,6 +18892,9 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def CertificatePublicKey(self):
+        """证书内容。
+        :rtype: str
+        """
         return self._CertificatePublicKey
 
     @CertificatePublicKey.setter
@@ -15646,6 +18903,9 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def CertificatePrivateKey(self):
+        """私钥内容，证书类型为 SVR 时必填，为 CA 时可不填。
+        :rtype: str
+        """
         return self._CertificatePrivateKey
 
     @CertificatePrivateKey.setter
@@ -15654,6 +18914,9 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def CertificateType(self):
+        """证书类型，默认 SVR。CA = CA证书，SVR = 服务器证书。
+        :rtype: str
+        """
         return self._CertificateType
 
     @CertificateType.setter
@@ -15662,6 +18925,9 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def Alias(self):
+        """备注名称。
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -15670,6 +18936,9 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """项目 ID。
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -15678,6 +18947,9 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def CertificateUse(self):
+        """证书用途/证书来源。“CLB，CDN，WAF，LIVE，DDOS”
+        :rtype: str
+        """
         return self._CertificateUse
 
     @CertificateUse.setter
@@ -15686,6 +18958,9 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表
+        :rtype: list of Tags
+        """
         return self._Tags
 
     @Tags.setter
@@ -15694,6 +18969,9 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def Repeatable(self):
+        """相同的证书是否允许重复上传； true：允许上传相同指纹的证书；  false：不允许上传相同指纹的证书； 默认值：true
+        :rtype: bool
+        """
         return self._Repeatable
 
     @Repeatable.setter
@@ -15746,6 +19024,9 @@ class UploadCertificateResponse(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书 ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -15754,6 +19035,10 @@ class UploadCertificateResponse(AbstractModel):
 
     @property
     def RepeatCertId(self):
+        """重复证书的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RepeatCertId
 
     @RepeatCertId.setter
@@ -15762,6 +19047,9 @@ class UploadCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15792,6 +19080,9 @@ class UploadConfirmLetterRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -15800,6 +19091,9 @@ class UploadConfirmLetterRequest(AbstractModel):
 
     @property
     def ConfirmLetter(self):
+        """base64编码后的证书确认函文件，格式应为jpg、jpeg、png、pdf，大小应在1kb与1.4M之间。
+        :rtype: str
+        """
         return self._ConfirmLetter
 
     @ConfirmLetter.setter
@@ -15840,6 +19134,9 @@ class UploadConfirmLetterResponse(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -15848,6 +19145,9 @@ class UploadConfirmLetterResponse(AbstractModel):
 
     @property
     def IsSuccess(self):
+        """是否成功
+        :rtype: bool
+        """
         return self._IsSuccess
 
     @IsSuccess.setter
@@ -15856,6 +19156,9 @@ class UploadConfirmLetterResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15886,6 +19189,9 @@ class UploadRevokeLetterRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书 ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -15894,6 +19200,9 @@ class UploadRevokeLetterRequest(AbstractModel):
 
     @property
     def RevokeLetter(self):
+        """base64编码后的证书确认函文件，格式应为jpg、jpeg、png、pdf，大小应在1kb与1.4M之间。
+        :rtype: str
+        """
         return self._RevokeLetter
 
     @RevokeLetter.setter
@@ -15934,6 +19243,9 @@ class UploadRevokeLetterResponse(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书 ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -15942,6 +19254,9 @@ class UploadRevokeLetterResponse(AbstractModel):
 
     @property
     def IsSuccess(self):
+        """是否成功。
+        :rtype: bool
+        """
         return self._IsSuccess
 
     @IsSuccess.setter
@@ -15950,6 +19265,9 @@ class UploadRevokeLetterResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15985,6 +19303,10 @@ class VODInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
+        """vod实例详情	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VodInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -15993,6 +19315,9 @@ class VODInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
+        """该地域下vod实例总数	
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -16001,6 +19326,10 @@ class VODInstanceList(AbstractModel):
 
     @property
     def Error(self):
+        """是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Error
 
     @Error.setter
@@ -16041,6 +19370,9 @@ class VerifyManagerRequest(AbstractModel):
 
     @property
     def ManagerId(self):
+        """管理人ID
+        :rtype: int
+        """
         return self._ManagerId
 
     @ManagerId.setter
@@ -16077,6 +19409,9 @@ class VerifyManagerResponse(AbstractModel):
 
     @property
     def ManagerId(self):
+        """管理人ID
+        :rtype: int
+        """
         return self._ManagerId
 
     @ManagerId.setter
@@ -16085,6 +19420,9 @@ class VerifyManagerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16114,6 +19452,9 @@ class VodInstanceDetail(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -16122,6 +19463,9 @@ class VodInstanceDetail(AbstractModel):
 
     @property
     def CertId(self):
+        """证书ID
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -16164,6 +19508,9 @@ class WafInstanceDetail(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -16172,6 +19519,10 @@ class WafInstanceDetail(AbstractModel):
 
     @property
     def CertId(self):
+        """证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -16180,6 +19531,10 @@ class WafInstanceDetail(AbstractModel):
 
     @property
     def Keepalive(self):
+        """是否保持长连接，1是，0 否
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Keepalive
 
     @Keepalive.setter
@@ -16226,6 +19581,9 @@ class WafInstanceList(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -16234,6 +19592,10 @@ class WafInstanceList(AbstractModel):
 
     @property
     def InstanceList(self):
+        """waf实例详情	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of WafInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -16242,6 +19604,9 @@ class WafInstanceList(AbstractModel):
 
     @property
     def TotalCount(self):
+        """该地域下waf实例总数	
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -16250,6 +19615,10 @@ class WafInstanceList(AbstractModel):
 
     @property
     def Error(self):
+        """是否查询异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Error
 
     @Error.setter

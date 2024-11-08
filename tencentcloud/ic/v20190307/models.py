@@ -54,6 +54,9 @@ class AppInfo(AbstractModel):
 
     @property
     def Sdkappid(self):
+        """应用ID
+        :rtype: str
+        """
         return self._Sdkappid
 
     @Sdkappid.setter
@@ -62,6 +65,9 @@ class AppInfo(AbstractModel):
 
     @property
     def Appkey(self):
+        """应用key
+        :rtype: str
+        """
         return self._Appkey
 
     @Appkey.setter
@@ -70,6 +76,9 @@ class AppInfo(AbstractModel):
 
     @property
     def CloudAppid(self):
+        """用户appid
+        :rtype: str
+        """
         return self._CloudAppid
 
     @CloudAppid.setter
@@ -78,6 +87,10 @@ class AppInfo(AbstractModel):
 
     @property
     def Name(self):
+        """应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -86,6 +99,9 @@ class AppInfo(AbstractModel):
 
     @property
     def Description(self):
+        """应用描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -94,6 +110,9 @@ class AppInfo(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -102,6 +121,9 @@ class AppInfo(AbstractModel):
 
     @property
     def BizType(self):
+        """应用类型
+        :rtype: int
+        """
         return self._BizType
 
     @BizType.setter
@@ -110,6 +132,9 @@ class AppInfo(AbstractModel):
 
     @property
     def Uin(self):
+        """用户Uin
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -250,6 +275,9 @@ class CardInfo(AbstractModel):
 
     @property
     def Iccid(self):
+        """卡片ID
+        :rtype: str
+        """
         return self._Iccid
 
     @Iccid.setter
@@ -258,6 +286,10 @@ class CardInfo(AbstractModel):
 
     @property
     def Msisdn(self):
+        """卡电话号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msisdn
 
     @Msisdn.setter
@@ -266,6 +298,10 @@ class CardInfo(AbstractModel):
 
     @property
     def Imsi(self):
+        """卡imsi
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Imsi
 
     @Imsi.setter
@@ -274,6 +310,10 @@ class CardInfo(AbstractModel):
 
     @property
     def Imei(self):
+        """卡imei
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Imei
 
     @Imei.setter
@@ -282,6 +322,9 @@ class CardInfo(AbstractModel):
 
     @property
     def Sdkappid(self):
+        """应用ID
+        :rtype: str
+        """
         return self._Sdkappid
 
     @Sdkappid.setter
@@ -290,6 +333,9 @@ class CardInfo(AbstractModel):
 
     @property
     def Teleoperator(self):
+        """运营商编号
+        :rtype: int
+        """
         return self._Teleoperator
 
     @Teleoperator.setter
@@ -298,6 +344,9 @@ class CardInfo(AbstractModel):
 
     @property
     def CardStatus(self):
+        """卡片状态 1:未激活 2：激活 3：停卡 5：销卡
+        :rtype: int
+        """
         return self._CardStatus
 
     @CardStatus.setter
@@ -306,6 +355,10 @@ class CardInfo(AbstractModel):
 
     @property
     def NetworkStatus(self):
+        """网络状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._NetworkStatus
 
     @NetworkStatus.setter
@@ -314,6 +367,10 @@ class CardInfo(AbstractModel):
 
     @property
     def ActivitedTime(self):
+        """激活时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ActivitedTime
 
     @ActivitedTime.setter
@@ -322,6 +379,9 @@ class CardInfo(AbstractModel):
 
     @property
     def Type(self):
+        """资费类型，1 单卡，2 流量池
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -330,6 +390,10 @@ class CardInfo(AbstractModel):
 
     @property
     def ProductId(self):
+        """套餐类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -338,6 +402,10 @@ class CardInfo(AbstractModel):
 
     @property
     def PoolId(self):
+        """流量池ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PoolId
 
     @PoolId.setter
@@ -346,6 +414,10 @@ class CardInfo(AbstractModel):
 
     @property
     def DataUsedInPeriod(self):
+        """周期套餐流量使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._DataUsedInPeriod
 
     @DataUsedInPeriod.setter
@@ -354,6 +426,10 @@ class CardInfo(AbstractModel):
 
     @property
     def DataTotalInPeriod(self):
+        """周期套餐总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._DataTotalInPeriod
 
     @DataTotalInPeriod.setter
@@ -362,6 +438,10 @@ class CardInfo(AbstractModel):
 
     @property
     def ProductExpiredTime(self):
+        """过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductExpiredTime
 
     @ProductExpiredTime.setter
@@ -370,6 +450,10 @@ class CardInfo(AbstractModel):
 
     @property
     def Description(self):
+        """描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -378,6 +462,9 @@ class CardInfo(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -386,6 +473,9 @@ class CardInfo(AbstractModel):
 
     @property
     def ModifiedTime(self):
+        """修改时间
+        :rtype: str
+        """
         return self._ModifiedTime
 
     @ModifiedTime.setter
@@ -394,6 +484,10 @@ class CardInfo(AbstractModel):
 
     @property
     def PreorderCnt(self):
+        """套餐周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PreorderCnt
 
     @PreorderCnt.setter
@@ -402,6 +496,10 @@ class CardInfo(AbstractModel):
 
     @property
     def IsActivated(self):
+        """激活被回调标志
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsActivated
 
     @IsActivated.setter
@@ -410,6 +508,10 @@ class CardInfo(AbstractModel):
 
     @property
     def OrderId(self):
+        """订单ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -418,6 +520,10 @@ class CardInfo(AbstractModel):
 
     @property
     def AutoRenew(self):
+        """是否自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AutoRenew
 
     @AutoRenew.setter
@@ -426,6 +532,10 @@ class CardInfo(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -434,6 +544,10 @@ class CardInfo(AbstractModel):
 
     @property
     def AllowArrears(self):
+        """0 不需要开通达量不停卡 1 需要开通达量不停卡
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AllowArrears
 
     @AllowArrears.setter
@@ -442,6 +556,9 @@ class CardInfo(AbstractModel):
 
     @property
     def NeedSms(self):
+        """是否开通短信0:未开短信 1:开通短信
+        :rtype: int
+        """
         return self._NeedSms
 
     @NeedSms.setter
@@ -450,6 +567,9 @@ class CardInfo(AbstractModel):
 
     @property
     def Provider(self):
+        """供应商
+        :rtype: int
+        """
         return self._Provider
 
     @Provider.setter
@@ -458,6 +578,10 @@ class CardInfo(AbstractModel):
 
     @property
     def CertificationState(self):
+        """实名认证 0:无 1:未实名 2:已实名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CertificationState
 
     @CertificationState.setter
@@ -466,6 +590,10 @@ class CardInfo(AbstractModel):
 
     @property
     def OtherData(self):
+        """其他流量信息,流量分离统计其他流量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._OtherData
 
     @OtherData.setter
@@ -530,6 +658,9 @@ class CardList(AbstractModel):
 
     @property
     def Total(self):
+        """卡片总数
+        :rtype: str
+        """
         return self._Total
 
     @Total.setter
@@ -538,6 +669,10 @@ class CardList(AbstractModel):
 
     @property
     def List(self):
+        """卡片列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CardInfo
+        """
         return self._List
 
     @List.setter
@@ -577,6 +712,9 @@ class DescribeAppRequest(AbstractModel):
 
     @property
     def Sdkappid(self):
+        """物联卡应用ID
+        :rtype: int
+        """
         return self._Sdkappid
 
     @Sdkappid.setter
@@ -614,6 +752,10 @@ class DescribeAppResponse(AbstractModel):
 
     @property
     def Data(self):
+        """应用信息详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ic.v20190307.models.AppInfo`
+        """
         return self._Data
 
     @Data.setter
@@ -622,6 +764,9 @@ class DescribeAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -653,6 +798,9 @@ class DescribeCardRequest(AbstractModel):
 
     @property
     def Sdkappid(self):
+        """应用ID
+        :rtype: int
+        """
         return self._Sdkappid
 
     @Sdkappid.setter
@@ -661,6 +809,9 @@ class DescribeCardRequest(AbstractModel):
 
     @property
     def Iccid(self):
+        """卡片ID
+        :rtype: str
+        """
         return self._Iccid
 
     @Iccid.setter
@@ -699,6 +850,10 @@ class DescribeCardResponse(AbstractModel):
 
     @property
     def Data(self):
+        """卡片详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ic.v20190307.models.CardInfo`
+        """
         return self._Data
 
     @Data.setter
@@ -707,6 +862,9 @@ class DescribeCardResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -741,6 +899,9 @@ class DescribeCardsRequest(AbstractModel):
 
     @property
     def Sdkappid(self):
+        """应用ID
+        :rtype: str
+        """
         return self._Sdkappid
 
     @Sdkappid.setter
@@ -749,6 +910,9 @@ class DescribeCardsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移值
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -757,6 +921,9 @@ class DescribeCardsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """列表限制
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -795,6 +962,9 @@ class DescribeCardsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """卡片列表信息
+        :rtype: :class:`tencentcloud.ic.v20190307.models.CardList`
+        """
         return self._Data
 
     @Data.setter
@@ -803,6 +973,9 @@ class DescribeCardsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -852,6 +1025,9 @@ class DescribeSmsRequest(AbstractModel):
 
     @property
     def Sdkappid(self):
+        """应用ID
+        :rtype: int
+        """
         return self._Sdkappid
 
     @Sdkappid.setter
@@ -860,6 +1036,9 @@ class DescribeSmsRequest(AbstractModel):
 
     @property
     def Iccid(self):
+        """卡片ID
+        :rtype: str
+        """
         return self._Iccid
 
     @Iccid.setter
@@ -868,6 +1047,9 @@ class DescribeSmsRequest(AbstractModel):
 
     @property
     def Msisdn(self):
+        """卡片号码
+        :rtype: str
+        """
         return self._Msisdn
 
     @Msisdn.setter
@@ -876,6 +1058,9 @@ class DescribeSmsRequest(AbstractModel):
 
     @property
     def SmsType(self):
+        """短信类型
+        :rtype: int
+        """
         return self._SmsType
 
     @SmsType.setter
@@ -884,6 +1069,9 @@ class DescribeSmsRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """开始时间  YYYY-MM-DD HH:mm:ss
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -892,6 +1080,9 @@ class DescribeSmsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间  YYYY-MM-DD HH:mm:ss
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -900,6 +1091,9 @@ class DescribeSmsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -908,6 +1102,9 @@ class DescribeSmsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """小于200
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -956,6 +1153,10 @@ class DescribeSmsResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -964,6 +1165,10 @@ class DescribeSmsResponse(AbstractModel):
 
     @property
     def List(self):
+        """短信列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ResSms
+        """
         return self._List
 
     @List.setter
@@ -972,6 +1177,9 @@ class DescribeSmsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1010,6 +1218,9 @@ class ModifyUserCardRemarkRequest(AbstractModel):
 
     @property
     def Sdkappid(self):
+        """应用ID
+        :rtype: int
+        """
         return self._Sdkappid
 
     @Sdkappid.setter
@@ -1018,6 +1229,9 @@ class ModifyUserCardRemarkRequest(AbstractModel):
 
     @property
     def Iccid(self):
+        """物联卡ICCID
+        :rtype: str
+        """
         return self._Iccid
 
     @Iccid.setter
@@ -1026,6 +1240,9 @@ class ModifyUserCardRemarkRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注信息，限50字
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1061,6 +1278,9 @@ class ModifyUserCardRemarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1092,6 +1312,9 @@ class PayForExtendDataRequest(AbstractModel):
 
     @property
     def Iccid(self):
+        """卡片ICCID
+        :rtype: str
+        """
         return self._Iccid
 
     @Iccid.setter
@@ -1100,6 +1323,9 @@ class PayForExtendDataRequest(AbstractModel):
 
     @property
     def ExtentData(self):
+        """套外流量,单位MB
+        :rtype: int
+        """
         return self._ExtentData
 
     @ExtentData.setter
@@ -1108,6 +1334,9 @@ class PayForExtendDataRequest(AbstractModel):
 
     @property
     def Sdkappid(self):
+        """应用ID
+        :rtype: int
+        """
         return self._Sdkappid
 
     @Sdkappid.setter
@@ -1146,6 +1375,9 @@ class PayForExtendDataResponse(AbstractModel):
 
     @property
     def Data(self):
+        """订单号
+        :rtype: :class:`tencentcloud.ic.v20190307.models.ResOrderIds`
+        """
         return self._Data
 
     @Data.setter
@@ -1154,6 +1386,9 @@ class PayForExtendDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1188,6 +1423,9 @@ class RenewCardsRequest(AbstractModel):
 
     @property
     def Sdkappid(self):
+        """应用ID
+        :rtype: int
+        """
         return self._Sdkappid
 
     @Sdkappid.setter
@@ -1196,6 +1434,9 @@ class RenewCardsRequest(AbstractModel):
 
     @property
     def Iccids(self):
+        """续费的iccid
+        :rtype: list of str
+        """
         return self._Iccids
 
     @Iccids.setter
@@ -1204,6 +1445,9 @@ class RenewCardsRequest(AbstractModel):
 
     @property
     def RenewNum(self):
+        """续费的周期（单位：月）
+        :rtype: int
+        """
         return self._RenewNum
 
     @RenewNum.setter
@@ -1243,6 +1487,10 @@ class RenewCardsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """续费成功的订单id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ic.v20190307.models.ResRenew`
+        """
         return self._Data
 
     @Data.setter
@@ -1251,6 +1499,9 @@ class RenewCardsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1280,6 +1531,10 @@ class ResOrderIds(AbstractModel):
 
     @property
     def OrderIds(self):
+        """每一张续费卡片的订单ID数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._OrderIds
 
     @OrderIds.setter
@@ -1314,6 +1569,10 @@ class ResRenew(AbstractModel):
 
     @property
     def OrderIds(self):
+        """每一张续费卡片的订单ID数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._OrderIds
 
     @OrderIds.setter
@@ -1380,6 +1639,10 @@ class ResSms(AbstractModel):
 
     @property
     def Iccid(self):
+        """卡片ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Iccid
 
     @Iccid.setter
@@ -1388,6 +1651,10 @@ class ResSms(AbstractModel):
 
     @property
     def Msisdn(self):
+        """卡片号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Msisdn
 
     @Msisdn.setter
@@ -1396,6 +1663,10 @@ class ResSms(AbstractModel):
 
     @property
     def SdkAppid(self):
+        """应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SdkAppid
 
     @SdkAppid.setter
@@ -1404,6 +1675,10 @@ class ResSms(AbstractModel):
 
     @property
     def Content(self):
+        """短信内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -1412,6 +1687,10 @@ class ResSms(AbstractModel):
 
     @property
     def SmsType(self):
+        """短信类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SmsType
 
     @SmsType.setter
@@ -1420,6 +1699,10 @@ class ResSms(AbstractModel):
 
     @property
     def SendTime(self):
+        """发送时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SendTime
 
     @SendTime.setter
@@ -1428,6 +1711,10 @@ class ResSms(AbstractModel):
 
     @property
     def ReportTime(self):
+        """推送时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReportTime
 
     @ReportTime.setter
@@ -1436,6 +1723,10 @@ class ResSms(AbstractModel):
 
     @property
     def Remark(self):
+        """SUCC：成功  FAIL 失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1444,6 +1735,10 @@ class ResSms(AbstractModel):
 
     @property
     def Status(self):
+        """回执状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1491,6 +1786,9 @@ class SendMultiSmsRequest(AbstractModel):
 
     @property
     def Sdkappid(self):
+        """应用ID
+        :rtype: str
+        """
         return self._Sdkappid
 
     @Sdkappid.setter
@@ -1499,6 +1797,9 @@ class SendMultiSmsRequest(AbstractModel):
 
     @property
     def Iccids(self):
+        """卡片列表
+        :rtype: list of str
+        """
         return self._Iccids
 
     @Iccids.setter
@@ -1507,6 +1808,9 @@ class SendMultiSmsRequest(AbstractModel):
 
     @property
     def Content(self):
+        """短信内容 长度限制 70
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -1546,6 +1850,10 @@ class SendMultiSmsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """短信流水数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SmsRet
+        """
         return self._Data
 
     @Data.setter
@@ -1554,6 +1862,9 @@ class SendMultiSmsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1591,6 +1902,9 @@ class SendSmsRequest(AbstractModel):
 
     @property
     def Sdkappid(self):
+        """应用ID
+        :rtype: int
+        """
         return self._Sdkappid
 
     @Sdkappid.setter
@@ -1599,6 +1913,9 @@ class SendSmsRequest(AbstractModel):
 
     @property
     def Iccid(self):
+        """卡片ID
+        :rtype: str
+        """
         return self._Iccid
 
     @Iccid.setter
@@ -1607,6 +1924,9 @@ class SendSmsRequest(AbstractModel):
 
     @property
     def Content(self):
+        """短信内容长度70限制
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -1646,6 +1966,10 @@ class SendSmsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """短信流水信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ic.v20190307.models.SmsSid`
+        """
         return self._Data
 
     @Data.setter
@@ -1654,6 +1978,9 @@ class SendSmsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1691,6 +2018,9 @@ class SmsRet(AbstractModel):
 
     @property
     def Code(self):
+        """该iccid请求状态
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -1699,6 +2029,9 @@ class SmsRet(AbstractModel):
 
     @property
     def Msg(self):
+        """短信发送返回信息
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -1707,6 +2040,9 @@ class SmsRet(AbstractModel):
 
     @property
     def Iccid(self):
+        """卡片ID
+        :rtype: str
+        """
         return self._Iccid
 
     @Iccid.setter
@@ -1715,6 +2051,9 @@ class SmsRet(AbstractModel):
 
     @property
     def Sid(self):
+        """流水ID
+        :rtype: str
+        """
         return self._Sid
 
     @Sid.setter
@@ -1755,6 +2094,10 @@ class SmsSid(AbstractModel):
 
     @property
     def Iccid(self):
+        """卡片ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Iccid
 
     @Iccid.setter
@@ -1763,6 +2106,9 @@ class SmsSid(AbstractModel):
 
     @property
     def Sid(self):
+        """信息流水ID
+        :rtype: str
+        """
         return self._Sid
 
     @Sid.setter

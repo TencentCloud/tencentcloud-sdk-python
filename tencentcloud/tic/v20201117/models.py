@@ -35,6 +35,9 @@ class ApplyStackRequest(AbstractModel):
 
     @property
     def StackId(self):
+        """资源栈ID
+        :rtype: str
+        """
         return self._StackId
 
     @StackId.setter
@@ -43,6 +46,9 @@ class ApplyStackRequest(AbstractModel):
 
     @property
     def VersionId(self):
+        """待执行apply事件的版本ID
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -80,6 +86,9 @@ class ApplyStackResponse(AbstractModel):
 
     @property
     def EventId(self):
+        """执行的事件ID
+        :rtype: str
+        """
         return self._EventId
 
     @EventId.setter
@@ -88,6 +97,9 @@ class ApplyStackResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -123,6 +135,9 @@ class CreateStackRequest(AbstractModel):
 
     @property
     def StackName(self):
+        """资源栈名称，不得超过60个字符
+        :rtype: str
+        """
         return self._StackName
 
     @StackName.setter
@@ -131,6 +146,9 @@ class CreateStackRequest(AbstractModel):
 
     @property
     def StackRegion(self):
+        """资源栈所在地域
+        :rtype: str
+        """
         return self._StackRegion
 
     @StackRegion.setter
@@ -139,6 +157,9 @@ class CreateStackRequest(AbstractModel):
 
     @property
     def TemplateUrl(self):
+        """HCL模板URL，⽬前仅限 COS URL, ⽂件为zip压缩格式
+        :rtype: str
+        """
         return self._TemplateUrl
 
     @TemplateUrl.setter
@@ -147,6 +168,9 @@ class CreateStackRequest(AbstractModel):
 
     @property
     def Description(self):
+        """资源栈描述，不得超过200个字符
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -189,6 +213,9 @@ class CreateStackResponse(AbstractModel):
 
     @property
     def StackId(self):
+        """创建得到的资源栈ID
+        :rtype: str
+        """
         return self._StackId
 
     @StackId.setter
@@ -197,6 +224,9 @@ class CreateStackResponse(AbstractModel):
 
     @property
     def VersionId(self):
+        """资源栈版本ID
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -205,6 +235,9 @@ class CreateStackResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -241,6 +274,9 @@ class CreateStackVersionRequest(AbstractModel):
 
     @property
     def StackId(self):
+        """待增加版本的资源栈ID
+        :rtype: str
+        """
         return self._StackId
 
     @StackId.setter
@@ -249,6 +285,9 @@ class CreateStackVersionRequest(AbstractModel):
 
     @property
     def TemplateUrl(self):
+        """模板 URL，⽬前仅限 COS URL, ⽂件为zip压缩格式
+        :rtype: str
+        """
         return self._TemplateUrl
 
     @TemplateUrl.setter
@@ -257,6 +296,9 @@ class CreateStackVersionRequest(AbstractModel):
 
     @property
     def VersionName(self):
+        """版本名称，不得超过60个字符
+        :rtype: str
+        """
         return self._VersionName
 
     @VersionName.setter
@@ -265,6 +307,9 @@ class CreateStackVersionRequest(AbstractModel):
 
     @property
     def Description(self):
+        """版本描述，不得超过200个字符
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -304,6 +349,9 @@ class CreateStackVersionResponse(AbstractModel):
 
     @property
     def VersionId(self):
+        """新创建的版本ID
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -312,6 +360,9 @@ class CreateStackVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -338,6 +389,9 @@ class DeleteStackRequest(AbstractModel):
 
     @property
     def StackId(self):
+        """待删除的资源栈ID
+        :rtype: str
+        """
         return self._StackId
 
     @StackId.setter
@@ -371,6 +425,9 @@ class DeleteStackResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -396,6 +453,9 @@ class DeleteStackVersionRequest(AbstractModel):
 
     @property
     def VersionId(self):
+        """待删除的版本ID
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -429,6 +489,9 @@ class DeleteStackVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -454,6 +517,9 @@ class DescribeStackEventRequest(AbstractModel):
 
     @property
     def EventId(self):
+        """事件ID
+        :rtype: str
+        """
         return self._EventId
 
     @EventId.setter
@@ -511,6 +577,9 @@ class DescribeStackEventResponse(AbstractModel):
 
     @property
     def EventId(self):
+        """事件ID
+        :rtype: str
+        """
         return self._EventId
 
     @EventId.setter
@@ -519,6 +588,9 @@ class DescribeStackEventResponse(AbstractModel):
 
     @property
     def VersionId(self):
+        """版本ID
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -527,6 +599,9 @@ class DescribeStackEventResponse(AbstractModel):
 
     @property
     def StackId(self):
+        """资源栈ID
+        :rtype: str
+        """
         return self._StackId
 
     @StackId.setter
@@ -535,6 +610,9 @@ class DescribeStackEventResponse(AbstractModel):
 
     @property
     def Type(self):
+        """事件类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -543,6 +621,9 @@ class DescribeStackEventResponse(AbstractModel):
 
     @property
     def Status(self):
+        """事件状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -551,6 +632,9 @@ class DescribeStackEventResponse(AbstractModel):
 
     @property
     def EventMessage(self):
+        """状态信息
+        :rtype: str
+        """
         return self._EventMessage
 
     @EventMessage.setter
@@ -559,6 +643,9 @@ class DescribeStackEventResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -567,6 +654,9 @@ class DescribeStackEventResponse(AbstractModel):
 
     @property
     def ConsoleLog(self):
+        """控制台输出文本
+        :rtype: str
+        """
         return self._ConsoleLog
 
     @ConsoleLog.setter
@@ -575,6 +665,9 @@ class DescribeStackEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -631,6 +724,9 @@ class DescribeStackEventsRequest(AbstractModel):
 
     @property
     def EventIds(self):
+        """按照⼀个或者多个事件ID查询
+        :rtype: list of str
+        """
         return self._EventIds
 
     @EventIds.setter
@@ -639,6 +735,23 @@ class DescribeStackEventsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """<li>**VersionId**</li>
+按照【**版本ID**】过滤，VersionId形如 `ver-kg8hn58h`
+类型：string
+
+<li>**StackId**</li>
+按照【**资源栈ID**】过滤，StackId形如 `stk-hz5vn3te`
+类型：string
+
+<li>**Type**</li>
+按照【**事件类型**】过滤，Type 形如 plan, apply, destroy
+类型：string
+
+<li>**Status**</li>
+按照【**事件状态**】过滤，Status形如 queueing, running, success, failed
+类型：string
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -647,6 +760,9 @@ class DescribeStackEventsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -655,6 +771,9 @@ class DescribeStackEventsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -702,6 +821,9 @@ class DescribeStackEventsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的事件数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -710,6 +832,9 @@ class DescribeStackEventsResponse(AbstractModel):
 
     @property
     def Events(self):
+        """事件详细信息列表
+        :rtype: list of EventInfo
+        """
         return self._Events
 
     @Events.setter
@@ -718,6 +843,9 @@ class DescribeStackEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -769,6 +897,9 @@ class DescribeStackVersionsRequest(AbstractModel):
 
     @property
     def VersionIds(self):
+        """按照⼀个或者多个版本ID查询
+        :rtype: list of str
+        """
         return self._VersionIds
 
     @VersionIds.setter
@@ -777,6 +908,9 @@ class DescribeStackVersionsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -785,6 +919,9 @@ class DescribeStackVersionsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -793,6 +930,19 @@ class DescribeStackVersionsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """<li>**Name**</li>
+按照【**版本名称**】进行过滤
+类型：string
+
+<li>**Status**</li>
+按照【**版本状态**】过滤，形如`VERSION_EDITING`，`PLAN_IN_PROGRESS`等
+类型：string
+
+<li>**StackId**</li>
+按照版本所属的【**资源栈ID**】进行过滤，形如`stk-xxxxxx`
+类型：string
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -840,6 +990,9 @@ class DescribeStackVersionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的版本数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -848,6 +1001,9 @@ class DescribeStackVersionsResponse(AbstractModel):
 
     @property
     def Versions(self):
+        """版本详细信息列表
+        :rtype: list of VersionInfo
+        """
         return self._Versions
 
     @Versions.setter
@@ -856,6 +1012,9 @@ class DescribeStackVersionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -894,6 +1053,9 @@ class DescribeStacksRequest(AbstractModel):
 
     @property
     def StackIds(self):
+        """按照⼀个或者多个资源栈ID查询
+        :rtype: list of str
+        """
         return self._StackIds
 
     @StackIds.setter
@@ -902,6 +1064,9 @@ class DescribeStacksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -910,6 +1075,9 @@ class DescribeStacksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -951,6 +1119,9 @@ class DescribeStacksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的资源栈数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -959,6 +1130,9 @@ class DescribeStacksResponse(AbstractModel):
 
     @property
     def Stacks(self):
+        """资源栈详细信息列表
+        :rtype: list of StackInfo
+        """
         return self._Stacks
 
     @Stacks.setter
@@ -967,6 +1141,9 @@ class DescribeStacksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1002,6 +1179,9 @@ class DestroyStackRequest(AbstractModel):
 
     @property
     def StackId(self):
+        """资源栈ID
+        :rtype: str
+        """
         return self._StackId
 
     @StackId.setter
@@ -1010,6 +1190,9 @@ class DestroyStackRequest(AbstractModel):
 
     @property
     def VersionId(self):
+        """待执行destroy事件的版本ID
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -1047,6 +1230,9 @@ class DestroyStackResponse(AbstractModel):
 
     @property
     def EventId(self):
+        """事件ID
+        :rtype: str
+        """
         return self._EventId
 
     @EventId.setter
@@ -1055,6 +1241,9 @@ class DestroyStackResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1099,6 +1288,9 @@ class EventInfo(AbstractModel):
 
     @property
     def EventId(self):
+        """事件ID
+        :rtype: str
+        """
         return self._EventId
 
     @EventId.setter
@@ -1107,6 +1299,9 @@ class EventInfo(AbstractModel):
 
     @property
     def VersionId(self):
+        """版本ID
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -1115,6 +1310,9 @@ class EventInfo(AbstractModel):
 
     @property
     def StackId(self):
+        """资源栈ID
+        :rtype: str
+        """
         return self._StackId
 
     @StackId.setter
@@ -1123,6 +1321,9 @@ class EventInfo(AbstractModel):
 
     @property
     def Type(self):
+        """事件类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1131,6 +1332,9 @@ class EventInfo(AbstractModel):
 
     @property
     def Status(self):
+        """版本状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1139,6 +1343,9 @@ class EventInfo(AbstractModel):
 
     @property
     def Message(self):
+        """状态信息
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -1147,6 +1354,9 @@ class EventInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1189,6 +1399,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """条件名字
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1197,6 +1410,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """匹配的值，可以有多个
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -1234,6 +1450,9 @@ class PlanStackRequest(AbstractModel):
 
     @property
     def StackId(self):
+        """资源栈ID
+        :rtype: str
+        """
         return self._StackId
 
     @StackId.setter
@@ -1242,6 +1461,9 @@ class PlanStackRequest(AbstractModel):
 
     @property
     def VersionId(self):
+        """待执行plan事件的版本ID
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -1279,6 +1501,9 @@ class PlanStackResponse(AbstractModel):
 
     @property
     def EventId(self):
+        """执行的事件ID
+        :rtype: str
+        """
         return self._EventId
 
     @EventId.setter
@@ -1287,6 +1512,9 @@ class PlanStackResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1328,6 +1556,9 @@ class StackInfo(AbstractModel):
 
     @property
     def StackId(self):
+        """资源栈ID
+        :rtype: str
+        """
         return self._StackId
 
     @StackId.setter
@@ -1336,6 +1567,9 @@ class StackInfo(AbstractModel):
 
     @property
     def StackName(self):
+        """资源栈名称
+        :rtype: str
+        """
         return self._StackName
 
     @StackName.setter
@@ -1344,6 +1578,9 @@ class StackInfo(AbstractModel):
 
     @property
     def Description(self):
+        """资源栈描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1352,6 +1589,9 @@ class StackInfo(AbstractModel):
 
     @property
     def Region(self):
+        """所处地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -1360,6 +1600,9 @@ class StackInfo(AbstractModel):
 
     @property
     def Status(self):
+        """资源栈状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1368,6 +1611,9 @@ class StackInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1412,6 +1658,9 @@ class UpdateStackRequest(AbstractModel):
 
     @property
     def StackId(self):
+        """待更新的资源栈ID
+        :rtype: str
+        """
         return self._StackId
 
     @StackId.setter
@@ -1420,6 +1669,9 @@ class UpdateStackRequest(AbstractModel):
 
     @property
     def StackName(self):
+        """资源栈名称，不得超过60个字符
+        :rtype: str
+        """
         return self._StackName
 
     @StackName.setter
@@ -1428,6 +1680,9 @@ class UpdateStackRequest(AbstractModel):
 
     @property
     def Description(self):
+        """资源栈描述，不得超过200个字符
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1463,6 +1718,9 @@ class UpdateStackResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1497,6 +1755,9 @@ class UpdateStackVersionRequest(AbstractModel):
 
     @property
     def VersionId(self):
+        """待更新的版本ID
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -1505,6 +1766,9 @@ class UpdateStackVersionRequest(AbstractModel):
 
     @property
     def TemplateUrl(self):
+        """模板 URL，⽬前仅限 COS URL, ⽂件为zip压缩格式
+        :rtype: str
+        """
         return self._TemplateUrl
 
     @TemplateUrl.setter
@@ -1513,6 +1777,9 @@ class UpdateStackVersionRequest(AbstractModel):
 
     @property
     def VersionName(self):
+        """版本名称，不得超过60个字符
+        :rtype: str
+        """
         return self._VersionName
 
     @VersionName.setter
@@ -1521,6 +1788,9 @@ class UpdateStackVersionRequest(AbstractModel):
 
     @property
     def Description(self):
+        """版本描述，不得超过200个字符
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1557,6 +1827,9 @@ class UpdateStackVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1597,6 +1870,9 @@ class VersionInfo(AbstractModel):
 
     @property
     def VersionId(self):
+        """版本ID
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -1605,6 +1881,9 @@ class VersionInfo(AbstractModel):
 
     @property
     def VersionName(self):
+        """版本名称
+        :rtype: str
+        """
         return self._VersionName
 
     @VersionName.setter
@@ -1613,6 +1892,9 @@ class VersionInfo(AbstractModel):
 
     @property
     def Description(self):
+        """版本描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1621,6 +1903,9 @@ class VersionInfo(AbstractModel):
 
     @property
     def StackId(self):
+        """资源栈ID
+        :rtype: str
+        """
         return self._StackId
 
     @StackId.setter
@@ -1629,6 +1914,9 @@ class VersionInfo(AbstractModel):
 
     @property
     def Status(self):
+        """版本状态
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1637,6 +1925,9 @@ class VersionInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter

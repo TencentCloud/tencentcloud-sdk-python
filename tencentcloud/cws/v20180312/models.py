@@ -47,6 +47,9 @@ class CreateMonitorsRequest(AbstractModel):
 
     @property
     def Urls(self):
+        """站点的url列表
+        :rtype: list of str
+        """
         return self._Urls
 
     @Urls.setter
@@ -55,6 +58,9 @@ class CreateMonitorsRequest(AbstractModel):
 
     @property
     def Name(self):
+        """任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -63,6 +69,9 @@ class CreateMonitorsRequest(AbstractModel):
 
     @property
     def ScannerType(self):
+        """扫描模式，normal-正常扫描；deep-深度扫描
+        :rtype: str
+        """
         return self._ScannerType
 
     @ScannerType.setter
@@ -71,6 +80,9 @@ class CreateMonitorsRequest(AbstractModel):
 
     @property
     def Crontab(self):
+        """扫描周期，单位小时，每X小时执行一次
+        :rtype: int
+        """
         return self._Crontab
 
     @Crontab.setter
@@ -79,6 +91,9 @@ class CreateMonitorsRequest(AbstractModel):
 
     @property
     def RateLimit(self):
+        """扫描速率限制，每秒发送X个HTTP请求
+        :rtype: int
+        """
         return self._RateLimit
 
     @RateLimit.setter
@@ -87,6 +102,9 @@ class CreateMonitorsRequest(AbstractModel):
 
     @property
     def FirstScanStartTime(self):
+        """首次扫描开始时间
+        :rtype: str
+        """
         return self._FirstScanStartTime
 
     @FirstScanStartTime.setter
@@ -125,6 +143,9 @@ class CreateMonitorsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -153,6 +174,9 @@ class CreateSitesRequest(AbstractModel):
 
     @property
     def Urls(self):
+        """站点的url列表
+        :rtype: list of str
+        """
         return self._Urls
 
     @Urls.setter
@@ -161,6 +185,9 @@ class CreateSitesRequest(AbstractModel):
 
     @property
     def UserAgent(self):
+        """访问网站的客户端标识
+        :rtype: str
+        """
         return self._UserAgent
 
     @UserAgent.setter
@@ -201,6 +228,9 @@ class CreateSitesResponse(AbstractModel):
 
     @property
     def Number(self):
+        """新增站点数。
+        :rtype: int
+        """
         return self._Number
 
     @Number.setter
@@ -209,6 +239,9 @@ class CreateSitesResponse(AbstractModel):
 
     @property
     def Sites(self):
+        """站点数组
+        :rtype: list of MiniSite
+        """
         return self._Sites
 
     @Sites.setter
@@ -217,6 +250,9 @@ class CreateSitesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -255,6 +291,9 @@ class CreateSitesScansRequest(AbstractModel):
 
     @property
     def SiteIds(self):
+        """站点的ID列表
+        :rtype: list of int non-negative
+        """
         return self._SiteIds
 
     @SiteIds.setter
@@ -263,6 +302,9 @@ class CreateSitesScansRequest(AbstractModel):
 
     @property
     def ScannerType(self):
+        """扫描模式，normal-正常扫描；deep-深度扫描
+        :rtype: str
+        """
         return self._ScannerType
 
     @ScannerType.setter
@@ -271,6 +313,9 @@ class CreateSitesScansRequest(AbstractModel):
 
     @property
     def RateLimit(self):
+        """扫描速率限制，每秒发送X个HTTP请求
+        :rtype: int
+        """
         return self._RateLimit
 
     @RateLimit.setter
@@ -306,6 +351,9 @@ class CreateSitesScansResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -331,6 +379,9 @@ class CreateVulsMisinformationRequest(AbstractModel):
 
     @property
     def VulIds(self):
+        """漏洞ID列表
+        :rtype: list of int non-negative
+        """
         return self._VulIds
 
     @VulIds.setter
@@ -364,6 +415,9 @@ class CreateVulsMisinformationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -392,6 +446,9 @@ class CreateVulsReportRequest(AbstractModel):
 
     @property
     def SiteId(self):
+        """站点ID
+        :rtype: int
+        """
         return self._SiteId
 
     @SiteId.setter
@@ -400,6 +457,9 @@ class CreateVulsReportRequest(AbstractModel):
 
     @property
     def MonitorId(self):
+        """监控任务ID
+        :rtype: int
+        """
         return self._MonitorId
 
     @MonitorId.setter
@@ -437,6 +497,9 @@ class CreateVulsReportResponse(AbstractModel):
 
     @property
     def ReportFileUrl(self):
+        """报告下载地址
+        :rtype: str
+        """
         return self._ReportFileUrl
 
     @ReportFileUrl.setter
@@ -445,6 +508,9 @@ class CreateVulsReportResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -471,6 +537,9 @@ class DeleteMonitorsRequest(AbstractModel):
 
     @property
     def MonitorIds(self):
+        """监控任务ID列表
+        :rtype: list of int non-negative
+        """
         return self._MonitorIds
 
     @MonitorIds.setter
@@ -504,6 +573,9 @@ class DeleteMonitorsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -529,6 +601,9 @@ class DeleteSitesRequest(AbstractModel):
 
     @property
     def SiteIds(self):
+        """站点ID列表
+        :rtype: list of int non-negative
+        """
         return self._SiteIds
 
     @SiteIds.setter
@@ -562,6 +637,9 @@ class DeleteSitesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -611,6 +689,9 @@ class DescribeConfigResponse(AbstractModel):
 
     @property
     def NoticeLevel(self):
+        """漏洞告警通知等级，4位分别代表：高危、中危、低危、提示。
+        :rtype: str
+        """
         return self._NoticeLevel
 
     @NoticeLevel.setter
@@ -619,6 +700,9 @@ class DescribeConfigResponse(AbstractModel):
 
     @property
     def Id(self):
+        """配置ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -627,6 +711,9 @@ class DescribeConfigResponse(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """记录创建时间。
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -635,6 +722,9 @@ class DescribeConfigResponse(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """记录更新新建。
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -643,6 +733,9 @@ class DescribeConfigResponse(AbstractModel):
 
     @property
     def Appid(self):
+        """云用户appid。
+        :rtype: int
+        """
         return self._Appid
 
     @Appid.setter
@@ -651,6 +744,9 @@ class DescribeConfigResponse(AbstractModel):
 
     @property
     def ContentLevel(self):
+        """内容检测通知等级-1:通知,0-不通知
+        :rtype: int
+        """
         return self._ContentLevel
 
     @ContentLevel.setter
@@ -659,6 +755,9 @@ class DescribeConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -699,6 +798,9 @@ class DescribeMonitorsRequest(AbstractModel):
 
     @property
     def MonitorIds(self):
+        """监控任务ID列表
+        :rtype: list of int non-negative
+        """
         return self._MonitorIds
 
     @MonitorIds.setter
@@ -707,6 +809,9 @@ class DescribeMonitorsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -715,6 +820,9 @@ class DescribeMonitorsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -723,6 +831,9 @@ class DescribeMonitorsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -770,6 +881,9 @@ class DescribeMonitorsResponse(AbstractModel):
 
     @property
     def Monitors(self):
+        """监控任务列表。
+        :rtype: list of MonitorsDetail
+        """
         return self._Monitors
 
     @Monitors.setter
@@ -778,6 +892,9 @@ class DescribeMonitorsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """监控任务数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -786,6 +903,9 @@ class DescribeMonitorsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -833,6 +953,9 @@ class DescribeSiteQuotaResponse(AbstractModel):
 
     @property
     def Total(self):
+        """已购买的扫描次数。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -841,6 +964,9 @@ class DescribeSiteQuotaResponse(AbstractModel):
 
     @property
     def Used(self):
+        """已使用的扫描次数。
+        :rtype: int
+        """
         return self._Used
 
     @Used.setter
@@ -849,6 +975,9 @@ class DescribeSiteQuotaResponse(AbstractModel):
 
     @property
     def Available(self):
+        """剩余可用的扫描次数。
+        :rtype: int
+        """
         return self._Available
 
     @Available.setter
@@ -857,6 +986,9 @@ class DescribeSiteQuotaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -894,6 +1026,9 @@ class DescribeSitesRequest(AbstractModel):
 
     @property
     def SiteIds(self):
+        """站点ID列表
+        :rtype: list of int non-negative
+        """
         return self._SiteIds
 
     @SiteIds.setter
@@ -902,6 +1037,9 @@ class DescribeSitesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -910,6 +1048,9 @@ class DescribeSitesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -918,6 +1059,9 @@ class DescribeSitesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -965,6 +1109,9 @@ class DescribeSitesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """站点数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -973,6 +1120,9 @@ class DescribeSitesResponse(AbstractModel):
 
     @property
     def Sites(self):
+        """站点信息列表。
+        :rtype: list of Site
+        """
         return self._Sites
 
     @Sites.setter
@@ -981,6 +1131,9 @@ class DescribeSitesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1013,6 +1166,9 @@ class DescribeSitesVerificationRequest(AbstractModel):
 
     @property
     def Urls(self):
+        """站点的url列表
+        :rtype: list of str
+        """
         return self._Urls
 
     @Urls.setter
@@ -1052,6 +1208,9 @@ class DescribeSitesVerificationResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """验证信息数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1060,6 +1219,9 @@ class DescribeSitesVerificationResponse(AbstractModel):
 
     @property
     def SitesVerification(self):
+        """验证信息列表。
+        :rtype: list of SitesVerification
+        """
         return self._SitesVerification
 
     @SitesVerification.setter
@@ -1068,6 +1230,9 @@ class DescribeSitesVerificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1133,6 +1298,9 @@ class DescribeVulsNumberResponse(AbstractModel):
 
     @property
     def ImpactSiteNumber(self):
+        """受影响的网站总数。
+        :rtype: int
+        """
         return self._ImpactSiteNumber
 
     @ImpactSiteNumber.setter
@@ -1141,6 +1309,9 @@ class DescribeVulsNumberResponse(AbstractModel):
 
     @property
     def SiteNumber(self):
+        """已验证的网站总数。
+        :rtype: int
+        """
         return self._SiteNumber
 
     @SiteNumber.setter
@@ -1149,6 +1320,9 @@ class DescribeVulsNumberResponse(AbstractModel):
 
     @property
     def VulsHighNumber(self):
+        """高风险漏洞总数。
+        :rtype: int
+        """
         return self._VulsHighNumber
 
     @VulsHighNumber.setter
@@ -1157,6 +1331,9 @@ class DescribeVulsNumberResponse(AbstractModel):
 
     @property
     def VulsMiddleNumber(self):
+        """中风险漏洞总数。
+        :rtype: int
+        """
         return self._VulsMiddleNumber
 
     @VulsMiddleNumber.setter
@@ -1165,6 +1342,9 @@ class DescribeVulsNumberResponse(AbstractModel):
 
     @property
     def VulsLowNumber(self):
+        """低高风险漏洞总数。
+        :rtype: int
+        """
         return self._VulsLowNumber
 
     @VulsLowNumber.setter
@@ -1173,6 +1353,9 @@ class DescribeVulsNumberResponse(AbstractModel):
 
     @property
     def VulsNoticeNumber(self):
+        """风险提示总数。
+        :rtype: int
+        """
         return self._VulsNoticeNumber
 
     @VulsNoticeNumber.setter
@@ -1181,6 +1364,9 @@ class DescribeVulsNumberResponse(AbstractModel):
 
     @property
     def PageCount(self):
+        """扫描页面总数。
+        :rtype: int
+        """
         return self._PageCount
 
     @PageCount.setter
@@ -1189,6 +1375,9 @@ class DescribeVulsNumberResponse(AbstractModel):
 
     @property
     def Sites(self):
+        """已验证的网站列表。
+        :rtype: list of MonitorMiniSite
+        """
         return self._Sites
 
     @Sites.setter
@@ -1197,6 +1386,9 @@ class DescribeVulsNumberResponse(AbstractModel):
 
     @property
     def ImpactSites(self):
+        """受影响的网站列表。
+        :rtype: list of MonitorMiniSite
+        """
         return self._ImpactSites
 
     @ImpactSites.setter
@@ -1205,6 +1397,9 @@ class DescribeVulsNumberResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1261,6 +1456,9 @@ class DescribeVulsNumberTimelineResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """统计数据记录数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1269,6 +1467,9 @@ class DescribeVulsNumberTimelineResponse(AbstractModel):
 
     @property
     def VulsTimeline(self):
+        """用户漏洞数随时间变化统计数据。
+        :rtype: list of VulsTimeline
+        """
         return self._VulsTimeline
 
     @VulsTimeline.setter
@@ -1277,6 +1478,9 @@ class DescribeVulsNumberTimelineResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1321,6 +1525,9 @@ class DescribeVulsRequest(AbstractModel):
 
     @property
     def SiteId(self):
+        """站点ID
+        :rtype: int
+        """
         return self._SiteId
 
     @SiteId.setter
@@ -1329,6 +1536,9 @@ class DescribeVulsRequest(AbstractModel):
 
     @property
     def MonitorId(self):
+        """监控任务ID
+        :rtype: int
+        """
         return self._MonitorId
 
     @MonitorId.setter
@@ -1337,6 +1547,9 @@ class DescribeVulsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1345,6 +1558,9 @@ class DescribeVulsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1353,6 +1569,9 @@ class DescribeVulsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1401,6 +1620,9 @@ class DescribeVulsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """漏洞数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1409,6 +1631,9 @@ class DescribeVulsResponse(AbstractModel):
 
     @property
     def Vuls(self):
+        """漏洞信息列表。
+        :rtype: list of Vul
+        """
         return self._Vuls
 
     @Vuls.setter
@@ -1417,6 +1642,9 @@ class DescribeVulsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1455,6 +1683,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """过滤键的名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1463,6 +1694,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """一个或者多个过滤值。
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -1500,6 +1734,9 @@ class MiniSite(AbstractModel):
 
     @property
     def SiteId(self):
+        """站点ID。
+        :rtype: int
+        """
         return self._SiteId
 
     @SiteId.setter
@@ -1508,6 +1745,9 @@ class MiniSite(AbstractModel):
 
     @property
     def Url(self):
+        """站点Url。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -1542,6 +1782,9 @@ class ModifyConfigAttributeRequest(AbstractModel):
 
     @property
     def NoticeLevel(self):
+        """漏洞告警通知等级，4位分别代表：高危、中危、低危、提示
+        :rtype: str
+        """
         return self._NoticeLevel
 
     @NoticeLevel.setter
@@ -1575,6 +1818,9 @@ class ModifyConfigAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1621,6 +1867,9 @@ class ModifyMonitorAttributeRequest(AbstractModel):
 
     @property
     def MonitorId(self):
+        """监测任务ID
+        :rtype: int
+        """
         return self._MonitorId
 
     @MonitorId.setter
@@ -1629,6 +1878,9 @@ class ModifyMonitorAttributeRequest(AbstractModel):
 
     @property
     def Urls(self):
+        """站点的url列表
+        :rtype: list of str
+        """
         return self._Urls
 
     @Urls.setter
@@ -1637,6 +1889,9 @@ class ModifyMonitorAttributeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1645,6 +1900,9 @@ class ModifyMonitorAttributeRequest(AbstractModel):
 
     @property
     def ScannerType(self):
+        """扫描模式，normal-正常扫描；deep-深度扫描
+        :rtype: str
+        """
         return self._ScannerType
 
     @ScannerType.setter
@@ -1653,6 +1911,9 @@ class ModifyMonitorAttributeRequest(AbstractModel):
 
     @property
     def Crontab(self):
+        """扫描周期，单位小时，每X小时执行一次
+        :rtype: int
+        """
         return self._Crontab
 
     @Crontab.setter
@@ -1661,6 +1922,9 @@ class ModifyMonitorAttributeRequest(AbstractModel):
 
     @property
     def RateLimit(self):
+        """扫描速率限制，每秒发送X个HTTP请求
+        :rtype: int
+        """
         return self._RateLimit
 
     @RateLimit.setter
@@ -1669,6 +1933,9 @@ class ModifyMonitorAttributeRequest(AbstractModel):
 
     @property
     def FirstScanStartTime(self):
+        """首次扫描开始时间
+        :rtype: str
+        """
         return self._FirstScanStartTime
 
     @FirstScanStartTime.setter
@@ -1677,6 +1944,9 @@ class ModifyMonitorAttributeRequest(AbstractModel):
 
     @property
     def MonitorStatus(self):
+        """监测状态：1-监测中；2-暂停监测
+        :rtype: int
+        """
         return self._MonitorStatus
 
     @MonitorStatus.setter
@@ -1717,6 +1987,9 @@ class ModifyMonitorAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1760,6 +2033,9 @@ class ModifySiteAttributeRequest(AbstractModel):
 
     @property
     def SiteId(self):
+        """站点ID
+        :rtype: int
+        """
         return self._SiteId
 
     @SiteId.setter
@@ -1768,6 +2044,9 @@ class ModifySiteAttributeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """站点名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1776,6 +2055,9 @@ class ModifySiteAttributeRequest(AbstractModel):
 
     @property
     def NeedLogin(self):
+        """网站是否需要登录扫描：0-未知；-1-不需要；1-需要
+        :rtype: int
+        """
         return self._NeedLogin
 
     @NeedLogin.setter
@@ -1784,6 +2066,9 @@ class ModifySiteAttributeRequest(AbstractModel):
 
     @property
     def LoginCookie(self):
+        """登录后的cookie
+        :rtype: str
+        """
         return self._LoginCookie
 
     @LoginCookie.setter
@@ -1792,6 +2077,9 @@ class ModifySiteAttributeRequest(AbstractModel):
 
     @property
     def LoginCheckUrl(self):
+        """用于测试cookie是否有效的URL
+        :rtype: str
+        """
         return self._LoginCheckUrl
 
     @LoginCheckUrl.setter
@@ -1800,6 +2088,9 @@ class ModifySiteAttributeRequest(AbstractModel):
 
     @property
     def LoginCheckKw(self):
+        """用于测试cookie是否有效的关键字
+        :rtype: str
+        """
         return self._LoginCheckKw
 
     @LoginCheckKw.setter
@@ -1808,6 +2099,9 @@ class ModifySiteAttributeRequest(AbstractModel):
 
     @property
     def ScanDisallow(self):
+        """禁止扫描器扫描的目录关键字
+        :rtype: str
+        """
         return self._ScanDisallow
 
     @ScanDisallow.setter
@@ -1847,6 +2141,9 @@ class ModifySiteAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1914,6 +2211,9 @@ class Monitor(AbstractModel):
 
     @property
     def Id(self):
+        """监控任务ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -1922,6 +2222,9 @@ class Monitor(AbstractModel):
 
     @property
     def Name(self):
+        """监控名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1930,6 +2233,9 @@ class Monitor(AbstractModel):
 
     @property
     def MonitorStatus(self):
+        """监测状态：1-监测中；2-暂停监测。
+        :rtype: int
+        """
         return self._MonitorStatus
 
     @MonitorStatus.setter
@@ -1938,6 +2244,9 @@ class Monitor(AbstractModel):
 
     @property
     def ScannerType(self):
+        """监测模式，normal-正常扫描；deep-深度扫描。
+        :rtype: str
+        """
         return self._ScannerType
 
     @ScannerType.setter
@@ -1946,6 +2255,9 @@ class Monitor(AbstractModel):
 
     @property
     def Crontab(self):
+        """扫描周期，单位小时，每X小时执行一次。
+        :rtype: int
+        """
         return self._Crontab
 
     @Crontab.setter
@@ -1954,6 +2266,9 @@ class Monitor(AbstractModel):
 
     @property
     def IncludedVulsTypes(self):
+        """指定扫描类型，3位数每位依次表示：扫描Web漏洞、扫描系统漏洞、扫描系统端口。
+        :rtype: str
+        """
         return self._IncludedVulsTypes
 
     @IncludedVulsTypes.setter
@@ -1962,6 +2277,9 @@ class Monitor(AbstractModel):
 
     @property
     def RateLimit(self):
+        """速率限制，每秒发送X个HTTP请求。
+        :rtype: int
+        """
         return self._RateLimit
 
     @RateLimit.setter
@@ -1970,6 +2288,9 @@ class Monitor(AbstractModel):
 
     @property
     def FirstScanStartTime(self):
+        """首次扫描开始时间。
+        :rtype: str
+        """
         return self._FirstScanStartTime
 
     @FirstScanStartTime.setter
@@ -1978,6 +2299,9 @@ class Monitor(AbstractModel):
 
     @property
     def ScanStatus(self):
+        """扫描状态：0-待扫描（无任何扫描结果）；1-扫描中（正在进行扫描）；2-已扫描（有扫描结果且不正在扫描）；3-扫描完成待同步结果。
+        :rtype: int
+        """
         return self._ScanStatus
 
     @ScanStatus.setter
@@ -1986,6 +2310,9 @@ class Monitor(AbstractModel):
 
     @property
     def LastScanFinishTime(self):
+        """上一次扫描完成时间。
+        :rtype: str
+        """
         return self._LastScanFinishTime
 
     @LastScanFinishTime.setter
@@ -1994,6 +2321,9 @@ class Monitor(AbstractModel):
 
     @property
     def CurrentScanStartTime(self):
+        """当前扫描开始时间，如扫描完成则为上一次扫描的开始时间。
+        :rtype: str
+        """
         return self._CurrentScanStartTime
 
     @CurrentScanStartTime.setter
@@ -2002,6 +2332,9 @@ class Monitor(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """CreatedAt。
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -2010,6 +2343,9 @@ class Monitor(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """UpdatedAt。
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -2018,6 +2354,9 @@ class Monitor(AbstractModel):
 
     @property
     def Appid(self):
+        """云用户appid。
+        :rtype: int
+        """
         return self._Appid
 
     @Appid.setter
@@ -2026,6 +2365,9 @@ class Monitor(AbstractModel):
 
     @property
     def ContentScanStatus(self):
+        """扫描状态：0-待检测；1-检测完成
+        :rtype: int
+        """
         return self._ContentScanStatus
 
     @ContentScanStatus.setter
@@ -2076,6 +2418,9 @@ class MonitorMiniSite(AbstractModel):
 
     @property
     def SiteId(self):
+        """站点ID。
+        :rtype: int
+        """
         return self._SiteId
 
     @SiteId.setter
@@ -2084,6 +2429,9 @@ class MonitorMiniSite(AbstractModel):
 
     @property
     def Url(self):
+        """站点Url。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -2151,6 +2499,9 @@ class MonitorsDetail(AbstractModel):
 
     @property
     def Basic(self):
+        """监控任务基础信息。
+        :rtype: :class:`tencentcloud.cws.v20180312.models.Monitor`
+        """
         return self._Basic
 
     @Basic.setter
@@ -2159,6 +2510,9 @@ class MonitorsDetail(AbstractModel):
 
     @property
     def Sites(self):
+        """监控任务包含的站点列表。
+        :rtype: list of MonitorMiniSite
+        """
         return self._Sites
 
     @Sites.setter
@@ -2167,6 +2521,9 @@ class MonitorsDetail(AbstractModel):
 
     @property
     def SiteNumber(self):
+        """监控任务包含的站点列表数量。
+        :rtype: int
+        """
         return self._SiteNumber
 
     @SiteNumber.setter
@@ -2175,6 +2532,9 @@ class MonitorsDetail(AbstractModel):
 
     @property
     def ImpactSites(self):
+        """监控任务包含的受漏洞威胁的站点列表。
+        :rtype: list of MonitorMiniSite
+        """
         return self._ImpactSites
 
     @ImpactSites.setter
@@ -2183,6 +2543,9 @@ class MonitorsDetail(AbstractModel):
 
     @property
     def ImpactSiteNumber(self):
+        """监控任务包含的受漏洞威胁的站点列表数量。
+        :rtype: int
+        """
         return self._ImpactSiteNumber
 
     @ImpactSiteNumber.setter
@@ -2191,6 +2554,9 @@ class MonitorsDetail(AbstractModel):
 
     @property
     def VulsHighNumber(self):
+        """高风险漏洞数量。
+        :rtype: int
+        """
         return self._VulsHighNumber
 
     @VulsHighNumber.setter
@@ -2199,6 +2565,9 @@ class MonitorsDetail(AbstractModel):
 
     @property
     def VulsMiddleNumber(self):
+        """中风险漏洞数量。
+        :rtype: int
+        """
         return self._VulsMiddleNumber
 
     @VulsMiddleNumber.setter
@@ -2207,6 +2576,9 @@ class MonitorsDetail(AbstractModel):
 
     @property
     def VulsLowNumber(self):
+        """低风险漏洞数量。
+        :rtype: int
+        """
         return self._VulsLowNumber
 
     @VulsLowNumber.setter
@@ -2215,6 +2587,9 @@ class MonitorsDetail(AbstractModel):
 
     @property
     def VulsNoticeNumber(self):
+        """提示数量。
+        :rtype: int
+        """
         return self._VulsNoticeNumber
 
     @VulsNoticeNumber.setter
@@ -2223,6 +2598,9 @@ class MonitorsDetail(AbstractModel):
 
     @property
     def Progress(self):
+        """监控任务包含的站点列表的平均扫描进度。
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -2231,6 +2609,9 @@ class MonitorsDetail(AbstractModel):
 
     @property
     def PageCount(self):
+        """扫描页面总数。
+        :rtype: int
+        """
         return self._PageCount
 
     @PageCount.setter
@@ -2239,6 +2620,9 @@ class MonitorsDetail(AbstractModel):
 
     @property
     def ContentNumber(self):
+        """内容检测数量。
+        :rtype: int
+        """
         return self._ContentNumber
 
     @ContentNumber.setter
@@ -2394,6 +2778,9 @@ class Site(AbstractModel):
 
     @property
     def Id(self):
+        """站点ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -2402,6 +2789,9 @@ class Site(AbstractModel):
 
     @property
     def MonitorId(self):
+        """监控任务ID，为0时表示未加入监控任务。
+        :rtype: int
+        """
         return self._MonitorId
 
     @MonitorId.setter
@@ -2410,6 +2800,9 @@ class Site(AbstractModel):
 
     @property
     def Url(self):
+        """站点url。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -2418,6 +2811,9 @@ class Site(AbstractModel):
 
     @property
     def Name(self):
+        """站点名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2426,6 +2822,9 @@ class Site(AbstractModel):
 
     @property
     def VerifyStatus(self):
+        """验证状态：0-未验证；1-已验证；2-验证失效，待重新验证。
+        :rtype: int
+        """
         return self._VerifyStatus
 
     @VerifyStatus.setter
@@ -2434,6 +2833,9 @@ class Site(AbstractModel):
 
     @property
     def MonitorStatus(self):
+        """监测状态：0-未监测；1-监测中；2-暂停监测。
+        :rtype: int
+        """
         return self._MonitorStatus
 
     @MonitorStatus.setter
@@ -2442,6 +2844,9 @@ class Site(AbstractModel):
 
     @property
     def ScanStatus(self):
+        """扫描状态：0-待扫描（无任何扫描结果）；1-扫描中（正在进行扫描）；2-已扫描（有扫描结果且不正在扫描）；3-扫描完成待同步结果。
+        :rtype: int
+        """
         return self._ScanStatus
 
     @ScanStatus.setter
@@ -2450,6 +2855,9 @@ class Site(AbstractModel):
 
     @property
     def LastScanTaskId(self):
+        """最近一次的AIScanner的扫描任务id，注意取消的情况。
+        :rtype: int
+        """
         return self._LastScanTaskId
 
     @LastScanTaskId.setter
@@ -2458,6 +2866,9 @@ class Site(AbstractModel):
 
     @property
     def LastScanStartTime(self):
+        """最近一次扫描开始时间。
+        :rtype: str
+        """
         return self._LastScanStartTime
 
     @LastScanStartTime.setter
@@ -2466,6 +2877,9 @@ class Site(AbstractModel):
 
     @property
     def LastScanFinishTime(self):
+        """最近一次扫描完成时间。
+        :rtype: str
+        """
         return self._LastScanFinishTime
 
     @LastScanFinishTime.setter
@@ -2474,6 +2888,9 @@ class Site(AbstractModel):
 
     @property
     def LastScanCancelTime(self):
+        """最近一次取消时间，取消即使用上一次扫描结果。
+        :rtype: str
+        """
         return self._LastScanCancelTime
 
     @LastScanCancelTime.setter
@@ -2482,6 +2899,9 @@ class Site(AbstractModel):
 
     @property
     def LastScanPageCount(self):
+        """最近一次扫描扫描的页面数。
+        :rtype: int
+        """
         return self._LastScanPageCount
 
     @LastScanPageCount.setter
@@ -2490,6 +2910,9 @@ class Site(AbstractModel):
 
     @property
     def LastScanScannerType(self):
+        """normal-正常扫描；deep-深度扫描。
+        :rtype: str
+        """
         return self._LastScanScannerType
 
     @LastScanScannerType.setter
@@ -2498,6 +2921,9 @@ class Site(AbstractModel):
 
     @property
     def LastScanVulsHighNum(self):
+        """最近一次扫描高风险漏洞数量。
+        :rtype: int
+        """
         return self._LastScanVulsHighNum
 
     @LastScanVulsHighNum.setter
@@ -2506,6 +2932,9 @@ class Site(AbstractModel):
 
     @property
     def LastScanVulsMiddleNum(self):
+        """最近一次扫描中风险漏洞数量。
+        :rtype: int
+        """
         return self._LastScanVulsMiddleNum
 
     @LastScanVulsMiddleNum.setter
@@ -2514,6 +2943,9 @@ class Site(AbstractModel):
 
     @property
     def LastScanVulsLowNum(self):
+        """最近一次扫描低风险漏洞数量。
+        :rtype: int
+        """
         return self._LastScanVulsLowNum
 
     @LastScanVulsLowNum.setter
@@ -2522,6 +2954,9 @@ class Site(AbstractModel):
 
     @property
     def LastScanVulsNoticeNum(self):
+        """最近一次扫描提示信息数量。
+        :rtype: int
+        """
         return self._LastScanVulsNoticeNum
 
     @LastScanVulsNoticeNum.setter
@@ -2530,6 +2965,9 @@ class Site(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """记录添加时间。
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -2538,6 +2976,9 @@ class Site(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """记录最近修改时间。
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -2546,6 +2987,9 @@ class Site(AbstractModel):
 
     @property
     def LastScanRateLimit(self):
+        """速率限制，每秒发送X个HTTP请求。
+        :rtype: int
+        """
         return self._LastScanRateLimit
 
     @LastScanRateLimit.setter
@@ -2554,6 +2998,9 @@ class Site(AbstractModel):
 
     @property
     def LastScanVulsNum(self):
+        """最近一次扫描漏洞总数量。
+        :rtype: int
+        """
         return self._LastScanVulsNum
 
     @LastScanVulsNum.setter
@@ -2562,6 +3009,9 @@ class Site(AbstractModel):
 
     @property
     def LastScanNoticeNum(self):
+        """最近一次扫描提示总数量
+        :rtype: int
+        """
         return self._LastScanNoticeNum
 
     @LastScanNoticeNum.setter
@@ -2570,6 +3020,9 @@ class Site(AbstractModel):
 
     @property
     def Progress(self):
+        """扫描进度，百分比整数
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -2578,6 +3031,9 @@ class Site(AbstractModel):
 
     @property
     def Appid(self):
+        """云用户appid。
+        :rtype: int
+        """
         return self._Appid
 
     @Appid.setter
@@ -2586,6 +3042,9 @@ class Site(AbstractModel):
 
     @property
     def Uin(self):
+        """云用户标识。
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -2594,6 +3053,9 @@ class Site(AbstractModel):
 
     @property
     def NeedLogin(self):
+        """网站是否需要登录扫描：0-未知；-1-不需要；1-需要。
+        :rtype: int
+        """
         return self._NeedLogin
 
     @NeedLogin.setter
@@ -2602,6 +3064,9 @@ class Site(AbstractModel):
 
     @property
     def LoginCookie(self):
+        """登录后的cookie。
+        :rtype: str
+        """
         return self._LoginCookie
 
     @LoginCookie.setter
@@ -2610,6 +3075,9 @@ class Site(AbstractModel):
 
     @property
     def LoginCookieValid(self):
+        """登录后的cookie是否有效：0-无效；1-有效。
+        :rtype: int
+        """
         return self._LoginCookieValid
 
     @LoginCookieValid.setter
@@ -2618,6 +3086,9 @@ class Site(AbstractModel):
 
     @property
     def LoginCheckUrl(self):
+        """用于测试cookie是否有效的URL。
+        :rtype: str
+        """
         return self._LoginCheckUrl
 
     @LoginCheckUrl.setter
@@ -2626,6 +3097,9 @@ class Site(AbstractModel):
 
     @property
     def LoginCheckKw(self):
+        """用于测试cookie是否有效的关键字。
+        :rtype: str
+        """
         return self._LoginCheckKw
 
     @LoginCheckKw.setter
@@ -2634,6 +3108,9 @@ class Site(AbstractModel):
 
     @property
     def ScanDisallow(self):
+        """禁止扫描器扫描的目录关键字。
+        :rtype: str
+        """
         return self._ScanDisallow
 
     @ScanDisallow.setter
@@ -2642,6 +3119,9 @@ class Site(AbstractModel):
 
     @property
     def UserAgent(self):
+        """访问网站的客户端标识。
+        :rtype: str
+        """
         return self._UserAgent
 
     @UserAgent.setter
@@ -2650,6 +3130,9 @@ class Site(AbstractModel):
 
     @property
     def ContentStatus(self):
+        """内容检测状态：0-未检测；1-已检测；
+        :rtype: int
+        """
         return self._ContentStatus
 
     @ContentStatus.setter
@@ -2658,6 +3141,9 @@ class Site(AbstractModel):
 
     @property
     def LastScanContentNum(self):
+        """最近一次扫描内容检测数量
+        :rtype: int
+        """
         return self._LastScanContentNum
 
     @LastScanContentNum.setter
@@ -2754,6 +3240,9 @@ class SitesVerification(AbstractModel):
 
     @property
     def Domain(self):
+        """根域名。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -2762,6 +3251,9 @@ class SitesVerification(AbstractModel):
 
     @property
     def TxtName(self):
+        """txt解析域名验证的name。
+        :rtype: str
+        """
         return self._TxtName
 
     @TxtName.setter
@@ -2770,6 +3262,9 @@ class SitesVerification(AbstractModel):
 
     @property
     def TxtText(self):
+        """txt解析域名验证的text。
+        :rtype: str
+        """
         return self._TxtText
 
     @TxtText.setter
@@ -2778,6 +3273,9 @@ class SitesVerification(AbstractModel):
 
     @property
     def ValidTo(self):
+        """验证有效期，在此之前有效。
+        :rtype: str
+        """
         return self._ValidTo
 
     @ValidTo.setter
@@ -2786,6 +3284,9 @@ class SitesVerification(AbstractModel):
 
     @property
     def VerifyStatus(self):
+        """验证状态：0-未验证；1-已验证；2-验证失效，待重新验证。
+        :rtype: int
+        """
         return self._VerifyStatus
 
     @VerifyStatus.setter
@@ -2794,6 +3295,9 @@ class SitesVerification(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """CreatedAt。
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -2802,6 +3306,9 @@ class SitesVerification(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """UpdatedAt。
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -2810,6 +3317,9 @@ class SitesVerification(AbstractModel):
 
     @property
     def Id(self):
+        """ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -2818,6 +3328,9 @@ class SitesVerification(AbstractModel):
 
     @property
     def Appid(self):
+        """云用户appid
+        :rtype: int
+        """
         return self._Appid
 
     @Appid.setter
@@ -2826,6 +3339,9 @@ class SitesVerification(AbstractModel):
 
     @property
     def VerifyUrl(self):
+        """用于验证站点的url，即访问该url获取验证数据。
+        :rtype: str
+        """
         return self._VerifyUrl
 
     @VerifyUrl.setter
@@ -2834,6 +3350,9 @@ class SitesVerification(AbstractModel):
 
     @property
     def VerifyFileUrl(self):
+        """获取验证验证文件的url。
+        :rtype: str
+        """
         return self._VerifyFileUrl
 
     @VerifyFileUrl.setter
@@ -2877,6 +3396,9 @@ class VerifySitesRequest(AbstractModel):
 
     @property
     def Urls(self):
+        """站点的url列表
+        :rtype: list of str
+        """
         return self._Urls
 
     @Urls.setter
@@ -2916,6 +3438,9 @@ class VerifySitesResponse(AbstractModel):
 
     @property
     def SuccessNumber(self):
+        """验证成功的根域名数量。
+        :rtype: int
+        """
         return self._SuccessNumber
 
     @SuccessNumber.setter
@@ -2924,6 +3449,9 @@ class VerifySitesResponse(AbstractModel):
 
     @property
     def FailNumber(self):
+        """验证失败的根域名数量。
+        :rtype: int
+        """
         return self._FailNumber
 
     @FailNumber.setter
@@ -2932,6 +3460,9 @@ class VerifySitesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3010,6 +3541,9 @@ class Vul(AbstractModel):
 
     @property
     def Id(self):
+        """漏洞ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -3018,6 +3552,9 @@ class Vul(AbstractModel):
 
     @property
     def SiteId(self):
+        """站点ID。
+        :rtype: int
+        """
         return self._SiteId
 
     @SiteId.setter
@@ -3026,6 +3563,9 @@ class Vul(AbstractModel):
 
     @property
     def TaskId(self):
+        """扫描引擎的扫描任务ID。
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -3034,6 +3574,9 @@ class Vul(AbstractModel):
 
     @property
     def Level(self):
+        """漏洞级别：high、middle、low、notice。
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -3042,6 +3585,9 @@ class Vul(AbstractModel):
 
     @property
     def Name(self):
+        """漏洞名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3050,6 +3596,9 @@ class Vul(AbstractModel):
 
     @property
     def Url(self):
+        """出现漏洞的url。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -3058,6 +3607,9 @@ class Vul(AbstractModel):
 
     @property
     def Html(self):
+        """网址/细节。
+        :rtype: str
+        """
         return self._Html
 
     @Html.setter
@@ -3066,6 +3618,9 @@ class Vul(AbstractModel):
 
     @property
     def Nickname(self):
+        """漏洞类型。
+        :rtype: str
+        """
         return self._Nickname
 
     @Nickname.setter
@@ -3074,6 +3629,9 @@ class Vul(AbstractModel):
 
     @property
     def Harm(self):
+        """危害说明。
+        :rtype: str
+        """
         return self._Harm
 
     @Harm.setter
@@ -3082,6 +3640,9 @@ class Vul(AbstractModel):
 
     @property
     def Describe(self):
+        """漏洞描述。
+        :rtype: str
+        """
         return self._Describe
 
     @Describe.setter
@@ -3090,6 +3651,9 @@ class Vul(AbstractModel):
 
     @property
     def Solution(self):
+        """解决方案。
+        :rtype: str
+        """
         return self._Solution
 
     @Solution.setter
@@ -3098,6 +3662,9 @@ class Vul(AbstractModel):
 
     @property
     def From(self):
+        """漏洞参考。
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -3106,6 +3673,9 @@ class Vul(AbstractModel):
 
     @property
     def Parameter(self):
+        """漏洞通过该参数攻击。
+        :rtype: str
+        """
         return self._Parameter
 
     @Parameter.setter
@@ -3114,6 +3684,9 @@ class Vul(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """CreatedAt。
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -3122,6 +3695,9 @@ class Vul(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """UpdatedAt。
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -3130,6 +3706,9 @@ class Vul(AbstractModel):
 
     @property
     def IsReported(self):
+        """是否已经添加误报，0-否，1-是。
+        :rtype: int
+        """
         return self._IsReported
 
     @IsReported.setter
@@ -3138,6 +3717,9 @@ class Vul(AbstractModel):
 
     @property
     def Appid(self):
+        """云用户appid。
+        :rtype: int
+        """
         return self._Appid
 
     @Appid.setter
@@ -3146,6 +3728,9 @@ class Vul(AbstractModel):
 
     @property
     def Uin(self):
+        """云用户标识。
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -3229,6 +3814,9 @@ class VulsTimeline(AbstractModel):
 
     @property
     def Id(self):
+        """ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -3237,6 +3825,9 @@ class VulsTimeline(AbstractModel):
 
     @property
     def Appid(self):
+        """云用户appid。
+        :rtype: int
+        """
         return self._Appid
 
     @Appid.setter
@@ -3245,6 +3836,9 @@ class VulsTimeline(AbstractModel):
 
     @property
     def Date(self):
+        """日期。
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -3253,6 +3847,9 @@ class VulsTimeline(AbstractModel):
 
     @property
     def PageCount(self):
+        """扫描页面总数量。
+        :rtype: int
+        """
         return self._PageCount
 
     @PageCount.setter
@@ -3261,6 +3858,9 @@ class VulsTimeline(AbstractModel):
 
     @property
     def SiteNum(self):
+        """已验证网站总数量。
+        :rtype: int
+        """
         return self._SiteNum
 
     @SiteNum.setter
@@ -3269,6 +3869,9 @@ class VulsTimeline(AbstractModel):
 
     @property
     def ImpactSiteNum(self):
+        """受影响的网站总数量。
+        :rtype: int
+        """
         return self._ImpactSiteNum
 
     @ImpactSiteNum.setter
@@ -3277,6 +3880,9 @@ class VulsTimeline(AbstractModel):
 
     @property
     def VulsHighNum(self):
+        """高危漏洞总数量。
+        :rtype: int
+        """
         return self._VulsHighNum
 
     @VulsHighNum.setter
@@ -3285,6 +3891,9 @@ class VulsTimeline(AbstractModel):
 
     @property
     def VulsMiddleNum(self):
+        """中危漏洞总数量。
+        :rtype: int
+        """
         return self._VulsMiddleNum
 
     @VulsMiddleNum.setter
@@ -3293,6 +3902,9 @@ class VulsTimeline(AbstractModel):
 
     @property
     def VulsLowNum(self):
+        """低危漏洞总数量。
+        :rtype: int
+        """
         return self._VulsLowNum
 
     @VulsLowNum.setter
@@ -3301,6 +3913,9 @@ class VulsTimeline(AbstractModel):
 
     @property
     def VulsNoticeNum(self):
+        """风险提示总数量
+        :rtype: int
+        """
         return self._VulsNoticeNum
 
     @VulsNoticeNum.setter
@@ -3309,6 +3924,9 @@ class VulsTimeline(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """记录添加时间。
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -3317,6 +3935,9 @@ class VulsTimeline(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """记录最近修改时间。
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter

@@ -37,6 +37,10 @@ class AbnormalEvents(AbstractModel):
 
     @property
     def Date(self):
+        """对应查询日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -45,6 +49,10 @@ class AbnormalEvents(AbstractModel):
 
     @property
     def Info(self):
+        """列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AbnormalEventsInfo
+        """
         return self._Info
 
     @Info.setter
@@ -89,6 +97,10 @@ class AbnormalEventsInfo(AbstractModel):
 
     @property
     def Key(self):
+        """类型值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Key
 
     @Key.setter
@@ -97,6 +109,10 @@ class AbnormalEventsInfo(AbstractModel):
 
     @property
     def Count(self):
+        """类型总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -180,6 +196,10 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -188,6 +208,10 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def DeviceType(self):
+        """设备类型；2：IPC
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DeviceType
 
     @DeviceType.setter
@@ -196,6 +220,10 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def Status(self):
+        """设备状态；0：设备不在线；1：设备在线；2：设备隔离中；3：设备未注册
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -204,6 +232,10 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -212,6 +244,10 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def ExtraInformation(self):
+        """设备扩展属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExtraInformation
 
     @ExtraInformation.setter
@@ -220,6 +256,10 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def NickName(self):
+        """设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NickName
 
     @NickName.setter
@@ -228,6 +268,10 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def GroupPath(self):
+        """设备绑定分组路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupPath
 
     @GroupPath.setter
@@ -236,6 +280,10 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def DeviceCode(self):
+        """设备编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceCode
 
     @DeviceCode.setter
@@ -244,6 +292,10 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def IsRecord(self):
+        """是否存在录像,，0:不存在；1：存在
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsRecord
 
     @IsRecord.setter
@@ -252,6 +304,10 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def Recordable(self):
+        """该设备是否可录制
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Recordable
 
     @Recordable.setter
@@ -260,6 +316,10 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def Protocol(self):
+        """设备接入协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -268,6 +328,10 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def GroupId(self):
+        """组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -276,6 +340,10 @@ class AllDeviceInfo(AbstractModel):
 
     @property
     def GroupName(self):
+        """组名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -324,6 +392,9 @@ class BindGroupDevicesRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """分组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -332,6 +403,9 @@ class BindGroupDevicesRequest(AbstractModel):
 
     @property
     def DeviceList(self):
+        """设备唯一标识列表
+        :rtype: list of str
+        """
         return self._DeviceList
 
     @DeviceList.setter
@@ -366,6 +440,9 @@ class BindGroupDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -422,6 +499,9 @@ class ChannelDetail(AbstractModel):
 
     @property
     def ChannelName(self):
+        """通道名称
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -430,6 +510,9 @@ class ChannelDetail(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道唯一标识
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -438,6 +521,10 @@ class ChannelDetail(AbstractModel):
 
     @property
     def ChannelType(self):
+        """通道类型 0：未知；1：视频通道；2：音频通道；3：告警通道
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ChannelType
 
     @ChannelType.setter
@@ -446,6 +533,10 @@ class ChannelDetail(AbstractModel):
 
     @property
     def ChannelCode(self):
+        """20位国标通道编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChannelCode
 
     @ChannelCode.setter
@@ -454,6 +545,10 @@ class ChannelDetail(AbstractModel):
 
     @property
     def ExtraInformation(self):
+        """通道扩展信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExtraInformation
 
     @ExtraInformation.setter
@@ -462,6 +557,10 @@ class ChannelDetail(AbstractModel):
 
     @property
     def Status(self):
+        """通道在线状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -470,6 +569,10 @@ class ChannelDetail(AbstractModel):
 
     @property
     def IsRecord(self):
+        """通道是否存在录像标识 0：无录像；1：有录像
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsRecord
 
     @IsRecord.setter
@@ -478,6 +581,10 @@ class ChannelDetail(AbstractModel):
 
     @property
     def DeviceId(self):
+        """通道所属设备唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -486,6 +593,10 @@ class ChannelDetail(AbstractModel):
 
     @property
     def BusinessGroupId(self):
+        """通道所属虚拟组织的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BusinessGroupId
 
     @BusinessGroupId.setter
@@ -532,6 +643,10 @@ class ChannelItem(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -540,6 +655,10 @@ class ChannelItem(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -588,6 +707,9 @@ class ControlChannelLocalRecordRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备唯一标识
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -596,6 +718,9 @@ class ControlChannelLocalRecordRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道唯一标识
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -604,6 +729,9 @@ class ControlChannelLocalRecordRequest(AbstractModel):
 
     @property
     def StreamId(self):
+        """流Id，流的唯一标识
+        :rtype: str
+        """
         return self._StreamId
 
     @StreamId.setter
@@ -612,6 +740,14 @@ class ControlChannelLocalRecordRequest(AbstractModel):
 
     @property
     def Command(self):
+        """控制参数，转义的json字符串
+
+目前支持的command：
+"Command": "{"Action":"PAUSE"}" 暂停
+"Command": "{"Action":"PLAY"}" 暂停恢复
+"Command": "{"Action":"PLAY","Offset":"15"}" 基于文件起始时间点的位置偏移，单位秒
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -648,6 +784,9 @@ class ControlChannelLocalRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -694,6 +833,9 @@ focusOut - 焦距变远
 
     @property
     def DeviceId(self):
+        """设备唯一标识
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -702,6 +844,9 @@ focusOut - 焦距变远
 
     @property
     def ChannelId(self):
+        """通道唯一标识
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -710,6 +855,24 @@ focusOut - 焦距变远
 
     @property
     def Command(self):
+        """PTZ控制命令类型：
+stop - 停止当前PTZ信令
+left - 向左移动
+right - 向右移动
+up - 向上移动
+down - 向下移动
+leftUp - 左上移动
+leftDown - 左下移动
+rightUp - 右上移动
+rightDown - 右下移动
+zoomOut - 镜头缩小
+zoomIn - 镜头放大
+irisIn - 光圈缩小
+irisOut - 光圈放大
+focusIn - 焦距变近
+focusOut - 焦距变远
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -745,6 +908,9 @@ class ControlChannelPTZResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -791,6 +957,9 @@ focusOut - 焦距变远
 
     @property
     def DeviceId(self):
+        """设备唯一标识
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -799,6 +968,24 @@ focusOut - 焦距变远
 
     @property
     def Command(self):
+        """PTZ控制命令类型：
+stop - 停止当前PTZ信令
+left - 向左移动
+right - 向右移动
+up - 向上移动
+down - 向下移动
+leftUp - 左上移动
+leftDown - 左下移动
+rightUp - 右上移动
+rightDown - 右下移动
+zoomOut - 镜头缩小
+zoomIn - 镜头放大
+irisIn - 光圈缩小
+irisOut - 光圈放大
+focusIn - 焦距变近
+focusOut - 焦距变远
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -807,6 +994,9 @@ focusOut - 焦距变远
 
     @property
     def ChannelId(self):
+        """通道唯一标识
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -842,6 +1032,9 @@ class ControlDevicePTZResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -879,6 +1072,9 @@ class ControlHomePositionRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道ID
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -887,6 +1083,9 @@ class ControlHomePositionRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备Id
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -895,6 +1094,9 @@ class ControlHomePositionRequest(AbstractModel):
 
     @property
     def Enable(self):
+        """看守位使能 0-停用看守位 1-启用看守位
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -903,6 +1105,9 @@ class ControlHomePositionRequest(AbstractModel):
 
     @property
     def PresetId(self):
+        """预置位编码 范围1-8，启用看守位时必填
+        :rtype: int
+        """
         return self._PresetId
 
     @PresetId.setter
@@ -911,6 +1116,9 @@ class ControlHomePositionRequest(AbstractModel):
 
     @property
     def ResetTime(self):
+        """看守位自动归位时间， 启用看守位时必填
+        :rtype: int
+        """
         return self._ResetTime
 
     @ResetTime.setter
@@ -948,6 +1156,9 @@ class ControlHomePositionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -985,6 +1196,9 @@ Call-调用指定的预置位
 
     @property
     def ChannelId(self):
+        """通道ID
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -993,6 +1207,12 @@ Call-调用指定的预置位
 
     @property
     def Command(self):
+        """控制命令：
+Set-设置当前位置为预置位
+Del-删除指定的预置位
+Call-调用指定的预置位
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -1001,6 +1221,9 @@ Call-调用指定的预置位
 
     @property
     def PresetId(self):
+        """预置位编码 范围1-8
+        :rtype: int
+        """
         return self._PresetId
 
     @PresetId.setter
@@ -1009,6 +1232,9 @@ Call-调用指定的预置位
 
     @property
     def DeviceId(self):
+        """设备Id
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -1045,6 +1271,9 @@ class ControlPresetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1084,6 +1313,9 @@ class ControlRecordStreamRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备Id，设备的唯一标识
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -1092,6 +1324,9 @@ class ControlRecordStreamRequest(AbstractModel):
 
     @property
     def StreamId(self):
+        """流Id，流的唯一标识
+        :rtype: str
+        """
         return self._StreamId
 
     @StreamId.setter
@@ -1100,6 +1335,14 @@ class ControlRecordStreamRequest(AbstractModel):
 
     @property
     def Command(self):
+        """|控制参数，CmdJson结构转义的json字符串。| Action  | string  |是|控制动作，play(用于暂停后恢复播放)、pause（暂停）、teardown(停止)、jump(拖动播放)
+| Offset  | uint  |否|拖动播放时的时间偏移量（相对于起始时间）,单位：秒
+目前支持的command：
+"Command": "{"Action":"PAUSE"}" 暂停
+"Command": "{"Action":"PLAY"}" 暂停恢复
+"Command": "{"Action":"PLAY","Offset":"15"}" 位置偏移，可以替代jump操作
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -1108,6 +1351,9 @@ class ControlRecordStreamRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道唯一标识
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -1144,6 +1390,9 @@ class ControlRecordStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1175,6 +1424,9 @@ class CreateDeviceGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """分组名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -1183,6 +1435,9 @@ class CreateDeviceGroupRequest(AbstractModel):
 
     @property
     def ParentId(self):
+        """父分组ID
+        :rtype: str
+        """
         return self._ParentId
 
     @ParentId.setter
@@ -1191,6 +1446,9 @@ class CreateDeviceGroupRequest(AbstractModel):
 
     @property
     def GroupDescribe(self):
+        """分组描述
+        :rtype: str
+        """
         return self._GroupDescribe
 
     @GroupDescribe.setter
@@ -1234,6 +1492,10 @@ class CreateDeviceGroupResponse(AbstractModel):
 
     @property
     def Status(self):
+        """响应结果，“OK”为成功，其他为失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1242,6 +1504,10 @@ class CreateDeviceGroupResponse(AbstractModel):
 
     @property
     def GroupId(self):
+        """分组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -1250,6 +1516,9 @@ class CreateDeviceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1286,6 +1555,9 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def NickName(self):
+        """设备名称
+        :rtype: str
+        """
         return self._NickName
 
     @NickName.setter
@@ -1294,6 +1566,9 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def PassWord(self):
+        """设备密码
+        :rtype: str
+        """
         return self._PassWord
 
     @PassWord.setter
@@ -1302,6 +1577,9 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def DeviceType(self):
+        """设备类型，1：国标VMS设备(公有云不支持此类型)，2：国标IPC设备，3：国标NVR设备，9：智能告警设备(公有云不支持此类型)
+        :rtype: int
+        """
         return self._DeviceType
 
     @DeviceType.setter
@@ -1310,6 +1588,9 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """设备需要绑定的分组ID，参数为空则默认绑定到根分组
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -1358,6 +1639,10 @@ class CreateDeviceResponse(AbstractModel):
 
     @property
     def DeviceCode(self):
+        """设备编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceCode
 
     @DeviceCode.setter
@@ -1366,6 +1651,10 @@ class CreateDeviceResponse(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -1374,6 +1663,10 @@ class CreateDeviceResponse(AbstractModel):
 
     @property
     def VirtualGroupId(self):
+        """设备虚拟组信息，仅在创建NVR时返回该值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VirtualGroupId
 
     @VirtualGroupId.setter
@@ -1382,6 +1675,9 @@ class CreateDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1413,6 +1709,9 @@ class CreateLiveChannelRequest(AbstractModel):
 
     @property
     def LiveChannelName(self):
+        """直播频道名称
+        :rtype: str
+        """
         return self._LiveChannelName
 
     @LiveChannelName.setter
@@ -1421,6 +1720,9 @@ class CreateLiveChannelRequest(AbstractModel):
 
     @property
     def LiveChannelType(self):
+        """直播频道类型 1：固定直播；2：移动直播
+        :rtype: int
+        """
         return self._LiveChannelType
 
     @LiveChannelType.setter
@@ -1463,6 +1765,10 @@ class CreateLiveChannelResponse(AbstractModel):
 
     @property
     def LiveChannelId(self):
+        """直播频道ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LiveChannelId
 
     @LiveChannelId.setter
@@ -1471,6 +1777,10 @@ class CreateLiveChannelResponse(AbstractModel):
 
     @property
     def PushStreamAddress(self):
+        """直播频道推流地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PushStreamAddress
 
     @PushStreamAddress.setter
@@ -1479,6 +1789,9 @@ class CreateLiveChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1518,6 +1831,9 @@ class CreateLiveRecordPlanRequest(AbstractModel):
 
     @property
     def PlanName(self):
+        """录制计划名
+        :rtype: str
+        """
         return self._PlanName
 
     @PlanName.setter
@@ -1526,6 +1842,9 @@ class CreateLiveRecordPlanRequest(AbstractModel):
 
     @property
     def PlanType(self):
+        """计划类型 1：固定直播 2：移动直播
+        :rtype: int
+        """
         return self._PlanType
 
     @PlanType.setter
@@ -1534,6 +1853,9 @@ class CreateLiveRecordPlanRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """时间模板ID,固定直播时为必填
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -1542,6 +1864,9 @@ class CreateLiveRecordPlanRequest(AbstractModel):
 
     @property
     def RecordStorageTime(self):
+        """录制文件存储时长，单位天，默认30天
+        :rtype: int
+        """
         return self._RecordStorageTime
 
     @RecordStorageTime.setter
@@ -1550,6 +1875,9 @@ class CreateLiveRecordPlanRequest(AbstractModel):
 
     @property
     def LiveChannelIds(self):
+        """绑定的直播频道ID列表
+        :rtype: list of str
+        """
         return self._LiveChannelIds
 
     @LiveChannelIds.setter
@@ -1591,6 +1919,10 @@ class CreateLiveRecordPlanResponse(AbstractModel):
 
     @property
     def PlanId(self):
+        """录制计划名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -1599,6 +1931,9 @@ class CreateLiveRecordPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1643,6 +1978,9 @@ class CreateMessageForwardRequest(AbstractModel):
 
     @property
     def RegionId(self):
+        """区域ID
+        :rtype: str
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -1651,6 +1989,9 @@ class CreateMessageForwardRequest(AbstractModel):
 
     @property
     def RegionName(self):
+        """区域名称
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -1659,6 +2000,9 @@ class CreateMessageForwardRequest(AbstractModel):
 
     @property
     def Instance(self):
+        """实例ID
+        :rtype: str
+        """
         return self._Instance
 
     @Instance.setter
@@ -1667,6 +2011,9 @@ class CreateMessageForwardRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -1675,6 +2022,9 @@ class CreateMessageForwardRequest(AbstractModel):
 
     @property
     def MessageType(self):
+        """json数组， 转发类型 1: 告警 2:GPS
+        :rtype: str
+        """
         return self._MessageType
 
     @MessageType.setter
@@ -1683,6 +2033,9 @@ class CreateMessageForwardRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        """kafka topic id
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -1691,6 +2044,9 @@ class CreateMessageForwardRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """kafka topic 名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -1734,6 +2090,10 @@ class CreateMessageForwardResponse(AbstractModel):
 
     @property
     def IntId(self):
+        """配置ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IntId
 
     @IntId.setter
@@ -1742,6 +2102,9 @@ class CreateMessageForwardResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1780,6 +2143,9 @@ class CreateRecordPlanRequest(AbstractModel):
 
     @property
     def Name(self):
+        """计划名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1788,6 +2154,9 @@ class CreateRecordPlanRequest(AbstractModel):
 
     @property
     def TimeTemplateId(self):
+        """时间模板ID
+        :rtype: str
+        """
         return self._TimeTemplateId
 
     @TimeTemplateId.setter
@@ -1796,6 +2165,9 @@ class CreateRecordPlanRequest(AbstractModel):
 
     @property
     def EventId(self):
+        """触发录制的事件类别 1:全部
+        :rtype: int
+        """
         return self._EventId
 
     @EventId.setter
@@ -1804,6 +2176,9 @@ class CreateRecordPlanRequest(AbstractModel):
 
     @property
     def Devices(self):
+        """该录制计划绑定的设备列表
+        :rtype: list of DeviceItem
+        """
         return self._Devices
 
     @Devices.setter
@@ -1812,6 +2187,9 @@ class CreateRecordPlanRequest(AbstractModel):
 
     @property
     def RecordStorageTime(self):
+        """存储周期
+        :rtype: int
+        """
         return self._RecordStorageTime
 
     @RecordStorageTime.setter
@@ -1857,6 +2235,9 @@ class CreateRecordPlanResponse(AbstractModel):
 
     @property
     def PlanId(self):
+        """录制计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -1865,6 +2246,9 @@ class CreateRecordPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1900,6 +2284,9 @@ class CreateRecordingPlanRequest(AbstractModel):
 
     @property
     def Name(self):
+        """计划名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1908,6 +2295,9 @@ class CreateRecordingPlanRequest(AbstractModel):
 
     @property
     def TimeTemplateId(self):
+        """时间模板ID
+        :rtype: str
+        """
         return self._TimeTemplateId
 
     @TimeTemplateId.setter
@@ -1916,6 +2306,9 @@ class CreateRecordingPlanRequest(AbstractModel):
 
     @property
     def Channels(self):
+        """该录制计划绑定的通道列表
+        :rtype: list of ChannelItem
+        """
         return self._Channels
 
     @Channels.setter
@@ -1924,6 +2317,9 @@ class CreateRecordingPlanRequest(AbstractModel):
 
     @property
     def RecordStorageTime(self):
+        """存储周期(天)；默认存储30天
+        :rtype: int
+        """
         return self._RecordStorageTime
 
     @RecordStorageTime.setter
@@ -1968,6 +2364,9 @@ class CreateRecordingPlanResponse(AbstractModel):
 
     @property
     def PlanId(self):
+        """录制计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -1976,6 +2375,9 @@ class CreateRecordingPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2017,6 +2419,9 @@ class CreateSceneRequest(AbstractModel):
 
     @property
     def SceneName(self):
+        """场景名称
+        :rtype: str
+        """
         return self._SceneName
 
     @SceneName.setter
@@ -2025,6 +2430,9 @@ class CreateSceneRequest(AbstractModel):
 
     @property
     def SceneTrigger(self):
+        """场景触发规则
+        :rtype: str
+        """
         return self._SceneTrigger
 
     @SceneTrigger.setter
@@ -2033,6 +2441,9 @@ class CreateSceneRequest(AbstractModel):
 
     @property
     def RecordDuration(self):
+        """录制时长 (秒)
+        :rtype: int
+        """
         return self._RecordDuration
 
     @RecordDuration.setter
@@ -2041,6 +2452,9 @@ class CreateSceneRequest(AbstractModel):
 
     @property
     def StoreDuration(self):
+        """录像存储时长(天)
+        :rtype: int
+        """
         return self._StoreDuration
 
     @StoreDuration.setter
@@ -2049,6 +2463,9 @@ class CreateSceneRequest(AbstractModel):
 
     @property
     def Devices(self):
+        """设备列表(不推荐使用)
+        :rtype: list of DeviceItem
+        """
         return self._Devices
 
     @Devices.setter
@@ -2057,6 +2474,9 @@ class CreateSceneRequest(AbstractModel):
 
     @property
     def Channels(self):
+        """通道列表
+        :rtype: list of ChannelItem
+        """
         return self._Channels
 
     @Channels.setter
@@ -2109,6 +2529,10 @@ class CreateSceneResponse(AbstractModel):
 
     @property
     def IntId(self):
+        """场景ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IntId
 
     @IntId.setter
@@ -2117,6 +2541,9 @@ class CreateSceneResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2149,6 +2576,9 @@ class CreateTimeTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """时间模板名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2157,6 +2587,9 @@ class CreateTimeTemplateRequest(AbstractModel):
 
     @property
     def IsAllWeek(self):
+        """是否为每周全时录制（即7*24h录制），0：非全时录制，1；全时录制，默认0
+        :rtype: int
+        """
         return self._IsAllWeek
 
     @IsAllWeek.setter
@@ -2165,6 +2598,9 @@ class CreateTimeTemplateRequest(AbstractModel):
 
     @property
     def TimeTemplateSpecs(self):
+        """当IsAllWeek为0时必选，用于描述模板的各个时间片段
+        :rtype: list of TimeTemplateSpec
+        """
         return self._TimeTemplateSpecs
 
     @TimeTemplateSpecs.setter
@@ -2208,6 +2644,9 @@ class CreateTimeTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
+        """时间模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -2216,6 +2655,9 @@ class CreateTimeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2245,6 +2687,9 @@ class DeleteChannelRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -2253,6 +2698,9 @@ class DeleteChannelRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道ID
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -2287,6 +2735,9 @@ class DeleteChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2312,6 +2763,9 @@ class DeleteDeviceGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """分组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -2349,6 +2803,10 @@ class DeleteDeviceGroupResponse(AbstractModel):
 
     @property
     def Status(self):
+        """响应结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2357,6 +2815,9 @@ class DeleteDeviceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2383,6 +2844,9 @@ class DeleteDeviceRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备唯一标识
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -2420,6 +2884,10 @@ class DeleteDeviceResponse(AbstractModel):
 
     @property
     def Status(self):
+        """操作结果 OK-成功； 其他-失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2428,6 +2896,9 @@ class DeleteDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2454,6 +2925,9 @@ class DeleteLiveChannelRequest(AbstractModel):
 
     @property
     def LiveChannelId(self):
+        """直播频道ID
+        :rtype: str
+        """
         return self._LiveChannelId
 
     @LiveChannelId.setter
@@ -2487,6 +2961,9 @@ class DeleteLiveChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2512,6 +2989,9 @@ class DeleteLiveRecordPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """录制计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -2548,6 +3028,9 @@ class DeleteLiveRecordPlanResponse(AbstractModel):
 
     @property
     def Status(self):
+        """删除状态描述
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2556,6 +3039,9 @@ class DeleteLiveRecordPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2582,6 +3068,9 @@ class DeleteLiveVideoListRequest(AbstractModel):
 
     @property
     def IntIDs(self):
+        """视频ID 列表, 大小限制(100)
+        :rtype: list of int non-negative
+        """
         return self._IntIDs
 
     @IntIDs.setter
@@ -2615,6 +3104,9 @@ class DeleteLiveVideoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2640,6 +3132,9 @@ class DeleteMessageForwardRequest(AbstractModel):
 
     @property
     def IntId(self):
+        """配置ID
+        :rtype: int
+        """
         return self._IntId
 
     @IntId.setter
@@ -2673,6 +3168,9 @@ class DeleteMessageForwardResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2698,6 +3196,9 @@ class DeleteRecordPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """录制计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -2734,6 +3235,9 @@ class DeleteRecordPlanResponse(AbstractModel):
 
     @property
     def Status(self):
+        """操作结果，OK：成功，其他：失败
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2742,6 +3246,9 @@ class DeleteRecordPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2768,6 +3275,9 @@ class DeleteRecordingPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """录制计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -2804,6 +3314,9 @@ class DeleteRecordingPlanResponse(AbstractModel):
 
     @property
     def Status(self):
+        """操作结果，OK：成功，其他：失败
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2812,6 +3325,9 @@ class DeleteRecordingPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2838,6 +3354,9 @@ class DeleteSceneRequest(AbstractModel):
 
     @property
     def IntId(self):
+        """场景ID
+        :rtype: int
+        """
         return self._IntId
 
     @IntId.setter
@@ -2871,6 +3390,9 @@ class DeleteSceneResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2896,6 +3418,9 @@ class DeleteTimeTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """时间模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -2933,6 +3458,10 @@ class DeleteTimeTemplateResponse(AbstractModel):
 
     @property
     def Status(self):
+        """操作结果，OK：成功，其他：失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2941,6 +3470,9 @@ class DeleteTimeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2967,6 +3499,9 @@ class DeleteVideoListRequest(AbstractModel):
 
     @property
     def InitIDs(self):
+        """视频ID列表长度限制100内
+        :rtype: list of int
+        """
         return self._InitIDs
 
     @InitIDs.setter
@@ -3000,6 +3535,9 @@ class DeleteVideoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3028,6 +3566,9 @@ class DeleteWarningRequest(AbstractModel):
 
     @property
     def Id(self):
+        """告警ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -3036,6 +3577,9 @@ class DeleteWarningRequest(AbstractModel):
 
     @property
     def Index(self):
+        """告警索引
+        :rtype: str
+        """
         return self._Index
 
     @Index.setter
@@ -3070,6 +3614,9 @@ class DeleteWarningResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3098,6 +3645,9 @@ class DescribeAbnormalEventsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3106,6 +3656,9 @@ class DescribeAbnormalEventsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3144,6 +3697,10 @@ class DescribeAbnormalEventsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """异动事件走势列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AbnormalEvents
+        """
         return self._Data
 
     @Data.setter
@@ -3152,6 +3709,9 @@ class DescribeAbnormalEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3195,6 +3755,9 @@ class DescribeAllDeviceListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3203,6 +3766,9 @@ class DescribeAllDeviceListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制，默认200
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3211,6 +3777,9 @@ class DescribeAllDeviceListRequest(AbstractModel):
 
     @property
     def NickName(self):
+        """设备名称，需要模糊匹配设备名称时为必填
+        :rtype: str
+        """
         return self._NickName
 
     @NickName.setter
@@ -3219,6 +3788,9 @@ class DescribeAllDeviceListRequest(AbstractModel):
 
     @property
     def DeviceIds(self):
+        """DeviceId列表，需要精确查找设备时为必填
+        :rtype: list of str
+        """
         return self._DeviceIds
 
     @DeviceIds.setter
@@ -3227,6 +3799,9 @@ class DescribeAllDeviceListRequest(AbstractModel):
 
     @property
     def DeviceTypes(self):
+        """设备类型过滤，设备类型，1：国标VMS设备(公有云不支持此类型)，2：国标IPC设备，3：国标NVR设备，9：智能告警设备(公有云不支持此类型)
+        :rtype: list of int
+        """
         return self._DeviceTypes
 
     @DeviceTypes.setter
@@ -3272,6 +3847,10 @@ class DescribeAllDeviceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """设备总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3280,6 +3859,10 @@ class DescribeAllDeviceListResponse(AbstractModel):
 
     @property
     def Devices(self):
+        """设备详细信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AllDeviceInfo
+        """
         return self._Devices
 
     @Devices.setter
@@ -3288,6 +3871,9 @@ class DescribeAllDeviceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3326,6 +3912,9 @@ class DescribeBindSceneChannelsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """条数限制最大不能超过1000
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3334,6 +3923,9 @@ class DescribeBindSceneChannelsRequest(AbstractModel):
 
     @property
     def SceneId(self):
+        """场景ID
+        :rtype: int
+        """
         return self._SceneId
 
     @SceneId.setter
@@ -3342,6 +3934,9 @@ class DescribeBindSceneChannelsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移值
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3385,6 +3980,10 @@ class DescribeBindSceneChannelsResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -3393,6 +3992,10 @@ class DescribeBindSceneChannelsResponse(AbstractModel):
 
     @property
     def List(self):
+        """通道列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ChannelItem
+        """
         return self._List
 
     @List.setter
@@ -3401,6 +4004,9 @@ class DescribeBindSceneChannelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3439,6 +4045,9 @@ class DescribeBindSceneDevicesRequest(AbstractModel):
 
     @property
     def SceneId(self):
+        """场景ID
+        :rtype: int
+        """
         return self._SceneId
 
     @SceneId.setter
@@ -3447,6 +4056,9 @@ class DescribeBindSceneDevicesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移值
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3455,6 +4067,9 @@ class DescribeBindSceneDevicesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """条数限制最大不能超过1000
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3498,6 +4113,10 @@ class DescribeBindSceneDevicesResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -3506,6 +4125,10 @@ class DescribeBindSceneDevicesResponse(AbstractModel):
 
     @property
     def List(self):
+        """设备列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DeviceItem
+        """
         return self._List
 
     @List.setter
@@ -3514,6 +4137,9 @@ class DescribeBindSceneDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3549,6 +4175,9 @@ class DescribeChannelLiveStreamURLRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备唯一标识，必填参数
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -3557,6 +4186,9 @@ class DescribeChannelLiveStreamURLRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道唯一标识（接口升级字段为必填），必填参数
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -3594,6 +4226,9 @@ class DescribeChannelLiveStreamURLResponse(AbstractModel):
 
     @property
     def Data(self):
+        """设备实时流地址列表
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceStreamsData`
+        """
         return self._Data
 
     @Data.setter
@@ -3602,6 +4237,9 @@ class DescribeChannelLiveStreamURLResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3645,6 +4283,9 @@ class DescribeChannelLocalRecordURLRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备唯一标识
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -3653,6 +4294,9 @@ class DescribeChannelLocalRecordURLRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道唯一标识
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -3661,6 +4305,9 @@ class DescribeChannelLocalRecordURLRequest(AbstractModel):
 
     @property
     def RecordId(self):
+        """录像文件Id，通过获取本地录像返回
+        :rtype: str
+        """
         return self._RecordId
 
     @RecordId.setter
@@ -3669,6 +4316,9 @@ class DescribeChannelLocalRecordURLRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """UNIX 时间戳，30天内，URL失效时间，如180s无人观看此流则URL提前失效
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -3677,6 +4327,9 @@ class DescribeChannelLocalRecordURLRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """录像文件推送的开始时间，需要在RecordId参数起始时间内，可以通过此参数控制回放流起始点
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3685,6 +4338,9 @@ class DescribeChannelLocalRecordURLRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """录像文件推送的结束时间，需要在RecordId参数起始时间内，可以通过此参数控制回放流起始点
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3726,6 +4382,9 @@ class DescribeChannelLocalRecordURLResponse(AbstractModel):
 
     @property
     def Data(self):
+        """结果
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeRecordStreamData`
+        """
         return self._Data
 
     @Data.setter
@@ -3734,6 +4393,9 @@ class DescribeChannelLocalRecordURLResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3768,6 +4430,9 @@ class DescribeChannelStreamURLRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备唯一标识，必填参数
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -3776,6 +4441,9 @@ class DescribeChannelStreamURLRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """流地址失效时间，固定值填写0，其他参数无效，必填参数
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -3784,6 +4452,9 @@ class DescribeChannelStreamURLRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道唯一标识（接口升级字段为必填），必填参数
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -3822,6 +4493,9 @@ class DescribeChannelStreamURLResponse(AbstractModel):
 
     @property
     def Data(self):
+        """设备实时流地址列表
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceStreamsData`
+        """
         return self._Data
 
     @Data.setter
@@ -3830,6 +4504,9 @@ class DescribeChannelStreamURLResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3864,6 +4541,9 @@ class DescribeChannelsByLiveRecordPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """录制计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -3872,6 +4552,9 @@ class DescribeChannelsByLiveRecordPlanRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3880,6 +4563,9 @@ class DescribeChannelsByLiveRecordPlanRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页大小
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3923,6 +4609,10 @@ class DescribeChannelsByLiveRecordPlanResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3931,6 +4621,10 @@ class DescribeChannelsByLiveRecordPlanResponse(AbstractModel):
 
     @property
     def LiveChannels(self):
+        """通道详情数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LiveChannelItem
+        """
         return self._LiveChannels
 
     @LiveChannels.setter
@@ -3939,6 +4633,9 @@ class DescribeChannelsByLiveRecordPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3986,6 +4683,9 @@ class DescribeChannelsRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备Id
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -3994,6 +4694,9 @@ class DescribeChannelsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制，默认0
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4002,6 +4705,9 @@ class DescribeChannelsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4010,6 +4716,9 @@ class DescribeChannelsRequest(AbstractModel):
 
     @property
     def ChannelTypes(self):
+        """通道类型  0: 未知类型 1: 视频通道 2:  音频通道 3: 告警通道
+        :rtype: list of int non-negative
+        """
         return self._ChannelTypes
 
     @ChannelTypes.setter
@@ -4018,6 +4727,9 @@ class DescribeChannelsRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """录制计划ID， 当为"null"值时未绑定录制计划
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -4026,6 +4738,9 @@ class DescribeChannelsRequest(AbstractModel):
 
     @property
     def SceneId(self):
+        """告警联动场景ID， 当为 -1 值时未绑定场景
+        :rtype: int
+        """
         return self._SceneId
 
     @SceneId.setter
@@ -4072,6 +4787,10 @@ class DescribeChannelsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """通道总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4080,6 +4799,10 @@ class DescribeChannelsResponse(AbstractModel):
 
     @property
     def Channels(self):
+        """通道详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ChannelDetail
+        """
         return self._Channels
 
     @Channels.setter
@@ -4088,6 +4811,9 @@ class DescribeChannelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4141,6 +4867,9 @@ class DescribeCurrentDeviceDataResponse(AbstractModel):
 
     @property
     def Channels(self):
+        """通道数
+        :rtype: int
+        """
         return self._Channels
 
     @Channels.setter
@@ -4149,6 +4878,9 @@ class DescribeCurrentDeviceDataResponse(AbstractModel):
 
     @property
     def Devices(self):
+        """设备数
+        :rtype: int
+        """
         return self._Devices
 
     @Devices.setter
@@ -4157,6 +4889,9 @@ class DescribeCurrentDeviceDataResponse(AbstractModel):
 
     @property
     def OnlineChannels(self):
+        """在线通道数
+        :rtype: int
+        """
         return self._OnlineChannels
 
     @OnlineChannels.setter
@@ -4165,6 +4900,9 @@ class DescribeCurrentDeviceDataResponse(AbstractModel):
 
     @property
     def OnlineDevices(self):
+        """在线设备数
+        :rtype: int
+        """
         return self._OnlineDevices
 
     @OnlineDevices.setter
@@ -4173,6 +4911,9 @@ class DescribeCurrentDeviceDataResponse(AbstractModel):
 
     @property
     def RecordingChannels(self):
+        """正在录制通道数
+        :rtype: int
+        """
         return self._RecordingChannels
 
     @RecordingChannels.setter
@@ -4181,6 +4922,9 @@ class DescribeCurrentDeviceDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4226,6 +4970,9 @@ class DescribeDeviceEventRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间，秒级时间戳
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4234,6 +4981,9 @@ class DescribeDeviceEventRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，秒级时间戳
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4242,6 +4992,9 @@ class DescribeDeviceEventRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备Id
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -4250,6 +5003,9 @@ class DescribeDeviceEventRequest(AbstractModel):
 
     @property
     def EventTypes(self):
+        """默认为全部 事件类型 1:注册 2:心跳 4:录制异常 5:播放异常 6:流中断
+        :rtype: list of int
+        """
         return self._EventTypes
 
     @EventTypes.setter
@@ -4258,6 +5014,9 @@ class DescribeDeviceEventRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移值
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4266,6 +5025,9 @@ class DescribeDeviceEventRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """limit限制值
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4312,6 +5074,10 @@ class DescribeDeviceEventResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4320,6 +5086,10 @@ class DescribeDeviceEventResponse(AbstractModel):
 
     @property
     def Events(self):
+        """事件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Events
+        """
         return self._Events
 
     @Events.setter
@@ -4328,6 +5098,9 @@ class DescribeDeviceEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4360,6 +5133,9 @@ class DescribeDeviceGroupRequest(AbstractModel):
 
     @property
     def DeviceIds(self):
+        """设备唯一标识列表
+        :rtype: list of str
+        """
         return self._DeviceIds
 
     @DeviceIds.setter
@@ -4397,6 +5173,10 @@ class DescribeDeviceGroupResponse(AbstractModel):
 
     @property
     def DevGroups(self):
+        """设备所在分组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DevGroupInfo
+        """
         return self._DevGroups
 
     @DevGroups.setter
@@ -4405,6 +5185,9 @@ class DescribeDeviceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4445,6 +5228,9 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4453,6 +5239,9 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制，默认200
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4461,6 +5250,9 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def NickName(self):
+        """设备名前缀
+        :rtype: str
+        """
         return self._NickName
 
     @NickName.setter
@@ -4469,6 +5261,9 @@ class DescribeDeviceListRequest(AbstractModel):
 
     @property
     def DeviceTypes(self):
+        """设备类型，1：国标VMS设备(公有云不支持此类型)，2：国标IPC设备，3：国标NVR设备，9：智能告警设备(公有云不支持此类型)
+        :rtype: list of int
+        """
         return self._DeviceTypes
 
     @DeviceTypes.setter
@@ -4513,6 +5308,10 @@ class DescribeDeviceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """设备总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4521,6 +5320,10 @@ class DescribeDeviceListResponse(AbstractModel):
 
     @property
     def Devices(self):
+        """设备详细信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AllDeviceInfo
+        """
         return self._Devices
 
     @Devices.setter
@@ -4529,6 +5332,9 @@ class DescribeDeviceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4570,6 +5376,9 @@ class DescribeDeviceMonitorDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间戳
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4578,6 +5387,9 @@ class DescribeDeviceMonitorDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间戳
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4586,6 +5398,9 @@ class DescribeDeviceMonitorDataRequest(AbstractModel):
 
     @property
     def Type(self):
+        """类型 支持 OnlineChannels/OnlineDevices/RecordingChannels
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -4594,6 +5409,9 @@ class DescribeDeviceMonitorDataRequest(AbstractModel):
 
     @property
     def TimesSpec(self):
+        """时间粒度 目前只支持 1h
+        :rtype: str
+        """
         return self._TimesSpec
 
     @TimesSpec.setter
@@ -4633,6 +5451,9 @@ class DescribeDeviceMonitorDataResponse(AbstractModel):
 
     @property
     def Data(self):
+        """查询设备统计monitor信息列表
+        :rtype: list of DeviceMonitorValue
+        """
         return self._Data
 
     @Data.setter
@@ -4641,6 +5462,9 @@ class DescribeDeviceMonitorDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4672,6 +5496,9 @@ class DescribeDevicePassWordRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备唯一标识
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -4708,6 +5535,9 @@ class DescribeDevicePassWordResponse(AbstractModel):
 
     @property
     def PassWord(self):
+        """设备密码
+        :rtype: str
+        """
         return self._PassWord
 
     @PassWord.setter
@@ -4716,6 +5546,9 @@ class DescribeDevicePassWordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4742,6 +5575,9 @@ class DescribeDeviceRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -4778,6 +5614,9 @@ class DescribeDeviceResponse(AbstractModel):
 
     @property
     def Device(self):
+        """设备详情信息
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.AllDeviceInfo`
+        """
         return self._Device
 
     @Device.setter
@@ -4786,6 +5625,9 @@ class DescribeDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4823,6 +5665,9 @@ class DescribeDeviceStreamsData(AbstractModel):
 
     @property
     def RtspAddr(self):
+        """rtsp地址
+        :rtype: str
+        """
         return self._RtspAddr
 
     @RtspAddr.setter
@@ -4831,6 +5676,9 @@ class DescribeDeviceStreamsData(AbstractModel):
 
     @property
     def RtmpAddr(self):
+        """rtmp地址
+        :rtype: str
+        """
         return self._RtmpAddr
 
     @RtmpAddr.setter
@@ -4839,6 +5687,9 @@ class DescribeDeviceStreamsData(AbstractModel):
 
     @property
     def HlsAddr(self):
+        """hls地址
+        :rtype: str
+        """
         return self._HlsAddr
 
     @HlsAddr.setter
@@ -4847,6 +5698,9 @@ class DescribeDeviceStreamsData(AbstractModel):
 
     @property
     def FlvAddr(self):
+        """flv地址
+        :rtype: str
+        """
         return self._FlvAddr
 
     @FlvAddr.setter
@@ -4889,6 +5743,9 @@ class DescribeDeviceStreamsRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备唯一标识
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -4897,6 +5754,9 @@ class DescribeDeviceStreamsRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """流地址失效时间
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -4905,6 +5765,9 @@ class DescribeDeviceStreamsRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道唯一标识（接口升级字段为必填）
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -4943,6 +5806,9 @@ class DescribeDeviceStreamsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """设备实时流地址列表
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceStreamsData`
+        """
         return self._Data
 
     @Data.setter
@@ -4951,6 +5817,9 @@ class DescribeDeviceStreamsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4979,6 +5848,9 @@ class DescribeGroupByIdRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """分组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -5016,6 +5888,10 @@ class DescribeGroupByIdResponse(AbstractModel):
 
     @property
     def Group(self):
+        """分组信息详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.GroupItem`
+        """
         return self._Group
 
     @Group.setter
@@ -5024,6 +5900,9 @@ class DescribeGroupByIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5052,6 +5931,9 @@ class DescribeGroupByPathRequest(AbstractModel):
 
     @property
     def GroupPath(self):
+        """分组路径，格式为/aaa(/bbb/ccc)
+        :rtype: str
+        """
         return self._GroupPath
 
     @GroupPath.setter
@@ -5089,6 +5971,10 @@ class DescribeGroupByPathResponse(AbstractModel):
 
     @property
     def Group(self):
+        """分组信息详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.GroupItem`
+        """
         return self._Group
 
     @Group.setter
@@ -5097,6 +5983,9 @@ class DescribeGroupByPathResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5141,6 +6030,9 @@ class DescribeGroupDevicesRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """分组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -5149,6 +6041,9 @@ class DescribeGroupDevicesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5157,6 +6052,9 @@ class DescribeGroupDevicesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制值，默认200
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5165,6 +6063,9 @@ class DescribeGroupDevicesRequest(AbstractModel):
 
     @property
     def NickName(self):
+        """设备名称，根据设备名称模糊匹配时必填
+        :rtype: str
+        """
         return self._NickName
 
     @NickName.setter
@@ -5173,6 +6074,9 @@ class DescribeGroupDevicesRequest(AbstractModel):
 
     @property
     def Recordable(self):
+        """过滤不可录制设备
+        :rtype: int
+        """
         return self._Recordable
 
     @Recordable.setter
@@ -5181,6 +6085,10 @@ class DescribeGroupDevicesRequest(AbstractModel):
 
     @property
     def DeviceTypes(self):
+        """当Group是普通组的时候，支持根据DeviceTypes筛选类型，
+ 设备类型，1：国标VMS设备(公有云不支持此类型)，2：国标IPC设备，3：国标NVR设备，9：智能告警设备(公有云不支持此类型)
+        :rtype: list of int
+        """
         return self._DeviceTypes
 
     @DeviceTypes.setter
@@ -5227,6 +6135,10 @@ class DescribeGroupDevicesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """分组绑定的设备数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5235,6 +6147,10 @@ class DescribeGroupDevicesResponse(AbstractModel):
 
     @property
     def DeviceList(self):
+        """设备详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GroupDeviceItem
+        """
         return self._DeviceList
 
     @DeviceList.setter
@@ -5243,6 +6159,9 @@ class DescribeGroupDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5275,6 +6194,9 @@ class DescribeGroupsRequest(AbstractModel):
 
     @property
     def GroupIds(self):
+        """分组ID列表
+        :rtype: list of str
+        """
         return self._GroupIds
 
     @GroupIds.setter
@@ -5312,6 +6234,10 @@ class DescribeGroupsResponse(AbstractModel):
 
     @property
     def Groups(self):
+        """分组详细信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GroupInfo
+        """
         return self._Groups
 
     @Groups.setter
@@ -5320,6 +6246,9 @@ class DescribeGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5360,6 +6289,9 @@ class DescribeIPCChannelsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5368,6 +6300,9 @@ class DescribeIPCChannelsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制，默认0
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5376,6 +6311,9 @@ class DescribeIPCChannelsRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备Id
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -5384,6 +6322,9 @@ class DescribeIPCChannelsRequest(AbstractModel):
 
     @property
     def ChannelTypes(self):
+        """通道类型  0: 未知类型 1: 视频通道 2:  音频通道 3: 告警通道
+        :rtype: list of int non-negative
+        """
         return self._ChannelTypes
 
     @ChannelTypes.setter
@@ -5428,6 +6369,10 @@ class DescribeIPCChannelsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """通道总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5436,6 +6381,10 @@ class DescribeIPCChannelsResponse(AbstractModel):
 
     @property
     def DeviceList(self):
+        """通道详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GroupDeviceItem
+        """
         return self._DeviceList
 
     @DeviceList.setter
@@ -5444,6 +6393,9 @@ class DescribeIPCChannelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5488,6 +6440,9 @@ class DescribeLiveChannelListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5496,6 +6451,9 @@ class DescribeLiveChannelListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """最大数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5504,6 +6462,9 @@ class DescribeLiveChannelListRequest(AbstractModel):
 
     @property
     def LiveChannelType(self):
+        """直播频道类型，1：固定直播；2：移动直播
+        :rtype: int
+        """
         return self._LiveChannelType
 
     @LiveChannelType.setter
@@ -5512,6 +6473,9 @@ class DescribeLiveChannelListRequest(AbstractModel):
 
     @property
     def RecordPlanId(self):
+        """直播录制计划ID, null: 直播录制计划为空
+        :rtype: str
+        """
         return self._RecordPlanId
 
     @RecordPlanId.setter
@@ -5520,6 +6484,9 @@ class DescribeLiveChannelListRequest(AbstractModel):
 
     @property
     def LiveChannelName(self):
+        """频道名称 (支持模糊搜索)
+        :rtype: str
+        """
         return self._LiveChannelName
 
     @LiveChannelName.setter
@@ -5565,6 +6532,10 @@ class DescribeLiveChannelListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """频道总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -5573,6 +6544,10 @@ class DescribeLiveChannelListResponse(AbstractModel):
 
     @property
     def LiveChannels(self):
+        """频道信息数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LiveChannelInfo
+        """
         return self._LiveChannels
 
     @LiveChannels.setter
@@ -5581,6 +6556,9 @@ class DescribeLiveChannelListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5613,6 +6591,9 @@ class DescribeLiveChannelRequest(AbstractModel):
 
     @property
     def LiveChannelId(self):
+        """频道ID
+        :rtype: str
+        """
         return self._LiveChannelId
 
     @LiveChannelId.setter
@@ -5674,6 +6655,10 @@ class DescribeLiveChannelResponse(AbstractModel):
 
     @property
     def LiveChannelId(self):
+        """频道ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LiveChannelId
 
     @LiveChannelId.setter
@@ -5682,6 +6667,10 @@ class DescribeLiveChannelResponse(AbstractModel):
 
     @property
     def LiveChannelName(self):
+        """频道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LiveChannelName
 
     @LiveChannelName.setter
@@ -5690,6 +6679,10 @@ class DescribeLiveChannelResponse(AbstractModel):
 
     @property
     def LiveChannelType(self):
+        """直播频道类型 1：固定直播；2：移动直播
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LiveChannelType
 
     @LiveChannelType.setter
@@ -5698,6 +6691,10 @@ class DescribeLiveChannelResponse(AbstractModel):
 
     @property
     def LiveStatus(self):
+        """通道直播状态：1: 未推流，2: 推流中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LiveStatus
 
     @LiveStatus.setter
@@ -5706,6 +6703,10 @@ class DescribeLiveChannelResponse(AbstractModel):
 
     @property
     def PushStreamAddress(self):
+        """推流地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PushStreamAddress
 
     @PushStreamAddress.setter
@@ -5714,6 +6715,10 @@ class DescribeLiveChannelResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -5722,6 +6727,10 @@ class DescribeLiveChannelResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -5730,6 +6739,9 @@ class DescribeLiveChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5762,6 +6774,9 @@ class DescribeLiveRecordPlanByIdRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """录制计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -5810,6 +6825,9 @@ class DescribeLiveRecordPlanByIdResponse(AbstractModel):
 
     @property
     def PlanName(self):
+        """计划名称
+        :rtype: str
+        """
         return self._PlanName
 
     @PlanName.setter
@@ -5818,6 +6836,9 @@ class DescribeLiveRecordPlanByIdResponse(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -5826,6 +6847,9 @@ class DescribeLiveRecordPlanByIdResponse(AbstractModel):
 
     @property
     def TemplateName(self):
+        """模板名称
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -5834,6 +6858,9 @@ class DescribeLiveRecordPlanByIdResponse(AbstractModel):
 
     @property
     def RecordStorageTime(self):
+        """存储时间
+        :rtype: int
+        """
         return self._RecordStorageTime
 
     @RecordStorageTime.setter
@@ -5842,6 +6869,9 @@ class DescribeLiveRecordPlanByIdResponse(AbstractModel):
 
     @property
     def PlanType(self):
+        """计划类型
+        :rtype: int
+        """
         return self._PlanType
 
     @PlanType.setter
@@ -5850,6 +6880,9 @@ class DescribeLiveRecordPlanByIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5886,6 +6919,9 @@ class DescribeLiveRecordPlanIdsRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """时间模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -5894,6 +6930,9 @@ class DescribeLiveRecordPlanIdsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5902,6 +6941,9 @@ class DescribeLiveRecordPlanIdsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页大小
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5943,6 +6985,9 @@ class DescribeLiveRecordPlanIdsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总个数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5951,6 +6996,9 @@ class DescribeLiveRecordPlanIdsResponse(AbstractModel):
 
     @property
     def Plans(self):
+        """计划数组
+        :rtype: list of LiveRecordPlanItem
+        """
         return self._Plans
 
     @Plans.setter
@@ -5959,6 +7007,9 @@ class DescribeLiveRecordPlanIdsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5994,6 +7045,9 @@ class DescribeLiveStreamRequest(AbstractModel):
 
     @property
     def LiveChannelId(self):
+        """频道ID
+        :rtype: str
+        """
         return self._LiveChannelId
 
     @LiveChannelId.setter
@@ -6002,6 +7056,9 @@ class DescribeLiveStreamRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """过期时间 秒级unix时间戳
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -6040,6 +7097,10 @@ class DescribeLiveStreamResponse(AbstractModel):
 
     @property
     def Data(self):
+        """拉流地址，只有在推流情况下才有
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.StreamAddress`
+        """
         return self._Data
 
     @Data.setter
@@ -6048,6 +7109,9 @@ class DescribeLiveStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6103,6 +7167,9 @@ class DescribeLiveVideoListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6111,6 +7178,9 @@ class DescribeLiveVideoListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页的每页数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6119,6 +7189,9 @@ class DescribeLiveVideoListRequest(AbstractModel):
 
     @property
     def LiveChannelId(self):
+        """直播频道ID
+        :rtype: str
+        """
         return self._LiveChannelId
 
     @LiveChannelId.setter
@@ -6127,6 +7200,9 @@ class DescribeLiveVideoListRequest(AbstractModel):
 
     @property
     def StartRecordTime(self):
+        """开始录制开始时间
+        :rtype: int
+        """
         return self._StartRecordTime
 
     @StartRecordTime.setter
@@ -6135,6 +7211,9 @@ class DescribeLiveVideoListRequest(AbstractModel):
 
     @property
     def EndRecordTime(self):
+        """开始录制结束时间
+        :rtype: int
+        """
         return self._EndRecordTime
 
     @EndRecordTime.setter
@@ -6143,6 +7222,9 @@ class DescribeLiveVideoListRequest(AbstractModel):
 
     @property
     def StartExpireTime(self):
+        """过期开始时间
+        :rtype: int
+        """
         return self._StartExpireTime
 
     @StartExpireTime.setter
@@ -6151,6 +7233,9 @@ class DescribeLiveVideoListRequest(AbstractModel):
 
     @property
     def EndExpireTime(self):
+        """过期结束时间
+        :rtype: int
+        """
         return self._EndExpireTime
 
     @EndExpireTime.setter
@@ -6159,6 +7244,9 @@ class DescribeLiveVideoListRequest(AbstractModel):
 
     @property
     def StartFileSize(self):
+        """文件大小范围 Byte
+        :rtype: int
+        """
         return self._StartFileSize
 
     @StartFileSize.setter
@@ -6167,6 +7255,9 @@ class DescribeLiveVideoListRequest(AbstractModel):
 
     @property
     def EndFileSize(self):
+        """文件大小范围 Byte
+        :rtype: int
+        """
         return self._EndFileSize
 
     @EndFileSize.setter
@@ -6175,6 +7266,9 @@ class DescribeLiveVideoListRequest(AbstractModel):
 
     @property
     def IsRecording(self):
+        """录制状态，5: 录制回写完
+        :rtype: int
+        """
         return self._IsRecording
 
     @IsRecording.setter
@@ -6225,6 +7319,10 @@ class DescribeLiveVideoListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总的条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -6233,6 +7331,10 @@ class DescribeLiveVideoListResponse(AbstractModel):
 
     @property
     def RecordList(self):
+        """录制任务详情数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LiveRecordItem
+        """
         return self._RecordList
 
     @RecordList.setter
@@ -6241,6 +7343,9 @@ class DescribeLiveVideoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6273,6 +7378,9 @@ class DescribeMessageForwardRequest(AbstractModel):
 
     @property
     def IntId(self):
+        """配置ID
+        :rtype: int
+        """
         return self._IntId
 
     @IntId.setter
@@ -6346,6 +7454,10 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def RegionId(self):
+        """区域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -6354,6 +7466,10 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def RegionName(self):
+        """区域名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -6362,6 +7478,10 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def Instance(self):
+        """实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Instance
 
     @Instance.setter
@@ -6370,6 +7490,10 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -6378,6 +7502,10 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def IntId(self):
+        """配置ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IntId
 
     @IntId.setter
@@ -6386,6 +7514,10 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def MessageType(self):
+        """json数组， 转发类型 1: 告警 2:GPS
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MessageType
 
     @MessageType.setter
@@ -6394,6 +7526,10 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def TopicId(self):
+        """kafka topic id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -6402,6 +7538,10 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """配置创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -6410,6 +7550,10 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def Uin(self):
+        """用户Uin信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -6418,6 +7562,10 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def TopicName(self):
+        """kafka topic 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -6426,6 +7574,9 @@ class DescribeMessageForwardResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6464,6 +7615,9 @@ class DescribeMessageForwardsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """数量限制
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6472,6 +7626,9 @@ class DescribeMessageForwardsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6514,6 +7671,10 @@ class DescribeMessageForwardsResponse(AbstractModel):
 
     @property
     def Total(self):
+        """配置总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -6522,6 +7683,10 @@ class DescribeMessageForwardsResponse(AbstractModel):
 
     @property
     def List(self):
+        """配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MessageForward
+        """
         return self._List
 
     @List.setter
@@ -6530,6 +7695,9 @@ class DescribeMessageForwardsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6565,6 +7733,9 @@ class DescribeMonitorDataByDateRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间戳
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -6573,6 +7744,9 @@ class DescribeMonitorDataByDateRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间戳 最多显示30天数据
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6611,6 +7785,10 @@ class DescribeMonitorDataByDateResponse(AbstractModel):
 
     @property
     def Data(self):
+        """统计数据列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordStatistic
+        """
         return self._Data
 
     @Data.setter
@@ -6619,6 +7797,9 @@ class DescribeMonitorDataByDateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6653,6 +7834,9 @@ class DescribePresetListRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """视频通道唯一标识
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -6661,6 +7845,9 @@ class DescribePresetListRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备唯一标识
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -6699,6 +7886,10 @@ class DescribePresetListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """预置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PresetItem
+        """
         return self._Data
 
     @Data.setter
@@ -6707,6 +7898,9 @@ class DescribePresetListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6750,6 +7944,9 @@ class DescribeRecordDatesByChannelRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备唯一标识
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -6758,6 +7955,9 @@ class DescribeRecordDatesByChannelRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道唯一标识
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -6766,6 +7966,9 @@ class DescribeRecordDatesByChannelRequest(AbstractModel):
 
     @property
     def Type(self):
+        """1: 云端录制 2: 本地录制
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -6774,6 +7977,9 @@ class DescribeRecordDatesByChannelRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制量，默认200
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6782,6 +7988,9 @@ class DescribeRecordDatesByChannelRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6823,6 +8032,10 @@ class DescribeRecordDatesByChannelResponse(AbstractModel):
 
     @property
     def Dates(self):
+        """含有录像文件的日期列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Dates
 
     @Dates.setter
@@ -6831,6 +8044,9 @@ class DescribeRecordDatesByChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6863,6 +8079,9 @@ class DescribeRecordDatesByLiveRequest(AbstractModel):
 
     @property
     def LiveChannelId(self):
+        """直播频道ID
+        :rtype: str
+        """
         return self._LiveChannelId
 
     @LiveChannelId.setter
@@ -6871,6 +8090,9 @@ class DescribeRecordDatesByLiveRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页值，本地录制时参数无效
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6879,6 +8101,9 @@ class DescribeRecordDatesByLiveRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制值，本地录制时参数无效
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6918,6 +8143,10 @@ class DescribeRecordDatesByLiveResponse(AbstractModel):
 
     @property
     def Dates(self):
+        """录制日期数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Dates
 
     @Dates.setter
@@ -6926,6 +8155,9 @@ class DescribeRecordDatesByLiveResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6964,6 +8196,9 @@ class DescribeRecordStreamData(AbstractModel):
 
     @property
     def RtspAddr(self):
+        """Rtsp地址
+        :rtype: str
+        """
         return self._RtspAddr
 
     @RtspAddr.setter
@@ -6972,6 +8207,9 @@ class DescribeRecordStreamData(AbstractModel):
 
     @property
     def RtmpAddr(self):
+        """Rtmp地址
+        :rtype: str
+        """
         return self._RtmpAddr
 
     @RtmpAddr.setter
@@ -6980,6 +8218,9 @@ class DescribeRecordStreamData(AbstractModel):
 
     @property
     def HlsAddr(self):
+        """Hls地址
+        :rtype: str
+        """
         return self._HlsAddr
 
     @HlsAddr.setter
@@ -6988,6 +8229,9 @@ class DescribeRecordStreamData(AbstractModel):
 
     @property
     def FlvAddr(self):
+        """Flv地址
+        :rtype: str
+        """
         return self._FlvAddr
 
     @FlvAddr.setter
@@ -6996,6 +8240,9 @@ class DescribeRecordStreamData(AbstractModel):
 
     @property
     def StreamId(self):
+        """流Id
+        :rtype: str
+        """
         return self._StreamId
 
     @StreamId.setter
@@ -7048,6 +8295,9 @@ class DescribeRecordStreamRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备Id
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -7056,6 +8306,9 @@ class DescribeRecordStreamRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """流失效时间，UNIX时间戳，30天内
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -7064,6 +8317,9 @@ class DescribeRecordStreamRequest(AbstractModel):
 
     @property
     def RecordId(self):
+        """录像文件ID
+        :rtype: str
+        """
         return self._RecordId
 
     @RecordId.setter
@@ -7072,6 +8328,9 @@ class DescribeRecordStreamRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """录像流开始时间，当录像文件ID为空时有效，UNIX时间戳
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7080,6 +8339,9 @@ class DescribeRecordStreamRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """录像流结束时间，当录像文件iD为空时有效，UNIX时间戳
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7088,6 +8350,9 @@ class DescribeRecordStreamRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道唯一标识（此接口升级为必填字段）
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -7129,6 +8394,9 @@ class DescribeRecordStreamResponse(AbstractModel):
 
     @property
     def Data(self):
+        """结果
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeRecordStreamData`
+        """
         return self._Data
 
     @Data.setter
@@ -7137,6 +8405,9 @@ class DescribeRecordStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7165,6 +8436,9 @@ class DescribeRecordingPlanByIdRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """录制计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -7202,6 +8476,10 @@ class DescribeRecordingPlanByIdResponse(AbstractModel):
 
     @property
     def Plan(self):
+        """录制计划详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordPlanDetail`
+        """
         return self._Plan
 
     @Plan.setter
@@ -7210,6 +8488,9 @@ class DescribeRecordingPlanByIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7252,6 +8533,10 @@ class DescribeRecordingPlansResponse(AbstractModel):
 
     @property
     def Plans(self):
+        """录制计划详情·列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordPlanDetail
+        """
         return self._Plans
 
     @Plans.setter
@@ -7260,6 +8545,10 @@ class DescribeRecordingPlansResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """录制计划总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7268,6 +8557,9 @@ class DescribeRecordingPlansResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7309,6 +8601,9 @@ class DescribeSIPServerResponse(AbstractModel):
 
     @property
     def Data(self):
+        """SIP服务器相关配置项
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.ServerConfiguration`
+        """
         return self._Data
 
     @Data.setter
@@ -7317,6 +8612,9 @@ class DescribeSIPServerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7345,6 +8643,9 @@ class DescribeSceneRequest(AbstractModel):
 
     @property
     def IntId(self):
+        """场景ID
+        :rtype: int
+        """
         return self._IntId
 
     @IntId.setter
@@ -7409,6 +8710,10 @@ class DescribeSceneResponse(AbstractModel):
 
     @property
     def IntId(self):
+        """场景ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IntId
 
     @IntId.setter
@@ -7417,6 +8722,10 @@ class DescribeSceneResponse(AbstractModel):
 
     @property
     def RecordDuration(self):
+        """录制时长(秒)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RecordDuration
 
     @RecordDuration.setter
@@ -7425,6 +8734,10 @@ class DescribeSceneResponse(AbstractModel):
 
     @property
     def SceneName(self):
+        """场景名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SceneName
 
     @SceneName.setter
@@ -7433,6 +8746,10 @@ class DescribeSceneResponse(AbstractModel):
 
     @property
     def SceneTrigger(self):
+        """场景触发规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SceneTrigger
 
     @SceneTrigger.setter
@@ -7441,6 +8758,10 @@ class DescribeSceneResponse(AbstractModel):
 
     @property
     def StoreDuration(self):
+        """存储时长 (天)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._StoreDuration
 
     @StoreDuration.setter
@@ -7449,6 +8770,10 @@ class DescribeSceneResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -7457,6 +8782,10 @@ class DescribeSceneResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -7465,6 +8794,9 @@ class DescribeSceneResponse(AbstractModel):
 
     @property
     def Uin(self):
+        """用户Uin
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -7473,6 +8805,9 @@ class DescribeSceneResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7509,6 +8844,9 @@ class DescribeScenesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """条数限制
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7517,6 +8855,9 @@ class DescribeScenesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7559,6 +8900,10 @@ class DescribeScenesResponse(AbstractModel):
 
     @property
     def Total(self):
+        """场景总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -7567,6 +8912,10 @@ class DescribeScenesResponse(AbstractModel):
 
     @property
     def List(self):
+        """场景列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SceneItem
+        """
         return self._List
 
     @List.setter
@@ -7575,6 +8924,9 @@ class DescribeScenesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7620,6 +8972,9 @@ class DescribeStatisticDetailsRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """开始日期，格式【YYYY-MM-DD】
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -7628,6 +8983,9 @@ class DescribeStatisticDetailsRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """结束日期，格式【YYYY-MM-DD】
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -7636,6 +8994,16 @@ class DescribeStatisticDetailsRequest(AbstractModel):
 
     @property
     def StatisticField(self):
+        """统计项。取值范围：
+1.录制设备数：RecordingDevice
+2.非录制设备数：NonRecordingDevice
+3.观看流量总数：WatchFlux
+4.已用存储容量总数：StorageUsage
+5. X-P2P分享流量: P2PFluxTotal
+6. X-P2P峰值带宽: P2PPeakValue
+7. RTMP推流路数(直播推流): LivePushTotal
+        :rtype: str
+        """
         return self._StatisticField
 
     @StatisticField.setter
@@ -7675,6 +9043,10 @@ class DescribeStatisticDetailsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """统计详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of StatisticItem
+        """
         return self._Data
 
     @Data.setter
@@ -7683,6 +9055,9 @@ class DescribeStatisticDetailsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7714,6 +9089,9 @@ class DescribeStatisticSummaryRequest(AbstractModel):
 
     @property
     def Date(self):
+        """指定日期。格式【YYYY-MM-DD】
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -7775,6 +9153,10 @@ class DescribeStatisticSummaryResponse(AbstractModel):
 
     @property
     def RecordingDevice(self):
+        """录制设备总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RecordingDevice
 
     @RecordingDevice.setter
@@ -7783,6 +9165,10 @@ class DescribeStatisticSummaryResponse(AbstractModel):
 
     @property
     def NonRecordingDevice(self):
+        """非录制设备总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._NonRecordingDevice
 
     @NonRecordingDevice.setter
@@ -7791,6 +9177,10 @@ class DescribeStatisticSummaryResponse(AbstractModel):
 
     @property
     def WatchFlux(self):
+        """观看流量总数。为直播观看流量与点播观看流量之和。单位：GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._WatchFlux
 
     @WatchFlux.setter
@@ -7799,6 +9189,10 @@ class DescribeStatisticSummaryResponse(AbstractModel):
 
     @property
     def StorageUsage(self):
+        """累计有效存储容量总数。单位：GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._StorageUsage
 
     @StorageUsage.setter
@@ -7807,6 +9201,10 @@ class DescribeStatisticSummaryResponse(AbstractModel):
 
     @property
     def P2PFluxTotal(self):
+        """X-P2P分享流量。单位 Byte
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._P2PFluxTotal
 
     @P2PFluxTotal.setter
@@ -7815,6 +9213,10 @@ class DescribeStatisticSummaryResponse(AbstractModel):
 
     @property
     def P2PPeakValue(self):
+        """X-P2P峰值带宽。 单位bps
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._P2PPeakValue
 
     @P2PPeakValue.setter
@@ -7823,6 +9225,10 @@ class DescribeStatisticSummaryResponse(AbstractModel):
 
     @property
     def LivePushTotal(self):
+        """RTMP推流路数 ( 直播推流)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LivePushTotal
 
     @LivePushTotal.setter
@@ -7831,6 +9237,9 @@ class DescribeStatisticSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7875,6 +9284,9 @@ class DescribeSubGroupsRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """分组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -7883,6 +9295,9 @@ class DescribeSubGroupsRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """分组名称，根据名称模糊匹配子分组时为必填
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -7891,6 +9306,9 @@ class DescribeSubGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7899,6 +9317,9 @@ class DescribeSubGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数，默认200
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7907,6 +9328,9 @@ class DescribeSubGroupsRequest(AbstractModel):
 
     @property
     def OnlyGroup(self):
+        """是否统计子分组下的设备数，0：统计，1：不统计
+        :rtype: int
+        """
         return self._OnlyGroup
 
     @OnlyGroup.setter
@@ -7952,6 +9376,10 @@ class DescribeSubGroupsResponse(AbstractModel):
 
     @property
     def GroupList(self):
+        """子分组详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GroupItem
+        """
         return self._GroupList
 
     @GroupList.setter
@@ -7960,6 +9388,10 @@ class DescribeSubGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """子分组总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7968,6 +9400,9 @@ class DescribeSubGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8000,6 +9435,9 @@ class DescribeSubscriptionStatusRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -8036,6 +9474,9 @@ class DescribeSubscriptionStatusResponse(AbstractModel):
 
     @property
     def AlarmStatus(self):
+        """设备GB28181报警订阅状态 1：未开启订阅；2：已开启订阅
+        :rtype: int
+        """
         return self._AlarmStatus
 
     @AlarmStatus.setter
@@ -8044,6 +9485,9 @@ class DescribeSubscriptionStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8086,6 +9530,9 @@ class DescribeVideoListByChannelRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备唯一标识
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -8094,6 +9541,9 @@ class DescribeVideoListByChannelRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道唯一标识
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -8102,6 +9552,9 @@ class DescribeVideoListByChannelRequest(AbstractModel):
 
     @property
     def Type(self):
+        """1: 云端录制 2: 本地录制
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -8110,6 +9563,10 @@ class DescribeVideoListByChannelRequest(AbstractModel):
 
     @property
     def Date(self):
+        """指定某天。取值【YYYY-MM-DD】
+为空时默认查询最近一天的记录
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -8118,6 +9575,9 @@ class DescribeVideoListByChannelRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制量，默认2000
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8126,6 +9586,9 @@ class DescribeVideoListByChannelRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8172,6 +9635,10 @@ class DescribeVideoListByChannelResponse(AbstractModel):
 
     @property
     def VideoList(self):
+        """录像详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordTaskItem
+        """
         return self._VideoList
 
     @VideoList.setter
@@ -8180,6 +9647,10 @@ class DescribeVideoListByChannelResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """录像总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8188,6 +9659,9 @@ class DescribeVideoListByChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8268,6 +9742,9 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8276,6 +9753,9 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8284,6 +9764,9 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间戳，秒级
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8292,6 +9775,9 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间戳，秒级
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8300,6 +9786,9 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备Id
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -8308,6 +9797,9 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def StartRecordTime(self):
+        """开始录制范围 开始
+        :rtype: int
+        """
         return self._StartRecordTime
 
     @StartRecordTime.setter
@@ -8316,6 +9808,9 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def EndRecordTime(self):
+        """开始录制范围 结束
+        :rtype: int
+        """
         return self._EndRecordTime
 
     @EndRecordTime.setter
@@ -8324,6 +9819,9 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def StartExpireTime(self):
+        """过期时间范围 开始
+        :rtype: int
+        """
         return self._StartExpireTime
 
     @StartExpireTime.setter
@@ -8332,6 +9830,9 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def EndExpireTime(self):
+        """过期时间范围 结束
+        :rtype: int
+        """
         return self._EndExpireTime
 
     @EndExpireTime.setter
@@ -8340,6 +9841,9 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def StartFileSize(self):
+        """文件大小范围 开始 单位byte
+        :rtype: int
+        """
         return self._StartFileSize
 
     @StartFileSize.setter
@@ -8348,6 +9852,9 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def EndFileSize(self):
+        """文件大小范围 结束 单位byte
+        :rtype: int
+        """
         return self._EndFileSize
 
     @EndFileSize.setter
@@ -8356,6 +9863,9 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def IsRecording(self):
+        """录制状态 99: 录制方已经回写状态 1: 开始录制了，等待回写 2: 已经到了时间模板的停止时间，在等待录制方回写
+        :rtype: int
+        """
         return self._IsRecording
 
     @IsRecording.setter
@@ -8364,6 +9874,9 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道ID默认必传
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -8372,6 +9885,9 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """录制计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -8380,6 +9896,9 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def SceneId(self):
+        """场景ID
+        :rtype: int
+        """
         return self._SceneId
 
     @SceneId.setter
@@ -8388,6 +9907,9 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def WarnId(self):
+        """告警ID
+        :rtype: int
+        """
         return self._WarnId
 
     @WarnId.setter
@@ -8396,6 +9918,9 @@ class DescribeVideoListRequest(AbstractModel):
 
     @property
     def RecordType(self):
+        """录制类型 1: 联动计划录制 2: 告警录制
+        :rtype: list of int
+        """
         return self._RecordType
 
     @RecordType.setter
@@ -8454,6 +9979,9 @@ class DescribeVideoListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8462,6 +9990,9 @@ class DescribeVideoListResponse(AbstractModel):
 
     @property
     def VideoList(self):
+        """已废弃
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordTaskItem`
+        """
         return self._VideoList
 
     @VideoList.setter
@@ -8470,6 +10001,9 @@ class DescribeVideoListResponse(AbstractModel):
 
     @property
     def RecordList(self):
+        """录像详情列表
+        :rtype: list of RecordTaskItem
+        """
         return self._RecordList
 
     @RecordList.setter
@@ -8478,6 +10012,9 @@ class DescribeVideoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8523,6 +10060,10 @@ class DescribeWarnModResponse(AbstractModel):
 
     @property
     def Data(self):
+        """告警类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -8531,6 +10072,9 @@ class DescribeWarnModResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8578,6 +10122,9 @@ class DescribeWarningsRequest(AbstractModel):
 
     @property
     def OrderType(self):
+        """1:创建时间倒序 2：创建时间升序 3：level倒序 4：leve升序
+        :rtype: int
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -8586,6 +10133,9 @@ class DescribeWarningsRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """可选设备id
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -8594,6 +10144,9 @@ class DescribeWarningsRequest(AbstractModel):
 
     @property
     def WarnLevelArray(self):
+        """如果不传则查询所有，取值参见配置
+        :rtype: list of int
+        """
         return self._WarnLevelArray
 
     @WarnLevelArray.setter
@@ -8602,6 +10155,9 @@ class DescribeWarningsRequest(AbstractModel):
 
     @property
     def WarnModeArray(self):
+        """如果不传则查询所有，取值参见配置
+        :rtype: list of int
+        """
         return self._WarnModeArray
 
     @WarnModeArray.setter
@@ -8610,6 +10166,9 @@ class DescribeWarningsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """不传认为是0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8618,6 +10177,9 @@ class DescribeWarningsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """不传认为是20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8626,6 +10188,9 @@ class DescribeWarningsRequest(AbstractModel):
 
     @property
     def DateBegin(self):
+        """形似：2021-05-21 00:00:00 .取值在当前日前30天内，不传默认是当前日前30天日期
+        :rtype: str
+        """
         return self._DateBegin
 
     @DateBegin.setter
@@ -8634,6 +10199,9 @@ class DescribeWarningsRequest(AbstractModel):
 
     @property
     def DateEnd(self):
+        """形似：2021-05-21 23:59:59 .取值在当前日前30天内，不传默认是当前日前30天日期
+        :rtype: str
+        """
         return self._DateEnd
 
     @DateEnd.setter
@@ -8682,6 +10250,10 @@ class DescribeWarningsResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -8690,6 +10262,10 @@ class DescribeWarningsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """告警列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of WarningsData
+        """
         return self._Data
 
     @Data.setter
@@ -8698,6 +10274,9 @@ class DescribeWarningsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8739,6 +10318,9 @@ class DescribeXP2PDataRequest(AbstractModel):
 
     @property
     def P2PAppId(self):
+        """P2P应用ID
+        :rtype: str
+        """
         return self._P2PAppId
 
     @P2PAppId.setter
@@ -8747,6 +10329,9 @@ class DescribeXP2PDataRequest(AbstractModel):
 
     @property
     def From(self):
+        """查询开始时间，时间戳秒
+        :rtype: int
+        """
         return self._From
 
     @From.setter
@@ -8755,6 +10340,9 @@ class DescribeXP2PDataRequest(AbstractModel):
 
     @property
     def To(self):
+        """查询结束时间，时间戳秒
+        :rtype: int
+        """
         return self._To
 
     @To.setter
@@ -8763,6 +10351,9 @@ class DescribeXP2PDataRequest(AbstractModel):
 
     @property
     def P2PChannelId(self):
+        """P2P通路ID
+        :rtype: str
+        """
         return self._P2PChannelId
 
     @P2PChannelId.setter
@@ -8805,6 +10396,12 @@ class DescribeXP2PDataResponse(AbstractModel):
 
     @property
     def Data(self):
+        """[log_time,cdn_bytes , p2p_bytes, online_people, stuck_times, stuck_people,request,request_success,request_fail,play_fail]
+[时间戳,cdn流量(字节) , p2p流量(字节), 在线人数, 卡播次数, 卡播人数,起播请求次数,起播成功次数,起播失败次数,播放失败次数, pcdn cdn流量（字节), pcdn路由流量(字节), 上传流量(字节)]
+[1481016480, 46118502414, 75144943171, 61691, 3853, 0,0,0,0,0, 0, 0, 0]
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -8813,6 +10410,9 @@ class DescribeXP2PDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8851,6 +10451,9 @@ class DevGroupInfo(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备唯一标识
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -8859,6 +10462,9 @@ class DevGroupInfo(AbstractModel):
 
     @property
     def GroupId(self):
+        """分组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -8867,6 +10473,9 @@ class DevGroupInfo(AbstractModel):
 
     @property
     def GroupPath(self):
+        """分组路径
+        :rtype: str
+        """
         return self._GroupPath
 
     @GroupPath.setter
@@ -8875,6 +10484,9 @@ class DevGroupInfo(AbstractModel):
 
     @property
     def ParentId(self):
+        """父分组ID
+        :rtype: str
+        """
         return self._ParentId
 
     @ParentId.setter
@@ -8883,6 +10495,9 @@ class DevGroupInfo(AbstractModel):
 
     @property
     def Error(self):
+        """设备错误，仅在用户没权限或者设备已删除时返回具体结果
+        :rtype: str
+        """
         return self._Error
 
     @Error.setter
@@ -8925,6 +10540,10 @@ class DeviceItem(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -8933,6 +10552,10 @@ class DeviceItem(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -8972,6 +10595,10 @@ class DeviceMonitorValue(AbstractModel):
 
     @property
     def Value(self):
+        """统计值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Value
 
     @Value.setter
@@ -8980,6 +10607,10 @@ class DeviceMonitorValue(AbstractModel):
 
     @property
     def Time(self):
+        """统计时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -9042,6 +10673,10 @@ class Events(AbstractModel):
 
     @property
     def EventTime(self):
+        """开始时间，秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EventTime
 
     @EventTime.setter
@@ -9050,6 +10685,10 @@ class Events(AbstractModel):
 
     @property
     def EventType(self):
+        """事件类型 1:注册 2:心跳 4:录制异常 5:播放异常 6:流中断
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EventType
 
     @EventType.setter
@@ -9058,6 +10697,10 @@ class Events(AbstractModel):
 
     @property
     def EventDesc(self):
+        """事件描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EventDesc
 
     @EventDesc.setter
@@ -9066,6 +10709,9 @@ class Events(AbstractModel):
 
     @property
     def DeviceType(self):
+        """设备类型
+        :rtype: int
+        """
         return self._DeviceType
 
     @DeviceType.setter
@@ -9074,6 +10720,9 @@ class Events(AbstractModel):
 
     @property
     def DeviceAddress(self):
+        """设备地址
+        :rtype: str
+        """
         return self._DeviceAddress
 
     @DeviceAddress.setter
@@ -9082,6 +10731,9 @@ class Events(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备Id
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -9090,6 +10742,9 @@ class Events(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道Id
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -9098,6 +10753,9 @@ class Events(AbstractModel):
 
     @property
     def EventLog(self):
+        """事件日志
+        :rtype: str
+        """
         return self._EventLog
 
     @EventLog.setter
@@ -9106,6 +10764,10 @@ class Events(AbstractModel):
 
     @property
     def DeviceName(self):
+        """设备备注名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -9159,6 +10821,9 @@ class GetRecordDatesByDevRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备唯一标识
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -9167,6 +10832,9 @@ class GetRecordDatesByDevRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制量，默认200
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -9175,6 +10843,9 @@ class GetRecordDatesByDevRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -9183,6 +10854,9 @@ class GetRecordDatesByDevRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道唯一标识，对于NVR设备，多通道IPC设备，设备编码与通道编码不一致的IPC设备，此字段为必填
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -9191,6 +10865,9 @@ class GetRecordDatesByDevRequest(AbstractModel):
 
     @property
     def Type(self):
+        """1: 云端录制 2: 本地录制
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -9232,6 +10909,10 @@ class GetRecordDatesByDevResponse(AbstractModel):
 
     @property
     def Dates(self):
+        """含有录像文件的日期列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Dates
 
     @Dates.setter
@@ -9240,6 +10921,9 @@ class GetRecordDatesByDevResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9266,6 +10950,9 @@ class GetRecordPlanByDevRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备唯一标识
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -9303,6 +10990,10 @@ class GetRecordPlanByDevResponse(AbstractModel):
 
     @property
     def Plan(self):
+        """录制计划详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordPlanItem`
+        """
         return self._Plan
 
     @Plan.setter
@@ -9311,6 +11002,9 @@ class GetRecordPlanByDevResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9339,6 +11033,9 @@ class GetRecordPlanByIdRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """录制计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -9376,6 +11073,10 @@ class GetRecordPlanByIdResponse(AbstractModel):
 
     @property
     def Plan(self):
+        """录制计划详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordPlanItem`
+        """
         return self._Plan
 
     @Plan.setter
@@ -9384,6 +11085,9 @@ class GetRecordPlanByIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9426,6 +11130,10 @@ class GetRecordPlansResponse(AbstractModel):
 
     @property
     def Plans(self):
+        """录制计划详情·列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordPlanItem
+        """
         return self._Plans
 
     @Plans.setter
@@ -9434,6 +11142,10 @@ class GetRecordPlansResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """录制计划总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9442,6 +11154,9 @@ class GetRecordPlansResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9474,6 +11189,9 @@ class GetTimeTemplateByIdRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """时间模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -9511,6 +11229,10 @@ class GetTimeTemplateByIdResponse(AbstractModel):
 
     @property
     def Template(self):
+        """时间模板详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.TimeTemplateItem`
+        """
         return self._Template
 
     @Template.setter
@@ -9519,6 +11241,9 @@ class GetTimeTemplateByIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9560,6 +11285,10 @@ class GetTimeTemplatesResponse(AbstractModel):
 
     @property
     def Templates(self):
+        """时间模板列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TimeTemplateItem
+        """
         return self._Templates
 
     @Templates.setter
@@ -9568,6 +11297,9 @@ class GetTimeTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """时间模板总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9576,6 +11308,9 @@ class GetTimeTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9627,6 +11362,9 @@ class GetVideoListByConRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备唯一标识
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -9635,6 +11373,9 @@ class GetVideoListByConRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -9643,6 +11384,9 @@ class GetVideoListByConRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -9651,6 +11395,9 @@ class GetVideoListByConRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道唯一标识，对于NVR设备，多通道IPC设备，设备编码与通道编码不一致的IPC设备，此字段为必填
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -9659,6 +11406,9 @@ class GetVideoListByConRequest(AbstractModel):
 
     @property
     def LatestDay(self):
+        """0：查询指定日期的录像；1：查询最近一天的录像；默认0
+        :rtype: int
+        """
         return self._LatestDay
 
     @LatestDay.setter
@@ -9667,6 +11417,10 @@ class GetVideoListByConRequest(AbstractModel):
 
     @property
     def Date(self):
+        """指定某天。取值【YYYY-MM-DD】
+为空时默认查询最近一天的记录
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -9675,6 +11429,9 @@ class GetVideoListByConRequest(AbstractModel):
 
     @property
     def Type(self):
+        """1: 云端录制 2: 本地录制
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -9722,6 +11479,10 @@ class GetVideoListByConResponse(AbstractModel):
 
     @property
     def VideoList(self):
+        """录像详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordTaskItem
+        """
         return self._VideoList
 
     @VideoList.setter
@@ -9730,6 +11491,10 @@ class GetVideoListByConResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """录像总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9738,6 +11503,9 @@ class GetVideoListByConResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9819,6 +11587,10 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -9827,6 +11599,10 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def NickName(self):
+        """设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NickName
 
     @NickName.setter
@@ -9835,6 +11611,10 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def Status(self):
+        """设备状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -9843,6 +11623,10 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def ExtraInformation(self):
+        """扩展信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExtraInformation
 
     @ExtraInformation.setter
@@ -9851,6 +11635,10 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def DeviceType(self):
+        """设备类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DeviceType
 
     @DeviceType.setter
@@ -9859,6 +11647,10 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def RTSPUrl(self):
+        """rtsp地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RTSPUrl
 
     @RTSPUrl.setter
@@ -9867,6 +11659,10 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def DeviceCode(self):
+        """设备编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceCode
 
     @DeviceCode.setter
@@ -9875,6 +11671,10 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def IsRecord(self):
+        """是否存在录像
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsRecord
 
     @IsRecord.setter
@@ -9883,6 +11683,10 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def Recordable(self):
+        """该设备是否可录制
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Recordable
 
     @Recordable.setter
@@ -9891,6 +11695,10 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def Protocol(self):
+        """设备接入协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -9899,6 +11707,10 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def CreateTime(self):
+        """设备创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -9907,6 +11719,10 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def ChannelNum(self):
+        """设备通道总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ChannelNum
 
     @ChannelNum.setter
@@ -9915,6 +11731,10 @@ class GroupDeviceItem(AbstractModel):
 
     @property
     def VideoChannelNum(self):
+        """设备视频通道总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._VideoChannelNum
 
     @VideoChannelNum.setter
@@ -9989,6 +11809,9 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupId(self):
+        """分组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -9997,6 +11820,9 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupName(self):
+        """分组名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -10005,6 +11831,9 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupType(self):
+        """分组类型
+        :rtype: str
+        """
         return self._GroupType
 
     @GroupType.setter
@@ -10013,6 +11842,9 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupPath(self):
+        """分组路径
+        :rtype: str
+        """
         return self._GroupPath
 
     @GroupPath.setter
@@ -10021,6 +11853,9 @@ class GroupInfo(AbstractModel):
 
     @property
     def ParentId(self):
+        """父分组ID
+        :rtype: str
+        """
         return self._ParentId
 
     @ParentId.setter
@@ -10029,6 +11864,9 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupDescribe(self):
+        """分组描述
+        :rtype: str
+        """
         return self._GroupDescribe
 
     @GroupDescribe.setter
@@ -10037,6 +11875,9 @@ class GroupInfo(AbstractModel):
 
     @property
     def ExtraInformation(self):
+        """扩展信息
+        :rtype: str
+        """
         return self._ExtraInformation
 
     @ExtraInformation.setter
@@ -10045,6 +11886,9 @@ class GroupInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -10053,6 +11897,10 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupStatus(self):
+        """分组状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._GroupStatus
 
     @GroupStatus.setter
@@ -10061,6 +11909,10 @@ class GroupInfo(AbstractModel):
 
     @property
     def Error(self):
+        """设备不存在时产生的错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Error
 
     @Error.setter
@@ -10144,6 +11996,10 @@ class GroupItem(AbstractModel):
 
     @property
     def GroupName(self):
+        """分组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -10152,6 +12008,10 @@ class GroupItem(AbstractModel):
 
     @property
     def ParentId(self):
+        """父分组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ParentId
 
     @ParentId.setter
@@ -10160,6 +12020,10 @@ class GroupItem(AbstractModel):
 
     @property
     def GroupId(self):
+        """分组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -10168,6 +12032,10 @@ class GroupItem(AbstractModel):
 
     @property
     def GroupPath(self):
+        """分组路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupPath
 
     @GroupPath.setter
@@ -10176,6 +12044,10 @@ class GroupItem(AbstractModel):
 
     @property
     def GroupDescribe(self):
+        """分组描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupDescribe
 
     @GroupDescribe.setter
@@ -10184,6 +12056,10 @@ class GroupItem(AbstractModel):
 
     @property
     def DeviceNum(self):
+        """分组绑定设备数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DeviceNum
 
     @DeviceNum.setter
@@ -10192,6 +12068,10 @@ class GroupItem(AbstractModel):
 
     @property
     def SubGroupNum(self):
+        """子分组数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SubGroupNum
 
     @SubGroupNum.setter
@@ -10200,6 +12080,10 @@ class GroupItem(AbstractModel):
 
     @property
     def ExtraInformation(self):
+        """分组附加信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExtraInformation
 
     @ExtraInformation.setter
@@ -10208,6 +12092,10 @@ class GroupItem(AbstractModel):
 
     @property
     def GroupType(self):
+        """分组类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupType
 
     @GroupType.setter
@@ -10216,6 +12104,10 @@ class GroupItem(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -10224,6 +12116,10 @@ class GroupItem(AbstractModel):
 
     @property
     def GroupStatus(self):
+        """分组状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._GroupStatus
 
     @GroupStatus.setter
@@ -10292,6 +12188,10 @@ class LiveChannelInfo(AbstractModel):
 
     @property
     def LiveChannelId(self):
+        """频道ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LiveChannelId
 
     @LiveChannelId.setter
@@ -10300,6 +12200,10 @@ class LiveChannelInfo(AbstractModel):
 
     @property
     def LiveChannelName(self):
+        """频道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LiveChannelName
 
     @LiveChannelName.setter
@@ -10308,6 +12212,10 @@ class LiveChannelInfo(AbstractModel):
 
     @property
     def LiveChannelType(self):
+        """频道类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LiveChannelType
 
     @LiveChannelType.setter
@@ -10316,6 +12224,10 @@ class LiveChannelInfo(AbstractModel):
 
     @property
     def LiveStatus(self):
+        """通道直播状态：1: 未推流，2: 推流中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._LiveStatus
 
     @LiveStatus.setter
@@ -10324,6 +12236,10 @@ class LiveChannelInfo(AbstractModel):
 
     @property
     def PushStreamAddress(self):
+        """推流地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PushStreamAddress
 
     @PushStreamAddress.setter
@@ -10332,6 +12248,10 @@ class LiveChannelInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -10340,6 +12260,10 @@ class LiveChannelInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -10382,6 +12306,9 @@ class LiveChannelItem(AbstractModel):
 
     @property
     def ChannelId(self):
+        """频道ID
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -10390,6 +12317,9 @@ class LiveChannelItem(AbstractModel):
 
     @property
     def ChannelName(self):
+        """频道名称
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -10448,6 +12378,9 @@ class LiveRecordItem(AbstractModel):
 
     @property
     def IntID(self):
+        """录制文件自增ID
+        :rtype: int
+        """
         return self._IntID
 
     @IntID.setter
@@ -10456,6 +12389,9 @@ class LiveRecordItem(AbstractModel):
 
     @property
     def LiveChannelId(self):
+        """直播频道ID
+        :rtype: str
+        """
         return self._LiveChannelId
 
     @LiveChannelId.setter
@@ -10464,6 +12400,9 @@ class LiveRecordItem(AbstractModel):
 
     @property
     def ExpectDeleteTime(self):
+        """过期时间
+        :rtype: int
+        """
         return self._ExpectDeleteTime
 
     @ExpectDeleteTime.setter
@@ -10472,6 +12411,9 @@ class LiveRecordItem(AbstractModel):
 
     @property
     def RecordTimeLen(self):
+        """录制时长
+        :rtype: int
+        """
         return self._RecordTimeLen
 
     @RecordTimeLen.setter
@@ -10480,6 +12422,9 @@ class LiveRecordItem(AbstractModel):
 
     @property
     def FileSize(self):
+        """文件大小
+        :rtype: int
+        """
         return self._FileSize
 
     @FileSize.setter
@@ -10488,6 +12433,9 @@ class LiveRecordItem(AbstractModel):
 
     @property
     def VideoUrl(self):
+        """录制文件url
+        :rtype: str
+        """
         return self._VideoUrl
 
     @VideoUrl.setter
@@ -10496,6 +12444,9 @@ class LiveRecordItem(AbstractModel):
 
     @property
     def RecordPlanId(self):
+        """录制计划ID
+        :rtype: str
+        """
         return self._RecordPlanId
 
     @RecordPlanId.setter
@@ -10504,6 +12455,9 @@ class LiveRecordItem(AbstractModel):
 
     @property
     def StartTime(self):
+        """录制开始时间
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -10512,6 +12466,9 @@ class LiveRecordItem(AbstractModel):
 
     @property
     def EndTime(self):
+        """录制结束时间
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -10558,6 +12515,10 @@ class LiveRecordPlanItem(AbstractModel):
 
     @property
     def PlanId(self):
+        """计划ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -10566,6 +12527,10 @@ class LiveRecordPlanItem(AbstractModel):
 
     @property
     def PlanName(self):
+        """计划名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PlanName
 
     @PlanName.setter
@@ -10641,6 +12606,10 @@ class MessageForward(AbstractModel):
 
     @property
     def IntId(self):
+        """配置ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IntId
 
     @IntId.setter
@@ -10649,6 +12618,10 @@ class MessageForward(AbstractModel):
 
     @property
     def Uin(self):
+        """用户Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -10657,6 +12630,10 @@ class MessageForward(AbstractModel):
 
     @property
     def MessageType(self):
+        """json数组， 转发类型 1: 告警 2:GPS
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MessageType
 
     @MessageType.setter
@@ -10665,6 +12642,10 @@ class MessageForward(AbstractModel):
 
     @property
     def RegionId(self):
+        """区域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -10673,6 +12654,10 @@ class MessageForward(AbstractModel):
 
     @property
     def RegionName(self):
+        """区域名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -10681,6 +12666,10 @@ class MessageForward(AbstractModel):
 
     @property
     def Instance(self):
+        """实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Instance
 
     @Instance.setter
@@ -10689,6 +12678,10 @@ class MessageForward(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -10697,6 +12690,10 @@ class MessageForward(AbstractModel):
 
     @property
     def TopicId(self):
+        """kafka topic id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -10705,6 +12702,10 @@ class MessageForward(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -10713,6 +12714,10 @@ class MessageForward(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -10721,6 +12726,10 @@ class MessageForward(AbstractModel):
 
     @property
     def TopicName(self):
+        """topic 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -10770,6 +12779,9 @@ class ModifyBindPlanLiveChannelRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """直播录制计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -10778,6 +12790,9 @@ class ModifyBindPlanLiveChannelRequest(AbstractModel):
 
     @property
     def Type(self):
+        """1: 绑定 2: 解绑
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -10786,6 +12801,9 @@ class ModifyBindPlanLiveChannelRequest(AbstractModel):
 
     @property
     def LiveChannelIds(self):
+        """直播频道ID列表
+        :rtype: list of str
+        """
         return self._LiveChannelIds
 
     @LiveChannelIds.setter
@@ -10821,6 +12839,9 @@ class ModifyBindPlanLiveChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10852,6 +12873,9 @@ class ModifyBindRecordingPlanRequest(AbstractModel):
 
     @property
     def Type(self):
+        """操作类型： 1-绑定设备 ；2-解绑设备
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -10860,6 +12884,9 @@ class ModifyBindRecordingPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """录制计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -10868,6 +12895,9 @@ class ModifyBindRecordingPlanRequest(AbstractModel):
 
     @property
     def Channels(self):
+        """录制通道列表
+        :rtype: list of ChannelItem
+        """
         return self._Channels
 
     @Channels.setter
@@ -10908,6 +12938,9 @@ class ModifyBindRecordingPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10939,6 +12972,9 @@ class ModifyBindSceneChannelsRequest(AbstractModel):
 
     @property
     def SceneId(self):
+        """场景ID
+        :rtype: int
+        """
         return self._SceneId
 
     @SceneId.setter
@@ -10947,6 +12983,9 @@ class ModifyBindSceneChannelsRequest(AbstractModel):
 
     @property
     def Type(self):
+        """1: 绑定 2: 解绑
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -10955,6 +12994,9 @@ class ModifyBindSceneChannelsRequest(AbstractModel):
 
     @property
     def Channels(self):
+        """通道列表
+        :rtype: list of ChannelItem
+        """
         return self._Channels
 
     @Channels.setter
@@ -10995,6 +13037,9 @@ class ModifyBindSceneChannelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11026,6 +13071,9 @@ class ModifyBindSceneDeviceRequest(AbstractModel):
 
     @property
     def SceneId(self):
+        """场景ID
+        :rtype: int
+        """
         return self._SceneId
 
     @SceneId.setter
@@ -11034,6 +13082,9 @@ class ModifyBindSceneDeviceRequest(AbstractModel):
 
     @property
     def Type(self):
+        """1: 绑定 2: 解绑
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -11042,6 +13093,9 @@ class ModifyBindSceneDeviceRequest(AbstractModel):
 
     @property
     def Devices(self):
+        """设备列表
+        :rtype: list of DeviceItem
+        """
         return self._Devices
 
     @Devices.setter
@@ -11082,6 +13136,9 @@ class ModifyBindSceneDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11110,6 +13167,9 @@ class ModifyDeviceDataRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备唯一标识
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -11118,6 +13178,9 @@ class ModifyDeviceDataRequest(AbstractModel):
 
     @property
     def NickName(self):
+        """设备名称
+        :rtype: str
+        """
         return self._NickName
 
     @NickName.setter
@@ -11156,6 +13219,10 @@ class ModifyDeviceDataResponse(AbstractModel):
 
     @property
     def Status(self):
+        """操作结果,“OK”表示成功，其他表示失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -11164,6 +13231,9 @@ class ModifyDeviceDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11193,6 +13263,9 @@ class ModifyLiveChannelRequest(AbstractModel):
 
     @property
     def LiveChannelId(self):
+        """直播频道ID
+        :rtype: str
+        """
         return self._LiveChannelId
 
     @LiveChannelId.setter
@@ -11201,6 +13274,9 @@ class ModifyLiveChannelRequest(AbstractModel):
 
     @property
     def LiveChannelName(self):
+        """直播频道名
+        :rtype: str
+        """
         return self._LiveChannelName
 
     @LiveChannelName.setter
@@ -11235,6 +13311,9 @@ class ModifyLiveChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11266,6 +13345,9 @@ class ModifyLiveRecordPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """录制计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -11274,6 +13356,9 @@ class ModifyLiveRecordPlanRequest(AbstractModel):
 
     @property
     def PlanName(self):
+        """录制计划名
+        :rtype: str
+        """
         return self._PlanName
 
     @PlanName.setter
@@ -11282,6 +13367,9 @@ class ModifyLiveRecordPlanRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """时间模板ID，固定直播时为必填
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -11317,6 +13405,9 @@ class ModifyLiveRecordPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11345,6 +13436,9 @@ class ModifyLiveVideoRequest(AbstractModel):
 
     @property
     def IntIDs(self):
+        """视频ID 列表, 大小限制(100)
+        :rtype: list of int
+        """
         return self._IntIDs
 
     @IntIDs.setter
@@ -11353,6 +13447,9 @@ class ModifyLiveVideoRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """过期时间 秒 (-1: 为永不过期)
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -11387,6 +13484,9 @@ class ModifyLiveVideoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11415,6 +13515,9 @@ class ModifyMessageForwardRequest(AbstractModel):
 
     @property
     def IntId(self):
+        """配置ID
+        :rtype: int
+        """
         return self._IntId
 
     @IntId.setter
@@ -11423,6 +13526,9 @@ class ModifyMessageForwardRequest(AbstractModel):
 
     @property
     def MessageType(self):
+        """json数组， 转发类型 1: 告警 2:GPS
+        :rtype: str
+        """
         return self._MessageType
 
     @MessageType.setter
@@ -11457,6 +13563,9 @@ class ModifyMessageForwardResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11491,6 +13600,9 @@ class ModifyPresetRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道ID
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -11499,6 +13611,9 @@ class ModifyPresetRequest(AbstractModel):
 
     @property
     def PresetId(self):
+        """预置位编码 范围1-8
+        :rtype: int
+        """
         return self._PresetId
 
     @PresetId.setter
@@ -11507,6 +13622,9 @@ class ModifyPresetRequest(AbstractModel):
 
     @property
     def PresetName(self):
+        """预制位名称
+        :rtype: str
+        """
         return self._PresetName
 
     @PresetName.setter
@@ -11515,6 +13633,9 @@ class ModifyPresetRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备Id
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -11551,6 +13672,9 @@ class ModifyPresetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11582,6 +13706,9 @@ class ModifyRecordingPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """录制计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -11590,6 +13717,9 @@ class ModifyRecordingPlanRequest(AbstractModel):
 
     @property
     def Name(self):
+        """计划名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -11598,6 +13728,9 @@ class ModifyRecordingPlanRequest(AbstractModel):
 
     @property
     def TimeTemplateId(self):
+        """时间模板ID
+        :rtype: str
+        """
         return self._TimeTemplateId
 
     @TimeTemplateId.setter
@@ -11636,6 +13769,9 @@ class ModifyRecordingPlanResponse(AbstractModel):
 
     @property
     def Status(self):
+        """操作结果
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -11644,6 +13780,9 @@ class ModifyRecordingPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11679,6 +13818,9 @@ class ModifySceneRequest(AbstractModel):
 
     @property
     def IntId(self):
+        """场景ID
+        :rtype: int
+        """
         return self._IntId
 
     @IntId.setter
@@ -11687,6 +13829,9 @@ class ModifySceneRequest(AbstractModel):
 
     @property
     def SceneName(self):
+        """场景名称
+        :rtype: str
+        """
         return self._SceneName
 
     @SceneName.setter
@@ -11695,6 +13840,9 @@ class ModifySceneRequest(AbstractModel):
 
     @property
     def SceneTrigger(self):
+        """触发条件
+        :rtype: str
+        """
         return self._SceneTrigger
 
     @SceneTrigger.setter
@@ -11703,6 +13851,9 @@ class ModifySceneRequest(AbstractModel):
 
     @property
     def RecordDuration(self):
+        """录制时长(秒)
+        :rtype: int
+        """
         return self._RecordDuration
 
     @RecordDuration.setter
@@ -11739,6 +13890,9 @@ class ModifySceneResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11770,6 +13924,9 @@ class ModifySubscriptionStatusRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -11778,6 +13935,9 @@ class ModifySubscriptionStatusRequest(AbstractModel):
 
     @property
     def Status(self):
+        """订阅状态 1：关闭订阅 2：开启订阅
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -11786,6 +13946,9 @@ class ModifySubscriptionStatusRequest(AbstractModel):
 
     @property
     def SubscriptionItem(self):
+        """订阅类型 Alarm:告警订阅 Catalog:目录订阅 MobilePosition:移动位置订阅
+        :rtype: str
+        """
         return self._SubscriptionItem
 
     @SubscriptionItem.setter
@@ -11821,6 +13984,9 @@ class ModifySubscriptionStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11849,6 +14015,9 @@ class ModifyVideoInfoRequest(AbstractModel):
 
     @property
     def InitIDs(self):
+        """视频ID列表长度限制100内
+        :rtype: list of int
+        """
         return self._InitIDs
 
     @InitIDs.setter
@@ -11857,6 +14026,9 @@ class ModifyVideoInfoRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """过期时间 时间戳 -1: 永不过期 0: 无效值
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -11891,6 +14063,9 @@ class ModifyVideoInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11927,6 +14102,10 @@ class PresetItem(AbstractModel):
 
     @property
     def PresetId(self):
+        """预置位ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PresetId
 
     @PresetId.setter
@@ -11935,6 +14114,10 @@ class PresetItem(AbstractModel):
 
     @property
     def PresetName(self):
+        """预置位名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PresetName
 
     @PresetName.setter
@@ -11943,6 +14126,9 @@ class PresetItem(AbstractModel):
 
     @property
     def Status(self):
+        """预置位状态 0:未设置预置位 1:已设置预置位 2:已设置预置位&看守位
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -11951,6 +14137,9 @@ class PresetItem(AbstractModel):
 
     @property
     def ResetTime(self):
+        """预置位启用时的自动归位时间
+        :rtype: int
+        """
         return self._ResetTime
 
     @ResetTime.setter
@@ -12008,6 +14197,10 @@ class RecordPlanDetail(AbstractModel):
 
     @property
     def PlanId(self):
+        """计划ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -12016,6 +14209,10 @@ class RecordPlanDetail(AbstractModel):
 
     @property
     def Name(self):
+        """计划名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12024,6 +14221,10 @@ class RecordPlanDetail(AbstractModel):
 
     @property
     def TimeTemplateId(self):
+        """时间模板ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimeTemplateId
 
     @TimeTemplateId.setter
@@ -12032,6 +14233,10 @@ class RecordPlanDetail(AbstractModel):
 
     @property
     def TimeTemplateName(self):
+        """时间模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimeTemplateName
 
     @TimeTemplateName.setter
@@ -12040,6 +14245,10 @@ class RecordPlanDetail(AbstractModel):
 
     @property
     def Channels(self):
+        """绑定的通道列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ChannelItem
+        """
         return self._Channels
 
     @Channels.setter
@@ -12048,6 +14257,10 @@ class RecordPlanDetail(AbstractModel):
 
     @property
     def RecordStorageTime(self):
+        """存储周期（天）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RecordStorageTime
 
     @RecordStorageTime.setter
@@ -12116,6 +14329,10 @@ class RecordPlanItem(AbstractModel):
 
     @property
     def PlanId(self):
+        """计划ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -12124,6 +14341,10 @@ class RecordPlanItem(AbstractModel):
 
     @property
     def Name(self):
+        """计划名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12132,6 +14353,10 @@ class RecordPlanItem(AbstractModel):
 
     @property
     def TimeTemplateId(self):
+        """时间模板ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimeTemplateId
 
     @TimeTemplateId.setter
@@ -12140,6 +14365,10 @@ class RecordPlanItem(AbstractModel):
 
     @property
     def TimeTemplateName(self):
+        """时间模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimeTemplateName
 
     @TimeTemplateName.setter
@@ -12148,6 +14377,10 @@ class RecordPlanItem(AbstractModel):
 
     @property
     def EventId(self):
+        """录制类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EventId
 
     @EventId.setter
@@ -12156,6 +14389,10 @@ class RecordPlanItem(AbstractModel):
 
     @property
     def Devices(self):
+        """绑定的设备列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DeviceItem
+        """
         return self._Devices
 
     @Devices.setter
@@ -12164,6 +14401,10 @@ class RecordPlanItem(AbstractModel):
 
     @property
     def RecordStorageTime(self):
+        """录像存储天数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RecordStorageTime
 
     @RecordStorageTime.setter
@@ -12213,6 +14454,10 @@ class RecordStatistic(AbstractModel):
 
     @property
     def Time(self):
+        """时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -12221,6 +14466,10 @@ class RecordStatistic(AbstractModel):
 
     @property
     def Value(self):
+        """统计结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordStatisticValue`
+        """
         return self._Value
 
     @Value.setter
@@ -12266,6 +14515,10 @@ class RecordStatisticValue(AbstractModel):
 
     @property
     def ExpectTimeLen(self):
+        """期望执行时间 秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ExpectTimeLen
 
     @ExpectTimeLen.setter
@@ -12274,6 +14527,10 @@ class RecordStatisticValue(AbstractModel):
 
     @property
     def RecordTimeLen(self):
+        """实际执行时间 秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RecordTimeLen
 
     @RecordTimeLen.setter
@@ -12282,6 +14539,10 @@ class RecordStatisticValue(AbstractModel):
 
     @property
     def FileSize(self):
+        """存储大小 G
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._FileSize
 
     @FileSize.setter
@@ -12354,6 +14615,10 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def RecordTaskId(self):
+        """录像任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RecordTaskId
 
     @RecordTaskId.setter
@@ -12362,6 +14627,10 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def RecordPlanId(self):
+        """录制计划ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RecordPlanId
 
     @RecordPlanId.setter
@@ -12370,6 +14639,10 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def StartTime(self):
+        """本录制片段开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -12378,6 +14651,10 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def EndTime(self):
+        """本录制片段结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -12386,6 +14663,10 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def EventId(self):
+        """录制模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EventId
 
     @EventId.setter
@@ -12394,6 +14675,10 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def VideoUrl(self):
+        """本录制片段对应的录制文件URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VideoUrl
 
     @VideoUrl.setter
@@ -12402,6 +14687,10 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def RecordStatus(self):
+        """本录制片段当前的录制状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RecordStatus
 
     @RecordStatus.setter
@@ -12410,6 +14699,10 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def SceneId(self):
+        """场景ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SceneId
 
     @SceneId.setter
@@ -12418,6 +14711,10 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def WarnId(self):
+        """告警ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._WarnId
 
     @WarnId.setter
@@ -12426,6 +14723,10 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def RecordId(self):
+        """录制id，NVR下属设备有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RecordId
 
     @RecordId.setter
@@ -12471,6 +14772,9 @@ class ResetWarningRequest(AbstractModel):
 
     @property
     def Id(self):
+        """告警ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -12479,6 +14783,9 @@ class ResetWarningRequest(AbstractModel):
 
     @property
     def Index(self):
+        """Es中告警ID
+        :rtype: str
+        """
         return self._Index
 
     @Index.setter
@@ -12513,6 +14820,9 @@ class ResetWarningResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12565,6 +14875,10 @@ class SceneItem(AbstractModel):
 
     @property
     def IntId(self):
+        """场景ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IntId
 
     @IntId.setter
@@ -12573,6 +14887,10 @@ class SceneItem(AbstractModel):
 
     @property
     def Uin(self):
+        """用户UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -12581,6 +14899,10 @@ class SceneItem(AbstractModel):
 
     @property
     def SceneName(self):
+        """场景名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SceneName
 
     @SceneName.setter
@@ -12589,6 +14911,10 @@ class SceneItem(AbstractModel):
 
     @property
     def SceneTrigger(self):
+        """触发规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SceneTrigger
 
     @SceneTrigger.setter
@@ -12597,6 +14923,10 @@ class SceneItem(AbstractModel):
 
     @property
     def RecordDuration(self):
+        """录制时长 秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RecordDuration
 
     @RecordDuration.setter
@@ -12605,6 +14935,10 @@ class SceneItem(AbstractModel):
 
     @property
     def StoreDuration(self):
+        """存储时长 天
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._StoreDuration
 
     @StoreDuration.setter
@@ -12613,6 +14947,9 @@ class SceneItem(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -12621,6 +14958,9 @@ class SceneItem(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """修改时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -12670,6 +15010,9 @@ class ServerConfiguration(AbstractModel):
 
     @property
     def Host(self):
+        """SIP服务器地址
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -12678,6 +15021,9 @@ class ServerConfiguration(AbstractModel):
 
     @property
     def Port(self):
+        """SIP服务器端口
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -12686,6 +15032,9 @@ class ServerConfiguration(AbstractModel):
 
     @property
     def Serial(self):
+        """SIP服务器编码
+        :rtype: str
+        """
         return self._Serial
 
     @Serial.setter
@@ -12694,6 +15043,9 @@ class ServerConfiguration(AbstractModel):
 
     @property
     def Realm(self):
+        """SIP服务器域
+        :rtype: str
+        """
         return self._Realm
 
     @Realm.setter
@@ -12735,6 +15087,10 @@ class StatisticItem(AbstractModel):
 
     @property
     def Date(self):
+        """日期。格式【YYYY-MM-DD】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -12743,6 +15099,10 @@ class StatisticItem(AbstractModel):
 
     @property
     def Sum(self):
+        """统计数额
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Sum
 
     @Sum.setter
@@ -12794,6 +15154,10 @@ class StreamAddress(AbstractModel):
 
     @property
     def StreamId(self):
+        """流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StreamId
 
     @StreamId.setter
@@ -12802,6 +15166,10 @@ class StreamAddress(AbstractModel):
 
     @property
     def RtspAddr(self):
+        """rtsp流地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RtspAddr
 
     @RtspAddr.setter
@@ -12810,6 +15178,10 @@ class StreamAddress(AbstractModel):
 
     @property
     def RtmpAddr(self):
+        """rtmp流地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RtmpAddr
 
     @RtmpAddr.setter
@@ -12818,6 +15190,10 @@ class StreamAddress(AbstractModel):
 
     @property
     def HlsAddr(self):
+        """hls流地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._HlsAddr
 
     @HlsAddr.setter
@@ -12826,6 +15202,10 @@ class StreamAddress(AbstractModel):
 
     @property
     def FlvAddr(self):
+        """flv流地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FlvAddr
 
     @FlvAddr.setter
@@ -12880,6 +15260,10 @@ class TimeTemplateItem(AbstractModel):
 
     @property
     def TemplateId(self):
+        """时间模板ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -12888,6 +15272,10 @@ class TimeTemplateItem(AbstractModel):
 
     @property
     def Name(self):
+        """模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12896,6 +15284,10 @@ class TimeTemplateItem(AbstractModel):
 
     @property
     def IsAllWeek(self):
+        """是否全时录制，即7*24小时录制 0-否 1-是
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsAllWeek
 
     @IsAllWeek.setter
@@ -12904,6 +15296,10 @@ class TimeTemplateItem(AbstractModel):
 
     @property
     def Type(self):
+        """是否为自定义模板 0-否 1-是
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -12912,6 +15308,10 @@ class TimeTemplateItem(AbstractModel):
 
     @property
     def TimeTemplateSpecs(self):
+        """时间片段详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TimeTemplateSpec
+        """
         return self._TimeTemplateSpecs
 
     @TimeTemplateSpecs.setter
@@ -12963,6 +15363,10 @@ class TimeTemplateSpec(AbstractModel):
 
     @property
     def DayofWeek(self):
+        """一周中的周几
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DayofWeek
 
     @DayofWeek.setter
@@ -12971,6 +15375,10 @@ class TimeTemplateSpec(AbstractModel):
 
     @property
     def BeginTime(self):
+        """时间片段的开始时分。格式【HH:MM】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -12979,6 +15387,10 @@ class TimeTemplateSpec(AbstractModel):
 
     @property
     def EndTime(self):
+        """时间片段的结束时分。格式【HH:MM】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -13023,6 +15435,9 @@ class UpdateDeviceGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """分组名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -13031,6 +15446,9 @@ class UpdateDeviceGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """分组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -13039,6 +15457,9 @@ class UpdateDeviceGroupRequest(AbstractModel):
 
     @property
     def GroupDescribe(self):
+        """分组描述
+        :rtype: str
+        """
         return self._GroupDescribe
 
     @GroupDescribe.setter
@@ -13047,6 +15468,9 @@ class UpdateDeviceGroupRequest(AbstractModel):
 
     @property
     def NewParentId(self):
+        """新父分组ID，用于修改分组路径
+        :rtype: str
+        """
         return self._NewParentId
 
     @NewParentId.setter
@@ -13083,6 +15507,9 @@ class UpdateDeviceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13111,6 +15538,9 @@ class UpdateDevicePassWordRequest(AbstractModel):
 
     @property
     def PassWord(self):
+        """设备密码
+        :rtype: str
+        """
         return self._PassWord
 
     @PassWord.setter
@@ -13119,6 +15549,9 @@ class UpdateDevicePassWordRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备唯一标识
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -13157,6 +15590,10 @@ class UpdateDevicePassWordResponse(AbstractModel):
 
     @property
     def Status(self):
+        """操作结果，“OK”表示成功，其他表示失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -13165,6 +15602,9 @@ class UpdateDevicePassWordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13208,6 +15648,9 @@ class UpdateRecordPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """录制计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -13216,6 +15659,9 @@ class UpdateRecordPlanRequest(AbstractModel):
 
     @property
     def Name(self):
+        """计划名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -13224,6 +15670,9 @@ class UpdateRecordPlanRequest(AbstractModel):
 
     @property
     def TimeTemplateId(self):
+        """时间模板ID
+        :rtype: str
+        """
         return self._TimeTemplateId
 
     @TimeTemplateId.setter
@@ -13232,6 +15681,9 @@ class UpdateRecordPlanRequest(AbstractModel):
 
     @property
     def EventId(self):
+        """触发录制的事件 1：全部
+        :rtype: int
+        """
         return self._EventId
 
     @EventId.setter
@@ -13240,6 +15692,9 @@ class UpdateRecordPlanRequest(AbstractModel):
 
     @property
     def Devices(self):
+        """录制设备列表
+        :rtype: list of DeviceItem
+        """
         return self._Devices
 
     @Devices.setter
@@ -13248,6 +15703,11 @@ class UpdateRecordPlanRequest(AbstractModel):
 
     @property
     def IsModifyDevices(self):
+        """是否更新绑定此录制计划的设备列表
+0 - 不更新
+1 - 更新，如果Devices参数为空则清空设备列表，Devices不为空则全量更新设备列表
+        :rtype: int
+        """
         return self._IsModifyDevices
 
     @IsModifyDevices.setter
@@ -13294,6 +15754,9 @@ class UpdateRecordPlanResponse(AbstractModel):
 
     @property
     def Status(self):
+        """操作结果
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -13302,6 +15765,9 @@ class UpdateRecordPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13338,6 +15804,9 @@ class UpdateTimeTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """时间模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -13346,6 +15815,9 @@ class UpdateTimeTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """时间模板名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -13354,6 +15826,10 @@ class UpdateTimeTemplateRequest(AbstractModel):
 
     @property
     def IsAllWeek(self):
+        """是否全时录制，即7*24小时录制。
+0：非全时录制；1：全时录制。默认1
+        :rtype: int
+        """
         return self._IsAllWeek
 
     @IsAllWeek.setter
@@ -13362,6 +15838,9 @@ class UpdateTimeTemplateRequest(AbstractModel):
 
     @property
     def TimeTemplateSpecs(self):
+        """录制时间片段
+        :rtype: list of TimeTemplateSpec
+        """
         return self._TimeTemplateSpecs
 
     @TimeTemplateSpecs.setter
@@ -13406,6 +15885,9 @@ class UpdateTimeTemplateResponse(AbstractModel):
 
     @property
     def Status(self):
+        """操作结果，“OK”表示成功，其他表示失败。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -13414,6 +15896,9 @@ class UpdateTimeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13518,6 +16003,10 @@ class WarningsData(AbstractModel):
 
     @property
     def Id(self):
+        """唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -13526,6 +16015,10 @@ class WarningsData(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -13534,6 +16027,10 @@ class WarningsData(AbstractModel):
 
     @property
     def DeviceName(self):
+        """设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -13542,6 +16039,10 @@ class WarningsData(AbstractModel):
 
     @property
     def WarnChannel(self):
+        """告警通道
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WarnChannel
 
     @WarnChannel.setter
@@ -13550,6 +16051,10 @@ class WarningsData(AbstractModel):
 
     @property
     def WarnLevel(self):
+        """告警级别 1: "一级警情", 2: "二级警情", 3: "三级警情", 4: "四级警情",
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._WarnLevel
 
     @WarnLevel.setter
@@ -13558,6 +16063,10 @@ class WarningsData(AbstractModel):
 
     @property
     def WarnLevelName(self):
+        """告警级别名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WarnLevelName
 
     @WarnLevelName.setter
@@ -13566,6 +16075,10 @@ class WarningsData(AbstractModel):
 
     @property
     def WarnMode(self):
+        """告警方式 2 设备报警 5 视频报警 6 设备故障报警
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._WarnMode
 
     @WarnMode.setter
@@ -13574,6 +16087,10 @@ class WarningsData(AbstractModel):
 
     @property
     def WarnModeName(self):
+        """告警方式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WarnModeName
 
     @WarnModeName.setter
@@ -13582,6 +16099,43 @@ class WarningsData(AbstractModel):
 
     @property
     def WarnType(self):
+        """告警类型  2: {
+			Name: "设备报警",
+			WarnType: map[int]string{
+				1: "视频丢失报警",
+				2: "设备防拆报警",
+				3: "存储设备磁盘满报警",
+				4: "设备高温报警",
+				5: "设备低温报警",
+			},
+		},
+		5: {
+			Name: "视频报警",
+			WarnType: map[int]string{
+				1:  "人工视频报警",
+				2:  "运动目标检测报警",
+				3:  "遗留物检测报警",
+				4:  "物体移除检测报警",
+				5:  "绊线检测报警",
+				6:  "入侵检测报警",
+				7:  "逆行检测报警",
+				8:  "徘徊检测报警",
+				9:  "流量统计报警",
+				10: "密度检测报警",
+				11: "视频异常检测报警",
+				12: "快速移动报警",
+			},
+		},
+		6: {
+			Name: "设备故障报警",
+			WarnType: map[int]string{
+				1: "存储设备磁盘故障报警",
+				2: "存储设备风扇故障报警",
+			},
+		}
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._WarnType
 
     @WarnType.setter
@@ -13590,6 +16144,10 @@ class WarningsData(AbstractModel):
 
     @property
     def Del(self):
+        """是否删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Del
 
     @Del.setter
@@ -13598,6 +16156,10 @@ class WarningsData(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -13606,6 +16168,10 @@ class WarningsData(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter

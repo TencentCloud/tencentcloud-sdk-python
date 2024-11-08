@@ -35,6 +35,9 @@ class ComplexRule(AbstractModel):
 
     @property
     def SimpleRules(self):
+        """简单规则表达式
+        :rtype: list of SimpleRule
+        """
         return self._SimpleRules
 
     @SimpleRules.setter
@@ -43,6 +46,9 @@ class ComplexRule(AbstractModel):
 
     @property
     def Relation(self):
+        """表达式间逻辑关系
+        :rtype: str
+        """
         return self._Relation
 
     @Relation.setter
@@ -94,6 +100,9 @@ class Condition(AbstractModel):
 
     @property
     def Filters(self):
+        """Filters 条件过滤
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -102,6 +111,9 @@ class Condition(AbstractModel):
 
     @property
     def FilterGroups(self):
+        """FilterGroups 条件过滤组
+        :rtype: list of FilterGroup
+        """
         return self._FilterGroups
 
     @FilterGroups.setter
@@ -110,6 +122,9 @@ class Condition(AbstractModel):
 
     @property
     def Sort(self):
+        """Sort 排序字段
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Sort`
+        """
         return self._Sort
 
     @Sort.setter
@@ -118,6 +133,9 @@ class Condition(AbstractModel):
 
     @property
     def PageSize(self):
+        """PageSize 每页获取数(只支持32位)
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -126,6 +144,9 @@ class Condition(AbstractModel):
 
     @property
     def PageNum(self):
+        """PageNum 获取第几页(只支持32位)
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -190,6 +211,9 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
 
     @property
     def DeviceVirtualGroupName(self):
+        """必填，终端自定义分组名
+        :rtype: str
+        """
         return self._DeviceVirtualGroupName
 
     @DeviceVirtualGroupName.setter
@@ -198,6 +222,9 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
 
     @property
     def Description(self):
+        """详情
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -206,6 +233,9 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
 
     @property
     def OsType(self):
+        """必填，系统类型（0: win，1：linux，2: mac，3: win_srv，4：android，5：ios ）(只支持32位)
+        :rtype: int
+        """
         return self._OsType
 
     @OsType.setter
@@ -214,6 +244,9 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
 
     @property
     def TimeType(self):
+        """必填，分组类型（0:手动分组；非0为自动划分分组；具体枚举值为：1:自动每小时划分分组、2:自动每天划分分组、3:自定义时间划分分组）(只支持32位)
+        :rtype: int
+        """
         return self._TimeType
 
     @TimeType.setter
@@ -222,6 +255,9 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
 
     @property
     def AutoMinute(self):
+        """选填，TimeType=3时的自动划分时间，其他情况为0（单位min）(只支持32位)
+        :rtype: int
+        """
         return self._AutoMinute
 
     @AutoMinute.setter
@@ -230,6 +266,9 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
 
     @property
     def AutoRules(self):
+        """选填，手动分组不填，自动划分分组的划分规则数据
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.ComplexRule`
+        """
         return self._AutoRules
 
     @AutoRules.setter
@@ -273,6 +312,9 @@ class CreateDeviceVirtualGroupResponse(AbstractModel):
 
     @property
     def Data(self):
+        """响应返回的data
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.CreateDeviceVirtualGroupRspData`
+        """
         return self._Data
 
     @Data.setter
@@ -281,6 +323,9 @@ class CreateDeviceVirtualGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -309,6 +354,9 @@ class CreateDeviceVirtualGroupRspData(AbstractModel):
 
     @property
     def Id(self):
+        """返回的自定义分组id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -399,6 +447,9 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def NamePath(self):
+        """账号分组名全路径，点分格式
+        :rtype: str
+        """
         return self._NamePath
 
     @NamePath.setter
@@ -407,6 +458,9 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def IdPathArr(self):
+        """账号分组ID全路径，数组格式
+        :rtype: list of int
+        """
         return self._IdPathArr
 
     @IdPathArr.setter
@@ -415,6 +469,9 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def ExtraInfo(self):
+        """扩展信息
+        :rtype: str
+        """
         return self._ExtraInfo
 
     @ExtraInfo.setter
@@ -423,6 +480,9 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def Utime(self):
+        """最后更新时间
+        :rtype: str
+        """
         return self._Utime
 
     @Utime.setter
@@ -431,6 +491,9 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def ParentId(self):
+        """父分组ID
+        :rtype: int
+        """
         return self._ParentId
 
     @ParentId.setter
@@ -439,6 +502,9 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def OrgId(self):
+        """源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
+        :rtype: str
+        """
         return self._OrgId
 
     @OrgId.setter
@@ -447,6 +513,9 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def Name(self):
+        """分组名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -455,6 +524,9 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def Id(self):
+        """分组ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -463,6 +535,9 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def Description(self):
+        """分组描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -471,6 +546,9 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def Source(self):
+        """同步数据源
+        :rtype: int
+        """
         return self._Source
 
     @Source.setter
@@ -479,6 +557,9 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def IdPath(self):
+        """账号分组ID全路径，点分格式
+        :rtype: str
+        """
         return self._IdPath
 
     @IdPath.setter
@@ -487,6 +568,9 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def Itime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._Itime
 
     @Itime.setter
@@ -495,6 +579,9 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def ParentOrgId(self):
+        """父源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
+        :rtype: str
+        """
         return self._ParentOrgId
 
     @ParentOrgId.setter
@@ -503,6 +590,9 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def ImportType(self):
+        """导入类型
+        :rtype: str
+        """
         return self._ImportType
 
     @ImportType.setter
@@ -511,6 +601,9 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def MiniIamId(self):
+        """miniIAM id
+        :rtype: str
+        """
         return self._MiniIamId
 
     @MiniIamId.setter
@@ -519,6 +612,9 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def UserTotal(self):
+        """该分组下含子组的所有用户总数
+        :rtype: int
+        """
         return self._UserTotal
 
     @UserTotal.setter
@@ -527,6 +623,9 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def IsLeaf(self):
+        """是否叶子节点
+        :rtype: bool
+        """
         return self._IsLeaf
 
     @IsLeaf.setter
@@ -535,6 +634,9 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def ReadOnly(self):
+        """是否该账户的直接权限
+        :rtype: bool
+        """
         return self._ReadOnly
 
     @ReadOnly.setter
@@ -543,6 +645,9 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def LatestSyncResult(self):
+        """最新一次同步任务的结果
+        :rtype: str
+        """
         return self._LatestSyncResult
 
     @LatestSyncResult.setter
@@ -551,6 +656,9 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def LatestSyncTime(self):
+        """最新一次同步任务的结束时间
+        :rtype: str
+        """
         return self._LatestSyncTime
 
     @LatestSyncTime.setter
@@ -606,6 +714,9 @@ class DescribeAccountGroupsPageResp(AbstractModel):
 
     @property
     def Items(self):
+        """账户分响应对象集合
+        :rtype: list of DescribeAccountGroupsData
+        """
         return self._Items
 
     @Items.setter
@@ -614,6 +725,9 @@ class DescribeAccountGroupsPageResp(AbstractModel):
 
     @property
     def Page(self):
+        """分页公共对象
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Paging`
+        """
         return self._Page
 
     @Page.setter
@@ -672,6 +786,9 @@ class DescribeAccountGroupsRequest(AbstractModel):
 
     @property
     def Deepin(self):
+        """搜索范围：0-仅当前分组的直接子组，1-当前分组的所有子组。默认为0。
+        :rtype: int
+        """
         return self._Deepin
 
     @Deepin.setter
@@ -680,6 +797,20 @@ class DescribeAccountGroupsRequest(AbstractModel):
 
     @property
     def Condition(self):
+        """查询条件
+
+过滤参数
+1、Name，string类型，按分组名过滤
+是否必填：否
+操作符: like
+
+排序条件
+1、Itime，string类型，按分组创建时间排序
+是否必填：否
+2、Utime，string类型，按分组更新时间排序
+是否必填：否
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        """
         return self._Condition
 
     @Condition.setter
@@ -688,6 +819,9 @@ class DescribeAccountGroupsRequest(AbstractModel):
 
     @property
     def ParentId(self):
+        """父分组ID，获取该分组下的子组信息。默认查询全网根分组下子组信息。
+        :rtype: int
+        """
         return self._ParentId
 
     @ParentId.setter
@@ -728,6 +862,9 @@ class DescribeAccountGroupsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """账号分组详情响应数据
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeAccountGroupsPageResp`
+        """
         return self._Data
 
     @Data.setter
@@ -736,6 +873,9 @@ class DescribeAccountGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -767,6 +907,9 @@ class DescribeDevicesPageRsp(AbstractModel):
 
     @property
     def Paging(self):
+        """数据分页信息
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Paging`
+        """
         return self._Paging
 
     @Paging.setter
@@ -775,6 +918,9 @@ class DescribeDevicesPageRsp(AbstractModel):
 
     @property
     def Items(self):
+        """业务响应数据
+        :rtype: list of DeviceDetail
+        """
         return self._Items
 
     @Items.setter
@@ -907,6 +1053,55 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def Condition(self):
+        """过滤条件参数（字段含义请参考接口返回值）
+
+- Mid, 类型String，支持操作：【eq，like，ilike】，支持排序
+- Name, 类型String，支持操作：【eq，like，ilike】，支持排序
+- Itime, 类型String，支持操作：【eq，like，ilike】，支持排序
+- UserName, 类型String，支持操作：【eq，like，ilike】，支持排序
+- MacAddr, 类型String，支持操作：【eq，like，ilike】，支持排序
+- UserId, 类型String，支持操作：【eq，like，ilike】，支持排序
+- Ip, 类型String，支持操作：【eq，like，ilike】，支持排序
+- Tags，类型String，支持操作：【eq，like，ilike】，支持排序
+- LocalIpList，类型String，支持操作：【eq，like，ilike】，支持排序
+- SerialNum，类型String，支持操作：【eq，like，ilike】，支持排序
+- Version，类型String，支持操作：【eq，like，ilike】，支持排序
+- StrVersion，类型String，支持操作：【eq，like，ilike】，支持排序
+- RtpStatus，类型String，支持操作：【eq，like，ilike】，**不支持排序**
+- HostName，类型String，支持操作：【eq，like，ilike】，支持排序
+- IoaUserName，类型String，支持操作：【eq，like，ilike】，支持排序
+- GroupName，类型String，支持操作：【eq，like，ilike】，支持排序
+- CriticalVulListCount，**类型Int**，支持操作：【eq】，**不支持排序**
+- RiskCount，**类型Int**，支持操作：【eq】，**不支持排序**
+- VulVersion，类型String，支持操作：【eq，like，ilike】，**不支持排序**
+- Virusver，类型String，支持操作：【eq，like，ilike】，**不支持排序**
+- SysRepver，类型String，支持操作：【eq，like，ilike】，**不支持排序**
+- BaseBoardSn，类型String，支持操作：【eq，like，ilike】，支持排序
+- Os，类型String，支持操作：【eq，like，ilike】，支持排序
+- ConnActiveTime，类型String，支持操作：【eq，like，ilike】，**不支持排序**
+- FirewallStatus，**类型Int**，支持操作：【eq】，**不支持排序**
+- ProfileName，类型String，支持操作：【eq，like，ilike】，支持排序
+- DomainName，类型String，支持操作：【eq，like，ilike】，支持排序
+- SysRepVersion，类型String，支持操作：【eq，like，ilike】，支持排序
+- VirusVer，类型String，支持操作：【eq，like，ilike】，支持排序
+- Cpu，类型String，支持操作：【eq，like，ilike】，支持排序
+- Memory，类型String，支持操作：【eq，like，ilike】，支持排序
+- HardDiskSize，类型String，支持操作：【eq，like，ilike】，支持排序
+- HardwareChangeCount，**类型Int**，支持操作：【eq】，支持排序
+- AccountName，类型String，支持操作：【like.ilike】，支持排序
+- AccountGroupName，类型String，支持操作：【like.ilike】，支持排序
+- ScreenRecordingPermission，**类型Int**，支持操作：【eq】，支持排序
+- DiskAccessPermission，**类型Int**，支持操作：【eq】，支持排序
+
+
+
+
+
+分页参数
+- PageNum 从1开始，小于等于0时使用默认参数
+- PageSize 最大值5000，最好不超过100
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        """
         return self._Condition
 
     @Condition.setter
@@ -915,6 +1110,26 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def GroupId(self):
+        """【和GroupIds必须有一个填写】设备分组id（需要和OsType匹配），下面是私有化场景下默认id：
+id-名称-操作系统
+1	全网终端	Win
+2	未分组终端	Win
+30000000	服务器	Win
+40000101	全网终端	Linux
+40000102	未分组终端	Linux
+40000103	服务器	Linux
+40000201	全网终端	macOS
+40000202	未分组终端	macOS
+40000203	服务器	macOS
+40000401	全网终端	Android
+40000402	未分组终端	Android
+40000501	全网终端	iOS
+40000502	未分组终端	iOS
+
+
+SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -923,6 +1138,9 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def OsType(self):
+        """【必填】操作系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0），需要和GroupId或者GroupIds匹配
+        :rtype: int
+        """
         return self._OsType
 
     @OsType.setter
@@ -931,6 +1149,9 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def OnlineStatus(self):
+        """在线状态 （2表示在线，0或者1表示离线）
+        :rtype: int
+        """
         return self._OnlineStatus
 
     @OnlineStatus.setter
@@ -939,6 +1160,9 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def Filters(self):
+        """过滤条件--兼容旧接口,参数同Condition
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -947,6 +1171,9 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def Sort(self):
+        """排序字段--兼容旧接口,参数同Condition
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Sort`
+        """
         return self._Sort
 
     @Sort.setter
@@ -955,6 +1182,9 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def PageNum(self):
+        """获取第几页--兼容旧接口,参数同Condition
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -963,6 +1193,9 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def PageSize(self):
+        """每页获取数--兼容旧接口,参数同Condition
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -971,6 +1204,9 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def Status(self):
+        """授权状态： 4基础授权 5高级授权
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -979,6 +1215,10 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def GroupIds(self):
+        """【和GroupId必须有一个填写】设备分组id列表（需要和OsType匹配）
+
+        :rtype: list of int
+        """
         return self._GroupIds
 
     @GroupIds.setter
@@ -1033,6 +1273,9 @@ class DescribeDevicesResponse(AbstractModel):
 
     @property
     def Data(self):
+        """分页的data数据
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDevicesPageRsp`
+        """
         return self._Data
 
     @Data.setter
@@ -1041,6 +1284,9 @@ class DescribeDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1069,6 +1315,9 @@ class DescribeLocalAccountAccountGroupsData(AbstractModel):
 
     @property
     def AccountGroupId(self):
+        """组Id(只支持32位)
+        :rtype: int
+        """
         return self._AccountGroupId
 
     @AccountGroupId.setter
@@ -1159,6 +1408,9 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def Id(self):
+        """uid，数据库中唯一
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -1167,6 +1419,9 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def UserId(self):
+        """账号，登录账号
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -1175,6 +1430,9 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def UserName(self):
+        """用户名
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -1183,6 +1441,9 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def AccountId(self):
+        """账号id，同Id字段
+        :rtype: int
+        """
         return self._AccountId
 
     @AccountId.setter
@@ -1191,6 +1452,9 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def GroupId(self):
+        """账号所在的分组id
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -1199,6 +1463,9 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def GroupName(self):
+        """账号所在的分组名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -1207,6 +1474,9 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def NamePath(self):
+        """账号所在的分组名称路径，用英文.分割
+        :rtype: str
+        """
         return self._NamePath
 
     @NamePath.setter
@@ -1215,6 +1485,9 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def Source(self):
+        """账号来源,0表示本地账号(只支持32位)
+        :rtype: int
+        """
         return self._Source
 
     @Source.setter
@@ -1223,6 +1496,9 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def Status(self):
+        """账号状态,0禁用，1启用(只支持32位)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1231,6 +1507,9 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def Itime(self):
+        """账号的创建时间
+        :rtype: str
+        """
         return self._Itime
 
     @Itime.setter
@@ -1239,6 +1518,9 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def Utime(self):
+        """账号的最后更新时间
+        :rtype: str
+        """
         return self._Utime
 
     @Utime.setter
@@ -1247,6 +1529,9 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def ExtraInfo(self):
+        """账号的扩展信息，包含邮箱、手机号、身份证、职位等信息
+        :rtype: str
+        """
         return self._ExtraInfo
 
     @ExtraInfo.setter
@@ -1255,6 +1540,9 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def RiskLevel(self):
+        """用户风险等级，枚举：none, low, middle, high
+        :rtype: str
+        """
         return self._RiskLevel
 
     @RiskLevel.setter
@@ -1263,6 +1551,9 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def AccountGroups(self):
+        """所属组
+        :rtype: list of DescribeLocalAccountAccountGroupsData
+        """
         return self._AccountGroups
 
     @AccountGroups.setter
@@ -1271,6 +1562,9 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def MobileBindNum(self):
+        """绑定手机端设备数
+        :rtype: int
+        """
         return self._MobileBindNum
 
     @MobileBindNum.setter
@@ -1279,6 +1573,9 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def PcBindNum(self):
+        """绑定Pc端设备数
+        :rtype: int
+        """
         return self._PcBindNum
 
     @PcBindNum.setter
@@ -1287,6 +1584,9 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def OnlineStatus(self):
+        """账号在线状态 1：在线 2：离线
+        :rtype: int
+        """
         return self._OnlineStatus
 
     @OnlineStatus.setter
@@ -1295,6 +1595,9 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def ActiveStatus(self):
+        """账号活跃状态 1：活跃 2：非活跃
+        :rtype: int
+        """
         return self._ActiveStatus
 
     @ActiveStatus.setter
@@ -1303,6 +1606,9 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def LoginTime(self):
+        """账号登录时间
+        :rtype: str
+        """
         return self._LoginTime
 
     @LoginTime.setter
@@ -1311,6 +1617,9 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def LogoutTime(self):
+        """账号登出时间
+        :rtype: str
+        """
         return self._LogoutTime
 
     @LogoutTime.setter
@@ -1371,6 +1680,9 @@ class DescribeLocalAccountsPage(AbstractModel):
 
     @property
     def Page(self):
+        """公共分页对象
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Paging`
+        """
         return self._Page
 
     @Page.setter
@@ -1379,6 +1691,9 @@ class DescribeLocalAccountsPage(AbstractModel):
 
     @property
     def Items(self):
+        """获取账号列表响应的单个对象
+        :rtype: list of DescribeLocalAccountsData
+        """
         return self._Items
 
     @Items.setter
@@ -1438,6 +1753,21 @@ class DescribeLocalAccountsRequest(AbstractModel):
 
     @property
     def Condition(self):
+        """查询条件：过滤或排序
+1、UserName，string类型，姓名
+是否必填：否
+过滤支持：是，支持eq、like、ilike
+排序支持：否
+2、UserId，string类型，账户
+是否必填：否
+过滤支持：是，支持eq、like、ilike
+排序支持：否
+3、Phone，string类型，手机号
+是否必填：否
+过滤支持：是，支持eq、like、ilike
+排序支持：否
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        """
         return self._Condition
 
     @Condition.setter
@@ -1446,6 +1776,9 @@ class DescribeLocalAccountsRequest(AbstractModel):
 
     @property
     def AccountGroupId(self):
+        """获取账号的分组ID，不传默认获取全网根账号组
+        :rtype: int
+        """
         return self._AccountGroupId
 
     @AccountGroupId.setter
@@ -1454,6 +1787,9 @@ class DescribeLocalAccountsRequest(AbstractModel):
 
     @property
     def ShowFlag(self):
+        """是否仅展示当前目录下用户 1： 递归显示 2：仅显示当前目录下用户
+        :rtype: int
+        """
         return self._ShowFlag
 
     @ShowFlag.setter
@@ -1494,6 +1830,9 @@ class DescribeLocalAccountsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """获取账号列表响应的分页对象
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeLocalAccountsPage`
+        """
         return self._Data
 
     @Data.setter
@@ -1502,6 +1841,9 @@ class DescribeLocalAccountsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1539,6 +1881,9 @@ class DescribeRootAccountGroupResponse(AbstractModel):
 
     @property
     def Data(self):
+        """账号根分组响应详情
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.GetAccountGroupData`
+        """
         return self._Data
 
     @Data.setter
@@ -1547,6 +1892,9 @@ class DescribeRootAccountGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1701,6 +2049,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Id(self):
+        """设备ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -1709,6 +2060,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Mid(self):
+        """设备唯一标识码，在ioa中每个设备有唯一标识码
+        :rtype: str
+        """
         return self._Mid
 
     @Mid.setter
@@ -1717,6 +2071,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Name(self):
+        """终端名（设备名）
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1725,6 +2082,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def GroupId(self):
+        """设备所在分组ID
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -1733,6 +2093,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def OsType(self):
+        """OS平台，0：Windows 、1： Linux、 2：macOS 、4： Android、 5: iOS。默认是0
+        :rtype: int
+        """
         return self._OsType
 
     @OsType.setter
@@ -1741,6 +2104,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Ip(self):
+        """设备IP地址（出口IP）
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -1749,6 +2115,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def OnlineStatus(self):
+        """在线状态，2：在线、0或者1:离线
+        :rtype: int
+        """
         return self._OnlineStatus
 
     @OnlineStatus.setter
@@ -1757,6 +2126,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Version(self):
+        """客户端版本号-大整数
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -1765,6 +2137,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def StrVersion(self):
+        """客户端版本号-点分字符串
+        :rtype: str
+        """
         return self._StrVersion
 
     @StrVersion.setter
@@ -1773,6 +2148,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Itime(self):
+        """首次在线时间
+        :rtype: str
+        """
         return self._Itime
 
     @Itime.setter
@@ -1781,6 +2159,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def ConnActiveTime(self):
+        """最后一次在线时间
+        :rtype: str
+        """
         return self._ConnActiveTime
 
     @ConnActiveTime.setter
@@ -1789,6 +2170,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Locked(self):
+        """设备是否加锁 ，1：锁定 0或者2：未锁定。
+        :rtype: int
+        """
         return self._Locked
 
     @Locked.setter
@@ -1797,6 +2181,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def LocalIpList(self):
+        """设备本地IP列表, 包括IP
+        :rtype: str
+        """
         return self._LocalIpList
 
     @LocalIpList.setter
@@ -1805,6 +2192,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def HostId(self):
+        """宿主机id（需要宿主机也安装iOA才能显示）
+        :rtype: int
+        """
         return self._HostId
 
     @HostId.setter
@@ -1813,6 +2203,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def GroupName(self):
+        """设备所属分组名
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -1821,6 +2214,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def GroupNamePath(self):
+        """设备所属分组路径
+        :rtype: str
+        """
         return self._GroupNamePath
 
     @GroupNamePath.setter
@@ -1829,6 +2225,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def CriticalVulListCount(self):
+        """未修复高危漏洞数(只支持32位)
+        :rtype: int
+        """
         return self._CriticalVulListCount
 
     @CriticalVulListCount.setter
@@ -1837,6 +2236,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def ComputerName(self):
+        """设备名，和Name相同
+        :rtype: str
+        """
         return self._ComputerName
 
     @ComputerName.setter
@@ -1845,6 +2247,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def DomainName(self):
+        """登录域名
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -1853,6 +2258,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def MacAddr(self):
+        """MAC地址
+        :rtype: str
+        """
         return self._MacAddr
 
     @MacAddr.setter
@@ -1861,6 +2269,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def VulCount(self):
+        """漏洞数
+        :rtype: int
+        """
         return self._VulCount
 
     @VulCount.setter
@@ -1869,6 +2280,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def RiskCount(self):
+        """病毒风险数
+        :rtype: int
+        """
         return self._RiskCount
 
     @RiskCount.setter
@@ -1877,6 +2291,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def VirusVer(self):
+        """病毒库版本
+        :rtype: str
+        """
         return self._VirusVer
 
     @VirusVer.setter
@@ -1885,6 +2302,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def VulVersion(self):
+        """漏洞库版本
+        :rtype: str
+        """
         return self._VulVersion
 
     @VulVersion.setter
@@ -1893,6 +2313,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def SysRepVersion(self):
+        """系统修复引擎版本
+        :rtype: str
+        """
         return self._SysRepVersion
 
     @SysRepVersion.setter
@@ -1901,6 +2324,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def VulCriticalList(self):
+        """高危补丁列表
+        :rtype: list of str
+        """
         return self._VulCriticalList
 
     @VulCriticalList.setter
@@ -1909,6 +2335,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Tags(self):
+        """标签
+        :rtype: str
+        """
         return self._Tags
 
     @Tags.setter
@@ -1917,6 +2346,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def UserName(self):
+        """终端用户名
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -1925,6 +2357,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def FirewallStatus(self):
+        """防火墙状态，不等于0表示开启
+        :rtype: int
+        """
         return self._FirewallStatus
 
     @FirewallStatus.setter
@@ -1933,6 +2368,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def SerialNum(self):
+        """SN序列号
+        :rtype: str
+        """
         return self._SerialNum
 
     @SerialNum.setter
@@ -1941,6 +2379,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def DeviceStrategyVer(self):
+        """设备管控策略版本
+        :rtype: str
+        """
         return self._DeviceStrategyVer
 
     @DeviceStrategyVer.setter
@@ -1949,6 +2390,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def NGNStrategyVer(self):
+        """NGN策略版本
+        :rtype: str
+        """
         return self._NGNStrategyVer
 
     @NGNStrategyVer.setter
@@ -1957,6 +2401,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def IOAUserName(self):
+        """最近登录账户的账号
+        :rtype: str
+        """
         return self._IOAUserName
 
     @IOAUserName.setter
@@ -1965,6 +2412,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def DeviceNewStrategyVer(self):
+        """设备管控新策略
+        :rtype: str
+        """
         return self._DeviceNewStrategyVer
 
     @DeviceNewStrategyVer.setter
@@ -1973,6 +2423,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def NGNNewStrategyVer(self):
+        """NGN策略新版本
+        :rtype: str
+        """
         return self._NGNNewStrategyVer
 
     @NGNNewStrategyVer.setter
@@ -1981,6 +2434,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def HostName(self):
+        """宿主机名称（需要宿主机也安装iOA才能显示）
+        :rtype: str
+        """
         return self._HostName
 
     @HostName.setter
@@ -1989,6 +2445,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def BaseBoardSn(self):
+        """主板序列号
+        :rtype: str
+        """
         return self._BaseBoardSn
 
     @BaseBoardSn.setter
@@ -1997,6 +2456,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def AccountUsers(self):
+        """绑定账户名称
+        :rtype: str
+        """
         return self._AccountUsers
 
     @AccountUsers.setter
@@ -2005,6 +2467,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def IdentityStrategyVer(self):
+        """身份策略版本
+        :rtype: str
+        """
         return self._IdentityStrategyVer
 
     @IdentityStrategyVer.setter
@@ -2013,6 +2478,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def IdentityNewStrategyVer(self):
+        """身份策略新版本
+        :rtype: str
+        """
         return self._IdentityNewStrategyVer
 
     @IdentityNewStrategyVer.setter
@@ -2021,6 +2489,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def AccountGroupName(self):
+        """最近登录账号部门
+        :rtype: str
+        """
         return self._AccountGroupName
 
     @AccountGroupName.setter
@@ -2029,6 +2500,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def AccountName(self):
+        """最近登录账户的姓名
+        :rtype: str
+        """
         return self._AccountName
 
     @AccountName.setter
@@ -2037,6 +2511,9 @@ class DeviceDetail(AbstractModel):
 
     @property
     def AccountGroupId(self):
+        """账号组id
+        :rtype: int
+        """
         return self._AccountGroupId
 
     @AccountGroupId.setter
@@ -2118,6 +2595,9 @@ class Filter(AbstractModel):
 
     @property
     def Field(self):
+        """过滤字段
+        :rtype: str
+        """
         return self._Field
 
     @Field.setter
@@ -2126,6 +2606,9 @@ class Filter(AbstractModel):
 
     @property
     def Operator(self):
+        """过滤方式： eq:等于,net:不等于,like,nlike,gt:大于,lt:小于,egt:大于等于,elt:小于等于。具体支持哪些过滤方式，结合具体接口字段描述来定
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -2134,6 +2617,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """过滤条件
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -2169,6 +2655,9 @@ class FilterGroup(AbstractModel):
 
     @property
     def Filters(self):
+        """Filters 条件过滤
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2255,6 +2744,9 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def NamePath(self):
+        """分组名称全路径，点分格式
+        :rtype: str
+        """
         return self._NamePath
 
     @NamePath.setter
@@ -2263,6 +2755,9 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def IdPathArr(self):
+        """分组ID全路径，数组格式
+        :rtype: list of int
+        """
         return self._IdPathArr
 
     @IdPathArr.setter
@@ -2271,6 +2766,9 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def ExtraInfo(self):
+        """分组扩展信息
+        :rtype: str
+        """
         return self._ExtraInfo
 
     @ExtraInfo.setter
@@ -2279,6 +2777,9 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def Utime(self):
+        """最后更新时间
+        :rtype: str
+        """
         return self._Utime
 
     @Utime.setter
@@ -2287,6 +2788,9 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def ParentId(self):
+        """当前分组的父分组ID
+        :rtype: int
+        """
         return self._ParentId
 
     @ParentId.setter
@@ -2295,6 +2799,9 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def OrgId(self):
+        """源账号组ID，该字段仅适用于第三方同步的组织架构，通过OrgId-Id构成源组织架构分组ID-现组织架构分组ID映射关系
+        :rtype: str
+        """
         return self._OrgId
 
     @OrgId.setter
@@ -2303,6 +2810,9 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def Name(self):
+        """分组名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2311,6 +2821,9 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def Id(self):
+        """分组ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -2319,6 +2832,9 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def Description(self):
+        """分组描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2327,6 +2843,9 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def Source(self):
+        """分组导入源(只支持32位)
+        :rtype: int
+        """
         return self._Source
 
     @Source.setter
@@ -2335,6 +2854,9 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def IdPath(self):
+        """分组ID全路径，点分格式
+        :rtype: str
+        """
         return self._IdPath
 
     @IdPath.setter
@@ -2343,6 +2865,9 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def Itime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._Itime
 
     @Itime.setter
@@ -2351,6 +2876,9 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def ParentOrgId(self):
+        """父源账号组ID，该字段仅适用于第三方同步的组织架构
+        :rtype: str
+        """
         return self._ParentOrgId
 
     @ParentOrgId.setter
@@ -2359,6 +2887,9 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def Import(self):
+        """导入信息,json格式
+        :rtype: str
+        """
         return self._Import
 
     @Import.setter
@@ -2367,6 +2898,9 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def ImportEnable(self):
+        """是否开启导入架构
+        :rtype: bool
+        """
         return self._ImportEnable
 
     @ImportEnable.setter
@@ -2375,6 +2909,9 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def ImportType(self):
+        """导入类型
+        :rtype: str
+        """
         return self._ImportType
 
     @ImportType.setter
@@ -2383,6 +2920,9 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def MiniIamId(self):
+        """miniIAMId，MiniIAM源才有
+        :rtype: str
+        """
         return self._MiniIamId
 
     @MiniIamId.setter
@@ -2441,6 +2981,9 @@ class Paging(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页条数
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -2449,6 +2992,9 @@ class Paging(AbstractModel):
 
     @property
     def PageNum(self):
+        """页码
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -2457,6 +3003,9 @@ class Paging(AbstractModel):
 
     @property
     def PageCount(self):
+        """总页数
+        :rtype: int
+        """
         return self._PageCount
 
     @PageCount.setter
@@ -2465,6 +3014,9 @@ class Paging(AbstractModel):
 
     @property
     def Total(self):
+        """记录总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -2495,10 +3047,8 @@ class RuleExpression(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 规则元数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of RuleItem
         :param _Relation: 关系
-注意：此字段可能返回 null，表示取不到有效值。
         :type Relation: str
         """
         self._Items = None
@@ -2506,6 +3056,9 @@ class RuleExpression(AbstractModel):
 
     @property
     def Items(self):
+        """规则元数据
+        :rtype: list of RuleItem
+        """
         return self._Items
 
     @Items.setter
@@ -2514,6 +3067,9 @@ class RuleExpression(AbstractModel):
 
     @property
     def Relation(self):
+        """关系
+        :rtype: str
+        """
         return self._Relation
 
     @Relation.setter
@@ -2547,16 +3103,12 @@ class RuleItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 字段名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Operate: 操作关系（等于、不等于、包含、不包含）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Operate: str
         :param _Value: 内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Values: 内容，v2多值版本使用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of str
         """
         self._Key = None
@@ -2566,6 +3118,9 @@ class RuleItem(AbstractModel):
 
     @property
     def Key(self):
+        """字段名称
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -2574,6 +3129,9 @@ class RuleItem(AbstractModel):
 
     @property
     def Operate(self):
+        """操作关系（等于、不等于、包含、不包含）
+        :rtype: str
+        """
         return self._Operate
 
     @Operate.setter
@@ -2582,6 +3140,9 @@ class RuleItem(AbstractModel):
 
     @property
     def Value(self):
+        """内容
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -2590,6 +3151,9 @@ class RuleItem(AbstractModel):
 
     @property
     def Values(self):
+        """内容，v2多值版本使用
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -2620,10 +3184,8 @@ class SimpleRule(AbstractModel):
     def __init__(self):
         r"""
         :param _Expressions: 规则表达式
-注意：此字段可能返回 null，表示取不到有效值。
         :type Expressions: list of RuleExpression
         :param _Relation: 表达式间逻辑关系
-注意：此字段可能返回 null，表示取不到有效值。
         :type Relation: str
         """
         self._Expressions = None
@@ -2631,6 +3193,9 @@ class SimpleRule(AbstractModel):
 
     @property
     def Expressions(self):
+        """规则表达式
+        :rtype: list of RuleExpression
+        """
         return self._Expressions
 
     @Expressions.setter
@@ -2639,6 +3204,9 @@ class SimpleRule(AbstractModel):
 
     @property
     def Relation(self):
+        """表达式间逻辑关系
+        :rtype: str
+        """
         return self._Relation
 
     @Relation.setter
@@ -2681,6 +3249,9 @@ class Sort(AbstractModel):
 
     @property
     def Field(self):
+        """排序字段
+        :rtype: str
+        """
         return self._Field
 
     @Field.setter
@@ -2689,6 +3260,9 @@ class Sort(AbstractModel):
 
     @property
     def Order(self):
+        """排序方式
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter

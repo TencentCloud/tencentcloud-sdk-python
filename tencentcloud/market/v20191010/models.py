@@ -47,6 +47,9 @@ class FlowProductRemindRequest(AbstractModel):
 
     @property
     def ProviderUin(self):
+        """服务商uin
+        :rtype: str
+        """
         return self._ProviderUin
 
     @ProviderUin.setter
@@ -55,6 +58,9 @@ class FlowProductRemindRequest(AbstractModel):
 
     @property
     def SignId(self):
+        """服务商实例ID
+        :rtype: str
+        """
         return self._SignId
 
     @SignId.setter
@@ -63,6 +69,9 @@ class FlowProductRemindRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """云市场实例ID
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -71,6 +80,9 @@ class FlowProductRemindRequest(AbstractModel):
 
     @property
     def TotalFlow(self):
+        """实例总流量
+        :rtype: str
+        """
         return self._TotalFlow
 
     @TotalFlow.setter
@@ -79,6 +91,9 @@ class FlowProductRemindRequest(AbstractModel):
 
     @property
     def LeftFlow(self):
+        """剩余流量
+        :rtype: str
+        """
         return self._LeftFlow
 
     @LeftFlow.setter
@@ -87,6 +102,9 @@ class FlowProductRemindRequest(AbstractModel):
 
     @property
     def FlowUnit(self):
+        """流量单位
+        :rtype: str
+        """
         return self._FlowUnit
 
     @FlowUnit.setter
@@ -135,6 +153,9 @@ class FlowProductRemindResponse(AbstractModel):
 
     @property
     def Success(self):
+        """是否成功
+        :rtype: str
+        """
         return self._Success
 
     @Success.setter
@@ -143,6 +164,9 @@ class FlowProductRemindResponse(AbstractModel):
 
     @property
     def FlowId(self):
+        """流水号
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -151,6 +175,10 @@ class FlowProductRemindResponse(AbstractModel):
 
     @property
     def Info(self):
+        """消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Info
 
     @Info.setter
@@ -159,6 +187,9 @@ class FlowProductRemindResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -187,6 +218,9 @@ class GetUsagePlanUsageAmountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """用于查询实例的Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -229,6 +263,9 @@ class GetUsagePlanUsageAmountResponse(AbstractModel):
 
     @property
     def MaxRequestNum(self):
+        """最大调用量
+        :rtype: int
+        """
         return self._MaxRequestNum
 
     @MaxRequestNum.setter
@@ -237,6 +274,9 @@ class GetUsagePlanUsageAmountResponse(AbstractModel):
 
     @property
     def InUseRequestNum(self):
+        """已经调用量
+        :rtype: int
+        """
         return self._InUseRequestNum
 
     @InUseRequestNum.setter
@@ -245,6 +285,9 @@ class GetUsagePlanUsageAmountResponse(AbstractModel):
 
     @property
     def RemainingRequestNum(self):
+        """剩余调用量
+        :rtype: int
+        """
         return self._RemainingRequestNum
 
     @RemainingRequestNum.setter
@@ -253,6 +296,9 @@ class GetUsagePlanUsageAmountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

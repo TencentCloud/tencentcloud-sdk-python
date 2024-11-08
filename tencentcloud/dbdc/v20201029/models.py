@@ -92,6 +92,9 @@ class DBInstanceDetail(AbstractModel):
 
     @property
     def InstanceId(self):
+        """DB实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -100,6 +103,9 @@ class DBInstanceDetail(AbstractModel):
 
     @property
     def InstanceName(self):
+        """DB实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -108,6 +114,9 @@ class DBInstanceDetail(AbstractModel):
 
     @property
     def Status(self):
+        """DB实例状态,-1:已隔离, 0:创建中, 1:流程中, 2:运行中, 3:未初始化
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -116,6 +125,9 @@ class DBInstanceDetail(AbstractModel):
 
     @property
     def StatusDesc(self):
+        """DB实例状态描述,-1:已隔离, 0:创建中, 1:流程中, 2:运行中, 3:未初始化
+        :rtype: str
+        """
         return self._StatusDesc
 
     @StatusDesc.setter
@@ -124,6 +136,9 @@ class DBInstanceDetail(AbstractModel):
 
     @property
     def DbVersion(self):
+        """DB实例版本
+        :rtype: str
+        """
         return self._DbVersion
 
     @DbVersion.setter
@@ -132,6 +147,9 @@ class DBInstanceDetail(AbstractModel):
 
     @property
     def Vip(self):
+        """Vip信息
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -140,6 +158,9 @@ class DBInstanceDetail(AbstractModel):
 
     @property
     def Vport(self):
+        """Vip使用的端口号
+        :rtype: int
+        """
         return self._Vport
 
     @Vport.setter
@@ -148,6 +169,9 @@ class DBInstanceDetail(AbstractModel):
 
     @property
     def UniqueVpcId(self):
+        """字符串型的私有网络ID
+        :rtype: str
+        """
         return self._UniqueVpcId
 
     @UniqueVpcId.setter
@@ -156,6 +180,9 @@ class DBInstanceDetail(AbstractModel):
 
     @property
     def UniqueSubnetId(self):
+        """字符串型的私有网络子网ID
+        :rtype: str
+        """
         return self._UniqueSubnetId
 
     @UniqueSubnetId.setter
@@ -164,6 +191,9 @@ class DBInstanceDetail(AbstractModel):
 
     @property
     def Shard(self):
+        """是否为分布式版本,0:否,1:是
+        :rtype: int
+        """
         return self._Shard
 
     @Shard.setter
@@ -172,6 +202,9 @@ class DBInstanceDetail(AbstractModel):
 
     @property
     def NodeNum(self):
+        """DB实例节点数
+        :rtype: int
+        """
         return self._NodeNum
 
     @NodeNum.setter
@@ -180,6 +213,9 @@ class DBInstanceDetail(AbstractModel):
 
     @property
     def Cpu(self):
+        """CPU规格(单位:核数)
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -188,6 +224,9 @@ class DBInstanceDetail(AbstractModel):
 
     @property
     def Memory(self):
+        """内存规格(单位:GB)
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -196,6 +235,9 @@ class DBInstanceDetail(AbstractModel):
 
     @property
     def Disk(self):
+        """磁盘规格(单位:GB)
+        :rtype: int
+        """
         return self._Disk
 
     @Disk.setter
@@ -204,6 +246,9 @@ class DBInstanceDetail(AbstractModel):
 
     @property
     def ShardNum(self):
+        """分布式类型的实例的分片数
+        :rtype: int
+        """
         return self._ShardNum
 
     @ShardNum.setter
@@ -212,6 +257,9 @@ class DBInstanceDetail(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -220,6 +268,9 @@ class DBInstanceDetail(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -228,6 +279,9 @@ class DBInstanceDetail(AbstractModel):
 
     @property
     def DbHosts(self):
+        """Db所在主机列表, 格式: m1,s1|m2,s2
+        :rtype: str
+        """
         return self._DbHosts
 
     @DbHosts.setter
@@ -236,6 +290,9 @@ class DBInstanceDetail(AbstractModel):
 
     @property
     def HostRole(self):
+        """主机角色, 1:主, 2:从, 3:主+从
+        :rtype: int
+        """
         return self._HostRole
 
     @HostRole.setter
@@ -244,6 +301,9 @@ class DBInstanceDetail(AbstractModel):
 
     @property
     def DbEngine(self):
+        """DB引擎，MySQL,Percona,MariaDB
+        :rtype: str
+        """
         return self._DbEngine
 
     @DbEngine.setter
@@ -252,6 +312,9 @@ class DBInstanceDetail(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -317,6 +380,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """独享集群实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -325,6 +391,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def HostId(self):
+        """独享集群主机Id
+        :rtype: str
+        """
         return self._HostId
 
     @HostId.setter
@@ -333,6 +402,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页返回数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -341,6 +413,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -349,6 +424,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def ShardType(self):
+        """实例类型,0:mariadb, 1:tdsql
+        :rtype: list of int
+        """
         return self._ShardType
 
     @ShardType.setter
@@ -392,6 +470,9 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def Instances(self):
+        """独享集群内的DB实例列表
+        :rtype: list of DBInstanceDetail
+        """
         return self._Instances
 
     @Instances.setter
@@ -400,6 +481,9 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """独享集群内的DB实例总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -408,6 +492,9 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -449,6 +536,9 @@ class DescribeHostListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """独享集群实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -457,6 +547,9 @@ class DescribeHostListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页返回数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -465,6 +558,9 @@ class DescribeHostListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -473,6 +569,9 @@ class DescribeHostListRequest(AbstractModel):
 
     @property
     def AssignStatus(self):
+        """分配状态过滤，0-可分配，1-禁止分配
+        :rtype: list of int
+        """
         return self._AssignStatus
 
     @AssignStatus.setter
@@ -515,6 +614,9 @@ class DescribeHostListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """主机总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -523,6 +625,9 @@ class DescribeHostListResponse(AbstractModel):
 
     @property
     def Hosts(self):
+        """主机详情
+        :rtype: list of HostDetail
+        """
         return self._Hosts
 
     @Hosts.setter
@@ -531,6 +636,9 @@ class DescribeHostListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -640,6 +748,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def InstanceId(self):
+        """独享集群实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -648,6 +759,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def InstanceName(self):
+        """独享集群实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -656,6 +770,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -664,6 +781,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID, 0:CDB, 1:TDSQL
+        :rtype: int
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -672,6 +792,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def Type(self):
+        """集群类型, 0:公有云, 1:金融围笼, 2:CDC集群
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -680,6 +803,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def HostType(self):
+        """主机类型, 0:物理机, 1:CVM机型, 2:CDC机型
+        :rtype: int
+        """
         return self._HostType
 
     @HostType.setter
@@ -688,6 +814,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """自动续费标志, 0:未设置, 1:自动续费, 2:到期不续费
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -696,6 +825,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def Status(self):
+        """集群状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -704,6 +836,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def StatusDesc(self):
+        """集群状态描述
+        :rtype: str
+        """
         return self._StatusDesc
 
     @StatusDesc.setter
@@ -712,6 +847,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -720,6 +858,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def PeriodEndTime(self):
+        """到期时间
+        :rtype: str
+        """
         return self._PeriodEndTime
 
     @PeriodEndTime.setter
@@ -728,6 +869,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def HostNum(self):
+        """主机数
+        :rtype: int
+        """
         return self._HostNum
 
     @HostNum.setter
@@ -736,6 +880,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def DbNum(self):
+        """DB实例数
+        :rtype: int
+        """
         return self._DbNum
 
     @DbNum.setter
@@ -744,6 +891,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def AssignStrategy(self):
+        """分配策略, 0:紧凑, 1:均匀
+        :rtype: int
+        """
         return self._AssignStrategy
 
     @AssignStrategy.setter
@@ -752,6 +902,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def CpuSpec(self):
+        """总主机CPU(单位:核数)
+        :rtype: int
+        """
         return self._CpuSpec
 
     @CpuSpec.setter
@@ -760,6 +913,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def CpuAssigned(self):
+        """总已分配CPU(单位:核数)
+        :rtype: int
+        """
         return self._CpuAssigned
 
     @CpuAssigned.setter
@@ -768,6 +924,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def CpuAssignable(self):
+        """总可分配CPU(单位:核数)
+        :rtype: int
+        """
         return self._CpuAssignable
 
     @CpuAssignable.setter
@@ -776,6 +935,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def MemorySpec(self):
+        """总主机内存(单位:GB)
+        :rtype: int
+        """
         return self._MemorySpec
 
     @MemorySpec.setter
@@ -784,6 +946,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def MemoryAssigned(self):
+        """总已分配内存(单位:GB)
+        :rtype: int
+        """
         return self._MemoryAssigned
 
     @MemoryAssigned.setter
@@ -792,6 +957,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def MemoryAssignable(self):
+        """总可分配内存(单位:GB)
+        :rtype: int
+        """
         return self._MemoryAssignable
 
     @MemoryAssignable.setter
@@ -800,6 +968,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def DiskSpec(self):
+        """总机器磁盘(单位:GB)
+        :rtype: int
+        """
         return self._DiskSpec
 
     @DiskSpec.setter
@@ -808,6 +979,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def DiskAssigned(self):
+        """总已分配磁盘(单位:GB)
+        :rtype: int
+        """
         return self._DiskAssigned
 
     @DiskAssigned.setter
@@ -816,6 +990,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def DiskAssignable(self):
+        """总可分配磁盘(单位:GB)
+        :rtype: int
+        """
         return self._DiskAssignable
 
     @DiskAssignable.setter
@@ -824,6 +1001,9 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -832,6 +1012,10 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def FenceId(self):
+        """金融围笼ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FenceId
 
     @FenceId.setter
@@ -840,6 +1024,10 @@ class DescribeInstanceDetail(AbstractModel):
 
     @property
     def ClusterId(self):
+        """所属集群ID(默认集群为空)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -898,6 +1086,9 @@ class DescribeInstanceDetailRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """独享集群实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1011,6 +1202,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """独享集群实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1019,6 +1213,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def InstanceName(self):
+        """独享集群实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -1027,6 +1224,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -1035,6 +1235,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def ProductId(self):
+        """产品ID, 0:CDB, 1:TDSQL
+        :rtype: int
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -1043,6 +1246,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def Type(self):
+        """集群类型, 0:公有云, 1:金融围笼
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -1051,6 +1257,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def HostType(self):
+        """主机类型, 0:物理机, 1:cvm本地盘, 2:cvm云盘
+        :rtype: int
+        """
         return self._HostType
 
     @HostType.setter
@@ -1059,6 +1268,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """自动续费标志, 0:未设置, 1:自动续费, 2:到期不续费
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -1067,6 +1279,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def Status(self):
+        """集群状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1075,6 +1290,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def StatusDesc(self):
+        """集群状态描述
+        :rtype: str
+        """
         return self._StatusDesc
 
     @StatusDesc.setter
@@ -1083,6 +1301,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1091,6 +1312,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def PeriodEndTime(self):
+        """到期时间
+        :rtype: str
+        """
         return self._PeriodEndTime
 
     @PeriodEndTime.setter
@@ -1099,6 +1323,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def HostNum(self):
+        """主机数
+        :rtype: int
+        """
         return self._HostNum
 
     @HostNum.setter
@@ -1107,6 +1334,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def DbNum(self):
+        """Db实例数
+        :rtype: int
+        """
         return self._DbNum
 
     @DbNum.setter
@@ -1115,6 +1345,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def AssignStrategy(self):
+        """分配策略, 0:紧凑, 1:均匀
+        :rtype: int
+        """
         return self._AssignStrategy
 
     @AssignStrategy.setter
@@ -1123,6 +1356,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def CpuSpec(self):
+        """总主机CPU(单位:核)
+        :rtype: int
+        """
         return self._CpuSpec
 
     @CpuSpec.setter
@@ -1131,6 +1367,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def CpuAssigned(self):
+        """总已分配CPU(单位:核)
+        :rtype: int
+        """
         return self._CpuAssigned
 
     @CpuAssigned.setter
@@ -1139,6 +1378,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def CpuAssignable(self):
+        """总可分配CPU(单位:核)
+        :rtype: int
+        """
         return self._CpuAssignable
 
     @CpuAssignable.setter
@@ -1147,6 +1389,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def MemorySpec(self):
+        """总主机内存(单位:GB)
+        :rtype: int
+        """
         return self._MemorySpec
 
     @MemorySpec.setter
@@ -1155,6 +1400,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def MemoryAssigned(self):
+        """总已分配内存(单位:GB)
+        :rtype: int
+        """
         return self._MemoryAssigned
 
     @MemoryAssigned.setter
@@ -1163,6 +1411,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def MemoryAssignable(self):
+        """总可分配内存(单位:GB)
+        :rtype: int
+        """
         return self._MemoryAssignable
 
     @MemoryAssignable.setter
@@ -1171,6 +1422,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def DiskSpec(self):
+        """总机器磁盘(单位:GB)
+        :rtype: int
+        """
         return self._DiskSpec
 
     @DiskSpec.setter
@@ -1179,6 +1433,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def DiskAssigned(self):
+        """总已分配磁盘(单位:GB)
+        :rtype: int
+        """
         return self._DiskAssigned
 
     @DiskAssigned.setter
@@ -1187,6 +1444,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def DiskAssignable(self):
+        """总可分配磁盘(单位:GB)
+        :rtype: int
+        """
         return self._DiskAssignable
 
     @DiskAssignable.setter
@@ -1195,6 +1455,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -1203,6 +1466,10 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def FenceId(self):
+        """金融围笼ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FenceId
 
     @FenceId.setter
@@ -1211,6 +1478,10 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def ClusterId(self):
+        """所属集群ID(默认集群为空)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1219,6 +1490,9 @@ class DescribeInstanceDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1297,6 +1571,9 @@ class DescribeInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页返回数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1305,6 +1582,9 @@ class DescribeInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1313,6 +1593,9 @@ class DescribeInstanceListRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """排序字段，createTime,instancename两者之一
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -1321,6 +1604,9 @@ class DescribeInstanceListRequest(AbstractModel):
 
     @property
     def SortBy(self):
+        """排序规则，desc,asc两者之一
+        :rtype: str
+        """
         return self._SortBy
 
     @SortBy.setter
@@ -1329,6 +1615,9 @@ class DescribeInstanceListRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """按产品过滤，0:CDB, 1:TDSQL
+        :rtype: list of int
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -1337,6 +1626,9 @@ class DescribeInstanceListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """按实例ID过滤
+        :rtype: list of str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1345,6 +1637,9 @@ class DescribeInstanceListRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """按实例名称过滤
+        :rtype: list of str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -1353,6 +1648,9 @@ class DescribeInstanceListRequest(AbstractModel):
 
     @property
     def FenceId(self):
+        """按金融围笼ID过滤
+        :rtype: list of str
+        """
         return self._FenceId
 
     @FenceId.setter
@@ -1361,6 +1659,9 @@ class DescribeInstanceListRequest(AbstractModel):
 
     @property
     def Status(self):
+        """按实例状态过滤, -1:已隔离, 0:创建中, 1:运行中, 2:扩容中, 3:删除中
+        :rtype: list of int
+        """
         return self._Status
 
     @Status.setter
@@ -1369,6 +1670,9 @@ class DescribeInstanceListRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """按所属集群ID过滤
+        :rtype: list of str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1417,6 +1721,9 @@ class DescribeInstanceListResponse(AbstractModel):
 
     @property
     def Instances(self):
+        """独享集群列表
+        :rtype: list of DescribeInstanceDetail
+        """
         return self._Instances
 
     @Instances.setter
@@ -1425,6 +1732,9 @@ class DescribeInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """独享集群实例总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1433,6 +1743,9 @@ class DescribeInstanceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1492,6 +1805,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceTypes(self):
+        """集群类型: 0 一主一备, 1 一主两备...N-1 一主N备
+        :rtype: list of int
+        """
         return self._InstanceTypes
 
     @InstanceTypes.setter
@@ -1500,6 +1816,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def ProductIds(self):
+        """产品ID:  0 MYSQL，1 TDSQL
+        :rtype: list of int
+        """
         return self._ProductIds
 
     @ProductIds.setter
@@ -1508,6 +1827,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """集群uuid: 如 dbdc-q810131s
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -1516,6 +1838,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def FenceFlag(self):
+        """是否按金融围笼标志搜索
+        :rtype: bool
+        """
         return self._FenceFlag
 
     @FenceFlag.setter
@@ -1524,6 +1849,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """按实例名字模糊匹配
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -1532,6 +1860,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页数目, 整型
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1540,6 +1871,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码, 整型
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -1548,6 +1882,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """排序字段，枚举：createtime,groupname
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -1556,6 +1893,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def OrderByType(self):
+        """排序方式: asc升序, desc降序
+        :rtype: str
+        """
         return self._OrderByType
 
     @OrderByType.setter
@@ -1564,6 +1904,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceStatus(self):
+        """集群状态: -2 已删除, -1 已隔离, 0 创建中, 1 运行中, 2 扩容中, 3 删除中
+        :rtype: int
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -1612,6 +1955,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """集群数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1620,6 +1966,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def Instances(self):
+        """集群扩展信息
+        :rtype: list of InstanceExpand
+        """
         return self._Instances
 
     @Instances.setter
@@ -1628,6 +1977,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1684,6 +2036,9 @@ class DeviceInfo(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID
+        :rtype: int
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -1692,6 +2047,9 @@ class DeviceInfo(AbstractModel):
 
     @property
     def DeviceNo(self):
+        """设备No
+        :rtype: str
+        """
         return self._DeviceNo
 
     @DeviceNo.setter
@@ -1700,6 +2058,9 @@ class DeviceInfo(AbstractModel):
 
     @property
     def DevClass(self):
+        """设备类型
+        :rtype: str
+        """
         return self._DevClass
 
     @DevClass.setter
@@ -1708,6 +2069,9 @@ class DeviceInfo(AbstractModel):
 
     @property
     def MaxMemory(self):
+        """设备总内存，单位GB
+        :rtype: float
+        """
         return self._MaxMemory
 
     @MaxMemory.setter
@@ -1716,6 +2080,9 @@ class DeviceInfo(AbstractModel):
 
     @property
     def MaxDisk(self):
+        """设备总磁盘，单位GB
+        :rtype: float
+        """
         return self._MaxDisk
 
     @MaxDisk.setter
@@ -1724,6 +2091,9 @@ class DeviceInfo(AbstractModel):
 
     @property
     def RestMemory(self):
+        """设备剩余内存，单位GB
+        :rtype: float
+        """
         return self._RestMemory
 
     @RestMemory.setter
@@ -1732,6 +2102,9 @@ class DeviceInfo(AbstractModel):
 
     @property
     def RestDisk(self):
+        """设备剩余磁盘，单位GB
+        :rtype: float
+        """
         return self._RestDisk
 
     @RestDisk.setter
@@ -1740,6 +2113,9 @@ class DeviceInfo(AbstractModel):
 
     @property
     def RawDeviceNum(self):
+        """设备机器个数
+        :rtype: int
+        """
         return self._RawDeviceNum
 
     @RawDeviceNum.setter
@@ -1748,6 +2124,9 @@ class DeviceInfo(AbstractModel):
 
     @property
     def InstanceNum(self):
+        """数据库实例个数
+        :rtype: int
+        """
         return self._InstanceNum
 
     @InstanceNum.setter
@@ -1858,6 +2237,9 @@ class HostDetail(AbstractModel):
 
     @property
     def HostId(self):
+        """主机Id
+        :rtype: str
+        """
         return self._HostId
 
     @HostId.setter
@@ -1866,6 +2248,9 @@ class HostDetail(AbstractModel):
 
     @property
     def HostName(self):
+        """主机名称
+        :rtype: str
+        """
         return self._HostName
 
     @HostName.setter
@@ -1874,6 +2259,9 @@ class HostDetail(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -1882,6 +2270,9 @@ class HostDetail(AbstractModel):
 
     @property
     def Status(self):
+        """主机状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1890,6 +2281,9 @@ class HostDetail(AbstractModel):
 
     @property
     def AssignStatus(self):
+        """分配DB实例状态,0:可分配,1:不可分配
+        :rtype: int
+        """
         return self._AssignStatus
 
     @AssignStatus.setter
@@ -1898,6 +2292,9 @@ class HostDetail(AbstractModel):
 
     @property
     def HostType(self):
+        """主机类型, 0:物理机, 1:cvm本地盘, 2:cvm云盘
+        :rtype: int
+        """
         return self._HostType
 
     @HostType.setter
@@ -1906,6 +2303,9 @@ class HostDetail(AbstractModel):
 
     @property
     def DbNum(self):
+        """DB实例数
+        :rtype: int
+        """
         return self._DbNum
 
     @DbNum.setter
@@ -1914,6 +2314,9 @@ class HostDetail(AbstractModel):
 
     @property
     def CpuSpec(self):
+        """主机CPU(单位:核数)
+        :rtype: int
+        """
         return self._CpuSpec
 
     @CpuSpec.setter
@@ -1922,6 +2325,9 @@ class HostDetail(AbstractModel):
 
     @property
     def CpuAssigned(self):
+        """已分配CPU(单位:核数)
+        :rtype: int
+        """
         return self._CpuAssigned
 
     @CpuAssigned.setter
@@ -1930,6 +2336,9 @@ class HostDetail(AbstractModel):
 
     @property
     def CpuAssignable(self):
+        """可分配CPU(单位:核数)
+        :rtype: int
+        """
         return self._CpuAssignable
 
     @CpuAssignable.setter
@@ -1938,6 +2347,9 @@ class HostDetail(AbstractModel):
 
     @property
     def MemorySpec(self):
+        """主机内存(单位:GB)
+        :rtype: int
+        """
         return self._MemorySpec
 
     @MemorySpec.setter
@@ -1946,6 +2358,9 @@ class HostDetail(AbstractModel):
 
     @property
     def MemoryAssigned(self):
+        """已分配内存(单位:GB)
+        :rtype: int
+        """
         return self._MemoryAssigned
 
     @MemoryAssigned.setter
@@ -1954,6 +2369,9 @@ class HostDetail(AbstractModel):
 
     @property
     def MemoryAssignable(self):
+        """可分配内存(单位:GB)
+        :rtype: int
+        """
         return self._MemoryAssignable
 
     @MemoryAssignable.setter
@@ -1962,6 +2380,9 @@ class HostDetail(AbstractModel):
 
     @property
     def DiskSpec(self):
+        """主机磁盘(单位:GB)
+        :rtype: int
+        """
         return self._DiskSpec
 
     @DiskSpec.setter
@@ -1970,6 +2391,9 @@ class HostDetail(AbstractModel):
 
     @property
     def DiskAssigned(self):
+        """已分配磁盘(单位:GB)
+        :rtype: int
+        """
         return self._DiskAssigned
 
     @DiskAssigned.setter
@@ -1978,6 +2402,9 @@ class HostDetail(AbstractModel):
 
     @property
     def DiskAssignable(self):
+        """可分配磁盘(GB)
+        :rtype: int
+        """
         return self._DiskAssignable
 
     @DiskAssignable.setter
@@ -1986,6 +2413,9 @@ class HostDetail(AbstractModel):
 
     @property
     def CpuRatio(self):
+        """CPU分配比
+        :rtype: float
+        """
         return self._CpuRatio
 
     @CpuRatio.setter
@@ -1994,6 +2424,9 @@ class HostDetail(AbstractModel):
 
     @property
     def MemoryRatio(self):
+        """内存分配比
+        :rtype: float
+        """
         return self._MemoryRatio
 
     @MemoryRatio.setter
@@ -2002,6 +2435,9 @@ class HostDetail(AbstractModel):
 
     @property
     def DiskRatio(self):
+        """磁盘分配比
+        :rtype: float
+        """
         return self._DiskRatio
 
     @DiskRatio.setter
@@ -2010,6 +2446,9 @@ class HostDetail(AbstractModel):
 
     @property
     def MachineName(self):
+        """机型名称
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -2018,6 +2457,9 @@ class HostDetail(AbstractModel):
 
     @property
     def MachineType(self):
+        """机型类别
+        :rtype: str
+        """
         return self._MachineType
 
     @MachineType.setter
@@ -2026,6 +2468,9 @@ class HostDetail(AbstractModel):
 
     @property
     def PidTag(self):
+        """计费标签
+        :rtype: str
+        """
         return self._PidTag
 
     @PidTag.setter
@@ -2034,6 +2479,9 @@ class HostDetail(AbstractModel):
 
     @property
     def Pid(self):
+        """计费ID
+        :rtype: int
+        """
         return self._Pid
 
     @Pid.setter
@@ -2042,6 +2490,9 @@ class HostDetail(AbstractModel):
 
     @property
     def InstanceId(self):
+        """独享集群实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2125,6 +2576,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Status(self):
+        """集群状态，0：运行中，1：不在运行
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2133,6 +2587,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ReadWriteTotalLeaveMemory(self):
+        """读写集群剩余内存容量，单位GB
+        :rtype: float
+        """
         return self._ReadWriteTotalLeaveMemory
 
     @ReadWriteTotalLeaveMemory.setter
@@ -2141,6 +2598,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ReadWriteTotalLeaveDisk(self):
+        """读写集群剩余磁盘容量，单位GB
+        :rtype: float
+        """
         return self._ReadWriteTotalLeaveDisk
 
     @ReadWriteTotalLeaveDisk.setter
@@ -2149,6 +2609,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ReadWriteTotalMemory(self):
+        """读写集群总内存容量，单位GB
+        :rtype: float
+        """
         return self._ReadWriteTotalMemory
 
     @ReadWriteTotalMemory.setter
@@ -2157,6 +2620,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ReadWriteTotalDisk(self):
+        """读写集群总磁盘容量，单位GB
+        :rtype: float
+        """
         return self._ReadWriteTotalDisk
 
     @ReadWriteTotalDisk.setter
@@ -2165,6 +2631,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ReadOnlyTotalLeaveMemory(self):
+        """只读集群剩余内存容量，单位GB
+        :rtype: float
+        """
         return self._ReadOnlyTotalLeaveMemory
 
     @ReadOnlyTotalLeaveMemory.setter
@@ -2173,6 +2642,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ReadOnlyTotalLeaveDisk(self):
+        """只读集群剩余磁盘容量，单位GB
+        :rtype: float
+        """
         return self._ReadOnlyTotalLeaveDisk
 
     @ReadOnlyTotalLeaveDisk.setter
@@ -2181,6 +2653,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ReadOnlyTotalMemory(self):
+        """只读集群总内存容量，单位GB
+        :rtype: float
+        """
         return self._ReadOnlyTotalMemory
 
     @ReadOnlyTotalMemory.setter
@@ -2189,6 +2664,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ReadOnlyTotalDisk(self):
+        """只读集群总磁盘容量，单位GB
+        :rtype: float
+        """
         return self._ReadOnlyTotalDisk
 
     @ReadOnlyTotalDisk.setter
@@ -2197,6 +2675,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def InstanceDeviceInfos(self):
+        """集群设备详情
+        :rtype: list of InstanceDeviceInfo
+        """
         return self._InstanceDeviceInfos
 
     @InstanceDeviceInfos.setter
@@ -2257,6 +2738,10 @@ class InstanceDeviceInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2265,6 +2750,10 @@ class InstanceDeviceInfo(AbstractModel):
 
     @property
     def ReadWriteDevice(self):
+        """读写设备组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DeviceInfo
+        """
         return self._ReadWriteDevice
 
     @ReadWriteDevice.setter
@@ -2273,6 +2762,10 @@ class InstanceDeviceInfo(AbstractModel):
 
     @property
     def ReadOnlyDevice(self):
+        """只读设备组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DeviceInfo
+        """
         return self._ReadOnlyDevice
 
     @ReadOnlyDevice.setter
@@ -2281,6 +2774,10 @@ class InstanceDeviceInfo(AbstractModel):
 
     @property
     def FreeDevice(self):
+        """空闲设备组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DeviceInfo
+        """
         return self._FreeDevice
 
     @FreeDevice.setter
@@ -2368,6 +2865,9 @@ class InstanceExpand(AbstractModel):
 
     @property
     def InstanceId(self):
+        """集群ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2376,6 +2876,9 @@ class InstanceExpand(AbstractModel):
 
     @property
     def InstanceName(self):
+        """集群名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -2384,6 +2887,9 @@ class InstanceExpand(AbstractModel):
 
     @property
     def AppId(self):
+        """用户ID
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -2392,6 +2898,9 @@ class InstanceExpand(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -2400,6 +2909,9 @@ class InstanceExpand(AbstractModel):
 
     @property
     def Zone(self):
+        """可用区
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -2408,6 +2920,9 @@ class InstanceExpand(AbstractModel):
 
     @property
     def InstanceType(self):
+        """集群类型： 0：一主一备，1：一主两备
+        :rtype: int
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -2416,6 +2931,9 @@ class InstanceExpand(AbstractModel):
 
     @property
     def InstanceStatus(self):
+        """集群状态: 0 集群创建中, 1 集群有效, 2 集群扩容中, 3 集群删除中, 4 集群缩容中 -1 集群已隔离 -2 集群已删除
+        :rtype: int
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -2424,6 +2942,9 @@ class InstanceExpand(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2432,6 +2953,9 @@ class InstanceExpand(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """实例自动续费标识： 0正常续费 1自动续费 2到期不续费
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -2440,6 +2964,9 @@ class InstanceExpand(AbstractModel):
 
     @property
     def Machine(self):
+        """机型
+        :rtype: str
+        """
         return self._Machine
 
     @Machine.setter
@@ -2448,6 +2975,9 @@ class InstanceExpand(AbstractModel):
 
     @property
     def PeriodEndTime(self):
+        """过期时间
+        :rtype: str
+        """
         return self._PeriodEndTime
 
     @PeriodEndTime.setter
@@ -2456,6 +2986,9 @@ class InstanceExpand(AbstractModel):
 
     @property
     def InstanceDetail(self):
+        """集群信息
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.InstanceDetail`
+        """
         return self._InstanceDetail
 
     @InstanceDetail.setter
@@ -2464,6 +2997,9 @@ class InstanceExpand(AbstractModel):
 
     @property
     def Pid(self):
+        """计费侧的产品ID
+        :rtype: int
+        """
         return self._Pid
 
     @Pid.setter
@@ -2514,6 +3050,9 @@ class ModifyInstanceNameRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """独享集群实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2522,6 +3061,9 @@ class ModifyInstanceNameRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """独享集群实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -2556,6 +3098,9 @@ class ModifyInstanceNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

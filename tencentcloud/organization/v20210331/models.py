@@ -32,6 +32,9 @@ class AcceptJoinShareUnitInvitationRequest(AbstractModel):
 
     @property
     def UnitId(self):
+        """共享单元ID。
+        :rtype: str
+        """
         return self._UnitId
 
     @UnitId.setter
@@ -65,6 +68,9 @@ class AcceptJoinShareUnitInvitationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -93,6 +99,9 @@ class AddExternalSAMLIdPCertificateRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -101,6 +110,9 @@ class AddExternalSAMLIdPCertificateRequest(AbstractModel):
 
     @property
     def X509Certificate(self):
+        """PEM 格式的 X509 证书。  由 SAML 身份提供商提供。
+        :rtype: str
+        """
         return self._X509Certificate
 
     @X509Certificate.setter
@@ -138,6 +150,9 @@ class AddExternalSAMLIdPCertificateResponse(AbstractModel):
 
     @property
     def CertificateId(self):
+        """SAML 签名证书 ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -146,6 +161,9 @@ class AddExternalSAMLIdPCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -181,6 +199,9 @@ class AddOrganizationMemberEmailRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """成员Uin。
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -189,6 +210,9 @@ class AddOrganizationMemberEmailRequest(AbstractModel):
 
     @property
     def Email(self):
+        """邮箱地址。
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -197,6 +221,9 @@ class AddOrganizationMemberEmailRequest(AbstractModel):
 
     @property
     def CountryCode(self):
+        """国际区号。
+        :rtype: str
+        """
         return self._CountryCode
 
     @CountryCode.setter
@@ -205,6 +232,9 @@ class AddOrganizationMemberEmailRequest(AbstractModel):
 
     @property
     def Phone(self):
+        """手机号。
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -245,6 +275,10 @@ class AddOrganizationMemberEmailResponse(AbstractModel):
 
     @property
     def BindId(self):
+        """绑定Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BindId
 
     @BindId.setter
@@ -253,6 +287,9 @@ class AddOrganizationMemberEmailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -288,6 +325,9 @@ class AddOrganizationNodeRequest(AbstractModel):
 
     @property
     def ParentNodeId(self):
+        """父节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
+        :rtype: int
+        """
         return self._ParentNodeId
 
     @ParentNodeId.setter
@@ -296,6 +336,9 @@ class AddOrganizationNodeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """节点名称。最大长度为40个字符，支持英文字母、数字、汉字、符号+@、&._[]-
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -304,6 +347,9 @@ class AddOrganizationNodeRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -312,6 +358,9 @@ class AddOrganizationNodeRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """部门标签列表。最大10个
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -356,6 +405,9 @@ class AddOrganizationNodeResponse(AbstractModel):
 
     @property
     def NodeId(self):
+        """节点ID。
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -364,6 +416,9 @@ class AddOrganizationNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -395,6 +450,8 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
         :type RolePolicies: list of PolicyDetail
         :param _CustomPolicyDocument: 自定义策略内容。长度：最大 4096 个字符。当RolePolicyType为Inline时，该参数必须配置。关于权限策略的语法和结构，请参见权限策略语法和结构。
         :type CustomPolicyDocument: str
+        :param _CustomPolicyDocuments: 自定义策略内容列表（跟RolePolicyNames一一对应）
+        :type CustomPolicyDocuments: list of str
         """
         self._ZoneId = None
         self._RoleConfigurationId = None
@@ -402,9 +459,13 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
         self._RolePolicyNames = None
         self._RolePolicies = None
         self._CustomPolicyDocument = None
+        self._CustomPolicyDocuments = None
 
     @property
     def ZoneId(self):
+        """空间 ID
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -413,6 +474,9 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
 
     @property
     def RoleConfigurationId(self):
+        """权限配置 ID
+        :rtype: str
+        """
         return self._RoleConfigurationId
 
     @RoleConfigurationId.setter
@@ -421,6 +485,9 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
 
     @property
     def RolePolicyType(self):
+        """权限策略类型。取值：  System：系统策略。复用 CAM 的系统策略。 Custom: 自定义策略。按照 CAM 权限策略语法和结构编写的自定义策略。 
+        :rtype: str
+        """
         return self._RolePolicyType
 
     @RolePolicyType.setter
@@ -429,6 +496,9 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
 
     @property
     def RolePolicyNames(self):
+        """权限策略名称，长度最大为 20策略，每个策略长度最大32个字符。如果要添加系统策略，建议使用RolePolicies参数。自定义策略时，数组长度最大为1。
+        :rtype: list of str
+        """
         return self._RolePolicyNames
 
     @RolePolicyNames.setter
@@ -437,6 +507,9 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
 
     @property
     def RolePolicies(self):
+        """添加的系统策略详情。
+        :rtype: list of PolicyDetail
+        """
         return self._RolePolicies
 
     @RolePolicies.setter
@@ -445,11 +518,25 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
 
     @property
     def CustomPolicyDocument(self):
+        """自定义策略内容。长度：最大 4096 个字符。当RolePolicyType为Inline时，该参数必须配置。关于权限策略的语法和结构，请参见权限策略语法和结构。
+        :rtype: str
+        """
         return self._CustomPolicyDocument
 
     @CustomPolicyDocument.setter
     def CustomPolicyDocument(self, CustomPolicyDocument):
         self._CustomPolicyDocument = CustomPolicyDocument
+
+    @property
+    def CustomPolicyDocuments(self):
+        """自定义策略内容列表（跟RolePolicyNames一一对应）
+        :rtype: list of str
+        """
+        return self._CustomPolicyDocuments
+
+    @CustomPolicyDocuments.setter
+    def CustomPolicyDocuments(self, CustomPolicyDocuments):
+        self._CustomPolicyDocuments = CustomPolicyDocuments
 
 
     def _deserialize(self, params):
@@ -464,6 +551,7 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
                 obj._deserialize(item)
                 self._RolePolicies.append(obj)
         self._CustomPolicyDocument = params.get("CustomPolicyDocument")
+        self._CustomPolicyDocuments = params.get("CustomPolicyDocuments")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -488,6 +576,9 @@ class AddPermissionPolicyToRoleConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -519,6 +610,9 @@ class AddShareUnitMembersRequest(AbstractModel):
 
     @property
     def UnitId(self):
+        """共享单元ID。
+        :rtype: str
+        """
         return self._UnitId
 
     @UnitId.setter
@@ -527,6 +621,9 @@ class AddShareUnitMembersRequest(AbstractModel):
 
     @property
     def Area(self):
+        """共享单元地域。
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -535,6 +632,9 @@ class AddShareUnitMembersRequest(AbstractModel):
 
     @property
     def Members(self):
+        """共享成员列表。最大10个。
+        :rtype: list of ShareMember
+        """
         return self._Members
 
     @Members.setter
@@ -575,6 +675,9 @@ class AddShareUnitMembersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -609,6 +712,9 @@ class AddShareUnitRequest(AbstractModel):
 
     @property
     def Name(self):
+        """共享单元名称。仅支持大小写字母、数字、-、以及_的组合，3-128个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -617,6 +723,9 @@ class AddShareUnitRequest(AbstractModel):
 
     @property
     def Area(self):
+        """共享单元地域。可通过接口[DescribeShareAreas](https://cloud.tencent.com/document/product/850/103050)获取支持共享的地域。
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -625,6 +734,9 @@ class AddShareUnitRequest(AbstractModel):
 
     @property
     def Description(self):
+        """共享单元描述。最大128个字符。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -633,6 +745,9 @@ class AddShareUnitRequest(AbstractModel):
 
     @property
     def ShareScope(self):
+        """共享范围。取值：1-仅允许集团组织内共享 2-允许共享给任意账号，默认值：1
+        :rtype: int
+        """
         return self._ShareScope
 
     @ShareScope.setter
@@ -678,6 +793,9 @@ class AddShareUnitResourcesRequest(AbstractModel):
 
     @property
     def UnitId(self):
+        """共享单元ID。
+        :rtype: str
+        """
         return self._UnitId
 
     @UnitId.setter
@@ -686,6 +804,9 @@ class AddShareUnitResourcesRequest(AbstractModel):
 
     @property
     def Area(self):
+        """共享单元地域。
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -694,6 +815,9 @@ class AddShareUnitResourcesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """共享资源类型。支持共享的资源类型,请参见[资源共享概述](https://cloud.tencent.com/document/product/850/59489)
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -702,6 +826,9 @@ class AddShareUnitResourcesRequest(AbstractModel):
 
     @property
     def Resources(self):
+        """共享资源列表。最大10个。
+        :rtype: list of ProductResource
+        """
         return self._Resources
 
     @Resources.setter
@@ -743,6 +870,9 @@ class AddShareUnitResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -771,6 +901,9 @@ class AddShareUnitResponse(AbstractModel):
 
     @property
     def UnitId(self):
+        """共享单元ID。
+        :rtype: str
+        """
         return self._UnitId
 
     @UnitId.setter
@@ -779,6 +912,9 @@ class AddShareUnitResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -811,6 +947,9 @@ class AddUserToGroupRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -819,6 +958,9 @@ class AddUserToGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """用户组 ID。
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -827,6 +969,9 @@ class AddUserToGroupRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户 ID。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -862,6 +1007,9 @@ class AddUserToGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -896,6 +1044,9 @@ class AttachPolicyRequest(AbstractModel):
 
     @property
     def TargetId(self):
+        """绑定策略目标ID。成员Uin或部门ID
+        :rtype: int
+        """
         return self._TargetId
 
     @TargetId.setter
@@ -904,6 +1055,9 @@ class AttachPolicyRequest(AbstractModel):
 
     @property
     def TargetType(self):
+        """目标类型。取值范围：NODE-部门、MEMBER-成员
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -912,6 +1066,9 @@ class AttachPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """策略ID。
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -920,6 +1077,9 @@ class AttachPolicyRequest(AbstractModel):
 
     @property
     def Type(self):
+        """策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -956,6 +1116,9 @@ class AttachPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -990,6 +1153,10 @@ class AuthNode(AbstractModel):
 
     @property
     def RelationId(self):
+        """互信主体关系ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RelationId
 
     @RelationId.setter
@@ -998,6 +1165,10 @@ class AuthNode(AbstractModel):
 
     @property
     def AuthName(self):
+        """互信主体名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AuthName
 
     @AuthName.setter
@@ -1006,6 +1177,10 @@ class AuthNode(AbstractModel):
 
     @property
     def Manager(self):
+        """主体管理员
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.organization.v20210331.models.MemberMainInfo`
+        """
         return self._Manager
 
     @Manager.setter
@@ -1048,6 +1223,10 @@ class AuthRelationFile(AbstractModel):
 
     @property
     def Name(self):
+        """文件名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1056,6 +1235,10 @@ class AuthRelationFile(AbstractModel):
 
     @property
     def Url(self):
+        """文件路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -1096,6 +1279,9 @@ class BindOrganizationMemberAuthAccountRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """成员Uin。
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -1104,6 +1290,9 @@ class BindOrganizationMemberAuthAccountRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """策略ID。可以调用[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)获取
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -1112,6 +1301,9 @@ class BindOrganizationMemberAuthAccountRequest(AbstractModel):
 
     @property
     def OrgSubAccountUins(self):
+        """组织管理员子账号Uin列表。最大5个
+        :rtype: list of int
+        """
         return self._OrgSubAccountUins
 
     @OrgSubAccountUins.setter
@@ -1147,6 +1339,9 @@ class BindOrganizationMemberAuthAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1178,6 +1373,9 @@ class CancelOrganizationMemberAuthAccountRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """成员Uin。
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -1186,6 +1384,9 @@ class CancelOrganizationMemberAuthAccountRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """策略ID。可以通过[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)获取
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -1194,6 +1395,9 @@ class CancelOrganizationMemberAuthAccountRequest(AbstractModel):
 
     @property
     def OrgSubAccountUin(self):
+        """组织子账号Uin。
+        :rtype: int
+        """
         return self._OrgSubAccountUin
 
     @OrgSubAccountUin.setter
@@ -1229,6 +1433,9 @@ class CancelOrganizationMemberAuthAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1254,6 +1461,9 @@ class CheckAccountDeleteRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """成员Uin。
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -1293,6 +1503,9 @@ class CheckAccountDeleteResponse(AbstractModel):
 
     @property
     def AllowDelete(self):
+        """成员是否允许删除。 true-是、false-否
+        :rtype: bool
+        """
         return self._AllowDelete
 
     @AllowDelete.setter
@@ -1301,6 +1514,9 @@ class CheckAccountDeleteResponse(AbstractModel):
 
     @property
     def NotAllowReason(self):
+        """不允许删除原因。
+        :rtype: :class:`tencentcloud.organization.v20210331.models.NotAllowReason`
+        """
         return self._NotAllowReason
 
     @NotAllowReason.setter
@@ -1309,6 +1525,9 @@ class CheckAccountDeleteResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1338,6 +1557,9 @@ class ClearExternalSAMLIdentityProviderRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -1371,6 +1593,9 @@ class ClearExternalSAMLIdentityProviderResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1405,6 +1630,9 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -1413,6 +1641,9 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """用户组的名称。  格式：允许英文字母、数字和特殊字符-。 长度：最大 128 个字符。
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -1421,6 +1652,9 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def Description(self):
+        """用户组的描述。  长度：最大 1024 个字符。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1429,6 +1663,9 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def GroupType(self):
+        """用户组类型  Manual：手动创建，Synchronized：外部导入
+        :rtype: str
+        """
         return self._GroupType
 
     @GroupType.setter
@@ -1468,6 +1705,9 @@ class CreateGroupResponse(AbstractModel):
 
     @property
     def GroupInfo(self):
+        """用户组信息。
+        :rtype: :class:`tencentcloud.organization.v20210331.models.GroupInfo`
+        """
         return self._GroupInfo
 
     @GroupInfo.setter
@@ -1476,6 +1716,9 @@ class CreateGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1516,6 +1759,9 @@ class CreateOrgServiceAssignRequest(AbstractModel):
 
     @property
     def ServiceId(self):
+        """集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+        :rtype: int
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -1524,6 +1770,9 @@ class CreateOrgServiceAssignRequest(AbstractModel):
 
     @property
     def MemberUins(self):
+        """委派管理员Uin列表。 最大长度20个
+        :rtype: list of int
+        """
         return self._MemberUins
 
     @MemberUins.setter
@@ -1532,6 +1781,9 @@ class CreateOrgServiceAssignRequest(AbstractModel):
 
     @property
     def ManagementScope(self):
+        """委派管理员管理范围。 取值：1-全部成员 2-部分成员，默认值1
+        :rtype: int
+        """
         return self._ManagementScope
 
     @ManagementScope.setter
@@ -1540,6 +1792,9 @@ class CreateOrgServiceAssignRequest(AbstractModel):
 
     @property
     def ManagementScopeUins(self):
+        """管理的成员Uin列表。ManagementScope为2时该参数有效
+        :rtype: list of int
+        """
         return self._ManagementScopeUins
 
     @ManagementScopeUins.setter
@@ -1548,6 +1803,9 @@ class CreateOrgServiceAssignRequest(AbstractModel):
 
     @property
     def ManagementScopeNodeIds(self):
+        """管理的部门ID列表。ManagementScope为2时该参数有效
+        :rtype: list of int
+        """
         return self._ManagementScopeNodeIds
 
     @ManagementScopeNodeIds.setter
@@ -1585,6 +1843,9 @@ class CreateOrgServiceAssignResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1616,6 +1877,9 @@ class CreateOrganizationIdentityRequest(AbstractModel):
 
     @property
     def IdentityAliasName(self):
+        """身份名称
+        :rtype: str
+        """
         return self._IdentityAliasName
 
     @IdentityAliasName.setter
@@ -1624,6 +1888,9 @@ class CreateOrganizationIdentityRequest(AbstractModel):
 
     @property
     def IdentityPolicy(self):
+        """身份策略
+        :rtype: list of IdentityPolicy
+        """
         return self._IdentityPolicy
 
     @IdentityPolicy.setter
@@ -1632,6 +1899,9 @@ class CreateOrganizationIdentityRequest(AbstractModel):
 
     @property
     def Description(self):
+        """身份描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1676,6 +1946,10 @@ class CreateOrganizationIdentityResponse(AbstractModel):
 
     @property
     def IdentityId(self):
+        """身份ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IdentityId
 
     @IdentityId.setter
@@ -1684,6 +1958,9 @@ class CreateOrganizationIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1713,6 +1990,9 @@ class CreateOrganizationMemberAuthIdentityRequest(AbstractModel):
 
     @property
     def MemberUins(self):
+        """成员Uin列表。最多10个
+        :rtype: list of int non-negative
+        """
         return self._MemberUins
 
     @MemberUins.setter
@@ -1721,6 +2001,9 @@ class CreateOrganizationMemberAuthIdentityRequest(AbstractModel):
 
     @property
     def IdentityIds(self):
+        """身份Id列表。最多5个，可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
+        :rtype: list of int non-negative
+        """
         return self._IdentityIds
 
     @IdentityIds.setter
@@ -1755,6 +2038,9 @@ class CreateOrganizationMemberAuthIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1789,6 +2075,9 @@ class CreateOrganizationMemberPolicyRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """成员Uin。
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -1797,6 +2086,9 @@ class CreateOrganizationMemberPolicyRequest(AbstractModel):
 
     @property
     def PolicyName(self):
+        """策略名。最大长度为128个字符，支持英文字母、数字、符号+=,.@_-
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -1805,6 +2097,9 @@ class CreateOrganizationMemberPolicyRequest(AbstractModel):
 
     @property
     def IdentityId(self):
+        """成员访问身份ID。可以调用[DescribeOrganizationMemberAuthIdentities](https://cloud.tencent.com/document/product/850/82936)获取
+        :rtype: int
+        """
         return self._IdentityId
 
     @IdentityId.setter
@@ -1813,6 +2108,9 @@ class CreateOrganizationMemberPolicyRequest(AbstractModel):
 
     @property
     def Description(self):
+        """描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1853,6 +2151,10 @@ class CreateOrganizationMemberPolicyResponse(AbstractModel):
 
     @property
     def PolicyId(self):
+        """策略ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -1861,6 +2163,9 @@ class CreateOrganizationMemberPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1917,6 +2222,9 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def Name(self):
+        """成员名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&._[]-:,
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1925,6 +2233,9 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def PolicyType(self):
+        """关系策略。取值：Financial
+        :rtype: str
+        """
         return self._PolicyType
 
     @PolicyType.setter
@@ -1933,6 +2244,9 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def PermissionIds(self):
+        """成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票、6-优惠继承、7-代付费，1、2 默认必须
+        :rtype: list of int non-negative
+        """
         return self._PermissionIds
 
     @PermissionIds.setter
@@ -1941,6 +2255,9 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def NodeId(self):
+        """成员所属部门的节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -1949,6 +2266,9 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def AccountName(self):
+        """账号名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&._[]-:,
+        :rtype: str
+        """
         return self._AccountName
 
     @AccountName.setter
@@ -1957,6 +2277,9 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1965,6 +2288,9 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def RecordId(self):
+        """成员创建记录ID。创建异常重试时需要
+        :rtype: int
+        """
         return self._RecordId
 
     @RecordId.setter
@@ -1973,6 +2299,9 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def PayUin(self):
+        """代付者Uin。成员代付费时需要
+        :rtype: str
+        """
         return self._PayUin
 
     @PayUin.setter
@@ -1981,6 +2310,9 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def IdentityRoleID(self):
+        """成员访问身份ID列表。可以调用ListOrganizationIdentity获取，1默认支持
+        :rtype: list of int non-negative
+        """
         return self._IdentityRoleID
 
     @IdentityRoleID.setter
@@ -1989,6 +2321,9 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def AuthRelationId(self):
+        """认证主体关系ID。给不同主体创建成员时需要，可以调用DescribeOrganizationAuthNode获取
+        :rtype: int
+        """
         return self._AuthRelationId
 
     @AuthRelationId.setter
@@ -1997,6 +2332,9 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """成员标签列表。最大10个
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -2049,6 +2387,10 @@ class CreateOrganizationMemberResponse(AbstractModel):
 
     @property
     def Uin(self):
+        """成员Uin。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Uin
 
     @Uin.setter
@@ -2057,6 +2399,9 @@ class CreateOrganizationMemberResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2092,6 +2437,9 @@ class CreateOrganizationMembersPolicyRequest(AbstractModel):
 
     @property
     def MemberUins(self):
+        """成员Uin列表。最多10个
+        :rtype: list of int
+        """
         return self._MemberUins
 
     @MemberUins.setter
@@ -2100,6 +2448,9 @@ class CreateOrganizationMembersPolicyRequest(AbstractModel):
 
     @property
     def PolicyName(self):
+        """策略名。长度1～128个字符，支持英文字母、数字、符号+=,.@_-
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -2108,6 +2459,9 @@ class CreateOrganizationMembersPolicyRequest(AbstractModel):
 
     @property
     def IdentityId(self):
+        """成员访问身份ID。可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
+        :rtype: int
+        """
         return self._IdentityId
 
     @IdentityId.setter
@@ -2116,6 +2470,9 @@ class CreateOrganizationMembersPolicyRequest(AbstractModel):
 
     @property
     def Description(self):
+        """策略描述。最大长度为128个字符
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2156,6 +2513,10 @@ class CreateOrganizationMembersPolicyResponse(AbstractModel):
 
     @property
     def PolicyId(self):
+        """策略ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -2164,6 +2525,9 @@ class CreateOrganizationMembersPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2202,6 +2566,9 @@ class CreateOrganizationResponse(AbstractModel):
 
     @property
     def OrgId(self):
+        """企业组织ID
+        :rtype: int
+        """
         return self._OrgId
 
     @OrgId.setter
@@ -2210,6 +2577,9 @@ class CreateOrganizationResponse(AbstractModel):
 
     @property
     def NickName(self):
+        """创建者昵称
+        :rtype: str
+        """
         return self._NickName
 
     @NickName.setter
@@ -2218,6 +2588,9 @@ class CreateOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2255,6 +2628,10 @@ class CreatePolicyRequest(AbstractModel):
 
     @property
     def Name(self):
+        """策略名。
+长度为1~128个字符，可以包含汉字、英文字母、数字和下划线（_）
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2263,6 +2640,9 @@ class CreatePolicyRequest(AbstractModel):
 
     @property
     def Content(self):
+        """策略内容。参考CAM策略语法
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -2271,6 +2651,9 @@ class CreatePolicyRequest(AbstractModel):
 
     @property
     def Type(self):
+        """策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2279,6 +2662,9 @@ class CreatePolicyRequest(AbstractModel):
 
     @property
     def Description(self):
+        """策略描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2318,6 +2704,9 @@ class CreatePolicyResponse(AbstractModel):
 
     @property
     def PolicyId(self):
+        """策略ID
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -2326,6 +2715,9 @@ class CreatePolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2355,6 +2747,9 @@ class CreateRoleAssignmentRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -2363,6 +2758,9 @@ class CreateRoleAssignmentRequest(AbstractModel):
 
     @property
     def RoleAssignmentInfo(self):
+        """授权成员账号信息，最多授权50条。
+        :rtype: list of RoleAssignmentInfo
+        """
         return self._RoleAssignmentInfo
 
     @RoleAssignmentInfo.setter
@@ -2405,6 +2803,9 @@ class CreateRoleAssignmentResponse(AbstractModel):
 
     @property
     def Tasks(self):
+        """任务详情。
+        :rtype: list of TaskInfo
+        """
         return self._Tasks
 
     @Tasks.setter
@@ -2413,6 +2814,9 @@ class CreateRoleAssignmentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2456,6 +2860,9 @@ class CreateRoleConfigurationRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -2464,6 +2871,9 @@ class CreateRoleConfigurationRequest(AbstractModel):
 
     @property
     def RoleConfigurationName(self):
+        """权限配置名称。格式：包含英文字母、数字或短划线（-）。 长度：最大 128 个字符。
+        :rtype: str
+        """
         return self._RoleConfigurationName
 
     @RoleConfigurationName.setter
@@ -2472,6 +2882,9 @@ class CreateRoleConfigurationRequest(AbstractModel):
 
     @property
     def Description(self):
+        """权限配置的描述。 长度：最大 1024 个字符。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2480,6 +2893,9 @@ class CreateRoleConfigurationRequest(AbstractModel):
 
     @property
     def SessionDuration(self):
+        """会话持续时间。 CIC用户使用权限配置访问集团账号目标账号时，会话最多保持的时间。 单位：秒。 取值范围：900 ~ 43200（15 分钟~12 小时）。 默认值：3600（1 小时）。
+        :rtype: int
+        """
         return self._SessionDuration
 
     @SessionDuration.setter
@@ -2488,6 +2904,9 @@ class CreateRoleConfigurationRequest(AbstractModel):
 
     @property
     def RelayState(self):
+        """初始访问页面。 CIC用户使用权限配置访问集团账号目标账号时，初始访问的页面地址。 该页面必须是腾讯云控制台页面。默认为空，表示跳转到腾讯云控制台首页。
+        :rtype: str
+        """
         return self._RelayState
 
     @RelayState.setter
@@ -2528,6 +2947,9 @@ class CreateRoleConfigurationResponse(AbstractModel):
 
     @property
     def RoleConfigurationInfo(self):
+        """配置访问详情
+        :rtype: :class:`tencentcloud.organization.v20210331.models.RoleConfiguration`
+        """
         return self._RoleConfigurationInfo
 
     @RoleConfigurationInfo.setter
@@ -2536,6 +2958,9 @@ class CreateRoleConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2564,6 +2989,9 @@ class CreateSCIMCredentialRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。z-前缀开头，后面是12位随机数字/小写字母
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -2618,6 +3046,9 @@ class CreateSCIMCredentialResponse(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。z-前缀开头，后面是12位随机数字/小写字母。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -2626,6 +3057,9 @@ class CreateSCIMCredentialResponse(AbstractModel):
 
     @property
     def CredentialId(self):
+        """SCIM密钥ID。scimcred-前缀开头，后面是12位随机数字/小写字母。
+        :rtype: str
+        """
         return self._CredentialId
 
     @CredentialId.setter
@@ -2634,6 +3068,9 @@ class CreateSCIMCredentialResponse(AbstractModel):
 
     @property
     def CredentialType(self):
+        """SCIM密钥类型。
+        :rtype: str
+        """
         return self._CredentialType
 
     @CredentialType.setter
@@ -2642,6 +3079,9 @@ class CreateSCIMCredentialResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """SCIM 密钥的创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2650,6 +3090,9 @@ class CreateSCIMCredentialResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """SCIM 密钥的过期时间。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -2658,6 +3101,9 @@ class CreateSCIMCredentialResponse(AbstractModel):
 
     @property
     def CredentialStatus(self):
+        """SCIM密钥状态，Enabled已开启，Disabled已关闭。
+        :rtype: str
+        """
         return self._CredentialStatus
 
     @CredentialStatus.setter
@@ -2666,6 +3112,9 @@ class CreateSCIMCredentialResponse(AbstractModel):
 
     @property
     def CredentialSecret(self):
+        """SCIM密钥。
+        :rtype: str
+        """
         return self._CredentialSecret
 
     @CredentialSecret.setter
@@ -2674,6 +3123,9 @@ class CreateSCIMCredentialResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2730,6 +3182,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -2738,6 +3193,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def UserName(self):
+        """用户名称。空间内必须唯一。不支持修改。  格式：包含数字、英文字母和特殊符号+ = , . @ - _ 。  长度：最大 64 个字符
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -2746,6 +3204,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def FirstName(self):
+        """用户的姓。  长度：最大 64 个字符。
+        :rtype: str
+        """
         return self._FirstName
 
     @FirstName.setter
@@ -2754,6 +3215,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def LastName(self):
+        """用户的名。  长度：最大 64 个字符。
+        :rtype: str
+        """
         return self._LastName
 
     @LastName.setter
@@ -2762,6 +3226,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def DisplayName(self):
+        """用户的显示名称。  长度：最大 256 个字符。
+        :rtype: str
+        """
         return self._DisplayName
 
     @DisplayName.setter
@@ -2770,6 +3237,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Description(self):
+        """用户的描述。  长度：最大 1024 个字符。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2778,6 +3248,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Email(self):
+        """用户的电子邮箱。目录内必须唯一。  长度：最大 128 个字符。
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -2786,6 +3259,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def UserStatus(self):
+        """用户的状态。取值：  Enabled（默认值）：启用。 Disabled：禁用。
+        :rtype: str
+        """
         return self._UserStatus
 
     @UserStatus.setter
@@ -2794,6 +3270,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def UserType(self):
+        """用户类型  Manual：手动创建，Synchronized：外部导入
+        :rtype: str
+        """
         return self._UserType
 
     @UserType.setter
@@ -2838,6 +3317,9 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def UserInfo(self):
+        """用户详情
+        :rtype: :class:`tencentcloud.organization.v20210331.models.UserInfo`
+        """
         return self._UserInfo
 
     @UserInfo.setter
@@ -2846,6 +3328,9 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2877,6 +3362,9 @@ class CreateUserSyncProvisioningRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -2885,6 +3373,9 @@ class CreateUserSyncProvisioningRequest(AbstractModel):
 
     @property
     def UserSyncProvisionings(self):
+        """CAM用户同步信息。
+        :rtype: list of UserSyncProvisioning
+        """
         return self._UserSyncProvisionings
 
     @UserSyncProvisionings.setter
@@ -2927,6 +3418,9 @@ class CreateUserSyncProvisioningResponse(AbstractModel):
 
     @property
     def Tasks(self):
+        """任务详细。
+        :rtype: list of UserProvisioningsTask
+        """
         return self._Tasks
 
     @Tasks.setter
@@ -2935,6 +3429,9 @@ class CreateUserSyncProvisioningResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2966,6 +3463,9 @@ class DeleteAccountRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """成员Uin。
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -2999,6 +3499,9 @@ class DeleteAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3027,6 +3530,9 @@ class DeleteGroupRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -3035,6 +3541,9 @@ class DeleteGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """用户组的 ID。
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -3069,6 +3578,9 @@ class DeleteGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3097,6 +3609,9 @@ class DeleteOrgServiceAssignRequest(AbstractModel):
 
     @property
     def ServiceId(self):
+        """集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+        :rtype: int
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -3105,6 +3620,9 @@ class DeleteOrgServiceAssignRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """委派管理员Uin。
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -3139,6 +3657,9 @@ class DeleteOrgServiceAssignResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3164,6 +3685,9 @@ class DeleteOrganizationIdentityRequest(AbstractModel):
 
     @property
     def IdentityId(self):
+        """身份ID。可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
+        :rtype: int
+        """
         return self._IdentityId
 
     @IdentityId.setter
@@ -3197,6 +3721,9 @@ class DeleteOrganizationIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3225,6 +3752,9 @@ class DeleteOrganizationMemberAuthIdentityRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """成员Uin。
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -3233,6 +3763,9 @@ class DeleteOrganizationMemberAuthIdentityRequest(AbstractModel):
 
     @property
     def IdentityId(self):
+        """身份ID。可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
+        :rtype: int
+        """
         return self._IdentityId
 
     @IdentityId.setter
@@ -3267,6 +3800,9 @@ class DeleteOrganizationMemberAuthIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3292,6 +3828,9 @@ class DeleteOrganizationMembersPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """访问策略ID。可以通过[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)获取
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -3325,6 +3864,9 @@ class DeleteOrganizationMembersPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3350,6 +3892,9 @@ class DeleteOrganizationMembersRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """被删除成员的Uin列表。
+        :rtype: list of int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -3383,6 +3928,9 @@ class DeleteOrganizationMembersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3408,6 +3956,9 @@ class DeleteOrganizationNodesRequest(AbstractModel):
 
     @property
     def NodeId(self):
+        """节点ID列表。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
+        :rtype: list of int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -3441,6 +3992,9 @@ class DeleteOrganizationNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3472,6 +4026,9 @@ class DeleteOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3501,6 +4058,10 @@ class DeletePolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """需要删除的策略ID。可以调用[ListPolicies](https://cloud.tencent.com/document/product/850/105311)获取
+
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -3509,6 +4070,9 @@ class DeletePolicyRequest(AbstractModel):
 
     @property
     def Type(self):
+        """策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3543,6 +4107,9 @@ class DeletePolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3586,6 +4153,9 @@ class DeleteRoleAssignmentRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -3594,6 +4164,9 @@ class DeleteRoleAssignmentRequest(AbstractModel):
 
     @property
     def RoleConfigurationId(self):
+        """权限配置ID。
+        :rtype: str
+        """
         return self._RoleConfigurationId
 
     @RoleConfigurationId.setter
@@ -3602,6 +4175,9 @@ class DeleteRoleAssignmentRequest(AbstractModel):
 
     @property
     def TargetType(self):
+        """同步的集团账号目标账号的类型，ManagerUin管理账号;MemberUin成员账号
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -3610,6 +4186,9 @@ class DeleteRoleAssignmentRequest(AbstractModel):
 
     @property
     def TargetUin(self):
+        """集团账号目标账号的UIN
+        :rtype: int
+        """
         return self._TargetUin
 
     @TargetUin.setter
@@ -3618,6 +4197,9 @@ class DeleteRoleAssignmentRequest(AbstractModel):
 
     @property
     def PrincipalType(self):
+        """CAM 用户同步的身份类型。取值： User：表示同步的身份是用户。 Group：表示同步的身份是用户组。
+        :rtype: str
+        """
         return self._PrincipalType
 
     @PrincipalType.setter
@@ -3626,6 +4208,9 @@ class DeleteRoleAssignmentRequest(AbstractModel):
 
     @property
     def PrincipalId(self):
+        """用户同步 ID。取值： 当PrincipalType取值为Group时，该值为用户组 ID（g-********）， 当PrincipalType取值为User时，该值为用户 ID（u-********）。 	
+        :rtype: str
+        """
         return self._PrincipalId
 
     @PrincipalId.setter
@@ -3634,6 +4219,9 @@ class DeleteRoleAssignmentRequest(AbstractModel):
 
     @property
     def DeprovisionStrategy(self):
+        """当您移除一个集团账号目标账号上使用某权限配置的最后一个授权时，是否同时解除权限配置部署。取值： DeprovisionForLastRoleAssignmentOnAccount：解除权限配置部署。 None（默认值）：不解除权限配置部署。
+        :rtype: str
+        """
         return self._DeprovisionStrategy
 
     @DeprovisionStrategy.setter
@@ -3676,6 +4264,9 @@ class DeleteRoleAssignmentResponse(AbstractModel):
 
     @property
     def Task(self):
+        """任务详情
+        :rtype: :class:`tencentcloud.organization.v20210331.models.TaskInfo`
+        """
         return self._Task
 
     @Task.setter
@@ -3684,6 +4275,9 @@ class DeleteRoleAssignmentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3715,6 +4309,9 @@ class DeleteRoleConfigurationRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -3723,6 +4320,9 @@ class DeleteRoleConfigurationRequest(AbstractModel):
 
     @property
     def RoleConfigurationId(self):
+        """权限配置 ID
+        :rtype: str
+        """
         return self._RoleConfigurationId
 
     @RoleConfigurationId.setter
@@ -3757,6 +4357,9 @@ class DeleteRoleConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3785,6 +4388,9 @@ class DeleteSCIMCredentialRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。z-前缀开头，后面是12位随机数字/小写字母
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -3793,6 +4399,9 @@ class DeleteSCIMCredentialRequest(AbstractModel):
 
     @property
     def CredentialId(self):
+        """SCIM密钥ID。scimcred-前缀开头，后面是12位随机数字/小写字母。
+        :rtype: str
+        """
         return self._CredentialId
 
     @CredentialId.setter
@@ -3827,6 +4436,9 @@ class DeleteSCIMCredentialResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3858,6 +4470,9 @@ class DeleteShareUnitMembersRequest(AbstractModel):
 
     @property
     def UnitId(self):
+        """共享单元ID。
+        :rtype: str
+        """
         return self._UnitId
 
     @UnitId.setter
@@ -3866,6 +4481,9 @@ class DeleteShareUnitMembersRequest(AbstractModel):
 
     @property
     def Area(self):
+        """共享单元地域。
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -3874,6 +4492,9 @@ class DeleteShareUnitMembersRequest(AbstractModel):
 
     @property
     def Members(self):
+        """成员列表。
+        :rtype: list of ShareMember
+        """
         return self._Members
 
     @Members.setter
@@ -3914,6 +4535,9 @@ class DeleteShareUnitMembersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3939,6 +4563,9 @@ class DeleteShareUnitRequest(AbstractModel):
 
     @property
     def UnitId(self):
+        """共享单元ID。
+        :rtype: str
+        """
         return self._UnitId
 
     @UnitId.setter
@@ -3981,6 +4608,9 @@ class DeleteShareUnitResourcesRequest(AbstractModel):
 
     @property
     def UnitId(self):
+        """共享单元ID。
+        :rtype: str
+        """
         return self._UnitId
 
     @UnitId.setter
@@ -3989,6 +4619,9 @@ class DeleteShareUnitResourcesRequest(AbstractModel):
 
     @property
     def Area(self):
+        """共享单元地域。
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -3997,6 +4630,9 @@ class DeleteShareUnitResourcesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """共享资源类型。支持共享的资源类型,请参见[资源共享概述](https://cloud.tencent.com/document/product/850/59489)
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -4005,6 +4641,9 @@ class DeleteShareUnitResourcesRequest(AbstractModel):
 
     @property
     def Resources(self):
+        """共享资源列表。最大10个。
+        :rtype: list of ShareResource
+        """
         return self._Resources
 
     @Resources.setter
@@ -4046,6 +4685,9 @@ class DeleteShareUnitResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4071,6 +4713,9 @@ class DeleteShareUnitResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4099,6 +4744,9 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -4107,6 +4755,9 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户 ID。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -4141,6 +4792,9 @@ class DeleteUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4169,6 +4823,9 @@ class DeleteUserSyncProvisioningRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -4177,6 +4834,9 @@ class DeleteUserSyncProvisioningRequest(AbstractModel):
 
     @property
     def UserProvisioningId(self):
+        """用户同步的ID。
+        :rtype: str
+        """
         return self._UserProvisioningId
 
     @UserProvisioningId.setter
@@ -4214,6 +4874,9 @@ class DeleteUserSyncProvisioningResponse(AbstractModel):
 
     @property
     def Tasks(self):
+        """任务详情。
+        :rtype: :class:`tencentcloud.organization.v20210331.models.UserProvisioningsTask`
+        """
         return self._Tasks
 
     @Tasks.setter
@@ -4222,6 +4885,9 @@ class DeleteUserSyncProvisioningResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4250,6 +4916,9 @@ class DescribeEffectivePolicyRequest(AbstractModel):
 
     @property
     def TargetId(self):
+        """账号uin或者节点id。
+        :rtype: int
+        """
         return self._TargetId
 
     @TargetId.setter
@@ -4287,6 +4956,10 @@ class DescribeEffectivePolicyResponse(AbstractModel):
 
     @property
     def EffectivePolicy(self):
+        """有效策略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.organization.v20210331.models.EffectivePolicy`
+        """
         return self._EffectivePolicy
 
     @EffectivePolicy.setter
@@ -4295,6 +4968,9 @@ class DescribeEffectivePolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4347,6 +5023,9 @@ class DescribeIdentityCenterResponse(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。z-前缀开头，后面是12位随机数字/小写字母
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -4355,6 +5034,9 @@ class DescribeIdentityCenterResponse(AbstractModel):
 
     @property
     def ZoneName(self):
+        """空间名，必须全局唯一。包含小写字母、数字和短划线（-）。不能以短划线（-）开头或结尾，且不能有两个连续的短划线（-）。长度：2~64 个字符。
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -4363,6 +5045,9 @@ class DescribeIdentityCenterResponse(AbstractModel):
 
     @property
     def ServiceStatus(self):
+        """服务开启状态，Disabled代表未开通，Enabled代表已开通
+        :rtype: str
+        """
         return self._ServiceStatus
 
     @ServiceStatus.setter
@@ -4371,6 +5056,9 @@ class DescribeIdentityCenterResponse(AbstractModel):
 
     @property
     def ScimSyncStatus(self):
+        """SCIM 同步状态。Enabled：启用。 Disabled：禁用。
+        :rtype: str
+        """
         return self._ScimSyncStatus
 
     @ScimSyncStatus.setter
@@ -4379,6 +5067,9 @@ class DescribeIdentityCenterResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -4387,6 +5078,9 @@ class DescribeIdentityCenterResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -4395,6 +5089,9 @@ class DescribeIdentityCenterResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4432,6 +5129,9 @@ class DescribeOrganizationAuthNodeRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量。取值是limit的整数倍。默认值 : 0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4440,6 +5140,9 @@ class DescribeOrganizationAuthNodeRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目。取值范围：1~50。默认值：10。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4448,6 +5151,9 @@ class DescribeOrganizationAuthNodeRequest(AbstractModel):
 
     @property
     def AuthName(self):
+        """互信主体名称。
+        :rtype: str
+        """
         return self._AuthName
 
     @AuthName.setter
@@ -4491,6 +5197,10 @@ class DescribeOrganizationAuthNodeResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -4499,6 +5209,10 @@ class DescribeOrganizationAuthNodeResponse(AbstractModel):
 
     @property
     def Items(self):
+        """条目详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AuthNode
+        """
         return self._Items
 
     @Items.setter
@@ -4507,6 +5221,9 @@ class DescribeOrganizationAuthNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4554,6 +5271,9 @@ class DescribeOrganizationFinancialByMemberRequest(AbstractModel):
 
     @property
     def Month(self):
+        """查询开始月份。格式：yyyy-mm，例如：2021-01。
+        :rtype: str
+        """
         return self._Month
 
     @Month.setter
@@ -4562,6 +5282,9 @@ class DescribeOrganizationFinancialByMemberRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目。取值范围：1~50，默认值：10	
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4570,6 +5293,9 @@ class DescribeOrganizationFinancialByMemberRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量。取值是limit的整数倍，默认值 : 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4578,6 +5304,9 @@ class DescribeOrganizationFinancialByMemberRequest(AbstractModel):
 
     @property
     def EndMonth(self):
+        """查询结束月份。格式：yyyy-mm，例如：2021-01,默认值为查询开始月份。
+        :rtype: str
+        """
         return self._EndMonth
 
     @EndMonth.setter
@@ -4586,6 +5315,9 @@ class DescribeOrganizationFinancialByMemberRequest(AbstractModel):
 
     @property
     def MemberUins(self):
+        """查询成员列表。 最大100个
+        :rtype: list of int
+        """
         return self._MemberUins
 
     @MemberUins.setter
@@ -4594,6 +5326,9 @@ class DescribeOrganizationFinancialByMemberRequest(AbstractModel):
 
     @property
     def ProductCodes(self):
+        """查询产品列表。 最大100个
+        :rtype: list of str
+        """
         return self._ProductCodes
 
     @ProductCodes.setter
@@ -4644,6 +5379,10 @@ class DescribeOrganizationFinancialByMemberResponse(AbstractModel):
 
     @property
     def TotalCost(self):
+        """当月总消耗。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._TotalCost
 
     @TotalCost.setter
@@ -4652,6 +5391,10 @@ class DescribeOrganizationFinancialByMemberResponse(AbstractModel):
 
     @property
     def Items(self):
+        """成员消耗详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OrgMemberFinancial
+        """
         return self._Items
 
     @Items.setter
@@ -4660,6 +5403,10 @@ class DescribeOrganizationFinancialByMemberResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数目。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -4668,6 +5415,9 @@ class DescribeOrganizationFinancialByMemberResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4710,6 +5460,9 @@ class DescribeOrganizationFinancialByMonthRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询月数。取值范围：1~6，默认值：6
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4718,6 +5471,9 @@ class DescribeOrganizationFinancialByMonthRequest(AbstractModel):
 
     @property
     def EndMonth(self):
+        """查询结束月份。格式：yyyy-mm，例如：2021-01
+        :rtype: str
+        """
         return self._EndMonth
 
     @EndMonth.setter
@@ -4726,6 +5482,9 @@ class DescribeOrganizationFinancialByMonthRequest(AbstractModel):
 
     @property
     def MemberUins(self):
+        """查询成员列表。 最大100个
+        :rtype: list of int
+        """
         return self._MemberUins
 
     @MemberUins.setter
@@ -4734,6 +5493,9 @@ class DescribeOrganizationFinancialByMonthRequest(AbstractModel):
 
     @property
     def ProductCodes(self):
+        """查询产品列表。 最大100个
+        :rtype: list of str
+        """
         return self._ProductCodes
 
     @ProductCodes.setter
@@ -4774,6 +5536,10 @@ class DescribeOrganizationFinancialByMonthResponse(AbstractModel):
 
     @property
     def Items(self):
+        """产品消耗详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OrgFinancialByMonth
+        """
         return self._Items
 
     @Items.setter
@@ -4782,6 +5548,9 @@ class DescribeOrganizationFinancialByMonthResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4828,6 +5597,9 @@ class DescribeOrganizationFinancialByProductRequest(AbstractModel):
 
     @property
     def Month(self):
+        """查询开始月份。格式：yyyy-mm，例如：2021-01
+        :rtype: str
+        """
         return self._Month
 
     @Month.setter
@@ -4836,6 +5608,9 @@ class DescribeOrganizationFinancialByProductRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目。取值范围：1~50，默认值：10	
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4844,6 +5619,9 @@ class DescribeOrganizationFinancialByProductRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量。取值是limit的整数倍，默认值 : 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4852,6 +5630,9 @@ class DescribeOrganizationFinancialByProductRequest(AbstractModel):
 
     @property
     def EndMonth(self):
+        """查询结束月份。格式：yyyy-mm，例如：2021-01,默认值为查询开始月份
+        :rtype: str
+        """
         return self._EndMonth
 
     @EndMonth.setter
@@ -4860,6 +5641,9 @@ class DescribeOrganizationFinancialByProductRequest(AbstractModel):
 
     @property
     def MemberUins(self):
+        """查询成员列表。 最大100个
+        :rtype: list of int
+        """
         return self._MemberUins
 
     @MemberUins.setter
@@ -4868,6 +5652,9 @@ class DescribeOrganizationFinancialByProductRequest(AbstractModel):
 
     @property
     def ProductCodes(self):
+        """查询产品列表。 最大100个
+        :rtype: list of str
+        """
         return self._ProductCodes
 
     @ProductCodes.setter
@@ -4918,6 +5705,10 @@ class DescribeOrganizationFinancialByProductResponse(AbstractModel):
 
     @property
     def TotalCost(self):
+        """当月总消耗。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._TotalCost
 
     @TotalCost.setter
@@ -4926,6 +5717,10 @@ class DescribeOrganizationFinancialByProductResponse(AbstractModel):
 
     @property
     def Items(self):
+        """产品消耗详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OrgProductFinancial
+        """
         return self._Items
 
     @Items.setter
@@ -4934,6 +5729,10 @@ class DescribeOrganizationFinancialByProductResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数目。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -4942,6 +5741,9 @@ class DescribeOrganizationFinancialByProductResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4984,6 +5786,9 @@ class DescribeOrganizationMemberAuthAccountsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量。取值是limit的整数倍。默认值 : 0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4992,6 +5797,9 @@ class DescribeOrganizationMemberAuthAccountsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目。取值范围：1~50。默认值：10。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5000,6 +5808,9 @@ class DescribeOrganizationMemberAuthAccountsRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """成员Uin。
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -5008,6 +5819,9 @@ class DescribeOrganizationMemberAuthAccountsRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """策略ID。可以通过[DescribeOrganizationMemberPolicies](https://cloud.tencent.com/document/product/850/82935)获取
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -5052,6 +5866,10 @@ class DescribeOrganizationMemberAuthAccountsResponse(AbstractModel):
 
     @property
     def Items(self):
+        """列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OrgMemberAuthAccount
+        """
         return self._Items
 
     @Items.setter
@@ -5060,6 +5878,10 @@ class DescribeOrganizationMemberAuthAccountsResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -5068,6 +5890,9 @@ class DescribeOrganizationMemberAuthAccountsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5109,6 +5934,9 @@ class DescribeOrganizationMemberAuthIdentitiesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量。取值是limit的整数倍，默认值 : 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5117,6 +5945,9 @@ class DescribeOrganizationMemberAuthIdentitiesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目。取值范围：1~50，默认值：10
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5125,6 +5956,9 @@ class DescribeOrganizationMemberAuthIdentitiesRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """组织成员Uin。入参MemberUin与IdentityId至少填写一个
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -5133,6 +5967,9 @@ class DescribeOrganizationMemberAuthIdentitiesRequest(AbstractModel):
 
     @property
     def IdentityId(self):
+        """身份ID。入参MemberUin与IdentityId至少填写一个, 可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
+        :rtype: int
+        """
         return self._IdentityId
 
     @IdentityId.setter
@@ -5177,6 +6014,10 @@ class DescribeOrganizationMemberAuthIdentitiesResponse(AbstractModel):
 
     @property
     def Items(self):
+        """授权身份列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OrgMemberAuthIdentity
+        """
         return self._Items
 
     @Items.setter
@@ -5185,6 +6026,10 @@ class DescribeOrganizationMemberAuthIdentitiesResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数目。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -5193,6 +6038,9 @@ class DescribeOrganizationMemberAuthIdentitiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5225,6 +6073,9 @@ class DescribeOrganizationMemberEmailBindRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """成员Uin。
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -5294,6 +6145,10 @@ class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
 
     @property
     def BindId(self):
+        """绑定ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BindId
 
     @BindId.setter
@@ -5302,6 +6157,10 @@ class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
 
     @property
     def ApplyTime(self):
+        """申请时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ApplyTime
 
     @ApplyTime.setter
@@ -5310,6 +6169,10 @@ class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
 
     @property
     def Email(self):
+        """邮箱地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -5318,6 +6181,10 @@ class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
 
     @property
     def Phone(self):
+        """安全手机号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -5326,6 +6193,10 @@ class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
 
     @property
     def BindStatus(self):
+        """绑定状态。    未绑定：Unbound，待激活：Valid，绑定成功：Success，绑定失败：Failed
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BindStatus
 
     @BindStatus.setter
@@ -5334,6 +6205,10 @@ class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
 
     @property
     def BindTime(self):
+        """绑定时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BindTime
 
     @BindTime.setter
@@ -5342,6 +6217,10 @@ class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
 
     @property
     def Description(self):
+        """失败说明。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -5350,6 +6229,10 @@ class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
 
     @property
     def PhoneBind(self):
+        """安全手机绑定状态 。 未绑定：0，已绑定：1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PhoneBind
 
     @PhoneBind.setter
@@ -5358,6 +6241,10 @@ class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
 
     @property
     def CountryCode(self):
+        """国际区号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CountryCode
 
     @CountryCode.setter
@@ -5366,6 +6253,9 @@ class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5409,6 +6299,9 @@ class DescribeOrganizationMemberPoliciesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量。取值是limit的整数倍。默认值 : 0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5417,6 +6310,9 @@ class DescribeOrganizationMemberPoliciesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目。取值范围：1~50。默认值：10。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5425,6 +6321,9 @@ class DescribeOrganizationMemberPoliciesRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """成员Uin。
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -5433,6 +6332,9 @@ class DescribeOrganizationMemberPoliciesRequest(AbstractModel):
 
     @property
     def SearchKey(self):
+        """搜索关键字。可用于策略名或描述搜索
+        :rtype: str
+        """
         return self._SearchKey
 
     @SearchKey.setter
@@ -5477,6 +6379,10 @@ class DescribeOrganizationMemberPoliciesResponse(AbstractModel):
 
     @property
     def Items(self):
+        """列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OrgMemberPolicy
+        """
         return self._Items
 
     @Items.setter
@@ -5485,6 +6391,10 @@ class DescribeOrganizationMemberPoliciesResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数目。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -5493,6 +6403,9 @@ class DescribeOrganizationMemberPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5543,6 +6456,9 @@ class DescribeOrganizationMembersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量。取值是limit的整数倍，默认值 : 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5551,6 +6467,9 @@ class DescribeOrganizationMembersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目。取值范围：1~50，默认值：10
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5559,6 +6478,9 @@ class DescribeOrganizationMembersRequest(AbstractModel):
 
     @property
     def Lang(self):
+        """国际站：en，国内站：zh
+        :rtype: str
+        """
         return self._Lang
 
     @Lang.setter
@@ -5567,6 +6489,9 @@ class DescribeOrganizationMembersRequest(AbstractModel):
 
     @property
     def SearchKey(self):
+        """成员名称或者成员ID搜索。
+        :rtype: str
+        """
         return self._SearchKey
 
     @SearchKey.setter
@@ -5575,6 +6500,9 @@ class DescribeOrganizationMembersRequest(AbstractModel):
 
     @property
     def AuthName(self):
+        """主体名称搜索。
+        :rtype: str
+        """
         return self._AuthName
 
     @AuthName.setter
@@ -5583,6 +6511,9 @@ class DescribeOrganizationMembersRequest(AbstractModel):
 
     @property
     def Product(self):
+        """可信服务产品简称。可信服务管理员查询时必须指定
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -5591,6 +6522,9 @@ class DescribeOrganizationMembersRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """成员标签搜索列表，最大10个
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -5641,6 +6575,9 @@ class DescribeOrganizationMembersResponse(AbstractModel):
 
     @property
     def Items(self):
+        """成员列表。
+        :rtype: list of OrgMember
+        """
         return self._Items
 
     @Items.setter
@@ -5649,6 +6586,9 @@ class DescribeOrganizationMembersResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数目。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -5657,6 +6597,9 @@ class DescribeOrganizationMembersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5695,6 +6638,9 @@ class DescribeOrganizationNodesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目。最大50
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5703,6 +6649,9 @@ class DescribeOrganizationNodesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量。取值是limit的整数倍。默认值 : 0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5711,6 +6660,9 @@ class DescribeOrganizationNodesRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """部门标签搜索列表，最大10个
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -5759,6 +6711,10 @@ class DescribeOrganizationNodesResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -5767,6 +6723,10 @@ class DescribeOrganizationNodesResponse(AbstractModel):
 
     @property
     def Items(self):
+        """列表详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OrgNode
+        """
         return self._Items
 
     @Items.setter
@@ -5775,6 +6735,9 @@ class DescribeOrganizationNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5810,6 +6773,9 @@ class DescribeOrganizationRequest(AbstractModel):
 
     @property
     def Lang(self):
+        """国际站：en，国内站：zh
+        :rtype: str
+        """
         return self._Lang
 
     @Lang.setter
@@ -5818,6 +6784,9 @@ class DescribeOrganizationRequest(AbstractModel):
 
     @property
     def Product(self):
+        """可信服务产品简称。查询是否该可信服务管理员时必须指定
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -5916,6 +6885,10 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def OrgId(self):
+        """企业组织ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._OrgId
 
     @OrgId.setter
@@ -5924,6 +6897,10 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def HostUin(self):
+        """创建者UIN。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HostUin
 
     @HostUin.setter
@@ -5932,6 +6909,10 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def NickName(self):
+        """创建者昵称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NickName
 
     @NickName.setter
@@ -5940,6 +6921,10 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def OrgType(self):
+        """企业组织类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._OrgType
 
     @OrgType.setter
@@ -5948,6 +6933,10 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def IsManager(self):
+        """是否组织管理员。是：true ，否：false
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsManager
 
     @IsManager.setter
@@ -5956,6 +6945,10 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def OrgPolicyType(self):
+        """策略类型。财务管理：Financial
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrgPolicyType
 
     @OrgPolicyType.setter
@@ -5964,6 +6957,10 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def OrgPolicyName(self):
+        """策略名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrgPolicyName
 
     @OrgPolicyName.setter
@@ -5972,6 +6969,10 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def OrgPermission(self):
+        """成员财务权限列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OrgPermission
+        """
         return self._OrgPermission
 
     @OrgPermission.setter
@@ -5980,6 +6981,10 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def RootNodeId(self):
+        """组织根节点ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RootNodeId
 
     @RootNodeId.setter
@@ -5988,6 +6993,10 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """组织创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -5996,6 +7005,10 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def JoinTime(self):
+        """成员加入时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._JoinTime
 
     @JoinTime.setter
@@ -6004,6 +7017,10 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def IsAllowQuit(self):
+        """成员是否允许退出。允许：Allow，不允许：Denied
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IsAllowQuit
 
     @IsAllowQuit.setter
@@ -6012,6 +7029,10 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def PayUin(self):
+        """代付者Uin。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PayUin
 
     @PayUin.setter
@@ -6020,6 +7041,10 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def PayName(self):
+        """代付者名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PayName
 
     @PayName.setter
@@ -6028,6 +7053,10 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def IsAssignManager(self):
+        """是否可信服务管理员。是：true，否：false
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsAssignManager
 
     @IsAssignManager.setter
@@ -6036,6 +7065,10 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def IsAuthManager(self):
+        """是否实名主体管理员。是：true，否：false
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsAuthManager
 
     @IsAuthManager.setter
@@ -6044,6 +7077,9 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6093,6 +7129,9 @@ class DescribePolicyConfigRequest(AbstractModel):
 
     @property
     def OrganizationId(self):
+        """企业组织Id。可以调用[DescribeOrganization](https://cloud.tencent.com/document/product/850/67059)获取
+        :rtype: int
+        """
         return self._OrganizationId
 
     @OrganizationId.setter
@@ -6101,6 +7140,9 @@ class DescribePolicyConfigRequest(AbstractModel):
 
     @property
     def Type(self):
+        """策略类型。默认值0，取值范围：0-服务控制策略、1-标签策略
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -6141,6 +7183,9 @@ class DescribePolicyConfigResponse(AbstractModel):
 
     @property
     def Status(self):
+        """开启状态。0-未开启、1-开启
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -6149,6 +7194,9 @@ class DescribePolicyConfigResponse(AbstractModel):
 
     @property
     def Type(self):
+        """策略类型。SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -6157,6 +7205,9 @@ class DescribePolicyConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6187,6 +7238,9 @@ class DescribePolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """策略Id。
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -6195,6 +7249,9 @@ class DescribePolicyRequest(AbstractModel):
 
     @property
     def PolicyType(self):
+        """策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :rtype: str
+        """
         return self._PolicyType
 
     @PolicyType.setter
@@ -6255,6 +7312,9 @@ class DescribePolicyResponse(AbstractModel):
 
     @property
     def PolicyId(self):
+        """策略Id。
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -6263,6 +7323,10 @@ class DescribePolicyResponse(AbstractModel):
 
     @property
     def PolicyName(self):
+        """策略名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -6271,6 +7335,9 @@ class DescribePolicyResponse(AbstractModel):
 
     @property
     def Type(self):
+        """策略类型。1-自定义 2-预设策略
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -6279,6 +7346,10 @@ class DescribePolicyResponse(AbstractModel):
 
     @property
     def Description(self):
+        """策略描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -6287,6 +7358,10 @@ class DescribePolicyResponse(AbstractModel):
 
     @property
     def PolicyDocument(self):
+        """策略文档。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PolicyDocument
 
     @PolicyDocument.setter
@@ -6295,6 +7370,10 @@ class DescribePolicyResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """策略更新时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -6303,6 +7382,10 @@ class DescribePolicyResponse(AbstractModel):
 
     @property
     def AddTime(self):
+        """策略创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -6311,6 +7394,9 @@ class DescribePolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6343,6 +7429,9 @@ class DescribeShareAreasRequest(AbstractModel):
 
     @property
     def Lang(self):
+        """国际站：en，国内站：zh
+        :rtype: str
+        """
         return self._Lang
 
     @Lang.setter
@@ -6380,6 +7469,10 @@ class DescribeShareAreasResponse(AbstractModel):
 
     @property
     def Items(self):
+        """详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ShareArea
+        """
         return self._Items
 
     @Items.setter
@@ -6388,6 +7481,9 @@ class DescribeShareAreasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6431,6 +7527,9 @@ class DescribeShareUnitMembersRequest(AbstractModel):
 
     @property
     def UnitId(self):
+        """共享单元ID。
+        :rtype: str
+        """
         return self._UnitId
 
     @UnitId.setter
@@ -6439,6 +7538,9 @@ class DescribeShareUnitMembersRequest(AbstractModel):
 
     @property
     def Area(self):
+        """共享单元地域。
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -6447,6 +7549,9 @@ class DescribeShareUnitMembersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量。取值是limit的整数倍，默认值 : 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6455,6 +7560,9 @@ class DescribeShareUnitMembersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目。取值范围：1~50。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6463,6 +7571,9 @@ class DescribeShareUnitMembersRequest(AbstractModel):
 
     @property
     def SearchKey(self):
+        """搜索关键字。支持成员Uin搜索。
+        :rtype: str
+        """
         return self._SearchKey
 
     @SearchKey.setter
@@ -6508,6 +7619,10 @@ class DescribeShareUnitMembersResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数目。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -6516,6 +7631,10 @@ class DescribeShareUnitMembersResponse(AbstractModel):
 
     @property
     def Items(self):
+        """共享单元成员列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ShareUnitMember
+        """
         return self._Items
 
     @Items.setter
@@ -6524,6 +7643,9 @@ class DescribeShareUnitMembersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6571,6 +7693,9 @@ class DescribeShareUnitResourcesRequest(AbstractModel):
 
     @property
     def UnitId(self):
+        """共享单元ID。
+        :rtype: str
+        """
         return self._UnitId
 
     @UnitId.setter
@@ -6579,6 +7704,9 @@ class DescribeShareUnitResourcesRequest(AbstractModel):
 
     @property
     def Area(self):
+        """共享单元地域。
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -6587,6 +7715,9 @@ class DescribeShareUnitResourcesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量。取值是limit的整数倍，默认值 : 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6595,6 +7726,9 @@ class DescribeShareUnitResourcesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目。取值范围：1~50。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6603,6 +7737,9 @@ class DescribeShareUnitResourcesRequest(AbstractModel):
 
     @property
     def SearchKey(self):
+        """搜索关键字。支持产品资源ID搜索。
+        :rtype: str
+        """
         return self._SearchKey
 
     @SearchKey.setter
@@ -6611,6 +7748,9 @@ class DescribeShareUnitResourcesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """共享资源类型。支持共享的资源类型,请参见[资源共享概述](https://cloud.tencent.com/document/product/850/59489)
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -6657,6 +7797,10 @@ class DescribeShareUnitResourcesResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数目。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -6665,6 +7809,10 @@ class DescribeShareUnitResourcesResponse(AbstractModel):
 
     @property
     def Items(self):
+        """共享单元资源列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ShareUnitResource
+        """
         return self._Items
 
     @Items.setter
@@ -6673,6 +7821,9 @@ class DescribeShareUnitResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6714,6 +7865,9 @@ class DescribeShareUnitsRequest(AbstractModel):
 
     @property
     def Area(self):
+        """共享单元地域。可通过接口[DescribeShareAreas](https://cloud.tencent.com/document/product/850/103050)获取支持共享的地域。
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -6722,6 +7876,9 @@ class DescribeShareUnitsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量。取值是limit的整数倍。默认值 : 0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6730,6 +7887,9 @@ class DescribeShareUnitsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目。取值范围：1~50。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6738,6 +7898,9 @@ class DescribeShareUnitsRequest(AbstractModel):
 
     @property
     def SearchKey(self):
+        """搜索关键字。支持UnitId和Name搜索。
+        :rtype: str
+        """
         return self._SearchKey
 
     @SearchKey.setter
@@ -6782,6 +7945,10 @@ class DescribeShareUnitsResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数目。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -6790,6 +7957,10 @@ class DescribeShareUnitsResponse(AbstractModel):
 
     @property
     def Items(self):
+        """共享单元列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ManagerShareUnit
+        """
         return self._Items
 
     @Items.setter
@@ -6798,6 +7969,9 @@ class DescribeShareUnitsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6839,6 +8013,9 @@ class DetachPolicyRequest(AbstractModel):
 
     @property
     def TargetId(self):
+        """解绑策略目标ID。成员Uin或部门ID
+        :rtype: int
+        """
         return self._TargetId
 
     @TargetId.setter
@@ -6847,6 +8024,9 @@ class DetachPolicyRequest(AbstractModel):
 
     @property
     def TargetType(self):
+        """目标类型。取值范围：NODE-部门、MEMBER-成员
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -6855,6 +8035,9 @@ class DetachPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """策略ID。
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -6863,6 +8046,9 @@ class DetachPolicyRequest(AbstractModel):
 
     @property
     def Type(self):
+        """策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -6899,6 +8085,9 @@ class DetachPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6927,6 +8116,9 @@ class DisablePolicyTypeRequest(AbstractModel):
 
     @property
     def OrganizationId(self):
+        """企业组织Id。可以调用[DescribeOrganization](https://cloud.tencent.com/document/product/850/67059)获取
+        :rtype: int
+        """
         return self._OrganizationId
 
     @OrganizationId.setter
@@ -6935,6 +8127,9 @@ class DisablePolicyTypeRequest(AbstractModel):
 
     @property
     def PolicyType(self):
+        """策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :rtype: str
+        """
         return self._PolicyType
 
     @PolicyType.setter
@@ -6969,6 +8164,9 @@ class DisablePolicyTypeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7003,6 +8201,9 @@ class DismantleRoleConfigurationRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -7011,6 +8212,9 @@ class DismantleRoleConfigurationRequest(AbstractModel):
 
     @property
     def RoleConfigurationId(self):
+        """权限配置ID。
+        :rtype: str
+        """
         return self._RoleConfigurationId
 
     @RoleConfigurationId.setter
@@ -7019,6 +8223,9 @@ class DismantleRoleConfigurationRequest(AbstractModel):
 
     @property
     def TargetType(self):
+        """同步的集团账号目标账号的类型，ManagerUin管理账号;MemberUin成员账号。
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -7027,6 +8234,9 @@ class DismantleRoleConfigurationRequest(AbstractModel):
 
     @property
     def TargetUin(self):
+        """同步的集团账号目标账号的UIN。
+        :rtype: int
+        """
         return self._TargetUin
 
     @TargetUin.setter
@@ -7066,6 +8276,9 @@ class DismantleRoleConfigurationResponse(AbstractModel):
 
     @property
     def Task(self):
+        """任务详情。
+        :rtype: :class:`tencentcloud.organization.v20210331.models.RoleProvisioningsTask`
+        """
         return self._Task
 
     @Task.setter
@@ -7074,6 +8287,9 @@ class DismantleRoleConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7108,6 +8324,9 @@ class EffectivePolicy(AbstractModel):
 
     @property
     def TargetId(self):
+        """目标ID。
+        :rtype: int
+        """
         return self._TargetId
 
     @TargetId.setter
@@ -7116,6 +8335,9 @@ class EffectivePolicy(AbstractModel):
 
     @property
     def PolicyContent(self):
+        """有效策略内容。
+        :rtype: str
+        """
         return self._PolicyContent
 
     @PolicyContent.setter
@@ -7124,6 +8346,9 @@ class EffectivePolicy(AbstractModel):
 
     @property
     def LastUpdatedTimestamp(self):
+        """有效策略更新时间。
+        :rtype: int
+        """
         return self._LastUpdatedTimestamp
 
     @LastUpdatedTimestamp.setter
@@ -7162,6 +8387,9 @@ class EnablePolicyTypeRequest(AbstractModel):
 
     @property
     def OrganizationId(self):
+        """企业组织Id。可以调用[DescribeOrganization](https://cloud.tencent.com/document/product/850/67059)获取
+        :rtype: int
+        """
         return self._OrganizationId
 
     @OrganizationId.setter
@@ -7170,6 +8398,9 @@ class EnablePolicyTypeRequest(AbstractModel):
 
     @property
     def PolicyType(self):
+        """策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :rtype: str
+        """
         return self._PolicyType
 
     @PolicyType.setter
@@ -7204,6 +8435,9 @@ class EnablePolicyTypeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7229,6 +8463,9 @@ class GetExternalSAMLIdentityProviderRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -7265,6 +8502,9 @@ class GetExternalSAMLIdentityProviderResponse(AbstractModel):
 
     @property
     def SAMLIdentityProviderConfiguration(self):
+        """saml 身份提供商配置信息。
+        :rtype: :class:`tencentcloud.organization.v20210331.models.SAMLIdentityProviderConfiguration`
+        """
         return self._SAMLIdentityProviderConfiguration
 
     @SAMLIdentityProviderConfiguration.setter
@@ -7273,6 +8513,9 @@ class GetExternalSAMLIdentityProviderResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7304,6 +8547,9 @@ class GetGroupRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -7312,6 +8558,9 @@ class GetGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """用户组的 ID。
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -7349,6 +8598,9 @@ class GetGroupResponse(AbstractModel):
 
     @property
     def GroupInfo(self):
+        """用户组信息
+        :rtype: :class:`tencentcloud.organization.v20210331.models.GroupInfo`
+        """
         return self._GroupInfo
 
     @GroupInfo.setter
@@ -7357,6 +8609,9 @@ class GetGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7388,6 +8643,9 @@ class GetProvisioningTaskStatusRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -7396,6 +8654,9 @@ class GetProvisioningTaskStatusRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -7433,6 +8694,9 @@ class GetProvisioningTaskStatusResponse(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """任务状态信息。
+        :rtype: :class:`tencentcloud.organization.v20210331.models.TaskStatus`
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -7441,6 +8705,9 @@ class GetProvisioningTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7472,6 +8739,9 @@ class GetRoleConfigurationRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -7480,6 +8750,9 @@ class GetRoleConfigurationRequest(AbstractModel):
 
     @property
     def RoleConfigurationId(self):
+        """权限配置ID
+        :rtype: str
+        """
         return self._RoleConfigurationId
 
     @RoleConfigurationId.setter
@@ -7517,6 +8790,9 @@ class GetRoleConfigurationResponse(AbstractModel):
 
     @property
     def RoleConfigurationInfo(self):
+        """权限配置详情
+        :rtype: :class:`tencentcloud.organization.v20210331.models.RoleConfiguration`
+        """
         return self._RoleConfigurationInfo
 
     @RoleConfigurationInfo.setter
@@ -7525,6 +8801,9 @@ class GetRoleConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7553,6 +8832,9 @@ class GetSCIMSynchronizationStatusRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。z-前缀开头，后面是12位随机数字/小写字母
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -7589,6 +8871,9 @@ class GetSCIMSynchronizationStatusResponse(AbstractModel):
 
     @property
     def SCIMSynchronizationStatus(self):
+        """SCIM 同步状态。Enabled：启用。 Disabled：禁用。
+        :rtype: str
+        """
         return self._SCIMSynchronizationStatus
 
     @SCIMSynchronizationStatus.setter
@@ -7597,6 +8882,9 @@ class GetSCIMSynchronizationStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7626,6 +8914,9 @@ class GetTaskStatusRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -7634,6 +8925,9 @@ class GetTaskStatusRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -7671,6 +8965,9 @@ class GetTaskStatusResponse(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """任务状态信息。
+        :rtype: :class:`tencentcloud.organization.v20210331.models.TaskStatus`
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -7679,6 +8976,9 @@ class GetTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7710,6 +9010,9 @@ class GetUserRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户 ID。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -7718,6 +9021,9 @@ class GetUserRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -7755,6 +9061,9 @@ class GetUserResponse(AbstractModel):
 
     @property
     def UserInfo(self):
+        """用户信息。
+        :rtype: :class:`tencentcloud.organization.v20210331.models.UserInfo`
+        """
         return self._UserInfo
 
     @UserInfo.setter
@@ -7763,6 +9072,9 @@ class GetUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7794,6 +9106,9 @@ class GetUserSyncProvisioningRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -7802,6 +9117,9 @@ class GetUserSyncProvisioningRequest(AbstractModel):
 
     @property
     def UserProvisioningId(self):
+        """CAM 用户同步的 ID。
+        :rtype: str
+        """
         return self._UserProvisioningId
 
     @UserProvisioningId.setter
@@ -7839,6 +9157,9 @@ class GetUserSyncProvisioningResponse(AbstractModel):
 
     @property
     def UserProvisioning(self):
+        """CAM 用户同步信息。
+        :rtype: :class:`tencentcloud.organization.v20210331.models.UserProvisioning`
+        """
         return self._UserProvisioning
 
     @UserProvisioning.setter
@@ -7847,6 +9168,9 @@ class GetUserSyncProvisioningResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7875,6 +9199,9 @@ class GetZoneSAMLServiceProviderInfoRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -7911,6 +9238,9 @@ class GetZoneSAMLServiceProviderInfoResponse(AbstractModel):
 
     @property
     def SAMLServiceProvider(self):
+        """saml服务提供商配置信息
+        :rtype: :class:`tencentcloud.organization.v20210331.models.SAMLServiceProvider`
+        """
         return self._SAMLServiceProvider
 
     @SAMLServiceProvider.setter
@@ -7919,6 +9249,9 @@ class GetZoneSAMLServiceProviderInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7947,6 +9280,9 @@ class GetZoneStatisticsRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -7983,6 +9319,9 @@ class GetZoneStatisticsResponse(AbstractModel):
 
     @property
     def ZoneStatistics(self):
+        """空间的统计信息。
+        :rtype: :class:`tencentcloud.organization.v20210331.models.ZoneStatistics`
+        """
         return self._ZoneStatistics
 
     @ZoneStatistics.setter
@@ -7991,6 +9330,9 @@ class GetZoneStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8040,6 +9382,9 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupName(self):
+        """用户组的名称。
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -8048,6 +9393,9 @@ class GroupInfo(AbstractModel):
 
     @property
     def Description(self):
+        """用户组的描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -8056,6 +9404,9 @@ class GroupInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """用户组的创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8064,6 +9415,9 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupType(self):
+        """用户组的类型  Manual：手动创建，Synchronized：外部导入。
+        :rtype: str
+        """
         return self._GroupType
 
     @GroupType.setter
@@ -8072,6 +9426,9 @@ class GroupInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """用户组的修改时间。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -8080,6 +9437,9 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupId(self):
+        """用户组的 ID。
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -8088,6 +9448,9 @@ class GroupInfo(AbstractModel):
 
     @property
     def MemberCount(self):
+        """组员数量。
+        :rtype: int
+        """
         return self._MemberCount
 
     @MemberCount.setter
@@ -8096,6 +9459,9 @@ class GroupInfo(AbstractModel):
 
     @property
     def IsSelected(self):
+        """如果有入参FilterUsers，用户在用户组返回true，否则返回false
+        :rtype: bool
+        """
         return self._IsSelected
 
     @IsSelected.setter
@@ -8157,6 +9523,9 @@ class GroupMembers(AbstractModel):
 
     @property
     def UserName(self):
+        """查询username。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -8165,6 +9534,9 @@ class GroupMembers(AbstractModel):
 
     @property
     def DisplayName(self):
+        """用户的显示名称。
+        :rtype: str
+        """
         return self._DisplayName
 
     @DisplayName.setter
@@ -8173,6 +9545,9 @@ class GroupMembers(AbstractModel):
 
     @property
     def Description(self):
+        """用户的描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -8181,6 +9556,9 @@ class GroupMembers(AbstractModel):
 
     @property
     def Email(self):
+        """用户的电子邮箱。目录内必须唯一。
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -8189,6 +9567,9 @@ class GroupMembers(AbstractModel):
 
     @property
     def UserStatus(self):
+        """用户状态 Enabled：启用， Disabled：禁用。
+        :rtype: str
+        """
         return self._UserStatus
 
     @UserStatus.setter
@@ -8197,6 +9578,9 @@ class GroupMembers(AbstractModel):
 
     @property
     def UserType(self):
+        """用户类型  Manual：手动创建，Synchronized：外部导入。
+        :rtype: str
+        """
         return self._UserType
 
     @UserType.setter
@@ -8205,6 +9589,9 @@ class GroupMembers(AbstractModel):
 
     @property
     def UserId(self):
+        """用户 ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -8213,6 +9600,9 @@ class GroupMembers(AbstractModel):
 
     @property
     def JoinTime(self):
+        """用户加入用户组的时间
+        :rtype: str
+        """
         return self._JoinTime
 
     @JoinTime.setter
@@ -8264,6 +9654,9 @@ class IdentityPolicy(AbstractModel):
 
     @property
     def PolicyId(self):
+        """CAM预设策略ID。PolicyType 为预设策略时有效且必选
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -8272,6 +9665,9 @@ class IdentityPolicy(AbstractModel):
 
     @property
     def PolicyName(self):
+        """CAM预设策略名称。PolicyType 为预设策略时有效且必选
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -8280,6 +9676,10 @@ class IdentityPolicy(AbstractModel):
 
     @property
     def PolicyType(self):
+        """策略类型。取值 1-自定义策略  2-预设策略；默认值2
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PolicyType
 
     @PolicyType.setter
@@ -8288,6 +9688,10 @@ class IdentityPolicy(AbstractModel):
 
     @property
     def PolicyDocument(self):
+        """自定义策略内容，遵循CAM策略语法。PolicyType 为自定义策略时有效且必选
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PolicyDocument
 
     @PolicyDocument.setter
@@ -8354,6 +9758,9 @@ class InviteOrganizationMemberRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """被邀请账号Uin。
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -8362,6 +9769,9 @@ class InviteOrganizationMemberRequest(AbstractModel):
 
     @property
     def Name(self):
+        """成员名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&._[]-:,
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8370,6 +9780,9 @@ class InviteOrganizationMemberRequest(AbstractModel):
 
     @property
     def PolicyType(self):
+        """关系策略。取值：Financial
+        :rtype: str
+        """
         return self._PolicyType
 
     @PolicyType.setter
@@ -8378,6 +9791,9 @@ class InviteOrganizationMemberRequest(AbstractModel):
 
     @property
     def PermissionIds(self):
+        """成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票、6-优惠继承、7-代付费，1、2 默认必须
+        :rtype: list of int non-negative
+        """
         return self._PermissionIds
 
     @PermissionIds.setter
@@ -8386,6 +9802,9 @@ class InviteOrganizationMemberRequest(AbstractModel):
 
     @property
     def NodeId(self):
+        """成员所属部门的节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -8394,6 +9813,9 @@ class InviteOrganizationMemberRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -8402,6 +9824,9 @@ class InviteOrganizationMemberRequest(AbstractModel):
 
     @property
     def IsAllowQuit(self):
+        """是否允许成员退出。允许：Allow，不允许：Denied。
+        :rtype: str
+        """
         return self._IsAllowQuit
 
     @IsAllowQuit.setter
@@ -8410,6 +9835,9 @@ class InviteOrganizationMemberRequest(AbstractModel):
 
     @property
     def PayUin(self):
+        """代付者Uin。成员代付费时需要
+        :rtype: str
+        """
         return self._PayUin
 
     @PayUin.setter
@@ -8418,6 +9846,9 @@ class InviteOrganizationMemberRequest(AbstractModel):
 
     @property
     def RelationAuthName(self):
+        """互信实名主体名称。
+        :rtype: str
+        """
         return self._RelationAuthName
 
     @RelationAuthName.setter
@@ -8426,6 +9857,9 @@ class InviteOrganizationMemberRequest(AbstractModel):
 
     @property
     def AuthFile(self):
+        """互信主体证明文件列表。
+        :rtype: list of AuthRelationFile
+        """
         return self._AuthFile
 
     @AuthFile.setter
@@ -8434,6 +9868,9 @@ class InviteOrganizationMemberRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """成员标签列表。最大10个
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -8487,6 +9924,9 @@ class InviteOrganizationMemberResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8527,6 +9967,9 @@ Synchronized：外部同步。
 
     @property
     def GroupName(self):
+        """用户组的名称。
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -8535,6 +9978,9 @@ Synchronized：外部同步。
 
     @property
     def Description(self):
+        """用户组的描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -8543,6 +9989,9 @@ Synchronized：外部同步。
 
     @property
     def GroupId(self):
+        """用户组 ID。
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -8551,6 +10000,12 @@ Synchronized：外部同步。
 
     @property
     def GroupType(self):
+        """用户组的类型。取值：
+
+Manual：手动创建。
+Synchronized：外部同步。
+        :rtype: str
+        """
         return self._GroupType
 
     @GroupType.setter
@@ -8559,6 +10014,9 @@ Synchronized：外部同步。
 
     @property
     def JoinTime(self):
+        """加入用户组的时间
+        :rtype: str
+        """
         return self._JoinTime
 
     @JoinTime.setter
@@ -8596,6 +10054,9 @@ class ListExternalSAMLIdPCertificatesRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -8635,6 +10096,9 @@ class ListExternalSAMLIdPCertificatesResponse(AbstractModel):
 
     @property
     def TotalCounts(self):
+        """符合请求参数条件的数据总条数。
+        :rtype: int
+        """
         return self._TotalCounts
 
     @TotalCounts.setter
@@ -8643,6 +10107,9 @@ class ListExternalSAMLIdPCertificatesResponse(AbstractModel):
 
     @property
     def SAMLIdPCertificates(self):
+        """SAML 签名证书列表
+        :rtype: list of SAMLIdPCertificate
+        """
         return self._SAMLIdPCertificates
 
     @SAMLIdPCertificates.setter
@@ -8651,6 +10118,9 @@ class ListExternalSAMLIdPCertificatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8695,6 +10165,9 @@ class ListGroupMembersRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -8703,6 +10176,9 @@ class ListGroupMembersRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """用户组ID。
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -8711,6 +10187,9 @@ class ListGroupMembersRequest(AbstractModel):
 
     @property
     def NextToken(self):
+        """查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -8719,6 +10198,9 @@ class ListGroupMembersRequest(AbstractModel):
 
     @property
     def MaxResults(self):
+        """每页的最大数据条数。  取值范围：1~100。  默认值：10。
+        :rtype: int
+        """
         return self._MaxResults
 
     @MaxResults.setter
@@ -8727,6 +10209,9 @@ class ListGroupMembersRequest(AbstractModel):
 
     @property
     def UserType(self):
+        """用户类型  Manual：手动创建，Synchronized：外部导入。
+        :rtype: str
+        """
         return self._UserType
 
     @UserType.setter
@@ -8779,6 +10264,9 @@ class ListGroupMembersResponse(AbstractModel):
 
     @property
     def NextToken(self):
+        """查询返回结果下一页的令牌。  说明 只有IsTruncated为true时，才显示该参数。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -8787,6 +10275,9 @@ class ListGroupMembersResponse(AbstractModel):
 
     @property
     def TotalCounts(self):
+        """符合请求参数条件的数据总条数。
+        :rtype: int
+        """
         return self._TotalCounts
 
     @TotalCounts.setter
@@ -8795,6 +10286,9 @@ class ListGroupMembersResponse(AbstractModel):
 
     @property
     def MaxResults(self):
+        """每页的最大数据条数。
+        :rtype: int
+        """
         return self._MaxResults
 
     @MaxResults.setter
@@ -8803,6 +10297,9 @@ class ListGroupMembersResponse(AbstractModel):
 
     @property
     def IsTruncated(self):
+        """返回结果是否被截断。取值：  true：已截断。 false：未截断。
+        :rtype: bool
+        """
         return self._IsTruncated
 
     @IsTruncated.setter
@@ -8811,6 +10308,9 @@ class ListGroupMembersResponse(AbstractModel):
 
     @property
     def GroupMembers(self):
+        """用户组的用户列表
+        :rtype: list of GroupMembers
+        """
         return self._GroupMembers
 
     @GroupMembers.setter
@@ -8819,6 +10319,9 @@ class ListGroupMembersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8861,7 +10364,7 @@ class ListGroupsRequest(AbstractModel):
         :type FilterUsers: list of str
         :param _SortField: 排序的字段，目前只支持CreateTime，默认是CreateTime字段
         :type SortField: str
-        :param _SortType: 排序类型：Desc 倒序 Asc  正序，需要你和SortField一起设置
+        :param _SortType: 排序类型：Desc 倒序 Asc  正序，需要您和SortField一起设置
         :type SortType: str
         :param _Offset: 翻页offset. 不要与NextToken同时使用，优先使用NextToken
         :type Offset: int
@@ -8878,6 +10381,9 @@ class ListGroupsRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -8886,6 +10392,9 @@ class ListGroupsRequest(AbstractModel):
 
     @property
     def NextToken(self):
+        """查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -8894,6 +10403,9 @@ class ListGroupsRequest(AbstractModel):
 
     @property
     def MaxResults(self):
+        """每页的最大数据条数。  取值范围：1~100。  默认值：10。
+        :rtype: int
+        """
         return self._MaxResults
 
     @MaxResults.setter
@@ -8902,6 +10414,9 @@ class ListGroupsRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """过滤条件。  格式：<Attribute> <Operator> <Value>，不区分大小写。目前，<Attribute>只支持GroupName，<Operator>只支持eq（Equals）和sw（Start With）。  示例：Filter = "GroupName sw test"，表示查询名称以 test 开头的全部用户组。Filter = "GroupName eq testgroup"，表示查询名称为 testgroup 的用户组。
+        :rtype: str
+        """
         return self._Filter
 
     @Filter.setter
@@ -8910,6 +10425,9 @@ class ListGroupsRequest(AbstractModel):
 
     @property
     def GroupType(self):
+        """用户组的类型  Manual：手动创建，Synchronized：外部导入。
+        :rtype: str
+        """
         return self._GroupType
 
     @GroupType.setter
@@ -8918,6 +10436,9 @@ class ListGroupsRequest(AbstractModel):
 
     @property
     def FilterUsers(self):
+        """筛选的用户，该用户关联的用户组会返回IsSelected=1
+        :rtype: list of str
+        """
         return self._FilterUsers
 
     @FilterUsers.setter
@@ -8926,6 +10447,9 @@ class ListGroupsRequest(AbstractModel):
 
     @property
     def SortField(self):
+        """排序的字段，目前只支持CreateTime，默认是CreateTime字段
+        :rtype: str
+        """
         return self._SortField
 
     @SortField.setter
@@ -8934,6 +10458,9 @@ class ListGroupsRequest(AbstractModel):
 
     @property
     def SortType(self):
+        """排序类型：Desc 倒序 Asc  正序，需要您和SortField一起设置
+        :rtype: str
+        """
         return self._SortType
 
     @SortType.setter
@@ -8942,6 +10469,9 @@ class ListGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """翻页offset. 不要与NextToken同时使用，优先使用NextToken
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8998,6 +10528,9 @@ class ListGroupsResponse(AbstractModel):
 
     @property
     def NextToken(self):
+        """查询返回结果下一页的令牌。  说明 只有IsTruncated为true时，才显示该参数。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -9006,6 +10539,9 @@ class ListGroupsResponse(AbstractModel):
 
     @property
     def Groups(self):
+        """用户组列表。
+        :rtype: list of GroupInfo
+        """
         return self._Groups
 
     @Groups.setter
@@ -9014,6 +10550,9 @@ class ListGroupsResponse(AbstractModel):
 
     @property
     def MaxResults(self):
+        """每页的最大数据条数。
+        :rtype: int
+        """
         return self._MaxResults
 
     @MaxResults.setter
@@ -9022,6 +10561,9 @@ class ListGroupsResponse(AbstractModel):
 
     @property
     def TotalCounts(self):
+        """符合请求参数条件的数据总条数。
+        :rtype: int
+        """
         return self._TotalCounts
 
     @TotalCounts.setter
@@ -9030,6 +10572,9 @@ class ListGroupsResponse(AbstractModel):
 
     @property
     def IsTruncated(self):
+        """返回结果是否被截断。取值：  true：已截断。 false：未截断。
+        :rtype: bool
+        """
         return self._IsTruncated
 
     @IsTruncated.setter
@@ -9038,6 +10583,9 @@ class ListGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9082,6 +10630,9 @@ class ListJoinedGroupsForUserRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -9090,6 +10641,9 @@ class ListJoinedGroupsForUserRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -9098,6 +10652,9 @@ class ListJoinedGroupsForUserRequest(AbstractModel):
 
     @property
     def NextToken(self):
+        """查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -9106,6 +10663,9 @@ class ListJoinedGroupsForUserRequest(AbstractModel):
 
     @property
     def MaxResults(self):
+        """每页的最大数据条数。  取值范围：1~100。  默认值：10。
+        :rtype: int
+        """
         return self._MaxResults
 
     @MaxResults.setter
@@ -9157,6 +10717,9 @@ class ListJoinedGroupsForUserResponse(AbstractModel):
 
     @property
     def NextToken(self):
+        """查询返回结果下一页的令牌。  说明 只有IsTruncated为true时，才显示该参数。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -9165,6 +10728,9 @@ class ListJoinedGroupsForUserResponse(AbstractModel):
 
     @property
     def TotalCounts(self):
+        """符合请求参数条件的数据总条数。
+        :rtype: int
+        """
         return self._TotalCounts
 
     @TotalCounts.setter
@@ -9173,6 +10739,9 @@ class ListJoinedGroupsForUserResponse(AbstractModel):
 
     @property
     def MaxResults(self):
+        """每页的最大数据条数。
+        :rtype: int
+        """
         return self._MaxResults
 
     @MaxResults.setter
@@ -9181,6 +10750,9 @@ class ListJoinedGroupsForUserResponse(AbstractModel):
 
     @property
     def IsTruncated(self):
+        """返回结果是否被截断。取值：  true：已截断。 false：未截断。
+        :rtype: bool
+        """
         return self._IsTruncated
 
     @IsTruncated.setter
@@ -9189,6 +10761,9 @@ class ListJoinedGroupsForUserResponse(AbstractModel):
 
     @property
     def JoinedGroups(self):
+        """用户加入的用户组列表
+        :rtype: list of JoinedGroups
+        """
         return self._JoinedGroups
 
     @JoinedGroups.setter
@@ -9197,6 +10772,9 @@ class ListJoinedGroupsForUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9242,6 +10820,9 @@ class ListNonCompliantResourceRequest(AbstractModel):
 
     @property
     def MaxResults(self):
+        """限制数目。取值范围：1~50。
+        :rtype: int
+        """
         return self._MaxResults
 
     @MaxResults.setter
@@ -9250,6 +10831,9 @@ class ListNonCompliantResourceRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """成员Uin。
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -9258,6 +10842,10 @@ class ListNonCompliantResourceRequest(AbstractModel):
 
     @property
     def PaginationToken(self):
+        """从上一页的响应中获取的下一页的Token值。
+如果是第一次请求，设置为空。
+        :rtype: str
+        """
         return self._PaginationToken
 
     @PaginationToken.setter
@@ -9266,6 +10854,9 @@ class ListNonCompliantResourceRequest(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键。
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -9310,6 +10901,10 @@ class ListNonCompliantResourceResponse(AbstractModel):
 
     @property
     def Items(self):
+        """资源及标签合规信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ResourceTagMapping
+        """
         return self._Items
 
     @Items.setter
@@ -9318,6 +10913,10 @@ class ListNonCompliantResourceResponse(AbstractModel):
 
     @property
     def PaginationToken(self):
+        """获取的下一页的Token值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PaginationToken
 
     @PaginationToken.setter
@@ -9326,6 +10925,9 @@ class ListNonCompliantResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9364,6 +10966,9 @@ class ListOrgServiceAssignMemberRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量。取值是limit的整数倍，默认值 : 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -9372,6 +10977,9 @@ class ListOrgServiceAssignMemberRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目。取值范围：1~50，默认值：10
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -9380,6 +10988,9 @@ class ListOrgServiceAssignMemberRequest(AbstractModel):
 
     @property
     def ServiceId(self):
+        """集团服务ID。可以通过[ListOrganizationService](https://cloud.tencent.com/document/product/850/109561)获取
+        :rtype: int
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -9423,6 +11034,10 @@ class ListOrgServiceAssignMemberResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -9431,6 +11046,10 @@ class ListOrgServiceAssignMemberResponse(AbstractModel):
 
     @property
     def Items(self):
+        """委派管理员列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OrganizationServiceAssignMember
+        """
         return self._Items
 
     @Items.setter
@@ -9439,6 +11058,9 @@ class ListOrgServiceAssignMemberResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9483,6 +11105,9 @@ class ListOrganizationIdentityRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量。取值是limit的整数倍。默认值 : 0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -9491,6 +11116,9 @@ class ListOrganizationIdentityRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目。取值范围：1~50。默认值：10。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -9499,6 +11127,9 @@ class ListOrganizationIdentityRequest(AbstractModel):
 
     @property
     def SearchKey(self):
+        """名称搜索关键字。
+        :rtype: str
+        """
         return self._SearchKey
 
     @SearchKey.setter
@@ -9507,6 +11138,9 @@ class ListOrganizationIdentityRequest(AbstractModel):
 
     @property
     def IdentityId(self):
+        """身份ID。可以通过身份ID搜索
+        :rtype: int
+        """
         return self._IdentityId
 
     @IdentityId.setter
@@ -9515,6 +11149,9 @@ class ListOrganizationIdentityRequest(AbstractModel):
 
     @property
     def IdentityType(self):
+        """身份类型。取值范围 1-预设, 2-自定义
+        :rtype: int
+        """
         return self._IdentityType
 
     @IdentityType.setter
@@ -9560,6 +11197,10 @@ class ListOrganizationIdentityResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -9568,6 +11209,10 @@ class ListOrganizationIdentityResponse(AbstractModel):
 
     @property
     def Items(self):
+        """条目详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OrgIdentity
+        """
         return self._Items
 
     @Items.setter
@@ -9576,6 +11221,9 @@ class ListOrganizationIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9614,6 +11262,9 @@ class ListOrganizationServiceRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量。取值是limit的整数倍，默认值 : 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -9622,6 +11273,9 @@ class ListOrganizationServiceRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """限制数目。取值范围：1~50，默认值：10
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -9630,6 +11284,9 @@ class ListOrganizationServiceRequest(AbstractModel):
 
     @property
     def SearchKey(self):
+        """名称搜索关键字。
+        :rtype: str
+        """
         return self._SearchKey
 
     @SearchKey.setter
@@ -9673,6 +11330,10 @@ class ListOrganizationServiceResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -9681,6 +11342,10 @@ class ListOrganizationServiceResponse(AbstractModel):
 
     @property
     def Items(self):
+        """集团服务列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OrganizationServiceAssign
+        """
         return self._Items
 
     @Items.setter
@@ -9689,6 +11354,9 @@ class ListOrganizationServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9730,6 +11398,9 @@ class ListPermissionPoliciesInRoleConfigurationRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -9738,6 +11409,9 @@ class ListPermissionPoliciesInRoleConfigurationRequest(AbstractModel):
 
     @property
     def RoleConfigurationId(self):
+        """权限配置 ID
+        :rtype: str
+        """
         return self._RoleConfigurationId
 
     @RoleConfigurationId.setter
@@ -9746,6 +11420,9 @@ class ListPermissionPoliciesInRoleConfigurationRequest(AbstractModel):
 
     @property
     def RolePolicyType(self):
+        """权限策略类型。取值：  System：系统策略。复用 CAM 的系统策略。 Custom: 自定义策略。按照 CAM 权限策略语法和结构编写的自定义策略。
+        :rtype: str
+        """
         return self._RolePolicyType
 
     @RolePolicyType.setter
@@ -9754,6 +11431,9 @@ class ListPermissionPoliciesInRoleConfigurationRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """按策略名称搜索
+        :rtype: str
+        """
         return self._Filter
 
     @Filter.setter
@@ -9796,6 +11476,9 @@ class ListPermissionPoliciesInRoleConfigurationResponse(AbstractModel):
 
     @property
     def TotalCounts(self):
+        """权限策略总个数。
+        :rtype: int
+        """
         return self._TotalCounts
 
     @TotalCounts.setter
@@ -9804,6 +11487,9 @@ class ListPermissionPoliciesInRoleConfigurationResponse(AbstractModel):
 
     @property
     def RolePolicies(self):
+        """权限策略列表。
+        :rtype: list of RolePolicie
+        """
         return self._RolePolicies
 
     @RolePolicies.setter
@@ -9812,6 +11498,9 @@ class ListPermissionPoliciesInRoleConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9873,6 +11562,9 @@ class ListPoliciesForTarget(AbstractModel):
 
     @property
     def StrategyId(self):
+        """策略Id
+        :rtype: int
+        """
         return self._StrategyId
 
     @StrategyId.setter
@@ -9881,6 +11573,9 @@ class ListPoliciesForTarget(AbstractModel):
 
     @property
     def StrategyName(self):
+        """策略名称
+        :rtype: str
+        """
         return self._StrategyName
 
     @StrategyName.setter
@@ -9889,6 +11584,10 @@ class ListPoliciesForTarget(AbstractModel):
 
     @property
     def Remark(self):
+        """备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -9897,6 +11596,9 @@ class ListPoliciesForTarget(AbstractModel):
 
     @property
     def Uin(self):
+        """关联的账号或节点
+        :rtype: int
+        """
         return self._Uin
 
     @Uin.setter
@@ -9905,6 +11607,9 @@ class ListPoliciesForTarget(AbstractModel):
 
     @property
     def Type(self):
+        """关联类型 1-节点 2-用户
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -9913,6 +11618,10 @@ class ListPoliciesForTarget(AbstractModel):
 
     @property
     def AddTime(self):
+        """策略创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -9921,6 +11630,10 @@ class ListPoliciesForTarget(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """策略更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -9929,6 +11642,10 @@ class ListPoliciesForTarget(AbstractModel):
 
     @property
     def Name(self):
+        """部门名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9937,6 +11654,10 @@ class ListPoliciesForTarget(AbstractModel):
 
     @property
     def AttachTime(self):
+        """策略绑定时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AttachTime
 
     @AttachTime.setter
@@ -9990,6 +11711,9 @@ class ListPoliciesForTargetRequest(AbstractModel):
 
     @property
     def TargetId(self):
+        """账号uin或者节点id。
+        :rtype: int
+        """
         return self._TargetId
 
     @TargetId.setter
@@ -9998,6 +11722,9 @@ class ListPoliciesForTargetRequest(AbstractModel):
 
     @property
     def Rp(self):
+        """每页数量。默认值是 20，必须大于 0 且小于或等于 200
+        :rtype: int
+        """
         return self._Rp
 
     @Rp.setter
@@ -10006,6 +11733,9 @@ class ListPoliciesForTargetRequest(AbstractModel):
 
     @property
     def Page(self):
+        """页码。默认值是 1，从 1开始，不能大于 200
+        :rtype: int
+        """
         return self._Page
 
     @Page.setter
@@ -10014,6 +11744,9 @@ class ListPoliciesForTargetRequest(AbstractModel):
 
     @property
     def PolicyType(self):
+        """策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :rtype: str
+        """
         return self._PolicyType
 
     @PolicyType.setter
@@ -10022,6 +11755,9 @@ class ListPoliciesForTargetRequest(AbstractModel):
 
     @property
     def Keyword(self):
+        """搜索关键字。按照策略名称搜索
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -10066,6 +11802,9 @@ class ListPoliciesForTargetResponse(AbstractModel):
 
     @property
     def TotalNum(self):
+        """总数。
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -10074,6 +11813,10 @@ class ListPoliciesForTargetResponse(AbstractModel):
 
     @property
     def List(self):
+        """目标关联的策略列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ListPoliciesForTarget
+        """
         return self._List
 
     @List.setter
@@ -10082,6 +11825,9 @@ class ListPoliciesForTargetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10126,6 +11872,9 @@ class ListPoliciesRequest(AbstractModel):
 
     @property
     def Rp(self):
+        """每页数量。默认值是 20，必须大于 0 且小于或等于 200
+        :rtype: int
+        """
         return self._Rp
 
     @Rp.setter
@@ -10134,6 +11883,9 @@ class ListPoliciesRequest(AbstractModel):
 
     @property
     def Page(self):
+        """页码。默认值是 1，从 1开始，不能大于 200
+        :rtype: int
+        """
         return self._Page
 
     @Page.setter
@@ -10142,6 +11894,9 @@ class ListPoliciesRequest(AbstractModel):
 
     @property
     def Scope(self):
+        """查询范围。取值范围： All-获取所有策略、QCS-只获取预设策略、Local-只获取自定义策略，默认值：All
+        :rtype: str
+        """
         return self._Scope
 
     @Scope.setter
@@ -10150,6 +11905,9 @@ class ListPoliciesRequest(AbstractModel):
 
     @property
     def Keyword(self):
+        """搜索关键字。按照策略名搜索
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -10158,6 +11916,9 @@ class ListPoliciesRequest(AbstractModel):
 
     @property
     def PolicyType(self):
+        """策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :rtype: str
+        """
         return self._PolicyType
 
     @PolicyType.setter
@@ -10202,6 +11963,9 @@ class ListPoliciesResponse(AbstractModel):
 
     @property
     def TotalNum(self):
+        """策略总数
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -10210,6 +11974,10 @@ class ListPoliciesResponse(AbstractModel):
 
     @property
     def List(self):
+        """策略列表数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ListPolicyNode
+        """
         return self._List
 
     @List.setter
@@ -10218,6 +11986,9 @@ class ListPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10272,6 +12043,10 @@ class ListPolicyNode(AbstractModel):
 
     @property
     def AddTime(self):
+        """策略创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -10280,6 +12055,10 @@ class ListPolicyNode(AbstractModel):
 
     @property
     def AttachedTimes(self):
+        """策略绑定次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AttachedTimes
 
     @AttachedTimes.setter
@@ -10288,6 +12067,10 @@ class ListPolicyNode(AbstractModel):
 
     @property
     def Description(self):
+        """策略描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -10296,6 +12079,9 @@ class ListPolicyNode(AbstractModel):
 
     @property
     def PolicyName(self):
+        """策略名称
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -10304,6 +12090,9 @@ class ListPolicyNode(AbstractModel):
 
     @property
     def PolicyId(self):
+        """策略Id
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -10312,6 +12101,10 @@ class ListPolicyNode(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """策略更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -10320,6 +12113,9 @@ class ListPolicyNode(AbstractModel):
 
     @property
     def Type(self):
+        """策略类型 1-自定义 2-预设
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -10383,6 +12179,9 @@ class ListRoleAssignmentsRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -10391,6 +12190,9 @@ class ListRoleAssignmentsRequest(AbstractModel):
 
     @property
     def RoleConfigurationId(self):
+        """权限配置ID。
+        :rtype: str
+        """
         return self._RoleConfigurationId
 
     @RoleConfigurationId.setter
@@ -10399,6 +12201,9 @@ class ListRoleAssignmentsRequest(AbstractModel):
 
     @property
     def MaxResults(self):
+        """每页的最大数据条数。  取值范围：1~100。  默认值：10。
+        :rtype: int
+        """
         return self._MaxResults
 
     @MaxResults.setter
@@ -10407,6 +12212,9 @@ class ListRoleAssignmentsRequest(AbstractModel):
 
     @property
     def NextToken(self):
+        """查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -10415,6 +12223,9 @@ class ListRoleAssignmentsRequest(AbstractModel):
 
     @property
     def TargetType(self):
+        """同步的集团账号目标账号的类型，ManagerUin管理账号;MemberUin成员账号
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -10423,6 +12234,9 @@ class ListRoleAssignmentsRequest(AbstractModel):
 
     @property
     def TargetUin(self):
+        """同步的集团账号目标账号的UIN。
+        :rtype: int
+        """
         return self._TargetUin
 
     @TargetUin.setter
@@ -10431,6 +12245,9 @@ class ListRoleAssignmentsRequest(AbstractModel):
 
     @property
     def PrincipalType(self):
+        """CAM 用户同步的身份类型。取值： User：表示同步的身份是用户。 Group：表示同步的身份是用户组。
+        :rtype: str
+        """
         return self._PrincipalType
 
     @PrincipalType.setter
@@ -10439,6 +12256,9 @@ class ListRoleAssignmentsRequest(AbstractModel):
 
     @property
     def PrincipalId(self):
+        """用户同步 ID。取值： 当PrincipalType取值为Group时，该值为用户组 ID（g-****)，当PrincipalType取值为User时，该值为用户 ID （u-****）。
+        :rtype: str
+        """
         return self._PrincipalId
 
     @PrincipalId.setter
@@ -10447,6 +12267,9 @@ class ListRoleAssignmentsRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """查询条件，目前只支持权限配置名称查询。
+        :rtype: str
+        """
         return self._Filter
 
     @Filter.setter
@@ -10503,6 +12326,9 @@ class ListRoleAssignmentsResponse(AbstractModel):
 
     @property
     def NextToken(self):
+        """查询返回结果下一页的令牌。  说明 只有IsTruncated为true时，才显示该参数。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -10511,6 +12337,9 @@ class ListRoleAssignmentsResponse(AbstractModel):
 
     @property
     def TotalCounts(self):
+        """符合请求参数条件的数据总条数。
+        :rtype: int
+        """
         return self._TotalCounts
 
     @TotalCounts.setter
@@ -10519,6 +12348,9 @@ class ListRoleAssignmentsResponse(AbstractModel):
 
     @property
     def MaxResults(self):
+        """每页的最大数据条数。
+        :rtype: int
+        """
         return self._MaxResults
 
     @MaxResults.setter
@@ -10527,6 +12359,9 @@ class ListRoleAssignmentsResponse(AbstractModel):
 
     @property
     def IsTruncated(self):
+        """返回结果是否被截断。取值：  true：已截断。 false：未截断。
+        :rtype: bool
+        """
         return self._IsTruncated
 
     @IsTruncated.setter
@@ -10535,6 +12370,9 @@ class ListRoleAssignmentsResponse(AbstractModel):
 
     @property
     def RoleAssignments(self):
+        """集团账号目标账号的授权列表。
+        :rtype: list of RoleAssignments
+        """
         return self._RoleAssignments
 
     @RoleAssignments.setter
@@ -10543,6 +12381,9 @@ class ListRoleAssignmentsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10599,6 +12440,9 @@ class ListRoleConfigurationProvisioningsRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -10607,6 +12451,9 @@ class ListRoleConfigurationProvisioningsRequest(AbstractModel):
 
     @property
     def RoleConfigurationId(self):
+        """权限配置ID。
+        :rtype: str
+        """
         return self._RoleConfigurationId
 
     @RoleConfigurationId.setter
@@ -10615,6 +12462,9 @@ class ListRoleConfigurationProvisioningsRequest(AbstractModel):
 
     @property
     def MaxResults(self):
+        """每页的最大数据条数。  取值范围：1~100。  默认值：10。
+        :rtype: int
+        """
         return self._MaxResults
 
     @MaxResults.setter
@@ -10623,6 +12473,9 @@ class ListRoleConfigurationProvisioningsRequest(AbstractModel):
 
     @property
     def NextToken(self):
+        """查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -10631,6 +12484,9 @@ class ListRoleConfigurationProvisioningsRequest(AbstractModel):
 
     @property
     def TargetType(self):
+        """同步的集团账号目标账号的类型，ManagerUin管理账号;MemberUin成员账号
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -10639,6 +12495,9 @@ class ListRoleConfigurationProvisioningsRequest(AbstractModel):
 
     @property
     def TargetUin(self):
+        """同步的集团账号目标账号的UIN。
+        :rtype: int
+        """
         return self._TargetUin
 
     @TargetUin.setter
@@ -10647,6 +12506,9 @@ class ListRoleConfigurationProvisioningsRequest(AbstractModel):
 
     @property
     def DeploymentStatus(self):
+        """Deployed: 部署成功 DeployedRequired：需要重新部署 DeployFailed：部署失败
+        :rtype: str
+        """
         return self._DeploymentStatus
 
     @DeploymentStatus.setter
@@ -10655,6 +12517,9 @@ class ListRoleConfigurationProvisioningsRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """支持配置名称搜索。
+        :rtype: str
+        """
         return self._Filter
 
     @Filter.setter
@@ -10710,6 +12575,9 @@ class ListRoleConfigurationProvisioningsResponse(AbstractModel):
 
     @property
     def NextToken(self):
+        """查询返回结果下一页的令牌。  说明 只有IsTruncated为true时，才显示该参数。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -10718,6 +12586,9 @@ class ListRoleConfigurationProvisioningsResponse(AbstractModel):
 
     @property
     def TotalCounts(self):
+        """符合请求参数条件的数据总条数。
+        :rtype: int
+        """
         return self._TotalCounts
 
     @TotalCounts.setter
@@ -10726,6 +12597,9 @@ class ListRoleConfigurationProvisioningsResponse(AbstractModel):
 
     @property
     def MaxResults(self):
+        """每页的最大数据条数。
+        :rtype: int
+        """
         return self._MaxResults
 
     @MaxResults.setter
@@ -10734,6 +12608,9 @@ class ListRoleConfigurationProvisioningsResponse(AbstractModel):
 
     @property
     def IsTruncated(self):
+        """返回结果是否被截断。取值：  true：已截断。 false：未截断。
+        :rtype: bool
+        """
         return self._IsTruncated
 
     @IsTruncated.setter
@@ -10742,6 +12619,9 @@ class ListRoleConfigurationProvisioningsResponse(AbstractModel):
 
     @property
     def RoleConfigurationProvisionings(self):
+        """部成员账号列表。
+        :rtype: list of RoleConfigurationProvisionings
+        """
         return self._RoleConfigurationProvisionings
 
     @RoleConfigurationProvisionings.setter
@@ -10750,6 +12630,9 @@ class ListRoleConfigurationProvisioningsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10784,7 +12667,7 @@ class ListRoleConfigurationsRequest(AbstractModel):
         :type NextToken: str
         :param _MaxResults: 每页的最大数据条数。  取值范围：1~100。  默认值：10。
         :type MaxResults: int
-        :param _Filter: 过滤条件。不区分大小写。目前，只支持 RoleConfigurationName，只支持 eq（Equals）和 sw（Start With）。 示例：Filter = "RoleConfigurationName，只支持 sw test"，表示查询名称以 test 开头的全部权限配置。Filter = "RoleConfigurationName，只支持 eq TestRoleConfiguration"，表示查询名称为 TestRoleConfiguration 的权限配置。
+        :param _Filter: 过滤文本。不区分大小写。目前，支持 RoleConfigurationName和Description. 示例：Filter = "test"，表示查询名称或描述里包含 test 的权限配置。
         :type Filter: str
         :param _FilterTargets: 检索成员账号是否配置过权限，如果配置过返回IsSelected: true, 否则返回false。
         :type FilterTargets: list of int
@@ -10800,6 +12683,9 @@ class ListRoleConfigurationsRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -10808,6 +12694,9 @@ class ListRoleConfigurationsRequest(AbstractModel):
 
     @property
     def NextToken(self):
+        """查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -10816,6 +12705,9 @@ class ListRoleConfigurationsRequest(AbstractModel):
 
     @property
     def MaxResults(self):
+        """每页的最大数据条数。  取值范围：1~100。  默认值：10。
+        :rtype: int
+        """
         return self._MaxResults
 
     @MaxResults.setter
@@ -10824,6 +12716,9 @@ class ListRoleConfigurationsRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """过滤文本。不区分大小写。目前，支持 RoleConfigurationName和Description. 示例：Filter = "test"，表示查询名称或描述里包含 test 的权限配置。
+        :rtype: str
+        """
         return self._Filter
 
     @Filter.setter
@@ -10832,6 +12727,9 @@ class ListRoleConfigurationsRequest(AbstractModel):
 
     @property
     def FilterTargets(self):
+        """检索成员账号是否配置过权限，如果配置过返回IsSelected: true, 否则返回false。
+        :rtype: list of int
+        """
         return self._FilterTargets
 
     @FilterTargets.setter
@@ -10840,6 +12738,9 @@ class ListRoleConfigurationsRequest(AbstractModel):
 
     @property
     def PrincipalId(self):
+        """授权的用户UserId或者用户组的GroupId，必须和入参数FilterTargets一起设置
+        :rtype: str
+        """
         return self._PrincipalId
 
     @PrincipalId.setter
@@ -10893,6 +12794,9 @@ class ListRoleConfigurationsResponse(AbstractModel):
 
     @property
     def TotalCounts(self):
+        """符合请求参数条件的数据总条数。
+        :rtype: int
+        """
         return self._TotalCounts
 
     @TotalCounts.setter
@@ -10901,6 +12805,9 @@ class ListRoleConfigurationsResponse(AbstractModel):
 
     @property
     def MaxResults(self):
+        """每页的最大数据条数。
+        :rtype: int
+        """
         return self._MaxResults
 
     @MaxResults.setter
@@ -10909,6 +12816,9 @@ class ListRoleConfigurationsResponse(AbstractModel):
 
     @property
     def IsTruncated(self):
+        """返回结果是否被截断。取值：  true：已截断。 false：未截断。
+        :rtype: bool
+        """
         return self._IsTruncated
 
     @IsTruncated.setter
@@ -10917,6 +12827,9 @@ class ListRoleConfigurationsResponse(AbstractModel):
 
     @property
     def NextToken(self):
+        """查询返回结果下一页的令牌。  说明 只有IsTruncated为true时，才显示该参数。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -10925,6 +12838,9 @@ class ListRoleConfigurationsResponse(AbstractModel):
 
     @property
     def RoleConfigurations(self):
+        """权限配置列表。
+        :rtype: list of RoleConfiguration
+        """
         return self._RoleConfigurations
 
     @RoleConfigurations.setter
@@ -10933,6 +12849,9 @@ class ListRoleConfigurationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10971,6 +12890,9 @@ class ListSCIMCredentialsRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。z-前缀开头，后面是12位随机数字/小写字母
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -10979,6 +12901,9 @@ class ListSCIMCredentialsRequest(AbstractModel):
 
     @property
     def CredentialId(self):
+        """SCIM密钥ID
+        :rtype: str
+        """
         return self._CredentialId
 
     @CredentialId.setter
@@ -11019,6 +12944,9 @@ class ListSCIMCredentialsResponse(AbstractModel):
 
     @property
     def TotalCounts(self):
+        """SCIM密钥数量。
+        :rtype: int
+        """
         return self._TotalCounts
 
     @TotalCounts.setter
@@ -11027,6 +12955,9 @@ class ListSCIMCredentialsResponse(AbstractModel):
 
     @property
     def SCIMCredentials(self):
+        """SCIM 密钥信息。
+        :rtype: list of SCIMCredential
+        """
         return self._SCIMCredentials
 
     @SCIMCredentials.setter
@@ -11035,6 +12966,9 @@ class ListSCIMCredentialsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11077,6 +13011,9 @@ class ListTargetsForPolicyNode(AbstractModel):
 
     @property
     def Uin(self):
+        """scp账号uin或节点Id
+        :rtype: int
+        """
         return self._Uin
 
     @Uin.setter
@@ -11085,6 +13022,9 @@ class ListTargetsForPolicyNode(AbstractModel):
 
     @property
     def RelatedType(self):
+        """关联类型 1-节点关联 2-用户关联
+        :rtype: int
+        """
         return self._RelatedType
 
     @RelatedType.setter
@@ -11093,6 +13033,10 @@ class ListTargetsForPolicyNode(AbstractModel):
 
     @property
     def Name(self):
+        """账号或者节点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -11101,6 +13045,9 @@ class ListTargetsForPolicyNode(AbstractModel):
 
     @property
     def AddTime(self):
+        """绑定时间
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -11152,6 +13099,9 @@ class ListTargetsForPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """策略Id。
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -11160,6 +13110,9 @@ class ListTargetsForPolicyRequest(AbstractModel):
 
     @property
     def Rp(self):
+        """每页数量。默认值是 20，必须大于 0 且小于或等于 200
+        :rtype: int
+        """
         return self._Rp
 
     @Rp.setter
@@ -11168,6 +13121,9 @@ class ListTargetsForPolicyRequest(AbstractModel):
 
     @property
     def Page(self):
+        """页码。默认值是 1，从 1开始，不能大于 200
+        :rtype: int
+        """
         return self._Page
 
     @Page.setter
@@ -11176,6 +13132,9 @@ class ListTargetsForPolicyRequest(AbstractModel):
 
     @property
     def TargetType(self):
+        """策略类型。取值范围：All-全部、User-用户、Node-节点
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -11184,6 +13143,9 @@ class ListTargetsForPolicyRequest(AbstractModel):
 
     @property
     def PolicyType(self):
+        """策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :rtype: str
+        """
         return self._PolicyType
 
     @PolicyType.setter
@@ -11192,6 +13154,9 @@ class ListTargetsForPolicyRequest(AbstractModel):
 
     @property
     def Keyword(self):
+        """按照多个策略id搜索，空格隔开。
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -11237,6 +13202,9 @@ class ListTargetsForPolicyResponse(AbstractModel):
 
     @property
     def TotalNum(self):
+        """总数。
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -11245,6 +13213,10 @@ class ListTargetsForPolicyResponse(AbstractModel):
 
     @property
     def List(self):
+        """指定SCP策略关联目标列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ListTargetsForPolicyNode
+        """
         return self._List
 
     @List.setter
@@ -11253,6 +13225,9 @@ class ListTargetsForPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11312,6 +13287,9 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -11320,6 +13298,9 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def PrincipalId(self):
+        """用户同步 ID。取值： 当PrincipalType取值为Group时，该值为用户组 ID（g-****）， 当PrincipalType取值为User时，该值为用户 ID（u-****）。
+        :rtype: str
+        """
         return self._PrincipalId
 
     @PrincipalId.setter
@@ -11328,6 +13309,9 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def NextToken(self):
+        """查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -11336,6 +13320,9 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def MaxResults(self):
+        """每页的最大数据条数。  取值范围：1~100。  默认值：10。
+        :rtype: int
+        """
         return self._MaxResults
 
     @MaxResults.setter
@@ -11344,6 +13331,9 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def PrincipalType(self):
+        """CAM 用户同步的身份类型。取值： User：表示同步的身份是用户。 Group：表示同步的身份是用户组。
+        :rtype: str
+        """
         return self._PrincipalType
 
     @PrincipalType.setter
@@ -11352,6 +13342,9 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def TargetUin(self):
+        """同步的集团账号目标账号的UIN。
+        :rtype: int
+        """
         return self._TargetUin
 
     @TargetUin.setter
@@ -11360,6 +13353,9 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def TargetType(self):
+        """同步的集团账号目标账号的类型，ManagerUin管理账号;MemberUin成员账号
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -11368,6 +13364,9 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def RoleConfigurationId(self):
+        """权限配置ID。
+        :rtype: str
+        """
         return self._RoleConfigurationId
 
     @RoleConfigurationId.setter
@@ -11376,6 +13375,9 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def Status(self):
+        """InProgress：任务执行中。 Success：任务执行成功。 Failed：任务执行失败。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -11384,6 +13386,9 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型。
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -11441,6 +13446,9 @@ class ListTasksResponse(AbstractModel):
 
     @property
     def NextToken(self):
+        """查询返回结果下一页的令牌。  说明 只有IsTruncated为true时，才显示该参数。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -11449,6 +13457,9 @@ class ListTasksResponse(AbstractModel):
 
     @property
     def TotalCounts(self):
+        """符合请求参数条件的数据总条数。
+        :rtype: int
+        """
         return self._TotalCounts
 
     @TotalCounts.setter
@@ -11457,6 +13468,9 @@ class ListTasksResponse(AbstractModel):
 
     @property
     def MaxResults(self):
+        """每页的最大数据条数。
+        :rtype: int
+        """
         return self._MaxResults
 
     @MaxResults.setter
@@ -11465,6 +13479,9 @@ class ListTasksResponse(AbstractModel):
 
     @property
     def IsTruncated(self):
+        """返回结果是否被截断。取值：  true：已截断。 false：未截断。
+        :rtype: bool
+        """
         return self._IsTruncated
 
     @IsTruncated.setter
@@ -11473,6 +13490,9 @@ class ListTasksResponse(AbstractModel):
 
     @property
     def Tasks(self):
+        """任务详情
+        :rtype: list of TaskInfo
+        """
         return self._Tasks
 
     @Tasks.setter
@@ -11481,6 +13501,9 @@ class ListTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11537,6 +13560,9 @@ class ListUserSyncProvisioningsRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -11545,6 +13571,9 @@ class ListUserSyncProvisioningsRequest(AbstractModel):
 
     @property
     def PrincipalId(self):
+        """用户同步 ID。取值：  当PrincipalType取值为Group时，该值为用户组 ID（g-********）。 当PrincipalType取值为User时，该值为用户 ID（u-********）。
+        :rtype: str
+        """
         return self._PrincipalId
 
     @PrincipalId.setter
@@ -11553,6 +13582,9 @@ class ListUserSyncProvisioningsRequest(AbstractModel):
 
     @property
     def NextToken(self):
+        """查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -11561,6 +13593,9 @@ class ListUserSyncProvisioningsRequest(AbstractModel):
 
     @property
     def MaxResults(self):
+        """每页的最大数据条数。  取值范围：1~100。  默认值：10。
+        :rtype: int
+        """
         return self._MaxResults
 
     @MaxResults.setter
@@ -11569,6 +13604,9 @@ class ListUserSyncProvisioningsRequest(AbstractModel):
 
     @property
     def PrincipalType(self):
+        """CAM 用户同步的身份类型。取值： User：表示同步的身份是用户。 Group：表示同步的身份是用户组。
+        :rtype: str
+        """
         return self._PrincipalType
 
     @PrincipalType.setter
@@ -11577,6 +13615,9 @@ class ListUserSyncProvisioningsRequest(AbstractModel):
 
     @property
     def TargetUin(self):
+        """集团账号目标账号的UIN。
+        :rtype: int
+        """
         return self._TargetUin
 
     @TargetUin.setter
@@ -11585,6 +13626,9 @@ class ListUserSyncProvisioningsRequest(AbstractModel):
 
     @property
     def TargetType(self):
+        """同步的集团账号目标账号的类型，ManagerUin管理账号;MemberUin成员账号
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -11593,6 +13637,9 @@ class ListUserSyncProvisioningsRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """检测条件。
+        :rtype: str
+        """
         return self._Filter
 
     @Filter.setter
@@ -11648,6 +13695,9 @@ class ListUserSyncProvisioningsResponse(AbstractModel):
 
     @property
     def NextToken(self):
+        """查询返回结果下一页的令牌。  说明 只有IsTruncated为true时，才显示该参数。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -11656,6 +13706,9 @@ class ListUserSyncProvisioningsResponse(AbstractModel):
 
     @property
     def TotalCounts(self):
+        """符合请求参数条件的数据总条数。
+        :rtype: int
+        """
         return self._TotalCounts
 
     @TotalCounts.setter
@@ -11664,6 +13717,9 @@ class ListUserSyncProvisioningsResponse(AbstractModel):
 
     @property
     def MaxResults(self):
+        """每页的最大数据条数。
+        :rtype: int
+        """
         return self._MaxResults
 
     @MaxResults.setter
@@ -11672,6 +13728,9 @@ class ListUserSyncProvisioningsResponse(AbstractModel):
 
     @property
     def IsTruncated(self):
+        """返回结果是否被截断。取值：  true：已截断。 false：未截断。
+        :rtype: bool
+        """
         return self._IsTruncated
 
     @IsTruncated.setter
@@ -11680,6 +13739,9 @@ class ListUserSyncProvisioningsResponse(AbstractModel):
 
     @property
     def UserProvisionings(self):
+        """CAM同步的用户列表。
+        :rtype: list of UserProvisioning
+        """
         return self._UserProvisionings
 
     @UserProvisionings.setter
@@ -11688,6 +13750,9 @@ class ListUserSyncProvisioningsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11732,7 +13797,7 @@ class ListUsersRequest(AbstractModel):
         :type FilterGroups: list of str
         :param _SortField: 排序的字段，目前只支持CreateTime，默认是CreateTime字段
         :type SortField: str
-        :param _SortType: 排序类型：Desc 倒序 Asc  正序，需要你和SortField一起设置
+        :param _SortType: 排序类型：Desc 倒序 Asc  正序，需要您和SortField一起设置
         :type SortType: str
         :param _Offset: 翻页offset. 不要与NextToken同时使用，优先使用NextToken
         :type Offset: int
@@ -11750,6 +13815,9 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -11758,6 +13826,9 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def UserStatus(self):
+        """用户状态 Enabled：启用， Disabled：禁用。
+        :rtype: str
+        """
         return self._UserStatus
 
     @UserStatus.setter
@@ -11766,6 +13837,9 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def UserType(self):
+        """用户类型  Manual：手动创建，Synchronized：外部导入。
+        :rtype: str
+        """
         return self._UserType
 
     @UserType.setter
@@ -11774,6 +13848,9 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """过滤条件。  目前仅支持用户名，邮箱，用户userId，描述
+        :rtype: str
+        """
         return self._Filter
 
     @Filter.setter
@@ -11782,6 +13859,9 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def MaxResults(self):
+        """每页的最大数据条数。  取值范围：1~100。  默认值：10。
+        :rtype: int
+        """
         return self._MaxResults
 
     @MaxResults.setter
@@ -11790,6 +13870,9 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def NextToken(self):
+        """查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法经过多次查询，直到IsTruncated为false时，表示全部数据查询完毕。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -11798,6 +13881,9 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def FilterGroups(self):
+        """筛选的用户组，该用户组关联的子用户会返回IsSelected=1
+        :rtype: list of str
+        """
         return self._FilterGroups
 
     @FilterGroups.setter
@@ -11806,6 +13892,9 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def SortField(self):
+        """排序的字段，目前只支持CreateTime，默认是CreateTime字段
+        :rtype: str
+        """
         return self._SortField
 
     @SortField.setter
@@ -11814,6 +13903,9 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def SortType(self):
+        """排序类型：Desc 倒序 Asc  正序，需要您和SortField一起设置
+        :rtype: str
+        """
         return self._SortType
 
     @SortType.setter
@@ -11822,6 +13914,9 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """翻页offset. 不要与NextToken同时使用，优先使用NextToken
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -11879,6 +13974,9 @@ class ListUsersResponse(AbstractModel):
 
     @property
     def TotalCounts(self):
+        """符合请求参数条件的数据总条数。
+        :rtype: int
+        """
         return self._TotalCounts
 
     @TotalCounts.setter
@@ -11887,6 +13985,9 @@ class ListUsersResponse(AbstractModel):
 
     @property
     def MaxResults(self):
+        """每页的最大数据条数。
+        :rtype: int
+        """
         return self._MaxResults
 
     @MaxResults.setter
@@ -11895,6 +13996,9 @@ class ListUsersResponse(AbstractModel):
 
     @property
     def Users(self):
+        """用户列表。
+        :rtype: list of UserInfo
+        """
         return self._Users
 
     @Users.setter
@@ -11903,6 +14007,9 @@ class ListUsersResponse(AbstractModel):
 
     @property
     def NextToken(self):
+        """查询返回结果下一页的令牌。只有IsTruncated为true时，才显示该参数。
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -11911,6 +14018,9 @@ class ListUsersResponse(AbstractModel):
 
     @property
     def IsTruncated(self):
+        """返回结果是否被截断。取值：  true：已截断。 false：未截断。
+        :rtype: bool
+        """
         return self._IsTruncated
 
     @IsTruncated.setter
@@ -11919,6 +14029,9 @@ class ListUsersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11986,6 +14099,9 @@ class ManagerShareUnit(AbstractModel):
 
     @property
     def UnitId(self):
+        """共享单元ID。
+        :rtype: str
+        """
         return self._UnitId
 
     @UnitId.setter
@@ -11994,6 +14110,9 @@ class ManagerShareUnit(AbstractModel):
 
     @property
     def Name(self):
+        """共享单元名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12002,6 +14121,9 @@ class ManagerShareUnit(AbstractModel):
 
     @property
     def Uin(self):
+        """共享单元管理员Uin。
+        :rtype: int
+        """
         return self._Uin
 
     @Uin.setter
@@ -12010,6 +14132,9 @@ class ManagerShareUnit(AbstractModel):
 
     @property
     def OwnerUin(self):
+        """共享单元管理员OwnerUin。
+        :rtype: int
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -12018,6 +14143,9 @@ class ManagerShareUnit(AbstractModel):
 
     @property
     def Area(self):
+        """共享单元地域。
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -12026,6 +14154,10 @@ class ManagerShareUnit(AbstractModel):
 
     @property
     def Description(self):
+        """描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -12034,6 +14166,10 @@ class ManagerShareUnit(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -12042,6 +14178,10 @@ class ManagerShareUnit(AbstractModel):
 
     @property
     def ShareResourceNum(self):
+        """共享单元资源数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ShareResourceNum
 
     @ShareResourceNum.setter
@@ -12050,6 +14190,10 @@ class ManagerShareUnit(AbstractModel):
 
     @property
     def ShareMemberNum(self):
+        """共享单元成员数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ShareMemberNum
 
     @ShareMemberNum.setter
@@ -12058,6 +14202,10 @@ class ManagerShareUnit(AbstractModel):
 
     @property
     def ShareScope(self):
+        """共享范围。取值：1-仅允许集团组织内共享 2-允许共享给任意账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ShareScope
 
     @ShareScope.setter
@@ -12105,6 +14253,10 @@ class MemberIdentity(AbstractModel):
 
     @property
     def IdentityId(self):
+        """身份ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IdentityId
 
     @IdentityId.setter
@@ -12113,6 +14265,10 @@ class MemberIdentity(AbstractModel):
 
     @property
     def IdentityAliasName(self):
+        """身份名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IdentityAliasName
 
     @IdentityAliasName.setter
@@ -12152,6 +14308,10 @@ class MemberMainInfo(AbstractModel):
 
     @property
     def MemberUin(self):
+        """成员uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -12160,6 +14320,10 @@ class MemberMainInfo(AbstractModel):
 
     @property
     def MemberName(self):
+        """成员名称j
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MemberName
 
     @MemberName.setter
@@ -12197,6 +14361,9 @@ class MoveOrganizationNodeMembersRequest(AbstractModel):
 
     @property
     def NodeId(self):
+        """组织节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -12205,6 +14372,9 @@ class MoveOrganizationNodeMembersRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """成员Uin列表。
+        :rtype: list of int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -12239,6 +14409,9 @@ class MoveOrganizationNodeMembersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12269,6 +14442,10 @@ class NodeMainInfo(AbstractModel):
 
     @property
     def NodeId(self):
+        """部门ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -12277,6 +14454,10 @@ class NodeMainInfo(AbstractModel):
 
     @property
     def NodeName(self):
+        """部门名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NodeName
 
     @NodeName.setter
@@ -12344,6 +14525,10 @@ class NotAllowReason(AbstractModel):
 
     @property
     def IsCreateMember(self):
+        """是否创建的成员。true-是、false-否；成员不是创建的成员不允许删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsCreateMember
 
     @IsCreateMember.setter
@@ -12352,6 +14537,10 @@ class NotAllowReason(AbstractModel):
 
     @property
     def DeletionPermission(self):
+        """成员删除许可。true-开启、false-关闭；成员删除许可关闭时不允许删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._DeletionPermission
 
     @DeletionPermission.setter
@@ -12360,6 +14549,10 @@ class NotAllowReason(AbstractModel):
 
     @property
     def IsAssignManager(self):
+        """是否可信服务委派管理员。true-是、false-否；成员是可信服务委派管理员不允许删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsAssignManager
 
     @IsAssignManager.setter
@@ -12368,6 +14561,10 @@ class NotAllowReason(AbstractModel):
 
     @property
     def IsAuthManager(self):
+        """是否主体管理员。true-是、false-否；成员是主体管理员不允许删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsAuthManager
 
     @IsAuthManager.setter
@@ -12376,6 +14573,10 @@ class NotAllowReason(AbstractModel):
 
     @property
     def IsShareManager(self):
+        """是否共享资源管理员。true-是、false-否；成员是共享资源管理员不允许删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsShareManager
 
     @IsShareManager.setter
@@ -12384,6 +14585,10 @@ class NotAllowReason(AbstractModel):
 
     @property
     def OperateProcess(self):
+        """成员是否设置了操作审批。true-是、false-否；成员设置了操作审批时不允许删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._OperateProcess
 
     @OperateProcess.setter
@@ -12392,6 +14597,10 @@ class NotAllowReason(AbstractModel):
 
     @property
     def BillingPermission(self):
+        """是否允许解除成员财务权限。true-是、false-否；成员不能解除财务权限时不允许删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._BillingPermission
 
     @BillingPermission.setter
@@ -12400,6 +14609,10 @@ class NotAllowReason(AbstractModel):
 
     @property
     def ExistResources(self):
+        """存在的资源列表。账号存在资源时不允许删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ExistResources
 
     @ExistResources.setter
@@ -12408,6 +14621,10 @@ class NotAllowReason(AbstractModel):
 
     @property
     def DetectFailedResources(self):
+        """检测失败的资源列表。账号有资源检测失败时不允许删除。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._DetectFailedResources
 
     @DetectFailedResources.setter
@@ -12449,6 +14666,9 @@ class OpenIdentityCenterRequest(AbstractModel):
 
     @property
     def ZoneName(self):
+        """空间名，必须全局唯一。包含小写字母、数字和短划线（-）。不能以短划线（-）开头或结尾，且不能有两个连续的短划线（-）。长度：2~64 个字符。
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -12485,6 +14705,9 @@ class OpenIdentityCenterResponse(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。z-前缀开头，后面是12位随机数字/小写字母
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -12493,6 +14716,9 @@ class OpenIdentityCenterResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12532,6 +14758,10 @@ class OrgFinancialByMonth(AbstractModel):
 
     @property
     def Id(self):
+        """记录ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -12540,6 +14770,10 @@ class OrgFinancialByMonth(AbstractModel):
 
     @property
     def Month(self):
+        """月份，格式：yyyy-mm，示例：2021-01。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Month
 
     @Month.setter
@@ -12548,6 +14782,10 @@ class OrgFinancialByMonth(AbstractModel):
 
     @property
     def TotalCost(self):
+        """消耗金额，单元：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._TotalCost
 
     @TotalCost.setter
@@ -12556,6 +14794,10 @@ class OrgFinancialByMonth(AbstractModel):
 
     @property
     def GrowthRate(self):
+        """比上月增长率%。正数增长，负数下降，空值无法统计。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GrowthRate
 
     @GrowthRate.setter
@@ -12613,6 +14855,10 @@ class OrgIdentity(AbstractModel):
 
     @property
     def IdentityId(self):
+        """身份ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IdentityId
 
     @IdentityId.setter
@@ -12621,6 +14867,10 @@ class OrgIdentity(AbstractModel):
 
     @property
     def IdentityAliasName(self):
+        """身份名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IdentityAliasName
 
     @IdentityAliasName.setter
@@ -12629,6 +14879,10 @@ class OrgIdentity(AbstractModel):
 
     @property
     def Description(self):
+        """描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -12637,6 +14891,10 @@ class OrgIdentity(AbstractModel):
 
     @property
     def IdentityPolicy(self):
+        """身份策略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of IdentityPolicy
+        """
         return self._IdentityPolicy
 
     @IdentityPolicy.setter
@@ -12645,6 +14903,10 @@ class OrgIdentity(AbstractModel):
 
     @property
     def IdentityType(self):
+        """身份类型。 1-预设、 2-自定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IdentityType
 
     @IdentityType.setter
@@ -12653,6 +14915,10 @@ class OrgIdentity(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -12765,6 +15031,10 @@ class OrgMember(AbstractModel):
 
     @property
     def MemberUin(self):
+        """成员Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -12773,6 +15043,10 @@ class OrgMember(AbstractModel):
 
     @property
     def Name(self):
+        """成员名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12781,6 +15055,10 @@ class OrgMember(AbstractModel):
 
     @property
     def MemberType(self):
+        """成员类型，邀请：Invite， 创建：Create
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MemberType
 
     @MemberType.setter
@@ -12789,6 +15067,10 @@ class OrgMember(AbstractModel):
 
     @property
     def OrgPolicyType(self):
+        """关系策略类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrgPolicyType
 
     @OrgPolicyType.setter
@@ -12797,6 +15079,10 @@ class OrgMember(AbstractModel):
 
     @property
     def OrgPolicyName(self):
+        """关系策略名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrgPolicyName
 
     @OrgPolicyName.setter
@@ -12805,6 +15091,10 @@ class OrgMember(AbstractModel):
 
     @property
     def OrgPermission(self):
+        """关系策略权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OrgPermission
+        """
         return self._OrgPermission
 
     @OrgPermission.setter
@@ -12813,6 +15103,10 @@ class OrgMember(AbstractModel):
 
     @property
     def NodeId(self):
+        """所属节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -12821,6 +15115,10 @@ class OrgMember(AbstractModel):
 
     @property
     def NodeName(self):
+        """所属节点名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NodeName
 
     @NodeName.setter
@@ -12829,6 +15127,10 @@ class OrgMember(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -12837,6 +15139,10 @@ class OrgMember(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -12845,6 +15151,10 @@ class OrgMember(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -12853,6 +15163,10 @@ class OrgMember(AbstractModel):
 
     @property
     def IsAllowQuit(self):
+        """是否允许成员退出。允许：Allow，不允许：Denied。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IsAllowQuit
 
     @IsAllowQuit.setter
@@ -12861,6 +15175,10 @@ class OrgMember(AbstractModel):
 
     @property
     def PayUin(self):
+        """代付者Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PayUin
 
     @PayUin.setter
@@ -12869,6 +15187,10 @@ class OrgMember(AbstractModel):
 
     @property
     def PayName(self):
+        """代付者名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PayName
 
     @PayName.setter
@@ -12877,6 +15199,10 @@ class OrgMember(AbstractModel):
 
     @property
     def OrgIdentity(self):
+        """管理身份
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MemberIdentity
+        """
         return self._OrgIdentity
 
     @OrgIdentity.setter
@@ -12885,6 +15211,10 @@ class OrgMember(AbstractModel):
 
     @property
     def BindStatus(self):
+        """安全信息绑定状态  未绑定：Unbound，待激活：Valid，绑定成功：Success，绑定失败：Failed
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BindStatus
 
     @BindStatus.setter
@@ -12893,6 +15223,10 @@ class OrgMember(AbstractModel):
 
     @property
     def PermissionStatus(self):
+        """成员权限状态 已确认：Confirmed ，待确认：UnConfirmed
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PermissionStatus
 
     @PermissionStatus.setter
@@ -12901,6 +15235,10 @@ class OrgMember(AbstractModel):
 
     @property
     def Tags(self):
+        """成员标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -12999,6 +15337,10 @@ class OrgMemberAuthAccount(AbstractModel):
 
     @property
     def OrgSubAccountUin(self):
+        """组织子账号Uin。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._OrgSubAccountUin
 
     @OrgSubAccountUin.setter
@@ -13007,6 +15349,10 @@ class OrgMemberAuthAccount(AbstractModel):
 
     @property
     def PolicyId(self):
+        """策略ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -13015,6 +15361,10 @@ class OrgMemberAuthAccount(AbstractModel):
 
     @property
     def PolicyName(self):
+        """策略名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -13023,6 +15373,10 @@ class OrgMemberAuthAccount(AbstractModel):
 
     @property
     def IdentityId(self):
+        """身份ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IdentityId
 
     @IdentityId.setter
@@ -13031,6 +15385,10 @@ class OrgMemberAuthAccount(AbstractModel):
 
     @property
     def IdentityRoleName(self):
+        """身份角色名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IdentityRoleName
 
     @IdentityRoleName.setter
@@ -13039,6 +15397,10 @@ class OrgMemberAuthAccount(AbstractModel):
 
     @property
     def IdentityRoleAliasName(self):
+        """身份角色别名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IdentityRoleAliasName
 
     @IdentityRoleAliasName.setter
@@ -13047,6 +15409,10 @@ class OrgMemberAuthAccount(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -13055,6 +15421,10 @@ class OrgMemberAuthAccount(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -13063,6 +15433,10 @@ class OrgMemberAuthAccount(AbstractModel):
 
     @property
     def OrgSubAccountName(self):
+        """子账号名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrgSubAccountName
 
     @OrgSubAccountName.setter
@@ -13141,6 +15515,10 @@ class OrgMemberAuthIdentity(AbstractModel):
 
     @property
     def IdentityId(self):
+        """身份ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IdentityId
 
     @IdentityId.setter
@@ -13149,6 +15527,10 @@ class OrgMemberAuthIdentity(AbstractModel):
 
     @property
     def IdentityRoleName(self):
+        """身份的角色名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IdentityRoleName
 
     @IdentityRoleName.setter
@@ -13157,6 +15539,10 @@ class OrgMemberAuthIdentity(AbstractModel):
 
     @property
     def IdentityRoleAliasName(self):
+        """身份的角色别名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IdentityRoleAliasName
 
     @IdentityRoleAliasName.setter
@@ -13165,6 +15551,10 @@ class OrgMemberAuthIdentity(AbstractModel):
 
     @property
     def Description(self):
+        """身份描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -13173,6 +15563,10 @@ class OrgMemberAuthIdentity(AbstractModel):
 
     @property
     def CreateTime(self):
+        """首次配置成功的时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -13181,6 +15575,10 @@ class OrgMemberAuthIdentity(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """最后一次配置成功的时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -13189,6 +15587,10 @@ class OrgMemberAuthIdentity(AbstractModel):
 
     @property
     def IdentityType(self):
+        """身份类型。取值： 1-预设身份  2-自定义身份
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IdentityType
 
     @IdentityType.setter
@@ -13197,6 +15599,10 @@ class OrgMemberAuthIdentity(AbstractModel):
 
     @property
     def Status(self):
+        """配置状态。取值：1-配置完成 2-需重新配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -13205,6 +15611,10 @@ class OrgMemberAuthIdentity(AbstractModel):
 
     @property
     def MemberUin(self):
+        """成员Uin。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -13213,6 +15623,10 @@ class OrgMemberAuthIdentity(AbstractModel):
 
     @property
     def MemberName(self):
+        """成员名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MemberName
 
     @MemberName.setter
@@ -13268,6 +15682,10 @@ class OrgMemberFinancial(AbstractModel):
 
     @property
     def MemberUin(self):
+        """成员Uin。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -13276,6 +15694,10 @@ class OrgMemberFinancial(AbstractModel):
 
     @property
     def MemberName(self):
+        """成员名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MemberName
 
     @MemberName.setter
@@ -13284,6 +15706,10 @@ class OrgMemberFinancial(AbstractModel):
 
     @property
     def TotalCost(self):
+        """消耗金额，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._TotalCost
 
     @TotalCost.setter
@@ -13292,6 +15718,10 @@ class OrgMemberFinancial(AbstractModel):
 
     @property
     def Ratio(self):
+        """占比%。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ratio
 
     @Ratio.setter
@@ -13357,6 +15787,10 @@ class OrgMemberPolicy(AbstractModel):
 
     @property
     def PolicyId(self):
+        """策略ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -13365,6 +15799,10 @@ class OrgMemberPolicy(AbstractModel):
 
     @property
     def PolicyName(self):
+        """策略名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -13373,6 +15811,10 @@ class OrgMemberPolicy(AbstractModel):
 
     @property
     def IdentityId(self):
+        """身份ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IdentityId
 
     @IdentityId.setter
@@ -13381,6 +15823,10 @@ class OrgMemberPolicy(AbstractModel):
 
     @property
     def IdentityRoleName(self):
+        """身份角色名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IdentityRoleName
 
     @IdentityRoleName.setter
@@ -13389,6 +15835,10 @@ class OrgMemberPolicy(AbstractModel):
 
     @property
     def IdentityRoleAliasName(self):
+        """身份角色别名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IdentityRoleAliasName
 
     @IdentityRoleAliasName.setter
@@ -13397,6 +15847,10 @@ class OrgMemberPolicy(AbstractModel):
 
     @property
     def Description(self):
+        """描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -13405,6 +15859,10 @@ class OrgMemberPolicy(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -13413,6 +15871,10 @@ class OrgMemberPolicy(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -13478,6 +15940,10 @@ class OrgNode(AbstractModel):
 
     @property
     def NodeId(self):
+        """组织节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -13486,6 +15952,10 @@ class OrgNode(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -13494,6 +15964,10 @@ class OrgNode(AbstractModel):
 
     @property
     def ParentNodeId(self):
+        """父节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ParentNodeId
 
     @ParentNodeId.setter
@@ -13502,6 +15976,10 @@ class OrgNode(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -13510,6 +15988,10 @@ class OrgNode(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -13518,6 +16000,10 @@ class OrgNode(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -13526,6 +16012,10 @@ class OrgNode(AbstractModel):
 
     @property
     def Tags(self):
+        """成员标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -13573,6 +16063,9 @@ class OrgPermission(AbstractModel):
 
     @property
     def Id(self):
+        """权限Id
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -13581,6 +16074,9 @@ class OrgPermission(AbstractModel):
 
     @property
     def Name(self):
+        """权限名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -13628,6 +16124,10 @@ class OrgProductFinancial(AbstractModel):
 
     @property
     def ProductName(self):
+        """产品Code。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -13636,6 +16136,10 @@ class OrgProductFinancial(AbstractModel):
 
     @property
     def ProductCode(self):
+        """产品名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductCode
 
     @ProductCode.setter
@@ -13644,6 +16148,10 @@ class OrgProductFinancial(AbstractModel):
 
     @property
     def TotalCost(self):
+        """产品消耗，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._TotalCost
 
     @TotalCost.setter
@@ -13652,6 +16160,10 @@ class OrgProductFinancial(AbstractModel):
 
     @property
     def Ratio(self):
+        """占比%。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ratio
 
     @Ratio.setter
@@ -13738,6 +16250,10 @@ class OrganizationServiceAssign(AbstractModel):
 
     @property
     def ServiceId(self):
+        """集团服务ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -13746,6 +16262,10 @@ class OrganizationServiceAssign(AbstractModel):
 
     @property
     def ProductName(self):
+        """集团服务产品名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -13754,6 +16274,10 @@ class OrganizationServiceAssign(AbstractModel):
 
     @property
     def IsAssign(self):
+        """是否支持委派。取值: 1-是  2-否
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsAssign
 
     @IsAssign.setter
@@ -13762,6 +16286,10 @@ class OrganizationServiceAssign(AbstractModel):
 
     @property
     def Description(self):
+        """集团服务描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -13770,6 +16298,10 @@ class OrganizationServiceAssign(AbstractModel):
 
     @property
     def MemberNum(self):
+        """当前委派管理员数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MemberNum
 
     @MemberNum.setter
@@ -13778,6 +16310,10 @@ class OrganizationServiceAssign(AbstractModel):
 
     @property
     def Document(self):
+        """帮助文档。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Document
 
     @Document.setter
@@ -13786,6 +16322,10 @@ class OrganizationServiceAssign(AbstractModel):
 
     @property
     def ConsoleUrl(self):
+        """集团服务产品控制台路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ConsoleUrl
 
     @ConsoleUrl.setter
@@ -13794,6 +16334,11 @@ class OrganizationServiceAssign(AbstractModel):
 
     @property
     def IsUsageStatus(self):
+        """是否接入使用状态。取值: 1-是 
+ 2-否
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsUsageStatus
 
     @IsUsageStatus.setter
@@ -13802,6 +16347,10 @@ class OrganizationServiceAssign(AbstractModel):
 
     @property
     def CanAssignCount(self):
+        """委派管理员数量限制。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CanAssignCount
 
     @CanAssignCount.setter
@@ -13810,6 +16359,10 @@ class OrganizationServiceAssign(AbstractModel):
 
     @property
     def Product(self):
+        """集团服务产品标识。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -13818,6 +16371,10 @@ class OrganizationServiceAssign(AbstractModel):
 
     @property
     def ServiceGrant(self):
+        """是否支持集团服务授权。取值 1-是、2-否
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ServiceGrant
 
     @ServiceGrant.setter
@@ -13826,6 +16383,10 @@ class OrganizationServiceAssign(AbstractModel):
 
     @property
     def GrantStatus(self):
+        """集团服务授权启用状态。ServiceGrant值为1时该字段有效 ，取值：Enabled-开启  Disabled-关闭 
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GrantStatus
 
     @GrantStatus.setter
@@ -13834,6 +16395,10 @@ class OrganizationServiceAssign(AbstractModel):
 
     @property
     def IsSetManagementScope(self):
+        """是否支持设置委派管理范围。取值: 1-是  2-否
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsSetManagementScope
 
     @IsSetManagementScope.setter
@@ -13912,6 +16477,10 @@ class OrganizationServiceAssignMember(AbstractModel):
 
     @property
     def ServiceId(self):
+        """集团服务ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -13920,6 +16489,10 @@ class OrganizationServiceAssignMember(AbstractModel):
 
     @property
     def ProductName(self):
+        """集团服务产品名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -13928,6 +16501,10 @@ class OrganizationServiceAssignMember(AbstractModel):
 
     @property
     def MemberUin(self):
+        """委派管理员Uin。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -13936,6 +16513,10 @@ class OrganizationServiceAssignMember(AbstractModel):
 
     @property
     def MemberName(self):
+        """委派管理员名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MemberName
 
     @MemberName.setter
@@ -13944,6 +16525,10 @@ class OrganizationServiceAssignMember(AbstractModel):
 
     @property
     def UsageStatus(self):
+        """启用状态 。取值：0-服务无启用状态  1-已启用  2-未启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UsageStatus
 
     @UsageStatus.setter
@@ -13952,6 +16537,10 @@ class OrganizationServiceAssignMember(AbstractModel):
 
     @property
     def CreateTime(self):
+        """委派时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -13960,6 +16549,10 @@ class OrganizationServiceAssignMember(AbstractModel):
 
     @property
     def ManagementScope(self):
+        """委派管理员管理范围。取值: 1-全部成员  2-部分成员
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ManagementScope
 
     @ManagementScope.setter
@@ -13968,6 +16561,10 @@ class OrganizationServiceAssignMember(AbstractModel):
 
     @property
     def ManagementScopeMembers(self):
+        """管理的成员Uin列表。ManagementScope值为2时该参数有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MemberMainInfo
+        """
         return self._ManagementScopeMembers
 
     @ManagementScopeMembers.setter
@@ -13976,6 +16573,10 @@ class OrganizationServiceAssignMember(AbstractModel):
 
     @property
     def ManagementScopeNodes(self):
+        """管理的部门ID列表。ManagementScope值为2时该参数有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NodeMainInfo
+        """
         return self._ManagementScopeNodes
 
     @ManagementScopeNodes.setter
@@ -14031,6 +16632,9 @@ class PolicyDetail(AbstractModel):
 
     @property
     def PolicyId(self):
+        """策略ID。
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -14039,6 +16643,10 @@ class PolicyDetail(AbstractModel):
 
     @property
     def PolicyName(self):
+        """策略名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -14076,6 +16684,9 @@ class ProductResource(AbstractModel):
 
     @property
     def ProductResourceId(self):
+        """产品资源ID。
+        :rtype: str
+        """
         return self._ProductResourceId
 
     @ProductResourceId.setter
@@ -14086,6 +16697,9 @@ class ProductResource(AbstractModel):
     def ResourceGrantLast(self):
         warnings.warn("parameter `ResourceGrantLast` is deprecated", DeprecationWarning) 
 
+        """资源六段式最后一节
+        :rtype: str
+        """
         return self._ResourceGrantLast
 
     @ResourceGrantLast.setter
@@ -14131,6 +16745,9 @@ class ProvisionRoleConfigurationRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -14139,6 +16756,9 @@ class ProvisionRoleConfigurationRequest(AbstractModel):
 
     @property
     def RoleConfigurationId(self):
+        """权限配置ID。
+        :rtype: str
+        """
         return self._RoleConfigurationId
 
     @RoleConfigurationId.setter
@@ -14147,6 +16767,9 @@ class ProvisionRoleConfigurationRequest(AbstractModel):
 
     @property
     def TargetType(self):
+        """同步的集团账号目标账号的类型，ManagerUin管理账号;MemberUin成员账号。
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -14155,6 +16778,9 @@ class ProvisionRoleConfigurationRequest(AbstractModel):
 
     @property
     def TargetUin(self):
+        """集团账号目标账号的UIN。
+        :rtype: int
+        """
         return self._TargetUin
 
     @TargetUin.setter
@@ -14194,6 +16820,9 @@ class ProvisionRoleConfigurationResponse(AbstractModel):
 
     @property
     def Task(self):
+        """任务详情。
+        :rtype: :class:`tencentcloud.organization.v20210331.models.RoleProvisioningsTask`
+        """
         return self._Task
 
     @Task.setter
@@ -14202,6 +16831,9 @@ class ProvisionRoleConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14230,6 +16862,9 @@ class QuitOrganizationRequest(AbstractModel):
 
     @property
     def OrgId(self):
+        """企业组织ID
+        :rtype: int
+        """
         return self._OrgId
 
     @OrgId.setter
@@ -14263,6 +16898,9 @@ class QuitOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14288,6 +16926,9 @@ class RejectJoinShareUnitInvitationRequest(AbstractModel):
 
     @property
     def UnitId(self):
+        """共享单元ID。
+        :rtype: str
+        """
         return self._UnitId
 
     @UnitId.setter
@@ -14321,6 +16962,9 @@ class RejectJoinShareUnitInvitationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14349,6 +16993,9 @@ class RemoveExternalSAMLIdPCertificateRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -14357,6 +17004,9 @@ class RemoveExternalSAMLIdPCertificateRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """PEM 格式的 X509 证书。  由 SAML 身份提供商提供。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -14391,6 +17041,9 @@ class RemoveExternalSAMLIdPCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14428,6 +17081,9 @@ class RemovePermissionPolicyFromRoleConfigurationRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -14436,6 +17092,9 @@ class RemovePermissionPolicyFromRoleConfigurationRequest(AbstractModel):
 
     @property
     def RoleConfigurationId(self):
+        """权限配置 ID
+        :rtype: str
+        """
         return self._RoleConfigurationId
 
     @RoleConfigurationId.setter
@@ -14444,6 +17103,9 @@ class RemovePermissionPolicyFromRoleConfigurationRequest(AbstractModel):
 
     @property
     def RolePolicyType(self):
+        """权限策略类型。取值：  System：系统策略。复用 CAM 的系统策略。 Custom: 自定义策略。按照 CAM 权限策略语法和结构编写的自定义策略。
+        :rtype: str
+        """
         return self._RolePolicyType
 
     @RolePolicyType.setter
@@ -14452,6 +17114,9 @@ class RemovePermissionPolicyFromRoleConfigurationRequest(AbstractModel):
 
     @property
     def RolePolicyName(self):
+        """权限策略名称，长度最大为 32 个字符。
+        :rtype: str
+        """
         return self._RolePolicyName
 
     @RolePolicyName.setter
@@ -14460,6 +17125,9 @@ class RemovePermissionPolicyFromRoleConfigurationRequest(AbstractModel):
 
     @property
     def RolePolicyId(self):
+        """策略ID。
+        :rtype: int
+        """
         return self._RolePolicyId
 
     @RolePolicyId.setter
@@ -14497,6 +17165,9 @@ class RemovePermissionPolicyFromRoleConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14528,6 +17199,9 @@ class RemoveUserFromGroupRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -14536,6 +17210,9 @@ class RemoveUserFromGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """用户组ID。
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -14544,6 +17221,9 @@ class RemoveUserFromGroupRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户ID。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -14579,6 +17259,9 @@ class RemoveUserFromGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14614,6 +17297,11 @@ class ResourceTagMapping(AbstractModel):
 
     @property
     def Resource(self):
+        """资源六段式。腾讯云使用资源六段式描述一个资源。
+例如：qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -14622,6 +17310,10 @@ class ResourceTagMapping(AbstractModel):
 
     @property
     def ComplianceDetails(self):
+        """合规详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.organization.v20210331.models.TagComplianceDetails`
+        """
         return self._ComplianceDetails
 
     @ComplianceDetails.setter
@@ -14630,6 +17322,10 @@ class ResourceTagMapping(AbstractModel):
 
     @property
     def Tags(self):
+        """资源标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tags
+        """
         return self._Tags
 
     @Tags.setter
@@ -14689,6 +17385,11 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def PrincipalId(self):
+        """CAM 用户同步的身份 ID。取值：
+当PrincipalType取值为Group时，该值为CIC用户组 ID（g-********）。
+当PrincipalType取值为User时，该值为CIC用户 ID（u-********）。
+        :rtype: str
+        """
         return self._PrincipalId
 
     @PrincipalId.setter
@@ -14697,6 +17398,12 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def PrincipalType(self):
+        """CAM 用户同步的身份类型。取值：
+
+User：表示该 CAM 用户同步的身份是CIC用户。
+Group：表示该 CAM 用户同步的身份是CIC用户组。
+        :rtype: str
+        """
         return self._PrincipalType
 
     @PrincipalType.setter
@@ -14705,6 +17412,9 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def TargetUin(self):
+        """同步集团账号目标账号的UIN。
+        :rtype: int
+        """
         return self._TargetUin
 
     @TargetUin.setter
@@ -14713,6 +17423,9 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def TargetType(self):
+        """同步集团账号目标账号的类型，ManagerUin管理账号;MemberUin成员账号
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -14721,6 +17434,9 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def RoleConfigurationId(self):
+        """权限配置ID。
+        :rtype: str
+        """
         return self._RoleConfigurationId
 
     @RoleConfigurationId.setter
@@ -14785,6 +17501,9 @@ class RoleAssignments(AbstractModel):
 
     @property
     def RoleConfigurationId(self):
+        """权限配置ID。
+        :rtype: str
+        """
         return self._RoleConfigurationId
 
     @RoleConfigurationId.setter
@@ -14793,6 +17512,9 @@ class RoleAssignments(AbstractModel):
 
     @property
     def RoleConfigurationName(self):
+        """权限配置名称。
+        :rtype: str
+        """
         return self._RoleConfigurationName
 
     @RoleConfigurationName.setter
@@ -14801,6 +17523,9 @@ class RoleAssignments(AbstractModel):
 
     @property
     def TargetUin(self):
+        """集团账号目标账号的UIN。
+        :rtype: int
+        """
         return self._TargetUin
 
     @TargetUin.setter
@@ -14809,6 +17534,9 @@ class RoleAssignments(AbstractModel):
 
     @property
     def TargetType(self):
+        """同步的集团账号目标账号的类型，ManagerUin管理账号;MemberUin成员账号。
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -14817,6 +17545,9 @@ class RoleAssignments(AbstractModel):
 
     @property
     def PrincipalId(self):
+        """CAM 用户同步的身份 ID。取值： 当PrincipalType取值为Group时，该值为CIC 用户组 ID（g-********）。 当PrincipalType取值为User时，该值为CIC 用户 ID（u-********）。
+        :rtype: str
+        """
         return self._PrincipalId
 
     @PrincipalId.setter
@@ -14825,6 +17556,9 @@ class RoleAssignments(AbstractModel):
 
     @property
     def PrincipalType(self):
+        """CAM 用户同步的身份类型。取值： User：表示该 CAM 用户同步的身份是CIC用户。 Group：表示该 CAM 用户同步的身份是CIC用户组。
+        :rtype: str
+        """
         return self._PrincipalType
 
     @PrincipalType.setter
@@ -14833,6 +17567,9 @@ class RoleAssignments(AbstractModel):
 
     @property
     def PrincipalName(self):
+        """用户名称或者用户组名称
+        :rtype: str
+        """
         return self._PrincipalName
 
     @PrincipalName.setter
@@ -14841,6 +17578,9 @@ class RoleAssignments(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -14849,6 +17589,9 @@ class RoleAssignments(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -14857,6 +17600,9 @@ class RoleAssignments(AbstractModel):
 
     @property
     def TargetName(self):
+        """集团账号目标账号的名称。
+        :rtype: str
+        """
         return self._TargetName
 
     @TargetName.setter
@@ -14921,6 +17667,9 @@ class RoleConfiguration(AbstractModel):
 
     @property
     def RoleConfigurationId(self):
+        """权限配置配置ID。
+        :rtype: str
+        """
         return self._RoleConfigurationId
 
     @RoleConfigurationId.setter
@@ -14929,6 +17678,9 @@ class RoleConfiguration(AbstractModel):
 
     @property
     def RoleConfigurationName(self):
+        """权限配置配名称。
+        :rtype: str
+        """
         return self._RoleConfigurationName
 
     @RoleConfigurationName.setter
@@ -14937,6 +17689,9 @@ class RoleConfiguration(AbstractModel):
 
     @property
     def Description(self):
+        """权限配置的描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -14945,6 +17700,10 @@ class RoleConfiguration(AbstractModel):
 
     @property
     def SessionDuration(self):
+        """会话持续时间。CIC 用户使用访问配置访问成员账号时，会话最多保持的时间。
+单位：秒。
+        :rtype: int
+        """
         return self._SessionDuration
 
     @SessionDuration.setter
@@ -14953,6 +17712,9 @@ class RoleConfiguration(AbstractModel):
 
     @property
     def RelayState(self):
+        """初始访问页面。CIC 用户使用访问配置访问成员账号时，初始访问的页面地址。
+        :rtype: str
+        """
         return self._RelayState
 
     @RelayState.setter
@@ -14961,6 +17723,9 @@ class RoleConfiguration(AbstractModel):
 
     @property
     def CreateTime(self):
+        """权限配置的创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -14969,6 +17734,9 @@ class RoleConfiguration(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """权限配置的更新时间。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -14977,6 +17745,9 @@ class RoleConfiguration(AbstractModel):
 
     @property
     def IsSelected(self):
+        """如果有入参FilterTargets查询成员账号是否配置过权限，配置了返回true，否则返回false。
+        :rtype: bool
+        """
         return self._IsSelected
 
     @IsSelected.setter
@@ -15038,6 +17809,9 @@ class RoleConfigurationProvisionings(AbstractModel):
 
     @property
     def DeploymentStatus(self):
+        """Deployed: 部署成功 DeployedRequired：需要重新部署 DeployFailed：部署失败
+        :rtype: str
+        """
         return self._DeploymentStatus
 
     @DeploymentStatus.setter
@@ -15046,6 +17820,9 @@ class RoleConfigurationProvisionings(AbstractModel):
 
     @property
     def RoleConfigurationId(self):
+        """权限配置ID。
+        :rtype: str
+        """
         return self._RoleConfigurationId
 
     @RoleConfigurationId.setter
@@ -15054,6 +17831,9 @@ class RoleConfigurationProvisionings(AbstractModel):
 
     @property
     def RoleConfigurationName(self):
+        """权限配置名称。
+        :rtype: str
+        """
         return self._RoleConfigurationName
 
     @RoleConfigurationName.setter
@@ -15062,6 +17842,9 @@ class RoleConfigurationProvisionings(AbstractModel):
 
     @property
     def TargetUin(self):
+        """集团账号目标账号的UIN
+        :rtype: int
+        """
         return self._TargetUin
 
     @TargetUin.setter
@@ -15070,6 +17853,9 @@ class RoleConfigurationProvisionings(AbstractModel):
 
     @property
     def TargetName(self):
+        """集团账号目标账号的名称。
+        :rtype: str
+        """
         return self._TargetName
 
     @TargetName.setter
@@ -15078,6 +17864,9 @@ class RoleConfigurationProvisionings(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间，
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -15086,6 +17875,9 @@ class RoleConfigurationProvisionings(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """修改时间，
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -15094,6 +17886,9 @@ class RoleConfigurationProvisionings(AbstractModel):
 
     @property
     def TargetType(self):
+        """同步的集团账号目标账号的类型，ManagerUin管理账号;MemberUin成员账号
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -15147,6 +17942,10 @@ class RolePolicie(AbstractModel):
 
     @property
     def RolePolicyId(self):
+        """策略ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RolePolicyId
 
     @RolePolicyId.setter
@@ -15155,6 +17954,9 @@ class RolePolicie(AbstractModel):
 
     @property
     def RolePolicyName(self):
+        """权限策略名称
+        :rtype: str
+        """
         return self._RolePolicyName
 
     @RolePolicyName.setter
@@ -15163,6 +17965,9 @@ class RolePolicie(AbstractModel):
 
     @property
     def RolePolicyType(self):
+        """权限策略类型
+        :rtype: str
+        """
         return self._RolePolicyType
 
     @RolePolicyType.setter
@@ -15171,6 +17976,9 @@ class RolePolicie(AbstractModel):
 
     @property
     def RolePolicyDocument(self):
+        """自定义策略内容。仅自定义策略返回该参数。
+        :rtype: str
+        """
         return self._RolePolicyDocument
 
     @RolePolicyDocument.setter
@@ -15179,6 +17987,9 @@ class RolePolicie(AbstractModel):
 
     @property
     def AddTime(self):
+        """权限策略被添加到权限配置的时间。
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -15237,6 +18048,9 @@ class RoleProvisioningsTask(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -15245,6 +18059,9 @@ class RoleProvisioningsTask(AbstractModel):
 
     @property
     def RoleConfigurationId(self):
+        """权限配置ID。
+        :rtype: str
+        """
         return self._RoleConfigurationId
 
     @RoleConfigurationId.setter
@@ -15253,6 +18070,9 @@ class RoleProvisioningsTask(AbstractModel):
 
     @property
     def RoleConfigurationName(self):
+        """权限配置名称。
+        :rtype: str
+        """
         return self._RoleConfigurationName
 
     @RoleConfigurationName.setter
@@ -15261,6 +18081,9 @@ class RoleProvisioningsTask(AbstractModel):
 
     @property
     def TargetUin(self):
+        """授权的集团账号目标账号的UIN
+        :rtype: int
+        """
         return self._TargetUin
 
     @TargetUin.setter
@@ -15269,6 +18092,10 @@ class RoleProvisioningsTask(AbstractModel):
 
     @property
     def TargetType(self):
+        """同步的集团账号目标账号的类型，ManagerUin管理账号;MemberUin成员账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -15277,6 +18104,10 @@ class RoleProvisioningsTask(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -15285,6 +18116,10 @@ class RoleProvisioningsTask(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """任务状态：InProgress: 进行中，Failed: 失败 3:Success: 成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -15351,6 +18186,9 @@ class SAMLIdPCertificate(AbstractModel):
 
     @property
     def SerialNumber(self):
+        """证书序列号。
+        :rtype: str
+        """
         return self._SerialNumber
 
     @SerialNumber.setter
@@ -15359,6 +18197,9 @@ class SAMLIdPCertificate(AbstractModel):
 
     @property
     def Issuer(self):
+        """证书颁发者。
+        :rtype: str
+        """
         return self._Issuer
 
     @Issuer.setter
@@ -15367,6 +18208,9 @@ class SAMLIdPCertificate(AbstractModel):
 
     @property
     def Version(self):
+        """证书版本。
+        :rtype: int
+        """
         return self._Version
 
     @Version.setter
@@ -15375,6 +18219,9 @@ class SAMLIdPCertificate(AbstractModel):
 
     @property
     def CertificateId(self):
+        """证书ID。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -15383,6 +18230,9 @@ class SAMLIdPCertificate(AbstractModel):
 
     @property
     def PublicKey(self):
+        """PEM 格式的公钥证书（Base64 编码）。
+        :rtype: str
+        """
         return self._PublicKey
 
     @PublicKey.setter
@@ -15391,6 +18241,9 @@ class SAMLIdPCertificate(AbstractModel):
 
     @property
     def SignatureAlgorithm(self):
+        """证书的签名算法。
+        :rtype: str
+        """
         return self._SignatureAlgorithm
 
     @SignatureAlgorithm.setter
@@ -15399,6 +18252,9 @@ class SAMLIdPCertificate(AbstractModel):
 
     @property
     def NotAfter(self):
+        """证书的过期时间。
+        :rtype: str
+        """
         return self._NotAfter
 
     @NotAfter.setter
@@ -15407,6 +18263,9 @@ class SAMLIdPCertificate(AbstractModel):
 
     @property
     def NotBefore(self):
+        """证书的创建时间。
+        :rtype: str
+        """
         return self._NotBefore
 
     @NotBefore.setter
@@ -15415,6 +18274,9 @@ class SAMLIdPCertificate(AbstractModel):
 
     @property
     def Subject(self):
+        """证书的主体。
+        :rtype: str
+        """
         return self._Subject
 
     @Subject.setter
@@ -15423,6 +18285,9 @@ class SAMLIdPCertificate(AbstractModel):
 
     @property
     def X509Certificate(self):
+        """PEM 格式的 X509 证书。
+        :rtype: str
+        """
         return self._X509Certificate
 
     @X509Certificate.setter
@@ -15483,6 +18348,9 @@ class SAMLIdentityProviderConfiguration(AbstractModel):
 
     @property
     def EntityId(self):
+        """IdP 标识。
+        :rtype: str
+        """
         return self._EntityId
 
     @EntityId.setter
@@ -15491,6 +18359,9 @@ class SAMLIdentityProviderConfiguration(AbstractModel):
 
     @property
     def SSOStatus(self):
+        """SSO 登录的启用状态。取值：  Enabled：启用。 Disabled（默认值）：禁用。
+        :rtype: str
+        """
         return self._SSOStatus
 
     @SSOStatus.setter
@@ -15499,6 +18370,9 @@ class SAMLIdentityProviderConfiguration(AbstractModel):
 
     @property
     def EncodedMetadataDocument(self):
+        """IdP 元数据文档（Base64 编码）。
+        :rtype: str
+        """
         return self._EncodedMetadataDocument
 
     @EncodedMetadataDocument.setter
@@ -15507,6 +18381,9 @@ class SAMLIdentityProviderConfiguration(AbstractModel):
 
     @property
     def CertificateIds(self):
+        """X509证书ID。
+        :rtype: list of str
+        """
         return self._CertificateIds
 
     @CertificateIds.setter
@@ -15515,6 +18392,9 @@ class SAMLIdentityProviderConfiguration(AbstractModel):
 
     @property
     def LoginUrl(self):
+        """IdP 的登录地址。
+        :rtype: str
+        """
         return self._LoginUrl
 
     @LoginUrl.setter
@@ -15523,6 +18403,9 @@ class SAMLIdentityProviderConfiguration(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -15531,6 +18414,9 @@ class SAMLIdentityProviderConfiguration(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -15579,6 +18465,9 @@ class SAMLServiceProvider(AbstractModel):
 
     @property
     def EntityId(self):
+        """https://tencentcloudsso.com/saml/sp/z-sjw8ensa**
+        :rtype: str
+        """
         return self._EntityId
 
     @EntityId.setter
@@ -15587,6 +18476,9 @@ class SAMLServiceProvider(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -15595,6 +18487,9 @@ class SAMLServiceProvider(AbstractModel):
 
     @property
     def EncodedMetadataDocument(self):
+        """SP 元数据文档（Base64 编码）。
+        :rtype: str
+        """
         return self._EncodedMetadataDocument
 
     @EncodedMetadataDocument.setter
@@ -15603,6 +18498,9 @@ class SAMLServiceProvider(AbstractModel):
 
     @property
     def AcsUrl(self):
+        """SP 的 ACS URL。
+        :rtype: str
+        """
         return self._AcsUrl
 
     @AcsUrl.setter
@@ -15654,6 +18552,9 @@ class SCIMCredential(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。z-前缀开头，后面是12位随机数字/小写字母
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -15662,6 +18563,9 @@ class SCIMCredential(AbstractModel):
 
     @property
     def Status(self):
+        """SCIM密钥状态，Enabled已开启，Disabled已关闭。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -15670,6 +18574,9 @@ class SCIMCredential(AbstractModel):
 
     @property
     def CredentialId(self):
+        """SCIM密钥ID。scimcred-前缀开头，后面是12位随机数字/小写字母。
+        :rtype: str
+        """
         return self._CredentialId
 
     @CredentialId.setter
@@ -15678,6 +18585,9 @@ class SCIMCredential(AbstractModel):
 
     @property
     def CredentialType(self):
+        """SCIM密钥类型。
+        :rtype: str
+        """
         return self._CredentialType
 
     @CredentialType.setter
@@ -15686,6 +18596,9 @@ class SCIMCredential(AbstractModel):
 
     @property
     def CreateTime(self):
+        """SCIM 密钥的创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -15694,6 +18607,9 @@ class SCIMCredential(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """SCIM 密钥的过期时间。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -15735,6 +18651,9 @@ class SendOrgMemberAccountBindEmailRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """成员Uin。
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -15743,6 +18662,9 @@ class SendOrgMemberAccountBindEmailRequest(AbstractModel):
 
     @property
     def BindId(self):
+        """绑定ID。可以通过[DescribeOrganizationMemberEmailBind](https://cloud.tencent.com/document/product/850/93332)获取
+        :rtype: int
+        """
         return self._BindId
 
     @BindId.setter
@@ -15777,6 +18699,9 @@ class SendOrgMemberAccountBindEmailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15817,6 +18742,9 @@ class SetExternalSAMLIdentityProviderRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -15825,6 +18753,9 @@ class SetExternalSAMLIdentityProviderRequest(AbstractModel):
 
     @property
     def EncodedMetadataDocument(self):
+        """IdP 元数据文档（Base64 编码）。  由支持 SAML 2.0 协议的 IdP 提供。
+        :rtype: str
+        """
         return self._EncodedMetadataDocument
 
     @EncodedMetadataDocument.setter
@@ -15833,6 +18764,9 @@ class SetExternalSAMLIdentityProviderRequest(AbstractModel):
 
     @property
     def SSOStatus(self):
+        """SSO 登录的启用状态。取值：  Enabled：启用。 Disabled（默认值）：禁用。
+        :rtype: str
+        """
         return self._SSOStatus
 
     @SSOStatus.setter
@@ -15841,6 +18775,9 @@ class SetExternalSAMLIdentityProviderRequest(AbstractModel):
 
     @property
     def EntityId(self):
+        """IdP 标识。
+        :rtype: str
+        """
         return self._EntityId
 
     @EntityId.setter
@@ -15849,6 +18786,9 @@ class SetExternalSAMLIdentityProviderRequest(AbstractModel):
 
     @property
     def LoginUrl(self):
+        """IdP 的登录地址。
+        :rtype: str
+        """
         return self._LoginUrl
 
     @LoginUrl.setter
@@ -15857,6 +18797,9 @@ class SetExternalSAMLIdentityProviderRequest(AbstractModel):
 
     @property
     def X509Certificate(self):
+        """PEM 格式的 X509 证书。指定该参数会替换所有已经存在的证书。
+        :rtype: str
+        """
         return self._X509Certificate
 
     @X509Certificate.setter
@@ -15895,6 +18838,9 @@ class SetExternalSAMLIdentityProviderResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15926,6 +18872,9 @@ class ShareArea(AbstractModel):
 
     @property
     def Name(self):
+        """地域名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -15934,6 +18883,9 @@ class ShareArea(AbstractModel):
 
     @property
     def Area(self):
+        """地域标识。
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -15942,6 +18894,9 @@ class ShareArea(AbstractModel):
 
     @property
     def AreaId(self):
+        """地域ID。
+        :rtype: int
+        """
         return self._AreaId
 
     @AreaId.setter
@@ -15977,6 +18932,9 @@ class ShareMember(AbstractModel):
 
     @property
     def ShareMemberUin(self):
+        """共享成员Uin。
+        :rtype: int
+        """
         return self._ShareMemberUin
 
     @ShareMemberUin.setter
@@ -16016,6 +18974,9 @@ class ShareResource(AbstractModel):
     def ResourceId(self):
         warnings.warn("parameter `ResourceId` is deprecated", DeprecationWarning) 
 
+        """共享资源ID。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -16026,6 +18987,10 @@ class ShareResource(AbstractModel):
 
     @property
     def ProductResourceId(self):
+        """产品资源ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProductResourceId
 
     @ProductResourceId.setter
@@ -16064,6 +19029,9 @@ class ShareUnitMember(AbstractModel):
 
     @property
     def ShareMemberUin(self):
+        """共享成员Uin。
+        :rtype: int
+        """
         return self._ShareMemberUin
 
     @ShareMemberUin.setter
@@ -16072,6 +19040,10 @@ class ShareUnitMember(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -16128,6 +19100,9 @@ class ShareUnitResource(AbstractModel):
 
     @property
     def ResourceId(self):
+        """共享资源ID。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -16136,6 +19111,9 @@ class ShareUnitResource(AbstractModel):
 
     @property
     def Type(self):
+        """共享资源类型。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -16144,6 +19122,10 @@ class ShareUnitResource(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -16152,6 +19134,9 @@ class ShareUnitResource(AbstractModel):
 
     @property
     def ProductResourceId(self):
+        """产品资源ID。
+        :rtype: str
+        """
         return self._ProductResourceId
 
     @ProductResourceId.setter
@@ -16160,6 +19145,10 @@ class ShareUnitResource(AbstractModel):
 
     @property
     def SharedMemberNum(self):
+        """共享单元成员数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SharedMemberNum
 
     @SharedMemberNum.setter
@@ -16168,6 +19157,10 @@ class ShareUnitResource(AbstractModel):
 
     @property
     def SharedMemberUseNum(self):
+        """使用中共享单元成员数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SharedMemberUseNum
 
     @SharedMemberUseNum.setter
@@ -16176,6 +19169,10 @@ class ShareUnitResource(AbstractModel):
 
     @property
     def ShareManagerUin(self):
+        """共享管理员OwnerUin。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ShareManagerUin
 
     @ShareManagerUin.setter
@@ -16220,6 +19217,10 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -16228,6 +19229,10 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -16271,6 +19276,10 @@ class TagComplianceDetails(AbstractModel):
 
     @property
     def ComplianceStatus(self):
+        """合规状态。true-合规，false-不合规
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._ComplianceStatus
 
     @ComplianceStatus.setter
@@ -16279,6 +19288,10 @@ class TagComplianceDetails(AbstractModel):
 
     @property
     def KeysWithNonCompliantValues(self):
+        """值不合规的标签键列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._KeysWithNonCompliantValues
 
     @KeysWithNonCompliantValues.setter
@@ -16287,6 +19300,10 @@ class TagComplianceDetails(AbstractModel):
 
     @property
     def NonCompliantKeys(self):
+        """键不合规的标签键列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._NonCompliantKeys
 
     @NonCompliantKeys.setter
@@ -16327,6 +19344,10 @@ class Tags(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -16335,6 +19356,10 @@ class Tags(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -16397,6 +19422,9 @@ class TaskInfo(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -16405,6 +19433,9 @@ class TaskInfo(AbstractModel):
 
     @property
     def RoleConfigurationId(self):
+        """权限配置ID。
+        :rtype: str
+        """
         return self._RoleConfigurationId
 
     @RoleConfigurationId.setter
@@ -16413,6 +19444,9 @@ class TaskInfo(AbstractModel):
 
     @property
     def RoleConfigurationName(self):
+        """权限配置名称。
+        :rtype: str
+        """
         return self._RoleConfigurationName
 
     @RoleConfigurationName.setter
@@ -16421,6 +19455,9 @@ class TaskInfo(AbstractModel):
 
     @property
     def TargetUin(self):
+        """授权的目标成员账号的UIN
+        :rtype: int
+        """
         return self._TargetUin
 
     @TargetUin.setter
@@ -16429,6 +19466,9 @@ class TaskInfo(AbstractModel):
 
     @property
     def TargetType(self):
+        """同步的目标账号的类型，ManagerUin管理账号;MemberUin成员账号
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -16437,6 +19477,9 @@ class TaskInfo(AbstractModel):
 
     @property
     def PrincipalId(self):
+        """用户授权的身份ID,如果是身份类型是CIC用户,则为用户ID; 如果是用户组，则为用户组ID;
+        :rtype: str
+        """
         return self._PrincipalId
 
     @PrincipalId.setter
@@ -16445,6 +19488,9 @@ class TaskInfo(AbstractModel):
 
     @property
     def PrincipalType(self):
+        """用户授权的身份类型, User代表CIC用户, Group代表CIC用户组
+        :rtype: str
+        """
         return self._PrincipalType
 
     @PrincipalType.setter
@@ -16453,6 +19499,9 @@ class TaskInfo(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型。
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -16461,6 +19510,9 @@ class TaskInfo(AbstractModel):
 
     @property
     def Status(self):
+        """InProgress：任务执行中。 Success：任务执行成功。 Failed：任务执行失败。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -16469,6 +19521,10 @@ class TaskInfo(AbstractModel):
 
     @property
     def FailureReason(self):
+        """失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FailureReason
 
     @FailureReason.setter
@@ -16526,6 +19582,9 @@ DeleteRoleAssignment：移除 成员 账号上的授权。
 
     @property
     def Status(self):
+        """任务状态。取值：  InProgress：任务执行中。 Success：任务执行成功。 Failed：任务执行失败。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -16534,6 +19593,9 @@ DeleteRoleAssignment：移除 成员 账号上的授权。
 
     @property
     def TaskId(self):
+        """任务 ID。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -16542,6 +19604,13 @@ DeleteRoleAssignment：移除 成员 账号上的授权。
 
     @property
     def TaskType(self):
+        """任务类型。取值：
+ProvisionRoleConfiguration：部署权限配置。
+DeprovisionRoleConfiguration：解除权限配置部署。
+CreateRoleAssignment：在成员 账号上授权。
+DeleteRoleAssignment：移除 成员 账号上的授权。
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -16550,6 +19619,11 @@ DeleteRoleAssignment：移除 成员 账号上的授权。
 
     @property
     def FailureReason(self):
+        """任务失败原因。
+说明
+只有Status为Failed，才会显示该参数。
+        :rtype: str
+        """
         return self._FailureReason
 
     @FailureReason.setter
@@ -16595,6 +19669,9 @@ class UpdateCustomPolicyForRoleConfigurationRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -16603,6 +19680,9 @@ class UpdateCustomPolicyForRoleConfigurationRequest(AbstractModel):
 
     @property
     def RoleConfigurationId(self):
+        """权限配置 ID
+        :rtype: str
+        """
         return self._RoleConfigurationId
 
     @RoleConfigurationId.setter
@@ -16611,6 +19691,9 @@ class UpdateCustomPolicyForRoleConfigurationRequest(AbstractModel):
 
     @property
     def CustomPolicyName(self):
+        """权限策略名称，长度最大为 32 个字符。
+        :rtype: str
+        """
         return self._CustomPolicyName
 
     @CustomPolicyName.setter
@@ -16619,6 +19702,9 @@ class UpdateCustomPolicyForRoleConfigurationRequest(AbstractModel):
 
     @property
     def NewCustomPolicyDocument(self):
+        """自定义策略内容。长度：最大 4096 个字符。当RolePolicyType为Inline时，该参数必须配置。关于权限策略的语法和结构，请参见权限策略语法和结构。
+        :rtype: str
+        """
         return self._NewCustomPolicyDocument
 
     @NewCustomPolicyDocument.setter
@@ -16655,6 +19741,9 @@ class UpdateCustomPolicyForRoleConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16689,6 +19778,9 @@ class UpdateGroupRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -16697,6 +19789,9 @@ class UpdateGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """用户组ID。
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -16705,6 +19800,9 @@ class UpdateGroupRequest(AbstractModel):
 
     @property
     def NewGroupName(self):
+        """新的用户组名称。
+        :rtype: str
+        """
         return self._NewGroupName
 
     @NewGroupName.setter
@@ -16713,6 +19811,9 @@ class UpdateGroupRequest(AbstractModel):
 
     @property
     def NewDescription(self):
+        """新的用户组描述。
+        :rtype: str
+        """
         return self._NewDescription
 
     @NewDescription.setter
@@ -16752,6 +19853,9 @@ class UpdateGroupResponse(AbstractModel):
 
     @property
     def GroupInfo(self):
+        """用户组信息。
+        :rtype: :class:`tencentcloud.organization.v20210331.models.GroupInfo`
+        """
         return self._GroupInfo
 
     @GroupInfo.setter
@@ -16760,6 +19864,9 @@ class UpdateGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16794,6 +19901,9 @@ class UpdateOrganizationIdentityRequest(AbstractModel):
 
     @property
     def IdentityId(self):
+        """身份ID。可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
+        :rtype: int
+        """
         return self._IdentityId
 
     @IdentityId.setter
@@ -16802,6 +19912,9 @@ class UpdateOrganizationIdentityRequest(AbstractModel):
 
     @property
     def Description(self):
+        """身份描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -16810,6 +19923,9 @@ class UpdateOrganizationIdentityRequest(AbstractModel):
 
     @property
     def IdentityPolicy(self):
+        """身份策略。
+        :rtype: list of IdentityPolicy
+        """
         return self._IdentityPolicy
 
     @IdentityPolicy.setter
@@ -16850,6 +19966,9 @@ class UpdateOrganizationIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16887,6 +20006,9 @@ class UpdateOrganizationMemberEmailBindRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """成员Uin。
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -16895,6 +20017,9 @@ class UpdateOrganizationMemberEmailBindRequest(AbstractModel):
 
     @property
     def BindId(self):
+        """绑定ID。可以通过[DescribeOrganizationMemberEmailBind](https://cloud.tencent.com/document/product/850/93332)获取
+        :rtype: int
+        """
         return self._BindId
 
     @BindId.setter
@@ -16903,6 +20028,9 @@ class UpdateOrganizationMemberEmailBindRequest(AbstractModel):
 
     @property
     def Email(self):
+        """邮箱地址。
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -16911,6 +20039,9 @@ class UpdateOrganizationMemberEmailBindRequest(AbstractModel):
 
     @property
     def CountryCode(self):
+        """国际区号。
+        :rtype: str
+        """
         return self._CountryCode
 
     @CountryCode.setter
@@ -16919,6 +20050,9 @@ class UpdateOrganizationMemberEmailBindRequest(AbstractModel):
 
     @property
     def Phone(self):
+        """手机号。
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -16956,6 +20090,9 @@ class UpdateOrganizationMemberEmailBindResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17000,6 +20137,9 @@ class UpdateOrganizationMemberRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """成员Uin。
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -17008,6 +20148,9 @@ class UpdateOrganizationMemberRequest(AbstractModel):
 
     @property
     def Name(self):
+        """成员名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&._[]-:,
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -17016,6 +20159,9 @@ class UpdateOrganizationMemberRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注。最大长度为40个字符
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -17024,6 +20170,9 @@ class UpdateOrganizationMemberRequest(AbstractModel):
 
     @property
     def PolicyType(self):
+        """关系策略类型。PolicyType不为空，PermissionIds不能为空。取值：Financial
+        :rtype: str
+        """
         return self._PolicyType
 
     @PolicyType.setter
@@ -17032,6 +20181,10 @@ class UpdateOrganizationMemberRequest(AbstractModel):
 
     @property
     def PermissionIds(self):
+        """成员财务权限ID列表。PermissionIds不为空，PolicyType不能为空。
+取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票、6-优惠继承、7-代付费、8-成本分析，如果有值，1、2 默认必须
+        :rtype: list of int non-negative
+        """
         return self._PermissionIds
 
     @PermissionIds.setter
@@ -17040,6 +20193,9 @@ class UpdateOrganizationMemberRequest(AbstractModel):
 
     @property
     def IsAllowQuit(self):
+        """是否允许成员退出组织。取值：Allow-允许、Denied-不允许
+        :rtype: str
+        """
         return self._IsAllowQuit
 
     @IsAllowQuit.setter
@@ -17048,6 +20204,9 @@ class UpdateOrganizationMemberRequest(AbstractModel):
 
     @property
     def PayUin(self):
+        """代付者Uin。成员财务权限有代付费时需要，取值为成员对应主体的主体管理员Uin
+        :rtype: str
+        """
         return self._PayUin
 
     @PayUin.setter
@@ -17087,6 +20246,9 @@ class UpdateOrganizationMemberResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17118,6 +20280,9 @@ class UpdateOrganizationNodeRequest(AbstractModel):
 
     @property
     def NodeId(self):
+        """节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -17126,6 +20291,9 @@ class UpdateOrganizationNodeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """节点名称。最大长度为40个字符，支持英文字母、数字、汉字、符号+@、&._[]-
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -17134,6 +20302,9 @@ class UpdateOrganizationNodeRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -17169,6 +20340,9 @@ class UpdateOrganizationNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17206,6 +20380,9 @@ class UpdatePolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """需要编辑的策略ID。可以调用[ListPolicies](https://cloud.tencent.com/document/product/850/105311)获取
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -17214,6 +20391,9 @@ class UpdatePolicyRequest(AbstractModel):
 
     @property
     def Description(self):
+        """策略描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -17222,6 +20402,9 @@ class UpdatePolicyRequest(AbstractModel):
 
     @property
     def Content(self):
+        """策略内容。参考CAM策略语法
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -17230,6 +20413,9 @@ class UpdatePolicyRequest(AbstractModel):
 
     @property
     def Name(self):
+        """策略名。长度为1~128个字符，可以包含汉字、英文字母、数字和下划线（_）
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -17238,6 +20424,9 @@ class UpdatePolicyRequest(AbstractModel):
 
     @property
     def Type(self):
+        """策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -17275,6 +20464,9 @@ class UpdatePolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17312,6 +20504,9 @@ class UpdateRoleConfigurationRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -17320,6 +20515,9 @@ class UpdateRoleConfigurationRequest(AbstractModel):
 
     @property
     def RoleConfigurationId(self):
+        """权限配置 ID
+        :rtype: str
+        """
         return self._RoleConfigurationId
 
     @RoleConfigurationId.setter
@@ -17328,6 +20526,9 @@ class UpdateRoleConfigurationRequest(AbstractModel):
 
     @property
     def NewDescription(self):
+        """新的权限配置描述。  长度：最大 1024 个字符。
+        :rtype: str
+        """
         return self._NewDescription
 
     @NewDescription.setter
@@ -17336,6 +20537,9 @@ class UpdateRoleConfigurationRequest(AbstractModel):
 
     @property
     def NewSessionDuration(self):
+        """新的会话持续时间。  CIC 用户使用权限配置访问集团账号目标账号时，会话最多保持的时间。  单位：秒。  取值范围：900-43200（15 分钟-12 小时）。
+        :rtype: int
+        """
         return self._NewSessionDuration
 
     @NewSessionDuration.setter
@@ -17344,6 +20548,9 @@ class UpdateRoleConfigurationRequest(AbstractModel):
 
     @property
     def NewRelayState(self):
+        """新的初始访问页面。  CIC 用户使用权限配置访问集团账号目标账号时，初始访问的页面地址。  该页面必须是腾讯云控制台页面。
+        :rtype: str
+        """
         return self._NewRelayState
 
     @NewRelayState.setter
@@ -17384,6 +20591,9 @@ class UpdateRoleConfigurationResponse(AbstractModel):
 
     @property
     def RoleConfigurationInfo(self):
+        """权限配置详情
+        :rtype: :class:`tencentcloud.organization.v20210331.models.RoleConfiguration`
+        """
         return self._RoleConfigurationInfo
 
     @RoleConfigurationInfo.setter
@@ -17392,6 +20602,9 @@ class UpdateRoleConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17426,6 +20639,9 @@ class UpdateSCIMCredentialStatusRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。z-前缀开头，后面是12位随机数字/小写字母
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -17434,6 +20650,9 @@ class UpdateSCIMCredentialStatusRequest(AbstractModel):
 
     @property
     def CredentialId(self):
+        """SCIM密钥ID。scimcred-前缀开头，后面是12位随机数字/小写字母。
+        :rtype: str
+        """
         return self._CredentialId
 
     @CredentialId.setter
@@ -17442,6 +20661,9 @@ class UpdateSCIMCredentialStatusRequest(AbstractModel):
 
     @property
     def NewStatus(self):
+        """SCIM密钥状态。Enabled：启用。 Disabled：禁用。
+        :rtype: str
+        """
         return self._NewStatus
 
     @NewStatus.setter
@@ -17477,6 +20699,9 @@ class UpdateSCIMCredentialStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17505,6 +20730,9 @@ class UpdateSCIMSynchronizationStatusRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。z-前缀开头，后面是12位随机数字/小写字母
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -17513,6 +20741,9 @@ class UpdateSCIMSynchronizationStatusRequest(AbstractModel):
 
     @property
     def SCIMSynchronizationStatus(self):
+        """SCIM 同步状态。Enabled：启用。Disabled：禁用。
+        :rtype: str
+        """
         return self._SCIMSynchronizationStatus
 
     @SCIMSynchronizationStatus.setter
@@ -17547,6 +20778,9 @@ class UpdateSCIMSynchronizationStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17581,6 +20815,9 @@ class UpdateShareUnitRequest(AbstractModel):
 
     @property
     def UnitId(self):
+        """共享单元ID。
+        :rtype: str
+        """
         return self._UnitId
 
     @UnitId.setter
@@ -17589,6 +20826,9 @@ class UpdateShareUnitRequest(AbstractModel):
 
     @property
     def Name(self):
+        """共享单元名称。仅支持大小写字母、数字、-、以及_的组合，3-128个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -17597,6 +20837,9 @@ class UpdateShareUnitRequest(AbstractModel):
 
     @property
     def Description(self):
+        """共享单元描述。最大128个字符。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -17605,6 +20848,9 @@ class UpdateShareUnitRequest(AbstractModel):
 
     @property
     def ShareScope(self):
+        """共享范围。取值：1-仅允许集团组织内共享 2-允许共享给任意账号，默认值：1
+        :rtype: int
+        """
         return self._ShareScope
 
     @ShareScope.setter
@@ -17641,6 +20887,9 @@ class UpdateShareUnitResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17684,6 +20933,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -17692,6 +20944,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户 ID。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -17700,6 +20955,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def NewFirstName(self):
+        """用户的名。
+        :rtype: str
+        """
         return self._NewFirstName
 
     @NewFirstName.setter
@@ -17708,6 +20966,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def NewLastName(self):
+        """用户的姓。
+        :rtype: str
+        """
         return self._NewLastName
 
     @NewLastName.setter
@@ -17716,6 +20977,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def NewDisplayName(self):
+        """用户的显示名称。
+        :rtype: str
+        """
         return self._NewDisplayName
 
     @NewDisplayName.setter
@@ -17724,6 +20988,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def NewDescription(self):
+        """用户的描述。
+        :rtype: str
+        """
         return self._NewDescription
 
     @NewDescription.setter
@@ -17732,6 +20999,9 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def NewEmail(self):
+        """用户的电子邮箱。
+        :rtype: str
+        """
         return self._NewEmail
 
     @NewEmail.setter
@@ -17774,6 +21044,9 @@ class UpdateUserResponse(AbstractModel):
 
     @property
     def UserInfo(self):
+        """用户信息
+        :rtype: :class:`tencentcloud.organization.v20210331.models.UserInfo`
+        """
         return self._UserInfo
 
     @UserInfo.setter
@@ -17782,6 +21055,9 @@ class UpdateUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17816,6 +21092,9 @@ class UpdateUserStatusRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间 ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -17824,6 +21103,9 @@ class UpdateUserStatusRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户 ID。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -17832,6 +21114,9 @@ class UpdateUserStatusRequest(AbstractModel):
 
     @property
     def NewUserStatus(self):
+        """用户的状态。取值：  Enabled：启用。 Disabled：禁用。
+        :rtype: str
+        """
         return self._NewUserStatus
 
     @NewUserStatus.setter
@@ -17867,6 +21152,9 @@ class UpdateUserStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17904,6 +21192,9 @@ class UpdateUserSyncProvisioningRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -17912,6 +21203,9 @@ class UpdateUserSyncProvisioningRequest(AbstractModel):
 
     @property
     def UserProvisioningId(self):
+        """用户同步的iD
+        :rtype: str
+        """
         return self._UserProvisioningId
 
     @UserProvisioningId.setter
@@ -17920,6 +21214,9 @@ class UpdateUserSyncProvisioningRequest(AbstractModel):
 
     @property
     def NewDescription(self):
+        """用户同步描述。
+        :rtype: str
+        """
         return self._NewDescription
 
     @NewDescription.setter
@@ -17928,6 +21225,9 @@ class UpdateUserSyncProvisioningRequest(AbstractModel):
 
     @property
     def NewDuplicationStateful(self):
+        """冲突策略。当CIC 用户同步到 CAM 时，如果 CAM 中存在同名用户时的处理策略。取值： KeepBoth：两者都保留。当CIC 用户被同步到 CAM 时，如果 CAM 已经存在同名用户，则对CIC 用户的用户名添加后缀_cic后尝试创建该用户名的 CAM 用户。 TakeOver：替换。当CIC 用户被同步到 CAM 时，如果 CAM 已经存在同名用户，则直接将已经存在的 CAM 用户替换为CIC 同步用户。 
+        :rtype: str
+        """
         return self._NewDuplicationStateful
 
     @NewDuplicationStateful.setter
@@ -17936,6 +21236,9 @@ class UpdateUserSyncProvisioningRequest(AbstractModel):
 
     @property
     def NewDeletionStrategy(self):
+        """删除策略。删除 CAM 用户同步时，对已同步的 CAM 用户的处理策略。取值： Delete：删除。删除 CAM 用户同步时，会删除从CIC 已经同步到 CAM 中的 CAM 用户。 Keep：保留。删除 RAM 用户同步时，会保留从CIC 已经同步到 CAM 中的 CAM 用户。 
+        :rtype: str
+        """
         return self._NewDeletionStrategy
 
     @NewDeletionStrategy.setter
@@ -17973,6 +21276,9 @@ class UpdateUserSyncProvisioningResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18001,6 +21307,9 @@ class UpdateZoneRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """空间ID。z-前缀开头，后面是12位随机数字/小写字母
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -18009,6 +21318,9 @@ class UpdateZoneRequest(AbstractModel):
 
     @property
     def NewZoneName(self):
+        """空间名，必须全局唯一。包含小写字母、数字和短划线（-）。不能以短划线（-）开头或结尾，且不能有两个连续的短划线（-）。长度：2~64 个字符。
+        :rtype: str
+        """
         return self._NewZoneName
 
     @NewZoneName.setter
@@ -18043,6 +21355,9 @@ class UpdateZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18101,6 +21416,9 @@ class UserInfo(AbstractModel):
 
     @property
     def UserName(self):
+        """查询username。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -18109,6 +21427,9 @@ class UserInfo(AbstractModel):
 
     @property
     def FirstName(self):
+        """用户的名。
+        :rtype: str
+        """
         return self._FirstName
 
     @FirstName.setter
@@ -18117,6 +21438,9 @@ class UserInfo(AbstractModel):
 
     @property
     def LastName(self):
+        """用户的姓。
+        :rtype: str
+        """
         return self._LastName
 
     @LastName.setter
@@ -18125,6 +21449,9 @@ class UserInfo(AbstractModel):
 
     @property
     def DisplayName(self):
+        """用户的显示名称。
+        :rtype: str
+        """
         return self._DisplayName
 
     @DisplayName.setter
@@ -18133,6 +21460,9 @@ class UserInfo(AbstractModel):
 
     @property
     def Description(self):
+        """用户的描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -18141,6 +21471,9 @@ class UserInfo(AbstractModel):
 
     @property
     def Email(self):
+        """用户的电子邮箱。目录内必须唯一。
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -18149,6 +21482,9 @@ class UserInfo(AbstractModel):
 
     @property
     def UserStatus(self):
+        """用户状态 Enabled：启用， Disabled：禁用。
+        :rtype: str
+        """
         return self._UserStatus
 
     @UserStatus.setter
@@ -18157,6 +21493,9 @@ class UserInfo(AbstractModel):
 
     @property
     def UserType(self):
+        """用户类型  Manual：手动创建，Synchronized：外部导入。
+        :rtype: str
+        """
         return self._UserType
 
     @UserType.setter
@@ -18165,6 +21504,9 @@ class UserInfo(AbstractModel):
 
     @property
     def UserId(self):
+        """用户 ID
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -18173,6 +21515,9 @@ class UserInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """用户的创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -18181,6 +21526,9 @@ class UserInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """用户的修改时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -18189,6 +21537,9 @@ class UserInfo(AbstractModel):
 
     @property
     def IsSelected(self):
+        """是否选中
+        :rtype: bool
+        """
         return self._IsSelected
 
     @IsSelected.setter
@@ -18281,6 +21632,12 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def UserProvisioningId(self):
+        """CAM 用户同步的状态。取值：
+
+Enabled：CAM 用户同步已启用。
+Disabled：CAM 用户同步未启用。
+        :rtype: str
+        """
         return self._UserProvisioningId
 
     @UserProvisioningId.setter
@@ -18289,6 +21646,9 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def Description(self):
+        """描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -18297,6 +21657,11 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def Status(self):
+        """CAM 用户同步的状态。取值：
+Enabled：CAM 用户同步已启用。
+Disabled：CAM 用户同步未启用。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -18305,6 +21670,11 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def PrincipalId(self):
+        """CAM 用户同步的身份 ID。取值：
+当PrincipalType取值为Group时，该值为CIC用户组 ID（g-********）。
+当PrincipalType取值为User时，该值为CIC用户 ID（u-********）。
+        :rtype: str
+        """
         return self._PrincipalId
 
     @PrincipalId.setter
@@ -18313,6 +21683,11 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def PrincipalName(self):
+        """CAM 用户同步的身份名称。取值：
+当PrincipalType取值为Group时，该值为CIC用户组名称。
+当PrincipalType取值为User时，该值为CIC用户名称。
+        :rtype: str
+        """
         return self._PrincipalName
 
     @PrincipalName.setter
@@ -18321,6 +21696,12 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def PrincipalType(self):
+        """CAM 用户同步的身份类型。取值：
+
+User：表示该 CAM 用户同步的身份是CIC用户。
+Group：表示该 CAM 用户同步的身份是CIC用户组。
+        :rtype: str
+        """
         return self._PrincipalType
 
     @PrincipalType.setter
@@ -18329,6 +21710,9 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def TargetUin(self):
+        """集团账号目标账号的UIN。
+        :rtype: int
+        """
         return self._TargetUin
 
     @TargetUin.setter
@@ -18337,6 +21721,9 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def TargetName(self):
+        """集团账号目标账号的名称。
+        :rtype: str
+        """
         return self._TargetName
 
     @TargetName.setter
@@ -18345,6 +21732,9 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def DuplicationStrategy(self):
+        """冲突策略。当CIC 用户同步到 CAM 时，如果 CAM 中存在同名用户时的处理策略。取值： KeepBoth：两者都保留。当CIC 用户被同步到 CAM 时，如果 CAM 已经存在同名用户，则对CIC 用户的用户名添加后缀_cic后尝试创建该用户名的 CAM 用户。 TakeOver：替换。当CIC 用户被同步到 CAM 时，如果 CAM 已经存在同名用户，则直接将已经存在的 CAM 用户替换为CIC 同步用户。
+        :rtype: str
+        """
         return self._DuplicationStrategy
 
     @DuplicationStrategy.setter
@@ -18353,6 +21743,9 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def DeletionStrategy(self):
+        """删除策略。删除 CAM 用户同步时，对已同步的 CAM 用户的处理策略。取值： Delete：删除。删除 CAM 用户同步时，会删除从CIC 已经同步到 CAM 中的 CAM 用户。 Keep：保留。删除 RAM 用户同步时，会保留从CIC 已经同步到 CAM 中的 CAM 用户。
+        :rtype: str
+        """
         return self._DeletionStrategy
 
     @DeletionStrategy.setter
@@ -18361,6 +21754,9 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def CreateTime(self):
+        """创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -18369,6 +21765,9 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def UpdateTime(self):
+        """更新时间。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -18377,6 +21776,9 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def TargetType(self):
+        """同步的集团账号目标账号的类型，ManagerUin管理账号;MemberUin成员账号
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -18452,6 +21854,9 @@ class UserProvisioningsTask(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -18460,6 +21865,9 @@ class UserProvisioningsTask(AbstractModel):
 
     @property
     def TargetUin(self):
+        """授权的集团账号目标账号的UIN
+        :rtype: int
+        """
         return self._TargetUin
 
     @TargetUin.setter
@@ -18468,6 +21876,9 @@ class UserProvisioningsTask(AbstractModel):
 
     @property
     def TargetType(self):
+        """同步的集团账号目标账号的类型，ManagerUin管理账号;MemberUin成员账号
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -18476,6 +21887,9 @@ class UserProvisioningsTask(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型。StartProvisioning：用户同步，DeleteProvisioning：删除用户同步
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -18484,6 +21898,9 @@ class UserProvisioningsTask(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """任务状态：InProgress: 进行中，Failed: 失败 3:Success: 成功
+        :rtype: str
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -18492,6 +21909,9 @@ class UserProvisioningsTask(AbstractModel):
 
     @property
     def UserProvisioningId(self):
+        """用户同步ID。
+        :rtype: str
+        """
         return self._UserProvisioningId
 
     @UserProvisioningId.setter
@@ -18500,6 +21920,9 @@ class UserProvisioningsTask(AbstractModel):
 
     @property
     def PrincipalId(self):
+        """ CAM 用户同步的身份 ID。取值： 当PrincipalType取值为Group时，该值为CIC 用户组 ID（g-********）。 当PrincipalType取值为User时，该值为CIC 用户 ID（u-********）。
+        :rtype: str
+        """
         return self._PrincipalId
 
     @PrincipalId.setter
@@ -18508,6 +21931,9 @@ class UserProvisioningsTask(AbstractModel):
 
     @property
     def PrincipalType(self):
+        """CAM 用户同步的身份类型。取值： User：表示该 CAM 用户同步的身份是CIC 用户。 Group：表示该 CAM 用户同步的身份是CIC 用户组。
+        :rtype: str
+        """
         return self._PrincipalType
 
     @PrincipalType.setter
@@ -18516,6 +21942,9 @@ class UserProvisioningsTask(AbstractModel):
 
     @property
     def PrincipalName(self):
+        """用户或者用户组名称。
+        :rtype: str
+        """
         return self._PrincipalName
 
     @PrincipalName.setter
@@ -18524,6 +21953,9 @@ class UserProvisioningsTask(AbstractModel):
 
     @property
     def DuplicationStrategy(self):
+        """冲突策略。KeepBoth:两者都保留;TakeOver:替换
+        :rtype: str
+        """
         return self._DuplicationStrategy
 
     @DuplicationStrategy.setter
@@ -18532,6 +21964,9 @@ class UserProvisioningsTask(AbstractModel):
 
     @property
     def DeletionStrategy(self):
+        """删除策略。Delete:删除;Keep:保留
+        :rtype: str
+        """
         return self._DeletionStrategy
 
     @DeletionStrategy.setter
@@ -18598,6 +22033,9 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def Description(self):
+        """描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -18606,6 +22044,11 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def PrincipalId(self):
+        """CAM 用户同步的身份 ID。取值：
+当PrincipalType取值为Group时，该值为CIC用户组 ID（g-********）。
+当PrincipalType取值为User时，该值为CIC用户 ID（u-********）。
+        :rtype: str
+        """
         return self._PrincipalId
 
     @PrincipalId.setter
@@ -18614,6 +22057,12 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def PrincipalType(self):
+        """CAM 用户同步的身份类型。取值：
+
+User：表示该 CAM 用户同步的身份是CIC用户。
+Group：表示该 CAM 用户同步的身份是CIC用户组。
+        :rtype: str
+        """
         return self._PrincipalType
 
     @PrincipalType.setter
@@ -18622,6 +22071,9 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def TargetUin(self):
+        """同步的集团账号目标账号的UIN。
+        :rtype: int
+        """
         return self._TargetUin
 
     @TargetUin.setter
@@ -18630,6 +22082,9 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def DuplicationStrategy(self):
+        """冲突策略。当CIC 用户同步到 CAM 时，如果 CAM 中存在同名用户时的处理策略。取值： KeepBoth：两者都保留。当CIC 用户被同步到 CAM 时，如果 CAM 已经存在同名用户，则对CIC 用户的用户名添加后缀_cic后尝试创建该用户名的 CAM 用户。 TakeOver：替换。当CIC 用户被同步到 CAM 时，如果 CAM 已经存在同名用户，则直接将已经存在的 CAM 用户替换为CIC 同步用户。
+        :rtype: str
+        """
         return self._DuplicationStrategy
 
     @DuplicationStrategy.setter
@@ -18638,6 +22093,9 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def DeletionStrategy(self):
+        """删除策略。删除 CAM 用户同步时，对已同步的 CAM 用户的处理策略。取值： Delete：删除。删除 CAM 用户同步时，会删除从CIC 已经同步到 CAM 中的 CAM 用户。 Keep：保留。删除 RAM 用户同步时，会保留从CIC 已经同步到 CAM 中的 CAM 用户。
+        :rtype: str
+        """
         return self._DeletionStrategy
 
     @DeletionStrategy.setter
@@ -18646,6 +22104,9 @@ Group：表示该 CAM 用户同步的身份是CIC用户组。
 
     @property
     def TargetType(self):
+        """同步的集团账号目标账号的类型，ManagerUin管理账号;MemberUin成员账号
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -18709,6 +22170,9 @@ class ZoneStatistics(AbstractModel):
 
     @property
     def UserQuota(self):
+        """用户配额。
+        :rtype: int
+        """
         return self._UserQuota
 
     @UserQuota.setter
@@ -18717,6 +22181,9 @@ class ZoneStatistics(AbstractModel):
 
     @property
     def GroupQuota(self):
+        """用户组配额。
+        :rtype: int
+        """
         return self._GroupQuota
 
     @GroupQuota.setter
@@ -18725,6 +22192,9 @@ class ZoneStatistics(AbstractModel):
 
     @property
     def RoleConfigurationQuota(self):
+        """权限配置配额。
+        :rtype: int
+        """
         return self._RoleConfigurationQuota
 
     @RoleConfigurationQuota.setter
@@ -18733,6 +22203,9 @@ class ZoneStatistics(AbstractModel):
 
     @property
     def SystemPolicyPerRoleConfigurationQuota(self):
+        """权限配置绑定的系统策略配额。
+        :rtype: int
+        """
         return self._SystemPolicyPerRoleConfigurationQuota
 
     @SystemPolicyPerRoleConfigurationQuota.setter
@@ -18741,6 +22214,9 @@ class ZoneStatistics(AbstractModel):
 
     @property
     def UserCount(self):
+        """用户数。
+        :rtype: int
+        """
         return self._UserCount
 
     @UserCount.setter
@@ -18749,6 +22225,9 @@ class ZoneStatistics(AbstractModel):
 
     @property
     def GroupCount(self):
+        """用户组数。
+        :rtype: int
+        """
         return self._GroupCount
 
     @GroupCount.setter
@@ -18757,6 +22236,9 @@ class ZoneStatistics(AbstractModel):
 
     @property
     def RoleConfigurationCount(self):
+        """权限配置数
+        :rtype: int
+        """
         return self._RoleConfigurationCount
 
     @RoleConfigurationCount.setter
@@ -18765,6 +22247,9 @@ class ZoneStatistics(AbstractModel):
 
     @property
     def UserProvisioningCount(self):
+        """同步用户数。
+        :rtype: int
+        """
         return self._UserProvisioningCount
 
     @UserProvisioningCount.setter
@@ -18773,6 +22258,9 @@ class ZoneStatistics(AbstractModel):
 
     @property
     def RoleConfigurationSyncCount(self):
+        """同步角色数。
+        :rtype: int
+        """
         return self._RoleConfigurationSyncCount
 
     @RoleConfigurationSyncCount.setter

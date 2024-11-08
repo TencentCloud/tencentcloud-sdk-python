@@ -35,6 +35,9 @@ class AggregationObj(AbstractModel):
 
     @property
     def Type(self):
+        """类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -43,6 +46,9 @@ class AggregationObj(AbstractModel):
 
     @property
     def Bucket(self):
+        """数组
+        :rtype: list of Bucket
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -83,6 +89,10 @@ class AlarmInfoRsp(AbstractModel):
 
     @property
     def AttackEvent(self):
+        """近7天威胁告警
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AttackEvent
+        """
         return self._AttackEvent
 
     @AttackEvent.setter
@@ -126,6 +136,10 @@ class AlertDetail(AbstractModel):
 
     @property
     def BaseInfo(self):
+        """告警基础信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.AlertType`
+        """
         return self._BaseInfo
 
     @BaseInfo.setter
@@ -134,6 +148,10 @@ class AlertDetail(AbstractModel):
 
     @property
     def Detail(self):
+        """告警详情，json序列化
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Detail
 
     @Detail.setter
@@ -175,6 +193,10 @@ class AlertListAggregations(AbstractModel):
 
     @property
     def Name(self):
+        """名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -183,6 +205,10 @@ class AlertListAggregations(AbstractModel):
 
     @property
     def Value(self):
+        """值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -226,6 +252,10 @@ class AlertListData(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -234,6 +264,10 @@ class AlertListData(AbstractModel):
 
     @property
     def AlertList(self):
+        """返回列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AlertType
+        """
         return self._AlertList
 
     @AlertList.setter
@@ -242,6 +276,10 @@ class AlertListData(AbstractModel):
 
     @property
     def Aggregations(self):
+        """聚合参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.AlertListAggregations`
+        """
         return self._Aggregations
 
     @Aggregations.setter
@@ -409,6 +447,10 @@ class AlertType(AbstractModel):
 
     @property
     def AlertTime(self):
+        """标准时间格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AlertTime
 
     @AlertTime.setter
@@ -417,6 +459,10 @@ class AlertType(AbstractModel):
 
     @property
     def AlertId(self):
+        """唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AlertId
 
     @AlertId.setter
@@ -425,6 +471,10 @@ class AlertType(AbstractModel):
 
     @property
     def AssetId(self):
+        """资产id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetId
 
     @AssetId.setter
@@ -433,6 +483,10 @@ class AlertType(AbstractModel):
 
     @property
     def AssetPrivateIp(self):
+        """内网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AssetPrivateIp
 
     @AssetPrivateIp.setter
@@ -441,6 +495,10 @@ class AlertType(AbstractModel):
 
     @property
     def AlertName(self):
+        """名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AlertName
 
     @AlertName.setter
@@ -449,6 +507,10 @@ class AlertType(AbstractModel):
 
     @property
     def Level(self):
+        """告警级别  0:未知 1:低危 2:中危 3:高危 4:严重
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -457,6 +519,10 @@ class AlertType(AbstractModel):
 
     @property
     def Type(self):
+        """类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -465,6 +531,10 @@ class AlertType(AbstractModel):
 
     @property
     def Source(self):
+        """来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -473,6 +543,10 @@ class AlertType(AbstractModel):
 
     @property
     def AttackChain(self):
+        """攻击字段1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AttackChain
 
     @AttackChain.setter
@@ -481,6 +555,10 @@ class AlertType(AbstractModel):
 
     @property
     def AttackId(self):
+        """攻击字段2
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AttackId
 
     @AttackId.setter
@@ -489,6 +567,10 @@ class AlertType(AbstractModel):
 
     @property
     def Concerns(self):
+        """关注点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ConcernInfo
+        """
         return self._Concerns
 
     @Concerns.setter
@@ -497,6 +579,10 @@ class AlertType(AbstractModel):
 
     @property
     def Action(self):
+        """1：已防御，0,2：仅检测(0:告警类 1:拦截类 2:放行类 )
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Action
 
     @Action.setter
@@ -505,6 +591,10 @@ class AlertType(AbstractModel):
 
     @property
     def AttackResult(self):
+        """0/空：未知，1：未成功，2：成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AttackResult
 
     @AttackResult.setter
@@ -513,6 +603,10 @@ class AlertType(AbstractModel):
 
     @property
     def EventStatus(self):
+        """//调查状态  0/空：未启用，1：调查中，2：完成调查
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EventStatus
 
     @EventStatus.setter
@@ -521,6 +615,10 @@ class AlertType(AbstractModel):
 
     @property
     def EventId(self):
+        """//关联事件ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EventId
 
     @EventId.setter
@@ -529,6 +627,10 @@ class AlertType(AbstractModel):
 
     @property
     def Status(self):
+        """//处置状态  0：未关闭，1：已关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -537,6 +639,10 @@ class AlertType(AbstractModel):
 
     @property
     def AssetName(self):
+        """资产名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetName
 
     @AssetName.setter
@@ -545,6 +651,10 @@ class AlertType(AbstractModel):
 
     @property
     def ConcernMaliciousCount(self):
+        """恶意实体
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ConcernMaliciousCount
 
     @ConcernMaliciousCount.setter
@@ -553,6 +663,10 @@ class AlertType(AbstractModel):
 
     @property
     def ConcernVictimCount(self):
+        """受害者实体
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ConcernVictimCount
 
     @ConcernVictimCount.setter
@@ -561,6 +675,10 @@ class AlertType(AbstractModel):
 
     @property
     def VictimAssetType(self):
+        """资产类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VictimAssetType
 
     @VictimAssetType.setter
@@ -569,6 +687,10 @@ class AlertType(AbstractModel):
 
     @property
     def SubType(self):
+        """告警子类
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubType
 
     @SubType.setter
@@ -577,6 +699,10 @@ class AlertType(AbstractModel):
 
     @property
     def AttackName(self):
+        """攻击技术名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AttackName
 
     @AttackName.setter
@@ -585,6 +711,10 @@ class AlertType(AbstractModel):
 
     @property
     def AssetPublicIp(self):
+        """外网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AssetPublicIp
 
     @AssetPublicIp.setter
@@ -593,6 +723,10 @@ class AlertType(AbstractModel):
 
     @property
     def AttackTactic(self):
+        """攻击战术名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AttackTactic
 
     @AttackTactic.setter
@@ -601,6 +735,10 @@ class AlertType(AbstractModel):
 
     @property
     def VictimAssetSub(self):
+        """资产子网
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VictimAssetSub
 
     @VictimAssetSub.setter
@@ -609,6 +747,10 @@ class AlertType(AbstractModel):
 
     @property
     def VictimAssetVpc(self):
+        """资产vpc
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VictimAssetVpc
 
     @VictimAssetVpc.setter
@@ -617,6 +759,10 @@ class AlertType(AbstractModel):
 
     @property
     def Timestamp(self):
+        """时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -625,6 +771,10 @@ class AlertType(AbstractModel):
 
     @property
     def AssetGroupName(self):
+        """资产组名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AssetGroupName
 
     @AssetGroupName.setter
@@ -633,6 +783,10 @@ class AlertType(AbstractModel):
 
     @property
     def AssetProjectName(self):
+        """资产项目名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetProjectName
 
     @AssetProjectName.setter
@@ -641,6 +795,10 @@ class AlertType(AbstractModel):
 
     @property
     def VictimAssetContent(self):
+        """失陷资产内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._VictimAssetContent
 
     @VictimAssetContent.setter
@@ -649,6 +807,10 @@ class AlertType(AbstractModel):
 
     @property
     def WrongReportStatus(self):
+        """错误报告状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._WrongReportStatus
 
     @WrongReportStatus.setter
@@ -657,6 +819,10 @@ class AlertType(AbstractModel):
 
     @property
     def WrongReportConditionId(self):
+        """错误报告Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._WrongReportConditionId
 
     @WrongReportConditionId.setter
@@ -830,6 +996,9 @@ class Asset(AbstractModel):
 
     @property
     def AssetType(self):
+        """资产类型
+        :rtype: str
+        """
         return self._AssetType
 
     @AssetType.setter
@@ -838,6 +1007,9 @@ class Asset(AbstractModel):
 
     @property
     def Name(self):
+        """名字
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -846,6 +1018,9 @@ class Asset(AbstractModel):
 
     @property
     def AssetRegionName(self):
+        """区域
+        :rtype: str
+        """
         return self._AssetRegionName
 
     @AssetRegionName.setter
@@ -854,6 +1029,9 @@ class Asset(AbstractModel):
 
     @property
     def AssetVpcid(self):
+        """所属网络
+        :rtype: str
+        """
         return self._AssetVpcid
 
     @AssetVpcid.setter
@@ -862,6 +1040,9 @@ class Asset(AbstractModel):
 
     @property
     def InstanceType(self):
+        """主机类型
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -870,6 +1051,9 @@ class Asset(AbstractModel):
 
     @property
     def InstanceState(self):
+        """主机状态
+        :rtype: str
+        """
         return self._InstanceState
 
     @InstanceState.setter
@@ -878,6 +1062,9 @@ class Asset(AbstractModel):
 
     @property
     def EngineVersion(self):
+        """引擎版本
+        :rtype: str
+        """
         return self._EngineVersion
 
     @EngineVersion.setter
@@ -886,6 +1073,9 @@ class Asset(AbstractModel):
 
     @property
     def Id(self):
+        """数据库标识
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -894,6 +1084,9 @@ class Asset(AbstractModel):
 
     @property
     def Tag(self):
+        """标签
+        :rtype: list of Tag
+        """
         return self._Tag
 
     @Tag.setter
@@ -902,6 +1095,9 @@ class Asset(AbstractModel):
 
     @property
     def AssetCspmRiskNum(self):
+        """配置风险统计数
+        :rtype: int
+        """
         return self._AssetCspmRiskNum
 
     @AssetCspmRiskNum.setter
@@ -910,6 +1106,9 @@ class Asset(AbstractModel):
 
     @property
     def PublicIpAddresses(self):
+        """主机IP
+        :rtype: list of str
+        """
         return self._PublicIpAddresses
 
     @PublicIpAddresses.setter
@@ -918,6 +1117,9 @@ class Asset(AbstractModel):
 
     @property
     def AssetUniqid(self):
+        """资产唯一标识
+        :rtype: str
+        """
         return self._AssetUniqid
 
     @AssetUniqid.setter
@@ -926,6 +1128,9 @@ class Asset(AbstractModel):
 
     @property
     def ChargeType(self):
+        """付费类型
+        :rtype: str
+        """
         return self._ChargeType
 
     @ChargeType.setter
@@ -934,6 +1139,9 @@ class Asset(AbstractModel):
 
     @property
     def AssetEventNum(self):
+        """安全事件统计数
+        :rtype: int
+        """
         return self._AssetEventNum
 
     @AssetEventNum.setter
@@ -942,6 +1150,9 @@ class Asset(AbstractModel):
 
     @property
     def AssetVulNum(self):
+        """漏洞统计数
+        :rtype: int
+        """
         return self._AssetVulNum
 
     @AssetVulNum.setter
@@ -950,6 +1161,9 @@ class Asset(AbstractModel):
 
     @property
     def PrivateIpAddresses(self):
+        """主机IP内网
+        :rtype: list of str
+        """
         return self._PrivateIpAddresses
 
     @PrivateIpAddresses.setter
@@ -958,6 +1172,9 @@ class Asset(AbstractModel):
 
     @property
     def GroupName(self):
+        """所属分组
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -966,6 +1183,10 @@ class Asset(AbstractModel):
 
     @property
     def SsaAssetDiscoverTime(self):
+        """发现时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SsaAssetDiscoverTime
 
     @SsaAssetDiscoverTime.setter
@@ -974,6 +1195,10 @@ class Asset(AbstractModel):
 
     @property
     def SsaAssetDeleteTime(self):
+        """下线时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SsaAssetDeleteTime
 
     @SsaAssetDeleteTime.setter
@@ -982,6 +1207,10 @@ class Asset(AbstractModel):
 
     @property
     def IsNew(self):
+        """是否是新增资产
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsNew
 
     @IsNew.setter
@@ -990,6 +1219,10 @@ class Asset(AbstractModel):
 
     @property
     def AssetSubnetId(self):
+        """所属子网
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetSubnetId
 
     @AssetSubnetId.setter
@@ -998,6 +1231,10 @@ class Asset(AbstractModel):
 
     @property
     def AssetSubnetName(self):
+        """子网名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetSubnetName
 
     @AssetSubnetName.setter
@@ -1006,6 +1243,10 @@ class Asset(AbstractModel):
 
     @property
     def AssetVpcName(self):
+        """vpc名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetVpcName
 
     @AssetVpcName.setter
@@ -1014,6 +1255,10 @@ class Asset(AbstractModel):
 
     @property
     def ClusterType(self):
+        """集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -1022,6 +1267,10 @@ class Asset(AbstractModel):
 
     @property
     def NameSpace(self):
+        """命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NameSpace
 
     @NameSpace.setter
@@ -1030,6 +1279,10 @@ class Asset(AbstractModel):
 
     @property
     def LoadBalancerType(self):
+        """负载均衡实例的网络类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LoadBalancerType
 
     @LoadBalancerType.setter
@@ -1038,6 +1291,10 @@ class Asset(AbstractModel):
 
     @property
     def LoadBalancerVips(self):
+        """负载均衡实例的vip列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._LoadBalancerVips
 
     @LoadBalancerVips.setter
@@ -1046,6 +1303,10 @@ class Asset(AbstractModel):
 
     @property
     def AssetIpv6(self):
+        """ipv6信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AssetIpv6
 
     @AssetIpv6.setter
@@ -1054,6 +1315,10 @@ class Asset(AbstractModel):
 
     @property
     def SSHRisk(self):
+        """ssh端口暴露风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SSHRisk
 
     @SSHRisk.setter
@@ -1062,6 +1327,10 @@ class Asset(AbstractModel):
 
     @property
     def RDPRisk(self):
+        """rdp端口暴露风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RDPRisk
 
     @RDPRisk.setter
@@ -1070,6 +1339,10 @@ class Asset(AbstractModel):
 
     @property
     def EventRisk(self):
+        """资产失陷事件风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EventRisk
 
     @EventRisk.setter
@@ -1327,6 +1600,9 @@ class AssetDetail(AbstractModel):
 
     @property
     def AssetType(self):
+        """资产类型
+        :rtype: str
+        """
         return self._AssetType
 
     @AssetType.setter
@@ -1335,6 +1611,9 @@ class AssetDetail(AbstractModel):
 
     @property
     def Name(self):
+        """名字
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1343,6 +1622,9 @@ class AssetDetail(AbstractModel):
 
     @property
     def Region(self):
+        """区域
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -1351,6 +1633,9 @@ class AssetDetail(AbstractModel):
 
     @property
     def VpcId(self):
+        """所属网络
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1359,6 +1644,9 @@ class AssetDetail(AbstractModel):
 
     @property
     def InstanceType(self):
+        """主机类型
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -1367,6 +1655,9 @@ class AssetDetail(AbstractModel):
 
     @property
     def InstanceState(self):
+        """主机状态
+        :rtype: str
+        """
         return self._InstanceState
 
     @InstanceState.setter
@@ -1375,6 +1666,9 @@ class AssetDetail(AbstractModel):
 
     @property
     def PublicIpAddresses(self):
+        """主机IP-公网
+        :rtype: list of str
+        """
         return self._PublicIpAddresses
 
     @PublicIpAddresses.setter
@@ -1383,6 +1677,9 @@ class AssetDetail(AbstractModel):
 
     @property
     def EngineVersion(self):
+        """引擎版本
+        :rtype: str
+        """
         return self._EngineVersion
 
     @EngineVersion.setter
@@ -1391,6 +1688,9 @@ class AssetDetail(AbstractModel):
 
     @property
     def Id(self):
+        """标识
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -1399,6 +1699,9 @@ class AssetDetail(AbstractModel):
 
     @property
     def Tag(self):
+        """标签
+        :rtype: list of Tag
+        """
         return self._Tag
 
     @Tag.setter
@@ -1407,6 +1710,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def Vip(self):
+        """内网IP地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -1415,6 +1722,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def Status(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1423,6 +1734,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def LoadBalancerVips(self):
+        """负载均衡示例的vip列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._LoadBalancerVips
 
     @LoadBalancerVips.setter
@@ -1431,6 +1746,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def Uin(self):
+        """账号ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Uin
 
     @Uin.setter
@@ -1439,6 +1758,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def CreationDate(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreationDate
 
     @CreationDate.setter
@@ -1447,6 +1770,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def Domain(self):
+        """访问域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -1455,6 +1782,9 @@ class AssetDetail(AbstractModel):
 
     @property
     def AssetUniqid(self):
+        """资产唯一id
+        :rtype: str
+        """
         return self._AssetUniqid
 
     @AssetUniqid.setter
@@ -1463,6 +1793,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def InstanceId(self):
+        """关联实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1471,6 +1805,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def DiskType(self):
+        """配置硬盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -1479,6 +1817,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def DiskSize(self):
+        """配置硬盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -1487,6 +1829,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def AssetStatus(self):
+        """云硬盘/证书状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetStatus
 
     @AssetStatus.setter
@@ -1495,6 +1841,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def CertType(self):
+        """证书类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertType
 
     @CertType.setter
@@ -1503,6 +1853,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def ProjectName(self):
+        """所属项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProjectName
 
     @ProjectName.setter
@@ -1511,6 +1865,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def CertEndTime(self):
+        """到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertEndTime
 
     @CertEndTime.setter
@@ -1519,6 +1877,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def ProductType(self):
+        """nosql引擎/版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ProductType
 
     @ProductType.setter
@@ -1527,6 +1889,9 @@ class AssetDetail(AbstractModel):
 
     @property
     def PrivateIpAddresses(self):
+        """主机IP-内网
+        :rtype: list of str
+        """
         return self._PrivateIpAddresses
 
     @PrivateIpAddresses.setter
@@ -1535,6 +1900,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def ValidityPeriod(self):
+        """证书有效期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ValidityPeriod
 
     @ValidityPeriod.setter
@@ -1543,6 +1912,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def GroupName(self):
+        """分组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -1551,6 +1924,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def Port(self):
+        """端口服务数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Port
 
     @Port.setter
@@ -1559,6 +1936,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def RiskConfig(self):
+        """配置风险数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._RiskConfig
 
     @RiskConfig.setter
@@ -1567,6 +1948,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def Event(self):
+        """相关待处理事件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Event
 
     @Event.setter
@@ -1575,6 +1960,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def Vul(self):
+        """相关待处理漏洞
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Vul
 
     @Vul.setter
@@ -1583,6 +1972,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def SsaAssetDiscoverTime(self):
+        """资产发现时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SsaAssetDiscoverTime
 
     @SsaAssetDiscoverTime.setter
@@ -1591,6 +1984,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def AssetSubnetId(self):
+        """所属子网
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetSubnetId
 
     @AssetSubnetId.setter
@@ -1599,6 +1996,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def AssetSubnetName(self):
+        """子网名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetSubnetName
 
     @AssetSubnetName.setter
@@ -1607,6 +2008,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def AssetVpcName(self):
+        """vpc名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetVpcName
 
     @AssetVpcName.setter
@@ -1615,6 +2020,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def ClusterType(self):
+        """集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -1623,6 +2032,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def NameSpace(self):
+        """命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NameSpace
 
     @NameSpace.setter
@@ -1631,6 +2044,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def AssetCreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetCreateTime
 
     @AssetCreateTime.setter
@@ -1639,6 +2056,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def LoadBalancerType(self):
+        """负载均衡网络类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LoadBalancerType
 
     @LoadBalancerType.setter
@@ -1647,6 +2068,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def AssetIpv6(self):
+        """ipv6信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AssetIpv6
 
     @AssetIpv6.setter
@@ -1655,6 +2080,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def SSHRisk(self):
+        """ssh风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SSHRisk
 
     @SSHRisk.setter
@@ -1663,6 +2092,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def RDPRisk(self):
+        """rdp风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RDPRisk
 
     @RDPRisk.setter
@@ -1671,6 +2104,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def EventRisk(self):
+        """安全事件风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EventRisk
 
     @EventRisk.setter
@@ -1679,6 +2116,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def AssetVulNum(self):
+        """漏洞数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AssetVulNum
 
     @AssetVulNum.setter
@@ -1687,6 +2128,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def AssetEventNum(self):
+        """资产事件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AssetEventNum
 
     @AssetEventNum.setter
@@ -1695,6 +2140,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def AssetCspmRiskNum(self):
+        """cspm风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AssetCspmRiskNum
 
     @AssetCspmRiskNum.setter
@@ -1703,6 +2152,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def SsaAssetDeleteTime(self):
+        """资产删除时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SsaAssetDeleteTime
 
     @SsaAssetDeleteTime.setter
@@ -1711,6 +2164,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def ChargeType(self):
+        """费用类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChargeType
 
     @ChargeType.setter
@@ -1719,6 +2176,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def AssetRegionName(self):
+        """地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetRegionName
 
     @AssetRegionName.setter
@@ -1727,6 +2188,10 @@ class AssetDetail(AbstractModel):
 
     @property
     def AssetVpcid(self):
+        """vpc信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetVpcid
 
     @AssetVpcid.setter
@@ -1818,6 +2283,9 @@ class AssetList(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -1826,6 +2294,9 @@ class AssetList(AbstractModel):
 
     @property
     def List(self):
+        """资产数组
+        :rtype: list of Asset
+        """
         return self._List
 
     @List.setter
@@ -1868,6 +2339,9 @@ class AssetQueryFilter(AbstractModel):
 
     @property
     def Filter(self):
+        """查询参数
+        :rtype: list of QueryFilter
+        """
         return self._Filter
 
     @Filter.setter
@@ -1876,6 +2350,9 @@ class AssetQueryFilter(AbstractModel):
 
     @property
     def Logic(self):
+        """查询连接符，1 and  ，2 or
+        :rtype: int
+        """
         return self._Logic
 
     @Logic.setter
@@ -1920,6 +2397,10 @@ class AssetTypeStatistic(AbstractModel):
 
     @property
     def AssetType(self):
+        """资产类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetType
 
     @AssetType.setter
@@ -1928,6 +2409,10 @@ class AssetTypeStatistic(AbstractModel):
 
     @property
     def AssetCount(self):
+        """统计计数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AssetCount
 
     @AssetCount.setter
@@ -1991,6 +2476,10 @@ class AttackEvent(AbstractModel):
 
     @property
     def SsaSrcIp(self):
+        """来源ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SsaSrcIp
 
     @SsaSrcIp.setter
@@ -1999,6 +2488,10 @@ class AttackEvent(AbstractModel):
 
     @property
     def SsaDstIp(self):
+        """目标ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SsaDstIp
 
     @SsaDstIp.setter
@@ -2007,6 +2500,10 @@ class AttackEvent(AbstractModel):
 
     @property
     def SsaDstProvince(self):
+        """目标省份
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SsaDstProvince
 
     @SsaDstProvince.setter
@@ -2015,6 +2512,10 @@ class AttackEvent(AbstractModel):
 
     @property
     def SsaDstCity(self):
+        """目标城市
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SsaDstCity
 
     @SsaDstCity.setter
@@ -2023,6 +2524,10 @@ class AttackEvent(AbstractModel):
 
     @property
     def SsaDstCountry(self):
+        """目标国家
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SsaDstCountry
 
     @SsaDstCountry.setter
@@ -2031,6 +2536,10 @@ class AttackEvent(AbstractModel):
 
     @property
     def SsaSrcProvince(self):
+        """来源省份
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SsaSrcProvince
 
     @SsaSrcProvince.setter
@@ -2039,6 +2548,10 @@ class AttackEvent(AbstractModel):
 
     @property
     def SsaSrcCountry(self):
+        """来源国家
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SsaSrcCountry
 
     @SsaSrcCountry.setter
@@ -2047,6 +2560,10 @@ class AttackEvent(AbstractModel):
 
     @property
     def SsaSrcCity(self):
+        """来源城市
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SsaSrcCity
 
     @SsaSrcCity.setter
@@ -2090,6 +2607,9 @@ class Bucket(AbstractModel):
 
     @property
     def Key(self):
+        """key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -2098,6 +2618,9 @@ class Bucket(AbstractModel):
 
     @property
     def Count(self):
+        """数量
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -2169,6 +2692,9 @@ class CheckAssetItem(AbstractModel):
 
     @property
     def Id(self):
+        """检查项下资产组ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -2177,6 +2703,9 @@ class CheckAssetItem(AbstractModel):
 
     @property
     def Instid(self):
+        """资产组实例id
+        :rtype: str
+        """
         return self._Instid
 
     @Instid.setter
@@ -2185,6 +2714,9 @@ class CheckAssetItem(AbstractModel):
 
     @property
     def Url(self):
+        """处置跳转URL
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -2193,6 +2725,9 @@ class CheckAssetItem(AbstractModel):
 
     @property
     def Taskid(self):
+        """检查任务id
+        :rtype: str
+        """
         return self._Taskid
 
     @Taskid.setter
@@ -2201,6 +2736,9 @@ class CheckAssetItem(AbstractModel):
 
     @property
     def Result(self):
+        """检查结果
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -2209,6 +2747,9 @@ class CheckAssetItem(AbstractModel):
 
     @property
     def Updatetime(self):
+        """更新时间
+        :rtype: str
+        """
         return self._Updatetime
 
     @Updatetime.setter
@@ -2217,6 +2758,10 @@ class CheckAssetItem(AbstractModel):
 
     @property
     def Tag(self):
+        """标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Tag
 
     @Tag.setter
@@ -2225,6 +2770,9 @@ class CheckAssetItem(AbstractModel):
 
     @property
     def IsIgnore(self):
+        """是否忽略
+        :rtype: int
+        """
         return self._IsIgnore
 
     @IsIgnore.setter
@@ -2233,6 +2781,9 @@ class CheckAssetItem(AbstractModel):
 
     @property
     def IsChecked(self):
+        """检查状态
+        :rtype: int
+        """
         return self._IsChecked
 
     @IsChecked.setter
@@ -2241,6 +2792,9 @@ class CheckAssetItem(AbstractModel):
 
     @property
     def AssetInfo(self):
+        """资产组信息
+        :rtype: str
+        """
         return self._AssetInfo
 
     @AssetInfo.setter
@@ -2249,6 +2803,9 @@ class CheckAssetItem(AbstractModel):
 
     @property
     def AssetId(self):
+        """资产组ES的_id
+        :rtype: str
+        """
         return self._AssetId
 
     @AssetId.setter
@@ -2257,6 +2814,9 @@ class CheckAssetItem(AbstractModel):
 
     @property
     def Detail(self):
+        """详情
+        :rtype: str
+        """
         return self._Detail
 
     @Detail.setter
@@ -2265,6 +2825,9 @@ class CheckAssetItem(AbstractModel):
 
     @property
     def Remarks(self):
+        """备注内容
+        :rtype: str
+        """
         return self._Remarks
 
     @Remarks.setter
@@ -2349,6 +2912,9 @@ class CheckConfigDetail(AbstractModel):
 
     @property
     def Id(self):
+        """检查项Id
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -2357,6 +2923,9 @@ class CheckConfigDetail(AbstractModel):
 
     @property
     def CheckName(self):
+        """检查项名称
+        :rtype: str
+        """
         return self._CheckName
 
     @CheckName.setter
@@ -2365,6 +2934,9 @@ class CheckConfigDetail(AbstractModel):
 
     @property
     def Content(self):
+        """检查项内容
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -2373,6 +2945,9 @@ class CheckConfigDetail(AbstractModel):
 
     @property
     def Method(self):
+        """检查项处置方案
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -2381,6 +2956,9 @@ class CheckConfigDetail(AbstractModel):
 
     @property
     def Doc(self):
+        """检查项帮助文档
+        :rtype: str
+        """
         return self._Doc
 
     @Doc.setter
@@ -2389,6 +2967,9 @@ class CheckConfigDetail(AbstractModel):
 
     @property
     def ErrorCount(self):
+        """未通过总数
+        :rtype: int
+        """
         return self._ErrorCount
 
     @ErrorCount.setter
@@ -2397,6 +2978,9 @@ class CheckConfigDetail(AbstractModel):
 
     @property
     def IsPass(self):
+        """是否通过检查
+        :rtype: int
+        """
         return self._IsPass
 
     @IsPass.setter
@@ -2405,6 +2989,9 @@ class CheckConfigDetail(AbstractModel):
 
     @property
     def SafeCount(self):
+        """通过检查项
+        :rtype: int
+        """
         return self._SafeCount
 
     @SafeCount.setter
@@ -2413,6 +3000,9 @@ class CheckConfigDetail(AbstractModel):
 
     @property
     def IgnoreCount(self):
+        """忽略检查项
+        :rtype: int
+        """
         return self._IgnoreCount
 
     @IgnoreCount.setter
@@ -2421,6 +3011,9 @@ class CheckConfigDetail(AbstractModel):
 
     @property
     def RiskCount(self):
+        """风险检查项
+        :rtype: int
+        """
         return self._RiskCount
 
     @RiskCount.setter
@@ -2429,6 +3022,9 @@ class CheckConfigDetail(AbstractModel):
 
     @property
     def NameEn(self):
+        """检查项英文
+        :rtype: str
+        """
         return self._NameEn
 
     @NameEn.setter
@@ -2437,6 +3033,9 @@ class CheckConfigDetail(AbstractModel):
 
     @property
     def AssetType(self):
+        """检查项类型
+        :rtype: str
+        """
         return self._AssetType
 
     @AssetType.setter
@@ -2445,6 +3044,9 @@ class CheckConfigDetail(AbstractModel):
 
     @property
     def ResCount(self):
+        """res_count
+        :rtype: int
+        """
         return self._ResCount
 
     @ResCount.setter
@@ -2453,6 +3055,9 @@ class CheckConfigDetail(AbstractModel):
 
     @property
     def IsIgnore(self):
+        """是否忽略
+        :rtype: int
+        """
         return self._IsIgnore
 
     @IsIgnore.setter
@@ -2572,6 +3177,9 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def Id(self):
+        """检查项ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -2580,6 +3188,9 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def Category(self):
+        """检查项类别
+        :rtype: str
+        """
         return self._Category
 
     @Category.setter
@@ -2588,6 +3199,9 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def Type(self):
+        """检查项类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2596,6 +3210,9 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def ErrorCount(self):
+        """不通过总数
+        :rtype: int
+        """
         return self._ErrorCount
 
     @ErrorCount.setter
@@ -2604,6 +3221,9 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def NameEn(self):
+        """检查项英文名
+        :rtype: str
+        """
         return self._NameEn
 
     @NameEn.setter
@@ -2612,6 +3232,9 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def CheckName(self):
+        """检查项名称
+        :rtype: str
+        """
         return self._CheckName
 
     @CheckName.setter
@@ -2620,6 +3243,9 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def Method(self):
+        """检查项处置方式
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -2628,6 +3254,9 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def Doc(self):
+        """帮助文档
+        :rtype: str
+        """
         return self._Doc
 
     @Doc.setter
@@ -2636,6 +3265,9 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def SafeCount(self):
+        """通过总数
+        :rtype: int
+        """
         return self._SafeCount
 
     @SafeCount.setter
@@ -2644,6 +3276,9 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def Content(self):
+        """检查项检查内容
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -2652,6 +3287,9 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def IsPass(self):
+        """是否通过检测
+        :rtype: int
+        """
         return self._IsPass
 
     @IsPass.setter
@@ -2660,6 +3298,9 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def IgnoreCount(self):
+        """忽略总数
+        :rtype: int
+        """
         return self._IgnoreCount
 
     @IgnoreCount.setter
@@ -2668,6 +3309,9 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def RiskCount(self):
+        """风险总数
+        :rtype: int
+        """
         return self._RiskCount
 
     @RiskCount.setter
@@ -2676,6 +3320,10 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def LastCheckTime(self):
+        """最近一次检测时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastCheckTime
 
     @LastCheckTime.setter
@@ -2684,6 +3332,9 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def AssetType(self):
+        """资产组类型
+        :rtype: str
+        """
         return self._AssetType
 
     @AssetType.setter
@@ -2692,6 +3343,9 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def ResCount(self):
+        """res_count
+        :rtype: int
+        """
         return self._ResCount
 
     @ResCount.setter
@@ -2700,6 +3354,9 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def UUID(self):
+        """检查项UUID
+        :rtype: str
+        """
         return self._UUID
 
     @UUID.setter
@@ -2708,6 +3365,10 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def StandardItem(self):
+        """标准项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StandardItem
 
     @StandardItem.setter
@@ -2716,6 +3377,10 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def Chapter(self):
+        """章节
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Chapter
 
     @Chapter.setter
@@ -2724,6 +3389,10 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def AssetTypeDesc(self):
+        """资产类型描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetTypeDesc
 
     @AssetTypeDesc.setter
@@ -2732,6 +3401,10 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def IsIgnore(self):
+        """是否忽略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsIgnore
 
     @IsIgnore.setter
@@ -2740,6 +3413,10 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def RiskItem(self):
+        """风险项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskItem
 
     @RiskItem.setter
@@ -2748,6 +3425,10 @@ class ComplianceCheckDetail(AbstractModel):
 
     @property
     def Title(self):
+        """合规检查项完整名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -2940,6 +3621,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def ConcernType(self):
+        """关注点类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ConcernType
 
     @ConcernType.setter
@@ -2948,6 +3633,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def EntityType(self):
+        """实体类型 1: 非云上IP，2: 云上IP，3: 域名，4: IP，5: 文件，6: 进程
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EntityType
 
     @EntityType.setter
@@ -2956,6 +3645,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def Concern(self):
+        """关注点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Concern
 
     @Concern.setter
@@ -2964,6 +3657,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def StatisticsCount(self):
+        """最近数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._StatisticsCount
 
     @StatisticsCount.setter
@@ -2972,6 +3669,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def IpCountry(self):
+        """IP国家
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IpCountry
 
     @IpCountry.setter
@@ -2980,6 +3681,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def IpProvince(self):
+        """IP省份
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IpProvince
 
     @IpProvince.setter
@@ -2988,6 +3693,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def Result(self):
+        """结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -2996,6 +3705,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def Confidence(self):
+        """置信度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -3004,6 +3717,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def IpIsp(self):
+        """服务商
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IpIsp
 
     @IpIsp.setter
@@ -3012,6 +3729,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def IpInfrastructure(self):
+        """是否基础设施
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IpInfrastructure
 
     @IpInfrastructure.setter
@@ -3020,6 +3741,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def ThreatType(self):
+        """威胁类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ThreatType
 
     @ThreatType.setter
@@ -3028,6 +3753,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def Groups(self):
+        """威胁团伙
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Groups
 
     @Groups.setter
@@ -3036,6 +3765,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def Status(self):
+        """状态威胁情报接口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3044,6 +3777,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """恶意标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Tags
 
     @Tags.setter
@@ -3052,6 +3789,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def VictimAssetType(self):
+        """资产类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VictimAssetType
 
     @VictimAssetType.setter
@@ -3060,6 +3801,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def VictimAssetName(self):
+        """资产名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VictimAssetName
 
     @VictimAssetName.setter
@@ -3068,6 +3813,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def DomainRegistrant(self):
+        """注册者
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DomainRegistrant
 
     @DomainRegistrant.setter
@@ -3076,6 +3825,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def DomainRegisteredInstitution(self):
+        """注册机构
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DomainRegisteredInstitution
 
     @DomainRegisteredInstitution.setter
@@ -3084,6 +3837,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def DomainRegistrationTime(self):
+        """注册时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DomainRegistrationTime
 
     @DomainRegistrationTime.setter
@@ -3092,6 +3849,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def FileName(self):
+        """文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -3100,6 +3861,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def FileMd5(self):
+        """MD5
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FileMd5
 
     @FileMd5.setter
@@ -3108,6 +3873,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def VirusName(self):
+        """病毒名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VirusName
 
     @VirusName.setter
@@ -3116,6 +3885,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def FilePath(self):
+        """文件路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FilePath
 
     @FilePath.setter
@@ -3124,6 +3897,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def FileSize(self):
+        """文件大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FileSize
 
     @FileSize.setter
@@ -3132,6 +3909,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def ProcName(self):
+        """进程名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProcName
 
     @ProcName.setter
@@ -3140,6 +3921,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def Pid(self):
+        """进程ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Pid
 
     @Pid.setter
@@ -3148,6 +3933,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def ProcPath(self):
+        """进程路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProcPath
 
     @ProcPath.setter
@@ -3156,6 +3945,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def ProcUser(self):
+        """用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProcUser
 
     @ProcUser.setter
@@ -3164,6 +3957,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def DefendedCount(self):
+        """已防御
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DefendedCount
 
     @DefendedCount.setter
@@ -3172,6 +3969,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def DetectedCount(self):
+        """仅检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DetectedCount
 
     @DetectedCount.setter
@@ -3180,6 +3981,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def SearchData(self):
+        """可疑关注点字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SearchData
 
     @SearchData.setter
@@ -3188,6 +3993,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def IpCountryIso(self):
+        """可疑关注点字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IpCountryIso
 
     @IpCountryIso.setter
@@ -3196,6 +4005,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def IpProvinceIso(self):
+        """可疑关注点字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IpProvinceIso
 
     @IpProvinceIso.setter
@@ -3204,6 +4017,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def IpCity(self):
+        """可疑关注点字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IpCity
 
     @IpCity.setter
@@ -3212,6 +4029,10 @@ class ConcernInfo(AbstractModel):
 
     @property
     def EventSubType(self):
+        """可疑关注点字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EventSubType
 
     @EventSubType.setter
@@ -3313,6 +4134,9 @@ class DataCheck(AbstractModel):
 
     @property
     def Id(self):
+        """检查项唯一标识符uuid
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -3321,6 +4145,9 @@ class DataCheck(AbstractModel):
 
     @property
     def Name(self):
+        """检查项名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3329,6 +4156,9 @@ class DataCheck(AbstractModel):
 
     @property
     def Type(self):
+        """检查项类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3337,6 +4167,10 @@ class DataCheck(AbstractModel):
 
     @property
     def LastCheckTime(self):
+        """最近一次检查时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastCheckTime
 
     @LastCheckTime.setter
@@ -3345,6 +4179,10 @@ class DataCheck(AbstractModel):
 
     @property
     def Status(self):
+        """初始未检测状态0, 已通过为1，未通过为2
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -3353,6 +4191,10 @@ class DataCheck(AbstractModel):
 
     @property
     def IsIgnored(self):
+        """0-未忽略,1-已忽略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsIgnored
 
     @IsIgnored.setter
@@ -3361,6 +4203,10 @@ class DataCheck(AbstractModel):
 
     @property
     def RiskCount(self):
+        """有风险的资源总数，未通过数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RiskCount
 
     @RiskCount.setter
@@ -3369,6 +4215,10 @@ class DataCheck(AbstractModel):
 
     @property
     def IsChecked(self):
+        """0-检测中,1-结束检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsChecked
 
     @IsChecked.setter
@@ -3377,6 +4227,10 @@ class DataCheck(AbstractModel):
 
     @property
     def AssetTotal(self):
+        """总资产数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AssetTotal
 
     @AssetTotal.setter
@@ -3385,6 +4239,10 @@ class DataCheck(AbstractModel):
 
     @property
     def Remarks(self):
+        """备注内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remarks
 
     @Remarks.setter
@@ -3484,6 +4342,9 @@ class DataCompliance(AbstractModel):
 
     @property
     def Id(self):
+        """等保唯一标识符
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -3492,6 +4353,9 @@ class DataCompliance(AbstractModel):
 
     @property
     def CheckItemId(self):
+        """检查项唯一标识符
+        :rtype: str
+        """
         return self._CheckItemId
 
     @CheckItemId.setter
@@ -3500,6 +4364,9 @@ class DataCompliance(AbstractModel):
 
     @property
     def Name(self):
+        """检查项名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3508,6 +4375,9 @@ class DataCompliance(AbstractModel):
 
     @property
     def AssetType(self):
+        """检查项资产类型
+        :rtype: str
+        """
         return self._AssetType
 
     @AssetType.setter
@@ -3516,6 +4386,9 @@ class DataCompliance(AbstractModel):
 
     @property
     def Type(self):
+        """检查项类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3524,6 +4397,9 @@ class DataCompliance(AbstractModel):
 
     @property
     def Category(self):
+        """检查项类别
+        :rtype: str
+        """
         return self._Category
 
     @Category.setter
@@ -3532,6 +4408,9 @@ class DataCompliance(AbstractModel):
 
     @property
     def StandardItem(self):
+        """检查项标准项
+        :rtype: str
+        """
         return self._StandardItem
 
     @StandardItem.setter
@@ -3540,6 +4419,9 @@ class DataCompliance(AbstractModel):
 
     @property
     def Chapter(self):
+        """检查项章节号
+        :rtype: str
+        """
         return self._Chapter
 
     @Chapter.setter
@@ -3548,6 +4430,10 @@ class DataCompliance(AbstractModel):
 
     @property
     def LastCheckTime(self):
+        """最近一次检查时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastCheckTime
 
     @LastCheckTime.setter
@@ -3556,6 +4442,10 @@ class DataCompliance(AbstractModel):
 
     @property
     def Status(self):
+        """初始未检测状态0, 已通过为1，未通过为2
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -3564,6 +4454,10 @@ class DataCompliance(AbstractModel):
 
     @property
     def RiskCount(self):
+        """有风险的资源总数，未通过数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RiskCount
 
     @RiskCount.setter
@@ -3572,6 +4466,10 @@ class DataCompliance(AbstractModel):
 
     @property
     def IsChecked(self):
+        """0-检测中,1-结束检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsChecked
 
     @IsChecked.setter
@@ -3580,6 +4478,10 @@ class DataCompliance(AbstractModel):
 
     @property
     def RiskItem(self):
+        """检查项风险项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RiskItem
 
     @RiskItem.setter
@@ -3588,6 +4490,10 @@ class DataCompliance(AbstractModel):
 
     @property
     def IsIgnored(self):
+        """0-未忽略,1-已忽略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsIgnored
 
     @IsIgnored.setter
@@ -3596,6 +4502,10 @@ class DataCompliance(AbstractModel):
 
     @property
     def Title(self):
+        """等保检查项完整名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -3604,6 +4514,10 @@ class DataCompliance(AbstractModel):
 
     @property
     def AssetTotal(self):
+        """资产总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AssetTotal
 
     @AssetTotal.setter
@@ -3612,6 +4526,10 @@ class DataCompliance(AbstractModel):
 
     @property
     def Remarks(self):
+        """忽略内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remarks
 
     @Remarks.setter
@@ -3664,6 +4582,9 @@ class DescribeAlarmStatRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3672,6 +4593,9 @@ class DescribeAlarmStatRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3710,6 +4634,10 @@ class DescribeAlarmStatResponse(AbstractModel):
 
     @property
     def Data(self):
+        """威胁告警信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.AlarmInfoRsp`
+        """
         return self._Data
 
     @Data.setter
@@ -3718,6 +4646,9 @@ class DescribeAlarmStatResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3762,6 +4693,9 @@ AssetCspmRiskNum,AssetVulNum,AssetEventNum,SsaAssetDiscoverTime
 
     @property
     def Filter(self):
+        """查询条件，可支持的查询字段：AssetUniqid,AssetName,AssetIpAll,AssetVpcid,Tag
+        :rtype: list of AssetQueryFilter
+        """
         return self._Filter
 
     @Filter.setter
@@ -3770,6 +4704,10 @@ AssetCspmRiskNum,AssetVulNum,AssetEventNum,SsaAssetDiscoverTime
 
     @property
     def Sorter(self):
+        """排序条件，可支持的排序字段：
+AssetCspmRiskNum,AssetVulNum,AssetEventNum,SsaAssetDiscoverTime
+        :rtype: list of QuerySort
+        """
         return self._Sorter
 
     @Sorter.setter
@@ -3778,6 +4716,9 @@ AssetCspmRiskNum,AssetVulNum,AssetEventNum,SsaAssetDiscoverTime
 
     @property
     def RiskTags(self):
+        """风险标签
+        :rtype: list of str
+        """
         return self._RiskTags
 
     @RiskTags.setter
@@ -3786,6 +4727,9 @@ AssetCspmRiskNum,AssetVulNum,AssetEventNum,SsaAssetDiscoverTime
 
     @property
     def Tags(self):
+        """标签
+        :rtype: list of str
+        """
         return self._Tags
 
     @Tags.setter
@@ -3794,6 +4738,9 @@ AssetCspmRiskNum,AssetVulNum,AssetEventNum,SsaAssetDiscoverTime
 
     @property
     def PageIndex(self):
+        """页
+        :rtype: int
+        """
         return self._PageIndex
 
     @PageIndex.setter
@@ -3802,6 +4749,9 @@ AssetCspmRiskNum,AssetVulNum,AssetEventNum,SsaAssetDiscoverTime
 
     @property
     def PageSize(self):
+        """页大小
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -3858,6 +4808,10 @@ class DescribeAssetDetailListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """业务数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AssetDetail
+        """
         return self._Data
 
     @Data.setter
@@ -3866,6 +4820,10 @@ class DescribeAssetDetailListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -3874,6 +4832,9 @@ class DescribeAssetDetailListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3906,6 +4867,9 @@ class DescribeAssetDetailRequest(AbstractModel):
 
     @property
     def Params(self):
+        """查询过滤参数
+        :rtype: str
+        """
         return self._Params
 
     @Params.setter
@@ -3943,6 +4907,10 @@ class DescribeAssetDetailResponse(AbstractModel):
 
     @property
     def Data(self):
+        """资产详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.AssetDetail`
+        """
         return self._Data
 
     @Data.setter
@@ -3951,6 +4919,9 @@ class DescribeAssetDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3979,6 +4950,9 @@ class DescribeAssetListRequest(AbstractModel):
 
     @property
     def Params(self):
+        """查询过滤参数
+        :rtype: str
+        """
         return self._Params
 
     @Params.setter
@@ -4021,6 +4995,9 @@ class DescribeAssetListResponse(AbstractModel):
 
     @property
     def AssetList(self):
+        """资产列表
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.AssetList`
+        """
         return self._AssetList
 
     @AssetList.setter
@@ -4029,6 +5006,9 @@ class DescribeAssetListResponse(AbstractModel):
 
     @property
     def AggregationData(self):
+        """聚合数据
+        :rtype: list of AggregationObj
+        """
         return self._AggregationData
 
     @AggregationData.setter
@@ -4037,6 +5017,9 @@ class DescribeAssetListResponse(AbstractModel):
 
     @property
     def NamespaceData(self):
+        """命名空间数据
+        :rtype: list of str
+        """
         return self._NamespaceData
 
     @NamespaceData.setter
@@ -4045,6 +5028,9 @@ class DescribeAssetListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4092,6 +5078,9 @@ class DescribeCheckConfigAssetListRequest(AbstractModel):
 
     @property
     def Id(self):
+        """检查项UUID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -4100,6 +5089,9 @@ class DescribeCheckConfigAssetListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """页码
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4108,6 +5100,9 @@ class DescribeCheckConfigAssetListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页列表数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4116,6 +5111,9 @@ class DescribeCheckConfigAssetListRequest(AbstractModel):
 
     @property
     def Search(self):
+        """db搜索条件
+        :rtype: list of Filter
+        """
         return self._Search
 
     @Search.setter
@@ -4124,6 +5122,9 @@ class DescribeCheckConfigAssetListRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """ES过滤条件
+        :rtype: list of Filter
+        """
         return self._Filter
 
     @Filter.setter
@@ -4178,6 +5179,9 @@ class DescribeCheckConfigAssetListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """资产列表总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -4186,6 +5190,10 @@ class DescribeCheckConfigAssetListResponse(AbstractModel):
 
     @property
     def CheckAssetsList(self):
+        """资产列表项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CheckAssetItem
+        """
         return self._CheckAssetsList
 
     @CheckAssetsList.setter
@@ -4194,6 +5202,9 @@ class DescribeCheckConfigAssetListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4226,6 +5237,9 @@ class DescribeCheckConfigDetailRequest(AbstractModel):
 
     @property
     def Id(self):
+        """检查项ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -4262,6 +5276,9 @@ class DescribeCheckConfigDetailResponse(AbstractModel):
 
     @property
     def CheckConfigDetail(self):
+        """检查项详情
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.CheckConfigDetail`
+        """
         return self._CheckConfigDetail
 
     @CheckConfigDetail.setter
@@ -4270,6 +5287,9 @@ class DescribeCheckConfigDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4310,6 +5330,9 @@ class DescribeComplianceAssetListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """页码
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4318,6 +5341,9 @@ class DescribeComplianceAssetListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4326,6 +5352,9 @@ class DescribeComplianceAssetListRequest(AbstractModel):
 
     @property
     def Id(self):
+        """检查项uuid
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -4334,6 +5363,9 @@ class DescribeComplianceAssetListRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """过滤条件
+        :rtype: list of Filter
+        """
         return self._Filter
 
     @Filter.setter
@@ -4342,6 +5374,9 @@ class DescribeComplianceAssetListRequest(AbstractModel):
 
     @property
     def Search(self):
+        """查询条件
+        :rtype: list of Filter
+        """
         return self._Search
 
     @Search.setter
@@ -4395,6 +5430,9 @@ class DescribeComplianceAssetListResponse(AbstractModel):
 
     @property
     def CheckAssetsList(self):
+        """资产组列表
+        :rtype: list of CheckAssetItem
+        """
         return self._CheckAssetsList
 
     @CheckAssetsList.setter
@@ -4403,6 +5441,9 @@ class DescribeComplianceAssetListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """资产组列表总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -4411,6 +5452,9 @@ class DescribeComplianceAssetListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4443,6 +5487,9 @@ class DescribeComplianceDetailRequest(AbstractModel):
 
     @property
     def Id(self):
+        """检查项uuid
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -4479,6 +5526,9 @@ class DescribeComplianceDetailResponse(AbstractModel):
 
     @property
     def CheckConfigDetail(self):
+        """合规管理检查项详情
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.ComplianceCheckDetail`
+        """
         return self._CheckConfigDetail
 
     @CheckConfigDetail.setter
@@ -4487,6 +5537,9 @@ class DescribeComplianceDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4515,6 +5568,9 @@ class DescribeComplianceListRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """搜索过滤条件
+        :rtype: str
+        """
         return self._Filter
 
     @Filter.setter
@@ -4559,6 +5615,9 @@ class DescribeComplianceListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """检查项列表
+        :rtype: list of DataCompliance
+        """
         return self._Data
 
     @Data.setter
@@ -4567,6 +5626,10 @@ class DescribeComplianceListResponse(AbstractModel):
 
     @property
     def AssetTotalNum(self):
+        """总检查资产数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AssetTotalNum
 
     @AssetTotalNum.setter
@@ -4575,6 +5638,10 @@ class DescribeComplianceListResponse(AbstractModel):
 
     @property
     def ConfigTotalNum(self):
+        """总检查项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ConfigTotalNum
 
     @ConfigTotalNum.setter
@@ -4583,6 +5650,9 @@ class DescribeComplianceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4616,6 +5686,9 @@ class DescribeConfigListRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """搜索过滤条件
+        :rtype: str
+        """
         return self._Filter
 
     @Filter.setter
@@ -4652,6 +5725,9 @@ class DescribeConfigListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """检查项列表
+        :rtype: list of DataCheck
+        """
         return self._Data
 
     @Data.setter
@@ -4660,6 +5736,9 @@ class DescribeConfigListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4724,6 +5803,9 @@ class DescribeDomainListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """起始，从0开始(只支持32位)
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4732,6 +5814,9 @@ class DescribeDomainListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """limit,最大值200(只支持32位)
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4740,6 +5825,9 @@ class DescribeDomainListRequest(AbstractModel):
 
     @property
     def AssetBasicType(self):
+        """资产大类，根据此字段时返回不同的子结构,AssetBasicType(只支持32位)
+        :rtype: int
+        """
         return self._AssetBasicType
 
     @AssetBasicType.setter
@@ -4748,6 +5836,9 @@ class DescribeDomainListRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """过滤条件
+        :rtype: list of QueryFilterV3
+        """
         return self._Filter
 
     @Filter.setter
@@ -4756,6 +5847,9 @@ class DescribeDomainListRequest(AbstractModel):
 
     @property
     def Order(self):
+        """排序
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -4764,6 +5858,9 @@ class DescribeDomainListRequest(AbstractModel):
 
     @property
     def By(self):
+        """排序字段
+        :rtype: str
+        """
         return self._By
 
     @By.setter
@@ -4772,6 +5869,9 @@ class DescribeDomainListRequest(AbstractModel):
 
     @property
     def Field(self):
+        """导出字段
+        :rtype: list of str
+        """
         return self._Field
 
     @Field.setter
@@ -4780,6 +5880,9 @@ class DescribeDomainListRequest(AbstractModel):
 
     @property
     def TimeRange(self):
+        """时间范围(只支持32位)
+        :rtype: int
+        """
         return self._TimeRange
 
     @TimeRange.setter
@@ -4788,6 +5891,9 @@ class DescribeDomainListRequest(AbstractModel):
 
     @property
     def Logic(self):
+        """逻辑字段(只支持32位)
+        :rtype: int
+        """
         return self._Logic
 
     @Logic.setter
@@ -4796,6 +5902,9 @@ class DescribeDomainListRequest(AbstractModel):
 
     @property
     def GroupByField(self):
+        """聚合字段  
+        :rtype: str
+        """
         return self._GroupByField
 
     @GroupByField.setter
@@ -4804,6 +5913,9 @@ class DescribeDomainListRequest(AbstractModel):
 
     @property
     def Task(self):
+        """-
+        :rtype: str
+        """
         return self._Task
 
     @Task.setter
@@ -4812,6 +5924,9 @@ class DescribeDomainListRequest(AbstractModel):
 
     @property
     def RequestFrom(self):
+        """0:cfw 1:vss 2.soc 3.waf 4.cwp
+        :rtype: int
+        """
         return self._RequestFrom
 
     @RequestFrom.setter
@@ -4867,6 +5982,9 @@ class DescribeDomainListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """无
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -4875,6 +5993,9 @@ class DescribeDomainListResponse(AbstractModel):
 
     @property
     def DomainInfoCollection(self):
+        """无
+        :rtype: list of DomainInfo
+        """
         return self._DomainInfoCollection
 
     @DomainInfoCollection.setter
@@ -4883,6 +6004,9 @@ class DescribeDomainListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4927,6 +6051,9 @@ class DescribeEventDetailRequest(AbstractModel):
 
     @property
     def Index(self):
+        """事件索引名
+        :rtype: str
+        """
         return self._Index
 
     @Index.setter
@@ -4935,6 +6062,9 @@ class DescribeEventDetailRequest(AbstractModel):
 
     @property
     def Id(self):
+        """事件id
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -4943,6 +6073,9 @@ class DescribeEventDetailRequest(AbstractModel):
 
     @property
     def Source(self):
+        """事件来源
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -4951,6 +6084,9 @@ class DescribeEventDetailRequest(AbstractModel):
 
     @property
     def SubEventType(self):
+        """事件子类型
+        :rtype: int
+        """
         return self._SubEventType
 
     @SubEventType.setter
@@ -4959,6 +6095,9 @@ class DescribeEventDetailRequest(AbstractModel):
 
     @property
     def Name(self):
+        """事件名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4999,6 +6138,9 @@ class DescribeEventDetailResponse(AbstractModel):
 
     @property
     def Data(self):
+        """事件详情
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -5007,6 +6149,9 @@ class DescribeEventDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5045,6 +6190,9 @@ class DescribeLeakDetectionListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """筛选条件
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -5053,6 +6201,9 @@ class DescribeLeakDetectionListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """每页数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5061,6 +6212,9 @@ class DescribeLeakDetectionListRequest(AbstractModel):
 
     @property
     def Page(self):
+        """页码
+        :rtype: int
+        """
         return self._Page
 
     @Page.setter
@@ -5069,6 +6223,9 @@ class DescribeLeakDetectionListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """起始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -5077,6 +6234,9 @@ class DescribeLeakDetectionListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -5125,6 +6285,9 @@ class DescribeLeakDetectionListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5133,6 +6296,9 @@ class DescribeLeakDetectionListResponse(AbstractModel):
 
     @property
     def List(self):
+        """数据列表
+        :rtype: list of str
+        """
         return self._List
 
     @List.setter
@@ -5141,6 +6307,9 @@ class DescribeLeakDetectionListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5177,6 +6346,9 @@ class DescribeMappingResultsRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """过滤条件，FilterKey 取值范围：AssetId，AssetIp，PrivateIp，Protocol，Service，OS，Process，Component，AssetType，Domain，Port，LastMappingTime，MappingType，Disposal，Vpc
+        :rtype: list of AssetQueryFilter
+        """
         return self._Filter
 
     @Filter.setter
@@ -5185,6 +6357,9 @@ class DescribeMappingResultsRequest(AbstractModel):
 
     @property
     def Sorter(self):
+        """排序条件，SortKey取值范围：CreateTime，LastMappingTime
+        :rtype: list of QuerySort
+        """
         return self._Sorter
 
     @Sorter.setter
@@ -5193,6 +6368,9 @@ class DescribeMappingResultsRequest(AbstractModel):
 
     @property
     def PageIndex(self):
+        """页码
+        :rtype: int
+        """
         return self._PageIndex
 
     @PageIndex.setter
@@ -5201,6 +6379,9 @@ class DescribeMappingResultsRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """页大小，默认大小20
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -5255,6 +6436,10 @@ class DescribeMappingResultsResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -5263,6 +6448,10 @@ class DescribeMappingResultsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.Results`
+        """
         return self._Data
 
     @Data.setter
@@ -5271,6 +6460,9 @@ class DescribeMappingResultsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5303,6 +6495,9 @@ class DescribeSocAlertDetailsRequest(AbstractModel):
 
     @property
     def AlertId(self):
+        """告警id
+        :rtype: str
+        """
         return self._AlertId
 
     @AlertId.setter
@@ -5311,6 +6506,9 @@ class DescribeSocAlertDetailsRequest(AbstractModel):
 
     @property
     def AlertTimestamp(self):
+        """告警时间，取Timestamp字段
+        :rtype: str
+        """
         return self._AlertTimestamp
 
     @AlertTimestamp.setter
@@ -5349,6 +6547,10 @@ class DescribeSocAlertDetailsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回详情数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.AlertDetail`
+        """
         return self._Data
 
     @Data.setter
@@ -5357,6 +6559,9 @@ class DescribeSocAlertDetailsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5400,6 +6605,9 @@ class DescribeSocAlertListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """页大小
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -5408,6 +6616,9 @@ class DescribeSocAlertListRequest(AbstractModel):
 
     @property
     def PageIndex(self):
+        """页码
+        :rtype: int
+        """
         return self._PageIndex
 
     @PageIndex.setter
@@ -5416,6 +6627,9 @@ class DescribeSocAlertListRequest(AbstractModel):
 
     @property
     def Scenes(self):
+        """1:急需关注 2.重保监控 3.全量告警
+        :rtype: int
+        """
         return self._Scenes
 
     @Scenes.setter
@@ -5424,6 +6638,9 @@ class DescribeSocAlertListRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """查询参数
+        :rtype: list of QueryFilter
+        """
         return self._Filter
 
     @Filter.setter
@@ -5432,6 +6649,9 @@ class DescribeSocAlertListRequest(AbstractModel):
 
     @property
     def Sorter(self):
+        """排序参数
+        :rtype: list of QuerySort
+        """
         return self._Sorter
 
     @Sorter.setter
@@ -5440,6 +6660,9 @@ class DescribeSocAlertListRequest(AbstractModel):
 
     @property
     def ExportFlag(self):
+        """是否导出；默认为否，如量级超过1000，则使用单独的导出接口
+        :rtype: bool
+        """
         return self._ExportFlag
 
     @ExportFlag.setter
@@ -5491,6 +6714,9 @@ class DescribeSocAlertListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """业务数据
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.AlertListData`
+        """
         return self._Data
 
     @Data.setter
@@ -5499,6 +6725,9 @@ class DescribeSocAlertListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5536,6 +6765,9 @@ class DescribeSocCheckItemListRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """查询参数,可支持的排序字段:Name,Type,AssetType,Level,Standard,IsFree
+        :rtype: list of QueryFilter
+        """
         return self._Filter
 
     @Filter.setter
@@ -5544,6 +6776,9 @@ class DescribeSocCheckItemListRequest(AbstractModel):
 
     @property
     def Sorter(self):
+        """排序参数:无
+        :rtype: list of QuerySort
+        """
         return self._Sorter
 
     @Sorter.setter
@@ -5552,6 +6787,9 @@ class DescribeSocCheckItemListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """当前页码数据，默认值为10
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -5560,6 +6798,9 @@ class DescribeSocCheckItemListRequest(AbstractModel):
 
     @property
     def PageIndex(self):
+        """当前页面索引，默认值为0
+        :rtype: int
+        """
         return self._PageIndex
 
     @PageIndex.setter
@@ -5610,6 +6851,10 @@ class DescribeSocCheckItemListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """检查项列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeSocCheckItemListRspRsp`
+        """
         return self._Data
 
     @Data.setter
@@ -5618,6 +6863,9 @@ class DescribeSocCheckItemListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5651,6 +6899,10 @@ class DescribeSocCheckItemListRspRsp(AbstractModel):
 
     @property
     def List(self):
+        """检查项详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SocCheckItemV1
+        """
         return self._List
 
     @List.setter
@@ -5659,6 +6911,10 @@ class DescribeSocCheckItemListRspRsp(AbstractModel):
 
     @property
     def Total(self):
+        """检查项总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -5711,6 +6967,10 @@ Name,Type,AssetType,Result,PloyName,PloyId
 
     @property
     def Filter(self):
+        """查询参数,可支持的查询参数：
+Name,Type,AssetType,Result,PloyName,PloyId
+        :rtype: list of QueryFilter
+        """
         return self._Filter
 
     @Filter.setter
@@ -5719,6 +6979,9 @@ Name,Type,AssetType,Result,PloyName,PloyId
 
     @property
     def Sorter(self):
+        """排序参数,可支持的排序参数：CheckStatus,RiskCount
+        :rtype: list of QuerySort
+        """
         return self._Sorter
 
     @Sorter.setter
@@ -5727,6 +6990,9 @@ Name,Type,AssetType,Result,PloyName,PloyId
 
     @property
     def PageSize(self):
+        """当前页码数据，默认值为10
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -5735,6 +7001,9 @@ Name,Type,AssetType,Result,PloyName,PloyId
 
     @property
     def PageIndex(self):
+        """当前页面索引，默认值为0
+        :rtype: int
+        """
         return self._PageIndex
 
     @PageIndex.setter
@@ -5743,6 +7012,9 @@ Name,Type,AssetType,Result,PloyName,PloyId
 
     @property
     def AssetId(self):
+        """资产id
+        :rtype: str
+        """
         return self._AssetId
 
     @AssetId.setter
@@ -5794,6 +7066,10 @@ class DescribeSocCheckResultListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """无
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeSocCheckResultListRspRsp`
+        """
         return self._Data
 
     @Data.setter
@@ -5802,6 +7078,9 @@ class DescribeSocCheckResultListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5845,6 +7124,9 @@ class DescribeSocCheckResultListRspRsp(AbstractModel):
 
     @property
     def List(self):
+        """具体检查项详情
+        :rtype: list of SocCheckResult
+        """
         return self._List
 
     @List.setter
@@ -5853,6 +7135,9 @@ class DescribeSocCheckResultListRspRsp(AbstractModel):
 
     @property
     def Total(self):
+        """检查结果总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -5861,6 +7146,9 @@ class DescribeSocCheckResultListRspRsp(AbstractModel):
 
     @property
     def LowTotal(self):
+        """低危个数
+        :rtype: int
+        """
         return self._LowTotal
 
     @LowTotal.setter
@@ -5869,6 +7157,9 @@ class DescribeSocCheckResultListRspRsp(AbstractModel):
 
     @property
     def MiddleTotal(self):
+        """中危个数
+        :rtype: int
+        """
         return self._MiddleTotal
 
     @MiddleTotal.setter
@@ -5877,6 +7168,9 @@ class DescribeSocCheckResultListRspRsp(AbstractModel):
 
     @property
     def HighTotal(self):
+        """高危个数
+        :rtype: int
+        """
         return self._HighTotal
 
     @HighTotal.setter
@@ -5885,6 +7179,9 @@ class DescribeSocCheckResultListRspRsp(AbstractModel):
 
     @property
     def NormalTotal(self):
+        """正常个数
+        :rtype: int
+        """
         return self._NormalTotal
 
     @NormalTotal.setter
@@ -5938,6 +7235,10 @@ class DescribeSocCspmComplianceResponse(AbstractModel):
 
     @property
     def Data(self):
+        """数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.SocComplianceInfoResp`
+        """
         return self._Data
 
     @Data.setter
@@ -5946,6 +7247,9 @@ class DescribeSocCspmComplianceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5977,6 +7281,9 @@ class DescribeVulDetailRequest(AbstractModel):
 
     @property
     def UniqId(self):
+        """漏洞唯一标识符
+        :rtype: str
+        """
         return self._UniqId
 
     @UniqId.setter
@@ -5985,6 +7292,9 @@ class DescribeVulDetailRequest(AbstractModel):
 
     @property
     def Source(self):
+        """查看详情来源
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -6107,6 +7417,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def VulType(self):
+        """漏洞类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._VulType
 
     @VulType.setter
@@ -6115,6 +7429,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def SubVulType(self):
+        """漏洞子类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubVulType
 
     @SubVulType.setter
@@ -6123,6 +7441,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def CvssScore(self):
+        """cvss分数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CvssScore
 
     @CvssScore.setter
@@ -6131,6 +7453,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def Cvss(self):
+        """cvss值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Cvss
 
     @Cvss.setter
@@ -6139,6 +7465,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def Cve(self):
+        """cve编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Cve
 
     @Cve.setter
@@ -6147,6 +7477,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def Cnvd(self):
+        """cnvd编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Cnvd
 
     @Cnvd.setter
@@ -6155,6 +7489,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def Cnnvd(self):
+        """cnnvd编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Cnnvd
 
     @Cnnvd.setter
@@ -6163,6 +7501,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def Desc(self):
+        """描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Desc
 
     @Desc.setter
@@ -6171,6 +7513,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def Reference(self):
+        """参考
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Reference
 
     @Reference.setter
@@ -6179,6 +7525,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def Repair(self):
+        """修复意见
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Repair
 
     @Repair.setter
@@ -6187,6 +7537,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def ReleaseTime(self):
+        """披露时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReleaseTime
 
     @ReleaseTime.setter
@@ -6195,6 +7549,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -6203,6 +7561,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def Name(self):
+        """漏洞名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6211,6 +7573,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def Level(self):
+        """等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -6219,6 +7585,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def Status(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -6227,6 +7597,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def ImpactAsset(self):
+        """受影响资产唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ImpactAsset
 
     @ImpactAsset.setter
@@ -6235,6 +7609,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def ImpactAssetName(self):
+        """受影响资产名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ImpactAssetName
 
     @ImpactAssetName.setter
@@ -6243,6 +7621,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def IsAssetDeleted(self):
+        """受影响资产是否已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsAssetDeleted
 
     @IsAssetDeleted.setter
@@ -6251,6 +7633,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def Source(self):
+        """漏洞来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -6259,6 +7645,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def VulUrl(self):
+        """漏洞URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VulUrl
 
     @VulUrl.setter
@@ -6267,6 +7657,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def SsaAssetCategory(self):
+        """资产归属
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SsaAssetCategory
 
     @SsaAssetCategory.setter
@@ -6275,6 +7669,10 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def VulPath(self):
+        """资产文件路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VulPath
 
     @VulPath.setter
@@ -6283,6 +7681,9 @@ class DescribeVulDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6330,6 +7731,9 @@ class DescribeVulListRequest(AbstractModel):
 
     @property
     def Params(self):
+        """查询过滤参数:(json序列化的结果）
+        :rtype: str
+        """
         return self._Params
 
     @Params.setter
@@ -6366,6 +7770,9 @@ class DescribeVulListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """漏洞列表
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.VulList`
+        """
         return self._Data
 
     @Data.setter
@@ -6374,6 +7781,9 @@ class DescribeVulListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6498,6 +7908,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -6506,6 +7920,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def ResolveAddr(self):
+        """解析地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._ResolveAddr
 
     @ResolveAddr.setter
@@ -6514,6 +7932,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def Region(self):
+        """地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Region
 
     @Region.setter
@@ -6522,6 +7944,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def AssetType(self):
+        """资产类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AssetType
 
     @AssetType.setter
@@ -6530,6 +7956,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def RiskVulCount(self):
+        """漏洞风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RiskVulCount
 
     @RiskVulCount.setter
@@ -6538,6 +7968,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def SensitiveCount(self):
+        """敏感内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SensitiveCount
 
     @SensitiveCount.setter
@@ -6546,6 +7980,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def HorseLinkCount(self):
+        """挂马暗链
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HorseLinkCount
 
     @HorseLinkCount.setter
@@ -6554,6 +7992,9 @@ class DomainInfo(AbstractModel):
 
     @property
     def WebModifyCount(self):
+        """网页篡改
+        :rtype: int
+        """
         return self._WebModifyCount
 
     @WebModifyCount.setter
@@ -6562,6 +8003,9 @@ class DomainInfo(AbstractModel):
 
     @property
     def ScanTime(self):
+        """上次扫描时间
+        :rtype: str
+        """
         return self._ScanTime
 
     @ScanTime.setter
@@ -6570,6 +8014,9 @@ class DomainInfo(AbstractModel):
 
     @property
     def DiscoverTime(self):
+        """最近发现时间
+        :rtype: str
+        """
         return self._DiscoverTime
 
     @DiscoverTime.setter
@@ -6578,6 +8025,9 @@ class DomainInfo(AbstractModel):
 
     @property
     def ScanTaskCount(self):
+        """扫描次数
+        :rtype: int
+        """
         return self._ScanTaskCount
 
     @ScanTaskCount.setter
@@ -6586,6 +8036,9 @@ class DomainInfo(AbstractModel):
 
     @property
     def PortRisk(self):
+        """端口
+        :rtype: int
+        """
         return self._PortRisk
 
     @PortRisk.setter
@@ -6594,6 +8047,9 @@ class DomainInfo(AbstractModel):
 
     @property
     def WeekPwdCount(self):
+        """弱口令
+        :rtype: int
+        """
         return self._WeekPwdCount
 
     @WeekPwdCount.setter
@@ -6602,6 +8058,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def AssetLocation(self):
+        """资产归属
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetLocation
 
     @AssetLocation.setter
@@ -6610,6 +8070,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def NetworkRisk(self):
+        """网络风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._NetworkRisk
 
     @NetworkRisk.setter
@@ -6618,6 +8082,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def NetworkAttack(self):
+        """网络攻击
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._NetworkAttack
 
     @NetworkAttack.setter
@@ -6626,6 +8094,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def BotVisit(self):
+        """bot访问
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BotVisit
 
     @BotVisit.setter
@@ -6634,6 +8106,11 @@ class DomainInfo(AbstractModel):
 
     @property
     def NetworkAccess(self):
+        """网络访问
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._NetworkAccess
 
     @NetworkAccess.setter
@@ -6642,6 +8119,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """资产创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -6650,6 +8131,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def WafStatus(self):
+        """waf状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._WafStatus
 
     @WafStatus.setter
@@ -6658,6 +8143,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def LastScanTime(self):
+        """最近扫描时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastScanTime
 
     @LastScanTime.setter
@@ -6666,6 +8155,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def AssetId(self):
+        """资产id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AssetId
 
     @AssetId.setter
@@ -6674,6 +8167,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def AssetName(self):
+        """资产名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AssetName
 
     @AssetName.setter
@@ -6682,6 +8179,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def SourceType(self):
+        """类别
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SourceType
 
     @SourceType.setter
@@ -6690,6 +8191,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def IsNotCore(self):
+        """是否核心资产
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsNotCore
 
     @IsNotCore.setter
@@ -6698,6 +8203,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def IsCloud(self):
+        """是否云外资产
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsCloud
 
     @IsCloud.setter
@@ -6765,6 +8274,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """过滤键的名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6773,6 +8285,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """一个或者多个过滤值。
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -6781,6 +8296,9 @@ class Filter(AbstractModel):
 
     @property
     def ExactMatch(self):
+        """是否需要精确匹配
+        :rtype: bool
+        """
         return self._ExactMatch
 
     @ExactMatch.setter
@@ -6846,6 +8364,9 @@ class ListDataSaEventPub(AbstractModel):
 
     @property
     def Time(self):
+        """时间
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -6854,6 +8375,9 @@ class ListDataSaEventPub(AbstractModel):
 
     @property
     def EventType1(self):
+        """安全事件1级分类
+        :rtype: int
+        """
         return self._EventType1
 
     @EventType1.setter
@@ -6862,6 +8386,9 @@ class ListDataSaEventPub(AbstractModel):
 
     @property
     def EventType2(self):
+        """安全事件2级分类
+        :rtype: int
+        """
         return self._EventType2
 
     @EventType2.setter
@@ -6870,6 +8397,9 @@ class ListDataSaEventPub(AbstractModel):
 
     @property
     def EventName(self):
+        """安全事件名称
+        :rtype: str
+        """
         return self._EventName
 
     @EventName.setter
@@ -6878,6 +8408,9 @@ class ListDataSaEventPub(AbstractModel):
 
     @property
     def Level(self):
+        """风险等级
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -6886,6 +8419,9 @@ class ListDataSaEventPub(AbstractModel):
 
     @property
     def Status(self):
+        """安全事件状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -6894,6 +8430,9 @@ class ListDataSaEventPub(AbstractModel):
 
     @property
     def SrcIp(self):
+        """攻击源ip
+        :rtype: str
+        """
         return self._SrcIp
 
     @SrcIp.setter
@@ -6902,6 +8441,9 @@ class ListDataSaEventPub(AbstractModel):
 
     @property
     def DstIp(self):
+        """攻击目标ip
+        :rtype: str
+        """
         return self._DstIp
 
     @DstIp.setter
@@ -6910,6 +8452,9 @@ class ListDataSaEventPub(AbstractModel):
 
     @property
     def DstPort(self):
+        """攻击目标端口
+        :rtype: int
+        """
         return self._DstPort
 
     @DstPort.setter
@@ -6918,6 +8463,9 @@ class ListDataSaEventPub(AbstractModel):
 
     @property
     def Asset(self):
+        """受影响资产
+        :rtype: str
+        """
         return self._Asset
 
     @Asset.setter
@@ -6926,6 +8474,9 @@ class ListDataSaEventPub(AbstractModel):
 
     @property
     def OldIdMd5(self):
+        """私有字段和公有字段映射的原始采集数据唯一标识的MD5值
+        :rtype: str
+        """
         return self._OldIdMd5
 
     @OldIdMd5.setter
@@ -7046,6 +8597,10 @@ class MappingResult(AbstractModel):
 
     @property
     def AssetName(self):
+        """资产名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetName
 
     @AssetName.setter
@@ -7054,6 +8609,10 @@ class MappingResult(AbstractModel):
 
     @property
     def AssetIp(self):
+        """公网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetIp
 
     @AssetIp.setter
@@ -7062,6 +8621,10 @@ class MappingResult(AbstractModel):
 
     @property
     def PrivateIp(self):
+        """内网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PrivateIp
 
     @PrivateIp.setter
@@ -7070,6 +8633,10 @@ class MappingResult(AbstractModel):
 
     @property
     def AssetId(self):
+        """资产id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetId
 
     @AssetId.setter
@@ -7078,6 +8645,10 @@ class MappingResult(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -7086,6 +8657,10 @@ class MappingResult(AbstractModel):
 
     @property
     def Port(self):
+        """端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Port
 
     @Port.setter
@@ -7094,6 +8669,10 @@ class MappingResult(AbstractModel):
 
     @property
     def Service(self):
+        """服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Service
 
     @Service.setter
@@ -7102,6 +8681,10 @@ class MappingResult(AbstractModel):
 
     @property
     def Component(self):
+        """组件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Component
 
     @Component.setter
@@ -7110,6 +8693,10 @@ class MappingResult(AbstractModel):
 
     @property
     def Process(self):
+        """进程
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Process
 
     @Process.setter
@@ -7118,6 +8705,10 @@ class MappingResult(AbstractModel):
 
     @property
     def OS(self):
+        """操作系统
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OS
 
     @OS.setter
@@ -7126,6 +8717,10 @@ class MappingResult(AbstractModel):
 
     @property
     def LastMappingTime(self):
+        """测绘时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastMappingTime
 
     @LastMappingTime.setter
@@ -7134,6 +8729,10 @@ class MappingResult(AbstractModel):
 
     @property
     def DisposalRecommendations(self):
+        """处置建议
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DisposalRecommendations
 
     @DisposalRecommendations.setter
@@ -7142,6 +8741,10 @@ class MappingResult(AbstractModel):
 
     @property
     def DisposalRecommendationDetails(self):
+        """处置建议详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DisposalRecommendationDetails
 
     @DisposalRecommendationDetails.setter
@@ -7150,6 +8753,10 @@ class MappingResult(AbstractModel):
 
     @property
     def AssetType(self):
+        """资产类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetType
 
     @AssetType.setter
@@ -7158,6 +8765,10 @@ class MappingResult(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -7166,6 +8777,10 @@ class MappingResult(AbstractModel):
 
     @property
     def MappingStatus(self):
+        """测绘状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MappingStatus
 
     @MappingStatus.setter
@@ -7174,6 +8789,10 @@ class MappingResult(AbstractModel):
 
     @property
     def Region(self):
+        """区域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -7182,6 +8801,10 @@ class MappingResult(AbstractModel):
 
     @property
     def SecurityStatus(self):
+        """安全防护状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SecurityStatus
+        """
         return self._SecurityStatus
 
     @SecurityStatus.setter
@@ -7190,6 +8813,10 @@ class MappingResult(AbstractModel):
 
     @property
     def DisposalRecommendation(self):
+        """处置建议
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DisposalRecommendation
 
     @DisposalRecommendation.setter
@@ -7198,6 +8825,10 @@ class MappingResult(AbstractModel):
 
     @property
     def MappingType(self):
+        """测绘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MappingType
 
     @MappingType.setter
@@ -7258,6 +8889,9 @@ class ObjDataSaEventPub(AbstractModel):
 
     @property
     def Count(self):
+        """Count
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -7266,6 +8900,9 @@ class ObjDataSaEventPub(AbstractModel):
 
     @property
     def List(self):
+        """List
+        :rtype: list of ListDataSaEventPub
+        """
         return self._List
 
     @List.setter
@@ -7311,6 +8948,9 @@ class QueryFilter(AbstractModel):
 
     @property
     def FilterKey(self):
+        """过滤key
+        :rtype: str
+        """
         return self._FilterKey
 
     @FilterKey.setter
@@ -7319,6 +8959,9 @@ class QueryFilter(AbstractModel):
 
     @property
     def FilterOperatorType(self):
+        """操作符(只支持32位)
+        :rtype: int
+        """
         return self._FilterOperatorType
 
     @FilterOperatorType.setter
@@ -7327,6 +8970,9 @@ class QueryFilter(AbstractModel):
 
     @property
     def FilterValue(self):
+        """过滤value
+        :rtype: str
+        """
         return self._FilterValue
 
     @FilterValue.setter
@@ -7371,6 +9017,9 @@ class QueryFilterV3(AbstractModel):
 
     @property
     def Filter(self):
+        """过滤条件
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.QueryFilter`
+        """
         return self._Filter
 
     @Filter.setter
@@ -7379,6 +9028,9 @@ class QueryFilterV3(AbstractModel):
 
     @property
     def HasSub(self):
+        """有无子条件
+        :rtype: bool
+        """
         return self._HasSub
 
     @HasSub.setter
@@ -7387,6 +9039,9 @@ class QueryFilterV3(AbstractModel):
 
     @property
     def SubFilters(self):
+        """查询条件
+        :rtype: list of QueryFilter
+        """
         return self._SubFilters
 
     @SubFilters.setter
@@ -7395,6 +9050,9 @@ class QueryFilterV3(AbstractModel):
 
     @property
     def Logic(self):
+        """逻辑操作(只支持32位)
+        :rtype: int
+        """
         return self._Logic
 
     @Logic.setter
@@ -7441,6 +9099,9 @@ class QuerySort(AbstractModel):
 
     @property
     def SortKey(self):
+        """排序字段
+        :rtype: str
+        """
         return self._SortKey
 
     @SortKey.setter
@@ -7449,6 +9110,9 @@ class QuerySort(AbstractModel):
 
     @property
     def SortType(self):
+        """顺序，1升序2降序
+        :rtype: int
+        """
         return self._SortType
 
     @SortType.setter
@@ -7496,6 +9160,10 @@ class Results(AbstractModel):
 
     @property
     def Statistics(self):
+        """测绘类型统计
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AssetTypeStatistic
+        """
         return self._Statistics
 
     @Statistics.setter
@@ -7504,6 +9172,10 @@ class Results(AbstractModel):
 
     @property
     def Result(self):
+        """测绘结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MappingResult
+        """
         return self._Result
 
     @Result.setter
@@ -7512,6 +9184,10 @@ class Results(AbstractModel):
 
     @property
     def TaskCount(self):
+        """测绘任务数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TaskCount
 
     @TaskCount.setter
@@ -7520,6 +9196,10 @@ class Results(AbstractModel):
 
     @property
     def TaskMaxCount(self):
+        """最大测绘任务数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TaskMaxCount
 
     @TaskMaxCount.setter
@@ -7587,6 +9267,9 @@ class SaDivulgeScanRuleMutateRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Id
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -7595,6 +9278,9 @@ class SaDivulgeScanRuleMutateRequest(AbstractModel):
 
     @property
     def DivulgeSoure(self):
+        """DivulgeSoure
+        :rtype: str
+        """
         return self._DivulgeSoure
 
     @DivulgeSoure.setter
@@ -7603,6 +9289,9 @@ class SaDivulgeScanRuleMutateRequest(AbstractModel):
 
     @property
     def DivulgeSoureUrl(self):
+        """DivulgeSoureUrl
+        :rtype: str
+        """
         return self._DivulgeSoureUrl
 
     @DivulgeSoureUrl.setter
@@ -7611,6 +9300,9 @@ class SaDivulgeScanRuleMutateRequest(AbstractModel):
 
     @property
     def RuleName(self):
+        """RuleName
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -7619,6 +9311,9 @@ class SaDivulgeScanRuleMutateRequest(AbstractModel):
 
     @property
     def RuleWord(self):
+        """RuleWord
+        :rtype: str
+        """
         return self._RuleWord
 
     @RuleWord.setter
@@ -7627,6 +9322,9 @@ class SaDivulgeScanRuleMutateRequest(AbstractModel):
 
     @property
     def ScanStatus(self):
+        """ScanStatus
+        :rtype: str
+        """
         return self._ScanStatus
 
     @ScanStatus.setter
@@ -7635,6 +9333,9 @@ class SaDivulgeScanRuleMutateRequest(AbstractModel):
 
     @property
     def DivulgeType(self):
+        """DivulgeType
+        :rtype: str
+        """
         return self._DivulgeType
 
     @DivulgeType.setter
@@ -7643,6 +9344,9 @@ class SaDivulgeScanRuleMutateRequest(AbstractModel):
 
     @property
     def RepairAdvice(self):
+        """RepairAdvice
+        :rtype: str
+        """
         return self._RepairAdvice
 
     @RepairAdvice.setter
@@ -7686,6 +9390,9 @@ class SaDivulgeScanRuleMutateResponse(AbstractModel):
 
     @property
     def Data(self):
+        """Data
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.SaDivulgeScanRuleSetList`
+        """
         return self._Data
 
     @Data.setter
@@ -7694,6 +9401,9 @@ class SaDivulgeScanRuleMutateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7728,6 +9438,9 @@ class SaDivulgeScanRuleSetList(AbstractModel):
 
     @property
     def Value(self):
+        """Value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -7736,6 +9449,9 @@ class SaDivulgeScanRuleSetList(AbstractModel):
 
     @property
     def Code(self):
+        """Code
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -7744,6 +9460,9 @@ class SaDivulgeScanRuleSetList(AbstractModel):
 
     @property
     def Message(self):
+        """Message
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -7809,6 +9528,9 @@ class SaEventPubRequest(AbstractModel):
 
     @property
     def Asset(self):
+        """受影响资产
+        :rtype: str
+        """
         return self._Asset
 
     @Asset.setter
@@ -7817,6 +9539,9 @@ class SaEventPubRequest(AbstractModel):
 
     @property
     def EventName(self):
+        """安全事件名称
+        :rtype: str
+        """
         return self._EventName
 
     @EventName.setter
@@ -7825,6 +9550,9 @@ class SaEventPubRequest(AbstractModel):
 
     @property
     def EventType1(self):
+        """安全事件1级分类，-1:未知 0:全部 1:攻击事件 2:侦查事件 3:僵木蠕毒 4:违规策略
+        :rtype: int
+        """
         return self._EventType1
 
     @EventType1.setter
@@ -7833,6 +9561,9 @@ class SaEventPubRequest(AbstractModel):
 
     @property
     def EventType2(self):
+        """安全事件2级分类，-1:未知 0:全部 1:DDOS事件 2:Web攻击 3:木马 4:异地登录 5:密码破解
+        :rtype: int
+        """
         return self._EventType2
 
     @EventType2.setter
@@ -7841,6 +9572,9 @@ class SaEventPubRequest(AbstractModel):
 
     @property
     def Level(self):
+        """风险等级，-1:未知 0:全部 1:低危 2:中危 3:高危 4:严重，可多选，如：1,2
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -7849,6 +9583,9 @@ class SaEventPubRequest(AbstractModel):
 
     @property
     def Status(self):
+        """安全事件状态，-1:未知 0:全部 1:待处理 2:已处理 3:误报 4:已忽略 5:已知晓 6:已信任
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -7857,6 +9594,9 @@ class SaEventPubRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7865,6 +9605,9 @@ class SaEventPubRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """查询起始地址
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7873,6 +9616,9 @@ class SaEventPubRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询个数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7881,6 +9627,9 @@ class SaEventPubRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7889,6 +9638,9 @@ class SaEventPubRequest(AbstractModel):
 
     @property
     def OldIdMd5(self):
+        """私有字段和公有字段映射的原始采集数据唯一标识的MD5值
+        :rtype: str
+        """
         return self._OldIdMd5
 
     @OldIdMd5.setter
@@ -7935,6 +9687,9 @@ class SaEventPubResponse(AbstractModel):
 
     @property
     def DataSaEventPub(self):
+        """DataSaEventPub
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.ObjDataSaEventPub`
+        """
         return self._DataSaEventPub
 
     @DataSaEventPub.setter
@@ -7943,6 +9698,9 @@ class SaEventPubResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7990,6 +9748,10 @@ class SocCheckItem(AbstractModel):
 
     @property
     def Name(self):
+        """名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -7998,6 +9760,10 @@ class SocCheckItem(AbstractModel):
 
     @property
     def LevelId(self):
+        """唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LevelId
 
     @LevelId.setter
@@ -8006,6 +9772,10 @@ class SocCheckItem(AbstractModel):
 
     @property
     def SuccessCount(self):
+        """成功数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SuccessCount
 
     @SuccessCount.setter
@@ -8014,6 +9784,10 @@ class SocCheckItem(AbstractModel):
 
     @property
     def FailCount(self):
+        """失败数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FailCount
 
     @FailCount.setter
@@ -8075,6 +9849,10 @@ class SocCheckItemV1(AbstractModel):
 
     @property
     def CheckId(self):
+        """检查项id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CheckId
 
     @CheckId.setter
@@ -8083,6 +9861,10 @@ class SocCheckItemV1(AbstractModel):
 
     @property
     def Name(self):
+        """配置要求
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8091,6 +9873,10 @@ class SocCheckItemV1(AbstractModel):
 
     @property
     def Type(self):
+        """检查项类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -8099,6 +9885,10 @@ class SocCheckItemV1(AbstractModel):
 
     @property
     def AssetType(self):
+        """检查对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetType
 
     @AssetType.setter
@@ -8107,6 +9897,10 @@ class SocCheckItemV1(AbstractModel):
 
     @property
     def Level(self):
+        """默认风险等级 2:低危 3:中危 4:高危
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -8115,6 +9909,10 @@ class SocCheckItemV1(AbstractModel):
 
     @property
     def Standard(self):
+        """相关规范
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Standard
 
     @Standard.setter
@@ -8123,6 +9921,10 @@ class SocCheckItemV1(AbstractModel):
 
     @property
     def IsFree(self):
+        """检查项是否付费 1:免费 2:付费
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsFree
 
     @IsFree.setter
@@ -8189,6 +9991,9 @@ class SocCheckResult(AbstractModel):
 
     @property
     def CheckId(self):
+        """检查项的uuid
+        :rtype: str
+        """
         return self._CheckId
 
     @CheckId.setter
@@ -8197,6 +10002,9 @@ class SocCheckResult(AbstractModel):
 
     @property
     def Name(self):
+        """配置要求
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8205,6 +10013,9 @@ class SocCheckResult(AbstractModel):
 
     @property
     def Type(self):
+        """检查项的类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -8213,6 +10024,9 @@ class SocCheckResult(AbstractModel):
 
     @property
     def AssetType(self):
+        """检查对象
+        :rtype: str
+        """
         return self._AssetType
 
     @AssetType.setter
@@ -8221,6 +10035,9 @@ class SocCheckResult(AbstractModel):
 
     @property
     def PloyName(self):
+        """策略名
+        :rtype: str
+        """
         return self._PloyName
 
     @PloyName.setter
@@ -8229,6 +10046,9 @@ class SocCheckResult(AbstractModel):
 
     @property
     def PloyId(self):
+        """策略id
+        :rtype: int
+        """
         return self._PloyId
 
     @PloyId.setter
@@ -8237,6 +10057,9 @@ class SocCheckResult(AbstractModel):
 
     @property
     def Result(self):
+        """正常,低危,中危,高危
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -8245,6 +10068,9 @@ class SocCheckResult(AbstractModel):
 
     @property
     def FailAssetNum(self):
+        """不符合数
+        :rtype: int
+        """
         return self._FailAssetNum
 
     @FailAssetNum.setter
@@ -8253,6 +10079,9 @@ class SocCheckResult(AbstractModel):
 
     @property
     def TotalAssetNum(self):
+        """总数
+        :rtype: int
+        """
         return self._TotalAssetNum
 
     @TotalAssetNum.setter
@@ -8261,6 +10090,9 @@ class SocCheckResult(AbstractModel):
 
     @property
     def DealUrl(self):
+        """处置建议url链接
+        :rtype: str
+        """
         return self._DealUrl
 
     @DealUrl.setter
@@ -8304,6 +10136,10 @@ class SocComplianceInfoResp(AbstractModel):
 
     @property
     def Items(self):
+        """合格项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SocComplianceItem
+        """
         return self._Items
 
     @Items.setter
@@ -8371,6 +10207,10 @@ class SocComplianceItem(AbstractModel):
 
     @property
     def Item(self):
+        """唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Item
 
     @Item.setter
@@ -8379,6 +10219,10 @@ class SocComplianceItem(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -8387,6 +10231,10 @@ class SocComplianceItem(AbstractModel):
 
     @property
     def StandardItem(self):
+        """分类
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StandardItem
 
     @StandardItem.setter
@@ -8395,6 +10243,10 @@ class SocComplianceItem(AbstractModel):
 
     @property
     def Result(self):
+        """结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -8403,6 +10255,10 @@ class SocComplianceItem(AbstractModel):
 
     @property
     def Suggestion(self):
+        """建议
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -8411,6 +10267,10 @@ class SocComplianceItem(AbstractModel):
 
     @property
     def ProStr(self):
+        """产品字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProStr
 
     @ProStr.setter
@@ -8419,6 +10279,10 @@ class SocComplianceItem(AbstractModel):
 
     @property
     def Production(self):
+        """产品数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SocProductionItem
+        """
         return self._Production
 
     @Production.setter
@@ -8427,6 +10291,10 @@ class SocComplianceItem(AbstractModel):
 
     @property
     def CheckItems(self):
+        """配置项数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SocCheckItem
+        """
         return self._CheckItems
 
     @CheckItems.setter
@@ -8486,6 +10354,10 @@ class SocProductionItem(AbstractModel):
 
     @property
     def Name(self):
+        """名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8494,6 +10366,10 @@ class SocProductionItem(AbstractModel):
 
     @property
     def Index(self):
+        """标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Index
 
     @Index.setter
@@ -8502,6 +10378,10 @@ class SocProductionItem(AbstractModel):
 
     @property
     def Status(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -8540,6 +10420,9 @@ class Tag(AbstractModel):
 
     @property
     def Fid(self):
+        """数据库标识
+        :rtype: int
+        """
         return self._Fid
 
     @Fid.setter
@@ -8548,6 +10431,9 @@ class Tag(AbstractModel):
 
     @property
     def Fname(self):
+        """标签名称字段
+        :rtype: str
+        """
         return self._Fname
 
     @Fname.setter
@@ -8691,6 +10577,9 @@ class VulItem(AbstractModel):
 
     @property
     def Id(self):
+        """标识
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -8699,6 +10588,9 @@ class VulItem(AbstractModel):
 
     @property
     def VulName(self):
+        """漏洞名称
+        :rtype: str
+        """
         return self._VulName
 
     @VulName.setter
@@ -8707,6 +10599,9 @@ class VulItem(AbstractModel):
 
     @property
     def Type(self):
+        """漏洞类型
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -8715,6 +10610,9 @@ class VulItem(AbstractModel):
 
     @property
     def Level(self):
+        """风险等级
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -8723,6 +10621,9 @@ class VulItem(AbstractModel):
 
     @property
     def Status(self):
+        """处理状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -8731,6 +10632,9 @@ class VulItem(AbstractModel):
 
     @property
     def Time(self):
+        """发现时间
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -8739,6 +10643,9 @@ class VulItem(AbstractModel):
 
     @property
     def ImpactAssetNum(self):
+        """影响资产数
+        :rtype: int
+        """
         return self._ImpactAssetNum
 
     @ImpactAssetNum.setter
@@ -8747,6 +10654,9 @@ class VulItem(AbstractModel):
 
     @property
     def ImpactAsset(self):
+        """影响资产id
+        :rtype: str
+        """
         return self._ImpactAsset
 
     @ImpactAsset.setter
@@ -8755,6 +10665,9 @@ class VulItem(AbstractModel):
 
     @property
     def ImpactAssetName(self):
+        """影响资产名称
+        :rtype: str
+        """
         return self._ImpactAssetName
 
     @ImpactAssetName.setter
@@ -8763,6 +10676,9 @@ class VulItem(AbstractModel):
 
     @property
     def VulDetail(self):
+        """漏洞描述
+        :rtype: str
+        """
         return self._VulDetail
 
     @VulDetail.setter
@@ -8771,6 +10687,9 @@ class VulItem(AbstractModel):
 
     @property
     def VulRefLink(self):
+        """参考链接
+        :rtype: str
+        """
         return self._VulRefLink
 
     @VulRefLink.setter
@@ -8779,6 +10698,9 @@ class VulItem(AbstractModel):
 
     @property
     def OldIdMd5(self):
+        """Md5值
+        :rtype: str
+        """
         return self._OldIdMd5
 
     @OldIdMd5.setter
@@ -8787,6 +10709,9 @@ class VulItem(AbstractModel):
 
     @property
     def UniqId(self):
+        """漏洞唯一标识
+        :rtype: str
+        """
         return self._UniqId
 
     @UniqId.setter
@@ -8795,6 +10720,9 @@ class VulItem(AbstractModel):
 
     @property
     def OperateTime(self):
+        """忽略时间
+        :rtype: str
+        """
         return self._OperateTime
 
     @OperateTime.setter
@@ -8803,6 +10731,10 @@ class VulItem(AbstractModel):
 
     @property
     def IsAssetDeleted(self):
+        """受影响资产是否下线
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IsAssetDeleted
 
     @IsAssetDeleted.setter
@@ -8811,6 +10743,9 @@ class VulItem(AbstractModel):
 
     @property
     def DiscoverTime(self):
+        """漏洞首次发现时间
+        :rtype: str
+        """
         return self._DiscoverTime
 
     @DiscoverTime.setter
@@ -8819,6 +10754,9 @@ class VulItem(AbstractModel):
 
     @property
     def OriginId(self):
+        """主机源信息标识符
+        :rtype: int
+        """
         return self._OriginId
 
     @OriginId.setter
@@ -8827,6 +10765,10 @@ class VulItem(AbstractModel):
 
     @property
     def Region(self):
+        """资产区域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -8835,6 +10777,10 @@ class VulItem(AbstractModel):
 
     @property
     def Vpcid(self):
+        """资产所属网络
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Vpcid
 
     @Vpcid.setter
@@ -8843,6 +10789,10 @@ class VulItem(AbstractModel):
 
     @property
     def AssetType(self):
+        """资产类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetType
 
     @AssetType.setter
@@ -8851,6 +10801,10 @@ class VulItem(AbstractModel):
 
     @property
     def AssetSubType(self):
+        """资产子类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AssetSubType
 
     @AssetSubType.setter
@@ -8859,6 +10813,10 @@ class VulItem(AbstractModel):
 
     @property
     def AssetIpAll(self):
+        """资产IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AssetIpAll
 
     @AssetIpAll.setter
@@ -8867,6 +10825,10 @@ class VulItem(AbstractModel):
 
     @property
     def PublicIpAddresses(self):
+        """cvm类型的公网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._PublicIpAddresses
 
     @PublicIpAddresses.setter
@@ -8875,6 +10837,10 @@ class VulItem(AbstractModel):
 
     @property
     def PrivateIpAddresses(self):
+        """cvm类型的内网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._PrivateIpAddresses
 
     @PrivateIpAddresses.setter
@@ -8883,6 +10849,10 @@ class VulItem(AbstractModel):
 
     @property
     def VulSource(self):
+        """漏洞来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VulSource
 
     @VulSource.setter
@@ -8891,6 +10861,10 @@ class VulItem(AbstractModel):
 
     @property
     def AffectedUrl(self):
+        """影响URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AffectedUrl
 
     @AffectedUrl.setter
@@ -8899,6 +10873,10 @@ class VulItem(AbstractModel):
 
     @property
     def SsaAssetCategory(self):
+        """资产归属
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SsaAssetCategory
 
     @SsaAssetCategory.setter
@@ -8907,6 +10885,10 @@ class VulItem(AbstractModel):
 
     @property
     def VulUrl(self):
+        """影响url
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VulUrl
 
     @VulUrl.setter
@@ -8915,6 +10897,10 @@ class VulItem(AbstractModel):
 
     @property
     def IsOpen(self):
+        """是否扫描
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsOpen
 
     @IsOpen.setter
@@ -8923,6 +10909,10 @@ class VulItem(AbstractModel):
 
     @property
     def YzHostId(self):
+        """御知主机id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._YzHostId
 
     @YzHostId.setter
@@ -8931,6 +10921,10 @@ class VulItem(AbstractModel):
 
     @property
     def VulRepairPlan(self):
+        """漏洞描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VulRepairPlan
 
     @VulRepairPlan.setter
@@ -8939,6 +10933,10 @@ class VulItem(AbstractModel):
 
     @property
     def VulPath(self):
+        """漏洞文件路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VulPath
 
     @VulPath.setter
@@ -9006,6 +11004,9 @@ class VulList(AbstractModel):
 
     @property
     def List(self):
+        """列表
+        :rtype: list of VulItem
+        """
         return self._List
 
     @List.setter
@@ -9014,6 +11015,9 @@ class VulList(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter

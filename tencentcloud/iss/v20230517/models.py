@@ -38,6 +38,9 @@ class AIConfig(AbstractModel):
 
     @property
     def DetectType(self):
+        """AI 分析类型。可选值为 Facemask(口罩识别)、Chefhat(厨师帽识别)、Smoking(抽烟检测)、Chefcloth(厨师服识别)、PhoneCall(接打电话识别)、Pet(宠物识别)、Body(人体识别)和Car(车辆车牌识别)等
+        :rtype: str
+        """
         return self._DetectType
 
     @DetectType.setter
@@ -46,6 +49,9 @@ class AIConfig(AbstractModel):
 
     @property
     def TimeInterval(self):
+        """截图频率。可选值1～20秒
+        :rtype: int
+        """
         return self._TimeInterval
 
     @TimeInterval.setter
@@ -54,6 +60,9 @@ class AIConfig(AbstractModel):
 
     @property
     def OperTimeSlot(self):
+        """模板生效的时间段。最多包含5组时间段
+        :rtype: list of OperTimeSlot
+        """
         return self._OperTimeSlot
 
     @OperTimeSlot.setter
@@ -118,6 +127,9 @@ class AITaskInfo(AbstractModel):
 
     @property
     def TaskId(self):
+        """AI 任务 ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -126,6 +138,9 @@ class AITaskInfo(AbstractModel):
 
     @property
     def Name(self):
+        """AI 任务名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -134,6 +149,9 @@ class AITaskInfo(AbstractModel):
 
     @property
     def Desc(self):
+        """AI 任务描述
+        :rtype: str
+        """
         return self._Desc
 
     @Desc.setter
@@ -142,6 +160,9 @@ class AITaskInfo(AbstractModel):
 
     @property
     def Status(self):
+        """AI 任务状态。"on"代表开启了 AI 分析任务，"off"代表停止 AI 分析任务
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -150,6 +171,9 @@ class AITaskInfo(AbstractModel):
 
     @property
     def ChannelList(self):
+        """通道 ID 列表
+        :rtype: list of str
+        """
         return self._ChannelList
 
     @ChannelList.setter
@@ -158,6 +182,9 @@ class AITaskInfo(AbstractModel):
 
     @property
     def CallbackUrl(self):
+        """AI 结果回调地址
+        :rtype: str
+        """
         return self._CallbackUrl
 
     @CallbackUrl.setter
@@ -166,6 +193,9 @@ class AITaskInfo(AbstractModel):
 
     @property
     def Templates(self):
+        """AI 配置列表
+        :rtype: list of AITemplates
+        """
         return self._Templates
 
     @Templates.setter
@@ -174,6 +204,9 @@ class AITaskInfo(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -182,6 +215,9 @@ class AITaskInfo(AbstractModel):
 
     @property
     def UpdatedTime(self):
+        """更新时间
+        :rtype: str
+        """
         return self._UpdatedTime
 
     @UpdatedTime.setter
@@ -235,6 +271,9 @@ class AITaskResultData(AbstractModel):
 
     @property
     def TaskId(self):
+        """AI 任务 ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -243,6 +282,9 @@ class AITaskResultData(AbstractModel):
 
     @property
     def AIResultCount(self):
+        """在 BeginTime 和 EndTime 时间之内，有识别结果的 AI 调用次数（分页依据此数值）
+        :rtype: int
+        """
         return self._AIResultCount
 
     @AIResultCount.setter
@@ -251,6 +293,10 @@ class AITaskResultData(AbstractModel):
 
     @property
     def AIResults(self):
+        """AI 任务执行结果详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iss.v20230517.models.AITaskResultInfo`
+        """
         return self._AIResults
 
     @AIResults.setter
@@ -317,6 +363,10 @@ class AITaskResultInfo(AbstractModel):
 
     @property
     def Body(self):
+        """人体识别结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BodyAIResultInfo
+        """
         return self._Body
 
     @Body.setter
@@ -325,6 +375,10 @@ class AITaskResultInfo(AbstractModel):
 
     @property
     def Pet(self):
+        """宠物识别结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PetAIResultInfo
+        """
         return self._Pet
 
     @Pet.setter
@@ -333,6 +387,10 @@ class AITaskResultInfo(AbstractModel):
 
     @property
     def Car(self):
+        """车辆车牌识别结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CarAIResultInfo
+        """
         return self._Car
 
     @Car.setter
@@ -341,6 +399,10 @@ class AITaskResultInfo(AbstractModel):
 
     @property
     def ChefHat(self):
+        """厨师帽结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ChefHatAIResultInfo
+        """
         return self._ChefHat
 
     @ChefHat.setter
@@ -349,6 +411,10 @@ class AITaskResultInfo(AbstractModel):
 
     @property
     def ChefCloth(self):
+        """厨师服结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ChefClothAIResultInfo
+        """
         return self._ChefCloth
 
     @ChefCloth.setter
@@ -357,6 +423,10 @@ class AITaskResultInfo(AbstractModel):
 
     @property
     def FaceMask(self):
+        """口罩识别结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FaceMaskAIResultInfo
+        """
         return self._FaceMask
 
     @FaceMask.setter
@@ -365,6 +435,10 @@ class AITaskResultInfo(AbstractModel):
 
     @property
     def Smoking(self):
+        """抽烟检测结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SmokingAIResultInfo
+        """
         return self._Smoking
 
     @Smoking.setter
@@ -373,6 +447,10 @@ class AITaskResultInfo(AbstractModel):
 
     @property
     def PhoneCall(self):
+        """接打电话识别结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PhoneCallAIResultInfo
+        """
         return self._PhoneCall
 
     @PhoneCall.setter
@@ -459,6 +537,9 @@ class AITemplates(AbstractModel):
 
     @property
     def Tag(self):
+        """AI 类别。可选值 AI(AI 分析)和 Snapshot(截图)，Templates 列表中只能出现一种类型。
+        :rtype: str
+        """
         return self._Tag
 
     @Tag.setter
@@ -467,6 +548,9 @@ class AITemplates(AbstractModel):
 
     @property
     def AIConfig(self):
+        """AI 分析配置。和"SnapshotConfig"二选一。
+        :rtype: :class:`tencentcloud.iss.v20230517.models.AIConfig`
+        """
         return self._AIConfig
 
     @AIConfig.setter
@@ -475,6 +559,9 @@ class AITemplates(AbstractModel):
 
     @property
     def SnapshotConfig(self):
+        """截图配置。和"AIConfig"二选一。
+        :rtype: :class:`tencentcloud.iss.v20230517.models.SnapshotConfig`
+        """
         return self._SnapshotConfig
 
     @SnapshotConfig.setter
@@ -529,6 +616,9 @@ class AddAITaskRequest(AbstractModel):
 
     @property
     def Name(self):
+        """AI 任务名称。仅支持中文、英文、数字、_、-，长度不超过32个字符
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -537,6 +627,9 @@ class AddAITaskRequest(AbstractModel):
 
     @property
     def ChannelList(self):
+        """通道 ID 列表。不能添加存在于其他 AI 任务的通道，限制1000个通道。
+        :rtype: list of str
+        """
         return self._ChannelList
 
     @ChannelList.setter
@@ -545,6 +638,9 @@ class AddAITaskRequest(AbstractModel):
 
     @property
     def Templates(self):
+        """AI 配置列表
+        :rtype: list of AITemplates
+        """
         return self._Templates
 
     @Templates.setter
@@ -553,6 +649,9 @@ class AddAITaskRequest(AbstractModel):
 
     @property
     def Desc(self):
+        """AI 任务描述。仅支持中文、英文、数字、_、-，长度不超过128个字符
+        :rtype: str
+        """
         return self._Desc
 
     @Desc.setter
@@ -561,6 +660,9 @@ class AddAITaskRequest(AbstractModel):
 
     @property
     def CallbackUrl(self):
+        """AI 结果回调地址。类似 "http://ip:port/***或者https://domain/***
+        :rtype: str
+        """
         return self._CallbackUrl
 
     @CallbackUrl.setter
@@ -569,6 +671,9 @@ class AddAITaskRequest(AbstractModel):
 
     @property
     def IsStartTheTask(self):
+        """是否立即开启 AI 任务。"true"代表立即开启 AI 任务，"false"代表暂不开启 AI 任务，默认为 false。
+        :rtype: bool
+        """
         return self._IsStartTheTask
 
     @IsStartTheTask.setter
@@ -616,6 +721,10 @@ class AddAITaskResponse(AbstractModel):
 
     @property
     def Data(self):
+        """AI任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iss.v20230517.models.AITaskInfo`
+        """
         return self._Data
 
     @Data.setter
@@ -624,6 +733,9 @@ class AddAITaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -722,6 +834,10 @@ class AddDeviceData(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备iD
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -730,6 +846,10 @@ class AddDeviceData(AbstractModel):
 
     @property
     def Code(self):
+        """设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -738,6 +858,10 @@ class AddDeviceData(AbstractModel):
 
     @property
     def Name(self):
+        """设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -746,6 +870,10 @@ class AddDeviceData(AbstractModel):
 
     @property
     def AccessProtocol(self):
+        """设备接入协议，1:RTMP,2:GB,3:GW 
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AccessProtocol
 
     @AccessProtocol.setter
@@ -754,6 +882,10 @@ class AddDeviceData(AbstractModel):
 
     @property
     def Type(self):
+        """设备类型，1:IPC,2:NVR
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -762,6 +894,10 @@ class AddDeviceData(AbstractModel):
 
     @property
     def ClusterId(self):
+        """设备接入服务节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -770,6 +906,11 @@ class AddDeviceData(AbstractModel):
 
     @property
     def ClusterName(self):
+        """设备接入服务节点名称
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -778,6 +919,10 @@ class AddDeviceData(AbstractModel):
 
     @property
     def TransportProtocol(self):
+        """设备流传输协议，1:UDP,2:TCP 
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TransportProtocol
 
     @TransportProtocol.setter
@@ -786,6 +931,10 @@ class AddDeviceData(AbstractModel):
 
     @property
     def Password(self):
+        """设备密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -794,6 +943,10 @@ class AddDeviceData(AbstractModel):
 
     @property
     def Description(self):
+        """设备描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -802,6 +955,10 @@ class AddDeviceData(AbstractModel):
 
     @property
     def Status(self):
+        """设备状态，0:未注册,1:在线,2:离线,3:禁用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -810,6 +967,10 @@ class AddDeviceData(AbstractModel):
 
     @property
     def OrganizationId(self):
+        """设备所属组织ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._OrganizationId
 
     @OrganizationId.setter
@@ -818,6 +979,10 @@ class AddDeviceData(AbstractModel):
 
     @property
     def GatewayId(self):
+        """设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -826,6 +991,10 @@ class AddDeviceData(AbstractModel):
 
     @property
     def ProtocolType(self):
+        """网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ProtocolType
 
     @ProtocolType.setter
@@ -834,6 +1003,10 @@ class AddDeviceData(AbstractModel):
 
     @property
     def Ip(self):
+        """设备接入IP（仅网关接入需要）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -842,6 +1015,10 @@ class AddDeviceData(AbstractModel):
 
     @property
     def Port(self):
+        """设备Port（仅网关接入需要）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -850,6 +1027,10 @@ class AddDeviceData(AbstractModel):
 
     @property
     def Username(self):
+        """设备用户名（仅网关接入需要）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -858,6 +1039,10 @@ class AddDeviceData(AbstractModel):
 
     @property
     def AppId(self):
+        """用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -937,6 +1122,10 @@ class AddOrgData(AbstractModel):
 
     @property
     def OrganizationId(self):
+        """组织 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrganizationId
 
     @OrganizationId.setter
@@ -945,6 +1134,10 @@ class AddOrgData(AbstractModel):
 
     @property
     def Name(self):
+        """组织名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -953,6 +1146,10 @@ class AddOrgData(AbstractModel):
 
     @property
     def ParentId(self):
+        """组织父节点 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ParentId
 
     @ParentId.setter
@@ -961,6 +1158,10 @@ class AddOrgData(AbstractModel):
 
     @property
     def Level(self):
+        """组织层级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -969,6 +1170,10 @@ class AddOrgData(AbstractModel):
 
     @property
     def AppId(self):
+        """用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -977,6 +1182,10 @@ class AddOrgData(AbstractModel):
 
     @property
     def ParentIds(self):
+        """组织结构
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ParentIds
 
     @ParentIds.setter
@@ -985,6 +1194,10 @@ class AddOrgData(AbstractModel):
 
     @property
     def Total(self):
+        """设备总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -993,6 +1206,10 @@ class AddOrgData(AbstractModel):
 
     @property
     def Online(self):
+        """设备在线数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Online
 
     @Online.setter
@@ -1036,6 +1253,9 @@ class AddOrganizationRequest(AbstractModel):
 
     @property
     def Name(self):
+        """组织名称（仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过64位，且组织名称不能重复）
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1044,6 +1264,9 @@ class AddOrganizationRequest(AbstractModel):
 
     @property
     def ParentId(self):
+        """组织父节点 ID（从查询组织接口DescribeOrganization中获取，填0代表根组织）
+        :rtype: str
+        """
         return self._ParentId
 
     @ParentId.setter
@@ -1081,6 +1304,9 @@ class AddOrganizationResponse(AbstractModel):
 
     @property
     def Data(self):
+        """增加组织接口返回数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.AddOrgData`
+        """
         return self._Data
 
     @Data.setter
@@ -1089,6 +1315,9 @@ class AddOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1141,6 +1370,9 @@ class AddRecordBackupPlanData(AbstractModel):
 
     @property
     def PlanId(self):
+        """录像上云计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -1149,6 +1381,9 @@ class AddRecordBackupPlanData(AbstractModel):
 
     @property
     def PlanName(self):
+        """录像上云计划名称
+        :rtype: str
+        """
         return self._PlanName
 
     @PlanName.setter
@@ -1157,6 +1392,9 @@ class AddRecordBackupPlanData(AbstractModel):
 
     @property
     def TemplateId(self):
+        """录像上云模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -1165,6 +1403,9 @@ class AddRecordBackupPlanData(AbstractModel):
 
     @property
     def Describe(self):
+        """录像上云计划描述
+        :rtype: str
+        """
         return self._Describe
 
     @Describe.setter
@@ -1173,6 +1414,9 @@ class AddRecordBackupPlanData(AbstractModel):
 
     @property
     def LifeCycle(self):
+        """云文件生命周期
+        :rtype: :class:`tencentcloud.iss.v20230517.models.LifeCycleData`
+        """
         return self._LifeCycle
 
     @LifeCycle.setter
@@ -1181,6 +1425,9 @@ class AddRecordBackupPlanData(AbstractModel):
 
     @property
     def Status(self):
+        """录像上云计划状态，1:正常使用中，0:删除中，无法使用
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1189,6 +1436,9 @@ class AddRecordBackupPlanData(AbstractModel):
 
     @property
     def ChannelCount(self):
+        """通道数量
+        :rtype: int
+        """
         return self._ChannelCount
 
     @ChannelCount.setter
@@ -1197,6 +1447,9 @@ class AddRecordBackupPlanData(AbstractModel):
 
     @property
     def CreateAt(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateAt
 
     @CreateAt.setter
@@ -1205,6 +1458,9 @@ class AddRecordBackupPlanData(AbstractModel):
 
     @property
     def UpdateAt(self):
+        """修改时间
+        :rtype: str
+        """
         return self._UpdateAt
 
     @UpdateAt.setter
@@ -1263,6 +1519,9 @@ class AddRecordBackupPlanRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """录制模板ID（录像计划关联的模板ID，从查询录像上云模板列表接口ListRecordBackupTemplates中获取）
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -1271,6 +1530,9 @@ class AddRecordBackupPlanRequest(AbstractModel):
 
     @property
     def PlanName(self):
+        """录像计划名称（仅支持中文、英文、数字、_、-，长度不超过32个字符，计划名称全局唯一，不能为空，不能重复）
+        :rtype: str
+        """
         return self._PlanName
 
     @PlanName.setter
@@ -1279,6 +1541,9 @@ class AddRecordBackupPlanRequest(AbstractModel):
 
     @property
     def Describe(self):
+        """录像计划描述（仅支持中文、英文、数字、_、-，长度不超过128个字符）
+        :rtype: str
+        """
         return self._Describe
 
     @Describe.setter
@@ -1287,6 +1552,9 @@ class AddRecordBackupPlanRequest(AbstractModel):
 
     @property
     def LifeCycle(self):
+        """生命周期（录像文件生命周期设置，管理文件冷、热存储的时间）
+        :rtype: :class:`tencentcloud.iss.v20230517.models.LifeCycleData`
+        """
         return self._LifeCycle
 
     @LifeCycle.setter
@@ -1295,6 +1563,9 @@ class AddRecordBackupPlanRequest(AbstractModel):
 
     @property
     def Channels(self):
+        """通道及通道所属设备（添加录像的设备的通道信息，一次添加通道总数不超过5000个，包括组织目录下的通道数量）
+        :rtype: list of ChannelInfo
+        """
         return self._Channels
 
     @Channels.setter
@@ -1303,6 +1574,9 @@ class AddRecordBackupPlanRequest(AbstractModel):
 
     @property
     def OrganizationId(self):
+        """添加组织目录下所有设备通道（Json数组，可以为空，通道总数量不超过5000个（包括Channel字段的数量））
+        :rtype: list of str
+        """
         return self._OrganizationId
 
     @OrganizationId.setter
@@ -1351,6 +1625,9 @@ class AddRecordBackupPlanResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.AddRecordBackupPlanData`
+        """
         return self._Data
 
     @Data.setter
@@ -1359,6 +1636,9 @@ class AddRecordBackupPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1412,6 +1692,10 @@ class AddRecordBackupTemplateData(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -1420,6 +1704,10 @@ class AddRecordBackupTemplateData(AbstractModel):
 
     @property
     def TemplateName(self):
+        """模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -1428,6 +1716,10 @@ class AddRecordBackupTemplateData(AbstractModel):
 
     @property
     def TimeSections(self):
+        """上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordTemplateTimeSections
+        """
         return self._TimeSections
 
     @TimeSections.setter
@@ -1436,6 +1728,10 @@ class AddRecordBackupTemplateData(AbstractModel):
 
     @property
     def DevTimeSections(self):
+        """录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordTemplateTimeSections
+        """
         return self._DevTimeSections
 
     @DevTimeSections.setter
@@ -1444,6 +1740,10 @@ class AddRecordBackupTemplateData(AbstractModel):
 
     @property
     def Scale(self):
+        """上云倍速（支持1，2，4倍速）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Scale
 
     @Scale.setter
@@ -1452,6 +1752,10 @@ class AddRecordBackupTemplateData(AbstractModel):
 
     @property
     def CreateAt(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateAt
 
     @CreateAt.setter
@@ -1460,6 +1764,10 @@ class AddRecordBackupTemplateData(AbstractModel):
 
     @property
     def UpdateAt(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateAt
 
     @UpdateAt.setter
@@ -1518,6 +1826,9 @@ class AddRecordBackupTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
+        """模板名称（仅支持中文、英文、数字、_、-，长度不超过32个字符，模板名称全局唯一，不能为空，不能重复）
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -1526,6 +1837,9 @@ class AddRecordBackupTemplateRequest(AbstractModel):
 
     @property
     def TimeSections(self):
+        """上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        :rtype: list of RecordTemplateTimeSections
+        """
         return self._TimeSections
 
     @TimeSections.setter
@@ -1534,6 +1848,9 @@ class AddRecordBackupTemplateRequest(AbstractModel):
 
     @property
     def DevTimeSections(self):
+        """录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        :rtype: list of RecordTemplateTimeSections
+        """
         return self._DevTimeSections
 
     @DevTimeSections.setter
@@ -1542,6 +1859,9 @@ class AddRecordBackupTemplateRequest(AbstractModel):
 
     @property
     def Scale(self):
+        """上云倍速（支持1，2，4倍速）
+        :rtype: int
+        """
         return self._Scale
 
     @Scale.setter
@@ -1591,6 +1911,9 @@ class AddRecordBackupTemplateResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.AddRecordBackupTemplateData`
+        """
         return self._Data
 
     @Data.setter
@@ -1599,6 +1922,9 @@ class AddRecordBackupTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1648,6 +1974,9 @@ class AddRecordPlanRequest(AbstractModel):
 
     @property
     def PlanName(self):
+        """实时上云计划名称，仅支持中文、英文、数字、_、-，长度不超过32个字符，计划名称全局唯一，不能为空，不能重复
+        :rtype: str
+        """
         return self._PlanName
 
     @PlanName.setter
@@ -1656,6 +1985,9 @@ class AddRecordPlanRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """实时上云模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -1664,6 +1996,9 @@ class AddRecordPlanRequest(AbstractModel):
 
     @property
     def LifeCycle(self):
+        """生命周期
+        :rtype: :class:`tencentcloud.iss.v20230517.models.LifeCycleData`
+        """
         return self._LifeCycle
 
     @LifeCycle.setter
@@ -1672,6 +2007,9 @@ class AddRecordPlanRequest(AbstractModel):
 
     @property
     def Describe(self):
+        """上云计划描述，仅支持中文、英文、数字、_、-，长度不超过128个字符 
+        :rtype: str
+        """
         return self._Describe
 
     @Describe.setter
@@ -1680,6 +2018,9 @@ class AddRecordPlanRequest(AbstractModel):
 
     @property
     def StreamType(self):
+        """码流类型，default:不指定码流类型，以设备默认推送类型为主， main:主码流，sub:子码流，其他根据设备能力集自定义，不填按默认类型处理，长度不能超过32个字节
+        :rtype: str
+        """
         return self._StreamType
 
     @StreamType.setter
@@ -1688,6 +2029,9 @@ class AddRecordPlanRequest(AbstractModel):
 
     @property
     def Channels(self):
+        """添加录像的设备的通道信息，一次添加通道总数不超过5000个，包括组织目录下的通道数量
+        :rtype: list of ChannelInfo
+        """
         return self._Channels
 
     @Channels.setter
@@ -1696,6 +2040,9 @@ class AddRecordPlanRequest(AbstractModel):
 
     @property
     def OrganizationId(self):
+        """添加组织目录下所有设备通道，Json数组，可以为空，通道总数量不超过5000个（包括Channel字段的数量）
+        :rtype: list of str
+        """
         return self._OrganizationId
 
     @OrganizationId.setter
@@ -1704,6 +2051,9 @@ class AddRecordPlanRequest(AbstractModel):
 
     @property
     def RepairMode(self):
+        """录像补录模式（0:不启用，1:启用），无该字段，默认不启用
+        :rtype: int
+        """
         return self._RepairMode
 
     @RepairMode.setter
@@ -1754,6 +2104,9 @@ class AddRecordPlanResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.iss.v20230517.models.RecordPlanOptData`
+        """
         return self._Data
 
     @Data.setter
@@ -1762,6 +2115,9 @@ class AddRecordPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1815,6 +2171,9 @@ class AddRecordRetrieveTaskData(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1823,6 +2182,9 @@ class AddRecordRetrieveTaskData(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -1831,6 +2193,9 @@ class AddRecordRetrieveTaskData(AbstractModel):
 
     @property
     def StartTime(self):
+        """取回录像的开始时间
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1839,6 +2204,9 @@ class AddRecordRetrieveTaskData(AbstractModel):
 
     @property
     def EndTime(self):
+        """取回录像的结束时间
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1847,6 +2215,9 @@ class AddRecordRetrieveTaskData(AbstractModel):
 
     @property
     def Mode(self):
+        """取回模式，1:极速模式，其他暂不支持
+        :rtype: int
+        """
         return self._Mode
 
     @Mode.setter
@@ -1855,6 +2226,9 @@ class AddRecordRetrieveTaskData(AbstractModel):
 
     @property
     def Expiration(self):
+        """副本有效期
+        :rtype: int
+        """
         return self._Expiration
 
     @Expiration.setter
@@ -1863,6 +2237,9 @@ class AddRecordRetrieveTaskData(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，0:已取回，1:取回中，2:待取回
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1871,6 +2248,9 @@ class AddRecordRetrieveTaskData(AbstractModel):
 
     @property
     def Capacity(self):
+        """取回容量，单位MB
+        :rtype: float
+        """
         return self._Capacity
 
     @Capacity.setter
@@ -1879,6 +2259,10 @@ class AddRecordRetrieveTaskData(AbstractModel):
 
     @property
     def Describe(self):
+        """任务描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Describe
 
     @Describe.setter
@@ -1938,6 +2322,9 @@ class AddRecordRetrieveTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名称，仅支持中文、英文、数字、_、-，长度不超过32个字符，名称全局唯一，不能为空，不能重复
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -1946,6 +2333,9 @@ class AddRecordRetrieveTaskRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """取回录像的开始时间，UTC秒数，例如：1662114146，开始和结束时间段最长为一天，且不能跨天
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1954,6 +2344,9 @@ class AddRecordRetrieveTaskRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """取回录像的结束时间，UTC秒数，例如：1662114146，开始和结束时间段最长为一天，且不能跨天
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1962,6 +2355,9 @@ class AddRecordRetrieveTaskRequest(AbstractModel):
 
     @property
     def Mode(self):
+        """取回模式， 1:极速模式，其他暂不支持
+        :rtype: int
+        """
         return self._Mode
 
     @Mode.setter
@@ -1970,6 +2366,9 @@ class AddRecordRetrieveTaskRequest(AbstractModel):
 
     @property
     def Expiration(self):
+        """取回录像副本有效期，最小为1天，最大为365天
+        :rtype: int
+        """
         return self._Expiration
 
     @Expiration.setter
@@ -1978,6 +2377,9 @@ class AddRecordRetrieveTaskRequest(AbstractModel):
 
     @property
     def Channels(self):
+        """设备通道，一个任务最多32个设备通道
+        :rtype: list of ChannelInfo
+        """
         return self._Channels
 
     @Channels.setter
@@ -1986,6 +2388,9 @@ class AddRecordRetrieveTaskRequest(AbstractModel):
 
     @property
     def Describe(self):
+        """取回任务描述
+        :rtype: str
+        """
         return self._Describe
 
     @Describe.setter
@@ -2033,6 +2438,9 @@ class AddRecordRetrieveTaskResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.iss.v20230517.models.AddRecordRetrieveTaskData`
+        """
         return self._Data
 
     @Data.setter
@@ -2041,6 +2449,9 @@ class AddRecordRetrieveTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2072,6 +2483,9 @@ class AddRecordTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
+        """模板名称， 仅支持中文、英文、数字、_、-，长度不超过32个字符，模板名称全局唯一，不能为空，不能重复
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -2080,6 +2494,9 @@ class AddRecordTemplateRequest(AbstractModel):
 
     @property
     def TimeSections(self):
+        """上云时间段，按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟
+        :rtype: list of RecordTemplateTimeSections
+        """
         return self._TimeSections
 
     @TimeSections.setter
@@ -2122,6 +2539,9 @@ class AddRecordTemplateResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.iss.v20230517.models.RecordTemplateInfo`
+        """
         return self._Data
 
     @Data.setter
@@ -2130,6 +2550,9 @@ class AddRecordTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2187,6 +2610,10 @@ class AddStreamAuthData(AbstractModel):
 
     @property
     def Id(self):
+        """鉴权配置ID（uuid）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -2195,6 +2622,10 @@ class AddStreamAuthData(AbstractModel):
 
     @property
     def PullState(self):
+        """是否开播放鉴权（1:开启,0:关闭）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PullState
 
     @PullState.setter
@@ -2203,6 +2634,10 @@ class AddStreamAuthData(AbstractModel):
 
     @property
     def PullSecret(self):
+        """播放密钥（仅支持字母数字，长度0-10位）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PullSecret
 
     @PullSecret.setter
@@ -2211,6 +2646,10 @@ class AddStreamAuthData(AbstractModel):
 
     @property
     def PullExpired(self):
+        """播放过期时间（单位：分钟）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PullExpired
 
     @PullExpired.setter
@@ -2219,6 +2658,10 @@ class AddStreamAuthData(AbstractModel):
 
     @property
     def PushState(self):
+        """是否开启推流鉴权（1:开启,0:关闭）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PushState
 
     @PushState.setter
@@ -2227,6 +2670,10 @@ class AddStreamAuthData(AbstractModel):
 
     @property
     def PushSecret(self):
+        """推流密钥（仅支持字母数字，长度0-10位）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PushSecret
 
     @PushSecret.setter
@@ -2235,6 +2682,10 @@ class AddStreamAuthData(AbstractModel):
 
     @property
     def PushExpired(self):
+        """推流过期时间（单位：分钟）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PushExpired
 
     @PushExpired.setter
@@ -2243,6 +2694,10 @@ class AddStreamAuthData(AbstractModel):
 
     @property
     def AppId(self):
+        """用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -2301,6 +2756,9 @@ class AddStreamAuthRequest(AbstractModel):
 
     @property
     def Id(self):
+        """鉴权配置ID（uuid）
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -2309,6 +2767,9 @@ class AddStreamAuthRequest(AbstractModel):
 
     @property
     def PullState(self):
+        """是否开播放鉴权（1:开启,0:关闭）
+        :rtype: int
+        """
         return self._PullState
 
     @PullState.setter
@@ -2317,6 +2778,9 @@ class AddStreamAuthRequest(AbstractModel):
 
     @property
     def PullSecret(self):
+        """播放密钥（仅支持字母数字，长度0-10位）
+        :rtype: str
+        """
         return self._PullSecret
 
     @PullSecret.setter
@@ -2325,6 +2789,9 @@ class AddStreamAuthRequest(AbstractModel):
 
     @property
     def PullExpired(self):
+        """播放过期时间（单位：分钟）
+        :rtype: int
+        """
         return self._PullExpired
 
     @PullExpired.setter
@@ -2333,6 +2800,9 @@ class AddStreamAuthRequest(AbstractModel):
 
     @property
     def PushState(self):
+        """是否开启推流鉴权（1:开启,0:关闭）
+        :rtype: int
+        """
         return self._PushState
 
     @PushState.setter
@@ -2341,6 +2811,9 @@ class AddStreamAuthRequest(AbstractModel):
 
     @property
     def PushSecret(self):
+        """推流密钥（仅支持字母数字，长度0-10位）
+        :rtype: str
+        """
         return self._PushSecret
 
     @PushSecret.setter
@@ -2349,6 +2822,9 @@ class AddStreamAuthRequest(AbstractModel):
 
     @property
     def PushExpired(self):
+        """推流过期时间（单位：分钟）
+        :rtype: int
+        """
         return self._PushExpired
 
     @PushExpired.setter
@@ -2391,6 +2867,9 @@ class AddStreamAuthResponse(AbstractModel):
 
     @property
     def Data(self):
+        """设置推拉流鉴权返回数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.AddStreamAuthData`
+        """
         return self._Data
 
     @Data.setter
@@ -2399,6 +2878,9 @@ class AddStreamAuthResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2472,6 +2954,9 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def Name(self):
+        """设备名称，仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位；（设备名称无需全局唯一，可以重复）
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2480,6 +2965,9 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def AccessProtocol(self):
+        """设备接入协议（1:RTMP,2:GB,3:GW,4:IVCP）
+        :rtype: int
+        """
         return self._AccessProtocol
 
     @AccessProtocol.setter
@@ -2488,6 +2976,9 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def Type(self):
+        """设备类型，1:IPC,2:NVR；（若设备接入协议选择RTMP,IVCP，则设备类型只能选择IPC）
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -2496,6 +2987,9 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def OrganizationId(self):
+        """设备所属组织ID，从查询组织接口DescribeOrganization中获取
+        :rtype: str
+        """
         return self._OrganizationId
 
     @OrganizationId.setter
@@ -2504,6 +2998,9 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """设备接入服务节点ID（从查询设备可用服务节点接口DescribeDeviceRegion中获取的Value字段）
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2512,6 +3009,9 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def TransportProtocol(self):
+        """设备流传输协议，1:UDP,2:TCP；(国标设备有效，不填写则默认UDP协议)
+        :rtype: int
+        """
         return self._TransportProtocol
 
     @TransportProtocol.setter
@@ -2520,6 +3020,9 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def Password(self):
+        """设备密码（国标，网关设备必填，长度为1-64个字符）
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -2528,6 +3031,9 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def Description(self):
+        """设备描述，长度不超过128个字符
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2536,6 +3042,9 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def GatewayId(self):
+        """设备接入网关ID，从查询网关列表接口中ListGateways获取（仅网关接入需要）
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -2544,6 +3053,9 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def ProtocolType(self):
+        """网关接入协议类型（从查询网关接入协议接口DescribeGatewayProtocol中获取）1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
+        :rtype: int
+        """
         return self._ProtocolType
 
     @ProtocolType.setter
@@ -2552,6 +3064,9 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def Ip(self):
+        """设备接入IP（仅网关接入需要）
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -2560,6 +3075,9 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def Port(self):
+        """设备端口（仅网关接入需要）
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -2568,6 +3086,9 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def Username(self):
+        """设备用户名（仅网关接入需要）
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -2576,6 +3097,9 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def SNCode(self):
+        """设备 SN，仅IVCP 协议设备需要
+        :rtype: str
+        """
         return self._SNCode
 
     @SNCode.setter
@@ -2584,6 +3108,9 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """RTMP推流地址自定义AppName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -2592,6 +3119,9 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def StreamName(self):
+        """RTMP推流地址自定义StreamName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -2643,6 +3173,9 @@ class AddUserDeviceResponse(AbstractModel):
 
     @property
     def Data(self):
+        """增加设备返回数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.AddDeviceData`
+        """
         return self._Data
 
     @Data.setter
@@ -2651,6 +3184,9 @@ class AddUserDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2685,6 +3221,9 @@ class BaseAIResultInfo(AbstractModel):
 
     @property
     def Name(self):
+        """名称。返回值有人体识别结果名称(person)、宠物识别结果名称(cat和dog) 、车辆车牌识别结果名称(vehicle)
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2693,6 +3232,9 @@ class BaseAIResultInfo(AbstractModel):
 
     @property
     def Score(self):
+        """置信度
+        :rtype: int
+        """
         return self._Score
 
     @Score.setter
@@ -2701,6 +3243,9 @@ class BaseAIResultInfo(AbstractModel):
 
     @property
     def Location(self):
+        """截图中坐标信息
+        :rtype: :class:`tencentcloud.iss.v20230517.models.Location`
+        """
         return self._Location
 
     @Location.setter
@@ -2739,6 +3284,10 @@ class BatchOperateDeviceData(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务 ID（用于在查询任务的子任务列表接口ListSubTasks中查询任务进度）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2775,6 +3324,9 @@ class BatchOperateDeviceRequest(AbstractModel):
 
     @property
     def DeviceIds(self):
+        """设备 ID 数组（从获取设备列表接口ListDevices中获取）
+        :rtype: list of str
+        """
         return self._DeviceIds
 
     @DeviceIds.setter
@@ -2783,6 +3335,9 @@ class BatchOperateDeviceRequest(AbstractModel):
 
     @property
     def Cmd(self):
+        """操作命令（enable：启用；disable：禁用；delete：删除；sync：同步设备通道；upgrade：固件升级；reset：恢复出厂设置；reboot：重启）
+        :rtype: str
+        """
         return self._Cmd
 
     @Cmd.setter
@@ -2820,6 +3375,9 @@ class BatchOperateDeviceResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.iss.v20230517.models.BatchOperateDeviceData`
+        """
         return self._Data
 
     @Data.setter
@@ -2828,6 +3386,9 @@ class BatchOperateDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2861,6 +3422,10 @@ class BitRateInfo(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -2869,6 +3434,10 @@ class BitRateInfo(AbstractModel):
 
     @property
     def Bitrate(self):
+        """码率,单位:kbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -2909,6 +3478,9 @@ class BodyAIResultInfo(AbstractModel):
 
     @property
     def Time(self):
+        """时间字符串
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -2917,6 +3489,9 @@ class BodyAIResultInfo(AbstractModel):
 
     @property
     def Url(self):
+        """截图 URL
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -2925,6 +3500,9 @@ class BodyAIResultInfo(AbstractModel):
 
     @property
     def BodyInfo(self):
+        """人体信息
+        :rtype: list of BaseAIResultInfo
+        """
         return self._BodyInfo
 
     @BodyInfo.setter
@@ -2971,6 +3549,9 @@ class CallISAPIRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -2979,6 +3560,9 @@ class CallISAPIRequest(AbstractModel):
 
     @property
     def Url(self):
+        """url 资源
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -2987,6 +3571,9 @@ class CallISAPIRequest(AbstractModel):
 
     @property
     def InputData(self):
+        """输入参数
+        :rtype: str
+        """
         return self._InputData
 
     @InputData.setter
@@ -3025,6 +3612,9 @@ class CallISAPIResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ISAPIOutputData`
+        """
         return self._Data
 
     @Data.setter
@@ -3033,6 +3623,9 @@ class CallISAPIResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3082,6 +3675,9 @@ class CarAIResultInfo(AbstractModel):
 
     @property
     def Serial(self):
+        """车系
+        :rtype: str
+        """
         return self._Serial
 
     @Serial.setter
@@ -3090,6 +3686,9 @@ class CarAIResultInfo(AbstractModel):
 
     @property
     def Brand(self):
+        """车辆品牌
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -3098,6 +3697,9 @@ class CarAIResultInfo(AbstractModel):
 
     @property
     def Type(self):
+        """车辆类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3106,6 +3708,9 @@ class CarAIResultInfo(AbstractModel):
 
     @property
     def Color(self):
+        """车辆颜色
+        :rtype: str
+        """
         return self._Color
 
     @Color.setter
@@ -3114,6 +3719,9 @@ class CarAIResultInfo(AbstractModel):
 
     @property
     def Confidence(self):
+        """置信度，0 - 100
+        :rtype: int
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -3122,6 +3730,9 @@ class CarAIResultInfo(AbstractModel):
 
     @property
     def Year(self):
+        """年份，识别不出年份时返回0
+        :rtype: int
+        """
         return self._Year
 
     @Year.setter
@@ -3130,6 +3741,9 @@ class CarAIResultInfo(AbstractModel):
 
     @property
     def PlateContent(self):
+        """车牌信息
+        :rtype: :class:`tencentcloud.iss.v20230517.models.PlateContent`
+        """
         return self._PlateContent
 
     @PlateContent.setter
@@ -3138,6 +3752,9 @@ class CarAIResultInfo(AbstractModel):
 
     @property
     def Location(self):
+        """截图中坐标信息
+        :rtype: :class:`tencentcloud.iss.v20230517.models.Location`
+        """
         return self._Location
 
     @Location.setter
@@ -3193,6 +3810,9 @@ class ChannelAttrInfo(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备通道所属的设备ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -3201,6 +3821,10 @@ class ChannelAttrInfo(AbstractModel):
 
     @property
     def DeviceName(self):
+        """设备通道所属的设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -3209,6 +3833,9 @@ class ChannelAttrInfo(AbstractModel):
 
     @property
     def ChannelId(self):
+        """设备通道ID
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -3217,6 +3844,10 @@ class ChannelAttrInfo(AbstractModel):
 
     @property
     def ChannelName(self):
+        """设备通道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -3256,6 +3887,9 @@ class ChannelInfo(AbstractModel):
 
     @property
     def DeviceId(self):
+        """通道所属的设备ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -3264,6 +3898,9 @@ class ChannelInfo(AbstractModel):
 
     @property
     def ChannelId(self):
+        """设备通道ID，一个设备通道只允许被一个上云计划添加
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -3301,6 +3938,9 @@ class CheckDomainRequest(AbstractModel):
 
     @property
     def PlayDomain(self):
+        """播放域名
+        :rtype: str
+        """
         return self._PlayDomain
 
     @PlayDomain.setter
@@ -3309,6 +3949,9 @@ class CheckDomainRequest(AbstractModel):
 
     @property
     def InternalDomain(self):
+        """CNAME 记录值
+        :rtype: str
+        """
         return self._InternalDomain
 
     @InternalDomain.setter
@@ -3346,6 +3989,9 @@ class CheckDomainResponse(AbstractModel):
 
     @property
     def Data(self):
+        """是否备案
+        :rtype: bool
+        """
         return self._Data
 
     @Data.setter
@@ -3354,6 +4000,9 @@ class CheckDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3386,6 +4035,9 @@ class ChefClothAIResultInfo(AbstractModel):
 
     @property
     def Time(self):
+        """时间字符串
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -3394,6 +4046,9 @@ class ChefClothAIResultInfo(AbstractModel):
 
     @property
     def Url(self):
+        """截图 URL
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -3402,6 +4057,9 @@ class ChefClothAIResultInfo(AbstractModel):
 
     @property
     def ChefClothInfoInfo(self):
+        """厨师服信息
+        :rtype: list of BaseAIResultInfo
+        """
         return self._ChefClothInfoInfo
 
     @ChefClothInfoInfo.setter
@@ -3448,6 +4106,9 @@ class ChefHatAIResultInfo(AbstractModel):
 
     @property
     def Time(self):
+        """时间字符串
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -3456,6 +4117,9 @@ class ChefHatAIResultInfo(AbstractModel):
 
     @property
     def Url(self):
+        """截图 URL
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -3464,6 +4128,9 @@ class ChefHatAIResultInfo(AbstractModel):
 
     @property
     def ChefHatInfo(self):
+        """厨师帽信息
+        :rtype: list of BaseAIResultInfo
+        """
         return self._ChefHatInfo
 
     @ChefHatInfo.setter
@@ -3514,6 +4181,9 @@ class ControlDevicePTZRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道 ID（从通道查询接口DescribeDeviceChannel中获取）
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -3522,6 +4192,13 @@ class ControlDevicePTZRequest(AbstractModel):
 
     @property
     def Type(self):
+        """命令类型（上:up,下:down,左:left,右:right
+上左:leftup,上右:rightup,下左:leftdown,下右:rightdown
+放大:zoomin,缩小:zoomout
+聚焦远:focusfar,聚焦近:focusnear
+光圈放大:irisin,光圈缩小:irisout）
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3530,6 +4207,9 @@ class ControlDevicePTZRequest(AbstractModel):
 
     @property
     def Speed(self):
+        """命令描述（速度值范围1-8）
+        :rtype: int
+        """
         return self._Speed
 
     @Speed.setter
@@ -3565,6 +4245,9 @@ class ControlDevicePTZResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3598,6 +4281,9 @@ del:预置位删除）
 
     @property
     def ChannelId(self):
+        """通道 ID（从通道查询接口DescribeDeviceChannel中获取）
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -3606,6 +4292,11 @@ del:预置位删除）
 
     @property
     def Cmd(self):
+        """命令（goto:预置位调用；
+set:预置位设置；
+del:预置位删除）
+        :rtype: str
+        """
         return self._Cmd
 
     @Cmd.setter
@@ -3614,6 +4305,9 @@ del:预置位删除）
 
     @property
     def Index(self):
+        """预置位索引（只支持1-10的索引位置，超出报错）
+        :rtype: int
+        """
         return self._Index
 
     @Index.setter
@@ -3649,6 +4343,9 @@ class ControlDevicePresetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3683,6 +4380,10 @@ class ControlDeviceStreamData(AbstractModel):
 
     @property
     def Flv(self):
+        """flv 流地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Flv
 
     @Flv.setter
@@ -3691,6 +4392,10 @@ class ControlDeviceStreamData(AbstractModel):
 
     @property
     def Hls(self):
+        """hls 流地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Hls
 
     @Hls.setter
@@ -3699,6 +4404,10 @@ class ControlDeviceStreamData(AbstractModel):
 
     @property
     def Rtmp(self):
+        """rtmp 流地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Rtmp
 
     @Rtmp.setter
@@ -3750,6 +4459,9 @@ class ControlDeviceStreamRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道 ID（从通道查询接口DescribeDeviceChannel中获取）
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -3758,6 +4470,10 @@ class ControlDeviceStreamRequest(AbstractModel):
 
     @property
     def StreamType(self):
+        """流类型（1:主码流；
+2:子码流（不可以和 Resolution 同时下发））
+        :rtype: str
+        """
         return self._StreamType
 
     @StreamType.setter
@@ -3766,6 +4482,15 @@ class ControlDeviceStreamRequest(AbstractModel):
 
     @property
     def Resolution(self):
+        """分辨率（1:QCIF；
+2:CIF；
+3:4CIF；
+4:D1；
+5:720P；
+6:1080P/I；
+自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -3774,6 +4499,9 @@ class ControlDeviceStreamRequest(AbstractModel):
 
     @property
     def IsInternal(self):
+        """是否内网
+        :rtype: bool
+        """
         return self._IsInternal
 
     @IsInternal.setter
@@ -3813,6 +4541,9 @@ class ControlDeviceStreamResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ControlDeviceStreamData`
+        """
         return self._Data
 
     @Data.setter
@@ -3821,6 +4552,9 @@ class ControlDeviceStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3861,6 +4595,9 @@ class ControlRecordRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道ID（录像播放地址格式 https://${domain}/live/${ChannelId}@${Session}）
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -3869,6 +4606,9 @@ class ControlRecordRequest(AbstractModel):
 
     @property
     def Session(self):
+        """录像会话 ID （ 录像播放地址格式 https://${domain}/live/${ChannelId}@${Session}）
+        :rtype: str
+        """
         return self._Session
 
     @Session.setter
@@ -3877,6 +4617,9 @@ class ControlRecordRequest(AbstractModel):
 
     @property
     def ControlAction(self):
+        """录像操作类型 （play:播放；pause:暂停 ；stop:关闭）
+        :rtype: str
+        """
         return self._ControlAction
 
     @ControlAction.setter
@@ -3885,6 +4628,9 @@ class ControlRecordRequest(AbstractModel):
 
     @property
     def Position(self):
+        """跳转进度 （ 参数应大于等于0，跳转到录像开始时间的相对时间（单位秒），例如0就是跳转到录像开始的时间,不可以和 Scale 参数同时出现）
+        :rtype: int
+        """
         return self._Position
 
     @Position.setter
@@ -3893,6 +4639,9 @@ class ControlRecordRequest(AbstractModel):
 
     @property
     def Scale(self):
+        """速度 （ 范围（0.25,0.5,1,2,4,8），不可以和 Pos 参数同时出现）
+        :rtype: float
+        """
         return self._Scale
 
     @Scale.setter
@@ -3930,6 +4679,9 @@ class ControlRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3961,6 +4713,9 @@ class ControlRecordTimelineRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道 ID（从通道查询接口DescribeDeviceChannel中获取）
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -3969,6 +4724,9 @@ class ControlRecordTimelineRequest(AbstractModel):
 
     @property
     def Start(self):
+        """起始时间
+        :rtype: int
+        """
         return self._Start
 
     @Start.setter
@@ -3977,6 +4735,9 @@ class ControlRecordTimelineRequest(AbstractModel):
 
     @property
     def End(self):
+        """结束时间
+        :rtype: int
+        """
         return self._End
 
     @End.setter
@@ -4016,6 +4777,10 @@ class ControlRecordTimelineResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Timeline
+        """
         return self._Data
 
     @Data.setter
@@ -4024,6 +4789,9 @@ class ControlRecordTimelineResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4055,6 +4823,9 @@ class DeleteAITaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """AI任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4088,6 +4859,9 @@ class DeleteAITaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4113,6 +4887,9 @@ class DeleteDomainRequest(AbstractModel):
 
     @property
     def Id(self):
+        """域名 ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -4146,6 +4923,9 @@ class DeleteDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4171,6 +4951,9 @@ class DeleteGatewayRequest(AbstractModel):
 
     @property
     def GatewayId(self):
+        """网关索引ID（从获取网关列表接口ListGateways中获取）
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -4204,6 +4987,9 @@ class DeleteGatewayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4229,6 +5015,9 @@ class DeleteOrganizationRequest(AbstractModel):
 
     @property
     def OrganizationId(self):
+        """组织ID（从查询组织接口DescribeOrganization中获取）
+        :rtype: str
+        """
         return self._OrganizationId
 
     @OrganizationId.setter
@@ -4262,6 +5051,9 @@ class DeleteOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4287,6 +5079,9 @@ class DeleteRecordBackupPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """录像上云计划ID（从查询录像上云计划列表接口ListRecordBackupPlans中获取）
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -4320,6 +5115,9 @@ class DeleteRecordBackupPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4345,6 +5143,9 @@ class DeleteRecordBackupTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板ID（从查询录像上云模板列表接口ListRecordBackupTemplates中获取）
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -4378,6 +5179,9 @@ class DeleteRecordBackupTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4403,6 +5207,9 @@ class DeleteRecordPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """上云计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -4436,6 +5243,9 @@ class DeleteRecordPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4461,6 +5271,9 @@ class DeleteRecordRetrieveTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """取回任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4494,6 +5307,9 @@ class DeleteRecordRetrieveTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4519,6 +5335,9 @@ class DeleteRecordTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -4552,6 +5371,9 @@ class DeleteRecordTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4577,6 +5399,9 @@ class DeleteUserDeviceRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID（从获取设备列表ListDevices接口中获取）
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -4610,6 +5435,9 @@ class DeleteUserDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4635,6 +5463,9 @@ class DescribeAITaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """AI任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4672,6 +5503,10 @@ class DescribeAITaskResponse(AbstractModel):
 
     @property
     def Data(self):
+        """AI任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iss.v20230517.models.AITaskInfo`
+        """
         return self._Data
 
     @Data.setter
@@ -4680,6 +5515,9 @@ class DescribeAITaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4729,6 +5567,9 @@ class DescribeAITaskResultRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """AI 任务 ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4737,6 +5578,9 @@ class DescribeAITaskResultRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道ID
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -4745,6 +5589,9 @@ class DescribeAITaskResultRequest(AbstractModel):
 
     @property
     def Object(self):
+        """桶内文件的路径。
+        :rtype: str
+        """
         return self._Object
 
     @Object.setter
@@ -4753,6 +5600,9 @@ class DescribeAITaskResultRequest(AbstractModel):
 
     @property
     def DetectType(self):
+        """AI 任务识别类型。可选值为 Facemask(口罩识别)、Chefhat(厨师帽识别)、Smoking(抽烟检测)、Chefcloth(厨师服识别)、PhoneCall(接打电话识别)、Pet(宠物识别)、Body(人体识别)和 Car(车辆车牌识别)
+        :rtype: str
+        """
         return self._DetectType
 
     @DetectType.setter
@@ -4761,6 +5611,9 @@ class DescribeAITaskResultRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """开始时间时间。秒级时间戳。开始时间和结束时间跨度小于等于30天
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -4769,6 +5622,9 @@ class DescribeAITaskResultRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间时间。秒级时间戳。开始时间和结束时间跨度小于等于30天
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4777,6 +5633,9 @@ class DescribeAITaskResultRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码。默认为1
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -4785,6 +5644,9 @@ class DescribeAITaskResultRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页 AI 识别结果数量。可选值1～100，默认为10（按时间倒序显示识别结果）
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -4832,6 +5694,10 @@ class DescribeAITaskResultResponse(AbstractModel):
 
     @property
     def Data(self):
+        """AI识别结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iss.v20230517.models.AITaskResultData`
+        """
         return self._Data
 
     @Data.setter
@@ -4840,6 +5706,9 @@ class DescribeAITaskResultResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """AI识别结果数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4848,6 +5717,9 @@ class DescribeAITaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4880,6 +5752,9 @@ class DescribeCNAMERequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """服务节点 ID（从查询域名可绑定服务节点接口DescribeDomainRegion中获取）
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -4888,6 +5763,9 @@ class DescribeCNAMERequest(AbstractModel):
 
     @property
     def DomainType(self):
+        """域名类型，0:拉流域名 1:推流域名
+        :rtype: int
+        """
         return self._DomainType
 
     @DomainType.setter
@@ -4925,6 +5803,9 @@ class DescribeCNAMEResponse(AbstractModel):
 
     @property
     def Data(self):
+        """CNAME 记录值
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -4933,6 +5814,9 @@ class DescribeCNAMEResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4996,6 +5880,10 @@ class DescribeDeviceChannelData(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -5004,6 +5892,10 @@ class DescribeDeviceChannelData(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -5012,6 +5904,10 @@ class DescribeDeviceChannelData(AbstractModel):
 
     @property
     def ChannelCode(self):
+        """通道编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChannelCode
 
     @ChannelCode.setter
@@ -5020,6 +5916,10 @@ class DescribeDeviceChannelData(AbstractModel):
 
     @property
     def Name(self):
+        """通道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5028,6 +5928,10 @@ class DescribeDeviceChannelData(AbstractModel):
 
     @property
     def Status(self):
+        """流状态（0:未传输,1:传输中）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -5036,6 +5940,10 @@ class DescribeDeviceChannelData(AbstractModel):
 
     @property
     def PTZType(self):
+        """是否可控 Ptz（0:不可控,1:可控）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PTZType
 
     @PTZType.setter
@@ -5044,6 +5952,10 @@ class DescribeDeviceChannelData(AbstractModel):
 
     @property
     def Manufacturer(self):
+        """通道厂商
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Manufacturer
 
     @Manufacturer.setter
@@ -5052,6 +5964,10 @@ class DescribeDeviceChannelData(AbstractModel):
 
     @property
     def Resolution(self):
+        """通道支持分辨率（分辨率列表由‘/’隔开，国标协议样例（6/3），自定义样例（12800960/640480））
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -5060,6 +5976,10 @@ class DescribeDeviceChannelData(AbstractModel):
 
     @property
     def State(self):
+        """通道在离线状态（0:离线,1:在线）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._State
 
     @State.setter
@@ -5068,6 +5988,10 @@ class DescribeDeviceChannelData(AbstractModel):
 
     @property
     def Region(self):
+        """所在地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -5110,6 +6034,9 @@ class DescribeDeviceChannelRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID（从获取设备列表接口ListDevices中获取）
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -5146,6 +6073,9 @@ class DescribeDeviceChannelResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+        :rtype: list of DescribeDeviceChannelData
+        """
         return self._Data
 
     @Data.setter
@@ -5154,6 +6084,9 @@ class DescribeDeviceChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5307,6 +6240,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -5315,6 +6252,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Code(self):
+        """设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -5323,6 +6264,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Name(self):
+        """设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5331,6 +6276,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def AccessProtocol(self):
+        """设备接入协议，1:RTMP,2:GB,3:GW 
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AccessProtocol
 
     @AccessProtocol.setter
@@ -5339,6 +6288,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Type(self):
+        """设备类型，1:IPC,2:NVR
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -5347,6 +6300,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def ClusterId(self):
+        """设备接入服务节点id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -5355,6 +6312,11 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def ClusterName(self):
+        """设备接入服务节点名称
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -5363,6 +6325,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def TransportProtocol(self):
+        """设备流传输协议，1:UDP,2:TCP 
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TransportProtocol
 
     @TransportProtocol.setter
@@ -5371,6 +6337,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Password(self):
+        """设备密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -5379,6 +6349,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Description(self):
+        """设备描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -5387,6 +6361,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def SipId(self):
+        """sip服务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SipId
 
     @SipId.setter
@@ -5395,6 +6373,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def SipDomain(self):
+        """sip服务域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SipDomain
 
     @SipDomain.setter
@@ -5403,6 +6385,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def SipIp(self):
+        """sip服务IP地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SipIp
 
     @SipIp.setter
@@ -5411,6 +6397,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def SipPort(self):
+        """sip服务端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SipPort
 
     @SipPort.setter
@@ -5419,6 +6409,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def PushStreamUrl(self):
+        """Rtmp设备推流地址(仅rtmp设备有效)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PushStreamUrl
 
     @PushStreamUrl.setter
@@ -5427,6 +6421,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Status(self):
+        """设备状态，0:未注册,1:在线,2:离线,3:禁用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -5435,6 +6433,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def OrganizationId(self):
+        """设备所属组织ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrganizationId
 
     @OrganizationId.setter
@@ -5443,6 +6445,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def GatewayId(self):
+        """设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -5451,6 +6457,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def GatewayName(self):
+        """设备所属网关名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GatewayName
 
     @GatewayName.setter
@@ -5459,6 +6469,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def ProtocolTypeName(self):
+        """设备网关协议名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProtocolTypeName
 
     @ProtocolTypeName.setter
@@ -5467,6 +6481,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def ProtocolType(self):
+        """网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ProtocolType
 
     @ProtocolType.setter
@@ -5475,6 +6493,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Ip(self):
+        """设备接入IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -5483,6 +6505,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Port(self):
+        """设备Port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -5491,6 +6517,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Username(self):
+        """设备用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -5499,6 +6529,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Region(self):
+        """设备地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -5507,6 +6541,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Manufacturer(self):
+        """设备厂商
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Manufacturer
 
     @Manufacturer.setter
@@ -5515,6 +6553,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def AudioSwitch(self):
+        """音频关开（0：关闭；1：开启）关闭时丢弃音频	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AudioSwitch
 
     @AudioSwitch.setter
@@ -5523,6 +6565,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def SubscribeSwitch(self):
+        """订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SubscribeSwitch
 
     @SubscribeSwitch.setter
@@ -5531,6 +6577,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def AppName(self):
+        """RTMP推流地址自定义appName
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -5539,6 +6589,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def StreamName(self):
+        """RTMP推流地址自定义streamName
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -5547,6 +6601,10 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def SilentFrameSwitch(self):
+        """是否开启静音帧（0：关闭；1 开启）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SilentFrameSwitch
 
     @SilentFrameSwitch.setter
@@ -5615,6 +6673,10 @@ class DescribeDevicePresetData(AbstractModel):
 
     @property
     def Index(self):
+        """预置位索引    只支持1-10的索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Index
 
     @Index.setter
@@ -5623,6 +6685,10 @@ class DescribeDevicePresetData(AbstractModel):
 
     @property
     def Name(self):
+        """预置位名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5657,6 +6723,9 @@ class DescribeDevicePresetRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道ID（从通道查询接口DescribeDeviceChannel中获取）
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -5693,6 +6762,9 @@ class DescribeDevicePresetResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: list of DescribeDevicePresetData
+        """
         return self._Data
 
     @Data.setter
@@ -5701,6 +6773,9 @@ class DescribeDevicePresetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5741,6 +6816,10 @@ class DescribeDeviceRegion(AbstractModel):
 
     @property
     def Label(self):
+        """服务节点描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -5749,6 +6828,10 @@ class DescribeDeviceRegion(AbstractModel):
 
     @property
     def Value(self):
+        """服务节点 ID（对应为其他接口中所需的 ClusterId）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -5757,6 +6840,10 @@ class DescribeDeviceRegion(AbstractModel):
 
     @property
     def Region(self):
+        """地域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -5801,6 +6888,9 @@ class DescribeDeviceRegionResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: list of DescribeDeviceRegion
+        """
         return self._Data
 
     @Data.setter
@@ -5809,6 +6899,9 @@ class DescribeDeviceRegionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5873,6 +6966,10 @@ class DescribeDomainData(AbstractModel):
 
     @property
     def Id(self):
+        """域名ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -5881,6 +6978,10 @@ class DescribeDomainData(AbstractModel):
 
     @property
     def PlayDomain(self):
+        """播放域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PlayDomain
 
     @PlayDomain.setter
@@ -5889,6 +6990,10 @@ class DescribeDomainData(AbstractModel):
 
     @property
     def InternalDomain(self):
+        """CNAME 记录值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InternalDomain
 
     @InternalDomain.setter
@@ -5897,6 +7002,10 @@ class DescribeDomainData(AbstractModel):
 
     @property
     def HaveCert(self):
+        """是否上传证书（0：否，1：是）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HaveCert
 
     @HaveCert.setter
@@ -5905,6 +7014,10 @@ class DescribeDomainData(AbstractModel):
 
     @property
     def ClusterId(self):
+        """服务节点 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -5913,6 +7026,10 @@ class DescribeDomainData(AbstractModel):
 
     @property
     def ClusterName(self):
+        """服务节点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -5921,6 +7038,10 @@ class DescribeDomainData(AbstractModel):
 
     @property
     def AppId(self):
+        """用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -5929,6 +7050,10 @@ class DescribeDomainData(AbstractModel):
 
     @property
     def CertId(self):
+        """证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -5937,6 +7062,10 @@ class DescribeDomainData(AbstractModel):
 
     @property
     def DomainType(self):
+        """域名类型 0:拉流域名 1:推流域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DomainType
 
     @DomainType.setter
@@ -5987,6 +7116,10 @@ class DescribeDomainRegionData(AbstractModel):
 
     @property
     def Label(self):
+        """服务节点描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -5995,6 +7128,10 @@ class DescribeDomainRegionData(AbstractModel):
 
     @property
     def Value(self):
+        """服务节点 ID（对应为其他接口中所需的 ClusterId）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -6003,6 +7140,10 @@ class DescribeDomainRegionData(AbstractModel):
 
     @property
     def Region(self):
+        """地域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -6047,6 +7188,9 @@ class DescribeDomainRegionResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: list of DescribeDomainRegionData
+        """
         return self._Data
 
     @Data.setter
@@ -6055,6 +7199,9 @@ class DescribeDomainRegionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6095,6 +7242,9 @@ class DescribeDomainResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: list of DescribeDomainData
+        """
         return self._Data
 
     @Data.setter
@@ -6103,6 +7253,9 @@ class DescribeDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6175,6 +7328,10 @@ class DescribeGatewayData(AbstractModel):
 
     @property
     def GatewayId(self):
+        """网关索引ID，用于网关查询，更新，删除操作
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -6183,6 +7340,10 @@ class DescribeGatewayData(AbstractModel):
 
     @property
     def GwId(self):
+        """网关编码，由网关设备生成的唯一编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GwId
 
     @GwId.setter
@@ -6191,6 +7352,10 @@ class DescribeGatewayData(AbstractModel):
 
     @property
     def Name(self):
+        """网关名称，仅支持中文、英文、数字、_、-，长度不超过32个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6199,6 +7364,10 @@ class DescribeGatewayData(AbstractModel):
 
     @property
     def Description(self):
+        """网关描述，仅支持中文、英文、数字、_、-，长度不超过128个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -6207,6 +7376,10 @@ class DescribeGatewayData(AbstractModel):
 
     @property
     def ClusterId(self):
+        """服务节点id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -6215,6 +7388,10 @@ class DescribeGatewayData(AbstractModel):
 
     @property
     def ClusterName(self):
+        """服务节点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -6223,6 +7400,10 @@ class DescribeGatewayData(AbstractModel):
 
     @property
     def Status(self):
+        """网关状态，0：离线，1:在线
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -6231,6 +7412,10 @@ class DescribeGatewayData(AbstractModel):
 
     @property
     def Version(self):
+        """网关版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GatewayVersion
+        """
         return self._Version
 
     @Version.setter
@@ -6239,6 +7424,10 @@ class DescribeGatewayData(AbstractModel):
 
     @property
     def DeviceNum(self):
+        """网关下挂设备数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DeviceNum
 
     @DeviceNum.setter
@@ -6247,6 +7436,10 @@ class DescribeGatewayData(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """激活时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -6255,6 +7448,10 @@ class DescribeGatewayData(AbstractModel):
 
     @property
     def Region(self):
+        """所属地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -6336,6 +7533,10 @@ class DescribeGatewayMonitor(AbstractModel):
 
     @property
     def DeviceTotal(self):
+        """设备接入总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DeviceTotal
 
     @DeviceTotal.setter
@@ -6344,6 +7545,10 @@ class DescribeGatewayMonitor(AbstractModel):
 
     @property
     def DeviceOnline(self):
+        """设备在线数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DeviceOnline
 
     @DeviceOnline.setter
@@ -6352,6 +7557,10 @@ class DescribeGatewayMonitor(AbstractModel):
 
     @property
     def DeviceOffline(self):
+        """设备离线数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DeviceOffline
 
     @DeviceOffline.setter
@@ -6360,6 +7569,10 @@ class DescribeGatewayMonitor(AbstractModel):
 
     @property
     def ChannelTotal(self):
+        """视频通道总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ChannelTotal
 
     @ChannelTotal.setter
@@ -6368,6 +7581,10 @@ class DescribeGatewayMonitor(AbstractModel):
 
     @property
     def ChannelOnline(self):
+        """视频通道在线数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ChannelOnline
 
     @ChannelOnline.setter
@@ -6376,6 +7593,10 @@ class DescribeGatewayMonitor(AbstractModel):
 
     @property
     def ChannelOffline(self):
+        """视频通道离线数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ChannelOffline
 
     @ChannelOffline.setter
@@ -6384,6 +7605,10 @@ class DescribeGatewayMonitor(AbstractModel):
 
     @property
     def UpFlow(self):
+        """网关上行流量,单位kbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UpFlow
 
     @UpFlow.setter
@@ -6392,6 +7617,10 @@ class DescribeGatewayMonitor(AbstractModel):
 
     @property
     def ChannelPull(self):
+        """流在传输中的通道数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ChannelPull
 
     @ChannelPull.setter
@@ -6400,6 +7629,10 @@ class DescribeGatewayMonitor(AbstractModel):
 
     @property
     def ChannelUnPull(self):
+        """流未传输中的通道数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ChannelUnPull
 
     @ChannelUnPull.setter
@@ -6441,6 +7674,9 @@ class DescribeGatewayMonitorRequest(AbstractModel):
 
     @property
     def GatewayId(self):
+        """网关索引ID（从获取网关列表接口ListGateways中获取）
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -6477,6 +7713,9 @@ class DescribeGatewayMonitorResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeGatewayMonitor`
+        """
         return self._Data
 
     @Data.setter
@@ -6485,6 +7724,9 @@ class DescribeGatewayMonitorResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6522,6 +7764,10 @@ class DescribeGatewayProtocolData(AbstractModel):
 
     @property
     def TypeCode(self):
+        """接入协议的字典码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TypeCode
 
     @TypeCode.setter
@@ -6530,6 +7776,10 @@ class DescribeGatewayProtocolData(AbstractModel):
 
     @property
     def Value(self):
+        """接入协议类型值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Value
 
     @Value.setter
@@ -6538,6 +7788,10 @@ class DescribeGatewayProtocolData(AbstractModel):
 
     @property
     def Label(self):
+        """接入协议的类型描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -6582,6 +7836,9 @@ class DescribeGatewayProtocolResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: list of DescribeGatewayProtocolData
+        """
         return self._Data
 
     @Data.setter
@@ -6590,6 +7847,9 @@ class DescribeGatewayProtocolResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6621,6 +7881,9 @@ class DescribeGatewayRequest(AbstractModel):
 
     @property
     def GatewayId(self):
+        """网关索引ID（从获取网关列表接口ListGateways中获取）
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -6657,6 +7920,9 @@ class DescribeGatewayResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeGatewayData`
+        """
         return self._Data
 
     @Data.setter
@@ -6665,6 +7931,9 @@ class DescribeGatewayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6710,6 +7979,10 @@ class DescribeGatewayVersion(AbstractModel):
 
     @property
     def Name(self):
+        """服务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6718,6 +7991,10 @@ class DescribeGatewayVersion(AbstractModel):
 
     @property
     def Version(self):
+        """服务版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -6726,6 +8003,10 @@ class DescribeGatewayVersion(AbstractModel):
 
     @property
     def LatestVersion(self):
+        """服务最新版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LatestVersion
 
     @LatestVersion.setter
@@ -6734,6 +8015,10 @@ class DescribeGatewayVersion(AbstractModel):
 
     @property
     def IsUpdate(self):
+        """是否需要更新
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUpdate
 
     @IsUpdate.setter
@@ -6742,6 +8027,10 @@ class DescribeGatewayVersion(AbstractModel):
 
     @property
     def UpgradeInfo(self):
+        """升级信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._UpgradeInfo
 
     @UpgradeInfo.setter
@@ -6780,6 +8069,10 @@ class DescribeGatewayVersionData(AbstractModel):
 
     @property
     def Services(self):
+        """网关服务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeGatewayVersion
+        """
         return self._Services
 
     @Services.setter
@@ -6818,6 +8111,9 @@ class DescribeGatewayVersionRequest(AbstractModel):
 
     @property
     def GatewayId(self):
+        """网关索引ID（从获取网关列表接口ListGateways中获取）
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -6854,6 +8150,9 @@ class DescribeGatewayVersionResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeGatewayVersionData`
+        """
         return self._Data
 
     @Data.setter
@@ -6862,6 +8161,9 @@ class DescribeGatewayVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6919,6 +8221,10 @@ class DescribeOrganizationData(AbstractModel):
 
     @property
     def OrganizationId(self):
+        """组织 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrganizationId
 
     @OrganizationId.setter
@@ -6927,6 +8233,10 @@ class DescribeOrganizationData(AbstractModel):
 
     @property
     def Name(self):
+        """组织名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6935,6 +8245,10 @@ class DescribeOrganizationData(AbstractModel):
 
     @property
     def ParentId(self):
+        """组织父节点 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ParentId
 
     @ParentId.setter
@@ -6943,6 +8257,10 @@ class DescribeOrganizationData(AbstractModel):
 
     @property
     def Level(self):
+        """组织层级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -6951,6 +8269,10 @@ class DescribeOrganizationData(AbstractModel):
 
     @property
     def AppId(self):
+        """用户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -6959,6 +8281,10 @@ class DescribeOrganizationData(AbstractModel):
 
     @property
     def ParentIds(self):
+        """组织结构
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ParentIds
 
     @ParentIds.setter
@@ -6967,6 +8293,10 @@ class DescribeOrganizationData(AbstractModel):
 
     @property
     def Total(self):
+        """设备总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -6975,6 +8305,10 @@ class DescribeOrganizationData(AbstractModel):
 
     @property
     def Online(self):
+        """设备在线数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Online
 
     @Online.setter
@@ -7024,6 +8358,9 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: list of DescribeOrganizationData
+        """
         return self._Data
 
     @Data.setter
@@ -7032,6 +8369,9 @@ class DescribeOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7087,6 +8427,9 @@ class DescribeRecordBackupPlanData(AbstractModel):
 
     @property
     def PlanId(self):
+        """录像上云计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -7095,6 +8438,9 @@ class DescribeRecordBackupPlanData(AbstractModel):
 
     @property
     def PlanName(self):
+        """录像上云计划名称
+        :rtype: str
+        """
         return self._PlanName
 
     @PlanName.setter
@@ -7103,6 +8449,9 @@ class DescribeRecordBackupPlanData(AbstractModel):
 
     @property
     def TemplateId(self):
+        """录像上云模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -7111,6 +8460,9 @@ class DescribeRecordBackupPlanData(AbstractModel):
 
     @property
     def Describe(self):
+        """录像上云计划描述
+        :rtype: str
+        """
         return self._Describe
 
     @Describe.setter
@@ -7119,6 +8471,9 @@ class DescribeRecordBackupPlanData(AbstractModel):
 
     @property
     def LifeCycle(self):
+        """云文件生命周期
+        :rtype: :class:`tencentcloud.iss.v20230517.models.LifeCycleData`
+        """
         return self._LifeCycle
 
     @LifeCycle.setter
@@ -7127,6 +8482,9 @@ class DescribeRecordBackupPlanData(AbstractModel):
 
     @property
     def Status(self):
+        """录像上云计划状态，1:正常使用中，0:删除中，无法使用
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -7135,6 +8493,9 @@ class DescribeRecordBackupPlanData(AbstractModel):
 
     @property
     def ChannelCount(self):
+        """通道数量
+        :rtype: int
+        """
         return self._ChannelCount
 
     @ChannelCount.setter
@@ -7143,6 +8504,9 @@ class DescribeRecordBackupPlanData(AbstractModel):
 
     @property
     def CreateAt(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateAt
 
     @CreateAt.setter
@@ -7151,6 +8515,9 @@ class DescribeRecordBackupPlanData(AbstractModel):
 
     @property
     def UpdateAt(self):
+        """修改时间
+        :rtype: str
+        """
         return self._UpdateAt
 
     @UpdateAt.setter
@@ -7194,6 +8561,9 @@ class DescribeRecordBackupPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """录像上云计划ID（从查询录像上云计划列表接口ListRecordBackupPlans中获取）
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -7230,6 +8600,9 @@ class DescribeRecordBackupPlanResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeRecordBackupPlanData`
+        """
         return self._Data
 
     @Data.setter
@@ -7238,6 +8611,9 @@ class DescribeRecordBackupPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7291,6 +8667,10 @@ class DescribeRecordBackupTemplateData(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -7299,6 +8679,10 @@ class DescribeRecordBackupTemplateData(AbstractModel):
 
     @property
     def TemplateName(self):
+        """模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -7307,6 +8691,10 @@ class DescribeRecordBackupTemplateData(AbstractModel):
 
     @property
     def TimeSections(self):
+        """上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordTemplateTimeSections
+        """
         return self._TimeSections
 
     @TimeSections.setter
@@ -7315,6 +8703,10 @@ class DescribeRecordBackupTemplateData(AbstractModel):
 
     @property
     def DevTimeSections(self):
+        """录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordTemplateTimeSections
+        """
         return self._DevTimeSections
 
     @DevTimeSections.setter
@@ -7323,6 +8715,10 @@ class DescribeRecordBackupTemplateData(AbstractModel):
 
     @property
     def Scale(self):
+        """上云倍速（支持1，2，4倍速）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Scale
 
     @Scale.setter
@@ -7331,6 +8727,10 @@ class DescribeRecordBackupTemplateData(AbstractModel):
 
     @property
     def CreateAt(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateAt
 
     @CreateAt.setter
@@ -7339,6 +8739,10 @@ class DescribeRecordBackupTemplateData(AbstractModel):
 
     @property
     def UpdateAt(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateAt
 
     @UpdateAt.setter
@@ -7388,6 +8792,9 @@ class DescribeRecordBackupTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板ID（从查询录像上云模板列表接口ListRecordBackupTemplates中获取）
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -7424,6 +8831,9 @@ class DescribeRecordBackupTemplateResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeRecordBackupTemplateData`
+        """
         return self._Data
 
     @Data.setter
@@ -7432,6 +8842,9 @@ class DescribeRecordBackupTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7464,6 +8877,9 @@ class DescribeRecordFileData(AbstractModel):
 
     @property
     def Tips(self):
+        """提示类型，0:时间段内无归档录像，1:时间段内有归档录像
+        :rtype: int
+        """
         return self._Tips
 
     @Tips.setter
@@ -7472,6 +8888,10 @@ class DescribeRecordFileData(AbstractModel):
 
     @property
     def List(self):
+        """存在为数组格式，不存在字段内容为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordTimeLine
+        """
         return self._List
 
     @List.setter
@@ -7523,6 +8943,9 @@ class DescribeRecordFileRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """通道所属设备ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -7531,6 +8954,9 @@ class DescribeRecordFileRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道ID
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -7539,6 +8965,9 @@ class DescribeRecordFileRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """检索开始时间，UTC秒数，例如：1662114146，开始和结束时间段最长为一天，且不能跨天
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7547,6 +8976,9 @@ class DescribeRecordFileRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """检索结束时间，UTC秒数，例如：1662114246，开始和结束时间段最长为一天，且不能跨天
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7555,6 +8987,9 @@ class DescribeRecordFileRequest(AbstractModel):
 
     @property
     def WithUrl(self):
+        """是否携带每个时间段的播放url
+        :rtype: bool
+        """
         return self._WithUrl
 
     @WithUrl.setter
@@ -7595,6 +9030,9 @@ class DescribeRecordFileResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeRecordFileData`
+        """
         return self._Data
 
     @Data.setter
@@ -7603,6 +9041,9 @@ class DescribeRecordFileResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7631,6 +9072,9 @@ class DescribeRecordPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """实时上云计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -7667,6 +9111,9 @@ class DescribeRecordPlanResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.iss.v20230517.models.RecordPlanBaseInfo`
+        """
         return self._Data
 
     @Data.setter
@@ -7675,6 +9122,9 @@ class DescribeRecordPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7704,14 +9154,20 @@ class DescribeRecordPlaybackUrlRequest(AbstractModel):
         :type EndTime: int
         :param _IsInternal: 是否获取内网地址
         :type IsInternal: bool
+        :param _CorrectTimestamp: 云录像回放时，是否需要开启时间戳矫正，主要解决时间戳反转，会退等问题导致无法播放
+        :type CorrectTimestamp: bool
         """
         self._ChannelId = None
         self._StartTime = None
         self._EndTime = None
         self._IsInternal = None
+        self._CorrectTimestamp = None
 
     @property
     def ChannelId(self):
+        """设备通道ID
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -7720,6 +9176,9 @@ class DescribeRecordPlaybackUrlRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """回放开始时间，UTC秒数，例如：1662114146，开始和结束时间段最长为一天，且不能跨天
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7728,6 +9187,9 @@ class DescribeRecordPlaybackUrlRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """回放结束时间，UTC秒数，例如：1662114246，开始和结束时间段最长为一天，且不能跨天
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7736,11 +9198,25 @@ class DescribeRecordPlaybackUrlRequest(AbstractModel):
 
     @property
     def IsInternal(self):
+        """是否获取内网地址
+        :rtype: bool
+        """
         return self._IsInternal
 
     @IsInternal.setter
     def IsInternal(self, IsInternal):
         self._IsInternal = IsInternal
+
+    @property
+    def CorrectTimestamp(self):
+        """云录像回放时，是否需要开启时间戳矫正，主要解决时间戳反转，会退等问题导致无法播放
+        :rtype: bool
+        """
+        return self._CorrectTimestamp
+
+    @CorrectTimestamp.setter
+    def CorrectTimestamp(self, CorrectTimestamp):
+        self._CorrectTimestamp = CorrectTimestamp
 
 
     def _deserialize(self, params):
@@ -7748,6 +9224,7 @@ class DescribeRecordPlaybackUrlRequest(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._IsInternal = params.get("IsInternal")
+        self._CorrectTimestamp = params.get("CorrectTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7775,6 +9252,9 @@ class DescribeRecordPlaybackUrlResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.iss.v20230517.models.RecordPlaybackUrl`
+        """
         return self._Data
 
     @Data.setter
@@ -7783,6 +9263,9 @@ class DescribeRecordPlaybackUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7842,6 +9325,9 @@ class DescribeRecordRetrieveTaskData(AbstractModel):
 
     @property
     def TaskId(self):
+        """取回任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -7850,6 +9336,9 @@ class DescribeRecordRetrieveTaskData(AbstractModel):
 
     @property
     def TaskName(self):
+        """取回任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -7858,6 +9347,9 @@ class DescribeRecordRetrieveTaskData(AbstractModel):
 
     @property
     def StartTime(self):
+        """取回录像的开始时间
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7866,6 +9358,9 @@ class DescribeRecordRetrieveTaskData(AbstractModel):
 
     @property
     def EndTime(self):
+        """取回录像的结束时间
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7874,6 +9369,9 @@ class DescribeRecordRetrieveTaskData(AbstractModel):
 
     @property
     def Mode(self):
+        """取回模式，1:极速模式，其他暂不支持
+        :rtype: int
+        """
         return self._Mode
 
     @Mode.setter
@@ -7882,6 +9380,9 @@ class DescribeRecordRetrieveTaskData(AbstractModel):
 
     @property
     def Expiration(self):
+        """副本有效期
+        :rtype: int
+        """
         return self._Expiration
 
     @Expiration.setter
@@ -7890,6 +9391,9 @@ class DescribeRecordRetrieveTaskData(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，0:已取回，1:取回中，2:待取回
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -7898,6 +9402,9 @@ class DescribeRecordRetrieveTaskData(AbstractModel):
 
     @property
     def Capacity(self):
+        """取回容量，单位MB
+        :rtype: float
+        """
         return self._Capacity
 
     @Capacity.setter
@@ -7906,6 +9413,9 @@ class DescribeRecordRetrieveTaskData(AbstractModel):
 
     @property
     def Channels(self):
+        """任务的设备通道id
+        :rtype: list of RecordRetrieveTaskChannelInfo
+        """
         return self._Channels
 
     @Channels.setter
@@ -7914,6 +9424,10 @@ class DescribeRecordRetrieveTaskData(AbstractModel):
 
     @property
     def Describe(self):
+        """任务描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Describe
 
     @Describe.setter
@@ -7922,6 +9436,9 @@ class DescribeRecordRetrieveTaskData(AbstractModel):
 
     @property
     def ChannelCount(self):
+        """任务通道数量
+        :rtype: int
+        """
         return self._ChannelCount
 
     @ChannelCount.setter
@@ -7970,6 +9487,9 @@ class DescribeRecordRetrieveTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """云录像取回任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -8006,6 +9526,9 @@ class DescribeRecordRetrieveTaskResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeRecordRetrieveTaskData`
+        """
         return self._Data
 
     @Data.setter
@@ -8014,6 +9537,9 @@ class DescribeRecordRetrieveTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8048,6 +9574,9 @@ class DescribeRecordSliceRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道ID
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -8056,6 +9585,9 @@ class DescribeRecordSliceRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """检索开始时间，UTC秒数，例如：1662114146，开始和结束时间段最长为一天，且不能跨天
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8064,6 +9596,9 @@ class DescribeRecordSliceRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """检索结束时间，UTC秒数，例如：1662114246，开始和结束时间段最长为一天，且不能跨天
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8103,6 +9638,10 @@ class DescribeRecordSliceResponse(AbstractModel):
 
     @property
     def Data(self):
+        """云录像切片信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordSliceInfo
+        """
         return self._Data
 
     @Data.setter
@@ -8111,6 +9650,9 @@ class DescribeRecordSliceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8142,6 +9684,9 @@ class DescribeRecordTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -8178,6 +9723,9 @@ class DescribeRecordTemplateResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.iss.v20230517.models.RecordTemplateInfo`
+        """
         return self._Data
 
     @Data.setter
@@ -8186,6 +9734,9 @@ class DescribeRecordTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8243,6 +9794,10 @@ class DescribeStreamAuthData(AbstractModel):
 
     @property
     def Id(self):
+        """鉴权配置ID（uuid）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -8251,6 +9806,10 @@ class DescribeStreamAuthData(AbstractModel):
 
     @property
     def PullState(self):
+        """是否开播放鉴权（1:开启,0:关闭）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PullState
 
     @PullState.setter
@@ -8259,6 +9818,10 @@ class DescribeStreamAuthData(AbstractModel):
 
     @property
     def PullSecret(self):
+        """播放密钥（仅支持字母数字，长度0-10位）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PullSecret
 
     @PullSecret.setter
@@ -8267,6 +9830,10 @@ class DescribeStreamAuthData(AbstractModel):
 
     @property
     def PullExpired(self):
+        """播放过期时间（单位：分钟）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PullExpired
 
     @PullExpired.setter
@@ -8275,6 +9842,10 @@ class DescribeStreamAuthData(AbstractModel):
 
     @property
     def PushState(self):
+        """是否开启推流鉴权（1:开启,0:关闭）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PushState
 
     @PushState.setter
@@ -8283,6 +9854,10 @@ class DescribeStreamAuthData(AbstractModel):
 
     @property
     def PushSecret(self):
+        """推流密钥（仅支持字母数字，长度0-10位）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PushSecret
 
     @PushSecret.setter
@@ -8291,6 +9866,10 @@ class DescribeStreamAuthData(AbstractModel):
 
     @property
     def PushExpired(self):
+        """推流过期时间（单位：分钟）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PushExpired
 
     @PushExpired.setter
@@ -8299,6 +9878,10 @@ class DescribeStreamAuthData(AbstractModel):
 
     @property
     def AppId(self):
+        """用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -8348,6 +9931,9 @@ class DescribeStreamAuthResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeStreamAuthData`
+        """
         return self._Data
 
     @Data.setter
@@ -8356,6 +9942,9 @@ class DescribeStreamAuthResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8384,6 +9973,9 @@ class DescribeTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """简单任务或复杂任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -8420,6 +10012,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def Data(self):
+        """任务详情
+        :rtype: :class:`tencentcloud.iss.v20230517.models.TaskData`
+        """
         return self._Data
 
     @Data.setter
@@ -8428,6 +10023,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8456,6 +10054,9 @@ class DescribeUserDeviceRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID（从获取设备列表接口ListDevices中获取）
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -8492,6 +10093,9 @@ class DescribeUserDeviceResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeDeviceData`
+        """
         return self._Data
 
     @Data.setter
@@ -8500,6 +10104,9 @@ class DescribeUserDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8529,6 +10136,10 @@ class DescribeVideoBitRateList(AbstractModel):
 
     @property
     def BitRates(self):
+        """通道码率列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BitRateInfo
+        """
         return self._BitRates
 
     @BitRates.setter
@@ -8567,6 +10178,9 @@ class DescribeVideoBitRateRequest(AbstractModel):
 
     @property
     def ChannelIds(self):
+        """通道ID列表
+        :rtype: list of str
+        """
         return self._ChannelIds
 
     @ChannelIds.setter
@@ -8603,6 +10217,9 @@ class DescribeVideoBitRateResponse(AbstractModel):
 
     @property
     def Data(self):
+        """无
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeVideoBitRateList`
+        """
         return self._Data
 
     @Data.setter
@@ -8611,6 +10228,9 @@ class DescribeVideoBitRateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8651,6 +10271,13 @@ URL 有效期是10分钟，过期后将拒绝访问，若需再用请重新获�
 
     @property
     def Url(self):
+        """录像文件下载 URL
+注意：
+URL 有效期是10分钟，过期后将拒绝访问，若需再用请重新获取 
+录像文件下载采用分块传输编码，响应头Transfer-Encoding:chunked 
+下载文件命名格式为{ChannelId}-{BeginTime}-{EndTime}.{FileType} 
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -8659,6 +10286,10 @@ URL 有效期是10分钟，过期后将拒绝访问，若需再用请重新获�
 
     @property
     def ActualBeginTime(self):
+        """实际下载录像的开始时间
+注意：当请求中指定IsRespActualTime参数为true时，才有该字段
+        :rtype: str
+        """
         return self._ActualBeginTime
 
     @ActualBeginTime.setter
@@ -8667,6 +10298,10 @@ URL 有效期是10分钟，过期后将拒绝访问，若需再用请重新获�
 
     @property
     def ActualEndTime(self):
+        """实际下载录像的结束时间
+注意：当请求中指定IsRespActualTime参数为true时，才有该字段
+        :rtype: str
+        """
         return self._ActualEndTime
 
     @ActualEndTime.setter
@@ -8729,6 +10364,9 @@ class DescribeVideoDownloadUrlRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道 ID
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -8737,6 +10375,10 @@ class DescribeVideoDownloadUrlRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """下载的开始时间，UTC 秒数，开始和结束时间段最长为60分钟，且不能跨天。
+注意：实际下载的文件时长可能会大于该时段时长，通过指定IsRespActualTime参数可以获取实际下载的开始时间和结束时间。 原因是下载是TS切片对齐的，其目的也是为了保证用户下载数据的完整性，完全包含其指定的时间段。
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -8745,6 +10387,10 @@ class DescribeVideoDownloadUrlRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """下载的结束时间，UTC 秒数，开始和结束时间段最长为60分钟，且不能跨天。
+注意：实际下载的文件时长可能会大于该时段时长，通过指定IsRespActualTime参数可以获取实际下载的开始时间和结束时间。 原因是下载是TS切片对齐的，其目的也是为了保证用户下载数据的完整性，完全包含其指定的时间段。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8753,6 +10399,9 @@ class DescribeVideoDownloadUrlRequest(AbstractModel):
 
     @property
     def FileType(self):
+        """文件格式，"mp4"：mp4格式，"ts"：ts文件格式
+        :rtype: str
+        """
         return self._FileType
 
     @FileType.setter
@@ -8761,6 +10410,9 @@ class DescribeVideoDownloadUrlRequest(AbstractModel):
 
     @property
     def IsRespActualTime(self):
+        """响应data中是否携带实际下载录像的开始时间与结束时间
+        :rtype: bool
+        """
         return self._IsRespActualTime
 
     @IsRespActualTime.setter
@@ -8769,6 +10421,9 @@ class DescribeVideoDownloadUrlRequest(AbstractModel):
 
     @property
     def IsInternal(self):
+        """是否返回内网下载URL，默认是false，返回公网下载URL，true则返回内网下载URL
+        :rtype: bool
+        """
         return self._IsInternal
 
     @IsInternal.setter
@@ -8777,6 +10432,9 @@ class DescribeVideoDownloadUrlRequest(AbstractModel):
 
     @property
     def Expires(self):
+        """设置URL的有效期, 最小值是1秒, 最大值是86400秒, 不设置的话, 默认是600秒
+        :rtype: int
+        """
         return self._Expires
 
     @Expires.setter
@@ -8785,6 +10443,13 @@ class DescribeVideoDownloadUrlRequest(AbstractModel):
 
     @property
     def IsSupportG711(self):
+        """下载的MP4文件是否支持G711音频编码. 
+注意: 如果云端录像中的音频编码为AAC, 那么下载的MP4默认是支持AAC编码的
+如果云端录像中的音频编码为G711且 IsSupportG711设置为true时, 下载的MP4是支持G711音频编码
+如果云端录像中的音频编码为G711且 IsSupportG711设置为false时, 下载的MP4是不支持G711音频编码
+该参数只对FileType为mp4才有效, 不设置的话, 默认是false
+        :rtype: bool
+        """
         return self._IsSupportG711
 
     @IsSupportG711.setter
@@ -8828,6 +10493,9 @@ class DescribeVideoDownloadUrlResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回的数据结构
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeVideoDownloadUrlData`
+        """
         return self._Data
 
     @Data.setter
@@ -8836,6 +10504,9 @@ class DescribeVideoDownloadUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8870,6 +10541,9 @@ class FaceMaskAIResultInfo(AbstractModel):
 
     @property
     def Time(self):
+        """时间字符串
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -8878,6 +10552,9 @@ class FaceMaskAIResultInfo(AbstractModel):
 
     @property
     def Url(self):
+        """截图 URL
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -8886,6 +10563,9 @@ class FaceMaskAIResultInfo(AbstractModel):
 
     @property
     def FaceMaskInfo(self):
+        """口罩信息
+        :rtype: list of BaseAIResultInfo
+        """
         return self._FaceMaskInfo
 
     @FaceMaskInfo.setter
@@ -8959,6 +10639,10 @@ class GatewayDevice(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -8967,6 +10651,10 @@ class GatewayDevice(AbstractModel):
 
     @property
     def ProtocolType(self):
+        """网关接入协议类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ProtocolType
 
     @ProtocolType.setter
@@ -8975,6 +10663,10 @@ class GatewayDevice(AbstractModel):
 
     @property
     def ProtocolTypeName(self):
+        """网关接入协议名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProtocolTypeName
 
     @ProtocolTypeName.setter
@@ -8983,6 +10675,10 @@ class GatewayDevice(AbstractModel):
 
     @property
     def Name(self):
+        """设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8991,6 +10687,10 @@ class GatewayDevice(AbstractModel):
 
     @property
     def Type(self):
+        """设备类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -8999,6 +10699,10 @@ class GatewayDevice(AbstractModel):
 
     @property
     def Ip(self):
+        """设备内网IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -9007,6 +10711,10 @@ class GatewayDevice(AbstractModel):
 
     @property
     def Port(self):
+        """设备端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -9015,6 +10723,10 @@ class GatewayDevice(AbstractModel):
 
     @property
     def ChannelNum(self):
+        """设备下通道数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ChannelNum
 
     @ChannelNum.setter
@@ -9023,6 +10735,10 @@ class GatewayDevice(AbstractModel):
 
     @property
     def Status(self):
+        """设备状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -9069,6 +10785,10 @@ class GatewayVersion(AbstractModel):
 
     @property
     def Name(self):
+        """服务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9077,6 +10797,10 @@ class GatewayVersion(AbstractModel):
 
     @property
     def Version(self):
+        """服务版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -9148,6 +10872,10 @@ class GatewaysData(AbstractModel):
 
     @property
     def GatewayId(self):
+        """网关索引ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -9156,6 +10884,10 @@ class GatewaysData(AbstractModel):
 
     @property
     def GwId(self):
+        """网关编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GwId
 
     @GwId.setter
@@ -9164,6 +10896,10 @@ class GatewaysData(AbstractModel):
 
     @property
     def Name(self):
+        """网关名称，仅支持中文、英文、数字、_、-，长度不超过32个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9172,6 +10908,10 @@ class GatewaysData(AbstractModel):
 
     @property
     def Description(self):
+        """网关描述，仅支持中文、英文、数字、_、-，长度不超过128个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -9180,6 +10920,10 @@ class GatewaysData(AbstractModel):
 
     @property
     def ClusterId(self):
+        """网关所属服务节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -9188,6 +10932,10 @@ class GatewaysData(AbstractModel):
 
     @property
     def ClusterName(self):
+        """网关所属服务节点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -9196,6 +10944,10 @@ class GatewaysData(AbstractModel):
 
     @property
     def Region(self):
+        """网关所属地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -9204,6 +10956,10 @@ class GatewaysData(AbstractModel):
 
     @property
     def Status(self):
+        """网关状态，0：离线，1:在线
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -9212,6 +10968,10 @@ class GatewaysData(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """网关激活时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -9220,6 +10980,10 @@ class GatewaysData(AbstractModel):
 
     @property
     def DeviceNum(self):
+        """所属网关设备数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DeviceNum
 
     @DeviceNum.setter
@@ -9263,6 +11027,10 @@ class ISAPIOutputData(AbstractModel):
 
     @property
     def OutputData(self):
+        """输出参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OutputData
 
     @OutputData.setter
@@ -9299,6 +11067,9 @@ class LifeCycleData(AbstractModel):
 
     @property
     def Transition(self):
+        """云文件热存储时长，单位天，最小1天，最大3650天
+        :rtype: int
+        """
         return self._Transition
 
     @Transition.setter
@@ -9307,6 +11078,9 @@ class LifeCycleData(AbstractModel):
 
     @property
     def Expiration(self):
+        """云文件冷存储时长， 单位天，0表示不设置，设置时最小60天，Expiration字段加Transition字段不超过3650天
+        :rtype: int
+        """
         return self._Expiration
 
     @Expiration.setter
@@ -9342,6 +11116,10 @@ class ListAITaskData(AbstractModel):
 
     @property
     def List(self):
+        """AI任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AITaskInfo
+        """
         return self._List
 
     @List.setter
@@ -9389,6 +11167,9 @@ class ListAITasksRequest(AbstractModel):
 
     @property
     def IsContainChannelList(self):
+        """是否包含通道列表。"true"代表包含通道列表，"false"代表不包含通道列表，默认为 false
+        :rtype: bool
+        """
         return self._IsContainChannelList
 
     @IsContainChannelList.setter
@@ -9397,6 +11178,9 @@ class ListAITasksRequest(AbstractModel):
 
     @property
     def IsContainTemplate(self):
+        """是否包含AI配置。"true"代表包含任务配置，"false"代表不包含任务配置，默认为 false。
+        :rtype: bool
+        """
         return self._IsContainTemplate
 
     @IsContainTemplate.setter
@@ -9405,6 +11189,9 @@ class ListAITasksRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码。默认为1
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -9413,6 +11200,9 @@ class ListAITasksRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页数量。可选值1～200，默认为20
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -9456,6 +11246,9 @@ class ListAITasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """AI 任务数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9464,6 +11257,10 @@ class ListAITasksResponse(AbstractModel):
 
     @property
     def Data(self):
+        """AI任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListAITaskData`
+        """
         return self._Data
 
     @Data.setter
@@ -9472,6 +11269,9 @@ class ListAITasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9537,6 +11337,9 @@ class ListDeviceInfo(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备 ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -9545,6 +11348,9 @@ class ListDeviceInfo(AbstractModel):
 
     @property
     def Code(self):
+        """设备编码
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -9553,6 +11359,9 @@ class ListDeviceInfo(AbstractModel):
 
     @property
     def Status(self):
+        """设备状态。0:未注册，1:在线，2:离线，3:禁用
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -9561,6 +11370,9 @@ class ListDeviceInfo(AbstractModel):
 
     @property
     def TransportProtocol(self):
+        """设备流传输协议。1:UDP,2:TCP
+        :rtype: int
+        """
         return self._TransportProtocol
 
     @TransportProtocol.setter
@@ -9569,6 +11381,9 @@ class ListDeviceInfo(AbstractModel):
 
     @property
     def Name(self):
+        """设备名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9577,6 +11392,9 @@ class ListDeviceInfo(AbstractModel):
 
     @property
     def Type(self):
+        """设备类型。1:IPC,2:NVR
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -9585,6 +11403,9 @@ class ListDeviceInfo(AbstractModel):
 
     @property
     def Password(self):
+        """设备密码
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -9593,6 +11414,9 @@ class ListDeviceInfo(AbstractModel):
 
     @property
     def Description(self):
+        """描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -9601,6 +11425,9 @@ class ListDeviceInfo(AbstractModel):
 
     @property
     def ClusterId(self):
+        """设备接入服务节点 ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -9609,6 +11436,9 @@ class ListDeviceInfo(AbstractModel):
 
     @property
     def ClusterName(self):
+        """服务节点名称
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -9617,6 +11447,9 @@ class ListDeviceInfo(AbstractModel):
 
     @property
     def AccessProtocol(self):
+        """接入协议。1:RTMP,2:GB,3:GW
+        :rtype: int
+        """
         return self._AccessProtocol
 
     @AccessProtocol.setter
@@ -9625,6 +11458,9 @@ class ListDeviceInfo(AbstractModel):
 
     @property
     def OrganizationId(self):
+        """设备所属组织 ID
+        :rtype: str
+        """
         return self._OrganizationId
 
     @OrganizationId.setter
@@ -9633,6 +11469,9 @@ class ListDeviceInfo(AbstractModel):
 
     @property
     def ChannelNum(self):
+        """通道数量
+        :rtype: int
+        """
         return self._ChannelNum
 
     @ChannelNum.setter
@@ -9708,6 +11547,9 @@ class ListDevicesRequest(AbstractModel):
 
     @property
     def OrganizationId(self):
+        """组织ID
+        :rtype: str
+        """
         return self._OrganizationId
 
     @OrganizationId.setter
@@ -9716,6 +11558,9 @@ class ListDevicesRequest(AbstractModel):
 
     @property
     def IsContainSubLevel(self):
+        """是否获取当前层级及子层级的设备列表，默认false
+        :rtype: bool
+        """
         return self._IsContainSubLevel
 
     @IsContainSubLevel.setter
@@ -9724,6 +11569,9 @@ class ListDevicesRequest(AbstractModel):
 
     @property
     def IsContainUser(self):
+        """是否包含当前用户已关联的设备，默认false
+        :rtype: bool
+        """
         return self._IsContainUser
 
     @IsContainUser.setter
@@ -9732,6 +11580,9 @@ class ListDevicesRequest(AbstractModel):
 
     @property
     def AccessProtocol(self):
+        """设备接入协议。1:RTMP，2:GB，3:GW，4:IVCP(私有协议)
+        :rtype: int
+        """
         return self._AccessProtocol
 
     @AccessProtocol.setter
@@ -9740,6 +11591,9 @@ class ListDevicesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """设备类型。1:IPC，2:NVR
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -9748,6 +11602,9 @@ class ListDevicesRequest(AbstractModel):
 
     @property
     def Status(self):
+        """设备状态。0:未注册，1:在线，2:离线，3:禁用	
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -9756,6 +11613,9 @@ class ListDevicesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """服务节点ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -9764,6 +11624,9 @@ class ListDevicesRequest(AbstractModel):
 
     @property
     def Keyword(self):
+        """模糊搜索设备的关键字
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -9772,6 +11635,9 @@ class ListDevicesRequest(AbstractModel):
 
     @property
     def CurrentUin(self):
+        """当前用户Uin
+        :rtype: int
+        """
         return self._CurrentUin
 
     @CurrentUin.setter
@@ -9780,6 +11646,9 @@ class ListDevicesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码，默认为1。
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -9788,6 +11657,9 @@ class ListDevicesRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页数量，默认为20，单页最大10000条
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -9838,6 +11710,10 @@ class ListDevicesResponse(AbstractModel):
 
     @property
     def Data(self):
+        """设备列表详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ListDeviceInfo
+        """
         return self._Data
 
     @Data.setter
@@ -9846,6 +11722,9 @@ class ListDevicesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """设备总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9854,6 +11733,9 @@ class ListDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9896,6 +11778,9 @@ class ListForbidplayChannelsData(AbstractModel):
 
     @property
     def PageNumber(self):
+        """第几页
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -9904,6 +11789,9 @@ class ListForbidplayChannelsData(AbstractModel):
 
     @property
     def PageSize(self):
+        """当前页的设备数量
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -9912,6 +11800,9 @@ class ListForbidplayChannelsData(AbstractModel):
 
     @property
     def TotalCount(self):
+        """本次查询的设备通道总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9920,6 +11811,10 @@ class ListForbidplayChannelsData(AbstractModel):
 
     @property
     def List(self):
+        """设备通道信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ChannelAttrInfo
+        """
         return self._List
 
     @List.setter
@@ -9966,6 +11861,10 @@ class ListGatewayDevicesData(AbstractModel):
 
     @property
     def List(self):
+        """网关下设备列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GatewayDevice
+        """
         return self._List
 
     @List.setter
@@ -9974,6 +11873,10 @@ class ListGatewayDevicesData(AbstractModel):
 
     @property
     def TotalCount(self):
+        """网关下设备总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10019,6 +11922,9 @@ class ListGatewayDevicesRequest(AbstractModel):
 
     @property
     def GatewayId(self):
+        """网关索引ID（从获取网关列表接口ListGateways中获取）
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -10027,6 +11933,9 @@ class ListGatewayDevicesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """分页页数
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -10035,6 +11944,9 @@ class ListGatewayDevicesRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """分页大小
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -10073,6 +11985,9 @@ class ListGatewayDevicesResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListGatewayDevicesData`
+        """
         return self._Data
 
     @Data.setter
@@ -10081,6 +11996,9 @@ class ListGatewayDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10114,6 +12032,10 @@ class ListGatewaysData(AbstractModel):
 
     @property
     def List(self):
+        """网关列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GatewaysData
+        """
         return self._List
 
     @List.setter
@@ -10122,6 +12044,10 @@ class ListGatewaysData(AbstractModel):
 
     @property
     def TotalCount(self):
+        """网关数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10173,6 +12099,9 @@ class ListGatewaysRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码，默认为1
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -10181,6 +12110,9 @@ class ListGatewaysRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页数量，默认为20
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -10189,6 +12121,9 @@ class ListGatewaysRequest(AbstractModel):
 
     @property
     def Name(self):
+        """网关名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10197,6 +12132,9 @@ class ListGatewaysRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """服务节点ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -10205,6 +12143,9 @@ class ListGatewaysRequest(AbstractModel):
 
     @property
     def Status(self):
+        """网关状态（0：离线，1 ：在线）
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -10245,6 +12186,9 @@ class ListGatewaysResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListGatewaysData`
+        """
         return self._Data
 
     @Data.setter
@@ -10253,6 +12197,9 @@ class ListGatewaysResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10284,6 +12231,9 @@ class ListOrganizationChannelNumbersData(AbstractModel):
 
     @property
     def TotalCount(self):
+        """组织下通道总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10292,6 +12242,9 @@ class ListOrganizationChannelNumbersData(AbstractModel):
 
     @property
     def NotInPlanCount(self):
+        """组织下未添加到计划的通道总数
+        :rtype: int
+        """
         return self._NotInPlanCount
 
     @NotInPlanCount.setter
@@ -10326,6 +12279,9 @@ class ListOrganizationChannelNumbersRequest(AbstractModel):
 
     @property
     def OrganizationId(self):
+        """组织ID，json数组格式，最多一次支持10个组织
+        :rtype: list of str
+        """
         return self._OrganizationId
 
     @OrganizationId.setter
@@ -10362,6 +12318,9 @@ class ListOrganizationChannelNumbersResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListOrganizationChannelNumbersData`
+        """
         return self._Data
 
     @Data.setter
@@ -10370,6 +12329,9 @@ class ListOrganizationChannelNumbersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10408,6 +12370,9 @@ class ListOrganizationChannelsData(AbstractModel):
 
     @property
     def PageNumber(self):
+        """第几页
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -10416,6 +12381,9 @@ class ListOrganizationChannelsData(AbstractModel):
 
     @property
     def PageSize(self):
+        """当前页的设备数量
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -10424,6 +12392,9 @@ class ListOrganizationChannelsData(AbstractModel):
 
     @property
     def TotalCount(self):
+        """本次查询的设备通道总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10432,6 +12403,10 @@ class ListOrganizationChannelsData(AbstractModel):
 
     @property
     def List(self):
+        """设备通道信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OrganizationChannelInfo
+        """
         return self._List
 
     @List.setter
@@ -10487,6 +12462,9 @@ class ListOrganizationChannelsRequest(AbstractModel):
 
     @property
     def OrganizationId(self):
+        """组织ID
+        :rtype: str
+        """
         return self._OrganizationId
 
     @OrganizationId.setter
@@ -10495,6 +12473,9 @@ class ListOrganizationChannelsRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页最大数量
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -10503,6 +12484,9 @@ class ListOrganizationChannelsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """第几页 
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -10511,6 +12495,10 @@ class ListOrganizationChannelsRequest(AbstractModel):
 
     @property
     def DeviceName(self):
+        """查询条件，则按照设备名称查询
+查询条件同时只有一个生效。长度不超过32字节
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -10519,6 +12507,10 @@ class ListOrganizationChannelsRequest(AbstractModel):
 
     @property
     def ChannelName(self):
+        """查询条件，则按照通道名称查询
+查询条件同时只有一个生效。长度不超过32字节
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -10559,6 +12551,9 @@ class ListOrganizationChannelsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListOrganizationChannelsData`
+        """
         return self._Data
 
     @Data.setter
@@ -10567,6 +12562,9 @@ class ListOrganizationChannelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10619,6 +12617,9 @@ class ListRecordBackupPlanData(AbstractModel):
 
     @property
     def PlanId(self):
+        """录像上云计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -10627,6 +12628,9 @@ class ListRecordBackupPlanData(AbstractModel):
 
     @property
     def PlanName(self):
+        """录像上云计划名称
+        :rtype: str
+        """
         return self._PlanName
 
     @PlanName.setter
@@ -10635,6 +12639,9 @@ class ListRecordBackupPlanData(AbstractModel):
 
     @property
     def TemplateId(self):
+        """录像上云模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -10643,6 +12650,9 @@ class ListRecordBackupPlanData(AbstractModel):
 
     @property
     def Describe(self):
+        """录像上云计划描述
+        :rtype: str
+        """
         return self._Describe
 
     @Describe.setter
@@ -10651,6 +12661,9 @@ class ListRecordBackupPlanData(AbstractModel):
 
     @property
     def LifeCycle(self):
+        """云文件生命周期
+        :rtype: :class:`tencentcloud.iss.v20230517.models.LifeCycleData`
+        """
         return self._LifeCycle
 
     @LifeCycle.setter
@@ -10659,6 +12672,9 @@ class ListRecordBackupPlanData(AbstractModel):
 
     @property
     def Status(self):
+        """录像上云计划状态，1:正常使用中，0:删除中，无法使用
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -10667,6 +12683,9 @@ class ListRecordBackupPlanData(AbstractModel):
 
     @property
     def ChannelCount(self):
+        """通道数量
+        :rtype: int
+        """
         return self._ChannelCount
 
     @ChannelCount.setter
@@ -10675,6 +12694,9 @@ class ListRecordBackupPlanData(AbstractModel):
 
     @property
     def CreateAt(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateAt
 
     @CreateAt.setter
@@ -10683,6 +12705,9 @@ class ListRecordBackupPlanData(AbstractModel):
 
     @property
     def UpdateAt(self):
+        """修改时间
+        :rtype: str
+        """
         return self._UpdateAt
 
     @UpdateAt.setter
@@ -10739,6 +12764,10 @@ class ListRecordBackupPlanDevicesData(AbstractModel):
 
     @property
     def PageNumber(self):
+        """第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -10747,6 +12776,10 @@ class ListRecordBackupPlanDevicesData(AbstractModel):
 
     @property
     def PageSize(self):
+        """当前页的设备数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -10755,6 +12788,10 @@ class ListRecordBackupPlanDevicesData(AbstractModel):
 
     @property
     def TotalCount(self):
+        """本次查询的设备通道总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10763,6 +12800,10 @@ class ListRecordBackupPlanDevicesData(AbstractModel):
 
     @property
     def List(self):
+        """设备通道信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordPlanChannelInfo
+        """
         return self._List
 
     @List.setter
@@ -10819,6 +12860,9 @@ class ListRecordBackupPlanDevicesRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """录像计划ID（从查询录像上云计划列表接口ListRecordBackupPlans中获取）
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -10827,6 +12871,9 @@ class ListRecordBackupPlanDevicesRequest(AbstractModel):
 
     @property
     def DeviceName(self):
+        """按照设备名称查询（为空时，不参考该参数）
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -10835,6 +12882,9 @@ class ListRecordBackupPlanDevicesRequest(AbstractModel):
 
     @property
     def ChannelName(self):
+        """按照通道名称查询（为空时，不参考该参数）
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -10843,6 +12893,9 @@ class ListRecordBackupPlanDevicesRequest(AbstractModel):
 
     @property
     def OrganizationName(self):
+        """按照组织名称查询（为空时，不参考该参数）
+        :rtype: str
+        """
         return self._OrganizationName
 
     @OrganizationName.setter
@@ -10851,6 +12904,9 @@ class ListRecordBackupPlanDevicesRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页最大数量
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -10859,6 +12915,9 @@ class ListRecordBackupPlanDevicesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """分页页数
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -10900,6 +12959,9 @@ class ListRecordBackupPlanDevicesResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListRecordBackupPlanDevicesData`
+        """
         return self._Data
 
     @Data.setter
@@ -10908,6 +12970,9 @@ class ListRecordBackupPlanDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10945,6 +13010,9 @@ class ListRecordBackupPlansResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: list of ListRecordBackupPlanData
+        """
         return self._Data
 
     @Data.setter
@@ -10953,6 +13021,9 @@ class ListRecordBackupPlansResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11009,6 +13080,10 @@ class ListRecordBackupTemplatesData(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -11017,6 +13092,10 @@ class ListRecordBackupTemplatesData(AbstractModel):
 
     @property
     def TemplateName(self):
+        """模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -11025,6 +13104,10 @@ class ListRecordBackupTemplatesData(AbstractModel):
 
     @property
     def TimeSections(self):
+        """上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordTemplateTimeSections
+        """
         return self._TimeSections
 
     @TimeSections.setter
@@ -11033,6 +13116,10 @@ class ListRecordBackupTemplatesData(AbstractModel):
 
     @property
     def DevTimeSections(self):
+        """录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordTemplateTimeSections
+        """
         return self._DevTimeSections
 
     @DevTimeSections.setter
@@ -11041,6 +13128,10 @@ class ListRecordBackupTemplatesData(AbstractModel):
 
     @property
     def Scale(self):
+        """上云倍速（支持1，2，4倍速）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Scale
 
     @Scale.setter
@@ -11049,6 +13140,10 @@ class ListRecordBackupTemplatesData(AbstractModel):
 
     @property
     def CreateAt(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateAt
 
     @CreateAt.setter
@@ -11057,6 +13152,10 @@ class ListRecordBackupTemplatesData(AbstractModel):
 
     @property
     def UpdateAt(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateAt
 
     @UpdateAt.setter
@@ -11115,6 +13214,9 @@ class ListRecordBackupTemplatesResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: list of ListRecordBackupTemplatesData
+        """
         return self._Data
 
     @Data.setter
@@ -11123,6 +13225,9 @@ class ListRecordBackupTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11155,6 +13260,10 @@ class ListRecordPlanChannelsData(AbstractModel):
 
     @property
     def List(self):
+        """用户所有计划下通道id，存在通道是为数组格式，不存在时，字段数据为空 
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._List
 
     @List.setter
@@ -11197,6 +13306,9 @@ class ListRecordPlanChannelsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListRecordPlanChannelsData`
+        """
         return self._Data
 
     @Data.setter
@@ -11205,6 +13317,9 @@ class ListRecordPlanChannelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11243,6 +13358,9 @@ class ListRecordPlanDevicesData(AbstractModel):
 
     @property
     def PageNumber(self):
+        """第几页
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -11251,6 +13369,9 @@ class ListRecordPlanDevicesData(AbstractModel):
 
     @property
     def PageSize(self):
+        """当前页的设备数量
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -11259,6 +13380,9 @@ class ListRecordPlanDevicesData(AbstractModel):
 
     @property
     def TotalCount(self):
+        """本次查询的设备通道总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -11267,6 +13391,10 @@ class ListRecordPlanDevicesData(AbstractModel):
 
     @property
     def List(self):
+        """设备通道信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordPlanChannelInfo
+        """
         return self._List
 
     @List.setter
@@ -11326,6 +13454,9 @@ class ListRecordPlanDevicesRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """上云计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -11334,6 +13465,9 @@ class ListRecordPlanDevicesRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页最大数量
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -11342,6 +13476,9 @@ class ListRecordPlanDevicesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """第几页
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -11350,6 +13487,10 @@ class ListRecordPlanDevicesRequest(AbstractModel):
 
     @property
     def DeviceName(self):
+        """按照设备名称查询，为空时，不参考该参数
+通道名称、设备名称、组织名称同时只有一个有效，如果同时多个字段有值，按照通道名称、设备名称、组织名称的优先级顺序查询，如果都为空，则全量查询。长度不超过32字节
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -11358,6 +13499,10 @@ class ListRecordPlanDevicesRequest(AbstractModel):
 
     @property
     def ChannelName(self):
+        """按照通道名称查询，为空时，不参考该参数
+通道名称、设备名称、组织名称同时只有一个有效，如果同时多个字段有值，按照通道名称、设备名称、组织名称的优先级顺序查询，如果都为空，则全量查询。长度不超过32字节
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -11366,6 +13511,10 @@ class ListRecordPlanDevicesRequest(AbstractModel):
 
     @property
     def OrganizationName(self):
+        """按照组织名称查询|，为空时，不参考该参数
+通道名称、设备名称、组织名称同时只有一个有效，如果同时多个字段有值，按照通道名称、设备名称、组织名称的优先级顺序查询，如果都为空，则全量查询。长度不超过32字节
+        :rtype: str
+        """
         return self._OrganizationName
 
     @OrganizationName.setter
@@ -11407,6 +13556,9 @@ class ListRecordPlanDevicesResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListRecordPlanDevicesData`
+        """
         return self._Data
 
     @Data.setter
@@ -11415,6 +13567,9 @@ class ListRecordPlanDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11453,6 +13608,10 @@ class ListRecordPlansResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果，存在计划时，为Json数组格式，不存在计划时，字段数据为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordPlanBaseInfo
+        """
         return self._Data
 
     @Data.setter
@@ -11461,6 +13620,9 @@ class ListRecordPlansResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11502,6 +13664,10 @@ class ListRecordRetrieveTasksResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordRetrieveTaskDetailsInfo
+        """
         return self._Data
 
     @Data.setter
@@ -11510,6 +13676,9 @@ class ListRecordRetrieveTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11551,6 +13720,10 @@ class ListRecordTemplatesResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果，存在模板时，为Json数组格式，不存在模板时，字段数据为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordTemplateInfo
+        """
         return self._Data
 
     @Data.setter
@@ -11559,6 +13732,9 @@ class ListRecordTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11593,6 +13769,9 @@ class ListSubTasksData(AbstractModel):
 
     @property
     def List(self):
+        """子任务列表
+        :rtype: list of SubTaskData
+        """
         return self._List
 
     @List.setter
@@ -11601,6 +13780,9 @@ class ListSubTasksData(AbstractModel):
 
     @property
     def TotalCount(self):
+        """子任务数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -11649,6 +13831,9 @@ class ListSubTasksRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """复杂任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -11657,6 +13842,9 @@ class ListSubTasksRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码，默认为1
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -11665,6 +13853,9 @@ class ListSubTasksRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页数量，默认为10
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -11673,6 +13864,9 @@ class ListSubTasksRequest(AbstractModel):
 
     @property
     def Status(self):
+        """默认不对该字段进行筛选，否则根据任务状态进行筛选。状态码：1-NEW，2-RUNNING，3-COMPLETED，4-FAILED
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -11712,6 +13906,9 @@ class ListSubTasksResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListSubTasksData`
+        """
         return self._Data
 
     @Data.setter
@@ -11720,6 +13917,9 @@ class ListSubTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11753,6 +13953,10 @@ class ListTasksData(AbstractModel):
 
     @property
     def List(self):
+        """任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TaskData
+        """
         return self._List
 
     @List.setter
@@ -11761,6 +13965,10 @@ class ListTasksData(AbstractModel):
 
     @property
     def TotalCount(self):
+        """任务数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -11819,6 +14027,9 @@ BatchRefreshDeviceChannel
 
     @property
     def PageNumber(self):
+        """页码，默认为1
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -11827,6 +14038,9 @@ BatchRefreshDeviceChannel
 
     @property
     def PageSize(self):
+        """每页数量，默认为20
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -11835,6 +14049,13 @@ BatchRefreshDeviceChannel
 
     @property
     def Operation(self):
+        """默认不根据该字段进行筛选，否则根据设备操作类型进行筛选，目前值有：BatchDeleteUserDevice，BatchDisableDevice，BatchEnableDevice，
+BatchUpgradeDevice，
+BatchResetDevice,
+BatchRebootDevice,
+BatchRefreshDeviceChannel
+        :rtype: str
+        """
         return self._Operation
 
     @Operation.setter
@@ -11843,6 +14064,9 @@ BatchRefreshDeviceChannel
 
     @property
     def Status(self):
+        """默认不根据该字段进行筛选，否则根据任务状态进行筛选。状态码：1-未执行，2-执行中，3-完成，4-取消
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -11851,6 +14075,9 @@ BatchRefreshDeviceChannel
 
     @property
     def BeginTime(self):
+        """开始时间
+        :rtype: int
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -11859,6 +14086,9 @@ BatchRefreshDeviceChannel
 
     @property
     def EndTime(self):
+        """结束时间
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -11900,6 +14130,9 @@ class ListTasksResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListTasksData`
+        """
         return self._Data
 
     @Data.setter
@@ -11908,6 +14141,9 @@ class ListTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11945,6 +14181,9 @@ class Location(AbstractModel):
 
     @property
     def X(self):
+        """左上角 X 坐标轴
+        :rtype: int
+        """
         return self._X
 
     @X.setter
@@ -11953,6 +14192,9 @@ class Location(AbstractModel):
 
     @property
     def Y(self):
+        """左上角 Y 坐标轴
+        :rtype: int
+        """
         return self._Y
 
     @Y.setter
@@ -11961,6 +14203,9 @@ class Location(AbstractModel):
 
     @property
     def Width(self):
+        """方框宽
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -11969,6 +14214,9 @@ class Location(AbstractModel):
 
     @property
     def Height(self):
+        """方框高
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -12008,6 +14256,9 @@ class OperTimeSlot(AbstractModel):
 
     @property
     def Start(self):
+        """开始时间。格式为"hh:mm:ss"，且 Start 必须小于 End
+        :rtype: str
+        """
         return self._Start
 
     @Start.setter
@@ -12016,6 +14267,9 @@ class OperTimeSlot(AbstractModel):
 
     @property
     def End(self):
+        """结束时间。格式为"hh:mm:ss"，且 Start 必须小于 End
+        :rtype: str
+        """
         return self._End
 
     @End.setter
@@ -12064,6 +14318,9 @@ class OrganizationChannelInfo(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备通道所属的设备ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -12072,6 +14329,10 @@ class OrganizationChannelInfo(AbstractModel):
 
     @property
     def DeviceName(self):
+        """设备通道所属的设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -12080,6 +14341,9 @@ class OrganizationChannelInfo(AbstractModel):
 
     @property
     def ChannelId(self):
+        """设备通道ID
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -12088,6 +14352,10 @@ class OrganizationChannelInfo(AbstractModel):
 
     @property
     def ChannelName(self):
+        """设备通道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -12096,6 +14364,9 @@ class OrganizationChannelInfo(AbstractModel):
 
     @property
     def InPlan(self):
+        """该通道是否在上云计划中，如果是，则不能在添加到其他上云计划|true：在上云计划中，false：不在上云计划中
+        :rtype: bool
+        """
         return self._InPlan
 
     @InPlan.setter
@@ -12139,6 +14410,9 @@ class PetAIResultInfo(AbstractModel):
 
     @property
     def Time(self):
+        """时间字符串
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -12147,6 +14421,9 @@ class PetAIResultInfo(AbstractModel):
 
     @property
     def Url(self):
+        """截图 URL
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -12155,6 +14432,9 @@ class PetAIResultInfo(AbstractModel):
 
     @property
     def PetInfo(self):
+        """宠物信息
+        :rtype: list of BaseAIResultInfo
+        """
         return self._PetInfo
 
     @PetInfo.setter
@@ -12201,6 +14481,9 @@ class PhoneCallAIResultInfo(AbstractModel):
 
     @property
     def Time(self):
+        """时间字符串
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -12209,6 +14492,9 @@ class PhoneCallAIResultInfo(AbstractModel):
 
     @property
     def Url(self):
+        """截图 URL
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -12217,6 +14503,9 @@ class PhoneCallAIResultInfo(AbstractModel):
 
     @property
     def PhoneCallInfo(self):
+        """打电话信息
+        :rtype: list of BaseAIResultInfo
+        """
         return self._PhoneCallInfo
 
     @PhoneCallInfo.setter
@@ -12266,6 +14555,9 @@ class PlateContent(AbstractModel):
 
     @property
     def Plate(self):
+        """车牌号信息
+        :rtype: str
+        """
         return self._Plate
 
     @Plate.setter
@@ -12274,6 +14566,9 @@ class PlateContent(AbstractModel):
 
     @property
     def Color(self):
+        """车牌的颜色
+        :rtype: str
+        """
         return self._Color
 
     @Color.setter
@@ -12282,6 +14577,9 @@ class PlateContent(AbstractModel):
 
     @property
     def Type(self):
+        """车牌的种类，例如普通蓝牌
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -12290,6 +14588,9 @@ class PlateContent(AbstractModel):
 
     @property
     def Location(self):
+        """截图中坐标信息
+        :rtype: :class:`tencentcloud.iss.v20230517.models.Location`
+        """
         return self._Location
 
     @Location.setter
@@ -12329,6 +14630,10 @@ class PlayRecordData(AbstractModel):
 
     @property
     def Flv(self):
+        """录像播放地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Flv
 
     @Flv.setter
@@ -12377,6 +14682,9 @@ class PlayRecordRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道 ID（从查询通道DescribeDeviceChannel接口中获取）
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -12385,6 +14693,9 @@ class PlayRecordRequest(AbstractModel):
 
     @property
     def Start(self):
+        """起始时间
+        :rtype: int
+        """
         return self._Start
 
     @Start.setter
@@ -12393,6 +14704,9 @@ class PlayRecordRequest(AbstractModel):
 
     @property
     def End(self):
+        """ 结束时间
+        :rtype: int
+        """
         return self._End
 
     @End.setter
@@ -12401,6 +14715,9 @@ class PlayRecordRequest(AbstractModel):
 
     @property
     def StreamType(self):
+        """流类型（1:主码流；2:子码流（不可以和 Resolution 同时下发））
+        :rtype: int
+        """
         return self._StreamType
 
     @StreamType.setter
@@ -12409,6 +14726,9 @@ class PlayRecordRequest(AbstractModel):
 
     @property
     def Resolution(self):
+        """分辨率（1:QCIF；2:CIF； 3:4CIF； 4:D1； 5:720P； 6:1080P/I； 自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -12417,6 +14737,9 @@ class PlayRecordRequest(AbstractModel):
 
     @property
     def IsInternal(self):
+        """是否内网
+        :rtype: bool
+        """
         return self._IsInternal
 
     @IsInternal.setter
@@ -12458,6 +14781,9 @@ class PlayRecordResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.iss.v20230517.models.PlayRecordData`
+        """
         return self._Data
 
     @Data.setter
@@ -12466,6 +14792,9 @@ class PlayRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12500,6 +14829,9 @@ class QueryForbidPlayChannelListRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """子用户uin，也可以是主用户的uin
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -12508,6 +14840,9 @@ class QueryForbidPlayChannelListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页最大数量，最大为200，超过按照200返回
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -12516,6 +14851,9 @@ class QueryForbidPlayChannelListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """第几页
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -12555,6 +14893,10 @@ class QueryForbidPlayChannelListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListForbidplayChannelsData`
+        """
         return self._Data
 
     @Data.setter
@@ -12563,6 +14905,9 @@ class QueryForbidPlayChannelListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12617,6 +14962,9 @@ class RecordPlanBaseInfo(AbstractModel):
 
     @property
     def PlanId(self):
+        """上云计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -12625,6 +14973,9 @@ class RecordPlanBaseInfo(AbstractModel):
 
     @property
     def PlanName(self):
+        """上云计划名称
+        :rtype: str
+        """
         return self._PlanName
 
     @PlanName.setter
@@ -12633,6 +14984,9 @@ class RecordPlanBaseInfo(AbstractModel):
 
     @property
     def TemplateId(self):
+        """上云模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -12641,6 +14995,10 @@ class RecordPlanBaseInfo(AbstractModel):
 
     @property
     def Describe(self):
+        """上云计划描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Describe
 
     @Describe.setter
@@ -12649,6 +15007,10 @@ class RecordPlanBaseInfo(AbstractModel):
 
     @property
     def StreamType(self):
+        """码流类型，default:设备默认码流类型，main:主码流，sub:子码流，其他根据设备能力集自定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StreamType
 
     @StreamType.setter
@@ -12657,6 +15019,9 @@ class RecordPlanBaseInfo(AbstractModel):
 
     @property
     def LifeCycle(self):
+        """云文件生命周期
+        :rtype: :class:`tencentcloud.iss.v20230517.models.LifeCycleData`
+        """
         return self._LifeCycle
 
     @LifeCycle.setter
@@ -12665,6 +15030,9 @@ class RecordPlanBaseInfo(AbstractModel):
 
     @property
     def Status(self):
+        """录像计划状态，1:正常使用中，0:删除中，无法使用
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -12673,6 +15041,9 @@ class RecordPlanBaseInfo(AbstractModel):
 
     @property
     def ChannelCount(self):
+        """通道总数
+        :rtype: int
+        """
         return self._ChannelCount
 
     @ChannelCount.setter
@@ -12681,6 +15052,9 @@ class RecordPlanBaseInfo(AbstractModel):
 
     @property
     def RepairMode(self):
+        """录像补录模式（0:不启用，1:启用）
+        :rtype: int
+        """
         return self._RepairMode
 
     @RepairMode.setter
@@ -12742,6 +15116,9 @@ class RecordPlanChannelInfo(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备通道所属的设备ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -12750,6 +15127,10 @@ class RecordPlanChannelInfo(AbstractModel):
 
     @property
     def DeviceName(self):
+        """设备通道所属的设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -12758,6 +15139,9 @@ class RecordPlanChannelInfo(AbstractModel):
 
     @property
     def ChannelId(self):
+        """设备通道ID
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -12766,6 +15150,10 @@ class RecordPlanChannelInfo(AbstractModel):
 
     @property
     def ChannelName(self):
+        """设备通道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -12774,6 +15162,10 @@ class RecordPlanChannelInfo(AbstractModel):
 
     @property
     def OrganizationName(self):
+        """所属组织名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrganizationName
 
     @OrganizationName.setter
@@ -12782,6 +15174,9 @@ class RecordPlanChannelInfo(AbstractModel):
 
     @property
     def AccessProtocol(self):
+        """通道所属设备的接入协议类型
+        :rtype: int
+        """
         return self._AccessProtocol
 
     @AccessProtocol.setter
@@ -12840,6 +15235,9 @@ class RecordPlanOptData(AbstractModel):
 
     @property
     def PlanId(self):
+        """上云计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -12848,6 +15246,9 @@ class RecordPlanOptData(AbstractModel):
 
     @property
     def PlanName(self):
+        """上云计划名称
+        :rtype: str
+        """
         return self._PlanName
 
     @PlanName.setter
@@ -12856,6 +15257,9 @@ class RecordPlanOptData(AbstractModel):
 
     @property
     def TemplateId(self):
+        """上云模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -12864,6 +15268,10 @@ class RecordPlanOptData(AbstractModel):
 
     @property
     def Describe(self):
+        """上云计划描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Describe
 
     @Describe.setter
@@ -12872,6 +15280,9 @@ class RecordPlanOptData(AbstractModel):
 
     @property
     def LifeCycle(self):
+        """云文件生命周期
+        :rtype: :class:`tencentcloud.iss.v20230517.models.LifeCycleData`
+        """
         return self._LifeCycle
 
     @LifeCycle.setter
@@ -12880,6 +15291,10 @@ class RecordPlanOptData(AbstractModel):
 
     @property
     def StreamType(self):
+        """码流类型，default:设备默认码流类型，main:主码流，sub:子码流，其他根据设备能力集自定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StreamType
 
     @StreamType.setter
@@ -12888,6 +15303,9 @@ class RecordPlanOptData(AbstractModel):
 
     @property
     def RepairMode(self):
+        """录像补录模式（0:不启用，1:启用）
+        :rtype: int
+        """
         return self._RepairMode
 
     @RepairMode.setter
@@ -12929,6 +15347,9 @@ class RecordPlaybackUrl(AbstractModel):
 
     @property
     def Hls(self):
+        """hls回放url
+        :rtype: str
+        """
         return self._Hls
 
     @Hls.setter
@@ -12974,6 +15395,9 @@ class RecordRetrieveTaskChannelInfo(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备通道所属的设备ID
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -12982,6 +15406,9 @@ class RecordRetrieveTaskChannelInfo(AbstractModel):
 
     @property
     def DeviceName(self):
+        """设备通道所属的设备名称
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -12990,6 +15417,9 @@ class RecordRetrieveTaskChannelInfo(AbstractModel):
 
     @property
     def ChannelId(self):
+        """设备通道ID
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -12998,6 +15428,9 @@ class RecordRetrieveTaskChannelInfo(AbstractModel):
 
     @property
     def ChannelName(self):
+        """设备通道名称 
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -13006,6 +15439,9 @@ class RecordRetrieveTaskChannelInfo(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，0:已取回，1:取回中，2:待取回, 3:无归档录像
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -13071,6 +15507,9 @@ class RecordRetrieveTaskDetailsInfo(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -13079,6 +15518,9 @@ class RecordRetrieveTaskDetailsInfo(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -13087,6 +15529,9 @@ class RecordRetrieveTaskDetailsInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """取回录像的开始时间 
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -13095,6 +15540,9 @@ class RecordRetrieveTaskDetailsInfo(AbstractModel):
 
     @property
     def EndTime(self):
+        """取回录像的结束时间
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -13103,6 +15551,9 @@ class RecordRetrieveTaskDetailsInfo(AbstractModel):
 
     @property
     def Mode(self):
+        """取回模式，1:极速模式，其他暂不支持
+        :rtype: int
+        """
         return self._Mode
 
     @Mode.setter
@@ -13111,6 +15562,9 @@ class RecordRetrieveTaskDetailsInfo(AbstractModel):
 
     @property
     def Expiration(self):
+        """副本有效期
+        :rtype: int
+        """
         return self._Expiration
 
     @Expiration.setter
@@ -13119,6 +15573,9 @@ class RecordRetrieveTaskDetailsInfo(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态， 0:已取回，1:取回中，2:待取回
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -13127,6 +15584,9 @@ class RecordRetrieveTaskDetailsInfo(AbstractModel):
 
     @property
     def Capacity(self):
+        """取回容量，单位MB
+        :rtype: int
+        """
         return self._Capacity
 
     @Capacity.setter
@@ -13135,6 +15595,10 @@ class RecordRetrieveTaskDetailsInfo(AbstractModel):
 
     @property
     def Describe(self):
+        """任务描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Describe
 
     @Describe.setter
@@ -13143,6 +15607,9 @@ class RecordRetrieveTaskDetailsInfo(AbstractModel):
 
     @property
     def ChannelCount(self):
+        """任务通道数量
+        :rtype: int
+        """
         return self._ChannelCount
 
     @ChannelCount.setter
@@ -13188,6 +15655,9 @@ class RecordSliceInfo(AbstractModel):
 
     @property
     def PlanId(self):
+        """计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -13196,6 +15666,9 @@ class RecordSliceInfo(AbstractModel):
 
     @property
     def List(self):
+        """录像切片开始和结束时间列表
+        :rtype: list of RecordTimeLine
+        """
         return self._List
 
     @List.setter
@@ -13241,6 +15714,9 @@ class RecordTemplateInfo(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -13249,6 +15725,9 @@ class RecordTemplateInfo(AbstractModel):
 
     @property
     def TemplateName(self):
+        """模板名称
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -13257,6 +15736,9 @@ class RecordTemplateInfo(AbstractModel):
 
     @property
     def TimeSections(self):
+        """上云时间段，按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟
+        :rtype: list of RecordTemplateTimeSections
+        """
         return self._TimeSections
 
     @TimeSections.setter
@@ -13303,6 +15785,9 @@ class RecordTemplateTimeSections(AbstractModel):
 
     @property
     def DayOfWeek(self):
+        """周日期，取值范围1～7（对应周一～周日
+        :rtype: int
+        """
         return self._DayOfWeek
 
     @DayOfWeek.setter
@@ -13311,6 +15796,9 @@ class RecordTemplateTimeSections(AbstractModel):
 
     @property
     def StartTime(self):
+        """开始时间，格式：HH:MM:SS，范围：[00:00:00～23:59:59]
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -13319,6 +15807,9 @@ class RecordTemplateTimeSections(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间，格式：HH:MM:SS，范围：[00:00:00～23:59:59] 
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -13361,6 +15852,9 @@ class RecordTimeLine(AbstractModel):
 
     @property
     def Begin(self):
+        """时间片段开始时间，UTC秒数，例如：1662114146
+        :rtype: int
+        """
         return self._Begin
 
     @Begin.setter
@@ -13369,6 +15863,9 @@ class RecordTimeLine(AbstractModel):
 
     @property
     def End(self):
+        """时间片段结束时间，UTC秒数，例如：1662114146
+        :rtype: int
+        """
         return self._End
 
     @End.setter
@@ -13377,6 +15874,10 @@ class RecordTimeLine(AbstractModel):
 
     @property
     def HlsUrl(self):
+        """对应时间片段的播放url
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._HlsUrl
 
     @HlsUrl.setter
@@ -13412,6 +15913,9 @@ class RefreshDeviceChannelRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备 ID（从获取设备列表ListDevices接口中获取）
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -13445,6 +15949,9 @@ class RefreshDeviceChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13473,6 +15980,9 @@ class SetForbidPlayChannelsRequest(AbstractModel):
 
     @property
     def Channels(self):
+        """要禁播的通道参数，一次最多可以设置200个通道
+        :rtype: list of SetForbidplayChannelParam
+        """
         return self._Channels
 
     @Channels.setter
@@ -13481,6 +15991,9 @@ class SetForbidPlayChannelsRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """用户uin，可以是子用户的也可以是主用户的uin
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -13520,6 +16033,9 @@ class SetForbidPlayChannelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13548,6 +16064,9 @@ class SetForbidplayChannelParam(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道Id
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -13556,6 +16075,9 @@ class SetForbidplayChannelParam(AbstractModel):
 
     @property
     def Enable(self):
+        """是否禁止通道播流
+        :rtype: bool
+        """
         return self._Enable
 
     @Enable.setter
@@ -13596,6 +16118,9 @@ class SmokingAIResultInfo(AbstractModel):
 
     @property
     def Time(self):
+        """时间字符串
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -13604,6 +16129,9 @@ class SmokingAIResultInfo(AbstractModel):
 
     @property
     def Url(self):
+        """截图 URL
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -13612,6 +16140,9 @@ class SmokingAIResultInfo(AbstractModel):
 
     @property
     def SmokingInfo(self):
+        """抽烟信息
+        :rtype: list of BaseAIResultInfo
+        """
         return self._SmokingInfo
 
     @SmokingInfo.setter
@@ -13655,6 +16186,9 @@ class SnapshotConfig(AbstractModel):
 
     @property
     def TimeInterval(self):
+        """截图频率。可选值1～20秒
+        :rtype: int
+        """
         return self._TimeInterval
 
     @TimeInterval.setter
@@ -13663,6 +16197,9 @@ class SnapshotConfig(AbstractModel):
 
     @property
     def OperTimeSlot(self):
+        """模板生效的时间段。最多包含5组时间段
+        :rtype: list of OperTimeSlot
+        """
         return self._OperTimeSlot
 
     @OperTimeSlot.setter
@@ -13749,6 +16286,9 @@ class SubTaskData(AbstractModel):
 
     @property
     def SubTaskId(self):
+        """子任务ID
+        :rtype: str
+        """
         return self._SubTaskId
 
     @SubTaskId.setter
@@ -13757,6 +16297,9 @@ class SubTaskData(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态1:NEW,2:RUNNING,3:COMPLETED ,4:FAILED
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -13765,6 +16308,10 @@ class SubTaskData(AbstractModel):
 
     @property
     def FailReason(self):
+        """任务失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FailReason
 
     @FailReason.setter
@@ -13773,6 +16320,9 @@ class SubTaskData(AbstractModel):
 
     @property
     def Progress(self):
+        """任务进度
+        :rtype: float
+        """
         return self._Progress
 
     @Progress.setter
@@ -13781,6 +16331,9 @@ class SubTaskData(AbstractModel):
 
     @property
     def Action(self):
+        """操作类型
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -13789,6 +16342,9 @@ class SubTaskData(AbstractModel):
 
     @property
     def ActionZhDesc(self):
+        """操作类型中文描述
+        :rtype: str
+        """
         return self._ActionZhDesc
 
     @ActionZhDesc.setter
@@ -13797,6 +16353,9 @@ class SubTaskData(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -13805,6 +16364,9 @@ class SubTaskData(AbstractModel):
 
     @property
     def StartedAt(self):
+        """启动任务时间
+        :rtype: str
+        """
         return self._StartedAt
 
     @StartedAt.setter
@@ -13813,6 +16375,9 @@ class SubTaskData(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """创建任务时间
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -13821,6 +16386,9 @@ class SubTaskData(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """更新任务时间
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -13829,6 +16397,9 @@ class SubTaskData(AbstractModel):
 
     @property
     def Runtime(self):
+        """任务运行时间，单位ms
+        :rtype: int
+        """
         return self._Runtime
 
     @Runtime.setter
@@ -13837,6 +16408,10 @@ class SubTaskData(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -13845,6 +16420,10 @@ class SubTaskData(AbstractModel):
 
     @property
     def DeviceName(self):
+        """设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -13853,6 +16432,10 @@ class SubTaskData(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -13861,6 +16444,10 @@ class SubTaskData(AbstractModel):
 
     @property
     def ChannelName(self):
+        """通道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -13970,6 +16557,9 @@ class TaskData(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -13978,6 +16568,9 @@ class TaskData(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态1:NEW,2:RUNNING,3:COMPLETED ,4:FAILED
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -13986,6 +16579,10 @@ class TaskData(AbstractModel):
 
     @property
     def FailReason(self):
+        """失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FailReason
 
     @FailReason.setter
@@ -13994,6 +16591,9 @@ class TaskData(AbstractModel):
 
     @property
     def Progress(self):
+        """进度（0-1）
+        :rtype: float
+        """
         return self._Progress
 
     @Progress.setter
@@ -14002,6 +16602,9 @@ class TaskData(AbstractModel):
 
     @property
     def Action(self):
+        """任务操作类型，批量任务类型以Batch开头
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -14010,6 +16613,9 @@ class TaskData(AbstractModel):
 
     @property
     def ActionZhDesc(self):
+        """操作类型中文描述
+        :rtype: str
+        """
         return self._ActionZhDesc
 
     @ActionZhDesc.setter
@@ -14018,6 +16624,9 @@ class TaskData(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型 1.简单 2.复杂 3.子任务
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -14026,6 +16635,9 @@ class TaskData(AbstractModel):
 
     @property
     def ResourceId(self):
+        """任务资源id（复杂任务该字段无效）
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -14034,6 +16646,9 @@ class TaskData(AbstractModel):
 
     @property
     def Total(self):
+        """总任务数（仅复杂任务有效）
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -14042,6 +16657,9 @@ class TaskData(AbstractModel):
 
     @property
     def SuccessCount(self):
+        """成功任务数（仅复杂任务有效）
+        :rtype: int
+        """
         return self._SuccessCount
 
     @SuccessCount.setter
@@ -14050,6 +16668,9 @@ class TaskData(AbstractModel):
 
     @property
     def FailCount(self):
+        """失败任务数（仅复杂任务有效）
+        :rtype: int
+        """
         return self._FailCount
 
     @FailCount.setter
@@ -14058,6 +16679,9 @@ class TaskData(AbstractModel):
 
     @property
     def RunningCount(self):
+        """运行任务数（仅复杂任务有效）
+        :rtype: int
+        """
         return self._RunningCount
 
     @RunningCount.setter
@@ -14066,6 +16690,9 @@ class TaskData(AbstractModel):
 
     @property
     def StartedAt(self):
+        """启动任务时间
+        :rtype: str
+        """
         return self._StartedAt
 
     @StartedAt.setter
@@ -14074,6 +16701,9 @@ class TaskData(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """创建任务时间
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -14082,6 +16712,9 @@ class TaskData(AbstractModel):
 
     @property
     def UpdatedAt(self):
+        """更新任务时间
+        :rtype: str
+        """
         return self._UpdatedAt
 
     @UpdatedAt.setter
@@ -14090,6 +16723,9 @@ class TaskData(AbstractModel):
 
     @property
     def Runtime(self):
+        """任务运行时间，单位ms
+        :rtype: int
+        """
         return self._Runtime
 
     @Runtime.setter
@@ -14098,6 +16734,10 @@ class TaskData(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -14106,6 +16746,10 @@ class TaskData(AbstractModel):
 
     @property
     def DeviceName(self):
+        """设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -14114,6 +16758,10 @@ class TaskData(AbstractModel):
 
     @property
     def ChannelId(self):
+        """通道ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -14122,6 +16770,10 @@ class TaskData(AbstractModel):
 
     @property
     def ChannelName(self):
+        """ 通道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -14179,6 +16831,10 @@ class Timeline(AbstractModel):
 
     @property
     def Begin(self):
+        """分片起始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Begin
 
     @Begin.setter
@@ -14187,6 +16843,10 @@ class Timeline(AbstractModel):
 
     @property
     def End(self):
+        """分片结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._End
 
     @End.setter
@@ -14239,6 +16899,9 @@ class UpdateAITaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """AI 任务 ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -14247,6 +16910,9 @@ class UpdateAITaskRequest(AbstractModel):
 
     @property
     def Name(self):
+        """AI 任务名称。仅支持中文、英文、数字、_、-，长度不超过32个字符
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14255,6 +16921,9 @@ class UpdateAITaskRequest(AbstractModel):
 
     @property
     def Desc(self):
+        """AI 任务描述。仅支持中文、英文、数字、_、-，长度不超过128个字符
+        :rtype: str
+        """
         return self._Desc
 
     @Desc.setter
@@ -14263,6 +16932,9 @@ class UpdateAITaskRequest(AbstractModel):
 
     @property
     def ChannelList(self):
+        """通道 ID 列表。不能添加存在于其他 AI 任务的通道，限制1000个通道。
+        :rtype: list of str
+        """
         return self._ChannelList
 
     @ChannelList.setter
@@ -14271,6 +16943,9 @@ class UpdateAITaskRequest(AbstractModel):
 
     @property
     def CallbackUrl(self):
+        """AI 结果回调地址。类似 "http://ip:port/***或者https://domain/***
+        :rtype: str
+        """
         return self._CallbackUrl
 
     @CallbackUrl.setter
@@ -14279,6 +16954,9 @@ class UpdateAITaskRequest(AbstractModel):
 
     @property
     def IsStartTheTask(self):
+        """是否立即开启 AI 任务。"true"代表立即开启 AI 任务，"false"代表暂不开启 AI 任务，默认为 false。
+        :rtype: bool
+        """
         return self._IsStartTheTask
 
     @IsStartTheTask.setter
@@ -14287,6 +16965,9 @@ class UpdateAITaskRequest(AbstractModel):
 
     @property
     def Templates(self):
+        """AI 配置列表
+        :rtype: list of AITemplates
+        """
         return self._Templates
 
     @Templates.setter
@@ -14335,6 +17016,10 @@ class UpdateAITaskResponse(AbstractModel):
 
     @property
     def Data(self):
+        """AI任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iss.v20230517.models.AITaskInfo`
+        """
         return self._Data
 
     @Data.setter
@@ -14343,6 +17028,9 @@ class UpdateAITaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14374,6 +17062,9 @@ class UpdateAITaskStatusRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """AI 任务 ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -14382,6 +17073,9 @@ class UpdateAITaskStatusRequest(AbstractModel):
 
     @property
     def Status(self):
+        """AI 任务状态。"on"代表开启了 AI 分析任务，"off"代表停止AI分析任务
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -14416,6 +17110,9 @@ class UpdateAITaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14511,6 +17208,10 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -14519,6 +17220,10 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def Code(self):
+        """设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -14527,6 +17232,10 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def Name(self):
+        """设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14535,6 +17244,10 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def AccessProtocol(self):
+        """设备接入协议，1:RTMP,2:GB,3:GW 
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AccessProtocol
 
     @AccessProtocol.setter
@@ -14543,6 +17256,10 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def Type(self):
+        """设备类型，1:IPC,2:NVR
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -14551,6 +17268,10 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def ClusterId(self):
+        """设备接入服务节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -14559,6 +17280,11 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def ClusterName(self):
+        """设备接入服务节点名称
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -14567,6 +17293,10 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def TransportProtocol(self):
+        """设备流传输协议，1:UDP,2:TCP 
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TransportProtocol
 
     @TransportProtocol.setter
@@ -14575,6 +17305,10 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def Password(self):
+        """设备密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -14583,6 +17317,10 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def Description(self):
+        """设备描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -14591,6 +17329,10 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def Status(self):
+        """设备状态，0:未注册,1:在线,2:离线,3:禁用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -14599,6 +17341,10 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def OrganizationId(self):
+        """设备所属组织ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._OrganizationId
 
     @OrganizationId.setter
@@ -14607,6 +17353,10 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def GatewayId(self):
+        """设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -14615,6 +17365,10 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def ProtocolType(self):
+        """网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ProtocolType
 
     @ProtocolType.setter
@@ -14623,6 +17377,10 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def Ip(self):
+        """设备接入IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -14631,6 +17389,10 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def Port(self):
+        """设备Port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -14639,6 +17401,10 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def Username(self):
+        """设备用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -14647,6 +17413,10 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def AppId(self):
+        """用户Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -14700,6 +17470,9 @@ class UpdateDeviceOrganizationRequest(AbstractModel):
 
     @property
     def DeviceIds(self):
+        """设备 ID 数组（从获取设备列表接口ListDevices中获取）
+        :rtype: list of str
+        """
         return self._DeviceIds
 
     @DeviceIds.setter
@@ -14708,6 +17481,9 @@ class UpdateDeviceOrganizationRequest(AbstractModel):
 
     @property
     def OrganizationId(self):
+        """组织 ID（从查询组织接口DescribeOrganization中获取）
+        :rtype: str
+        """
         return self._OrganizationId
 
     @OrganizationId.setter
@@ -14742,6 +17518,9 @@ class UpdateDeviceOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14770,6 +17549,9 @@ class UpdateDeviceStatusRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备 ID（从获取设备列表接口ListDevices中获取）
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -14778,6 +17560,9 @@ class UpdateDeviceStatusRequest(AbstractModel):
 
     @property
     def Status(self):
+        """禁用启用状态码（2：启用，3:禁用）
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -14812,6 +17597,9 @@ class UpdateDeviceStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14874,6 +17662,10 @@ class UpdateGatewayData(AbstractModel):
 
     @property
     def GatewayId(self):
+        """网关索引ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -14882,6 +17674,10 @@ class UpdateGatewayData(AbstractModel):
 
     @property
     def GwId(self):
+        """网关编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GwId
 
     @GwId.setter
@@ -14890,6 +17686,10 @@ class UpdateGatewayData(AbstractModel):
 
     @property
     def Name(self):
+        """网关名称，仅支持中文、英文、数字、_、-，长度不超过32个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14898,6 +17698,10 @@ class UpdateGatewayData(AbstractModel):
 
     @property
     def Description(self):
+        """网关描述，仅支持中文、英文、数字、_、-，长度不超过128个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -14906,6 +17710,10 @@ class UpdateGatewayData(AbstractModel):
 
     @property
     def ClusterId(self):
+        """服务节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -14914,6 +17722,10 @@ class UpdateGatewayData(AbstractModel):
 
     @property
     def ClusterName(self):
+        """服务节点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -14922,6 +17734,10 @@ class UpdateGatewayData(AbstractModel):
 
     @property
     def Status(self):
+        """网关状态，0：离线，1:在线
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -14930,6 +17746,10 @@ class UpdateGatewayData(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """激活时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -14938,6 +17758,10 @@ class UpdateGatewayData(AbstractModel):
 
     @property
     def Secret(self):
+        """网关密钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Secret
 
     @Secret.setter
@@ -14946,6 +17770,10 @@ class UpdateGatewayData(AbstractModel):
 
     @property
     def Version(self):
+        """网关版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -14994,6 +17822,9 @@ class UpdateGatewayRequest(AbstractModel):
 
     @property
     def GatewayId(self):
+        """网关索引ID（从获取网关列表ListGateways接口中获取）	
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -15002,6 +17833,9 @@ class UpdateGatewayRequest(AbstractModel):
 
     @property
     def Name(self):
+        """仅支持中文、英文、数网关名称，字、_、-，长度不超过32个字符
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -15010,6 +17844,9 @@ class UpdateGatewayRequest(AbstractModel):
 
     @property
     def Description(self):
+        """网关描述，仅支持中文、英文、数字、_、-，长度不超过128个字符
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -15048,6 +17885,9 @@ class UpdateGatewayResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.UpdateGatewayData`
+        """
         return self._Data
 
     @Data.setter
@@ -15056,6 +17896,9 @@ class UpdateGatewayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15113,6 +17956,10 @@ class UpdateOrgData(AbstractModel):
 
     @property
     def OrganizationId(self):
+        """组织 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OrganizationId
 
     @OrganizationId.setter
@@ -15121,6 +17968,10 @@ class UpdateOrgData(AbstractModel):
 
     @property
     def Name(self):
+        """组织名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -15129,6 +17980,10 @@ class UpdateOrgData(AbstractModel):
 
     @property
     def ParentId(self):
+        """组织父节点 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ParentId
 
     @ParentId.setter
@@ -15137,6 +17992,10 @@ class UpdateOrgData(AbstractModel):
 
     @property
     def Level(self):
+        """组织层级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -15145,6 +18004,10 @@ class UpdateOrgData(AbstractModel):
 
     @property
     def AppId(self):
+        """用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -15153,6 +18016,10 @@ class UpdateOrgData(AbstractModel):
 
     @property
     def ParentIds(self):
+        """组织结构
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ParentIds
 
     @ParentIds.setter
@@ -15161,6 +18028,10 @@ class UpdateOrgData(AbstractModel):
 
     @property
     def Total(self):
+        """设备总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -15169,6 +18040,10 @@ class UpdateOrgData(AbstractModel):
 
     @property
     def Online(self):
+        """设备在线数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Online
 
     @Online.setter
@@ -15212,6 +18087,9 @@ class UpdateOrganizationRequest(AbstractModel):
 
     @property
     def OrganizationId(self):
+        """组织ID（从查询组织接口DescribeOrganization中获取）
+        :rtype: str
+        """
         return self._OrganizationId
 
     @OrganizationId.setter
@@ -15220,6 +18098,9 @@ class UpdateOrganizationRequest(AbstractModel):
 
     @property
     def Name(self):
+        """组织名称，支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过64位，且组织名称不能重复
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -15257,6 +18138,9 @@ class UpdateOrganizationResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.iss.v20230517.models.UpdateOrgData`
+        """
         return self._Data
 
     @Data.setter
@@ -15265,6 +18149,9 @@ class UpdateOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15317,6 +18204,9 @@ class UpdateRecordBackupPlanData(AbstractModel):
 
     @property
     def PlanId(self):
+        """录像上云计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -15325,6 +18215,9 @@ class UpdateRecordBackupPlanData(AbstractModel):
 
     @property
     def PlanName(self):
+        """录像上云计划名称
+        :rtype: str
+        """
         return self._PlanName
 
     @PlanName.setter
@@ -15333,6 +18226,9 @@ class UpdateRecordBackupPlanData(AbstractModel):
 
     @property
     def TemplateId(self):
+        """录像上云模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -15341,6 +18237,9 @@ class UpdateRecordBackupPlanData(AbstractModel):
 
     @property
     def Describe(self):
+        """录像上云计划描述
+        :rtype: str
+        """
         return self._Describe
 
     @Describe.setter
@@ -15349,6 +18248,9 @@ class UpdateRecordBackupPlanData(AbstractModel):
 
     @property
     def LifeCycle(self):
+        """云文件生命周期
+        :rtype: :class:`tencentcloud.iss.v20230517.models.LifeCycleData`
+        """
         return self._LifeCycle
 
     @LifeCycle.setter
@@ -15357,6 +18259,9 @@ class UpdateRecordBackupPlanData(AbstractModel):
 
     @property
     def Status(self):
+        """录像上云计划状态，1:正常使用中，0:删除中，无法使用
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -15365,6 +18270,9 @@ class UpdateRecordBackupPlanData(AbstractModel):
 
     @property
     def ChannelCount(self):
+        """通道数量
+        :rtype: int
+        """
         return self._ChannelCount
 
     @ChannelCount.setter
@@ -15373,6 +18281,9 @@ class UpdateRecordBackupPlanData(AbstractModel):
 
     @property
     def CreateAt(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateAt
 
     @CreateAt.setter
@@ -15381,6 +18292,9 @@ class UpdateRecordBackupPlanData(AbstractModel):
 
     @property
     def UpdateAt(self):
+        """修改时间
+        :rtype: str
+        """
         return self._UpdateAt
 
     @UpdateAt.setter
@@ -15442,6 +18356,9 @@ class UpdateRecordBackupPlanModify(AbstractModel):
 
     @property
     def PlanName(self):
+        """录像上云计划名称（仅支持中文、英文、数字、_、-，长度不超过32个字符，计划名称全局唯一，不能为空，不能重复，不修改名称时，不需要该字段）
+        :rtype: str
+        """
         return self._PlanName
 
     @PlanName.setter
@@ -15450,6 +18367,9 @@ class UpdateRecordBackupPlanModify(AbstractModel):
 
     @property
     def TemplateId(self):
+        """录制模板ID（从查询录像上云模板列表接口ListRecordBackupTemplates中获取，不修改模板ID时，不需要该字段）
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -15458,6 +18378,9 @@ class UpdateRecordBackupPlanModify(AbstractModel):
 
     @property
     def Describe(self):
+        """录像上云计划描述（仅支持中文、英文、数字、_、-，长度不超过128个字符， 不修改描述时，不需要该字段）
+        :rtype: str
+        """
         return self._Describe
 
     @Describe.setter
@@ -15466,6 +18389,9 @@ class UpdateRecordBackupPlanModify(AbstractModel):
 
     @property
     def LifeCycle(self):
+        """生命周期（录像文件生命周期设置，管理文件冷、热存储的时间，不修改生命周期时，不需要该字段）
+        :rtype: :class:`tencentcloud.iss.v20230517.models.LifeCycleData`
+        """
         return self._LifeCycle
 
     @LifeCycle.setter
@@ -15474,6 +18400,9 @@ class UpdateRecordBackupPlanModify(AbstractModel):
 
     @property
     def Add(self):
+        """要新增的设备通道（Json数组，没有新增时，不需要该字段，一次添加通道总数不超过5000个，包括组织目录下的通道数量）
+        :rtype: list of ChannelInfo
+        """
         return self._Add
 
     @Add.setter
@@ -15482,6 +18411,9 @@ class UpdateRecordBackupPlanModify(AbstractModel):
 
     @property
     def Del(self):
+        """要删除的设备通道（Json数组，内容为要删除的设备通道id，没有删除设备通道时，不需要该字段）
+        :rtype: list of str
+        """
         return self._Del
 
     @Del.setter
@@ -15490,6 +18422,9 @@ class UpdateRecordBackupPlanModify(AbstractModel):
 
     @property
     def OrganizationId(self):
+        """添加组织目录下所有设备通道（Json数组，可以为空，并且通道总数量不超过5000个（包括Add字段通道数量））
+        :rtype: list of str
+        """
         return self._OrganizationId
 
     @OrganizationId.setter
@@ -15539,6 +18474,9 @@ class UpdateRecordBackupPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -15547,6 +18485,9 @@ class UpdateRecordBackupPlanRequest(AbstractModel):
 
     @property
     def Mod(self):
+        """修改的内容
+        :rtype: :class:`tencentcloud.iss.v20230517.models.UpdateRecordBackupPlanModify`
+        """
         return self._Mod
 
     @Mod.setter
@@ -15586,6 +18527,9 @@ class UpdateRecordBackupPlanResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.UpdateRecordBackupPlanData`
+        """
         return self._Data
 
     @Data.setter
@@ -15594,6 +18538,9 @@ class UpdateRecordBackupPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15647,6 +18594,10 @@ class UpdateRecordBackupTemplateData(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -15655,6 +18606,10 @@ class UpdateRecordBackupTemplateData(AbstractModel):
 
     @property
     def TemplateName(self):
+        """模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -15663,6 +18618,10 @@ class UpdateRecordBackupTemplateData(AbstractModel):
 
     @property
     def TimeSections(self):
+        """上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordTemplateTimeSections
+        """
         return self._TimeSections
 
     @TimeSections.setter
@@ -15671,6 +18630,10 @@ class UpdateRecordBackupTemplateData(AbstractModel):
 
     @property
     def DevTimeSections(self):
+        """录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordTemplateTimeSections
+        """
         return self._DevTimeSections
 
     @DevTimeSections.setter
@@ -15679,6 +18642,10 @@ class UpdateRecordBackupTemplateData(AbstractModel):
 
     @property
     def Scale(self):
+        """上云倍速（支持1，2，4倍速）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Scale
 
     @Scale.setter
@@ -15687,6 +18654,10 @@ class UpdateRecordBackupTemplateData(AbstractModel):
 
     @property
     def CreateAt(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateAt
 
     @CreateAt.setter
@@ -15695,6 +18666,10 @@ class UpdateRecordBackupTemplateData(AbstractModel):
 
     @property
     def UpdateAt(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateAt
 
     @UpdateAt.setter
@@ -15753,6 +18728,9 @@ class UpdateRecordBackupTemplateModify(AbstractModel):
 
     @property
     def TemplateName(self):
+        """模板名称（不修改名称时，不需要带该字段）
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -15761,6 +18739,9 @@ class UpdateRecordBackupTemplateModify(AbstractModel):
 
     @property
     def TimeSections(self):
+        """上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        :rtype: list of RecordTemplateTimeSections
+        """
         return self._TimeSections
 
     @TimeSections.setter
@@ -15769,6 +18750,9 @@ class UpdateRecordBackupTemplateModify(AbstractModel):
 
     @property
     def DevTimeSections(self):
+        """录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        :rtype: list of RecordTemplateTimeSections
+        """
         return self._DevTimeSections
 
     @DevTimeSections.setter
@@ -15777,6 +18761,9 @@ class UpdateRecordBackupTemplateModify(AbstractModel):
 
     @property
     def Scale(self):
+        """上云倍速（支持1，2，4倍速）
+        :rtype: int
+        """
         return self._Scale
 
     @Scale.setter
@@ -15826,6 +18813,9 @@ class UpdateRecordBackupTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板ID（从查询录像上云模板列表接口ListRecordBackupTemplates中获取）
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -15834,6 +18824,9 @@ class UpdateRecordBackupTemplateRequest(AbstractModel):
 
     @property
     def Mod(self):
+        """修改录像上云模板数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.UpdateRecordBackupTemplateModify`
+        """
         return self._Mod
 
     @Mod.setter
@@ -15873,6 +18866,9 @@ class UpdateRecordBackupTemplateResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.UpdateRecordBackupTemplateData`
+        """
         return self._Data
 
     @Data.setter
@@ -15881,6 +18877,9 @@ class UpdateRecordBackupTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15933,6 +18932,9 @@ class UpdateRecordPlanData(AbstractModel):
 
     @property
     def PlanName(self):
+        """上云计划名称，仅支持中文、英文、数字、_、-，长度不超过32个字符，计划名称全局唯一，不能为空，不能重复，不修改名称时，不需要该字段
+        :rtype: str
+        """
         return self._PlanName
 
     @PlanName.setter
@@ -15941,6 +18943,9 @@ class UpdateRecordPlanData(AbstractModel):
 
     @property
     def TemplateId(self):
+        """上云模板ID，不修改模板ID时，不需要该字段
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -15949,6 +18954,9 @@ class UpdateRecordPlanData(AbstractModel):
 
     @property
     def Describe(self):
+        """上云计划描述，仅支持中文、英文、数字、_、-，长度不超过128个字符， 不修改描述时，不需要该字段
+        :rtype: str
+        """
         return self._Describe
 
     @Describe.setter
@@ -15957,6 +18965,9 @@ class UpdateRecordPlanData(AbstractModel):
 
     @property
     def StreamType(self):
+        """码流类型，default:不指定码流类型，以设备默认推送类型为主， main:主码流，sub:子码流，其他根据设备能力集自定义，长度不能超过32个字节
+        :rtype: str
+        """
         return self._StreamType
 
     @StreamType.setter
@@ -15965,6 +18976,9 @@ class UpdateRecordPlanData(AbstractModel):
 
     @property
     def LifeCycle(self):
+        """生命周期，文件生命周期设置，管理文件冷、热存储的时间，不修改生命周期时，不需要该字段
+        :rtype: :class:`tencentcloud.iss.v20230517.models.LifeCycleData`
+        """
         return self._LifeCycle
 
     @LifeCycle.setter
@@ -15973,6 +18987,9 @@ class UpdateRecordPlanData(AbstractModel):
 
     @property
     def Add(self):
+        """要新增的设备通道,Json数组，没有新增时，不需要该字段，一次添加通道总数不超过5000个，包括组织目录下的通道数量
+        :rtype: list of ChannelInfo
+        """
         return self._Add
 
     @Add.setter
@@ -15981,6 +18998,9 @@ class UpdateRecordPlanData(AbstractModel):
 
     @property
     def Del(self):
+        """要删除的设备通道，Json数组，内容为要删除的设备通道id，没有删除设备通道时，不需要该字段
+        :rtype: list of str
+        """
         return self._Del
 
     @Del.setter
@@ -15989,6 +19009,9 @@ class UpdateRecordPlanData(AbstractModel):
 
     @property
     def OrganizationId(self):
+        """组织目录ID，添加组织目录下所有设备通道，Json数组，可以为空，并且通道总数量不超过5000个（包括Add字段通道数量）
+        :rtype: list of str
+        """
         return self._OrganizationId
 
     @OrganizationId.setter
@@ -15997,6 +19020,9 @@ class UpdateRecordPlanData(AbstractModel):
 
     @property
     def RepairMode(self):
+        """录像补录模式（0:不启用，1:启用）
+        :rtype: int
+        """
         return self._RepairMode
 
     @RepairMode.setter
@@ -16048,6 +19074,9 @@ class UpdateRecordPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
+        """计划ID
+        :rtype: str
+        """
         return self._PlanId
 
     @PlanId.setter
@@ -16056,6 +19085,9 @@ class UpdateRecordPlanRequest(AbstractModel):
 
     @property
     def Mod(self):
+        """修改计划的内容
+        :rtype: :class:`tencentcloud.iss.v20230517.models.UpdateRecordPlanData`
+        """
         return self._Mod
 
     @Mod.setter
@@ -16095,6 +19127,9 @@ class UpdateRecordPlanResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.iss.v20230517.models.RecordPlanOptData`
+        """
         return self._Data
 
     @Data.setter
@@ -16103,6 +19138,9 @@ class UpdateRecordPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16134,6 +19172,9 @@ class UpdateRecordTemplateData(AbstractModel):
 
     @property
     def TemplateName(self):
+        """模板名称， 不修改名称时，不需要带该字段
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -16142,6 +19183,9 @@ class UpdateRecordTemplateData(AbstractModel):
 
     @property
     def TimeSections(self):
+        """上云时间段，不修改名称时，不需要带该字段
+        :rtype: list of RecordTemplateTimeSections
+        """
         return self._TimeSections
 
     @TimeSections.setter
@@ -16184,6 +19228,9 @@ class UpdateRecordTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """模板ID
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -16192,6 +19239,9 @@ class UpdateRecordTemplateRequest(AbstractModel):
 
     @property
     def Mod(self):
+        """修改内容
+        :rtype: :class:`tencentcloud.iss.v20230517.models.UpdateRecordTemplateData`
+        """
         return self._Mod
 
     @Mod.setter
@@ -16231,6 +19281,9 @@ class UpdateRecordTemplateResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.iss.v20230517.models.RecordTemplateInfo`
+        """
         return self._Data
 
     @Data.setter
@@ -16239,6 +19292,9 @@ class UpdateRecordTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16300,6 +19356,9 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def DeviceId(self):
+        """设备ID（从获取设备列表接口ListDevices中获取）
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -16308,6 +19367,9 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def Name(self):
+        """设备名称（仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位）
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -16316,6 +19378,9 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def TransportProtocol(self):
+        """设备流传输协议，仅国标设备有效，填0则不做更改（1:UDP,2:TCP）
+        :rtype: int
+        """
         return self._TransportProtocol
 
     @TransportProtocol.setter
@@ -16324,6 +19389,9 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def Password(self):
+        """设备密码（仅国标，网关设备支持，长度不超过 64 位）
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -16332,6 +19400,9 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def Description(self):
+        """设备描述（长度不超过128位）
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -16340,6 +19411,9 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def Ip(self):
+        """设备接入Ip（仅网关接入支持）
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -16348,6 +19422,9 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def Port(self):
+        """设备Port（仅网关接入支持）
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -16356,6 +19433,9 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def Username(self):
+        """设备用户名（仅网关接入支持）
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -16364,6 +19444,9 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def ProtocolType(self):
+        """网关设备接入协议（仅网关接入支持）
+        :rtype: int
+        """
         return self._ProtocolType
 
     @ProtocolType.setter
@@ -16372,6 +19455,9 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def AudioSwitch(self):
+        """音频关开（0：关闭；1：开启）默认开启，关闭时丢弃音频
+        :rtype: int
+        """
         return self._AudioSwitch
 
     @AudioSwitch.setter
@@ -16380,6 +19466,9 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def SubscribeSwitch(self):
+        """订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效
+        :rtype: int
+        """
         return self._SubscribeSwitch
 
     @SubscribeSwitch.setter
@@ -16388,6 +19477,9 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def SilentFrameSwitch(self):
+        """是否开启静音帧（0：关闭；1 开启）
+        :rtype: int
+        """
         return self._SilentFrameSwitch
 
     @SilentFrameSwitch.setter
@@ -16435,6 +19527,9 @@ class UpdateUserDeviceResponse(AbstractModel):
 
     @property
     def Data(self):
+        """返回数据
+        :rtype: :class:`tencentcloud.iss.v20230517.models.UpdateDeviceData`
+        """
         return self._Data
 
     @Data.setter
@@ -16443,6 +19538,9 @@ class UpdateUserDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16471,6 +19569,9 @@ class UpgradeGatewayRequest(AbstractModel):
 
     @property
     def GatewayId(self):
+        """网关索引ID（从获取网关列表ListGateways接口中获取）
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -16504,6 +19605,9 @@ class UpgradeGatewayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

@@ -35,6 +35,9 @@ class AccessInfo(AbstractModel):
 
     @property
     def Host(self):
+        """域名
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -43,6 +46,9 @@ class AccessInfo(AbstractModel):
 
     @property
     def Vip(self):
+        """VIP
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -96,6 +102,9 @@ class Alias(AbstractModel):
 
     @property
     def FunctionVersion(self):
+        """别名指向的主版本
+        :rtype: str
+        """
         return self._FunctionVersion
 
     @FunctionVersion.setter
@@ -104,6 +113,9 @@ class Alias(AbstractModel):
 
     @property
     def Name(self):
+        """别名的名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -112,6 +124,10 @@ class Alias(AbstractModel):
 
     @property
     def RoutingConfig(self):
+        """别名的路由信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
+        """
         return self._RoutingConfig
 
     @RoutingConfig.setter
@@ -120,6 +136,10 @@ class Alias(AbstractModel):
 
     @property
     def Description(self):
+        """描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -128,6 +148,10 @@ class Alias(AbstractModel):
 
     @property
     def AddTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -136,6 +160,10 @@ class Alias(AbstractModel):
 
     @property
     def ModTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModTime
 
     @ModTime.setter
@@ -191,6 +219,9 @@ class AsyncEvent(AbstractModel):
 
     @property
     def InvokeRequestId(self):
+        """调用请求id
+        :rtype: str
+        """
         return self._InvokeRequestId
 
     @InvokeRequestId.setter
@@ -199,6 +230,9 @@ class AsyncEvent(AbstractModel):
 
     @property
     def InvokeType(self):
+        """调用类型
+        :rtype: str
+        """
         return self._InvokeType
 
     @InvokeType.setter
@@ -207,6 +241,9 @@ class AsyncEvent(AbstractModel):
 
     @property
     def Qualifier(self):
+        """函数版本
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -215,6 +252,9 @@ class AsyncEvent(AbstractModel):
 
     @property
     def Status(self):
+        """事件状态，RUNNING 表示运行中, FINISHED 表示调用成功, ABORTED 表示调用终止, FAILED 表示调用失败
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -223,6 +263,9 @@ class AsyncEvent(AbstractModel):
 
     @property
     def StartTime(self):
+        """调用开始时间，格式: "%Y-%m-%d %H:%M:%S.%f"
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -231,6 +274,9 @@ class AsyncEvent(AbstractModel):
 
     @property
     def EndTime(self):
+        """调用结束时间，格式: "%Y-%m-%d %H:%M:%S.%f"
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -275,6 +321,9 @@ class AsyncEventStatus(AbstractModel):
 
     @property
     def Status(self):
+        """异步事件状态，RUNNING 表示运行中, FINISHED 表示调用成功, ABORTED 表示调用终止, FAILED 表示调用失败。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -283,6 +332,9 @@ class AsyncEventStatus(AbstractModel):
 
     @property
     def StatusCode(self):
+        """请求状态码
+        :rtype: int
+        """
         return self._StatusCode
 
     @StatusCode.setter
@@ -291,6 +343,9 @@ class AsyncEventStatus(AbstractModel):
 
     @property
     def InvokeRequestId(self):
+        """异步执行请求 Id
+        :rtype: str
+        """
         return self._InvokeRequestId
 
     @InvokeRequestId.setter
@@ -329,6 +384,9 @@ class AsyncTriggerConfig(AbstractModel):
 
     @property
     def RetryConfig(self):
+        """用户错误的异步重试重试配置
+        :rtype: list of RetryConfig
+        """
         return self._RetryConfig
 
     @RetryConfig.setter
@@ -337,6 +395,9 @@ class AsyncTriggerConfig(AbstractModel):
 
     @property
     def MsgTTL(self):
+        """消息保留时间
+        :rtype: int
+        """
         return self._MsgTTL
 
     @MsgTTL.setter
@@ -377,6 +438,10 @@ class CertConf(AbstractModel):
 
     @property
     def CertificateId(self):
+        """ssl证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -410,6 +475,9 @@ class CfsConfig(AbstractModel):
 
     @property
     def CfsInsList(self):
+        """文件系统信息列表
+        :rtype: list of CfsInsInfo
+        """
         return self._CfsInsList
 
     @CfsInsList.setter
@@ -478,6 +546,9 @@ class CfsInsInfo(AbstractModel):
 
     @property
     def UserId(self):
+        """用户id
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -486,6 +557,9 @@ class CfsInsInfo(AbstractModel):
 
     @property
     def UserGroupId(self):
+        """用户组id
+        :rtype: str
+        """
         return self._UserGroupId
 
     @UserGroupId.setter
@@ -494,6 +568,9 @@ class CfsInsInfo(AbstractModel):
 
     @property
     def CfsId(self):
+        """文件系统实例id
+        :rtype: str
+        """
         return self._CfsId
 
     @CfsId.setter
@@ -502,6 +579,9 @@ class CfsInsInfo(AbstractModel):
 
     @property
     def MountInsId(self):
+        """文件系统挂载点id
+        :rtype: str
+        """
         return self._MountInsId
 
     @MountInsId.setter
@@ -510,6 +590,9 @@ class CfsInsInfo(AbstractModel):
 
     @property
     def LocalMountDir(self):
+        """本地挂载点
+        :rtype: str
+        """
         return self._LocalMountDir
 
     @LocalMountDir.setter
@@ -518,6 +601,9 @@ class CfsInsInfo(AbstractModel):
 
     @property
     def RemoteMountDir(self):
+        """远程挂载点
+        :rtype: str
+        """
         return self._RemoteMountDir
 
     @RemoteMountDir.setter
@@ -526,6 +612,11 @@ class CfsInsInfo(AbstractModel):
 
     @property
     def IpAddress(self):
+        """文件系统ip，配置 cfs 时无需填写。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IpAddress
 
     @IpAddress.setter
@@ -534,6 +625,11 @@ class CfsInsInfo(AbstractModel):
 
     @property
     def MountVpcId(self):
+        """文件系统所在的私有网络id，配置 cfs 时无需填写。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MountVpcId
 
     @MountVpcId.setter
@@ -542,6 +638,11 @@ class CfsInsInfo(AbstractModel):
 
     @property
     def MountSubnetId(self):
+        """文件系统所在私有网络的子网id，配置 cfs 时无需填写。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MountSubnetId
 
     @MountSubnetId.setter
@@ -625,6 +726,9 @@ class Code(AbstractModel):
 
     @property
     def CosBucketName(self):
+        """对象存储桶名称（填写存储桶名称自定义部分，不包含-appid）
+        :rtype: str
+        """
         return self._CosBucketName
 
     @CosBucketName.setter
@@ -633,6 +737,9 @@ class Code(AbstractModel):
 
     @property
     def CosObjectName(self):
+        """对象存储中代码包文件路径，以/开头
+        :rtype: str
+        """
         return self._CosObjectName
 
     @CosObjectName.setter
@@ -641,6 +748,9 @@ class Code(AbstractModel):
 
     @property
     def ZipFile(self):
+        """包含函数代码文件及其依赖项的 zip 格式文件，zip包大小上限为 50MB，使用该接口时要求将 zip 文件的内容转成 base64 编码
+        :rtype: str
+        """
         return self._ZipFile
 
     @ZipFile.setter
@@ -649,6 +759,9 @@ class Code(AbstractModel):
 
     @property
     def CosBucketRegion(self):
+        """对象存储的地域，地域为北京时需要传入ap-beijing,北京一区时需要传递ap-beijing-1，其他的地域不需要传递。
+        :rtype: str
+        """
         return self._CosBucketRegion
 
     @CosBucketRegion.setter
@@ -657,6 +770,9 @@ class Code(AbstractModel):
 
     @property
     def DemoId(self):
+        """如果是通过Demo创建的话，需要传入DemoId
+        :rtype: str
+        """
         return self._DemoId
 
     @DemoId.setter
@@ -665,6 +781,9 @@ class Code(AbstractModel):
 
     @property
     def TempCosObjectName(self):
+        """如果是从TempCos创建的话，需要传入TempCosObjectName
+        :rtype: str
+        """
         return self._TempCosObjectName
 
     @TempCosObjectName.setter
@@ -673,6 +792,9 @@ class Code(AbstractModel):
 
     @property
     def GitUrl(self):
+        """Git地址。该功能已下线。
+        :rtype: str
+        """
         return self._GitUrl
 
     @GitUrl.setter
@@ -681,6 +803,9 @@ class Code(AbstractModel):
 
     @property
     def GitUserName(self):
+        """Git用户名。该功能已下线。
+        :rtype: str
+        """
         return self._GitUserName
 
     @GitUserName.setter
@@ -689,6 +814,9 @@ class Code(AbstractModel):
 
     @property
     def GitPassword(self):
+        """Git密码。该功能已下线。
+        :rtype: str
+        """
         return self._GitPassword
 
     @GitPassword.setter
@@ -697,6 +825,9 @@ class Code(AbstractModel):
 
     @property
     def GitPasswordSecret(self):
+        """加密后的Git密码，一般无需指定。该功能已下线。
+        :rtype: str
+        """
         return self._GitPasswordSecret
 
     @GitPasswordSecret.setter
@@ -705,6 +836,9 @@ class Code(AbstractModel):
 
     @property
     def GitBranch(self):
+        """Git分支。该功能已下线。
+        :rtype: str
+        """
         return self._GitBranch
 
     @GitBranch.setter
@@ -713,6 +847,9 @@ class Code(AbstractModel):
 
     @property
     def GitDirectory(self):
+        """代码在Git仓库中的路径。该功能已下线。
+        :rtype: str
+        """
         return self._GitDirectory
 
     @GitDirectory.setter
@@ -721,6 +858,9 @@ class Code(AbstractModel):
 
     @property
     def GitCommitId(self):
+        """指定要拉取的版本。该功能已下线。
+        :rtype: str
+        """
         return self._GitCommitId
 
     @GitCommitId.setter
@@ -729,6 +869,9 @@ class Code(AbstractModel):
 
     @property
     def GitUserNameSecret(self):
+        """加密后的Git用户名，一般无需指定。该功能已下线。
+        :rtype: str
+        """
         return self._GitUserNameSecret
 
     @GitUserNameSecret.setter
@@ -737,6 +880,9 @@ class Code(AbstractModel):
 
     @property
     def ImageConfig(self):
+        """镜像部署时配置TCR镜像信息
+        :rtype: :class:`tencentcloud.scf.v20180416.models.ImageConfig`
+        """
         return self._ImageConfig
 
     @ImageConfig.setter
@@ -812,6 +958,9 @@ FALSE：不复制函数配置
 
     @property
     def FunctionName(self):
+        """要复制的函数的名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -820,6 +969,9 @@ FALSE：不复制函数配置
 
     @property
     def NewFunctionName(self):
+        """新函数的名称
+        :rtype: str
+        """
         return self._NewFunctionName
 
     @NewFunctionName.setter
@@ -828,6 +980,9 @@ FALSE：不复制函数配置
 
     @property
     def Namespace(self):
+        """要复制的函数所在的命名空间，默认为default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -836,6 +991,9 @@ FALSE：不复制函数配置
 
     @property
     def TargetNamespace(self):
+        """将函数复制到的命名空间，默认为default
+        :rtype: str
+        """
         return self._TargetNamespace
 
     @TargetNamespace.setter
@@ -844,6 +1002,9 @@ FALSE：不复制函数配置
 
     @property
     def Description(self):
+        """新函数的描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -852,6 +1013,9 @@ FALSE：不复制函数配置
 
     @property
     def TargetRegion(self):
+        """要将函数复制到的地域，不填则默认为当前地域
+        :rtype: str
+        """
         return self._TargetRegion
 
     @TargetRegion.setter
@@ -860,6 +1024,12 @@ FALSE：不复制函数配置
 
     @property
     def Override(self):
+        """如果目标Namespace下已有同名函数，是否覆盖，默认为否
+（注意：如果选择覆盖，会导致同名函数被删除，请慎重操作）
+TRUE：覆盖同名函数
+FALSE：不覆盖同名函数
+        :rtype: bool
+        """
         return self._Override
 
     @Override.setter
@@ -868,6 +1038,11 @@ FALSE：不复制函数配置
 
     @property
     def CopyConfiguration(self):
+        """是否复制函数的属性，包括环境变量、内存、超时、函数描述、标签、VPC等，默认为是。
+TRUE：复制函数配置
+FALSE：不复制函数配置
+        :rtype: bool
+        """
         return self._CopyConfiguration
 
     @CopyConfiguration.setter
@@ -908,6 +1083,9 @@ class CopyFunctionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -948,6 +1126,9 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def Name(self):
+        """别名的名称，在函数级别中唯一，只能包含字母、数字、'_'和‘-’，且必须以字母开头，长度限制为1-64
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -956,6 +1137,9 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -964,6 +1148,9 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def FunctionVersion(self):
+        """别名指向的主版本
+        :rtype: str
+        """
         return self._FunctionVersion
 
     @FunctionVersion.setter
@@ -972,6 +1159,9 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数所在的命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -980,6 +1170,9 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def RoutingConfig(self):
+        """别名的路由信息，需要为别名指定附加版本时，必须提供此参数；	  附加版本指的是：除主版本 FunctionVersion 外，为此别名再指定一个函数可正常使用的版本；   这里附加版本中的 Version 值 不能是别名指向的主版本；  要注意的是：如果想要某个版本的流量全部指向这个别名，不需配置此参数； 目前一个别名最多只能指定一个附加版本
+        :rtype: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
+        """
         return self._RoutingConfig
 
     @RoutingConfig.setter
@@ -988,6 +1181,9 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def Description(self):
+        """别名的描述信息
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1028,6 +1224,9 @@ class CreateAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1065,6 +1264,9 @@ class CreateCustomDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """域名，不支持泛域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -1073,6 +1275,9 @@ class CreateCustomDomainRequest(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议，取值范围：HTTP, HTTPS, HTTP&HTTPS
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -1081,6 +1286,9 @@ class CreateCustomDomainRequest(AbstractModel):
 
     @property
     def EndpointsConfig(self):
+        """路由配置
+        :rtype: list of EndpointsConf
+        """
         return self._EndpointsConfig
 
     @EndpointsConfig.setter
@@ -1089,6 +1297,9 @@ class CreateCustomDomainRequest(AbstractModel):
 
     @property
     def CertConfig(self):
+        """证书配置信息，HTTPS协议必穿
+        :rtype: :class:`tencentcloud.scf.v20180416.models.CertConf`
+        """
         return self._CertConfig
 
     @CertConfig.setter
@@ -1097,6 +1308,9 @@ class CreateCustomDomainRequest(AbstractModel):
 
     @property
     def WafConfig(self):
+        """web 应用防火墙配置
+        :rtype: :class:`tencentcloud.scf.v20180416.models.WafConf`
+        """
         return self._WafConfig
 
     @WafConfig.setter
@@ -1143,6 +1357,9 @@ class CreateCustomDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1258,6 +1475,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """创建的函数名称，函数名称支持26个英文字母大小写、数字、连接符和下划线，第一个字符只能以字母开头，最后一个字符不能为连接符或者下划线，名称长度2-60
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -1266,6 +1486,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def Code(self):
+        """函数代码. 注意：不能同时指定Cos、ZipFile或 DemoId。
+        :rtype: :class:`tencentcloud.scf.v20180416.models.Code`
+        """
         return self._Code
 
     @Code.setter
@@ -1274,6 +1497,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def Handler(self):
+        """函数处理方法名称，名称格式支持 "文件名称.方法名称" 形式（java 名称格式 包名.类名::方法名），文件名称和函数名称之间以"."隔开，文件名称和函数名称要求以字母开始和结尾，中间允许插入字母、数字、下划线和连接符，文件名称和函数名字的长度要求是 2-60 个字符
+        :rtype: str
+        """
         return self._Handler
 
     @Handler.setter
@@ -1282,6 +1508,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def Description(self):
+        """函数描述,最大支持 1000 个英文字母、数字、空格、逗号、换行符和英文句号，支持中文
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1290,6 +1519,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def MemorySize(self):
+        """函数运行时内存大小，默认为 128M，可选范围 64、128MB-3072MB，并且以 128MB 为阶梯
+        :rtype: int
+        """
         return self._MemorySize
 
     @MemorySize.setter
@@ -1298,6 +1530,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def Timeout(self):
+        """函数最长执行时间，单位为秒，可选值范围 1-900 秒，默认为 3 秒
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -1306,6 +1541,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def Environment(self):
+        """函数的环境变量
+        :rtype: :class:`tencentcloud.scf.v20180416.models.Environment`
+        """
         return self._Environment
 
     @Environment.setter
@@ -1314,6 +1552,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def Runtime(self):
+        """函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.16， Php5.2， Php7.4，Go1，Java8 和 CustomRuntime，默认Python2.7
+        :rtype: str
+        """
         return self._Runtime
 
     @Runtime.setter
@@ -1322,6 +1563,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def VpcConfig(self):
+        """函数的私有网络配置
+        :rtype: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
+        """
         return self._VpcConfig
 
     @VpcConfig.setter
@@ -1330,6 +1574,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数所属命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -1338,6 +1585,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def Role(self):
+        """函数绑定的角色
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -1346,6 +1596,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def InstallDependency(self):
+        """[在线依赖安装](https://cloud.tencent.com/document/product/583/37920)，TRUE 表示安装，默认值为 FALSE。仅支持 Node.js 函数。
+        :rtype: str
+        """
         return self._InstallDependency
 
     @InstallDependency.setter
@@ -1354,6 +1607,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def ClsLogsetId(self):
+        """函数日志投递到的CLS LogsetID
+        :rtype: str
+        """
         return self._ClsLogsetId
 
     @ClsLogsetId.setter
@@ -1362,6 +1618,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def ClsTopicId(self):
+        """函数日志投递到的CLS TopicID
+        :rtype: str
+        """
         return self._ClsTopicId
 
     @ClsTopicId.setter
@@ -1370,6 +1629,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def Type(self):
+        """函数类型，默认值为Event，创建触发器函数请填写Event，创建HTTP函数级服务请填写HTTP
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1378,6 +1640,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def CodeSource(self):
+        """CodeSource 代码来源，支持ZipFile, Cos, Demo 其中之一
+        :rtype: str
+        """
         return self._CodeSource
 
     @CodeSource.setter
@@ -1386,6 +1651,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def Layers(self):
+        """函数要关联的Layer版本列表，Layer会按照在列表中顺序依次覆盖。
+        :rtype: list of LayerVersionSimple
+        """
         return self._Layers
 
     @Layers.setter
@@ -1394,6 +1662,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def DeadLetterConfig(self):
+        """死信队列参数
+        :rtype: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
+        """
         return self._DeadLetterConfig
 
     @DeadLetterConfig.setter
@@ -1402,6 +1673,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def PublicNetConfig(self):
+        """公网访问配置
+        :rtype: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
+        """
         return self._PublicNetConfig
 
     @PublicNetConfig.setter
@@ -1410,6 +1684,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def CfsConfig(self):
+        """文件系统配置参数，用于云函数挂载文件系统
+        :rtype: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
+        """
         return self._CfsConfig
 
     @CfsConfig.setter
@@ -1418,6 +1695,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def InitTimeout(self):
+        """函数初始化超时时间，默认 65s，镜像部署函数默认 90s。
+        :rtype: int
+        """
         return self._InitTimeout
 
     @InitTimeout.setter
@@ -1426,6 +1706,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """函数 Tag 参数，以键值对数组形式传入
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1434,6 +1717,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def AsyncRunEnable(self):
+        """是否开启异步属性，TRUE 为开启，FALSE为关闭
+        :rtype: str
+        """
         return self._AsyncRunEnable
 
     @AsyncRunEnable.setter
@@ -1442,6 +1728,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def TraceEnable(self):
+        """是否开启事件追踪，TRUE 为开启，FALSE为关闭
+        :rtype: str
+        """
         return self._TraceEnable
 
     @TraceEnable.setter
@@ -1450,6 +1739,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def AutoDeployClsTopicIndex(self):
+        """是否自动创建cls索引，TRUE 为开启，FALSE为关闭
+        :rtype: str
+        """
         return self._AutoDeployClsTopicIndex
 
     @AutoDeployClsTopicIndex.setter
@@ -1458,6 +1750,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def AutoCreateClsTopic(self):
+        """是否自动创建cls主题，TRUE 为开启，FALSE为关闭
+        :rtype: str
+        """
         return self._AutoCreateClsTopic
 
     @AutoCreateClsTopic.setter
@@ -1466,6 +1761,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def ProtocolType(self):
+        """HTTP函数支持的访问协议。当前支持WebSockets协议，值为WS
+        :rtype: str
+        """
         return self._ProtocolType
 
     @ProtocolType.setter
@@ -1474,6 +1772,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def ProtocolParams(self):
+        """HTTP函数配置ProtocolType访问协议，当前协议可配置的参数
+        :rtype: :class:`tencentcloud.scf.v20180416.models.ProtocolParams`
+        """
         return self._ProtocolParams
 
     @ProtocolParams.setter
@@ -1482,6 +1783,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def InstanceConcurrencyConfig(self):
+        """单实例多并发配置。只支持Web函数。
+        :rtype: :class:`tencentcloud.scf.v20180416.models.InstanceConcurrencyConfig`
+        """
         return self._InstanceConcurrencyConfig
 
     @InstanceConcurrencyConfig.setter
@@ -1490,6 +1794,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def DnsCache(self):
+        """是否开启Dns缓存能力。只支持EVENT函数。默认为FALSE，TRUE 为开启，FALSE为关闭
+        :rtype: str
+        """
         return self._DnsCache
 
     @DnsCache.setter
@@ -1498,6 +1805,9 @@ class CreateFunctionRequest(AbstractModel):
 
     @property
     def IntranetConfig(self):
+        """内网访问配置
+        :rtype: :class:`tencentcloud.scf.v20180416.models.IntranetConfigIn`
+        """
         return self._IntranetConfig
 
     @IntranetConfig.setter
@@ -1589,6 +1899,9 @@ class CreateFunctionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1620,6 +1933,9 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -1628,6 +1944,9 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def Description(self):
+        """命名空间描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1636,6 +1955,9 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def ResourceEnv(self):
+        """资源池配置
+        :rtype: :class:`tencentcloud.scf.v20180416.models.NamespaceResourceEnv`
+        """
         return self._ResourceEnv
 
     @ResourceEnv.setter
@@ -1673,6 +1995,9 @@ class CreateNamespaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1722,6 +2047,9 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """新建触发器绑定的函数名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -1730,6 +2058,9 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def TriggerName(self):
+        """新建触发器名称。如果是定时触发器，名称支持英文字母、数字、连接符和下划线，最长100个字符；如果是cos触发器，需要是对应cos存储桶适用于XML API的访问域名(例如:5401-5ff414-12345.cos.ap-shanghai.myqcloud.com);如果是其他触发器，见具体触发器绑定参数的说明
+        :rtype: str
+        """
         return self._TriggerName
 
     @TriggerName.setter
@@ -1738,6 +2069,9 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def Type(self):
+        """触发器类型，目前支持 cos 、cls 、 timer、 ckafka、http类型。创建函数 URL 请使用 http 类型，参考[创建函数 URL ](https://cloud.tencent.com/document/product/583/100227#33bbbda4-9131-48a6-ac37-ac62ffe01424)。创建 cls 触发器请参考[CLS 创建投递 SCF 任务](https://cloud.tencent.com/document/product/614/61096)。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1746,6 +2080,9 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def TriggerDesc(self):
+        """触发器对应的参数，可见具体[触发器描述说明](https://cloud.tencent.com/document/product/583/39901)
+        :rtype: str
+        """
         return self._TriggerDesc
 
     @TriggerDesc.setter
@@ -1754,6 +2091,9 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数的命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -1762,6 +2102,9 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """触发器所生效的版本或别名，建议填写 [$DEFAULT](https://cloud.tencent.com/document/product/583/36149#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)方便后续进行版本的灰度发布，默认为 $LATEST。
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -1770,6 +2113,9 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def Enable(self):
+        """触发器的初始是能状态 OPEN表示开启 CLOSE表示关闭
+        :rtype: str
+        """
         return self._Enable
 
     @Enable.setter
@@ -1778,6 +2124,9 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def CustomArgument(self):
+        """用户自定义参数，仅支持timer触发器
+        :rtype: str
+        """
         return self._CustomArgument
 
     @CustomArgument.setter
@@ -1786,6 +2135,9 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def Description(self):
+        """触发器描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1830,6 +2182,9 @@ class CreateTriggerResponse(AbstractModel):
 
     @property
     def TriggerInfo(self):
+        """触发器信息
+        :rtype: :class:`tencentcloud.scf.v20180416.models.Trigger`
+        """
         return self._TriggerInfo
 
     @TriggerInfo.setter
@@ -1838,6 +2193,9 @@ class CreateTriggerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1872,6 +2230,9 @@ class DeadLetterConfig(AbstractModel):
 
     @property
     def Type(self):
+        """死信队列模式
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1880,6 +2241,9 @@ class DeadLetterConfig(AbstractModel):
 
     @property
     def Name(self):
+        """死信队列名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1888,6 +2252,9 @@ class DeadLetterConfig(AbstractModel):
 
     @property
     def FilterType(self):
+        """死信队列主题模式的标签形式
+        :rtype: str
+        """
         return self._FilterType
 
     @FilterType.setter
@@ -1929,6 +2296,9 @@ class DeleteAliasRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -1937,6 +2307,9 @@ class DeleteAliasRequest(AbstractModel):
 
     @property
     def Name(self):
+        """别名的名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1945,6 +2318,9 @@ class DeleteAliasRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数所在的命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -1980,6 +2356,9 @@ class DeleteAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2005,6 +2384,9 @@ class DeleteCustomDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -2038,6 +2420,9 @@ class DeleteCustomDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2069,6 +2454,9 @@ class DeleteFunctionRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """要删除的函数名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -2077,6 +2465,9 @@ class DeleteFunctionRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数所属命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -2085,6 +2476,9 @@ class DeleteFunctionRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """填写需要删除的版本号，不填默认删除函数下全部版本。
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -2120,6 +2514,9 @@ class DeleteFunctionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2148,6 +2545,9 @@ class DeleteLayerVersionRequest(AbstractModel):
 
     @property
     def LayerName(self):
+        """层名称
+        :rtype: str
+        """
         return self._LayerName
 
     @LayerName.setter
@@ -2156,6 +2556,9 @@ class DeleteLayerVersionRequest(AbstractModel):
 
     @property
     def LayerVersion(self):
+        """版本号
+        :rtype: int
+        """
         return self._LayerVersion
 
     @LayerVersion.setter
@@ -2190,6 +2593,9 @@ class DeleteLayerVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2215,6 +2621,9 @@ class DeleteNamespaceRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -2248,6 +2657,9 @@ class DeleteNamespaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2279,6 +2691,9 @@ class DeleteProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """需要删除预置并发的函数的名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -2287,6 +2702,9 @@ class DeleteProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """函数的版本号
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -2295,6 +2713,9 @@ class DeleteProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数所属命名空间，默认为default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -2330,6 +2751,9 @@ class DeleteProvisionedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2358,6 +2782,9 @@ class DeleteReservedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """需要删除最大独占配额的函数的名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -2366,6 +2793,9 @@ class DeleteReservedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数所属命名空间，默认为default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -2400,6 +2830,9 @@ class DeleteReservedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2440,6 +2873,9 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数的名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -2448,6 +2884,9 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def TriggerName(self):
+        """要删除的触发器名称
+        :rtype: str
+        """
         return self._TriggerName
 
     @TriggerName.setter
@@ -2456,6 +2895,9 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def Type(self):
+        """要删除的触发器类型，目前只支持  timer、ckafka 、apigw 、cls 、cos 、cmq 、http 类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2464,6 +2906,9 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数所属命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -2472,6 +2917,9 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def TriggerDesc(self):
+        """如果删除的触发器类型为 COS 触发器，该字段为必填值，存放 JSON 格式的数据 {"event":"cos:ObjectCreated:*"}，数据内容和 SetTrigger 接口中该字段的格式相同；如果删除的触发器类型为定时触发器或 CMQ 触发器，可以不指定该字段
+        :rtype: str
+        """
         return self._TriggerDesc
 
     @TriggerDesc.setter
@@ -2480,6 +2928,9 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """要删除的触发器实际所指向的版本或别名，默认值为 $LATEST
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -2518,6 +2969,9 @@ class DeleteTriggerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2558,6 +3012,9 @@ class DomainInfo(AbstractModel):
 
     @property
     def Domain(self):
+        """域名，不支持泛域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -2566,6 +3023,9 @@ class DomainInfo(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议，取值范围：HTTP, HTTPS, HTTP&HTTPS
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -2574,6 +3034,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def EndpointsConfig(self):
+        """路由配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EndpointsConf
+        """
         return self._EndpointsConfig
 
     @EndpointsConfig.setter
@@ -2582,6 +3046,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def CertConfig(self):
+        """证书配置信息，HTTPS协议必传路由配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.scf.v20180416.models.CertConf`
+        """
         return self._CertConfig
 
     @CertConfig.setter
@@ -2590,6 +3058,10 @@ class DomainInfo(AbstractModel):
 
     @property
     def WafConfig(self):
+        """web 应用防火墙配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.scf.v20180416.models.WafConf`
+        """
         return self._WafConfig
 
     @WafConfig.setter
@@ -2636,6 +3108,9 @@ class EipConfigIn(AbstractModel):
 
     @property
     def EipStatus(self):
+        """Eip开启状态，取值['ENABLE','DISABLE']
+        :rtype: str
+        """
         return self._EipStatus
 
     @EipStatus.setter
@@ -2673,6 +3148,9 @@ class EipConfigOut(AbstractModel):
 
     @property
     def EipStatus(self):
+        """是否是固定IP，["ENABLE","DISABLE"]
+        :rtype: str
+        """
         return self._EipStatus
 
     @EipStatus.setter
@@ -2681,6 +3159,10 @@ class EipConfigOut(AbstractModel):
 
     @property
     def EipAddress(self):
+        """IP列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._EipAddress
 
     @EipAddress.setter
@@ -2718,6 +3200,9 @@ class EipOutConfig(AbstractModel):
 
     @property
     def EipFixed(self):
+        """是否是固定IP，["TRUE","FALSE"]
+        :rtype: str
+        """
         return self._EipFixed
 
     @EipFixed.setter
@@ -2726,6 +3211,9 @@ class EipOutConfig(AbstractModel):
 
     @property
     def Eips(self):
+        """IP列表
+        :rtype: list of str
+        """
         return self._Eips
 
     @Eips.setter
@@ -2777,6 +3265,10 @@ class EndpointsConf(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -2785,6 +3277,10 @@ class EndpointsConf(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -2793,6 +3289,10 @@ class EndpointsConf(AbstractModel):
 
     @property
     def Qualifier(self):
+        """函数别名或版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -2801,6 +3301,10 @@ class EndpointsConf(AbstractModel):
 
     @property
     def PathMatch(self):
+        """路径,取值规范：/，/*，/xxx，/xxx/a，/xxx/*"
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PathMatch
 
     @PathMatch.setter
@@ -2809,6 +3313,10 @@ class EndpointsConf(AbstractModel):
 
     @property
     def PathRewrite(self):
+        """路径重写策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PathRewriteRule
+        """
         return self._PathRewrite
 
     @PathRewrite.setter
@@ -2851,6 +3359,9 @@ class Environment(AbstractModel):
 
     @property
     def Variables(self):
+        """环境变量数组
+        :rtype: list of Variable
+        """
         return self._Variables
 
     @Variables.setter
@@ -2897,6 +3408,12 @@ Name可选值：Status, Runtime, FunctionType, PublicNetStatus, AsyncRunEnable, 
 
     @property
     def Name(self):
+        """需要过滤的字段。过滤条件数量限制为10。
+Name可选值：VpcId, SubnetId, ClsTopicId, ClsLogsetId, Role, CfsId, CfsMountInsId, Eip；Values 长度限制为1。
+Name可选值：Status, Runtime, FunctionType, PublicNetStatus, AsyncRunEnable, TraceEnable；Values 长度限制为20。
+当 Name = Runtime 时，CustomImage 表示过滤镜像类型函数。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2905,6 +3422,9 @@ Name可选值：Status, Runtime, FunctionType, PublicNetStatus, AsyncRunEnable, 
 
     @property
     def Values(self):
+        """字段的过滤值。
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -2987,6 +3507,9 @@ class Function(AbstractModel):
 
     @property
     def ModTime(self):
+        """修改时间
+        :rtype: str
+        """
         return self._ModTime
 
     @ModTime.setter
@@ -2995,6 +3518,9 @@ class Function(AbstractModel):
 
     @property
     def AddTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -3003,6 +3529,10 @@ class Function(AbstractModel):
 
     @property
     def Runtime(self):
+        """运行时
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Runtime
 
     @Runtime.setter
@@ -3011,6 +3541,9 @@ class Function(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -3019,6 +3552,9 @@ class Function(AbstractModel):
 
     @property
     def FunctionId(self):
+        """函数ID
+        :rtype: str
+        """
         return self._FunctionId
 
     @FunctionId.setter
@@ -3027,6 +3563,9 @@ class Function(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -3035,6 +3574,9 @@ class Function(AbstractModel):
 
     @property
     def Status(self):
+        """函数状态，状态值及流转[参考此处](https://cloud.tencent.com/document/product/583/47175)
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3043,6 +3585,9 @@ class Function(AbstractModel):
 
     @property
     def StatusDesc(self):
+        """函数状态详情
+        :rtype: str
+        """
         return self._StatusDesc
 
     @StatusDesc.setter
@@ -3051,6 +3596,9 @@ class Function(AbstractModel):
 
     @property
     def Description(self):
+        """函数描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3059,6 +3607,9 @@ class Function(AbstractModel):
 
     @property
     def Tags(self):
+        """函数标签
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -3067,6 +3618,9 @@ class Function(AbstractModel):
 
     @property
     def Type(self):
+        """函数类型，取值为 HTTP 或者 Event
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3075,6 +3629,9 @@ class Function(AbstractModel):
 
     @property
     def StatusReasons(self):
+        """函数状态失败原因
+        :rtype: list of StatusReason
+        """
         return self._StatusReasons
 
     @StatusReasons.setter
@@ -3083,6 +3640,10 @@ class Function(AbstractModel):
 
     @property
     def TotalProvisionedConcurrencyMem(self):
+        """函数所有版本预置并发内存总和
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalProvisionedConcurrencyMem
 
     @TotalProvisionedConcurrencyMem.setter
@@ -3091,6 +3652,10 @@ class Function(AbstractModel):
 
     @property
     def ReservedConcurrencyMem(self):
+        """函数并发保留内存
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReservedConcurrencyMem
 
     @ReservedConcurrencyMem.setter
@@ -3099,6 +3664,9 @@ class Function(AbstractModel):
 
     @property
     def AsyncRunEnable(self):
+        """函数异步属性，取值 TRUE 或者 FALSE
+        :rtype: str
+        """
         return self._AsyncRunEnable
 
     @AsyncRunEnable.setter
@@ -3107,6 +3675,9 @@ class Function(AbstractModel):
 
     @property
     def TraceEnable(self):
+        """异步函数是否开启调用追踪，取值 TRUE 或者 FALSE
+        :rtype: str
+        """
         return self._TraceEnable
 
     @TraceEnable.setter
@@ -3201,6 +3772,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数的名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -3209,6 +3783,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def RetMsg(self):
+        """函数执行完成后的返回值
+        :rtype: str
+        """
         return self._RetMsg
 
     @RetMsg.setter
@@ -3217,6 +3794,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def RequestId(self):
+        """执行该函数对应的requestId
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3225,6 +3805,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def StartTime(self):
+        """函数开始执行时的时间点
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3233,6 +3816,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def RetCode(self):
+        """函数执行结果，如果是 0 表示执行成功，其他值表示失败
+        :rtype: int
+        """
         return self._RetCode
 
     @RetCode.setter
@@ -3241,6 +3827,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def InvokeFinished(self):
+        """函数调用是否结束，如果是 1 表示执行结束，其他值表示调用异常
+        :rtype: int
+        """
         return self._InvokeFinished
 
     @InvokeFinished.setter
@@ -3249,6 +3838,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def Duration(self):
+        """函数执行耗时，单位为 ms
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -3257,6 +3849,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def BillDuration(self):
+        """函数计费时间，根据 duration 向上取最近的 100ms，单位为ms
+        :rtype: int
+        """
         return self._BillDuration
 
     @BillDuration.setter
@@ -3265,6 +3860,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def MemUsage(self):
+        """函数执行时消耗实际内存大小，单位为 Byte
+        :rtype: int
+        """
         return self._MemUsage
 
     @MemUsage.setter
@@ -3273,6 +3871,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def Log(self):
+        """函数执行过程中的日志输出
+        :rtype: str
+        """
         return self._Log
 
     @Log.setter
@@ -3281,6 +3882,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def Level(self):
+        """日志等级
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -3289,6 +3893,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def Source(self):
+        """日志来源
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -3297,6 +3904,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def RetryNum(self):
+        """重试次数
+        :rtype: int
+        """
         return self._RetryNum
 
     @RetryNum.setter
@@ -3358,6 +3968,9 @@ class FunctionVersion(AbstractModel):
 
     @property
     def Version(self):
+        """函数版本名称
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -3366,6 +3979,10 @@ class FunctionVersion(AbstractModel):
 
     @property
     def Description(self):
+        """版本描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3374,6 +3991,10 @@ class FunctionVersion(AbstractModel):
 
     @property
     def AddTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -3382,6 +4003,10 @@ class FunctionVersion(AbstractModel):
 
     @property
     def ModTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModTime
 
     @ModTime.setter
@@ -3390,6 +4015,10 @@ class FunctionVersion(AbstractModel):
 
     @property
     def Status(self):
+        """版本状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3439,6 +4068,9 @@ class GetAccountResponse(AbstractModel):
 
     @property
     def AccountUsage(self):
+        """命名空间已使用的信息
+        :rtype: :class:`tencentcloud.scf.v20180416.models.UsageInfo`
+        """
         return self._AccountUsage
 
     @AccountUsage.setter
@@ -3447,6 +4079,9 @@ class GetAccountResponse(AbstractModel):
 
     @property
     def AccountLimit(self):
+        """命名空间限制的信息
+        :rtype: :class:`tencentcloud.scf.v20180416.models.LimitsInfo`
+        """
         return self._AccountLimit
 
     @AccountLimit.setter
@@ -3455,6 +4090,9 @@ class GetAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3492,6 +4130,9 @@ class GetAliasRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -3500,6 +4141,9 @@ class GetAliasRequest(AbstractModel):
 
     @property
     def Name(self):
+        """别名的名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3508,6 +4152,9 @@ class GetAliasRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数所在的命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -3564,6 +4211,9 @@ class GetAliasResponse(AbstractModel):
 
     @property
     def FunctionVersion(self):
+        """别名指向的主版本
+        :rtype: str
+        """
         return self._FunctionVersion
 
     @FunctionVersion.setter
@@ -3572,6 +4222,9 @@ class GetAliasResponse(AbstractModel):
 
     @property
     def Name(self):
+        """别名的名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3580,6 +4233,9 @@ class GetAliasResponse(AbstractModel):
 
     @property
     def RoutingConfig(self):
+        """别名的路由信息
+        :rtype: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
+        """
         return self._RoutingConfig
 
     @RoutingConfig.setter
@@ -3588,6 +4244,10 @@ class GetAliasResponse(AbstractModel):
 
     @property
     def Description(self):
+        """别名的描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3596,6 +4256,10 @@ class GetAliasResponse(AbstractModel):
 
     @property
     def AddTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -3604,6 +4268,10 @@ class GetAliasResponse(AbstractModel):
 
     @property
     def ModTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ModTime
 
     @ModTime.setter
@@ -3612,6 +4280,9 @@ class GetAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3645,6 +4316,9 @@ class GetAsyncEventStatusRequest(AbstractModel):
 
     @property
     def InvokeRequestId(self):
+        """异步执行请求 id
+        :rtype: str
+        """
         return self._InvokeRequestId
 
     @InvokeRequestId.setter
@@ -3681,6 +4355,9 @@ class GetAsyncEventStatusResponse(AbstractModel):
 
     @property
     def Result(self):
+        """异步事件状态
+        :rtype: :class:`tencentcloud.scf.v20180416.models.AsyncEventStatus`
+        """
         return self._Result
 
     @Result.setter
@@ -3689,6 +4366,9 @@ class GetAsyncEventStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3717,6 +4397,9 @@ class GetCustomDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -3765,6 +4448,9 @@ class GetCustomDomainResponse(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -3773,6 +4459,9 @@ class GetCustomDomainResponse(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -3781,6 +4470,9 @@ class GetCustomDomainResponse(AbstractModel):
 
     @property
     def EndpointsConfig(self):
+        """路由配置
+        :rtype: list of EndpointsConf
+        """
         return self._EndpointsConfig
 
     @EndpointsConfig.setter
@@ -3789,6 +4481,9 @@ class GetCustomDomainResponse(AbstractModel):
 
     @property
     def CertConfig(self):
+        """证书配置信息
+        :rtype: :class:`tencentcloud.scf.v20180416.models.CertConf`
+        """
         return self._CertConfig
 
     @CertConfig.setter
@@ -3797,6 +4492,9 @@ class GetCustomDomainResponse(AbstractModel):
 
     @property
     def WafConfig(self):
+        """web 应用防火墙配置
+        :rtype: :class:`tencentcloud.scf.v20180416.models.WafConf`
+        """
         return self._WafConfig
 
     @WafConfig.setter
@@ -3805,6 +4503,9 @@ class GetCustomDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3850,6 +4551,9 @@ class GetFunctionAddressRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数的名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -3858,6 +4562,9 @@ class GetFunctionAddressRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """函数的版本
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -3866,6 +4573,9 @@ class GetFunctionAddressRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数的命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -3907,6 +4617,9 @@ class GetFunctionAddressResponse(AbstractModel):
 
     @property
     def Url(self):
+        """函数的Cos地址
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -3915,6 +4628,9 @@ class GetFunctionAddressResponse(AbstractModel):
 
     @property
     def CodeSha256(self):
+        """函数的SHA256编码
+        :rtype: str
+        """
         return self._CodeSha256
 
     @CodeSha256.setter
@@ -3923,6 +4639,9 @@ class GetFunctionAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3956,6 +4675,9 @@ class GetFunctionEventInvokeConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -3964,6 +4686,9 @@ class GetFunctionEventInvokeConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数所属命名空间，默认为default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -3972,6 +4697,9 @@ class GetFunctionEventInvokeConfigRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """函数版本，默认为$LATEST
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -4010,6 +4738,9 @@ class GetFunctionEventInvokeConfigResponse(AbstractModel):
 
     @property
     def AsyncTriggerConfig(self):
+        """异步重试配置信息
+        :rtype: :class:`tencentcloud.scf.v20180416.models.AsyncTriggerConfig`
+        """
         return self._AsyncTriggerConfig
 
     @AsyncTriggerConfig.setter
@@ -4018,6 +4749,9 @@ class GetFunctionEventInvokeConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4081,6 +4815,11 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数的名称。
+- 为保证[获取函数运行日志](https://cloud.tencent.com/document/product/583/18583)接口`GetFunctionLogs`兼容性，输入参数`FunctionName`仍为非必填项，但建议填写该参数，否则可能导致日志获取失败。
+- 函数关联日志服务后，建议使用[日志服务](https://cloud.tencent.com/document/product/614/16875)相关接口以获得最佳日志检索体验。
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -4089,6 +4828,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """数据的偏移量，Offset+Limit不能大于10000
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4097,6 +4839,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数据的长度，Offset+Limit不能大于10000
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4105,6 +4850,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Order(self):
+        """以升序还是降序的方式对日志进行排序，可选值 desc和 asc
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -4113,6 +4861,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """根据某个字段排序日志,支持以下字段：function_name, duration, mem_usage, start_time
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -4121,6 +4872,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """日志过滤条件。可用来区分正确和错误日志，filter.RetCode=not0 表示只返回错误日志，filter.RetCode=is0 表示只返回正确日志，不传，则返回所有日志
+        :rtype: :class:`tencentcloud.scf.v20180416.models.LogFilter`
+        """
         return self._Filter
 
     @Filter.setter
@@ -4129,6 +4883,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数的命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -4137,6 +4894,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """函数的版本
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -4145,6 +4905,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def FunctionRequestId(self):
+        """执行该函数对应的requestId
+        :rtype: str
+        """
         return self._FunctionRequestId
 
     @FunctionRequestId.setter
@@ -4153,6 +4916,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询的具体日期，例如：2017-05-16 20:00:00，只能与endtime相差一天之内
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4161,6 +4927,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询的具体日期，例如：2017-05-16 20:59:59，只能与startTime相差一天之内
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4169,6 +4938,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def SearchContext(self):
+        """该字段已下线
+        :rtype: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`
+        """
         return self._SearchContext
 
     @SearchContext.setter
@@ -4226,6 +4998,9 @@ class GetFunctionLogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """函数日志的总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4234,6 +5009,9 @@ class GetFunctionLogsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """函数日志信息
+        :rtype: list of FunctionLog
+        """
         return self._Data
 
     @Data.setter
@@ -4242,6 +5020,9 @@ class GetFunctionLogsResponse(AbstractModel):
 
     @property
     def SearchContext(self):
+        """该字段已下线
+        :rtype: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`
+        """
         return self._SearchContext
 
     @SearchContext.setter
@@ -4250,6 +5031,9 @@ class GetFunctionLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4296,6 +5080,9 @@ class GetFunctionRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """需要获取详情的函数名称，ResourceId和FunctionName只能传一个
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -4304,6 +5091,10 @@ class GetFunctionRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """函数的版本号
+默认值: $LATEST
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -4312,6 +5103,10 @@ class GetFunctionRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数所属命名空间
+默认值: default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -4320,6 +5115,9 @@ class GetFunctionRequest(AbstractModel):
 
     @property
     def ShowCode(self):
+        """是否显示代码, TRUE表示显示代码，FALSE表示不显示代码,大于1M的入口文件不会显示
+        :rtype: str
+        """
         return self._ShowCode
 
     @ShowCode.setter
@@ -4511,6 +5309,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def ModTime(self):
+        """函数的最后修改时间
+        :rtype: str
+        """
         return self._ModTime
 
     @ModTime.setter
@@ -4519,6 +5320,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def CodeInfo(self):
+        """函数的代码
+        :rtype: str
+        """
         return self._CodeInfo
 
     @CodeInfo.setter
@@ -4527,6 +5331,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def Description(self):
+        """函数的描述信息
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4535,6 +5342,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def Triggers(self):
+        """函数的触发器列表
+        :rtype: list of Trigger
+        """
         return self._Triggers
 
     @Triggers.setter
@@ -4543,6 +5353,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def Handler(self):
+        """函数的入口
+        :rtype: str
+        """
         return self._Handler
 
     @Handler.setter
@@ -4551,6 +5364,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def CodeSize(self):
+        """函数代码大小
+        :rtype: int
+        """
         return self._CodeSize
 
     @CodeSize.setter
@@ -4559,6 +5375,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def Timeout(self):
+        """函数的超时时间
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -4567,6 +5386,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def FunctionVersion(self):
+        """函数的版本
+        :rtype: str
+        """
         return self._FunctionVersion
 
     @FunctionVersion.setter
@@ -4575,6 +5397,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def MemorySize(self):
+        """函数的最大可用内存
+        :rtype: int
+        """
         return self._MemorySize
 
     @MemorySize.setter
@@ -4583,6 +5408,10 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def Runtime(self):
+        """函数的运行环境
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Runtime
 
     @Runtime.setter
@@ -4591,6 +5420,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数的名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -4599,6 +5431,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def VpcConfig(self):
+        """函数的私有网络
+        :rtype: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
+        """
         return self._VpcConfig
 
     @VpcConfig.setter
@@ -4607,6 +5442,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def UseGpu(self):
+        """是否使用GPU
+        :rtype: str
+        """
         return self._UseGpu
 
     @UseGpu.setter
@@ -4615,6 +5453,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def Environment(self):
+        """函数的环境变量
+        :rtype: :class:`tencentcloud.scf.v20180416.models.Environment`
+        """
         return self._Environment
 
     @Environment.setter
@@ -4623,6 +5464,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def CodeResult(self):
+        """代码是否正确
+        :rtype: str
+        """
         return self._CodeResult
 
     @CodeResult.setter
@@ -4631,6 +5475,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def CodeError(self):
+        """代码错误信息
+        :rtype: str
+        """
         return self._CodeError
 
     @CodeError.setter
@@ -4639,6 +5486,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def ErrNo(self):
+        """代码错误码
+        :rtype: int
+        """
         return self._ErrNo
 
     @ErrNo.setter
@@ -4647,6 +5497,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数的命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -4655,6 +5508,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def Role(self):
+        """函数绑定的角色
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -4663,6 +5519,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def InstallDependency(self):
+        """是否自动安装依赖
+        :rtype: str
+        """
         return self._InstallDependency
 
     @InstallDependency.setter
@@ -4671,6 +5530,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def Status(self):
+        """函数状态，状态值及流转[参考说明](https://cloud.tencent.com/document/product/583/47175)
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -4679,6 +5541,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def StatusDesc(self):
+        """状态描述
+        :rtype: str
+        """
         return self._StatusDesc
 
     @StatusDesc.setter
@@ -4687,6 +5552,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def ClsLogsetId(self):
+        """日志投递到的Cls日志集
+        :rtype: str
+        """
         return self._ClsLogsetId
 
     @ClsLogsetId.setter
@@ -4695,6 +5563,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def ClsTopicId(self):
+        """日志投递到的Cls Topic
+        :rtype: str
+        """
         return self._ClsTopicId
 
     @ClsTopicId.setter
@@ -4703,6 +5574,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def FunctionId(self):
+        """函数ID
+        :rtype: str
+        """
         return self._FunctionId
 
     @FunctionId.setter
@@ -4711,6 +5585,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def Tags(self):
+        """函数的标签列表
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -4719,6 +5596,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def EipConfig(self):
+        """EipConfig配置
+        :rtype: :class:`tencentcloud.scf.v20180416.models.EipOutConfig`
+        """
         return self._EipConfig
 
     @EipConfig.setter
@@ -4727,6 +5607,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def AccessInfo(self):
+        """域名信息
+        :rtype: :class:`tencentcloud.scf.v20180416.models.AccessInfo`
+        """
         return self._AccessInfo
 
     @AccessInfo.setter
@@ -4735,6 +5618,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def Type(self):
+        """函数类型，取值为HTTP或者Event
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -4743,6 +5629,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def L5Enable(self):
+        """是否启用L5
+        :rtype: str
+        """
         return self._L5Enable
 
     @L5Enable.setter
@@ -4751,6 +5640,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def Layers(self):
+        """函数关联的Layer版本信息
+        :rtype: list of LayerVersionInfo
+        """
         return self._Layers
 
     @Layers.setter
@@ -4759,6 +5651,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def DeadLetterConfig(self):
+        """函数关联的死信队列信息
+        :rtype: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
+        """
         return self._DeadLetterConfig
 
     @DeadLetterConfig.setter
@@ -4767,6 +5662,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def AddTime(self):
+        """函数创建回见
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -4775,6 +5673,10 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def PublicNetConfig(self):
+        """公网访问配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigOut`
+        """
         return self._PublicNetConfig
 
     @PublicNetConfig.setter
@@ -4783,6 +5685,10 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def OnsEnable(self):
+        """是否启用Ons
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OnsEnable
 
     @OnsEnable.setter
@@ -4791,6 +5697,10 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def CfsConfig(self):
+        """文件系统配置参数，用于云函数挂载文件系统
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
+        """
         return self._CfsConfig
 
     @CfsConfig.setter
@@ -4799,6 +5709,10 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def AvailableStatus(self):
+        """函数的计费状态，状态值[参考此处](https://cloud.tencent.com/document/product/583/47175#.E5.87.BD.E6.95.B0.E8.AE.A1.E8.B4.B9.E7.8A.B6.E6.80.81)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AvailableStatus
 
     @AvailableStatus.setter
@@ -4807,6 +5721,10 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def Qualifier(self):
+        """函数版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -4815,6 +5733,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def InitTimeout(self):
+        """函数初始化超时时间
+        :rtype: int
+        """
         return self._InitTimeout
 
     @InitTimeout.setter
@@ -4823,6 +5744,10 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def StatusReasons(self):
+        """函数状态失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of StatusReason
+        """
         return self._StatusReasons
 
     @StatusReasons.setter
@@ -4831,6 +5756,10 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def AsyncRunEnable(self):
+        """是否开启异步属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AsyncRunEnable
 
     @AsyncRunEnable.setter
@@ -4839,6 +5768,10 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def TraceEnable(self):
+        """是否开启事件追踪
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TraceEnable
 
     @TraceEnable.setter
@@ -4847,6 +5780,10 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def ImageConfig(self):
+        """镜像配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.scf.v20180416.models.ImageConfig`
+        """
         return self._ImageConfig
 
     @ImageConfig.setter
@@ -4855,6 +5792,10 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def ProtocolType(self):
+        """HTTP函数支持的访问协议。当前支持WebSockets协议。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProtocolType
 
     @ProtocolType.setter
@@ -4863,6 +5804,10 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def ProtocolParams(self):
+        """HTTP函数配置ProtocolType访问协议，当前协议配置的参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.scf.v20180416.models.ProtocolParams`
+        """
         return self._ProtocolParams
 
     @ProtocolParams.setter
@@ -4871,6 +5816,10 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def DnsCache(self):
+        """是否开启DNS缓存
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DnsCache
 
     @DnsCache.setter
@@ -4879,6 +5828,10 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def IntranetConfig(self):
+        """内网访问配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.scf.v20180416.models.IntranetConfigOut`
+        """
         return self._IntranetConfig
 
     @IntranetConfig.setter
@@ -4887,6 +5840,9 @@ class GetFunctionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5002,6 +5958,9 @@ class GetLayerVersionRequest(AbstractModel):
 
     @property
     def LayerName(self):
+        """层名称
+        :rtype: str
+        """
         return self._LayerName
 
     @LayerName.setter
@@ -5010,6 +5969,9 @@ class GetLayerVersionRequest(AbstractModel):
 
     @property
     def LayerVersion(self):
+        """版本号
+        :rtype: int
+        """
         return self._LayerVersion
 
     @LayerVersion.setter
@@ -5071,6 +6033,9 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def CompatibleRuntimes(self):
+        """适配的运行时
+        :rtype: list of str
+        """
         return self._CompatibleRuntimes
 
     @CompatibleRuntimes.setter
@@ -5079,6 +6044,9 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def CodeSha256(self):
+        """层中版本文件的SHA256编码
+        :rtype: str
+        """
         return self._CodeSha256
 
     @CodeSha256.setter
@@ -5087,6 +6055,9 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def Location(self):
+        """层中版本文件的下载地址
+        :rtype: str
+        """
         return self._Location
 
     @Location.setter
@@ -5095,6 +6066,9 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def AddTime(self):
+        """版本的创建时间
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -5103,6 +6077,9 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def Description(self):
+        """版本的描述信息
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -5111,6 +6088,9 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def LicenseInfo(self):
+        """许可证信息
+        :rtype: str
+        """
         return self._LicenseInfo
 
     @LicenseInfo.setter
@@ -5119,6 +6099,9 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def LayerVersion(self):
+        """版本号
+        :rtype: int
+        """
         return self._LayerVersion
 
     @LayerVersion.setter
@@ -5127,6 +6110,9 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def LayerName(self):
+        """层名称
+        :rtype: str
+        """
         return self._LayerName
 
     @LayerName.setter
@@ -5135,6 +6121,9 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def Status(self):
+        """层的具体版本当前状态，状态值[参考此处](https://cloud.tencent.com/document/product/583/47175#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -5143,6 +6132,9 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5183,6 +6175,9 @@ class GetProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """需要获取预置并发详情的函数名称。
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -5191,6 +6186,9 @@ class GetProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数所在的命名空间，默认为default。
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -5199,6 +6197,9 @@ class GetProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """函数版本号，不传则返回函数所有版本的预置并发信息。
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -5240,6 +6241,9 @@ class GetProvisionedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def UnallocatedConcurrencyNum(self):
+        """该函数剩余可配置的预置并发数。
+        :rtype: int
+        """
         return self._UnallocatedConcurrencyNum
 
     @UnallocatedConcurrencyNum.setter
@@ -5248,6 +6252,9 @@ class GetProvisionedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def Allocated(self):
+        """函数已预置的并发配置详情。
+        :rtype: list of VersionProvisionedConcurrencyInfo
+        """
         return self._Allocated
 
     @Allocated.setter
@@ -5256,6 +6263,9 @@ class GetProvisionedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5300,6 +6310,9 @@ class GetRequestStatusRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -5308,6 +6321,9 @@ class GetRequestStatusRequest(AbstractModel):
 
     @property
     def FunctionRequestId(self):
+        """需要查询状态的请求 id
+        :rtype: str
+        """
         return self._FunctionRequestId
 
     @FunctionRequestId.setter
@@ -5316,6 +6332,9 @@ class GetRequestStatusRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数的所在的命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -5324,6 +6343,9 @@ class GetRequestStatusRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询的开始时间，例如：2017-05-16 20:00:00，不填默认为当前时间 - 15min
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -5332,6 +6354,9 @@ class GetRequestStatusRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """查询的结束时间，例如：2017-05-16 20:59:59。StartTime 为空时，EndTime 默认为当前时间；StartTime 有值时，需要同时传 EndTime。EndTime 需要晚于 StartTime。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -5377,6 +6402,10 @@ class GetRequestStatusResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """函数运行状态的总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5385,6 +6414,10 @@ class GetRequestStatusResponse(AbstractModel):
 
     @property
     def Data(self):
+        """函数运行状态数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RequestStatus
+        """
         return self._Data
 
     @Data.setter
@@ -5393,6 +6426,9 @@ class GetRequestStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5428,6 +6464,9 @@ class GetReservedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """需要获取最大独占配额详情的函数名称。
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -5436,6 +6475,9 @@ class GetReservedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数所在的命名空间，默认为default。
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -5474,6 +6516,10 @@ class GetReservedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def ReservedMem(self):
+        """该函数的最大独占配额。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReservedMem
 
     @ReservedMem.setter
@@ -5482,6 +6528,9 @@ class GetReservedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5540,6 +6589,9 @@ Job 镜像：-1
 
     @property
     def ImageType(self):
+        """镜像仓库类型，个人版或者企业版：personal/enterprise
+        :rtype: str
+        """
         return self._ImageType
 
     @ImageType.setter
@@ -5548,6 +6600,9 @@ Job 镜像：-1
 
     @property
     def ImageUri(self):
+        """{domain}/{namespace}/{imageName}:{tag}@{digest}
+        :rtype: str
+        """
         return self._ImageUri
 
     @ImageUri.setter
@@ -5556,6 +6611,10 @@ Job 镜像：-1
 
     @property
     def RegistryId(self):
+        """用于企业版TCR获取镜像拉取临时凭证，ImageType为"enterprise"时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -5564,6 +6623,10 @@ Job 镜像：-1
 
     @property
     def EntryPoint(self):
+        """参数已废弃
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EntryPoint
 
     @EntryPoint.setter
@@ -5572,6 +6635,10 @@ Job 镜像：-1
 
     @property
     def Command(self):
+        """容器的启动命令。该参数为可选参数，如果不填写，则默认使用 Dockerfile 中的 Entrypoint。传入规范，填写可运行的指令，例如 python
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -5580,6 +6647,10 @@ Job 镜像：-1
 
     @property
     def Args(self):
+        """容器的启动参数。该参数为可选参数，如果不填写，则默认使用 Dockerfile 中的 CMD。传入规范，以“空格”作为参数的分割标识，例如 -u app.py
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Args
 
     @Args.setter
@@ -5588,6 +6659,10 @@ Job 镜像：-1
 
     @property
     def ContainerImageAccelerate(self):
+        """镜像加速开关，默认False
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._ContainerImageAccelerate
 
     @ContainerImageAccelerate.setter
@@ -5596,6 +6671,15 @@ Job 镜像：-1
 
     @property
     def ImagePort(self):
+        """镜像函数端口设置，可指定镜像类型
+Web Server镜像：9000
+Job 镜像：-1
+注意：此字段可能返回 null，表示取不到有效值。
+默认值：9000
+示例值：9000
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ImagePort
 
     @ImagePort.setter
@@ -5641,6 +6725,10 @@ class InstanceConcurrencyConfig(AbstractModel):
 
     @property
     def DynamicEnabled(self):
+        """是否开启智能动态并发。'FALSE'时是静态并发。''时取消多并发配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DynamicEnabled
 
     @DynamicEnabled.setter
@@ -5649,6 +6737,10 @@ class InstanceConcurrencyConfig(AbstractModel):
 
     @property
     def MaxConcurrency(self):
+        """单实例并发数最大值。取值范围 [1,100]
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxConcurrency
 
     @MaxConcurrency.setter
@@ -5686,6 +6778,12 @@ DISABLE 为不开启
 
     @property
     def IpFixed(self):
+        """是否开启固定内网IP
+ENABLE 为开启
+DISABLE 为不开启
+
+        :rtype: str
+        """
         return self._IpFixed
 
     @IpFixed.setter
@@ -5725,6 +6823,11 @@ DISABLE 为不启用
 
     @property
     def IpFixed(self):
+        """是否启用固定内网IP
+ENABLE 为启用
+DISABLE 为不启用
+        :rtype: str
+        """
         return self._IpFixed
 
     @IpFixed.setter
@@ -5733,6 +6836,10 @@ DISABLE 为不启用
 
     @property
     def IpAddress(self):
+        """若已启用固定内网IP，则该字段返回使用的IP列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._IpAddress
 
     @IpAddress.setter
@@ -5782,6 +6889,9 @@ class InvokeFunctionRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -5790,6 +6900,9 @@ class InvokeFunctionRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """触发函数的版本号或别名，默认值为$DEFAULT
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -5798,6 +6911,9 @@ class InvokeFunctionRequest(AbstractModel):
 
     @property
     def Event(self):
+        """运行函数时的参数，以json格式传入，最大支持的参数长度是 6MB。该字段信息对应函数 [event 入参](https://cloud.tencent.com/document/product/583/9210#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E)。
+        :rtype: str
+        """
         return self._Event
 
     @Event.setter
@@ -5806,6 +6922,9 @@ class InvokeFunctionRequest(AbstractModel):
 
     @property
     def LogType(self):
+        """返回值会包含4KB的日志，可选值为None和Tail，默认值为None。当该值为Tail时，返回参数中的Log字段会包含对应的函数执行日志
+        :rtype: str
+        """
         return self._LogType
 
     @LogType.setter
@@ -5814,6 +6933,9 @@ class InvokeFunctionRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，不填默认为 default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -5822,6 +6944,9 @@ class InvokeFunctionRequest(AbstractModel):
 
     @property
     def RoutingKey(self):
+        """函数灰度流量控制调用，以json格式传入，例如{"k":"v"}，注意kv都需要是字符串类型，最大支持的参数长度是1024字节
+        :rtype: str
+        """
         return self._RoutingKey
 
     @RoutingKey.setter
@@ -5863,6 +6988,9 @@ class InvokeFunctionResponse(AbstractModel):
 
     @property
     def Result(self):
+        """函数执行结果
+        :rtype: :class:`tencentcloud.scf.v20180416.models.Result`
+        """
         return self._Result
 
     @Result.setter
@@ -5871,6 +6999,9 @@ class InvokeFunctionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5917,6 +7048,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -5925,6 +7059,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def InvocationType(self):
+        """同步调用请使用[同步 Invoke 调用接口](https://cloud.tencent.com/document/product/583/58400) 或填写同步调用参数 RequestResponse ，建议使用同步调用接口以获取最佳性能；异步调用填写 Event；默认为同步。接口超时时间为 300s，更长超时时间请使用异步调用。
+        :rtype: str
+        """
         return self._InvocationType
 
     @InvocationType.setter
@@ -5933,6 +7070,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """触发函数的版本号或别名，默认值为 $LATEST
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -5941,6 +7081,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def ClientContext(self):
+        """运行函数时的参数，以json格式传入，同步调用最大支持 6MB，异步调用最大支持 128 KB。该字段信息对应函数 [event 入参](https://cloud.tencent.com/document/product/583/9210#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E)。
+        :rtype: str
+        """
         return self._ClientContext
 
     @ClientContext.setter
@@ -5949,6 +7092,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def LogType(self):
+        """异步调用该字段返回为空。
+        :rtype: str
+        """
         return self._LogType
 
     @LogType.setter
@@ -5957,6 +7103,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -5965,6 +7114,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def RoutingKey(self):
+        """函数灰度流量控制调用，以json格式传入，例如{"k":"v"}，注意kv都需要是字符串类型，最大支持的参数长度是1024字节
+        :rtype: str
+        """
         return self._RoutingKey
 
     @RoutingKey.setter
@@ -6007,6 +7159,9 @@ class InvokeResponse(AbstractModel):
 
     @property
     def Result(self):
+        """函数执行结果
+        :rtype: :class:`tencentcloud.scf.v20180416.models.Result`
+        """
         return self._Result
 
     @Result.setter
@@ -6015,6 +7170,9 @@ class InvokeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6046,6 +7204,9 @@ class K8SLabel(AbstractModel):
 
     @property
     def Key(self):
+        """label的名称
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -6054,6 +7215,9 @@ class K8SLabel(AbstractModel):
 
     @property
     def Value(self):
+        """label的值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -6105,6 +7269,9 @@ class K8SToleration(AbstractModel):
 
     @property
     def Key(self):
+        """匹配的污点名
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -6113,6 +7280,10 @@ class K8SToleration(AbstractModel):
 
     @property
     def Operator(self):
+        """匹配方式，默认值为: Equal
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -6121,6 +7292,10 @@ class K8SToleration(AbstractModel):
 
     @property
     def Effect(self):
+        """执行策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Effect
 
     @Effect.setter
@@ -6129,6 +7304,10 @@ class K8SToleration(AbstractModel):
 
     @property
     def Value(self):
+        """匹配的污点值，当Operator为Equal时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -6137,6 +7316,10 @@ class K8SToleration(AbstractModel):
 
     @property
     def TolerationSeconds(self):
+        """当污点不被容忍时，Pod还能在节点上运行多久
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TolerationSeconds
 
     @TolerationSeconds.setter
@@ -6203,6 +7386,10 @@ class LayerVersionInfo(AbstractModel):
 
     @property
     def CompatibleRuntimes(self):
+        """版本适用的运行时
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._CompatibleRuntimes
 
     @CompatibleRuntimes.setter
@@ -6211,6 +7398,9 @@ class LayerVersionInfo(AbstractModel):
 
     @property
     def AddTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -6219,6 +7409,10 @@ class LayerVersionInfo(AbstractModel):
 
     @property
     def Description(self):
+        """版本描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -6227,6 +7421,10 @@ class LayerVersionInfo(AbstractModel):
 
     @property
     def LicenseInfo(self):
+        """许可证信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LicenseInfo
 
     @LicenseInfo.setter
@@ -6235,6 +7433,9 @@ class LayerVersionInfo(AbstractModel):
 
     @property
     def LayerVersion(self):
+        """版本号
+        :rtype: int
+        """
         return self._LayerVersion
 
     @LayerVersion.setter
@@ -6243,6 +7444,9 @@ class LayerVersionInfo(AbstractModel):
 
     @property
     def LayerName(self):
+        """层名称
+        :rtype: str
+        """
         return self._LayerName
 
     @LayerName.setter
@@ -6251,6 +7455,9 @@ class LayerVersionInfo(AbstractModel):
 
     @property
     def Status(self):
+        """层的具体版本当前状态，状态值[参考此处](https://cloud.tencent.com/document/product/583/47175#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -6259,6 +7466,10 @@ class LayerVersionInfo(AbstractModel):
 
     @property
     def Stamp(self):
+        """Stamp
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Stamp
 
     @Stamp.setter
@@ -6267,6 +7478,10 @@ class LayerVersionInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """返回层绑定的标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -6316,6 +7531,9 @@ class LayerVersionSimple(AbstractModel):
 
     @property
     def LayerName(self):
+        """绑定的层名称。解绑层需传递空字符串。
+        :rtype: str
+        """
         return self._LayerName
 
     @LayerName.setter
@@ -6324,6 +7542,9 @@ class LayerVersionSimple(AbstractModel):
 
     @property
     def LayerVersion(self):
+        """绑定或解绑层的版本号。解绑函数版本关联的最后一个层版本时，LayerVersion 填 0。
+        :rtype: int
+        """
         return self._LayerVersion
 
     @LayerVersion.setter
@@ -6361,6 +7582,9 @@ class LimitsInfo(AbstractModel):
 
     @property
     def NamespacesCount(self):
+        """命名空间个数限制
+        :rtype: int
+        """
         return self._NamespacesCount
 
     @NamespacesCount.setter
@@ -6369,6 +7593,9 @@ class LimitsInfo(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间限制信息
+        :rtype: list of NamespaceLimit
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -6420,6 +7647,9 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -6428,6 +7658,9 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数所在的命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -6436,6 +7669,9 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def FunctionVersion(self):
+        """如果提供此参数，则只返回与该函数版本有关联的别名
+        :rtype: str
+        """
         return self._FunctionVersion
 
     @FunctionVersion.setter
@@ -6444,6 +7680,9 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """数据偏移量，默认值为 0
+        :rtype: str
+        """
         return self._Offset
 
     @Offset.setter
@@ -6452,6 +7691,9 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数据长度，默认值为 20
+        :rtype: str
+        """
         return self._Limit
 
     @Limit.setter
@@ -6496,6 +7738,9 @@ class ListAliasesResponse(AbstractModel):
 
     @property
     def Aliases(self):
+        """别名列表
+        :rtype: list of Alias
+        """
         return self._Aliases
 
     @Aliases.setter
@@ -6504,6 +7749,10 @@ class ListAliasesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """别名总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6512,6 +7761,9 @@ class ListAliasesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6577,6 +7829,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -6585,6 +7840,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -6593,6 +7851,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """过滤条件，函数版本
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -6601,6 +7862,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def InvokeType(self):
+        """过滤条件，调用类型列表
+        :rtype: list of str
+        """
         return self._InvokeType
 
     @InvokeType.setter
@@ -6609,6 +7873,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def Status(self):
+        """过滤条件，事件状态列表
+        :rtype: list of str
+        """
         return self._Status
 
     @Status.setter
@@ -6617,6 +7884,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def StartTimeInterval(self):
+        """过滤条件，开始执行时间左闭右开区间
+        :rtype: :class:`tencentcloud.scf.v20180416.models.TimeInterval`
+        """
         return self._StartTimeInterval
 
     @StartTimeInterval.setter
@@ -6625,6 +7895,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def EndTimeInterval(self):
+        """过滤条件，结束执行时间左闭右开区间
+        :rtype: :class:`tencentcloud.scf.v20180416.models.TimeInterval`
+        """
         return self._EndTimeInterval
 
     @EndTimeInterval.setter
@@ -6633,6 +7906,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def Order(self):
+        """可选值 ASC 和 DESC，默认 DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -6641,6 +7917,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def Orderby(self):
+        """可选值 StartTime 和 EndTime，默认值 StartTime
+        :rtype: str
+        """
         return self._Orderby
 
     @Orderby.setter
@@ -6649,6 +7928,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """数据偏移量，默认值为 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6657,6 +7939,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数据长度，默认值为 20，最大值 100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6665,6 +7950,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def InvokeRequestId(self):
+        """过滤条件，事件调用请求id
+        :rtype: str
+        """
         return self._InvokeRequestId
 
     @InvokeRequestId.setter
@@ -6719,6 +8007,9 @@ class ListAsyncEventsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """满足过滤条件的事件总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6727,6 +8018,9 @@ class ListAsyncEventsResponse(AbstractModel):
 
     @property
     def EventList(self):
+        """异步事件列表
+        :rtype: list of AsyncEvent
+        """
         return self._EventList
 
     @EventList.setter
@@ -6735,6 +8029,9 @@ class ListAsyncEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6779,6 +8076,9 @@ class ListCustomDomainsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6787,6 +8087,9 @@ class ListCustomDomainsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """容量，默认20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6795,6 +8098,9 @@ class ListCustomDomainsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """取值范围：AddTime，ModTime， 默认AddTime
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -6803,6 +8109,9 @@ class ListCustomDomainsRequest(AbstractModel):
 
     @property
     def Order(self):
+        """取值范围：DESC, ASC 默认DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -6811,6 +8120,9 @@ class ListCustomDomainsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -6860,6 +8172,9 @@ class ListCustomDomainsResponse(AbstractModel):
 
     @property
     def Total(self):
+        """总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -6868,6 +8183,10 @@ class ListCustomDomainsResponse(AbstractModel):
 
     @property
     def Domains(self):
+        """域名列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DomainInfo
+        """
         return self._Domains
 
     @Domains.setter
@@ -6876,6 +8195,9 @@ class ListCustomDomainsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6932,6 +8254,9 @@ class ListFunctionsRequest(AbstractModel):
 
     @property
     def Order(self):
+        """以升序还是降序的方式返回结果，可选值 ASC 和 DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -6940,6 +8265,9 @@ class ListFunctionsRequest(AbstractModel):
 
     @property
     def Orderby(self):
+        """根据哪个字段进行返回结果排序,支持以下字段：AddTime, ModTime, FunctionName
+        :rtype: str
+        """
         return self._Orderby
 
     @Orderby.setter
@@ -6948,6 +8276,9 @@ class ListFunctionsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """数据偏移量，默认值为 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6956,6 +8287,9 @@ class ListFunctionsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数据长度，默认值为 20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6964,6 +8298,9 @@ class ListFunctionsRequest(AbstractModel):
 
     @property
     def SearchKey(self):
+        """支持FunctionName模糊匹配
+        :rtype: str
+        """
         return self._SearchKey
 
     @SearchKey.setter
@@ -6972,6 +8309,9 @@ class ListFunctionsRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -6980,6 +8320,9 @@ class ListFunctionsRequest(AbstractModel):
 
     @property
     def Description(self):
+        """函数描述，支持模糊搜索
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -6988,6 +8331,12 @@ class ListFunctionsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+- tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
+
+每次请求的Filters的上限为10，Filter.Values的上限为5。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -7039,6 +8388,9 @@ class ListFunctionsResponse(AbstractModel):
 
     @property
     def Functions(self):
+        """函数列表
+        :rtype: list of Function
+        """
         return self._Functions
 
     @Functions.setter
@@ -7047,6 +8399,9 @@ class ListFunctionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7055,6 +8410,9 @@ class ListFunctionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7090,6 +8448,9 @@ class ListLayerVersionsRequest(AbstractModel):
 
     @property
     def LayerName(self):
+        """层名称
+        :rtype: str
+        """
         return self._LayerName
 
     @LayerName.setter
@@ -7098,6 +8459,9 @@ class ListLayerVersionsRequest(AbstractModel):
 
     @property
     def CompatibleRuntime(self):
+        """适配的运行时
+        :rtype: list of str
+        """
         return self._CompatibleRuntime
 
     @CompatibleRuntime.setter
@@ -7135,6 +8499,9 @@ class ListLayerVersionsResponse(AbstractModel):
 
     @property
     def LayerVersions(self):
+        """层版本列表
+        :rtype: list of LayerVersionInfo
+        """
         return self._LayerVersions
 
     @LayerVersions.setter
@@ -7143,6 +8510,9 @@ class ListLayerVersionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7183,6 +8553,9 @@ class ListLayersRequest(AbstractModel):
 
     @property
     def CompatibleRuntime(self):
+        """适配的运行时
+        :rtype: str
+        """
         return self._CompatibleRuntime
 
     @CompatibleRuntime.setter
@@ -7191,6 +8564,9 @@ class ListLayersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移位置
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7199,6 +8575,9 @@ class ListLayersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """查询数目限制
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7207,6 +8586,9 @@ class ListLayersRequest(AbstractModel):
 
     @property
     def SearchKey(self):
+        """查询key，模糊匹配名称
+        :rtype: str
+        """
         return self._SearchKey
 
     @SearchKey.setter
@@ -7249,6 +8631,9 @@ class ListLayersResponse(AbstractModel):
 
     @property
     def Layers(self):
+        """层列表
+        :rtype: list of LayerVersionInfo
+        """
         return self._Layers
 
     @Layers.setter
@@ -7257,6 +8642,9 @@ class ListLayersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """层总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7265,6 +8653,9 @@ class ListLayersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7309,6 +8700,9 @@ class ListNamespacesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数据长度，默认值为 20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7317,6 +8711,9 @@ class ListNamespacesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """数据的偏移量，默认值为 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7325,6 +8722,9 @@ class ListNamespacesRequest(AbstractModel):
 
     @property
     def Orderby(self):
+        """根据哪个字段进行返回结果排序,支持以下字段：Name,Updatetime
+        :rtype: str
+        """
         return self._Orderby
 
     @Orderby.setter
@@ -7333,6 +8733,9 @@ class ListNamespacesRequest(AbstractModel):
 
     @property
     def Order(self):
+        """以升序还是降序的方式返回结果，可选值 ASC 和 DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -7341,6 +8744,9 @@ class ListNamespacesRequest(AbstractModel):
 
     @property
     def SearchKey(self):
+        """关键字匹配搜索，Key 可选值为 Namespace 和 Description，多个搜索条件之间是与的关系
+        :rtype: list of SearchKey
+        """
         return self._SearchKey
 
     @SearchKey.setter
@@ -7389,6 +8795,9 @@ class ListNamespacesResponse(AbstractModel):
 
     @property
     def Namespaces(self):
+        """namespace详情
+        :rtype: list of Namespace
+        """
         return self._Namespaces
 
     @Namespaces.setter
@@ -7397,6 +8806,9 @@ class ListNamespacesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """返回的namespace数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7405,6 +8817,9 @@ class ListNamespacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7457,6 +8872,9 @@ class ListTriggersRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -7465,6 +8883,9 @@ class ListTriggersRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，默认是default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -7473,6 +8894,9 @@ class ListTriggersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """数据偏移量，默认值为 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7481,6 +8905,9 @@ class ListTriggersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数据长度，默认值为 20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7489,6 +8916,9 @@ class ListTriggersRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """根据哪个字段进行返回结果排序,支持以下字段：add_time，mod_time，默认mod_time
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -7497,6 +8927,9 @@ class ListTriggersRequest(AbstractModel):
 
     @property
     def Order(self):
+        """以升序还是降序的方式返回结果，可选值 ASC 和 DESC，默认DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -7505,6 +8938,11 @@ class ListTriggersRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """* Qualifier: 函数版本，别名
+* TriggerName: 函数触发器名称
+* Description: 函数触发器描述
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -7555,6 +8993,9 @@ class ListTriggersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """触发器总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7563,6 +9004,9 @@ class ListTriggersResponse(AbstractModel):
 
     @property
     def Triggers(self):
+        """触发器列表
+        :rtype: list of TriggerInfo
+        """
         return self._Triggers
 
     @Triggers.setter
@@ -7571,6 +9015,9 @@ class ListTriggersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7618,6 +9065,9 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数名
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -7626,6 +9076,9 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数所在命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -7634,6 +9087,9 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """数据偏移量，默认值为 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7642,6 +9098,9 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数据长度，默认值为 20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7650,6 +9109,9 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     @property
     def Order(self):
+        """以升序还是降序的方式返回结果，可选值 ASC 和 DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -7658,6 +9120,9 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """根据哪个字段进行返回结果排序,支持以下字段：AddTime, ModTime
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -7707,6 +9172,9 @@ class ListVersionByFunctionResponse(AbstractModel):
 
     @property
     def FunctionVersion(self):
+        """函数版本。
+        :rtype: list of str
+        """
         return self._FunctionVersion
 
     @FunctionVersion.setter
@@ -7715,6 +9183,10 @@ class ListVersionByFunctionResponse(AbstractModel):
 
     @property
     def Versions(self):
+        """函数版本列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FunctionVersion
+        """
         return self._Versions
 
     @Versions.setter
@@ -7723,6 +9195,10 @@ class ListVersionByFunctionResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """函数版本总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7731,6 +9207,9 @@ class ListVersionByFunctionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7770,6 +9249,15 @@ UserCodeException 返回函数调用发生用户代码错误的日志，
 
     @property
     def RetCode(self):
+        """filter.RetCode的取值有：
+not0 表示只返回错误日志，
+is0 表示只返回正确日志，
+TimeLimitExceeded 返回函数调用发生超时的日志，
+ResourceLimitExceeded 返回函数调用发生资源超限的日志，
+UserCodeException 返回函数调用发生用户代码错误的日志，
+无输入则返回所有日志。
+        :rtype: str
+        """
         return self._RetCode
 
     @RetCode.setter
@@ -7812,6 +9300,9 @@ class LogSearchContext(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: str
+        """
         return self._Offset
 
     @Offset.setter
@@ -7820,6 +9311,9 @@ class LogSearchContext(AbstractModel):
 
     @property
     def Limit(self):
+        """日志条数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7828,6 +9322,9 @@ class LogSearchContext(AbstractModel):
 
     @property
     def Keyword(self):
+        """日志关键词
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -7836,6 +9333,9 @@ class LogSearchContext(AbstractModel):
 
     @property
     def Type(self):
+        """日志类型，支持Application和Platform，默认为Application
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -7884,6 +9384,9 @@ class Namespace(AbstractModel):
 
     @property
     def ModTime(self):
+        """命名空间创建时间
+        :rtype: str
+        """
         return self._ModTime
 
     @ModTime.setter
@@ -7892,6 +9395,9 @@ class Namespace(AbstractModel):
 
     @property
     def AddTime(self):
+        """命名空间修改时间
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -7900,6 +9406,9 @@ class Namespace(AbstractModel):
 
     @property
     def Description(self):
+        """命名空间描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -7908,6 +9417,9 @@ class Namespace(AbstractModel):
 
     @property
     def Name(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -7916,6 +9428,9 @@ class Namespace(AbstractModel):
 
     @property
     def Type(self):
+        """默认default，TCB表示是小程序云开发创建的
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -7981,6 +9496,9 @@ class NamespaceLimit(AbstractModel):
 
     @property
     def FunctionsCount(self):
+        """函数总数
+        :rtype: int
+        """
         return self._FunctionsCount
 
     @FunctionsCount.setter
@@ -7989,6 +9507,9 @@ class NamespaceLimit(AbstractModel):
 
     @property
     def Trigger(self):
+        """Trigger信息
+        :rtype: :class:`tencentcloud.scf.v20180416.models.TriggerCount`
+        """
         return self._Trigger
 
     @Trigger.setter
@@ -7997,6 +9518,9 @@ class NamespaceLimit(AbstractModel):
 
     @property
     def Namespace(self):
+        """Namespace名称
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -8005,6 +9529,9 @@ class NamespaceLimit(AbstractModel):
 
     @property
     def ConcurrentExecutions(self):
+        """并发量
+        :rtype: int
+        """
         return self._ConcurrentExecutions
 
     @ConcurrentExecutions.setter
@@ -8013,6 +9540,9 @@ class NamespaceLimit(AbstractModel):
 
     @property
     def TimeoutLimit(self):
+        """Timeout限制
+        :rtype: int
+        """
         return self._TimeoutLimit
 
     @TimeoutLimit.setter
@@ -8021,6 +9551,10 @@ class NamespaceLimit(AbstractModel):
 
     @property
     def TestModelLimit(self):
+        """测试事件限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TestModelLimit
 
     @TestModelLimit.setter
@@ -8029,6 +9563,9 @@ class NamespaceLimit(AbstractModel):
 
     @property
     def InitTimeoutLimit(self):
+        """初始化超时限制
+        :rtype: int
+        """
         return self._InitTimeoutLimit
 
     @InitTimeoutLimit.setter
@@ -8037,6 +9574,9 @@ class NamespaceLimit(AbstractModel):
 
     @property
     def RetryNumLimit(self):
+        """异步重试次数限制
+        :rtype: int
+        """
         return self._RetryNumLimit
 
     @RetryNumLimit.setter
@@ -8045,6 +9585,9 @@ class NamespaceLimit(AbstractModel):
 
     @property
     def MinMsgTTL(self):
+        """异步重试消息保留时间下限
+        :rtype: int
+        """
         return self._MinMsgTTL
 
     @MinMsgTTL.setter
@@ -8053,6 +9596,9 @@ class NamespaceLimit(AbstractModel):
 
     @property
     def MaxMsgTTL(self):
+        """异步重试消息保留时间上限
+        :rtype: int
+        """
         return self._MaxMsgTTL
 
     @MaxMsgTTL.setter
@@ -8098,6 +9644,10 @@ class NamespaceResourceEnv(AbstractModel):
 
     @property
     def TKE(self):
+        """基于TKE集群的资源池
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.scf.v20180416.models.NamespaceResourceEnvTKE`
+        """
         return self._TKE
 
     @TKE.setter
@@ -8162,6 +9712,9 @@ metadata:
 
     @property
     def ClusterID(self):
+        """集群ID
+        :rtype: str
+        """
         return self._ClusterID
 
     @ClusterID.setter
@@ -8170,6 +9723,9 @@ metadata:
 
     @property
     def SubnetID(self):
+        """子网ID
+        :rtype: str
+        """
         return self._SubnetID
 
     @SubnetID.setter
@@ -8178,6 +9734,9 @@ metadata:
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -8186,6 +9745,10 @@ metadata:
 
     @property
     def DataPath(self):
+        """数据存储地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataPath
 
     @DataPath.setter
@@ -8194,6 +9757,10 @@ metadata:
 
     @property
     def NodeSelector(self):
+        """node选择器
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of K8SLabel
+        """
         return self._NodeSelector
 
     @NodeSelector.setter
@@ -8202,6 +9769,10 @@ metadata:
 
     @property
     def Tolerations(self):
+        """污点容忍
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of K8SToleration
+        """
         return self._Tolerations
 
     @Tolerations.setter
@@ -8210,6 +9781,10 @@ metadata:
 
     @property
     def Port(self):
+        """scf组件将占用的节点端口起始号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -8218,6 +9793,13 @@ metadata:
 
     @property
     def PodTemplatePatch(self):
+        """yaml格式的pod patch内容，例如
+metadata:
+  labels:
+    key: value
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PodTemplatePatch
 
     @PodTemplatePatch.setter
@@ -8286,6 +9868,9 @@ class NamespaceUsage(AbstractModel):
 
     @property
     def Functions(self):
+        """函数数组
+        :rtype: list of str
+        """
         return self._Functions
 
     @Functions.setter
@@ -8294,6 +9879,9 @@ class NamespaceUsage(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -8302,6 +9890,9 @@ class NamespaceUsage(AbstractModel):
 
     @property
     def FunctionsCount(self):
+        """命名空间函数个数
+        :rtype: int
+        """
         return self._FunctionsCount
 
     @FunctionsCount.setter
@@ -8310,6 +9901,10 @@ class NamespaceUsage(AbstractModel):
 
     @property
     def TotalConcurrencyMem(self):
+        """命名空间配额总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalConcurrencyMem
 
     @TotalConcurrencyMem.setter
@@ -8318,6 +9913,10 @@ class NamespaceUsage(AbstractModel):
 
     @property
     def TotalAllocatedConcurrencyMem(self):
+        """命名空间并发使用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalAllocatedConcurrencyMem
 
     @TotalAllocatedConcurrencyMem.setter
@@ -8326,6 +9925,10 @@ class NamespaceUsage(AbstractModel):
 
     @property
     def TotalAllocatedProvisionedMem(self):
+        """命名空间预置使用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalAllocatedProvisionedMem
 
     @TotalAllocatedProvisionedMem.setter
@@ -8373,6 +9976,10 @@ class PathRewriteRule(AbstractModel):
 
     @property
     def Path(self):
+        """需要重路由的路径，取值规范：/，/*，/xxx，/xxx/a，/xxx/*
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -8381,6 +9988,10 @@ class PathRewriteRule(AbstractModel):
 
     @property
     def Type(self):
+        """匹配规，取值范围： WildcardRules 通配符匹配， ExactRules 精确匹配
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -8389,6 +10000,10 @@ class PathRewriteRule(AbstractModel):
 
     @property
     def Rewrite(self):
+        """替换值：比如/, /$
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Rewrite
 
     @Rewrite.setter
@@ -8425,6 +10040,10 @@ class ProtocolParams(AbstractModel):
 
     @property
     def WSParams(self):
+        """WebSockets协议支持的参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.scf.v20180416.models.WSParams`
+        """
         return self._WSParams
 
     @WSParams.setter
@@ -8463,6 +10082,9 @@ class PublicNetConfigIn(AbstractModel):
 
     @property
     def PublicNetStatus(self):
+        """是否开启公网访问能力取值['DISABLE','ENABLE']
+        :rtype: str
+        """
         return self._PublicNetStatus
 
     @PublicNetStatus.setter
@@ -8471,6 +10093,9 @@ class PublicNetConfigIn(AbstractModel):
 
     @property
     def EipConfig(self):
+        """Eip配置
+        :rtype: :class:`tencentcloud.scf.v20180416.models.EipConfigIn`
+        """
         return self._EipConfig
 
     @EipConfig.setter
@@ -8510,6 +10135,9 @@ class PublicNetConfigOut(AbstractModel):
 
     @property
     def PublicNetStatus(self):
+        """是否开启公网访问能力取值['DISABLE','ENABLE']
+        :rtype: str
+        """
         return self._PublicNetStatus
 
     @PublicNetStatus.setter
@@ -8518,6 +10146,9 @@ class PublicNetConfigOut(AbstractModel):
 
     @property
     def EipConfig(self):
+        """Eip配置
+        :rtype: :class:`tencentcloud.scf.v20180416.models.EipConfigOut`
+        """
         return self._EipConfig
 
     @EipConfig.setter
@@ -8569,6 +10200,9 @@ class PublishLayerVersionRequest(AbstractModel):
 
     @property
     def LayerName(self):
+        """层名称，支持26个英文字母大小写、数字、连接符和下划线，第一个字符只能以字母开头，最后一个字符不能为连接符或者下划线，名称长度1-64
+        :rtype: str
+        """
         return self._LayerName
 
     @LayerName.setter
@@ -8577,6 +10211,9 @@ class PublishLayerVersionRequest(AbstractModel):
 
     @property
     def CompatibleRuntimes(self):
+        """层适用的运行时，可多选，可选的值对应函数的 Runtime 可选值。
+        :rtype: list of str
+        """
         return self._CompatibleRuntimes
 
     @CompatibleRuntimes.setter
@@ -8585,6 +10222,9 @@ class PublishLayerVersionRequest(AbstractModel):
 
     @property
     def Content(self):
+        """层的文件来源或文件内容
+        :rtype: :class:`tencentcloud.scf.v20180416.models.Code`
+        """
         return self._Content
 
     @Content.setter
@@ -8593,6 +10233,9 @@ class PublishLayerVersionRequest(AbstractModel):
 
     @property
     def Description(self):
+        """层的版本的描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -8601,6 +10244,9 @@ class PublishLayerVersionRequest(AbstractModel):
 
     @property
     def LicenseInfo(self):
+        """层的软件许可证
+        :rtype: str
+        """
         return self._LicenseInfo
 
     @LicenseInfo.setter
@@ -8609,6 +10255,9 @@ class PublishLayerVersionRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """层Tag 参数，以键值对数组形式传入
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -8657,6 +10306,9 @@ class PublishLayerVersionResponse(AbstractModel):
 
     @property
     def LayerVersion(self):
+        """本次创建的层的版本号
+        :rtype: int
+        """
         return self._LayerVersion
 
     @LayerVersion.setter
@@ -8665,6 +10317,9 @@ class PublishLayerVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8697,6 +10352,9 @@ class PublishVersionRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """发布函数的名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -8705,6 +10363,9 @@ class PublishVersionRequest(AbstractModel):
 
     @property
     def Description(self):
+        """函数的描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -8713,6 +10374,9 @@ class PublishVersionRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数的命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -8773,6 +10437,9 @@ class PublishVersionResponse(AbstractModel):
 
     @property
     def FunctionVersion(self):
+        """函数的版本
+        :rtype: str
+        """
         return self._FunctionVersion
 
     @FunctionVersion.setter
@@ -8781,6 +10448,9 @@ class PublishVersionResponse(AbstractModel):
 
     @property
     def CodeSize(self):
+        """代码大小
+        :rtype: int
+        """
         return self._CodeSize
 
     @CodeSize.setter
@@ -8789,6 +10459,9 @@ class PublishVersionResponse(AbstractModel):
 
     @property
     def MemorySize(self):
+        """最大可用内存
+        :rtype: int
+        """
         return self._MemorySize
 
     @MemorySize.setter
@@ -8797,6 +10470,9 @@ class PublishVersionResponse(AbstractModel):
 
     @property
     def Description(self):
+        """函数的描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -8805,6 +10481,9 @@ class PublishVersionResponse(AbstractModel):
 
     @property
     def Handler(self):
+        """函数的入口
+        :rtype: str
+        """
         return self._Handler
 
     @Handler.setter
@@ -8813,6 +10492,9 @@ class PublishVersionResponse(AbstractModel):
 
     @property
     def Timeout(self):
+        """函数的超时时间
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -8821,6 +10503,10 @@ class PublishVersionResponse(AbstractModel):
 
     @property
     def Runtime(self):
+        """函数的运行环境
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Runtime
 
     @Runtime.setter
@@ -8829,6 +10515,9 @@ class PublishVersionResponse(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数的命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -8837,6 +10526,9 @@ class PublishVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8899,6 +10591,9 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """需要设置预置并发的函数的名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -8907,6 +10602,9 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """函数的版本号，注：$LATEST版本不支持预置并发
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -8915,6 +10613,9 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def VersionProvisionedConcurrencyNum(self):
+        """预置并发数量，注：所有版本的预置并发数总和存在上限限制，当前的上限是：函数最大并发配额 - 100
+        :rtype: int
+        """
         return self._VersionProvisionedConcurrencyNum
 
     @VersionProvisionedConcurrencyNum.setter
@@ -8923,6 +10624,9 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数所属命名空间，默认为default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -8931,6 +10635,9 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def TriggerActions(self):
+        """定时预置任务
+        :rtype: list of TriggerAction
+        """
         return self._TriggerActions
 
     @TriggerActions.setter
@@ -8939,6 +10646,14 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def ProvisionedType(self):
+        """预置类型，
+静态预置：Default
+动态追踪并发利用率指标预置：ConcurrencyUtilizationTracking
+预置类型二选一，设置静态预置时可以设置VersionProvisionedConcurrencyNum。
+
+动态利用率预置可以设置TrackingTarget，MinCapacity，MaxCapacity，保持向后兼容性此时VersionProvisionedConcurrencyNum设置为0.
+        :rtype: str
+        """
         return self._ProvisionedType
 
     @ProvisionedType.setter
@@ -8947,6 +10662,9 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def TrackingTarget(self):
+        """指标追踪的并发利用率。设置范围(0,1)
+        :rtype: float
+        """
         return self._TrackingTarget
 
     @TrackingTarget.setter
@@ -8955,6 +10673,9 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def MinCapacity(self):
+        """缩容时的最小值, 最小值为1
+        :rtype: int
+        """
         return self._MinCapacity
 
     @MinCapacity.setter
@@ -8963,6 +10684,9 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def MaxCapacity(self):
+        """扩容时的最大值
+        :rtype: int
+        """
         return self._MaxCapacity
 
     @MaxCapacity.setter
@@ -9009,6 +10733,9 @@ class PutProvisionedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9040,6 +10767,9 @@ class PutReservedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """需要设置最大独占配额的函数的名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -9048,6 +10778,9 @@ class PutReservedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def ReservedConcurrencyMem(self):
+        """函数最大独占配额，注：函数的最大独占配额内存总和上限：用户总并发内存配额 - 12800
+        :rtype: int
+        """
         return self._ReservedConcurrencyMem
 
     @ReservedConcurrencyMem.setter
@@ -9056,6 +10789,9 @@ class PutReservedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数所属命名空间，默认为default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -9091,6 +10827,9 @@ class PutReservedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9119,6 +10858,9 @@ class PutTotalConcurrencyConfigRequest(AbstractModel):
 
     @property
     def TotalConcurrencyMem(self):
+        """账号并发内存配额，注：账号并发内存配额下限：用户已用并发内存总额 + 12800
+        :rtype: int
+        """
         return self._TotalConcurrencyMem
 
     @TotalConcurrencyMem.setter
@@ -9127,6 +10869,9 @@ class PutTotalConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间，默认为default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -9161,6 +10906,9 @@ class PutTotalConcurrencyConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9207,6 +10955,9 @@ class RequestStatus(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数的名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -9215,6 +10966,9 @@ class RequestStatus(AbstractModel):
 
     @property
     def RetMsg(self):
+        """函数执行完成后的返回值
+        :rtype: str
+        """
         return self._RetMsg
 
     @RetMsg.setter
@@ -9223,6 +10977,9 @@ class RequestStatus(AbstractModel):
 
     @property
     def RequestId(self):
+        """查询的请求 id
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9231,6 +10988,9 @@ class RequestStatus(AbstractModel):
 
     @property
     def StartTime(self):
+        """请求开始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9239,6 +10999,9 @@ class RequestStatus(AbstractModel):
 
     @property
     def RetCode(self):
+        """请求执行结果， 0 表示执行成功，1表示运行中，-1 表示执行异常。
+        :rtype: int
+        """
         return self._RetCode
 
     @RetCode.setter
@@ -9247,6 +11010,9 @@ class RequestStatus(AbstractModel):
 
     @property
     def Duration(self):
+        """请求运行耗时，单位：ms
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -9255,6 +11021,9 @@ class RequestStatus(AbstractModel):
 
     @property
     def MemUsage(self):
+        """请求消耗内存，单位为 MB
+        :rtype: float
+        """
         return self._MemUsage
 
     @MemUsage.setter
@@ -9263,6 +11032,9 @@ class RequestStatus(AbstractModel):
 
     @property
     def RetryNum(self):
+        """重试次数
+        :rtype: int
+        """
         return self._RetryNum
 
     @RetryNum.setter
@@ -9324,6 +11096,9 @@ class Result(AbstractModel):
 
     @property
     def Log(self):
+        """表示执行过程中的日志输出，异步调用返回为空
+        :rtype: str
+        """
         return self._Log
 
     @Log.setter
@@ -9332,6 +11107,9 @@ class Result(AbstractModel):
 
     @property
     def RetMsg(self):
+        """表示执行函数的返回，异步调用返回为空
+        :rtype: str
+        """
         return self._RetMsg
 
     @RetMsg.setter
@@ -9340,6 +11118,9 @@ class Result(AbstractModel):
 
     @property
     def ErrMsg(self):
+        """表示执行函数的错误返回信息，异步调用返回为空
+        :rtype: str
+        """
         return self._ErrMsg
 
     @ErrMsg.setter
@@ -9348,6 +11129,9 @@ class Result(AbstractModel):
 
     @property
     def MemUsage(self):
+        """执行函数时的内存大小，单位为Byte，异步调用返回为空
+        :rtype: int
+        """
         return self._MemUsage
 
     @MemUsage.setter
@@ -9356,6 +11140,9 @@ class Result(AbstractModel):
 
     @property
     def Duration(self):
+        """表示执行函数的耗时，单位是毫秒，异步调用返回为空
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -9364,6 +11151,9 @@ class Result(AbstractModel):
 
     @property
     def BillDuration(self):
+        """表示函数的计费耗时，单位是毫秒，异步调用返回为空
+        :rtype: int
+        """
         return self._BillDuration
 
     @BillDuration.setter
@@ -9372,6 +11162,9 @@ class Result(AbstractModel):
 
     @property
     def FunctionRequestId(self):
+        """此次函数执行的Id
+        :rtype: str
+        """
         return self._FunctionRequestId
 
     @FunctionRequestId.setter
@@ -9380,6 +11173,9 @@ class Result(AbstractModel):
 
     @property
     def InvokeResult(self):
+        """请求 Invoke 接口，该参数已弃用。请求 InvokeFunction 接口，该参数值为请求执行[状态码](https://cloud.tencent.com/document/product/583/42611)。
+        :rtype: int
+        """
         return self._InvokeResult
 
     @InvokeResult.setter
@@ -9420,6 +11216,9 @@ class RetryConfig(AbstractModel):
 
     @property
     def RetryNum(self):
+        """重试次数
+        :rtype: int
+        """
         return self._RetryNum
 
     @RetryNum.setter
@@ -9457,6 +11256,9 @@ class RoutingConfig(AbstractModel):
 
     @property
     def AdditionalVersionWeights(self):
+        """随机权重路由附加版本
+        :rtype: list of VersionWeight
+        """
         return self._AdditionalVersionWeights
 
     @AdditionalVersionWeights.setter
@@ -9465,6 +11267,9 @@ class RoutingConfig(AbstractModel):
 
     @property
     def AddtionVersionMatchs(self):
+        """规则路由附加版本
+        :rtype: list of VersionMatch
+        """
         return self._AddtionVersionMatchs
 
     @AddtionVersionMatchs.setter
@@ -9512,6 +11317,9 @@ class SearchKey(AbstractModel):
 
     @property
     def Key(self):
+        """搜索关键字
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -9520,6 +11328,9 @@ class SearchKey(AbstractModel):
 
     @property
     def Value(self):
+        """搜索内容
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -9557,6 +11368,9 @@ class StatusReason(AbstractModel):
 
     @property
     def ErrorCode(self):
+        """错误码
+        :rtype: str
+        """
         return self._ErrorCode
 
     @ErrorCode.setter
@@ -9565,6 +11379,9 @@ class StatusReason(AbstractModel):
 
     @property
     def ErrorMessage(self):
+        """错误描述
+        :rtype: str
+        """
         return self._ErrorMessage
 
     @ErrorMessage.setter
@@ -9602,6 +11419,9 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
+        """标签的key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -9610,6 +11430,9 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
+        """标签的value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -9653,6 +11476,9 @@ class TerminateAsyncEventRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -9661,6 +11487,9 @@ class TerminateAsyncEventRequest(AbstractModel):
 
     @property
     def InvokeRequestId(self):
+        """终止的调用请求id
+        :rtype: str
+        """
         return self._InvokeRequestId
 
     @InvokeRequestId.setter
@@ -9669,6 +11498,9 @@ class TerminateAsyncEventRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -9677,6 +11509,9 @@ class TerminateAsyncEventRequest(AbstractModel):
 
     @property
     def GraceShutdown(self):
+        """true，向指定请求[发送 SIGTERM 终止信号](https://cloud.tencent.com/document/product/583/63969#.E5.8F.91.E9.80.81.E7.BB.88.E6.AD.A2.E4.BF.A1.E5.8F.B7]， ，默认值为 false。
+        :rtype: bool
+        """
         return self._GraceShutdown
 
     @GraceShutdown.setter
@@ -9713,6 +11548,9 @@ class TerminateAsyncEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9741,6 +11579,9 @@ class TimeInterval(AbstractModel):
 
     @property
     def Start(self):
+        """起始时间（包括在内），格式"%Y-%m-%d %H:%M:%S"
+        :rtype: str
+        """
         return self._Start
 
     @Start.setter
@@ -9749,6 +11590,9 @@ class TimeInterval(AbstractModel):
 
     @property
     def End(self):
+        """结束时间（不包括在内），格式"%Y-%m-%d %H:%M:%S"
+        :rtype: str
+        """
         return self._End
 
     @End.setter
@@ -9819,6 +11663,9 @@ class Trigger(AbstractModel):
 
     @property
     def ModTime(self):
+        """触发器最后修改时间
+        :rtype: str
+        """
         return self._ModTime
 
     @ModTime.setter
@@ -9827,6 +11674,9 @@ class Trigger(AbstractModel):
 
     @property
     def Type(self):
+        """触发器类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -9835,6 +11685,9 @@ class Trigger(AbstractModel):
 
     @property
     def TriggerDesc(self):
+        """触发器详细配置
+        :rtype: str
+        """
         return self._TriggerDesc
 
     @TriggerDesc.setter
@@ -9843,6 +11696,9 @@ class Trigger(AbstractModel):
 
     @property
     def TriggerName(self):
+        """触发器名称
+        :rtype: str
+        """
         return self._TriggerName
 
     @TriggerName.setter
@@ -9851,6 +11707,9 @@ class Trigger(AbstractModel):
 
     @property
     def AddTime(self):
+        """触发器创建时间
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -9859,6 +11718,9 @@ class Trigger(AbstractModel):
 
     @property
     def Enable(self):
+        """使能开关
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -9867,6 +11729,9 @@ class Trigger(AbstractModel):
 
     @property
     def CustomArgument(self):
+        """客户自定义参数
+        :rtype: str
+        """
         return self._CustomArgument
 
     @CustomArgument.setter
@@ -9875,6 +11740,9 @@ class Trigger(AbstractModel):
 
     @property
     def AvailableStatus(self):
+        """触发器状态
+        :rtype: str
+        """
         return self._AvailableStatus
 
     @AvailableStatus.setter
@@ -9885,6 +11753,9 @@ class Trigger(AbstractModel):
     def ResourceId(self):
         warnings.warn("parameter `ResourceId` is deprecated", DeprecationWarning) 
 
+        """触发器最小资源ID
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -9897,6 +11768,9 @@ class Trigger(AbstractModel):
     def BindStatus(self):
         warnings.warn("parameter `BindStatus` is deprecated", DeprecationWarning) 
 
+        """触发器和云函数绑定状态
+        :rtype: str
+        """
         return self._BindStatus
 
     @BindStatus.setter
@@ -9909,6 +11783,9 @@ class Trigger(AbstractModel):
     def TriggerAttribute(self):
         warnings.warn("parameter `TriggerAttribute` is deprecated", DeprecationWarning) 
 
+        """触发器类型，双向表示两侧控制台均可操作，单向表示SCF控制台单向创建
+        :rtype: str
+        """
         return self._TriggerAttribute
 
     @TriggerAttribute.setter
@@ -9919,6 +11796,9 @@ class Trigger(AbstractModel):
 
     @property
     def Qualifier(self):
+        """触发器绑定的别名或版本
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -9927,6 +11807,9 @@ class Trigger(AbstractModel):
 
     @property
     def Description(self):
+        """触发器描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -9985,6 +11868,10 @@ class TriggerAction(AbstractModel):
 
     @property
     def TriggerName(self):
+        """定时预置名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TriggerName
 
     @TriggerName.setter
@@ -9993,6 +11880,10 @@ class TriggerAction(AbstractModel):
 
     @property
     def TriggerProvisionedConcurrencyNum(self):
+        """定时预置并发数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TriggerProvisionedConcurrencyNum
 
     @TriggerProvisionedConcurrencyNum.setter
@@ -10001,6 +11892,10 @@ class TriggerAction(AbstractModel):
 
     @property
     def TriggerCronConfig(self):
+        """设置定时触发器的时间配置，cron表达式。Cron 表达式有七个必需字段，按空格分隔。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TriggerCronConfig
 
     @TriggerCronConfig.setter
@@ -10009,6 +11904,10 @@ class TriggerAction(AbstractModel):
 
     @property
     def ProvisionedType(self):
+        """预置类型 Default
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ProvisionedType
 
     @ProvisionedType.setter
@@ -10079,6 +11978,9 @@ class TriggerCount(AbstractModel):
 
     @property
     def Cos(self):
+        """Cos触发器数量
+        :rtype: int
+        """
         return self._Cos
 
     @Cos.setter
@@ -10087,6 +11989,9 @@ class TriggerCount(AbstractModel):
 
     @property
     def Timer(self):
+        """Timer触发器数量
+        :rtype: int
+        """
         return self._Timer
 
     @Timer.setter
@@ -10095,6 +12000,9 @@ class TriggerCount(AbstractModel):
 
     @property
     def Cmq(self):
+        """Cmq触发器数量
+        :rtype: int
+        """
         return self._Cmq
 
     @Cmq.setter
@@ -10103,6 +12011,9 @@ class TriggerCount(AbstractModel):
 
     @property
     def Total(self):
+        """触发器总数
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -10111,6 +12022,9 @@ class TriggerCount(AbstractModel):
 
     @property
     def Ckafka(self):
+        """Ckafka触发器数量
+        :rtype: int
+        """
         return self._Ckafka
 
     @Ckafka.setter
@@ -10119,6 +12033,9 @@ class TriggerCount(AbstractModel):
 
     @property
     def Apigw(self):
+        """Apigw触发器数量
+        :rtype: int
+        """
         return self._Apigw
 
     @Apigw.setter
@@ -10127,6 +12044,9 @@ class TriggerCount(AbstractModel):
 
     @property
     def Cls(self):
+        """Cls触发器数量
+        :rtype: int
+        """
         return self._Cls
 
     @Cls.setter
@@ -10135,6 +12055,9 @@ class TriggerCount(AbstractModel):
 
     @property
     def Clb(self):
+        """Clb触发器数量
+        :rtype: int
+        """
         return self._Clb
 
     @Clb.setter
@@ -10143,6 +12066,9 @@ class TriggerCount(AbstractModel):
 
     @property
     def Mps(self):
+        """Mps触发器数量
+        :rtype: int
+        """
         return self._Mps
 
     @Mps.setter
@@ -10151,6 +12077,9 @@ class TriggerCount(AbstractModel):
 
     @property
     def Cm(self):
+        """Cm触发器数量
+        :rtype: int
+        """
         return self._Cm
 
     @Cm.setter
@@ -10159,6 +12088,9 @@ class TriggerCount(AbstractModel):
 
     @property
     def Vod(self):
+        """Vod触发器数量
+        :rtype: int
+        """
         return self._Vod
 
     @Vod.setter
@@ -10167,6 +12099,10 @@ class TriggerCount(AbstractModel):
 
     @property
     def Eb(self):
+        """Eb触发器数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Eb
 
     @Eb.setter
@@ -10249,6 +12185,9 @@ class TriggerInfo(AbstractModel):
 
     @property
     def Enable(self):
+        """使能开关
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -10257,6 +12196,9 @@ class TriggerInfo(AbstractModel):
 
     @property
     def Qualifier(self):
+        """函数版本或别名
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -10265,6 +12207,9 @@ class TriggerInfo(AbstractModel):
 
     @property
     def TriggerName(self):
+        """触发器名称
+        :rtype: str
+        """
         return self._TriggerName
 
     @TriggerName.setter
@@ -10273,6 +12218,9 @@ class TriggerInfo(AbstractModel):
 
     @property
     def Type(self):
+        """触发器类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -10281,6 +12229,9 @@ class TriggerInfo(AbstractModel):
 
     @property
     def TriggerDesc(self):
+        """触发器详细配置
+        :rtype: str
+        """
         return self._TriggerDesc
 
     @TriggerDesc.setter
@@ -10289,6 +12240,9 @@ class TriggerInfo(AbstractModel):
 
     @property
     def AvailableStatus(self):
+        """触发器是否可用
+        :rtype: str
+        """
         return self._AvailableStatus
 
     @AvailableStatus.setter
@@ -10297,6 +12251,10 @@ class TriggerInfo(AbstractModel):
 
     @property
     def CustomArgument(self):
+        """客户自定义参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CustomArgument
 
     @CustomArgument.setter
@@ -10305,6 +12263,9 @@ class TriggerInfo(AbstractModel):
 
     @property
     def AddTime(self):
+        """触发器创建时间
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -10313,6 +12274,9 @@ class TriggerInfo(AbstractModel):
 
     @property
     def ModTime(self):
+        """触发器最后修改时间
+        :rtype: str
+        """
         return self._ModTime
 
     @ModTime.setter
@@ -10323,6 +12287,9 @@ class TriggerInfo(AbstractModel):
     def ResourceId(self):
         warnings.warn("parameter `ResourceId` is deprecated", DeprecationWarning) 
 
+        """触发器最小资源ID
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -10335,6 +12302,9 @@ class TriggerInfo(AbstractModel):
     def BindStatus(self):
         warnings.warn("parameter `BindStatus` is deprecated", DeprecationWarning) 
 
+        """触发器和云函数绑定状态
+        :rtype: str
+        """
         return self._BindStatus
 
     @BindStatus.setter
@@ -10347,6 +12317,9 @@ class TriggerInfo(AbstractModel):
     def TriggerAttribute(self):
         warnings.warn("parameter `TriggerAttribute` is deprecated", DeprecationWarning) 
 
+        """触发器类型，双向表示两侧控制台均可操作，单向表示SCF控制台单向创建
+        :rtype: str
+        """
         return self._TriggerAttribute
 
     @TriggerAttribute.setter
@@ -10357,6 +12330,10 @@ class TriggerInfo(AbstractModel):
 
     @property
     def Description(self):
+        """客户自定义触发器描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -10417,6 +12394,9 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -10425,6 +12405,9 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def Name(self):
+        """别名的名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10433,6 +12416,9 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def FunctionVersion(self):
+        """别名指向的主版本
+        :rtype: str
+        """
         return self._FunctionVersion
 
     @FunctionVersion.setter
@@ -10441,6 +12427,9 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数所在的命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -10449,6 +12438,9 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def RoutingConfig(self):
+        """别名的路由信息，需要为别名指定附加版本时，必须提供此参数；	  附加版本指的是：除主版本 FunctionVersion 外，为此别名再指定一个函数可正常使用的版本；   这里附加版本中的 Version 值 不能是别名指向的主版本；  要注意的是：如果想要某个版本的流量全部指向这个别名，不需配置此参数； 目前一个别名最多只能指定一个附加版本
+        :rtype: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
+        """
         return self._RoutingConfig
 
     @RoutingConfig.setter
@@ -10457,6 +12449,9 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def Description(self):
+        """别名的描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -10497,6 +12492,9 @@ class UpdateAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10534,6 +12532,9 @@ class UpdateCustomDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """自定义域名
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -10542,6 +12543,9 @@ class UpdateCustomDomainRequest(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议，取值范围：HTTP, HTTPS, HTTP&HTTPS
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -10550,6 +12554,9 @@ class UpdateCustomDomainRequest(AbstractModel):
 
     @property
     def CertConfig(self):
+        """证书配置信息，HTTPS协议必穿
+        :rtype: :class:`tencentcloud.scf.v20180416.models.CertConf`
+        """
         return self._CertConfig
 
     @CertConfig.setter
@@ -10558,6 +12565,9 @@ class UpdateCustomDomainRequest(AbstractModel):
 
     @property
     def WafConfig(self):
+        """web 应用防火墙配置
+        :rtype: :class:`tencentcloud.scf.v20180416.models.WafConf`
+        """
         return self._WafConfig
 
     @WafConfig.setter
@@ -10566,6 +12576,9 @@ class UpdateCustomDomainRequest(AbstractModel):
 
     @property
     def EndpointsConfig(self):
+        """	路由配置
+        :rtype: list of EndpointsConf
+        """
         return self._EndpointsConfig
 
     @EndpointsConfig.setter
@@ -10612,6 +12625,9 @@ class UpdateCustomDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10670,6 +12686,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """要修改的函数名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -10678,6 +12697,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def Handler(self):
+        """函数处理方法名称。名称格式支持“文件名称.函数名称”形式（java 名称格式 包名.类名::方法名），文件名称和函数名称之间以"."隔开，文件名称和函数名称要求以字母开始和结尾，中间允许插入字母、数字、下划线和连接符，文件名称和函数名字的长度要求 2-60 个字符
+        :rtype: str
+        """
         return self._Handler
 
     @Handler.setter
@@ -10686,6 +12708,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def CosBucketName(self):
+        """对象存储桶名称
+        :rtype: str
+        """
         return self._CosBucketName
 
     @CosBucketName.setter
@@ -10694,6 +12719,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def CosObjectName(self):
+        """对象存储对象路径
+        :rtype: str
+        """
         return self._CosObjectName
 
     @CosObjectName.setter
@@ -10702,6 +12730,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def ZipFile(self):
+        """包含函数代码文件及其依赖项的 zip 格式文件，使用该接口时要求将 zip 文件的内容转成 base64 编码，最大支持20M
+        :rtype: str
+        """
         return self._ZipFile
 
     @ZipFile.setter
@@ -10710,6 +12741,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数所属命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -10718,6 +12752,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def CosBucketRegion(self):
+        """对象存储的地域，注：北京分为ap-beijing和ap-beijing-1
+        :rtype: str
+        """
         return self._CosBucketRegion
 
     @CosBucketRegion.setter
@@ -10726,6 +12763,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def InstallDependency(self):
+        """是否自动安装依赖
+        :rtype: str
+        """
         return self._InstallDependency
 
     @InstallDependency.setter
@@ -10734,6 +12774,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """函数所属环境
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -10742,6 +12785,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def Publish(self):
+        """在更新时是否同步发布新版本，默认为：FALSE，不发布
+        :rtype: str
+        """
         return self._Publish
 
     @Publish.setter
@@ -10750,6 +12796,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def Code(self):
+        """函数代码
+        :rtype: :class:`tencentcloud.scf.v20180416.models.Code`
+        """
         return self._Code
 
     @Code.setter
@@ -10758,6 +12807,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def CodeSource(self):
+        """代码来源方式，支持 ZipFile, Cos, Inline 之一
+        :rtype: str
+        """
         return self._CodeSource
 
     @CodeSource.setter
@@ -10804,6 +12856,9 @@ class UpdateFunctionCodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10899,6 +12954,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """要修改的函数名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -10907,6 +12965,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def Description(self):
+        """函数描述。最大支持 1000 个英文字母、数字、空格、逗号和英文句号，支持中文
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -10915,6 +12976,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def MemorySize(self):
+        """函数运行时内存大小，默认为 128 M，可选范64M、128 M-3072 M，以 128MB 为阶梯。
+        :rtype: int
+        """
         return self._MemorySize
 
     @MemorySize.setter
@@ -10923,6 +12987,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def Timeout(self):
+        """函数最长执行时间，单位为秒，可选值范 1-900 秒，默认为 3 秒
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -10931,6 +12998,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def Runtime(self):
+        """函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.16， PHP5， PHP7，Go1 ， Java8和CustomRuntime
+        :rtype: str
+        """
         return self._Runtime
 
     @Runtime.setter
@@ -10939,6 +13009,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def Environment(self):
+        """函数的环境变量
+        :rtype: :class:`tencentcloud.scf.v20180416.models.Environment`
+        """
         return self._Environment
 
     @Environment.setter
@@ -10947,6 +13020,10 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数所属命名空间
+默认值: default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -10955,6 +13032,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def VpcConfig(self):
+        """函数的私有网络配置
+        :rtype: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
+        """
         return self._VpcConfig
 
     @VpcConfig.setter
@@ -10963,6 +13043,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def Role(self):
+        """函数绑定的角色
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -10971,6 +13054,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def InstallDependency(self):
+        """[在线依赖安装](https://cloud.tencent.com/document/product/583/37920)，TRUE 表示安装，默认值为 FALSE。仅支持 Node.js 函数。
+        :rtype: str
+        """
         return self._InstallDependency
 
     @InstallDependency.setter
@@ -10979,6 +13065,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def ClsLogsetId(self):
+        """日志投递到的cls日志集ID
+        :rtype: str
+        """
         return self._ClsLogsetId
 
     @ClsLogsetId.setter
@@ -10987,6 +13076,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def ClsTopicId(self):
+        """日志投递到的cls Topic ID
+        :rtype: str
+        """
         return self._ClsTopicId
 
     @ClsTopicId.setter
@@ -10995,6 +13087,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def Publish(self):
+        """在更新时是否同步发布新版本，默认为：FALSE，不发布新版本
+        :rtype: str
+        """
         return self._Publish
 
     @Publish.setter
@@ -11003,6 +13098,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def L5Enable(self):
+        """是否开启L5访问能力，TRUE 为开启，FALSE为关闭
+        :rtype: str
+        """
         return self._L5Enable
 
     @L5Enable.setter
@@ -11011,6 +13109,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def Layers(self):
+        """函数要关联的层版本列表，层的版本会按照在列表中顺序依次覆盖。
+        :rtype: list of LayerVersionSimple
+        """
         return self._Layers
 
     @Layers.setter
@@ -11019,6 +13120,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def DeadLetterConfig(self):
+        """函数关联的死信队列信息
+        :rtype: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
+        """
         return self._DeadLetterConfig
 
     @DeadLetterConfig.setter
@@ -11027,6 +13131,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def PublicNetConfig(self):
+        """公网访问配置
+        :rtype: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
+        """
         return self._PublicNetConfig
 
     @PublicNetConfig.setter
@@ -11035,6 +13142,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def CfsConfig(self):
+        """文件系统配置入参，用于云函数绑定CFS文件系统
+        :rtype: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
+        """
         return self._CfsConfig
 
     @CfsConfig.setter
@@ -11043,6 +13153,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def InitTimeout(self):
+        """函数初始化执行超时时间
+        :rtype: int
+        """
         return self._InitTimeout
 
     @InitTimeout.setter
@@ -11051,6 +13164,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def ProtocolParams(self):
+        """HTTP函数配置ProtocolType访问协议，当前协议可配置的参数
+        :rtype: :class:`tencentcloud.scf.v20180416.models.ProtocolParams`
+        """
         return self._ProtocolParams
 
     @ProtocolParams.setter
@@ -11059,6 +13175,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def InstanceConcurrencyConfig(self):
+        """单实例多并发配置。只支持Web函数。
+        :rtype: :class:`tencentcloud.scf.v20180416.models.InstanceConcurrencyConfig`
+        """
         return self._InstanceConcurrencyConfig
 
     @InstanceConcurrencyConfig.setter
@@ -11067,6 +13186,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def DnsCache(self):
+        """是否开启Dns缓存能力。只支持EVENT函数。默认为FALSE，TRUE 为开启，FALSE为关闭
+        :rtype: str
+        """
         return self._DnsCache
 
     @DnsCache.setter
@@ -11075,6 +13197,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def IntranetConfig(self):
+        """内网访问配置
+        :rtype: :class:`tencentcloud.scf.v20180416.models.IntranetConfigIn`
+        """
         return self._IntranetConfig
 
     @IntranetConfig.setter
@@ -11083,6 +13208,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def IgnoreSysLog(self):
+        """忽略系统日志上报
+        :rtype: bool
+        """
         return self._IgnoreSysLog
 
     @IgnoreSysLog.setter
@@ -11160,6 +13288,9 @@ class UpdateFunctionConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11191,6 +13322,9 @@ class UpdateFunctionEventInvokeConfigRequest(AbstractModel):
 
     @property
     def AsyncTriggerConfig(self):
+        """异步重试配置信息
+        :rtype: :class:`tencentcloud.scf.v20180416.models.AsyncTriggerConfig`
+        """
         return self._AsyncTriggerConfig
 
     @AsyncTriggerConfig.setter
@@ -11199,6 +13333,9 @@ class UpdateFunctionEventInvokeConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -11207,6 +13344,9 @@ class UpdateFunctionEventInvokeConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数所属命名空间，默认为default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -11244,6 +13384,9 @@ class UpdateFunctionEventInvokeConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11272,6 +13415,9 @@ class UpdateNamespaceRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间名称
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -11280,6 +13426,9 @@ class UpdateNamespaceRequest(AbstractModel):
 
     @property
     def Description(self):
+        """命名空间描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -11314,6 +13463,9 @@ class UpdateNamespaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11363,6 +13515,9 @@ class UpdateTriggerRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -11371,6 +13526,9 @@ class UpdateTriggerRequest(AbstractModel):
 
     @property
     def TriggerName(self):
+        """触发器名称
+        :rtype: str
+        """
         return self._TriggerName
 
     @TriggerName.setter
@@ -11379,6 +13537,9 @@ class UpdateTriggerRequest(AbstractModel):
 
     @property
     def Type(self):
+        """触发器类型，目前只支持timer、ckafka、http三种类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -11387,6 +13548,9 @@ class UpdateTriggerRequest(AbstractModel):
 
     @property
     def Enable(self):
+        """触发器开启或关闭，传参为OPEN为开启，CLOSE为关闭
+        :rtype: str
+        """
         return self._Enable
 
     @Enable.setter
@@ -11395,6 +13559,9 @@ class UpdateTriggerRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """触发器创建时所指向的函数版本或别名，默认为 $LATEST
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -11403,6 +13570,9 @@ class UpdateTriggerRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数的命名空间，默认值为default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -11411,6 +13581,9 @@ class UpdateTriggerRequest(AbstractModel):
 
     @property
     def TriggerDesc(self):
+        """TriggerDesc参数
+        :rtype: str
+        """
         return self._TriggerDesc
 
     @TriggerDesc.setter
@@ -11419,6 +13592,9 @@ class UpdateTriggerRequest(AbstractModel):
 
     @property
     def Description(self):
+        """触发器描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -11427,6 +13603,9 @@ class UpdateTriggerRequest(AbstractModel):
 
     @property
     def CustomArgument(self):
+        """用户附加信息
+        :rtype: str
+        """
         return self._CustomArgument
 
     @CustomArgument.setter
@@ -11468,6 +13647,9 @@ class UpdateTriggerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11511,6 +13693,9 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def Enable(self):
+        """触发器的初始是能状态OPEN表示开启 CLOSE表示关闭
+        :rtype: str
+        """
         return self._Enable
 
     @Enable.setter
@@ -11519,6 +13704,9 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """函数名称
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -11527,6 +13715,9 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def TriggerName(self):
+        """触发器名称
+        :rtype: str
+        """
         return self._TriggerName
 
     @TriggerName.setter
@@ -11535,6 +13726,9 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def Type(self):
+        """触发器类型，触发器类型，目前只支持 timer、 cos  、 ckafka三种类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -11543,6 +13737,9 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """触发器在创建时所指向的触发别名或版本，默认值为$LATEST
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -11551,6 +13748,9 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """函数所在的命名空间，默认值为default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -11559,6 +13759,9 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def TriggerDesc(self):
+        """如果更新的触发器类型为 COS 触发器，该字段为必填值，存放 JSON 格式的数据 {"event":"cos:ObjectCreated:*"}，数据内容和 SetTrigger 接口中该字段的格式相同；如果更新的触发器类型为定时触发器或 CMQ 触发器，可以不指定该字段
+        :rtype: str
+        """
         return self._TriggerDesc
 
     @TriggerDesc.setter
@@ -11598,6 +13801,9 @@ class UpdateTriggerStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11635,6 +13841,9 @@ class UsageInfo(AbstractModel):
 
     @property
     def NamespacesCount(self):
+        """命名空间个数
+        :rtype: int
+        """
         return self._NamespacesCount
 
     @NamespacesCount.setter
@@ -11643,6 +13852,9 @@ class UsageInfo(AbstractModel):
 
     @property
     def Namespace(self):
+        """命名空间详情
+        :rtype: list of NamespaceUsage
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -11651,6 +13863,9 @@ class UsageInfo(AbstractModel):
 
     @property
     def TotalConcurrencyMem(self):
+        """当前地域用户并发内存配额上限
+        :rtype: int
+        """
         return self._TotalConcurrencyMem
 
     @TotalConcurrencyMem.setter
@@ -11659,6 +13874,9 @@ class UsageInfo(AbstractModel):
 
     @property
     def TotalAllocatedConcurrencyMem(self):
+        """当前地域用户已配置并发内存额度
+        :rtype: int
+        """
         return self._TotalAllocatedConcurrencyMem
 
     @TotalAllocatedConcurrencyMem.setter
@@ -11667,6 +13885,9 @@ class UsageInfo(AbstractModel):
 
     @property
     def UserConcurrencyMemLimit(self):
+        """用户实际配置的账号并发配额
+        :rtype: int
+        """
         return self._UserConcurrencyMemLimit
 
     @UserConcurrencyMemLimit.setter
@@ -11712,6 +13933,9 @@ class Variable(AbstractModel):
 
     @property
     def Key(self):
+        """变量的名称，不可为空字符
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -11720,6 +13944,9 @@ class Variable(AbstractModel):
 
     @property
     def Value(self):
+        """变量的值，不可为空字符
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -11770,6 +13997,9 @@ exact 匹配规则要求：
 
     @property
     def Version(self):
+        """函数版本名称
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -11778,6 +14008,11 @@ exact 匹配规则要求：
 
     @property
     def Key(self):
+        """匹配规则的key，调用时通过传key来匹配规则路由到指定版本
+header方式：
+key填写"invoke.headers.User"，并在 invoke 调用函数时传参 RoutingKey：{"User":"value"}规则匹配调用
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -11786,6 +14021,11 @@ exact 匹配规则要求：
 
     @property
     def Method(self):
+        """匹配方式。取值范围：
+range：范围匹配
+exact：字符串精确匹配
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -11794,6 +14034,12 @@ exact 匹配规则要求：
 
     @property
     def Expression(self):
+        """range 匹配规则要求：
+需要为开区间或闭区间描述 (a,b) [a,b]，其中 a、b 均为整数
+exact 匹配规则要求：
+字符串精确匹配
+        :rtype: str
+        """
         return self._Expression
 
     @Expression.setter
@@ -11846,6 +14092,9 @@ class VersionProvisionedConcurrencyInfo(AbstractModel):
 
     @property
     def AllocatedProvisionedConcurrencyNum(self):
+        """设置的预置并发数。
+        :rtype: int
+        """
         return self._AllocatedProvisionedConcurrencyNum
 
     @AllocatedProvisionedConcurrencyNum.setter
@@ -11854,6 +14103,9 @@ class VersionProvisionedConcurrencyInfo(AbstractModel):
 
     @property
     def AvailableProvisionedConcurrencyNum(self):
+        """当前已完成预置的并发数。
+        :rtype: int
+        """
         return self._AvailableProvisionedConcurrencyNum
 
     @AvailableProvisionedConcurrencyNum.setter
@@ -11862,6 +14114,9 @@ class VersionProvisionedConcurrencyInfo(AbstractModel):
 
     @property
     def Status(self):
+        """预置任务状态，Done表示已完成，InProgress表示进行中，Failed表示部分或全部失败。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -11870,6 +14125,9 @@ class VersionProvisionedConcurrencyInfo(AbstractModel):
 
     @property
     def StatusReason(self):
+        """对预置任务状态Status的说明。
+        :rtype: str
+        """
         return self._StatusReason
 
     @StatusReason.setter
@@ -11878,6 +14136,9 @@ class VersionProvisionedConcurrencyInfo(AbstractModel):
 
     @property
     def Qualifier(self):
+        """函数版本号
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -11886,6 +14147,10 @@ class VersionProvisionedConcurrencyInfo(AbstractModel):
 
     @property
     def TriggerActions(self):
+        """预置并发定时任务。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TriggerAction
+        """
         return self._TriggerActions
 
     @TriggerActions.setter
@@ -11932,6 +14197,9 @@ class VersionWeight(AbstractModel):
 
     @property
     def Version(self):
+        """函数版本名称
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -11940,6 +14208,9 @@ class VersionWeight(AbstractModel):
 
     @property
     def Weight(self):
+        """该版本的权重
+        :rtype: float
+        """
         return self._Weight
 
     @Weight.setter
@@ -11977,6 +14248,9 @@ class VpcConfig(AbstractModel):
 
     @property
     def VpcId(self):
+        """私有网络 的 Id
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -11985,6 +14259,9 @@ class VpcConfig(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网的 Id
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -12020,6 +14297,10 @@ class WSParams(AbstractModel):
 
     @property
     def IdleTimeOut(self):
+        """空闲超时时间, 单位秒，默认15s。可配置范围1~1800s。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IdleTimeOut
 
     @IdleTimeOut.setter
@@ -12058,6 +14339,10 @@ class WafConf(AbstractModel):
 
     @property
     def WafOpen(self):
+        """web应用防火墙是否打开， 取值范围:OPEN, CLOSE
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WafOpen
 
     @WafOpen.setter
@@ -12066,6 +14351,10 @@ class WafConf(AbstractModel):
 
     @property
     def WafInstanceId(self):
+        """web应用防火墙实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._WafInstanceId
 
     @WafInstanceId.setter

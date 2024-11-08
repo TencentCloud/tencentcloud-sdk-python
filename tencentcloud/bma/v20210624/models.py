@@ -50,6 +50,9 @@ class BrandData(AbstractModel):
 
     @property
     def BrandName(self):
+        """商标名称
+        :rtype: str
+        """
         return self._BrandName
 
     @BrandName.setter
@@ -58,6 +61,9 @@ class BrandData(AbstractModel):
 
     @property
     def BrandCertificateName(self):
+        """商标证明
+        :rtype: str
+        """
         return self._BrandCertificateName
 
     @BrandCertificateName.setter
@@ -66,6 +72,9 @@ class BrandData(AbstractModel):
 
     @property
     def BrandStatus(self):
+        """商标审核状态 1-审核中 2-审核未通过 3-审核通过
+        :rtype: int
+        """
         return self._BrandStatus
 
     @BrandStatus.setter
@@ -74,6 +83,9 @@ class BrandData(AbstractModel):
 
     @property
     def BrandNote(self):
+        """审核说明
+        :rtype: str
+        """
         return self._BrandNote
 
     @BrandNote.setter
@@ -82,6 +94,9 @@ class BrandData(AbstractModel):
 
     @property
     def TransferName(self):
+        """商标转让证明
+        :rtype: str
+        """
         return self._TransferName
 
     @TransferName.setter
@@ -90,6 +105,9 @@ class BrandData(AbstractModel):
 
     @property
     def TransferStatus(self):
+        """商标转让证明审核状态
+        :rtype: int
+        """
         return self._TransferStatus
 
     @TransferStatus.setter
@@ -98,6 +116,9 @@ class BrandData(AbstractModel):
 
     @property
     def TransferNote(self):
+        """审核说明 1-审核中 2-审核未通过 3-审核通过
+        :rtype: str
+        """
         return self._TransferNote
 
     @TransferNote.setter
@@ -146,6 +167,9 @@ class CreateBPFakeURLRequest(AbstractModel):
 
     @property
     def ProtectURLId(self):
+        """保护网址ID
+        :rtype: int
+        """
         return self._ProtectURLId
 
     @ProtectURLId.setter
@@ -154,6 +178,9 @@ class CreateBPFakeURLRequest(AbstractModel):
 
     @property
     def FakeURL(self):
+        """仿冒网址
+        :rtype: str
+        """
         return self._FakeURL
 
     @FakeURL.setter
@@ -162,6 +189,9 @@ class CreateBPFakeURLRequest(AbstractModel):
 
     @property
     def SnapshotNames(self):
+        """截图
+        :rtype: list of str
+        """
         return self._SnapshotNames
 
     @SnapshotNames.setter
@@ -170,6 +200,9 @@ class CreateBPFakeURLRequest(AbstractModel):
 
     @property
     def Note(self):
+        """举报说明
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -206,6 +239,9 @@ class CreateBPFakeURLResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -231,6 +267,9 @@ class CreateBPFalseTicketRequest(AbstractModel):
 
     @property
     def FakeURL(self):
+        """仿冒网址
+        :rtype: str
+        """
         return self._FakeURL
 
     @FakeURL.setter
@@ -264,6 +303,9 @@ class CreateBPFalseTicketResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -298,6 +340,9 @@ class CreateBPOfflineAttachmentRequest(AbstractModel):
 
     @property
     def BrandName(self):
+        """品牌名字
+        :rtype: str
+        """
         return self._BrandName
 
     @BrandName.setter
@@ -306,6 +351,9 @@ class CreateBPOfflineAttachmentRequest(AbstractModel):
 
     @property
     def BrandCertificateName(self):
+        """商标证明
+        :rtype: str
+        """
         return self._BrandCertificateName
 
     @BrandCertificateName.setter
@@ -314,6 +362,9 @@ class CreateBPOfflineAttachmentRequest(AbstractModel):
 
     @property
     def TransferName(self):
+        """商标转让证明
+        :rtype: str
+        """
         return self._TransferName
 
     @TransferName.setter
@@ -322,6 +373,9 @@ class CreateBPOfflineAttachmentRequest(AbstractModel):
 
     @property
     def AuthorizationName(self):
+        """授权书
+        :rtype: str
+        """
         return self._AuthorizationName
 
     @AuthorizationName.setter
@@ -358,6 +412,9 @@ class CreateBPOfflineAttachmentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -383,6 +440,9 @@ class CreateBPOfflineTicketRequest(AbstractModel):
 
     @property
     def FakeURLId(self):
+        """仿冒网址ID
+        :rtype: int
+        """
         return self._FakeURLId
 
     @FakeURLId.setter
@@ -416,6 +476,9 @@ class CreateBPOfflineTicketResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -453,6 +516,9 @@ class CreateBPProtectURLsRequest(AbstractModel):
 
     @property
     def CompanyName(self):
+        """企业名称
+        :rtype: str
+        """
         return self._CompanyName
 
     @CompanyName.setter
@@ -461,6 +527,9 @@ class CreateBPProtectURLsRequest(AbstractModel):
 
     @property
     def Phone(self):
+        """电话号码
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -469,6 +538,9 @@ class CreateBPProtectURLsRequest(AbstractModel):
 
     @property
     def LicenseName(self):
+        """营业执照
+        :rtype: str
+        """
         return self._LicenseName
 
     @LicenseName.setter
@@ -477,6 +549,9 @@ class CreateBPProtectURLsRequest(AbstractModel):
 
     @property
     def ProtectURLs(self):
+        """保护网站
+        :rtype: list of str
+        """
         return self._ProtectURLs
 
     @ProtectURLs.setter
@@ -485,6 +560,9 @@ class CreateBPProtectURLsRequest(AbstractModel):
 
     @property
     def ProtectWebs(self):
+        """网站名称
+        :rtype: list of str
+        """
         return self._ProtectWebs
 
     @ProtectWebs.setter
@@ -522,6 +600,9 @@ class CreateBPProtectURLsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -592,6 +673,9 @@ class CreateCRBlockRequest(AbstractModel):
 
     @property
     def WorkId(self):
+        """作品ID
+        :rtype: int
+        """
         return self._WorkId
 
     @WorkId.setter
@@ -600,6 +684,9 @@ class CreateCRBlockRequest(AbstractModel):
 
     @property
     def TortUrl(self):
+        """侵权链接
+        :rtype: str
+        """
         return self._TortUrl
 
     @TortUrl.setter
@@ -608,6 +695,9 @@ class CreateCRBlockRequest(AbstractModel):
 
     @property
     def TortTitle(self):
+        """侵权标题
+        :rtype: str
+        """
         return self._TortTitle
 
     @TortTitle.setter
@@ -616,6 +706,9 @@ class CreateCRBlockRequest(AbstractModel):
 
     @property
     def TortPlat(self):
+        """侵权平台
+        :rtype: str
+        """
         return self._TortPlat
 
     @TortPlat.setter
@@ -624,6 +717,9 @@ class CreateCRBlockRequest(AbstractModel):
 
     @property
     def BlockUrl(self):
+        """拦截结果回调地址
+        :rtype: str
+        """
         return self._BlockUrl
 
     @BlockUrl.setter
@@ -632,6 +728,9 @@ class CreateCRBlockRequest(AbstractModel):
 
     @property
     def FileUrl(self):
+        """授权书下载地址
+        :rtype: str
+        """
         return self._FileUrl
 
     @FileUrl.setter
@@ -640,6 +739,9 @@ class CreateCRBlockRequest(AbstractModel):
 
     @property
     def ValidStartDate(self):
+        """授权书生效日期
+        :rtype: str
+        """
         return self._ValidStartDate
 
     @ValidStartDate.setter
@@ -648,6 +750,9 @@ class CreateCRBlockRequest(AbstractModel):
 
     @property
     def ValidEndDate(self):
+        """授权书截止日期
+        :rtype: str
+        """
         return self._ValidEndDate
 
     @ValidEndDate.setter
@@ -656,6 +761,9 @@ class CreateCRBlockRequest(AbstractModel):
 
     @property
     def TortPic(self):
+        """侵权截图
+        :rtype: str
+        """
         return self._TortPic
 
     @TortPic.setter
@@ -664,6 +772,9 @@ class CreateCRBlockRequest(AbstractModel):
 
     @property
     def CommFileUrl(self):
+        """委托书下载地址
+        :rtype: str
+        """
         return self._CommFileUrl
 
     @CommFileUrl.setter
@@ -672,6 +783,9 @@ class CreateCRBlockRequest(AbstractModel):
 
     @property
     def CommValidStartDate(self):
+        """委托书生效日期
+        :rtype: str
+        """
         return self._CommValidStartDate
 
     @CommValidStartDate.setter
@@ -680,6 +794,9 @@ class CreateCRBlockRequest(AbstractModel):
 
     @property
     def CommValidEndDate(self):
+        """委托书截止日期
+        :rtype: str
+        """
         return self._CommValidEndDate
 
     @CommValidEndDate.setter
@@ -688,6 +805,9 @@ class CreateCRBlockRequest(AbstractModel):
 
     @property
     def IsProducer(self):
+        """是否著作权人：0-否 1-是
+        :rtype: str
+        """
         return self._IsProducer
 
     @IsProducer.setter
@@ -696,6 +816,9 @@ class CreateCRBlockRequest(AbstractModel):
 
     @property
     def EvidenceFileUrl(self):
+        """存证证书下载地址
+        :rtype: str
+        """
         return self._EvidenceFileUrl
 
     @EvidenceFileUrl.setter
@@ -704,6 +827,9 @@ class CreateCRBlockRequest(AbstractModel):
 
     @property
     def EvidenceValidStartDate(self):
+        """存证证书生效日期
+        :rtype: str
+        """
         return self._EvidenceValidStartDate
 
     @EvidenceValidStartDate.setter
@@ -712,6 +838,9 @@ class CreateCRBlockRequest(AbstractModel):
 
     @property
     def EvidenceValidEndDate(self):
+        """存证证书截止日期
+        :rtype: str
+        """
         return self._EvidenceValidEndDate
 
     @EvidenceValidEndDate.setter
@@ -766,6 +895,9 @@ class CreateCRBlockResponse(AbstractModel):
 
     @property
     def TortId(self):
+        """侵权ID
+        :rtype: int
+        """
         return self._TortId
 
     @TortId.setter
@@ -774,6 +906,9 @@ class CreateCRBlockResponse(AbstractModel):
 
     @property
     def TortNum(self):
+        """该字段已废弃
+        :rtype: str
+        """
         return self._TortNum
 
     @TortNum.setter
@@ -782,6 +917,9 @@ class CreateCRBlockResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -830,6 +968,9 @@ class CreateCRCompanyVerifyRequest(AbstractModel):
 
     @property
     def CompanyName(self):
+        """企业名称
+        :rtype: str
+        """
         return self._CompanyName
 
     @CompanyName.setter
@@ -838,6 +979,9 @@ class CreateCRCompanyVerifyRequest(AbstractModel):
 
     @property
     def CompanyID(self):
+        """企业证件号码
+        :rtype: str
+        """
         return self._CompanyID
 
     @CompanyID.setter
@@ -846,6 +990,9 @@ class CreateCRCompanyVerifyRequest(AbstractModel):
 
     @property
     def CompanyLegalName(self):
+        """企业法人姓名
+        :rtype: str
+        """
         return self._CompanyLegalName
 
     @CompanyLegalName.setter
@@ -854,6 +1001,9 @@ class CreateCRCompanyVerifyRequest(AbstractModel):
 
     @property
     def ManagerName(self):
+        """联系人姓名
+        :rtype: str
+        """
         return self._ManagerName
 
     @ManagerName.setter
@@ -862,6 +1012,9 @@ class CreateCRCompanyVerifyRequest(AbstractModel):
 
     @property
     def ManagerPhone(self):
+        """联系人手机号
+        :rtype: str
+        """
         return self._ManagerPhone
 
     @ManagerPhone.setter
@@ -870,6 +1023,9 @@ class CreateCRCompanyVerifyRequest(AbstractModel):
 
     @property
     def VerificationCode(self):
+        """手机验证码，接口接入可以置空
+        :rtype: str
+        """
         return self._VerificationCode
 
     @VerificationCode.setter
@@ -878,6 +1034,9 @@ class CreateCRCompanyVerifyRequest(AbstractModel):
 
     @property
     def CompanyIDType(self):
+        """字段已废弃，企业认证号码类型 1：社会信用代码 2：组织机构代码 3：企业工商注册码 4：其他 默认为1
+        :rtype: str
+        """
         return self._CompanyIDType
 
     @CompanyIDType.setter
@@ -886,6 +1045,9 @@ class CreateCRCompanyVerifyRequest(AbstractModel):
 
     @property
     def Type(self):
+        """字段已废弃，认证类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -932,6 +1094,9 @@ class CreateCRCompanyVerifyResponse(AbstractModel):
 
     @property
     def Status(self):
+        """认证状态：0-认证成功 1-认证失败
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -940,6 +1105,9 @@ class CreateCRCompanyVerifyResponse(AbstractModel):
 
     @property
     def Note(self):
+        """认证状态说明，包括认证失败的原因
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -948,6 +1116,9 @@ class CreateCRCompanyVerifyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -978,6 +1149,9 @@ class CreateCRDesktopCodeRequest(AbstractModel):
 
     @property
     def TortId(self):
+        """xxx
+        :rtype: int
+        """
         return self._TortId
 
     @TortId.setter
@@ -986,6 +1160,9 @@ class CreateCRDesktopCodeRequest(AbstractModel):
 
     @property
     def DesktopCode(self):
+        """xxx
+        :rtype: str
+        """
         return self._DesktopCode
 
     @DesktopCode.setter
@@ -1020,6 +1197,9 @@ class CreateCRDesktopCodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1048,6 +1228,9 @@ class CreateCRRightFileRequest(AbstractModel):
 
     @property
     def WorkId(self):
+        """作品ID
+        :rtype: int
+        """
         return self._WorkId
 
     @WorkId.setter
@@ -1056,6 +1239,9 @@ class CreateCRRightFileRequest(AbstractModel):
 
     @property
     def FileList(self):
+        """权属文件列表
+        :rtype: list of File
+        """
         return self._FileList
 
     @FileList.setter
@@ -1098,6 +1284,9 @@ class CreateCRRightFileResponse(AbstractModel):
 
     @property
     def FileIds(self):
+        """权属文件Id，按提交顺序排序
+        :rtype: list of int
+        """
         return self._FileIds
 
     @FileIds.setter
@@ -1106,6 +1295,9 @@ class CreateCRRightFileResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1183,6 +1375,9 @@ class CreateCRRightRequest(AbstractModel):
 
     @property
     def WorkId(self):
+        """作品ID
+        :rtype: int
+        """
         return self._WorkId
 
     @WorkId.setter
@@ -1191,6 +1386,9 @@ class CreateCRRightRequest(AbstractModel):
 
     @property
     def TortUrl(self):
+        """侵权链接
+        :rtype: str
+        """
         return self._TortUrl
 
     @TortUrl.setter
@@ -1199,6 +1397,9 @@ class CreateCRRightRequest(AbstractModel):
 
     @property
     def TortTitle(self):
+        """侵权标题
+        :rtype: str
+        """
         return self._TortTitle
 
     @TortTitle.setter
@@ -1207,6 +1408,9 @@ class CreateCRRightRequest(AbstractModel):
 
     @property
     def TortPlat(self):
+        """侵权平台
+        :rtype: str
+        """
         return self._TortPlat
 
     @TortPlat.setter
@@ -1215,6 +1419,9 @@ class CreateCRRightRequest(AbstractModel):
 
     @property
     def RightUrl(self):
+        """发函结果回调地址
+        :rtype: str
+        """
         return self._RightUrl
 
     @RightUrl.setter
@@ -1223,6 +1430,9 @@ class CreateCRRightRequest(AbstractModel):
 
     @property
     def FileUrl(self):
+        """授权书下载地址
+        :rtype: str
+        """
         return self._FileUrl
 
     @FileUrl.setter
@@ -1231,6 +1441,9 @@ class CreateCRRightRequest(AbstractModel):
 
     @property
     def ValidStartDate(self):
+        """授权书生效日期
+        :rtype: str
+        """
         return self._ValidStartDate
 
     @ValidStartDate.setter
@@ -1239,6 +1452,9 @@ class CreateCRRightRequest(AbstractModel):
 
     @property
     def ValidEndDate(self):
+        """授权书截止日期
+        :rtype: str
+        """
         return self._ValidEndDate
 
     @ValidEndDate.setter
@@ -1247,6 +1463,9 @@ class CreateCRRightRequest(AbstractModel):
 
     @property
     def CommFileUrl(self):
+        """委托书下载地址
+        :rtype: str
+        """
         return self._CommFileUrl
 
     @CommFileUrl.setter
@@ -1255,6 +1474,9 @@ class CreateCRRightRequest(AbstractModel):
 
     @property
     def CommValidStartDate(self):
+        """委托书生效日期
+        :rtype: str
+        """
         return self._CommValidStartDate
 
     @CommValidStartDate.setter
@@ -1263,6 +1485,9 @@ class CreateCRRightRequest(AbstractModel):
 
     @property
     def CommValidEndDate(self):
+        """委托书截止日期
+        :rtype: str
+        """
         return self._CommValidEndDate
 
     @CommValidEndDate.setter
@@ -1271,6 +1496,9 @@ class CreateCRRightRequest(AbstractModel):
 
     @property
     def HomeFileUrl(self):
+        """主页下载地址
+        :rtype: str
+        """
         return self._HomeFileUrl
 
     @HomeFileUrl.setter
@@ -1279,6 +1507,9 @@ class CreateCRRightRequest(AbstractModel):
 
     @property
     def HomeValidStartDate(self):
+        """主页生效日期
+        :rtype: str
+        """
         return self._HomeValidStartDate
 
     @HomeValidStartDate.setter
@@ -1287,6 +1518,9 @@ class CreateCRRightRequest(AbstractModel):
 
     @property
     def HomeValidEndDate(self):
+        """主页截止日期
+        :rtype: str
+        """
         return self._HomeValidEndDate
 
     @HomeValidEndDate.setter
@@ -1295,6 +1529,9 @@ class CreateCRRightRequest(AbstractModel):
 
     @property
     def IsProducer(self):
+        """是否著作权人：0-否 1-是
+        :rtype: str
+        """
         return self._IsProducer
 
     @IsProducer.setter
@@ -1303,6 +1540,9 @@ class CreateCRRightRequest(AbstractModel):
 
     @property
     def EvidenceFileUrl(self):
+        """存证证书下载地址
+        :rtype: str
+        """
         return self._EvidenceFileUrl
 
     @EvidenceFileUrl.setter
@@ -1311,6 +1551,9 @@ class CreateCRRightRequest(AbstractModel):
 
     @property
     def EvidenceValidStartDate(self):
+        """存证证书生效日期
+        :rtype: str
+        """
         return self._EvidenceValidStartDate
 
     @EvidenceValidStartDate.setter
@@ -1319,6 +1562,9 @@ class CreateCRRightRequest(AbstractModel):
 
     @property
     def EvidenceValidEndDate(self):
+        """存证证书截止日期
+        :rtype: str
+        """
         return self._EvidenceValidEndDate
 
     @EvidenceValidEndDate.setter
@@ -1375,6 +1621,9 @@ class CreateCRRightResponse(AbstractModel):
 
     @property
     def TortId(self):
+        """侵权ID
+        :rtype: int
+        """
         return self._TortId
 
     @TortId.setter
@@ -1383,6 +1632,9 @@ class CreateCRRightResponse(AbstractModel):
 
     @property
     def TortNum(self):
+        """该字段已废弃
+        :rtype: str
+        """
         return self._TortNum
 
     @TortNum.setter
@@ -1391,6 +1643,9 @@ class CreateCRRightResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1427,6 +1682,9 @@ class CreateCRTortRequest(AbstractModel):
 
     @property
     def WorkId(self):
+        """作品ID
+        :rtype: int
+        """
         return self._WorkId
 
     @WorkId.setter
@@ -1435,6 +1693,9 @@ class CreateCRTortRequest(AbstractModel):
 
     @property
     def TortURL(self):
+        """侵权网址
+        :rtype: str
+        """
         return self._TortURL
 
     @TortURL.setter
@@ -1443,6 +1704,9 @@ class CreateCRTortRequest(AbstractModel):
 
     @property
     def TortPlat(self):
+        """侵权平台
+        :rtype: str
+        """
         return self._TortPlat
 
     @TortPlat.setter
@@ -1451,6 +1715,9 @@ class CreateCRTortRequest(AbstractModel):
 
     @property
     def TortTitle(self):
+        """侵权标题
+        :rtype: str
+        """
         return self._TortTitle
 
     @TortTitle.setter
@@ -1508,6 +1775,9 @@ class CreateCRTortResponse(AbstractModel):
 
     @property
     def WorkId(self):
+        """作品ID
+        :rtype: int
+        """
         return self._WorkId
 
     @WorkId.setter
@@ -1516,6 +1786,9 @@ class CreateCRTortResponse(AbstractModel):
 
     @property
     def TortId(self):
+        """侵权ID
+        :rtype: int
+        """
         return self._TortId
 
     @TortId.setter
@@ -1524,6 +1797,9 @@ class CreateCRTortResponse(AbstractModel):
 
     @property
     def TortTitle(self):
+        """侵权标题
+        :rtype: str
+        """
         return self._TortTitle
 
     @TortTitle.setter
@@ -1532,6 +1808,9 @@ class CreateCRTortResponse(AbstractModel):
 
     @property
     def TortPlat(self):
+        """侵权平台
+        :rtype: str
+        """
         return self._TortPlat
 
     @TortPlat.setter
@@ -1540,6 +1819,9 @@ class CreateCRTortResponse(AbstractModel):
 
     @property
     def TortURL(self):
+        """侵权网址
+        :rtype: str
+        """
         return self._TortURL
 
     @TortURL.setter
@@ -1548,6 +1830,9 @@ class CreateCRTortResponse(AbstractModel):
 
     @property
     def TortDomain(self):
+        """侵权域名
+        :rtype: str
+        """
         return self._TortDomain
 
     @TortDomain.setter
@@ -1556,6 +1841,9 @@ class CreateCRTortResponse(AbstractModel):
 
     @property
     def TortBodyName(self):
+        """侵权主体
+        :rtype: str
+        """
         return self._TortBodyName
 
     @TortBodyName.setter
@@ -1564,6 +1852,9 @@ class CreateCRTortResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1608,6 +1899,9 @@ class CreateCRUserVerifyRequest(AbstractModel):
 
     @property
     def UserName(self):
+        """用户真实姓名
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -1616,6 +1910,9 @@ class CreateCRUserVerifyRequest(AbstractModel):
 
     @property
     def UserID(self):
+        """用户身份证号
+        :rtype: str
+        """
         return self._UserID
 
     @UserID.setter
@@ -1624,6 +1921,9 @@ class CreateCRUserVerifyRequest(AbstractModel):
 
     @property
     def UserPhone(self):
+        """用户手机号码
+        :rtype: str
+        """
         return self._UserPhone
 
     @UserPhone.setter
@@ -1632,6 +1932,9 @@ class CreateCRUserVerifyRequest(AbstractModel):
 
     @property
     def VerificationCode(self):
+        """短信验证码，接口接入可以置空
+        :rtype: str
+        """
         return self._VerificationCode
 
     @VerificationCode.setter
@@ -1640,6 +1943,9 @@ class CreateCRUserVerifyRequest(AbstractModel):
 
     @property
     def Type(self):
+        """字段已废弃，认证类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1683,6 +1989,9 @@ class CreateCRUserVerifyResponse(AbstractModel):
 
     @property
     def Status(self):
+        """认证状态：0-认证成功 1-认证失败
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1691,6 +2000,9 @@ class CreateCRUserVerifyResponse(AbstractModel):
 
     @property
     def Note(self):
+        """认证状态说明，包括认证失败原因等
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -1699,6 +2011,9 @@ class CreateCRUserVerifyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1819,6 +2134,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def WorkName(self):
+        """作品名称
+        :rtype: str
+        """
         return self._WorkName
 
     @WorkName.setter
@@ -1827,6 +2145,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def WorkCategory(self):
+        """作品分类
+        :rtype: str
+        """
         return self._WorkCategory
 
     @WorkCategory.setter
@@ -1835,6 +2156,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def WorkType(self):
+        """作品内容类型
+        :rtype: str
+        """
         return self._WorkType
 
     @WorkType.setter
@@ -1843,6 +2167,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def WorkSign(self):
+        """作品标签
+        :rtype: str
+        """
         return self._WorkSign
 
     @WorkSign.setter
@@ -1851,6 +2178,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def WorkPic(self):
+        """字段已废弃，作品图片
+        :rtype: str
+        """
         return self._WorkPic
 
     @WorkPic.setter
@@ -1859,6 +2189,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def WorkDesc(self):
+        """作品描述
+        :rtype: str
+        """
         return self._WorkDesc
 
     @WorkDesc.setter
@@ -1867,6 +2200,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def IsOriginal(self):
+        """是否原创：0-否 1-是
+        :rtype: str
+        """
         return self._IsOriginal
 
     @IsOriginal.setter
@@ -1875,6 +2211,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def IsRelease(self):
+        """是否发布：0-未发布 1-已发布
+        :rtype: str
+        """
         return self._IsRelease
 
     @IsRelease.setter
@@ -1883,6 +2222,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def ProducerID(self):
+        """字段已废弃，著作权人ID
+        :rtype: int
+        """
         return self._ProducerID
 
     @ProducerID.setter
@@ -1891,6 +2233,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def ProduceTime(self):
+        """创作时间
+        :rtype: str
+        """
         return self._ProduceTime
 
     @ProduceTime.setter
@@ -1899,6 +2244,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def SampleContentURL(self):
+        """字段已废弃
+        :rtype: str
+        """
         return self._SampleContentURL
 
     @SampleContentURL.setter
@@ -1907,6 +2255,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def SampleDownloadURL(self):
+        """作品下载地址
+        :rtype: str
+        """
         return self._SampleDownloadURL
 
     @SampleDownloadURL.setter
@@ -1915,6 +2266,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def SamplePublicURL(self):
+        """作品在线地址
+        :rtype: str
+        """
         return self._SamplePublicURL
 
     @SamplePublicURL.setter
@@ -1923,6 +2277,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def GrantType(self):
+        """字段已废弃，授予类型
+        :rtype: str
+        """
         return self._GrantType
 
     @GrantType.setter
@@ -1931,6 +2288,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def IsMonitor(self):
+        """是否监测：0-不监测 1-监测
+        :rtype: str
+        """
         return self._IsMonitor
 
     @IsMonitor.setter
@@ -1939,6 +2299,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def IsCert(self):
+        """是否存证：0-不存证  2-存证 注意是2
+        :rtype: str
+        """
         return self._IsCert
 
     @IsCert.setter
@@ -1947,6 +2310,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def CertUrl(self):
+        """存证回调地址
+        :rtype: str
+        """
         return self._CertUrl
 
     @CertUrl.setter
@@ -1955,6 +2321,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def MonitorUrl(self):
+        """监测回调地址
+        :rtype: str
+        """
         return self._MonitorUrl
 
     @MonitorUrl.setter
@@ -1963,6 +2332,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def ProduceType(self):
+        """字段已废弃，创作性质
+        :rtype: str
+        """
         return self._ProduceType
 
     @ProduceType.setter
@@ -1971,6 +2343,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def WhiteLists(self):
+        """白名单列表
+        :rtype: list of str
+        """
         return self._WhiteLists
 
     @WhiteLists.setter
@@ -1979,6 +2354,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def WorkId(self):
+        """作品ID，忽略该字段
+        :rtype: int
+        """
         return self._WorkId
 
     @WorkId.setter
@@ -1987,6 +2365,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def ProducerName(self):
+        """著作权人姓名
+        :rtype: str
+        """
         return self._ProducerName
 
     @ProducerName.setter
@@ -1995,6 +2376,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def Nickname(self):
+        """作者，小说类型必填
+        :rtype: str
+        """
         return self._Nickname
 
     @Nickname.setter
@@ -2003,6 +2387,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def Authorization(self):
+        """授权书下载地址
+        :rtype: str
+        """
         return self._Authorization
 
     @Authorization.setter
@@ -2011,6 +2398,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def AuthorizationStartTime(self):
+        """授权书开始时间
+        :rtype: str
+        """
         return self._AuthorizationStartTime
 
     @AuthorizationStartTime.setter
@@ -2019,6 +2409,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def AuthorizationEndTime(self):
+        """授权书结束时间
+        :rtype: str
+        """
         return self._AuthorizationEndTime
 
     @AuthorizationEndTime.setter
@@ -2027,6 +2420,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def ContentType(self):
+        """内容格式，支持txt、doc等，表示Content的具体格式
+        :rtype: str
+        """
         return self._ContentType
 
     @ContentType.setter
@@ -2035,6 +2431,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def Content(self):
+        """文件内容base64编码，该字段仅在无法提供下载链接时使用
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -2043,6 +2442,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def MonitorEndTime(self):
+        """监测结束时间
+        :rtype: str
+        """
         return self._MonitorEndTime
 
     @MonitorEndTime.setter
@@ -2051,6 +2453,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def ApplierId(self):
+        """申请人ID，用于存证和取证
+        :rtype: str
+        """
         return self._ApplierId
 
     @ApplierId.setter
@@ -2059,6 +2464,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def ApplierName(self):
+        """申请人姓名，用于存证和取证
+        :rtype: str
+        """
         return self._ApplierName
 
     @ApplierName.setter
@@ -2067,6 +2475,9 @@ class CreateCRWorkRequest(AbstractModel):
 
     @property
     def IsAutoRenew(self):
+        """是否自动续期
+        :rtype: str
+        """
         return self._IsAutoRenew
 
     @IsAutoRenew.setter
@@ -2137,6 +2548,9 @@ class CreateCRWorkResponse(AbstractModel):
 
     @property
     def WorkId(self):
+        """作品ID，一个作品对应唯一的workid
+        :rtype: int
+        """
         return self._WorkId
 
     @WorkId.setter
@@ -2145,6 +2559,9 @@ class CreateCRWorkResponse(AbstractModel):
 
     @property
     def EvidenceId(self):
+        """存证ID，忽略该字段
+        :rtype: int
+        """
         return self._EvidenceId
 
     @EvidenceId.setter
@@ -2153,6 +2570,9 @@ class CreateCRWorkResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2216,6 +2636,9 @@ class DescribeBPCompanyInfoResponse(AbstractModel):
 
     @property
     def CompanyName(self):
+        """企业名称
+        :rtype: str
+        """
         return self._CompanyName
 
     @CompanyName.setter
@@ -2224,6 +2647,9 @@ class DescribeBPCompanyInfoResponse(AbstractModel):
 
     @property
     def Phone(self):
+        """电话号码
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -2232,6 +2658,9 @@ class DescribeBPCompanyInfoResponse(AbstractModel):
 
     @property
     def LicenseName(self):
+        """营业执照
+        :rtype: str
+        """
         return self._LicenseName
 
     @LicenseName.setter
@@ -2240,6 +2669,9 @@ class DescribeBPCompanyInfoResponse(AbstractModel):
 
     @property
     def LicenseStatus(self):
+        """营业执照审核状态 1-审核中 2-审核未通过，3、审核通过
+        :rtype: int
+        """
         return self._LicenseStatus
 
     @LicenseStatus.setter
@@ -2248,6 +2680,9 @@ class DescribeBPCompanyInfoResponse(AbstractModel):
 
     @property
     def LicenseNote(self):
+        """营业执照备注
+        :rtype: str
+        """
         return self._LicenseNote
 
     @LicenseNote.setter
@@ -2256,6 +2691,9 @@ class DescribeBPCompanyInfoResponse(AbstractModel):
 
     @property
     def AuthorizationName(self):
+        """授权书
+        :rtype: str
+        """
         return self._AuthorizationName
 
     @AuthorizationName.setter
@@ -2264,6 +2702,9 @@ class DescribeBPCompanyInfoResponse(AbstractModel):
 
     @property
     def AuthorizationStatus(self):
+        """授权书审核状态
+        :rtype: int
+        """
         return self._AuthorizationStatus
 
     @AuthorizationStatus.setter
@@ -2272,6 +2713,9 @@ class DescribeBPCompanyInfoResponse(AbstractModel):
 
     @property
     def AuthorizationNote(self):
+        """授权书备注
+        :rtype: str
+        """
         return self._AuthorizationNote
 
     @AuthorizationNote.setter
@@ -2280,6 +2724,9 @@ class DescribeBPCompanyInfoResponse(AbstractModel):
 
     @property
     def BrandDatas(self):
+        """品牌信息
+        :rtype: list of BrandData
+        """
         return self._BrandDatas
 
     @BrandDatas.setter
@@ -2288,6 +2735,9 @@ class DescribeBPCompanyInfoResponse(AbstractModel):
 
     @property
     def CompanyId(self):
+        """企业ID
+        :rtype: int
+        """
         return self._CompanyId
 
     @CompanyId.setter
@@ -2296,6 +2746,9 @@ class DescribeBPCompanyInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2342,6 +2795,9 @@ class DescribeBPFakeURLsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2350,6 +2806,9 @@ class DescribeBPFakeURLsRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """页数
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -2358,6 +2817,9 @@ class DescribeBPFakeURLsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -2407,6 +2869,9 @@ class DescribeBPFakeURLsResponse(AbstractModel):
 
     @property
     def FakeURLInfos(self):
+        """仿冒网址列表
+        :rtype: list of FakeURLInfo
+        """
         return self._FakeURLInfos
 
     @FakeURLInfos.setter
@@ -2415,6 +2880,9 @@ class DescribeBPFakeURLsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2423,6 +2891,9 @@ class DescribeBPFakeURLsResponse(AbstractModel):
 
     @property
     def ExportURL(self):
+        """导出量
+        :rtype: str
+        """
         return self._ExportURL
 
     @ExportURL.setter
@@ -2431,6 +2902,9 @@ class DescribeBPFakeURLsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2467,6 +2941,9 @@ class DescribeBPProtectURLsRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """页数
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -2475,6 +2952,9 @@ class DescribeBPProtectURLsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -2515,6 +2995,9 @@ class DescribeBPProtectURLsResponse(AbstractModel):
 
     @property
     def ProtectURLInfos(self):
+        """保护网址列表
+        :rtype: list of ProtectURLInfo
+        """
         return self._ProtectURLInfos
 
     @ProtectURLInfos.setter
@@ -2523,6 +3006,9 @@ class DescribeBPProtectURLsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2531,6 +3017,9 @@ class DescribeBPProtectURLsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2569,6 +3058,9 @@ class DescribeBPReportFakeURLsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2577,6 +3069,9 @@ class DescribeBPReportFakeURLsRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """页数
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -2585,6 +3080,9 @@ class DescribeBPReportFakeURLsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -2631,6 +3129,9 @@ class DescribeBPReportFakeURLsResponse(AbstractModel):
 
     @property
     def ReportFakeURLInfos(self):
+        """举报网站列表
+        :rtype: list of ReportFakeURLInfo
+        """
         return self._ReportFakeURLInfos
 
     @ReportFakeURLInfos.setter
@@ -2639,6 +3140,9 @@ class DescribeBPReportFakeURLsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2647,6 +3151,9 @@ class DescribeBPReportFakeURLsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2688,6 +3195,9 @@ class DescribeCRMonitorDetailRequest(AbstractModel):
 
     @property
     def WorkId(self):
+        """作品ID
+        :rtype: int
+        """
         return self._WorkId
 
     @WorkId.setter
@@ -2696,6 +3206,9 @@ class DescribeCRMonitorDetailRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """页数
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -2704,6 +3217,9 @@ class DescribeCRMonitorDetailRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -2712,6 +3228,9 @@ class DescribeCRMonitorDetailRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤参数
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2765,6 +3284,9 @@ class DescribeCRMonitorDetailResponse(AbstractModel):
 
     @property
     def Torts(self):
+        """侵权数组
+        :rtype: list of MonitorTort
+        """
         return self._Torts
 
     @Torts.setter
@@ -2773,6 +3295,9 @@ class DescribeCRMonitorDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总记录数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2781,6 +3306,9 @@ class DescribeCRMonitorDetailResponse(AbstractModel):
 
     @property
     def MonitorStatus(self):
+        """监测状态
+        :rtype: int
+        """
         return self._MonitorStatus
 
     @MonitorStatus.setter
@@ -2789,6 +3317,9 @@ class DescribeCRMonitorDetailResponse(AbstractModel):
 
     @property
     def ExportURL(self):
+        """导出地址
+        :rtype: str
+        """
         return self._ExportURL
 
     @ExportURL.setter
@@ -2797,6 +3328,9 @@ class DescribeCRMonitorDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2837,6 +3371,9 @@ class DescribeCRMonitorsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2845,6 +3382,9 @@ class DescribeCRMonitorsRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """页数
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -2853,6 +3393,9 @@ class DescribeCRMonitorsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -2902,6 +3445,9 @@ class DescribeCRMonitorsResponse(AbstractModel):
 
     @property
     def Monitors(self):
+        """监测结果
+        :rtype: list of Monitor
+        """
         return self._Monitors
 
     @Monitors.setter
@@ -2910,6 +3456,9 @@ class DescribeCRMonitorsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """记录总条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2918,6 +3467,9 @@ class DescribeCRMonitorsResponse(AbstractModel):
 
     @property
     def ExportURL(self):
+        """导出地址
+        :rtype: str
+        """
         return self._ExportURL
 
     @ExportURL.setter
@@ -2926,6 +3478,9 @@ class DescribeCRMonitorsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2959,6 +3514,9 @@ class DescribeCRObtainDetailRequest(AbstractModel):
 
     @property
     def TortId(self):
+        """侵权ID
+        :rtype: int
+        """
         return self._TortId
 
     @TortId.setter
@@ -3040,6 +3598,9 @@ class DescribeCRObtainDetailResponse(AbstractModel):
 
     @property
     def WorkName(self):
+        """作品名称
+        :rtype: str
+        """
         return self._WorkName
 
     @WorkName.setter
@@ -3048,6 +3609,9 @@ class DescribeCRObtainDetailResponse(AbstractModel):
 
     @property
     def TortURL(self):
+        """侵权链接
+        :rtype: str
+        """
         return self._TortURL
 
     @TortURL.setter
@@ -3056,6 +3620,9 @@ class DescribeCRObtainDetailResponse(AbstractModel):
 
     @property
     def ObtainTime(self):
+        """取证时间
+        :rtype: str
+        """
         return self._ObtainTime
 
     @ObtainTime.setter
@@ -3064,6 +3631,9 @@ class DescribeCRObtainDetailResponse(AbstractModel):
 
     @property
     def ObtainType(self):
+        """取证类型
+        :rtype: str
+        """
         return self._ObtainType
 
     @ObtainType.setter
@@ -3072,6 +3642,9 @@ class DescribeCRObtainDetailResponse(AbstractModel):
 
     @property
     def ObtainNum(self):
+        """取证号
+        :rtype: str
+        """
         return self._ObtainNum
 
     @ObtainNum.setter
@@ -3080,6 +3653,9 @@ class DescribeCRObtainDetailResponse(AbstractModel):
 
     @property
     def DepositFile(self):
+        """证据地址
+        :rtype: str
+        """
         return self._DepositFile
 
     @DepositFile.setter
@@ -3088,6 +3664,9 @@ class DescribeCRObtainDetailResponse(AbstractModel):
 
     @property
     def DepositCert(self):
+        """公证信息地址
+        :rtype: str
+        """
         return self._DepositCert
 
     @DepositCert.setter
@@ -3096,6 +3675,9 @@ class DescribeCRObtainDetailResponse(AbstractModel):
 
     @property
     def WorkType(self):
+        """内容类型
+        :rtype: str
+        """
         return self._WorkType
 
     @WorkType.setter
@@ -3104,6 +3686,9 @@ class DescribeCRObtainDetailResponse(AbstractModel):
 
     @property
     def WorkCategory(self):
+        """作品类型
+        :rtype: str
+        """
         return self._WorkCategory
 
     @WorkCategory.setter
@@ -3112,6 +3697,9 @@ class DescribeCRObtainDetailResponse(AbstractModel):
 
     @property
     def TortId(self):
+        """侵权ID
+        :rtype: int
+        """
         return self._TortId
 
     @TortId.setter
@@ -3120,6 +3708,9 @@ class DescribeCRObtainDetailResponse(AbstractModel):
 
     @property
     def TortNum(self):
+        """侵权编号
+        :rtype: str
+        """
         return self._TortNum
 
     @TortNum.setter
@@ -3128,6 +3719,9 @@ class DescribeCRObtainDetailResponse(AbstractModel):
 
     @property
     def ObtainStatus(self):
+        """取证状态
+        :rtype: int
+        """
         return self._ObtainStatus
 
     @ObtainStatus.setter
@@ -3136,6 +3730,9 @@ class DescribeCRObtainDetailResponse(AbstractModel):
 
     @property
     def ObtainNote(self):
+        """取证状态说明
+        :rtype: str
+        """
         return self._ObtainNote
 
     @ObtainNote.setter
@@ -3144,6 +3741,9 @@ class DescribeCRObtainDetailResponse(AbstractModel):
 
     @property
     def ObtainDuration(self):
+        """取证时长
+        :rtype: str
+        """
         return self._ObtainDuration
 
     @ObtainDuration.setter
@@ -3152,6 +3752,9 @@ class DescribeCRObtainDetailResponse(AbstractModel):
 
     @property
     def ObtainName(self):
+        """取证名称
+        :rtype: str
+        """
         return self._ObtainName
 
     @ObtainName.setter
@@ -3160,6 +3763,9 @@ class DescribeCRObtainDetailResponse(AbstractModel):
 
     @property
     def DepositPdfCert(self):
+        """取证公证信息
+        :rtype: str
+        """
         return self._DepositPdfCert
 
     @DepositPdfCert.setter
@@ -3168,6 +3774,9 @@ class DescribeCRObtainDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3209,6 +3818,9 @@ class DescribeCRWorkInfoRequest(AbstractModel):
 
     @property
     def WorkId(self):
+        """作品ID
+        :rtype: int
+        """
         return self._WorkId
 
     @WorkId.setter
@@ -3308,6 +3920,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def WorkName(self):
+        """作品名称
+        :rtype: str
+        """
         return self._WorkName
 
     @WorkName.setter
@@ -3316,6 +3931,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def MonitorStatus(self):
+        """监测状态
+        :rtype: int
+        """
         return self._MonitorStatus
 
     @MonitorStatus.setter
@@ -3324,6 +3942,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def AuthStatus(self):
+        """授权文件状态
+        :rtype: int
+        """
         return self._AuthStatus
 
     @AuthStatus.setter
@@ -3332,6 +3953,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def CommStatus(self):
+        """委托书状态
+        :rtype: int
+        """
         return self._CommStatus
 
     @CommStatus.setter
@@ -3340,6 +3964,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def IsProducer(self):
+        """是否著作权人
+        :rtype: int
+        """
         return self._IsProducer
 
     @IsProducer.setter
@@ -3348,6 +3975,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def EvidenceStatus(self):
+        """存证证书状态
+        :rtype: int
+        """
         return self._EvidenceStatus
 
     @EvidenceStatus.setter
@@ -3356,6 +3986,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def WorkCategory(self):
+        """作品类型
+        :rtype: str
+        """
         return self._WorkCategory
 
     @WorkCategory.setter
@@ -3364,6 +3997,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def IsOriginal(self):
+        """是否原创
+        :rtype: str
+        """
         return self._IsOriginal
 
     @IsOriginal.setter
@@ -3372,6 +4008,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def IsRelease(self):
+        """是否已发表
+        :rtype: str
+        """
         return self._IsRelease
 
     @IsRelease.setter
@@ -3380,6 +4019,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def ProducerName(self):
+        """著作权人姓名
+        :rtype: str
+        """
         return self._ProducerName
 
     @ProducerName.setter
@@ -3388,6 +4030,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def ProduceTime(self):
+        """发表时间
+        :rtype: str
+        """
         return self._ProduceTime
 
     @ProduceTime.setter
@@ -3396,6 +4041,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def WhiteLists(self):
+        """白名单
+        :rtype: list of str
+        """
         return self._WhiteLists
 
     @WhiteLists.setter
@@ -3404,6 +4052,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def WorkDesc(self):
+        """作品描述
+        :rtype: str
+        """
         return self._WorkDesc
 
     @WorkDesc.setter
@@ -3412,6 +4063,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def Authorization(self):
+        """授权书
+        :rtype: str
+        """
         return self._Authorization
 
     @Authorization.setter
@@ -3420,6 +4074,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def AuthorizationStartTime(self):
+        """授权书生效日期
+        :rtype: str
+        """
         return self._AuthorizationStartTime
 
     @AuthorizationStartTime.setter
@@ -3428,6 +4085,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def AuthorizationEndTime(self):
+        """授权书截止日期
+        :rtype: str
+        """
         return self._AuthorizationEndTime
 
     @AuthorizationEndTime.setter
@@ -3436,6 +4096,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def Commission(self):
+        """委托书
+        :rtype: str
+        """
         return self._Commission
 
     @Commission.setter
@@ -3444,6 +4107,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def CommissionStartTime(self):
+        """委托书生效日期
+        :rtype: str
+        """
         return self._CommissionStartTime
 
     @CommissionStartTime.setter
@@ -3452,6 +4118,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def CommissionEndTime(self):
+        """委托书截止日期
+        :rtype: str
+        """
         return self._CommissionEndTime
 
     @CommissionEndTime.setter
@@ -3460,6 +4129,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def EvidenceUrl(self):
+        """存证证书
+        :rtype: str
+        """
         return self._EvidenceUrl
 
     @EvidenceUrl.setter
@@ -3468,6 +4140,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def EvidenceStartTime(self):
+        """存证证书生效日期
+        :rtype: str
+        """
         return self._EvidenceStartTime
 
     @EvidenceStartTime.setter
@@ -3476,6 +4151,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def EvidenceEndTime(self):
+        """存证证书截止日期
+        :rtype: str
+        """
         return self._EvidenceEndTime
 
     @EvidenceEndTime.setter
@@ -3484,6 +4162,9 @@ class DescribeCRWorkInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3576,6 +4257,9 @@ class FakeURLInfo(AbstractModel):
 
     @property
     def FakeURLId(self):
+        """仿冒网址ID
+        :rtype: int
+        """
         return self._FakeURLId
 
     @FakeURLId.setter
@@ -3584,6 +4268,9 @@ class FakeURLInfo(AbstractModel):
 
     @property
     def ProtectWeb(self):
+        """保护网站
+        :rtype: str
+        """
         return self._ProtectWeb
 
     @ProtectWeb.setter
@@ -3592,6 +4279,9 @@ class FakeURLInfo(AbstractModel):
 
     @property
     def DetectTime(self):
+        """检测时间
+        :rtype: str
+        """
         return self._DetectTime
 
     @DetectTime.setter
@@ -3600,6 +4290,9 @@ class FakeURLInfo(AbstractModel):
 
     @property
     def FakeURL(self):
+        """仿冒网址
+        :rtype: str
+        """
         return self._FakeURL
 
     @FakeURL.setter
@@ -3608,6 +4301,9 @@ class FakeURLInfo(AbstractModel):
 
     @property
     def Snapshot(self):
+        """截图
+        :rtype: str
+        """
         return self._Snapshot
 
     @Snapshot.setter
@@ -3616,6 +4312,9 @@ class FakeURLInfo(AbstractModel):
 
     @property
     def IP(self):
+        """IP地址
+        :rtype: str
+        """
         return self._IP
 
     @IP.setter
@@ -3624,6 +4323,9 @@ class FakeURLInfo(AbstractModel):
 
     @property
     def IPLoc(self):
+        """IP地理位置
+        :rtype: str
+        """
         return self._IPLoc
 
     @IPLoc.setter
@@ -3632,6 +4334,9 @@ class FakeURLInfo(AbstractModel):
 
     @property
     def Heat(self):
+        """热度
+        :rtype: int
+        """
         return self._Heat
 
     @Heat.setter
@@ -3640,6 +4345,9 @@ class FakeURLInfo(AbstractModel):
 
     @property
     def Status(self):
+        """网址状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -3648,6 +4356,9 @@ class FakeURLInfo(AbstractModel):
 
     @property
     def Note(self):
+        """备注
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -3656,6 +4367,9 @@ class FakeURLInfo(AbstractModel):
 
     @property
     def FakeURLCompany(self):
+        """仿冒网站所属单位
+        :rtype: str
+        """
         return self._FakeURLCompany
 
     @FakeURLCompany.setter
@@ -3664,6 +4378,9 @@ class FakeURLInfo(AbstractModel):
 
     @property
     def FakeURLAttr(self):
+        """仿冒网站性质
+        :rtype: str
+        """
         return self._FakeURLAttr
 
     @FakeURLAttr.setter
@@ -3672,6 +4389,9 @@ class FakeURLInfo(AbstractModel):
 
     @property
     def FakeURLName(self):
+        """仿冒网站名称
+        :rtype: str
+        """
         return self._FakeURLName
 
     @FakeURLName.setter
@@ -3680,6 +4400,9 @@ class FakeURLInfo(AbstractModel):
 
     @property
     def FakeURLICP(self):
+        """仿冒网站备案号
+        :rtype: str
+        """
         return self._FakeURLICP
 
     @FakeURLICP.setter
@@ -3688,6 +4411,9 @@ class FakeURLInfo(AbstractModel):
 
     @property
     def FakeURLCreateTime(self):
+        """仿冒网站创建时间
+        :rtype: str
+        """
         return self._FakeURLCreateTime
 
     @FakeURLCreateTime.setter
@@ -3696,6 +4422,9 @@ class FakeURLInfo(AbstractModel):
 
     @property
     def FakeURLExpireTime(self):
+        """仿冒网站过期时间
+        :rtype: str
+        """
         return self._FakeURLExpireTime
 
     @FakeURLExpireTime.setter
@@ -3753,6 +4482,9 @@ class File(AbstractModel):
 
     @property
     def FileUrl(self):
+        """文件下载地址
+        :rtype: str
+        """
         return self._FileUrl
 
     @FileUrl.setter
@@ -3761,6 +4493,9 @@ class File(AbstractModel):
 
     @property
     def FileType(self):
+        """文件类型 1-委托书 2-授权书 5-存证证书 11-营业执照
+        :rtype: int
+        """
         return self._FileType
 
     @FileType.setter
@@ -3769,6 +4504,9 @@ class File(AbstractModel):
 
     @property
     def ValidStartDate(self):
+        """文件有效开始日期
+        :rtype: str
+        """
         return self._ValidStartDate
 
     @ValidStartDate.setter
@@ -3777,6 +4515,9 @@ class File(AbstractModel):
 
     @property
     def ValidEndDate(self):
+        """文件有效截止日期
+        :rtype: str
+        """
         return self._ValidEndDate
 
     @ValidEndDate.setter
@@ -3831,6 +4572,9 @@ class ModifyBPOfflineAttachmentRequest(AbstractModel):
 
     @property
     def LicenseName(self):
+        """营业执照
+        :rtype: str
+        """
         return self._LicenseName
 
     @LicenseName.setter
@@ -3839,6 +4583,9 @@ class ModifyBPOfflineAttachmentRequest(AbstractModel):
 
     @property
     def AuthorizationName(self):
+        """授权书
+        :rtype: str
+        """
         return self._AuthorizationName
 
     @AuthorizationName.setter
@@ -3847,6 +4594,9 @@ class ModifyBPOfflineAttachmentRequest(AbstractModel):
 
     @property
     def BrandName(self):
+        """商标名称
+        :rtype: str
+        """
         return self._BrandName
 
     @BrandName.setter
@@ -3855,6 +4605,9 @@ class ModifyBPOfflineAttachmentRequest(AbstractModel):
 
     @property
     def BrandCertificateName(self):
+        """商标证明
+        :rtype: str
+        """
         return self._BrandCertificateName
 
     @BrandCertificateName.setter
@@ -3863,6 +4616,9 @@ class ModifyBPOfflineAttachmentRequest(AbstractModel):
 
     @property
     def TransferName(self):
+        """商标转让证明
+        :rtype: str
+        """
         return self._TransferName
 
     @TransferName.setter
@@ -3900,6 +4656,9 @@ class ModifyBPOfflineAttachmentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3928,6 +4687,9 @@ class ModifyCRBlockStatusRequest(AbstractModel):
 
     @property
     def TortId(self):
+        """侵权ID
+        :rtype: int
+        """
         return self._TortId
 
     @TortId.setter
@@ -3936,6 +4698,9 @@ class ModifyCRBlockStatusRequest(AbstractModel):
 
     @property
     def BlockUrl(self):
+        """拦截结果回调地址
+        :rtype: str
+        """
         return self._BlockUrl
 
     @BlockUrl.setter
@@ -3970,6 +4735,9 @@ class ModifyCRBlockStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4001,6 +4769,9 @@ class ModifyCRMonitorRequest(AbstractModel):
 
     @property
     def WorkId(self):
+        """作品ID
+        :rtype: int
+        """
         return self._WorkId
 
     @WorkId.setter
@@ -4009,6 +4780,9 @@ class ModifyCRMonitorRequest(AbstractModel):
 
     @property
     def MonitorStatus(self):
+        """监测状态：1-开启监测 2-关闭监测
+        :rtype: str
+        """
         return self._MonitorStatus
 
     @MonitorStatus.setter
@@ -4017,6 +4791,9 @@ class ModifyCRMonitorRequest(AbstractModel):
 
     @property
     def MonitorEnd(self):
+        """监测截止时间
+        :rtype: str
+        """
         return self._MonitorEnd
 
     @MonitorEnd.setter
@@ -4052,6 +4829,9 @@ class ModifyCRMonitorResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4086,6 +4866,9 @@ class ModifyCRObtainStatusRequest(AbstractModel):
 
     @property
     def TortId(self):
+        """侵权ID
+        :rtype: int
+        """
         return self._TortId
 
     @TortId.setter
@@ -4094,6 +4877,9 @@ class ModifyCRObtainStatusRequest(AbstractModel):
 
     @property
     def ObtainType(self):
+        """取证类型：1-网页取证 2-过程取证(暂不提供)
+        :rtype: int
+        """
         return self._ObtainType
 
     @ObtainType.setter
@@ -4102,6 +4888,9 @@ class ModifyCRObtainStatusRequest(AbstractModel):
 
     @property
     def ObtainDuration(self):
+        """过程取证的取证时长，单位分钟，范围0-120
+        :rtype: int
+        """
         return self._ObtainDuration
 
     @ObtainDuration.setter
@@ -4110,6 +4899,9 @@ class ModifyCRObtainStatusRequest(AbstractModel):
 
     @property
     def ObtainUrl(self):
+        """取证结果回调地址
+        :rtype: str
+        """
         return self._ObtainUrl
 
     @ObtainUrl.setter
@@ -4146,6 +4938,9 @@ class ModifyCRObtainStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4174,6 +4969,9 @@ class ModifyCRRightStatusRequest(AbstractModel):
 
     @property
     def TortId(self):
+        """侵权ID
+        :rtype: int
+        """
         return self._TortId
 
     @TortId.setter
@@ -4182,6 +4980,9 @@ class ModifyCRRightStatusRequest(AbstractModel):
 
     @property
     def RightUrl(self):
+        """发函结果回调地址
+        :rtype: str
+        """
         return self._RightUrl
 
     @RightUrl.setter
@@ -4216,6 +5017,9 @@ class ModifyCRRightStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4259,6 +5063,9 @@ class ModifyCRWhiteListRequest(AbstractModel):
 
     @property
     def WhiteListId(self):
+        """该字段已废弃，白名单ID
+        :rtype: int
+        """
         return self._WhiteListId
 
     @WhiteListId.setter
@@ -4267,6 +5074,9 @@ class ModifyCRWhiteListRequest(AbstractModel):
 
     @property
     def PlatForm(self):
+        """该字段已废弃，平台名称
+        :rtype: str
+        """
         return self._PlatForm
 
     @PlatForm.setter
@@ -4275,6 +5085,9 @@ class ModifyCRWhiteListRequest(AbstractModel):
 
     @property
     def PlatUrl(self):
+        """该字段已废弃，平台站点链接
+        :rtype: str
+        """
         return self._PlatUrl
 
     @PlatUrl.setter
@@ -4283,6 +5096,9 @@ class ModifyCRWhiteListRequest(AbstractModel):
 
     @property
     def AuthorId(self):
+        """该字段已废弃，作者ID
+        :rtype: str
+        """
         return self._AuthorId
 
     @AuthorId.setter
@@ -4291,6 +5107,9 @@ class ModifyCRWhiteListRequest(AbstractModel):
 
     @property
     def WorksId(self):
+        """该字段已废弃，作品ID
+        :rtype: int
+        """
         return self._WorksId
 
     @WorksId.setter
@@ -4299,6 +5118,9 @@ class ModifyCRWhiteListRequest(AbstractModel):
 
     @property
     def WorkId(self):
+        """作品ID
+        :rtype: int
+        """
         return self._WorkId
 
     @WorkId.setter
@@ -4307,6 +5129,9 @@ class ModifyCRWhiteListRequest(AbstractModel):
 
     @property
     def WhiteSites(self):
+        """白名单列表，以\n分割
+        :rtype: str
+        """
         return self._WhiteSites
 
     @WhiteSites.setter
@@ -4346,6 +5171,9 @@ class ModifyCRWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4416,6 +5244,9 @@ class Monitor(AbstractModel):
 
     @property
     def WorkId(self):
+        """作品ID
+        :rtype: int
+        """
         return self._WorkId
 
     @WorkId.setter
@@ -4424,6 +5255,9 @@ class Monitor(AbstractModel):
 
     @property
     def WorkName(self):
+        """作品名称
+        :rtype: str
+        """
         return self._WorkName
 
     @WorkName.setter
@@ -4432,6 +5266,9 @@ class Monitor(AbstractModel):
 
     @property
     def WorkType(self):
+        """作品内容类型 01-视频 02-音频 03-文本 04-图片
+        :rtype: str
+        """
         return self._WorkType
 
     @WorkType.setter
@@ -4440,6 +5277,9 @@ class Monitor(AbstractModel):
 
     @property
     def TortPlatNum(self):
+        """侵权平台数量
+        :rtype: int
+        """
         return self._TortPlatNum
 
     @TortPlatNum.setter
@@ -4448,6 +5288,9 @@ class Monitor(AbstractModel):
 
     @property
     def TortURLNum(self):
+        """侵权链接数量
+        :rtype: int
+        """
         return self._TortURLNum
 
     @TortURLNum.setter
@@ -4456,6 +5299,9 @@ class Monitor(AbstractModel):
 
     @property
     def MonitorTime(self):
+        """监测时间
+        :rtype: str
+        """
         return self._MonitorTime
 
     @MonitorTime.setter
@@ -4464,6 +5310,9 @@ class Monitor(AbstractModel):
 
     @property
     def MonitorStatus(self):
+        """0-待监测 1-监测中 2-不监测 3-暂停监测
+        :rtype: int
+        """
         return self._MonitorStatus
 
     @MonitorStatus.setter
@@ -4472,6 +5321,9 @@ class Monitor(AbstractModel):
 
     @property
     def WorkCategory(self):
+        """作品类型
+        :rtype: str
+        """
         return self._WorkCategory
 
     @WorkCategory.setter
@@ -4480,6 +5332,9 @@ class Monitor(AbstractModel):
 
     @property
     def InsertTime(self):
+        """新增时间
+        :rtype: str
+        """
         return self._InsertTime
 
     @InsertTime.setter
@@ -4488,6 +5343,9 @@ class Monitor(AbstractModel):
 
     @property
     def MonitorNote(self):
+        """监测状态说明
+        :rtype: str
+        """
         return self._MonitorNote
 
     @MonitorNote.setter
@@ -4496,6 +5354,9 @@ class Monitor(AbstractModel):
 
     @property
     def WorkCategoryAll(self):
+        """作品类型全部展示
+        :rtype: str
+        """
         return self._WorkCategoryAll
 
     @WorkCategoryAll.setter
@@ -4504,6 +5365,9 @@ class Monitor(AbstractModel):
 
     @property
     def EvidenceStatus(self):
+        """存证状态
+        :rtype: int
+        """
         return self._EvidenceStatus
 
     @EvidenceStatus.setter
@@ -4512,6 +5376,9 @@ class Monitor(AbstractModel):
 
     @property
     def EvidenceNote(self):
+        """存证状态说明
+        :rtype: str
+        """
         return self._EvidenceNote
 
     @EvidenceNote.setter
@@ -4520,6 +5387,9 @@ class Monitor(AbstractModel):
 
     @property
     def TortSiteNum(self):
+        """侵权站点数量
+        :rtype: int
+        """
         return self._TortSiteNum
 
     @TortSiteNum.setter
@@ -4528,6 +5398,9 @@ class Monitor(AbstractModel):
 
     @property
     def MonitorEndTime(self):
+        """监测截止时间
+        :rtype: str
+        """
         return self._MonitorEndTime
 
     @MonitorEndTime.setter
@@ -4536,6 +5409,9 @@ class Monitor(AbstractModel):
 
     @property
     def AutoRenew(self):
+        """是否自动续费
+        :rtype: int
+        """
         return self._AutoRenew
 
     @AutoRenew.setter
@@ -4659,6 +5535,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def TortId(self):
+        """侵权信息ID
+        :rtype: int
+        """
         return self._TortId
 
     @TortId.setter
@@ -4667,6 +5546,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def TortTitle(self):
+        """侵权标题
+        :rtype: str
+        """
         return self._TortTitle
 
     @TortTitle.setter
@@ -4675,6 +5557,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def TortPlat(self):
+        """侵权平台
+        :rtype: str
+        """
         return self._TortPlat
 
     @TortPlat.setter
@@ -4683,6 +5568,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def TortURL(self):
+        """侵权链接
+        :rtype: str
+        """
         return self._TortURL
 
     @TortURL.setter
@@ -4691,6 +5579,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def PubTime(self):
+        """侵权链接发布时间
+        :rtype: str
+        """
         return self._PubTime
 
     @PubTime.setter
@@ -4699,6 +5590,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def Author(self):
+        """作者
+        :rtype: str
+        """
         return self._Author
 
     @Author.setter
@@ -4707,6 +5601,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def DetectTime(self):
+        """发现时间
+        :rtype: str
+        """
         return self._DetectTime
 
     @DetectTime.setter
@@ -4715,6 +5612,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def ObtainStatus(self):
+        """取证状态
+        :rtype: int
+        """
         return self._ObtainStatus
 
     @ObtainStatus.setter
@@ -4723,6 +5623,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def RightStatus(self):
+        """维权状态
+        :rtype: int
+        """
         return self._RightStatus
 
     @RightStatus.setter
@@ -4731,6 +5634,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def BlockStatus(self):
+        """拦截状态
+        :rtype: int
+        """
         return self._BlockStatus
 
     @BlockStatus.setter
@@ -4739,6 +5645,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def TortNum(self):
+        """侵权编号
+        :rtype: str
+        """
         return self._TortNum
 
     @TortNum.setter
@@ -4747,6 +5656,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def ObtainNote(self):
+        """取证状态说明
+        :rtype: str
+        """
         return self._ObtainNote
 
     @ObtainNote.setter
@@ -4755,6 +5667,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def WorkTitle(self):
+        """作品标题
+        :rtype: str
+        """
         return self._WorkTitle
 
     @WorkTitle.setter
@@ -4763,6 +5678,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def TortSite(self):
+        """侵权站点
+        :rtype: str
+        """
         return self._TortSite
 
     @TortSite.setter
@@ -4771,6 +5689,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def ICP(self):
+        """ICP备案信息
+        :rtype: str
+        """
         return self._ICP
 
     @ICP.setter
@@ -4779,6 +5700,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def RightNote(self):
+        """维权状态说明
+        :rtype: str
+        """
         return self._RightNote
 
     @RightNote.setter
@@ -4787,6 +5711,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def ObtainType(self):
+        """取证类型
+        :rtype: int
+        """
         return self._ObtainType
 
     @ObtainType.setter
@@ -4795,6 +5722,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def BlockNote(self):
+        """拦截状态说明
+        :rtype: str
+        """
         return self._BlockNote
 
     @BlockNote.setter
@@ -4803,6 +5733,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def WorkId(self):
+        """作品ID
+        :rtype: int
+        """
         return self._WorkId
 
     @WorkId.setter
@@ -4811,6 +5744,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def WorkName(self):
+        """作品名称
+        :rtype: str
+        """
         return self._WorkName
 
     @WorkName.setter
@@ -4819,6 +5755,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def AuthStatus(self):
+        """授权书状态
+        :rtype: int
+        """
         return self._AuthStatus
 
     @AuthStatus.setter
@@ -4827,6 +5766,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def CommStatus(self):
+        """委托书状态
+        :rtype: int
+        """
         return self._CommStatus
 
     @CommStatus.setter
@@ -4835,6 +5777,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def EvidenceStatus(self):
+        """存证证书状态
+        :rtype: int
+        """
         return self._EvidenceStatus
 
     @EvidenceStatus.setter
@@ -4843,6 +5788,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def IsProducer(self):
+        """是否著作权人
+        :rtype: int
+        """
         return self._IsProducer
 
     @IsProducer.setter
@@ -4851,6 +5799,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def IsOverseas(self):
+        """是否境外网址
+        :rtype: int
+        """
         return self._IsOverseas
 
     @IsOverseas.setter
@@ -4859,6 +5810,9 @@ class MonitorTort(AbstractModel):
 
     @property
     def IPLoc(self):
+        """ip地理位置
+        :rtype: str
+        """
         return self._IPLoc
 
     @IPLoc.setter
@@ -4932,6 +5886,9 @@ class ProtectURLInfo(AbstractModel):
 
     @property
     def ProtectURLId(self):
+        """保护网站ID
+        :rtype: int
+        """
         return self._ProtectURLId
 
     @ProtectURLId.setter
@@ -4940,6 +5897,9 @@ class ProtectURLInfo(AbstractModel):
 
     @property
     def ProtectURL(self):
+        """保护网站
+        :rtype: str
+        """
         return self._ProtectURL
 
     @ProtectURL.setter
@@ -4948,6 +5908,9 @@ class ProtectURLInfo(AbstractModel):
 
     @property
     def ProtectWeb(self):
+        """保护网站名称
+        :rtype: str
+        """
         return self._ProtectWeb
 
     @ProtectWeb.setter
@@ -4956,6 +5919,9 @@ class ProtectURLInfo(AbstractModel):
 
     @property
     def ProtectURLStatus(self):
+        """保护网站审核状态 1-审核中 2-审核不通过 3-审核通过
+        :rtype: int
+        """
         return self._ProtectURLStatus
 
     @ProtectURLStatus.setter
@@ -4964,6 +5930,9 @@ class ProtectURLInfo(AbstractModel):
 
     @property
     def ProtectURLNote(self):
+        """网站审核不通过原因
+        :rtype: str
+        """
         return self._ProtectURLNote
 
     @ProtectURLNote.setter
@@ -4972,6 +5941,9 @@ class ProtectURLInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -5061,6 +6033,9 @@ class ReportFakeURLInfo(AbstractModel):
 
     @property
     def FakeURLId(self):
+        """仿冒网址ID
+        :rtype: int
+        """
         return self._FakeURLId
 
     @FakeURLId.setter
@@ -5069,6 +6044,9 @@ class ReportFakeURLInfo(AbstractModel):
 
     @property
     def DetectTime(self):
+        """检测时间
+        :rtype: str
+        """
         return self._DetectTime
 
     @DetectTime.setter
@@ -5077,6 +6055,9 @@ class ReportFakeURLInfo(AbstractModel):
 
     @property
     def ProtectURL(self):
+        """保护网站
+        :rtype: str
+        """
         return self._ProtectURL
 
     @ProtectURL.setter
@@ -5085,6 +6066,9 @@ class ReportFakeURLInfo(AbstractModel):
 
     @property
     def ProtectWeb(self):
+        """保护网站名称
+        :rtype: str
+        """
         return self._ProtectWeb
 
     @ProtectWeb.setter
@@ -5093,6 +6077,9 @@ class ReportFakeURLInfo(AbstractModel):
 
     @property
     def FakeURL(self):
+        """仿冒网址
+        :rtype: str
+        """
         return self._FakeURL
 
     @FakeURL.setter
@@ -5101,6 +6088,9 @@ class ReportFakeURLInfo(AbstractModel):
 
     @property
     def Snapshot(self):
+        """截图
+        :rtype: str
+        """
         return self._Snapshot
 
     @Snapshot.setter
@@ -5109,6 +6099,9 @@ class ReportFakeURLInfo(AbstractModel):
 
     @property
     def IP(self):
+        """IP地址
+        :rtype: str
+        """
         return self._IP
 
     @IP.setter
@@ -5117,6 +6110,9 @@ class ReportFakeURLInfo(AbstractModel):
 
     @property
     def IPLoc(self):
+        """IP地理位置
+        :rtype: str
+        """
         return self._IPLoc
 
     @IPLoc.setter
@@ -5125,6 +6121,9 @@ class ReportFakeURLInfo(AbstractModel):
 
     @property
     def Heat(self):
+        """热度
+        :rtype: int
+        """
         return self._Heat
 
     @Heat.setter
@@ -5133,6 +6132,9 @@ class ReportFakeURLInfo(AbstractModel):
 
     @property
     def Status(self):
+        """网站状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -5141,6 +6143,9 @@ class ReportFakeURLInfo(AbstractModel):
 
     @property
     def Note(self):
+        """网站不处理原因
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -5149,6 +6154,9 @@ class ReportFakeURLInfo(AbstractModel):
 
     @property
     def FakeURLCompany(self):
+        """仿冒网站的企业名称
+        :rtype: str
+        """
         return self._FakeURLCompany
 
     @FakeURLCompany.setter
@@ -5157,6 +6165,9 @@ class ReportFakeURLInfo(AbstractModel):
 
     @property
     def FakeURLAttr(self):
+        """仿冒网站的网站性质
+        :rtype: str
+        """
         return self._FakeURLAttr
 
     @FakeURLAttr.setter
@@ -5165,6 +6176,9 @@ class ReportFakeURLInfo(AbstractModel):
 
     @property
     def FakeURLName(self):
+        """仿冒网站的网站名称
+        :rtype: str
+        """
         return self._FakeURLName
 
     @FakeURLName.setter
@@ -5173,6 +6187,9 @@ class ReportFakeURLInfo(AbstractModel):
 
     @property
     def FakeURLICP(self):
+        """仿冒网站的备案
+        :rtype: str
+        """
         return self._FakeURLICP
 
     @FakeURLICP.setter
@@ -5181,6 +6198,9 @@ class ReportFakeURLInfo(AbstractModel):
 
     @property
     def FakeURLCreateTime(self):
+        """仿冒网站创建时间
+        :rtype: str
+        """
         return self._FakeURLCreateTime
 
     @FakeURLCreateTime.setter
@@ -5189,6 +6209,9 @@ class ReportFakeURLInfo(AbstractModel):
 
     @property
     def FakeURLExpireTime(self):
+        """仿冒网站过期时间
+        :rtype: str
+        """
         return self._FakeURLExpireTime
 
     @FakeURLExpireTime.setter
@@ -5197,6 +6220,9 @@ class ReportFakeURLInfo(AbstractModel):
 
     @property
     def BlockTime(self):
+        """协查处置时间
+        :rtype: str
+        """
         return self._BlockTime
 
     @BlockTime.setter
@@ -5256,6 +6282,9 @@ class UpdateCRWorkRequest(AbstractModel):
 
     @property
     def WorkId(self):
+        """作品ID
+        :rtype: int
+        """
         return self._WorkId
 
     @WorkId.setter
@@ -5264,6 +6293,9 @@ class UpdateCRWorkRequest(AbstractModel):
 
     @property
     def ContentType(self):
+        """文件的扩展名，例如txt，docx
+        :rtype: str
+        """
         return self._ContentType
 
     @ContentType.setter
@@ -5272,6 +6304,9 @@ class UpdateCRWorkRequest(AbstractModel):
 
     @property
     def Content(self):
+        """内容的base64编码
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -5280,6 +6315,9 @@ class UpdateCRWorkRequest(AbstractModel):
 
     @property
     def CertType(self):
+        """本次存证类型：0-不存证 1-存当前文件 2-存历史全量文件
+        :rtype: str
+        """
         return self._CertType
 
     @CertType.setter
@@ -5322,6 +6360,9 @@ class UpdateCRWorkResponse(AbstractModel):
 
     @property
     def WorkId(self):
+        """作品ID
+        :rtype: int
+        """
         return self._WorkId
 
     @WorkId.setter
@@ -5330,6 +6371,9 @@ class UpdateCRWorkResponse(AbstractModel):
 
     @property
     def EvidenceId(self):
+        """存证ID
+        :rtype: int
+        """
         return self._EvidenceId
 
     @EvidenceId.setter
@@ -5338,6 +6382,9 @@ class UpdateCRWorkResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

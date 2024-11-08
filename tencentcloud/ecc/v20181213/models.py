@@ -38,6 +38,9 @@ class Aspect(AbstractModel):
 
     @property
     def Name(self):
+        """维度名字
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -46,6 +49,9 @@ class Aspect(AbstractModel):
 
     @property
     def Score(self):
+        """维度得分
+        :rtype: float
+        """
         return self._Score
 
     @Score.setter
@@ -54,6 +60,9 @@ class Aspect(AbstractModel):
 
     @property
     def Percentage(self):
+        """维度分数占比
+        :rtype: float
+        """
         return self._Percentage
 
     @Percentage.setter
@@ -101,6 +110,9 @@ class CompositionContext(AbstractModel):
 
     @property
     def Content(self):
+        """作文内容
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -109,6 +121,10 @@ class CompositionContext(AbstractModel):
 
     @property
     def CorrectData(self):
+        """批改结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ecc.v20181213.models.CorrectData`
+        """
         return self._CorrectData
 
     @CorrectData.setter
@@ -117,6 +133,10 @@ class CompositionContext(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务 id，用于查询接口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -125,6 +145,10 @@ class CompositionContext(AbstractModel):
 
     @property
     def SessionId(self):
+        """图像识别唯一标识，一次识别一个 SessionId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -175,6 +199,9 @@ class CompostionContext(AbstractModel):
 
     @property
     def Content(self):
+        """作文内容
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -183,6 +210,10 @@ class CompostionContext(AbstractModel):
 
     @property
     def CorrectData(self):
+        """批改结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ecc.v20181213.models.CorrectData`
+        """
         return self._CorrectData
 
     @CorrectData.setter
@@ -191,6 +222,10 @@ class CompostionContext(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务 id，用于查询接口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -199,6 +234,10 @@ class CompostionContext(AbstractModel):
 
     @property
     def SessionId(self):
+        """图像识别唯一标识，一次识别一个 SessionId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -246,6 +285,9 @@ class CorrectData(AbstractModel):
 
     @property
     def Score(self):
+        """总得分
+        :rtype: float
+        """
         return self._Score
 
     @Score.setter
@@ -254,6 +296,9 @@ class CorrectData(AbstractModel):
 
     @property
     def ScoreCat(self):
+        """各项得分详情
+        :rtype: :class:`tencentcloud.ecc.v20181213.models.ScoreCategory`
+        """
         return self._ScoreCat
 
     @ScoreCat.setter
@@ -262,6 +307,9 @@ class CorrectData(AbstractModel):
 
     @property
     def Comment(self):
+        """综合评价
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -270,6 +318,9 @@ class CorrectData(AbstractModel):
 
     @property
     def SentenceComments(self):
+        """句子点评
+        :rtype: list of SentenceCom
+        """
         return self._SentenceComments
 
     @SentenceComments.setter
@@ -343,6 +394,9 @@ class CorrectMultiImageRequest(AbstractModel):
 
     @property
     def Image(self):
+        """图片的url链接或base64数据。每张图片数据作为数组的一个元素，数组个数与图片个数保持一致。存放类别依据InputType而定，url与base64编码不能混合使用。
+        :rtype: list of str
+        """
         return self._Image
 
     @Image.setter
@@ -351,6 +405,9 @@ class CorrectMultiImageRequest(AbstractModel):
 
     @property
     def InputType(self):
+        """输出图片类型，0 表示 Image 字段是图片所在的 url，1 表示 Image 字段是 base64 编码后的图像数据。
+        :rtype: int
+        """
         return self._InputType
 
     @InputType.setter
@@ -359,6 +416,9 @@ class CorrectMultiImageRequest(AbstractModel):
 
     @property
     def EccAppid(self):
+        """业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数。
+        :rtype: str
+        """
         return self._EccAppid
 
     @EccAppid.setter
@@ -367,6 +427,9 @@ class CorrectMultiImageRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """图像识别唯一标识，一次识别一个 SessionId，使用识别功能时 SessionId 可用于使用文本批改接口，此时按图像批改价格收费；如使用文本批改接口时没有传入 SessionId，则需要收取文本批改的费用。
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -375,6 +438,9 @@ class CorrectMultiImageRequest(AbstractModel):
 
     @property
     def ServerType(self):
+        """服务类型，0：“多图像识别”，只返回识别结果；1：“多图像批改”，同时返回识别结果与批改结果。默认为 0。
+        :rtype: int
+        """
         return self._ServerType
 
     @ServerType.setter
@@ -383,6 +449,9 @@ class CorrectMultiImageRequest(AbstractModel):
 
     @property
     def Title(self):
+        """作文题目，可选参数
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -391,6 +460,9 @@ class CorrectMultiImageRequest(AbstractModel):
 
     @property
     def Grade(self):
+        """年级标准， 默认以 cet4 为标准，取值与意义如下：elementary 小学，grade7 grade8 grade9分别对应初一，初二，初三。 grade10 grade11 grade12 分别对应高一，高二，高三，以及 cet4 和 cet6 分别表示 英语4级和6级。
+        :rtype: str
+        """
         return self._Grade
 
     @Grade.setter
@@ -399,6 +471,9 @@ class CorrectMultiImageRequest(AbstractModel):
 
     @property
     def Requirement(self):
+        """作文提纲，可选参数，作文的写作要求。
+        :rtype: str
+        """
         return self._Requirement
 
     @Requirement.setter
@@ -407,6 +482,9 @@ class CorrectMultiImageRequest(AbstractModel):
 
     @property
     def ModelTitle(self):
+        """范文标题，可选参数，本接口可以依据提供的范文对作文进行评分。
+        :rtype: str
+        """
         return self._ModelTitle
 
     @ModelTitle.setter
@@ -415,6 +493,9 @@ class CorrectMultiImageRequest(AbstractModel):
 
     @property
     def ModelContent(self):
+        """范文内容，可选参数，同上，范文的正文部分。
+        :rtype: str
+        """
         return self._ModelContent
 
     @ModelContent.setter
@@ -423,6 +504,9 @@ class CorrectMultiImageRequest(AbstractModel):
 
     @property
     def IsAsync(self):
+        """异步模式标识，0：同步模式，1：异步模式。默认为同步模式
+        :rtype: int
+        """
         return self._IsAsync
 
     @IsAsync.setter
@@ -474,6 +558,9 @@ class CorrectMultiImageResponse(AbstractModel):
     def Data(self):
         warnings.warn("parameter `Data` is deprecated", DeprecationWarning) 
 
+        """接口返回数据
+        :rtype: :class:`tencentcloud.ecc.v20181213.models.CompostionContext`
+        """
         return self._Data
 
     @Data.setter
@@ -484,6 +571,9 @@ class CorrectMultiImageResponse(AbstractModel):
 
     @property
     def ResultData(self):
+        """接口返回数据
+        :rtype: :class:`tencentcloud.ecc.v20181213.models.CompositionContext`
+        """
         return self._ResultData
 
     @ResultData.setter
@@ -492,6 +582,9 @@ class CorrectMultiImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -526,6 +619,9 @@ class DescribeTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务 ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -534,6 +630,9 @@ class DescribeTaskRequest(AbstractModel):
 
     @property
     def EccAppid(self):
+        """业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数（暂时无需传入）。
+        :rtype: str
+        """
         return self._EccAppid
 
     @EccAppid.setter
@@ -579,6 +678,10 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def Content(self):
+        """作文识别文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -587,6 +690,10 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def CorrectData(self):
+        """整体的批改结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ecc.v20181213.models.CorrectData`
+        """
         return self._CorrectData
 
     @CorrectData.setter
@@ -595,6 +702,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，“Progressing”: 处理中（此时无结果返回）、“Finished”: 处理完成
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -603,6 +713,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -657,6 +770,9 @@ class ECCRequest(AbstractModel):
 
     @property
     def Content(self):
+        """作文文本，必填
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -665,6 +781,9 @@ class ECCRequest(AbstractModel):
 
     @property
     def Title(self):
+        """作文题目，可选参数
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -673,6 +792,9 @@ class ECCRequest(AbstractModel):
 
     @property
     def Grade(self):
+        """年级标准， 默认以cet4为标准，取值与意义如下：elementary 小学，grade7 grade8 grade9分别对应初一，初二，初三。 grade10 grade11 grade12 分别对应高一，高二，高三，以及cet4和cet6 分别表示 英语4级和6级。
+        :rtype: str
+        """
         return self._Grade
 
     @Grade.setter
@@ -681,6 +803,9 @@ class ECCRequest(AbstractModel):
 
     @property
     def Requirement(self):
+        """作文提纲，可选参数，作文的写作要求。
+        :rtype: str
+        """
         return self._Requirement
 
     @Requirement.setter
@@ -689,6 +814,9 @@ class ECCRequest(AbstractModel):
 
     @property
     def ModelTitle(self):
+        """范文标题，可选参数，本接口可以依据提供的范文对作文进行评分。
+        :rtype: str
+        """
         return self._ModelTitle
 
     @ModelTitle.setter
@@ -697,6 +825,9 @@ class ECCRequest(AbstractModel):
 
     @property
     def ModelContent(self):
+        """范文内容，可选参数，同上，范文的正文部分。
+        :rtype: str
+        """
         return self._ModelContent
 
     @ModelContent.setter
@@ -705,6 +836,9 @@ class ECCRequest(AbstractModel):
 
     @property
     def EccAppid(self):
+        """业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数（暂时无需传入）。
+        :rtype: str
+        """
         return self._EccAppid
 
     @EccAppid.setter
@@ -713,6 +847,9 @@ class ECCRequest(AbstractModel):
 
     @property
     def IsAsync(self):
+        """异步模式标识，0：同步模式，1：异步模式，默认为同步模式
+        :rtype: int
+        """
         return self._IsAsync
 
     @IsAsync.setter
@@ -721,6 +858,9 @@ class ECCRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """图像识别唯一标识，一次识别一个 SessionId。当传入此前识别接口使用过的 SessionId，则本次批改按图像批改价格收费；如使用了识别接口且本次没有传入 SessionId，则需要加取文本批改的费用；如果直接使用文本批改接口，则只收取文本批改的费用
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -770,6 +910,10 @@ class ECCResponse(AbstractModel):
 
     @property
     def Data(self):
+        """整体的批改结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ecc.v20181213.models.CorrectData`
+        """
         return self._Data
 
     @Data.setter
@@ -778,6 +922,10 @@ class ECCResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务 id，用于查询接口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -786,6 +934,9 @@ class ECCResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -845,6 +996,9 @@ class EHOCRRequest(AbstractModel):
 
     @property
     def Image(self):
+        """图片所在的url或base64编码后的图像数据，依据InputType而定
+        :rtype: str
+        """
         return self._Image
 
     @Image.setter
@@ -853,6 +1007,9 @@ class EHOCRRequest(AbstractModel):
 
     @property
     def InputType(self):
+        """输出图片类型，0 表示 Image 字段是图片所在的 url，1 表示 Image 字段是 base64 编码后的图像数据
+        :rtype: int
+        """
         return self._InputType
 
     @InputType.setter
@@ -861,6 +1018,9 @@ class EHOCRRequest(AbstractModel):
 
     @property
     def EccAppid(self):
+        """业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数（暂时无需传入）。
+        :rtype: str
+        """
         return self._EccAppid
 
     @EccAppid.setter
@@ -869,6 +1029,9 @@ class EHOCRRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """图像识别唯一标识，一次识别一个 SessionId，使用识别功能时 SessionId 可用于使用文本批改接口，此时按图像批改价格收费；如使用文本批改接口时没有传入 SessionId，则需要收取文本批改的费用
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -877,6 +1040,9 @@ class EHOCRRequest(AbstractModel):
 
     @property
     def ServerType(self):
+        """服务类型，0：“图像识别”，只返回识别结果，1：“图像批改”，同时返回识别结果与批改结果。默认为 0
+        :rtype: int
+        """
         return self._ServerType
 
     @ServerType.setter
@@ -885,6 +1051,9 @@ class EHOCRRequest(AbstractModel):
 
     @property
     def Title(self):
+        """作文题目，可选参数
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -893,6 +1062,9 @@ class EHOCRRequest(AbstractModel):
 
     @property
     def Grade(self):
+        """年级标准， 默认以 cet4 为标准，取值与意义如下：elementary 小学，grade7 grade8 grade9分别对应初一，初二，初三。 grade10 grade11 grade12 分别对应高一，高二，高三，以及 cet4 和 cet6 分别表示 英语4级和6级。
+        :rtype: str
+        """
         return self._Grade
 
     @Grade.setter
@@ -901,6 +1073,9 @@ class EHOCRRequest(AbstractModel):
 
     @property
     def Requirement(self):
+        """作文提纲，可选参数，作文的写作要求。
+        :rtype: str
+        """
         return self._Requirement
 
     @Requirement.setter
@@ -909,6 +1084,9 @@ class EHOCRRequest(AbstractModel):
 
     @property
     def ModelTitle(self):
+        """范文标题，可选参数，本接口可以依据提供的范文对作文进行评分。
+        :rtype: str
+        """
         return self._ModelTitle
 
     @ModelTitle.setter
@@ -917,6 +1095,9 @@ class EHOCRRequest(AbstractModel):
 
     @property
     def ModelContent(self):
+        """范文内容，可选参数，同上，范文的正文部分。
+        :rtype: str
+        """
         return self._ModelContent
 
     @ModelContent.setter
@@ -925,6 +1106,9 @@ class EHOCRRequest(AbstractModel):
 
     @property
     def IsAsync(self):
+        """异步模式标识，0：同步模式，1：异步模式。默认为同步模式
+        :rtype: int
+        """
         return self._IsAsync
 
     @IsAsync.setter
@@ -976,6 +1160,9 @@ class EHOCRResponse(AbstractModel):
     def Data(self):
         warnings.warn("parameter `Data` is deprecated", DeprecationWarning) 
 
+        """接口返回数据
+        :rtype: :class:`tencentcloud.ecc.v20181213.models.CompostionContext`
+        """
         return self._Data
 
     @Data.setter
@@ -986,6 +1173,9 @@ class EHOCRResponse(AbstractModel):
 
     @property
     def ResultData(self):
+        """接口返回数据
+        :rtype: :class:`tencentcloud.ecc.v20181213.models.CompositionContext`
+        """
         return self._ResultData
 
     @ResultData.setter
@@ -994,6 +1184,9 @@ class EHOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1025,6 +1218,9 @@ class ErrorCoordinate(AbstractModel):
 
     @property
     def Coordinate(self):
+        """维度单词坐标
+        :rtype: list of int
+        """
         return self._Coordinate
 
     @Coordinate.setter
@@ -1073,6 +1269,9 @@ class ScoreCategory(AbstractModel):
 
     @property
     def Words(self):
+        """词汇维度
+        :rtype: :class:`tencentcloud.ecc.v20181213.models.Aspect`
+        """
         return self._Words
 
     @Words.setter
@@ -1081,6 +1280,9 @@ class ScoreCategory(AbstractModel):
 
     @property
     def Sentences(self):
+        """句子维度
+        :rtype: :class:`tencentcloud.ecc.v20181213.models.Aspect`
+        """
         return self._Sentences
 
     @Sentences.setter
@@ -1089,6 +1291,9 @@ class ScoreCategory(AbstractModel):
 
     @property
     def Structure(self):
+        """篇章结构维度
+        :rtype: :class:`tencentcloud.ecc.v20181213.models.Aspect`
+        """
         return self._Structure
 
     @Structure.setter
@@ -1097,6 +1302,9 @@ class ScoreCategory(AbstractModel):
 
     @property
     def Content(self):
+        """内容维度
+        :rtype: :class:`tencentcloud.ecc.v20181213.models.Aspect`
+        """
         return self._Content
 
     @Content.setter
@@ -1105,6 +1313,9 @@ class ScoreCategory(AbstractModel):
 
     @property
     def Score(self):
+        """维度得分
+        :rtype: float
+        """
         return self._Score
 
     @Score.setter
@@ -1113,6 +1324,9 @@ class ScoreCategory(AbstractModel):
 
     @property
     def Percentage(self):
+        """维度分数占比
+        :rtype: float
+        """
         return self._Percentage
 
     @Percentage.setter
@@ -1162,6 +1376,9 @@ class SentenceCom(AbstractModel):
 
     @property
     def Suggestions(self):
+        """句子错误纠正信息
+        :rtype: list of SentenceSuggest
+        """
         return self._Suggestions
 
     @Suggestions.setter
@@ -1170,6 +1387,9 @@ class SentenceCom(AbstractModel):
 
     @property
     def Sentence(self):
+        """句子信息
+        :rtype: :class:`tencentcloud.ecc.v20181213.models.SentenceItem`
+        """
         return self._Sentence
 
     @Sentence.setter
@@ -1217,6 +1437,9 @@ class SentenceItem(AbstractModel):
 
     @property
     def Sentence(self):
+        """英语句子
+        :rtype: str
+        """
         return self._Sentence
 
     @Sentence.setter
@@ -1225,6 +1448,9 @@ class SentenceItem(AbstractModel):
 
     @property
     def ParaID(self):
+        """段落id
+        :rtype: int
+        """
         return self._ParaID
 
     @ParaID.setter
@@ -1233,6 +1459,9 @@ class SentenceItem(AbstractModel):
 
     @property
     def SentenceID(self):
+        """句子id
+        :rtype: int
+        """
         return self._SentenceID
 
     @SentenceID.setter
@@ -1286,6 +1515,9 @@ class SentenceSuggest(AbstractModel):
 
     @property
     def Type(self):
+        """类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1294,6 +1526,9 @@ class SentenceSuggest(AbstractModel):
 
     @property
     def ErrorType(self):
+        """错误类型
+        :rtype: str
+        """
         return self._ErrorType
 
     @ErrorType.setter
@@ -1302,6 +1537,9 @@ class SentenceSuggest(AbstractModel):
 
     @property
     def Origin(self):
+        """原始单词
+        :rtype: str
+        """
         return self._Origin
 
     @Origin.setter
@@ -1310,6 +1548,9 @@ class SentenceSuggest(AbstractModel):
 
     @property
     def Replace(self):
+        """替换成 的单词
+        :rtype: str
+        """
         return self._Replace
 
     @Replace.setter
@@ -1318,6 +1559,9 @@ class SentenceSuggest(AbstractModel):
 
     @property
     def Message(self):
+        """提示信息
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -1326,6 +1570,9 @@ class SentenceSuggest(AbstractModel):
 
     @property
     def ErrorPosition(self):
+        """维度单词位置，在句子的第几个到第几个单词之间
+        :rtype: list of int
+        """
         return self._ErrorPosition
 
     @ErrorPosition.setter
@@ -1334,6 +1581,9 @@ class SentenceSuggest(AbstractModel):
 
     @property
     def ErrorCoordinates(self):
+        """维度单词坐标，错误单词在图片中的坐标，只有传图片时正常返回，传文字时返回[ ]
+        :rtype: list of ErrorCoordinate
+        """
         return self._ErrorCoordinates
 
     @ErrorCoordinates.setter

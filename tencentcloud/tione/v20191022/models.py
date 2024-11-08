@@ -41,6 +41,10 @@ class AlgorithmSpecification(AbstractModel):
 
     @property
     def TrainingImageName(self):
+        """镜像名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TrainingImageName
 
     @TrainingImageName.setter
@@ -49,6 +53,10 @@ class AlgorithmSpecification(AbstractModel):
 
     @property
     def TrainingInputMode(self):
+        """输入模式File|Pipe
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TrainingInputMode
 
     @TrainingInputMode.setter
@@ -57,6 +65,10 @@ class AlgorithmSpecification(AbstractModel):
 
     @property
     def AlgorithmName(self):
+        """算法名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AlgorithmName
 
     @AlgorithmName.setter
@@ -102,6 +114,10 @@ Computing: 计算和存储都计费
 
     @property
     def Label(self):
+        """计费项标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -110,6 +126,9 @@ Computing: 计算和存储都计费
 
     @property
     def VolumeSize(self):
+        """存储大小
+        :rtype: int
+        """
         return self._VolumeSize
 
     @VolumeSize.setter
@@ -118,6 +137,12 @@ Computing: 计算和存储都计费
 
     @property
     def Status(self):
+        """计费状态
+None: 不计费
+StorageOnly: 仅存储计费
+Computing: 计算和存储都计费
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -159,6 +184,9 @@ class ClsConfig(AbstractModel):
 
     @property
     def Type(self):
+        """接入类型，可选项为free、customer
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -167,6 +195,9 @@ class ClsConfig(AbstractModel):
 
     @property
     def LogSetId(self):
+        """自定义CLS的日志集ID，只有当Type为customer时生效
+        :rtype: str
+        """
         return self._LogSetId
 
     @LogSetId.setter
@@ -175,6 +206,9 @@ class ClsConfig(AbstractModel):
 
     @property
     def TopicId(self):
+        """自定义CLS的日志主题ID，只有当Type为customer时生效
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -222,6 +256,9 @@ class CodeRepoSummary(AbstractModel):
 
     @property
     def CreationTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -230,6 +267,9 @@ class CodeRepoSummary(AbstractModel):
 
     @property
     def LastModifiedTime(self):
+        """更新时间
+        :rtype: str
+        """
         return self._LastModifiedTime
 
     @LastModifiedTime.setter
@@ -238,6 +278,9 @@ class CodeRepoSummary(AbstractModel):
 
     @property
     def CodeRepositoryName(self):
+        """存储库名称
+        :rtype: str
+        """
         return self._CodeRepositoryName
 
     @CodeRepositoryName.setter
@@ -246,6 +289,9 @@ class CodeRepoSummary(AbstractModel):
 
     @property
     def GitConfig(self):
+        """Git配置
+        :rtype: :class:`tencentcloud.tione.v20191022.models.GitConfig`
+        """
         return self._GitConfig
 
     @GitConfig.setter
@@ -254,6 +300,9 @@ class CodeRepoSummary(AbstractModel):
 
     @property
     def NoSecret(self):
+        """是否有Git凭证
+        :rtype: bool
+        """
         return self._NoSecret
 
     @NoSecret.setter
@@ -306,6 +355,10 @@ class CosDataSource(AbstractModel):
 
     @property
     def Bucket(self):
+        """cos桶
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -314,6 +367,10 @@ class CosDataSource(AbstractModel):
 
     @property
     def KeyPrefix(self):
+        """cos文件key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._KeyPrefix
 
     @KeyPrefix.setter
@@ -322,6 +379,10 @@ class CosDataSource(AbstractModel):
 
     @property
     def DataDistributionType(self):
+        """分布式数据下载方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataDistributionType
 
     @DataDistributionType.setter
@@ -330,6 +391,10 @@ class CosDataSource(AbstractModel):
 
     @property
     def DataType(self):
+        """数据类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataType
 
     @DataType.setter
@@ -372,6 +437,9 @@ class CreateCodeRepositoryRequest(AbstractModel):
 
     @property
     def CodeRepositoryName(self):
+        """存储库名称
+        :rtype: str
+        """
         return self._CodeRepositoryName
 
     @CodeRepositoryName.setter
@@ -380,6 +448,9 @@ class CreateCodeRepositoryRequest(AbstractModel):
 
     @property
     def GitConfig(self):
+        """Git相关配置
+        :rtype: :class:`tencentcloud.tione.v20191022.models.GitConfig`
+        """
         return self._GitConfig
 
     @GitConfig.setter
@@ -388,6 +459,9 @@ class CreateCodeRepositoryRequest(AbstractModel):
 
     @property
     def GitSecret(self):
+        """Git凭证
+        :rtype: :class:`tencentcloud.tione.v20191022.models.GitSecret`
+        """
         return self._GitSecret
 
     @GitSecret.setter
@@ -430,6 +504,9 @@ class CreateCodeRepositoryResponse(AbstractModel):
 
     @property
     def CodeRepositoryName(self):
+        """存储库名称
+        :rtype: str
+        """
         return self._CodeRepositoryName
 
     @CodeRepositoryName.setter
@@ -438,6 +515,9 @@ class CreateCodeRepositoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -516,6 +596,10 @@ class CreateNotebookInstanceRequest(AbstractModel):
 
     @property
     def NotebookInstanceName(self):
+        """Notebook实例名称，不能超过63个字符
+规则：“^\[a-zA-Z0-9\](-\*\[a-zA-Z0-9\])\*$”
+        :rtype: str
+        """
         return self._NotebookInstanceName
 
     @NotebookInstanceName.setter
@@ -524,6 +608,10 @@ class CreateNotebookInstanceRequest(AbstractModel):
 
     @property
     def InstanceType(self):
+        """Notebook算力类型
+参考https://cloud.tencent.com/document/product/851/41239
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -532,6 +620,10 @@ class CreateNotebookInstanceRequest(AbstractModel):
 
     @property
     def VolumeSizeInGB(self):
+        """数据卷大小(GB)
+用户持久化Notebook实例的数据
+        :rtype: int
+        """
         return self._VolumeSizeInGB
 
     @VolumeSizeInGB.setter
@@ -540,6 +632,10 @@ class CreateNotebookInstanceRequest(AbstractModel):
 
     @property
     def DirectInternetAccess(self):
+        """外网访问权限，可取值Enabled/Disabled
+开启后，Notebook实例可以具有访问外网80，443端口的权限
+        :rtype: str
+        """
         return self._DirectInternetAccess
 
     @DirectInternetAccess.setter
@@ -548,6 +644,10 @@ class CreateNotebookInstanceRequest(AbstractModel):
 
     @property
     def RootAccess(self):
+        """Root用户权限，可取值Enabled/Disabled
+开启后，Notebook实例可以切换至root用户执行命令
+        :rtype: str
+        """
         return self._RootAccess
 
     @RootAccess.setter
@@ -556,6 +656,10 @@ class CreateNotebookInstanceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网ID
+如果需要Notebook实例访问VPC内的资源，则需要选择对应的子网
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -564,6 +668,10 @@ class CreateNotebookInstanceRequest(AbstractModel):
 
     @property
     def LifecycleScriptsName(self):
+        """生命周期脚本名称
+必须是已存在的生命周期脚本，具体参考https://cloud.tencent.com/document/product/851/43140
+        :rtype: str
+        """
         return self._LifecycleScriptsName
 
     @LifecycleScriptsName.setter
@@ -572,6 +680,11 @@ class CreateNotebookInstanceRequest(AbstractModel):
 
     @property
     def DefaultCodeRepository(self):
+        """默认存储库名称
+可以是已创建的存储库名称或者已https://开头的公共git库
+参考https://cloud.tencent.com/document/product/851/43139
+        :rtype: str
+        """
         return self._DefaultCodeRepository
 
     @DefaultCodeRepository.setter
@@ -580,6 +693,11 @@ class CreateNotebookInstanceRequest(AbstractModel):
 
     @property
     def AdditionalCodeRepositories(self):
+        """其他存储库列表
+每个元素可以是已创建的存储库名称或者已https://开头的公共git库
+参考https://cloud.tencent.com/document/product/851/43139
+        :rtype: list of str
+        """
         return self._AdditionalCodeRepositories
 
     @AdditionalCodeRepositories.setter
@@ -588,6 +706,11 @@ class CreateNotebookInstanceRequest(AbstractModel):
 
     @property
     def ClsAccess(self):
+        """已弃用，请使用ClsConfig配置。
+是否开启CLS日志服务，可取值Enabled/Disabled，默认为Disabled
+开启后，Notebook运行的日志会收集到CLS中，CLS会产生费用，请根据需要选择
+        :rtype: str
+        """
         return self._ClsAccess
 
     @ClsAccess.setter
@@ -596,6 +719,10 @@ class CreateNotebookInstanceRequest(AbstractModel):
 
     @property
     def StoppingCondition(self):
+        """自动停止配置
+选择定时停止Notebook实例
+        :rtype: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
+        """
         return self._StoppingCondition
 
     @StoppingCondition.setter
@@ -604,6 +731,11 @@ class CreateNotebookInstanceRequest(AbstractModel):
 
     @property
     def AutoStopping(self):
+        """自动停止，可取值Enabled/Disabled
+取值为Disabled的时候StoppingCondition将被忽略
+取值为Enabled的时候读取StoppingCondition作为自动停止的配置
+        :rtype: str
+        """
         return self._AutoStopping
 
     @AutoStopping.setter
@@ -612,6 +744,9 @@ class CreateNotebookInstanceRequest(AbstractModel):
 
     @property
     def ClsConfig(self):
+        """接入日志的配置，默认接入免费日志
+        :rtype: :class:`tencentcloud.tione.v20191022.models.ClsConfig`
+        """
         return self._ClsConfig
 
     @ClsConfig.setter
@@ -664,6 +799,9 @@ class CreateNotebookInstanceResponse(AbstractModel):
 
     @property
     def NotebookInstanceName(self):
+        """Notebook实例名字
+        :rtype: str
+        """
         return self._NotebookInstanceName
 
     @NotebookInstanceName.setter
@@ -672,6 +810,9 @@ class CreateNotebookInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -706,6 +847,9 @@ base64后的脚本长度不能超过16384个字符
 
     @property
     def NotebookLifecycleScriptsName(self):
+        """Notebook生命周期脚本名称
+        :rtype: str
+        """
         return self._NotebookLifecycleScriptsName
 
     @NotebookLifecycleScriptsName.setter
@@ -714,6 +858,10 @@ base64后的脚本长度不能超过16384个字符
 
     @property
     def CreateScript(self):
+        """创建脚本，base64编码
+base64后的脚本长度不能超过16384个字符
+        :rtype: str
+        """
         return self._CreateScript
 
     @CreateScript.setter
@@ -722,6 +870,10 @@ base64后的脚本长度不能超过16384个字符
 
     @property
     def StartScript(self):
+        """启动脚本，base64编码
+base64后的脚本长度不能超过16384个字符
+        :rtype: str
+        """
         return self._StartScript
 
     @StartScript.setter
@@ -760,6 +912,9 @@ class CreateNotebookLifecycleScriptResponse(AbstractModel):
 
     @property
     def NotebookLifecycleScriptsName(self):
+        """生命周期脚本名称
+        :rtype: str
+        """
         return self._NotebookLifecycleScriptsName
 
     @NotebookLifecycleScriptsName.setter
@@ -768,6 +923,9 @@ class CreateNotebookLifecycleScriptResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -798,6 +956,10 @@ class CreatePresignedNotebookInstanceUrlRequest(AbstractModel):
 
     @property
     def NotebookInstanceName(self):
+        """Notebook实例名称
+规则：“^\[a-zA-Z0-9\](-\*\[a-zA-Z0-9\])\*$”
+        :rtype: str
+        """
         return self._NotebookInstanceName
 
     @NotebookInstanceName.setter
@@ -806,6 +968,9 @@ class CreatePresignedNotebookInstanceUrlRequest(AbstractModel):
 
     @property
     def SessionExpirationDurationInSeconds(self):
+        """session有效时间，秒，取值范围[1800, 43200]
+        :rtype: int
+        """
         return self._SessionExpirationDurationInSeconds
 
     @SessionExpirationDurationInSeconds.setter
@@ -843,6 +1008,9 @@ class CreatePresignedNotebookInstanceUrlResponse(AbstractModel):
 
     @property
     def AuthorizedUrl(self):
+        """授权url
+        :rtype: str
+        """
         return self._AuthorizedUrl
 
     @AuthorizedUrl.setter
@@ -851,6 +1019,9 @@ class CreatePresignedNotebookInstanceUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -908,6 +1079,9 @@ class CreateTrainingJobRequest(AbstractModel):
 
     @property
     def AlgorithmSpecification(self):
+        """算法镜像配置
+        :rtype: :class:`tencentcloud.tione.v20191022.models.AlgorithmSpecification`
+        """
         return self._AlgorithmSpecification
 
     @AlgorithmSpecification.setter
@@ -916,6 +1090,9 @@ class CreateTrainingJobRequest(AbstractModel):
 
     @property
     def OutputDataConfig(self):
+        """输出数据配置
+        :rtype: :class:`tencentcloud.tione.v20191022.models.OutputDataConfig`
+        """
         return self._OutputDataConfig
 
     @OutputDataConfig.setter
@@ -924,6 +1101,9 @@ class CreateTrainingJobRequest(AbstractModel):
 
     @property
     def ResourceConfig(self):
+        """资源实例配置
+        :rtype: :class:`tencentcloud.tione.v20191022.models.ResourceConfig`
+        """
         return self._ResourceConfig
 
     @ResourceConfig.setter
@@ -932,6 +1112,9 @@ class CreateTrainingJobRequest(AbstractModel):
 
     @property
     def TrainingJobName(self):
+        """训练任务名称
+        :rtype: str
+        """
         return self._TrainingJobName
 
     @TrainingJobName.setter
@@ -940,6 +1123,9 @@ class CreateTrainingJobRequest(AbstractModel):
 
     @property
     def InputDataConfig(self):
+        """输入数据配置
+        :rtype: list of InputDataConfig
+        """
         return self._InputDataConfig
 
     @InputDataConfig.setter
@@ -948,6 +1134,9 @@ class CreateTrainingJobRequest(AbstractModel):
 
     @property
     def StoppingCondition(self):
+        """中止条件
+        :rtype: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
+        """
         return self._StoppingCondition
 
     @StoppingCondition.setter
@@ -956,6 +1145,9 @@ class CreateTrainingJobRequest(AbstractModel):
 
     @property
     def VpcConfig(self):
+        """私有网络配置
+        :rtype: :class:`tencentcloud.tione.v20191022.models.VpcConfig`
+        """
         return self._VpcConfig
 
     @VpcConfig.setter
@@ -964,6 +1156,9 @@ class CreateTrainingJobRequest(AbstractModel):
 
     @property
     def HyperParameters(self):
+        """算法超级参数
+        :rtype: str
+        """
         return self._HyperParameters
 
     @HyperParameters.setter
@@ -972,6 +1167,9 @@ class CreateTrainingJobRequest(AbstractModel):
 
     @property
     def EnvConfig(self):
+        """环境变量配置
+        :rtype: list of EnvConfig
+        """
         return self._EnvConfig
 
     @EnvConfig.setter
@@ -980,6 +1178,9 @@ class CreateTrainingJobRequest(AbstractModel):
 
     @property
     def RoleName(self):
+        """角色名称
+        :rtype: str
+        """
         return self._RoleName
 
     @RoleName.setter
@@ -988,6 +1189,10 @@ class CreateTrainingJobRequest(AbstractModel):
 
     @property
     def RetryWhenResourceInsufficient(self):
+        """在资源不足（ResourceInsufficient）时后台不定时尝试重新创建训练任务。可取值Enabled/Disabled
+默认值为Disabled即不重新尝试。设为Enabled时重新尝试有一定的时间期限，定义在 StoppingCondition 中 MaxWaitTimeInSecond中 ，默认值为1天，超过该期限创建失败。
+        :rtype: str
+        """
         return self._RetryWhenResourceInsufficient
 
     @RetryWhenResourceInsufficient.setter
@@ -1054,6 +1259,9 @@ class CreateTrainingJobResponse(AbstractModel):
 
     @property
     def TrainingJobName(self):
+        """训练任务名称
+        :rtype: str
+        """
         return self._TrainingJobName
 
     @TrainingJobName.setter
@@ -1062,6 +1270,9 @@ class CreateTrainingJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1093,6 +1304,10 @@ class DataSource(AbstractModel):
 
     @property
     def CosDataSource(self):
+        """cos数据源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20191022.models.CosDataSource`
+        """
         return self._CosDataSource
 
     @CosDataSource.setter
@@ -1101,6 +1316,10 @@ class DataSource(AbstractModel):
 
     @property
     def FileSystemDataSource(self):
+        """文件系统输入源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20191022.models.FileSystemDataSource`
+        """
         return self._FileSystemDataSource
 
     @FileSystemDataSource.setter
@@ -1139,6 +1358,9 @@ class DeleteCodeRepositoryRequest(AbstractModel):
 
     @property
     def CodeRepositoryName(self):
+        """存储库名称
+        :rtype: str
+        """
         return self._CodeRepositoryName
 
     @CodeRepositoryName.setter
@@ -1175,6 +1397,9 @@ class DeleteCodeRepositoryResponse(AbstractModel):
 
     @property
     def CodeRepositoryName(self):
+        """存储库名称
+        :rtype: str
+        """
         return self._CodeRepositoryName
 
     @CodeRepositoryName.setter
@@ -1183,6 +1408,9 @@ class DeleteCodeRepositoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1209,6 +1437,9 @@ class DeleteNotebookInstanceRequest(AbstractModel):
 
     @property
     def NotebookInstanceName(self):
+        """Notebook实例名称
+        :rtype: str
+        """
         return self._NotebookInstanceName
 
     @NotebookInstanceName.setter
@@ -1242,6 +1473,9 @@ class DeleteNotebookInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1270,6 +1504,9 @@ class DeleteNotebookLifecycleScriptRequest(AbstractModel):
 
     @property
     def NotebookLifecycleScriptsName(self):
+        """生命周期脚本名称
+        :rtype: str
+        """
         return self._NotebookLifecycleScriptsName
 
     @NotebookLifecycleScriptsName.setter
@@ -1278,6 +1515,9 @@ class DeleteNotebookLifecycleScriptRequest(AbstractModel):
 
     @property
     def Forcible(self):
+        """是否忽略已关联的 notebook 实例强行删除生命周期脚本，默认 false
+        :rtype: bool
+        """
         return self._Forcible
 
     @Forcible.setter
@@ -1312,6 +1552,9 @@ class DeleteNotebookLifecycleScriptResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1350,6 +1593,9 @@ Ascending 按更新时间升序
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1358,6 +1604,9 @@ Ascending 按更新时间升序
 
     @property
     def Limit(self):
+        """返回数量，默认为20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1366,6 +1615,11 @@ Ascending 按更新时间升序
 
     @property
     def Filters(self):
+        """过滤条件。
+instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
+search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1374,6 +1628,11 @@ Ascending 按更新时间升序
 
     @property
     def SortOrder(self):
+        """排序规则。默认取Descending
+Descending 按更新时间降序
+Ascending 按更新时间升序
+        :rtype: str
+        """
         return self._SortOrder
 
     @SortOrder.setter
@@ -1422,6 +1681,9 @@ class DescribeCodeRepositoriesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """存储库总数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1430,6 +1692,10 @@ class DescribeCodeRepositoriesResponse(AbstractModel):
 
     @property
     def CodeRepoSet(self):
+        """存储库列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CodeRepoSummary
+        """
         return self._CodeRepoSet
 
     @CodeRepoSet.setter
@@ -1438,6 +1704,9 @@ class DescribeCodeRepositoriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1470,6 +1739,9 @@ class DescribeCodeRepositoryRequest(AbstractModel):
 
     @property
     def CodeRepositoryName(self):
+        """存储库名称
+        :rtype: str
+        """
         return self._CodeRepositoryName
 
     @CodeRepositoryName.setter
@@ -1518,6 +1790,9 @@ class DescribeCodeRepositoryResponse(AbstractModel):
 
     @property
     def CreationTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -1526,6 +1801,9 @@ class DescribeCodeRepositoryResponse(AbstractModel):
 
     @property
     def LastModifiedTime(self):
+        """更新时间
+        :rtype: str
+        """
         return self._LastModifiedTime
 
     @LastModifiedTime.setter
@@ -1534,6 +1812,9 @@ class DescribeCodeRepositoryResponse(AbstractModel):
 
     @property
     def CodeRepositoryName(self):
+        """存储库名称
+        :rtype: str
+        """
         return self._CodeRepositoryName
 
     @CodeRepositoryName.setter
@@ -1542,6 +1823,9 @@ class DescribeCodeRepositoryResponse(AbstractModel):
 
     @property
     def GitConfig(self):
+        """Git存储配置
+        :rtype: :class:`tencentcloud.tione.v20191022.models.GitConfig`
+        """
         return self._GitConfig
 
     @GitConfig.setter
@@ -1550,6 +1834,9 @@ class DescribeCodeRepositoryResponse(AbstractModel):
 
     @property
     def NoSecret(self):
+        """是否有Git凭证
+        :rtype: bool
+        """
         return self._NoSecret
 
     @NoSecret.setter
@@ -1558,6 +1845,9 @@ class DescribeCodeRepositoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1591,6 +1881,10 @@ class DescribeNotebookInstanceRequest(AbstractModel):
 
     @property
     def NotebookInstanceName(self):
+        """Notebook实例名称
+规则：“^\[a-zA-Z0-9\](-\*\[a-zA-Z0-9\])\*$”
+        :rtype: str
+        """
         return self._NotebookInstanceName
 
     @NotebookInstanceName.setter
@@ -1715,6 +2009,9 @@ Failed: 失败
 
     @property
     def NotebookInstanceName(self):
+        """Notebook实例名称
+        :rtype: str
+        """
         return self._NotebookInstanceName
 
     @NotebookInstanceName.setter
@@ -1723,6 +2020,10 @@ Failed: 失败
 
     @property
     def InstanceType(self):
+        """Notebook算力资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -1731,6 +2032,10 @@ Failed: 失败
 
     @property
     def RoleArn(self):
+        """角色的资源描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RoleArn
 
     @RoleArn.setter
@@ -1739,6 +2044,10 @@ Failed: 失败
 
     @property
     def DirectInternetAccess(self):
+        """外网访问权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DirectInternetAccess
 
     @DirectInternetAccess.setter
@@ -1747,6 +2056,10 @@ Failed: 失败
 
     @property
     def RootAccess(self):
+        """Root用户权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RootAccess
 
     @RootAccess.setter
@@ -1755,6 +2068,10 @@ Failed: 失败
 
     @property
     def SubnetId(self):
+        """子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -1763,6 +2080,10 @@ Failed: 失败
 
     @property
     def VolumeSizeInGB(self):
+        """数据卷大小(GB)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._VolumeSizeInGB
 
     @VolumeSizeInGB.setter
@@ -1771,6 +2092,10 @@ Failed: 失败
 
     @property
     def FailureReason(self):
+        """创建失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FailureReason
 
     @FailureReason.setter
@@ -1779,6 +2104,10 @@ Failed: 失败
 
     @property
     def CreationTime(self):
+        """Notebook实例创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -1787,6 +2116,10 @@ Failed: 失败
 
     @property
     def LastModifiedTime(self):
+        """Notebook实例最近修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastModifiedTime
 
     @LastModifiedTime.setter
@@ -1795,6 +2128,10 @@ Failed: 失败
 
     @property
     def LogUrl(self):
+        """Notebook实例日志链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogUrl
 
     @LogUrl.setter
@@ -1803,6 +2140,16 @@ Failed: 失败
 
     @property
     def NotebookInstanceStatus(self):
+        """Notebook实例状态
+
+Pending: 创建中
+Inservice: 运行中
+Stopping: 停止中
+Stopped: 已停止
+Failed: 失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NotebookInstanceStatus
 
     @NotebookInstanceStatus.setter
@@ -1811,6 +2158,10 @@ Failed: 失败
 
     @property
     def InstanceId(self):
+        """Notebook实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1819,6 +2170,10 @@ Failed: 失败
 
     @property
     def LifecycleScriptsName(self):
+        """notebook生命周期脚本名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LifecycleScriptsName
 
     @LifecycleScriptsName.setter
@@ -1827,6 +2182,11 @@ Failed: 失败
 
     @property
     def DefaultCodeRepository(self):
+        """默认存储库名称
+可以是已创建的存储库名称或者已https://开头的公共git库
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DefaultCodeRepository
 
     @DefaultCodeRepository.setter
@@ -1835,6 +2195,11 @@ Failed: 失败
 
     @property
     def AdditionalCodeRepositories(self):
+        """其他存储库列表
+每个元素可以是已创建的存储库名称或者已https://开头的公共git库
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AdditionalCodeRepositories
 
     @AdditionalCodeRepositories.setter
@@ -1843,6 +2208,10 @@ Failed: 失败
 
     @property
     def ClsAccess(self):
+        """是否开启CLS日志服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClsAccess
 
     @ClsAccess.setter
@@ -1851,6 +2220,10 @@ Failed: 失败
 
     @property
     def Prepay(self):
+        """是否预付费实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Prepay
 
     @Prepay.setter
@@ -1859,6 +2232,10 @@ Failed: 失败
 
     @property
     def Deadline(self):
+        """实例运行截止时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Deadline
 
     @Deadline.setter
@@ -1867,6 +2244,10 @@ Failed: 失败
 
     @property
     def StoppingCondition(self):
+        """自动停止配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
+        """
         return self._StoppingCondition
 
     @StoppingCondition.setter
@@ -1875,6 +2256,10 @@ Failed: 失败
 
     @property
     def ClsConfig(self):
+        """Cls配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20191022.models.ClsConfig`
+        """
         return self._ClsConfig
 
     @ClsConfig.setter
@@ -1883,6 +2268,9 @@ Failed: 失败
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1955,6 +2343,9 @@ billing-status - String - 是否必填：否 - （过滤条件）按照计费状
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1963,6 +2354,9 @@ billing-status - String - 是否必填：否 - （过滤条件）按照计费状
 
     @property
     def Limit(self):
+        """限制数目
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1971,6 +2365,11 @@ billing-status - String - 是否必填：否 - （过滤条件）按照计费状
 
     @property
     def SortOrder(self):
+        """排序规则。默认取Descending
+Descending 按更新时间降序
+Ascending 按更新时间升序
+        :rtype: str
+        """
         return self._SortOrder
 
     @SortOrder.setter
@@ -1979,6 +2378,17 @@ billing-status - String - 是否必填：否 - （过滤条件）按照计费状
 
     @property
     def Filters(self):
+        """过滤条件。
+instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
+search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
+lifecycle-name - String - 是否必填：否 -（过滤条件）按照生命周期脚本名称过滤。
+default-code-repo-name - String - 是否必填：否 -（过滤条件）按照默认存储库名称过滤。
+additional-code-repo-name - String - 是否必填：否 -（过滤条件）按照其他存储库名称过滤。
+billing-status - String - 是否必填：否 - （过滤条件）按照计费状态过滤，可取以下值
+   StorageOnly：仅存储计费的实例
+   Computing：计算和存储都计费的实例
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1987,6 +2397,9 @@ billing-status - String - 是否必填：否 - （过滤条件）按照计费状
 
     @property
     def SortBy(self):
+        """【废弃字段】排序字段
+        :rtype: str
+        """
         return self._SortBy
 
     @SortBy.setter
@@ -2035,6 +2448,9 @@ class DescribeNotebookInstancesResponse(AbstractModel):
 
     @property
     def NotebookInstanceSet(self):
+        """Notebook实例列表
+        :rtype: list of NotebookInstanceSummary
+        """
         return self._NotebookInstanceSet
 
     @NotebookInstanceSet.setter
@@ -2043,6 +2459,9 @@ class DescribeNotebookInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Notebook实例总数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2051,6 +2470,9 @@ class DescribeNotebookInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2083,6 +2505,9 @@ class DescribeNotebookLifecycleScriptRequest(AbstractModel):
 
     @property
     def NotebookLifecycleScriptsName(self):
+        """生命周期脚本名称
+        :rtype: str
+        """
         return self._NotebookLifecycleScriptsName
 
     @NotebookLifecycleScriptsName.setter
@@ -2133,6 +2558,9 @@ class DescribeNotebookLifecycleScriptResponse(AbstractModel):
 
     @property
     def NotebookLifecycleScriptsName(self):
+        """生命周期脚本名称
+        :rtype: str
+        """
         return self._NotebookLifecycleScriptsName
 
     @NotebookLifecycleScriptsName.setter
@@ -2141,6 +2569,10 @@ class DescribeNotebookLifecycleScriptResponse(AbstractModel):
 
     @property
     def CreateScript(self):
+        """创建脚本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateScript
 
     @CreateScript.setter
@@ -2149,6 +2581,10 @@ class DescribeNotebookLifecycleScriptResponse(AbstractModel):
 
     @property
     def StartScript(self):
+        """启动脚本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartScript
 
     @StartScript.setter
@@ -2157,6 +2593,9 @@ class DescribeNotebookLifecycleScriptResponse(AbstractModel):
 
     @property
     def CreationTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -2165,6 +2604,9 @@ class DescribeNotebookLifecycleScriptResponse(AbstractModel):
 
     @property
     def LastModifiedTime(self):
+        """最后修改时间
+        :rtype: str
+        """
         return self._LastModifiedTime
 
     @LastModifiedTime.setter
@@ -2173,6 +2615,9 @@ class DescribeNotebookLifecycleScriptResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2216,6 +2661,9 @@ Ascending 按更新时间升序
 
     @property
     def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2224,6 +2672,9 @@ Ascending 按更新时间升序
 
     @property
     def Limit(self):
+        """返回数量，默认为20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2232,6 +2683,11 @@ Ascending 按更新时间升序
 
     @property
     def Filters(self):
+        """过滤条件。
+instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
+search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2240,6 +2696,11 @@ Ascending 按更新时间升序
 
     @property
     def SortOrder(self):
+        """排序规则。默认取Descending
+Descending 按更新时间降序
+Ascending 按更新时间升序
+        :rtype: str
+        """
         return self._SortOrder
 
     @SortOrder.setter
@@ -2287,6 +2748,9 @@ class DescribeNotebookLifecycleScriptsResponse(AbstractModel):
 
     @property
     def NotebookLifecycleScriptsSet(self):
+        """Notebook生命周期脚本列表
+        :rtype: list of NotebookLifecycleScriptsSummary
+        """
         return self._NotebookLifecycleScriptsSet
 
     @NotebookLifecycleScriptsSet.setter
@@ -2295,6 +2759,9 @@ class DescribeNotebookLifecycleScriptsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Notebook生命周期脚本总数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2303,6 +2770,9 @@ class DescribeNotebookLifecycleScriptsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2353,6 +2823,9 @@ class DescribeNotebookSummaryResponse(AbstractModel):
 
     @property
     def AllInstanceCnt(self):
+        """实例总数
+        :rtype: int
+        """
         return self._AllInstanceCnt
 
     @AllInstanceCnt.setter
@@ -2361,6 +2834,9 @@ class DescribeNotebookSummaryResponse(AbstractModel):
 
     @property
     def BillingInstanceCnt(self):
+        """计费实例总数
+        :rtype: int
+        """
         return self._BillingInstanceCnt
 
     @BillingInstanceCnt.setter
@@ -2369,6 +2845,9 @@ class DescribeNotebookSummaryResponse(AbstractModel):
 
     @property
     def StorageOnlyBillingInstanceCnt(self):
+        """仅存储计费的实例总数
+        :rtype: int
+        """
         return self._StorageOnlyBillingInstanceCnt
 
     @StorageOnlyBillingInstanceCnt.setter
@@ -2377,6 +2856,9 @@ class DescribeNotebookSummaryResponse(AbstractModel):
 
     @property
     def ComputingBillingInstanceCnt(self):
+        """计算和存储都计费的实例总数
+        :rtype: int
+        """
         return self._ComputingBillingInstanceCnt
 
     @ComputingBillingInstanceCnt.setter
@@ -2385,6 +2867,9 @@ class DescribeNotebookSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2414,6 +2899,9 @@ class DescribeTrainingJobRequest(AbstractModel):
 
     @property
     def TrainingJobName(self):
+        """训练任务名称
+        :rtype: str
+        """
         return self._TrainingJobName
 
     @TrainingJobName.setter
@@ -2528,6 +3016,9 @@ Stopped：已停止
 
     @property
     def AlgorithmSpecification(self):
+        """算法镜像配置
+        :rtype: :class:`tencentcloud.tione.v20191022.models.AlgorithmSpecification`
+        """
         return self._AlgorithmSpecification
 
     @AlgorithmSpecification.setter
@@ -2536,6 +3027,9 @@ Stopped：已停止
 
     @property
     def TrainingJobName(self):
+        """任务名称
+        :rtype: str
+        """
         return self._TrainingJobName
 
     @TrainingJobName.setter
@@ -2544,6 +3038,10 @@ Stopped：已停止
 
     @property
     def HyperParameters(self):
+        """算法超级参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._HyperParameters
 
     @HyperParameters.setter
@@ -2552,6 +3050,9 @@ Stopped：已停止
 
     @property
     def InputDataConfig(self):
+        """输入数据配置
+        :rtype: list of InputDataConfig
+        """
         return self._InputDataConfig
 
     @InputDataConfig.setter
@@ -2560,6 +3061,9 @@ Stopped：已停止
 
     @property
     def OutputDataConfig(self):
+        """输出数据配置
+        :rtype: :class:`tencentcloud.tione.v20191022.models.OutputDataConfig`
+        """
         return self._OutputDataConfig
 
     @OutputDataConfig.setter
@@ -2568,6 +3072,10 @@ Stopped：已停止
 
     @property
     def StoppingCondition(self):
+        """中止条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
+        """
         return self._StoppingCondition
 
     @StoppingCondition.setter
@@ -2576,6 +3084,9 @@ Stopped：已停止
 
     @property
     def ResourceConfig(self):
+        """计算实例配置
+        :rtype: :class:`tencentcloud.tione.v20191022.models.ResourceConfig`
+        """
         return self._ResourceConfig
 
     @ResourceConfig.setter
@@ -2584,6 +3095,10 @@ Stopped：已停止
 
     @property
     def VpcConfig(self):
+        """私有网络配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20191022.models.VpcConfig`
+        """
         return self._VpcConfig
 
     @VpcConfig.setter
@@ -2592,6 +3107,10 @@ Stopped：已停止
 
     @property
     def FailureReason(self):
+        """失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FailureReason
 
     @FailureReason.setter
@@ -2600,6 +3119,9 @@ Stopped：已停止
 
     @property
     def LastModifiedTime(self):
+        """最近修改时间
+        :rtype: str
+        """
         return self._LastModifiedTime
 
     @LastModifiedTime.setter
@@ -2608,6 +3130,10 @@ Stopped：已停止
 
     @property
     def TrainingStartTime(self):
+        """任务开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TrainingStartTime
 
     @TrainingStartTime.setter
@@ -2616,6 +3142,10 @@ Stopped：已停止
 
     @property
     def TrainingEndTime(self):
+        """任务完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TrainingEndTime
 
     @TrainingEndTime.setter
@@ -2624,6 +3154,10 @@ Stopped：已停止
 
     @property
     def ModelArtifacts(self):
+        """模型输出配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20191022.models.ModelArtifacts`
+        """
         return self._ModelArtifacts
 
     @ModelArtifacts.setter
@@ -2632,6 +3166,18 @@ Stopped：已停止
 
     @property
     def SecondaryStatus(self):
+        """详细状态，取值范围
+Starting：启动中
+Downloading: 准备训练数据
+Training: 正在训练
+Uploading: 上传训练结果
+Completed：已完成
+Failed: 失败
+MaxRuntimeExceeded: 任务超过最大运行时间
+Stopping: 停止中
+Stopped：已停止
+        :rtype: str
+        """
         return self._SecondaryStatus
 
     @SecondaryStatus.setter
@@ -2640,6 +3186,10 @@ Stopped：已停止
 
     @property
     def SecondaryStatusTransitions(self):
+        """详细状态事件记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SecondaryStatusTransition
+        """
         return self._SecondaryStatusTransitions
 
     @SecondaryStatusTransitions.setter
@@ -2648,6 +3198,10 @@ Stopped：已停止
 
     @property
     def RoleName(self):
+        """角色名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RoleName
 
     @RoleName.setter
@@ -2656,6 +3210,14 @@ Stopped：已停止
 
     @property
     def TrainingJobStatus(self):
+        """训练任务状态，取值范围
+InProgress：运行中
+Completed: 已完成
+Failed: 失败
+Stopping: 停止中
+Stopped：已停止
+        :rtype: str
+        """
         return self._TrainingJobStatus
 
     @TrainingJobStatus.setter
@@ -2664,6 +3226,10 @@ Stopped：已停止
 
     @property
     def LogUrl(self):
+        """训练任务日志链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogUrl
 
     @LogUrl.setter
@@ -2672,6 +3238,9 @@ Stopped：已停止
 
     @property
     def InstanceId(self):
+        """训练任务实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2680,6 +3249,9 @@ Stopped：已停止
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2766,6 +3338,9 @@ search-by-name - String - 是否必填：否 -（过滤条件）按照名称检�
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2774,6 +3349,9 @@ search-by-name - String - 是否必填：否 -（过滤条件）按照名称检�
 
     @property
     def Limit(self):
+        """限制数目
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2782,6 +3360,9 @@ search-by-name - String - 是否必填：否 -（过滤条件）按照名称检�
 
     @property
     def CreationTimeAfter(self):
+        """创建时间晚于
+        :rtype: str
+        """
         return self._CreationTimeAfter
 
     @CreationTimeAfter.setter
@@ -2790,6 +3371,9 @@ search-by-name - String - 是否必填：否 -（过滤条件）按照名称检�
 
     @property
     def CreationTimeBefore(self):
+        """创建时间早于
+        :rtype: str
+        """
         return self._CreationTimeBefore
 
     @CreationTimeBefore.setter
@@ -2798,6 +3382,9 @@ search-by-name - String - 是否必填：否 -（过滤条件）按照名称检�
 
     @property
     def NameContains(self):
+        """根据名称过滤
+        :rtype: str
+        """
         return self._NameContains
 
     @NameContains.setter
@@ -2806,6 +3393,9 @@ search-by-name - String - 是否必填：否 -（过滤条件）按照名称检�
 
     @property
     def StatusEquals(self):
+        """根据状态过滤
+        :rtype: str
+        """
         return self._StatusEquals
 
     @StatusEquals.setter
@@ -2814,6 +3404,11 @@ search-by-name - String - 是否必填：否 -（过滤条件）按照名称检�
 
     @property
     def Filters(self):
+        """过滤条件。
+instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
+search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2864,6 +3459,9 @@ class DescribeTrainingJobsResponse(AbstractModel):
 
     @property
     def TrainingJobSet(self):
+        """训练任务列表
+        :rtype: list of TrainingJobSummary
+        """
         return self._TrainingJobSet
 
     @TrainingJobSet.setter
@@ -2872,6 +3470,9 @@ class DescribeTrainingJobsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """训练任务总数目
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2880,6 +3481,9 @@ class DescribeTrainingJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2915,6 +3519,9 @@ class EnvConfig(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2923,6 +3530,9 @@ class EnvConfig(AbstractModel):
 
     @property
     def Value(self):
+        """值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -2970,6 +3580,10 @@ class FileSystemDataSource(AbstractModel):
 
     @property
     def DirectoryPath(self):
+        """文件系统目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DirectoryPath
 
     @DirectoryPath.setter
@@ -2978,6 +3592,10 @@ class FileSystemDataSource(AbstractModel):
 
     @property
     def FileSystemType(self):
+        """文件系统类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FileSystemType
 
     @FileSystemType.setter
@@ -2986,6 +3604,10 @@ class FileSystemDataSource(AbstractModel):
 
     @property
     def FileSystemAccessMode(self):
+        """文件系统访问模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FileSystemAccessMode
 
     @FileSystemAccessMode.setter
@@ -2994,6 +3616,10 @@ class FileSystemDataSource(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """文件系统ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -3033,6 +3659,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """过滤字段名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3041,6 +3670,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """过滤字段取值
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -3079,6 +3711,9 @@ class GitConfig(AbstractModel):
 
     @property
     def RepositoryUrl(self):
+        """git地址
+        :rtype: str
+        """
         return self._RepositoryUrl
 
     @RepositoryUrl.setter
@@ -3087,6 +3722,10 @@ class GitConfig(AbstractModel):
 
     @property
     def Branch(self):
+        """代码分支
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Branch
 
     @Branch.setter
@@ -3126,6 +3765,9 @@ class GitSecret(AbstractModel):
 
     @property
     def NoSecret(self):
+        """无密钥，默认选项
+        :rtype: bool
+        """
         return self._NoSecret
 
     @NoSecret.setter
@@ -3134,6 +3776,11 @@ class GitSecret(AbstractModel):
 
     @property
     def Secret(self):
+        """Git用户名密码base64编码后的字符串
+编码前的内容应为Json字符串，如
+{"UserName": "用户名", "Password":"密码"}
+        :rtype: str
+        """
         return self._Secret
 
     @Secret.setter
@@ -3181,6 +3828,10 @@ class InputDataConfig(AbstractModel):
 
     @property
     def ChannelName(self):
+        """通道名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChannelName
 
     @ChannelName.setter
@@ -3189,6 +3840,10 @@ class InputDataConfig(AbstractModel):
 
     @property
     def DataSource(self):
+        """数据源配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20191022.models.DataSource`
+        """
         return self._DataSource
 
     @DataSource.setter
@@ -3197,6 +3852,10 @@ class InputDataConfig(AbstractModel):
 
     @property
     def InputMode(self):
+        """输入类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InputMode
 
     @InputMode.setter
@@ -3205,6 +3864,10 @@ class InputDataConfig(AbstractModel):
 
     @property
     def ContentType(self):
+        """文件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ContentType
 
     @ContentType.setter
@@ -3244,6 +3907,10 @@ class ModelArtifacts(AbstractModel):
 
     @property
     def CosModelArtifacts(self):
+        """cos输出路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CosModelArtifacts
 
     @CosModelArtifacts.setter
@@ -3331,6 +3998,10 @@ Failed: 失败
 
     @property
     def CreationTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -3339,6 +4010,10 @@ Failed: 失败
 
     @property
     def LastModifiedTime(self):
+        """最近修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastModifiedTime
 
     @LastModifiedTime.setter
@@ -3347,6 +4022,10 @@ Failed: 失败
 
     @property
     def NotebookInstanceName(self):
+        """notebook实例名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NotebookInstanceName
 
     @NotebookInstanceName.setter
@@ -3355,6 +4034,15 @@ Failed: 失败
 
     @property
     def NotebookInstanceStatus(self):
+        """notebook实例状态，取值范围：
+Pending: 创建中
+Inservice: 运行中
+Stopping: 停止中
+Stopped: 已停止
+Failed: 失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NotebookInstanceStatus
 
     @NotebookInstanceStatus.setter
@@ -3363,6 +4051,10 @@ Failed: 失败
 
     @property
     def InstanceType(self):
+        """算力类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -3371,6 +4063,10 @@ Failed: 失败
 
     @property
     def InstanceId(self):
+        """实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3379,6 +4075,10 @@ Failed: 失败
 
     @property
     def StartupTime(self):
+        """启动时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartupTime
 
     @StartupTime.setter
@@ -3387,6 +4087,10 @@ Failed: 失败
 
     @property
     def Deadline(self):
+        """运行截止时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Deadline
 
     @Deadline.setter
@@ -3395,6 +4099,10 @@ Failed: 失败
 
     @property
     def StoppingCondition(self):
+        """自动停止配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
+        """
         return self._StoppingCondition
 
     @StoppingCondition.setter
@@ -3403,6 +4111,10 @@ Failed: 失败
 
     @property
     def Prepay(self):
+        """是否是预付费实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Prepay
 
     @Prepay.setter
@@ -3411,6 +4123,10 @@ Failed: 失败
 
     @property
     def BillingLabel(self):
+        """计费标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20191022.models.BillingLabel`
+        """
         return self._BillingLabel
 
     @BillingLabel.setter
@@ -3419,6 +4135,10 @@ Failed: 失败
 
     @property
     def RuntimeInSeconds(self):
+        """运行时长，秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RuntimeInSeconds
 
     @RuntimeInSeconds.setter
@@ -3427,6 +4147,10 @@ Failed: 失败
 
     @property
     def RemainTimeInSeconds(self):
+        """剩余时长，秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RemainTimeInSeconds
 
     @RemainTimeInSeconds.setter
@@ -3482,6 +4206,9 @@ class NotebookLifecycleScriptsSummary(AbstractModel):
 
     @property
     def NotebookLifecycleScriptsName(self):
+        """notebook生命周期脚本名称
+        :rtype: str
+        """
         return self._NotebookLifecycleScriptsName
 
     @NotebookLifecycleScriptsName.setter
@@ -3490,6 +4217,9 @@ class NotebookLifecycleScriptsSummary(AbstractModel):
 
     @property
     def CreationTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -3498,6 +4228,9 @@ class NotebookLifecycleScriptsSummary(AbstractModel):
 
     @property
     def LastModifiedTime(self):
+        """修改时间
+        :rtype: str
+        """
         return self._LastModifiedTime
 
     @LastModifiedTime.setter
@@ -3542,6 +4275,10 @@ class OutputDataConfig(AbstractModel):
 
     @property
     def CosOutputBucket(self):
+        """cos输出桶
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CosOutputBucket
 
     @CosOutputBucket.setter
@@ -3550,6 +4287,10 @@ class OutputDataConfig(AbstractModel):
 
     @property
     def CosOutputKeyPrefix(self):
+        """cos输出key前缀
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CosOutputKeyPrefix
 
     @CosOutputKeyPrefix.setter
@@ -3558,6 +4299,10 @@ class OutputDataConfig(AbstractModel):
 
     @property
     def FileSystemDataSource(self):
+        """文件系统输出，如果指定了文件系统，那么Cos输出会被忽略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20191022.models.FileSystemDataSource`
+        """
         return self._FileSystemDataSource
 
     @FileSystemDataSource.setter
@@ -3604,6 +4349,10 @@ class ResourceConfig(AbstractModel):
 
     @property
     def InstanceCount(self):
+        """计算实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._InstanceCount
 
     @InstanceCount.setter
@@ -3612,6 +4361,10 @@ class ResourceConfig(AbstractModel):
 
     @property
     def InstanceType(self):
+        """计算实例类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -3620,6 +4373,10 @@ class ResourceConfig(AbstractModel):
 
     @property
     def VolumeSizeInGB(self):
+        """挂载CBS大小（GB）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._VolumeSizeInGB
 
     @VolumeSizeInGB.setter
@@ -3668,6 +4425,10 @@ class SecondaryStatusTransition(AbstractModel):
 
     @property
     def StartTime(self):
+        """状态开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3676,6 +4437,10 @@ class SecondaryStatusTransition(AbstractModel):
 
     @property
     def EndTime(self):
+        """状态结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3684,6 +4449,10 @@ class SecondaryStatusTransition(AbstractModel):
 
     @property
     def Status(self):
+        """状态名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3692,6 +4461,10 @@ class SecondaryStatusTransition(AbstractModel):
 
     @property
     def StatusMessage(self):
+        """状态详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StatusMessage
 
     @StatusMessage.setter
@@ -3736,6 +4509,9 @@ class StartNotebookInstanceRequest(AbstractModel):
 
     @property
     def NotebookInstanceName(self):
+        """Notebook实例名称
+        :rtype: str
+        """
         return self._NotebookInstanceName
 
     @NotebookInstanceName.setter
@@ -3744,6 +4520,11 @@ class StartNotebookInstanceRequest(AbstractModel):
 
     @property
     def AutoStopping(self):
+        """自动停止，可取值Enabled/Disabled
+取值为Disabled的时候StoppingCondition将被忽略
+取值为Enabled的时候读取StoppingCondition作为自动停止的配置
+        :rtype: str
+        """
         return self._AutoStopping
 
     @AutoStopping.setter
@@ -3752,6 +4533,9 @@ class StartNotebookInstanceRequest(AbstractModel):
 
     @property
     def StoppingCondition(self):
+        """自动停止配置，只在AutoStopping为Enabled的时候生效
+        :rtype: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
+        """
         return self._StoppingCondition
 
     @StoppingCondition.setter
@@ -3789,6 +4573,9 @@ class StartNotebookInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3814,6 +4601,9 @@ class StopNotebookInstanceRequest(AbstractModel):
 
     @property
     def NotebookInstanceName(self):
+        """Notebook实例名称
+        :rtype: str
+        """
         return self._NotebookInstanceName
 
     @NotebookInstanceName.setter
@@ -3847,6 +4637,9 @@ class StopNotebookInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3872,6 +4665,9 @@ class StopTrainingJobRequest(AbstractModel):
 
     @property
     def TrainingJobName(self):
+        """训练任务名称
+        :rtype: str
+        """
         return self._TrainingJobName
 
     @TrainingJobName.setter
@@ -3905,6 +4701,9 @@ class StopTrainingJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3935,6 +4734,10 @@ class StoppingCondition(AbstractModel):
 
     @property
     def MaxRuntimeInSeconds(self):
+        """最长运行运行时间（秒）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxRuntimeInSeconds
 
     @MaxRuntimeInSeconds.setter
@@ -3943,6 +4746,10 @@ class StoppingCondition(AbstractModel):
 
     @property
     def MaxWaitTimeInSeconds(self):
+        """最长等待运行时间（秒）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxWaitTimeInSeconds
 
     @MaxWaitTimeInSeconds.setter
@@ -4007,6 +4814,10 @@ Stopped：已停止
 
     @property
     def CreationTime(self):
+        """任务创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -4015,6 +4826,10 @@ Stopped：已停止
 
     @property
     def LastModifiedTime(self):
+        """最近修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LastModifiedTime
 
     @LastModifiedTime.setter
@@ -4023,6 +4838,10 @@ Stopped：已停止
 
     @property
     def TrainingJobName(self):
+        """训练任务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TrainingJobName
 
     @TrainingJobName.setter
@@ -4031,6 +4850,15 @@ Stopped：已停止
 
     @property
     def TrainingJobStatus(self):
+        """训练任务状态，取值范围
+InProgress：运行中
+Completed: 已完成
+Failed: 失败
+Stopping: 停止中
+Stopped：已停止
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TrainingJobStatus
 
     @TrainingJobStatus.setter
@@ -4039,6 +4867,10 @@ Stopped：已停止
 
     @property
     def TrainingEndTime(self):
+        """完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TrainingEndTime
 
     @TrainingEndTime.setter
@@ -4047,6 +4879,10 @@ Stopped：已停止
 
     @property
     def InstanceId(self):
+        """算了实例Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4055,6 +4891,10 @@ Stopped：已停止
 
     @property
     def ResourceConfig(self):
+        """资源配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20191022.models.ResourceConfig`
+        """
         return self._ResourceConfig
 
     @ResourceConfig.setter
@@ -4099,6 +4939,9 @@ class UpdateCodeRepositoryRequest(AbstractModel):
 
     @property
     def CodeRepositoryName(self):
+        """查询存储库名称
+        :rtype: str
+        """
         return self._CodeRepositoryName
 
     @CodeRepositoryName.setter
@@ -4107,6 +4950,9 @@ class UpdateCodeRepositoryRequest(AbstractModel):
 
     @property
     def GitSecret(self):
+        """Git凭证
+        :rtype: :class:`tencentcloud.tione.v20191022.models.GitSecret`
+        """
         return self._GitSecret
 
     @GitSecret.setter
@@ -4146,6 +4992,9 @@ class UpdateCodeRepositoryResponse(AbstractModel):
 
     @property
     def CodeRepositoryName(self):
+        """存储库名称
+        :rtype: str
+        """
         return self._CodeRepositoryName
 
     @CodeRepositoryName.setter
@@ -4154,6 +5003,9 @@ class UpdateCodeRepositoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4230,6 +5082,10 @@ class UpdateNotebookInstanceRequest(AbstractModel):
 
     @property
     def NotebookInstanceName(self):
+        """Notebook实例名称
+规则：“^\[a-zA-Z0-9\](-\*\[a-zA-Z0-9\])\*$”
+        :rtype: str
+        """
         return self._NotebookInstanceName
 
     @NotebookInstanceName.setter
@@ -4238,6 +5094,9 @@ class UpdateNotebookInstanceRequest(AbstractModel):
 
     @property
     def RoleArn(self):
+        """角色的资源描述
+        :rtype: str
+        """
         return self._RoleArn
 
     @RoleArn.setter
@@ -4246,6 +5105,9 @@ class UpdateNotebookInstanceRequest(AbstractModel):
 
     @property
     def RootAccess(self):
+        """Root访问权限
+        :rtype: str
+        """
         return self._RootAccess
 
     @RootAccess.setter
@@ -4254,6 +5116,9 @@ class UpdateNotebookInstanceRequest(AbstractModel):
 
     @property
     def VolumeSizeInGB(self):
+        """数据卷大小(GB)
+        :rtype: int
+        """
         return self._VolumeSizeInGB
 
     @VolumeSizeInGB.setter
@@ -4262,6 +5127,9 @@ class UpdateNotebookInstanceRequest(AbstractModel):
 
     @property
     def InstanceType(self):
+        """算力资源类型
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -4270,6 +5138,9 @@ class UpdateNotebookInstanceRequest(AbstractModel):
 
     @property
     def LifecycleScriptsName(self):
+        """notebook生命周期脚本名称
+        :rtype: str
+        """
         return self._LifecycleScriptsName
 
     @LifecycleScriptsName.setter
@@ -4278,6 +5149,10 @@ class UpdateNotebookInstanceRequest(AbstractModel):
 
     @property
     def DisassociateLifecycleScript(self):
+        """是否解绑生命周期脚本，默认 false。
+该值为true时，LifecycleScriptsName将被忽略
+        :rtype: bool
+        """
         return self._DisassociateLifecycleScript
 
     @DisassociateLifecycleScript.setter
@@ -4286,6 +5161,10 @@ class UpdateNotebookInstanceRequest(AbstractModel):
 
     @property
     def DefaultCodeRepository(self):
+        """默认存储库名称
+可以是已创建的存储库名称或者已https://开头的公共git库
+        :rtype: str
+        """
         return self._DefaultCodeRepository
 
     @DefaultCodeRepository.setter
@@ -4294,6 +5173,10 @@ class UpdateNotebookInstanceRequest(AbstractModel):
 
     @property
     def AdditionalCodeRepositories(self):
+        """其他存储库列表
+每个元素可以是已创建的存储库名称或者已https://开头的公共git库
+        :rtype: list of str
+        """
         return self._AdditionalCodeRepositories
 
     @AdditionalCodeRepositories.setter
@@ -4302,6 +5185,10 @@ class UpdateNotebookInstanceRequest(AbstractModel):
 
     @property
     def DisassociateDefaultCodeRepository(self):
+        """是否取消关联默认存储库，默认false
+该值为true时，DefaultCodeRepository将被忽略
+        :rtype: bool
+        """
         return self._DisassociateDefaultCodeRepository
 
     @DisassociateDefaultCodeRepository.setter
@@ -4310,6 +5197,10 @@ class UpdateNotebookInstanceRequest(AbstractModel):
 
     @property
     def DisassociateAdditionalCodeRepositories(self):
+        """是否取消关联其他存储库，默认false
+该值为true时，AdditionalCodeRepositories将被忽略
+        :rtype: bool
+        """
         return self._DisassociateAdditionalCodeRepositories
 
     @DisassociateAdditionalCodeRepositories.setter
@@ -4318,6 +5209,9 @@ class UpdateNotebookInstanceRequest(AbstractModel):
 
     @property
     def ClsAccess(self):
+        """已弃用，请使用ClsConfig配置。是否开启CLS日志服务，可取值Enabled/Disabled
+        :rtype: str
+        """
         return self._ClsAccess
 
     @ClsAccess.setter
@@ -4326,6 +5220,11 @@ class UpdateNotebookInstanceRequest(AbstractModel):
 
     @property
     def AutoStopping(self):
+        """自动停止，可取值Enabled/Disabled
+取值为Disabled的时候StoppingCondition将被忽略
+取值为Enabled的时候读取StoppingCondition作为自动停止的配置
+        :rtype: str
+        """
         return self._AutoStopping
 
     @AutoStopping.setter
@@ -4334,6 +5233,9 @@ class UpdateNotebookInstanceRequest(AbstractModel):
 
     @property
     def StoppingCondition(self):
+        """自动停止配置，只在AutoStopping为Enabled的时候生效
+        :rtype: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
+        """
         return self._StoppingCondition
 
     @StoppingCondition.setter
@@ -4342,6 +5244,9 @@ class UpdateNotebookInstanceRequest(AbstractModel):
 
     @property
     def ClsConfig(self):
+        """接入日志的配置，默认使用免费日志服务。
+        :rtype: :class:`tencentcloud.tione.v20191022.models.ClsConfig`
+        """
         return self._ClsConfig
 
     @ClsConfig.setter
@@ -4393,6 +5298,9 @@ class UpdateNotebookInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4423,6 +5331,10 @@ class VpcConfig(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """安全组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -4431,6 +5343,10 @@ class VpcConfig(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter

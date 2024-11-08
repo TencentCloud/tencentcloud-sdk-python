@@ -36,6 +36,9 @@ class AgeInfo(AbstractModel):
 
     @property
     def Age(self):
+        """变化到的人脸年龄 [10,80]。
+        :rtype: int
+        """
         return self._Age
 
     @Age.setter
@@ -44,6 +47,10 @@ class AgeInfo(AbstractModel):
 
     @property
     def FaceRect(self):
+        """人脸框位置。若不输入则选择 Image 或 Url 中面积最大的人脸。  
+您可以通过 [人脸检测与分析](https://cloud.tencent.com/document/api/867/32800)  接口获取人脸框位置信息。
+        :rtype: :class:`tencentcloud.ft.v20200304.models.FaceRect`
+        """
         return self._FaceRect
 
     @FaceRect.setter
@@ -80,6 +87,9 @@ class CancelFaceMorphJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """人像渐变任务Job id
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -113,6 +123,9 @@ class CancelFaceMorphJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -153,6 +166,10 @@ class ChangeAgePicRequest(AbstractModel):
 
     @property
     def AgeInfos(self):
+        """人脸变老变年轻信息。 
+您可以输入最多3个 AgeInfo 来实现给一张图中的最多3张人脸变老变年轻。
+        :rtype: list of AgeInfo
+        """
         return self._AgeInfos
 
     @AgeInfos.setter
@@ -161,6 +178,10 @@ class ChangeAgePicRequest(AbstractModel):
 
     @property
     def Image(self):
+        """图片 base64 数据，base64 编码后大小不可超过5M。 
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :rtype: str
+        """
         return self._Image
 
     @Image.setter
@@ -169,6 +190,13 @@ class ChangeAgePicRequest(AbstractModel):
 
     @property
     def Url(self):
+        """图片的 Url ，对应图片 base64 编码后大小不可超过5M。 
+图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+非腾讯云存储的Url速度和稳定性可能受一定影响。 
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -177,6 +205,9 @@ class ChangeAgePicRequest(AbstractModel):
 
     @property
     def RspImgType(self):
+        """返回图像方式（base64 或 url ) ，二选一。url有效期为1天。默认值为base64。
+        :rtype: str
+        """
         return self._RspImgType
 
     @RspImgType.setter
@@ -224,6 +255,9 @@ class ChangeAgePicResponse(AbstractModel):
 
     @property
     def ResultImage(self):
+        """RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
+        :rtype: str
+        """
         return self._ResultImage
 
     @ResultImage.setter
@@ -232,6 +266,9 @@ class ChangeAgePicResponse(AbstractModel):
 
     @property
     def ResultUrl(self):
+        """RspImgType 为 url 时，返回处理后的图片 url 数据。
+        :rtype: str
+        """
         return self._ResultUrl
 
     @ResultUrl.setter
@@ -240,6 +277,9 @@ class ChangeAgePicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -281,6 +321,10 @@ class FaceCartoonPicRequest(AbstractModel):
 
     @property
     def Image(self):
+        """图片 base64 数据，base64 编码后大小不可超过5M。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :rtype: str
+        """
         return self._Image
 
     @Image.setter
@@ -289,6 +333,13 @@ class FaceCartoonPicRequest(AbstractModel):
 
     @property
     def Url(self):
+        """图片的 Url ，对应图片 base64 编码后大小不可超过5M。
+图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
+图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的Url速度和稳定性可能受一定影响。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -297,6 +348,9 @@ class FaceCartoonPicRequest(AbstractModel):
 
     @property
     def RspImgType(self):
+        """返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
+        :rtype: str
+        """
         return self._RspImgType
 
     @RspImgType.setter
@@ -305,6 +359,9 @@ class FaceCartoonPicRequest(AbstractModel):
 
     @property
     def DisableGlobalEffect(self):
+        """关闭全图动漫化，传入true（不分大小写）即关闭全图动漫化。
+        :rtype: str
+        """
         return self._DisableGlobalEffect
 
     @DisableGlobalEffect.setter
@@ -347,6 +404,9 @@ class FaceCartoonPicResponse(AbstractModel):
 
     @property
     def ResultImage(self):
+        """结果图片Base64信息。
+        :rtype: str
+        """
         return self._ResultImage
 
     @ResultImage.setter
@@ -355,6 +415,9 @@ class FaceCartoonPicResponse(AbstractModel):
 
     @property
     def ResultUrl(self):
+        """RspImgType 为 url 时，返回处理后的图片 url 数据。(默认为base64)
+        :rtype: str
+        """
         return self._ResultUrl
 
     @ResultUrl.setter
@@ -363,6 +426,9 @@ class FaceCartoonPicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -399,6 +465,10 @@ class FaceMorphOutput(AbstractModel):
 
     @property
     def MorphUrl(self):
+        """人像渐变输出的url
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MorphUrl
 
     @MorphUrl.setter
@@ -407,6 +477,10 @@ class FaceMorphOutput(AbstractModel):
 
     @property
     def MorphMd5(self):
+        """人像渐变输出的结果MD5，用于校验
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._MorphMd5
 
     @MorphMd5.setter
@@ -415,6 +489,10 @@ class FaceMorphOutput(AbstractModel):
 
     @property
     def CoverImage(self):
+        """人像渐变输出的结果封面图base64字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CoverImage
 
     @CoverImage.setter
@@ -459,6 +537,9 @@ class FaceRect(AbstractModel):
 
     @property
     def Y(self):
+        """人脸框左上角纵坐标。
+        :rtype: int
+        """
         return self._Y
 
     @Y.setter
@@ -467,6 +548,9 @@ class FaceRect(AbstractModel):
 
     @property
     def X(self):
+        """人脸框左上角横坐标。
+        :rtype: int
+        """
         return self._X
 
     @X.setter
@@ -475,6 +559,9 @@ class FaceRect(AbstractModel):
 
     @property
     def Width(self):
+        """人脸框宽度。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -483,6 +570,9 @@ class FaceRect(AbstractModel):
 
     @property
     def Height(self):
+        """人脸框高度。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -523,6 +613,9 @@ class GenderInfo(AbstractModel):
 
     @property
     def Gender(self):
+        """选择转换方向，0：男变女，1：女变男。
+        :rtype: int
+        """
         return self._Gender
 
     @Gender.setter
@@ -531,6 +624,10 @@ class GenderInfo(AbstractModel):
 
     @property
     def FaceRect(self):
+        """人脸框位置。若不输入则选择 Image 或 Url 中面积最大的人脸。  
+您可以通过 [人脸检测与分析](https://cloud.tencent.com/document/api/867/32800)  接口获取人脸框位置信息。
+        :rtype: :class:`tencentcloud.ft.v20200304.models.FaceRect`
+        """
         return self._FaceRect
 
     @FaceRect.setter
@@ -570,6 +667,9 @@ class GradientInfo(AbstractModel):
 
     @property
     def Tempo(self):
+        """图片的展示时长，即单张图片静止不变的时间。GIF默认每张图片0.7s，视频默认每张图片0.5s。最大取值1s。
+        :rtype: float
+        """
         return self._Tempo
 
     @Tempo.setter
@@ -578,6 +678,9 @@ class GradientInfo(AbstractModel):
 
     @property
     def MorphTime(self):
+        """人像渐变的最长时间，即单张图片使用渐变特效的时间。 GIF默认值为0.5s，视频默值认为1s。最大取值1s。
+        :rtype: float
+        """
         return self._MorphTime
 
     @MorphTime.setter
@@ -639,6 +742,13 @@ Url、Image必须提供一个，如果都提供，只使用 Url。图片存储�
 
     @property
     def Images(self):
+        """图片 base64 数据，base64 编码后大小不可超过5M。 
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
+人员人脸总数量至少2张，不可超过5张。 
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。 
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :rtype: list of str
+        """
         return self._Images
 
     @Images.setter
@@ -647,6 +757,14 @@ Url、Image必须提供一个，如果都提供，只使用 Url。图片存储�
 
     @property
     def Urls(self):
+        """图片的 Url 。对应图片 base64 编码后大小不可超过5M。jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
+Url、Image必须提供一个，如果都提供，只使用 Url。图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+非腾讯云存储的Url速度和稳定性可能受一定影响。 
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。 
+人员人脸总数量不可超过5张。 
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+        :rtype: list of str
+        """
         return self._Urls
 
     @Urls.setter
@@ -655,6 +773,9 @@ Url、Image必须提供一个，如果都提供，只使用 Url。图片存储�
 
     @property
     def GradientInfos(self):
+        """人脸渐变参数。可调整每张图片的展示时长、人像渐变的最长时间
+        :rtype: list of GradientInfo
+        """
         return self._GradientInfos
 
     @GradientInfos.setter
@@ -663,6 +784,9 @@ Url、Image必须提供一个，如果都提供，只使用 Url。图片存储�
 
     @property
     def Fps(self):
+        """视频帧率，取值[1,25]。默认10
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -671,6 +795,9 @@ Url、Image必须提供一个，如果都提供，只使用 Url。图片存储�
 
     @property
     def OutputType(self):
+        """视频类型，取值0。目前仅支持MP4格式，默认为MP4格式
+        :rtype: int
+        """
         return self._OutputType
 
     @OutputType.setter
@@ -679,6 +806,9 @@ Url、Image必须提供一个，如果都提供，只使用 Url。图片存储�
 
     @property
     def OutputWidth(self):
+        """视频宽度，取值[128,1280]。默认值720
+        :rtype: int
+        """
         return self._OutputWidth
 
     @OutputWidth.setter
@@ -687,6 +817,9 @@ Url、Image必须提供一个，如果都提供，只使用 Url。图片存储�
 
     @property
     def OutputHeight(self):
+        """视频高度，取值[128,1280]。默认值1280
+        :rtype: int
+        """
         return self._OutputHeight
 
     @OutputHeight.setter
@@ -737,6 +870,9 @@ class MorphFaceResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """人像渐变任务的Job id
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -745,6 +881,9 @@ class MorphFaceResponse(AbstractModel):
 
     @property
     def EstimatedProcessTime(self):
+        """预估处理时间，粒度为秒
+        :rtype: int
+        """
         return self._EstimatedProcessTime
 
     @EstimatedProcessTime.setter
@@ -753,6 +892,9 @@ class MorphFaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -780,6 +922,9 @@ class QueryFaceMorphJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """人像渐变任务Job id
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -824,6 +969,9 @@ class QueryFaceMorphJobResponse(AbstractModel):
 
     @property
     def JobStatus(self):
+        """当前任务状态：排队中、处理中、处理失败或者处理完成
+        :rtype: str
+        """
         return self._JobStatus
 
     @JobStatus.setter
@@ -832,6 +980,10 @@ class QueryFaceMorphJobResponse(AbstractModel):
 
     @property
     def FaceMorphOutput(self):
+        """人像渐变输出的结果信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ft.v20200304.models.FaceMorphOutput`
+        """
         return self._FaceMorphOutput
 
     @FaceMorphOutput.setter
@@ -840,6 +992,10 @@ class QueryFaceMorphJobResponse(AbstractModel):
 
     @property
     def JobStatusCode(self):
+        """当前任务状态码：1：排队中、3: 处理中、5: 处理失败、7:处理完成
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._JobStatusCode
 
     @JobStatusCode.setter
@@ -848,6 +1004,9 @@ class QueryFaceMorphJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -893,6 +1052,10 @@ class SwapGenderPicRequest(AbstractModel):
 
     @property
     def GenderInfos(self):
+        """人脸转化性别信息。 
+您可以输入最多3个 GenderInfo 来实现给一张图中的最多3张人脸转换性别。
+        :rtype: list of GenderInfo
+        """
         return self._GenderInfos
 
     @GenderInfos.setter
@@ -901,6 +1064,10 @@ class SwapGenderPicRequest(AbstractModel):
 
     @property
     def Image(self):
+        """图片 base64 数据，base64 编码后大小不可超过5M。 
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :rtype: str
+        """
         return self._Image
 
     @Image.setter
@@ -909,6 +1076,13 @@ class SwapGenderPicRequest(AbstractModel):
 
     @property
     def Url(self):
+        """图片的 Url ，对应图片 base64 编码后大小不可超过5M。 
+图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+非腾讯云存储的Url速度和稳定性可能受一定影响。 
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -917,6 +1091,9 @@ class SwapGenderPicRequest(AbstractModel):
 
     @property
     def RspImgType(self):
+        """返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
+        :rtype: str
+        """
         return self._RspImgType
 
     @RspImgType.setter
@@ -964,6 +1141,9 @@ class SwapGenderPicResponse(AbstractModel):
 
     @property
     def ResultImage(self):
+        """RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
+        :rtype: str
+        """
         return self._ResultImage
 
     @ResultImage.setter
@@ -972,6 +1152,9 @@ class SwapGenderPicResponse(AbstractModel):
 
     @property
     def ResultUrl(self):
+        """RspImgType 为 url 时，返回处理后的图片 url 数据。
+        :rtype: str
+        """
         return self._ResultUrl
 
     @ResultUrl.setter
@@ -980,6 +1163,9 @@ class SwapGenderPicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

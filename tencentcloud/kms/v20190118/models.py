@@ -35,6 +35,9 @@ class AlgorithmInfo(AbstractModel):
 
     @property
     def KeyUsage(self):
+        """算法的标识
+        :rtype: str
+        """
         return self._KeyUsage
 
     @KeyUsage.setter
@@ -43,6 +46,9 @@ class AlgorithmInfo(AbstractModel):
 
     @property
     def Algorithm(self):
+        """算法的名称
+        :rtype: str
+        """
         return self._Algorithm
 
     @Algorithm.setter
@@ -77,6 +83,9 @@ class ArchiveKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK唯一标识符
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -110,6 +119,9 @@ class ArchiveKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -141,6 +153,9 @@ class AsymmetricRsaDecryptRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK的唯一标识
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -149,6 +164,9 @@ class AsymmetricRsaDecryptRequest(AbstractModel):
 
     @property
     def Ciphertext(self):
+        """使用PublicKey加密的密文，Base64编码
+        :rtype: str
+        """
         return self._Ciphertext
 
     @Ciphertext.setter
@@ -157,6 +175,9 @@ class AsymmetricRsaDecryptRequest(AbstractModel):
 
     @property
     def Algorithm(self):
+        """在使用公钥加密时对应的算法：当前支持RSAES_PKCS1_V1_5、RSAES_OAEP_SHA_1、RSAES_OAEP_SHA_256
+        :rtype: str
+        """
         return self._Algorithm
 
     @Algorithm.setter
@@ -198,6 +219,9 @@ class AsymmetricRsaDecryptResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK的唯一标识
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -206,6 +230,9 @@ class AsymmetricRsaDecryptResponse(AbstractModel):
 
     @property
     def Plaintext(self):
+        """解密后的明文，base64编码
+        :rtype: str
+        """
         return self._Plaintext
 
     @Plaintext.setter
@@ -214,6 +241,9 @@ class AsymmetricRsaDecryptResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -244,6 +274,9 @@ class AsymmetricSm2DecryptRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK的唯一标识
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -252,6 +285,9 @@ class AsymmetricSm2DecryptRequest(AbstractModel):
 
     @property
     def Ciphertext(self):
+        """使用PublicKey加密的密文，Base64编码，原始密文格式需要为C1C3C2_ASN1。原始密文长度不能超过256字节。
+        :rtype: str
+        """
         return self._Ciphertext
 
     @Ciphertext.setter
@@ -292,6 +328,9 @@ class AsymmetricSm2DecryptResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK的唯一标识
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -300,6 +339,9 @@ class AsymmetricSm2DecryptResponse(AbstractModel):
 
     @property
     def Plaintext(self):
+        """解密后的明文，base64编码
+        :rtype: str
+        """
         return self._Plaintext
 
     @Plaintext.setter
@@ -308,6 +350,9 @@ class AsymmetricSm2DecryptResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -341,6 +386,9 @@ class BindCloudResourceRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """cmk的ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -349,6 +397,9 @@ class BindCloudResourceRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """云产品的唯一性标识符
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -357,6 +408,9 @@ class BindCloudResourceRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源/实例ID，由调用方根据自己的云产品特征来定义，以字符串形式做存储。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -392,6 +446,9 @@ class BindCloudResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -417,6 +474,9 @@ class CancelKeyArchiveRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK唯一标识符
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -450,6 +510,9 @@ class CancelKeyArchiveResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -475,6 +538,9 @@ class CancelKeyDeletionRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """需要被取消删除的CMK的唯一标志
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -511,6 +577,9 @@ class CancelKeyDeletionResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """唯一标志被取消删除的CMK。
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -519,6 +588,9 @@ class CancelKeyDeletionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -560,6 +632,9 @@ class CreateKeyRequest(AbstractModel):
 
     @property
     def Alias(self):
+        """作为密钥更容易辨识，更容易被人看懂的别名， 不可为空，1-60个字母数字 - _ 的组合，首字符必须为字母或者数字。以 kms- 作为前缀的用于云产品使用，Alias 不可重复。
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -568,6 +643,9 @@ class CreateKeyRequest(AbstractModel):
 
     @property
     def Description(self):
+        """CMK 的描述，最大1024字节
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -576,6 +654,9 @@ class CreateKeyRequest(AbstractModel):
 
     @property
     def KeyUsage(self):
+        """指定key的用途，默认为  "ENCRYPT_DECRYPT" 表示创建对称加解密密钥，其它支持用途 “ASYMMETRIC_DECRYPT_RSA_2048” 表示创建用于加解密的RSA2048非对称密钥，“ASYMMETRIC_DECRYPT_SM2” 表示创建用于加解密的SM2非对称密钥，“ASYMMETRIC_SIGN_VERIFY_SM2” 表示创建用于签名验签的SM2非对称密钥，“ASYMMETRIC_SIGN_VERIFY_ECC” 表示创建用于签名验签的ECC非对称密钥，“ASYMMETRIC_SIGN_VERIFY_RSA_2048” 表示创建用于签名验签的RSA_2048非对称密钥，“ASYMMETRIC_SIGN_VERIFY_ECDSA384”表示创建用于签名验签的 ECDSA384 非对称秘钥。完整的秘钥用途与算法支持列表可通过 ListAlgorithms 接口获取。
+        :rtype: str
+        """
         return self._KeyUsage
 
     @KeyUsage.setter
@@ -584,6 +665,9 @@ class CreateKeyRequest(AbstractModel):
 
     @property
     def Type(self):
+        """指定key类型，默认为1，1表示默认类型，由KMS创建CMK密钥，2 表示EXTERNAL 类型，该类型需要用户导入密钥材料，参考 GetParametersForImport 和 ImportKeyMaterial 接口
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -592,6 +676,9 @@ class CreateKeyRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -600,6 +687,9 @@ class CreateKeyRequest(AbstractModel):
 
     @property
     def HsmClusterId(self):
+        """KMS 高级版对应的 HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）。
+        :rtype: str
+        """
         return self._HsmClusterId
 
     @HsmClusterId.setter
@@ -670,6 +760,9 @@ class CreateKeyResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK的全局唯一标识符
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -678,6 +771,9 @@ class CreateKeyResponse(AbstractModel):
 
     @property
     def Alias(self):
+        """作为密钥更容易辨识，更容易被人看懂的别名
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -686,6 +782,9 @@ class CreateKeyResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """密钥创建时间，unix时间戳
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -694,6 +793,9 @@ class CreateKeyResponse(AbstractModel):
 
     @property
     def Description(self):
+        """CMK的描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -702,6 +804,9 @@ class CreateKeyResponse(AbstractModel):
 
     @property
     def KeyState(self):
+        """CMK的状态
+        :rtype: str
+        """
         return self._KeyState
 
     @KeyState.setter
@@ -710,6 +815,9 @@ class CreateKeyResponse(AbstractModel):
 
     @property
     def KeyUsage(self):
+        """CMK的用途
+        :rtype: str
+        """
         return self._KeyUsage
 
     @KeyUsage.setter
@@ -718,6 +826,9 @@ class CreateKeyResponse(AbstractModel):
 
     @property
     def TagCode(self):
+        """标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+        :rtype: int
+        """
         return self._TagCode
 
     @TagCode.setter
@@ -726,6 +837,9 @@ class CreateKeyResponse(AbstractModel):
 
     @property
     def TagMsg(self):
+        """标签操作的返回信息
+        :rtype: str
+        """
         return self._TagMsg
 
     @TagMsg.setter
@@ -734,6 +848,9 @@ class CreateKeyResponse(AbstractModel):
 
     @property
     def HsmClusterId(self):
+        """HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
+        :rtype: str
+        """
         return self._HsmClusterId
 
     @HsmClusterId.setter
@@ -742,6 +859,9 @@ class CreateKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -785,6 +905,9 @@ class CreateWhiteBoxKeyRequest(AbstractModel):
 
     @property
     def Alias(self):
+        """作为密钥更容易辨识，更容易被人看懂的别名， 不可为空，1-60个字母数字 - _ 的组合，首字符必须为字母或者数字。Alias不可重复。
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -793,6 +916,9 @@ class CreateWhiteBoxKeyRequest(AbstractModel):
 
     @property
     def Algorithm(self):
+        """创建密钥所有的算法类型，支持的取值：AES_256,SM4
+        :rtype: str
+        """
         return self._Algorithm
 
     @Algorithm.setter
@@ -801,6 +927,9 @@ class CreateWhiteBoxKeyRequest(AbstractModel):
 
     @property
     def Description(self):
+        """密钥的描述，最大1024字节
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -809,6 +938,9 @@ class CreateWhiteBoxKeyRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -865,6 +997,9 @@ class CreateWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def EncryptKey(self):
+        """用于加密的密钥，base64编码
+        :rtype: str
+        """
         return self._EncryptKey
 
     @EncryptKey.setter
@@ -873,6 +1008,9 @@ class CreateWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def DecryptKey(self):
+        """用于解密的密钥，base64编码
+        :rtype: str
+        """
         return self._DecryptKey
 
     @DecryptKey.setter
@@ -881,6 +1019,9 @@ class CreateWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """白盒密钥的全局唯一标识符
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -889,6 +1030,9 @@ class CreateWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def TagCode(self):
+        """标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+        :rtype: int
+        """
         return self._TagCode
 
     @TagCode.setter
@@ -897,6 +1041,9 @@ class CreateWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def TagMsg(self):
+        """标签操作的返回信息
+        :rtype: str
+        """
         return self._TagMsg
 
     @TagMsg.setter
@@ -905,6 +1052,9 @@ class CreateWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -944,6 +1094,9 @@ class DecryptRequest(AbstractModel):
 
     @property
     def CiphertextBlob(self):
+        """待解密的密文数据
+        :rtype: str
+        """
         return self._CiphertextBlob
 
     @CiphertextBlob.setter
@@ -952,6 +1105,9 @@ class DecryptRequest(AbstractModel):
 
     @property
     def EncryptionContext(self):
+        """key/value对的json字符串，如果Encrypt指定了该参数，则在调用Decrypt API时需要提供同样的参数，最大支持1024字符
+        :rtype: str
+        """
         return self._EncryptionContext
 
     @EncryptionContext.setter
@@ -960,6 +1116,9 @@ class DecryptRequest(AbstractModel):
 
     @property
     def EncryptionPublicKey(self):
+        """PEM 格式公钥字符串，支持 RSA2048 和 SM2 公钥，用于对返回数据中的 Plaintext 值进行加密。若为空，则不对 Plaintext 值加密。
+        :rtype: str
+        """
         return self._EncryptionPublicKey
 
     @EncryptionPublicKey.setter
@@ -968,6 +1127,9 @@ class DecryptRequest(AbstractModel):
 
     @property
     def EncryptionAlgorithm(self):
+        """非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（以 C1C3C2 格式返回密文），SM2_C1C3C2_ASN1 （以 C1C3C2 ASN1 格式返回密文），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
+        :rtype: str
+        """
         return self._EncryptionAlgorithm
 
     @EncryptionAlgorithm.setter
@@ -1011,6 +1173,9 @@ class DecryptResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK的全局唯一标识
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -1019,6 +1184,10 @@ class DecryptResponse(AbstractModel):
 
     @property
     def Plaintext(self):
+        """若调用时未提供 EncryptionPublicKey，该字段值为 Base64 编码的明文，需进行 Base64 解码以获取明文。
+若调用时提供了 EncryptionPublicKey，则该字段值为使用 EncryptionPublicKey 公钥进行非对称加密后的 Base64 编码的密文。需在 Base64 解码后，使用用户上传的公钥对应的私钥进行进一步解密，以获取明文。
+        :rtype: str
+        """
         return self._Plaintext
 
     @Plaintext.setter
@@ -1027,6 +1196,9 @@ class DecryptResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1054,6 +1226,9 @@ class DeleteImportedKeyMaterialRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """指定需要删除密钥材料的EXTERNAL CMK。
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -1087,6 +1262,9 @@ class DeleteImportedKeyMaterialResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1112,6 +1290,9 @@ class DeleteWhiteBoxKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """白盒密钥的全局唯一标识符
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -1145,6 +1326,9 @@ class DeleteWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1170,6 +1354,9 @@ class DescribeKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK全局唯一标识符
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -1206,6 +1393,9 @@ class DescribeKeyResponse(AbstractModel):
 
     @property
     def KeyMetadata(self):
+        """密钥属性信息
+        :rtype: :class:`tencentcloud.kms.v20190118.models.KeyMetadata`
+        """
         return self._KeyMetadata
 
     @KeyMetadata.setter
@@ -1214,6 +1404,9 @@ class DescribeKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1242,6 +1435,9 @@ class DescribeKeysRequest(AbstractModel):
 
     @property
     def KeyIds(self):
+        """查询CMK的ID列表，批量查询一次最多支持100个KeyId
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -1278,6 +1474,9 @@ class DescribeKeysResponse(AbstractModel):
 
     @property
     def KeyMetadatas(self):
+        """返回的属性信息列表
+        :rtype: list of KeyMetadata
+        """
         return self._KeyMetadatas
 
     @KeyMetadatas.setter
@@ -1286,6 +1485,9 @@ class DescribeKeysResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1317,6 +1519,9 @@ class DescribeWhiteBoxDecryptKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """白盒密钥的全局唯一标识符
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -1353,6 +1558,9 @@ class DescribeWhiteBoxDecryptKeyResponse(AbstractModel):
 
     @property
     def DecryptKey(self):
+        """白盒解密密钥，base64编码
+        :rtype: str
+        """
         return self._DecryptKey
 
     @DecryptKey.setter
@@ -1361,6 +1569,9 @@ class DescribeWhiteBoxDecryptKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1387,6 +1598,9 @@ class DescribeWhiteBoxDeviceFingerprintsRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """白盒密钥ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -1423,6 +1637,9 @@ class DescribeWhiteBoxDeviceFingerprintsResponse(AbstractModel):
 
     @property
     def DeviceFingerprints(self):
+        """设备指纹列表
+        :rtype: list of DeviceFingerprint
+        """
         return self._DeviceFingerprints
 
     @DeviceFingerprints.setter
@@ -1431,6 +1648,9 @@ class DescribeWhiteBoxDeviceFingerprintsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1471,6 +1691,9 @@ class DescribeWhiteBoxKeyDetailsRequest(AbstractModel):
 
     @property
     def KeyStatus(self):
+        """过滤条件：密钥的状态，0：disabled，1：enabled
+        :rtype: int
+        """
         return self._KeyStatus
 
     @KeyStatus.setter
@@ -1479,6 +1702,9 @@ class DescribeWhiteBoxKeyDetailsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1487,6 +1713,9 @@ class DescribeWhiteBoxKeyDetailsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """含义跟 SQL 查询的 Limit 一致，表示本次最多获取 Limit 个元素。缺省值为0, 表示不分页
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1495,6 +1724,9 @@ class DescribeWhiteBoxKeyDetailsRequest(AbstractModel):
 
     @property
     def TagFilters(self):
+        """标签过滤条件
+        :rtype: list of TagFilter
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -1542,6 +1774,9 @@ class DescribeWhiteBoxKeyDetailsResponse(AbstractModel):
 
     @property
     def KeyInfos(self):
+        """白盒密钥信息列表。
+        :rtype: list of WhiteboxKeyInfo
+        """
         return self._KeyInfos
 
     @KeyInfos.setter
@@ -1550,6 +1785,9 @@ class DescribeWhiteBoxKeyDetailsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """白盒密钥总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1558,6 +1796,9 @@ class DescribeWhiteBoxKeyDetailsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1590,6 +1831,9 @@ class DescribeWhiteBoxKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """白盒密钥的全局唯一标识符
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -1626,6 +1870,9 @@ class DescribeWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def KeyInfo(self):
+        """白盒密钥信息
+        :rtype: :class:`tencentcloud.kms.v20190118.models.WhiteboxKeyInfo`
+        """
         return self._KeyInfo
 
     @KeyInfo.setter
@@ -1634,6 +1881,9 @@ class DescribeWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1671,6 +1921,9 @@ class DescribeWhiteBoxServiceStatusResponse(AbstractModel):
 
     @property
     def ServiceEnabled(self):
+        """用户的白盒密钥服务是否可用
+        :rtype: bool
+        """
         return self._ServiceEnabled
 
     @ServiceEnabled.setter
@@ -1679,6 +1932,9 @@ class DescribeWhiteBoxServiceStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1708,6 +1964,9 @@ class DeviceFingerprint(AbstractModel):
 
     @property
     def Identity(self):
+        """指纹信息，由设备指纹采集工具采集获得，格式满足正则表达式：^[0-9a-f]{8}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{16}$
+        :rtype: str
+        """
         return self._Identity
 
     @Identity.setter
@@ -1716,6 +1975,9 @@ class DeviceFingerprint(AbstractModel):
 
     @property
     def Description(self):
+        """描述信息，如：IP，设备名称等，最大1024字节
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1750,6 +2012,9 @@ class DisableKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK唯一标识符
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -1783,6 +2048,9 @@ class DisableKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1808,6 +2076,9 @@ class DisableKeyRotationRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK唯一标识符
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -1841,6 +2112,9 @@ class DisableKeyRotationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1866,6 +2140,9 @@ class DisableKeysRequest(AbstractModel):
 
     @property
     def KeyIds(self):
+        """需要批量禁用的CMK Id 列表，CMK数量最大支持100
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -1899,6 +2176,9 @@ class DisableKeysResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1924,6 +2204,9 @@ class DisableWhiteBoxKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """白盒密钥的全局唯一标识符
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -1957,6 +2240,9 @@ class DisableWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1982,6 +2268,9 @@ class DisableWhiteBoxKeysRequest(AbstractModel):
 
     @property
     def KeyIds(self):
+        """白盒密钥的全局唯一标识符列表。注意：要确保所有提供的KeyId是格式有效的，没有重复，个数不超过50个，并且都是有效存在的。
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -2015,6 +2304,9 @@ class DisableWhiteBoxKeysResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2040,6 +2332,9 @@ class EnableKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK唯一标识符
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2073,6 +2368,9 @@ class EnableKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2101,6 +2399,9 @@ class EnableKeyRotationRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK唯一标识符
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2109,6 +2410,9 @@ class EnableKeyRotationRequest(AbstractModel):
 
     @property
     def RotateDays(self):
+        """密钥轮转周期，单位天，允许范围 7 ~ 365，默认值 365。
+        :rtype: int
+        """
         return self._RotateDays
 
     @RotateDays.setter
@@ -2143,6 +2447,9 @@ class EnableKeyRotationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2168,6 +2475,9 @@ class EnableKeysRequest(AbstractModel):
 
     @property
     def KeyIds(self):
+        """需要批量启用的CMK Id 列表， CMK数量最大支持100
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -2201,6 +2511,9 @@ class EnableKeysResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2226,6 +2539,9 @@ class EnableWhiteBoxKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """白盒密钥的全局唯一标识符
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2259,6 +2575,9 @@ class EnableWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2284,6 +2603,9 @@ class EnableWhiteBoxKeysRequest(AbstractModel):
 
     @property
     def KeyIds(self):
+        """白盒密钥的全局唯一标识符列表。注意：要确保所有提供的KeyId是格式有效的，没有重复，个数不超过50个，并且都是有效存在的。
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -2317,6 +2639,9 @@ class EnableWhiteBoxKeysResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2348,6 +2673,9 @@ class EncryptByWhiteBoxRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """白盒密钥的全局唯一标识符
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2356,6 +2684,9 @@ class EncryptByWhiteBoxRequest(AbstractModel):
 
     @property
     def PlainText(self):
+        """待加密的文本， base64编码，文本的原始长度最大不超过4KB
+        :rtype: str
+        """
         return self._PlainText
 
     @PlainText.setter
@@ -2364,6 +2695,9 @@ class EncryptByWhiteBoxRequest(AbstractModel):
 
     @property
     def InitializationVector(self):
+        """初始化向量，大小为 16 Bytes，加密算法会使用到, base64编码；如果不传，则由后端服务随机生成。用户需要自行保存该值，作为解密的参数。
+        :rtype: str
+        """
         return self._InitializationVector
 
     @InitializationVector.setter
@@ -2405,6 +2739,9 @@ class EncryptByWhiteBoxResponse(AbstractModel):
 
     @property
     def InitializationVector(self):
+        """初始化向量，加密算法会使用到, base64编码。如果由调用方在入参中传入，则原样返回。如果调用方没有传入，则后端服务随机生成，并返回
+        :rtype: str
+        """
         return self._InitializationVector
 
     @InitializationVector.setter
@@ -2413,6 +2750,9 @@ class EncryptByWhiteBoxResponse(AbstractModel):
 
     @property
     def CipherText(self):
+        """加密后的密文，base64编码
+        :rtype: str
+        """
         return self._CipherText
 
     @CipherText.setter
@@ -2421,6 +2761,9 @@ class EncryptByWhiteBoxResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2454,6 +2797,9 @@ class EncryptRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """调用CreateKey生成的CMK全局唯一标识符
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2462,6 +2808,9 @@ class EncryptRequest(AbstractModel):
 
     @property
     def Plaintext(self):
+        """被加密的明文数据，该字段必须使用base64编码，原文最大长度支持4K
+        :rtype: str
+        """
         return self._Plaintext
 
     @Plaintext.setter
@@ -2470,6 +2819,9 @@ class EncryptRequest(AbstractModel):
 
     @property
     def EncryptionContext(self):
+        """key/value对的json字符串，如果指定了该参数，则在调用Decrypt API时需要提供同样的参数，最大支持1024个字符
+        :rtype: str
+        """
         return self._EncryptionContext
 
     @EncryptionContext.setter
@@ -2511,6 +2863,9 @@ class EncryptResponse(AbstractModel):
 
     @property
     def CiphertextBlob(self):
+        """加密后的密文，base64编码。注意：本字段中打包了密文和密钥的相关信息，不是对明文的直接加密结果，只有将该字段作为Decrypt接口的输入参数，才可以解密出原文。
+        :rtype: str
+        """
         return self._CiphertextBlob
 
     @CiphertextBlob.setter
@@ -2519,6 +2874,9 @@ class EncryptResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """加密使用的CMK的全局唯一标识
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2527,6 +2885,9 @@ class EncryptResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2569,6 +2930,9 @@ class GenerateDataKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK全局唯一标识符
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2577,6 +2941,9 @@ class GenerateDataKeyRequest(AbstractModel):
 
     @property
     def KeySpec(self):
+        """指定生成Datakey的加密算法以及Datakey大小，AES_128或者AES_256。KeySpec 和 NumberOfBytes 必须指定一个
+        :rtype: str
+        """
         return self._KeySpec
 
     @KeySpec.setter
@@ -2585,6 +2952,9 @@ class GenerateDataKeyRequest(AbstractModel):
 
     @property
     def NumberOfBytes(self):
+        """生成的DataKey的长度，同时指定NumberOfBytes和KeySpec时，以NumberOfBytes为准。最小值为1， 最大值为1024。KeySpec 和 NumberOfBytes 必须指定一个
+        :rtype: int
+        """
         return self._NumberOfBytes
 
     @NumberOfBytes.setter
@@ -2593,6 +2963,9 @@ class GenerateDataKeyRequest(AbstractModel):
 
     @property
     def EncryptionContext(self):
+        """key/value对的json字符串，如果使用该字段，则返回的DataKey在解密时需要填入相同的字符串
+        :rtype: str
+        """
         return self._EncryptionContext
 
     @EncryptionContext.setter
@@ -2601,6 +2974,9 @@ class GenerateDataKeyRequest(AbstractModel):
 
     @property
     def EncryptionPublicKey(self):
+        """PEM 格式公钥字符串，支持 RSA2048 和 SM2 公钥，用于对返回数据中的 Plaintext 值进行加密。若为空，则不对 Plaintext 值加密。
+        :rtype: str
+        """
         return self._EncryptionPublicKey
 
     @EncryptionPublicKey.setter
@@ -2609,6 +2985,9 @@ class GenerateDataKeyRequest(AbstractModel):
 
     @property
     def EncryptionAlgorithm(self):
+        """非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（以 C1C3C2 格式返回密文），SM2_C1C3C2_ASN1 （以 C1C3C2 ASN1 格式返回密文），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
+        :rtype: str
+        """
         return self._EncryptionAlgorithm
 
     @EncryptionAlgorithm.setter
@@ -2657,6 +3036,9 @@ class GenerateDataKeyResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK的全局唯一标识
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2665,6 +3047,10 @@ class GenerateDataKeyResponse(AbstractModel):
 
     @property
     def Plaintext(self):
+        """若调用时未提供 EncryptionPublicKey，该字段值为生成的数据密钥 DataKey 的 Base64 编码的明文，需进行 Base64 解码以获取 DataKey 明文。
+若调用时提供了 EncryptionPublicKey，则该字段值为使用 EncryptionPublicKey 公钥进行非对称加密后的 Base64 编码的密文。需在 Base64 解码后，使用用户上传的公钥对应的私钥进行进一步解密，以获取 DataKey 明文。
+        :rtype: str
+        """
         return self._Plaintext
 
     @Plaintext.setter
@@ -2673,6 +3059,9 @@ class GenerateDataKeyResponse(AbstractModel):
 
     @property
     def CiphertextBlob(self):
+        """数据密钥DataKey加密后的密文，用户需要自行保存该密文，KMS不托管用户的数据密钥。可以通过Decrypt接口从CiphertextBlob中获取数据密钥DataKey明文
+        :rtype: str
+        """
         return self._CiphertextBlob
 
     @CiphertextBlob.setter
@@ -2681,6 +3070,9 @@ class GenerateDataKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2709,6 +3101,9 @@ class GenerateRandomRequest(AbstractModel):
 
     @property
     def NumberOfBytes(self):
+        """生成的随机数的长度。最小值为1， 最大值为1024。
+        :rtype: int
+        """
         return self._NumberOfBytes
 
     @NumberOfBytes.setter
@@ -2745,6 +3140,9 @@ class GenerateRandomResponse(AbstractModel):
 
     @property
     def Plaintext(self):
+        """生成的随机数的明文，该明文使用base64编码，用户需要使用base64解码得到明文。
+        :rtype: str
+        """
         return self._Plaintext
 
     @Plaintext.setter
@@ -2753,6 +3151,9 @@ class GenerateRandomResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2779,6 +3180,9 @@ class GetKeyRotationStatusRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK唯一标识符
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2815,6 +3219,9 @@ class GetKeyRotationStatusResponse(AbstractModel):
 
     @property
     def KeyRotationEnabled(self):
+        """密钥轮换是否开启
+        :rtype: bool
+        """
         return self._KeyRotationEnabled
 
     @KeyRotationEnabled.setter
@@ -2823,6 +3230,9 @@ class GetKeyRotationStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2855,6 +3265,9 @@ class GetParametersForImportRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK的唯一标识，获取密钥参数的CMK必须是EXTERNAL类型，即在CreateKey时指定Type=2 类型的CMK。
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2863,6 +3276,9 @@ class GetParametersForImportRequest(AbstractModel):
 
     @property
     def WrappingAlgorithm(self):
+        """指定加密密钥材料的算法，目前支持RSAES_PKCS1_V1_5、RSAES_OAEP_SHA_1、RSAES_OAEP_SHA_256
+        :rtype: str
+        """
         return self._WrappingAlgorithm
 
     @WrappingAlgorithm.setter
@@ -2871,6 +3287,9 @@ class GetParametersForImportRequest(AbstractModel):
 
     @property
     def WrappingKeySpec(self):
+        """指定加密密钥材料的类型，目前只支持RSA_2048
+        :rtype: str
+        """
         return self._WrappingKeySpec
 
     @WrappingKeySpec.setter
@@ -2918,6 +3337,9 @@ class GetParametersForImportResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK的唯一标识，用于指定目标导入密钥材料的CMK。
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2926,6 +3348,9 @@ class GetParametersForImportResponse(AbstractModel):
 
     @property
     def ImportToken(self):
+        """导入密钥材料需要的token，用于作为 ImportKeyMaterial 的参数。
+        :rtype: str
+        """
         return self._ImportToken
 
     @ImportToken.setter
@@ -2934,6 +3359,9 @@ class GetParametersForImportResponse(AbstractModel):
 
     @property
     def PublicKey(self):
+        """用于加密密钥材料的RSA公钥，base64编码。使用PublicKey base64解码后的公钥将导入密钥进行加密后作为 ImportKeyMaterial 的参数。
+        :rtype: str
+        """
         return self._PublicKey
 
     @PublicKey.setter
@@ -2942,6 +3370,9 @@ class GetParametersForImportResponse(AbstractModel):
 
     @property
     def ParametersValidTo(self):
+        """该导出token和公钥的有效期，超过该时间后无法导入，需要重新调用GetParametersForImport获取。
+        :rtype: int
+        """
         return self._ParametersValidTo
 
     @ParametersValidTo.setter
@@ -2950,6 +3381,9 @@ class GetParametersForImportResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2979,6 +3413,9 @@ class GetPublicKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK的唯一标识。
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -3021,6 +3458,9 @@ class GetPublicKeyResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK的唯一标识。
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -3029,6 +3469,9 @@ class GetPublicKeyResponse(AbstractModel):
 
     @property
     def PublicKey(self):
+        """经过base64编码的公钥内容。
+        :rtype: str
+        """
         return self._PublicKey
 
     @PublicKey.setter
@@ -3037,6 +3480,9 @@ class GetPublicKeyResponse(AbstractModel):
 
     @property
     def PublicKeyPem(self):
+        """PEM格式的公钥内容。
+        :rtype: str
+        """
         return self._PublicKeyPem
 
     @PublicKeyPem.setter
@@ -3045,6 +3491,9 @@ class GetPublicKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3082,6 +3531,9 @@ class GetRegionsResponse(AbstractModel):
 
     @property
     def Regions(self):
+        """可用region列表
+        :rtype: list of str
+        """
         return self._Regions
 
     @Regions.setter
@@ -3090,6 +3542,9 @@ class GetRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3149,6 +3604,9 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def ServiceEnabled(self):
+        """KMS服务是否开通， true 表示已开通
+        :rtype: bool
+        """
         return self._ServiceEnabled
 
     @ServiceEnabled.setter
@@ -3157,6 +3615,9 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def InvalidType(self):
+        """服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放
+        :rtype: int
+        """
         return self._InvalidType
 
     @InvalidType.setter
@@ -3165,6 +3626,9 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def UserLevel(self):
+        """0-普通版，1-旗舰版
+        :rtype: int
+        """
         return self._UserLevel
 
     @UserLevel.setter
@@ -3173,6 +3637,9 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def ProExpireTime(self):
+        """旗舰版到期时间（Epoch Unix Timestamp）。
+        :rtype: int
+        """
         return self._ProExpireTime
 
     @ProExpireTime.setter
@@ -3181,6 +3648,9 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def ProRenewFlag(self):
+        """旗舰版是否自动续费：0-不自动续费，1-自动续费
+        :rtype: int
+        """
         return self._ProRenewFlag
 
     @ProRenewFlag.setter
@@ -3189,6 +3659,9 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def ProResourceId(self):
+        """旗舰版购买记录的唯一性标识。如果为开通旗舰版，则返回值为空
+        :rtype: str
+        """
         return self._ProResourceId
 
     @ProResourceId.setter
@@ -3197,6 +3670,9 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def ExclusiveVSMEnabled(self):
+        """是否开通 KMS 托管版
+        :rtype: bool
+        """
         return self._ExclusiveVSMEnabled
 
     @ExclusiveVSMEnabled.setter
@@ -3205,6 +3681,9 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def ExclusiveHSMEnabled(self):
+        """是否开通 KMS 独享版
+        :rtype: bool
+        """
         return self._ExclusiveHSMEnabled
 
     @ExclusiveHSMEnabled.setter
@@ -3213,6 +3692,9 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def SubscriptionInfo(self):
+        """KMS 订阅信息。
+        :rtype: str
+        """
         return self._SubscriptionInfo
 
     @SubscriptionInfo.setter
@@ -3221,6 +3703,9 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3264,6 +3749,9 @@ class ImportKeyMaterialRequest(AbstractModel):
 
     @property
     def EncryptedKeyMaterial(self):
+        """使用GetParametersForImport 返回的PublicKey加密后的密钥材料base64编码。对于国密版本region的KMS，导入的密钥材料长度要求为 128 bit，FIPS版本region的KMS， 导入的密钥材料长度要求为 256 bit。
+        :rtype: str
+        """
         return self._EncryptedKeyMaterial
 
     @EncryptedKeyMaterial.setter
@@ -3272,6 +3760,9 @@ class ImportKeyMaterialRequest(AbstractModel):
 
     @property
     def ImportToken(self):
+        """通过调用GetParametersForImport获得的导入令牌。
+        :rtype: str
+        """
         return self._ImportToken
 
     @ImportToken.setter
@@ -3280,6 +3771,9 @@ class ImportKeyMaterialRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """指定导入密钥材料的CMK，需要和GetParametersForImport 指定的CMK相同。
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -3288,6 +3782,9 @@ class ImportKeyMaterialRequest(AbstractModel):
 
     @property
     def ValidTo(self):
+        """密钥材料过期时间 unix 时间戳，不指定或者 0 表示密钥材料不会过期，若指定过期时间，需要大于当前时间点，最大支持 2147443200。
+        :rtype: int
+        """
         return self._ValidTo
 
     @ValidTo.setter
@@ -3324,6 +3821,9 @@ class ImportKeyMaterialResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3349,6 +3849,9 @@ class Key(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK的全局唯一标识。
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -3433,6 +3936,9 @@ class KeyMetadata(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK的全局唯一标识
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -3441,6 +3947,9 @@ class KeyMetadata(AbstractModel):
 
     @property
     def Alias(self):
+        """作为密钥更容易辨识，更容易被人看懂的别名
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -3449,6 +3958,9 @@ class KeyMetadata(AbstractModel):
 
     @property
     def CreateTime(self):
+        """密钥创建时间
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3457,6 +3969,9 @@ class KeyMetadata(AbstractModel):
 
     @property
     def Description(self):
+        """CMK的描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3465,6 +3980,9 @@ class KeyMetadata(AbstractModel):
 
     @property
     def KeyState(self):
+        """CMK的状态， 取值为：Enabled | Disabled | PendingDelete | PendingImport | Archived
+        :rtype: str
+        """
         return self._KeyState
 
     @KeyState.setter
@@ -3473,6 +3991,9 @@ class KeyMetadata(AbstractModel):
 
     @property
     def KeyUsage(self):
+        """CMK用途，取值为: ENCRYPT_DECRYPT | ASYMMETRIC_DECRYPT_RSA_2048 | ASYMMETRIC_DECRYPT_SM2 | ASYMMETRIC_SIGN_VERIFY_SM2 | ASYMMETRIC_SIGN_VERIFY_RSA_2048 | ASYMMETRIC_SIGN_VERIFY_ECC
+        :rtype: str
+        """
         return self._KeyUsage
 
     @KeyUsage.setter
@@ -3481,6 +4002,9 @@ class KeyMetadata(AbstractModel):
 
     @property
     def Type(self):
+        """CMK类型，2 表示符合FIPS标准，4表示符合国密标准
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -3489,6 +4013,9 @@ class KeyMetadata(AbstractModel):
 
     @property
     def CreatorUin(self):
+        """创建者
+        :rtype: int
+        """
         return self._CreatorUin
 
     @CreatorUin.setter
@@ -3497,6 +4024,9 @@ class KeyMetadata(AbstractModel):
 
     @property
     def KeyRotationEnabled(self):
+        """是否开启了密钥轮换功能
+        :rtype: bool
+        """
         return self._KeyRotationEnabled
 
     @KeyRotationEnabled.setter
@@ -3505,6 +4035,9 @@ class KeyMetadata(AbstractModel):
 
     @property
     def Owner(self):
+        """CMK的创建者，用户创建的为 user，授权各云产品自动创建的为对应的产品名
+        :rtype: str
+        """
         return self._Owner
 
     @Owner.setter
@@ -3513,6 +4046,9 @@ class KeyMetadata(AbstractModel):
 
     @property
     def NextRotateTime(self):
+        """在密钥轮换开启状态下，下次轮换的时间
+        :rtype: int
+        """
         return self._NextRotateTime
 
     @NextRotateTime.setter
@@ -3521,6 +4057,9 @@ class KeyMetadata(AbstractModel):
 
     @property
     def DeletionDate(self):
+        """计划删除的时间
+        :rtype: int
+        """
         return self._DeletionDate
 
     @DeletionDate.setter
@@ -3529,6 +4068,9 @@ class KeyMetadata(AbstractModel):
 
     @property
     def Origin(self):
+        """CMK 密钥材料类型，由KMS创建的为： TENCENT_KMS， 由用户导入的类型为：EXTERNAL
+        :rtype: str
+        """
         return self._Origin
 
     @Origin.setter
@@ -3537,6 +4079,9 @@ class KeyMetadata(AbstractModel):
 
     @property
     def ValidTo(self):
+        """在Origin为  EXTERNAL 时有效，表示密钥材料的有效日期， 0 表示不过期
+        :rtype: int
+        """
         return self._ValidTo
 
     @ValidTo.setter
@@ -3545,6 +4090,9 @@ class KeyMetadata(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID，格式：creatorUin/$creatorUin/$keyId
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -3553,6 +4101,9 @@ class KeyMetadata(AbstractModel):
 
     @property
     def HsmClusterId(self):
+        """HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
+        :rtype: str
+        """
         return self._HsmClusterId
 
     @HsmClusterId.setter
@@ -3561,6 +4112,9 @@ class KeyMetadata(AbstractModel):
 
     @property
     def RotateDays(self):
+        """密钥轮转周期（天）
+        :rtype: int
+        """
         return self._RotateDays
 
     @RotateDays.setter
@@ -3569,6 +4123,9 @@ class KeyMetadata(AbstractModel):
 
     @property
     def LastRotateTime(self):
+        """上次乱转时间（Unix timestamp）
+        :rtype: int
+        """
         return self._LastRotateTime
 
     @LastRotateTime.setter
@@ -3634,6 +4191,9 @@ class ListAlgorithmsResponse(AbstractModel):
 
     @property
     def SymmetricAlgorithms(self):
+        """本地区支持的对称加密算法
+        :rtype: list of AlgorithmInfo
+        """
         return self._SymmetricAlgorithms
 
     @SymmetricAlgorithms.setter
@@ -3642,6 +4202,9 @@ class ListAlgorithmsResponse(AbstractModel):
 
     @property
     def AsymmetricAlgorithms(self):
+        """本地区支持的非对称加密算法
+        :rtype: list of AlgorithmInfo
+        """
         return self._AsymmetricAlgorithms
 
     @AsymmetricAlgorithms.setter
@@ -3650,6 +4213,9 @@ class ListAlgorithmsResponse(AbstractModel):
 
     @property
     def AsymmetricSignVerifyAlgorithms(self):
+        """本地区支持的非对称签名验签算法
+        :rtype: list of AlgorithmInfo
+        """
         return self._AsymmetricSignVerifyAlgorithms
 
     @AsymmetricSignVerifyAlgorithms.setter
@@ -3658,6 +4224,9 @@ class ListAlgorithmsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3728,6 +4297,9 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3736,6 +4308,9 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """含义跟 SQL 查询的 Limit 一致，表示本次最多获取 Limit 个元素。缺省值为10，最大值为200
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3744,6 +4319,9 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def Role(self):
+        """根据创建者角色筛选，默认 0 表示用户自己创建的cmk， 1 表示授权其它云产品自动创建的cmk
+        :rtype: int
+        """
         return self._Role
 
     @Role.setter
@@ -3752,6 +4330,9 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def OrderType(self):
+        """根据CMK创建时间排序， 0 表示按照降序排序，1表示按照升序排序
+        :rtype: int
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -3760,6 +4341,9 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def KeyState(self):
+        """根据CMK状态筛选， 0表示全部CMK， 1 表示仅查询Enabled CMK， 2 表示仅查询Disabled CMK，3 表示查询PendingDelete 状态的CMK(处于计划删除状态的Key)，4 表示查询 PendingImport 状态的CMK，5 表示查询 Archived 状态的 CMK
+        :rtype: int
+        """
         return self._KeyState
 
     @KeyState.setter
@@ -3768,6 +4352,9 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def SearchKeyAlias(self):
+        """根据KeyId或者Alias进行模糊匹配查询
+        :rtype: str
+        """
         return self._SearchKeyAlias
 
     @SearchKeyAlias.setter
@@ -3776,6 +4363,9 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def Origin(self):
+        """根据CMK类型筛选， "TENCENT_KMS" 表示筛选密钥材料由KMS创建的CMK， "EXTERNAL" 表示筛选密钥材料需要用户导入的 EXTERNAL类型CMK，"ALL" 或者不设置表示两种类型都查询，大小写敏感。
+        :rtype: str
+        """
         return self._Origin
 
     @Origin.setter
@@ -3784,6 +4374,9 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def KeyUsage(self):
+        """根据CMK的KeyUsage筛选，ALL表示筛选全部，可使用的参数为：ALL 或 ENCRYPT_DECRYPT 或 ASYMMETRIC_DECRYPT_RSA_2048 或 ASYMMETRIC_DECRYPT_SM2 或 ASYMMETRIC_SIGN_VERIFY_SM2 或 ASYMMETRIC_SIGN_VERIFY_RSA_2048 或 ASYMMETRIC_SIGN_VERIFY_ECC，为空则默认筛选ENCRYPT_DECRYPT类型
+        :rtype: str
+        """
         return self._KeyUsage
 
     @KeyUsage.setter
@@ -3792,6 +4385,9 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def TagFilters(self):
+        """标签过滤条件
+        :rtype: list of TagFilter
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -3800,6 +4396,9 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def HsmClusterId(self):
+        """KMS 高级版对应的 HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）。
+        :rtype: str
+        """
         return self._HsmClusterId
 
     @HsmClusterId.setter
@@ -3853,6 +4452,9 @@ class ListKeyDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """CMK的总数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3861,6 +4463,9 @@ class ListKeyDetailResponse(AbstractModel):
 
     @property
     def KeyMetadatas(self):
+        """返回的属性信息列表。
+        :rtype: list of KeyMetadata
+        """
         return self._KeyMetadatas
 
     @KeyMetadatas.setter
@@ -3869,6 +4474,9 @@ class ListKeyDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3910,6 +4518,9 @@ class ListKeysRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3918,6 +4529,9 @@ class ListKeysRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """含义跟 SQL 查询的 Limit 一致，表示本次获最多获取 Limit 个元素。缺省值为10，最大值为200
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3926,6 +4540,9 @@ class ListKeysRequest(AbstractModel):
 
     @property
     def Role(self):
+        """根据创建者角色筛选，默认 0 表示用户自己创建的cmk， 1 表示授权其它云产品自动创建的cmk
+        :rtype: int
+        """
         return self._Role
 
     @Role.setter
@@ -3934,6 +4551,9 @@ class ListKeysRequest(AbstractModel):
 
     @property
     def HsmClusterId(self):
+        """KMS 高级版对应的 HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）。
+        :rtype: str
+        """
         return self._HsmClusterId
 
     @HsmClusterId.setter
@@ -3976,6 +4596,9 @@ class ListKeysResponse(AbstractModel):
 
     @property
     def Keys(self):
+        """CMK列表数组
+        :rtype: list of Key
+        """
         return self._Keys
 
     @Keys.setter
@@ -3984,6 +4607,9 @@ class ListKeysResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """CMK的总数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3992,6 +4618,9 @@ class ListKeysResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4027,6 +4656,9 @@ class OverwriteWhiteBoxDeviceFingerprintsRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """白盒密钥ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4035,6 +4667,9 @@ class OverwriteWhiteBoxDeviceFingerprintsRequest(AbstractModel):
 
     @property
     def DeviceFingerprints(self):
+        """设备指纹列表，如果列表为空，则表示删除该密钥对应的所有指纹信息。列表最大长度不超过200。
+        :rtype: list of DeviceFingerprint
+        """
         return self._DeviceFingerprints
 
     @DeviceFingerprints.setter
@@ -4074,6 +4709,9 @@ class OverwriteWhiteBoxDeviceFingerprintsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4105,6 +4743,9 @@ class PostQuantumCryptoDecryptRequest(AbstractModel):
 
     @property
     def CiphertextBlob(self):
+        """待解密的密文数据
+        :rtype: str
+        """
         return self._CiphertextBlob
 
     @CiphertextBlob.setter
@@ -4113,6 +4754,9 @@ class PostQuantumCryptoDecryptRequest(AbstractModel):
 
     @property
     def EncryptionPublicKey(self):
+        """PEM 格式公钥字符串，支持 RSA2048 和 SM2 公钥，用于对返回数据中的 Plaintext 值进行加密。若为空，则不对 Plaintext 值加密。
+        :rtype: str
+        """
         return self._EncryptionPublicKey
 
     @EncryptionPublicKey.setter
@@ -4121,6 +4765,9 @@ class PostQuantumCryptoDecryptRequest(AbstractModel):
 
     @property
     def EncryptionAlgorithm(self):
+        """非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（以 C1C3C2 格式返回密文），SM2_C1C3C2_ASN1 （以 C1C3C2 ASN1 格式返回密文），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
+        :rtype: str
+        """
         return self._EncryptionAlgorithm
 
     @EncryptionAlgorithm.setter
@@ -4163,6 +4810,9 @@ class PostQuantumCryptoDecryptResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK的全局唯一标识
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4171,6 +4821,10 @@ class PostQuantumCryptoDecryptResponse(AbstractModel):
 
     @property
     def PlainText(self):
+        """若调用时未提供 EncryptionPublicKey，该字段值为 Base64 编码的明文，需进行 Base64 解码以获取明文。
+若调用时提供了 EncryptionPublicKey，则该字段值为使用 EncryptionPublicKey 公钥进行非对称加密后的 Base64 编码的密文。需在 Base64 解码后，使用用户上传的公钥对应的私钥进行进一步解密，以获取明文。
+        :rtype: str
+        """
         return self._PlainText
 
     @PlainText.setter
@@ -4179,6 +4833,9 @@ class PostQuantumCryptoDecryptResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4209,6 +4866,9 @@ class PostQuantumCryptoEncryptRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """调用CreateKey生成的CMK全局唯一标识符
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4217,6 +4877,9 @@ class PostQuantumCryptoEncryptRequest(AbstractModel):
 
     @property
     def PlainText(self):
+        """被加密的明文数据，该字段必须使用base64编码，原文最大长度支持4K
+        :rtype: str
+        """
         return self._PlainText
 
     @PlainText.setter
@@ -4257,6 +4920,9 @@ class PostQuantumCryptoEncryptResponse(AbstractModel):
 
     @property
     def CiphertextBlob(self):
+        """加密后的密文，base64编码。注意：本字段中打包了密文和密钥的相关信息，不是对明文的直接加密结果，只有将该字段作为PostQuantumCryptoDecrypt接口的输入参数，才可以解密出原文。
+        :rtype: str
+        """
         return self._CiphertextBlob
 
     @CiphertextBlob.setter
@@ -4265,6 +4931,9 @@ class PostQuantumCryptoEncryptResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """加密使用的CMK的全局唯一标识
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4273,6 +4942,9 @@ class PostQuantumCryptoEncryptResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4303,6 +4975,9 @@ class PostQuantumCryptoSignRequest(AbstractModel):
 
     @property
     def Message(self):
+        """Base64 编码的消息原文。消息原文的长度（Base64编码前的长度）不超过4096字节。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -4311,6 +4986,9 @@ class PostQuantumCryptoSignRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """密钥的唯一标识
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4348,6 +5026,9 @@ class PostQuantumCryptoSignResponse(AbstractModel):
 
     @property
     def Signature(self):
+        """签名值，Base64编码。可使用 PostQuantumCryptoVerify接口对签名值进行验证。
+        :rtype: str
+        """
         return self._Signature
 
     @Signature.setter
@@ -4356,6 +5037,9 @@ class PostQuantumCryptoSignResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4388,6 +5072,9 @@ class PostQuantumCryptoVerifyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """密钥的唯一标识
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4396,6 +5083,9 @@ class PostQuantumCryptoVerifyRequest(AbstractModel):
 
     @property
     def SignatureValue(self):
+        """签名值，通过调用KMS PostQuantumCryptoSign签名接口生成
+        :rtype: str
+        """
         return self._SignatureValue
 
     @SignatureValue.setter
@@ -4404,6 +5094,9 @@ class PostQuantumCryptoVerifyRequest(AbstractModel):
 
     @property
     def Message(self):
+        """Base64 编码的消息原文，消息原文的长度（Base64编码前的长度）不超过4096字节。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -4442,6 +5135,9 @@ class PostQuantumCryptoVerifyResponse(AbstractModel):
 
     @property
     def SignatureValid(self):
+        """签名是否有效。true：签名有效，false：签名无效。
+        :rtype: bool
+        """
         return self._SignatureValid
 
     @SignatureValid.setter
@@ -4450,6 +5146,9 @@ class PostQuantumCryptoVerifyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4485,6 +5184,9 @@ class ReEncryptRequest(AbstractModel):
 
     @property
     def CiphertextBlob(self):
+        """需要重新加密的密文
+        :rtype: str
+        """
         return self._CiphertextBlob
 
     @CiphertextBlob.setter
@@ -4493,6 +5195,9 @@ class ReEncryptRequest(AbstractModel):
 
     @property
     def DestinationKeyId(self):
+        """重新加密使用的CMK，如果为空，则使用密文原有的CMK重新加密（若密钥没有轮换则密文不会刷新）
+        :rtype: str
+        """
         return self._DestinationKeyId
 
     @DestinationKeyId.setter
@@ -4501,6 +5206,9 @@ class ReEncryptRequest(AbstractModel):
 
     @property
     def SourceEncryptionContext(self):
+        """CiphertextBlob 密文加密时使用的key/value对的json字符串。如果加密时未使用，则为空
+        :rtype: str
+        """
         return self._SourceEncryptionContext
 
     @SourceEncryptionContext.setter
@@ -4509,6 +5217,9 @@ class ReEncryptRequest(AbstractModel):
 
     @property
     def DestinationEncryptionContext(self):
+        """重新加密使用的key/value对的json字符串，如果使用该字段，则返回的新密文在解密时需要填入相同的字符串
+        :rtype: str
+        """
         return self._DestinationEncryptionContext
 
     @DestinationEncryptionContext.setter
@@ -4557,6 +5268,9 @@ class ReEncryptResponse(AbstractModel):
 
     @property
     def CiphertextBlob(self):
+        """重新加密后的密文
+        :rtype: str
+        """
         return self._CiphertextBlob
 
     @CiphertextBlob.setter
@@ -4565,6 +5279,9 @@ class ReEncryptResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """重新加密使用的CMK
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4573,6 +5290,9 @@ class ReEncryptResponse(AbstractModel):
 
     @property
     def SourceKeyId(self):
+        """重新加密前密文使用的CMK
+        :rtype: str
+        """
         return self._SourceKeyId
 
     @SourceKeyId.setter
@@ -4581,6 +5301,9 @@ class ReEncryptResponse(AbstractModel):
 
     @property
     def ReEncrypted(self):
+        """true表示密文已经重新加密。同一个CMK进行重加密，在密钥没有发生轮换的情况下不会进行实际重新加密操作，返回原密文
+        :rtype: bool
+        """
         return self._ReEncrypted
 
     @ReEncrypted.setter
@@ -4589,6 +5312,9 @@ class ReEncryptResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4621,6 +5347,9 @@ class ScheduleKeyDeletionRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK的唯一标志
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4629,6 +5358,9 @@ class ScheduleKeyDeletionRequest(AbstractModel):
 
     @property
     def PendingWindowInDays(self):
+        """计划删除时间区间[7,30]
+        :rtype: int
+        """
         return self._PendingWindowInDays
 
     @PendingWindowInDays.setter
@@ -4669,6 +5401,9 @@ class ScheduleKeyDeletionResponse(AbstractModel):
 
     @property
     def DeletionDate(self):
+        """计划删除执行时间
+        :rtype: int
+        """
         return self._DeletionDate
 
     @DeletionDate.setter
@@ -4677,6 +5412,9 @@ class ScheduleKeyDeletionResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """唯一标志被计划删除的CMK
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4685,6 +5423,9 @@ class ScheduleKeyDeletionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4721,6 +5462,9 @@ class SignByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def Algorithm(self):
+        """签名算法，支持的算法：SM2DSA，ECC_P256_R1，RSA_PSS_SHA_256，RSA_PKCS1_SHA_256 等。更多支持的算法可通过 ListAlgorithms 接口进行查询。
+        :rtype: str
+        """
         return self._Algorithm
 
     @Algorithm.setter
@@ -4729,6 +5473,9 @@ class SignByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def Message(self):
+        """消息原文或消息摘要。如果提供的是消息原文，则消息原文的长度（Base64编码前的长度）不超过4096字节。如果提供的是消息摘要，消息摘要长度（Base64编码前的长度）必须等于32字节
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -4737,6 +5484,9 @@ class SignByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """密钥的唯一标识
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4745,6 +5495,9 @@ class SignByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def MessageType(self):
+        """消息类型：RAW，DIGEST，如果不传，默认为RAW，表示消息原文。
+        :rtype: str
+        """
         return self._MessageType
 
     @MessageType.setter
@@ -4784,6 +5537,9 @@ class SignByAsymmetricKeyResponse(AbstractModel):
 
     @property
     def Signature(self):
+        """签名，Base64编码
+        :rtype: str
+        """
         return self._Signature
 
     @Signature.setter
@@ -4792,6 +5548,9 @@ class SignByAsymmetricKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4821,6 +5580,9 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -4829,6 +5591,9 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签值
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -4866,6 +5631,9 @@ class TagFilter(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签键
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -4874,6 +5642,9 @@ class TagFilter(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签值
+        :rtype: list of str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -4914,6 +5685,9 @@ class UnbindCloudResourceRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """cmk的ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4922,6 +5696,9 @@ class UnbindCloudResourceRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """云产品的唯一性标识符
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -4930,6 +5707,9 @@ class UnbindCloudResourceRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源/实例ID，由调用方根据自己的云产品特征来定义，以字符串形式做存储。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -4965,6 +5745,9 @@ class UnbindCloudResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4993,6 +5776,9 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def Alias(self):
+        """新的别名，1-60个字符或数字的组合
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -5001,6 +5787,9 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK的全局唯一标识符
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -5035,6 +5824,9 @@ class UpdateAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5063,6 +5855,9 @@ class UpdateKeyDescriptionRequest(AbstractModel):
 
     @property
     def Description(self):
+        """新的描述信息，最大支持1024字节
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -5071,6 +5866,9 @@ class UpdateKeyDescriptionRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """需要修改描述信息的CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -5105,6 +5903,9 @@ class UpdateKeyDescriptionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5142,6 +5943,9 @@ class VerifyByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """密钥的唯一标识
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -5150,6 +5954,9 @@ class VerifyByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def SignatureValue(self):
+        """签名值，通过调用KMS签名接口生成
+        :rtype: str
+        """
         return self._SignatureValue
 
     @SignatureValue.setter
@@ -5158,6 +5965,9 @@ class VerifyByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def Message(self):
+        """消息原文或消息摘要。如果提供的是消息原文，则消息原文的长度（Base64编码前的长度）不超过4096字节。如果提供的是消息摘要，则消息摘要长度（Base64编码前的长度）必须等于32字节
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -5166,6 +5976,9 @@ class VerifyByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def Algorithm(self):
+        """签名算法，支持的算法：SM2DSA，ECC_P256_R1，RSA_PSS_SHA_256，RSA_PKCS1_SHA_256 等。更多支持的算法可通过 ListAlgorithms 接口进行查询。
+        :rtype: str
+        """
         return self._Algorithm
 
     @Algorithm.setter
@@ -5174,6 +5987,9 @@ class VerifyByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def MessageType(self):
+        """消息类型：RAW，DIGEST，如果不传，默认为RAW，表示消息原文。
+        :rtype: str
+        """
         return self._MessageType
 
     @MessageType.setter
@@ -5214,6 +6030,9 @@ class VerifyByAsymmetricKeyResponse(AbstractModel):
 
     @property
     def SignatureValid(self):
+        """签名是否有效。true：签名有效，false：签名无效。
+        :rtype: bool
+        """
         return self._SignatureValid
 
     @SignatureValid.setter
@@ -5222,6 +6041,9 @@ class VerifyByAsymmetricKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5281,6 +6103,9 @@ class WhiteboxKeyInfo(AbstractModel):
 
     @property
     def KeyId(self):
+        """白盒密钥的全局唯一标识符
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -5289,6 +6114,9 @@ class WhiteboxKeyInfo(AbstractModel):
 
     @property
     def Alias(self):
+        """作为密钥更容易辨识，更容易被人看懂的别名， 不可为空，1-60个字母数字 - _ 的组合，首字符必须为字母或者数字. 不可重复
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -5297,6 +6125,9 @@ class WhiteboxKeyInfo(AbstractModel):
 
     @property
     def CreatorUin(self):
+        """创建者
+        :rtype: int
+        """
         return self._CreatorUin
 
     @CreatorUin.setter
@@ -5305,6 +6136,9 @@ class WhiteboxKeyInfo(AbstractModel):
 
     @property
     def Description(self):
+        """密钥的描述信息
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -5313,6 +6147,9 @@ class WhiteboxKeyInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """密钥创建时间，Unix时间戳
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -5321,6 +6158,9 @@ class WhiteboxKeyInfo(AbstractModel):
 
     @property
     def Status(self):
+        """白盒密钥的状态， 取值为：Enabled | Disabled
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -5329,6 +6169,9 @@ class WhiteboxKeyInfo(AbstractModel):
 
     @property
     def OwnerUin(self):
+        """创建者
+        :rtype: int
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -5337,6 +6180,9 @@ class WhiteboxKeyInfo(AbstractModel):
 
     @property
     def Algorithm(self):
+        """密钥所用的算法类型
+        :rtype: str
+        """
         return self._Algorithm
 
     @Algorithm.setter
@@ -5345,6 +6191,9 @@ class WhiteboxKeyInfo(AbstractModel):
 
     @property
     def EncryptKey(self):
+        """白盒加密密钥，base64编码
+        :rtype: str
+        """
         return self._EncryptKey
 
     @EncryptKey.setter
@@ -5353,6 +6202,9 @@ class WhiteboxKeyInfo(AbstractModel):
 
     @property
     def DecryptKey(self):
+        """白盒解密密钥，base64编码
+        :rtype: str
+        """
         return self._DecryptKey
 
     @DecryptKey.setter
@@ -5361,6 +6213,9 @@ class WhiteboxKeyInfo(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID，格式：creatorUin/$creatorUin/$keyId
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -5369,6 +6224,9 @@ class WhiteboxKeyInfo(AbstractModel):
 
     @property
     def DeviceFingerprintBind(self):
+        """是否有设备指纹与当前密钥绑定
+        :rtype: bool
+        """
         return self._DeviceFingerprintBind
 
     @DeviceFingerprintBind.setter

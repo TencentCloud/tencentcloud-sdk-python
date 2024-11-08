@@ -66,6 +66,9 @@ class AIAnalysisTemplateItem(AbstractModel):
 
     @property
     def Definition(self):
+        """智能分析模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -74,6 +77,9 @@ class AIAnalysisTemplateItem(AbstractModel):
 
     @property
     def Name(self):
+        """智能分析模板名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -82,6 +88,9 @@ class AIAnalysisTemplateItem(AbstractModel):
 
     @property
     def Comment(self):
+        """智能分析模板描述信息。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -90,6 +99,10 @@ class AIAnalysisTemplateItem(AbstractModel):
 
     @property
     def ClassificationConfigure(self):
+        """智能分类任务控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ClassificationConfigureInfo`
+        """
         return self._ClassificationConfigure
 
     @ClassificationConfigure.setter
@@ -98,6 +111,10 @@ class AIAnalysisTemplateItem(AbstractModel):
 
     @property
     def TagConfigure(self):
+        """智能标签任务控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TagConfigureInfo`
+        """
         return self._TagConfigure
 
     @TagConfigure.setter
@@ -106,6 +123,10 @@ class AIAnalysisTemplateItem(AbstractModel):
 
     @property
     def CoverConfigure(self):
+        """智能封面任务控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CoverConfigureInfo`
+        """
         return self._CoverConfigure
 
     @CoverConfigure.setter
@@ -114,6 +135,10 @@ class AIAnalysisTemplateItem(AbstractModel):
 
     @property
     def FrameTagConfigure(self):
+        """智能按帧标签任务控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FrameTagConfigureInfo`
+        """
         return self._FrameTagConfigure
 
     @FrameTagConfigure.setter
@@ -122,6 +147,9 @@ class AIAnalysisTemplateItem(AbstractModel):
 
     @property
     def CreateTime(self):
+        """模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -130,6 +158,9 @@ class AIAnalysisTemplateItem(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -138,6 +169,12 @@ class AIAnalysisTemplateItem(AbstractModel):
 
     @property
     def Type(self):
+        """模板类型，取值范围：
+* Preset：系统预置模板；
+* Custom：用户自定义模板。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -225,6 +262,9 @@ class AIRecognitionTemplateItem(AbstractModel):
 
     @property
     def Definition(self):
+        """视频内容识别模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -233,6 +273,9 @@ class AIRecognitionTemplateItem(AbstractModel):
 
     @property
     def Name(self):
+        """视频内容识别模板名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -241,6 +284,9 @@ class AIRecognitionTemplateItem(AbstractModel):
 
     @property
     def Comment(self):
+        """视频内容识别模板描述信息。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -249,6 +295,9 @@ class AIRecognitionTemplateItem(AbstractModel):
 
     @property
     def FaceConfigure(self):
+        """人脸识别控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FaceConfigureInfo`
+        """
         return self._FaceConfigure
 
     @FaceConfigure.setter
@@ -257,6 +306,9 @@ class AIRecognitionTemplateItem(AbstractModel):
 
     @property
     def OcrFullTextConfigure(self):
+        """文本全文识别控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.OcrFullTextConfigureInfo`
+        """
         return self._OcrFullTextConfigure
 
     @OcrFullTextConfigure.setter
@@ -265,6 +317,9 @@ class AIRecognitionTemplateItem(AbstractModel):
 
     @property
     def OcrWordsConfigure(self):
+        """文本关键词识别控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.OcrWordsConfigureInfo`
+        """
         return self._OcrWordsConfigure
 
     @OcrWordsConfigure.setter
@@ -273,6 +328,9 @@ class AIRecognitionTemplateItem(AbstractModel):
 
     @property
     def AsrFullTextConfigure(self):
+        """语音全文识别控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AsrFullTextConfigureInfo`
+        """
         return self._AsrFullTextConfigure
 
     @AsrFullTextConfigure.setter
@@ -281,6 +339,9 @@ class AIRecognitionTemplateItem(AbstractModel):
 
     @property
     def AsrWordsConfigure(self):
+        """语音关键词识别控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AsrWordsConfigureInfo`
+        """
         return self._AsrWordsConfigure
 
     @AsrWordsConfigure.setter
@@ -289,6 +350,10 @@ class AIRecognitionTemplateItem(AbstractModel):
 
     @property
     def TranslateConfigure(self):
+        """语音翻译控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TranslateConfigureInfo`
+        """
         return self._TranslateConfigure
 
     @TranslateConfigure.setter
@@ -297,6 +362,9 @@ class AIRecognitionTemplateItem(AbstractModel):
 
     @property
     def CreateTime(self):
+        """模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -305,6 +373,9 @@ class AIRecognitionTemplateItem(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -313,6 +384,12 @@ class AIRecognitionTemplateItem(AbstractModel):
 
     @property
     def Type(self):
+        """模板类型，取值范围：
+* Preset：系统预置模板；
+* Custom：用户自定义模板。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -371,6 +448,11 @@ class ActionConfigInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """动作识别任务开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -428,6 +510,25 @@ class Activity(AbstractModel):
 
     @property
     def ActivityType(self):
+        """原子任务类型：
+<li>input: 起始节点</li>
+<li>output：终止节点</li>
+<li>action-trans：转码</li>
+<li>action-samplesnapshot：采样截图</li>
+<li>action-AIAnalysis: 分析</li>
+<li>action-AIRecognition：识别</li>
+<li>action-aiReview：审核</li>
+<li>action-animated-graphics：转动图</li>
+<li>action-image-sprite：雪碧图</li>
+<li>action-snapshotByTimeOffset: 时间点截图</li>
+<li>action-adaptive-substream：自适应码流</li>
+<li>action-AIQualityControl：媒体质检</li>
+
+
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ActivityType
 
     @ActivityType.setter
@@ -436,6 +537,10 @@ class Activity(AbstractModel):
 
     @property
     def ReardriveIndex(self):
+        """后驱节点索引数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._ReardriveIndex
 
     @ReardriveIndex.setter
@@ -444,6 +549,10 @@ class Activity(AbstractModel):
 
     @property
     def ActivityPara(self):
+        """原子任务参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ActivityPara`
+        """
         return self._ActivityPara
 
     @ActivityPara.setter
@@ -518,6 +627,10 @@ class ActivityPara(AbstractModel):
 
     @property
     def TranscodeTask(self):
+        """视频转码任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TranscodeTaskInput`
+        """
         return self._TranscodeTask
 
     @TranscodeTask.setter
@@ -526,6 +639,10 @@ class ActivityPara(AbstractModel):
 
     @property
     def AnimatedGraphicTask(self):
+        """视频转动图任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AnimatedGraphicTaskInput`
+        """
         return self._AnimatedGraphicTask
 
     @AnimatedGraphicTask.setter
@@ -534,6 +651,10 @@ class ActivityPara(AbstractModel):
 
     @property
     def SnapshotByTimeOffsetTask(self):
+        """视频按时间点截图任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SnapshotByTimeOffsetTaskInput`
+        """
         return self._SnapshotByTimeOffsetTask
 
     @SnapshotByTimeOffsetTask.setter
@@ -542,6 +663,10 @@ class ActivityPara(AbstractModel):
 
     @property
     def SampleSnapshotTask(self):
+        """视频采样截图任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SampleSnapshotTaskInput`
+        """
         return self._SampleSnapshotTask
 
     @SampleSnapshotTask.setter
@@ -550,6 +675,10 @@ class ActivityPara(AbstractModel):
 
     @property
     def ImageSpriteTask(self):
+        """视频截雪碧图任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageSpriteTaskInput`
+        """
         return self._ImageSpriteTask
 
     @ImageSpriteTask.setter
@@ -558,6 +687,10 @@ class ActivityPara(AbstractModel):
 
     @property
     def AdaptiveDynamicStreamingTask(self):
+        """转自适应码流任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingTaskInput`
+        """
         return self._AdaptiveDynamicStreamingTask
 
     @AdaptiveDynamicStreamingTask.setter
@@ -566,6 +699,10 @@ class ActivityPara(AbstractModel):
 
     @property
     def AiContentReviewTask(self):
+        """视频内容审核类型任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        """
         return self._AiContentReviewTask
 
     @AiContentReviewTask.setter
@@ -574,6 +711,10 @@ class ActivityPara(AbstractModel):
 
     @property
     def AiAnalysisTask(self):
+        """视频内容分析类型任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        """
         return self._AiAnalysisTask
 
     @AiAnalysisTask.setter
@@ -582,6 +723,10 @@ class ActivityPara(AbstractModel):
 
     @property
     def AiRecognitionTask(self):
+        """视频内容识别类型任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        """
         return self._AiRecognitionTask
 
     @AiRecognitionTask.setter
@@ -590,6 +735,10 @@ class ActivityPara(AbstractModel):
 
     @property
     def QualityControlTask(self):
+        """媒体质检任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
+        """
         return self._QualityControlTask
 
     @QualityControlTask.setter
@@ -689,6 +838,10 @@ class ActivityResItem(AbstractModel):
 
     @property
     def TranscodeTask(self):
+        """转码任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskTranscodeResult`
+        """
         return self._TranscodeTask
 
     @TranscodeTask.setter
@@ -697,6 +850,10 @@ class ActivityResItem(AbstractModel):
 
     @property
     def AnimatedGraphicTask(self):
+        """转动图任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAnimatedGraphicResult`
+        """
         return self._AnimatedGraphicTask
 
     @AnimatedGraphicTask.setter
@@ -705,6 +862,10 @@ class ActivityResItem(AbstractModel):
 
     @property
     def SnapshotByTimeOffsetTask(self):
+        """时间点截图任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSnapshotByTimeOffsetResult`
+        """
         return self._SnapshotByTimeOffsetTask
 
     @SnapshotByTimeOffsetTask.setter
@@ -713,6 +874,10 @@ class ActivityResItem(AbstractModel):
 
     @property
     def SampleSnapshotTask(self):
+        """采样截图任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`
+        """
         return self._SampleSnapshotTask
 
     @SampleSnapshotTask.setter
@@ -721,6 +886,10 @@ class ActivityResItem(AbstractModel):
 
     @property
     def ImageSpriteTask(self):
+        """雪碧图任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskImageSpriteResult`
+        """
         return self._ImageSpriteTask
 
     @ImageSpriteTask.setter
@@ -729,6 +898,10 @@ class ActivityResItem(AbstractModel):
 
     @property
     def AdaptiveDynamicStreamingTask(self):
+        """自适应码流任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAdaptiveDynamicStreamingResult`
+        """
         return self._AdaptiveDynamicStreamingTask
 
     @AdaptiveDynamicStreamingTask.setter
@@ -737,6 +910,10 @@ class ActivityResItem(AbstractModel):
 
     @property
     def RecognitionTask(self):
+        """识别任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleRecognitionTaskResult`
+        """
         return self._RecognitionTask
 
     @RecognitionTask.setter
@@ -745,6 +922,10 @@ class ActivityResItem(AbstractModel):
 
     @property
     def ReviewTask(self):
+        """审核任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleReviewTaskResult`
+        """
         return self._ReviewTask
 
     @ReviewTask.setter
@@ -753,6 +934,10 @@ class ActivityResItem(AbstractModel):
 
     @property
     def AnalysisTask(self):
+        """分析任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleAnalysisTaskResult`
+        """
         return self._AnalysisTask
 
     @AnalysisTask.setter
@@ -761,6 +946,10 @@ class ActivityResItem(AbstractModel):
 
     @property
     def QualityControlTask(self):
+        """媒体质检任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
+        """
         return self._QualityControlTask
 
     @QualityControlTask.setter
@@ -836,6 +1025,19 @@ class ActivityResult(AbstractModel):
 
     @property
     def ActivityType(self):
+        """原子任务类型。
+<li>Transcode：转码。</li>
+<li>SampleSnapshot：采样截图。</li>
+<li>AnimatedGraphics：转动图。</li>
+<li>SnapshotByTimeOffset：时间点截图。</li>
+<li>ImageSprites：雪碧图。</li>
+<li>AdaptiveDynamicStreaming：自适应码流。</li>
+<li>AiContentReview：内容审核。</li>
+<li>AIRecognition：智能识别。</li>
+<li>AIAnalysis：智能分析。</li>
+<li>AiQualityControl：媒体质检。</li>
+        :rtype: str
+        """
         return self._ActivityType
 
     @ActivityType.setter
@@ -844,6 +1046,9 @@ class ActivityResult(AbstractModel):
 
     @property
     def ActivityResItem(self):
+        """原子任务输出。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ActivityResItem`
+        """
         return self._ActivityResItem
 
     @ActivityResItem.setter
@@ -889,6 +1094,9 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def Definition(self):
+        """转自适应码流规格。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -897,6 +1105,9 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def Package(self):
+        """打包格式，可能为 HLS和 MPEG-DASH 两种。
+        :rtype: str
+        """
         return self._Package
 
     @Package.setter
@@ -905,6 +1116,9 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def Path(self):
+        """播放路径。
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -913,6 +1127,9 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def Storage(self):
+        """自适应码流文件的存储位置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._Storage
 
     @Storage.setter
@@ -988,6 +1205,9 @@ PureAudio：纯音频类型
 
     @property
     def Definition(self):
+        """转自适应码流模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -996,6 +1216,9 @@ PureAudio：纯音频类型
 
     @property
     def WatermarkSet(self):
+        """水印列表，支持多张图片或文字水印，最大可支持 10 张。
+        :rtype: list of WatermarkInput
+        """
         return self._WatermarkSet
 
     @WatermarkSet.setter
@@ -1004,6 +1227,10 @@ PureAudio：纯音频类型
 
     @property
     def OutputStorage(self):
+        """转自适应码流后文件的目标存储，不填则继承上层的 OutputStorage 值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -1012,6 +1239,16 @@ PureAudio：纯音频类型
 
     @property
     def OutputObjectPath(self):
+        """转自适应码流后，manifest 文件的输出路径，可以为相对路径或者绝对路径。
+若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
+相对路径示例：
+<li>文件名_{变量名}.{format}</li>
+<li>文件名.{format}</li>
+绝对路径示例：
+<li>/自定义路径/文件名_{变量名}.{format}</li>
+如果不填，则默认为相对路径：{inputName}_adaptiveDynamicStreaming_{definition}.{format}。
+        :rtype: str
+        """
         return self._OutputObjectPath
 
     @OutputObjectPath.setter
@@ -1020,6 +1257,9 @@ PureAudio：纯音频类型
 
     @property
     def SubStreamObjectName(self):
+        """转自适应码流后，子流文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}`。
+        :rtype: str
+        """
         return self._SubStreamObjectName
 
     @SubStreamObjectName.setter
@@ -1028,6 +1268,9 @@ PureAudio：纯音频类型
 
     @property
     def SegmentObjectName(self):
+        """转自适应码流（仅 HLS）后，分片文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`。
+        :rtype: str
+        """
         return self._SegmentObjectName
 
     @SegmentObjectName.setter
@@ -1036,6 +1279,10 @@ PureAudio：纯音频类型
 
     @property
     def AddOnSubtitles(self):
+        """要插入的字幕文件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AddOnSubtitle
+        """
         return self._AddOnSubtitles
 
     @AddOnSubtitles.setter
@@ -1044,6 +1291,10 @@ PureAudio：纯音频类型
 
     @property
     def DrmInfo(self):
+        """Drm信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
+        """
         return self._DrmInfo
 
     @DrmInfo.setter
@@ -1052,6 +1303,12 @@ PureAudio：纯音频类型
 
     @property
     def DefinitionType(self):
+        """自适应转码模板类型：
+Common：音视频类型
+PureAudio：纯音频类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DefinitionType
 
     @DefinitionType.setter
@@ -1159,6 +1416,9 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def Definition(self):
+        """转自适应码流模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -1167,6 +1427,11 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def Type(self):
+        """模板类型，取值范围：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1175,6 +1440,9 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def Name(self):
+        """转自适应码流模板名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1183,6 +1451,9 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def Comment(self):
+        """转自适应码流模板描述信息。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -1191,6 +1462,11 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def Format(self):
+        """转自适应码流格式，取值范围：
+<li>HLS，</li>
+<li>MPEG-DASH。</li>
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -1199,6 +1475,9 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def StreamInfos(self):
+        """转自适应码流输入流参数信息，最多输入10路流。
+        :rtype: list of AdaptiveStreamTemplate
+        """
         return self._StreamInfos
 
     @StreamInfos.setter
@@ -1207,6 +1486,11 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def DisableHigherVideoBitrate(self):
+        """是否禁止视频低码率转高码率，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+        :rtype: int
+        """
         return self._DisableHigherVideoBitrate
 
     @DisableHigherVideoBitrate.setter
@@ -1215,6 +1499,11 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def DisableHigherVideoResolution(self):
+        """是否禁止视频分辨率转高分辨率，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+        :rtype: int
+        """
         return self._DisableHigherVideoResolution
 
     @DisableHigherVideoResolution.setter
@@ -1223,6 +1512,9 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def CreateTime(self):
+        """模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1231,6 +1523,9 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -1239,6 +1534,10 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def PureAudio(self):
+        """是否为纯音频，0表示视频，1表示纯音频
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PureAudio
 
     @PureAudio.setter
@@ -1247,6 +1546,19 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def SegmentType(self):
+        """hls 分片类型，可选值：
+<li>ts-segment：HLS+TS 切片</li>
+<li>ts-byterange：HLS+TS byte range</li>
+<li>mp4-segment：HLS+MP4 切片</li>
+<li>mp4-byterange：HLS+MP4 byte range</li>
+<li>ts-packed-audio：TS+Packed Audio</li>
+<li>mp4-packed-audio：MP4+Packed Audio</li>
+默认值：ts-segment
+
+注：自适应码流的hls分片格式已此字段为准
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SegmentType
 
     @SegmentType.setter
@@ -1309,6 +1621,9 @@ class AdaptiveStreamTemplate(AbstractModel):
 
     @property
     def Audio(self):
+        """音频参数信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
+        """
         return self._Audio
 
     @Audio.setter
@@ -1317,6 +1632,9 @@ class AdaptiveStreamTemplate(AbstractModel):
 
     @property
     def Video(self):
+        """视频参数信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
+        """
         return self._Video
 
     @Video.setter
@@ -1325,6 +1643,11 @@ class AdaptiveStreamTemplate(AbstractModel):
 
     @property
     def RemoveAudio(self):
+        """是否移除音频流，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+        :rtype: int
+        """
         return self._RemoveAudio
 
     @RemoveAudio.setter
@@ -1333,6 +1656,11 @@ class AdaptiveStreamTemplate(AbstractModel):
 
     @property
     def RemoveVideo(self):
+        """是否移除视频流，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+        :rtype: int
+        """
         return self._RemoveVideo
 
     @RemoveVideo.setter
@@ -1381,6 +1709,13 @@ class AddOnSubtitle(AbstractModel):
 
     @property
     def Type(self):
+        """插入形式，可选值：
+<li>subtitle-stream：插入字幕轨道</li>
+<li>close-caption-708：CEA-708字幕编码到SEI帧</li>
+<li>close-caption-608：CEA-608字幕编码到SEI帧</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1389,6 +1724,10 @@ class AddOnSubtitle(AbstractModel):
 
     @property
     def Subtitle(self):
+        """字幕文件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
         return self._Subtitle
 
     @Subtitle.setter
@@ -1472,6 +1811,16 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def Type(self):
+        """任务的类型，可以取的值有：
+<li>Classification：智能分类</li>
+<li>Cover：智能封面</li>
+<li>Tag：智能标签</li>
+<li>FrameTag：智能按帧标签</li>
+<li>Highlight：智能精彩集锦</li>
+<li>DeLogo：智能擦除</li>
+<li>Description：大模型摘要</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1480,6 +1829,10 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def ClassificationTask(self):
+        """视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationResult`
+        """
         return self._ClassificationTask
 
     @ClassificationTask.setter
@@ -1488,6 +1841,10 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def CoverTask(self):
+        """视频内容分析智能封面任务的查询结果，当任务类型为 Cover 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverResult`
+        """
         return self._CoverTask
 
     @CoverTask.setter
@@ -1496,6 +1853,10 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def TagTask(self):
+        """视频内容分析智能标签任务的查询结果，当任务类型为 Tag 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagResult`
+        """
         return self._TagTask
 
     @TagTask.setter
@@ -1504,6 +1865,10 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def FrameTagTask(self):
+        """视频内容分析智能按帧标签任务的查询结果，当任务类型为 FrameTag 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagResult`
+        """
         return self._FrameTagTask
 
     @FrameTagTask.setter
@@ -1512,6 +1877,10 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def HighlightTask(self):
+        """视频内容分析集锦任务的查询结果，当任务类型为 Highlight时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHighlightResult`
+        """
         return self._HighlightTask
 
     @HighlightTask.setter
@@ -1520,6 +1889,10 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def DeLogoTask(self):
+        """视频内容分析智能擦除任务的查询结果，当任务类型为 DeLogo 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoResult`
+        """
         return self._DeLogoTask
 
     @DeLogoTask.setter
@@ -1528,6 +1901,10 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def SegmentTask(self):
+        """视频内容分析拆条任务的查询结果，当任务类型为 SegmentRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskSegmentResult`
+        """
         return self._SegmentTask
 
     @SegmentTask.setter
@@ -1536,6 +1913,10 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def HeadTailTask(self):
+        """视频内容分析片头片尾任务的查询结果，当任务类型为 HeadTailRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHeadTailResult`
+        """
         return self._HeadTailTask
 
     @HeadTailTask.setter
@@ -1544,6 +1925,10 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def DescriptionTask(self):
+        """视频内容分析摘要任务的查询结果，当任务类型为 Description 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDescriptionResult`
+        """
         return self._DescriptionTask
 
     @DescriptionTask.setter
@@ -1552,6 +1937,10 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def HorizontalToVerticalTask(self):
+        """视频内容分析横转竖任务的查询结果，当任务类型为 HorizontalToVertical 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalResult`
+        """
         return self._HorizontalToVerticalTask
 
     @HorizontalToVerticalTask.setter
@@ -1615,6 +2004,9 @@ class AiAnalysisTaskClassificationInput(AbstractModel):
 
     @property
     def Definition(self):
+        """视频智能分类模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -1648,6 +2040,9 @@ class AiAnalysisTaskClassificationOutput(AbstractModel):
 
     @property
     def ClassificationSet(self):
+        """视频智能分类列表。
+        :rtype: list of MediaAiAnalysisClassificationItem
+        """
         return self._ClassificationSet
 
     @ClassificationSet.setter
@@ -1702,6 +2097,9 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1710,6 +2108,9 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -1718,6 +2119,9 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -1726,6 +2130,9 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -1734,6 +2141,9 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
 
     @property
     def Input(self):
+        """智能分类任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationInput`
+        """
         return self._Input
 
     @Input.setter
@@ -1742,6 +2152,10 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
 
     @property
     def Output(self):
+        """智能分类任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -1784,6 +2198,9 @@ class AiAnalysisTaskCoverInput(AbstractModel):
 
     @property
     def Definition(self):
+        """视频智能封面模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -1820,6 +2237,9 @@ class AiAnalysisTaskCoverOutput(AbstractModel):
 
     @property
     def CoverSet(self):
+        """智能封面列表。
+        :rtype: list of MediaAiAnalysisCoverItem
+        """
         return self._CoverSet
 
     @CoverSet.setter
@@ -1828,6 +2248,9 @@ class AiAnalysisTaskCoverOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """智能封面的存储位置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -1885,6 +2308,9 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1893,6 +2319,9 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -1901,6 +2330,9 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -1909,6 +2341,9 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -1917,6 +2352,9 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
     @property
     def Input(self):
+        """智能封面任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverInput`
+        """
         return self._Input
 
     @Input.setter
@@ -1925,6 +2363,10 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
     @property
     def Output(self):
+        """智能封面任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -1967,6 +2409,9 @@ class AiAnalysisTaskDelLogoInput(AbstractModel):
 
     @property
     def Definition(self):
+        """视频智能擦除模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -2011,6 +2456,9 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
 
     @property
     def Path(self):
+        """擦除后文件的路径。
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -2019,6 +2467,9 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """擦除后文件的存储位置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -2027,6 +2478,10 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
 
     @property
     def OriginSubtitlePath(self):
+        """基于画面提取的字幕文件路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OriginSubtitlePath
 
     @OriginSubtitlePath.setter
@@ -2035,6 +2490,10 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
 
     @property
     def TranslateSubtitlePath(self):
+        """基于画面提取的字幕翻译文件路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TranslateSubtitlePath
 
     @TranslateSubtitlePath.setter
@@ -2086,6 +2545,9 @@ class AiAnalysisTaskDelLogoResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2094,6 +2556,9 @@ class AiAnalysisTaskDelLogoResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0：成功，其他值：失败。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -2102,6 +2567,9 @@ class AiAnalysisTaskDelLogoResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -2110,6 +2578,9 @@ class AiAnalysisTaskDelLogoResult(AbstractModel):
 
     @property
     def Input(self):
+        """智能擦除任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoInput`
+        """
         return self._Input
 
     @Input.setter
@@ -2118,6 +2589,10 @@ class AiAnalysisTaskDelLogoResult(AbstractModel):
 
     @property
     def Output(self):
+        """智能擦除任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -2159,6 +2634,9 @@ class AiAnalysisTaskDescriptionInput(AbstractModel):
 
     @property
     def Definition(self):
+        """视频智能描述模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -2192,6 +2670,9 @@ class AiAnalysisTaskDescriptionOutput(AbstractModel):
 
     @property
     def DescriptionSet(self):
+        """视频智能描述列表。
+        :rtype: list of MediaAiAnalysisDescriptionItem
+        """
         return self._DescriptionSet
 
     @DescriptionSet.setter
@@ -2243,6 +2724,9 @@ class AiAnalysisTaskDescriptionResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2251,6 +2735,9 @@ class AiAnalysisTaskDescriptionResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0：成功，其他值：失败。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -2259,6 +2746,9 @@ class AiAnalysisTaskDescriptionResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -2267,6 +2757,9 @@ class AiAnalysisTaskDescriptionResult(AbstractModel):
 
     @property
     def Input(self):
+        """智能描述任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDescriptionInput`
+        """
         return self._Input
 
     @Input.setter
@@ -2275,6 +2768,10 @@ class AiAnalysisTaskDescriptionResult(AbstractModel):
 
     @property
     def Output(self):
+        """智能描述任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDescriptionOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -2316,6 +2813,9 @@ class AiAnalysisTaskFrameTagInput(AbstractModel):
 
     @property
     def Definition(self):
+        """视频智能按帧标签模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -2349,6 +2849,9 @@ class AiAnalysisTaskFrameTagOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """视频按帧标签列表。
+        :rtype: list of MediaAiAnalysisFrameTagSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -2403,6 +2906,9 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2411,6 +2917,9 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -2419,6 +2928,9 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -2427,6 +2939,9 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -2435,6 +2950,9 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
 
     @property
     def Input(self):
+        """智能按帧标签任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagInput`
+        """
         return self._Input
 
     @Input.setter
@@ -2443,6 +2961,10 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
 
     @property
     def Output(self):
+        """智能按帧标签任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -2485,6 +3007,9 @@ class AiAnalysisTaskHeadTailInput(AbstractModel):
 
     @property
     def Definition(self):
+        """片头片尾识别模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -2523,6 +3048,10 @@ class AiAnalysisTaskHeadTailOutput(AbstractModel):
 
     @property
     def HeadTimeOffset(self):
+        """片头pts。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._HeadTimeOffset
 
     @HeadTimeOffset.setter
@@ -2531,6 +3060,10 @@ class AiAnalysisTaskHeadTailOutput(AbstractModel):
 
     @property
     def TailTimeOffset(self):
+        """片尾pts。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._TailTimeOffset
 
     @TailTimeOffset.setter
@@ -2578,6 +3111,9 @@ class AiAnalysisTaskHeadTailResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2586,6 +3122,9 @@ class AiAnalysisTaskHeadTailResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0：成功，其他值：失败。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -2594,6 +3133,9 @@ class AiAnalysisTaskHeadTailResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -2602,6 +3144,9 @@ class AiAnalysisTaskHeadTailResult(AbstractModel):
 
     @property
     def Input(self):
+        """片头片尾任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHeadTailInput`
+        """
         return self._Input
 
     @Input.setter
@@ -2610,6 +3155,10 @@ class AiAnalysisTaskHeadTailResult(AbstractModel):
 
     @property
     def Output(self):
+        """片头片尾任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHeadTailOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -2651,6 +3200,9 @@ class AiAnalysisTaskHighlightInput(AbstractModel):
 
     @property
     def Definition(self):
+        """视频智能精彩片段模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -2688,6 +3240,9 @@ class AiAnalysisTaskHighlightOutput(AbstractModel):
 
     @property
     def HighlightSet(self):
+        """视频智能精彩片段列表。
+        :rtype: list of MediaAiAnalysisHighlightItem
+        """
         return self._HighlightSet
 
     @HighlightSet.setter
@@ -2696,6 +3251,10 @@ class AiAnalysisTaskHighlightOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """精彩片段的存储位置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -2750,6 +3309,9 @@ class AiAnalysisTaskHighlightResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2758,6 +3320,9 @@ class AiAnalysisTaskHighlightResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0：成功，其他值：失败。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -2766,6 +3331,9 @@ class AiAnalysisTaskHighlightResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -2774,6 +3342,9 @@ class AiAnalysisTaskHighlightResult(AbstractModel):
 
     @property
     def Input(self):
+        """智能精彩片段任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHighlightInput`
+        """
         return self._Input
 
     @Input.setter
@@ -2782,6 +3353,10 @@ class AiAnalysisTaskHighlightResult(AbstractModel):
 
     @property
     def Output(self):
+        """智能精彩片段任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHighlightOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -2824,6 +3399,10 @@ class AiAnalysisTaskHorizontalToVerticalInput(AbstractModel):
 
     @property
     def Definition(self):
+        """视频智能横转竖模板 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -2866,6 +3445,10 @@ class AiAnalysisTaskHorizontalToVerticalOutput(AbstractModel):
 
     @property
     def Path(self):
+        """视频智能横转竖列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -2874,6 +3457,10 @@ class AiAnalysisTaskHorizontalToVerticalOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """智能横转竖视频的存储位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -2882,6 +3469,10 @@ class AiAnalysisTaskHorizontalToVerticalOutput(AbstractModel):
 
     @property
     def Confidence(self):
+        """置信度。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -2936,6 +3527,10 @@ class AiAnalysisTaskHorizontalToVerticalResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2944,6 +3539,10 @@ class AiAnalysisTaskHorizontalToVerticalResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0：成功，其他值：失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -2952,6 +3551,10 @@ class AiAnalysisTaskHorizontalToVerticalResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -2960,6 +3563,10 @@ class AiAnalysisTaskHorizontalToVerticalResult(AbstractModel):
 
     @property
     def Input(self):
+        """智能横转竖任务输入
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalInput`
+        """
         return self._Input
 
     @Input.setter
@@ -2968,6 +3575,10 @@ class AiAnalysisTaskHorizontalToVerticalResult(AbstractModel):
 
     @property
     def Output(self):
+        """智能横转竖任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -3014,6 +3625,9 @@ class AiAnalysisTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """视频内容分析模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -3022,6 +3636,11 @@ class AiAnalysisTaskInput(AbstractModel):
 
     @property
     def ExtendedParameter(self):
+        """扩展参数，其值为序列化的 json字符串。
+注意：此参数为定制需求参数，需要线下对接。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExtendedParameter
 
     @ExtendedParameter.setter
@@ -3056,6 +3675,9 @@ class AiAnalysisTaskSegmentInput(AbstractModel):
 
     @property
     def Definition(self):
+        """拆条任务模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -3089,6 +3711,9 @@ class AiAnalysisTaskSegmentOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """智能拆条子片段列表。
+        :rtype: list of SegmentRecognitionItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -3140,6 +3765,9 @@ class AiAnalysisTaskSegmentResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3148,6 +3776,9 @@ class AiAnalysisTaskSegmentResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0：成功，其他值：失败。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -3156,6 +3787,9 @@ class AiAnalysisTaskSegmentResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -3164,6 +3798,9 @@ class AiAnalysisTaskSegmentResult(AbstractModel):
 
     @property
     def Input(self):
+        """拆条任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskSegmentInput`
+        """
         return self._Input
 
     @Input.setter
@@ -3172,6 +3809,10 @@ class AiAnalysisTaskSegmentResult(AbstractModel):
 
     @property
     def Output(self):
+        """拆条任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskSegmentOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -3213,6 +3854,9 @@ class AiAnalysisTaskTagInput(AbstractModel):
 
     @property
     def Definition(self):
+        """视频智能标签模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -3246,6 +3890,9 @@ class AiAnalysisTaskTagOutput(AbstractModel):
 
     @property
     def TagSet(self):
+        """视频智能标签列表。
+        :rtype: list of MediaAiAnalysisTagItem
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -3300,6 +3947,9 @@ class AiAnalysisTaskTagResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3308,6 +3958,9 @@ class AiAnalysisTaskTagResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -3316,6 +3969,9 @@ class AiAnalysisTaskTagResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -3324,6 +3980,9 @@ class AiAnalysisTaskTagResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -3332,6 +3991,9 @@ class AiAnalysisTaskTagResult(AbstractModel):
 
     @property
     def Input(self):
+        """智能标签任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagInput`
+        """
         return self._Input
 
     @Input.setter
@@ -3340,6 +4002,10 @@ class AiAnalysisTaskTagResult(AbstractModel):
 
     @property
     def Output(self):
+        """智能标签任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -3438,6 +4104,19 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def Type(self):
+        """任务的类型，可以取的值有：
+<li>Porn：图片鉴黄</li>
+<li>Terrorism：图片敏感</li>
+<li>Political：图片敏感</li>
+<li>Porn.Asr：Asr 文字鉴黄</li>
+<li>Porn.Ocr：Ocr 文字鉴黄</li>
+<li>Political.Asr：Asr 文字敏感</li>
+<li>Political.Ocr：Ocr 文字敏感</li>
+<li>Terrorism.Ocr：Ocr 文字敏感</li>
+<li>Prohibited.Asr：Asr 文字鉴违禁</li>
+<li>Prohibited.Ocr：Ocr 文字鉴违禁</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3446,6 +4125,9 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def SampleRate(self):
+        """采样频率，即对视频每秒截取进行审核的帧数。
+        :rtype: float
+        """
         return self._SampleRate
 
     @SampleRate.setter
@@ -3454,6 +4136,9 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def Duration(self):
+        """审核的视频时长，单位：秒。
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -3462,6 +4147,10 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def PornTask(self):
+        """视频内容审核智能画面鉴黄任务的查询结果，当任务类型为 Porn 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornResult`
+        """
         return self._PornTask
 
     @PornTask.setter
@@ -3470,6 +4159,10 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def TerrorismTask(self):
+        """视频内容审核智能画面敏感任务的查询结果，当任务类型为 Terrorism 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskTerrorismResult`
+        """
         return self._TerrorismTask
 
     @TerrorismTask.setter
@@ -3478,6 +4171,10 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def PoliticalTask(self):
+        """视频内容审核智能画面敏感任务的查询结果，当任务类型为 Political 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalResult`
+        """
         return self._PoliticalTask
 
     @PoliticalTask.setter
@@ -3486,6 +4183,10 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def PornAsrTask(self):
+        """视频内容审核 Asr 文字鉴黄任务的查询结果，当任务类型为 Porn.Asr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornAsrResult`
+        """
         return self._PornAsrTask
 
     @PornAsrTask.setter
@@ -3494,6 +4195,10 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def PornOcrTask(self):
+        """视频内容审核 Ocr 文字鉴黄任务的查询结果，当任务类型为 Porn.Ocr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornOcrResult`
+        """
         return self._PornOcrTask
 
     @PornOcrTask.setter
@@ -3502,6 +4207,10 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def PoliticalAsrTask(self):
+        """视频内容审核 Asr 文字敏感任务的查询结果，当任务类型为 Political.Asr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalAsrResult`
+        """
         return self._PoliticalAsrTask
 
     @PoliticalAsrTask.setter
@@ -3510,6 +4219,10 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def PoliticalOcrTask(self):
+        """视频内容审核 Ocr 文字敏感任务的查询结果，当任务类型为 Political.Ocr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalOcrResult`
+        """
         return self._PoliticalOcrTask
 
     @PoliticalOcrTask.setter
@@ -3518,6 +4231,10 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def TerrorismOcrTask(self):
+        """视频内容审核 Ocr 文字敏感任务的查询结果，当任务类型为 Terrorism.Ocr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskTerrorismOcrResult`
+        """
         return self._TerrorismOcrTask
 
     @TerrorismOcrTask.setter
@@ -3526,6 +4243,10 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def ProhibitedAsrTask(self):
+        """视频内容审核 Asr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Asr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskProhibitedAsrResult`
+        """
         return self._ProhibitedAsrTask
 
     @ProhibitedAsrTask.setter
@@ -3534,6 +4255,10 @@ class AiContentReviewResult(AbstractModel):
 
     @property
     def ProhibitedOcrTask(self):
+        """视频内容审核 Ocr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Ocr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskProhibitedOcrResult`
+        """
         return self._ProhibitedOcrTask
 
     @ProhibitedOcrTask.setter
@@ -3599,6 +4324,9 @@ class AiContentReviewTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """视频内容审核模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -3641,6 +4369,10 @@ class AiParagraphInfo(AbstractModel):
 
     @property
     def Summary(self):
+        """分段摘要
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Summary
 
     @Summary.setter
@@ -3649,6 +4381,10 @@ class AiParagraphInfo(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """分段起始时间点，秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -3657,6 +4393,10 @@ class AiParagraphInfo(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """分段结束时间点，秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -3702,6 +4442,15 @@ class AiQualityControlTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """媒体质检模板 ID 。
+可以直接使用预设模板，也可以在控制台自定义模板。预设模板如下：
+- 10：开启所有质检项；
+- 20：仅开启格式诊断对应质检项；
+- 30：仅开启无参考打分对应质检项；
+- 40：仅开启画面质量对应质检项。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -3710,6 +4459,10 @@ class AiQualityControlTaskInput(AbstractModel):
 
     @property
     def ChannelExtPara(self):
+        """渠道扩展参数json序列化字符串。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ChannelExtPara
 
     @ChannelExtPara.setter
@@ -3787,6 +4540,15 @@ ObjectRecognition 时有效。
 
     @property
     def Type(self):
+        """任务的类型，取值范围：
+<li>FaceRecognition：人脸识别，</li>
+<li>AsrWordsRecognition：语音关键词识别，</li>
+<li>OcrWordsRecognition：文本关键词识别，</li>
+<li>AsrFullTextRecognition：语音全文识别，</li>
+<li>OcrFullTextRecognition：文本全文识别。</li>
+<li>TransTextRecognition：语音翻译。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3795,6 +4557,11 @@ ObjectRecognition 时有效。
 
     @property
     def FaceTask(self):
+        """人脸识别结果，当 Type 为 
+ FaceRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResult`
+        """
         return self._FaceTask
 
     @FaceTask.setter
@@ -3803,6 +4570,11 @@ ObjectRecognition 时有效。
 
     @property
     def AsrWordsTask(self):
+        """语音关键词识别结果，当 Type 为
+ AsrWordsRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResult`
+        """
         return self._AsrWordsTask
 
     @AsrWordsTask.setter
@@ -3811,6 +4583,11 @@ ObjectRecognition 时有效。
 
     @property
     def AsrFullTextTask(self):
+        """语音全文识别结果，当 Type 为
+ AsrFullTextRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResult`
+        """
         return self._AsrFullTextTask
 
     @AsrFullTextTask.setter
@@ -3819,6 +4596,11 @@ ObjectRecognition 时有效。
 
     @property
     def OcrWordsTask(self):
+        """文本关键词识别结果，当 Type 为
+ OcrWordsRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResult`
+        """
         return self._OcrWordsTask
 
     @OcrWordsTask.setter
@@ -3827,6 +4609,11 @@ ObjectRecognition 时有效。
 
     @property
     def OcrFullTextTask(self):
+        """文本全文识别结果，当 Type 为
+ OcrFullTextRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResult`
+        """
         return self._OcrFullTextTask
 
     @OcrFullTextTask.setter
@@ -3835,6 +4622,12 @@ ObjectRecognition 时有效。
 
     @property
     def TransTextTask(self):
+        """翻译结果，当 Type 为
+
+TransTextRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskTransTextResult`
+        """
         return self._TransTextTask
 
     @TransTextTask.setter
@@ -3843,6 +4636,12 @@ ObjectRecognition 时有效。
 
     @property
     def ObjectTask(self):
+        """物体识别结果，当Type 为
+
+ObjectRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskObjectResult`
+        """
         return self._ObjectTask
 
     @ObjectTask.setter
@@ -3917,6 +4716,9 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3925,6 +4727,9 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -3933,6 +4738,9 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -3941,6 +4749,9 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -3949,6 +4760,9 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
 
     @property
     def Input(self):
+        """语音全文识别任务输入信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResultInput`
+        """
         return self._Input
 
     @Input.setter
@@ -3957,6 +4771,10 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
 
     @property
     def Output(self):
+        """语音全文识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResultOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -3965,6 +4783,10 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
 
     @property
     def Progress(self):
+        """任务进度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -4008,6 +4830,9 @@ class AiRecognitionTaskAsrFullTextResultInput(AbstractModel):
 
     @property
     def Definition(self):
+        """语音全文识别模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -4047,6 +4872,9 @@ class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """语音全文识别片段列表。
+        :rtype: list of AiRecognitionTaskAsrFullTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -4055,6 +4883,9 @@ class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
 
     @property
     def SubtitlePath(self):
+        """字幕文件地址。
+        :rtype: str
+        """
         return self._SubtitlePath
 
     @SubtitlePath.setter
@@ -4065,6 +4896,9 @@ class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
     def OutputStorage(self):
         warnings.warn("parameter `OutputStorage` is deprecated", DeprecationWarning) 
 
+        """字幕文件存储位置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -4118,6 +4952,9 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """识别片段置信度。取值：0~100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -4126,6 +4963,9 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """识别片段起始的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -4134,6 +4974,9 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """识别片段终止的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -4142,6 +4985,9 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
 
     @property
     def Text(self):
+        """识别文本。
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -4194,6 +5040,9 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -4202,6 +5051,9 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -4210,6 +5062,9 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -4218,6 +5073,9 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -4226,6 +5084,9 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
 
     @property
     def Input(self):
+        """语音关键词识别任务输入信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResultInput`
+        """
         return self._Input
 
     @Input.setter
@@ -4234,6 +5095,10 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
 
     @property
     def Output(self):
+        """语音关键词识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResultOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -4276,6 +5141,9 @@ class AiRecognitionTaskAsrWordsResultInput(AbstractModel):
 
     @property
     def Definition(self):
+        """语音关键词识别模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -4312,6 +5180,9 @@ class AiRecognitionTaskAsrWordsResultItem(AbstractModel):
 
     @property
     def Word(self):
+        """语音关键词。
+        :rtype: str
+        """
         return self._Word
 
     @Word.setter
@@ -4320,6 +5191,9 @@ class AiRecognitionTaskAsrWordsResultItem(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """语音关键词出现的时间片段列表。
+        :rtype: list of AiRecognitionTaskAsrWordsSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -4359,6 +5233,9 @@ class AiRecognitionTaskAsrWordsResultOutput(AbstractModel):
 
     @property
     def ResultSet(self):
+        """语音关键词识别结果集。
+        :rtype: list of AiRecognitionTaskAsrWordsResultItem
+        """
         return self._ResultSet
 
     @ResultSet.setter
@@ -4403,6 +5280,9 @@ class AiRecognitionTaskAsrWordsSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """识别片段起始的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -4411,6 +5291,9 @@ class AiRecognitionTaskAsrWordsSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """识别片段终止的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -4419,6 +5302,9 @@ class AiRecognitionTaskAsrWordsSegmentItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """识别片段置信度。取值：0~100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -4470,6 +5356,9 @@ class AiRecognitionTaskFaceResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -4478,6 +5367,9 @@ class AiRecognitionTaskFaceResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -4486,6 +5378,9 @@ class AiRecognitionTaskFaceResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -4494,6 +5389,9 @@ class AiRecognitionTaskFaceResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -4502,6 +5400,9 @@ class AiRecognitionTaskFaceResult(AbstractModel):
 
     @property
     def Input(self):
+        """人脸识别任务输入信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResultInput`
+        """
         return self._Input
 
     @Input.setter
@@ -4510,6 +5411,10 @@ class AiRecognitionTaskFaceResult(AbstractModel):
 
     @property
     def Output(self):
+        """人脸识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResultOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -4552,6 +5457,9 @@ class AiRecognitionTaskFaceResultInput(AbstractModel):
 
     @property
     def Definition(self):
+        """人脸识别模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -4638,6 +5546,9 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def Id(self):
+        """人物唯一标识 ID。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -4646,6 +5557,11 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def Type(self):
+        """人物库类型，表示识别出的人物来自哪个人物库：
+<li>Default：默认人物库；</li>
+<li>UserDefine：用户自定义人物库。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -4654,6 +5570,9 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def Name(self):
+        """人物名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4662,6 +5581,9 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """人物出现的片段结果集。
+        :rtype: list of AiRecognitionTaskFaceSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -4670,6 +5592,12 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def Gender(self):
+        """人物性别：
+<li>Male：男性；</li>
+<li>Female：女性。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Gender
 
     @Gender.setter
@@ -4678,6 +5606,10 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def Birthday(self):
+        """人物出生日期。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Birthday
 
     @Birthday.setter
@@ -4686,6 +5618,10 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def Profession(self):
+        """人物职业或者职务。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Profession
 
     @Profession.setter
@@ -4694,6 +5630,10 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def SchoolOfGraduation(self):
+        """人物毕业院校。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SchoolOfGraduation
 
     @SchoolOfGraduation.setter
@@ -4702,6 +5642,10 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def Abstract(self):
+        """人物简介。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Abstract
 
     @Abstract.setter
@@ -4710,6 +5654,10 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def PlaceOfBirth(self):
+        """人物出生地或者籍贯。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PlaceOfBirth
 
     @PlaceOfBirth.setter
@@ -4718,6 +5666,12 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def PersonType(self):
+        """人物类型：
+<li>Politician：官员；</li>
+<li>Artist：艺人。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PersonType
 
     @PersonType.setter
@@ -4726,6 +5680,12 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def Remark(self):
+        """敏感度标注：
+<li>Normal：正常；</li>
+<li>Sensitive：敏感。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -4734,6 +5694,10 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     @property
     def Url(self):
+        """截图链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -4784,6 +5748,9 @@ class AiRecognitionTaskFaceResultOutput(AbstractModel):
 
     @property
     def ResultSet(self):
+        """智能人脸识别结果集。
+        :rtype: list of AiRecognitionTaskFaceResultItem
+        """
         return self._ResultSet
 
     @ResultSet.setter
@@ -4831,6 +5798,9 @@ class AiRecognitionTaskFaceSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """识别片段起始的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -4839,6 +5809,9 @@ class AiRecognitionTaskFaceSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """识别片段终止的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -4847,6 +5820,9 @@ class AiRecognitionTaskFaceSegmentItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """识别片段置信度。取值：0~100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -4855,6 +5831,9 @@ class AiRecognitionTaskFaceSegmentItem(AbstractModel):
 
     @property
     def AreaCoordSet(self):
+        """识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -4891,6 +5870,9 @@ class AiRecognitionTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """视频智能识别模板 ID 。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -4937,6 +5919,9 @@ class AiRecognitionTaskObjectResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -4945,6 +5930,9 @@ class AiRecognitionTaskObjectResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0：成功，其他值：失败。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -4953,6 +5941,9 @@ class AiRecognitionTaskObjectResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -4961,6 +5952,9 @@ class AiRecognitionTaskObjectResult(AbstractModel):
 
     @property
     def Input(self):
+        """物体识别任务输入信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskObjectResultInput`
+        """
         return self._Input
 
     @Input.setter
@@ -4969,6 +5963,10 @@ class AiRecognitionTaskObjectResult(AbstractModel):
 
     @property
     def Output(self):
+        """物体识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskObjectResultOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -5010,6 +6008,9 @@ class AiRecognitionTaskObjectResultInput(AbstractModel):
 
     @property
     def Definition(self):
+        """物体识别模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -5046,6 +6047,9 @@ class AiRecognitionTaskObjectResultItem(AbstractModel):
 
     @property
     def Name(self):
+        """识别的物体名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5054,6 +6058,9 @@ class AiRecognitionTaskObjectResultItem(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """物体出现的片段列表。
+        :rtype: list of AiRecognitionTaskObjectSeqmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -5093,6 +6100,9 @@ class AiRecognitionTaskObjectResultOutput(AbstractModel):
 
     @property
     def ResultSet(self):
+        """智能物体识别结果集。
+        :rtype: list of AiRecognitionTaskObjectResultItem
+        """
         return self._ResultSet
 
     @ResultSet.setter
@@ -5140,6 +6150,9 @@ class AiRecognitionTaskObjectSeqmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """识别片段起始的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -5148,6 +6161,9 @@ class AiRecognitionTaskObjectSeqmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """识别片段终止的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -5156,6 +6172,9 @@ class AiRecognitionTaskObjectSeqmentItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """识别片段置信度。取值：0~100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -5164,6 +6183,9 @@ class AiRecognitionTaskObjectSeqmentItem(AbstractModel):
 
     @property
     def AreaCoordSet(self):
+        """识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -5216,6 +6238,9 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -5224,6 +6249,9 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -5232,6 +6260,9 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -5240,6 +6271,9 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -5248,6 +6282,9 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
 
     @property
     def Input(self):
+        """文本全文识别任务输入信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResultInput`
+        """
         return self._Input
 
     @Input.setter
@@ -5256,6 +6293,10 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
 
     @property
     def Output(self):
+        """文本全文识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResultOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -5298,6 +6339,9 @@ class AiRecognitionTaskOcrFullTextResultInput(AbstractModel):
 
     @property
     def Definition(self):
+        """文本全文识别模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -5331,6 +6375,9 @@ class AiRecognitionTaskOcrFullTextResultOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """文本全文识别结果集。
+        :rtype: list of AiRecognitionTaskOcrFullTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -5375,6 +6422,9 @@ class AiRecognitionTaskOcrFullTextSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """识别片段起始的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -5383,6 +6433,9 @@ class AiRecognitionTaskOcrFullTextSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """识别片段终止的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -5391,6 +6444,9 @@ class AiRecognitionTaskOcrFullTextSegmentItem(AbstractModel):
 
     @property
     def TextSet(self):
+        """识别片段结果集。
+        :rtype: list of AiRecognitionTaskOcrFullTextSegmentTextItem
+        """
         return self._TextSet
 
     @TextSet.setter
@@ -5437,6 +6493,9 @@ class AiRecognitionTaskOcrFullTextSegmentTextItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """识别片段置信度。取值：0~100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -5445,6 +6504,9 @@ class AiRecognitionTaskOcrFullTextSegmentTextItem(AbstractModel):
 
     @property
     def AreaCoordSet(self):
+        """识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -5453,6 +6515,9 @@ class AiRecognitionTaskOcrFullTextSegmentTextItem(AbstractModel):
 
     @property
     def Text(self):
+        """识别文本。
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -5504,6 +6569,9 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -5512,6 +6580,9 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -5520,6 +6591,9 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -5528,6 +6602,9 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -5536,6 +6613,9 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
 
     @property
     def Input(self):
+        """文本关键词识别任务输入信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResultInput`
+        """
         return self._Input
 
     @Input.setter
@@ -5544,6 +6624,10 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
 
     @property
     def Output(self):
+        """文本关键词识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResultOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -5586,6 +6670,9 @@ class AiRecognitionTaskOcrWordsResultInput(AbstractModel):
 
     @property
     def Definition(self):
+        """文本关键词识别模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -5622,6 +6709,9 @@ class AiRecognitionTaskOcrWordsResultItem(AbstractModel):
 
     @property
     def Word(self):
+        """文本关键词。
+        :rtype: str
+        """
         return self._Word
 
     @Word.setter
@@ -5630,6 +6720,9 @@ class AiRecognitionTaskOcrWordsResultItem(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """文本关键出现的片段列表。
+        :rtype: list of AiRecognitionTaskOcrWordsSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -5669,6 +6762,9 @@ class AiRecognitionTaskOcrWordsResultOutput(AbstractModel):
 
     @property
     def ResultSet(self):
+        """文本关键词识别结果集。
+        :rtype: list of AiRecognitionTaskOcrWordsResultItem
+        """
         return self._ResultSet
 
     @ResultSet.setter
@@ -5716,6 +6812,9 @@ class AiRecognitionTaskOcrWordsSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """识别片段起始的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -5724,6 +6823,9 @@ class AiRecognitionTaskOcrWordsSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """识别片段终止的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -5732,6 +6834,9 @@ class AiRecognitionTaskOcrWordsSegmentItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """识别片段置信度。取值：0~100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -5740,6 +6845,9 @@ class AiRecognitionTaskOcrWordsSegmentItem(AbstractModel):
 
     @property
     def AreaCoordSet(self):
+        """识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -5796,6 +6904,9 @@ class AiRecognitionTaskTransTextResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -5804,6 +6915,9 @@ class AiRecognitionTaskTransTextResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -5812,6 +6926,9 @@ class AiRecognitionTaskTransTextResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -5820,6 +6937,9 @@ class AiRecognitionTaskTransTextResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -5828,6 +6948,9 @@ class AiRecognitionTaskTransTextResult(AbstractModel):
 
     @property
     def Input(self):
+        """翻译任务输入信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskTransTextResultInput`
+        """
         return self._Input
 
     @Input.setter
@@ -5836,6 +6959,10 @@ class AiRecognitionTaskTransTextResult(AbstractModel):
 
     @property
     def Output(self):
+        """翻译任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskTransTextResultOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -5844,6 +6971,10 @@ class AiRecognitionTaskTransTextResult(AbstractModel):
 
     @property
     def Progress(self):
+        """任务进度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -5887,6 +7018,9 @@ class AiRecognitionTaskTransTextResultInput(AbstractModel):
 
     @property
     def Definition(self):
+        """翻译模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -5923,6 +7057,9 @@ class AiRecognitionTaskTransTextResultOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """翻译片段列表。
+        :rtype: list of AiRecognitionTaskTransTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -5931,6 +7068,9 @@ class AiRecognitionTaskTransTextResultOutput(AbstractModel):
 
     @property
     def SubtitlePath(self):
+        """字幕文件地址。
+        :rtype: str
+        """
         return self._SubtitlePath
 
     @SubtitlePath.setter
@@ -5982,6 +7122,9 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """识别片段置信度。取值：0~100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -5990,6 +7133,9 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """识别片段起始的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -5998,6 +7144,9 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """识别片段终止的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -6006,6 +7155,9 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def Text(self):
+        """识别文本。
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -6014,6 +7166,9 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def Trans(self):
+        """翻译文本。
+        :rtype: str
+        """
         return self._Trans
 
     @Trans.setter
@@ -6051,6 +7206,9 @@ class AiReviewPoliticalAsrTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -6093,6 +7251,9 @@ class AiReviewPoliticalAsrTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
+        """Asr 文字敏感评分，分值为0到100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -6101,6 +7262,12 @@ class AiReviewPoliticalAsrTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
+        """Asr 文字敏感结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -6109,6 +7276,9 @@ class AiReviewPoliticalAsrTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """Asr 文字敏感嫌疑的视频片段列表。
+        :rtype: list of MediaContentReviewAsrTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -6149,6 +7319,9 @@ class AiReviewPoliticalOcrTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -6191,6 +7364,9 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
+        """Ocr 文字敏感评分，分值为0到100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -6199,6 +7375,12 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
+        """Ocr 文字敏感结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -6207,6 +7389,9 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """Ocr 文字有敏感嫌疑的视频片段列表。
+        :rtype: list of MediaContentReviewOcrTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -6247,6 +7432,9 @@ class AiReviewPoliticalTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -6296,6 +7484,9 @@ violation_photo：
 
     @property
     def Confidence(self):
+        """视频涉敏评分，分值为0到100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -6304,6 +7495,12 @@ violation_photo：
 
     @property
     def Suggestion(self):
+        """涉敏结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -6312,6 +7509,13 @@ violation_photo：
 
     @property
     def Label(self):
+        """视频涉敏结果标签。内容审核模板[画面涉敏任务控制参数](https://cloud.tencent.com/document/api/862/37615#AiReviewPoliticalTaskOutput)里 LabelSet 参数与此参数取值范围的对应关系：
+violation_photo：
+<li>violation_photo：违规图标。</li>
+其他（即 politician/entertainment/sport/entrepreneur/scholar/celebrity/military）：
+<li>politician：涉敏人物。</li>
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -6320,6 +7524,9 @@ violation_photo：
 
     @property
     def SegmentSet(self):
+        """有涉敏嫌疑的视频片段列表。
+        :rtype: list of MediaContentReviewPoliticalSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -6361,6 +7568,9 @@ class AiReviewPornAsrTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """鉴黄模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -6403,6 +7613,9 @@ class AiReviewPornAsrTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
+        """Asr 文字涉黄评分，分值为0到100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -6411,6 +7624,12 @@ class AiReviewPornAsrTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
+        """Asr 文字涉黄结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -6419,6 +7638,9 @@ class AiReviewPornAsrTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """Asr 文字有涉黄嫌疑的视频片段列表。
+        :rtype: list of MediaContentReviewAsrTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -6459,6 +7681,9 @@ class AiReviewPornOcrTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """鉴黄模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -6501,6 +7726,9 @@ class AiReviewPornOcrTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
+        """Ocr 文字涉黄评分，分值为0到100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -6509,6 +7737,12 @@ class AiReviewPornOcrTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
+        """Ocr 文字涉黄结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -6517,6 +7751,9 @@ class AiReviewPornOcrTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """Ocr 文字有涉黄嫌疑的视频片段列表。
+        :rtype: list of MediaContentReviewOcrTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -6558,6 +7795,10 @@ class AiReviewPornTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """鉴黄模板 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -6607,6 +7848,9 @@ class AiReviewPornTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
+        """视频鉴黄评分，分值为0到100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -6615,6 +7859,12 @@ class AiReviewPornTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
+        """鉴黄结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -6623,6 +7873,13 @@ class AiReviewPornTaskOutput(AbstractModel):
 
     @property
     def Label(self):
+        """视频鉴黄结果标签，取值范围：
+<li>porn：色情。</li>
+<li>sexy：性感。</li>
+<li>vulgar：低俗。</li>
+<li>intimacy：亲密行为。</li>
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -6631,6 +7888,9 @@ class AiReviewPornTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """有涉黄嫌疑的视频片段列表。
+        :rtype: list of MediaContentReviewSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -6672,6 +7932,9 @@ class AiReviewProhibitedAsrTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """鉴违禁模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -6714,6 +7977,9 @@ class AiReviewProhibitedAsrTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
+        """Asr 文字涉违禁评分，分值为0到100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -6722,6 +7988,12 @@ class AiReviewProhibitedAsrTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
+        """Asr 文字涉违禁结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -6730,6 +8002,9 @@ class AiReviewProhibitedAsrTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """Asr 文字有涉违禁嫌疑的视频片段列表。
+        :rtype: list of MediaContentReviewAsrTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -6770,6 +8045,9 @@ class AiReviewProhibitedOcrTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """鉴违禁模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -6812,6 +8090,9 @@ class AiReviewProhibitedOcrTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
+        """Ocr 文字涉违禁评分，分值为0到100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -6820,6 +8101,12 @@ class AiReviewProhibitedOcrTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
+        """Ocr 文字涉违禁结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -6828,6 +8115,9 @@ class AiReviewProhibitedOcrTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """Ocr 文字有涉违禁嫌疑的视频片段列表。
+        :rtype: list of MediaContentReviewOcrTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -6884,6 +8174,9 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -6892,6 +8185,9 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -6900,6 +8196,9 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -6908,6 +8207,9 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -6916,6 +8218,9 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
 
     @property
     def Input(self):
+        """内容审核 Asr 文字敏感任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalAsrTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -6924,6 +8229,10 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
 
     @property
     def Output(self):
+        """内容审核 Asr 文字敏感任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalAsrTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -6982,6 +8291,9 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS，FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -6990,6 +8302,9 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -6998,6 +8313,9 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -7006,6 +8324,9 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -7014,6 +8335,9 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
 
     @property
     def Input(self):
+        """内容审核 Ocr 文字敏感任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalOcrTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -7022,6 +8346,10 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
 
     @property
     def Output(self):
+        """内容审核 Ocr 文字敏感任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalOcrTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -7080,6 +8408,9 @@ class AiReviewTaskPoliticalResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7088,6 +8419,9 @@ class AiReviewTaskPoliticalResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -7096,6 +8430,9 @@ class AiReviewTaskPoliticalResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -7104,6 +8441,9 @@ class AiReviewTaskPoliticalResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -7112,6 +8452,9 @@ class AiReviewTaskPoliticalResult(AbstractModel):
 
     @property
     def Input(self):
+        """内容审核涉敏任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -7120,6 +8463,10 @@ class AiReviewTaskPoliticalResult(AbstractModel):
 
     @property
     def Output(self):
+        """内容审核涉敏任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -7178,6 +8525,9 @@ class AiReviewTaskPornAsrResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7186,6 +8536,9 @@ class AiReviewTaskPornAsrResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -7194,6 +8547,9 @@ class AiReviewTaskPornAsrResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -7202,6 +8558,9 @@ class AiReviewTaskPornAsrResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -7210,6 +8569,9 @@ class AiReviewTaskPornAsrResult(AbstractModel):
 
     @property
     def Input(self):
+        """内容审核 Asr 文字鉴黄任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPornAsrTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -7218,6 +8580,10 @@ class AiReviewTaskPornAsrResult(AbstractModel):
 
     @property
     def Output(self):
+        """内容审核 Asr 文字鉴黄任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPornAsrTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -7276,6 +8642,9 @@ class AiReviewTaskPornOcrResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7284,6 +8653,9 @@ class AiReviewTaskPornOcrResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -7292,6 +8664,9 @@ class AiReviewTaskPornOcrResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -7300,6 +8675,9 @@ class AiReviewTaskPornOcrResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -7308,6 +8686,9 @@ class AiReviewTaskPornOcrResult(AbstractModel):
 
     @property
     def Input(self):
+        """内容审核 Ocr 文字鉴黄任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPornOcrTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -7316,6 +8697,10 @@ class AiReviewTaskPornOcrResult(AbstractModel):
 
     @property
     def Output(self):
+        """内容审核 Ocr 文字鉴黄任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPornOcrTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -7374,6 +8759,9 @@ class AiReviewTaskPornResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7382,6 +8770,9 @@ class AiReviewTaskPornResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -7390,6 +8781,9 @@ class AiReviewTaskPornResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -7398,6 +8792,9 @@ class AiReviewTaskPornResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -7406,6 +8803,9 @@ class AiReviewTaskPornResult(AbstractModel):
 
     @property
     def Input(self):
+        """内容审核鉴黄任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPornTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -7414,6 +8814,10 @@ class AiReviewTaskPornResult(AbstractModel):
 
     @property
     def Output(self):
+        """内容审核鉴黄任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPornTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -7472,6 +8876,9 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7480,6 +8887,9 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -7488,6 +8898,9 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -7496,6 +8909,9 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -7504,6 +8920,9 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
 
     @property
     def Input(self):
+        """内容审核 Asr 文字鉴违禁任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedAsrTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -7512,6 +8931,10 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
 
     @property
     def Output(self):
+        """内容审核 Asr 文字鉴违禁任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedAsrTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -7570,6 +8993,9 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7578,6 +9004,9 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -7586,6 +9015,9 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -7594,6 +9026,9 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -7602,6 +9037,9 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
 
     @property
     def Input(self):
+        """内容审核 Ocr 文字鉴违禁任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedOcrTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -7610,6 +9048,10 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
 
     @property
     def Output(self):
+        """内容审核 Ocr 文字鉴违禁任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedOcrTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -7668,6 +9110,9 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7676,6 +9121,9 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -7684,6 +9132,9 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -7692,6 +9143,9 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -7700,6 +9154,9 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
 
     @property
     def Input(self):
+        """内容审核 Ocr 文字敏感任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -7708,6 +9165,10 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
 
     @property
     def Output(self):
+        """内容审核 Ocr 文字敏感任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -7766,6 +9227,9 @@ class AiReviewTaskTerrorismResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7774,6 +9238,9 @@ class AiReviewTaskTerrorismResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -7782,6 +9249,9 @@ class AiReviewTaskTerrorismResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -7790,6 +9260,9 @@ class AiReviewTaskTerrorismResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -7798,6 +9271,9 @@ class AiReviewTaskTerrorismResult(AbstractModel):
 
     @property
     def Input(self):
+        """内容审核涉敏任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -7806,6 +9282,10 @@ class AiReviewTaskTerrorismResult(AbstractModel):
 
     @property
     def Output(self):
+        """内容审核涉敏任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -7848,6 +9328,9 @@ class AiReviewTerrorismOcrTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -7890,6 +9373,9 @@ class AiReviewTerrorismOcrTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
+        """Ocr 文字涉敏评分，分值为0到100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -7898,6 +9384,12 @@ class AiReviewTerrorismOcrTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
+        """Ocr 文字涉敏结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -7906,6 +9398,9 @@ class AiReviewTerrorismOcrTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """Ocr 文字有涉敏嫌疑的视频片段列表。
+        :rtype: list of MediaContentReviewOcrTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -7946,6 +9441,9 @@ class AiReviewTerrorismTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -8000,6 +9498,9 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
+        """视频涉敏评分，分值为0到100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -8008,6 +9509,12 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
+        """涉敏结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -8016,6 +9523,18 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
 
     @property
     def Label(self):
+        """视频涉敏结果标签，取值范围：
+<li>guns：武器枪支。</li>
+<li>crowd：人群聚集。</li>
+<li>police：警察部队。</li>
+<li>bloody：血腥画面。</li>
+<li>banners：涉敏旗帜。</li>
+<li>militant：武装分子。</li>
+<li>explosion：爆炸火灾。</li>
+<li>terrorists：涉敏人物。</li>
+<li>scenario：涉敏画面。</li>
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -8024,6 +9543,9 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """有涉敏嫌疑的视频片段列表。
+        :rtype: list of MediaContentReviewSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -8068,6 +9590,9 @@ class AiSampleFaceInfo(AbstractModel):
 
     @property
     def FaceId(self):
+        """人脸图片 ID。
+        :rtype: str
+        """
         return self._FaceId
 
     @FaceId.setter
@@ -8076,6 +9601,9 @@ class AiSampleFaceInfo(AbstractModel):
 
     @property
     def Url(self):
+        """人脸图片地址。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -8119,6 +9647,9 @@ class AiSampleFaceOperation(AbstractModel):
 
     @property
     def Type(self):
+        """操作类型，可选值：add（添加）、delete（删除）、reset（重置）。重置操作将清空该人物已有人脸数据，并添加 FaceContents 指定人脸数据。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -8127,6 +9658,9 @@ class AiSampleFaceOperation(AbstractModel):
 
     @property
     def FaceIds(self):
+        """人脸 ID 集合，当 Type为delete 时，该字段必填。
+        :rtype: list of str
+        """
         return self._FaceIds
 
     @FaceIds.setter
@@ -8135,6 +9669,12 @@ class AiSampleFaceOperation(AbstractModel):
 
     @property
     def FaceContents(self):
+        """人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串集合。
+<li>当 Type为add 或 reset 时，该字段必填；</li>
+<li>数组长度限制：5 张图片。</li>
+注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
+        :rtype: list of str
+        """
         return self._FaceContents
 
     @FaceContents.setter
@@ -8178,6 +9718,9 @@ class AiSampleFailFaceInfo(AbstractModel):
 
     @property
     def Index(self):
+        """对应入参 FaceContents 中错误图片下标，从 0 开始。
+        :rtype: int
+        """
         return self._Index
 
     @Index.setter
@@ -8186,6 +9729,11 @@ class AiSampleFailFaceInfo(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，取值：
+<li>0：成功；</li>
+<li>其他：失败。</li>
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -8194,6 +9742,9 @@ class AiSampleFailFaceInfo(AbstractModel):
 
     @property
     def Message(self):
+        """错误描述。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -8250,6 +9801,9 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def PersonId(self):
+        """人物 ID。
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -8258,6 +9812,9 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def Name(self):
+        """人物名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8266,6 +9823,9 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def Description(self):
+        """人物描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -8274,6 +9834,9 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def FaceInfoSet(self):
+        """人脸信息。
+        :rtype: list of AiSampleFaceInfo
+        """
         return self._FaceInfoSet
 
     @FaceInfoSet.setter
@@ -8282,6 +9845,9 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def TagSet(self):
+        """人物标签。
+        :rtype: list of str
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -8290,6 +9856,9 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def UsageSet(self):
+        """应用场景。
+        :rtype: list of str
+        """
         return self._UsageSet
 
     @UsageSet.setter
@@ -8298,6 +9867,9 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8306,6 +9878,9 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -8354,6 +9929,9 @@ class AiSampleTagOperation(AbstractModel):
 
     @property
     def Type(self):
+        """操作类型，可选值：add（添加）、delete（删除）、reset（重置）。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -8362,6 +9940,9 @@ class AiSampleTagOperation(AbstractModel):
 
     @property
     def Tags(self):
+        """标签，长度限制：128 个字符。
+        :rtype: list of str
+        """
         return self._Tags
 
     @Tags.setter
@@ -8408,6 +9989,9 @@ class AiSampleWord(AbstractModel):
 
     @property
     def Keyword(self):
+        """关键词。
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -8416,6 +10000,9 @@ class AiSampleWord(AbstractModel):
 
     @property
     def TagSet(self):
+        """关键词标签。
+        :rtype: list of str
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -8424,6 +10011,9 @@ class AiSampleWord(AbstractModel):
 
     @property
     def UsageSet(self):
+        """关键词应用场景。
+        :rtype: list of str
+        """
         return self._UsageSet
 
     @UsageSet.setter
@@ -8432,6 +10022,9 @@ class AiSampleWord(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8440,6 +10033,9 @@ class AiSampleWord(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -8482,6 +10078,9 @@ class AiSampleWordInfo(AbstractModel):
 
     @property
     def Keyword(self):
+        """关键词，长度限制：20 个字符。
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -8490,6 +10089,11 @@ class AiSampleWordInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """关键词标签
+<li>数组长度限制：20 个标签；</li>
+<li>单个标签长度限制：128 个字符。</li>
+        :rtype: list of str
+        """
         return self._Tags
 
     @Tags.setter
@@ -8544,6 +10148,9 @@ class AnimatedGraphicTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """视频转动图模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -8552,6 +10159,9 @@ class AnimatedGraphicTaskInput(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """动图在视频中的开始时间，单位为秒。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -8560,6 +10170,9 @@ class AnimatedGraphicTaskInput(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """动图在视频中的结束时间，单位为秒。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -8568,6 +10181,10 @@ class AnimatedGraphicTaskInput(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """转动图后文件的目标存储，不填则继承上层的 OutputStorage 值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -8576,6 +10193,16 @@ class AnimatedGraphicTaskInput(AbstractModel):
 
     @property
     def OutputObjectPath(self):
+        """转动图后文件的输出路径，可以为相对路径或者绝对路径。
+若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
+相对路径示例：
+<li>文件名_{变量名}.{format}</li>
+<li>文件名.{format}</li>
+绝对路径示例：
+<li>/自定义路径/文件名_{变量名}.{format}</li>
+如果不填，则默认为相对路径：`{inputName}_animatedGraphic_{definition}.{format}`。
+        :rtype: str
+        """
         return self._OutputObjectPath
 
     @OutputObjectPath.setter
@@ -8663,6 +10290,9 @@ class AnimatedGraphicsTemplate(AbstractModel):
 
     @property
     def Definition(self):
+        """转动图模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -8671,6 +10301,11 @@ class AnimatedGraphicsTemplate(AbstractModel):
 
     @property
     def Type(self):
+        """模板类型，取值范围：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -8679,6 +10314,9 @@ class AnimatedGraphicsTemplate(AbstractModel):
 
     @property
     def Name(self):
+        """转动图模板名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8687,6 +10325,9 @@ class AnimatedGraphicsTemplate(AbstractModel):
 
     @property
     def Comment(self):
+        """转动图模板描述。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -8695,6 +10336,14 @@ class AnimatedGraphicsTemplate(AbstractModel):
 
     @property
     def Width(self):
+        """动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -8703,6 +10352,14 @@ class AnimatedGraphicsTemplate(AbstractModel):
 
     @property
     def Height(self):
+        """动图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -8711,6 +10368,12 @@ class AnimatedGraphicsTemplate(AbstractModel):
 
     @property
     def ResolutionAdaptive(self):
+        """分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -8719,6 +10382,9 @@ class AnimatedGraphicsTemplate(AbstractModel):
 
     @property
     def Format(self):
+        """动图格式。
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -8727,6 +10393,9 @@ class AnimatedGraphicsTemplate(AbstractModel):
 
     @property
     def Fps(self):
+        """帧率。
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -8735,6 +10404,9 @@ class AnimatedGraphicsTemplate(AbstractModel):
 
     @property
     def Quality(self):
+        """图片质量。
+        :rtype: float
+        """
         return self._Quality
 
     @Quality.setter
@@ -8743,6 +10415,9 @@ class AnimatedGraphicsTemplate(AbstractModel):
 
     @property
     def CreateTime(self):
+        """模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8751,6 +10426,9 @@ class AnimatedGraphicsTemplate(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -8805,6 +10483,12 @@ class ArtifactRepairConfig(AbstractModel):
 
     @property
     def Switch(self):
+        """能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -8813,6 +10497,13 @@ class ArtifactRepairConfig(AbstractModel):
 
     @property
     def Type(self):
+        """类型，可选值：
+<li>weak</li>
+<li>strong</li>
+默认值：weak。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -8856,6 +10547,11 @@ class AsrFullTextConfigureInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """语音全文识别任务开关，可选值：
+<li>ON：开启智能语音全文识别任务；</li>
+<li>OFF：关闭智能语音全文识别任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -8864,6 +10560,10 @@ class AsrFullTextConfigureInfo(AbstractModel):
 
     @property
     def SubtitleFormat(self):
+        """生成的字幕文件格式，不填或者填空字符串表示不生成字幕文件，可选值：
+<li>vtt：生成 WebVTT 字幕文件。</li>
+        :rtype: str
+        """
         return self._SubtitleFormat
 
     @SubtitleFormat.setter
@@ -8872,6 +10572,9 @@ class AsrFullTextConfigureInfo(AbstractModel):
 
     @property
     def SourceLanguage(self):
+        """视频源语言。
+        :rtype: str
+        """
         return self._SourceLanguage
 
     @SourceLanguage.setter
@@ -8916,6 +10619,11 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """语音全文识别任务开关，可选值：
+<li>ON：开启智能语音全文识别任务；</li>
+<li>OFF：关闭智能语音全文识别任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -8924,6 +10632,10 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
 
     @property
     def SubtitleFormat(self):
+        """生成的字幕文件格式，填空字符串表示不生成字幕文件，可选值：
+<li>vtt：生成 WebVTT 字幕文件。</li>
+        :rtype: str
+        """
         return self._SubtitleFormat
 
     @SubtitleFormat.setter
@@ -8932,6 +10644,9 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
 
     @property
     def SourceLanguage(self):
+        """视频源语言。
+        :rtype: str
+        """
         return self._SourceLanguage
 
     @SourceLanguage.setter
@@ -8973,6 +10688,11 @@ class AsrWordsConfigureInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """语音关键词识别任务开关，可选值：
+<li>ON：开启语音关键词识别任务；</li>
+<li>OFF：关闭语音关键词识别任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -8981,6 +10701,10 @@ class AsrWordsConfigureInfo(AbstractModel):
 
     @property
     def LabelSet(self):
+        """关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -9021,6 +10745,11 @@ class AsrWordsConfigureInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """语音关键词识别任务开关，可选值：
+<li>ON：开启语音关键词识别任务；</li>
+<li>OFF：关闭语音关键词识别任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -9029,6 +10758,10 @@ class AsrWordsConfigureInfoForUpdate(AbstractModel):
 
     @property
     def LabelSet(self):
+        """关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -9073,6 +10806,12 @@ class AudioBeautifyConfig(AbstractModel):
 
     @property
     def Switch(self):
+        """能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -9081,6 +10820,13 @@ class AudioBeautifyConfig(AbstractModel):
 
     @property
     def Types(self):
+        """类型，可多选，可选值：
+<li>declick：杂音去除</li>
+<li>deesser：齿音压制</li>
+默认值：declick。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Types
 
     @Types.setter
@@ -9118,6 +10864,12 @@ class AudioDenoiseConfig(AbstractModel):
 
     @property
     def Switch(self):
+        """能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -9164,6 +10916,10 @@ class AudioEnhanceConfig(AbstractModel):
 
     @property
     def Denoise(self):
+        """音频降噪配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioDenoiseConfig`
+        """
         return self._Denoise
 
     @Denoise.setter
@@ -9172,6 +10928,10 @@ class AudioEnhanceConfig(AbstractModel):
 
     @property
     def Separate(self):
+        """音频分离配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioSeparateConfig`
+        """
         return self._Separate
 
     @Separate.setter
@@ -9180,6 +10940,10 @@ class AudioEnhanceConfig(AbstractModel):
 
     @property
     def VolumeBalance(self):
+        """音量均衡配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VolumeBalanceConfig`
+        """
         return self._VolumeBalance
 
     @VolumeBalance.setter
@@ -9188,6 +10952,10 @@ class AudioEnhanceConfig(AbstractModel):
 
     @property
     def Beautify(self):
+        """音频美化配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioBeautifyConfig`
+        """
         return self._Beautify
 
     @Beautify.setter
@@ -9249,6 +11017,12 @@ class AudioSeparateConfig(AbstractModel):
 
     @property
     def Switch(self):
+        """能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -9257,6 +11031,13 @@ class AudioSeparateConfig(AbstractModel):
 
     @property
     def Type(self):
+        """场景类型，可选值：
+<li>normal：人声背景声场景</li>
+<li>music：演唱伴奏场景</li>
+默认值：normal。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -9265,6 +11046,13 @@ class AudioSeparateConfig(AbstractModel):
 
     @property
     def Track(self):
+        """输出音轨，可选值：
+<li>vocal：输出人声</li>
+<li>background：应用场景为normal时输出背景声，应用场景为music时输出伴奏</li>
+默认值：vocal。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Track
 
     @Track.setter
@@ -9335,6 +11123,25 @@ class AudioTemplateInfo(AbstractModel):
 
     @property
     def Codec(self):
+        """音频流的编码格式。
+当不需要对音频进行转码时，可选值为：
+<li>copy。</li>
+当外层参数 Container 为 mp3 时，可选值为：
+<li>mp3。</li>
+当外层参数 Container 为 ogg 或 flac 时，可选值为：
+<li>flac。</li>
+当外层参数 Container 为 m4a 时，可选值为：
+<li>aac；</li>
+<li>ac3。</li>
+当外层参数 Container 为 mp4 或 flv 时，可选值为：
+<li>aac：更适合 mp4；</li>
+<li>mp3：更适合 flv；</li>
+<li>mp2。</li>
+当外层参数 Container 为 hls 时，可选值为：
+<li>aac；</li>
+<li>mp3。</li>
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -9343,6 +11150,10 @@ class AudioTemplateInfo(AbstractModel):
 
     @property
     def Bitrate(self):
+        """音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。
+当取值为 0，表示音频码率和原始音频保持一致。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -9351,6 +11162,13 @@ class AudioTemplateInfo(AbstractModel):
 
     @property
     def SampleRate(self):
+        """音频流的采样率，可选值：
+<li>32000</li>
+<li>44100</li>
+<li>48000</li>
+单位：Hz。
+        :rtype: int
+        """
         return self._SampleRate
 
     @SampleRate.setter
@@ -9359,6 +11177,14 @@ class AudioTemplateInfo(AbstractModel):
 
     @property
     def AudioChannel(self):
+        """音频通道方式，可选值：
+<li>1：单通道</li>
+<li>2：双通道</li>
+<li>6：5.1声道</li>
+当媒体的封装格式是音频格式时（flac，ogg，mp3，m4a）时，声道数不允许设为5.1声道。
+默认值：2。
+        :rtype: int
+        """
         return self._AudioChannel
 
     @AudioChannel.setter
@@ -9436,6 +11262,26 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Codec(self):
+        """音频流的编码格式。
+当不需要对音频进行转码时，可选值为：
+<li>copy。</li>
+当外层参数 Container 为 mp3 时，可选值为：
+<li>mp3。</li>
+当外层参数 Container 为 ogg 或 flac 时，可选值为：
+<li>flac。</li>
+当外层参数 Container 为 m4a 时，可选值为：
+<li>aac；</li>
+<li>ac3。</li>
+当外层参数 Container 为 mp4 或 flv 时，可选值为：
+<li>aac：更适合 mp4；</li>
+<li>mp3：更适合 flv；</li>
+<li>mp2。</li>
+当外层参数 Container 为 hls 时，可选值为：
+<li>aac；</li>
+<li>mp3。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -9444,6 +11290,10 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Bitrate(self):
+        """音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。 当取值为 0，表示音频码率和原始音频保持一致。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -9452,6 +11302,14 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 
     @property
     def SampleRate(self):
+        """音频流的采样率，可选值：
+<li>32000</li>
+<li>44100</li>
+<li>48000</li>
+单位：Hz。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SampleRate
 
     @SampleRate.setter
@@ -9460,6 +11318,14 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 
     @property
     def AudioChannel(self):
+        """音频通道方式，可选值：
+<li>1：单通道</li>
+<li>2：双通道</li>
+<li>6：5.1声道</li>
+当媒体的封装格式是音频格式时（flac，ogg，mp3，m4a）时，声道数不允许设为5.1声道。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AudioChannel
 
     @AudioChannel.setter
@@ -9468,6 +11334,10 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 
     @property
     def StreamSelects(self):
+        """指定输出要保留的音频轨道。默认是全部保留源的。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._StreamSelects
 
     @StreamSelects.setter
@@ -9529,6 +11399,9 @@ eu-west-3
 
     @property
     def S3Bucket(self):
+        """绑定的 AWS S3 存储桶。
+        :rtype: str
+        """
         return self._S3Bucket
 
     @S3Bucket.setter
@@ -9537,6 +11410,11 @@ eu-west-3
 
     @property
     def S3Region(self):
+        """绑定的桶所在 AWS 区域，目前支持：  
+us-east-1  
+eu-west-3
+        :rtype: str
+        """
         return self._S3Region
 
     @S3Region.setter
@@ -9545,6 +11423,9 @@ eu-west-3
 
     @property
     def Dir(self):
+        """绑定的输入路径目录，必须为绝对路径，即以 `/` 开头和结尾。如`/movie/201907/`，不填代表根目录`/`。	
+        :rtype: str
+        """
         return self._Dir
 
     @Dir.setter
@@ -9553,6 +11434,9 @@ eu-west-3
 
     @property
     def Formats(self):
+        """允许触发的文件格式列表，如 ["mp4", "flv", "mov"]。不填代表所有格式的文件都可以触发工作流。	
+        :rtype: list of str
+        """
         return self._Formats
 
     @Formats.setter
@@ -9561,6 +11445,10 @@ eu-west-3
 
     @property
     def S3SecretId(self):
+        """绑定的 AWS S3 存储桶的秘钥ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._S3SecretId
 
     @S3SecretId.setter
@@ -9569,6 +11457,10 @@ eu-west-3
 
     @property
     def S3SecretKey(self):
+        """绑定的 AWS S3 存储桶的秘钥Key。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._S3SecretKey
 
     @S3SecretKey.setter
@@ -9577,6 +11469,11 @@ eu-west-3
 
     @property
     def AwsSQS(self):
+        """绑定的 AWS S3 存储桶对应的 SQS事件队列。
+注意：队列和桶需要在同一区域。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
+        """
         return self._AwsSQS
 
     @AwsSQS.setter
@@ -9631,6 +11528,10 @@ class AwsSQS(AbstractModel):
 
     @property
     def SQSRegion(self):
+        """SQS 队列区域。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SQSRegion
 
     @SQSRegion.setter
@@ -9639,6 +11540,10 @@ class AwsSQS(AbstractModel):
 
     @property
     def SQSQueueName(self):
+        """SQS 队列名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SQSQueueName
 
     @SQSQueueName.setter
@@ -9647,6 +11552,10 @@ class AwsSQS(AbstractModel):
 
     @property
     def S3SecretId(self):
+        """读写SQS的秘钥id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._S3SecretId
 
     @S3SecretId.setter
@@ -9655,6 +11564,10 @@ class AwsSQS(AbstractModel):
 
     @property
     def S3SecretKey(self):
+        """读写SQS的秘钥key。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._S3SecretKey
 
     @S3SecretKey.setter
@@ -9694,6 +11607,9 @@ class BatchDeleteStreamLinkFlowRequest(AbstractModel):
 
     @property
     def EventId(self):
+        """EventId。
+        :rtype: str
+        """
         return self._EventId
 
     @EventId.setter
@@ -9702,6 +11618,9 @@ class BatchDeleteStreamLinkFlowRequest(AbstractModel):
 
     @property
     def FlowIds(self):
+        """Event关联的流Id数组，如果不传默认删除Event下面的所有媒体传输流。
+        :rtype: list of str
+        """
         return self._FlowIds
 
     @FlowIds.setter
@@ -9736,6 +11655,9 @@ class BatchDeleteStreamLinkFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9764,6 +11686,9 @@ class BatchStartStreamLinkFlowRequest(AbstractModel):
 
     @property
     def EventId(self):
+        """EventId。
+        :rtype: str
+        """
         return self._EventId
 
     @EventId.setter
@@ -9772,6 +11697,9 @@ class BatchStartStreamLinkFlowRequest(AbstractModel):
 
     @property
     def FlowIds(self):
+        """Event关联的流Id数组，如果不传默认启动Event下面的所有媒体传输流。
+        :rtype: list of str
+        """
         return self._FlowIds
 
     @FlowIds.setter
@@ -9806,6 +11734,9 @@ class BatchStartStreamLinkFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9834,6 +11765,9 @@ class BatchStopStreamLinkFlowRequest(AbstractModel):
 
     @property
     def EventId(self):
+        """EventId。
+        :rtype: str
+        """
         return self._EventId
 
     @EventId.setter
@@ -9842,6 +11776,9 @@ class BatchStopStreamLinkFlowRequest(AbstractModel):
 
     @property
     def FlowIds(self):
+        """流Id，如果不传默认停止Event下所有的媒体传输流。
+        :rtype: list of str
+        """
         return self._FlowIds
 
     @FlowIds.setter
@@ -9876,6 +11813,9 @@ class BatchStopStreamLinkFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9903,6 +11843,11 @@ class ClassificationConfigureInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """智能分类任务开关，可选值：
+<li>ON：开启智能分类任务；</li>
+<li>OFF：关闭智能分类任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -9938,6 +11883,11 @@ class ClassificationConfigureInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """智能分类任务开关，可选值：
+<li>ON：开启智能分类任务；</li>
+<li>OFF：关闭智能分类任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -9982,6 +11932,12 @@ class ColorEnhanceConfig(AbstractModel):
 
     @property
     def Switch(self):
+        """能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -9990,6 +11946,14 @@ class ColorEnhanceConfig(AbstractModel):
 
     @property
     def Type(self):
+        """类型，可选值：
+<li>weak</li>
+<li>normal</li>
+<li>strong</li>
+默认值：weak。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -10030,6 +11994,9 @@ class ComposeAudioItem(AbstractModel):
 
     @property
     def SourceMedia(self):
+        """元素对应媒体信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeSourceMedia`
+        """
         return self._SourceMedia
 
     @SourceMedia.setter
@@ -10038,6 +12005,9 @@ class ComposeAudioItem(AbstractModel):
 
     @property
     def TrackTime(self):
+        """元素在轨道时间轴上的时间信息，不填则紧跟上一个元素。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeTrackTime`
+        """
         return self._TrackTime
 
     @TrackTime.setter
@@ -10046,6 +12016,9 @@ class ComposeAudioItem(AbstractModel):
 
     @property
     def AudioOperations(self):
+        """对音频进行操作，如静音等。
+        :rtype: list of ComposeAudioOperation
+        """
         return self._AudioOperations
 
     @AudioOperations.setter
@@ -10098,6 +12071,10 @@ class ComposeAudioOperation(AbstractModel):
 
     @property
     def Type(self):
+        """音频操作类型，取值有：
+<li>Volume：音量调节。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -10106,6 +12083,13 @@ class ComposeAudioOperation(AbstractModel):
 
     @property
     def Volume(self):
+        """ 当 Type = Volume 时有效。音量调节参数，取值范围: 0~5。 
+<li>0 表示静音。</li>
+<li>小于1 表示降低音量。</li>
+<li>1 表示不变。</li>
+<li>大于1表示升高音量。</li>
+        :rtype: float
+        """
         return self._Volume
 
     @Volume.setter
@@ -10159,6 +12143,11 @@ class ComposeAudioStream(AbstractModel):
 
     @property
     def Codec(self):
+        """音频流的编码方式，可选值：
+<li>AAC：AAC 编码（默认），用于容器为 mp4。</li>
+<li>MP3：mp3 编码，用于容器为 mp3。</li>
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -10167,6 +12156,13 @@ class ComposeAudioStream(AbstractModel):
 
     @property
     def SampleRate(self):
+        """音频流的采样率，单位：Hz，可选值：
+<li>16000（默认）</li>
+<li>32000</li>
+<li>44100</li>
+<li>48000</li>
+        :rtype: int
+        """
         return self._SampleRate
 
     @SampleRate.setter
@@ -10175,6 +12171,11 @@ class ComposeAudioStream(AbstractModel):
 
     @property
     def AudioChannel(self):
+        """声道数，可选值：
+<li>1：单声道 。</li>
+<li>2：双声道（默认）。</li>
+        :rtype: int
+        """
         return self._AudioChannel
 
     @AudioChannel.setter
@@ -10183,6 +12184,11 @@ class ComposeAudioStream(AbstractModel):
 
     @property
     def Bitrate(self):
+        """参考码率，单位 kbps，范围：26~10000。
+如果设置，编码时会尽量按该码率进行编码。
+如果不设置，服务将根据音频参数自动采用合适的码率。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -10228,6 +12234,10 @@ class ComposeCanvas(AbstractModel):
 
     @property
     def Color(self):
+        """背景颜色对应的 RGB 参考值，取值格式： #RRGGBB，如 #F0F0F0 。 
+默认值：#000000（黑色）。
+        :rtype: str
+        """
         return self._Color
 
     @Color.setter
@@ -10236,6 +12246,10 @@ class ComposeCanvas(AbstractModel):
 
     @property
     def Width(self):
+        """画布宽度，即输出视频的宽度，取值范围：0~ 3840，单位：px。  
+默认值：0，表示和第一个视频宽度一致。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -10244,6 +12258,10 @@ class ComposeCanvas(AbstractModel):
 
     @property
     def Height(self):
+        """画布高度，即输出视频的高度，取值范围：0~ 3840，单位：px。  
+默认值：0，表示和第一个视频高度一致。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -10280,6 +12298,10 @@ class ComposeEmptyItem(AbstractModel):
 
     @property
     def Duration(self):
+        """元素时长，时间支持：
+<li>以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒。</li>
+        :rtype: str
+        """
         return self._Duration
 
     @Duration.setter
@@ -10349,6 +12371,9 @@ class ComposeImageItem(AbstractModel):
 
     @property
     def SourceMedia(self):
+        """元素对应媒体信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeSourceMedia`
+        """
         return self._SourceMedia
 
     @SourceMedia.setter
@@ -10357,6 +12382,9 @@ class ComposeImageItem(AbstractModel):
 
     @property
     def TrackTime(self):
+        """元素在轨道时间轴上的时间信息，不填则紧跟上一个元素。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeTrackTime`
+        """
         return self._TrackTime
 
     @TrackTime.setter
@@ -10365,6 +12393,12 @@ class ComposeImageItem(AbstractModel):
 
     @property
     def XPos(self):
+        """元素中心点距离画布原点的水平位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示元素 XPos 为画布宽度指定百分比的位置，如 10% 表示 XPos 为画布宽度的 10%。</li>
+<li>当字符串以 px 结尾，表示元素 XPos 单位为像素，如 100px 表示 XPos 为100像素。</li>
+默认：50%。
+        :rtype: str
+        """
         return self._XPos
 
     @XPos.setter
@@ -10373,6 +12407,12 @@ class ComposeImageItem(AbstractModel):
 
     @property
     def YPos(self):
+        """元素中心点距离画布原点的垂直位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示元素 YPos 为画布高度指定百分比的位置，如 10% 表示 YPos 为画布高度的 10%。</li>
+<li>当字符串以 px 结尾，表示元素 YPos 单位为像素，如 100px 表示 YPos 为100像素。</li>
+默认：50%。
+        :rtype: str
+        """
         return self._YPos
 
     @YPos.setter
@@ -10381,6 +12421,15 @@ class ComposeImageItem(AbstractModel):
 
     @property
     def Width(self):
+        """视频片段的宽度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示元素 Width 为画布宽度的百分比大小，如 10% 表示 Width 为画布宽度的 10%。</li>
+<li>当字符串以 px 结尾，表示元素 Width 单位为像素，如 100px 表示 Width 为100像素。</li>
+为空（或0） 的场景：
+<li>当 Width、Height 均为空，则 Width 和 Height 取源素材本身的 Width、Height。</li>
+<li>当 Width 为空，Height 非空，则 Width 按源素材比例缩放。</li>
+<li>当 Width 非空，Height 为空，则 Height 按源素材比例缩放。</li>
+        :rtype: str
+        """
         return self._Width
 
     @Width.setter
@@ -10389,6 +12438,15 @@ class ComposeImageItem(AbstractModel):
 
     @property
     def Height(self):
+        """元素的高度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示元素 Height 为画布高度的百分比大小，如 10% 表示 Height 为画布高度的 10%。</li>
+<li>当字符串以 px 结尾，表示元素 Height 单位为像素，如 100px 表示 Height 为100像素。</li>
+为空（或0） 的场景：
+<li>当 Width、Height 均为空，则 Width 和 Height 取源素材本身的 Width、Height。</li>
+<li>当 Width 为空，Height 非空，则 Width 按源素材比例缩放。</li>
+<li>当 Width 非空，Height 为空，则 Height 按源素材比例缩放。</li>
+        :rtype: str
+        """
         return self._Height
 
     @Height.setter
@@ -10397,6 +12455,9 @@ class ComposeImageItem(AbstractModel):
 
     @property
     def ImageOperations(self):
+        """对图像画面进行的操作，如图像旋转等。
+        :rtype: list of ComposeImageOperation
+        """
         return self._ImageOperations
 
     @ImageOperations.setter
@@ -10455,6 +12516,11 @@ class ComposeImageOperation(AbstractModel):
 
     @property
     def Type(self):
+        """类型，取值有：
+<li>Rotate：图像旋转。</li>
+<li>Flip：图像翻转。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -10463,6 +12529,9 @@ class ComposeImageOperation(AbstractModel):
 
     @property
     def RotateAngle(self):
+        """当 Type = Rotate 时有效。图像以中心点为原点进行旋转的角度，取值范围0~360。
+        :rtype: float
+        """
         return self._RotateAngle
 
     @RotateAngle.setter
@@ -10471,6 +12540,11 @@ class ComposeImageOperation(AbstractModel):
 
     @property
     def FlipType(self):
+        """当 Type = Flip 时有效。图像翻转动作，取值有： 
+<li>Horizental：水平翻转，即左右镜像。</li>
+<li>Vertical：垂直翻转，即上下镜像。</li>
+        :rtype: str
+        """
         return self._FlipType
 
     @FlipType.setter
@@ -10520,6 +12594,9 @@ class ComposeMediaConfig(AbstractModel):
 
     @property
     def TargetInfo(self):
+        """合成目标视频信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeTargetInfo`
+        """
         return self._TargetInfo
 
     @TargetInfo.setter
@@ -10528,6 +12605,9 @@ class ComposeMediaConfig(AbstractModel):
 
     @property
     def Canvas(self):
+        """合成目标视频的画布信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeCanvas`
+        """
         return self._Canvas
 
     @Canvas.setter
@@ -10536,6 +12616,9 @@ class ComposeMediaConfig(AbstractModel):
 
     @property
     def Styles(self):
+        """全局样式，和轨道 Tracks 配合使用，用于定于样式，如字幕样式。
+        :rtype: list of ComposeStyles
+        """
         return self._Styles
 
     @Styles.setter
@@ -10544,6 +12627,10 @@ class ComposeMediaConfig(AbstractModel):
 
     @property
     def Tracks(self):
+        """用于描述合成视频的轨道列表，包括：视频、音频、图片、文字等元素组成的多个轨道信息。关于轨道和时间：
+<ul><li>轨道时间轴即为目标视频时间轴。</li><li>时间轴上相同时间点的不同轨道上的元素会重叠：</li><ul><li>视频、图片、文字：按轨道顺序进行图像的叠加，轨道顺序靠前的在上面。</li><li>音频 ：进行混音。</li></ul></ul>注意：同一轨道中各个元素（除字幕元素外）的轨道时间不能重叠。
+        :rtype: list of ComposeMediaTrack
+        """
         return self._Tracks
 
     @Tracks.setter
@@ -10618,6 +12705,15 @@ class ComposeMediaItem(AbstractModel):
 
     @property
     def Type(self):
+        """元素类型。取值有：
+<li>Video：视频元素。</li>
+<li>Audio：音频元素。</li>
+<li>Image：图片元素。</li>
+<li>Transition：转场元素。</li>
+<li>Subtitle：字幕元素。</li>
+<li>Empty：空白元素。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -10626,6 +12722,9 @@ class ComposeMediaItem(AbstractModel):
 
     @property
     def Video(self):
+        """视频元素，当 Type = Video 时有效。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeVideoItem`
+        """
         return self._Video
 
     @Video.setter
@@ -10634,6 +12733,9 @@ class ComposeMediaItem(AbstractModel):
 
     @property
     def Audio(self):
+        """音频元素，当 Type = Audio 时有效。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeAudioItem`
+        """
         return self._Audio
 
     @Audio.setter
@@ -10642,6 +12744,9 @@ class ComposeMediaItem(AbstractModel):
 
     @property
     def Image(self):
+        """图片元素，当 Type = Image 时有效。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeImageItem`
+        """
         return self._Image
 
     @Image.setter
@@ -10650,6 +12755,9 @@ class ComposeMediaItem(AbstractModel):
 
     @property
     def Transition(self):
+        """转场元素，当 Type = Transition 时有效。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeTransitionItem`
+        """
         return self._Transition
 
     @Transition.setter
@@ -10658,6 +12766,9 @@ class ComposeMediaItem(AbstractModel):
 
     @property
     def Subtitle(self):
+        """字幕元素，当 Type = Subtitle 是有效。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeSubtitleItem`
+        """
         return self._Subtitle
 
     @Subtitle.setter
@@ -10666,6 +12777,9 @@ class ComposeMediaItem(AbstractModel):
 
     @property
     def Empty(self):
+        """空白元素，当 Type = Empty 时有效。用于时间轴的占位。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeEmptyItem`
+        """
         return self._Empty
 
     @Empty.setter
@@ -10720,6 +12834,9 @@ class ComposeMediaTrack(AbstractModel):
 
     @property
     def Type(self):
+        """轨道类型，取值有：<ul><li>Video ：视频轨道。视频轨道可由以下元素组成：</li><ul><li>Video 元素</li><li>Image 元素</li><li>Transition 元素</li><li>Empty 元素</li></ul><li>Audio ：音频轨道。音频轨道可由以下元素组成：</li><ul><li>Audio 元素</li><li>Transition 元素</li><li>Empty 元素</li></ul><li>Title：文字轨道。文字轨道可由以下元素组成：</li><ul><li>Subtitle 元素</li></ul>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -10728,6 +12845,9 @@ class ComposeMediaTrack(AbstractModel):
 
     @property
     def Items(self):
+        """轨道上的元素列表。
+        :rtype: list of ComposeMediaItem
+        """
         return self._Items
 
     @Items.setter
@@ -10781,6 +12901,9 @@ class ComposeSourceMedia(AbstractModel):
 
     @property
     def FileId(self):
+        """媒体对应的素材ID，即 FileInfos 列表中对应素材的 ID。
+        :rtype: str
+        """
         return self._FileId
 
     @FileId.setter
@@ -10789,6 +12912,12 @@ class ComposeSourceMedia(AbstractModel):
 
     @property
     def StartTime(self):
+        """媒体位于素材的起始时间，时间点支持 s、% 两种格式：
+<li>当字符串以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
+<li>当字符串以 % 结尾，表示时间点为素材时长的百分比大小，如10%表示时间点为素材第10% 的时刻。</li>
+默认：0s
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -10797,6 +12926,14 @@ class ComposeSourceMedia(AbstractModel):
 
     @property
     def EndTime(self):
+        """媒体位于素材的结束时间，和 StartTime 构成媒体在源素材的时间区间，时间点支持 s、% 两种格式：
+<li>当字符串以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
+<li>当字符串以 % 结尾，表示时间点为素材时长的百分比大小，如10%表示时间点为素材第10%的时间。</li>
+默认：如果对应轨道时长有设置，则默认轨道时长，否则为素材时长，无时长的素材默认为 1 秒。
+注意：至少需要大于 StartTime 0.02 秒。
+
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -10840,6 +12977,10 @@ class ComposeStyles(AbstractModel):
 
     @property
     def Id(self):
+        """样式 Id，用于和轨道元素中的样式关联。
+注意：允许字母、数字、-、_ 组合，最长 32 字符。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -10848,6 +12989,10 @@ class ComposeStyles(AbstractModel):
 
     @property
     def Type(self):
+        """样式类型，取值有：
+<li>Subtitle：字幕样式。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -10856,6 +13001,9 @@ class ComposeStyles(AbstractModel):
 
     @property
     def Subtitle(self):
+        """字幕样式信息，当 Type = Subtitle 时有效。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeSubtitleStyle`
+        """
         return self._Subtitle
 
     @Subtitle.setter
@@ -10899,6 +13047,9 @@ class ComposeSubtitleItem(AbstractModel):
 
     @property
     def StyleId(self):
+        """字幕样式，Styles 列表中对应的 Subtitle样式的 ID。
+        :rtype: str
+        """
         return self._StyleId
 
     @StyleId.setter
@@ -10907,6 +13058,9 @@ class ComposeSubtitleItem(AbstractModel):
 
     @property
     def Text(self):
+        """字幕文本。
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -10915,6 +13069,9 @@ class ComposeSubtitleItem(AbstractModel):
 
     @property
     def TrackTime(self):
+        """元素在轨道时间轴上的时间信息，不填则紧跟上一个元素。	
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeTrackTime`
+        """
         return self._TrackTime
 
     @TrackTime.setter
@@ -11015,6 +13172,12 @@ class ComposeSubtitleStyle(AbstractModel):
 
     @property
     def Height(self):
+        """字幕高度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示为画布高度的百分比大小，如 10% 表示为画布高度的 10%。</li>
+<li>当字符串以 px 结尾，表示单位为像素，如 100px 表示为100像素。</li>
+默认为 FontSize 大小。
+        :rtype: str
+        """
         return self._Height
 
     @Height.setter
@@ -11023,6 +13186,12 @@ class ComposeSubtitleStyle(AbstractModel):
 
     @property
     def MarginBottom(self):
+        """字幕距离下边框距离，支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示为画布高度的百分比大小，如 10% 表示为画布高度的 10%。</li>
+<li>当字符串以 px 结尾，表示单位为像素，如 100px 表示为100像素。</li>
+默认：0px
+        :rtype: str
+        """
         return self._MarginBottom
 
     @MarginBottom.setter
@@ -11031,6 +13200,11 @@ class ComposeSubtitleStyle(AbstractModel):
 
     @property
     def FontType(self):
+        """字体类型，支持：
+<li>SimHei：黑体（默认）。</li>
+<li>SimSun：宋体。</li>
+        :rtype: str
+        """
         return self._FontType
 
     @FontType.setter
@@ -11039,6 +13213,12 @@ class ComposeSubtitleStyle(AbstractModel):
 
     @property
     def FontSize(self):
+        """字体大小，支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示为画布高度的百分比大小，如 10% 表示为画布高度的 10%。</li>
+<li>当字符串以 px 结尾，表示单位为像素，如 100px 表示为100像素。</li>
+默认：2%
+        :rtype: str
+        """
         return self._FontSize
 
     @FontSize.setter
@@ -11047,6 +13227,11 @@ class ComposeSubtitleStyle(AbstractModel):
 
     @property
     def FontBold(self):
+        """是否使用粗体，和字体相关，可选值：
+<li>0：否（默认）。</li>
+<li>1：是。</li>
+        :rtype: int
+        """
         return self._FontBold
 
     @FontBold.setter
@@ -11055,6 +13240,11 @@ class ComposeSubtitleStyle(AbstractModel):
 
     @property
     def FontItalic(self):
+        """是否使用斜体，和字体相关，可选值：
+<li>0：否（默认）。</li>
+<li>1：是。</li>
+        :rtype: int
+        """
         return self._FontItalic
 
     @FontItalic.setter
@@ -11063,6 +13253,12 @@ class ComposeSubtitleStyle(AbstractModel):
 
     @property
     def FontColor(self):
+        """字体颜色，格式：#RRGGBBAA。  
+默认值：0x000000FF（黑色）。  
+注意：其中 AA 部分指的是透明度，为可选。
+
+        :rtype: str
+        """
         return self._FontColor
 
     @FontColor.setter
@@ -11071,6 +13267,12 @@ class ComposeSubtitleStyle(AbstractModel):
 
     @property
     def FontAlign(self):
+        """文字对齐方式：
+<li>Center：居中（默认）。</li>
+<li>Left：左对齐。</li>
+<li>Right：右对齐。</li>
+        :rtype: str
+        """
         return self._FontAlign
 
     @FontAlign.setter
@@ -11079,6 +13281,14 @@ class ComposeSubtitleStyle(AbstractModel):
 
     @property
     def FontAlignMargin(self):
+        """用于字幕对齐留白：
+<li>FontAlign=Left 时，表示距离左边距离。</li>
+<li>FontAlign=Right时，表示距离右边距离。</li>
+支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示为画布宽度的百分比大小，如 10% 表示为画布宽度的 10%。</li>
+<li>当字符串以 px 结尾，表示单位为像素，如 100px 表示为100像素。</li>
+        :rtype: str
+        """
         return self._FontAlignMargin
 
     @FontAlignMargin.setter
@@ -11087,6 +13297,12 @@ class ComposeSubtitleStyle(AbstractModel):
 
     @property
     def BorderWidth(self):
+        """字体边框宽度，支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示为画布高度的百分比大小，如 10% 表示为画布高度的 10%。</li>
+<li>当字符串以 px 结尾，表示单位为像素，如 100px 表示为100像素。</li>
+默认： 0，表示不需要边框。
+        :rtype: str
+        """
         return self._BorderWidth
 
     @BorderWidth.setter
@@ -11095,6 +13311,9 @@ class ComposeSubtitleStyle(AbstractModel):
 
     @property
     def BorderColor(self):
+        """边框颜色，当 BorderWidth 不为 0 时生效，其值格式和 FontColor 一致。
+        :rtype: str
+        """
         return self._BorderColor
 
     @BorderColor.setter
@@ -11103,6 +13322,10 @@ class ComposeSubtitleStyle(AbstractModel):
 
     @property
     def BottomColor(self):
+        """文字底色，其值格式和 FontColor 一致。  
+默认为空， 表示不使用底色。
+        :rtype: str
+        """
         return self._BottomColor
 
     @BottomColor.setter
@@ -11165,6 +13388,11 @@ class ComposeTargetInfo(AbstractModel):
 
     @property
     def Container(self):
+        """封装容器格式，可选值：
+<li>mp4：视频文件（默认）。</li>
+<li>mp3：纯音频文件。</li>
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -11173,6 +13401,11 @@ class ComposeTargetInfo(AbstractModel):
 
     @property
     def RemoveVideo(self):
+        """是否去除视频数据，可选值：
+<li>0：保留（默认）。</li>
+<li>1：去除。</li>
+        :rtype: int
+        """
         return self._RemoveVideo
 
     @RemoveVideo.setter
@@ -11181,6 +13414,11 @@ class ComposeTargetInfo(AbstractModel):
 
     @property
     def RemoveAudio(self):
+        """是否去除音频数据，可选值：
+<li>0：保留（默认）。</li>
+<li>1：去除。</li>
+        :rtype: int
+        """
         return self._RemoveAudio
 
     @RemoveAudio.setter
@@ -11189,6 +13427,9 @@ class ComposeTargetInfo(AbstractModel):
 
     @property
     def VideoStream(self):
+        """输出视频流信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeVideoStream`
+        """
         return self._VideoStream
 
     @VideoStream.setter
@@ -11197,6 +13438,9 @@ class ComposeTargetInfo(AbstractModel):
 
     @property
     def AudioStream(self):
+        """输出音频流信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeAudioStream`
+        """
         return self._AudioStream
 
     @AudioStream.setter
@@ -11245,6 +13489,11 @@ class ComposeTrackTime(AbstractModel):
 
     @property
     def Start(self):
+        """元素在轨道上的起始时间，时间点支持：
+<li>以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
+注意：不填则默认为前一个元素的结束时间，此时可以通过 ComposeEmptyItem 元素来进行占位，实现轨道起始时间设置。
+        :rtype: str
+        """
         return self._Start
 
     @Start.setter
@@ -11253,6 +13502,11 @@ class ComposeTrackTime(AbstractModel):
 
     @property
     def Duration(self):
+        """元素时长，时间支持：
+<li>以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
+默认：取对应 ComposeSourceMedia 媒体的有效时长（即 EndTime-StartTime），没有 ComposeSourceMedia 则默认为 1 秒。
+        :rtype: str
+        """
         return self._Duration
 
     @Duration.setter
@@ -11298,6 +13552,15 @@ class ComposeTransitionItem(AbstractModel):
 
     @property
     def Duration(self):
+        """元素时长，时间支持：<li>以 s 结尾，表示时间点单位为秒，如 3s 表示时间点为第3秒。</li>
+默认：1s
+注意：
+<li>必须是整数s，否则向下取整。</li>
+<li>转场 前后必须紧挨着两个不为 Empty 的元素。</li>
+<li>转场 Duration 必须小于前一个元素的 Duration，同时必须小于后一个元素的 Duration。</li>
+<li>进行转场处理的两个元素，第二个元素在轨道上的起始时间会自动调整为前一个元素的结束时间减去转场的 Duration。</li>
+        :rtype: str
+        """
         return self._Duration
 
     @Duration.setter
@@ -11306,6 +13569,11 @@ class ComposeTransitionItem(AbstractModel):
 
     @property
     def Transitions(self):
+        """转场操作列表。
+默认：淡入淡出。
+注意：图像转场操作和音频转场操作各自最多支持一个。
+        :rtype: list of ComposeTransitionOperation
+        """
         return self._Transitions
 
     @Transitions.setter
@@ -11384,6 +13652,48 @@ class ComposeTransitionOperation(AbstractModel):
 
     @property
     def Type(self):
+        """转场类型。
+
+图像的转场操作，用于两个视频片段图像间的转场处理：
+<li>ImageFadeInFadeOut：图像淡入淡出。</li>
+<li>BowTieHorizontal：水平蝴蝶结。</li>
+<li>BowTieVertical：垂直蝴蝶结。</li>
+<li>ButterflyWaveScrawler：晃动。</li>
+<li>Cannabisleaf：枫叶。</li>
+<li>Circle：弧形收放。</li>
+<li>CircleCrop：圆环聚拢。</li>
+<li>Circleopen：椭圆聚拢。</li>
+<li>Crosswarp：横向翘曲。</li>
+<li>Cube：立方体。</li>
+<li>DoomScreenTransition：幕布。</li>
+<li>Doorway：门廊。</li>
+<li>Dreamy：波浪。</li>
+<li>DreamyZoom：水平聚拢。</li>
+<li>FilmBurn：火烧云。</li>
+<li>GlitchMemories：抖动。</li>
+<li>Heart：心形。</li>
+<li>InvertedPageCurl：翻页。</li>
+<li>Luma：腐蚀。</li>
+<li>Mosaic：九宫格。</li>
+<li>Pinwheel：风车。</li>
+<li>PolarFunction：椭圆扩散。</li>
+<li>PolkaDotsCurtain：弧形扩散。</li>
+<li>Radial：雷达扫描。</li>
+<li>RotateScaleFade：上下收放。</li>
+<li>Squeeze：上下聚拢。</li>
+<li>Swap：放大切换。</li>
+<li>Swirl：螺旋。</li>
+<li>UndulatingBurnOutSwirl：水流蔓延。</li>
+<li>Windowblinds：百叶窗。</li>
+<li>WipeDown：向下收起。</li>
+<li>WipeLeft：向左收起。</li>
+<li>WipeRight：向右收起。</li>
+<li>WipeUp：向上收起。</li>
+<li>ZoomInCircles：水波纹。</li> 
+音频的转场操作，用于两个音频片段间的转场处理：
+<li>AudioFadeInFadeOut：声音淡入淡出。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -11456,6 +13766,9 @@ class ComposeVideoItem(AbstractModel):
 
     @property
     def SourceMedia(self):
+        """元素对应媒体信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeSourceMedia`
+        """
         return self._SourceMedia
 
     @SourceMedia.setter
@@ -11464,6 +13777,9 @@ class ComposeVideoItem(AbstractModel):
 
     @property
     def TrackTime(self):
+        """元素在轨道时间轴上的时间信息，不填则紧跟上一个元素。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeTrackTime`
+        """
         return self._TrackTime
 
     @TrackTime.setter
@@ -11472,6 +13788,12 @@ class ComposeVideoItem(AbstractModel):
 
     @property
     def XPos(self):
+        """元素中心点距离画布原点的水平位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示元素 XPos 为画布宽度指定百分比的位置，如 10% 表示 XPos 为画布宽度的 10%。</li>
+<li>当字符串以 px 结尾，表示元素 XPos 单位为像素，如 100px 表示 XPos 为100像素。</li>
+默认：50%。
+        :rtype: str
+        """
         return self._XPos
 
     @XPos.setter
@@ -11480,6 +13802,12 @@ class ComposeVideoItem(AbstractModel):
 
     @property
     def YPos(self):
+        """元素中心点距离画布原点的垂直位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示元素 YPos 为画布高度指定百分比的位置，如 10% 表示 YPos 为画布高度的 10%。</li>
+<li>当字符串以 px 结尾，表示元素 YPos 单位为像素，如 100px 表示 YPos 为100像素。</li>
+默认：50%。
+        :rtype: str
+        """
         return self._YPos
 
     @YPos.setter
@@ -11488,6 +13816,15 @@ class ComposeVideoItem(AbstractModel):
 
     @property
     def Width(self):
+        """视频片段的宽度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示元素 Width 为画布宽度的百分比大小，如 10% 表示 Width 为画布宽度的 10%。</li>
+<li>当字符串以 px 结尾，表示元素 Width 单位为像素，如 100px 表示 Width 为100像素。</li>
+为空（或0） 的场景：
+<li>当 Width、Height 均为空，则 Width 和 Height 取源素材本身的 Width、Height。</li>
+<li>当 Width 为空，Height 非空，则 Width 按源素材比例缩放。</li>
+<li>当 Width 非空，Height 为空，则 Height 按源素材比例缩放。</li>
+        :rtype: str
+        """
         return self._Width
 
     @Width.setter
@@ -11496,6 +13833,15 @@ class ComposeVideoItem(AbstractModel):
 
     @property
     def Height(self):
+        """元素的高度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示元素 Height 为画布高度的百分比大小，如 10% 表示 Height 为画布高度的 10%。</li>
+<li>当字符串以 px 结尾，表示元素 Height 单位为像素，如 100px 表示 Height 为100像素。</li>
+为空（或0） 的场景：
+<li>当 Width、Height 均为空，则 Width 和 Height 取源素材本身的 Width、Height。</li>
+<li>当 Width 为空，Height 非空，则 Width 按源素材比例缩放。</li>
+<li>当 Width 非空，Height 为空，则 Height 按源素材比例缩放。</li>
+        :rtype: str
+        """
         return self._Height
 
     @Height.setter
@@ -11504,6 +13850,9 @@ class ComposeVideoItem(AbstractModel):
 
     @property
     def ImageOperations(self):
+        """对图像画面进行的操作，如图像旋转等。
+        :rtype: list of ComposeImageOperation
+        """
         return self._ImageOperations
 
     @ImageOperations.setter
@@ -11512,6 +13861,9 @@ class ComposeVideoItem(AbstractModel):
 
     @property
     def AudioOperations(self):
+        """对音频进行操作，如静音等。
+        :rtype: list of ComposeAudioOperation
+        """
         return self._AudioOperations
 
     @AudioOperations.setter
@@ -11576,6 +13928,10 @@ class ComposeVideoStream(AbstractModel):
 
     @property
     def Codec(self):
+        """视频流的编码方式，可选值：
+<li>H.264：H.264 编码（默认）。</li>
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -11584,6 +13940,10 @@ class ComposeVideoStream(AbstractModel):
 
     @property
     def Fps(self):
+        """视频帧率，取值范围：[0, 60]，单位：Hz。  
+默认值：0，表示和第一个视频帧率一致。
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -11592,6 +13952,11 @@ class ComposeVideoStream(AbstractModel):
 
     @property
     def Bitrate(self):
+        """参考码率，单位 kbps，范围：50~35000。
+如果设置，编码时会尽量按该码率进行编码。
+如果不设置，服务将通过画面复杂度自动采用合适的码率。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -11704,6 +14069,18 @@ Info：一般性的流信息。
 
     @property
     def Category(self):
+        """诊断出的异常类别，取值范围：
+DecodeParamException：解码参数异常
+TimeStampException：时间戳异常
+FrameException： 帧率异常
+StreamStatusException：流状态异常
+StreamInfo：流信息异常
+StreamAbnormalCharacteristics：流特征异常
+DecodeException：解码异常
+HLSRequirements：HLS 格式异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Category
 
     @Category.setter
@@ -11712,6 +14089,57 @@ Info：一般性的流信息。
 
     @property
     def Type(self):
+        """诊断出的具体异常类型，取值如下：
+
+VideoResolutionChanged：视频分辨率变化
+AudioSampleRateChanged：音频采样率变化
+AudioChannelsChanged：音频通道数变化
+ParameterSetsChanged：流参数集信息发生变化
+DarOrSarInvalid：视频的宽高比异常
+TimestampFallback：DTS时间戳回退
+DtsJitter：DTS抖动过大
+PtsJitter：PTS抖动过大
+AACDurationDeviation：AAC帧时间戳间隔不合理
+AudioDroppingFrames：音频丢帧
+VideoDroppingFrames：视频丢帧
+AVTimestampInterleave：音视频交织不合理
+PtsLessThanDts：媒体流的 pts 小于 dts
+ReceiveFpsJitter：网络接收帧率抖动过大
+ReceiveFpsTooSmall：网络接收视频帧率过小
+FpsJitter：通过PTS计算得到的流帧率抖动过大
+StreamOpenFailed：流打开失败
+StreamEnd：流结束
+StreamParseFailed：流解析失败
+VideoFirstFrameNotIdr：首帧不是IDR帧
+StreamNALUError：NALU起始码错误
+TsStreamNoAud：mpegts的H26x流缺失 AUD NALU
+AudioStreamLack：无音频流
+VideoStreamLack：无视频流
+LackAudioRecover：缺失音频流恢复
+LackVideoRecover：缺失视频流恢复
+VideoBitrateOutofRange：视频流码率(kbps)超出范围
+AudioBitrateOutofRange：音频流码率(kbps)超出范围
+VideoDecodeFailed：视频解码错误
+AudioDecodeFailed：音频解码错误
+AudioOutOfPhase：双通道音频相位相反
+VideoDuplicatedFrame：视频流中存在重复帧
+AudioDuplicatedFrame：音频流中存在重复帧
+VideoRotation：视频画面旋转
+TsMultiPrograms：MPEG2-TS流有多个program
+Mp4InvalidCodecFourcc：MP4中codec fourcc不符合Apple HLS要求
+HLSBadM3u8Format：无效的m3u8文件
+HLSInvalidMasterM3u8：无效的main m3u8文件
+HLSInvalidMediaM3u8：无效的media m3u8文件
+HLSMasterM3u8Recommended：main m3u8缺少标准推荐的参数
+HLSMediaM3u8Recommended：media m3u8缺少标准推荐的参数
+HLSMediaM3u8DiscontinuityExist：media m3u8存在EXT-X-DISCONTINUITY
+HLSMediaSegmentsStreamNumChange：切片的流数目发生变化
+HLSMediaSegmentsPTSJitterDeviation：切片间PTS跳变且没有EXT-X-DISCONTINUITY
+HLSMediaSegmentsDTSJitterDeviation：切片间DTS跳变且没有EXT-X-DISCONTINUITY
+TimecodeTrackExist：MP4存在tmcd轨道
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -11720,6 +14148,15 @@ Info：一般性的流信息。
 
     @property
     def SeverityLevel(self):
+        """诊断出的异常级别，取值范围：
+Fatal：影响后续播放和解析，
+Error： 可能会影响播放，
+Warning： 可能会有潜在风险，但不一定会影响播放，
+Notice：比较重要的流信息，
+Info：一般性的流信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SeverityLevel
 
     @SeverityLevel.setter
@@ -11728,6 +14165,10 @@ Info：一般性的流信息。
 
     @property
     def DateTimeSet(self):
+        """警告出现的时间点，形式如 “2022-12-25T13:14:16Z”
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._DateTimeSet
 
     @DateTimeSet.setter
@@ -11736,6 +14177,10 @@ Info：一般性的流信息。
 
     @property
     def TimestampSet(self):
+        """时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of float
+        """
         return self._TimestampSet
 
     @TimestampSet.setter
@@ -11813,6 +14258,9 @@ class ContentReviewTemplateItem(AbstractModel):
 
     @property
     def Definition(self):
+        """内容审核模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -11821,6 +14269,9 @@ class ContentReviewTemplateItem(AbstractModel):
 
     @property
     def Name(self):
+        """内容审核模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -11829,6 +14280,9 @@ class ContentReviewTemplateItem(AbstractModel):
 
     @property
     def Comment(self):
+        """内容审核模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -11837,6 +14291,10 @@ class ContentReviewTemplateItem(AbstractModel):
 
     @property
     def PornConfigure(self):
+        """鉴黄控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfo`
+        """
         return self._PornConfigure
 
     @PornConfigure.setter
@@ -11845,6 +14303,10 @@ class ContentReviewTemplateItem(AbstractModel):
 
     @property
     def TerrorismConfigure(self):
+        """涉敏控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfo`
+        """
         return self._TerrorismConfigure
 
     @TerrorismConfigure.setter
@@ -11853,6 +14315,10 @@ class ContentReviewTemplateItem(AbstractModel):
 
     @property
     def PoliticalConfigure(self):
+        """涉敏控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfo`
+        """
         return self._PoliticalConfigure
 
     @PoliticalConfigure.setter
@@ -11861,6 +14327,12 @@ class ContentReviewTemplateItem(AbstractModel):
 
     @property
     def ProhibitedConfigure(self):
+        """违禁控制参数。违禁内容包括：
+<li>谩骂；</li>
+<li>涉毒违法。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfo`
+        """
         return self._ProhibitedConfigure
 
     @ProhibitedConfigure.setter
@@ -11869,6 +14341,10 @@ class ContentReviewTemplateItem(AbstractModel):
 
     @property
     def UserDefineConfigure(self):
+        """用户自定义内容审核控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfo`
+        """
         return self._UserDefineConfigure
 
     @UserDefineConfigure.setter
@@ -11877,6 +14353,9 @@ class ContentReviewTemplateItem(AbstractModel):
 
     @property
     def CreateTime(self):
+        """模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -11885,6 +14364,9 @@ class ContentReviewTemplateItem(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -11893,6 +14375,12 @@ class ContentReviewTemplateItem(AbstractModel):
 
     @property
     def Type(self):
+        """模板类型，取值范围：
+* Preset：系统预置模板；
+* Custom：用户自定义模板。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -11955,6 +14443,9 @@ class CosFileUploadTrigger(AbstractModel):
 
     @property
     def Bucket(self):
+        """工作流绑定的 COS Bucket 名，如 TopRankVideo-125xxx88。
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -11963,6 +14454,9 @@ class CosFileUploadTrigger(AbstractModel):
 
     @property
     def Region(self):
+        """工作流绑定的 COS Bucket 所属园区，如 ap-chongiqng。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -11971,6 +14465,9 @@ class CosFileUploadTrigger(AbstractModel):
 
     @property
     def Dir(self):
+        """工作流绑定的输入路径目录，必须为绝对路径，即以 `/` 开头和结尾。如`/movie/201907/`，不填代表根目录`/`。
+        :rtype: str
+        """
         return self._Dir
 
     @Dir.setter
@@ -11979,6 +14476,9 @@ class CosFileUploadTrigger(AbstractModel):
 
     @property
     def Formats(self):
+        """工作流允许触发的文件格式列表，如 ["mp4", "flv", "mov"]。不填代表所有格式的文件都可以触发工作流。
+        :rtype: list of str
+        """
         return self._Formats
 
     @Formats.setter
@@ -12021,6 +14521,9 @@ class CosInputInfo(AbstractModel):
 
     @property
     def Bucket(self):
+        """媒体处理对象文件所在的 COS Bucket 名，如 TopRankVideo-125xxx88。
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -12029,6 +14532,9 @@ class CosInputInfo(AbstractModel):
 
     @property
     def Region(self):
+        """媒体处理对象文件所在的 COS Bucket 所属园区，如 ap-chongqing。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -12037,6 +14543,9 @@ class CosInputInfo(AbstractModel):
 
     @property
     def Object(self):
+        """媒体处理对象文件的输入路径，如`/movie/201907/WildAnimal.mov`。
+        :rtype: str
+        """
         return self._Object
 
     @Object.setter
@@ -12075,6 +14584,9 @@ class CosOutputStorage(AbstractModel):
 
     @property
     def Bucket(self):
+        """媒体处理生成的文件输出的目标 Bucket 名，如 TopRankVideo-125xxx88。如果不填，表示继承上层。
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -12083,6 +14595,9 @@ class CosOutputStorage(AbstractModel):
 
     @property
     def Region(self):
+        """媒体处理生成的文件输出的目标 Bucket 的园区，如 ap-chongqing。如果不填，表示继承上层。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -12119,6 +14634,11 @@ class CoverConfigureInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """智能封面任务开关，可选值：
+<li>ON：开启智能封面任务；</li>
+<li>OFF：关闭智能封面任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -12154,6 +14674,11 @@ class CoverConfigureInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """智能封面任务开关，可选值：
+<li>ON：开启智能封面任务；</li>
+<li>OFF：关闭智能封面任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -12202,6 +14727,9 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """视频内容分析模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12210,6 +14738,9 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """视频内容分析模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -12218,6 +14749,9 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def ClassificationConfigure(self):
+        """智能分类任务控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ClassificationConfigureInfo`
+        """
         return self._ClassificationConfigure
 
     @ClassificationConfigure.setter
@@ -12226,6 +14760,9 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def TagConfigure(self):
+        """智能标签任务控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TagConfigureInfo`
+        """
         return self._TagConfigure
 
     @TagConfigure.setter
@@ -12234,6 +14771,9 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def CoverConfigure(self):
+        """智能封面任务控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CoverConfigureInfo`
+        """
         return self._CoverConfigure
 
     @CoverConfigure.setter
@@ -12242,6 +14782,9 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def FrameTagConfigure(self):
+        """智能按帧标签任务控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FrameTagConfigureInfo`
+        """
         return self._FrameTagConfigure
 
     @FrameTagConfigure.setter
@@ -12291,6 +14834,9 @@ class CreateAIAnalysisTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """视频内容分析模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -12299,6 +14845,9 @@ class CreateAIAnalysisTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12346,6 +14895,9 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """视频内容识别模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12354,6 +14906,9 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """视频内容识别模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -12362,6 +14917,9 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def FaceConfigure(self):
+        """人脸识别控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FaceConfigureInfo`
+        """
         return self._FaceConfigure
 
     @FaceConfigure.setter
@@ -12370,6 +14928,9 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def OcrFullTextConfigure(self):
+        """文本全文识别控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.OcrFullTextConfigureInfo`
+        """
         return self._OcrFullTextConfigure
 
     @OcrFullTextConfigure.setter
@@ -12378,6 +14939,9 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def OcrWordsConfigure(self):
+        """文本关键词识别控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.OcrWordsConfigureInfo`
+        """
         return self._OcrWordsConfigure
 
     @OcrWordsConfigure.setter
@@ -12386,6 +14950,9 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def AsrFullTextConfigure(self):
+        """语音全文识别控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AsrFullTextConfigureInfo`
+        """
         return self._AsrFullTextConfigure
 
     @AsrFullTextConfigure.setter
@@ -12394,6 +14961,9 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def AsrWordsConfigure(self):
+        """语音关键词识别控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AsrWordsConfigureInfo`
+        """
         return self._AsrWordsConfigure
 
     @AsrWordsConfigure.setter
@@ -12402,6 +14972,9 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def TranslateConfigure(self):
+        """语音翻译控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TranslateConfigureInfo`
+        """
         return self._TranslateConfigure
 
     @TranslateConfigure.setter
@@ -12457,6 +15030,9 @@ class CreateAIRecognitionTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """视频内容识别模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -12465,6 +15041,9 @@ class CreateAIRecognitionTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12531,6 +15110,11 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def Format(self):
+        """自适应转码格式，取值范围：
+<li>HLS，</li>
+<li>MPEG-DASH。</li>
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -12539,6 +15123,10 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def StreamInfos(self):
+        """转自适应码流输出子流参数信息，最多输出10路子流。
+注意：各个子流的帧率必须保持一致；如果不一致，采用第一个子流的帧率作为输出帧率。
+        :rtype: list of AdaptiveStreamTemplate
+        """
         return self._StreamInfos
 
     @StreamInfos.setter
@@ -12547,6 +15135,9 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12555,6 +15146,12 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def DisableHigherVideoBitrate(self):
+        """是否禁止视频低码率转高码率，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+默认为否。
+        :rtype: int
+        """
         return self._DisableHigherVideoBitrate
 
     @DisableHigherVideoBitrate.setter
@@ -12563,6 +15160,12 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def DisableHigherVideoResolution(self):
+        """是否禁止视频分辨率转高分辨率，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+默认为否。
+        :rtype: int
+        """
         return self._DisableHigherVideoResolution
 
     @DisableHigherVideoResolution.setter
@@ -12571,6 +15174,9 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -12579,6 +15185,18 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def PureAudio(self):
+        """是否为纯音频，0表示视频模版，1表示纯音频模版
+当值为1：
+1. StreamInfos.N.RemoveVideo=1
+2. StreamInfos.N.RemoveAudio=0
+3. StreamInfos.N.Video.Codec=copy
+
+当值为0：
+
+1. StreamInfos.N.Video.Codec不能为copy
+2. StreamInfos.N.Video.Fps不能为null
+        :rtype: int
+        """
         return self._PureAudio
 
     @PureAudio.setter
@@ -12587,6 +15205,10 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def SegmentType(self):
+        """hls 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
+注：自适应码流的hls分片格式已此字段为准
+        :rtype: str
+        """
         return self._SegmentType
 
     @SegmentType.setter
@@ -12635,6 +15257,9 @@ class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """自适应转码模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -12643,6 +15268,9 @@ class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12703,6 +15331,9 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def Fps(self):
+        """帧率，取值范围：[1, 30]，单位：Hz。
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -12711,6 +15342,14 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def Width(self):
+        """动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -12719,6 +15358,14 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def Height(self):
+        """动图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -12727,6 +15374,12 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def ResolutionAdaptive(self):
+        """分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -12735,6 +15388,9 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def Format(self):
+        """动图格式，取值为 gif 和 webp。默认为 gif。
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -12743,6 +15399,9 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def Quality(self):
+        """图片质量，取值范围：[1, 100]，默认值为 75。
+        :rtype: float
+        """
         return self._Quality
 
     @Quality.setter
@@ -12751,6 +15410,9 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """转动图模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12759,6 +15421,9 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -12802,6 +15467,9 @@ class CreateAnimatedGraphicsTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """转动图模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -12810,6 +15478,9 @@ class CreateAnimatedGraphicsTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12857,6 +15528,9 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """内容审核模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12865,6 +15539,9 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """内容审核模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -12873,6 +15550,9 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 
     @property
     def PornConfigure(self):
+        """令人反感的信息的控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfo`
+        """
         return self._PornConfigure
 
     @PornConfigure.setter
@@ -12881,6 +15561,9 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 
     @property
     def TerrorismConfigure(self):
+        """令人不安全的信息的控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfo`
+        """
         return self._TerrorismConfigure
 
     @TerrorismConfigure.setter
@@ -12889,6 +15572,9 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 
     @property
     def PoliticalConfigure(self):
+        """令人不适宜的信息的控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfo`
+        """
         return self._PoliticalConfigure
 
     @PoliticalConfigure.setter
@@ -12897,6 +15583,12 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 
     @property
     def ProhibitedConfigure(self):
+        """违禁控制参数。违禁内容包括：
+<li>谩骂；</li>
+<li>涉毒违法。</li>
+注意：此参数尚未支持。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfo`
+        """
         return self._ProhibitedConfigure
 
     @ProhibitedConfigure.setter
@@ -12905,6 +15597,9 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 
     @property
     def UserDefineConfigure(self):
+        """用户自定义内容审核控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfo`
+        """
         return self._UserDefineConfigure
 
     @UserDefineConfigure.setter
@@ -12957,6 +15652,9 @@ class CreateContentReviewTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """内容审核模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -12965,6 +15663,9 @@ class CreateContentReviewTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13041,6 +15742,11 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def SampleType(self):
+        """采样类型，取值：
+<li>Percent：按百分比。</li>
+<li>Time：按时间间隔。</li>
+        :rtype: str
+        """
         return self._SampleType
 
     @SampleType.setter
@@ -13049,6 +15755,11 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def SampleInterval(self):
+        """采样间隔。
+<li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
+<li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
+        :rtype: int
+        """
         return self._SampleInterval
 
     @SampleInterval.setter
@@ -13057,6 +15768,9 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def RowCount(self):
+        """雪碧图中小图的行数。
+        :rtype: int
+        """
         return self._RowCount
 
     @RowCount.setter
@@ -13065,6 +15779,9 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def ColumnCount(self):
+        """雪碧图中小图的列数。
+        :rtype: int
+        """
         return self._ColumnCount
 
     @ColumnCount.setter
@@ -13073,6 +15790,9 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """雪碧图模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -13081,6 +15801,14 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def Width(self):
+        """雪碧图中小图的宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -13089,6 +15817,14 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def Height(self):
+        """雪碧图中小图的高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -13097,6 +15833,12 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def ResolutionAdaptive(self):
+        """分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -13105,6 +15847,12 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def FillType(self):
+        """填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+默认值：black 。
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -13113,6 +15861,9 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -13121,6 +15872,9 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def Format(self):
+        """图片格式，取值为 jpg、png、webp。默认为 jpg。
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -13167,6 +15921,9 @@ class CreateImageSpriteTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """雪碧图模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -13175,6 +15932,9 @@ class CreateImageSpriteTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13237,6 +15997,9 @@ class CreateInput(AbstractModel):
 
     @property
     def InputName(self):
+        """输入名称，可填大小写、数字和下划线，长度为[1, 32]。
+        :rtype: str
+        """
         return self._InputName
 
     @InputName.setter
@@ -13245,6 +16008,9 @@ class CreateInput(AbstractModel):
 
     @property
     def Protocol(self):
+        """输入的协议，可选[SRT|RTP|RTMP|RTMP_PULL]。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -13253,6 +16019,9 @@ class CreateInput(AbstractModel):
 
     @property
     def Description(self):
+        """输入描述，长度为[0, 255]。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -13261,6 +16030,9 @@ class CreateInput(AbstractModel):
 
     @property
     def AllowIpList(self):
+        """输入的IP白名单，格式为CIDR。
+        :rtype: list of str
+        """
         return self._AllowIpList
 
     @AllowIpList.setter
@@ -13269,6 +16041,9 @@ class CreateInput(AbstractModel):
 
     @property
     def SRTSettings(self):
+        """输入的SRT配置信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateInputSRTSettings`
+        """
         return self._SRTSettings
 
     @SRTSettings.setter
@@ -13277,6 +16052,9 @@ class CreateInput(AbstractModel):
 
     @property
     def RTPSettings(self):
+        """输入的RTP配置信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateInputRTPSettings`
+        """
         return self._RTPSettings
 
     @RTPSettings.setter
@@ -13285,6 +16063,9 @@ class CreateInput(AbstractModel):
 
     @property
     def FailOver(self):
+        """输入的主备开关，可选[OPEN|CLOSE]，默认为CLOSE。
+        :rtype: str
+        """
         return self._FailOver
 
     @FailOver.setter
@@ -13293,6 +16074,9 @@ class CreateInput(AbstractModel):
 
     @property
     def RTMPPullSettings(self):
+        """输入的RTMP_PULL配置信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateInputRTMPPullSettings`
+        """
         return self._RTMPPullSettings
 
     @RTMPPullSettings.setter
@@ -13301,6 +16085,9 @@ class CreateInput(AbstractModel):
 
     @property
     def RTSPPullSettings(self):
+        """输入的RTSP_PULL配置信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateInputRTSPPullSettings`
+        """
         return self._RTSPPullSettings
 
     @RTSPPullSettings.setter
@@ -13309,6 +16096,9 @@ class CreateInput(AbstractModel):
 
     @property
     def HLSPullSettings(self):
+        """输入的HLS_PULL配置信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateInputHLSPullSettings`
+        """
         return self._HLSPullSettings
 
     @HLSPullSettings.setter
@@ -13317,6 +16107,9 @@ class CreateInput(AbstractModel):
 
     @property
     def ResilientStream(self):
+        """延播平滑吐流配置信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ResilientStreamConf`
+        """
         return self._ResilientStream
 
     @ResilientStream.setter
@@ -13325,6 +16118,9 @@ class CreateInput(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """绑定的输入安全组 ID。 
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -13333,6 +16129,9 @@ class CreateInput(AbstractModel):
 
     @property
     def Zones(self):
+        """可用区，非必填，如果开启容灾必须输入两个不同的可用区，否则最多只允许输入一个可用区。	
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -13390,6 +16189,9 @@ class CreateInputHLSPullSettings(AbstractModel):
 
     @property
     def SourceAddresses(self):
+        """HLS源站的源站地址，有且只能有一个。
+        :rtype: list of HLSPullSourceAddress
+        """
         return self._SourceAddresses
 
     @SourceAddresses.setter
@@ -13428,6 +16230,9 @@ class CreateInputRTMPPullSettings(AbstractModel):
 
     @property
     def SourceAddresses(self):
+        """RTMP源站的源站地址，有且只能有一个。
+        :rtype: list of RTMPPullSourceAddress
+        """
         return self._SourceAddresses
 
     @SourceAddresses.setter
@@ -13469,6 +16274,9 @@ class CreateInputRTPSettings(AbstractModel):
 
     @property
     def FEC(self):
+        """默认为“none”，可选值['none']。
+        :rtype: str
+        """
         return self._FEC
 
     @FEC.setter
@@ -13477,6 +16285,9 @@ class CreateInputRTPSettings(AbstractModel):
 
     @property
     def IdleTimeout(self):
+        """空闲超时时间，默认5000，单位ms，范围为[1000, 10000]。
+        :rtype: int
+        """
         return self._IdleTimeout
 
     @IdleTimeout.setter
@@ -13511,6 +16322,9 @@ class CreateInputRTSPPullSettings(AbstractModel):
 
     @property
     def SourceAddresses(self):
+        """RTSP源站的源站地址，有且只能有一个。
+        :rtype: list of RTSPPullSourceAddress
+        """
         return self._SourceAddresses
 
     @SourceAddresses.setter
@@ -13573,6 +16387,9 @@ class CreateInputSRTSettings(AbstractModel):
 
     @property
     def Mode(self):
+        """SRT模式，可选[LISTENER|CALLER]，默认为LISTENER。
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -13581,6 +16398,9 @@ class CreateInputSRTSettings(AbstractModel):
 
     @property
     def StreamId(self):
+        """流Id，可选大小写字母、数字和特殊字符（.#!:&,=_-），长度为0~512。具体格式可以参考：https://github.com/Haivision/srt/blob/master/docs/features/access-control.md#standard-keys。
+        :rtype: str
+        """
         return self._StreamId
 
     @StreamId.setter
@@ -13589,6 +16409,9 @@ class CreateInputSRTSettings(AbstractModel):
 
     @property
     def Latency(self):
+        """延迟，默认0，单位ms，范围为[0, 3000]。
+        :rtype: int
+        """
         return self._Latency
 
     @Latency.setter
@@ -13597,6 +16420,9 @@ class CreateInputSRTSettings(AbstractModel):
 
     @property
     def RecvLatency(self):
+        """接收延迟，默认120，单位ms，范围为[0, 3000]。
+        :rtype: int
+        """
         return self._RecvLatency
 
     @RecvLatency.setter
@@ -13605,6 +16431,9 @@ class CreateInputSRTSettings(AbstractModel):
 
     @property
     def PeerLatency(self):
+        """对端延迟，默认0，单位ms，范围为[0, 3000]。
+        :rtype: int
+        """
         return self._PeerLatency
 
     @PeerLatency.setter
@@ -13613,6 +16442,9 @@ class CreateInputSRTSettings(AbstractModel):
 
     @property
     def PeerIdleTimeout(self):
+        """对端超时时间，默认5000，单位ms，范围为[1000, 10000]。
+        :rtype: int
+        """
         return self._PeerIdleTimeout
 
     @PeerIdleTimeout.setter
@@ -13621,6 +16453,9 @@ class CreateInputSRTSettings(AbstractModel):
 
     @property
     def Passphrase(self):
+        """解密密钥，默认为空，表示不加密。只可填ascii码值，长度为[10, 79]。
+        :rtype: str
+        """
         return self._Passphrase
 
     @Passphrase.setter
@@ -13629,6 +16464,9 @@ class CreateInputSRTSettings(AbstractModel):
 
     @property
     def PbKeyLen(self):
+        """密钥长度，默认为0，可选[0|16|24|32]。
+        :rtype: int
+        """
         return self._PbKeyLen
 
     @PbKeyLen.setter
@@ -13637,6 +16475,9 @@ class CreateInputSRTSettings(AbstractModel):
 
     @property
     def SourceAddresses(self):
+        """SRT对端地址，当Mode为CALLER时必填，且只能填1组。
+        :rtype: list of SRTSourceAddressReq
+        """
         return self._SourceAddresses
 
     @SourceAddresses.setter
@@ -13714,6 +16555,9 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def OutputName(self):
+        """输出的名称。
+        :rtype: str
+        """
         return self._OutputName
 
     @OutputName.setter
@@ -13722,6 +16566,9 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def Description(self):
+        """输出描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -13730,6 +16577,9 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def Protocol(self):
+        """输出协议，可选[SRT|RTP|RTMP|RTMP_PULL]。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -13738,6 +16588,9 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def OutputRegion(self):
+        """输出地区。
+        :rtype: str
+        """
         return self._OutputRegion
 
     @OutputRegion.setter
@@ -13746,6 +16599,9 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def SRTSettings(self):
+        """输出的SRT的配置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateOutputSRTSettings`
+        """
         return self._SRTSettings
 
     @SRTSettings.setter
@@ -13754,6 +16610,9 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def RTMPSettings(self):
+        """输出的RTMP的配置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateOutputRTMPSettings`
+        """
         return self._RTMPSettings
 
     @RTMPSettings.setter
@@ -13762,6 +16621,9 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def RTPSettings(self):
+        """输出的RTP的配置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateOutputInfoRTPSettings`
+        """
         return self._RTPSettings
 
     @RTPSettings.setter
@@ -13770,6 +16632,10 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def AllowIpList(self):
+        """IP白名单列表，格式为CIDR，如0.0.0.0/0。
+当Protocol为RTMP_PULL有效，为空代表不限制客户端IP。
+        :rtype: list of str
+        """
         return self._AllowIpList
 
     @AllowIpList.setter
@@ -13778,6 +16644,9 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def MaxConcurrent(self):
+        """最大拉流并发数，最大4，默认4。
+        :rtype: int
+        """
         return self._MaxConcurrent
 
     @MaxConcurrent.setter
@@ -13786,6 +16655,9 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """绑定的输入安全组 ID。 
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -13794,6 +16666,9 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def Zones(self):
+        """可用区，output最多只支持输入一个可用区。	
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -13849,6 +16724,9 @@ class CreateOutputInfoRTPSettings(AbstractModel):
 
     @property
     def Destinations(self):
+        """转推的目标地址，可填1~2个。
+        :rtype: list of CreateOutputRTPSettingsDestinations
+        """
         return self._Destinations
 
     @Destinations.setter
@@ -13857,6 +16735,9 @@ class CreateOutputInfoRTPSettings(AbstractModel):
 
     @property
     def FEC(self):
+        """只能填none。
+        :rtype: str
+        """
         return self._FEC
 
     @FEC.setter
@@ -13865,6 +16746,9 @@ class CreateOutputInfoRTPSettings(AbstractModel):
 
     @property
     def IdleTimeout(self):
+        """空闲超时时间，单位ms。
+        :rtype: int
+        """
         return self._IdleTimeout
 
     @IdleTimeout.setter
@@ -13908,6 +16792,9 @@ class CreateOutputRTMPSettings(AbstractModel):
 
     @property
     def Destinations(self):
+        """转推的目标地址，可填1~2个。
+        :rtype: list of CreateOutputRtmpSettingsDestinations
+        """
         return self._Destinations
 
     @Destinations.setter
@@ -13916,6 +16803,9 @@ class CreateOutputRTMPSettings(AbstractModel):
 
     @property
     def ChunkSize(self):
+        """RTMP的Chunk大小，范围为[4096, 40960]。
+        :rtype: int
+        """
         return self._ChunkSize
 
     @ChunkSize.setter
@@ -13958,6 +16848,9 @@ class CreateOutputRTPSettingsDestinations(AbstractModel):
 
     @property
     def Ip(self):
+        """转推的目标IP。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -13966,6 +16859,9 @@ class CreateOutputRTPSettingsDestinations(AbstractModel):
 
     @property
     def Port(self):
+        """转推的目标端口。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -14003,6 +16899,9 @@ class CreateOutputRtmpSettingsDestinations(AbstractModel):
 
     @property
     def Url(self):
+        """转推的URL，格式如：rtmp://domain/live。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -14011,6 +16910,9 @@ class CreateOutputRtmpSettingsDestinations(AbstractModel):
 
     @property
     def StreamKey(self):
+        """转推的StreamKey，格式如：stream?key=value。
+        :rtype: str
+        """
         return self._StreamKey
 
     @StreamKey.setter
@@ -14069,6 +16971,9 @@ class CreateOutputSRTSettings(AbstractModel):
 
     @property
     def Destinations(self):
+        """转推的目标地址，当Mode为CALLER时必填，且只能填1组。
+        :rtype: list of CreateOutputSRTSettingsDestinations
+        """
         return self._Destinations
 
     @Destinations.setter
@@ -14077,6 +16982,9 @@ class CreateOutputSRTSettings(AbstractModel):
 
     @property
     def StreamId(self):
+        """转推SRT的流Id，可选大小写字母、数字和特殊字符（.#!:&,=_-），长度为0~512。
+        :rtype: str
+        """
         return self._StreamId
 
     @StreamId.setter
@@ -14085,6 +16993,9 @@ class CreateOutputSRTSettings(AbstractModel):
 
     @property
     def Latency(self):
+        """转推SRT的总延迟，默认0，单位ms，范围为[0, 3000]。
+        :rtype: int
+        """
         return self._Latency
 
     @Latency.setter
@@ -14093,6 +17004,9 @@ class CreateOutputSRTSettings(AbstractModel):
 
     @property
     def RecvLatency(self):
+        """转推SRT的接收延迟，默认120，单位ms，范围为[0, 3000]。
+        :rtype: int
+        """
         return self._RecvLatency
 
     @RecvLatency.setter
@@ -14101,6 +17015,9 @@ class CreateOutputSRTSettings(AbstractModel):
 
     @property
     def PeerLatency(self):
+        """转推SRT的对端延迟，默认0，单位ms，范围为[0, 3000]。
+        :rtype: int
+        """
         return self._PeerLatency
 
     @PeerLatency.setter
@@ -14109,6 +17026,9 @@ class CreateOutputSRTSettings(AbstractModel):
 
     @property
     def PeerIdleTimeout(self):
+        """转推SRT的对端空闲超时时间，默认5000，单位ms，范围为[1000, 10000]。
+        :rtype: int
+        """
         return self._PeerIdleTimeout
 
     @PeerIdleTimeout.setter
@@ -14117,6 +17037,9 @@ class CreateOutputSRTSettings(AbstractModel):
 
     @property
     def Passphrase(self):
+        """转推SRT的加密密钥，默认为空，表示不加密。只可填ascii码值，长度为[10, 79]。
+        :rtype: str
+        """
         return self._Passphrase
 
     @Passphrase.setter
@@ -14125,6 +17048,9 @@ class CreateOutputSRTSettings(AbstractModel):
 
     @property
     def PbKeyLen(self):
+        """转推SRT的密钥长度，默认为0，可选[0|16|24|32]。
+        :rtype: int
+        """
         return self._PbKeyLen
 
     @PbKeyLen.setter
@@ -14133,6 +17059,9 @@ class CreateOutputSRTSettings(AbstractModel):
 
     @property
     def Mode(self):
+        """SRT模式，可选[LISTENER|CALLER]，默认为CALLER。
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -14182,6 +17111,9 @@ class CreateOutputSRTSettingsDestinations(AbstractModel):
 
     @property
     def Ip(self):
+        """输出的IP。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -14190,6 +17122,9 @@ class CreateOutputSRTSettingsDestinations(AbstractModel):
 
     @property
     def Port(self):
+        """输出的端口。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -14242,6 +17177,9 @@ class CreatePersonSampleRequest(AbstractModel):
 
     @property
     def Name(self):
+        """素材名称，长度限制：20 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14250,6 +17188,12 @@ class CreatePersonSampleRequest(AbstractModel):
 
     @property
     def Usages(self):
+        """素材应用场景，可选值：
+1. Recognition：用于内容识别，等价于 Recognition.Face。
+2. Review：用于不适宜内容识别，等价于 Review.Face。
+3. All：包含以上全部，等价于 1+2。
+        :rtype: list of str
+        """
         return self._Usages
 
     @Usages.setter
@@ -14258,6 +17202,9 @@ class CreatePersonSampleRequest(AbstractModel):
 
     @property
     def Description(self):
+        """素材描述，长度限制：1024 个字符。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -14266,6 +17213,10 @@ class CreatePersonSampleRequest(AbstractModel):
 
     @property
     def FaceContents(self):
+        """素材图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 jpeg、png 图片格式。数组长度限制：5 张图片。
+注意：图片必须是单人像五官较清晰的照片，像素不低于 200*200。
+        :rtype: list of str
+        """
         return self._FaceContents
 
     @FaceContents.setter
@@ -14274,6 +17225,11 @@ class CreatePersonSampleRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """素材标签
+<li>数组长度限制：20 个标签；</li>
+<li>单个标签长度限制：128 个字符。</li>
+        :rtype: list of str
+        """
         return self._Tags
 
     @Tags.setter
@@ -14317,6 +17273,9 @@ class CreatePersonSampleResponse(AbstractModel):
 
     @property
     def Person(self):
+        """素材信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiSamplePerson`
+        """
         return self._Person
 
     @Person.setter
@@ -14325,6 +17284,9 @@ class CreatePersonSampleResponse(AbstractModel):
 
     @property
     def FailFaceInfoSet(self):
+        """处理失败的五官定位信息。
+        :rtype: list of AiSampleFailFaceInfo
+        """
         return self._FailFaceInfoSet
 
     @FailFaceInfoSet.setter
@@ -14333,6 +17295,9 @@ class CreatePersonSampleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14373,6 +17338,9 @@ class CreateQualityControlTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """媒体质检模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14381,6 +17349,9 @@ class CreateQualityControlTemplateRequest(AbstractModel):
 
     @property
     def QualityControlItemSet(self):
+        """媒体质检控制参数。
+        :rtype: list of QualityControlItemConfig
+        """
         return self._QualityControlItemSet
 
     @QualityControlItemSet.setter
@@ -14389,6 +17360,9 @@ class CreateQualityControlTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """媒体质检模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -14432,6 +17406,9 @@ class CreateQualityControlTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """媒体质检模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -14440,6 +17417,9 @@ class CreateQualityControlTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14512,6 +17492,11 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def SampleType(self):
+        """采样截图类型，取值：
+<li>Percent：按百分比。</li>
+<li>Time：按时间间隔。</li>
+        :rtype: str
+        """
         return self._SampleType
 
     @SampleType.setter
@@ -14520,6 +17505,11 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def SampleInterval(self):
+        """采样间隔。
+<li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
+<li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
+        :rtype: int
+        """
         return self._SampleInterval
 
     @SampleInterval.setter
@@ -14528,6 +17518,9 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """采样截图模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14536,6 +17529,14 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Width(self):
+        """截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -14544,6 +17545,14 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Height(self):
+        """截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -14552,6 +17561,12 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def ResolutionAdaptive(self):
+        """分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -14560,6 +17575,9 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Format(self):
+        """图片格式，取值为 jpg、png、webp。默认为 jpg。
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -14568,6 +17586,9 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -14576,6 +17597,14 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def FillType(self):
+        """填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+默认值：black 。
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -14620,6 +17649,9 @@ class CreateSampleSnapshotTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """采样截图模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -14628,6 +17660,9 @@ class CreateSampleSnapshotTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14673,6 +17708,9 @@ class CreateScheduleRequest(AbstractModel):
 
     @property
     def ScheduleName(self):
+        """编排名称，最多128字符。同一个用户该名称唯一。
+        :rtype: str
+        """
         return self._ScheduleName
 
     @ScheduleName.setter
@@ -14681,6 +17719,9 @@ class CreateScheduleRequest(AbstractModel):
 
     @property
     def Trigger(self):
+        """编排绑定的触发规则，当上传视频命中该规则到该对象时即触发编排。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
+        """
         return self._Trigger
 
     @Trigger.setter
@@ -14689,6 +17730,9 @@ class CreateScheduleRequest(AbstractModel):
 
     @property
     def Activities(self):
+        """编排任务列表。
+        :rtype: list of Activity
+        """
         return self._Activities
 
     @Activities.setter
@@ -14697,6 +17741,9 @@ class CreateScheduleRequest(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """媒体处理的文件输出存储位置。不填则继承 Trigger 中的存储位置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -14705,6 +17752,10 @@ class CreateScheduleRequest(AbstractModel):
 
     @property
     def OutputDir(self):
+        """媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
+如果不填，表示与触发文件所在的目录一致。
+        :rtype: str
+        """
         return self._OutputDir
 
     @OutputDir.setter
@@ -14713,6 +17764,9 @@ class CreateScheduleRequest(AbstractModel):
 
     @property
     def TaskNotifyConfig(self):
+        """任务的事件通知配置，不填代表不获取事件通知。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -14721,6 +17775,9 @@ class CreateScheduleRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -14774,6 +17831,9 @@ class CreateScheduleResponse(AbstractModel):
 
     @property
     def ScheduleId(self):
+        """编排 ID。
+        :rtype: int
+        """
         return self._ScheduleId
 
     @ScheduleId.setter
@@ -14782,6 +17842,9 @@ class CreateScheduleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14844,6 +17907,9 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """指定时间点截图模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14852,6 +17918,14 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Width(self):
+        """截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -14860,6 +17934,14 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Height(self):
+        """截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -14868,6 +17950,12 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def ResolutionAdaptive(self):
+        """分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -14876,6 +17964,9 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Format(self):
+        """图片格式，取值可以为 jpg、png、webp。默认为 jpg。
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -14884,6 +17975,9 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -14892,6 +17986,14 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def FillType(self):
+        """填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+默认值：black 。
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -14934,6 +18036,9 @@ class CreateSnapshotByTimeOffsetTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """时间点截图模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -14942,6 +18047,9 @@ class CreateSnapshotByTimeOffsetTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14971,6 +18079,9 @@ class CreateStreamLinkEventRequest(AbstractModel):
 
     @property
     def EventName(self):
+        """事件名称。
+        :rtype: str
+        """
         return self._EventName
 
     @EventName.setter
@@ -14979,6 +18090,9 @@ class CreateStreamLinkEventRequest(AbstractModel):
 
     @property
     def Description(self):
+        """事件描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -15016,6 +18130,9 @@ class CreateStreamLinkEventResponse(AbstractModel):
 
     @property
     def Info(self):
+        """创建的Event信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeEvent`
+        """
         return self._Info
 
     @Info.setter
@@ -15024,6 +18141,9 @@ class CreateStreamLinkEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15061,6 +18181,9 @@ class CreateStreamLinkFlowRequest(AbstractModel):
 
     @property
     def FlowName(self):
+        """流名称。
+        :rtype: str
+        """
         return self._FlowName
 
     @FlowName.setter
@@ -15069,6 +18192,9 @@ class CreateStreamLinkFlowRequest(AbstractModel):
 
     @property
     def MaxBandwidth(self):
+        """最大带宽，单位bps，可选[10000000, 20000000, 50000000]。
+        :rtype: int
+        """
         return self._MaxBandwidth
 
     @MaxBandwidth.setter
@@ -15077,6 +18203,9 @@ class CreateStreamLinkFlowRequest(AbstractModel):
 
     @property
     def InputGroup(self):
+        """流的输入组。
+        :rtype: list of CreateInput
+        """
         return self._InputGroup
 
     @InputGroup.setter
@@ -15085,6 +18214,9 @@ class CreateStreamLinkFlowRequest(AbstractModel):
 
     @property
     def EventId(self):
+        """该Flow关联的媒体传输事件ID，每个flow只能关联一个Event。
+        :rtype: str
+        """
         return self._EventId
 
     @EventId.setter
@@ -15129,6 +18261,9 @@ class CreateStreamLinkFlowResponse(AbstractModel):
 
     @property
     def Info(self):
+        """创建的Flow信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeFlow`
+        """
         return self._Info
 
     @Info.setter
@@ -15137,6 +18272,9 @@ class CreateStreamLinkFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15168,6 +18306,9 @@ class CreateStreamLinkInputRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """媒体传输流ID。
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -15176,6 +18317,9 @@ class CreateStreamLinkInputRequest(AbstractModel):
 
     @property
     def InputGroup(self):
+        """流的输入组。
+        :rtype: list of CreateInput
+        """
         return self._InputGroup
 
     @InputGroup.setter
@@ -15218,6 +18362,9 @@ class CreateStreamLinkInputResponse(AbstractModel):
 
     @property
     def Info(self):
+        """创建的Flow信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeFlow`
+        """
         return self._Info
 
     @Info.setter
@@ -15226,6 +18373,9 @@ class CreateStreamLinkInputResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15257,6 +18407,9 @@ class CreateStreamLinkOutputInfoRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """传输流Id。
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -15265,6 +18418,9 @@ class CreateStreamLinkOutputInfoRequest(AbstractModel):
 
     @property
     def Output(self):
+        """传输流的Output配置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateOutputInfo`
+        """
         return self._Output
 
     @Output.setter
@@ -15304,6 +18460,9 @@ class CreateStreamLinkOutputInfoResponse(AbstractModel):
 
     @property
     def Info(self):
+        """创建后的Output信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeOutput`
+        """
         return self._Info
 
     @Info.setter
@@ -15312,6 +18471,9 @@ class CreateStreamLinkOutputInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15370,6 +18532,9 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Container(self):
+        """封装格式，可选值：mp4、flv、hls、ts、webm、mkv、mxf、mov、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -15378,6 +18543,9 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """转码模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -15386,6 +18554,9 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -15394,6 +18565,12 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     @property
     def RemoveVideo(self):
+        """是否去除视频数据，可选值：
+<li>0：保留</li>
+<li>1：去除</li>
+默认值：0。
+        :rtype: int
+        """
         return self._RemoveVideo
 
     @RemoveVideo.setter
@@ -15402,6 +18579,12 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     @property
     def RemoveAudio(self):
+        """是否去除音频数据，可选值：
+<li>0：保留</li>
+<li>1：去除</li>
+默认值：0。
+        :rtype: int
+        """
         return self._RemoveAudio
 
     @RemoveAudio.setter
@@ -15410,6 +18593,9 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     @property
     def VideoTemplate(self):
+        """视频流配置参数，当 RemoveVideo 为 0，该字段必填。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
+        """
         return self._VideoTemplate
 
     @VideoTemplate.setter
@@ -15418,6 +18604,9 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     @property
     def AudioTemplate(self):
+        """音频流配置参数，当 RemoveAudio 为 0，该字段必填。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
+        """
         return self._AudioTemplate
 
     @AudioTemplate.setter
@@ -15426,6 +18615,9 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     @property
     def TEHDConfig(self):
+        """极速高清转码参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
+        """
         return self._TEHDConfig
 
     @TEHDConfig.setter
@@ -15434,6 +18626,9 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     @property
     def EnhanceConfig(self):
+        """音视频增强配置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
+        """
         return self._EnhanceConfig
 
     @EnhanceConfig.setter
@@ -15486,6 +18681,9 @@ class CreateTranscodeTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """转码模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -15494,6 +18692,9 @@ class CreateTranscodeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15523,6 +18724,9 @@ class CreateVideoDatabaseEntryTaskRequest(AbstractModel):
 
     @property
     def InputInfo(self):
+        """待入库视频信息
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
         return self._InputInfo
 
     @InputInfo.setter
@@ -15531,6 +18735,9 @@ class CreateVideoDatabaseEntryTaskRequest(AbstractModel):
 
     @property
     def TaskNotifyConfig(self):
+        """可选，入库任务完成后向指定的回调地址传递任务结果，目前仅支持URL
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -15573,6 +18780,10 @@ class CreateVideoDatabaseEntryTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -15581,6 +18792,9 @@ class CreateVideoDatabaseEntryTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15613,6 +18827,9 @@ class CreateVideoSearchTaskRequest(AbstractModel):
 
     @property
     def SearchValueInput(self):
+        """用于检索任务的输入
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SearchValueInput`
+        """
         return self._SearchValueInput
 
     @SearchValueInput.setter
@@ -15621,6 +18838,9 @@ class CreateVideoSearchTaskRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回视频的最大数量，取值范围[1,20]，将返回最相近的前Limit条视频,默认为5
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -15629,6 +18849,9 @@ class CreateVideoSearchTaskRequest(AbstractModel):
 
     @property
     def TaskNotifyConfig(self):
+        """可选，用于检索任务完成后向回调方发送检索结果，目前仅支持URL方式
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -15672,6 +18895,10 @@ class CreateVideoSearchTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """检索任务的Id，用于后续查询任务状态和返回任务结果时标识任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -15680,6 +18907,9 @@ class CreateVideoSearchTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15744,6 +18974,12 @@ class CreateWatermarkTemplateRequest(AbstractModel):
 
     @property
     def Type(self):
+        """水印类型，可选值：
+<li>image：图片水印；</li>
+<li>text：文字水印；</li>
+<li>svg：SVG 水印。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -15752,6 +18988,9 @@ class CreateWatermarkTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """水印模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -15760,6 +18999,9 @@ class CreateWatermarkTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -15768,6 +19010,14 @@ class CreateWatermarkTemplateRequest(AbstractModel):
 
     @property
     def CoordinateOrigin(self):
+        """原点位置，可选值：
+<li>TopLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
+<li>TopRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
+<li>BottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
+<li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
+默认值：TopLeft。
+        :rtype: str
+        """
         return self._CoordinateOrigin
 
     @CoordinateOrigin.setter
@@ -15776,6 +19026,12 @@ class CreateWatermarkTemplateRequest(AbstractModel):
 
     @property
     def XPos(self):
+        """水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 XPos 为指定像素，如 100px 表示 XPos 为 100 像素。</li>
+默认值：0px。
+        :rtype: str
+        """
         return self._XPos
 
     @XPos.setter
@@ -15784,6 +19040,12 @@ class CreateWatermarkTemplateRequest(AbstractModel):
 
     @property
     def YPos(self):
+        """水印原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 YPos 为指定像素，如 100px 表示 YPos 为 100 像素。</li>
+默认值：0px。
+        :rtype: str
+        """
         return self._YPos
 
     @YPos.setter
@@ -15792,6 +19054,9 @@ class CreateWatermarkTemplateRequest(AbstractModel):
 
     @property
     def ImageTemplate(self):
+        """图片水印模板，仅当 Type 为 image，该字段必填且有效。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageWatermarkInput`
+        """
         return self._ImageTemplate
 
     @ImageTemplate.setter
@@ -15800,6 +19065,9 @@ class CreateWatermarkTemplateRequest(AbstractModel):
 
     @property
     def TextTemplate(self):
+        """文字水印模板，仅当 Type 为 text，该字段必填且有效。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TextWatermarkTemplateInput`
+        """
         return self._TextTemplate
 
     @TextTemplate.setter
@@ -15808,6 +19076,9 @@ class CreateWatermarkTemplateRequest(AbstractModel):
 
     @property
     def SvgTemplate(self):
+        """SVG 水印模板，仅当 Type 为 svg，该字段必填且有效。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SvgWatermarkInput`
+        """
         return self._SvgTemplate
 
     @SvgTemplate.setter
@@ -15861,6 +19132,9 @@ class CreateWatermarkTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """水印模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -15869,6 +19143,9 @@ class CreateWatermarkTemplateResponse(AbstractModel):
 
     @property
     def ImageUrl(self):
+        """水印图片地址，仅当 Type 为 image，该字段有效。
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -15877,6 +19154,9 @@ class CreateWatermarkTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15915,6 +19195,17 @@ class CreateWordSamplesRequest(AbstractModel):
 
     @property
     def Usages(self):
+        """<b>关键词应用场景，可选值：</b>
+1. Recognition.Ocr：通过光学字符识别技术，进行内容识别；
+2. Recognition.Asr：通过音频识别技术，进行内容识别；
+3. Review.Ocr：通过光学字符识别技术，进行不适宜内容识别；
+4. Review.Asr：通过音频识别技术，进行不适宜内容识别；
+<b>可合并简写为：</b>
+5. Recognition：通过光学字符识别技术、音频识别技术，进行内容识别，等价于 1+2；
+6. Review：通过光学字符识别技术、音频识别技术，进行不适宜内容识别，等价于 3+4；
+7. All：通过光学字符识别技术、音频识别技术，进行内容识别、不适宜内容识别，等价于 1+2+3+4。
+        :rtype: list of str
+        """
         return self._Usages
 
     @Usages.setter
@@ -15923,6 +19214,9 @@ class CreateWordSamplesRequest(AbstractModel):
 
     @property
     def Words(self):
+        """关键词，数组长度限制：100。
+        :rtype: list of AiSampleWordInfo
+        """
         return self._Words
 
     @Words.setter
@@ -15962,6 +19256,9 @@ class CreateWordSamplesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16015,6 +19312,9 @@ class CreateWorkflowRequest(AbstractModel):
 
     @property
     def WorkflowName(self):
+        """工作流名称，最多128字符。同一个用户该名称唯一。
+        :rtype: str
+        """
         return self._WorkflowName
 
     @WorkflowName.setter
@@ -16023,6 +19323,9 @@ class CreateWorkflowRequest(AbstractModel):
 
     @property
     def Trigger(self):
+        """工作流绑定的触发规则，当上传视频命中该规则到该对象时即触发工作流。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
+        """
         return self._Trigger
 
     @Trigger.setter
@@ -16031,6 +19334,9 @@ class CreateWorkflowRequest(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """媒体处理的文件输出存储位置。不填则继承 Trigger 中的存储位置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -16039,6 +19345,10 @@ class CreateWorkflowRequest(AbstractModel):
 
     @property
     def OutputDir(self):
+        """媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
+如果不填，表示与触发文件所在的目录一致。
+        :rtype: str
+        """
         return self._OutputDir
 
     @OutputDir.setter
@@ -16047,6 +19357,9 @@ class CreateWorkflowRequest(AbstractModel):
 
     @property
     def MediaProcessTask(self):
+        """媒体处理类型任务参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
+        """
         return self._MediaProcessTask
 
     @MediaProcessTask.setter
@@ -16055,6 +19368,9 @@ class CreateWorkflowRequest(AbstractModel):
 
     @property
     def AiContentReviewTask(self):
+        """视频内容审核类型任务参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        """
         return self._AiContentReviewTask
 
     @AiContentReviewTask.setter
@@ -16063,6 +19379,9 @@ class CreateWorkflowRequest(AbstractModel):
 
     @property
     def AiAnalysisTask(self):
+        """视频内容分析类型任务参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        """
         return self._AiAnalysisTask
 
     @AiAnalysisTask.setter
@@ -16071,6 +19390,9 @@ class CreateWorkflowRequest(AbstractModel):
 
     @property
     def AiRecognitionTask(self):
+        """视频内容识别类型任务参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        """
         return self._AiRecognitionTask
 
     @AiRecognitionTask.setter
@@ -16079,6 +19401,9 @@ class CreateWorkflowRequest(AbstractModel):
 
     @property
     def TaskNotifyConfig(self):
+        """任务的事件通知配置，不填代表不获取事件通知。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -16087,6 +19412,9 @@ class CreateWorkflowRequest(AbstractModel):
 
     @property
     def TaskPriority(self):
+        """工作流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :rtype: int
+        """
         return self._TaskPriority
 
     @TaskPriority.setter
@@ -16146,6 +19474,9 @@ class CreateWorkflowResponse(AbstractModel):
 
     @property
     def WorkflowId(self):
+        """工作流 ID。
+        :rtype: int
+        """
         return self._WorkflowId
 
     @WorkflowId.setter
@@ -16154,6 +19485,9 @@ class CreateWorkflowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16180,6 +19514,9 @@ class DeleteAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """视频内容分析模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -16213,6 +19550,9 @@ class DeleteAIAnalysisTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16238,6 +19578,9 @@ class DeleteAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """视频内容识别模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -16271,6 +19614,9 @@ class DeleteAIRecognitionTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16296,6 +19642,9 @@ class DeleteAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """自适应转码模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -16329,6 +19678,9 @@ class DeleteAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16354,6 +19706,9 @@ class DeleteAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """转动图模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -16387,6 +19742,9 @@ class DeleteAnimatedGraphicsTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16412,6 +19770,9 @@ class DeleteContentReviewTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """内容审核模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -16445,6 +19806,9 @@ class DeleteContentReviewTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16470,6 +19834,9 @@ class DeleteImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """雪碧图模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -16503,6 +19870,9 @@ class DeleteImageSpriteTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16528,6 +19898,9 @@ class DeletePersonSampleRequest(AbstractModel):
 
     @property
     def PersonId(self):
+        """素材 ID。
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -16561,6 +19934,9 @@ class DeletePersonSampleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16586,6 +19962,9 @@ class DeleteQualityControlTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """媒体质检模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -16619,6 +19998,9 @@ class DeleteQualityControlTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16644,6 +20026,9 @@ class DeleteSampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """采样截图模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -16677,6 +20062,9 @@ class DeleteSampleSnapshotTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16702,6 +20090,9 @@ class DeleteScheduleRequest(AbstractModel):
 
     @property
     def ScheduleId(self):
+        """编排唯一标识。
+        :rtype: int
+        """
         return self._ScheduleId
 
     @ScheduleId.setter
@@ -16735,6 +20126,9 @@ class DeleteScheduleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16760,6 +20154,9 @@ class DeleteSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """指定时间点截图模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -16793,6 +20190,9 @@ class DeleteSnapshotByTimeOffsetTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16818,6 +20218,9 @@ class DeleteStreamLinkEventRequest(AbstractModel):
 
     @property
     def EventId(self):
+        """媒体传输事件Id，删除前需要保证该Event关联的所有Flow都已经删除。
+        :rtype: str
+        """
         return self._EventId
 
     @EventId.setter
@@ -16851,6 +20254,9 @@ class DeleteStreamLinkEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16876,6 +20282,9 @@ class DeleteStreamLinkFlowRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """传输流Id。
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -16909,6 +20318,9 @@ class DeleteStreamLinkFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16937,6 +20349,9 @@ class DeleteStreamLinkOutputRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """流Id。
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -16945,6 +20360,9 @@ class DeleteStreamLinkOutputRequest(AbstractModel):
 
     @property
     def OutputId(self):
+        """输出Id。
+        :rtype: str
+        """
         return self._OutputId
 
     @OutputId.setter
@@ -16979,6 +20397,9 @@ class DeleteStreamLinkOutputResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17004,6 +20425,9 @@ class DeleteTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """转码模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -17037,6 +20461,9 @@ class DeleteTranscodeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17062,6 +20489,9 @@ class DeleteWatermarkTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """水印模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -17095,6 +20525,9 @@ class DeleteWatermarkTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17120,6 +20553,9 @@ class DeleteWordSamplesRequest(AbstractModel):
 
     @property
     def Keywords(self):
+        """关键词，数组长度限制：100 个词。
+        :rtype: list of str
+        """
         return self._Keywords
 
     @Keywords.setter
@@ -17153,6 +20589,9 @@ class DeleteWordSamplesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17178,6 +20617,9 @@ class DeleteWorkflowRequest(AbstractModel):
 
     @property
     def WorkflowId(self):
+        """工作流 ID。
+        :rtype: int
+        """
         return self._WorkflowId
 
     @WorkflowId.setter
@@ -17211,6 +20653,9 @@ class DeleteWorkflowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17250,6 +20695,9 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
+        """视频内容分析模板唯一标识过滤条件，数组长度限制：10。
+        :rtype: list of int
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -17258,6 +20706,9 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -17266,6 +20717,9 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，默认值：10，最大值：100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -17274,6 +20728,11 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """模板类型过滤条件，不填则返回所有，可选值：
+* Preset：系统预置模板；
+* Custom：用户自定义模板。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -17282,6 +20741,9 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """视频内容分析模板标识过滤条件，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -17325,6 +20787,9 @@ class DescribeAIAnalysisTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合过滤条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -17333,6 +20798,9 @@ class DescribeAIAnalysisTemplatesResponse(AbstractModel):
 
     @property
     def AIAnalysisTemplateSet(self):
+        """视频内容分析模板详情列表。
+        :rtype: list of AIAnalysisTemplateItem
+        """
         return self._AIAnalysisTemplateSet
 
     @AIAnalysisTemplateSet.setter
@@ -17341,6 +20809,9 @@ class DescribeAIAnalysisTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17387,6 +20858,9 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
+        """视频内容识别模板唯一标识过滤条件，数组长度限制：10。
+        :rtype: list of int
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -17395,6 +20869,9 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -17403,6 +20880,9 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，默认值：10，最大值：50。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -17411,6 +20891,11 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """模板类型过滤条件，不填则返回所有，可选值：
+* Preset：系统预置模板；
+* Custom：用户自定义模板。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -17419,6 +20904,9 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """视频内容识别模板标识过滤条件，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -17462,6 +20950,9 @@ class DescribeAIRecognitionTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合过滤条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -17470,6 +20961,9 @@ class DescribeAIRecognitionTemplatesResponse(AbstractModel):
 
     @property
     def AIRecognitionTemplateSet(self):
+        """视频内容识别模板详情列表。
+        :rtype: list of AIRecognitionTemplateItem
+        """
         return self._AIRecognitionTemplateSet
 
     @AIRecognitionTemplateSet.setter
@@ -17478,6 +20972,9 @@ class DescribeAIRecognitionTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17527,6 +21024,9 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
+        """转自适应码流模板唯一标识过滤条件，数组长度限制：100。
+        :rtype: list of int non-negative
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -17535,6 +21035,9 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -17543,6 +21046,9 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，默认值：10，最大值：100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -17551,6 +21057,11 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """模板类型过滤条件，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -17559,6 +21070,9 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 
     @property
     def PureAudio(self):
+        """是否为纯音频，0表示视频，1表示纯音频
+        :rtype: int
+        """
         return self._PureAudio
 
     @PureAudio.setter
@@ -17567,6 +21081,9 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """自适应转码模板标识过滤条件，长度限制：64 个字符
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -17611,6 +21128,9 @@ class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合过滤条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -17619,6 +21139,9 @@ class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
 
     @property
     def AdaptiveDynamicStreamingTemplateSet(self):
+        """转自适应码流模板详情列表。
+        :rtype: list of AdaptiveDynamicStreamingTemplate
+        """
         return self._AdaptiveDynamicStreamingTemplateSet
 
     @AdaptiveDynamicStreamingTemplateSet.setter
@@ -17627,6 +21150,9 @@ class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17673,6 +21199,9 @@ class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
+        """转动图模板唯一标识过滤条件，数组长度限制：100。
+        :rtype: list of int non-negative
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -17681,6 +21210,9 @@ class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -17689,6 +21221,9 @@ class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，默认值：10，最大值：100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -17697,6 +21232,11 @@ class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """模板类型过滤条件，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -17705,6 +21245,9 @@ class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """转动图模板标识过滤条件，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -17748,6 +21291,9 @@ class DescribeAnimatedGraphicsTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合过滤条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -17756,6 +21302,9 @@ class DescribeAnimatedGraphicsTemplatesResponse(AbstractModel):
 
     @property
     def AnimatedGraphicsTemplateSet(self):
+        """转动图模板详情列表。
+        :rtype: list of AnimatedGraphicsTemplate
+        """
         return self._AnimatedGraphicsTemplateSet
 
     @AnimatedGraphicsTemplateSet.setter
@@ -17764,6 +21313,9 @@ class DescribeAnimatedGraphicsTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17810,6 +21362,9 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
+        """智能审核模板唯一标识过滤条件，数组长度限制：50。
+        :rtype: list of int
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -17818,6 +21373,9 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -17826,6 +21384,9 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，默认值：10，最大值：50。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -17834,6 +21395,11 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """模板类型过滤条件，不填则返回所有，可选值：
+* Preset：系统预置模板；
+* Custom：用户自定义模板。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -17842,6 +21408,9 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """智能审核模板标识过滤条件，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -17885,6 +21454,9 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合过滤条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -17893,6 +21465,9 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
 
     @property
     def ContentReviewTemplateSet(self):
+        """内容审核模板详情列表。
+        :rtype: list of ContentReviewTemplateItem
+        """
         return self._ContentReviewTemplateSet
 
     @ContentReviewTemplateSet.setter
@@ -17901,6 +21476,9 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17951,6 +21529,9 @@ class DescribeEvent(AbstractModel):
 
     @property
     def EventName(self):
+        """Event的名称。
+        :rtype: str
+        """
         return self._EventName
 
     @EventName.setter
@@ -17959,6 +21540,9 @@ class DescribeEvent(AbstractModel):
 
     @property
     def EventId(self):
+        """Event的Id，唯一标识一个event。
+        :rtype: str
+        """
         return self._EventId
 
     @EventId.setter
@@ -17967,6 +21551,9 @@ class DescribeEvent(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Event创建时间，格式为yyyy-MM-ddTHH:mm:ssZ。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -17975,6 +21562,9 @@ class DescribeEvent(AbstractModel):
 
     @property
     def Description(self):
+        """Event的描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -17983,6 +21573,11 @@ class DescribeEvent(AbstractModel):
 
     @property
     def Status(self):
+        """Event的状态信息
+0：未运行
+1：运行中
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -17991,6 +21586,10 @@ class DescribeEvent(AbstractModel):
 
     @property
     def AttachedFlowGroup(self):
+        """Event关联的Flow列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeFlowId
+        """
         return self._AttachedFlowGroup
 
     @AttachedFlowGroup.setter
@@ -18056,6 +21655,9 @@ class DescribeFlow(AbstractModel):
 
     @property
     def FlowId(self):
+        """流Id。
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -18064,6 +21666,9 @@ class DescribeFlow(AbstractModel):
 
     @property
     def FlowName(self):
+        """流名称。
+        :rtype: str
+        """
         return self._FlowName
 
     @FlowName.setter
@@ -18072,6 +21677,9 @@ class DescribeFlow(AbstractModel):
 
     @property
     def State(self):
+        """流状态，目前有IDLE/RUNNING。
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -18080,6 +21688,9 @@ class DescribeFlow(AbstractModel):
 
     @property
     def MaxBandwidth(self):
+        """最大带宽值。
+        :rtype: int
+        """
         return self._MaxBandwidth
 
     @MaxBandwidth.setter
@@ -18088,6 +21699,9 @@ class DescribeFlow(AbstractModel):
 
     @property
     def InputGroup(self):
+        """输入组。
+        :rtype: list of DescribeInput
+        """
         return self._InputGroup
 
     @InputGroup.setter
@@ -18096,6 +21710,10 @@ class DescribeFlow(AbstractModel):
 
     @property
     def OutputGroup(self):
+        """输出组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeOutput
+        """
         return self._OutputGroup
 
     @OutputGroup.setter
@@ -18104,6 +21722,9 @@ class DescribeFlow(AbstractModel):
 
     @property
     def EventId(self):
+        """该Flow关联的媒体传输事件EventId。
+        :rtype: str
+        """
         return self._EventId
 
     @EventId.setter
@@ -18112,6 +21733,9 @@ class DescribeFlow(AbstractModel):
 
     @property
     def Region(self):
+        """媒体传输输入流所属的区域，取值和InputRegion相同。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -18165,6 +21789,9 @@ class DescribeFlowId(AbstractModel):
 
     @property
     def FlowId(self):
+        """FlowId，唯一标识一个flow。
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -18173,6 +21800,9 @@ class DescribeFlowId(AbstractModel):
 
     @property
     def Region(self):
+        """flow所在的区域名称。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -18208,6 +21838,10 @@ class DescribeHLSPullSourceAddress(AbstractModel):
 
     @property
     def Url(self):
+        """HLS源站的Url地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -18255,6 +21889,9 @@ class DescribeImageSpriteTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
+        """雪碧图模板唯一标识过滤条件，数组长度限制：100。
+        :rtype: list of int non-negative
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -18263,6 +21900,9 @@ class DescribeImageSpriteTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -18271,6 +21911,9 @@ class DescribeImageSpriteTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，默认值：10，最大值：100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -18279,6 +21922,11 @@ class DescribeImageSpriteTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """模板类型过滤条件，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -18287,6 +21935,9 @@ class DescribeImageSpriteTemplatesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """雪碧图模板标识过滤条件，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -18330,6 +21981,9 @@ class DescribeImageSpriteTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合过滤条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -18338,6 +21992,9 @@ class DescribeImageSpriteTemplatesResponse(AbstractModel):
 
     @property
     def ImageSpriteTemplateSet(self):
+        """雪碧图模板详情列表。
+        :rtype: list of ImageSpriteTemplate
+        """
         return self._ImageSpriteTemplateSet
 
     @ImageSpriteTemplateSet.setter
@@ -18346,6 +22003,9 @@ class DescribeImageSpriteTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18435,6 +22095,9 @@ class DescribeInput(AbstractModel):
 
     @property
     def InputId(self):
+        """输入Id。
+        :rtype: str
+        """
         return self._InputId
 
     @InputId.setter
@@ -18443,6 +22106,9 @@ class DescribeInput(AbstractModel):
 
     @property
     def InputName(self):
+        """输入名称。
+        :rtype: str
+        """
         return self._InputName
 
     @InputName.setter
@@ -18451,6 +22117,10 @@ class DescribeInput(AbstractModel):
 
     @property
     def Description(self):
+        """输入描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -18459,6 +22129,9 @@ class DescribeInput(AbstractModel):
 
     @property
     def Protocol(self):
+        """输入协议。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -18467,6 +22140,9 @@ class DescribeInput(AbstractModel):
 
     @property
     def InputAddressList(self):
+        """输入地址列表。
+        :rtype: list of InputAddress
+        """
         return self._InputAddressList
 
     @InputAddressList.setter
@@ -18475,6 +22151,9 @@ class DescribeInput(AbstractModel):
 
     @property
     def AllowIpList(self):
+        """输入IP白名单列表。
+        :rtype: list of str
+        """
         return self._AllowIpList
 
     @AllowIpList.setter
@@ -18483,6 +22162,10 @@ class DescribeInput(AbstractModel):
 
     @property
     def SRTSettings(self):
+        """输入的SRT配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeInputSRTSettings`
+        """
         return self._SRTSettings
 
     @SRTSettings.setter
@@ -18491,6 +22174,10 @@ class DescribeInput(AbstractModel):
 
     @property
     def RTPSettings(self):
+        """输入的RTP配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeInputRTPSettings`
+        """
         return self._RTPSettings
 
     @RTPSettings.setter
@@ -18499,6 +22186,9 @@ class DescribeInput(AbstractModel):
 
     @property
     def InputRegion(self):
+        """输入的地区。
+        :rtype: str
+        """
         return self._InputRegion
 
     @InputRegion.setter
@@ -18507,6 +22197,9 @@ class DescribeInput(AbstractModel):
 
     @property
     def RTMPSettings(self):
+        """输入的RTMP配置信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeInputRTMPSettings`
+        """
         return self._RTMPSettings
 
     @RTMPSettings.setter
@@ -18515,6 +22208,10 @@ class DescribeInput(AbstractModel):
 
     @property
     def FailOver(self):
+        """输入的主备开关。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FailOver
 
     @FailOver.setter
@@ -18523,6 +22220,10 @@ class DescribeInput(AbstractModel):
 
     @property
     def RTMPPullSettings(self):
+        """输入的RTMP_PULL配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeInputRTMPPullSettings`
+        """
         return self._RTMPPullSettings
 
     @RTMPPullSettings.setter
@@ -18531,6 +22232,10 @@ class DescribeInput(AbstractModel):
 
     @property
     def RTSPPullSettings(self):
+        """输入的RTSP_PULL配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeInputRTSPPullSettings`
+        """
         return self._RTSPPullSettings
 
     @RTSPPullSettings.setter
@@ -18539,6 +22244,10 @@ class DescribeInput(AbstractModel):
 
     @property
     def HLSPullSettings(self):
+        """输入的HLS_PULL配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeInputHLSPullSettings`
+        """
         return self._HLSPullSettings
 
     @HLSPullSettings.setter
@@ -18547,6 +22256,10 @@ class DescribeInput(AbstractModel):
 
     @property
     def ResilientStream(self):
+        """延播平滑吐流配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ResilientStreamConf`
+        """
         return self._ResilientStream
 
     @ResilientStream.setter
@@ -18555,6 +22268,10 @@ class DescribeInput(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """绑定的输入安全组 ID。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -18563,6 +22280,9 @@ class DescribeInput(AbstractModel):
 
     @property
     def Zones(self):
+        """可用区配置，开启容灾情况下最多有两个，顺序和pipeline 0、1对应，否则最多只有一个可用区。	
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -18631,6 +22351,9 @@ class DescribeInputHLSPullSettings(AbstractModel):
 
     @property
     def SourceAddresses(self):
+        """HLS源站地址信息。
+        :rtype: list of DescribeHLSPullSourceAddress
+        """
         return self._SourceAddresses
 
     @SourceAddresses.setter
@@ -18669,6 +22392,9 @@ class DescribeInputRTMPPullSettings(AbstractModel):
 
     @property
     def SourceAddresses(self):
+        """RTMP源站地址信息。
+        :rtype: list of DescribeRTMPPullSourceAddress
+        """
         return self._SourceAddresses
 
     @SourceAddresses.setter
@@ -18712,6 +22438,10 @@ RTMP的推流地址拼接规则为：rtmp://Ip:1935/AppName/StreamKey
 
     @property
     def AppName(self):
+        """RTMP的推流路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -18720,6 +22450,10 @@ RTMP的推流地址拼接规则为：rtmp://Ip:1935/AppName/StreamKey
 
     @property
     def StreamKey(self):
+        """RTMP的推流StreamKey。
+RTMP的推流地址拼接规则为：rtmp://Ip:1935/AppName/StreamKey
+        :rtype: str
+        """
         return self._StreamKey
 
     @StreamKey.setter
@@ -18757,6 +22491,9 @@ class DescribeInputRTPSettings(AbstractModel):
 
     @property
     def FEC(self):
+        """是否FEC。
+        :rtype: str
+        """
         return self._FEC
 
     @FEC.setter
@@ -18765,6 +22502,9 @@ class DescribeInputRTPSettings(AbstractModel):
 
     @property
     def IdleTimeout(self):
+        """空闲超时时间。
+        :rtype: int
+        """
         return self._IdleTimeout
 
     @IdleTimeout.setter
@@ -18799,6 +22539,9 @@ class DescribeInputRTSPPullSettings(AbstractModel):
 
     @property
     def SourceAddresses(self):
+        """RTSP源站地址信息。
+        :rtype: list of DescribeRTSPPullSourceAddress
+        """
         return self._SourceAddresses
 
     @SourceAddresses.setter
@@ -18863,6 +22606,10 @@ class DescribeInputSRTSettings(AbstractModel):
 
     @property
     def Mode(self):
+        """SRT模式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -18871,6 +22618,9 @@ class DescribeInputSRTSettings(AbstractModel):
 
     @property
     def StreamId(self):
+        """流Id。
+        :rtype: str
+        """
         return self._StreamId
 
     @StreamId.setter
@@ -18879,6 +22629,9 @@ class DescribeInputSRTSettings(AbstractModel):
 
     @property
     def Latency(self):
+        """延迟。
+        :rtype: int
+        """
         return self._Latency
 
     @Latency.setter
@@ -18887,6 +22640,9 @@ class DescribeInputSRTSettings(AbstractModel):
 
     @property
     def RecvLatency(self):
+        """接收延迟。
+        :rtype: int
+        """
         return self._RecvLatency
 
     @RecvLatency.setter
@@ -18895,6 +22651,9 @@ class DescribeInputSRTSettings(AbstractModel):
 
     @property
     def PeerLatency(self):
+        """对端延迟。
+        :rtype: int
+        """
         return self._PeerLatency
 
     @PeerLatency.setter
@@ -18903,6 +22662,9 @@ class DescribeInputSRTSettings(AbstractModel):
 
     @property
     def PeerIdleTimeout(self):
+        """对端空闲超时时间。
+        :rtype: int
+        """
         return self._PeerIdleTimeout
 
     @PeerIdleTimeout.setter
@@ -18911,6 +22673,9 @@ class DescribeInputSRTSettings(AbstractModel):
 
     @property
     def Passphrase(self):
+        """解密密钥。
+        :rtype: str
+        """
         return self._Passphrase
 
     @Passphrase.setter
@@ -18919,6 +22684,9 @@ class DescribeInputSRTSettings(AbstractModel):
 
     @property
     def PbKeyLen(self):
+        """密钥长度。
+        :rtype: int
+        """
         return self._PbKeyLen
 
     @PbKeyLen.setter
@@ -18927,6 +22695,10 @@ class DescribeInputSRTSettings(AbstractModel):
 
     @property
     def SourceAddresses(self):
+        """SRT对端地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SRTSourceAddressResp
+        """
         return self._SourceAddresses
 
     @SourceAddresses.setter
@@ -18973,6 +22745,9 @@ class DescribeMediaMetaDataRequest(AbstractModel):
 
     @property
     def InputInfo(self):
+        """需要获取元信息的文件输入信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
         return self._InputInfo
 
     @InputInfo.setter
@@ -19011,6 +22786,9 @@ class DescribeMediaMetaDataResponse(AbstractModel):
 
     @property
     def MetaData(self):
+        """媒体元信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
+        """
         return self._MetaData
 
     @MetaData.setter
@@ -19019,6 +22797,9 @@ class DescribeMediaMetaDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19106,6 +22887,9 @@ class DescribeOutput(AbstractModel):
 
     @property
     def OutputId(self):
+        """输出Id。
+        :rtype: str
+        """
         return self._OutputId
 
     @OutputId.setter
@@ -19114,6 +22898,9 @@ class DescribeOutput(AbstractModel):
 
     @property
     def OutputName(self):
+        """输出名称。
+        :rtype: str
+        """
         return self._OutputName
 
     @OutputName.setter
@@ -19122,6 +22909,9 @@ class DescribeOutput(AbstractModel):
 
     @property
     def OutputType(self):
+        """输出类型。
+        :rtype: str
+        """
         return self._OutputType
 
     @OutputType.setter
@@ -19130,6 +22920,10 @@ class DescribeOutput(AbstractModel):
 
     @property
     def Description(self):
+        """输出描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -19138,6 +22932,9 @@ class DescribeOutput(AbstractModel):
 
     @property
     def Protocol(self):
+        """输出协议。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -19146,6 +22943,9 @@ class DescribeOutput(AbstractModel):
 
     @property
     def OutputAddressList(self):
+        """输出的出口地址信息列表。
+        :rtype: list of OutputAddress
+        """
         return self._OutputAddressList
 
     @OutputAddressList.setter
@@ -19154,6 +22954,10 @@ class DescribeOutput(AbstractModel):
 
     @property
     def OutputRegion(self):
+        """输出的地区。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OutputRegion
 
     @OutputRegion.setter
@@ -19162,6 +22966,10 @@ class DescribeOutput(AbstractModel):
 
     @property
     def SRTSettings(self):
+        """输出的SRT配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeOutputSRTSettings`
+        """
         return self._SRTSettings
 
     @SRTSettings.setter
@@ -19170,6 +22978,10 @@ class DescribeOutput(AbstractModel):
 
     @property
     def RTPSettings(self):
+        """输出的RTP配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRTPSettings`
+        """
         return self._RTPSettings
 
     @RTPSettings.setter
@@ -19178,6 +22990,10 @@ class DescribeOutput(AbstractModel):
 
     @property
     def RTMPSettings(self):
+        """输出的RTMP配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRTMPSettings`
+        """
         return self._RTMPSettings
 
     @RTMPSettings.setter
@@ -19186,6 +23002,10 @@ class DescribeOutput(AbstractModel):
 
     @property
     def RTMPPullSettings(self):
+        """输出的RTMP拉流配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRTMPPullSettings`
+        """
         return self._RTMPPullSettings
 
     @RTMPPullSettings.setter
@@ -19194,6 +23014,11 @@ class DescribeOutput(AbstractModel):
 
     @property
     def AllowIpList(self):
+        """CIDR白名单列表。
+当Protocol为RTMP_PULL有效，为空代表不限制客户端IP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AllowIpList
 
     @AllowIpList.setter
@@ -19202,6 +23027,10 @@ class DescribeOutput(AbstractModel):
 
     @property
     def RTSPPullSettings(self):
+        """输出的RTSP拉流配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRTSPPullSettings`
+        """
         return self._RTSPPullSettings
 
     @RTSPPullSettings.setter
@@ -19210,6 +23039,10 @@ class DescribeOutput(AbstractModel):
 
     @property
     def HLSPullSettings(self):
+        """输出的HLS拉流配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeOutputHLSPullSettings`
+        """
         return self._HLSPullSettings
 
     @HLSPullSettings.setter
@@ -19218,6 +23051,9 @@ class DescribeOutput(AbstractModel):
 
     @property
     def MaxConcurrent(self):
+        """最大拉流并发数，最大为4，默认4。
+        :rtype: int
+        """
         return self._MaxConcurrent
 
     @MaxConcurrent.setter
@@ -19226,6 +23062,10 @@ class DescribeOutput(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """绑定的安全组 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -19234,6 +23074,9 @@ class DescribeOutput(AbstractModel):
 
     @property
     def Zones(self):
+        """可用区，output目前最多只支持一个。	
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -19300,6 +23143,9 @@ class DescribeOutputHLSPullServerUrl(AbstractModel):
 
     @property
     def Url(self):
+        """HLS拉流地址的Url。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -19334,6 +23180,10 @@ class DescribeOutputHLSPullSettings(AbstractModel):
 
     @property
     def ServerUrls(self):
+        """HLS拉流地址列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeOutputHLSPullServerUrl
+        """
         return self._ServerUrls
 
     @ServerUrls.setter
@@ -19375,6 +23225,9 @@ class DescribeOutputRTMPPullServerUrl(AbstractModel):
 
     @property
     def TcUrl(self):
+        """RTMP拉流地址的tcUrl。
+        :rtype: str
+        """
         return self._TcUrl
 
     @TcUrl.setter
@@ -19383,6 +23236,9 @@ class DescribeOutputRTMPPullServerUrl(AbstractModel):
 
     @property
     def StreamKey(self):
+        """RTMP拉流地址的流key。
+        :rtype: str
+        """
         return self._StreamKey
 
     @StreamKey.setter
@@ -19418,6 +23274,10 @@ class DescribeOutputRTMPPullSettings(AbstractModel):
 
     @property
     def ServerUrls(self):
+        """拉流地址列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeOutputRTMPPullServerUrl
+        """
         return self._ServerUrls
 
     @ServerUrls.setter
@@ -19465,6 +23325,10 @@ class DescribeOutputRTMPSettings(AbstractModel):
 
     @property
     def IdleTimeout(self):
+        """空闲超时时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IdleTimeout
 
     @IdleTimeout.setter
@@ -19473,6 +23337,10 @@ class DescribeOutputRTMPSettings(AbstractModel):
 
     @property
     def ChunkSize(self):
+        """Chunk大小。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ChunkSize
 
     @ChunkSize.setter
@@ -19481,6 +23349,10 @@ class DescribeOutputRTMPSettings(AbstractModel):
 
     @property
     def Destinations(self):
+        """转推RTMP的目标地址信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RTMPAddressDestination
+        """
         return self._Destinations
 
     @Destinations.setter
@@ -19530,6 +23402,10 @@ class DescribeOutputRTPSettings(AbstractModel):
 
     @property
     def Destinations(self):
+        """转推RTP的目标地址信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RTPAddressDestination
+        """
         return self._Destinations
 
     @Destinations.setter
@@ -19538,6 +23414,10 @@ class DescribeOutputRTPSettings(AbstractModel):
 
     @property
     def FEC(self):
+        """是否FEC。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FEC
 
     @FEC.setter
@@ -19546,6 +23426,10 @@ class DescribeOutputRTPSettings(AbstractModel):
 
     @property
     def IdleTimeout(self):
+        """空闲超时时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IdleTimeout
 
     @IdleTimeout.setter
@@ -19586,6 +23470,9 @@ class DescribeOutputRTSPPullServerUrl(AbstractModel):
 
     @property
     def Url(self):
+        """RTSP拉流地址的Url。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -19620,6 +23507,10 @@ class DescribeOutputRTSPPullSettings(AbstractModel):
 
     @property
     def ServerUrls(self):
+        """RTSP拉流地址列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeOutputRTSPPullServerUrl
+        """
         return self._ServerUrls
 
     @ServerUrls.setter
@@ -19695,6 +23586,10 @@ class DescribeOutputSRTSettings(AbstractModel):
 
     @property
     def Destinations(self):
+        """转推的目标的地址信息列表，SRT模式为CALLER时使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SRTAddressDestination
+        """
         return self._Destinations
 
     @Destinations.setter
@@ -19703,6 +23598,10 @@ class DescribeOutputSRTSettings(AbstractModel):
 
     @property
     def StreamId(self):
+        """流Id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StreamId
 
     @StreamId.setter
@@ -19711,6 +23610,10 @@ class DescribeOutputSRTSettings(AbstractModel):
 
     @property
     def Latency(self):
+        """延迟。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Latency
 
     @Latency.setter
@@ -19719,6 +23622,10 @@ class DescribeOutputSRTSettings(AbstractModel):
 
     @property
     def RecvLatency(self):
+        """接收延迟。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RecvLatency
 
     @RecvLatency.setter
@@ -19727,6 +23634,10 @@ class DescribeOutputSRTSettings(AbstractModel):
 
     @property
     def PeerLatency(self):
+        """对端延迟。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PeerLatency
 
     @PeerLatency.setter
@@ -19735,6 +23646,10 @@ class DescribeOutputSRTSettings(AbstractModel):
 
     @property
     def PeerIdleTimeout(self):
+        """对端空闲超时时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PeerIdleTimeout
 
     @PeerIdleTimeout.setter
@@ -19743,6 +23658,10 @@ class DescribeOutputSRTSettings(AbstractModel):
 
     @property
     def Passphrase(self):
+        """加密密钥。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Passphrase
 
     @Passphrase.setter
@@ -19751,6 +23670,10 @@ class DescribeOutputSRTSettings(AbstractModel):
 
     @property
     def PbKeyLen(self):
+        """加密密钥长度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PbKeyLen
 
     @PbKeyLen.setter
@@ -19759,6 +23682,10 @@ class DescribeOutputSRTSettings(AbstractModel):
 
     @property
     def Mode(self):
+        """SRT模式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -19767,6 +23694,10 @@ class DescribeOutputSRTSettings(AbstractModel):
 
     @property
     def SourceAddresses(self):
+        """服务器监听地址，SRT模式为LISTENER时使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OutputSRTSourceAddressResp
+        """
         return self._SourceAddresses
 
     @SourceAddresses.setter
@@ -19839,6 +23770,14 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """拉取的素材类型，可选值：
+<li>UserDefine：用户自定义素材库；</li>
+<li>Default：系统默认素材库。</li>
+
+默认值：UserDefine，拉取用户自定义素材库素材。
+说明：如果是拉取系统默认素材库，只能使用素材名字或者素材 ID + 素材名字的方式进行拉取，且人脸图片只返回一张。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -19847,6 +23786,9 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     @property
     def PersonIds(self):
+        """素材 ID，数组长度限制：100。
+        :rtype: list of str
+        """
         return self._PersonIds
 
     @PersonIds.setter
@@ -19855,6 +23797,9 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     @property
     def Names(self):
+        """素材名称，数组长度限制：20。
+        :rtype: list of str
+        """
         return self._Names
 
     @Names.setter
@@ -19863,6 +23808,9 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """素材标签，数组长度限制：20。
+        :rtype: list of str
+        """
         return self._Tags
 
     @Tags.setter
@@ -19871,6 +23819,9 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -19879,6 +23830,9 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，默认值：100，最大值：100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -19923,6 +23877,9 @@ class DescribePersonSamplesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -19931,6 +23888,9 @@ class DescribePersonSamplesResponse(AbstractModel):
 
     @property
     def PersonSet(self):
+        """素材信息。
+        :rtype: list of AiSamplePerson
+        """
         return self._PersonSet
 
     @PersonSet.setter
@@ -19939,6 +23899,9 @@ class DescribePersonSamplesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19985,6 +23948,9 @@ class DescribeQualityControlTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
+        """媒体质检模板唯一标识过滤条件，数组长度限制：100。
+        :rtype: list of int
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -19993,6 +23959,9 @@ class DescribeQualityControlTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -20001,6 +23970,11 @@ class DescribeQualityControlTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数
+<li>默认值：10；</li>
+<li>最大值：100。</li>
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -20009,6 +23983,9 @@ class DescribeQualityControlTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """"Preset"：预设，Custom":自定义模板
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -20017,6 +23994,9 @@ class DescribeQualityControlTemplatesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """媒体质检模板标识过滤条件，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -20061,6 +24041,9 @@ class DescribeQualityControlTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合过滤条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -20069,6 +24052,10 @@ class DescribeQualityControlTemplatesResponse(AbstractModel):
 
     @property
     def QualityControlTemplateSet(self):
+        """媒体质检模板详情列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QualityControlTemplate
+        """
         return self._QualityControlTemplateSet
 
     @QualityControlTemplateSet.setter
@@ -20077,6 +24064,9 @@ class DescribeQualityControlTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20114,6 +24104,10 @@ RTMP源站地址拼接规则为：$TcUrl/$StreamKey。
 
     @property
     def TcUrl(self):
+        """RTMP源站的TcUrl地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TcUrl
 
     @TcUrl.setter
@@ -20122,6 +24116,10 @@ RTMP源站地址拼接规则为：$TcUrl/$StreamKey。
 
     @property
     def StreamKey(self):
+        """RTMP源站的StreamKey。
+RTMP源站地址拼接规则为：$TcUrl/$StreamKey。
+        :rtype: str
+        """
         return self._StreamKey
 
     @StreamKey.setter
@@ -20157,6 +24155,10 @@ class DescribeRTSPPullSourceAddress(AbstractModel):
 
     @property
     def Url(self):
+        """RTSP源站的Url地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -20204,6 +24206,9 @@ class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
+        """采样截图模板唯一标识过滤条件，数组长度限制：100。
+        :rtype: list of int non-negative
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -20212,6 +24217,9 @@ class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -20220,6 +24228,9 @@ class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，默认值：10，最大值：100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -20228,6 +24239,11 @@ class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """模板类型过滤条件，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -20236,6 +24252,9 @@ class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """采样截图模板标识过滤条件，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -20279,6 +24298,9 @@ class DescribeSampleSnapshotTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合过滤条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -20287,6 +24309,9 @@ class DescribeSampleSnapshotTemplatesResponse(AbstractModel):
 
     @property
     def SampleSnapshotTemplateSet(self):
+        """采样截图模板详情列表。
+        :rtype: list of SampleSnapshotTemplate
+        """
         return self._SampleSnapshotTemplateSet
 
     @SampleSnapshotTemplateSet.setter
@@ -20295,6 +24320,9 @@ class DescribeSampleSnapshotTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20345,6 +24373,9 @@ class DescribeSchedulesRequest(AbstractModel):
 
     @property
     def ScheduleIds(self):
+        """编排 ID 过滤条件，数组长度限制：100。
+        :rtype: list of int
+        """
         return self._ScheduleIds
 
     @ScheduleIds.setter
@@ -20353,6 +24384,12 @@ class DescribeSchedulesRequest(AbstractModel):
 
     @property
     def TriggerType(self):
+        """编排触发类型，可选值：
+<li>CosFileUpload： 腾讯云 COS 文件上传触发</li>
+<li>AwsS3FileUpload：Aws S3 文件上传触发。</li>
+不填或者为空表示全部。
+        :rtype: str
+        """
         return self._TriggerType
 
     @TriggerType.setter
@@ -20361,6 +24398,12 @@ class DescribeSchedulesRequest(AbstractModel):
 
     @property
     def Status(self):
+        """状态，取值范围：
+<li>Enabled：已启用，</li>
+<li>Disabled：已禁用。</li>
+不填此参数，则不区编排状态。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -20369,6 +24412,9 @@ class DescribeSchedulesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -20377,6 +24423,9 @@ class DescribeSchedulesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，默认值：10，最大值：100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -20420,6 +24469,9 @@ class DescribeSchedulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合过滤条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -20428,6 +24480,9 @@ class DescribeSchedulesResponse(AbstractModel):
 
     @property
     def ScheduleInfoSet(self):
+        """编排信息数组。
+        :rtype: list of SchedulesInfo
+        """
         return self._ScheduleInfoSet
 
     @ScheduleInfoSet.setter
@@ -20436,6 +24491,9 @@ class DescribeSchedulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20482,6 +24540,9 @@ class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
+        """指定时间点截图模板唯一标识过滤条件，数组长度限制：100。
+        :rtype: list of int non-negative
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -20490,6 +24551,9 @@ class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -20498,6 +24562,9 @@ class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，默认值：10，最大值：100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -20506,6 +24573,11 @@ class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """模板类型过滤条件，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -20514,6 +24586,9 @@ class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """指定时间点截图模板标识过滤条件，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -20557,6 +24632,9 @@ class DescribeSnapshotByTimeOffsetTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合过滤条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -20565,6 +24643,9 @@ class DescribeSnapshotByTimeOffsetTemplatesResponse(AbstractModel):
 
     @property
     def SnapshotByTimeOffsetTemplateSet(self):
+        """指定时间点截图模板详情列表。
+        :rtype: list of SnapshotByTimeOffsetTemplate
+        """
         return self._SnapshotByTimeOffsetTemplateSet
 
     @SnapshotByTimeOffsetTemplateSet.setter
@@ -20573,6 +24654,9 @@ class DescribeSnapshotByTimeOffsetTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20614,6 +24698,9 @@ class DescribeStreamLinkActivateStateResponse(AbstractModel):
 
     @property
     def Status(self):
+        """用户已激活为0，否则为非0。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -20622,6 +24709,9 @@ class DescribeStreamLinkActivateStateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20654,6 +24744,9 @@ class DescribeStreamLinkEventAttachedFlowsRequest(AbstractModel):
 
     @property
     def EventId(self):
+        """EventId。
+        :rtype: str
+        """
         return self._EventId
 
     @EventId.setter
@@ -20662,6 +24755,9 @@ class DescribeStreamLinkEventAttachedFlowsRequest(AbstractModel):
 
     @property
     def PageNum(self):
+        """当前页数，默认1。
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -20670,6 +24766,9 @@ class DescribeStreamLinkEventAttachedFlowsRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页大小，默认1000。
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -20711,6 +24810,9 @@ class DescribeStreamLinkEventAttachedFlowsResponse(AbstractModel):
 
     @property
     def Infos(self):
+        """流的配置信息列表。
+        :rtype: list of DescribeFlow
+        """
         return self._Infos
 
     @Infos.setter
@@ -20719,6 +24821,9 @@ class DescribeStreamLinkEventAttachedFlowsResponse(AbstractModel):
 
     @property
     def TotalNum(self):
+        """总数量。
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -20727,6 +24832,9 @@ class DescribeStreamLinkEventAttachedFlowsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20759,6 +24867,9 @@ class DescribeStreamLinkEventRequest(AbstractModel):
 
     @property
     def EventId(self):
+        """媒体传输事件ID。
+        :rtype: str
+        """
         return self._EventId
 
     @EventId.setter
@@ -20795,6 +24906,9 @@ class DescribeStreamLinkEventResponse(AbstractModel):
 
     @property
     def Info(self):
+        """媒体传输事件的配置信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeEvent`
+        """
         return self._Info
 
     @Info.setter
@@ -20803,6 +24917,9 @@ class DescribeStreamLinkEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20834,6 +24951,9 @@ class DescribeStreamLinkEventsRequest(AbstractModel):
 
     @property
     def PageNum(self):
+        """当前页数，默认1。
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -20842,6 +24962,9 @@ class DescribeStreamLinkEventsRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页大小，默认10。
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -20891,6 +25014,9 @@ class DescribeStreamLinkEventsResponse(AbstractModel):
 
     @property
     def Infos(self):
+        """媒体传输事件的配置信息列表。
+        :rtype: list of DescribeEvent
+        """
         return self._Infos
 
     @Infos.setter
@@ -20899,6 +25025,9 @@ class DescribeStreamLinkEventsResponse(AbstractModel):
 
     @property
     def PageNum(self):
+        """当前页数。
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -20907,6 +25036,9 @@ class DescribeStreamLinkEventsResponse(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页大小。
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -20915,6 +25047,9 @@ class DescribeStreamLinkEventsResponse(AbstractModel):
 
     @property
     def TotalNum(self):
+        """总数量。
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -20923,6 +25058,9 @@ class DescribeStreamLinkEventsResponse(AbstractModel):
 
     @property
     def TotalPage(self):
+        """总页数。
+        :rtype: int
+        """
         return self._TotalPage
 
     @TotalPage.setter
@@ -20931,6 +25069,9 @@ class DescribeStreamLinkEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20989,6 +25130,9 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def FlowId(self):
+        """传输流Id。
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -20997,6 +25141,10 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def StartTime(self):
+        """统计的开始时间，默认为前一小时，最多支持查询近7天。
+UTC时间，如'2020-01-01T12:00:00Z'。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -21005,6 +25153,10 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def EndTime(self):
+        """统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
+UTC时间，如'2020-01-01T12:00:00Z'。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -21013,6 +25165,9 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def Type(self):
+        """输入或输出类型，可选[input|output]。
+        :rtype: list of str
+        """
         return self._Type
 
     @Type.setter
@@ -21021,6 +25176,9 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def Pipeline(self):
+        """主通道或备通道，可选[0|1]。
+        :rtype: list of str
+        """
         return self._Pipeline
 
     @Pipeline.setter
@@ -21029,6 +25187,9 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def PageSize(self):
+        """每页大小，默认100，范围为[1, 1000]。
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -21037,6 +25198,9 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def SortType(self):
+        """按Timestamp升序或降序排序，默认降序，可选[desc|asc]。
+        :rtype: str
+        """
         return self._SortType
 
     @SortType.setter
@@ -21045,6 +25209,9 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def PageNum(self):
+        """页码，默认1，范围为[1, 1000]。
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -21100,6 +25267,9 @@ class DescribeStreamLinkFlowLogsResponse(AbstractModel):
 
     @property
     def Infos(self):
+        """日志信息列表。
+        :rtype: list of FlowLogInfo
+        """
         return self._Infos
 
     @Infos.setter
@@ -21108,6 +25278,9 @@ class DescribeStreamLinkFlowLogsResponse(AbstractModel):
 
     @property
     def PageNum(self):
+        """当前页码。
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -21116,6 +25289,9 @@ class DescribeStreamLinkFlowLogsResponse(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页大小。
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -21124,6 +25300,9 @@ class DescribeStreamLinkFlowLogsResponse(AbstractModel):
 
     @property
     def TotalNum(self):
+        """总数量。
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -21132,6 +25311,9 @@ class DescribeStreamLinkFlowLogsResponse(AbstractModel):
 
     @property
     def TotalPage(self):
+        """总页数。
+        :rtype: int
+        """
         return self._TotalPage
 
     @TotalPage.setter
@@ -21140,6 +25322,9 @@ class DescribeStreamLinkFlowLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21195,6 +25380,9 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def FlowId(self):
+        """传输流ID。
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -21203,6 +25391,9 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def Type(self):
+        """输入或输出类型，可选[input|output]。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -21211,6 +25402,9 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def InputOutputId(self):
+        """输入或输出Id。
+        :rtype: str
+        """
         return self._InputOutputId
 
     @InputOutputId.setter
@@ -21219,6 +25413,9 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def Pipeline(self):
+        """主通道或备通道，可选[0|1]。
+        :rtype: str
+        """
         return self._Pipeline
 
     @Pipeline.setter
@@ -21227,6 +25424,9 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def Period(self):
+        """查询间隔，可选[5s|1min|5min|15min]。
+        :rtype: str
+        """
         return self._Period
 
     @Period.setter
@@ -21235,6 +25435,10 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def StartTime(self):
+        """统计的开始时间，默认为前一小时，最多支持查询近7天。
+UTC时间，如'2020-01-01T12:00:00Z'。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -21243,6 +25447,10 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def EndTime(self):
+        """统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
+UTC时间，如'2020-01-01T12:00:00Z'。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -21285,6 +25493,9 @@ class DescribeStreamLinkFlowMediaStatisticsResponse(AbstractModel):
 
     @property
     def Infos(self):
+        """传输流的媒体数据列表。
+        :rtype: list of FlowMediaInfo
+        """
         return self._Infos
 
     @Infos.setter
@@ -21293,6 +25504,9 @@ class DescribeStreamLinkFlowMediaStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21330,6 +25544,9 @@ class DescribeStreamLinkFlowRealtimeStatusRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """流ID。
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -21338,6 +25555,9 @@ class DescribeStreamLinkFlowRealtimeStatusRequest(AbstractModel):
 
     @property
     def InputIds(self):
+        """输入id数组，如果输入输出数组都为空，则代表全量查询。
+        :rtype: list of str
+        """
         return self._InputIds
 
     @InputIds.setter
@@ -21346,6 +25566,9 @@ class DescribeStreamLinkFlowRealtimeStatusRequest(AbstractModel):
 
     @property
     def OutputIds(self):
+        """输出id数组，如果输入输出数组都为空，则代表全量查询。
+        :rtype: list of str
+        """
         return self._OutputIds
 
     @OutputIds.setter
@@ -21387,6 +25610,9 @@ class DescribeStreamLinkFlowRealtimeStatusResponse(AbstractModel):
 
     @property
     def Timestamp(self):
+        """查询时间，单位s。
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -21395,6 +25621,9 @@ class DescribeStreamLinkFlowRealtimeStatusResponse(AbstractModel):
 
     @property
     def Datas(self):
+        """实时数据信息列表。
+        :rtype: list of FlowRealtimeStatusItem
+        """
         return self._Datas
 
     @Datas.setter
@@ -21403,6 +25632,9 @@ class DescribeStreamLinkFlowRealtimeStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21435,6 +25667,9 @@ class DescribeStreamLinkFlowRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """流Id。
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -21471,6 +25706,9 @@ class DescribeStreamLinkFlowResponse(AbstractModel):
 
     @property
     def Info(self):
+        """流的配置信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeFlow`
+        """
         return self._Info
 
     @Info.setter
@@ -21479,6 +25717,9 @@ class DescribeStreamLinkFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21527,6 +25768,9 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def FlowId(self):
+        """传输流ID。
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -21535,6 +25779,9 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def Type(self):
+        """输入或输出类型，可选[input|output]。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -21543,6 +25790,9 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def InputOutputId(self):
+        """输入或输出Id。
+        :rtype: str
+        """
         return self._InputOutputId
 
     @InputOutputId.setter
@@ -21551,6 +25801,9 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def Pipeline(self):
+        """主通道或备通道，可选[0|1]。
+        :rtype: str
+        """
         return self._Pipeline
 
     @Pipeline.setter
@@ -21559,6 +25812,10 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def StartTime(self):
+        """统计的开始时间，默认为前一小时，最多支持查询近7天。
+UTC时间，如'2020-01-01T12:00:00Z'。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -21567,6 +25824,10 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def EndTime(self):
+        """统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
+UTC时间，如'2020-01-01T12:00:00Z'。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -21575,6 +25836,9 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def Period(self):
+        """查询间隔，可选[5s|1min|5min|15min]。
+        :rtype: str
+        """
         return self._Period
 
     @Period.setter
@@ -21617,6 +25881,9 @@ class DescribeStreamLinkFlowSRTStatisticsResponse(AbstractModel):
 
     @property
     def Infos(self):
+        """传输流的SRT质量数据列表。
+        :rtype: list of FlowSRTInfo
+        """
         return self._Infos
 
     @Infos.setter
@@ -21625,6 +25892,9 @@ class DescribeStreamLinkFlowSRTStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21676,6 +25946,9 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def FlowId(self):
+        """传输流ID。
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -21684,6 +25957,9 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def Type(self):
+        """输入或输出类型，可选[input|output]。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -21692,6 +25968,9 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def InputOutputId(self):
+        """输入或输出Id。
+        :rtype: str
+        """
         return self._InputOutputId
 
     @InputOutputId.setter
@@ -21700,6 +25979,9 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def Pipeline(self):
+        """主通道或备通道，可选[0|1]。
+        :rtype: str
+        """
         return self._Pipeline
 
     @Pipeline.setter
@@ -21708,6 +25990,9 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def Period(self):
+        """查询间隔，可选[5s|1min|5min|15min]。
+        :rtype: str
+        """
         return self._Period
 
     @Period.setter
@@ -21716,6 +26001,10 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def StartTime(self):
+        """统计的开始时间，默认为前一小时，最多支持查询近7天。
+UTC时间，如'2020-01-01T12:00:00Z'。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -21724,6 +26013,10 @@ UTC时间，如'2020-01-01T12:00:00Z'。
 
     @property
     def EndTime(self):
+        """统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
+UTC时间，如'2020-01-01T12:00:00Z'。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -21766,6 +26059,9 @@ class DescribeStreamLinkFlowStatisticsResponse(AbstractModel):
 
     @property
     def Infos(self):
+        """传输流的媒体数据列表。
+        :rtype: list of FlowStatisticsArray
+        """
         return self._Infos
 
     @Infos.setter
@@ -21774,6 +26070,9 @@ class DescribeStreamLinkFlowStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21808,6 +26107,9 @@ class DescribeStreamLinkFlowsRequest(AbstractModel):
 
     @property
     def PageNum(self):
+        """当前页数，默认1。
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -21816,6 +26118,9 @@ class DescribeStreamLinkFlowsRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页大小，默认10。
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -21865,6 +26170,9 @@ class DescribeStreamLinkFlowsResponse(AbstractModel):
 
     @property
     def Infos(self):
+        """流的配置信息列表。
+        :rtype: list of DescribeFlow
+        """
         return self._Infos
 
     @Infos.setter
@@ -21873,6 +26181,9 @@ class DescribeStreamLinkFlowsResponse(AbstractModel):
 
     @property
     def PageNum(self):
+        """当前页数。
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -21881,6 +26192,9 @@ class DescribeStreamLinkFlowsResponse(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页大小。
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -21889,6 +26203,9 @@ class DescribeStreamLinkFlowsResponse(AbstractModel):
 
     @property
     def TotalNum(self):
+        """总数量。
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -21897,6 +26214,9 @@ class DescribeStreamLinkFlowsResponse(AbstractModel):
 
     @property
     def TotalPage(self):
+        """总页数。
+        :rtype: int
+        """
         return self._TotalPage
 
     @TotalPage.setter
@@ -21905,6 +26225,9 @@ class DescribeStreamLinkFlowsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21949,6 +26272,9 @@ class DescribeStreamLinkRegionsResponse(AbstractModel):
 
     @property
     def Info(self):
+        """媒体传输地区信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.StreamLinkRegionInfo`
+        """
         return self._Info
 
     @Info.setter
@@ -21957,6 +26283,9 @@ class DescribeStreamLinkRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21985,6 +26314,9 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """视频处理任务的任务 ID。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -22072,6 +26404,9 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型，目前取值有：<li>WorkflowTask：视频工作流处理任务。</li><li>EditMediaTask：视频编辑任务。</li><li>LiveStreamProcessTask：直播流处理任务。</li><li>ScheduleTask：编排处理任务。</li><li>EvaluationTask：评测任务。</li>
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -22080,6 +26415,12 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，取值：
+<li>WAITING：等待中；</li>
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -22088,6 +26429,9 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """任务的创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -22096,6 +26440,9 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def BeginProcessTime(self):
+        """任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._BeginProcessTime
 
     @BeginProcessTime.setter
@@ -22104,6 +26451,9 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def FinishTime(self):
+        """任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._FinishTime
 
     @FinishTime.setter
@@ -22112,6 +26462,10 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def EditMediaTask(self):
+        """视频编辑任务信息，仅当 TaskType 为 EditMediaTask，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EditMediaTask`
+        """
         return self._EditMediaTask
 
     @EditMediaTask.setter
@@ -22120,6 +26474,10 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def WorkflowTask(self):
+        """视频处理任务信息，仅当 TaskType 为 WorkflowTask，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.WorkflowTask`
+        """
         return self._WorkflowTask
 
     @WorkflowTask.setter
@@ -22128,6 +26486,10 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def LiveStreamProcessTask(self):
+        """直播流处理任务信息，仅当 TaskType 为 LiveStreamProcessTask，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamProcessTask`
+        """
         return self._LiveStreamProcessTask
 
     @LiveStreamProcessTask.setter
@@ -22136,6 +26498,10 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def TaskNotifyConfig(self):
+        """任务的事件通知信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -22144,6 +26510,9 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def TasksPriority(self):
+        """任务流的优先级，取值范围为 [-10, 10]。
+        :rtype: int
+        """
         return self._TasksPriority
 
     @TasksPriority.setter
@@ -22152,6 +26521,9 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def SessionId(self):
+        """用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长50个字符，不带或者带空字符串表示不做去重。
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -22160,6 +26532,9 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def SessionContext(self):
+        """来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长1000个字符。
+        :rtype: str
+        """
         return self._SessionContext
 
     @SessionContext.setter
@@ -22168,6 +26543,9 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def ExtInfo(self):
+        """扩展信息字段，仅用于特定场景。
+        :rtype: str
+        """
         return self._ExtInfo
 
     @ExtInfo.setter
@@ -22176,6 +26554,10 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def ScheduleTask(self):
+        """编排处理任务信息，仅当 TaskType 为 ScheduleTask，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleTask`
+        """
         return self._ScheduleTask
 
     @ScheduleTask.setter
@@ -22184,6 +26566,10 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def LiveScheduleTask(self):
+        """直播编排处理任务信息，仅当 TaskType 为 LiveScheduleTask，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveScheduleTask`
+        """
         return self._LiveScheduleTask
 
     @LiveScheduleTask.setter
@@ -22192,6 +26578,9 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22250,6 +26639,9 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Status(self):
+        """过滤条件：任务状态，可选值：WAITING（等待中）、PROCESSING（处理中）、FINISH（已完成）。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -22258,6 +26650,9 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，默认值：10，最大值：100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -22266,6 +26661,9 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def ScrollToken(self):
+        """翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。
+        :rtype: str
+        """
         return self._ScrollToken
 
     @ScrollToken.setter
@@ -22310,6 +26708,9 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TaskSet(self):
+        """任务概要列表。
+        :rtype: list of TaskSimpleInfo
+        """
         return self._TaskSet
 
     @TaskSet.setter
@@ -22318,6 +26719,9 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def ScrollToken(self):
+        """翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空字符串，说明已无更多数据。
+        :rtype: str
+        """
         return self._ScrollToken
 
     @ScrollToken.setter
@@ -22326,6 +26730,9 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合过滤条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -22334,6 +26741,9 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22401,6 +26811,9 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
+        """转码模板唯一标识过滤条件，数组长度限制：100。
+        :rtype: list of int
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -22409,6 +26822,11 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """模板类型过滤条件，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -22417,6 +26835,11 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
 
     @property
     def ContainerType(self):
+        """封装格式过滤条件，可选值：
+<li>Video：视频格式，可以同时包含视频流和音频流的封装格式板；</li>
+<li>PureAudio：纯音频格式，只能包含音频流的封装格式。</li>
+        :rtype: str
+        """
         return self._ContainerType
 
     @ContainerType.setter
@@ -22425,6 +26848,11 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
 
     @property
     def TEHDType(self):
+        """（建议使用TranscodeType代替）极速高清过滤条件，用于过滤普通转码或极速高清转码模板，可选值：
+<li>Common：普通转码模板；</li>
+<li>TEHD：极速高清模板。</li>
+        :rtype: str
+        """
         return self._TEHDType
 
     @TEHDType.setter
@@ -22433,6 +26861,9 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -22441,6 +26872,9 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，默认值：10，最大值：100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -22449,6 +26883,16 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
 
     @property
     def TranscodeType(self):
+        """模板类型（替换旧版本 TEHDType），可选值：
+<li>Common：普通转码模板；</li>
+<li>TEHD：视频极速高清，老的类型（建议使用 TEHD-100） 。</li>
+<li>TEHD-100：视频极速高清</li>
+<li>TEHD-200：音频极速高清</li>
+<li>Enhance：音视频增强模板。</li>
+默认空，不限制类型。
+
+        :rtype: str
+        """
         return self._TranscodeType
 
     @TranscodeType.setter
@@ -22457,6 +26901,9 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """转码模板标识过滤条件，长度限制：64 个字符。	
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -22503,6 +26950,9 @@ class DescribeTranscodeTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合过滤条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -22511,6 +26961,9 @@ class DescribeTranscodeTemplatesResponse(AbstractModel):
 
     @property
     def TranscodeTemplateSet(self):
+        """转码模板详情列表。
+        :rtype: list of TranscodeTemplate
+        """
         return self._TranscodeTemplateSet
 
     @TranscodeTemplateSet.setter
@@ -22519,6 +26972,9 @@ class DescribeTranscodeTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22551,6 +27007,9 @@ class DescribeVideoDatabaseEntryTaskDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """待查询的任务Id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -22596,6 +27055,10 @@ class DescribeVideoDatabaseEntryTaskDetailResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """查询的任务Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -22604,6 +27067,10 @@ class DescribeVideoDatabaseEntryTaskDetailResponse(AbstractModel):
 
     @property
     def Status(self):
+        """查询的任务的状态，可能为WAITING、PROCESSING、FAIL、SUCCESS。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -22612,6 +27079,10 @@ class DescribeVideoDatabaseEntryTaskDetailResponse(AbstractModel):
 
     @property
     def VideoDBEntryTaskResults(self):
+        """查询的任务的结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VideoDBEntryTaskResult
+        """
         return self._VideoDBEntryTaskResults
 
     @VideoDBEntryTaskResults.setter
@@ -22620,6 +27091,9 @@ class DescribeVideoDatabaseEntryTaskDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22653,6 +27127,9 @@ class DescribeVideoSearchTaskDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """待查询的任务Id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -22698,6 +27175,10 @@ class DescribeVideoSearchTaskDetailResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """查询的任务Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -22706,6 +27187,10 @@ class DescribeVideoSearchTaskDetailResponse(AbstractModel):
 
     @property
     def Status(self):
+        """查询的任务的状态，可能为WAITING、PROCESSING、FAIL、SUCCESS。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -22714,6 +27199,10 @@ class DescribeVideoSearchTaskDetailResponse(AbstractModel):
 
     @property
     def SearchTaskResults(self):
+        """查询的任务的结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SearchTaskResult
+        """
         return self._SearchTaskResults
 
     @SearchTaskResults.setter
@@ -22722,6 +27211,9 @@ class DescribeVideoSearchTaskDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22771,6 +27263,9 @@ class DescribeWatermarkTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
+        """水印模板唯一标识过滤条件，数组长度限制：100。
+        :rtype: list of int
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -22779,6 +27274,11 @@ class DescribeWatermarkTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """水印类型过滤条件，可选值：
+<li>image：图片水印；</li>
+<li>text：文字水印。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -22787,6 +27287,9 @@ class DescribeWatermarkTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -22795,6 +27298,11 @@ class DescribeWatermarkTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数
+<li>默认值：10；</li>
+<li>最大值：100。</li>
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -22803,6 +27311,9 @@ class DescribeWatermarkTemplatesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """水印模板标识过滤条件，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -22846,6 +27357,9 @@ class DescribeWatermarkTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合过滤条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -22854,6 +27368,9 @@ class DescribeWatermarkTemplatesResponse(AbstractModel):
 
     @property
     def WatermarkTemplateSet(self):
+        """水印模板详情列表。
+        :rtype: list of WatermarkTemplate
+        """
         return self._WatermarkTemplateSet
 
     @WatermarkTemplateSet.setter
@@ -22862,6 +27379,9 @@ class DescribeWatermarkTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22914,6 +27434,9 @@ class DescribeWordSamplesRequest(AbstractModel):
 
     @property
     def Keywords(self):
+        """关键词过滤条件，数组长度限制：100 个词。
+        :rtype: list of str
+        """
         return self._Keywords
 
     @Keywords.setter
@@ -22922,6 +27445,17 @@ class DescribeWordSamplesRequest(AbstractModel):
 
     @property
     def Usages(self):
+        """<b>关键词应用场景过滤条件，可选值：</b>
+1. Recognition.Ocr：通过光学字符识别技术，进行内容识别；
+2. Recognition.Asr：通过音频识别技术，进行内容识别；
+3. Review.Ocr：通过光学字符识别技术，进行不适宜内容的识别；
+4. Review.Asr：通过音频识别技术，进行不适宜内容的识别；
+<b>可合并简写为：</b>
+5. Recognition：通过光学字符识别技术、音频识别技术，进行内容识别，等价于 1+2；
+6. Review：通过光学字符识别技术、音频识别技术，进行不适宜内容的识别，等价于 3+4；
+可多选，元素间关系为 or，即关键词的应用场景包含该字段集合中任意元素的记录，均符合该条件。
+        :rtype: list of str
+        """
         return self._Usages
 
     @Usages.setter
@@ -22930,6 +27464,9 @@ class DescribeWordSamplesRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签过滤条件，数组长度限制：20 个词。
+        :rtype: list of str
+        """
         return self._Tags
 
     @Tags.setter
@@ -22938,6 +27475,9 @@ class DescribeWordSamplesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -22946,6 +27486,9 @@ class DescribeWordSamplesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，默认值：100，最大值：100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -22991,6 +27534,10 @@ class DescribeWordSamplesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的记录总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -22999,6 +27546,10 @@ class DescribeWordSamplesResponse(AbstractModel):
 
     @property
     def WordSet(self):
+        """关键词信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AiSampleWord
+        """
         return self._WordSet
 
     @WordSet.setter
@@ -23007,6 +27558,9 @@ class DescribeWordSamplesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23051,6 +27605,9 @@ class DescribeWorkflowsRequest(AbstractModel):
 
     @property
     def WorkflowIds(self):
+        """工作流 ID 过滤条件，数组长度限制：100。
+        :rtype: list of int
+        """
         return self._WorkflowIds
 
     @WorkflowIds.setter
@@ -23059,6 +27616,12 @@ class DescribeWorkflowsRequest(AbstractModel):
 
     @property
     def Status(self):
+        """工作流状态，取值范围：
+<li>Enabled：已启用，</li>
+<li>Disabled：已禁用。</li>
+不填此参数，则不区分工作流状态。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -23067,6 +27630,9 @@ class DescribeWorkflowsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -23075,6 +27641,9 @@ class DescribeWorkflowsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回记录条数，默认值：10，最大值：100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -23117,6 +27686,9 @@ class DescribeWorkflowsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合过滤条件的记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -23125,6 +27697,9 @@ class DescribeWorkflowsResponse(AbstractModel):
 
     @property
     def WorkflowInfoSet(self):
+        """工作流信息数组。
+        :rtype: list of WorkflowInfo
+        """
         return self._WorkflowInfoSet
 
     @WorkflowInfoSet.setter
@@ -23133,6 +27708,9 @@ class DescribeWorkflowsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23246,6 +27824,18 @@ Info：一般性的流信息。
 
     @property
     def Category(self):
+        """诊断出的异常类别，取值范围：
+DecodeParamException：解码参数异常
+TimeStampException：时间戳异常
+FrameException： 帧率异常
+StreamStatusException：流状态异常
+StreamInfo：流信息异常
+StreamAbnormalCharacteristics：流特征异常
+DecodeException：解码异常
+HLSRequirements：HLS 格式异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Category
 
     @Category.setter
@@ -23254,6 +27844,57 @@ Info：一般性的流信息。
 
     @property
     def Type(self):
+        """诊断出的具体异常类型，取值如下：
+
+VideoResolutionChanged：视频分辨率变化
+AudioSampleRateChanged：音频采样率变化
+AudioChannelsChanged：音频通道数变化
+ParameterSetsChanged：流参数集信息发生变化
+DarOrSarInvalid：视频的宽高比异常
+TimestampFallback：DTS时间戳回退
+DtsJitter：DTS抖动过大
+PtsJitter：PTS抖动过大
+AACDurationDeviation：AAC帧时间戳间隔不合理
+AudioDroppingFrames：音频丢帧
+VideoDroppingFrames：视频丢帧
+AVTimestampInterleave：音视频交织不合理
+PtsLessThanDts：媒体流的 pts 小于 dts
+ReceiveFpsJitter：网络接收帧率抖动过大
+ReceiveFpsTooSmall：网络接收视频帧率过小
+FpsJitter：通过PTS计算得到的流帧率抖动过大
+StreamOpenFailed：流打开失败
+StreamEnd：流结束
+StreamParseFailed：流解析失败
+VideoFirstFrameNotIdr：首帧不是IDR帧
+StreamNALUError：NALU起始码错误
+TsStreamNoAud：mpegts的H26x流缺失 AUD NALU
+AudioStreamLack：无音频流
+VideoStreamLack：无视频流
+LackAudioRecover：缺失音频流恢复
+LackVideoRecover：缺失视频流恢复
+VideoBitrateOutofRange：视频流码率(kbps)超出范围
+AudioBitrateOutofRange：音频流码率(kbps)超出范围
+VideoDecodeFailed：视频解码错误
+AudioDecodeFailed：音频解码错误
+AudioOutOfPhase：双通道音频相位相反
+VideoDuplicatedFrame：视频流中存在重复帧
+AudioDuplicatedFrame：音频流中存在重复帧
+VideoRotation：视频画面旋转
+TsMultiPrograms：MPEG2-TS流有多个program
+Mp4InvalidCodecFourcc：MP4中codec fourcc不符合Apple HLS要求
+HLSBadM3u8Format：无效的m3u8文件
+HLSInvalidMasterM3u8：无效的main m3u8文件
+HLSInvalidMediaM3u8：无效的media m3u8文件
+HLSMasterM3u8Recommended：main m3u8缺少标准推荐的参数
+HLSMediaM3u8Recommended：media m3u8缺少标准推荐的参数
+HLSMediaM3u8DiscontinuityExist：media m3u8存在EXT-X-DISCONTINUITY
+HLSMediaSegmentsStreamNumChange：切片的流数目发生变化
+HLSMediaSegmentsPTSJitterDeviation：切片间PTS跳变且没有EXT-X-DISCONTINUITY
+HLSMediaSegmentsDTSJitterDeviation：切片间DTS跳变且没有EXT-X-DISCONTINUITY
+TimecodeTrackExist：MP4存在tmcd轨道
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -23262,6 +27903,10 @@ Info：一般性的流信息。
 
     @property
     def Timestamp(self):
+        """诊断出异常开始的PTS时间戳。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -23270,6 +27915,10 @@ Info：一般性的流信息。
 
     @property
     def Description(self):
+        """诊断出的异常描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -23278,6 +27927,10 @@ Info：一般性的流信息。
 
     @property
     def DateTime(self):
+        """诊断到异常的北京时间，采用 ISO 日期格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DateTime
 
     @DateTime.setter
@@ -23286,6 +27939,15 @@ Info：一般性的流信息。
 
     @property
     def SeverityLevel(self):
+        """诊断出的异常级别，取值范围：
+Fatal：影响后续播放和解析，
+Error： 可能会影响播放，
+Warning： 可能会有潜在风险，但不一定会影响播放，
+Notice：比较重要的流信息，
+Info：一般性的流信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SeverityLevel
 
     @SeverityLevel.setter
@@ -23324,6 +27986,9 @@ class DisableScheduleRequest(AbstractModel):
 
     @property
     def ScheduleId(self):
+        """编排唯一表示。
+        :rtype: int
+        """
         return self._ScheduleId
 
     @ScheduleId.setter
@@ -23357,6 +28022,9 @@ class DisableScheduleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23382,6 +28050,9 @@ class DisableWorkflowRequest(AbstractModel):
 
     @property
     def WorkflowId(self):
+        """工作流 ID。
+        :rtype: int
+        """
         return self._WorkflowId
 
     @WorkflowId.setter
@@ -23415,6 +28086,9 @@ class DisableWorkflowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23446,6 +28120,11 @@ class DrmInfo(AbstractModel):
 
     @property
     def Type(self):
+        """加密类型：
+<li> simpleaes: aes-128 加密</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -23454,6 +28133,10 @@ class DrmInfo(AbstractModel):
 
     @property
     def SimpleAesDrm(self):
+        """SimpleAes 加密信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SimpleAesDrm`
+        """
         return self._SimpleAesDrm
 
     @SimpleAesDrm.setter
@@ -23502,6 +28185,9 @@ class EditMediaFileInfo(AbstractModel):
 
     @property
     def InputInfo(self):
+        """视频的输入信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
         return self._InputInfo
 
     @InputInfo.setter
@@ -23510,6 +28196,9 @@ class EditMediaFileInfo(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """【剪辑】任务生效，视频剪辑的起始时间偏移，单位：秒。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -23518,6 +28207,9 @@ class EditMediaFileInfo(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """【剪辑】任务生效，视频剪辑的结束时间偏移，单位：秒。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -23526,6 +28218,12 @@ class EditMediaFileInfo(AbstractModel):
 
     @property
     def Id(self):
+        """【合成】任务必选，用于轨道元素中媒体关联源素材 ID。
+
+注意：允许字母、数字、-、_ ，最长 32 字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -23572,6 +28270,10 @@ fast：快速编辑，处理速度更快但精准度一定程度降低
 
     @property
     def Container(self):
+        """封装格式，可选值：mp4、hls、mov、flv、avi。默认是 mp4。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -23580,6 +28282,13 @@ fast：快速编辑，处理速度更快但精准度一定程度降低
 
     @property
     def Type(self):
+        """剪辑模式，可选值：
+normal（默认）：精准编辑
+fast：快速编辑，处理速度更快但精准度一定程度降低
+注意：fast只支持单文件，normal默认输出转码格式是h264
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -23643,6 +28352,9 @@ class EditMediaRequest(AbstractModel):
 
     @property
     def FileInfos(self):
+        """输入的视频文件信息。
+        :rtype: list of EditMediaFileInfo
+        """
         return self._FileInfos
 
     @FileInfos.setter
@@ -23651,6 +28363,9 @@ class EditMediaRequest(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """媒体处理输出文件的目标存储。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -23659,6 +28374,12 @@ class EditMediaRequest(AbstractModel):
 
     @property
     def OutputObjectPath(self):
+        """媒体处理输出文件的目标路径。
+
+注意：对于复杂合成任务，路径中的文件名只可为数字、字母、-、_ 的组合，最长 64 个字符。
+
+        :rtype: str
+        """
         return self._OutputObjectPath
 
     @OutputObjectPath.setter
@@ -23667,6 +28388,9 @@ class EditMediaRequest(AbstractModel):
 
     @property
     def OutputConfig(self):
+        """【剪辑】任务生成的文件配置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EditMediaOutputConfig`
+        """
         return self._OutputConfig
 
     @OutputConfig.setter
@@ -23675,6 +28399,11 @@ class EditMediaRequest(AbstractModel):
 
     @property
     def ComposeConfig(self):
+        """【合成】任务配置。
+
+注意：当其不为空时，认为是合成任务，否则按剪辑任务处理。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeMediaConfig`
+        """
         return self._ComposeConfig
 
     @ComposeConfig.setter
@@ -23683,6 +28412,9 @@ class EditMediaRequest(AbstractModel):
 
     @property
     def TaskNotifyConfig(self):
+        """任务的事件通知信息，不填代表不获取事件通知。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -23691,6 +28423,9 @@ class EditMediaRequest(AbstractModel):
 
     @property
     def TasksPriority(self):
+        """任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
+        :rtype: int
+        """
         return self._TasksPriority
 
     @TasksPriority.setter
@@ -23699,6 +28434,9 @@ class EditMediaRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -23707,6 +28445,9 @@ class EditMediaRequest(AbstractModel):
 
     @property
     def SessionContext(self):
+        """来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :rtype: str
+        """
         return self._SessionContext
 
     @SessionContext.setter
@@ -23764,6 +28505,9 @@ class EditMediaResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """编辑视频的任务 ID，可以通过该 ID 查询编辑任务的状态。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -23772,6 +28516,9 @@ class EditMediaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23818,6 +28565,9 @@ class EditMediaTask(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务 ID。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -23826,6 +28576,11 @@ class EditMediaTask(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -23834,6 +28589,11 @@ class EditMediaTask(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码
+<li>0：成功；</li>
+<li>其他值：失败。</li>
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -23842,6 +28602,9 @@ class EditMediaTask(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -23850,6 +28613,9 @@ class EditMediaTask(AbstractModel):
 
     @property
     def Input(self):
+        """视频编辑任务的输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EditMediaTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -23858,6 +28624,10 @@ class EditMediaTask(AbstractModel):
 
     @property
     def Output(self):
+        """视频编辑任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EditMediaTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -23900,6 +28670,9 @@ class EditMediaTaskInput(AbstractModel):
 
     @property
     def FileInfoSet(self):
+        """输入的视频文件信息。
+        :rtype: list of EditMediaFileInfo
+        """
         return self._FileInfoSet
 
     @FileInfoSet.setter
@@ -23945,6 +28718,9 @@ class EditMediaTaskOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """编辑后文件的目标存储。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -23953,6 +28729,9 @@ class EditMediaTaskOutput(AbstractModel):
 
     @property
     def Path(self):
+        """编辑后的视频文件路径。
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -23961,6 +28740,10 @@ class EditMediaTaskOutput(AbstractModel):
 
     @property
     def MetaData(self):
+        """编辑后的视频文件元信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
+        """
         return self._MetaData
 
     @MetaData.setter
@@ -24000,6 +28783,9 @@ class EnableScheduleRequest(AbstractModel):
 
     @property
     def ScheduleId(self):
+        """编排唯一标识。
+        :rtype: int
+        """
         return self._ScheduleId
 
     @ScheduleId.setter
@@ -24033,6 +28819,9 @@ class EnableScheduleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -24058,6 +28847,9 @@ class EnableWorkflowRequest(AbstractModel):
 
     @property
     def WorkflowId(self):
+        """工作流 ID。
+        :rtype: int
+        """
         return self._WorkflowId
 
     @WorkflowId.setter
@@ -24091,6 +28883,9 @@ class EnableWorkflowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -24121,6 +28916,10 @@ class EnhanceConfig(AbstractModel):
 
     @property
     def VideoEnhance(self):
+        """视频增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoEnhanceConfig`
+        """
         return self._VideoEnhance
 
     @VideoEnhance.setter
@@ -24129,6 +28928,10 @@ class EnhanceConfig(AbstractModel):
 
     @property
     def AudioEnhance(self):
+        """音频增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioEnhanceConfig`
+        """
         return self._AudioEnhance
 
     @AudioEnhance.setter
@@ -24170,6 +28973,9 @@ class ExecuteFunctionRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """调用后端接口名称。
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -24178,6 +28984,9 @@ class ExecuteFunctionRequest(AbstractModel):
 
     @property
     def FunctionArg(self):
+        """接口参数，具体参数格式调用时与后端协调。
+        :rtype: str
+        """
         return self._FunctionArg
 
     @FunctionArg.setter
@@ -24215,6 +29024,9 @@ class ExecuteFunctionResponse(AbstractModel):
 
     @property
     def Result(self):
+        """处理结果打包后的字符串，具体与后台一同协调。
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -24223,6 +29035,9 @@ class ExecuteFunctionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -24251,6 +29066,11 @@ class ExpressionConfigInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """表情识别任务开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -24306,6 +29126,11 @@ class FaceConfigureInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """人脸识别任务开关，可选值：
+<li>ON：开启智能人脸识别任务；</li>
+<li>OFF：关闭智能人脸识别任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -24314,6 +29139,9 @@ class FaceConfigureInfo(AbstractModel):
 
     @property
     def Score(self):
+        """人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果。默认 95 分。取值范围：0 - 100。
+        :rtype: float
+        """
         return self._Score
 
     @Score.setter
@@ -24322,6 +29150,12 @@ class FaceConfigureInfo(AbstractModel):
 
     @property
     def DefaultLibraryLabelSet(self):
+        """默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：
+<li>entertainment：娱乐明星；</li>
+<li>sport：体育明星；</li>
+<li>politician：敏感人物。</li>
+        :rtype: list of str
+        """
         return self._DefaultLibraryLabelSet
 
     @DefaultLibraryLabelSet.setter
@@ -24330,6 +29164,10 @@ class FaceConfigureInfo(AbstractModel):
 
     @property
     def UserDefineLibraryLabelSet(self):
+        """用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
+标签个数最多 100 个，每个标签长度最多 16 个字符。
+        :rtype: list of str
+        """
         return self._UserDefineLibraryLabelSet
 
     @UserDefineLibraryLabelSet.setter
@@ -24338,6 +29176,13 @@ class FaceConfigureInfo(AbstractModel):
 
     @property
     def FaceLibrary(self):
+        """人物库选择，可选值：
+<li>Default：使用默认人物库；</li>
+<li>UserDefine：使用用户自定义人物库。</li>
+<li>All：同时使用默认人物库和用户自定义人物库。</li>
+默认值：All，使用系统默认人物库及用户自定义人物库。
+        :rtype: str
+        """
         return self._FaceLibrary
 
     @FaceLibrary.setter
@@ -24396,6 +29241,11 @@ class FaceConfigureInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """人脸识别任务开关，可选值：
+<li>ON：开启智能人脸识别任务；</li>
+<li>OFF：关闭智能人脸识别任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -24404,6 +29254,9 @@ class FaceConfigureInfoForUpdate(AbstractModel):
 
     @property
     def Score(self):
+        """人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果。取值范围：0-100。
+        :rtype: float
+        """
         return self._Score
 
     @Score.setter
@@ -24412,6 +29265,12 @@ class FaceConfigureInfoForUpdate(AbstractModel):
 
     @property
     def DefaultLibraryLabelSet(self):
+        """默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：
+<li>entertainment：娱乐明星；</li>
+<li>sport：体育明星；</li>
+<li>politician：敏感人物。</li>
+        :rtype: list of str
+        """
         return self._DefaultLibraryLabelSet
 
     @DefaultLibraryLabelSet.setter
@@ -24420,6 +29279,10 @@ class FaceConfigureInfoForUpdate(AbstractModel):
 
     @property
     def UserDefineLibraryLabelSet(self):
+        """用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
+标签个数最多 100 个，每个标签长度最多 16 个字符。
+        :rtype: list of str
+        """
         return self._UserDefineLibraryLabelSet
 
     @UserDefineLibraryLabelSet.setter
@@ -24428,6 +29291,12 @@ class FaceConfigureInfoForUpdate(AbstractModel):
 
     @property
     def FaceLibrary(self):
+        """人物库选择，可选值：
+<li>Default：使用默认人物库；</li>
+<li>UserDefine：使用用户自定义人物库。</li>
+<li>All：同时使用默认人物库和用户自定义人物库。</li>
+        :rtype: str
+        """
         return self._FaceLibrary
 
     @FaceLibrary.setter
@@ -24473,6 +29342,12 @@ class FaceEnhanceConfig(AbstractModel):
 
     @property
     def Switch(self):
+        """能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -24481,6 +29356,11 @@ class FaceEnhanceConfig(AbstractModel):
 
     @property
     def Intensity(self):
+        """强度，取值范围：0.0~1.0。
+默认：0.0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Intensity
 
     @Intensity.setter
@@ -24521,6 +29401,9 @@ class FlowAudio(AbstractModel):
 
     @property
     def Fps(self):
+        """帧率。
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -24529,6 +29412,9 @@ class FlowAudio(AbstractModel):
 
     @property
     def Rate(self):
+        """码率，单位是bps。
+        :rtype: int
+        """
         return self._Rate
 
     @Rate.setter
@@ -24537,6 +29423,9 @@ class FlowAudio(AbstractModel):
 
     @property
     def Pid(self):
+        """音频Pid。
+        :rtype: int
+        """
         return self._Pid
 
     @Pid.setter
@@ -24599,6 +29488,9 @@ class FlowLogInfo(AbstractModel):
 
     @property
     def Timestamp(self):
+        """时间戳，单位为秒。
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -24607,6 +29499,9 @@ class FlowLogInfo(AbstractModel):
 
     @property
     def Type(self):
+        """输入输出类型（input/output）。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -24615,6 +29510,9 @@ class FlowLogInfo(AbstractModel):
 
     @property
     def InputOutputId(self):
+        """输入或输出Id。
+        :rtype: str
+        """
         return self._InputOutputId
 
     @InputOutputId.setter
@@ -24623,6 +29521,9 @@ class FlowLogInfo(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -24631,6 +29532,9 @@ class FlowLogInfo(AbstractModel):
 
     @property
     def EventCode(self):
+        """事件代码。
+        :rtype: str
+        """
         return self._EventCode
 
     @EventCode.setter
@@ -24639,6 +29543,9 @@ class FlowLogInfo(AbstractModel):
 
     @property
     def EventMessage(self):
+        """事件信息。
+        :rtype: str
+        """
         return self._EventMessage
 
     @EventMessage.setter
@@ -24647,6 +29554,9 @@ class FlowLogInfo(AbstractModel):
 
     @property
     def RemoteIp(self):
+        """对端IP。
+        :rtype: str
+        """
         return self._RemoteIp
 
     @RemoteIp.setter
@@ -24655,6 +29565,9 @@ class FlowLogInfo(AbstractModel):
 
     @property
     def RemotePort(self):
+        """对端端口。
+        :rtype: str
+        """
         return self._RemotePort
 
     @RemotePort.setter
@@ -24663,6 +29576,9 @@ class FlowLogInfo(AbstractModel):
 
     @property
     def Pipeline(self):
+        """主备通道，0为主通道，1为备通道。
+        :rtype: str
+        """
         return self._Pipeline
 
     @Pipeline.setter
@@ -24671,6 +29587,9 @@ class FlowLogInfo(AbstractModel):
 
     @property
     def InputOutputName(self):
+        """输入或输出的名称。
+        :rtype: str
+        """
         return self._InputOutputName
 
     @InputOutputName.setter
@@ -24722,6 +29641,9 @@ class FlowMediaAudio(AbstractModel):
 
     @property
     def Fps(self):
+        """帧率。
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -24730,6 +29652,9 @@ class FlowMediaAudio(AbstractModel):
 
     @property
     def Rate(self):
+        """码率，单位是bps。
+        :rtype: int
+        """
         return self._Rate
 
     @Rate.setter
@@ -24738,6 +29663,9 @@ class FlowMediaAudio(AbstractModel):
 
     @property
     def Pid(self):
+        """音频Pid。
+        :rtype: int
+        """
         return self._Pid
 
     @Pid.setter
@@ -24746,6 +29674,9 @@ class FlowMediaAudio(AbstractModel):
 
     @property
     def SessionId(self):
+        """标志同一次推流。
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -24797,6 +29728,9 @@ class FlowMediaInfo(AbstractModel):
 
     @property
     def Timestamp(self):
+        """时间戳，单位是秒。
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -24805,6 +29739,9 @@ class FlowMediaInfo(AbstractModel):
 
     @property
     def Network(self):
+        """总带宽。
+        :rtype: int
+        """
         return self._Network
 
     @Network.setter
@@ -24813,6 +29750,9 @@ class FlowMediaInfo(AbstractModel):
 
     @property
     def Video(self):
+        """传输流的视频数据。
+        :rtype: list of FlowMediaVideo
+        """
         return self._Video
 
     @Video.setter
@@ -24821,6 +29761,9 @@ class FlowMediaInfo(AbstractModel):
 
     @property
     def Audio(self):
+        """传输流的音频数据。
+        :rtype: list of FlowMediaAudio
+        """
         return self._Audio
 
     @Audio.setter
@@ -24829,6 +29772,9 @@ class FlowMediaInfo(AbstractModel):
 
     @property
     def SessionId(self):
+        """标志同一次推流。
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -24837,6 +29783,9 @@ class FlowMediaInfo(AbstractModel):
 
     @property
     def ClientIp(self):
+        """客户端IP。
+        :rtype: str
+        """
         return self._ClientIp
 
     @ClientIp.setter
@@ -24894,6 +29843,9 @@ class FlowMediaVideo(AbstractModel):
 
     @property
     def Fps(self):
+        """帧率。
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -24902,6 +29854,9 @@ class FlowMediaVideo(AbstractModel):
 
     @property
     def Rate(self):
+        """码率，单位是bps。
+        :rtype: int
+        """
         return self._Rate
 
     @Rate.setter
@@ -24910,6 +29865,9 @@ class FlowMediaVideo(AbstractModel):
 
     @property
     def Pid(self):
+        """视频Pid。
+        :rtype: int
+        """
         return self._Pid
 
     @Pid.setter
@@ -24918,6 +29876,9 @@ class FlowMediaVideo(AbstractModel):
 
     @property
     def SessionId(self):
+        """标志同一次推流。
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -24966,6 +29927,9 @@ class FlowRealtimeStatusCommon(AbstractModel):
 
     @property
     def State(self):
+        """当前连接状态，Connected|Waiting|Idle。
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -24974,6 +29938,9 @@ class FlowRealtimeStatusCommon(AbstractModel):
 
     @property
     def Mode(self):
+        """连接模式，Listener|Caller。
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -24982,6 +29949,9 @@ class FlowRealtimeStatusCommon(AbstractModel):
 
     @property
     def ConnectedTime(self):
+        """已连接时长，单位为ms。
+        :rtype: int
+        """
         return self._ConnectedTime
 
     @ConnectedTime.setter
@@ -24990,6 +29960,9 @@ class FlowRealtimeStatusCommon(AbstractModel):
 
     @property
     def Bitrate(self):
+        """实时码率，单位为bps。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -24998,6 +29971,9 @@ class FlowRealtimeStatusCommon(AbstractModel):
 
     @property
     def Reconnections(self):
+        """重试次数。
+        :rtype: int
+        """
         return self._Reconnections
 
     @Reconnections.setter
@@ -25065,6 +30041,9 @@ class FlowRealtimeStatusItem(AbstractModel):
 
     @property
     def Type(self):
+        """类型，Input|Output。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -25073,6 +30052,9 @@ class FlowRealtimeStatusItem(AbstractModel):
 
     @property
     def InputId(self):
+        """输入Id，如果Type为Input，此字段不为空。
+        :rtype: str
+        """
         return self._InputId
 
     @InputId.setter
@@ -25081,6 +30063,9 @@ class FlowRealtimeStatusItem(AbstractModel):
 
     @property
     def OutputId(self):
+        """输出Id，如果Type为Output，此字段不为空。
+        :rtype: str
+        """
         return self._OutputId
 
     @OutputId.setter
@@ -25089,6 +30074,9 @@ class FlowRealtimeStatusItem(AbstractModel):
 
     @property
     def FlowId(self):
+        """流Id。
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -25097,6 +30085,9 @@ class FlowRealtimeStatusItem(AbstractModel):
 
     @property
     def Protocol(self):
+        """协议， SRT | RTMP。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -25105,6 +30096,9 @@ class FlowRealtimeStatusItem(AbstractModel):
 
     @property
     def CommonStatus(self):
+        """共同状态信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FlowRealtimeStatusCommon`
+        """
         return self._CommonStatus
 
     @CommonStatus.setter
@@ -25113,6 +30107,10 @@ class FlowRealtimeStatusItem(AbstractModel):
 
     @property
     def SRTStatus(self):
+        """如果是SRT协议则有此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FlowRealtimeStatusSRT`
+        """
         return self._SRTStatus
 
     @SRTStatus.setter
@@ -25121,6 +30119,10 @@ class FlowRealtimeStatusItem(AbstractModel):
 
     @property
     def RTMPStatus(self):
+        """如果是RTMP协议则有此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FlowRealtimeStatusRTMP`
+        """
         return self._RTMPStatus
 
     @RTMPStatus.setter
@@ -25129,6 +30131,9 @@ class FlowRealtimeStatusItem(AbstractModel):
 
     @property
     def ConnectServerIP(self):
+        """服务器IP。
+        :rtype: str
+        """
         return self._ConnectServerIP
 
     @ConnectServerIP.setter
@@ -25137,6 +30142,10 @@ class FlowRealtimeStatusItem(AbstractModel):
 
     @property
     def RTPStatus(self):
+        """如果是RTP协议则有此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FlowRealtimeStatusRTP`
+        """
         return self._RTPStatus
 
     @RTPStatus.setter
@@ -25190,6 +30199,9 @@ class FlowRealtimeStatusRTMP(AbstractModel):
 
     @property
     def VideoFPS(self):
+        """视频帧率。
+        :rtype: int
+        """
         return self._VideoFPS
 
     @VideoFPS.setter
@@ -25198,6 +30210,9 @@ class FlowRealtimeStatusRTMP(AbstractModel):
 
     @property
     def AudioFPS(self):
+        """音频帧率。
+        :rtype: int
+        """
         return self._AudioFPS
 
     @AudioFPS.setter
@@ -25232,6 +30247,9 @@ class FlowRealtimeStatusRTP(AbstractModel):
 
     @property
     def Packets(self):
+        """传输的包个数
+        :rtype: int
+        """
         return self._Packets
 
     @Packets.setter
@@ -25283,6 +30301,9 @@ class FlowRealtimeStatusSRT(AbstractModel):
 
     @property
     def Latency(self):
+        """延迟，单位为ms。
+        :rtype: int
+        """
         return self._Latency
 
     @Latency.setter
@@ -25291,6 +30312,9 @@ class FlowRealtimeStatusSRT(AbstractModel):
 
     @property
     def RTT(self):
+        """RTT，单位为ms。
+        :rtype: int
+        """
         return self._RTT
 
     @RTT.setter
@@ -25299,6 +30323,9 @@ class FlowRealtimeStatusSRT(AbstractModel):
 
     @property
     def Packets(self):
+        """实时发包数或者收包数。
+        :rtype: int
+        """
         return self._Packets
 
     @Packets.setter
@@ -25307,6 +30334,9 @@ class FlowRealtimeStatusSRT(AbstractModel):
 
     @property
     def PacketLossRate(self):
+        """丢包率。
+        :rtype: float
+        """
         return self._PacketLossRate
 
     @PacketLossRate.setter
@@ -25315,6 +30345,9 @@ class FlowRealtimeStatusSRT(AbstractModel):
 
     @property
     def RetransmitRate(self):
+        """重传率。
+        :rtype: float
+        """
         return self._RetransmitRate
 
     @RetransmitRate.setter
@@ -25323,6 +30356,9 @@ class FlowRealtimeStatusSRT(AbstractModel):
 
     @property
     def DroppedPackets(self):
+        """实时丢包数。
+        :rtype: int
+        """
         return self._DroppedPackets
 
     @DroppedPackets.setter
@@ -25331,6 +30367,9 @@ class FlowRealtimeStatusSRT(AbstractModel):
 
     @property
     def Encryption(self):
+        """是否加密，On|Off。
+        :rtype: str
+        """
         return self._Encryption
 
     @Encryption.setter
@@ -25394,6 +30433,9 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def Timestamp(self):
+        """时间戳，单位是秒。
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -25402,6 +30444,9 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def SendPacketLossRate(self):
+        """发送丢包率。
+        :rtype: int
+        """
         return self._SendPacketLossRate
 
     @SendPacketLossRate.setter
@@ -25410,6 +30455,9 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def SendRetransmissionRate(self):
+        """发送重传率。
+        :rtype: int
+        """
         return self._SendRetransmissionRate
 
     @SendRetransmissionRate.setter
@@ -25418,6 +30466,9 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def RecvPacketLossRate(self):
+        """接收丢包率。
+        :rtype: int
+        """
         return self._RecvPacketLossRate
 
     @RecvPacketLossRate.setter
@@ -25426,6 +30477,9 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def RecvRetransmissionRate(self):
+        """接收重传率。
+        :rtype: int
+        """
         return self._RecvRetransmissionRate
 
     @RecvRetransmissionRate.setter
@@ -25434,6 +30488,9 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def RTT(self):
+        """与对端的RTT时延。
+        :rtype: int
+        """
         return self._RTT
 
     @RTT.setter
@@ -25442,6 +30499,9 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def SessionId(self):
+        """标志同一次推流。
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -25450,6 +30510,9 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def SendPacketDropNumber(self):
+        """发送弃包数。
+        :rtype: int
+        """
         return self._SendPacketDropNumber
 
     @SendPacketDropNumber.setter
@@ -25458,6 +30521,9 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def RecvPacketDropNumber(self):
+        """接收弃包数。
+        :rtype: int
+        """
         return self._RecvPacketDropNumber
 
     @RecvPacketDropNumber.setter
@@ -25511,6 +30577,9 @@ class FlowStatistics(AbstractModel):
 
     @property
     def SessionId(self):
+        """会话Id。
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -25519,6 +30588,9 @@ class FlowStatistics(AbstractModel):
 
     @property
     def ClientIp(self):
+        """对端IP。
+        :rtype: str
+        """
         return self._ClientIp
 
     @ClientIp.setter
@@ -25527,6 +30599,9 @@ class FlowStatistics(AbstractModel):
 
     @property
     def Network(self):
+        """总带宽。
+        :rtype: int
+        """
         return self._Network
 
     @Network.setter
@@ -25535,6 +30610,9 @@ class FlowStatistics(AbstractModel):
 
     @property
     def Video(self):
+        """视频数据。
+        :rtype: list of FlowVideo
+        """
         return self._Video
 
     @Video.setter
@@ -25543,6 +30621,9 @@ class FlowStatistics(AbstractModel):
 
     @property
     def Audio(self):
+        """音频数据。
+        :rtype: list of FlowAudio
+        """
         return self._Audio
 
     @Audio.setter
@@ -25593,6 +30674,9 @@ class FlowStatisticsArray(AbstractModel):
 
     @property
     def Timestamp(self):
+        """时间戳。
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -25601,6 +30685,9 @@ class FlowStatisticsArray(AbstractModel):
 
     @property
     def FlowStatistics(self):
+        """每个会话的统计数据。
+        :rtype: list of FlowStatistics
+        """
         return self._FlowStatistics
 
     @FlowStatistics.setter
@@ -25646,6 +30733,9 @@ class FlowVideo(AbstractModel):
 
     @property
     def Fps(self):
+        """帧率。
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -25654,6 +30744,9 @@ class FlowVideo(AbstractModel):
 
     @property
     def Rate(self):
+        """码率，单位是bps。
+        :rtype: int
+        """
         return self._Rate
 
     @Rate.setter
@@ -25662,6 +30755,9 @@ class FlowVideo(AbstractModel):
 
     @property
     def Pid(self):
+        """音频Pid。
+        :rtype: int
+        """
         return self._Pid
 
     @Pid.setter
@@ -25706,6 +30802,12 @@ class FrameRateConfig(AbstractModel):
 
     @property
     def Switch(self):
+        """能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -25714,6 +30816,12 @@ class FrameRateConfig(AbstractModel):
 
     @property
     def Fps(self):
+        """帧率，取值范围：[0, 100]，单位：Hz。
+默认值 0。
+注意：对于转码，该参数会覆盖 VideoTemplate 内部的 Fps。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -25750,6 +30858,11 @@ class FrameTagConfigureInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """智能按帧标签任务开关，可选值：
+<li>ON：开启智能按帧标签任务；</li>
+<li>OFF：关闭智能按帧标签任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -25785,6 +30898,11 @@ class FrameTagConfigureInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """智能按帧标签任务开关，可选值：
+<li>ON：开启智能按帧标签任务；</li>
+<li>OFF：关闭智能按帧标签任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -25818,6 +30936,9 @@ class HLSPullSourceAddress(AbstractModel):
 
     @property
     def Url(self):
+        """HLS源站的Url地址。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -25863,6 +30984,12 @@ class HdrConfig(AbstractModel):
 
     @property
     def Switch(self):
+        """能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -25871,6 +30998,15 @@ class HdrConfig(AbstractModel):
 
     @property
     def Type(self):
+        """类型，可选值：
+<li>HDR10</li>
+<li>HLG</li>
+默认值：HDR10。
+注意：video的编码方式需要为h265；
+注意：视频编码位深为10。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -25910,6 +31046,10 @@ class HeadTailParameter(AbstractModel):
 
     @property
     def HeadSet(self):
+        """片头列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MediaInputInfo
+        """
         return self._HeadSet
 
     @HeadSet.setter
@@ -25918,6 +31058,10 @@ class HeadTailParameter(AbstractModel):
 
     @property
     def TailSet(self):
+        """片尾列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MediaInputInfo
+        """
         return self._TailSet
 
     @TailSet.setter
@@ -25972,6 +31116,9 @@ class HighlightSegmentItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """置信度。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -25980,6 +31127,9 @@ class HighlightSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """片段起始时间偏移。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -25988,6 +31138,9 @@ class HighlightSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """片段结束时间偏移。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -25996,6 +31149,10 @@ class HighlightSegmentItem(AbstractModel):
 
     @property
     def SegmentTags(self):
+        """片段标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._SegmentTags
 
     @SegmentTags.setter
@@ -26043,6 +31200,12 @@ class ImageQualityEnhanceConfig(AbstractModel):
 
     @property
     def Switch(self):
+        """能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -26051,6 +31214,14 @@ class ImageQualityEnhanceConfig(AbstractModel):
 
     @property
     def Type(self):
+        """类型，可选值：
+<li>weak</li>
+<li>normal</li>
+<li>strong</li>
+默认值：weak。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -26106,6 +31277,9 @@ class ImageSpriteTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """雪碧图模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -26114,6 +31288,10 @@ class ImageSpriteTaskInput(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """截取雪碧图后文件的目标存储，不填则继承上层的 OutputStorage 值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -26122,6 +31300,16 @@ class ImageSpriteTaskInput(AbstractModel):
 
     @property
     def OutputObjectPath(self):
+        """截取雪碧图后，雪碧图图片文件的输出路径，可以为相对路径或者绝对路径。
+若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
+相对路径示例：
+<li>文件名_{变量名}.{format}</li>
+<li>文件名.{format}</li>
+绝对路径示例：
+<li>/自定义路径/文件名_{变量名}.{format}</li>
+如果不填，则默认为相对路径：`{inputName}_imageSprite_{definition}_{number}.{format}`。
+        :rtype: str
+        """
         return self._OutputObjectPath
 
     @OutputObjectPath.setter
@@ -26130,6 +31318,9 @@ class ImageSpriteTaskInput(AbstractModel):
 
     @property
     def WebVttObjectName(self):
+        """截取雪碧图后，Web VTT 文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_imageSprite_{definition}.{format}`。
+        :rtype: str
+        """
         return self._WebVttObjectName
 
     @WebVttObjectName.setter
@@ -26138,6 +31329,10 @@ class ImageSpriteTaskInput(AbstractModel):
 
     @property
     def ObjectNumberFormat(self):
+        """截取雪碧图后输出路径中的`{number}`变量的规则。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
+        """
         return self._ObjectNumberFormat
 
     @ObjectNumberFormat.setter
@@ -26239,6 +31434,9 @@ class ImageSpriteTemplate(AbstractModel):
 
     @property
     def Definition(self):
+        """雪碧图模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -26247,6 +31445,11 @@ class ImageSpriteTemplate(AbstractModel):
 
     @property
     def Type(self):
+        """模板类型，取值范围：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -26255,6 +31458,9 @@ class ImageSpriteTemplate(AbstractModel):
 
     @property
     def Name(self):
+        """雪碧图模板名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -26263,6 +31469,14 @@ class ImageSpriteTemplate(AbstractModel):
 
     @property
     def Width(self):
+        """雪碧图中小图的宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -26271,6 +31485,14 @@ class ImageSpriteTemplate(AbstractModel):
 
     @property
     def Height(self):
+        """雪碧图中小图的高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -26279,6 +31501,12 @@ class ImageSpriteTemplate(AbstractModel):
 
     @property
     def ResolutionAdaptive(self):
+        """分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -26287,6 +31515,9 @@ class ImageSpriteTemplate(AbstractModel):
 
     @property
     def SampleType(self):
+        """采样类型。
+        :rtype: str
+        """
         return self._SampleType
 
     @SampleType.setter
@@ -26295,6 +31526,9 @@ class ImageSpriteTemplate(AbstractModel):
 
     @property
     def SampleInterval(self):
+        """采样间隔。
+        :rtype: int
+        """
         return self._SampleInterval
 
     @SampleInterval.setter
@@ -26303,6 +31537,9 @@ class ImageSpriteTemplate(AbstractModel):
 
     @property
     def RowCount(self):
+        """雪碧图中小图的行数。
+        :rtype: int
+        """
         return self._RowCount
 
     @RowCount.setter
@@ -26311,6 +31548,9 @@ class ImageSpriteTemplate(AbstractModel):
 
     @property
     def ColumnCount(self):
+        """雪碧图中小图的列数。
+        :rtype: int
+        """
         return self._ColumnCount
 
     @ColumnCount.setter
@@ -26319,6 +31559,9 @@ class ImageSpriteTemplate(AbstractModel):
 
     @property
     def CreateTime(self):
+        """模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -26327,6 +31570,9 @@ class ImageSpriteTemplate(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -26335,6 +31581,12 @@ class ImageSpriteTemplate(AbstractModel):
 
     @property
     def FillType(self):
+        """填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+默认值：black 。
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -26343,6 +31595,9 @@ class ImageSpriteTemplate(AbstractModel):
 
     @property
     def Comment(self):
+        """模板描述信息。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -26351,6 +31606,9 @@ class ImageSpriteTemplate(AbstractModel):
 
     @property
     def Format(self):
+        """图片格式。
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -26416,6 +31674,9 @@ class ImageWatermarkInput(AbstractModel):
 
     @property
     def ImageContent(self):
+        """水印图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串。支持 jpeg、png 图片格式。
+        :rtype: str
+        """
         return self._ImageContent
 
     @ImageContent.setter
@@ -26424,6 +31685,12 @@ class ImageWatermarkInput(AbstractModel):
 
     @property
     def Width(self):
+        """水印的宽度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。取值范围为[8, 4096]。</li>
+当宽高都不填或者为0时，默认为 10%。
+        :rtype: str
+        """
         return self._Width
 
     @Width.setter
@@ -26432,6 +31699,12 @@ class ImageWatermarkInput(AbstractModel):
 
     @property
     def Height(self):
+        """水印的高度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素。取值范围为0或[8, 4096]。</li>
+默认值：0px，表示 Height 按照原始水印图片的宽高比缩放。
+        :rtype: str
+        """
         return self._Height
 
     @Height.setter
@@ -26440,6 +31713,12 @@ class ImageWatermarkInput(AbstractModel):
 
     @property
     def RepeatType(self):
+        """水印重复类型。使用场景：水印为动态图像。取值范围：
+<li>once：动态水印播放完后，不再出现；</li>
+<li>repeat_last_frame：水印播放完后，停留在最后一帧；</li>
+<li>repeat：水印循环播放，直到视频结束（默认值）。</li>
+        :rtype: str
+        """
         return self._RepeatType
 
     @RepeatType.setter
@@ -26493,6 +31772,9 @@ class ImageWatermarkInputForUpdate(AbstractModel):
 
     @property
     def ImageContent(self):
+        """水印图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串。支持 jpeg、png 图片格式。
+        :rtype: str
+        """
         return self._ImageContent
 
     @ImageContent.setter
@@ -26501,6 +31783,11 @@ class ImageWatermarkInputForUpdate(AbstractModel):
 
     @property
     def Width(self):
+        """水印的宽度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。取值范围为[8, 4096]。</li>
+        :rtype: str
+        """
         return self._Width
 
     @Width.setter
@@ -26509,6 +31796,12 @@ class ImageWatermarkInputForUpdate(AbstractModel):
 
     @property
     def Height(self):
+        """水印的高度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素。取值范围为0或[8, 4096]。</li>
+
+        :rtype: str
+        """
         return self._Height
 
     @Height.setter
@@ -26517,6 +31810,12 @@ class ImageWatermarkInputForUpdate(AbstractModel):
 
     @property
     def RepeatType(self):
+        """水印重复类型。使用场景：水印为动态图像。取值范围：
+<li>once：动态水印播放完后，不再出现；</li>
+<li>repeat_last_frame：水印播放完后，停留在最后一帧；</li>
+<li>repeat：水印循环播放，直到视频结束。</li>
+        :rtype: str
+        """
         return self._RepeatType
 
     @RepeatType.setter
@@ -26570,6 +31869,9 @@ class ImageWatermarkTemplate(AbstractModel):
 
     @property
     def ImageUrl(self):
+        """水印图片地址。
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -26578,6 +31880,11 @@ class ImageWatermarkTemplate(AbstractModel):
 
     @property
     def Width(self):
+        """水印的宽度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
+        :rtype: str
+        """
         return self._Width
 
     @Width.setter
@@ -26586,6 +31893,12 @@ class ImageWatermarkTemplate(AbstractModel):
 
     @property
     def Height(self):
+        """水印的高度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素；</li>
+0px：表示 Height 按照 Width 对视频宽度的比例缩放。
+        :rtype: str
+        """
         return self._Height
 
     @Height.setter
@@ -26594,6 +31907,12 @@ class ImageWatermarkTemplate(AbstractModel):
 
     @property
     def RepeatType(self):
+        """水印重复类型。使用场景：水印为动态图像。取值范围：
+<li>once：动态水印播放完后，不再出现；</li>
+<li>repeat_last_frame：水印播放完后，停留在最后一帧；</li>
+<li>repeat：水印循环播放，直到视频结束。</li>
+        :rtype: str
+        """
         return self._RepeatType
 
     @RepeatType.setter
@@ -26633,6 +31952,9 @@ class InputAddress(AbstractModel):
 
     @property
     def Ip(self):
+        """输入地址的IP。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -26641,6 +31963,9 @@ class InputAddress(AbstractModel):
 
     @property
     def Port(self):
+        """输入地址的端口。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -26680,6 +32005,10 @@ class LiveActivityResItem(AbstractModel):
 
     @property
     def LiveRecordTask(self):
+        """直播录制任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveScheduleLiveRecordTaskResult`
+        """
         return self._LiveRecordTask
 
     @LiveRecordTask.setter
@@ -26688,6 +32017,10 @@ class LiveActivityResItem(AbstractModel):
 
     @property
     def LiveQualityControlTask(self):
+        """媒体质检任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
+        """
         return self._LiveQualityControlTask
 
     @LiveQualityControlTask.setter
@@ -26733,6 +32066,12 @@ class LiveActivityResult(AbstractModel):
 
     @property
     def ActivityType(self):
+        """原子任务类型。
+<li>LiveRecord：直播录制。</li>
+<li>AiQualityControl：媒体质检。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ActivityType
 
     @ActivityType.setter
@@ -26741,6 +32080,10 @@ class LiveActivityResult(AbstractModel):
 
     @property
     def LiveActivityResItem(self):
+        """原子任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveActivityResItem`
+        """
         return self._LiveActivityResItem
 
     @LiveActivityResItem.setter
@@ -26794,6 +32137,10 @@ class LiveRecordFile(AbstractModel):
 
     @property
     def Url(self):
+        """直播录制文件地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -26802,6 +32149,10 @@ class LiveRecordFile(AbstractModel):
 
     @property
     def Size(self):
+        """直播录制文件大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -26810,6 +32161,10 @@ class LiveRecordFile(AbstractModel):
 
     @property
     def Duration(self):
+        """直播录制文件时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -26818,6 +32173,10 @@ class LiveRecordFile(AbstractModel):
 
     @property
     def StartTime(self):
+        """直播录制文件开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -26826,6 +32185,10 @@ class LiveRecordFile(AbstractModel):
 
     @property
     def EndTime(self):
+        """直播录制文件结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -26868,6 +32231,10 @@ class LiveRecordResult(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """直播录制文件的目标存储。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -26876,6 +32243,10 @@ class LiveRecordResult(AbstractModel):
 
     @property
     def FileList(self):
+        """直播录制文件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LiveRecordFile
+        """
         return self._FileList
 
     @FileList.setter
@@ -26925,6 +32296,9 @@ class LiveRecordTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """直播录制模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -26933,6 +32307,10 @@ class LiveRecordTaskInput(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """直播录制后文件的目标存储，不填则继承上层的 OutputStorage 值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -26941,6 +32319,10 @@ class LiveRecordTaskInput(AbstractModel):
 
     @property
     def OutputObjectPath(self):
+        """直播录制后文件的输出路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OutputObjectPath
 
     @OutputObjectPath.setter
@@ -27006,6 +32388,9 @@ class LiveScheduleLiveRecordTaskResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -27014,6 +32399,10 @@ class LiveScheduleLiveRecordTaskResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -27022,6 +32411,10 @@ class LiveScheduleLiveRecordTaskResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -27030,6 +32423,10 @@ class LiveScheduleLiveRecordTaskResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -27038,6 +32435,10 @@ class LiveScheduleLiveRecordTaskResult(AbstractModel):
 
     @property
     def Input(self):
+        """直播录制任务的输入。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveRecordTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -27046,6 +32447,10 @@ class LiveScheduleLiveRecordTaskResult(AbstractModel):
 
     @property
     def Output(self):
+        """直播录制任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveRecordResult`
+        """
         return self._Output
 
     @Output.setter
@@ -27054,6 +32459,10 @@ class LiveScheduleLiveRecordTaskResult(AbstractModel):
 
     @property
     def BeginProcessTime(self):
+        """任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BeginProcessTime
 
     @BeginProcessTime.setter
@@ -27062,6 +32471,10 @@ class LiveScheduleLiveRecordTaskResult(AbstractModel):
 
     @property
     def FinishTime(self):
+        """任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FinishTime
 
     @FinishTime.setter
@@ -27129,6 +32542,10 @@ class LiveScheduleTask(AbstractModel):
 
     @property
     def TaskId(self):
+        """直播编排任务 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -27137,6 +32554,12 @@ class LiveScheduleTask(AbstractModel):
 
     @property
     def Status(self):
+        """任务流状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -27145,6 +32568,10 @@ class LiveScheduleTask(AbstractModel):
 
     @property
     def ErrCode(self):
+        """源异常时返回非0错误码，返回0 时请使用各个具体任务的 ErrCode。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -27153,6 +32580,10 @@ class LiveScheduleTask(AbstractModel):
 
     @property
     def Message(self):
+        """源异常时返回对应异常Message，否则请使用各个具体任务的 Message。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -27161,6 +32592,10 @@ class LiveScheduleTask(AbstractModel):
 
     @property
     def Url(self):
+        """直播流 URL。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -27169,6 +32604,10 @@ class LiveScheduleTask(AbstractModel):
 
     @property
     def LiveActivityResultSet(self):
+        """直播编排任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LiveActivityResult
+        """
         return self._LiveActivityResultSet
 
     @LiveActivityResultSet.setter
@@ -27213,6 +32652,10 @@ class LiveStreamAiAnalysisResultInfo(AbstractModel):
 
     @property
     def ResultSet(self):
+        """直播分析子任务结果，暂时只支持直播拆条。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LiveStreamAiAnalysisResultItem
+        """
         return self._ResultSet
 
     @ResultSet.setter
@@ -27257,6 +32700,10 @@ SegmentRecognition 时有效。
 
     @property
     def Type(self):
+        """结果的类型，取值范围：
+<li>SegmentRecognition：拆条。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -27265,6 +32712,11 @@ SegmentRecognition 时有效。
 
     @property
     def SegmentResultSet(self):
+        """拆条结果，当 Type 为
+SegmentRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SegmentRecognitionItem
+        """
         return self._SegmentResultSet
 
     @SegmentResultSet.setter
@@ -27319,6 +32771,10 @@ class LiveStreamAiQualityControlResultInfo(AbstractModel):
     def QualityControlResults(self):
         warnings.warn("parameter `QualityControlResults` is deprecated", DeprecationWarning) 
 
+        """内容质检结果列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QualityControlResult
+        """
         return self._QualityControlResults
 
     @QualityControlResults.setter
@@ -27331,6 +32787,10 @@ class LiveStreamAiQualityControlResultInfo(AbstractModel):
     def DiagnoseResults(self):
         warnings.warn("parameter `DiagnoseResults` is deprecated", DeprecationWarning) 
 
+        """格式诊断结果列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DiagnoseResult
+        """
         return self._DiagnoseResults
 
     @DiagnoseResults.setter
@@ -27341,6 +32801,10 @@ class LiveStreamAiQualityControlResultInfo(AbstractModel):
 
     @property
     def QualityControlResultSet(self):
+        """内容质检结果列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QualityControlResult
+        """
         return self._QualityControlResultSet
 
     @QualityControlResultSet.setter
@@ -27349,6 +32813,10 @@ class LiveStreamAiQualityControlResultInfo(AbstractModel):
 
     @property
     def DiagnoseResultSet(self):
+        """格式诊断结果列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DiagnoseResult
+        """
         return self._DiagnoseResultSet
 
     @DiagnoseResultSet.setter
@@ -27405,6 +32873,9 @@ class LiveStreamAiRecognitionResultInfo(AbstractModel):
 
     @property
     def ResultSet(self):
+        """内容识别结果列表。
+        :rtype: list of LiveStreamAiRecognitionResultItem
+        """
         return self._ResultSet
 
     @ResultSet.setter
@@ -27481,6 +32952,17 @@ OcrFullTextRecognition 时有效。
 
     @property
     def Type(self):
+        """结果的类型，取值范围：
+<li>FaceRecognition：人脸识别，</li>
+<li>AsrWordsRecognition：语音关键词识别，</li>
+<li>OcrWordsRecognition：文本关键词识别，</li>
+<li>AsrFullTextRecognition：语音全文识别，</li>
+<li>OcrFullTextRecognition：文本全文识别。</li>
+<li>TransTextRecognition：语音翻译。</li>
+<li>ObjectRecognition：目标检测。</li>
+<li>TagRecognition：精彩打点。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -27489,6 +32971,10 @@ OcrFullTextRecognition 时有效。
 
     @property
     def FaceRecognitionResultSet(self):
+        """人脸识别结果，当 Type 为
+FaceRecognition 时有效。
+        :rtype: list of LiveStreamFaceRecognitionResult
+        """
         return self._FaceRecognitionResultSet
 
     @FaceRecognitionResultSet.setter
@@ -27497,6 +32983,10 @@ OcrFullTextRecognition 时有效。
 
     @property
     def AsrWordsRecognitionResultSet(self):
+        """语音关键词识别结果，当 Type 为
+AsrWordsRecognition 时有效。
+        :rtype: list of LiveStreamAsrWordsRecognitionResult
+        """
         return self._AsrWordsRecognitionResultSet
 
     @AsrWordsRecognitionResultSet.setter
@@ -27505,6 +32995,10 @@ OcrFullTextRecognition 时有效。
 
     @property
     def OcrWordsRecognitionResultSet(self):
+        """文本关键词识别结果，当 Type 为
+OcrWordsRecognition 时有效。
+        :rtype: list of LiveStreamOcrWordsRecognitionResult
+        """
         return self._OcrWordsRecognitionResultSet
 
     @OcrWordsRecognitionResultSet.setter
@@ -27513,6 +33007,10 @@ OcrFullTextRecognition 时有效。
 
     @property
     def AsrFullTextRecognitionResultSet(self):
+        """语音全文识别结果，当 Type 为
+AsrFullTextRecognition 时有效。
+        :rtype: list of LiveStreamAsrFullTextRecognitionResult
+        """
         return self._AsrFullTextRecognitionResultSet
 
     @AsrFullTextRecognitionResultSet.setter
@@ -27521,6 +33019,10 @@ OcrFullTextRecognition 时有效。
 
     @property
     def OcrFullTextRecognitionResultSet(self):
+        """文本全文识别结果，当 Type 为
+OcrFullTextRecognition 时有效。
+        :rtype: list of LiveStreamOcrFullTextRecognitionResult
+        """
         return self._OcrFullTextRecognitionResultSet
 
     @OcrFullTextRecognitionResultSet.setter
@@ -27529,6 +33031,9 @@ OcrFullTextRecognition 时有效。
 
     @property
     def TransTextRecognitionResultSet(self):
+        """翻译结果，当Type 为 TransTextRecognition 时有效。
+        :rtype: list of LiveStreamTransTextRecognitionResult
+        """
         return self._TransTextRecognitionResultSet
 
     @TransTextRecognitionResultSet.setter
@@ -27537,6 +33042,9 @@ OcrFullTextRecognition 时有效。
 
     @property
     def ObjectRecognitionResultSet(self):
+        """目标检测结果，当Type为 ObjectRecognition 时有效。
+        :rtype: list of LiveStreamObjectRecognitionResult
+        """
         return self._ObjectRecognitionResultSet
 
     @ObjectRecognitionResultSet.setter
@@ -27545,6 +33053,10 @@ OcrFullTextRecognition 时有效。
 
     @property
     def TagRecognitionResultSet(self):
+        """打点结果，当Type 为 TagRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LiveStreamTagRecognitionResult
+        """
         return self._TagRecognitionResultSet
 
     @TagRecognitionResultSet.setter
@@ -27656,6 +33168,9 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def StartPtsTime(self):
+        """嫌疑片段起始的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -27664,6 +33179,9 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def EndPtsTime(self):
+        """嫌疑片段结束的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -27672,6 +33190,9 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Confidence(self):
+        """嫌疑片段敏感分数。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -27680,6 +33201,12 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Suggestion(self):
+        """嫌疑片段鉴黄结果建议，取值范围：
+<li>pass</li>
+<li>review</li>
+<li>block</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -27688,6 +33215,11 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Label(self):
+        """视频敏感结果标签，取值范围：
+<li>politician：敏感人物。</li>
+<li>violation_photo：违规图标。</li>
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -27696,6 +33228,9 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Name(self):
+        """敏感人物、违规图标名字。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -27704,6 +33239,9 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def AreaCoordSet(self):
+        """敏感人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -27712,6 +33250,10 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Url(self):
+        """嫌疑图片 URL （图片不会永久存储，到达
+PicUrlExpireTime 时间点后图片将被删除）。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -27720,6 +33262,9 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def PicUrlExpireTime(self):
+        """嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._PicUrlExpireTime
 
     @PicUrlExpireTime.setter
@@ -27787,6 +33332,9 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def StartPtsTime(self):
+        """嫌疑片段起始的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -27795,6 +33343,9 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def EndPtsTime(self):
+        """嫌疑片段结束的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -27803,6 +33354,9 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Confidence(self):
+        """嫌疑片段涉黄分数。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -27811,6 +33365,12 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Suggestion(self):
+        """嫌疑片段鉴黄结果建议，取值范围：
+<li>pass</li>
+<li>review</li>
+<li>block</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -27819,6 +33379,13 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Label(self):
+        """视频鉴黄结果标签，取值范围：
+<li>porn：色情。</li>
+<li>sexy：性感。</li>
+<li>vulgar：低俗。</li>
+<li>intimacy：亲密行为。</li>
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -27827,6 +33394,10 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Url(self):
+        """嫌疑图片 URL （图片不会永久存储，到达
+PicUrlExpireTime 时间点后图片将被删除）。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -27835,6 +33406,9 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def PicUrlExpireTime(self):
+        """嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._PicUrlExpireTime
 
     @PicUrlExpireTime.setter
@@ -27904,6 +33478,9 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def StartPtsTime(self):
+        """嫌疑片段起始的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -27912,6 +33489,9 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def EndPtsTime(self):
+        """嫌疑片段结束的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -27920,6 +33500,9 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Confidence(self):
+        """嫌疑片段涉敏分数。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -27928,6 +33511,12 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Suggestion(self):
+        """嫌疑片段涉敏结果建议，取值范围：
+<li>pass</li>
+<li>review</li>
+<li>block</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -27936,6 +33525,17 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Label(self):
+        """视频涉敏结果标签，取值范围：
+<li>guns：武器枪支。</li>
+<li>crowd：人群聚集。</li>
+<li>police：警察部队。</li>
+<li>bloody：血腥画面。</li>
+<li>banners：涉敏旗帜。</li>
+<li>militant：武装分子。</li>
+<li>explosion：爆炸火灾。</li>
+<li>terrorists：涉敏人物。</li>
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -27944,6 +33544,10 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Url(self):
+        """嫌疑图片 URL （图片不会永久存储，到达
+PicUrlExpireTime 时间点后图片将被删除）。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -27952,6 +33556,9 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def PicUrlExpireTime(self):
+        """嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._PicUrlExpireTime
 
     @PicUrlExpireTime.setter
@@ -27991,6 +33598,9 @@ class LiveStreamAiReviewResultInfo(AbstractModel):
 
     @property
     def ResultSet(self):
+        """内容审核结果列表。
+        :rtype: list of LiveStreamAiReviewResultItem
+        """
         return self._ResultSet
 
     @ResultSet.setter
@@ -28045,6 +33655,13 @@ class LiveStreamAiReviewResultItem(AbstractModel):
 
     @property
     def Type(self):
+        """审核结果的类型，可以取的值有：
+<li>ImagePorn：图片鉴黄</li>
+<li>ImageTerrorism：图片涉敏</li>
+<li>ImagePolitical：图片涉敏</li>
+<li>VoicePorn：声音违规</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -28053,6 +33670,9 @@ class LiveStreamAiReviewResultItem(AbstractModel):
 
     @property
     def ImagePornResultSet(self):
+        """图片鉴黄的结果，当 Type 为 ImagePorn 时有效。
+        :rtype: list of LiveStreamAiReviewImagePornResult
+        """
         return self._ImagePornResultSet
 
     @ImagePornResultSet.setter
@@ -28061,6 +33681,9 @@ class LiveStreamAiReviewResultItem(AbstractModel):
 
     @property
     def ImageTerrorismResultSet(self):
+        """图片涉敏的结果，当 Type 为 ImageTerrorism 时有效。
+        :rtype: list of LiveStreamAiReviewImageTerrorismResult
+        """
         return self._ImageTerrorismResultSet
 
     @ImageTerrorismResultSet.setter
@@ -28069,6 +33692,9 @@ class LiveStreamAiReviewResultItem(AbstractModel):
 
     @property
     def ImagePoliticalResultSet(self):
+        """图片涉敏的结果，当 Type 为 ImagePolitical 时有效。
+        :rtype: list of LiveStreamAiReviewImagePoliticalResult
+        """
         return self._ImagePoliticalResultSet
 
     @ImagePoliticalResultSet.setter
@@ -28077,6 +33703,9 @@ class LiveStreamAiReviewResultItem(AbstractModel):
 
     @property
     def VoicePornResultSet(self):
+        """声音违规的结果，当 Type 为 VoicePorn 时有效。
+        :rtype: list of LiveStreamAiReviewVoicePornResult
+        """
         return self._VoicePornResultSet
 
     @VoicePornResultSet.setter
@@ -28150,6 +33779,9 @@ class LiveStreamAiReviewVoicePornResult(AbstractModel):
 
     @property
     def StartPtsTime(self):
+        """嫌疑片段起始的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -28158,6 +33790,9 @@ class LiveStreamAiReviewVoicePornResult(AbstractModel):
 
     @property
     def EndPtsTime(self):
+        """嫌疑片段结束的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -28166,6 +33801,9 @@ class LiveStreamAiReviewVoicePornResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """嫌疑片段涉黄分数。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -28174,6 +33812,12 @@ class LiveStreamAiReviewVoicePornResult(AbstractModel):
 
     @property
     def Suggestion(self):
+        """嫌疑片段鉴黄结果建议，取值范围：
+<li>pass</li>
+<li>review</li>
+<li>block</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -28182,6 +33826,10 @@ class LiveStreamAiReviewVoicePornResult(AbstractModel):
 
     @property
     def Label(self):
+        """视频鉴黄结果标签，取值范围：
+<li>sexual_moan：呻吟。</li>
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -28240,6 +33888,9 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
     @property
     def Text(self):
+        """识别文本。
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -28248,6 +33899,9 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
     @property
     def StartPtsTime(self):
+        """识别片段起始的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -28256,6 +33910,9 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
     @property
     def EndPtsTime(self):
+        """识别片段终止的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -28264,6 +33921,9 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """识别片段置信度。取值：0~100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -28272,6 +33932,10 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
     @property
     def StartTime(self):
+        """识别开始UTC时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -28280,6 +33944,10 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
     @property
     def EndTime(self):
+        """识别结束UTC时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -28288,6 +33956,10 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
     @property
     def SteadyState(self):
+        """稳态标记。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SteadyState
 
     @SteadyState.setter
@@ -28336,6 +34008,9 @@ class LiveStreamAsrWordsRecognitionResult(AbstractModel):
 
     @property
     def Word(self):
+        """语音关键词。
+        :rtype: str
+        """
         return self._Word
 
     @Word.setter
@@ -28344,6 +34019,9 @@ class LiveStreamAsrWordsRecognitionResult(AbstractModel):
 
     @property
     def StartPtsTime(self):
+        """识别片段起始的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -28352,6 +34030,9 @@ class LiveStreamAsrWordsRecognitionResult(AbstractModel):
 
     @property
     def EndPtsTime(self):
+        """识别片段终止的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -28360,6 +34041,9 @@ class LiveStreamAsrWordsRecognitionResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """识别片段置信度。取值：0~100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -28415,6 +34099,9 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
 
     @property
     def Id(self):
+        """人物唯一标识 ID。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -28423,6 +34110,9 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
 
     @property
     def Name(self):
+        """人物名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -28431,6 +34121,10 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
 
     @property
     def Type(self):
+        """人物库类型，表示识别出的人物来自哪个人物库：
+<li>Default：默认人物库；</li><li>UserDefine：用户自定义人物库。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -28439,6 +34133,9 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
 
     @property
     def StartPtsTime(self):
+        """识别片段起始的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -28447,6 +34144,9 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
 
     @property
     def EndPtsTime(self):
+        """识别片段终止的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -28455,6 +34155,9 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """识别片段置信度。取值：0~100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -28463,6 +34166,9 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
 
     @property
     def AreaCoordSet(self):
+        """识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -28518,6 +34224,9 @@ class LiveStreamObjectRecognitionResult(AbstractModel):
 
     @property
     def Name(self):
+        """识别的物体名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -28526,6 +34235,9 @@ class LiveStreamObjectRecognitionResult(AbstractModel):
 
     @property
     def StartPtsOffset(self):
+        """识别片段起始的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._StartPtsOffset
 
     @StartPtsOffset.setter
@@ -28534,6 +34246,9 @@ class LiveStreamObjectRecognitionResult(AbstractModel):
 
     @property
     def EndPtsOffset(self):
+        """识别片段终止的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._EndPtsOffset
 
     @EndPtsOffset.setter
@@ -28542,6 +34257,9 @@ class LiveStreamObjectRecognitionResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """识别片段置信度。取值：0~100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -28550,6 +34268,9 @@ class LiveStreamObjectRecognitionResult(AbstractModel):
 
     @property
     def AreaCoordSet(self):
+        """识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -28558,6 +34279,10 @@ class LiveStreamObjectRecognitionResult(AbstractModel):
 
     @property
     def Url(self):
+        """截图链接。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -28608,6 +34333,9 @@ class LiveStreamOcrFullTextRecognitionResult(AbstractModel):
 
     @property
     def Text(self):
+        """语音文本。
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -28616,6 +34344,9 @@ class LiveStreamOcrFullTextRecognitionResult(AbstractModel):
 
     @property
     def StartPtsTime(self):
+        """识别片段起始的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -28624,6 +34355,9 @@ class LiveStreamOcrFullTextRecognitionResult(AbstractModel):
 
     @property
     def EndPtsTime(self):
+        """识别片段终止的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -28632,6 +34366,9 @@ class LiveStreamOcrFullTextRecognitionResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """识别片段置信度。取值：0~100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -28640,6 +34377,9 @@ class LiveStreamOcrFullTextRecognitionResult(AbstractModel):
 
     @property
     def AreaCoordSet(self):
+        """识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -28689,6 +34429,9 @@ class LiveStreamOcrWordsRecognitionResult(AbstractModel):
 
     @property
     def Word(self):
+        """文本关键词。
+        :rtype: str
+        """
         return self._Word
 
     @Word.setter
@@ -28697,6 +34440,9 @@ class LiveStreamOcrWordsRecognitionResult(AbstractModel):
 
     @property
     def StartPtsTime(self):
+        """识别片段起始的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -28705,6 +34451,9 @@ class LiveStreamOcrWordsRecognitionResult(AbstractModel):
 
     @property
     def EndPtsTime(self):
+        """识别片段终止的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -28713,6 +34462,9 @@ class LiveStreamOcrWordsRecognitionResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """识别片段置信度。取值：0~100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -28721,6 +34473,9 @@ class LiveStreamOcrWordsRecognitionResult(AbstractModel):
 
     @property
     def AreaCoords(self):
+        """识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :rtype: list of int
+        """
         return self._AreaCoords
 
     @AreaCoords.setter
@@ -28763,6 +34518,11 @@ class LiveStreamProcessErrorInfo(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码：
+<li>0表示没有错误；</li>
+<li>非0表示错误，请参考 Message 错误信息。</li>
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -28771,6 +34531,9 @@ class LiveStreamProcessErrorInfo(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -28819,6 +34582,9 @@ class LiveStreamProcessTask(AbstractModel):
 
     @property
     def TaskId(self):
+        """媒体处理任务 ID。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -28827,6 +34593,11 @@ class LiveStreamProcessTask(AbstractModel):
 
     @property
     def Status(self):
+        """任务流状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -28835,6 +34606,9 @@ class LiveStreamProcessTask(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -28843,6 +34617,9 @@ class LiveStreamProcessTask(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -28851,6 +34628,9 @@ class LiveStreamProcessTask(AbstractModel):
 
     @property
     def Url(self):
+        """直播流 URL。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -28895,6 +34675,12 @@ class LiveStreamRecordResultInfo(AbstractModel):
 
     @property
     def RecordOver(self):
+        """录制是否结束。
+0：录制未结束，返回单个文件结果
+1：录制结束，返回所有录制文件结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RecordOver
 
     @RecordOver.setter
@@ -28903,6 +34689,10 @@ class LiveStreamRecordResultInfo(AbstractModel):
 
     @property
     def FileResults(self):
+        """文件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LiveRecordFile
+        """
         return self._FileResults
 
     @FileResults.setter
@@ -28951,6 +34741,9 @@ class LiveStreamTagRecognitionResult(AbstractModel):
 
     @property
     def Id(self):
+        """打点事件。
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -28959,6 +34752,9 @@ class LiveStreamTagRecognitionResult(AbstractModel):
 
     @property
     def StartPtsTime(self):
+        """识别片段起始的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -28967,6 +34763,9 @@ class LiveStreamTagRecognitionResult(AbstractModel):
 
     @property
     def EndPtsTime(self):
+        """识别片段终止的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -28975,6 +34774,9 @@ class LiveStreamTagRecognitionResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """识别片段置信度。取值：0~100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -29032,6 +34834,11 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     @property
     def NotifyType(self):
+        """通知类型，默认CMQ，指定URL时HTTP回调推送到 NotifyUrl 指定的地址。
+
+<font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
+        :rtype: str
+        """
         return self._NotifyType
 
     @NotifyType.setter
@@ -29040,6 +34847,9 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     @property
     def CmqModel(self):
+        """CMQ 的模型，有 Queue 和 Topic 两种，目前仅支持 Queue。
+        :rtype: str
+        """
         return self._CmqModel
 
     @CmqModel.setter
@@ -29048,6 +34858,9 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     @property
     def CmqRegion(self):
+        """CMQ 的园区，如 sh，bj 等。
+        :rtype: str
+        """
         return self._CmqRegion
 
     @CmqRegion.setter
@@ -29056,6 +34869,9 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     @property
     def QueueName(self):
+        """当模型为 Queue 时有效，表示接收事件通知的 CMQ 的队列名。
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -29064,6 +34880,9 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     @property
     def TopicName(self):
+        """当模型为 Topic 时有效，表示接收事件通知的 CMQ 的主题名。
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -29072,6 +34891,9 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     @property
     def NotifyUrl(self):
+        """HTTP回调地址，NotifyType为URL时必填。
+        :rtype: str
+        """
         return self._NotifyUrl
 
     @NotifyUrl.setter
@@ -29080,6 +34902,10 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     @property
     def NotifyKey(self):
+        """用于生成回调签名的 Key。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NotifyKey
 
     @NotifyKey.setter
@@ -29143,6 +34969,9 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
 
     @property
     def Text(self):
+        """识别文本。
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -29151,6 +34980,9 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
 
     @property
     def StartPtsTime(self):
+        """翻译片段起始的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -29159,6 +34991,9 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
 
     @property
     def EndPtsTime(self):
+        """翻译片段终止的 PTS 时间，单位：秒。
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -29167,6 +35002,9 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """翻译片段置信度。取值：0~100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -29175,6 +35013,9 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
 
     @property
     def Trans(self):
+        """翻译文本。
+        :rtype: str
+        """
         return self._Trans
 
     @Trans.setter
@@ -29183,6 +35024,10 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
 
     @property
     def StartTime(self):
+        """翻译开始UTC时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -29191,6 +35036,10 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
 
     @property
     def EndTime(self):
+        """翻译结束UTC时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -29199,6 +35048,10 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
 
     @property
     def SteadyState(self):
+        """稳态标记。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SteadyState
 
     @SteadyState.setter
@@ -29248,6 +35101,12 @@ class LowLightEnhanceConfig(AbstractModel):
 
     @property
     def Switch(self):
+        """能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -29256,6 +35115,12 @@ class LowLightEnhanceConfig(AbstractModel):
 
     @property
     def Type(self):
+        """类型，可选值：
+<li>normal</li>
+默认值：normal。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -29298,6 +35163,14 @@ class ManageTaskRequest(AbstractModel):
 
     @property
     def OperationType(self):
+        """操作类型，取值范围：
+<ul>
+<li>Abort：终止任务。使用说明：
+<ul><li>若 [任务类型](/document/product/862/37614#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) 为直播流处理任务（LiveStreamProcessTask），支持终止 [任务状态](/document/product/862/37614#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) 为等待中（WAITING）或处理中（PROCESSING）的任务；</li>
+<li>否则，对于其他 [任务类型](/document/product/862/37614#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)，只支持终止 [任务状态](/document/product/862/37614#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) 为等待中（WAITING）的任务。</li></ul>
+</li></ul>
+        :rtype: str
+        """
         return self._OperationType
 
     @OperationType.setter
@@ -29306,6 +35179,9 @@ class ManageTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """视频处理的任务 ID。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -29340,6 +35216,9 @@ class ManageTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -29368,6 +35247,9 @@ class MediaAiAnalysisClassificationItem(AbstractModel):
 
     @property
     def Classification(self):
+        """智能分类的类别名称。
+        :rtype: str
+        """
         return self._Classification
 
     @Classification.setter
@@ -29376,6 +35258,9 @@ class MediaAiAnalysisClassificationItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """智能分类的可信度，取值范围是 0 到 100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -29413,6 +35298,9 @@ class MediaAiAnalysisCoverItem(AbstractModel):
 
     @property
     def CoverPath(self):
+        """智能封面存储路径。
+        :rtype: str
+        """
         return self._CoverPath
 
     @CoverPath.setter
@@ -29421,6 +35309,9 @@ class MediaAiAnalysisCoverItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """智能封面的可信度，取值范围是 0 到 100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -29462,6 +35353,9 @@ class MediaAiAnalysisDescriptionItem(AbstractModel):
 
     @property
     def Description(self):
+        """智能描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -29470,6 +35364,9 @@ class MediaAiAnalysisDescriptionItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """智能描述的可信度，取值范围是 0 到 100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -29478,6 +35375,10 @@ class MediaAiAnalysisDescriptionItem(AbstractModel):
 
     @property
     def Paragraphs(self):
+        """分段结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AiParagraphInfo
+        """
         return self._Paragraphs
 
     @Paragraphs.setter
@@ -29525,6 +35426,9 @@ class MediaAiAnalysisFrameTagItem(AbstractModel):
 
     @property
     def Tag(self):
+        """按帧标签名称。
+        :rtype: str
+        """
         return self._Tag
 
     @Tag.setter
@@ -29533,6 +35437,10 @@ class MediaAiAnalysisFrameTagItem(AbstractModel):
 
     @property
     def CategorySet(self):
+        """按帧标签名称的分类列表，CategorySet.N 表示第 N+1级分类。
+比如 Tag 为“塔楼”时，CategorySet 包含两个元素：CategorySet.0 为“场景”，CategorySet.1为 “建筑”，表示按帧标签为“塔楼”，且第1级分类是“场景”，第2级分类是“建筑”。
+        :rtype: list of str
+        """
         return self._CategorySet
 
     @CategorySet.setter
@@ -29541,6 +35449,9 @@ class MediaAiAnalysisFrameTagItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """按帧标签的可信度，取值范围是 0 到 100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -29582,6 +35493,9 @@ class MediaAiAnalysisFrameTagSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """按帧标签起始的偏移时间。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -29590,6 +35504,9 @@ class MediaAiAnalysisFrameTagSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """按帧标签结束的偏移时间。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -29598,6 +35515,9 @@ class MediaAiAnalysisFrameTagSegmentItem(AbstractModel):
 
     @property
     def TagSet(self):
+        """时间片段内的标签列表。
+        :rtype: list of MediaAiAnalysisFrameTagItem
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -29650,6 +35570,9 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
 
     @property
     def HighlightPath(self):
+        """智能精彩集锦地址。
+        :rtype: str
+        """
         return self._HighlightPath
 
     @HighlightPath.setter
@@ -29658,6 +35581,9 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
 
     @property
     def CovImgPath(self):
+        """智能精彩集锦封面地址。
+        :rtype: str
+        """
         return self._CovImgPath
 
     @CovImgPath.setter
@@ -29666,6 +35592,9 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """智能精彩集锦的可信度，取值范围是 0 到 100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -29674,6 +35603,9 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
 
     @property
     def Duration(self):
+        """智能精彩集锦持续时间。
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -29682,6 +35614,9 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """智能精彩集锦子片段列表。
+        :rtype: list of HighlightSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -29727,6 +35662,9 @@ class MediaAiAnalysisTagItem(AbstractModel):
 
     @property
     def Tag(self):
+        """标签名称。
+        :rtype: str
+        """
         return self._Tag
 
     @Tag.setter
@@ -29735,6 +35673,9 @@ class MediaAiAnalysisTagItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """标签的可信度，取值范围是 0 到 100。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -29799,6 +35740,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Storage(self):
+        """转动图文件的存储位置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._Storage
 
     @Storage.setter
@@ -29807,6 +35751,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Path(self):
+        """转动图的文件路径。
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -29815,6 +35762,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Definition(self):
+        """转动图模板 ID，参见[转动图参数模板](https://cloud.tencent.com/document/product/862/37042#.E9.A2.84.E7.BD.AE.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -29823,6 +35773,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Container(self):
+        """动图格式，如 gif。
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -29831,6 +35784,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Height(self):
+        """动图的高度，单位：px。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -29839,6 +35795,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Width(self):
+        """动图的宽度，单位：px。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -29847,6 +35806,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Bitrate(self):
+        """动图码率，单位：bps。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -29855,6 +35817,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Size(self):
+        """动图大小，单位：字节。
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -29863,6 +35828,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Md5(self):
+        """动图的md5值。
+        :rtype: str
+        """
         return self._Md5
 
     @Md5.setter
@@ -29871,6 +35839,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """动图在视频中的起始时间偏移，单位：秒。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -29879,6 +35850,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """动图在视频中的结束时间偏移，单位：秒。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -29942,6 +35916,9 @@ class MediaAudioStreamItem(AbstractModel):
 
     @property
     def Bitrate(self):
+        """音频流的码率，单位：bps。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -29950,6 +35927,9 @@ class MediaAudioStreamItem(AbstractModel):
 
     @property
     def SamplingRate(self):
+        """音频流的采样率，单位：hz。
+        :rtype: int
+        """
         return self._SamplingRate
 
     @SamplingRate.setter
@@ -29958,6 +35938,9 @@ class MediaAudioStreamItem(AbstractModel):
 
     @property
     def Codec(self):
+        """音频流的编码格式，例如 aac。
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -29966,6 +35949,10 @@ class MediaAudioStreamItem(AbstractModel):
 
     @property
     def Channel(self):
+        """音频声道数，例如 2。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Channel
 
     @Channel.setter
@@ -29974,6 +35961,10 @@ class MediaAudioStreamItem(AbstractModel):
 
     @property
     def Codecs(self):
+        """音频Codecs。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Codecs
 
     @Codecs.setter
@@ -29982,6 +35973,10 @@ class MediaAudioStreamItem(AbstractModel):
 
     @property
     def Loudness(self):
+        """音频响度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Loudness
 
     @Loudness.setter
@@ -30035,6 +36030,9 @@ class MediaContentReviewAsrTextSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """嫌疑片段起始的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -30043,6 +36041,9 @@ class MediaContentReviewAsrTextSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """嫌疑片段结束的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -30051,6 +36052,9 @@ class MediaContentReviewAsrTextSegmentItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """嫌疑片段置信度。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -30059,6 +36063,12 @@ class MediaContentReviewAsrTextSegmentItem(AbstractModel):
 
     @property
     def Suggestion(self):
+        """嫌疑片段审核结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -30067,6 +36077,9 @@ class MediaContentReviewAsrTextSegmentItem(AbstractModel):
 
     @property
     def KeywordSet(self):
+        """嫌疑关键词列表。
+        :rtype: list of str
+        """
         return self._KeywordSet
 
     @KeywordSet.setter
@@ -30129,6 +36142,9 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def StartTimeOffset(self):
+        """嫌疑片段起始的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -30137,6 +36153,9 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def EndTimeOffset(self):
+        """嫌疑片段结束的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -30145,6 +36164,9 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Confidence(self):
+        """嫌疑片段置信度。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -30153,6 +36175,12 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Suggestion(self):
+        """嫌疑片段审核结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -30161,6 +36189,9 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def KeywordSet(self):
+        """嫌疑关键词列表。
+        :rtype: list of str
+        """
         return self._KeywordSet
 
     @KeywordSet.setter
@@ -30169,6 +36200,9 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def AreaCoordSet(self):
+        """嫌疑文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -30177,6 +36211,10 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def Url(self):
+        """嫌疑图片 URL （图片不会永久存储，到达
+PicUrlExpireTime 时间点后图片将被删除）。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -30185,6 +36223,9 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
     @property
     def PicUrlExpireTime(self):
+        """嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._PicUrlExpireTime
 
     @PicUrlExpireTime.setter
@@ -30276,6 +36317,9 @@ military：
 
     @property
     def StartTimeOffset(self):
+        """嫌疑片段起始的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -30284,6 +36328,9 @@ military：
 
     @property
     def EndTimeOffset(self):
+        """嫌疑片段结束的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -30292,6 +36339,9 @@ military：
 
     @property
     def Confidence(self):
+        """嫌疑片段涉敏分数。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -30300,6 +36350,12 @@ military：
 
     @property
     def Suggestion(self):
+        """嫌疑片段涉敏结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -30308,6 +36364,9 @@ military：
 
     @property
     def Name(self):
+        """涉敏人物、违规图标名字。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -30316,6 +36375,32 @@ military：
 
     @property
     def Label(self):
+        """嫌疑片段涉敏结果标签。内容审核模板[画面涉敏任务控制参数](https://cloud.tencent.com/document/api/862/37615#PoliticalImgReviewTemplateInfo)里 LabelSet 参数与此参数取值范围的对应关系：
+violation_photo：
+<li>violation_photo：违规图标。</li>
+politician：
+<li>nation_politician：国家领导人；</li>
+<li>province_politician: 省部级领导人；</li>
+<li>bureau_politician：厅局级领导人；</li>
+<li>county_politician：县处级领导人；</li>
+<li>rural_politician：乡科级领导人；</li>
+<li>sensitive_politician：涉敏人物；</li>
+<li>foreign_politician：国外领导人。</li>
+entertainment：
+<li>sensitive_entertainment：敏感娱乐人物。</li>
+sport：
+<li>sensitive_sport：敏感体育人物。</li>
+entrepreneur：
+<li>sensitive_entrepreneur：敏感商业人物。</li>
+scholar：
+<li>sensitive_scholar：敏感教育学者。</li>
+celebrity：
+<li>sensitive_celebrity：敏感知名人物；</li>
+<li>historical_celebrity：历史知名人物。</li>
+military：
+<li>sensitive_military：敏感军事人物。</li>
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -30324,6 +36409,10 @@ military：
 
     @property
     def Url(self):
+        """嫌疑图片 URL （图片不会永久存储，到达
+ PicUrlExpireTime 时间点后图片将被删除）。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -30332,6 +36421,9 @@ military：
 
     @property
     def AreaCoordSet(self):
+        """涉敏人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -30340,6 +36432,9 @@ military：
 
     @property
     def PicUrlExpireTime(self):
+        """嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._PicUrlExpireTime
 
     @PicUrlExpireTime.setter
@@ -30403,6 +36498,9 @@ class MediaContentReviewSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """嫌疑片段起始的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -30411,6 +36509,9 @@ class MediaContentReviewSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """嫌疑片段结束的偏移时间，单位：秒。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -30419,6 +36520,9 @@ class MediaContentReviewSegmentItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """嫌疑片段涉黄分数。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -30427,6 +36531,9 @@ class MediaContentReviewSegmentItem(AbstractModel):
 
     @property
     def Label(self):
+        """嫌疑片段鉴黄结果标签。
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -30435,6 +36542,12 @@ class MediaContentReviewSegmentItem(AbstractModel):
 
     @property
     def Suggestion(self):
+        """嫌疑片段鉴黄结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -30443,6 +36556,10 @@ class MediaContentReviewSegmentItem(AbstractModel):
 
     @property
     def Url(self):
+        """嫌疑图片 URL （图片不会永久存储，到达
+ PicUrlExpireTime 时间点后图片将被删除）。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -30451,6 +36568,9 @@ class MediaContentReviewSegmentItem(AbstractModel):
 
     @property
     def PicUrlExpireTime(self):
+        """嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._PicUrlExpireTime
 
     @PicUrlExpireTime.setter
@@ -30508,6 +36628,9 @@ class MediaImageSpriteItem(AbstractModel):
 
     @property
     def Definition(self):
+        """雪碧图规格，参见[雪碧图参数模板](https://cloud.tencent.com/document/product/266/33480#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -30516,6 +36639,9 @@ class MediaImageSpriteItem(AbstractModel):
 
     @property
     def Height(self):
+        """雪碧图小图的高度。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -30524,6 +36650,9 @@ class MediaImageSpriteItem(AbstractModel):
 
     @property
     def Width(self):
+        """雪碧图小图的宽度。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -30532,6 +36661,9 @@ class MediaImageSpriteItem(AbstractModel):
 
     @property
     def TotalCount(self):
+        """每一张雪碧图大图里小图的数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -30540,6 +36672,9 @@ class MediaImageSpriteItem(AbstractModel):
 
     @property
     def ImagePathSet(self):
+        """每一张雪碧图大图的路径。
+        :rtype: list of str
+        """
         return self._ImagePathSet
 
     @ImagePathSet.setter
@@ -30548,6 +36683,9 @@ class MediaImageSpriteItem(AbstractModel):
 
     @property
     def WebVttPath(self):
+        """雪碧图子图位置与时间关系的 WebVtt 文件路径。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在雪碧大图里的坐标位置，一般被播放器用于实现预览。
+        :rtype: str
+        """
         return self._WebVttPath
 
     @WebVttPath.setter
@@ -30556,6 +36694,9 @@ class MediaImageSpriteItem(AbstractModel):
 
     @property
     def Storage(self):
+        """雪碧图文件的存储位置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._Storage
 
     @Storage.setter
@@ -30611,6 +36752,12 @@ class MediaInputInfo(AbstractModel):
 
     @property
     def Type(self):
+        """输入来源对象的类型，支持：
+<li> COS：COS源</li>
+<li> URL：URL源</li>
+<li> AWS-S3：AWS 源，目前只支持转码任务 </li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -30619,6 +36766,9 @@ class MediaInputInfo(AbstractModel):
 
     @property
     def CosInputInfo(self):
+        """当 Type 为 COS 时有效，则该项为必填，表示媒体处理 COS 对象信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`
+        """
         return self._CosInputInfo
 
     @CosInputInfo.setter
@@ -30627,6 +36777,10 @@ class MediaInputInfo(AbstractModel):
 
     @property
     def UrlInputInfo(self):
+        """当 Type 为 URL 时有效，则该项为必填，表示媒体处理 URL 对象信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UrlInputInfo`
+        """
         return self._UrlInputInfo
 
     @UrlInputInfo.setter
@@ -30635,6 +36789,10 @@ class MediaInputInfo(AbstractModel):
 
     @property
     def S3InputInfo(self):
+        """当 Type 为 AWS-S3 时有效，则该项为必填，表示媒体处理 AWS S3 对象信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.S3InputInfo`
+        """
         return self._S3InputInfo
 
     @S3InputInfo.setter
@@ -30707,6 +36865,9 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Size(self):
+        """上传的媒体文件大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -30715,6 +36876,9 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Container(self):
+        """容器类型，例如 m4a，mp4 等。
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -30723,6 +36887,9 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Bitrate(self):
+        """视频流码率平均值与音频流码率平均值之和，单位：bps。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -30731,6 +36898,9 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Height(self):
+        """视频流高度的最大值，单位：px。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -30739,6 +36909,9 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Width(self):
+        """视频流宽度的最大值，单位：px。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -30747,6 +36920,9 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Duration(self):
+        """视频时长，单位：秒。
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -30755,6 +36931,9 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Rotate(self):
+        """视频拍摄时的选择角度，单位：度。
+        :rtype: int
+        """
         return self._Rotate
 
     @Rotate.setter
@@ -30763,6 +36942,9 @@ class MediaMetaData(AbstractModel):
 
     @property
     def VideoStreamSet(self):
+        """视频流信息。
+        :rtype: list of MediaVideoStreamItem
+        """
         return self._VideoStreamSet
 
     @VideoStreamSet.setter
@@ -30771,6 +36953,9 @@ class MediaMetaData(AbstractModel):
 
     @property
     def AudioStreamSet(self):
+        """音频流信息。
+        :rtype: list of MediaAudioStreamItem
+        """
         return self._AudioStreamSet
 
     @AudioStreamSet.setter
@@ -30779,6 +36964,9 @@ class MediaMetaData(AbstractModel):
 
     @property
     def VideoDuration(self):
+        """视频时长，单位：秒。
+        :rtype: float
+        """
         return self._VideoDuration
 
     @VideoDuration.setter
@@ -30787,6 +36975,9 @@ class MediaMetaData(AbstractModel):
 
     @property
     def AudioDuration(self):
+        """音频时长，单位：秒。
+        :rtype: float
+        """
         return self._AudioDuration
 
     @AudioDuration.setter
@@ -30864,6 +37055,9 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -30872,6 +37066,9 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -30880,6 +37077,9 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -30888,6 +37088,9 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -30896,6 +37099,9 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
 
     @property
     def Input(self):
+        """对视频转自适应码流任务的输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -30904,6 +37110,10 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
 
     @property
     def Output(self):
+        """对视频转自适应码流任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingInfoItem`
+        """
         return self._Output
 
     @Output.setter
@@ -30912,6 +37122,10 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
 
     @property
     def BeginProcessTime(self):
+        """任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BeginProcessTime
 
     @BeginProcessTime.setter
@@ -30920,6 +37134,10 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
 
     @property
     def FinishTime(self):
+        """任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FinishTime
 
     @FinishTime.setter
@@ -30988,6 +37206,9 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -30996,6 +37217,9 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -31004,6 +37228,9 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -31012,6 +37239,9 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -31020,6 +37250,9 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
 
     @property
     def Input(self):
+        """转动图任务的输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AnimatedGraphicTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -31028,6 +37261,10 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
 
     @property
     def Output(self):
+        """转动图任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaAnimatedGraphicsItem`
+        """
         return self._Output
 
     @Output.setter
@@ -31036,6 +37273,10 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
 
     @property
     def BeginProcessTime(self):
+        """任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BeginProcessTime
 
     @BeginProcessTime.setter
@@ -31044,6 +37285,10 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
 
     @property
     def FinishTime(self):
+        """任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FinishTime
 
     @FinishTime.setter
@@ -31112,6 +37357,9 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -31120,6 +37368,9 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -31128,6 +37379,9 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -31136,6 +37390,9 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -31144,6 +37401,9 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
 
     @property
     def Input(self):
+        """对视频截雪碧图任务的输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageSpriteTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -31152,6 +37412,10 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
 
     @property
     def Output(self):
+        """对视频截雪碧图任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaImageSpriteItem`
+        """
         return self._Output
 
     @Output.setter
@@ -31160,6 +37424,10 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
 
     @property
     def BeginProcessTime(self):
+        """任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BeginProcessTime
 
     @BeginProcessTime.setter
@@ -31168,6 +37436,10 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
 
     @property
     def FinishTime(self):
+        """任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FinishTime
 
     @FinishTime.setter
@@ -31227,6 +37499,9 @@ class MediaProcessTaskInput(AbstractModel):
 
     @property
     def TranscodeTaskSet(self):
+        """视频转码任务列表。
+        :rtype: list of TranscodeTaskInput
+        """
         return self._TranscodeTaskSet
 
     @TranscodeTaskSet.setter
@@ -31235,6 +37510,9 @@ class MediaProcessTaskInput(AbstractModel):
 
     @property
     def AnimatedGraphicTaskSet(self):
+        """视频转动图任务列表。
+        :rtype: list of AnimatedGraphicTaskInput
+        """
         return self._AnimatedGraphicTaskSet
 
     @AnimatedGraphicTaskSet.setter
@@ -31243,6 +37521,9 @@ class MediaProcessTaskInput(AbstractModel):
 
     @property
     def SnapshotByTimeOffsetTaskSet(self):
+        """对视频按时间点截图任务列表。
+        :rtype: list of SnapshotByTimeOffsetTaskInput
+        """
         return self._SnapshotByTimeOffsetTaskSet
 
     @SnapshotByTimeOffsetTaskSet.setter
@@ -31251,6 +37532,9 @@ class MediaProcessTaskInput(AbstractModel):
 
     @property
     def SampleSnapshotTaskSet(self):
+        """对视频采样截图任务列表。
+        :rtype: list of SampleSnapshotTaskInput
+        """
         return self._SampleSnapshotTaskSet
 
     @SampleSnapshotTaskSet.setter
@@ -31259,6 +37543,9 @@ class MediaProcessTaskInput(AbstractModel):
 
     @property
     def ImageSpriteTaskSet(self):
+        """对视频截雪碧图任务列表。
+        :rtype: list of ImageSpriteTaskInput
+        """
         return self._ImageSpriteTaskSet
 
     @ImageSpriteTaskSet.setter
@@ -31267,6 +37554,9 @@ class MediaProcessTaskInput(AbstractModel):
 
     @property
     def AdaptiveDynamicStreamingTaskSet(self):
+        """转自适应码流任务列表。
+        :rtype: list of AdaptiveDynamicStreamingTaskInput
+        """
         return self._AdaptiveDynamicStreamingTaskSet
 
     @AdaptiveDynamicStreamingTaskSet.setter
@@ -31366,6 +37656,16 @@ class MediaProcessTaskResult(AbstractModel):
 
     @property
     def Type(self):
+        """任务的类型，可以取的值有：
+<li>Transcode：转码</li>
+<li>AnimatedGraphics：转动图</li>
+<li>SnapshotByTimeOffset：时间点截图</li>
+<li>SampleSnapshot：采样截图</li>
+<li>ImageSprites：雪碧图</li>
+<li>CoverBySnapshot：截图做封面</li>
+<li>AdaptiveDynamicStreaming：自适应码流</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -31374,6 +37674,10 @@ class MediaProcessTaskResult(AbstractModel):
 
     @property
     def TranscodeTask(self):
+        """视频转码任务的查询结果，当任务类型为 Transcode 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskTranscodeResult`
+        """
         return self._TranscodeTask
 
     @TranscodeTask.setter
@@ -31382,6 +37686,10 @@ class MediaProcessTaskResult(AbstractModel):
 
     @property
     def AnimatedGraphicTask(self):
+        """视频转动图任务的查询结果，当任务类型为 AnimatedGraphics 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAnimatedGraphicResult`
+        """
         return self._AnimatedGraphicTask
 
     @AnimatedGraphicTask.setter
@@ -31390,6 +37698,10 @@ class MediaProcessTaskResult(AbstractModel):
 
     @property
     def SnapshotByTimeOffsetTask(self):
+        """对视频按时间点截图任务的查询结果，当任务类型为 SnapshotByTimeOffset 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSnapshotByTimeOffsetResult`
+        """
         return self._SnapshotByTimeOffsetTask
 
     @SnapshotByTimeOffsetTask.setter
@@ -31398,6 +37710,10 @@ class MediaProcessTaskResult(AbstractModel):
 
     @property
     def SampleSnapshotTask(self):
+        """对视频采样截图任务的查询结果，当任务类型为 SampleSnapshot 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`
+        """
         return self._SampleSnapshotTask
 
     @SampleSnapshotTask.setter
@@ -31406,6 +37722,10 @@ class MediaProcessTaskResult(AbstractModel):
 
     @property
     def ImageSpriteTask(self):
+        """对视频截雪碧图任务的查询结果，当任务类型为 ImageSprite 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskImageSpriteResult`
+        """
         return self._ImageSpriteTask
 
     @ImageSpriteTask.setter
@@ -31414,6 +37734,10 @@ class MediaProcessTaskResult(AbstractModel):
 
     @property
     def AdaptiveDynamicStreamingTask(self):
+        """转自适应码流任务查询结果，当任务类型为 AdaptiveDynamicStreaming 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAdaptiveDynamicStreamingResult`
+        """
         return self._AdaptiveDynamicStreamingTask
 
     @AdaptiveDynamicStreamingTask.setter
@@ -31489,6 +37813,9 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -31497,6 +37824,9 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -31505,6 +37835,9 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -31513,6 +37846,9 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -31521,6 +37857,9 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
 
     @property
     def Input(self):
+        """对视频做采样截图任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SampleSnapshotTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -31529,6 +37868,10 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
 
     @property
     def Output(self):
+        """对视频做采样截图任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaSampleSnapshotItem`
+        """
         return self._Output
 
     @Output.setter
@@ -31537,6 +37880,10 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
 
     @property
     def BeginProcessTime(self):
+        """任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BeginProcessTime
 
     @BeginProcessTime.setter
@@ -31545,6 +37892,10 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
 
     @property
     def FinishTime(self):
+        """任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FinishTime
 
     @FinishTime.setter
@@ -31613,6 +37964,9 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -31621,6 +37975,9 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -31629,6 +37986,9 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -31637,6 +37997,9 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -31645,6 +38008,9 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
 
     @property
     def Input(self):
+        """对视频按指定时间点截图任务输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SnapshotByTimeOffsetTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -31653,6 +38019,10 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
 
     @property
     def Output(self):
+        """对视频按指定时间点截图任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaSnapshotByTimeOffsetItem`
+        """
         return self._Output
 
     @Output.setter
@@ -31661,6 +38031,10 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
 
     @property
     def BeginProcessTime(self):
+        """任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BeginProcessTime
 
     @BeginProcessTime.setter
@@ -31669,6 +38043,10 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
 
     @property
     def FinishTime(self):
+        """任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FinishTime
 
     @FinishTime.setter
@@ -31733,6 +38111,9 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -31741,6 +38122,9 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -31749,6 +38133,9 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -31757,6 +38144,9 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -31765,6 +38155,9 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
 
     @property
     def Input(self):
+        """转码任务的输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TranscodeTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -31773,6 +38166,10 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
 
     @property
     def Output(self):
+        """转码任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaTranscodeItem`
+        """
         return self._Output
 
     @Output.setter
@@ -31781,6 +38178,10 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
 
     @property
     def Progress(self):
+        """转码进度，取值范围 [0-100]
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -31843,6 +38244,9 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     @property
     def Definition(self):
+        """采样截图规格 ID，参见[采样截图参数模板](https://cloud.tencent.com/document/product/266/33480#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -31851,6 +38255,11 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     @property
     def SampleType(self):
+        """采样方式，取值范围：
+<li>Percent：根据百分比间隔采样。</li>
+<li>Time：根据时间间隔采样。</li>
+        :rtype: str
+        """
         return self._SampleType
 
     @SampleType.setter
@@ -31859,6 +38268,11 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     @property
     def Interval(self):
+        """采样间隔
+<li>当 SampleType 为 Percent 时，该值表示多少百分比一张图。</li>
+<li>当 SampleType 为 Time 时，该值表示多少时间间隔一张图，单位秒， 第一张图均为视频首帧。</li>
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -31867,6 +38281,9 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     @property
     def Storage(self):
+        """截图后文件的存储位置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._Storage
 
     @Storage.setter
@@ -31875,6 +38292,9 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     @property
     def ImagePathSet(self):
+        """生成的截图 path 列表。
+        :rtype: list of str
+        """
         return self._ImagePathSet
 
     @ImagePathSet.setter
@@ -31883,6 +38303,9 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     @property
     def WaterMarkDefinition(self):
+        """截图如果被打上了水印，被打水印的模板 ID 列表。
+        :rtype: list of int
+        """
         return self._WaterMarkDefinition
 
     @WaterMarkDefinition.setter
@@ -31929,6 +38352,9 @@ class MediaSnapshotByTimeOffsetItem(AbstractModel):
 
     @property
     def Definition(self):
+        """指定时间点截图规格，参见[指定时间点截图参数模板](https://cloud.tencent.com/document/product/266/33480#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -31937,6 +38363,9 @@ class MediaSnapshotByTimeOffsetItem(AbstractModel):
 
     @property
     def PicInfoSet(self):
+        """同一规格的截图信息集合，每个元素代表一张截图。
+        :rtype: list of MediaSnapshotByTimePicInfoItem
+        """
         return self._PicInfoSet
 
     @PicInfoSet.setter
@@ -31945,6 +38374,9 @@ class MediaSnapshotByTimeOffsetItem(AbstractModel):
 
     @property
     def Storage(self):
+        """指定时间点截图文件的存储位置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._Storage
 
     @Storage.setter
@@ -31993,6 +38425,9 @@ class MediaSnapshotByTimePicInfoItem(AbstractModel):
 
     @property
     def TimeOffset(self):
+        """该张截图对应视频文件中的时间偏移，单位为秒。
+        :rtype: float
+        """
         return self._TimeOffset
 
     @TimeOffset.setter
@@ -32001,6 +38436,9 @@ class MediaSnapshotByTimePicInfoItem(AbstractModel):
 
     @property
     def Path(self):
+        """该张截图的路径。
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -32009,6 +38447,9 @@ class MediaSnapshotByTimePicInfoItem(AbstractModel):
 
     @property
     def WaterMarkDefinition(self):
+        """截图如果被打上了水印，被打水印的模板 ID 列表。
+        :rtype: list of int
+        """
         return self._WaterMarkDefinition
 
     @WaterMarkDefinition.setter
@@ -32077,6 +38518,9 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """转码后文件的目标存储。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -32085,6 +38529,9 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Path(self):
+        """转码后的视频文件路径。
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -32093,6 +38540,9 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Definition(self):
+        """转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/862/37042)。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -32101,6 +38551,9 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Bitrate(self):
+        """视频流码率平均值与音频流码率平均值之和， 单位：bps。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -32109,6 +38562,9 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Height(self):
+        """视频流高度的最大值，单位：px。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -32117,6 +38573,9 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Width(self):
+        """视频流宽度的最大值，单位：px。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -32125,6 +38584,9 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Size(self):
+        """媒体文件总大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -32133,6 +38595,9 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Duration(self):
+        """视频时长，单位：秒。
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -32141,6 +38606,9 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Container(self):
+        """容器类型，例如 m4a，mp4 等。
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -32149,6 +38617,9 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Md5(self):
+        """视频的 md5 值。
+        :rtype: str
+        """
         return self._Md5
 
     @Md5.setter
@@ -32157,6 +38628,9 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def AudioStreamSet(self):
+        """音频流信息。
+        :rtype: list of MediaAudioStreamItem
+        """
         return self._AudioStreamSet
 
     @AudioStreamSet.setter
@@ -32165,6 +38639,9 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def VideoStreamSet(self):
+        """视频流信息。
+        :rtype: list of MediaVideoStreamItem
+        """
         return self._VideoStreamSet
 
     @VideoStreamSet.setter
@@ -32261,6 +38738,9 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def Bitrate(self):
+        """视频流的码率，单位：bps。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -32269,6 +38749,9 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def Height(self):
+        """视频流的高度，单位：px。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -32277,6 +38760,9 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def Width(self):
+        """视频流的宽度，单位：px。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -32285,6 +38771,9 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def Codec(self):
+        """视频流的编码格式，例如 h264。
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -32293,6 +38782,9 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def Fps(self):
+        """帧率，单位：hz。
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -32301,6 +38793,10 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def ColorPrimaries(self):
+        """色彩空间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ColorPrimaries
 
     @ColorPrimaries.setter
@@ -32309,6 +38805,10 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def ColorSpace(self):
+        """色彩空间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ColorSpace
 
     @ColorSpace.setter
@@ -32317,6 +38817,10 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def ColorTransfer(self):
+        """色彩空间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ColorTransfer
 
     @ColorTransfer.setter
@@ -32325,6 +38829,10 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def HdrType(self):
+        """HDR类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._HdrType
 
     @HdrType.setter
@@ -32333,6 +38841,10 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def Codecs(self):
+        """视频Codecs。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Codecs
 
     @Codecs.setter
@@ -32341,6 +38853,10 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def FpsNumerator(self):
+        """帧率分子部分
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FpsNumerator
 
     @FpsNumerator.setter
@@ -32349,6 +38865,10 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def FpsDenominator(self):
+        """帧率分母部分
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FpsDenominator
 
     @FpsDenominator.setter
@@ -32411,6 +38931,9 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """视频内容分析模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -32419,6 +38942,9 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """视频内容分析模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -32427,6 +38953,9 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """视频内容分析模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -32435,6 +38964,9 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def ClassificationConfigure(self):
+        """智能分类任务控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ClassificationConfigureInfoForUpdate`
+        """
         return self._ClassificationConfigure
 
     @ClassificationConfigure.setter
@@ -32443,6 +38975,9 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def TagConfigure(self):
+        """智能标签任务控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TagConfigureInfoForUpdate`
+        """
         return self._TagConfigure
 
     @TagConfigure.setter
@@ -32451,6 +38986,9 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def CoverConfigure(self):
+        """智能封面任务控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CoverConfigureInfoForUpdate`
+        """
         return self._CoverConfigure
 
     @CoverConfigure.setter
@@ -32459,6 +38997,9 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def FrameTagConfigure(self):
+        """智能按帧标签任务控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FrameTagConfigureInfoForUpdate`
+        """
         return self._FrameTagConfigure
 
     @FrameTagConfigure.setter
@@ -32506,6 +39047,9 @@ class ModifyAIAnalysisTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -32555,6 +39099,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """视频内容识别模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -32563,6 +39110,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """视频内容识别模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -32571,6 +39121,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """视频内容识别模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -32579,6 +39132,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def FaceConfigure(self):
+        """人脸识别控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FaceConfigureInfoForUpdate`
+        """
         return self._FaceConfigure
 
     @FaceConfigure.setter
@@ -32587,6 +39143,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def OcrFullTextConfigure(self):
+        """文本全文识别控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.OcrFullTextConfigureInfoForUpdate`
+        """
         return self._OcrFullTextConfigure
 
     @OcrFullTextConfigure.setter
@@ -32595,6 +39154,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def OcrWordsConfigure(self):
+        """文本关键词识别控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.OcrWordsConfigureInfoForUpdate`
+        """
         return self._OcrWordsConfigure
 
     @OcrWordsConfigure.setter
@@ -32603,6 +39165,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def AsrFullTextConfigure(self):
+        """语音全文识别控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AsrFullTextConfigureInfoForUpdate`
+        """
         return self._AsrFullTextConfigure
 
     @AsrFullTextConfigure.setter
@@ -32611,6 +39176,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def AsrWordsConfigure(self):
+        """语音关键词识别控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AsrWordsConfigureInfoForUpdate`
+        """
         return self._AsrWordsConfigure
 
     @AsrWordsConfigure.setter
@@ -32619,6 +39187,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def TranslateConfigure(self):
+        """语音翻译控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TranslateConfigureInfoForUpdate`
+        """
         return self._TranslateConfigure
 
     @TranslateConfigure.setter
@@ -32672,6 +39243,9 @@ class ModifyAIRecognitionTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -32738,6 +39312,9 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """转自适应码流模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -32746,6 +39323,9 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -32754,6 +39334,11 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def Format(self):
+        """转自适应码流格式，取值范围：
+<li>HLS，</li>
+<li>MPEG-DASH。</li>
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -32762,6 +39347,11 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def DisableHigherVideoBitrate(self):
+        """是否禁止视频低码率转高码率，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+        :rtype: int
+        """
         return self._DisableHigherVideoBitrate
 
     @DisableHigherVideoBitrate.setter
@@ -32770,6 +39360,11 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def DisableHigherVideoResolution(self):
+        """是否禁止视频分辨率转高分辨率，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+        :rtype: int
+        """
         return self._DisableHigherVideoResolution
 
     @DisableHigherVideoResolution.setter
@@ -32778,6 +39373,10 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def StreamInfos(self):
+        """转自适应码流输入流参数信息，最多输入10路流。
+注意：各个流的帧率必须保持一致；如果不一致，采用第一个流的帧率作为输出帧率。
+        :rtype: list of AdaptiveStreamTemplate
+        """
         return self._StreamInfos
 
     @StreamInfos.setter
@@ -32786,6 +39385,9 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -32794,6 +39396,18 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def PureAudio(self):
+        """是否为纯音频，0表示视频模版，1表示纯音频模版
+当值为1：
+1. StreamInfos.N.RemoveVideo=1
+2. StreamInfos.N.RemoveAudio=0
+3. StreamInfos.N.Video.Codec=copy
+
+当值为0：
+
+1. StreamInfos.N.Video.Codec不能为copy
+2. StreamInfos.N.Video.Fps不能为null
+        :rtype: int
+        """
         return self._PureAudio
 
     @PureAudio.setter
@@ -32802,6 +39416,10 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def SegmentType(self):
+        """hls 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
+注：自适应码流的hls分片格式已此字段为准
+        :rtype: str
+        """
         return self._SegmentType
 
     @SegmentType.setter
@@ -32848,6 +39466,9 @@ class ModifyAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -32910,6 +39531,9 @@ class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """转动图模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -32918,6 +39542,9 @@ class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """转动图模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -32926,6 +39553,14 @@ class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def Width(self):
+        """动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -32934,6 +39569,14 @@ class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def Height(self):
+        """动图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -32942,6 +39585,12 @@ class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def ResolutionAdaptive(self):
+        """分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -32950,6 +39599,9 @@ class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def Format(self):
+        """动图格式，取值为 gif 和 webp。
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -32958,6 +39610,9 @@ class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def Fps(self):
+        """帧率，取值范围：[1, 30]，单位：Hz。
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -32966,6 +39621,9 @@ class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def Quality(self):
+        """图片质量，取值范围：[1, 100]，默认值为 75。
+        :rtype: float
+        """
         return self._Quality
 
     @Quality.setter
@@ -32974,6 +39632,9 @@ class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -33015,6 +39676,9 @@ class ModifyAnimatedGraphicsTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -33064,6 +39728,9 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """内容审核模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -33072,6 +39739,9 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """内容审核模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -33080,6 +39750,9 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """内容审核模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -33088,6 +39761,9 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
 
     @property
     def PornConfigure(self):
+        """令人反感的信息的控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfoForUpdate`
+        """
         return self._PornConfigure
 
     @PornConfigure.setter
@@ -33096,6 +39772,9 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
 
     @property
     def TerrorismConfigure(self):
+        """令人不安全的信息的控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfoForUpdate`
+        """
         return self._TerrorismConfigure
 
     @TerrorismConfigure.setter
@@ -33104,6 +39783,9 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
 
     @property
     def PoliticalConfigure(self):
+        """令人不适宜的控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfoForUpdate`
+        """
         return self._PoliticalConfigure
 
     @PoliticalConfigure.setter
@@ -33112,6 +39794,12 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
 
     @property
     def ProhibitedConfigure(self):
+        """违禁控制参数。违禁内容包括：
+<li>谩骂；</li>
+<li>涉毒违法。</li>
+注意：此参数尚未支持。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfoForUpdate`
+        """
         return self._ProhibitedConfigure
 
     @ProhibitedConfigure.setter
@@ -33120,6 +39808,9 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
 
     @property
     def UserDefineConfigure(self):
+        """用户自定义内容审核控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfoForUpdate`
+        """
         return self._UserDefineConfigure
 
     @UserDefineConfigure.setter
@@ -33170,6 +39861,9 @@ class ModifyContentReviewTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -33248,6 +39942,9 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """雪碧图模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -33256,6 +39953,9 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """雪碧图模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -33264,6 +39964,14 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def Width(self):
+        """雪碧图中小图的宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -33272,6 +39980,14 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def Height(self):
+        """雪碧图中小图的高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -33280,6 +39996,12 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def ResolutionAdaptive(self):
+        """分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -33288,6 +40010,11 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def SampleType(self):
+        """采样类型，取值：
+<li>Percent：按百分比。</li>
+<li>Time：按时间间隔。</li>
+        :rtype: str
+        """
         return self._SampleType
 
     @SampleType.setter
@@ -33296,6 +40023,11 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def SampleInterval(self):
+        """采样间隔。
+<li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
+<li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
+        :rtype: int
+        """
         return self._SampleInterval
 
     @SampleInterval.setter
@@ -33304,6 +40036,9 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def RowCount(self):
+        """雪碧图中小图的行数。
+        :rtype: int
+        """
         return self._RowCount
 
     @RowCount.setter
@@ -33312,6 +40047,9 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def ColumnCount(self):
+        """雪碧图中小图的列数。
+        :rtype: int
+        """
         return self._ColumnCount
 
     @ColumnCount.setter
@@ -33320,6 +40058,12 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def FillType(self):
+        """填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+默认值：black 。
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -33328,6 +40072,9 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -33336,6 +40083,9 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def Format(self):
+        """图片格式，取值可以为 jpg、png、webp。
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -33380,6 +40130,9 @@ class ModifyImageSpriteTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -33447,6 +40200,9 @@ class ModifyInput(AbstractModel):
 
     @property
     def InputId(self):
+        """输入Id。
+        :rtype: str
+        """
         return self._InputId
 
     @InputId.setter
@@ -33455,6 +40211,9 @@ class ModifyInput(AbstractModel):
 
     @property
     def InputName(self):
+        """输入名称。
+        :rtype: str
+        """
         return self._InputName
 
     @InputName.setter
@@ -33463,6 +40222,9 @@ class ModifyInput(AbstractModel):
 
     @property
     def Description(self):
+        """输入描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -33471,6 +40233,9 @@ class ModifyInput(AbstractModel):
 
     @property
     def AllowIpList(self):
+        """允许的推流的IP，CIDR格式。
+        :rtype: list of str
+        """
         return self._AllowIpList
 
     @AllowIpList.setter
@@ -33479,6 +40244,9 @@ class ModifyInput(AbstractModel):
 
     @property
     def SRTSettings(self):
+        """SRT的配置信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateInputSRTSettings`
+        """
         return self._SRTSettings
 
     @SRTSettings.setter
@@ -33487,6 +40255,9 @@ class ModifyInput(AbstractModel):
 
     @property
     def RTPSettings(self):
+        """RTP的配置信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateInputRTPSettings`
+        """
         return self._RTPSettings
 
     @RTPSettings.setter
@@ -33495,6 +40266,12 @@ class ModifyInput(AbstractModel):
 
     @property
     def Protocol(self):
+        """输入的协议，可选[SRT|RTP|RTMP]。
+当输出包含RTP时，输入只能是RTP。
+当输出包含RTMP时，输入可以是SRT/RTMP。
+当输出包含SRT时，输入只能是SRT。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -33503,6 +40280,9 @@ class ModifyInput(AbstractModel):
 
     @property
     def FailOver(self):
+        """输入的主备开关，可选[OPEN|CLOSE]。
+        :rtype: str
+        """
         return self._FailOver
 
     @FailOver.setter
@@ -33511,6 +40291,9 @@ class ModifyInput(AbstractModel):
 
     @property
     def RTMPPullSettings(self):
+        """RTMP_PULL的配置信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateInputRTMPPullSettings`
+        """
         return self._RTMPPullSettings
 
     @RTMPPullSettings.setter
@@ -33519,6 +40302,9 @@ class ModifyInput(AbstractModel):
 
     @property
     def RTSPPullSettings(self):
+        """RTSP_PULL的配置信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateInputRTSPPullSettings`
+        """
         return self._RTSPPullSettings
 
     @RTSPPullSettings.setter
@@ -33527,6 +40313,9 @@ class ModifyInput(AbstractModel):
 
     @property
     def HLSPullSettings(self):
+        """HLS_PULL的配置信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateInputHLSPullSettings`
+        """
         return self._HLSPullSettings
 
     @HLSPullSettings.setter
@@ -33535,6 +40324,9 @@ class ModifyInput(AbstractModel):
 
     @property
     def ResilientStream(self):
+        """延播平滑吐流配置信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ResilientStreamConf`
+        """
         return self._ResilientStream
 
     @ResilientStream.setter
@@ -33543,6 +40335,9 @@ class ModifyInput(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """绑定的输入安全组 ID。 仅支持关联一组安全组。
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -33551,6 +40346,9 @@ class ModifyInput(AbstractModel):
 
     @property
     def Zones(self):
+        """可用区，非必填，最多支持输入两个可用区，对于需改接口，只要第二个可用区会参与到资源分配。如果input开启容灾或者涉及RTSP_PULL协议切换时有效(会重新分配地址)。	
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -33640,6 +40438,9 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def OutputId(self):
+        """需要修改的Output的Id。
+        :rtype: str
+        """
         return self._OutputId
 
     @OutputId.setter
@@ -33648,6 +40449,9 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def OutputName(self):
+        """输出的名称。
+        :rtype: str
+        """
         return self._OutputName
 
     @OutputName.setter
@@ -33656,6 +40460,9 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def Description(self):
+        """输出的描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -33664,6 +40471,9 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def Protocol(self):
+        """输出的转推协议，支持SRT|RTP|RTMP。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -33672,6 +40482,9 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def SRTSettings(self):
+        """转推SRT的配置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateOutputSRTSettings`
+        """
         return self._SRTSettings
 
     @SRTSettings.setter
@@ -33680,6 +40493,9 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def RTPSettings(self):
+        """转推RTP的配置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateOutputInfoRTPSettings`
+        """
         return self._RTPSettings
 
     @RTPSettings.setter
@@ -33688,6 +40504,9 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def RTMPSettings(self):
+        """转推RTMP的配置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateOutputRTMPSettings`
+        """
         return self._RTMPSettings
 
     @RTMPSettings.setter
@@ -33696,6 +40515,10 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def AllowIpList(self):
+        """IP白名单列表，格式为CIDR，如0.0.0.0/0。
+当Protocol为RTMP_PULL有效，为空代表不限制客户端IP。
+        :rtype: list of str
+        """
         return self._AllowIpList
 
     @AllowIpList.setter
@@ -33704,6 +40527,9 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def MaxConcurrent(self):
+        """最大拉流并发数，最大4，默认4。
+        :rtype: int
+        """
         return self._MaxConcurrent
 
     @MaxConcurrent.setter
@@ -33712,6 +40538,9 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """绑定的安全组 ID。 仅支持关联一组安全组。	
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -33720,6 +40549,9 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def Zones(self):
+        """可用区
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -33787,6 +40619,9 @@ class ModifyPersonSampleRequest(AbstractModel):
 
     @property
     def PersonId(self):
+        """素材 ID。
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -33795,6 +40630,9 @@ class ModifyPersonSampleRequest(AbstractModel):
 
     @property
     def Name(self):
+        """名称，长度限制：128 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -33803,6 +40641,9 @@ class ModifyPersonSampleRequest(AbstractModel):
 
     @property
     def Description(self):
+        """描述，长度限制：1024 个字符。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -33811,6 +40652,12 @@ class ModifyPersonSampleRequest(AbstractModel):
 
     @property
     def Usages(self):
+        """素材应用场景，可选值：
+1. Recognition：用于内容识别，等价于 Recognition.Face。
+2. Review：用于不适宜的内容识别，等价于 Review.Face。
+3. All：用于内容识别、不适宜的内容识别，等价于 1+2。
+        :rtype: list of str
+        """
         return self._Usages
 
     @Usages.setter
@@ -33819,6 +40666,9 @@ class ModifyPersonSampleRequest(AbstractModel):
 
     @property
     def FaceOperationInfo(self):
+        """五官操作信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiSampleFaceOperation`
+        """
         return self._FaceOperationInfo
 
     @FaceOperationInfo.setter
@@ -33827,6 +40677,9 @@ class ModifyPersonSampleRequest(AbstractModel):
 
     @property
     def TagOperationInfo(self):
+        """标签操作信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiSampleTagOperation`
+        """
         return self._TagOperationInfo
 
     @TagOperationInfo.setter
@@ -33876,6 +40729,9 @@ class ModifyPersonSampleResponse(AbstractModel):
 
     @property
     def Person(self):
+        """素材信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiSamplePerson`
+        """
         return self._Person
 
     @Person.setter
@@ -33884,6 +40740,10 @@ class ModifyPersonSampleResponse(AbstractModel):
 
     @property
     def FailFaceInfoSet(self):
+        """处理失败的五官信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AiSampleFailFaceInfo
+        """
         return self._FailFaceInfoSet
 
     @FailFaceInfoSet.setter
@@ -33892,6 +40752,9 @@ class ModifyPersonSampleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -33935,6 +40798,9 @@ class ModifyQualityControlTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """媒体质检模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -33943,6 +40809,9 @@ class ModifyQualityControlTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """媒体质检模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -33951,6 +40820,9 @@ class ModifyQualityControlTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -33959,6 +40831,9 @@ class ModifyQualityControlTemplateRequest(AbstractModel):
 
     @property
     def QualityControlItemSet(self):
+        """媒体质检配置参数。
+        :rtype: list of QualityControlItemConfig
+        """
         return self._QualityControlItemSet
 
     @QualityControlItemSet.setter
@@ -34000,6 +40875,9 @@ class ModifyQualityControlTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -34074,6 +40952,9 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """采样截图模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -34082,6 +40963,9 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """采样截图模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -34090,6 +40974,14 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Width(self):
+        """截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -34098,6 +40990,14 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Height(self):
+        """截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -34106,6 +41006,12 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def ResolutionAdaptive(self):
+        """分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -34114,6 +41020,11 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def SampleType(self):
+        """采样截图类型，取值：
+<li>Percent：按百分比。</li>
+<li>Time：按时间间隔。</li>
+        :rtype: str
+        """
         return self._SampleType
 
     @SampleType.setter
@@ -34122,6 +41033,11 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def SampleInterval(self):
+        """采样间隔。
+<li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
+<li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
+        :rtype: int
+        """
         return self._SampleInterval
 
     @SampleInterval.setter
@@ -34130,6 +41046,9 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Format(self):
+        """图片格式，取值为 jpg、png、webp。
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -34138,6 +41057,9 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -34146,6 +41068,14 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def FillType(self):
+        """填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+默认值：black 。
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -34188,6 +41118,9 @@ class ModifySampleSnapshotTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -34236,6 +41169,9 @@ class ModifyScheduleRequest(AbstractModel):
 
     @property
     def ScheduleId(self):
+        """编排唯一标识。
+        :rtype: int
+        """
         return self._ScheduleId
 
     @ScheduleId.setter
@@ -34244,6 +41180,9 @@ class ModifyScheduleRequest(AbstractModel):
 
     @property
     def ScheduleName(self):
+        """编排名称。
+        :rtype: str
+        """
         return self._ScheduleName
 
     @ScheduleName.setter
@@ -34252,6 +41191,9 @@ class ModifyScheduleRequest(AbstractModel):
 
     @property
     def Trigger(self):
+        """编排绑定的触发规则。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
+        """
         return self._Trigger
 
     @Trigger.setter
@@ -34260,6 +41202,10 @@ class ModifyScheduleRequest(AbstractModel):
 
     @property
     def Activities(self):
+        """编排任务列表。
+注意：内部不允许部分更新，如果需要更新需全量提交编排任务列表。
+        :rtype: list of Activity
+        """
         return self._Activities
 
     @Activities.setter
@@ -34268,6 +41214,9 @@ class ModifyScheduleRequest(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """媒体处理的文件输出存储位置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -34276,6 +41225,10 @@ class ModifyScheduleRequest(AbstractModel):
 
     @property
     def OutputDir(self):
+        """媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾。
+注意：如果设置为空，则表示取消老配置的OutputDir值。
+        :rtype: str
+        """
         return self._OutputDir
 
     @OutputDir.setter
@@ -34284,6 +41237,9 @@ class ModifyScheduleRequest(AbstractModel):
 
     @property
     def TaskNotifyConfig(self):
+        """任务的事件通知配置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -34292,6 +41248,9 @@ class ModifyScheduleRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """资源ID，需要保证对应资源是开启状态。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -34343,6 +41302,9 @@ class ModifyScheduleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -34407,6 +41369,9 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """指定时间点截图模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -34415,6 +41380,9 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """指定时间点截图模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -34423,6 +41391,14 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Width(self):
+        """截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -34431,6 +41407,14 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Height(self):
+        """截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -34439,6 +41423,12 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def ResolutionAdaptive(self):
+        """分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -34447,6 +41437,9 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Format(self):
+        """图片格式，取值可以为 jpg、png、webp。
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -34455,6 +41448,9 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -34463,6 +41459,14 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def FillType(self):
+        """填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+默认值：black 。
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -34503,6 +41507,9 @@ class ModifySnapshotByTimeOffsetTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -34534,6 +41541,9 @@ class ModifyStreamLinkEventRequest(AbstractModel):
 
     @property
     def EventId(self):
+        """媒体传输事件Event Id。
+        :rtype: str
+        """
         return self._EventId
 
     @EventId.setter
@@ -34542,6 +41552,9 @@ class ModifyStreamLinkEventRequest(AbstractModel):
 
     @property
     def EventName(self):
+        """需要修改的事件名称。
+        :rtype: str
+        """
         return self._EventName
 
     @EventName.setter
@@ -34550,6 +41563,9 @@ class ModifyStreamLinkEventRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Event的描述信息。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -34585,6 +41601,9 @@ class ModifyStreamLinkEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -34613,6 +41632,9 @@ class ModifyStreamLinkFlowRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """流Id。
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -34621,6 +41643,9 @@ class ModifyStreamLinkFlowRequest(AbstractModel):
 
     @property
     def FlowName(self):
+        """需要修改的流名称。
+        :rtype: str
+        """
         return self._FlowName
 
     @FlowName.setter
@@ -34655,6 +41680,9 @@ class ModifyStreamLinkFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -34683,6 +41711,9 @@ class ModifyStreamLinkInputRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """流Id。
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -34691,6 +41722,9 @@ class ModifyStreamLinkInputRequest(AbstractModel):
 
     @property
     def Input(self):
+        """需要修改的Input信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyInput`
+        """
         return self._Input
 
     @Input.setter
@@ -34730,6 +41764,9 @@ class ModifyStreamLinkInputResponse(AbstractModel):
 
     @property
     def Info(self):
+        """修改后的Input信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeInput`
+        """
         return self._Info
 
     @Info.setter
@@ -34738,6 +41775,9 @@ class ModifyStreamLinkInputResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -34769,6 +41809,9 @@ class ModifyStreamLinkOutputInfoRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """流Id。
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -34777,6 +41820,9 @@ class ModifyStreamLinkOutputInfoRequest(AbstractModel):
 
     @property
     def Output(self):
+        """需要修改的Output配置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyOutputInfo`
+        """
         return self._Output
 
     @Output.setter
@@ -34816,6 +41862,9 @@ class ModifyStreamLinkOutputInfoResponse(AbstractModel):
 
     @property
     def Info(self):
+        """修改后的Output配置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeOutput`
+        """
         return self._Info
 
     @Info.setter
@@ -34824,6 +41873,9 @@ class ModifyStreamLinkOutputInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -34883,6 +41935,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """转码模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -34891,6 +41946,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Container(self):
+        """封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -34899,6 +41957,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """转码模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -34907,6 +41968,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -34915,6 +41979,11 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def RemoveVideo(self):
+        """是否去除视频数据，可选值：
+<li>0：保留</li>
+<li>1：去除</li>
+        :rtype: int
+        """
         return self._RemoveVideo
 
     @RemoveVideo.setter
@@ -34923,6 +41992,11 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def RemoveAudio(self):
+        """是否去除音频数据，可选值：
+<li>0：保留</li>
+<li>1：去除</li>
+        :rtype: int
+        """
         return self._RemoveAudio
 
     @RemoveAudio.setter
@@ -34931,6 +42005,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def VideoTemplate(self):
+        """视频流配置参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfoForUpdate`
+        """
         return self._VideoTemplate
 
     @VideoTemplate.setter
@@ -34939,6 +42016,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def AudioTemplate(self):
+        """音频流配置参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`
+        """
         return self._AudioTemplate
 
     @AudioTemplate.setter
@@ -34947,6 +42027,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def TEHDConfig(self):
+        """极速高清转码参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
+        """
         return self._TEHDConfig
 
     @TEHDConfig.setter
@@ -34955,6 +42038,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def EnhanceConfig(self):
+        """音视频增强参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
+        """
         return self._EnhanceConfig
 
     @EnhanceConfig.setter
@@ -35005,6 +42091,9 @@ class ModifyTranscodeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -35062,6 +42151,9 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """水印模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -35070,6 +42162,9 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """水印模板名称，长度限制：64 个字符。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -35078,6 +42173,9 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """模板描述信息，长度限制：256 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -35086,6 +42184,13 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 
     @property
     def CoordinateOrigin(self):
+        """原点位置，可选值：
+<li>TopLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
+<li>TopRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
+<li>BottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
+<li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
+        :rtype: str
+        """
         return self._CoordinateOrigin
 
     @CoordinateOrigin.setter
@@ -35094,6 +42199,11 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 
     @property
     def XPos(self):
+        """水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 XPos 为指定像素，如 100px 表示 XPos 为 100 像素。</li>
+        :rtype: str
+        """
         return self._XPos
 
     @XPos.setter
@@ -35102,6 +42212,11 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 
     @property
     def YPos(self):
+        """水印原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 YPos 为指定像素，如 100px 表示 YPos 为 100 像素。</li>
+        :rtype: str
+        """
         return self._YPos
 
     @YPos.setter
@@ -35110,6 +42225,9 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 
     @property
     def ImageTemplate(self):
+        """图片水印模板，该字段仅对图片水印模板有效。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageWatermarkInputForUpdate`
+        """
         return self._ImageTemplate
 
     @ImageTemplate.setter
@@ -35118,6 +42236,9 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 
     @property
     def TextTemplate(self):
+        """文字水印模板，该字段仅对文字水印模板有效。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TextWatermarkTemplateInputForUpdate`
+        """
         return self._TextTemplate
 
     @TextTemplate.setter
@@ -35126,6 +42247,9 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 
     @property
     def SvgTemplate(self):
+        """SVG水印模板，当 Type 为 svg，该字段必填。当 Type 为 image 或 text，该字段无效。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SvgWatermarkInputForUpdate`
+        """
         return self._SvgTemplate
 
     @SvgTemplate.setter
@@ -35176,6 +42300,9 @@ class ModifyWatermarkTemplateResponse(AbstractModel):
 
     @property
     def ImageUrl(self):
+        """图片水印地址，仅当 ImageTemplate.ImageContent 非空，该字段有效。
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -35184,6 +42311,9 @@ class ModifyWatermarkTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -35224,6 +42354,9 @@ class ModifyWordSampleRequest(AbstractModel):
 
     @property
     def Keyword(self):
+        """关键词，长度限制：128 个字符。
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -35232,6 +42365,17 @@ class ModifyWordSampleRequest(AbstractModel):
 
     @property
     def Usages(self):
+        """<b>关键词应用场景，可选值：</b>
+1. Recognition.Ocr：通过光学字符识别技术，进行内容识别；
+2. Recognition.Asr：通过音频识别技术，进行内容识别；
+3. Review.Ocr：通过光学字符识别技术，进行不适宜的内容识别；
+4. Review.Asr：通过音频识别技术，进行不适宜的音频识别；
+<b>可合并简写为：</b>
+5. Recognition：通过光学字符识别技术、音频识别技术，进行内容识别，等价于 1+2；
+6. Review：通过光学字符识别技术、音频识别技术，进行不适宜的内容识别，等价于 3+4；
+7. All：包含以上全部，等价于 1+2+3+4。
+        :rtype: list of str
+        """
         return self._Usages
 
     @Usages.setter
@@ -35240,6 +42384,9 @@ class ModifyWordSampleRequest(AbstractModel):
 
     @property
     def TagOperationInfo(self):
+        """标签操作信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiSampleTagOperation`
+        """
         return self._TagOperationInfo
 
     @TagOperationInfo.setter
@@ -35277,6 +42424,9 @@ class ModifyWordSampleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -35340,6 +42490,11 @@ class MosaicInput(AbstractModel):
 
     @property
     def CoordinateOrigin(self):
+        """原点位置，目前仅支持：
+<li>TopLeft：表示坐标原点位于视频图像左上角，马赛克原点为图片或文字的左上角。</li>
+默认值：TopLeft。
+        :rtype: str
+        """
         return self._CoordinateOrigin
 
     @CoordinateOrigin.setter
@@ -35348,6 +42503,12 @@ class MosaicInput(AbstractModel):
 
     @property
     def XPos(self):
+        """马赛克原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示马赛克 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示马赛克 XPos 为指定像素，如 100px 表示 XPos 为 100 像素。</li>
+默认值：0px。
+        :rtype: str
+        """
         return self._XPos
 
     @XPos.setter
@@ -35356,6 +42517,12 @@ class MosaicInput(AbstractModel):
 
     @property
     def YPos(self):
+        """马赛克原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示马赛克 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示马赛克 YPos 为指定像素，如 100px 表示 YPos 为 100 像素。</li>
+默认值：0px。
+        :rtype: str
+        """
         return self._YPos
 
     @YPos.setter
@@ -35364,6 +42531,12 @@ class MosaicInput(AbstractModel):
 
     @property
     def Width(self):
+        """马赛克的宽度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示马赛克 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示马赛克 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
+默认值：10%。
+        :rtype: str
+        """
         return self._Width
 
     @Width.setter
@@ -35372,6 +42545,12 @@ class MosaicInput(AbstractModel):
 
     @property
     def Height(self):
+        """马赛克的高度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示马赛克 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示马赛克 Height 单位为像素，如 100px 表示 Height 为 100 像素。</li>
+默认值：10%。
+        :rtype: str
+        """
         return self._Height
 
     @Height.setter
@@ -35380,6 +42559,12 @@ class MosaicInput(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """马赛克的起始时间偏移，单位：秒。不填或填0，表示马赛克从画面出现时开始显现。
+<li>不填或填0，表示马赛克从画面开始就出现；</li>
+<li>当数值大于0时（假设为 n），表示马赛克从画面开始的第 n 秒出现；</li>
+<li>当数值小于0时（假设为 -n），表示马赛克从离画面结束 n 秒前开始出现。</li>
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -35388,6 +42573,12 @@ class MosaicInput(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """马赛克的结束时间偏移，单位：秒。
+<li>不填或填0，表示马赛克持续到画面结束；</li>
+<li>当数值大于0时（假设为 n），表示马赛克持续到第 n 秒时消失；</li>
+<li>当数值小于0时（假设为 -n），表示马赛克持续到离画面结束 n 秒前消失。</li>
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -35436,6 +42627,9 @@ class NumberFormat(AbstractModel):
 
     @property
     def InitialValue(self):
+        """`{number}`变量的起始值，默认为0。
+        :rtype: int
+        """
         return self._InitialValue
 
     @InitialValue.setter
@@ -35444,6 +42638,9 @@ class NumberFormat(AbstractModel):
 
     @property
     def Increment(self):
+        """`{number}`变量的增长步长，默认为1。
+        :rtype: int
+        """
         return self._Increment
 
     @Increment.setter
@@ -35452,6 +42649,9 @@ class NumberFormat(AbstractModel):
 
     @property
     def MinLength(self):
+        """`{number}`变量的最小长度，不足时补占位符。默认为1。
+        :rtype: int
+        """
         return self._MinLength
 
     @MinLength.setter
@@ -35460,6 +42660,9 @@ class NumberFormat(AbstractModel):
 
     @property
     def PlaceHolder(self):
+        """`{number}`变量的长度不足时，补充的占位符。默认为"0"。
+        :rtype: str
+        """
         return self._PlaceHolder
 
     @PlaceHolder.setter
@@ -35498,6 +42701,11 @@ class OcrFullTextConfigureInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """文本全文识别任务开关，可选值：
+<li>ON：开启智能文本全文识别任务；</li>
+<li>OFF：关闭智能文本全文识别任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -35533,6 +42741,11 @@ class OcrFullTextConfigureInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """文本全文识别任务开关，可选值：
+<li>ON：开启智能文本全文识别任务；</li>
+<li>OFF：关闭智能文本全文识别任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -35572,6 +42785,11 @@ class OcrWordsConfigureInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """文本关键词识别任务开关，可选值：
+<li>ON：开启文本关键词识别任务；</li>
+<li>OFF：关闭文本关键词识别任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -35580,6 +42798,10 @@ class OcrWordsConfigureInfo(AbstractModel):
 
     @property
     def LabelSet(self):
+        """关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -35620,6 +42842,11 @@ class OcrWordsConfigureInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """文本关键词识别任务开关，可选值：
+<li>ON：开启文本关键词识别任务；</li>
+<li>OFF：关闭文本关键词识别任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -35628,6 +42855,10 @@ class OcrWordsConfigureInfoForUpdate(AbstractModel):
 
     @property
     def LabelSet(self):
+        """关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -35662,6 +42893,9 @@ class OutputAddress(AbstractModel):
 
     @property
     def Ip(self):
+        """出口IP。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -35700,6 +42934,10 @@ class OutputSRTSourceAddressResp(AbstractModel):
 
     @property
     def Ip(self):
+        """监听IP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -35708,6 +42946,10 @@ class OutputSRTSourceAddressResp(AbstractModel):
 
     @property
     def Port(self):
+        """监听端口。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -35778,6 +43020,9 @@ class OverrideTranscodeParameter(AbstractModel):
 
     @property
     def Container(self):
+        """封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -35786,6 +43031,11 @@ class OverrideTranscodeParameter(AbstractModel):
 
     @property
     def RemoveVideo(self):
+        """是否去除视频数据，取值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+        :rtype: int
+        """
         return self._RemoveVideo
 
     @RemoveVideo.setter
@@ -35794,6 +43044,11 @@ class OverrideTranscodeParameter(AbstractModel):
 
     @property
     def RemoveAudio(self):
+        """是否去除音频数据，取值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+        :rtype: int
+        """
         return self._RemoveAudio
 
     @RemoveAudio.setter
@@ -35802,6 +43057,9 @@ class OverrideTranscodeParameter(AbstractModel):
 
     @property
     def VideoTemplate(self):
+        """视频流配置参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfoForUpdate`
+        """
         return self._VideoTemplate
 
     @VideoTemplate.setter
@@ -35810,6 +43068,9 @@ class OverrideTranscodeParameter(AbstractModel):
 
     @property
     def AudioTemplate(self):
+        """音频流配置参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`
+        """
         return self._AudioTemplate
 
     @AudioTemplate.setter
@@ -35818,6 +43079,10 @@ class OverrideTranscodeParameter(AbstractModel):
 
     @property
     def TEHDConfig(self):
+        """极速高清转码参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
+        """
         return self._TEHDConfig
 
     @TEHDConfig.setter
@@ -35826,6 +43091,10 @@ class OverrideTranscodeParameter(AbstractModel):
 
     @property
     def SubtitleTemplate(self):
+        """字幕流配置参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
+        """
         return self._SubtitleTemplate
 
     @SubtitleTemplate.setter
@@ -35834,6 +43103,10 @@ class OverrideTranscodeParameter(AbstractModel):
 
     @property
     def AddonAudioStream(self):
+        """外挂音轨参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MediaInputInfo
+        """
         return self._AddonAudioStream
 
     @AddonAudioStream.setter
@@ -35842,6 +43115,10 @@ class OverrideTranscodeParameter(AbstractModel):
 
     @property
     def StdExtInfo(self):
+        """转码扩展字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StdExtInfo
 
     @StdExtInfo.setter
@@ -35850,6 +43127,10 @@ class OverrideTranscodeParameter(AbstractModel):
 
     @property
     def AddOnSubtitles(self):
+        """要插入的字幕文件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AddOnSubtitle
+        """
         return self._AddOnSubtitles
 
     @AddOnSubtitles.setter
@@ -35910,6 +43191,9 @@ class ParseLiveStreamProcessNotificationRequest(AbstractModel):
 
     @property
     def Content(self):
+        """从 CMQ 获取到的直播流事件通知内容。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -35983,6 +43267,13 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     @property
     def NotificationType(self):
+        """直播流处理结果类型，包含：
+<li>AiReviewResult：内容审核结果；</li>
+<li>AiRecognitionResult：内容识别结果；</li>
+<li>LiveRecordResult：直播录制结果；</li>
+<li>ProcessEof：直播流处理结束。</li>
+        :rtype: str
+        """
         return self._NotificationType
 
     @NotificationType.setter
@@ -35991,6 +43282,9 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """视频处理任务 ID。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -35999,6 +43293,10 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     @property
     def ProcessEofInfo(self):
+        """直播流处理错误信息，当 NotificationType 为 ProcessEof 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamProcessErrorInfo`
+        """
         return self._ProcessEofInfo
 
     @ProcessEofInfo.setter
@@ -36007,6 +43305,10 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     @property
     def AiReviewResultInfo(self):
+        """内容审核结果，当 NotificationType 为 AiReviewResult 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiReviewResultInfo`
+        """
         return self._AiReviewResultInfo
 
     @AiReviewResultInfo.setter
@@ -36015,6 +43317,10 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     @property
     def AiRecognitionResultInfo(self):
+        """内容识别结果，当 NotificationType 为 AiRecognitionResult 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiRecognitionResultInfo`
+        """
         return self._AiRecognitionResultInfo
 
     @AiRecognitionResultInfo.setter
@@ -36023,6 +43329,10 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     @property
     def AiAnalysisResultInfo(self):
+        """内容分析结果，当 NotificationType 为 AiAnalysisResult 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiAnalysisResultInfo`
+        """
         return self._AiAnalysisResultInfo
 
     @AiAnalysisResultInfo.setter
@@ -36031,6 +43341,10 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     @property
     def AiQualityControlResultInfo(self):
+        """媒体质检结果，当 NotificationType 为 AiQualityControlResult 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiQualityControlResultInfo`
+        """
         return self._AiQualityControlResultInfo
 
     @AiQualityControlResultInfo.setter
@@ -36039,6 +43353,10 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     @property
     def LiveRecordResultInfo(self):
+        """直播录制结果，当 NotificationType 为 LiveRecordResult 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamRecordResultInfo`
+        """
         return self._LiveRecordResultInfo
 
     @LiveRecordResultInfo.setter
@@ -36047,6 +43365,9 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     @property
     def SessionId(self):
+        """用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长50个字符，不带或者带空字符串表示不做去重。
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -36055,6 +43376,9 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     @property
     def SessionContext(self):
+        """来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长1000个字符。
+        :rtype: str
+        """
         return self._SessionContext
 
     @SessionContext.setter
@@ -36063,6 +43387,9 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -36110,6 +43437,9 @@ class ParseNotificationRequest(AbstractModel):
 
     @property
     def Content(self):
+        """从 CMQ 获取到的事件通知内容。
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -36176,6 +43506,12 @@ class ParseNotificationResponse(AbstractModel):
 
     @property
     def EventType(self):
+        """支持事件类型，目前取值有：
+<li>WorkflowTask：视频工作流处理任务。</li>
+<li>EditMediaTask：视频编辑任务。</li>
+<li>ScheduleTask：编排任务。</li>
+        :rtype: str
+        """
         return self._EventType
 
     @EventType.setter
@@ -36184,6 +43520,10 @@ class ParseNotificationResponse(AbstractModel):
 
     @property
     def WorkflowTaskEvent(self):
+        """视频处理任务信息，仅当 EventType 为 WorkflowTask，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.WorkflowTask`
+        """
         return self._WorkflowTaskEvent
 
     @WorkflowTaskEvent.setter
@@ -36192,6 +43532,10 @@ class ParseNotificationResponse(AbstractModel):
 
     @property
     def EditMediaTaskEvent(self):
+        """视频编辑任务信息，仅当 EventType 为 EditMediaTask，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EditMediaTask`
+        """
         return self._EditMediaTaskEvent
 
     @EditMediaTaskEvent.setter
@@ -36200,6 +43544,9 @@ class ParseNotificationResponse(AbstractModel):
 
     @property
     def SessionId(self):
+        """用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长50个字符，不带或者带空字符串表示不做去重。
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -36208,6 +43555,9 @@ class ParseNotificationResponse(AbstractModel):
 
     @property
     def SessionContext(self):
+        """来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长1000个字符。
+        :rtype: str
+        """
         return self._SessionContext
 
     @SessionContext.setter
@@ -36216,6 +43566,10 @@ class ParseNotificationResponse(AbstractModel):
 
     @property
     def ScheduleTaskEvent(self):
+        """编排任务信息，仅当 EventType 为 ScheduleTask，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleTask`
+        """
         return self._ScheduleTaskEvent
 
     @ScheduleTaskEvent.setter
@@ -36224,6 +43578,12 @@ class ParseNotificationResponse(AbstractModel):
 
     @property
     def Timestamp(self):
+        """- 过期时间，事件通知签名过期 UNIX 时间戳。
+- 来自媒体处理的消息通知默认过期时间是10分钟，如果一条消息通知中的 Timestamp 值所指定的时间已经过期，则可以判定这条通知无效，进而可以防止网络重放攻击。
+- Timestamp 的格式为十进制 UNIX 时间戳，即从1970年01月01日（UTC/GMT 的午夜）开始所经过的秒数。
+
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -36232,6 +43592,9 @@ class ParseNotificationResponse(AbstractModel):
 
     @property
     def Sign(self):
+        """事件通知安全签名 Sign = MD5（Timestamp + NotifyKey）。说明：媒体处理把Timestamp 和 TaskNotifyConfig 里面的NotifyKey 进行字符串拼接后通过 MD5 计算得出 Sign 值，并将其放在通知消息里，您的后台服务器在收到通知消息后可以根据同样的算法确认 Sign 是否正确，进而确认消息是否确实来自媒体处理后台。
+        :rtype: str
+        """
         return self._Sign
 
     @Sign.setter
@@ -36240,6 +43603,9 @@ class ParseNotificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -36287,6 +43653,11 @@ class PoliticalAsrReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """语音涉敏任务开关，可选值：
+<li>ON：开启语音涉敏任务；</li>
+<li>OFF：关闭语音涉敏任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -36295,6 +43666,9 @@ class PoliticalAsrReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -36303,6 +43677,9 @@ class PoliticalAsrReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -36346,6 +43723,11 @@ class PoliticalAsrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """语音涉敏任务开关，可选值：
+<li>ON：开启语音涉敏任务；</li>
+<li>OFF：关闭语音涉敏任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -36354,6 +43736,9 @@ class PoliticalAsrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -36362,6 +43747,9 @@ class PoliticalAsrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -36403,6 +43791,9 @@ class PoliticalConfigureInfo(AbstractModel):
 
     @property
     def ImgReviewInfo(self):
+        """画面涉敏控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PoliticalImgReviewTemplateInfo`
+        """
         return self._ImgReviewInfo
 
     @ImgReviewInfo.setter
@@ -36411,6 +43802,9 @@ class PoliticalConfigureInfo(AbstractModel):
 
     @property
     def AsrReviewInfo(self):
+        """语音涉敏控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PoliticalAsrReviewTemplateInfo`
+        """
         return self._AsrReviewInfo
 
     @AsrReviewInfo.setter
@@ -36419,6 +43813,9 @@ class PoliticalConfigureInfo(AbstractModel):
 
     @property
     def OcrReviewInfo(self):
+        """文本涉敏控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PoliticalOcrReviewTemplateInfo`
+        """
         return self._OcrReviewInfo
 
     @OcrReviewInfo.setter
@@ -36466,6 +43863,9 @@ class PoliticalConfigureInfoForUpdate(AbstractModel):
 
     @property
     def ImgReviewInfo(self):
+        """画面涉敏控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PoliticalImgReviewTemplateInfoForUpdate`
+        """
         return self._ImgReviewInfo
 
     @ImgReviewInfo.setter
@@ -36474,6 +43874,9 @@ class PoliticalConfigureInfoForUpdate(AbstractModel):
 
     @property
     def AsrReviewInfo(self):
+        """语音涉敏控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PoliticalAsrReviewTemplateInfoForUpdate`
+        """
         return self._AsrReviewInfo
 
     @AsrReviewInfo.setter
@@ -36482,6 +43885,9 @@ class PoliticalConfigureInfoForUpdate(AbstractModel):
 
     @property
     def OcrReviewInfo(self):
+        """文本涉敏控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PoliticalOcrReviewTemplateInfoForUpdate`
+        """
         return self._OcrReviewInfo
 
     @OcrReviewInfo.setter
@@ -36542,6 +43948,11 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """画面涉敏任务开关，可选值：
+<li>ON：开启画面涉敏任务；</li>
+<li>OFF：关闭画面涉敏任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -36550,6 +43961,17 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 
     @property
     def LabelSet(self):
+        """画面涉敏过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+<li>violation_photo：违规图标；</li>
+<li>politician：涉敏人物；</li>
+<li>entertainment：娱乐人物；</li>
+<li>sport：体育人物；</li>
+<li>entrepreneur：商业人物；</li>
+<li>scholar：教育学者；</li>
+<li>celebrity：知名人物；</li>
+<li>military：军事人物。</li>
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -36558,6 +43980,9 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -36566,6 +43991,9 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -36621,6 +44049,11 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """画面涉敏任务开关，可选值：
+<li>ON：开启画面涉敏任务；</li>
+<li>OFF：关闭画面涉敏任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -36629,6 +44062,17 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def LabelSet(self):
+        """画面涉敏过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+<li>violation_photo：违规图标；</li>
+<li>politician：涉敏人物；</li>
+<li>entertainment：娱乐人物；</li>
+<li>sport：体育人物；</li>
+<li>entrepreneur：商业人物；</li>
+<li>scholar：教育学者；</li>
+<li>celebrity：知名人物；</li>
+<li>military：军事人物。</li>
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -36637,6 +44081,9 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -36645,6 +44092,9 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -36689,6 +44139,11 @@ class PoliticalOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """文本涉敏任务开关，可选值：
+<li>ON：开启文本涉敏任务；</li>
+<li>OFF：关闭文本涉敏任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -36697,6 +44152,9 @@ class PoliticalOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -36705,6 +44163,9 @@ class PoliticalOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -36748,6 +44209,11 @@ class PoliticalOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """文本涉敏任务开关，可选值：
+<li>ON：开启文本涉敏任务；</li>
+<li>OFF：关闭文本涉敏任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -36756,6 +44222,9 @@ class PoliticalOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -36764,6 +44233,9 @@ class PoliticalOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -36807,6 +44279,11 @@ class PornAsrReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """语音鉴黄任务开关，可选值：
+<li>ON：开启语音鉴黄任务；</li>
+<li>OFF：关闭语音鉴黄任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -36815,6 +44292,9 @@ class PornAsrReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -36823,6 +44303,9 @@ class PornAsrReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -36866,6 +44349,11 @@ class PornAsrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """语音鉴黄任务开关，可选值：
+<li>ON：开启语音鉴黄任务；</li>
+<li>OFF：关闭语音鉴黄任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -36874,6 +44362,9 @@ class PornAsrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -36882,6 +44373,9 @@ class PornAsrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -36923,6 +44417,9 @@ class PornConfigureInfo(AbstractModel):
 
     @property
     def ImgReviewInfo(self):
+        """画面鉴黄控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PornImgReviewTemplateInfo`
+        """
         return self._ImgReviewInfo
 
     @ImgReviewInfo.setter
@@ -36931,6 +44428,9 @@ class PornConfigureInfo(AbstractModel):
 
     @property
     def AsrReviewInfo(self):
+        """语音鉴黄控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PornAsrReviewTemplateInfo`
+        """
         return self._AsrReviewInfo
 
     @AsrReviewInfo.setter
@@ -36939,6 +44439,9 @@ class PornConfigureInfo(AbstractModel):
 
     @property
     def OcrReviewInfo(self):
+        """文本鉴黄控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PornOcrReviewTemplateInfo`
+        """
         return self._OcrReviewInfo
 
     @OcrReviewInfo.setter
@@ -36986,6 +44489,9 @@ class PornConfigureInfoForUpdate(AbstractModel):
 
     @property
     def ImgReviewInfo(self):
+        """画面鉴黄控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PornImgReviewTemplateInfoForUpdate`
+        """
         return self._ImgReviewInfo
 
     @ImgReviewInfo.setter
@@ -36994,6 +44500,9 @@ class PornConfigureInfoForUpdate(AbstractModel):
 
     @property
     def AsrReviewInfo(self):
+        """语音鉴黄控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PornAsrReviewTemplateInfoForUpdate`
+        """
         return self._AsrReviewInfo
 
     @AsrReviewInfo.setter
@@ -37002,6 +44511,9 @@ class PornConfigureInfoForUpdate(AbstractModel):
 
     @property
     def OcrReviewInfo(self):
+        """文本鉴黄控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PornOcrReviewTemplateInfoForUpdate`
+        """
         return self._OcrReviewInfo
 
     @OcrReviewInfo.setter
@@ -37058,6 +44570,11 @@ class PornImgReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """画面鉴黄任务开关，可选值：
+<li>ON：开启画面鉴黄任务；</li>
+<li>OFF：关闭画面鉴黄任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -37066,6 +44583,13 @@ class PornImgReviewTemplateInfo(AbstractModel):
 
     @property
     def LabelSet(self):
+        """画面鉴黄过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+<li>porn：色情；</li>
+<li>vulgar：低俗；</li>
+<li>intimacy：亲密行为；</li>
+<li>sexy：性感。</li>
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -37074,6 +44598,9 @@ class PornImgReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -37082,6 +44609,9 @@ class PornImgReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 0 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -37133,6 +44663,11 @@ class PornImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """画面鉴黄任务开关，可选值：
+<li>ON：开启画面鉴黄任务；</li>
+<li>OFF：关闭画面鉴黄任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -37141,6 +44676,13 @@ class PornImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def LabelSet(self):
+        """画面鉴黄过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+<li>porn：色情；</li>
+<li>vulgar：低俗；</li>
+<li>intimacy：亲密行为；</li>
+<li>sexy：性感。</li>
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -37149,6 +44691,9 @@ class PornImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -37157,6 +44702,9 @@ class PornImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -37201,6 +44749,11 @@ class PornOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """文本鉴黄任务开关，可选值：
+<li>ON：开启文本鉴黄任务；</li>
+<li>OFF：关闭文本鉴黄任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -37209,6 +44762,9 @@ class PornOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -37217,6 +44773,9 @@ class PornOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -37260,6 +44819,11 @@ class PornOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """文本鉴黄任务开关，可选值：
+<li>ON：开启文本鉴黄任务；</li>
+<li>OFF：关闭文本鉴黄任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -37268,6 +44832,9 @@ class PornOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -37276,6 +44843,9 @@ class PornOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -37345,6 +44915,9 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def Url(self):
+        """直播流 URL（必须是直播文件地址，支持 rtmp，hls 和 flv 等）。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -37353,6 +44926,9 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def TaskNotifyConfig(self):
+        """任务的事件通知信息，用于指定直播流处理的结果。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamTaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -37361,6 +44937,9 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """直播流处理输出文件的目标存储。如处理有文件输出，该参数为必填项。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -37369,6 +44948,9 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def OutputDir(self):
+        """直播流处理生成的文件输出的目标目录，如`/movie/201909/`，如果不填为 `/` 目录。
+        :rtype: str
+        """
         return self._OutputDir
 
     @OutputDir.setter
@@ -37377,6 +44959,9 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def AiContentReviewTask(self):
+        """视频内容审核类型任务参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        """
         return self._AiContentReviewTask
 
     @AiContentReviewTask.setter
@@ -37385,6 +44970,9 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def AiRecognitionTask(self):
+        """视频内容识别类型任务参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        """
         return self._AiRecognitionTask
 
     @AiRecognitionTask.setter
@@ -37393,6 +44981,9 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def AiAnalysisTask(self):
+        """视频内容分析类型任务参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        """
         return self._AiAnalysisTask
 
     @AiAnalysisTask.setter
@@ -37401,6 +44992,9 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def AiQualityControlTask(self):
+        """媒体质检类型任务参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
+        """
         return self._AiQualityControlTask
 
     @AiQualityControlTask.setter
@@ -37409,6 +45003,9 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -37417,6 +45014,9 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def SessionContext(self):
+        """来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :rtype: str
+        """
         return self._SessionContext
 
     @SessionContext.setter
@@ -37425,6 +45025,13 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def ScheduleId(self):
+        """直播编排ID。
+注意1：对于OutputStorage、OutputDir参数：
+<li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li>
+<li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若对直播流发起处理（ProcessLiveStream）有输出，将覆盖原有编排的默认输出。</li>
+注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessLiveStream）有设置，将覆盖原有编排的默认回调。
+        :rtype: int
+        """
         return self._ScheduleId
 
     @ScheduleId.setter
@@ -37483,6 +45090,9 @@ class ProcessLiveStreamResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务 ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -37491,6 +45101,9 @@ class ProcessLiveStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -37567,6 +45180,9 @@ class ProcessMediaRequest(AbstractModel):
 
     @property
     def InputInfo(self):
+        """媒体处理的文件输入信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
         return self._InputInfo
 
     @InputInfo.setter
@@ -37575,6 +45191,10 @@ class ProcessMediaRequest(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """媒体处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。
+注意：当InputInfo.Type为URL时，该参数是必填项
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -37583,6 +45203,10 @@ class ProcessMediaRequest(AbstractModel):
 
     @property
     def OutputDir(self):
+        """媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
+如果不填，表示与 InputInfo 中文件所在的目录一致。
+        :rtype: str
+        """
         return self._OutputDir
 
     @OutputDir.setter
@@ -37591,6 +45215,16 @@ class ProcessMediaRequest(AbstractModel):
 
     @property
     def ScheduleId(self):
+        """编排ID。
+注意1：对于OutputStorage、OutputDir参数：
+<li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li>
+<li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若创建任务接口（ProcessMedia）有指定输出，将覆盖原有编排的默认输出。</li>
+<li>即输出设置的优先级：编排子任务节点 > 任务接口指定 > 对应编排内的配置 </li>
+注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessMedia）有设置，将覆盖原有编排的默认回调。
+
+注意3：编排的 Trigger 只是用来自动化触发场景，在手动发起的请求中已经配置的 Trigger 无意义。
+        :rtype: int
+        """
         return self._ScheduleId
 
     @ScheduleId.setter
@@ -37599,6 +45233,9 @@ class ProcessMediaRequest(AbstractModel):
 
     @property
     def MediaProcessTask(self):
+        """媒体处理类型任务参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
+        """
         return self._MediaProcessTask
 
     @MediaProcessTask.setter
@@ -37607,6 +45244,9 @@ class ProcessMediaRequest(AbstractModel):
 
     @property
     def AiContentReviewTask(self):
+        """视频内容审核类型任务参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        """
         return self._AiContentReviewTask
 
     @AiContentReviewTask.setter
@@ -37615,6 +45255,9 @@ class ProcessMediaRequest(AbstractModel):
 
     @property
     def AiAnalysisTask(self):
+        """视频内容分析类型任务参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        """
         return self._AiAnalysisTask
 
     @AiAnalysisTask.setter
@@ -37623,6 +45266,9 @@ class ProcessMediaRequest(AbstractModel):
 
     @property
     def AiRecognitionTask(self):
+        """视频内容识别类型任务参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        """
         return self._AiRecognitionTask
 
     @AiRecognitionTask.setter
@@ -37631,6 +45277,9 @@ class ProcessMediaRequest(AbstractModel):
 
     @property
     def AiQualityControlTask(self):
+        """媒体质检类型任务参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
+        """
         return self._AiQualityControlTask
 
     @AiQualityControlTask.setter
@@ -37639,6 +45288,9 @@ class ProcessMediaRequest(AbstractModel):
 
     @property
     def TaskNotifyConfig(self):
+        """任务的事件通知信息，不填代表不获取事件通知。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -37647,6 +45299,9 @@ class ProcessMediaRequest(AbstractModel):
 
     @property
     def TasksPriority(self):
+        """任务流的优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
+        :rtype: int
+        """
         return self._TasksPriority
 
     @TasksPriority.setter
@@ -37655,6 +45310,9 @@ class ProcessMediaRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不传该参数或者参数为空字符串则本次请求不做去重操作。
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -37663,6 +45321,9 @@ class ProcessMediaRequest(AbstractModel):
 
     @property
     def SessionContext(self):
+        """来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :rtype: str
+        """
         return self._SessionContext
 
     @SessionContext.setter
@@ -37671,6 +45332,11 @@ class ProcessMediaRequest(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型，默认Online
+<li> Online：实时任务</li>
+<li> Offline：闲时任务，不保证实效性，默认3天内处理完</li>
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -37736,6 +45402,9 @@ class ProcessMediaResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务 ID。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -37744,6 +45413,9 @@ class ProcessMediaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -37778,6 +45450,11 @@ class ProhibitedAsrReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """语音违禁任务开关，可选值：
+<li>ON：开启语音违禁任务；</li>
+<li>OFF：关闭语音违禁任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -37786,6 +45463,9 @@ class ProhibitedAsrReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -37794,6 +45474,9 @@ class ProhibitedAsrReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -37837,6 +45520,11 @@ class ProhibitedAsrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """语音违禁任务开关，可选值：
+<li>ON：开启语音违禁任务；</li>
+<li>OFF：关闭语音违禁任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -37845,6 +45533,9 @@ class ProhibitedAsrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -37853,6 +45544,9 @@ class ProhibitedAsrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -37893,6 +45587,10 @@ class ProhibitedConfigureInfo(AbstractModel):
 
     @property
     def AsrReviewInfo(self):
+        """语音违禁控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ProhibitedAsrReviewTemplateInfo`
+        """
         return self._AsrReviewInfo
 
     @AsrReviewInfo.setter
@@ -37901,6 +45599,10 @@ class ProhibitedConfigureInfo(AbstractModel):
 
     @property
     def OcrReviewInfo(self):
+        """文本违禁控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ProhibitedOcrReviewTemplateInfo`
+        """
         return self._OcrReviewInfo
 
     @OcrReviewInfo.setter
@@ -37942,6 +45644,9 @@ class ProhibitedConfigureInfoForUpdate(AbstractModel):
 
     @property
     def AsrReviewInfo(self):
+        """语音违禁控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ProhibitedAsrReviewTemplateInfoForUpdate`
+        """
         return self._AsrReviewInfo
 
     @AsrReviewInfo.setter
@@ -37950,6 +45655,9 @@ class ProhibitedConfigureInfoForUpdate(AbstractModel):
 
     @property
     def OcrReviewInfo(self):
+        """文本违禁控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ProhibitedOcrReviewTemplateInfoForUpdate`
+        """
         return self._OcrReviewInfo
 
     @OcrReviewInfo.setter
@@ -37996,6 +45704,11 @@ class ProhibitedOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """文本违禁任务开关，可选值：
+<li>ON：开启文本违禁任务；</li>
+<li>OFF：关闭文本违禁任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -38004,6 +45717,9 @@ class ProhibitedOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -38012,6 +45728,9 @@ class ProhibitedOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -38055,6 +45774,11 @@ class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """文本违禁任务开关，可选值：
+<li>ON：开启文本违禁任务；</li>
+<li>OFF：关闭文本违禁任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -38063,6 +45787,9 @@ class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -38071,6 +45798,9 @@ class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -38123,6 +45853,10 @@ class QualityControlData(AbstractModel):
 
     @property
     def NoAudio(self):
+        """为true时表示视频无音频轨。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._NoAudio
 
     @NoAudio.setter
@@ -38131,6 +45865,10 @@ class QualityControlData(AbstractModel):
 
     @property
     def NoVideo(self):
+        """为true时表示视频无视频轨。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._NoVideo
 
     @NoVideo.setter
@@ -38139,6 +45877,10 @@ class QualityControlData(AbstractModel):
 
     @property
     def QualityEvaluationScore(self):
+        """视频无参考质量打分，百分制。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._QualityEvaluationScore
 
     @QualityEvaluationScore.setter
@@ -38147,6 +45889,10 @@ class QualityControlData(AbstractModel):
 
     @property
     def QualityControlResultSet(self):
+        """内容质检检出异常项。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QualityControlResult
+        """
         return self._QualityControlResultSet
 
     @QualityControlResultSet.setter
@@ -38155,6 +45901,10 @@ class QualityControlData(AbstractModel):
 
     @property
     def ContainerDiagnoseResultSet(self):
+        """格式诊断检出异常项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ContainerDiagnoseResultItem
+        """
         return self._ContainerDiagnoseResultSet
 
     @ContainerDiagnoseResultSet.setter
@@ -38213,6 +45963,10 @@ class QualityControlItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """置信度，取值范围是 0 到 100。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -38221,6 +45975,9 @@ class QualityControlItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """出现的起始时间戳，秒。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -38229,6 +45986,9 @@ class QualityControlItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """出现的结束时间戳，秒。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -38237,6 +45997,10 @@ class QualityControlItem(AbstractModel):
 
     @property
     def AreaCoordSet(self):
+        """区域坐标(px)，即左上角坐标、右下角坐标。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -38360,6 +46124,72 @@ class QualityControlItemConfig(AbstractModel):
 
     @property
     def Type(self):
+        """质检项名称。质检项取值如下：
+<li>LowEvaluation：无参考打分</li>
+<li>Mosaic：马赛克检测</li>
+<li>CrashScreen：花屏检测</li>
+<li>VideoFreezedFrame：视频冻结</li>
+<li>Blur：模糊检测</li>
+<li>BlackWhiteEdge：黑白边检测</li>
+<li>SolidColorScreen：纯色屏检测</li>
+<li>LowLighting：低光照</li>
+<li>HighLighting：过曝</li>
+<li>NoVoice：静音检测</li>
+<li>LowVoice：低音检测</li>
+<li>HighVoice：爆音检测</li>
+<li>Jitter：抖动检测</li>
+<li>Noise：噪点检测</li>
+<li>QRCode：二维码检测</li>
+<li>BarCode：条形码检测</li>
+<li>AppletCode：小程序码检测</li>
+<li>VideoResolutionChanged：视频分辨率变化</li>
+<li>AudioSampleRateChanged：音频采样率变化</li>
+<li>AudioChannelsChanged：音频通道数变化</li>
+<li>ParameterSetsChanged：流参数集信息发生变化</li>
+<li>DarOrSarInvalid：视频的宽高比异常</li>
+<li>TimestampFallback：DTS时间戳回退</li>
+<li>DtsJitter：DTS抖动过大</li>
+<li>PtsJitter：PTS抖动过大</li>
+<li>AACDurationDeviation：AAC帧时间戳间隔不合理</li>
+<li>AudioDroppingFrames：音频丢帧</li>
+<li>VideoDroppingFrames：视频丢帧</li>
+<li>AVTimestampInterleave：音视频交织不合理</li>
+<li>PtsLessThanDts：媒体流的 pts 小于 dts</li>
+<li>ReceiveFpsJitter：网络接收帧率抖动过大</li>
+<li>ReceiveFpsTooSmall：网络接收视频帧率过小</li>
+<li>FpsJitter：通过PTS计算得到的流帧率抖动过大</li>
+<li>StreamOpenFailed：流打开失败</li>
+<li>StreamEnd：流结束</li>
+<li>StreamParseFailed：流解析失败</li>
+<li>VideoFirstFrameNotIdr：首帧不是IDR帧</li>
+<li>StreamNALUError：NALU起始码错误</li>
+<li>TsStreamNoAud：mpegts的H26x流缺失 AUD NALU</li>
+<li>AudioStreamLack：无音频流</li>
+<li>VideoStreamLack：无视频流</li>
+<li>LackAudioRecover：缺失音频流恢复</li>
+<li>LackVideoRecover：缺失视频流恢复</li>
+<li>VideoBitrateOutofRange：视频流码率(kbps)超出范围</li>
+<li>AudioBitrateOutofRange：音频流码率(kbps)超出范围</li>
+<li>VideoDecodeFailed：视频解码错误</li>
+<li>AudioDecodeFailed：音频解码错误</li>
+<li>AudioOutOfPhase：双通道音频相位相反</li>
+<li>VideoDuplicatedFrame：视频流中存在重复帧</li>
+<li>AudioDuplicatedFrame：音频流中存在重复帧</li>
+<li>VideoRotation：视频画面旋转</li>
+<li>TsMultiPrograms：MPEG2-TS流有多个program</li>
+<li>Mp4InvalidCodecFourcc：MP4中codec fourcc不符合Apple HLS要求</li>
+<li>HLSBadM3u8Format：无效的m3u8文件</li>
+<li>HLSInvalidMasterM3u8：无效的main m3u8文件</li>
+<li>HLSInvalidMediaM3u8：无效的media m3u8文件</li>
+<li>HLSMasterM3u8Recommended：main m3u8缺少标准推荐的参数</li>
+<li>HLSMediaM3u8Recommended：media m3u8缺少标准推荐的参数</li>
+<li>HLSMediaM3u8DiscontinuityExist：media m3u8存在EXT-X-DISCONTINUITY</li>
+<li>HLSMediaSegmentsStreamNumChange：切片的流数目发生变化</li>
+<li>HLSMediaSegmentsPTSJitterDeviation：切片间PTS跳变且没有EXT-X-DISCONTINUITY</li>
+<li>HLSMediaSegmentsDTSJitterDeviation：切片间DTS跳变且没有EXT-X-DISCONTINUITY</li>
+<li>TimecodeTrackExist：MP4存在tmcd轨道</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -38368,6 +46198,13 @@ class QualityControlItemConfig(AbstractModel):
 
     @property
     def Switch(self):
+        """能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -38376,6 +46213,11 @@ class QualityControlItemConfig(AbstractModel):
 
     @property
     def Sampling(self):
+        """采样方式，取值范围：
+- Time：根据时间间隔采样。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Sampling
 
     @Sampling.setter
@@ -38384,6 +46226,10 @@ class QualityControlItemConfig(AbstractModel):
 
     @property
     def IntervalTime(self):
+        """采样间隔时间，单位：ms。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IntervalTime
 
     @IntervalTime.setter
@@ -38392,6 +46238,10 @@ class QualityControlItemConfig(AbstractModel):
 
     @property
     def Duration(self):
+        """异常持续时间，单位：ms。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -38400,6 +46250,10 @@ class QualityControlItemConfig(AbstractModel):
 
     @property
     def Threshold(self):
+        """检测项对应的阈值，不同检测项对应阈值不同。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Threshold
 
     @Threshold.setter
@@ -38457,6 +46311,25 @@ LowEvaluation：无参考打分低于阈值。
 
     @property
     def Type(self):
+        """异常类型，取值范围：
+Jitter：抖动，
+Blur：模糊，
+LowLighting：低光照，
+HighLighting：过曝，
+CrashScreen：花屏，
+BlackWhiteEdge：黑白边，
+SolidColorScreen：纯色屏，
+Noise：噪点，
+Mosaic：马赛克，
+QRCode：二维码，
+AppletCode：小程序码，
+BarCode：条形码，
+LowVoice：低音，
+HighVoice：爆音，
+NoVoice：静音，
+LowEvaluation：无参考打分低于阈值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -38465,6 +46338,9 @@ LowEvaluation：无参考打分低于阈值。
 
     @property
     def QualityControlItems(self):
+        """质检结果项。
+        :rtype: list of QualityControlItem
+        """
         return self._QualityControlItems
 
     @QualityControlItems.setter
@@ -38530,6 +46406,9 @@ class QualityControlTemplate(AbstractModel):
 
     @property
     def Definition(self):
+        """媒体质检模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -38538,6 +46417,10 @@ class QualityControlTemplate(AbstractModel):
 
     @property
     def Name(self):
+        """媒体质检模板名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -38546,6 +46429,10 @@ class QualityControlTemplate(AbstractModel):
 
     @property
     def Comment(self):
+        """模板描述信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -38554,6 +46441,12 @@ class QualityControlTemplate(AbstractModel):
 
     @property
     def Type(self):
+        """模板类型，取值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -38562,6 +46455,10 @@ class QualityControlTemplate(AbstractModel):
 
     @property
     def QualityControlItemSet(self):
+        """媒体质检配置参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QualityControlItemConfig
+        """
         return self._QualityControlItemSet
 
     @QualityControlItemSet.setter
@@ -38570,6 +46467,10 @@ class QualityControlTemplate(AbstractModel):
 
     @property
     def CreateTime(self):
+        """模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -38578,6 +46479,10 @@ class QualityControlTemplate(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -38625,6 +46530,9 @@ class RTMPAddressDestination(AbstractModel):
 
     @property
     def Url(self):
+        """转推RTMP的目标Url，格式如'rtmp://domain/live'。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -38633,6 +46541,9 @@ class RTMPAddressDestination(AbstractModel):
 
     @property
     def StreamKey(self):
+        """转推RTMP的目标StreamKey，格式如'steamid?key=value'。
+        :rtype: str
+        """
         return self._StreamKey
 
     @StreamKey.setter
@@ -38670,6 +46581,9 @@ class RTMPPullSourceAddress(AbstractModel):
 
     @property
     def TcUrl(self):
+        """RTMP源站的TcUrl地址。
+        :rtype: str
+        """
         return self._TcUrl
 
     @TcUrl.setter
@@ -38678,6 +46592,9 @@ class RTMPPullSourceAddress(AbstractModel):
 
     @property
     def StreamKey(self):
+        """RTMP源站的StreamKey信息。
+        :rtype: str
+        """
         return self._StreamKey
 
     @StreamKey.setter
@@ -38715,6 +46632,9 @@ class RTPAddressDestination(AbstractModel):
 
     @property
     def Ip(self):
+        """转推的目标地址的IP。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -38723,6 +46643,9 @@ class RTPAddressDestination(AbstractModel):
 
     @property
     def Port(self):
+        """转推的目标地址的端口。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -38757,6 +46680,9 @@ class RTSPPullSourceAddress(AbstractModel):
 
     @property
     def Url(self):
+        """RTSP源站的Url地址。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -38808,6 +46734,9 @@ class RawImageWatermarkInput(AbstractModel):
 
     @property
     def ImageContent(self):
+        """水印图片的输入内容。支持 jpeg、png 图片格式。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
         return self._ImageContent
 
     @ImageContent.setter
@@ -38816,6 +46745,12 @@ class RawImageWatermarkInput(AbstractModel):
 
     @property
     def Width(self):
+        """水印的宽度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
+默认值：10%。
+        :rtype: str
+        """
         return self._Width
 
     @Width.setter
@@ -38824,6 +46759,12 @@ class RawImageWatermarkInput(AbstractModel):
 
     @property
     def Height(self):
+        """水印的高度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素。</li>
+默认值：0px，表示 Height 按照原始水印图片的宽高比缩放。
+        :rtype: str
+        """
         return self._Height
 
     @Height.setter
@@ -38832,6 +46773,12 @@ class RawImageWatermarkInput(AbstractModel):
 
     @property
     def RepeatType(self):
+        """水印重复类型。使用场景：水印为动态图像。取值范围：
+<li>once：动态水印播放完后，不再出现；</li>
+<li>repeat_last_frame：水印播放完后，停留在最后一帧；</li>
+<li>repeat：水印循环播放，直到视频结束（默认值）。</li>
+        :rtype: str
+        """
         return self._RepeatType
 
     @RepeatType.setter
@@ -38891,6 +46838,9 @@ class RawTranscodeParameter(AbstractModel):
 
     @property
     def Container(self):
+        """封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -38899,6 +46849,12 @@ class RawTranscodeParameter(AbstractModel):
 
     @property
     def RemoveVideo(self):
+        """是否去除视频数据，取值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._RemoveVideo
 
     @RemoveVideo.setter
@@ -38907,6 +46863,12 @@ class RawTranscodeParameter(AbstractModel):
 
     @property
     def RemoveAudio(self):
+        """是否去除音频数据，取值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._RemoveAudio
 
     @RemoveAudio.setter
@@ -38915,6 +46877,9 @@ class RawTranscodeParameter(AbstractModel):
 
     @property
     def VideoTemplate(self):
+        """视频流配置参数，当 RemoveVideo 为 0，该字段必填。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
+        """
         return self._VideoTemplate
 
     @VideoTemplate.setter
@@ -38923,6 +46888,9 @@ class RawTranscodeParameter(AbstractModel):
 
     @property
     def AudioTemplate(self):
+        """音频流配置参数，当 RemoveAudio 为 0，该字段必填。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
+        """
         return self._AudioTemplate
 
     @AudioTemplate.setter
@@ -38931,6 +46899,9 @@ class RawTranscodeParameter(AbstractModel):
 
     @property
     def TEHDConfig(self):
+        """极速高清转码参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
+        """
         return self._TEHDConfig
 
     @TEHDConfig.setter
@@ -38996,6 +46967,10 @@ class RawWatermarkParameter(AbstractModel):
 
     @property
     def Type(self):
+        """水印类型，可选值：
+<li>image：图片水印。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -39004,6 +46979,11 @@ class RawWatermarkParameter(AbstractModel):
 
     @property
     def CoordinateOrigin(self):
+        """原点位置，目前仅支持：
+<li>TopLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角。</li>
+默认值：TopLeft。
+        :rtype: str
+        """
         return self._CoordinateOrigin
 
     @CoordinateOrigin.setter
@@ -39012,6 +46992,12 @@ class RawWatermarkParameter(AbstractModel):
 
     @property
     def XPos(self):
+        """水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 XPos 为指定像素，如 100px 表示 XPos 为 100 像素。</li>
+默认值：0px。
+        :rtype: str
+        """
         return self._XPos
 
     @XPos.setter
@@ -39020,6 +47006,12 @@ class RawWatermarkParameter(AbstractModel):
 
     @property
     def YPos(self):
+        """水印原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 YPos 为指定像素，如 100px 表示 YPos 为 100 像素。</li>
+默认值：0px。
+        :rtype: str
+        """
         return self._YPos
 
     @YPos.setter
@@ -39028,6 +47020,9 @@ class RawWatermarkParameter(AbstractModel):
 
     @property
     def ImageTemplate(self):
+        """图片水印模板，当 Type 为 image，该字段必填。当 Type 为 text，该字段无效。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.RawImageWatermarkInput`
+        """
         return self._ImageTemplate
 
     @ImageTemplate.setter
@@ -39073,6 +47068,9 @@ class RecognizeMediaForZhiXueRequest(AbstractModel):
 
     @property
     def InputInfo(self):
+        """输入媒体文件存储信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
         return self._InputInfo
 
     @InputInfo.setter
@@ -39081,6 +47079,9 @@ class RecognizeMediaForZhiXueRequest(AbstractModel):
 
     @property
     def ExpressionConfig(self):
+        """表情识别参数配置。默认开启。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ExpressionConfigInfo`
+        """
         return self._ExpressionConfig
 
     @ExpressionConfig.setter
@@ -39089,6 +47090,9 @@ class RecognizeMediaForZhiXueRequest(AbstractModel):
 
     @property
     def ActionConfig(self):
+        """动作识别参数配置。默认开启。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ActionConfigInfo`
+        """
         return self._ActionConfig
 
     @ActionConfig.setter
@@ -39133,6 +47137,9 @@ class RecognizeMediaForZhiXueResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务 ID，可以通过该 ID 查询任务状态和结果。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -39141,6 +47148,9 @@ class RecognizeMediaForZhiXueResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -39167,6 +47177,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def Name(self):
+        """地区名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -39231,6 +47244,9 @@ class ResetWorkflowRequest(AbstractModel):
 
     @property
     def WorkflowId(self):
+        """工作流 ID。
+        :rtype: int
+        """
         return self._WorkflowId
 
     @WorkflowId.setter
@@ -39239,6 +47255,9 @@ class ResetWorkflowRequest(AbstractModel):
 
     @property
     def WorkflowName(self):
+        """工作流名称，最多128字符。同一个用户该名称唯一。
+        :rtype: str
+        """
         return self._WorkflowName
 
     @WorkflowName.setter
@@ -39247,6 +47266,9 @@ class ResetWorkflowRequest(AbstractModel):
 
     @property
     def Trigger(self):
+        """工作流绑定的触发规则，当上传视频命中该规则到该对象时即触发工作流。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
+        """
         return self._Trigger
 
     @Trigger.setter
@@ -39255,6 +47277,9 @@ class ResetWorkflowRequest(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """视频处理的文件输出配置。不填则继承 Trigger 中的存储位置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -39263,6 +47288,10 @@ class ResetWorkflowRequest(AbstractModel):
 
     @property
     def OutputDir(self):
+        """视频处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
+如果不填，表示与触发文件所在的目录一致，即`{inputDir}`。
+        :rtype: str
+        """
         return self._OutputDir
 
     @OutputDir.setter
@@ -39271,6 +47300,9 @@ class ResetWorkflowRequest(AbstractModel):
 
     @property
     def MediaProcessTask(self):
+        """视频处理类型任务参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
+        """
         return self._MediaProcessTask
 
     @MediaProcessTask.setter
@@ -39279,6 +47311,9 @@ class ResetWorkflowRequest(AbstractModel):
 
     @property
     def AiContentReviewTask(self):
+        """视频内容审核类型任务参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        """
         return self._AiContentReviewTask
 
     @AiContentReviewTask.setter
@@ -39287,6 +47322,9 @@ class ResetWorkflowRequest(AbstractModel):
 
     @property
     def AiAnalysisTask(self):
+        """视频内容分析类型任务参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        """
         return self._AiAnalysisTask
 
     @AiAnalysisTask.setter
@@ -39295,6 +47333,9 @@ class ResetWorkflowRequest(AbstractModel):
 
     @property
     def AiRecognitionTask(self):
+        """视频内容识别类型任务参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        """
         return self._AiRecognitionTask
 
     @AiRecognitionTask.setter
@@ -39303,6 +47344,9 @@ class ResetWorkflowRequest(AbstractModel):
 
     @property
     def TaskPriority(self):
+        """工作流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :rtype: int
+        """
         return self._TaskPriority
 
     @TaskPriority.setter
@@ -39311,6 +47355,9 @@ class ResetWorkflowRequest(AbstractModel):
 
     @property
     def TaskNotifyConfig(self):
+        """任务的事件通知信息，不填代表不获取事件通知。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -39368,6 +47415,9 @@ class ResetWorkflowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -39398,6 +47448,10 @@ class ResilientStreamConf(AbstractModel):
 
     @property
     def Enable(self):
+        """是否开启延播平滑吐流，true开启，false不开启，默认不开启。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Enable
 
     @Enable.setter
@@ -39406,6 +47460,10 @@ class ResilientStreamConf(AbstractModel):
 
     @property
     def BufferTime(self):
+        """延播时间，单位秒，目前支持的范围为10~300秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BufferTime
 
     @BufferTime.setter
@@ -39460,6 +47518,10 @@ eu-west-3
 
     @property
     def S3Bucket(self):
+        """S3 bucket。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._S3Bucket
 
     @S3Bucket.setter
@@ -39468,6 +47530,13 @@ eu-west-3
 
     @property
     def S3Region(self):
+        """S3 bucket 对应的区域，目前支持：  
+us-east-1  
+eu-west-3
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._S3Region
 
     @S3Region.setter
@@ -39476,6 +47545,10 @@ eu-west-3
 
     @property
     def S3Object(self):
+        """S3 bucket 中的媒体资源路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._S3Object
 
     @S3Object.setter
@@ -39484,6 +47557,10 @@ eu-west-3
 
     @property
     def S3SecretId(self):
+        """AWS 内网访问 媒体资源的秘钥id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._S3SecretId
 
     @S3SecretId.setter
@@ -39492,6 +47569,10 @@ eu-west-3
 
     @property
     def S3SecretKey(self):
+        """AWS 内网访问 媒体资源的秘钥key。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._S3SecretKey
 
     @S3SecretKey.setter
@@ -39542,6 +47623,10 @@ class S3OutputStorage(AbstractModel):
 
     @property
     def S3Bucket(self):
+        """S3 bucket。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._S3Bucket
 
     @S3Bucket.setter
@@ -39550,6 +47635,10 @@ class S3OutputStorage(AbstractModel):
 
     @property
     def S3Region(self):
+        """S3 bucket 对应的区域。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._S3Region
 
     @S3Region.setter
@@ -39558,6 +47647,10 @@ class S3OutputStorage(AbstractModel):
 
     @property
     def S3SecretId(self):
+        """AWS 内网上传 媒体资源的秘钥id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._S3SecretId
 
     @S3SecretId.setter
@@ -39566,6 +47659,10 @@ class S3OutputStorage(AbstractModel):
 
     @property
     def S3SecretKey(self):
+        """AWS 内网上传 媒体资源的秘钥key。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._S3SecretKey
 
     @S3SecretKey.setter
@@ -39605,6 +47702,9 @@ class SRTAddressDestination(AbstractModel):
 
     @property
     def Ip(self):
+        """目标地址的IP。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -39613,6 +47713,9 @@ class SRTAddressDestination(AbstractModel):
 
     @property
     def Port(self):
+        """目标地址的端口。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -39650,6 +47753,9 @@ class SRTSourceAddressReq(AbstractModel):
 
     @property
     def Ip(self):
+        """对端IP。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -39658,6 +47764,9 @@ class SRTSourceAddressReq(AbstractModel):
 
     @property
     def Port(self):
+        """对端端口。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -39697,6 +47806,10 @@ class SRTSourceAddressResp(AbstractModel):
 
     @property
     def Ip(self):
+        """对端IP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -39705,6 +47818,10 @@ class SRTSourceAddressResp(AbstractModel):
 
     @property
     def Port(self):
+        """对端端口。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -39761,6 +47878,9 @@ class SampleSnapshotTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """采样截图模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -39769,6 +47889,9 @@ class SampleSnapshotTaskInput(AbstractModel):
 
     @property
     def WatermarkSet(self):
+        """水印列表，支持多张图片或文字水印，最大可支持 10 张。
+        :rtype: list of WatermarkInput
+        """
         return self._WatermarkSet
 
     @WatermarkSet.setter
@@ -39777,6 +47900,10 @@ class SampleSnapshotTaskInput(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """采样截图后文件的目标存储，不填则继承上层的 OutputStorage 值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -39785,6 +47912,17 @@ class SampleSnapshotTaskInput(AbstractModel):
 
     @property
     def OutputObjectPath(self):
+        """采样截图后图片文件的输出路径，可以为相对路径或者绝对路径。
+若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
+相对路径示例：
+<li>文件名_{变量名}.{format}</li>
+<li>文件名.{format}</li>
+绝对路径示例：
+<li>/自定义路径/文件名_{变量名}.{format}</li>
+如果不填，则默认为相对路径：`{inputName}_sampleSnapshot_{definition}_{number}.{format}`。
+
+        :rtype: str
+        """
         return self._OutputObjectPath
 
     @OutputObjectPath.setter
@@ -39793,6 +47931,10 @@ class SampleSnapshotTaskInput(AbstractModel):
 
     @property
     def ObjectNumberFormat(self):
+        """采样截图后输出路径中的`{number}`变量的规则。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
+        """
         return self._ObjectNumberFormat
 
     @ObjectNumberFormat.setter
@@ -39895,6 +48037,9 @@ class SampleSnapshotTemplate(AbstractModel):
 
     @property
     def Definition(self):
+        """采样截图模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -39903,6 +48048,11 @@ class SampleSnapshotTemplate(AbstractModel):
 
     @property
     def Type(self):
+        """模板类型，取值范围：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -39911,6 +48061,9 @@ class SampleSnapshotTemplate(AbstractModel):
 
     @property
     def Name(self):
+        """采样截图模板名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -39919,6 +48072,9 @@ class SampleSnapshotTemplate(AbstractModel):
 
     @property
     def Comment(self):
+        """模板描述信息。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -39927,6 +48083,14 @@ class SampleSnapshotTemplate(AbstractModel):
 
     @property
     def Width(self):
+        """截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -39935,6 +48099,14 @@ class SampleSnapshotTemplate(AbstractModel):
 
     @property
     def Height(self):
+        """截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -39943,6 +48115,12 @@ class SampleSnapshotTemplate(AbstractModel):
 
     @property
     def ResolutionAdaptive(self):
+        """分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -39951,6 +48129,9 @@ class SampleSnapshotTemplate(AbstractModel):
 
     @property
     def Format(self):
+        """图片格式。
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -39959,6 +48140,9 @@ class SampleSnapshotTemplate(AbstractModel):
 
     @property
     def SampleType(self):
+        """采样截图类型。
+        :rtype: str
+        """
         return self._SampleType
 
     @SampleType.setter
@@ -39967,6 +48151,9 @@ class SampleSnapshotTemplate(AbstractModel):
 
     @property
     def SampleInterval(self):
+        """采样间隔。
+        :rtype: int
+        """
         return self._SampleInterval
 
     @SampleInterval.setter
@@ -39975,6 +48162,9 @@ class SampleSnapshotTemplate(AbstractModel):
 
     @property
     def CreateTime(self):
+        """模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -39983,6 +48173,9 @@ class SampleSnapshotTemplate(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -39991,6 +48184,14 @@ class SampleSnapshotTemplate(AbstractModel):
 
     @property
     def FillType(self):
+        """填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+默认值：black 。
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -40060,6 +48261,9 @@ class ScheduleAnalysisTaskResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -40068,6 +48272,9 @@ class ScheduleAnalysisTaskResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -40076,6 +48283,9 @@ class ScheduleAnalysisTaskResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -40084,6 +48294,9 @@ class ScheduleAnalysisTaskResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -40092,6 +48305,9 @@ class ScheduleAnalysisTaskResult(AbstractModel):
 
     @property
     def Input(self):
+        """分析任务的输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -40100,6 +48316,10 @@ class ScheduleAnalysisTaskResult(AbstractModel):
 
     @property
     def Output(self):
+        """分析任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AiAnalysisResult
+        """
         return self._Output
 
     @Output.setter
@@ -40108,6 +48328,10 @@ class ScheduleAnalysisTaskResult(AbstractModel):
 
     @property
     def BeginProcessTime(self):
+        """任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BeginProcessTime
 
     @BeginProcessTime.setter
@@ -40116,6 +48340,10 @@ class ScheduleAnalysisTaskResult(AbstractModel):
 
     @property
     def FinishTime(self):
+        """任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FinishTime
 
     @FinishTime.setter
@@ -40179,6 +48407,9 @@ class ScheduleQualityControlTaskResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -40187,6 +48418,9 @@ class ScheduleQualityControlTaskResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -40195,6 +48429,9 @@ class ScheduleQualityControlTaskResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -40203,6 +48440,9 @@ class ScheduleQualityControlTaskResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -40211,6 +48451,9 @@ class ScheduleQualityControlTaskResult(AbstractModel):
 
     @property
     def Input(self):
+        """媒体质检任务的输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -40219,6 +48462,10 @@ class ScheduleQualityControlTaskResult(AbstractModel):
 
     @property
     def Output(self):
+        """媒体质检任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.QualityControlData`
+        """
         return self._Output
 
     @Output.setter
@@ -40285,6 +48532,9 @@ class ScheduleRecognitionTaskResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -40293,6 +48543,9 @@ class ScheduleRecognitionTaskResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -40301,6 +48554,9 @@ class ScheduleRecognitionTaskResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -40309,6 +48565,9 @@ class ScheduleRecognitionTaskResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -40317,6 +48576,9 @@ class ScheduleRecognitionTaskResult(AbstractModel):
 
     @property
     def Input(self):
+        """识别任务的输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -40325,6 +48587,10 @@ class ScheduleRecognitionTaskResult(AbstractModel):
 
     @property
     def Output(self):
+        """识别任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AiRecognitionResult
+        """
         return self._Output
 
     @Output.setter
@@ -40333,6 +48599,10 @@ class ScheduleRecognitionTaskResult(AbstractModel):
 
     @property
     def BeginProcessTime(self):
+        """任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BeginProcessTime
 
     @BeginProcessTime.setter
@@ -40341,6 +48611,10 @@ class ScheduleRecognitionTaskResult(AbstractModel):
 
     @property
     def FinishTime(self):
+        """任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FinishTime
 
     @FinishTime.setter
@@ -40412,6 +48686,9 @@ class ScheduleReviewTaskResult(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -40420,6 +48697,9 @@ class ScheduleReviewTaskResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -40428,6 +48708,9 @@ class ScheduleReviewTaskResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -40436,6 +48719,9 @@ class ScheduleReviewTaskResult(AbstractModel):
 
     @property
     def Message(self):
+        """错误信息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -40444,6 +48730,9 @@ class ScheduleReviewTaskResult(AbstractModel):
 
     @property
     def Input(self):
+        """审核任务的输入。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -40452,6 +48741,10 @@ class ScheduleReviewTaskResult(AbstractModel):
 
     @property
     def Output(self):
+        """审核任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AiContentReviewResult
+        """
         return self._Output
 
     @Output.setter
@@ -40460,6 +48753,10 @@ class ScheduleReviewTaskResult(AbstractModel):
 
     @property
     def BeginProcessTime(self):
+        """任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BeginProcessTime
 
     @BeginProcessTime.setter
@@ -40468,6 +48765,10 @@ class ScheduleReviewTaskResult(AbstractModel):
 
     @property
     def FinishTime(self):
+        """任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FinishTime
 
     @FinishTime.setter
@@ -40538,6 +48839,9 @@ class ScheduleTask(AbstractModel):
 
     @property
     def TaskId(self):
+        """编排任务 ID。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -40546,6 +48850,11 @@ class ScheduleTask(AbstractModel):
 
     @property
     def Status(self):
+        """任务流状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -40554,6 +48863,9 @@ class ScheduleTask(AbstractModel):
 
     @property
     def ErrCode(self):
+        """源异常时返回非0错误码，返回0 时请使用各个具体任务的 ErrCode。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -40562,6 +48874,9 @@ class ScheduleTask(AbstractModel):
 
     @property
     def Message(self):
+        """源异常时返回对应异常Message，否则请使用各个具体任务的 Message。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -40570,6 +48885,10 @@ class ScheduleTask(AbstractModel):
 
     @property
     def InputInfo(self):
+        """媒体处理的目标文件信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
         return self._InputInfo
 
     @InputInfo.setter
@@ -40578,6 +48897,10 @@ class ScheduleTask(AbstractModel):
 
     @property
     def MetaData(self):
+        """原始视频的元信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
+        """
         return self._MetaData
 
     @MetaData.setter
@@ -40586,6 +48909,10 @@ class ScheduleTask(AbstractModel):
 
     @property
     def ActivityResultSet(self):
+        """编排任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ActivityResult
+        """
         return self._ActivityResultSet
 
     @ActivityResultSet.setter
@@ -40682,6 +49009,9 @@ Disabled：已禁用。
 
     @property
     def ScheduleId(self):
+        """编排唯一标识。
+        :rtype: int
+        """
         return self._ScheduleId
 
     @ScheduleId.setter
@@ -40690,6 +49020,10 @@ Disabled：已禁用。
 
     @property
     def ScheduleName(self):
+        """编排名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ScheduleName
 
     @ScheduleName.setter
@@ -40698,6 +49032,12 @@ Disabled：已禁用。
 
     @property
     def Type(self):
+        """编排类型，可选值：
+ <li>Preset：系统预置编排；</li>
+<li>Custom：用户自定义编排。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -40706,6 +49046,12 @@ Disabled：已禁用。
 
     @property
     def Status(self):
+        """编排状态，取值范围：
+Enabled：已启用，
+Disabled：已禁用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -40714,6 +49060,10 @@ Disabled：已禁用。
 
     @property
     def Trigger(self):
+        """编排绑定的触发规则。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
+        """
         return self._Trigger
 
     @Trigger.setter
@@ -40722,6 +49072,10 @@ Disabled：已禁用。
 
     @property
     def Activities(self):
+        """编排任务列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Activity
+        """
         return self._Activities
 
     @Activities.setter
@@ -40730,6 +49084,10 @@ Disabled：已禁用。
 
     @property
     def OutputStorage(self):
+        """媒体处理的文件输出存储位置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -40738,6 +49096,10 @@ Disabled：已禁用。
 
     @property
     def OutputDir(self):
+        """媒体处理生成的文件输出的目标目录。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OutputDir
 
     @OutputDir.setter
@@ -40746,6 +49108,10 @@ Disabled：已禁用。
 
     @property
     def TaskNotifyConfig(self):
+        """任务的事件通知配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -40754,6 +49120,10 @@ Disabled：已禁用。
 
     @property
     def CreateTime(self):
+        """创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -40762,6 +49132,10 @@ Disabled：已禁用。
 
     @property
     def UpdateTime(self):
+        """最后编辑时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -40770,6 +49144,10 @@ Disabled：已禁用。
 
     @property
     def ResourceId(self):
+        """资源ID，对于没有关联资源ID的，用账号主资源ID填充。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -40833,6 +49211,12 @@ class ScratchRepairConfig(AbstractModel):
 
     @property
     def Switch(self):
+        """能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -40841,6 +49225,11 @@ class ScratchRepairConfig(AbstractModel):
 
     @property
     def Intensity(self):
+        """强度，取值范围：0.0~1.0。
+默认：0.0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Intensity
 
     @Intensity.setter
@@ -40880,6 +49269,10 @@ class SearchTaskResult(AbstractModel):
 
     @property
     def Score(self):
+        """视频在本次检索中的得分，得分越高和检索值越相似，取值范围[0,1]
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Score
 
     @Score.setter
@@ -40888,6 +49281,10 @@ class SearchTaskResult(AbstractModel):
 
     @property
     def VideoId(self):
+        """检索获得的视频ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VideoId
 
     @VideoId.setter
@@ -40927,6 +49324,10 @@ Text：文本检索
 
     @property
     def SearchValueType(self):
+        """检索输入的类型，目前支持：
+Text：文本检索
+        :rtype: str
+        """
         return self._SearchValueType
 
     @SearchValueType.setter
@@ -40935,6 +49336,10 @@ Text：文本检索
 
     @property
     def TextInput(self):
+        """当SearchValueType为Text时有效且必填，用于检索视频的文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TextInput
 
     @TextInput.setter
@@ -40995,6 +49400,9 @@ class SegmentRecognitionItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """置信度。
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -41003,6 +49411,9 @@ class SegmentRecognitionItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """片段起始时间偏移。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -41011,6 +49422,9 @@ class SegmentRecognitionItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """片段结束时间偏移。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -41019,6 +49433,10 @@ class SegmentRecognitionItem(AbstractModel):
 
     @property
     def SegmentUrl(self):
+        """拆条片段URL。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SegmentUrl
 
     @SegmentUrl.setter
@@ -41027,6 +49445,10 @@ class SegmentRecognitionItem(AbstractModel):
 
     @property
     def Title(self):
+        """分段标题。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -41035,6 +49457,10 @@ class SegmentRecognitionItem(AbstractModel):
 
     @property
     def Summary(self):
+        """分段概要。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Summary
 
     @Summary.setter
@@ -41043,6 +49469,10 @@ class SegmentRecognitionItem(AbstractModel):
 
     @property
     def BeginTime(self):
+        """直播切片对应直播起始时间点，采用 ISO 日期格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -41051,6 +49481,10 @@ class SegmentRecognitionItem(AbstractModel):
 
     @property
     def EndTime(self):
+        """直播切片对应直播结束时间点，采用 ISO 日期格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -41103,6 +49537,13 @@ off：关闭
 
     @property
     def Switch(self):
+        """启动分片时长开关，可选值：
+on：打开
+off：关闭
+默认off
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -41111,6 +49552,10 @@ off：关闭
 
     @property
     def FragmentTime(self):
+        """启动时分片时长，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FragmentTime
 
     @FragmentTime.setter
@@ -41119,6 +49564,10 @@ off：关闭
 
     @property
     def FragmentEndNum(self):
+        """生效分片数，表示前FragmentEndNum个分片以FragmentTime时长切片，取值>=1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FragmentEndNum
 
     @FragmentEndNum.setter
@@ -41162,6 +49611,12 @@ class SharpEnhanceConfig(AbstractModel):
 
     @property
     def Switch(self):
+        """能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -41170,6 +49625,11 @@ class SharpEnhanceConfig(AbstractModel):
 
     @property
     def Intensity(self):
+        """强度，取值范围：0.0~1.0。
+默认：0.0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Intensity
 
     @Intensity.setter
@@ -41213,6 +49673,10 @@ class SimpleAesDrm(AbstractModel):
 
     @property
     def Uri(self):
+        """请求解密秘钥uri地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Uri
 
     @Uri.setter
@@ -41221,6 +49685,10 @@ class SimpleAesDrm(AbstractModel):
 
     @property
     def Key(self):
+        """加密key(32字节字符串)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -41229,6 +49697,10 @@ class SimpleAesDrm(AbstractModel):
 
     @property
     def Vector(self):
+        """加密初始化向量(32字节字符串)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Vector
 
     @Vector.setter
@@ -41293,6 +49765,9 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """指定时间点截图模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -41301,6 +49776,11 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
 
     @property
     def ExtTimeOffsetSet(self):
+        """截图时间点列表，时间点支持 s、% 两种格式：
+<li>当字符串以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
+<li>当字符串以 % 结尾，表示时间点为视频时长的百分比大小，如10%表示时间点为视频前第10%的时间。</li>
+        :rtype: list of str
+        """
         return self._ExtTimeOffsetSet
 
     @ExtTimeOffsetSet.setter
@@ -41309,6 +49789,9 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
 
     @property
     def TimeOffsetSet(self):
+        """截图时间点列表，单位为<font color=red>秒</font>。此参数已不再建议使用，建议您使用 ExtTimeOffsetSet 参数。
+        :rtype: list of float
+        """
         return self._TimeOffsetSet
 
     @TimeOffsetSet.setter
@@ -41317,6 +49800,9 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
 
     @property
     def WatermarkSet(self):
+        """水印列表，支持多张图片或文字水印，最大可支持 10 张。
+        :rtype: list of WatermarkInput
+        """
         return self._WatermarkSet
 
     @WatermarkSet.setter
@@ -41325,6 +49811,10 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """时间点截图后文件的目标存储，不填则继承上层的 OutputStorage 值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -41333,6 +49823,16 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
 
     @property
     def OutputObjectPath(self):
+        """时间点截图后图片文件的输出路径，可以为相对路径或者绝对路径。
+若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
+相对路径示例：
+<li>文件名_{变量名}.{format}</li>
+<li>文件名.{format}</li>
+绝对路径示例：
+<li>/自定义路径/文件名_{变量名}.{format}</li>
+如果不填，则默认为相对路径：`{inputName}_snapshotByTimeOffset_{definition}_{number}.{format}`。
+        :rtype: str
+        """
         return self._OutputObjectPath
 
     @OutputObjectPath.setter
@@ -41341,6 +49841,10 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
 
     @property
     def ObjectNumberFormat(self):
+        """时间点截图后输出路径中的`{number}`变量的规则。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
+        """
         return self._ObjectNumberFormat
 
     @ObjectNumberFormat.setter
@@ -41439,6 +49943,9 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
 
     @property
     def Definition(self):
+        """时间点截图模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -41447,6 +49954,11 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
 
     @property
     def Type(self):
+        """模板类型，取值范围：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -41455,6 +49967,9 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
 
     @property
     def Name(self):
+        """时间点截图模板名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -41463,6 +49978,9 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
 
     @property
     def Comment(self):
+        """模板描述信息。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -41471,6 +49989,14 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
 
     @property
     def Width(self):
+        """截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -41479,6 +50005,14 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
 
     @property
     def Height(self):
+        """截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -41487,6 +50021,12 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
 
     @property
     def ResolutionAdaptive(self):
+        """分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -41495,6 +50035,9 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
 
     @property
     def Format(self):
+        """图片格式。
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -41503,6 +50046,9 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
 
     @property
     def CreateTime(self):
+        """模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -41511,6 +50057,9 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -41519,6 +50068,14 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
 
     @property
     def FillType(self):
+        """填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+<li>black：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+<li>black：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+默认值：black 。
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -41562,6 +50119,9 @@ class StartStreamLinkFlowRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """流Id。
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -41595,6 +50155,9 @@ class StartStreamLinkFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -41620,6 +50183,9 @@ class StopStreamLinkFlowRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """流Id。
+        :rtype: str
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -41653,6 +50219,9 @@ class StopStreamLinkFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -41678,6 +50247,9 @@ class StreamLinkRegionInfo(AbstractModel):
 
     @property
     def Regions(self):
+        """媒体直传输的地区信息列表。
+        :rtype: list of RegionInfo
+        """
         return self._Regions
 
     @Regions.setter
@@ -41745,6 +50317,10 @@ class SubtitleTemplate(AbstractModel):
 
     @property
     def Path(self):
+        """要压制到视频中的字幕文件地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -41753,6 +50329,10 @@ class SubtitleTemplate(AbstractModel):
 
     @property
     def StreamIndex(self):
+        """指定要压制到视频中的字幕轨道，如果有指定Path，则Path 优先级更高。Path 和 StreamIndex 至少指定一个。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._StreamIndex
 
     @StreamIndex.setter
@@ -41761,6 +50341,15 @@ class SubtitleTemplate(AbstractModel):
 
     @property
     def FontType(self):
+        """字体类型，
+<li>hei.ttf：黑体</li>
+<li>song.ttf：宋体</li>
+<li>simkai.ttf：楷体</li>
+<li>arial.ttf：仅支持英文</li>
+默认hei.ttf
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FontType
 
     @FontType.setter
@@ -41769,6 +50358,10 @@ class SubtitleTemplate(AbstractModel):
 
     @property
     def FontSize(self):
+        """字体大小，格式：Npx，N 为数值，不指定则以字幕文件中为准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FontSize
 
     @FontSize.setter
@@ -41777,6 +50370,10 @@ class SubtitleTemplate(AbstractModel):
 
     @property
     def FontColor(self):
+        """字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FontColor
 
     @FontColor.setter
@@ -41785,6 +50382,13 @@ class SubtitleTemplate(AbstractModel):
 
     @property
     def FontAlpha(self):
+        """文字透明度，取值范围：(0, 1]
+<li>0：完全透明</li>
+<li>1：完全不透明</li>
+默认值：1。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._FontAlpha
 
     @FontAlpha.setter
@@ -41839,6 +50443,12 @@ class SuperResolutionConfig(AbstractModel):
 
     @property
     def Switch(self):
+        """能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -41847,6 +50457,13 @@ class SuperResolutionConfig(AbstractModel):
 
     @property
     def Type(self):
+        """类型，可选值：
+<li>lq：针对低清晰度有较多噪声视频的超分；</li>
+<li>hq：针对高清晰度视频超分。</li>
+默认值：lq。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -41855,6 +50472,12 @@ class SuperResolutionConfig(AbstractModel):
 
     @property
     def Size(self):
+        """超分倍数，可选值：
+<li>2：目前只支持 2 倍超分。</li>
+默认值：2。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -41909,6 +50532,17 @@ class SvgWatermarkInput(AbstractModel):
 
     @property
     def Width(self):
+        """水印的宽度，支持 px，%，W%，H%，S%，L% 六种格式：
+<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素；当填 0px 且
+ Height 不为 0px 时，表示水印的宽度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的宽度取原始 SVG 图像的宽度；</li>
+<li>当字符串以 W% 结尾，表示水印 Width 为视频宽度的百分比大小，如 10W% 表示 Width 为视频宽度的 10%；</li>
+<li>当字符串以 H% 结尾，表示水印 Width 为视频高度的百分比大小，如 10H% 表示 Width 为视频高度的 10%；</li>
+<li>当字符串以 S% 结尾，表示水印 Width 为视频短边的百分比大小，如 10S% 表示 Width 为视频短边的 10%；</li>
+<li>当字符串以 L% 结尾，表示水印 Width 为视频长边的百分比大小，如 10L% 表示 Width 为视频长边的 10%；</li>
+<li>当字符串以 % 结尾时，含义同 W%。</li>
+默认值为 10W%。
+        :rtype: str
+        """
         return self._Width
 
     @Width.setter
@@ -41917,6 +50551,17 @@ class SvgWatermarkInput(AbstractModel):
 
     @property
     def Height(self):
+        """水印的高度，支持 px，W%，H%，S%，L% 六种格式：
+<li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素；当填 0px 且
+ Width 不为 0px 时，表示水印的高度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的高度取原始 SVG 图像的高度；</li>
+<li>当字符串以 W% 结尾，表示水印 Height 为视频宽度的百分比大小，如 10W% 表示 Height 为视频宽度的 10%；</li>
+<li>当字符串以 H% 结尾，表示水印 Height 为视频高度的百分比大小，如 10H% 表示 Height 为视频高度的 10%；</li>
+<li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短边的 10%；</li>
+<li>当字符串以 L% 结尾，表示水印 Height 为视频长边的百分比大小，如 10L% 表示 Height 为视频长边的 10%；</li>
+<li>当字符串以 % 结尾时，含义同 H%。</li>
+默认值为 0px。
+        :rtype: str
+        """
         return self._Height
 
     @Height.setter
@@ -41970,6 +50615,17 @@ class SvgWatermarkInputForUpdate(AbstractModel):
 
     @property
     def Width(self):
+        """水印的宽度，支持 px，%，W%，H%，S%，L% 六种格式：
+<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素；当填 0px 且
+ Height 不为 0px 时，表示水印的宽度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的宽度取原始 SVG 图像的宽度；</li>
+<li>当字符串以 W% 结尾，表示水印 Width 为视频宽度的百分比大小，如 10W% 表示 Width 为视频宽度的 10%；</li>
+<li>当字符串以 H% 结尾，表示水印 Width 为视频高度的百分比大小，如 10H% 表示 Width 为视频高度的 10%；</li>
+<li>当字符串以 S% 结尾，表示水印 Width 为视频短边的百分比大小，如 10S% 表示 Width 为视频短边的 10%；</li>
+<li>当字符串以 L% 结尾，表示水印 Width 为视频长边的百分比大小，如 10L% 表示 Width 为视频长边的 10%；</li>
+<li>当字符串以 % 结尾时，含义同 W%。</li>
+默认值为 10W%。
+        :rtype: str
+        """
         return self._Width
 
     @Width.setter
@@ -41978,6 +50634,17 @@ class SvgWatermarkInputForUpdate(AbstractModel):
 
     @property
     def Height(self):
+        """水印的高度，支持 px，%，W%，H%，S%，L% 六种格式：
+<li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素；当填 0px 且
+ Width 不为 0px 时，表示水印的高度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的高度取原始 SVG 图像的高度；</li>
+<li>当字符串以 W% 结尾，表示水印 Height 为视频宽度的百分比大小，如 10W% 表示 Height 为视频宽度的 10%；</li>
+<li>当字符串以 H% 结尾，表示水印 Height 为视频高度的百分比大小，如 10H% 表示 Height 为视频高度的 10%；</li>
+<li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短边的 10%；</li>
+<li>当字符串以 L% 结尾，表示水印 Height 为视频长边的百分比大小，如 10L% 表示 Height 为视频长边的 10%；</li>
+<li>当字符串以 % 结尾时，含义同 H%。
+默认值为 0px。
+        :rtype: str
+        """
         return self._Height
 
     @Height.setter
@@ -42019,6 +50686,12 @@ class TEHDConfig(AbstractModel):
 
     @property
     def Type(self):
+        """极速高清类型，可选值：
+<li>TEHD-100：极速高清-100（视频极速高清）。</li>
+<li>TEHD-200：极速高清-200（音频极速高清）。</li>
+不填代表不启用极速高清。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -42027,6 +50700,10 @@ class TEHDConfig(AbstractModel):
 
     @property
     def MaxVideoBitrate(self):
+        """视频码率上限，当 Type 指定了极速高清类型时有效。
+不填或填0表示不设视频码率上限。
+        :rtype: int
+        """
         return self._MaxVideoBitrate
 
     @MaxVideoBitrate.setter
@@ -42069,6 +50746,13 @@ class TEHDConfigForUpdate(AbstractModel):
 
     @property
     def Type(self):
+        """极速高清类型，可选值：
+<li>TEHD-100：极速高清-100（视频极速高清）。</li>
+<li>TEHD-200：极速高清-200（音频极速高清）。</li>
+不填代表不修改。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -42077,6 +50761,10 @@ class TEHDConfigForUpdate(AbstractModel):
 
     @property
     def MaxVideoBitrate(self):
+        """视频码率上限，不填代表不修改。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxVideoBitrate
 
     @MaxVideoBitrate.setter
@@ -42113,6 +50801,11 @@ class TagConfigureInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """智能标签任务开关，可选值：
+<li>ON：开启智能标签任务；</li>
+<li>OFF：关闭智能标签任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -42148,6 +50841,11 @@ class TagConfigureInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """智能标签任务开关，可选值：
+<li>ON：开启智能标签任务；</li>
+<li>OFF：关闭智能标签任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -42214,6 +50912,15 @@ class TaskNotifyConfig(AbstractModel):
 
     @property
     def NotifyType(self):
+        """通知类型，可选值：
+<li>CMQ：已下线，建议切换到TDMQ-CMQ</li>
+<li>TDMQ-CMQ：消息队列</li>
+<li>URL：指定URL时HTTP回调推送到 NotifyUrl 指定的地址，回调协议http+json，包体内容同解析事件通知接口的输出参数 </li>
+<li>SCF：不推荐使用，需要在控制台额外配置SCF</li>
+<li>AWS-SQS：AWS 队列，只适用于 AWS 任务，且要求同区域</li>
+<font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
+        :rtype: str
+        """
         return self._NotifyType
 
     @NotifyType.setter
@@ -42222,6 +50929,9 @@ class TaskNotifyConfig(AbstractModel):
 
     @property
     def NotifyMode(self):
+        """工作流通知的模式，可取值有 Finish 和 Change，不填代表 Finish。
+        :rtype: str
+        """
         return self._NotifyMode
 
     @NotifyMode.setter
@@ -42230,6 +50940,9 @@ class TaskNotifyConfig(AbstractModel):
 
     @property
     def NotifyUrl(self):
+        """HTTP回调地址，NotifyType为URL时必填。
+        :rtype: str
+        """
         return self._NotifyUrl
 
     @NotifyUrl.setter
@@ -42238,6 +50951,9 @@ class TaskNotifyConfig(AbstractModel):
 
     @property
     def CmqModel(self):
+        """CMQ或TDMQ-CMQ 的模型，有 Queue 和 Topic 两种。
+        :rtype: str
+        """
         return self._CmqModel
 
     @CmqModel.setter
@@ -42246,6 +50962,9 @@ class TaskNotifyConfig(AbstractModel):
 
     @property
     def CmqRegion(self):
+        """CMQ或TDMQ-CMQ 的园区，如 sh，bj 等。
+        :rtype: str
+        """
         return self._CmqRegion
 
     @CmqRegion.setter
@@ -42254,6 +50973,9 @@ class TaskNotifyConfig(AbstractModel):
 
     @property
     def TopicName(self):
+        """当模型为 Topic 时有效，表示接收事件通知的 CMQ 或 TDMQ-CMQ 的主题名。
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -42262,6 +50984,9 @@ class TaskNotifyConfig(AbstractModel):
 
     @property
     def QueueName(self):
+        """当模型为 Queue 时有效，表示接收事件通知的 CMQ 或 TDMQ-CMQ 的队列名。
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -42270,6 +50995,11 @@ class TaskNotifyConfig(AbstractModel):
 
     @property
     def AwsSQS(self):
+        """AWS SQS 回调，NotifyType为 AWS-SQS 时必填。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
+        """
         return self._AwsSQS
 
     @AwsSQS.setter
@@ -42278,6 +51008,10 @@ class TaskNotifyConfig(AbstractModel):
 
     @property
     def NotifyKey(self):
+        """用于生成回调签名的key。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._NotifyKey
 
     @NotifyKey.setter
@@ -42331,6 +51065,11 @@ class TaskOutputStorage(AbstractModel):
 
     @property
     def Type(self):
+        """媒体处理输出对象存储位置的类型，支持：
+<li>COS：COS存储</li>
+<li>AWS-S3：AWS 存储，只适用于AWS任务，且要求同区域</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -42339,6 +51078,10 @@ class TaskOutputStorage(AbstractModel):
 
     @property
     def CosOutputStorage(self):
+        """当 Type 为 COS 时有效，则该项为必填，表示媒体处理 COS 输出位置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CosOutputStorage`
+        """
         return self._CosOutputStorage
 
     @CosOutputStorage.setter
@@ -42347,6 +51090,10 @@ class TaskOutputStorage(AbstractModel):
 
     @property
     def S3OutputStorage(self):
+        """当 Type 为 AWS-S3 时有效，则该项为必填，表示媒体处理 AWS S3 输出位置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.S3OutputStorage`
+        """
         return self._S3OutputStorage
 
     @S3OutputStorage.setter
@@ -42404,6 +51151,9 @@ class TaskSimpleInfo(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务 ID。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -42412,6 +51162,12 @@ class TaskSimpleInfo(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型，包含：
+<li> WorkflowTask：工作流处理任务；</li>
+<li> EditMediaTask：视频编辑任务；</li>
+<li> LiveProcessTask：直播处理任务。</li>
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -42420,6 +51176,9 @@ class TaskSimpleInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """任务创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -42428,6 +51187,9 @@ class TaskSimpleInfo(AbstractModel):
 
     @property
     def BeginProcessTime(self):
+        """任务开始执行时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。若任务尚未开始，该字段为：0000-00-00T00:00:00Z。
+        :rtype: str
+        """
         return self._BeginProcessTime
 
     @BeginProcessTime.setter
@@ -42436,6 +51198,9 @@ class TaskSimpleInfo(AbstractModel):
 
     @property
     def FinishTime(self):
+        """任务结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。若任务尚未完成，该字段为：0000-00-00T00:00:00Z。
+        :rtype: str
+        """
         return self._FinishTime
 
     @FinishTime.setter
@@ -42444,6 +51209,9 @@ class TaskSimpleInfo(AbstractModel):
 
     @property
     def SubTaskTypes(self):
+        """子任务类型。
+        :rtype: list of str
+        """
         return self._SubTaskTypes
 
     @SubTaskTypes.setter
@@ -42485,6 +51253,9 @@ class TerrorismConfigureInfo(AbstractModel):
 
     @property
     def ImgReviewInfo(self):
+        """画面涉敏任务控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TerrorismImgReviewTemplateInfo`
+        """
         return self._ImgReviewInfo
 
     @ImgReviewInfo.setter
@@ -42493,6 +51264,9 @@ class TerrorismConfigureInfo(AbstractModel):
 
     @property
     def OcrReviewInfo(self):
+        """文本涉敏任务控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TerrorismOcrReviewTemplateInfo`
+        """
         return self._OcrReviewInfo
 
     @OcrReviewInfo.setter
@@ -42534,6 +51308,9 @@ class TerrorismConfigureInfoForUpdate(AbstractModel):
 
     @property
     def ImgReviewInfo(self):
+        """画面涉敏任务控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TerrorismImgReviewTemplateInfoForUpdate`
+        """
         return self._ImgReviewInfo
 
     @ImgReviewInfo.setter
@@ -42542,6 +51319,9 @@ class TerrorismConfigureInfoForUpdate(AbstractModel):
 
     @property
     def OcrReviewInfo(self):
+        """文本涉敏任务控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TerrorismOcrReviewTemplateInfoForUpdate`
+        """
         return self._OcrReviewInfo
 
     @OcrReviewInfo.setter
@@ -42599,6 +51379,11 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """画面涉敏任务开关，可选值：
+<li>ON：开启画面涉敏任务；</li>
+<li>OFF：关闭画面涉敏任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -42607,6 +51392,17 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 
     @property
     def LabelSet(self):
+        """画面涉敏过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+<li>guns：武器枪支；</li>
+<li>crowd：人群聚集；</li>
+<li>bloody：血腥画面；</li>
+<li>police：警察部队；</li>
+<li>banners：涉敏旗帜；</li>
+<li>militant：武装分子；</li>
+<li>explosion：爆炸火灾；</li>
+<li>terrorists：涉敏人物；</li>
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -42615,6 +51411,9 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -42623,6 +51422,9 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 80 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -42678,6 +51480,11 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """画面涉敏任务开关，可选值：
+<li>ON：开启画面涉敏任务；</li>
+<li>OFF：关闭画面涉敏任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -42686,6 +51493,17 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def LabelSet(self):
+        """画面涉敏过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+<li>guns：武器枪支；</li>
+<li>crowd：人群聚集；</li>
+<li>bloody：血腥画面；</li>
+<li>police：警察部队；</li>
+<li>banners：涉敏旗帜；</li>
+<li>militant：武装分子；</li>
+<li>explosion：爆炸火灾；</li>
+<li>terrorists：涉敏人物；</li>
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -42694,6 +51512,9 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -42702,6 +51523,9 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -42746,6 +51570,11 @@ class TerrorismOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """文本涉敏任务开关，可选值：
+<li>ON：开启文本涉敏任务；</li>
+<li>OFF：关闭文本涉敏任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -42754,6 +51583,9 @@ class TerrorismOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -42762,6 +51594,9 @@ class TerrorismOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -42805,6 +51640,11 @@ class TerrorismOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """文本涉敏任务开关，可选值：
+<li>ON：开启文本涉敏任务；</li>
+<li>OFF：关闭文本涉敏任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -42813,6 +51653,9 @@ class TerrorismOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -42821,6 +51664,9 @@ class TerrorismOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -42874,6 +51720,11 @@ class TextWatermarkTemplateInput(AbstractModel):
 
     @property
     def FontType(self):
+        """字体类型，目前可以支持两种：
+<li>simkai.ttf：可以支持中文和英文；</li>
+<li>arial.ttf：仅支持英文。</li>
+        :rtype: str
+        """
         return self._FontType
 
     @FontType.setter
@@ -42882,6 +51733,9 @@ class TextWatermarkTemplateInput(AbstractModel):
 
     @property
     def FontSize(self):
+        """字体大小，格式：Npx，N 为数值。N的取值范围：[0,1] 和 [8, 4096]
+        :rtype: str
+        """
         return self._FontSize
 
     @FontSize.setter
@@ -42890,6 +51744,9 @@ class TextWatermarkTemplateInput(AbstractModel):
 
     @property
     def FontColor(self):
+        """字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）。
+        :rtype: str
+        """
         return self._FontColor
 
     @FontColor.setter
@@ -42898,6 +51755,12 @@ class TextWatermarkTemplateInput(AbstractModel):
 
     @property
     def FontAlpha(self):
+        """文字透明度，取值范围：(0, 1]
+<li>0：完全透明</li>
+<li>1：完全不透明</li>
+默认值：1。
+        :rtype: float
+        """
         return self._FontAlpha
 
     @FontAlpha.setter
@@ -42906,6 +51769,10 @@ class TextWatermarkTemplateInput(AbstractModel):
 
     @property
     def TextContent(self):
+        """文字内容，长度不超过100个字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TextContent
 
     @TextContent.setter
@@ -42959,6 +51826,11 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
 
     @property
     def FontType(self):
+        """字体类型，目前可以支持两种：
+<li>simkai.ttf：可以支持中文和英文；</li>
+<li>arial.ttf：仅支持英文。</li>
+        :rtype: str
+        """
         return self._FontType
 
     @FontType.setter
@@ -42967,6 +51839,9 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
 
     @property
     def FontSize(self):
+        """字体大小，格式：Npx，N 为数值。N的取值范围：[0,1] 和 [8, 4096]
+        :rtype: str
+        """
         return self._FontSize
 
     @FontSize.setter
@@ -42975,6 +51850,9 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
 
     @property
     def FontColor(self):
+        """字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）。
+        :rtype: str
+        """
         return self._FontColor
 
     @FontColor.setter
@@ -42983,6 +51861,11 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
 
     @property
     def FontAlpha(self):
+        """文字透明度，取值范围：(0, 1]
+<li>0：完全透明</li>
+<li>1：完全不透明</li>
+        :rtype: float
+        """
         return self._FontAlpha
 
     @FontAlpha.setter
@@ -42991,6 +51874,9 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
 
     @property
     def TextContent(self):
+        """文字内容，长度不超过100个字符。
+        :rtype: str
+        """
         return self._TextContent
 
     @TextContent.setter
@@ -43084,6 +51970,9 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """视频转码模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -43092,6 +51981,11 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def RawParameter(self):
+        """视频转码自定义参数，当 Definition 填 0 时有效。
+该参数用于高度定制场景，建议您优先使用 Definition 指定转码参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.RawTranscodeParameter`
+        """
         return self._RawParameter
 
     @RawParameter.setter
@@ -43100,6 +51994,12 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def OverrideParameter(self):
+        """视频转码自定义参数，当 Definition 不填 0 时有效。
+当填写了该结构中的部分转码参数时，将使用填写的参数覆盖转码模板中的参数。
+该参数用于高度定制场景，建议您仅使用 Definition 指定转码参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.OverrideTranscodeParameter`
+        """
         return self._OverrideParameter
 
     @OverrideParameter.setter
@@ -43108,6 +52008,10 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def WatermarkSet(self):
+        """水印列表，支持多张图片或文字水印，最大可支持 10 张。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of WatermarkInput
+        """
         return self._WatermarkSet
 
     @WatermarkSet.setter
@@ -43116,6 +52020,9 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def MosaicSet(self):
+        """马赛克列表，最大可支持 10 张。
+        :rtype: list of MosaicInput
+        """
         return self._MosaicSet
 
     @MosaicSet.setter
@@ -43124,6 +52031,12 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """转码后的视频的起始时间偏移，单位：秒。
+<li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li>
+<li>当数值大于0时（假设为 n），表示转码后的视频从原始视频的第 n 秒位置开始；</li>
+<li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -43132,6 +52045,12 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """转码后视频的终止时间偏移，单位：秒。
+<li>不填或填0，表示转码后的视频持续到原始视频的末尾终止；</li>
+<li>当数值大于0时（假设为 n），表示转码后的视频持续到原始视频第 n 秒时终止；</li>
+<li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -43140,6 +52059,10 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """转码后文件的目标存储，不填则继承上层的 OutputStorage 值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -43148,6 +52071,17 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def OutputObjectPath(self):
+        """转码后主文件的输出路径，可以为相对路径或者绝对路径。
+若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
+相对路径示例：
+<li>文件名_{变量名}.{format}</li>
+<li>文件名.{format}</li>
+绝对路径示例：
+<li>/自定义路径/文件名_{变量名}.{format}</li>
+如果不填，则默认为相对路径：`{inputName}_transcode_{definition}.{format}`。
+
+        :rtype: str
+        """
         return self._OutputObjectPath
 
     @OutputObjectPath.setter
@@ -43156,6 +52090,9 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def SegmentObjectName(self):
+        """转码后分片文件的输出路径（转码 HLS 时 ts 的路径），只能为相对路径。如果不填，则默认为：`{inputName}_transcode_{definition}_{number}.{format}`。
+        :rtype: str
+        """
         return self._SegmentObjectName
 
     @SegmentObjectName.setter
@@ -43164,6 +52101,10 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def ObjectNumberFormat(self):
+        """转码后输出路径中的`{number}`变量的规则。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
+        """
         return self._ObjectNumberFormat
 
     @ObjectNumberFormat.setter
@@ -43172,6 +52113,10 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def HeadTailParameter(self):
+        """片头片尾参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.HeadTailParameter`
+        """
         return self._HeadTailParameter
 
     @HeadTailParameter.setter
@@ -43285,6 +52230,9 @@ class TranscodeTemplate(AbstractModel):
 
     @property
     def Definition(self):
+        """转码模板唯一标识。
+        :rtype: str
+        """
         return self._Definition
 
     @Definition.setter
@@ -43293,6 +52241,9 @@ class TranscodeTemplate(AbstractModel):
 
     @property
     def Container(self):
+        """封装格式，取值：mp4、flv、hls、mp3、flac、ogg。
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -43301,6 +52252,9 @@ class TranscodeTemplate(AbstractModel):
 
     @property
     def Name(self):
+        """转码模板名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -43309,6 +52263,9 @@ class TranscodeTemplate(AbstractModel):
 
     @property
     def Comment(self):
+        """模板描述信息。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -43317,6 +52274,11 @@ class TranscodeTemplate(AbstractModel):
 
     @property
     def Type(self):
+        """模板类型，取值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -43325,6 +52287,11 @@ class TranscodeTemplate(AbstractModel):
 
     @property
     def RemoveVideo(self):
+        """是否去除视频数据，取值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+        :rtype: int
+        """
         return self._RemoveVideo
 
     @RemoveVideo.setter
@@ -43333,6 +52300,11 @@ class TranscodeTemplate(AbstractModel):
 
     @property
     def RemoveAudio(self):
+        """是否去除音频数据，取值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+        :rtype: int
+        """
         return self._RemoveAudio
 
     @RemoveAudio.setter
@@ -43341,6 +52313,9 @@ class TranscodeTemplate(AbstractModel):
 
     @property
     def VideoTemplate(self):
+        """视频流配置参数，仅当 RemoveVideo 为 0，该字段有效。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
+        """
         return self._VideoTemplate
 
     @VideoTemplate.setter
@@ -43349,6 +52324,9 @@ class TranscodeTemplate(AbstractModel):
 
     @property
     def AudioTemplate(self):
+        """音频流配置参数，仅当 RemoveAudio 为 0，该字段有效 。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
+        """
         return self._AudioTemplate
 
     @AudioTemplate.setter
@@ -43357,6 +52335,10 @@ class TranscodeTemplate(AbstractModel):
 
     @property
     def TEHDConfig(self):
+        """极速高清转码参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
+        """
         return self._TEHDConfig
 
     @TEHDConfig.setter
@@ -43365,6 +52347,11 @@ class TranscodeTemplate(AbstractModel):
 
     @property
     def ContainerType(self):
+        """封装格式过滤条件，可选值：
+<li>Video：视频格式，可以同时包含视频流和音频流的封装格式；</li>
+<li>PureAudio：纯音频格式，只能包含音频流的封装格式板。</li>
+        :rtype: str
+        """
         return self._ContainerType
 
     @ContainerType.setter
@@ -43373,6 +52360,9 @@ class TranscodeTemplate(AbstractModel):
 
     @property
     def CreateTime(self):
+        """模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -43381,6 +52371,9 @@ class TranscodeTemplate(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -43389,6 +52382,10 @@ class TranscodeTemplate(AbstractModel):
 
     @property
     def EnhanceConfig(self):
+        """音视频增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
+        """
         return self._EnhanceConfig
 
     @EnhanceConfig.setter
@@ -43456,6 +52453,11 @@ class TranslateConfigureInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """语音翻译任务开关，可选值：
+<li>ON：开启智能语音翻译任务；</li>
+<li>OFF：关闭智能语音翻译任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -43464,6 +52466,9 @@ class TranslateConfigureInfo(AbstractModel):
 
     @property
     def SourceLanguage(self):
+        """视频源语言。
+        :rtype: str
+        """
         return self._SourceLanguage
 
     @SourceLanguage.setter
@@ -43472,6 +52477,9 @@ class TranslateConfigureInfo(AbstractModel):
 
     @property
     def DestinationLanguage(self):
+        """翻译目标语言。
+        :rtype: str
+        """
         return self._DestinationLanguage
 
     @DestinationLanguage.setter
@@ -43480,6 +52488,11 @@ class TranslateConfigureInfo(AbstractModel):
 
     @property
     def SubtitleFormat(self):
+        """生成的字幕文件格式，填空字符串表示不生成字幕文件，可选值：
+<li>vtt：生成 WebVTT 字幕文件。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubtitleFormat
 
     @SubtitleFormat.setter
@@ -43528,6 +52541,11 @@ class TranslateConfigureInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """语音翻译任务开关，可选值：
+<li>ON：开启智能语音翻译任务；</li>
+<li>OFF：关闭智能语音翻译任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -43536,6 +52554,9 @@ class TranslateConfigureInfoForUpdate(AbstractModel):
 
     @property
     def SourceLanguage(self):
+        """视频源语言。
+        :rtype: str
+        """
         return self._SourceLanguage
 
     @SourceLanguage.setter
@@ -43544,6 +52565,9 @@ class TranslateConfigureInfoForUpdate(AbstractModel):
 
     @property
     def DestinationLanguage(self):
+        """翻译目标语言。
+        :rtype: str
+        """
         return self._DestinationLanguage
 
     @DestinationLanguage.setter
@@ -43552,6 +52576,10 @@ class TranslateConfigureInfoForUpdate(AbstractModel):
 
     @property
     def SubtitleFormat(self):
+        """生成的字幕文件格式，填空字符串表示不生成字幕文件，可选值：
+<li>vtt：生成 WebVTT 字幕文件。</li>
+        :rtype: str
+        """
         return self._SubtitleFormat
 
     @SubtitleFormat.setter
@@ -43588,6 +52616,9 @@ class UrlInputInfo(AbstractModel):
 
     @property
     def Url(self):
+        """视频的 URL。
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -43633,6 +52664,11 @@ class UserDefineAsrTextReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """用户自定语音审核任务开关，可选值：
+<li>ON：开启自定义语音审核任务；</li>
+<li>OFF：关闭自定义语音审核任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -43641,6 +52677,10 @@ class UserDefineAsrTextReviewTemplateInfo(AbstractModel):
 
     @property
     def LabelSet(self):
+        """用户自定义语音过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -43649,6 +52689,9 @@ class UserDefineAsrTextReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -43657,6 +52700,9 @@ class UserDefineAsrTextReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -43705,6 +52751,11 @@ class UserDefineAsrTextReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """用户自定语音审核任务开关，可选值：
+<li>ON：开启自定义语音审核任务；</li>
+<li>OFF：关闭自定义语音审核任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -43713,6 +52764,10 @@ class UserDefineAsrTextReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def LabelSet(self):
+        """用户自定义语音过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -43721,6 +52776,9 @@ class UserDefineAsrTextReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -43729,6 +52787,9 @@ class UserDefineAsrTextReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -43771,6 +52832,9 @@ class UserDefineConfigureInfo(AbstractModel):
 
     @property
     def FaceReviewInfo(self):
+        """用户自定义人物审核控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UserDefineFaceReviewTemplateInfo`
+        """
         return self._FaceReviewInfo
 
     @FaceReviewInfo.setter
@@ -43779,6 +52843,9 @@ class UserDefineConfigureInfo(AbstractModel):
 
     @property
     def AsrReviewInfo(self):
+        """用户自定义语音审核控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UserDefineAsrTextReviewTemplateInfo`
+        """
         return self._AsrReviewInfo
 
     @AsrReviewInfo.setter
@@ -43787,6 +52854,9 @@ class UserDefineConfigureInfo(AbstractModel):
 
     @property
     def OcrReviewInfo(self):
+        """用户自定义文本审核控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UserDefineOcrTextReviewTemplateInfo`
+        """
         return self._OcrReviewInfo
 
     @OcrReviewInfo.setter
@@ -43834,6 +52904,9 @@ class UserDefineConfigureInfoForUpdate(AbstractModel):
 
     @property
     def FaceReviewInfo(self):
+        """用户自定义人物审核控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UserDefineFaceReviewTemplateInfoForUpdate`
+        """
         return self._FaceReviewInfo
 
     @FaceReviewInfo.setter
@@ -43842,6 +52915,9 @@ class UserDefineConfigureInfoForUpdate(AbstractModel):
 
     @property
     def AsrReviewInfo(self):
+        """用户自定义语音审核控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UserDefineAsrTextReviewTemplateInfoForUpdate`
+        """
         return self._AsrReviewInfo
 
     @AsrReviewInfo.setter
@@ -43850,6 +52926,9 @@ class UserDefineConfigureInfoForUpdate(AbstractModel):
 
     @property
     def OcrReviewInfo(self):
+        """用户自定义文本审核控制参数。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UserDefineOcrTextReviewTemplateInfoForUpdate`
+        """
         return self._OcrReviewInfo
 
     @OcrReviewInfo.setter
@@ -43903,6 +52982,11 @@ class UserDefineFaceReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """用户自定义人物审核任务开关，可选值：
+<li>ON：开启自定义人物审核任务；</li>
+<li>OFF：关闭自定义人物审核任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -43911,6 +52995,10 @@ class UserDefineFaceReviewTemplateInfo(AbstractModel):
 
     @property
     def LabelSet(self):
+        """用户自定义人物过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -43919,6 +53007,9 @@ class UserDefineFaceReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -43927,6 +53018,9 @@ class UserDefineFaceReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -43975,6 +53069,11 @@ class UserDefineFaceReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """用户自定义人物审核任务开关，可选值：
+<li>ON：开启自定义人物审核任务；</li>
+<li>OFF：关闭自定义人物审核任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -43983,6 +53082,10 @@ class UserDefineFaceReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def LabelSet(self):
+        """用户自定义人物过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -43991,6 +53094,9 @@ class UserDefineFaceReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -43999,6 +53105,9 @@ class UserDefineFaceReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -44047,6 +53156,11 @@ class UserDefineOcrTextReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """用户自定文本审核任务开关，可选值：
+<li>ON：开启自定义文本审核任务；</li>
+<li>OFF：关闭自定义文本审核任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -44055,6 +53169,10 @@ class UserDefineOcrTextReviewTemplateInfo(AbstractModel):
 
     @property
     def LabelSet(self):
+        """用户自定义文本过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -44063,6 +53181,9 @@ class UserDefineOcrTextReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -44071,6 +53192,9 @@ class UserDefineOcrTextReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -44119,6 +53243,11 @@ class UserDefineOcrTextReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """用户自定文本审核任务开关，可选值：
+<li>ON：开启自定义文本审核任务；</li>
+<li>OFF：关闭自定义文本审核任务。</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -44127,6 +53256,10 @@ class UserDefineOcrTextReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def LabelSet(self):
+        """用户自定义文本过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -44135,6 +53268,9 @@ class UserDefineOcrTextReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -44143,6 +53279,9 @@ class UserDefineOcrTextReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -44180,6 +53319,10 @@ class VideoDBEntryTaskResult(AbstractModel):
 
     @property
     def VideoId(self):
+        """入库的视频ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VideoId
 
     @VideoId.setter
@@ -44223,6 +53366,12 @@ class VideoDenoiseConfig(AbstractModel):
 
     @property
     def Switch(self):
+        """能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -44231,6 +53380,13 @@ class VideoDenoiseConfig(AbstractModel):
 
     @property
     def Type(self):
+        """类型，可选值：
+<li>weak</li>
+<li>strong</li>
+默认值：weak。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -44306,6 +53462,10 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def FrameRate(self):
+        """插帧帧率配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FrameRateConfig`
+        """
         return self._FrameRate
 
     @FrameRate.setter
@@ -44314,6 +53474,10 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def SuperResolution(self):
+        """超分配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
+        """
         return self._SuperResolution
 
     @SuperResolution.setter
@@ -44322,6 +53486,10 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def Hdr(self):
+        """HDR配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.HdrConfig`
+        """
         return self._Hdr
 
     @Hdr.setter
@@ -44330,6 +53498,10 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def Denoise(self):
+        """视频降噪配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoDenoiseConfig`
+        """
         return self._Denoise
 
     @Denoise.setter
@@ -44338,6 +53510,10 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def ImageQualityEnhance(self):
+        """综合增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
+        """
         return self._ImageQualityEnhance
 
     @ImageQualityEnhance.setter
@@ -44346,6 +53522,10 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def ColorEnhance(self):
+        """色彩增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
+        """
         return self._ColorEnhance
 
     @ColorEnhance.setter
@@ -44354,6 +53534,10 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def SharpEnhance(self):
+        """细节增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SharpEnhanceConfig`
+        """
         return self._SharpEnhance
 
     @SharpEnhance.setter
@@ -44362,6 +53546,10 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def FaceEnhance(self):
+        """人脸增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FaceEnhanceConfig`
+        """
         return self._FaceEnhance
 
     @FaceEnhance.setter
@@ -44370,6 +53558,10 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def LowLightEnhance(self):
+        """低光照增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
+        """
         return self._LowLightEnhance
 
     @LowLightEnhance.setter
@@ -44378,6 +53570,10 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def ScratchRepair(self):
+        """去划痕配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScratchRepairConfig`
+        """
         return self._ScratchRepair
 
     @ScratchRepair.setter
@@ -44386,6 +53582,10 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def ArtifactRepair(self):
+        """去伪影（毛刺）配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ArtifactRepairConfig`
+        """
         return self._ArtifactRepair
 
     @ArtifactRepair.setter
@@ -44618,6 +53818,24 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Codec(self):
+        """视频流的编码格式，可选值：
+<li>h264：H.264 编码</li>
+<li>h265：H.265 编码</li>
+<li>h266：H.266 编码</li>
+<li>av1：AOMedia Video 1 编码</li>
+<li>vp8：VP8 编码</li>
+<li>vp9：VP9 编码</li>
+<li>mpeg2：MPEG2 编码</li>
+<li>dnxhd：DNxHD 编码</li>
+<li>mv-hevc：MV-HEVC 编码</li>
+
+注意：av1 编码容器目前只支持 mp4 ，webm，mkv。
+注意：H.266 编码容器目前只支持 mp4 ，hls，ts，mov。
+注意：VP8、VP9编码容器目前只支持webm，mkv。
+注意：MPEG2、dnxhd 编码容器目前只支持mxf。
+注意：MV-HEVC编码容器目前只支持mp4，hls，mov。其中hls格式只支持mp4分片格式。
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -44626,6 +53844,12 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Fps(self):
+        """视频帧率，取值范围：
+当FpsDenominator的值为空时，范围：[0, 120]，单位：Hz；
+当FpsDenominator的值不为空时，Fps/FpsDenominator的范围：[0,120]
+当取值为 0，表示帧率和原始视频保持一致。
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -44634,6 +53858,10 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Bitrate(self):
+        """视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。
+当取值为 0，表示视频码率和原始视频保持一致。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -44642,6 +53870,13 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def ResolutionAdaptive(self):
+        """分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+注意：自适应模式时，Width不能小于Height。
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -44650,6 +53885,14 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Width(self):
+        """视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -44658,6 +53901,14 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Height(self):
+        """视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -44666,6 +53917,10 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Gop(self):
+        """关键帧 I 帧之间的间隔，允许按帧或秒自定义GOP长度，取值范围：0 和 [1, 100000]，
+当填 0 或不填时，系统将自动设置 gop 长度。
+        :rtype: int
+        """
         return self._Gop
 
     @Gop.setter
@@ -44674,6 +53929,13 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def GopUnit(self):
+        """Gop数值单位，可选值：
+frame：表示帧
+second：表示秒
+默认值：frame
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GopUnit
 
     @GopUnit.setter
@@ -44682,6 +53944,16 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def FillType(self):
+        """填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>
+<li>smarttailor：智能剪裁：智能选取视频画面，来保证画面比例裁剪。</li>
+默认值：black 。
+注意：自适应码流只支持 stretch、black。
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -44690,6 +53962,15 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Vcrf(self):
+        """视频恒定码率控制因子，取值范围为[0, 51]。
+如果指定该参数，将使用 CRF 的码率控制方式做转码（视频码率将不再生效）。
+如果没有特殊需求，不建议指定该参数。
+注意：
+若Mode选择ABR，无需配置Vcrf值
+若Mode选择CBR，无需配置Vcrf值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Vcrf
 
     @Vcrf.setter
@@ -44698,6 +53979,12 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def HlsTime(self):
+        """分片平均时长，范围：（0-10]，单位：秒
+默认值：10
+注意：只能在封装格式hls的情况下使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HlsTime
 
     @HlsTime.setter
@@ -44706,6 +53993,15 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def SegmentType(self):
+        """hls 分片类型，可选值 ：
+<li>0：HLS+TS 切片</li>
+<li>2：HLS+TS byte range</li>
+<li>7：HLS+MP4 切片</li>
+<li>5：HLS+MP4 byte range</li>
+默认值：0
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SegmentType
 
     @SegmentType.setter
@@ -44714,6 +54010,11 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def FpsDenominator(self):
+        """帧率分母部分
+注意：值必须大于0
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FpsDenominator
 
     @FpsDenominator.setter
@@ -44722,6 +54023,13 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Stereo3dType(self):
+        """3D视频拼接方式，仅mv-hevc，3D视频生效，可选值：
+<li>side_by_side：左右视角</li>
+<li>top_bottom：上下视角</li>
+默认值:side_by_side
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Stereo3dType
 
     @Stereo3dType.setter
@@ -44730,6 +54038,16 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def VideoProfile(self):
+        """Profile，适用于不同场景。
+baseline: 只支持I/P帧，并只支持无交错的场景，适用于视频通话、手机视频等场景。
+main: 主流Profile，提供I帧、P帧、B帧，并支持无交错模式和交错模式。主要用在主流的音视频消费产品如视频播放器、流媒体传输设备上。
+high: 最高编码等级，在Main Profile上添加了8X8的预测，并支持自定义量化。广泛应用在蓝光存储、高清电视等场景。
+default：随原视频自动填充。    
+
+仅编码标准选择h264时出现该配置， 支持 baseline/main/high，默认为：default
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VideoProfile
 
     @VideoProfile.setter
@@ -44738,6 +54056,12 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def VideoLevel(self):
+        """编码器级别，默认为自动（""）
+若编码标准选择H264: 支持以下选项：""，1 , 1.1 , 1.2 , 1.3 , 2 , 2.1 , 2.2 , 3 , 3.1 , 3.2 , 4 , 4.1 , 4.2 , 5 , 5.1
+若编码标准选择H265: 支持以下选项：""，1 , 2 , 2.1 , 3 , 3.1 , 4 , 4.1 , 5 , 5.1 , 5.2 , 6 , 6.1 , 6.2 , 8.5
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VideoLevel
 
     @VideoLevel.setter
@@ -44746,6 +54070,11 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Bframes(self):
+        """参考帧之间的B帧数，默认选自动，支持 0 - 16
+注意：不填表示使用自动
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Bframes
 
     @Bframes.setter
@@ -44754,6 +54083,15 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Mode(self):
+        """码率控制模式：可选值：
+VBR（Variable Bit Rate）：动态比特率，根据视频画面的复杂度动态调整输出的码率，使得画面质量更高，适用于存储场景和对画面质量要求较高的应用。
+ABR（Average Bit Rate）：平均比特率，尽量保持输出视频的平均码率稳定，但允许短期内的码率波动，适用于需要在保持一定画质的情况下尽量减少整体码率的场景。
+CBR（Constant Bit Rate）：恒定比特率，指视频编码时输出的码率保持恒定不变，不考虑画面复杂度的变化，适用于对网络带宽要求较为严格的场景，如直播等。
+VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量因子来控制视频质量，实现视频的恒定质量编码，码率会根据内容的复杂度自动调整，适用于希望保持一定画质的场景。
+默认选择 VBR
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -44762,6 +54100,11 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Sar(self):
+        """显示高宽比，可选值：[1:1，2:1，default]
+默认值：default
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Sar
 
     @Sar.setter
@@ -44770,6 +54113,13 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def NoScenecut(self):
+        """自适应I帧决策，开启后，媒体处理将自动识别视频中不同场景之间的过渡点（通常是视觉上显著不同的帧，比如从一个镜头切换到另一个镜头），在这些点自适应插入关键帧（I帧），从而提高视频的随机访问性和编码效率。可选值：
+0：关闭自适应I帧决策 
+1：使用自适应I帧决策
+默认值：0
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._NoScenecut
 
     @NoScenecut.setter
@@ -44778,6 +54128,10 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def BitDepth(self):
+        """比特位：支持8/10，默认为8
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BitDepth
 
     @BitDepth.setter
@@ -44786,6 +54140,13 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def RawPts(self):
+        """保持原始时间戳：可选值：
+0：表示关闭
+1：表示打开
+默认是关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RawPts
 
     @RawPts.setter
@@ -44794,6 +54155,11 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Compress(self):
+        """按比例压缩码率，开启后，将根据比例来调整输出视频的码率。填写压缩率后，系统会根据视频源码率自动计算目标输出码率。压缩率范围0-100
+不填此值表示不开启，默认不开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Compress
 
     @Compress.setter
@@ -44802,6 +54168,10 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def SegmentSpecificInfo(self):
+        """切片特殊配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
+        """
         return self._SegmentSpecificInfo
 
     @SegmentSpecificInfo.setter
@@ -45036,6 +54406,25 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Codec(self):
+        """视频流的编码格式，可选值：
+<li>h264：H.264 编码</li>
+<li>h265：H.265 编码</li>
+<li>h266：H.266 编码</li>
+<li>av1：AOMedia Video 1 编码</li>
+<li>vp8：VP8 编码</li>
+<li>vp9：VP9 编码</li>
+<li>mpeg2：MPEG2 编码</li>
+<li>dnxhd：DNxHD 编码</li>
+<li>mv-hevc：MV-HEVC 编码</li>
+
+注意：av1 编码容器目前只支持 mp4 ，webm，mkv。
+注意：H.266 编码容器目前只支持 mp4 ，hls，ts，mov。
+注意：VP8、VP9编码容器目前只支持webm，mkv。
+注意：MPEG2、dnxhd 编码容器目前只支持mxf。
+注意：MV-HEVC编码容器目前只支持mp4，hls，mov。其中hls格式只支持mp4分片格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -45044,6 +54433,13 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Fps(self):
+        """视频帧率，取值范围：
+当FpsDenominator的值为空时，范围：[0, 120]，单位：Hz；
+当FpsDenominator的值不为空时，Fps/FpsDenominator的范围：[0,120]
+当取值为 0，表示帧率和原始视频保持一致。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -45052,6 +54448,11 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Bitrate(self):
+        """视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。
+当取值为 0，表示视频码率和原始视频保持一致。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -45060,6 +54461,13 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def ResolutionAdaptive(self):
+        """分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+注意：自适应模式时，Width不能小于Height。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -45068,6 +54476,14 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Width(self):
+        """视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -45076,6 +54492,10 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Height(self):
+        """视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -45084,6 +54504,11 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Gop(self):
+        """关键帧 I 帧之间的间隔，允许按帧或秒自定义GOP长度，取值范围：0 和 [1, 100000]。
+当填 0 时，系统将自动设置 gop 长度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Gop
 
     @Gop.setter
@@ -45092,6 +54517,13 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def GopUnit(self):
+        """Gop数值单位，可选值： 
+frame：表示帧 
+second：表示秒
+默认值：frame
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GopUnit
 
     @GopUnit.setter
@@ -45100,6 +54532,17 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def FillType(self):
+        """填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+ <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>
+<li>smarttailor：智能剪裁：智能选取视频画面，来保证画面比例裁剪。</li>
+默认值：black 。
+注意：自适应码流只支持 stretch、black。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -45108,6 +54551,15 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Vcrf(self):
+        """视频恒定码率控制因子。取值范围为[0, 51]和100。
+如果没有特殊需求，不建议指定该参数。
+注意：
+需要修改为自动时，填100
+若Mode选择ABR，无需配置Vcrf值
+若Mode选择CBR，无需配置Vcrf值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Vcrf
 
     @Vcrf.setter
@@ -45116,6 +54568,13 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def ContentAdaptStream(self):
+        """内容自适应编码。可选值：
+<li>0：不开启</li>
+<li>1：开启</li>
+默认值: 0.   当开启该参数时，将会自适应生成多个不同分辨率，不同码率的码流， 其中VideoTemplate的宽和高为多个码流中的最大分辨率，VideoTemplate中的码率为多个码流中的最高码率， VideoTemplate中的vcrf为多个码流中的最高质量。 当不设置分辨率、码率和vcrf时， ContentAdaptStream 参数生成的最高分辨率为视频源的分辨率，视频质量为接近vmaf95分。 若要开启该参数或了解计费细节, 请联系您的腾讯云商务。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ContentAdaptStream
 
     @ContentAdaptStream.setter
@@ -45124,6 +54583,12 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def HlsTime(self):
+        """分片平均时长，取值范围：（0-10]，单位：秒
+默认值：10
+注意：只在封装格式HLS时使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._HlsTime
 
     @HlsTime.setter
@@ -45132,6 +54597,15 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def SegmentType(self):
+        """hls 分片类型，可选值：
+<li>0：HLS+TS 切片</li>
+<li>2：HLS+TS byte range</li>
+<li>7：HLS+MP4 切片</li>
+<li>5：HLS+MP4 byte range</li>
+默认值：0
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SegmentType
 
     @SegmentType.setter
@@ -45140,6 +54614,11 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def FpsDenominator(self):
+        """帧率分母部分
+注意：值必须大于0
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FpsDenominator
 
     @FpsDenominator.setter
@@ -45148,6 +54627,13 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Stereo3dType(self):
+        """3D视频拼接方式，仅mv-hevc，3D视频生效，可选值：
+<li>side_by_side：左右视角</li>
+<li>top_bottom：上下视角</li>
+默认值:side_by_side
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Stereo3dType
 
     @Stereo3dType.setter
@@ -45156,6 +54642,16 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def VideoProfile(self):
+        """Profile，适用于不同场景。 
+baseline: 只支持I/P帧，并只支持无交错的场景，适用于视频通话、手机视频等场景。 
+main: 主流Profile，提供I帧、P帧、B帧，并支持无交错模式和交错模式。主要用在主流的音视频消费产品如视频播放器、流媒体传输设备上。 
+high: 最高编码等级，在Main Profile上添加了8X8的预测，并支持自定义量化。广泛应用在蓝光存储、高清电视等场景。
+default：随原视频自动填充
+
+仅编码标准选择h264时出现该配置，默认为：default
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VideoProfile
 
     @VideoProfile.setter
@@ -45164,6 +54660,12 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def VideoLevel(self):
+        """编码器级别，默认为自动（""）
+若编码标准选择H264: 支持以下选项：""，1 , 1.1 , 1.2 , 1.3 , 2 , 2.1 , 2.2 , 3 , 3.1 , 3.2 , 4 , 4.1 , 4.2 , 5 , 5.1 
+若编码标准选择H265: 支持以下选项：""，1 , 2 , 2.1 , 3 , 3.1 , 4 , 4.1 , 5 , 5.1 , 5.2 , 6 , 6.1 , 6.2 , 8.5
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VideoLevel
 
     @VideoLevel.setter
@@ -45172,6 +54674,12 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Bframes(self):
+        """最大连续B帧数，默认选自动，支持 0 - 16和-1
+注意：
+-1表示修改为自动值	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Bframes
 
     @Bframes.setter
@@ -45180,6 +54688,15 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Mode(self):
+        """码率控制模式：可选值： 
+VBR（Variable Bit Rate）：动态比特率，根据视频画面的复杂度动态调整输出的码率，使得画面质量更高，适用于存储场景和对画面质量要求较高的应用。 
+ABR（Average Bit Rate）：平均比特率，尽量保持输出视频的平均码率稳定，但允许短期内的码率波动，适用于需要在保持一定画质的情况下尽量减少整体码率的场景。 
+CBR（Constant Bit Rate）：恒定比特率，指视频编码时输出的码率保持恒定不变，不考虑画面复杂度的变化，适用于对网络带宽要求较为严格的场景，如直播等。 
+VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量因子来控制视频质量，实现视频的恒定质量编码，码率会根据内容的复杂度自动调整，适用于希望保持一定画质的场景。 
+默认选择 VBR
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -45188,6 +54705,11 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Sar(self):
+        """显示高宽比，可选值：[1:1，2:1，default]
+默认值：default
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Sar
 
     @Sar.setter
@@ -45196,6 +54718,13 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def NoScenecut(self):
+        """自适应I帧决策，开启后，媒体处理将自动识别视频中不同场景之间的过渡点（通常是视觉上显著不同的帧，比如从一个镜头切换到另一个镜头），在这些点自适应插入关键帧（I帧），从而提高视频的随机访问性和编码效率。可选值： 
+0：关闭自适应I帧决策 
+1：使用自适应I帧决策 
+默认值：0	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._NoScenecut
 
     @NoScenecut.setter
@@ -45204,6 +54733,10 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def BitDepth(self):
+        """比特位：支持8/10，默认为8	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BitDepth
 
     @BitDepth.setter
@@ -45212,6 +54745,13 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def RawPts(self):
+        """保持原始时间戳：可选值： 
+0：表示关闭 
+1：表示打开 
+默认是关闭	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RawPts
 
     @RawPts.setter
@@ -45220,6 +54760,11 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def Compress(self):
+        """按比例压缩码率，开启后，将根据比例来调整输出视频的码率。填写压缩率后，系统会根据视频源码率自动计算目标输出码率。压缩率范围0-100，可选值：[0-100]和-1 
+注意：-1表示修改为自动	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Compress
 
     @Compress.setter
@@ -45228,6 +54773,10 @@ VCRF（Constant Rate Factor）：恒定质量因子，通过设定一个质量�
 
     @property
     def SegmentSpecificInfo(self):
+        """切片特殊配置	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
+        """
         return self._SegmentSpecificInfo
 
     @SegmentSpecificInfo.setter
@@ -45297,6 +54846,12 @@ class VolumeBalanceConfig(AbstractModel):
 
     @property
     def Switch(self):
+        """能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -45305,6 +54860,13 @@ class VolumeBalanceConfig(AbstractModel):
 
     @property
     def Type(self):
+        """类型，可选值：
+<li>loudNorm：响度标准化</li>
+<li>gainControl：减小突变</li>
+默认值：loudNorm。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -45366,6 +54928,9 @@ SVG 水印不支持截图打水印。
 
     @property
     def Definition(self):
+        """水印模板 ID。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -45374,6 +54939,11 @@ SVG 水印不支持截图打水印。
 
     @property
     def RawParameter(self):
+        """水印自定义参数，当 Definition 填 0 时有效。
+该参数用于高度定制场景，建议您优先使用 Definition 指定水印参数。
+水印自定义参数不支持截图打水印。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.RawWatermarkParameter`
+        """
         return self._RawParameter
 
     @RawParameter.setter
@@ -45382,6 +54952,10 @@ SVG 水印不支持截图打水印。
 
     @property
     def TextContent(self):
+        """文字内容，长度不超过100个字符。仅当水印类型为文字水印时填写。
+文字水印不支持截图打水印。
+        :rtype: str
+        """
         return self._TextContent
 
     @TextContent.setter
@@ -45390,6 +54964,10 @@ SVG 水印不支持截图打水印。
 
     @property
     def SvgContent(self):
+        """SVG 内容。长度不超过 2000000 个字符。仅当水印类型为 SVG 水印时填写。
+SVG 水印不支持截图打水印。
+        :rtype: str
+        """
         return self._SvgContent
 
     @SvgContent.setter
@@ -45398,6 +54976,13 @@ SVG 水印不支持截图打水印。
 
     @property
     def StartTimeOffset(self):
+        """水印的起始时间偏移，单位：秒。不填或填0，表示水印从画面出现时开始显现。
+<li>不填或填0，表示水印从画面开始就出现；</li>
+<li>当数值大于0时（假设为 n），表示水印从画面开始的第 n 秒出现；</li>
+<li>当数值小于0时（假设为 -n），表示水印从离画面结束 n 秒前开始出现。</li>
+注：只用于视频场景，截图不支持。
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -45406,6 +54991,13 @@ SVG 水印不支持截图打水印。
 
     @property
     def EndTimeOffset(self):
+        """水印的结束时间偏移，单位：秒。
+<li>不填或填0，表示水印持续到画面结束；</li>
+<li>当数值大于0时（假设为 n），表示水印持续到第 n 秒时消失；</li>
+<li>当数值小于0时（假设为 -n），表示水印持续到离画面结束 n 秒前消失。</li>
+注：只用于视频场景，截图不支持。
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -45492,6 +55084,9 @@ class WatermarkTemplate(AbstractModel):
 
     @property
     def Definition(self):
+        """水印模板唯一标识。
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -45500,6 +55095,11 @@ class WatermarkTemplate(AbstractModel):
 
     @property
     def Type(self):
+        """水印类型，取值：
+<li>image：图片水印；</li>
+<li>text：文字水印。</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -45508,6 +55108,9 @@ class WatermarkTemplate(AbstractModel):
 
     @property
     def Name(self):
+        """水印模板名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -45516,6 +55119,9 @@ class WatermarkTemplate(AbstractModel):
 
     @property
     def Comment(self):
+        """模板描述信息。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -45524,6 +55130,11 @@ class WatermarkTemplate(AbstractModel):
 
     @property
     def XPos(self):
+        """水印图片原点距离视频图像原点的水平位置。
+<li>当字符串以 % 结尾，表示水印 Left 为视频宽度指定百分比的位置，如 10% 表示 Left 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Left 为视频宽度指定像素的位置，如 100px 表示 Left 为 100 像素。</li>
+        :rtype: str
+        """
         return self._XPos
 
     @XPos.setter
@@ -45532,6 +55143,11 @@ class WatermarkTemplate(AbstractModel):
 
     @property
     def YPos(self):
+        """水印图片原点距离视频图像原点的垂直位置。
+<li>当字符串以 % 结尾，表示水印 Top 为视频高度指定百分比的位置，如 10% 表示 Top 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Top 为视频高度指定像素的位置，如 100px 表示 Top 为 100 像素。</li>
+        :rtype: str
+        """
         return self._YPos
 
     @YPos.setter
@@ -45540,6 +55156,10 @@ class WatermarkTemplate(AbstractModel):
 
     @property
     def ImageTemplate(self):
+        """图片水印模板，仅当 Type 为 image，该字段有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageWatermarkTemplate`
+        """
         return self._ImageTemplate
 
     @ImageTemplate.setter
@@ -45548,6 +55168,10 @@ class WatermarkTemplate(AbstractModel):
 
     @property
     def TextTemplate(self):
+        """文字水印模板，仅当 Type 为 text，该字段有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TextWatermarkTemplateInput`
+        """
         return self._TextTemplate
 
     @TextTemplate.setter
@@ -45556,6 +55180,10 @@ class WatermarkTemplate(AbstractModel):
 
     @property
     def SvgTemplate(self):
+        """SVG 水印模板，当 Type 为 svg，该字段有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SvgWatermarkInput`
+        """
         return self._SvgTemplate
 
     @SvgTemplate.setter
@@ -45564,6 +55192,9 @@ class WatermarkTemplate(AbstractModel):
 
     @property
     def CreateTime(self):
+        """模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -45572,6 +55203,9 @@ class WatermarkTemplate(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -45580,6 +55214,13 @@ class WatermarkTemplate(AbstractModel):
 
     @property
     def CoordinateOrigin(self):
+        """原点位置，可选值：
+<li>topLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
+<li>topRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
+<li>bottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
+<li>bottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下。；</li>
+        :rtype: str
+        """
         return self._CoordinateOrigin
 
     @CoordinateOrigin.setter
@@ -45636,6 +55277,9 @@ class WithdrawsWatermarkRequest(AbstractModel):
 
     @property
     def InputInfo(self):
+        """输入媒体文件存储信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
         return self._InputInfo
 
     @InputInfo.setter
@@ -45644,6 +55288,9 @@ class WithdrawsWatermarkRequest(AbstractModel):
 
     @property
     def TaskNotifyConfig(self):
+        """任务的事件通知信息，不填代表不获取事件通知。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -45652,6 +55299,9 @@ class WithdrawsWatermarkRequest(AbstractModel):
 
     @property
     def SessionContext(self):
+        """来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :rtype: str
+        """
         return self._SessionContext
 
     @SessionContext.setter
@@ -45694,6 +55344,9 @@ class WithdrawsWatermarkResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务 ID，可以通过该 ID 查询任务状态和结果。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -45702,6 +55355,9 @@ class WithdrawsWatermarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -45775,6 +55431,9 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def WorkflowId(self):
+        """工作流 ID。
+        :rtype: int
+        """
         return self._WorkflowId
 
     @WorkflowId.setter
@@ -45783,6 +55442,9 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def WorkflowName(self):
+        """工作流名称。
+        :rtype: str
+        """
         return self._WorkflowName
 
     @WorkflowName.setter
@@ -45791,6 +55453,11 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def Status(self):
+        """工作流状态，取值范围：
+<li>Enabled：已启用，</li>
+<li>Disabled：已禁用。</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -45799,6 +55466,9 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def Trigger(self):
+        """工作流绑定的输入规则，当上传视频命中该规则到该对象时即触发工作流。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
+        """
         return self._Trigger
 
     @Trigger.setter
@@ -45807,6 +55477,10 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """媒体处理的文件输出存储位置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -45815,6 +55489,10 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def MediaProcessTask(self):
+        """媒体处理类型任务参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
+        """
         return self._MediaProcessTask
 
     @MediaProcessTask.setter
@@ -45823,6 +55501,10 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def AiContentReviewTask(self):
+        """视频内容审核类型任务参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        """
         return self._AiContentReviewTask
 
     @AiContentReviewTask.setter
@@ -45831,6 +55513,10 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def AiAnalysisTask(self):
+        """视频内容分析类型任务参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        """
         return self._AiAnalysisTask
 
     @AiAnalysisTask.setter
@@ -45839,6 +55525,10 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def AiRecognitionTask(self):
+        """视频内容识别类型任务参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        """
         return self._AiRecognitionTask
 
     @AiRecognitionTask.setter
@@ -45847,6 +55537,10 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def TaskNotifyConfig(self):
+        """任务的事件通知信息，不填代表不获取事件通知。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -45855,6 +55549,9 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def TaskPriority(self):
+        """任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :rtype: int
+        """
         return self._TaskPriority
 
     @TaskPriority.setter
@@ -45863,6 +55560,9 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def OutputDir(self):
+        """媒体处理生成的文件输出的目标目录，如`/movie/201907/`。
+        :rtype: str
+        """
         return self._OutputDir
 
     @OutputDir.setter
@@ -45871,6 +55571,9 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """工作流创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -45879,6 +55582,9 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """工作流最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -45974,6 +55680,9 @@ class WorkflowTask(AbstractModel):
 
     @property
     def TaskId(self):
+        """媒体处理任务 ID。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -45982,6 +55691,11 @@ class WorkflowTask(AbstractModel):
 
     @property
     def Status(self):
+        """任务流状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -45990,6 +55704,9 @@ class WorkflowTask(AbstractModel):
 
     @property
     def ErrCode(self):
+        """源异常时返回非0错误码，返回0 时请使用各个具体任务的 ErrCode。
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -45998,6 +55715,9 @@ class WorkflowTask(AbstractModel):
 
     @property
     def Message(self):
+        """源异常时返回对应异常Message，否则请使用各个具体任务的 Message。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -46006,6 +55726,10 @@ class WorkflowTask(AbstractModel):
 
     @property
     def InputInfo(self):
+        """媒体处理的目标文件信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
         return self._InputInfo
 
     @InputInfo.setter
@@ -46014,6 +55738,10 @@ class WorkflowTask(AbstractModel):
 
     @property
     def MetaData(self):
+        """原始视频的元信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
+        """
         return self._MetaData
 
     @MetaData.setter
@@ -46022,6 +55750,9 @@ class WorkflowTask(AbstractModel):
 
     @property
     def MediaProcessResultSet(self):
+        """媒体处理任务的执行状态与结果。
+        :rtype: list of MediaProcessTaskResult
+        """
         return self._MediaProcessResultSet
 
     @MediaProcessResultSet.setter
@@ -46030,6 +55761,9 @@ class WorkflowTask(AbstractModel):
 
     @property
     def AiContentReviewResultSet(self):
+        """视频内容审核任务的执行状态与结果。
+        :rtype: list of AiContentReviewResult
+        """
         return self._AiContentReviewResultSet
 
     @AiContentReviewResultSet.setter
@@ -46038,6 +55772,9 @@ class WorkflowTask(AbstractModel):
 
     @property
     def AiAnalysisResultSet(self):
+        """视频内容分析任务的执行状态与结果。
+        :rtype: list of AiAnalysisResult
+        """
         return self._AiAnalysisResultSet
 
     @AiAnalysisResultSet.setter
@@ -46046,6 +55783,9 @@ class WorkflowTask(AbstractModel):
 
     @property
     def AiRecognitionResultSet(self):
+        """视频内容识别任务的执行状态与结果。
+        :rtype: list of AiRecognitionResult
+        """
         return self._AiRecognitionResultSet
 
     @AiRecognitionResultSet.setter
@@ -46054,6 +55794,10 @@ class WorkflowTask(AbstractModel):
 
     @property
     def AiQualityControlTaskResult(self):
+        """媒体质检任务的执行状态与结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
+        """
         return self._AiQualityControlTaskResult
 
     @AiQualityControlTaskResult.setter
@@ -46137,6 +55881,13 @@ class WorkflowTrigger(AbstractModel):
 
     @property
     def Type(self):
+        """触发器的类型，可选值：
+<li>CosFileUpload：COS触发</li>
+<li>AwsS3FileUpload：AWS触发，目前只支持转码任务。只有编排支持，工作流不支持。  </li>
+
+
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -46145,6 +55896,10 @@ class WorkflowTrigger(AbstractModel):
 
     @property
     def CosFileUploadTrigger(self):
+        """当 Type 为 CosFileUpload 时必填且有效，为 COS 触发规则。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CosFileUploadTrigger`
+        """
         return self._CosFileUploadTrigger
 
     @CosFileUploadTrigger.setter
@@ -46153,6 +55908,12 @@ class WorkflowTrigger(AbstractModel):
 
     @property
     def AwsS3FileUploadTrigger(self):
+        """当 Type 为 AwsS3FileUpload 时必填且有效，为 AWS S3 触发规则。
+
+注意：目前AWS的S3、对应触发队列SQS、回调队列SQS的秘钥需要一致。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AwsS3FileUploadTrigger`
+        """
         return self._AwsS3FileUploadTrigger
 
     @AwsS3FileUploadTrigger.setter

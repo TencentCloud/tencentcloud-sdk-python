@@ -44,6 +44,9 @@ class CreateLibraryRequest(AbstractModel):
 
     @property
     def Name(self):
+        """媒体库名称，最多 50 个字符
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -52,6 +55,9 @@ class CreateLibraryRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注，最多 250 个字符
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -60,6 +66,9 @@ class CreateLibraryRequest(AbstractModel):
 
     @property
     def BucketName(self):
+        """存储桶全名，新建后不可更改。当前版本不再支持指定存储桶。
+        :rtype: str
+        """
         return self._BucketName
 
     @BucketName.setter
@@ -68,6 +77,9 @@ class CreateLibraryRequest(AbstractModel):
 
     @property
     def BucketRegion(self):
+        """存储桶所在地域，新建后不可更改。当前版本不再支持指定存储桶所在地域。
+        :rtype: str
+        """
         return self._BucketRegion
 
     @BucketRegion.setter
@@ -76,6 +88,9 @@ class CreateLibraryRequest(AbstractModel):
 
     @property
     def LibraryExtension(self):
+        """媒体库配置项，部分参数新建后不可更改
+        :rtype: :class:`tencentcloud.smh.v20210712.models.LibraryExtension`
+        """
         return self._LibraryExtension
 
     @LibraryExtension.setter
@@ -118,6 +133,9 @@ class CreateLibraryResponse(AbstractModel):
 
     @property
     def LibraryId(self):
+        """媒体库 ID
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -126,6 +144,9 @@ class CreateLibraryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -161,6 +182,9 @@ class CreateUserLifecycleRequest(AbstractModel):
 
     @property
     def LibraryId(self):
+        """媒体库 ID。
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -169,6 +193,9 @@ class CreateUserLifecycleRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """用于唯一查找用户的过滤器。
+        :rtype: :class:`tencentcloud.smh.v20210712.models.UserFilter`
+        """
         return self._Filter
 
     @Filter.setter
@@ -177,6 +204,9 @@ class CreateUserLifecycleRequest(AbstractModel):
 
     @property
     def IsolateTime(self):
+        """隔离时间，当时间超过该时间点后，指定用户将无法登录，但他的账号信息、文件资源会被保留，可以通过再次调用本接口更新隔离时间，恢复登录。如不指定，则代表不设置隔离时间，且当前用户已经设置的隔离时间会被删除。
+        :rtype: str
+        """
         return self._IsolateTime
 
     @IsolateTime.setter
@@ -185,6 +215,9 @@ class CreateUserLifecycleRequest(AbstractModel):
 
     @property
     def DestroyTime(self):
+        """销毁时间，当时间超过该时间点后，指定用户的资源将被销毁且无法通过再次调用此接口更新时间。如果同时指定了 IsolateTime 则不能早于 IsolateTime 指定的时间。如不指定，则代表不设置销毁时间，且当前用户已经设置的销毁时间会被删除。
+        :rtype: str
+        """
         return self._DestroyTime
 
     @DestroyTime.setter
@@ -234,6 +267,9 @@ class CreateUserLifecycleResponse(AbstractModel):
 
     @property
     def UserId(self):
+        """用户 ID。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -242,6 +278,10 @@ class CreateUserLifecycleResponse(AbstractModel):
 
     @property
     def IsolateTime(self):
+        """设置的隔离时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IsolateTime
 
     @IsolateTime.setter
@@ -250,6 +290,10 @@ class CreateUserLifecycleResponse(AbstractModel):
 
     @property
     def DestroyTime(self):
+        """设置的销毁时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DestroyTime
 
     @DestroyTime.setter
@@ -258,6 +302,9 @@ class CreateUserLifecycleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -322,6 +369,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def LibraryId(self):
+        """媒体库 ID。
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -330,6 +380,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Role(self):
+        """用户角色，当只支持 user。
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -338,6 +391,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Enabled(self):
+        """是否启用。
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -346,6 +402,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def CountryCode(self):
+        """手机号国家码，不传默认为 null，此时无法使用该登录方式进行登录。
+        :rtype: str
+        """
         return self._CountryCode
 
     @CountryCode.setter
@@ -354,6 +413,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """手机号码，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有手机号重复则报错。CountryCode 和 PhoneNumber 必须同时传入或同时不传入。
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -362,6 +424,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Email(self):
+        """邮箱，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有邮箱重复则报错。
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -370,6 +435,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def AccountName(self):
+        """账号，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有账号重复则报错。只能使用大小写字母、数字、中划线、下划线、小数点，长度不超过 50 个字符。
+        :rtype: str
+        """
         return self._AccountName
 
     @AccountName.setter
@@ -378,6 +446,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def AccountPassword(self):
+        """密码的 base64 形式，不传默认为 null，此时无法使用该登录方式进行登录。AccountName 和 AccountPassword 必须同时传入或同时不传入。
+        :rtype: str
+        """
         return self._AccountPassword
 
     @AccountPassword.setter
@@ -386,6 +457,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def AccountUserId(self):
+        """第三方账号 ID，用于关联第三方账号体系，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有第三方账号重复则报错。只能使用大小写字母、数字、中划线、下划线、小数点，长度不超过 200 个字符。
+        :rtype: str
+        """
         return self._AccountUserId
 
     @AccountUserId.setter
@@ -394,6 +468,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """备注。不超过 255 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -402,6 +479,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Nickname(self):
+        """昵称。不超过 100 个字符。
+        :rtype: str
+        """
         return self._Nickname
 
     @Nickname.setter
@@ -410,6 +490,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Avatar(self):
+        """用户头像地址。不超过 255 个字符。
+        :rtype: str
+        """
         return self._Avatar
 
     @Avatar.setter
@@ -418,6 +501,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Customize(self):
+        """自定义信息。不超过 255 个字符。
+        :rtype: str
+        """
         return self._Customize
 
     @Customize.setter
@@ -514,6 +600,9 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def LibraryId(self):
+        """用户所在的媒体库 ID。
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -522,6 +611,9 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def UserId(self):
+        """用户 ID。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -530,6 +622,9 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def CreationTime(self):
+        """用户创建时间。
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -538,6 +633,9 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def Role(self):
+        """用户角色.
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -546,6 +644,9 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def Enabled(self):
+        """是否启用。
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -554,6 +655,10 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def CountryCode(self):
+        """手机号国家码，如未指定则为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CountryCode
 
     @CountryCode.setter
@@ -562,6 +667,10 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """手机号码，如未指定则为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -570,6 +679,10 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def Email(self):
+        """邮箱，如未指定则为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -578,6 +691,10 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def AccountName(self):
+        """账号，如未指定则为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AccountName
 
     @AccountName.setter
@@ -586,6 +703,10 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def AccountUserId(self):
+        """第三方账号 ID，用于关联第三方账号体系，如未指定则为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AccountUserId
 
     @AccountUserId.setter
@@ -594,6 +715,10 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def Comment(self):
+        """备注。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -602,6 +727,10 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def Nickname(self):
+        """昵称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Nickname
 
     @Nickname.setter
@@ -610,6 +739,10 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def Avatar(self):
+        """用户头像地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Avatar
 
     @Avatar.setter
@@ -618,6 +751,10 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def Customize(self):
+        """自定义信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Customize
 
     @Customize.setter
@@ -626,6 +763,9 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -665,6 +805,9 @@ class DeleteLibraryRequest(AbstractModel):
 
     @property
     def LibraryId(self):
+        """媒体库 ID
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -698,6 +841,9 @@ class DeleteLibraryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -726,6 +872,9 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def LibraryId(self):
+        """媒体库 ID。
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -734,6 +883,9 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """用于唯一查找用户的过滤器数组，数组之间为 **或** 的关系，即满足任意一个过滤器的用户，都将被删除，单次传入的过滤器最多为 100 个。
+        :rtype: list of UserFilter
+        """
         return self._Filters
 
     @Filters.setter
@@ -773,6 +925,9 @@ class DeleteUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -804,6 +959,9 @@ class DescribeLibrariesRequest(AbstractModel):
 
     @property
     def LibraryIds(self):
+        """按照一个或者多个媒体库 ID 查询，每次请求的上限为 100 个。
+        :rtype: list of str
+        """
         return self._LibraryIds
 
     @LibraryIds.setter
@@ -812,6 +970,9 @@ class DescribeLibrariesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码，整型，配合 PageSize 使用，默认值为 1。
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -820,6 +981,9 @@ class DescribeLibrariesRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页数目，整型，配合 PageNumber 使用，默认值为 20，最大值为 100。
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -861,6 +1025,9 @@ class DescribeLibrariesResponse(AbstractModel):
 
     @property
     def List(self):
+        """媒体库列表
+        :rtype: list of Library
+        """
         return self._List
 
     @List.setter
@@ -869,6 +1036,9 @@ class DescribeLibrariesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -877,6 +1047,9 @@ class DescribeLibrariesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -909,6 +1082,9 @@ class DescribeLibrarySecretRequest(AbstractModel):
 
     @property
     def LibraryId(self):
+        """媒体库 ID
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -948,6 +1124,9 @@ class DescribeLibrarySecretResponse(AbstractModel):
 
     @property
     def LibraryId(self):
+        """查询的媒体库 ID
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -956,6 +1135,9 @@ class DescribeLibrarySecretResponse(AbstractModel):
 
     @property
     def LibrarySecret(self):
+        """查询到的媒体库密钥
+        :rtype: str
+        """
         return self._LibrarySecret
 
     @LibrarySecret.setter
@@ -964,6 +1146,9 @@ class DescribeLibrarySecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1012,6 +1197,9 @@ class DescribeOfficialInstancesRequest(AbstractModel):
 
     @property
     def SuperAdminAccount(self):
+        """是否查询实例绑定的超级管理员账号，默认值为 false。
+        :rtype: bool
+        """
         return self._SuperAdminAccount
 
     @SuperAdminAccount.setter
@@ -1020,6 +1208,9 @@ class DescribeOfficialInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """按照一个或者多个实例 ID 查询，每次请求的上限为 100 个。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -1028,6 +1219,9 @@ class DescribeOfficialInstancesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码，整型，配合 PageSize 使用，默认值为 1。
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -1036,6 +1230,9 @@ class DescribeOfficialInstancesRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页数目，整型，配合 PageNumber 使用，默认值为 20，最大值为 100。
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1044,6 +1241,9 @@ class DescribeOfficialInstancesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """对指定列进行排序
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -1052,6 +1252,9 @@ class DescribeOfficialInstancesRequest(AbstractModel):
 
     @property
     def OrderByType(self):
+        """排序方式
+        :rtype: str
+        """
         return self._OrderByType
 
     @OrderByType.setter
@@ -1060,6 +1263,9 @@ class DescribeOfficialInstancesRequest(AbstractModel):
 
     @property
     def AutoRenew(self):
+        """续费管理筛选类型
+        :rtype: int
+        """
         return self._AutoRenew
 
     @AutoRenew.setter
@@ -1068,6 +1274,9 @@ class DescribeOfficialInstancesRequest(AbstractModel):
 
     @property
     def BindPhone(self):
+        """超级管理管理员账号是否绑定了手机号
+        :rtype: bool
+        """
         return self._BindPhone
 
     @BindPhone.setter
@@ -1114,6 +1323,9 @@ class DescribeOfficialInstancesResponse(AbstractModel):
 
     @property
     def List(self):
+        """实例列表
+        :rtype: list of Instance
+        """
         return self._List
 
     @List.setter
@@ -1122,6 +1334,9 @@ class DescribeOfficialInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1130,6 +1345,9 @@ class DescribeOfficialInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1180,6 +1398,9 @@ class DescribeOfficialOverviewResponse(AbstractModel):
 
     @property
     def Quantity(self):
+        """云盘实例数量
+        :rtype: int
+        """
         return self._Quantity
 
     @Quantity.setter
@@ -1188,6 +1409,9 @@ class DescribeOfficialOverviewResponse(AbstractModel):
 
     @property
     def Storage(self):
+        """已经使用的总存储量，单位为 Bytes，由于数字类型精度限制，该字段为 String 类型。
+        :rtype: str
+        """
         return self._Storage
 
     @Storage.setter
@@ -1196,6 +1420,9 @@ class DescribeOfficialOverviewResponse(AbstractModel):
 
     @property
     def UserCount(self):
+        """已经分配和使用的总用户数
+        :rtype: int
+        """
         return self._UserCount
 
     @UserCount.setter
@@ -1204,6 +1431,9 @@ class DescribeOfficialOverviewResponse(AbstractModel):
 
     @property
     def InternetTraffic(self):
+        """本月外网下行流量，单位为 Bytes，由于数字类型精度限制，该字段为 String 类型。
+        :rtype: str
+        """
         return self._InternetTraffic
 
     @InternetTraffic.setter
@@ -1212,6 +1442,9 @@ class DescribeOfficialOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1256,6 +1489,9 @@ class DescribeTrafficPackagesRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
+        """按照一个或者多个资源 ID 查询，每次请求的上限为 100 个。
+        :rtype: list of str
+        """
         return self._ResourceIds
 
     @ResourceIds.setter
@@ -1264,6 +1500,9 @@ class DescribeTrafficPackagesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """页码，整型，配合 PageSize 使用，默认值为 1。
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -1272,6 +1511,9 @@ class DescribeTrafficPackagesRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """每页数目，整型，配合 PageNumber 使用，默认值为 20，最大值为 100。
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1280,6 +1522,9 @@ class DescribeTrafficPackagesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """对指定列进行排序
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -1288,6 +1533,9 @@ class DescribeTrafficPackagesRequest(AbstractModel):
 
     @property
     def OrderByType(self):
+        """排序方式
+        :rtype: str
+        """
         return self._OrderByType
 
     @OrderByType.setter
@@ -1296,6 +1544,9 @@ class DescribeTrafficPackagesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """来源类型筛选
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -1340,6 +1591,9 @@ class DescribeTrafficPackagesResponse(AbstractModel):
 
     @property
     def List(self):
+        """流量包列表
+        :rtype: list of TrafficPackage
+        """
         return self._List
 
     @List.setter
@@ -1348,6 +1602,9 @@ class DescribeTrafficPackagesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1356,6 +1613,9 @@ class DescribeTrafficPackagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1391,6 +1651,9 @@ class DescribeUserLifecycleRequest(AbstractModel):
 
     @property
     def LibraryId(self):
+        """媒体库 ID。
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -1399,6 +1662,9 @@ class DescribeUserLifecycleRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """用于唯一查找用户的过滤器。
+        :rtype: :class:`tencentcloud.smh.v20210712.models.UserFilter`
+        """
         return self._Filter
 
     @Filter.setter
@@ -1446,6 +1712,9 @@ class DescribeUserLifecycleResponse(AbstractModel):
 
     @property
     def UserId(self):
+        """用户 ID。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -1454,6 +1723,10 @@ class DescribeUserLifecycleResponse(AbstractModel):
 
     @property
     def IsolateTime(self):
+        """设置的隔离时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IsolateTime
 
     @IsolateTime.setter
@@ -1462,6 +1735,10 @@ class DescribeUserLifecycleResponse(AbstractModel):
 
     @property
     def DestroyTime(self):
+        """设置的销毁时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DestroyTime
 
     @DestroyTime.setter
@@ -1470,6 +1747,9 @@ class DescribeUserLifecycleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1531,6 +1811,9 @@ class Instance(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1539,6 +1822,10 @@ class Instance(AbstractModel):
 
     @property
     def Domain(self):
+        """专属域名。如果实例无专属域名，则该属性为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -1547,6 +1834,9 @@ class Instance(AbstractModel):
 
     @property
     def EffectiveTime(self):
+        """生效时间
+        :rtype: str
+        """
         return self._EffectiveTime
 
     @EffectiveTime.setter
@@ -1555,6 +1845,10 @@ class Instance(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """过期时间。如果为按量计费或永久有效实例，该属性为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -1563,6 +1857,10 @@ class Instance(AbstractModel):
 
     @property
     def UserLimit(self):
+        """用户数量。如果为按量计费或不限制用户数量实例，该属性为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UserLimit
 
     @UserLimit.setter
@@ -1571,6 +1869,10 @@ class Instance(AbstractModel):
 
     @property
     def StorageLimit(self):
+        """存储容量，单位为 Bytes，由于数字类型精度限制，该字段为 String 类型。如果为按量计费或不限制存储容量实例，该属性为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StorageLimit
 
     @StorageLimit.setter
@@ -1579,6 +1881,10 @@ class Instance(AbstractModel):
 
     @property
     def StorageLimitGB(self):
+        """存储容量，单位为 GB。如果为按量计费或不限制存储容量实例，该属性为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._StorageLimitGB
 
     @StorageLimitGB.setter
@@ -1587,6 +1893,9 @@ class Instance(AbstractModel):
 
     @property
     def Isolated(self):
+        """是否过期隔离
+        :rtype: bool
+        """
         return self._Isolated
 
     @Isolated.setter
@@ -1595,6 +1904,9 @@ class Instance(AbstractModel):
 
     @property
     def AutoRenew(self):
+        """续费标识。0：手动续费；1：自动续费；2：到期不续。
+        :rtype: int
+        """
         return self._AutoRenew
 
     @AutoRenew.setter
@@ -1603,6 +1915,10 @@ class Instance(AbstractModel):
 
     @property
     def SuperAdminAccount(self):
+        """超级管理员账号，如果未选择查询实例绑定的超级管理员账号或当前实例未绑定超级管理员账号，则该属性为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SuperAdminAccount
 
     @SuperAdminAccount.setter
@@ -1672,6 +1988,9 @@ class Library(AbstractModel):
 
     @property
     def LibraryId(self):
+        """媒体库 ID
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -1680,6 +1999,9 @@ class Library(AbstractModel):
 
     @property
     def Name(self):
+        """媒体库友好名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1688,6 +2010,9 @@ class Library(AbstractModel):
 
     @property
     def Remark(self):
+        """备注
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1696,6 +2021,9 @@ class Library(AbstractModel):
 
     @property
     def BucketName(self):
+        """媒体库绑定的 COS 存储桶
+        :rtype: str
+        """
         return self._BucketName
 
     @BucketName.setter
@@ -1704,6 +2032,9 @@ class Library(AbstractModel):
 
     @property
     def BucketRegion(self):
+        """媒体库绑定的 COS 存储桶所在的地域
+        :rtype: str
+        """
         return self._BucketRegion
 
     @BucketRegion.setter
@@ -1712,6 +2043,9 @@ class Library(AbstractModel):
 
     @property
     def CreationTime(self):
+        """媒体库创建时间
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -1720,6 +2054,9 @@ class Library(AbstractModel):
 
     @property
     def LibraryExtension(self):
+        """媒体库配置项
+        :rtype: :class:`tencentcloud.smh.v20210712.models.LibraryExtension`
+        """
         return self._LibraryExtension
 
     @LibraryExtension.setter
@@ -1728,6 +2065,9 @@ class Library(AbstractModel):
 
     @property
     def Size(self):
+        """媒体库用量，单位为 Bytes，由于数字类型精度限制，该字段为 String 类型。
+        :rtype: str
+        """
         return self._Size
 
     @Size.setter
@@ -1736,6 +2076,9 @@ class Library(AbstractModel):
 
     @property
     def DirNum(self):
+        """媒体库目录数，由于数字类型精度限制，该字段为 String 类型。
+        :rtype: str
+        """
         return self._DirNum
 
     @DirNum.setter
@@ -1744,6 +2087,9 @@ class Library(AbstractModel):
 
     @property
     def FileNum(self):
+        """媒体库文件数，由于数字类型精度限制，该字段为 String 类型。
+        :rtype: str
+        """
         return self._FileNum
 
     @FileNum.setter
@@ -1853,6 +2199,9 @@ class LibraryExtension(AbstractModel):
 
     @property
     def IsFileLibrary(self):
+        """true 为文件类型媒体库，可存储任何类型文件；false 为媒体类型媒体库，仅可存储照片和视频类型文件。默认为 false。在媒体库创建后不能修改。
+        :rtype: bool
+        """
         return self._IsFileLibrary
 
     @IsFileLibrary.setter
@@ -1861,6 +2210,9 @@ class LibraryExtension(AbstractModel):
 
     @property
     def IsMultiSpace(self):
+        """true 为多租户空间媒体库，可创建多个租户空间；false 为单租户空间媒体库，不能创建租户空间，仅可使用默认的单一租户空间。默认为 false。在媒体库创建后不能修改。
+        :rtype: bool
+        """
         return self._IsMultiSpace
 
     @IsMultiSpace.setter
@@ -1869,6 +2221,9 @@ class LibraryExtension(AbstractModel):
 
     @property
     def CosStorageClass(self):
+        """保存至 COS 对象存储的文件的存储类型，仅支持 STANDARD、STANDARD_IA、INTELLIGENT_TIERING、MAZ_STANDARD、MAZ_STANDARD_IA 和 MAZ_INTELLIGENT_TIERING，默认为 STANDARD，当使用多 AZ 存储桶时将自动使用 MAZ_ 开头的用于多 AZ 的存储类型，否则自动使用非 MAZ_ 开头的用于非多 AZ 的存储类型。当指定智能分层存储 INTELLIGENT_TIERING 或 MAZ_INTELLIGENT_TIERING 时，需要事先为存储桶开启智能分层存储，否则将返回失败。在媒体库创建后不能修改。
+        :rtype: str
+        """
         return self._CosStorageClass
 
     @CosStorageClass.setter
@@ -1877,6 +2232,9 @@ class LibraryExtension(AbstractModel):
 
     @property
     def UseRecycleBin(self):
+        """是否开启回收站功能。默认为 false。
+        :rtype: bool
+        """
         return self._UseRecycleBin
 
     @UseRecycleBin.setter
@@ -1885,6 +2243,10 @@ class LibraryExtension(AbstractModel):
 
     @property
     def AutoRemoveRecycledDays(self):
+        """当开启回收站时，自动删除回收站项目的天数，不能超过 1095（3 年），指定为 0 则不自动删除，默认为 0。当未开启回收站时，该属性为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AutoRemoveRecycledDays
 
     @AutoRemoveRecycledDays.setter
@@ -1893,6 +2255,9 @@ class LibraryExtension(AbstractModel):
 
     @property
     def EnableSearch(self):
+        """是否启用文件路径搜索功能。默认为 false。
+        :rtype: bool
+        """
         return self._EnableSearch
 
     @EnableSearch.setter
@@ -1901,6 +2266,9 @@ class LibraryExtension(AbstractModel):
 
     @property
     def DenyOnQuotaLessThanUsage(self):
+        """设置媒体库或租户空间配额且配额小于已使用存储量时，是否拒绝设置请求。默认为 false。
+        :rtype: bool
+        """
         return self._DenyOnQuotaLessThanUsage
 
     @DenyOnQuotaLessThanUsage.setter
@@ -1909,6 +2277,9 @@ class LibraryExtension(AbstractModel):
 
     @property
     def EnableFileHistory(self):
+        """是否开启历史版本。默认为 false。
+        :rtype: bool
+        """
         return self._EnableFileHistory
 
     @EnableFileHistory.setter
@@ -1917,6 +2288,10 @@ class LibraryExtension(AbstractModel):
 
     @property
     def FileHistoryCount(self):
+        """当开启历史版本时，指定单个文件保留的历史版本的数量上限，不能超过 999，指定为 0 则不限制，默认为 0。当未开启历史版本时，该属性为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileHistoryCount
 
     @FileHistoryCount.setter
@@ -1925,6 +2300,10 @@ class LibraryExtension(AbstractModel):
 
     @property
     def FileHistoryExpireDay(self):
+        """当开启历史版本时，指定历史版本保留的最长天数，不能超过 999，指定为 0 则不限制，默认为 0。当未开启历史版本时，该属性为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FileHistoryExpireDay
 
     @FileHistoryExpireDay.setter
@@ -1933,6 +2312,9 @@ class LibraryExtension(AbstractModel):
 
     @property
     def MaxDirFileNameLength(self):
+        """目录或文件名的最长长度，不能超过 255，默认为 255。修改该参数不会影响存量目录或文件名，即如果将该字段的值改小，已经存在的长度超过目标值的目录或文件名不会发生变化。
+        :rtype: int
+        """
         return self._MaxDirFileNameLength
 
     @MaxDirFileNameLength.setter
@@ -1941,6 +2323,10 @@ class LibraryExtension(AbstractModel):
 
     @property
     def IsPublicRead(self):
+        """是否开启公有读，开启后读操作无需使用访问令牌，默认为 false。仅单租户空间媒体库支持该属性，否则该属性为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsPublicRead
 
     @IsPublicRead.setter
@@ -1949,6 +2335,10 @@ class LibraryExtension(AbstractModel):
 
     @property
     def IsMultiAlbum(self):
+        """媒体类型媒体库是否开启多相簿，开启后可创建一级目录（即相簿）且媒体文件只能保存在各相簿中，否则不能创建相簿且媒体文件只能保存在根目录。默认为 false。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。在媒体库创建后不能修改。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsMultiAlbum
 
     @IsMultiAlbum.setter
@@ -1957,6 +2347,10 @@ class LibraryExtension(AbstractModel):
 
     @property
     def AllowPhoto(self):
+        """媒体类型媒体库是否允许上传照片，默认为 true。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._AllowPhoto
 
     @AllowPhoto.setter
@@ -1965,6 +2359,10 @@ class LibraryExtension(AbstractModel):
 
     @property
     def AllowPhotoExtName(self):
+        """当媒体类型媒体库允许上传照片时，指定允许的扩展名，默认为空数组，此时将根据文件扩展名对应的 MIME 类型自动判断。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AllowPhotoExtName
 
     @AllowPhotoExtName.setter
@@ -1973,6 +2371,10 @@ class LibraryExtension(AbstractModel):
 
     @property
     def AllowVideo(self):
+        """媒体类型媒体库是否允许上传视频，默认为 true。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._AllowVideo
 
     @AllowVideo.setter
@@ -1981,6 +2383,10 @@ class LibraryExtension(AbstractModel):
 
     @property
     def AllowVideoExtName(self):
+        """当媒体类型媒体库允许上传视频时，指定允许的扩展名，默认为空数组，此时将根据文件扩展名对应的 MIME 类型自动判断。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AllowVideoExtName
 
     @AllowVideoExtName.setter
@@ -1989,6 +2395,10 @@ class LibraryExtension(AbstractModel):
 
     @property
     def AllowFileExtName(self):
+        """指定文件类型媒体库允许的文件扩展名，默认为空数组，此时允许上传所有类型文件。仅单租户空间文件类型媒体库支持该属性，否则该属性为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._AllowFileExtName
 
     @AllowFileExtName.setter
@@ -1997,6 +2407,10 @@ class LibraryExtension(AbstractModel):
 
     @property
     def RecognizeSensitiveContent(self):
+        """照片上传时是否进行敏感内容鉴定，默认为 false。仅单租户空间媒体库支持该属性，否则该属性为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._RecognizeSensitiveContent
 
     @RecognizeSensitiveContent.setter
@@ -2057,6 +2471,9 @@ class ModifyLibraryRequest(AbstractModel):
 
     @property
     def LibraryId(self):
+        """媒体库 ID
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -2065,6 +2482,9 @@ class ModifyLibraryRequest(AbstractModel):
 
     @property
     def Name(self):
+        """媒体库名称，最多 50 个字符。如不传则不修改。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2073,6 +2493,9 @@ class ModifyLibraryRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """备注，最多 250 个字符。如不传则不修改。
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -2081,6 +2504,9 @@ class ModifyLibraryRequest(AbstractModel):
 
     @property
     def LibraryExtension(self):
+        """媒体库配置项，部分参数在新建后不可更改，且仅修改传入的参数。如不传该参数则不修改任何配置项。
+        :rtype: :class:`tencentcloud.smh.v20210712.models.LibraryExtension`
+        """
         return self._LibraryExtension
 
     @LibraryExtension.setter
@@ -2119,6 +2545,9 @@ class ModifyLibraryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2183,6 +2612,9 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def LibraryId(self):
+        """媒体库 ID。
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -2191,6 +2623,9 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """用于唯一查找用户的过滤器。
+        :rtype: :class:`tencentcloud.smh.v20210712.models.UserFilter`
+        """
         return self._Filter
 
     @Filter.setter
@@ -2199,6 +2634,9 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def Role(self):
+        """用户角色，当只支持 user。
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -2207,6 +2645,9 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def Enabled(self):
+        """是否启用。
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -2215,6 +2656,9 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def CountryCode(self):
+        """手机号国家码，不传默认为 null，此时无法使用该登录方式进行登录。
+        :rtype: str
+        """
         return self._CountryCode
 
     @CountryCode.setter
@@ -2223,6 +2667,9 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """手机号码，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有手机号重复则报错。CountryCode 和 PhoneNumber 必须同时传入或同时不传入。
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -2231,6 +2678,9 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def Email(self):
+        """邮箱，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有邮箱重复则报错。
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -2239,6 +2689,9 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def AccountName(self):
+        """账号，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有账号重复则报错。只能使用大小写字母、数字、中划线、下划线、小数点，长度不超过 50 个字符。
+        :rtype: str
+        """
         return self._AccountName
 
     @AccountName.setter
@@ -2247,6 +2700,9 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def AccountPassword(self):
+        """密码的 base64 形式，不传默认为 null，此时无法使用该登录方式进行登录。AccountName 和 AccountPassword 必须同时传入或同时不传入。
+        :rtype: str
+        """
         return self._AccountPassword
 
     @AccountPassword.setter
@@ -2255,6 +2711,9 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def AccountUserId(self):
+        """第三方账号 ID，用于关联第三方账号体系，不传默认为 null，此时无法使用该登录方式进行登录。如果与同一媒体库内已有第三方账号重复则报错。只能使用大小写字母、数字、中划线、下划线、小数点，长度不超过 200 个字符。
+        :rtype: str
+        """
         return self._AccountUserId
 
     @AccountUserId.setter
@@ -2263,6 +2722,9 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """备注。不超过 255 个字符。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -2271,6 +2733,9 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def Nickname(self):
+        """昵称。不超过 100 个字符。
+        :rtype: str
+        """
         return self._Nickname
 
     @Nickname.setter
@@ -2279,6 +2744,9 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def Avatar(self):
+        """用户头像地址。不超过 255 个字符。
+        :rtype: str
+        """
         return self._Avatar
 
     @Avatar.setter
@@ -2287,6 +2755,9 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def Customize(self):
+        """自定义信息。不超过 255 个字符。
+        :rtype: str
+        """
         return self._Customize
 
     @Customize.setter
@@ -2382,6 +2853,9 @@ class ModifyUserResponse(AbstractModel):
 
     @property
     def LibraryId(self):
+        """用户所在的媒体库 ID。
+        :rtype: str
+        """
         return self._LibraryId
 
     @LibraryId.setter
@@ -2390,6 +2864,9 @@ class ModifyUserResponse(AbstractModel):
 
     @property
     def UserId(self):
+        """用户 ID。
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -2398,6 +2875,9 @@ class ModifyUserResponse(AbstractModel):
 
     @property
     def CreationTime(self):
+        """用户创建时间。
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -2406,6 +2886,9 @@ class ModifyUserResponse(AbstractModel):
 
     @property
     def Role(self):
+        """用户角色.
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -2414,6 +2897,9 @@ class ModifyUserResponse(AbstractModel):
 
     @property
     def Enabled(self):
+        """是否启用。
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -2422,6 +2908,10 @@ class ModifyUserResponse(AbstractModel):
 
     @property
     def CountryCode(self):
+        """手机号国家码，如未指定则为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CountryCode
 
     @CountryCode.setter
@@ -2430,6 +2920,10 @@ class ModifyUserResponse(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """手机号码，如未指定则为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -2438,6 +2932,10 @@ class ModifyUserResponse(AbstractModel):
 
     @property
     def Email(self):
+        """邮箱，如未指定则为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -2446,6 +2944,10 @@ class ModifyUserResponse(AbstractModel):
 
     @property
     def AccountName(self):
+        """账号，如未指定则为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AccountName
 
     @AccountName.setter
@@ -2454,6 +2956,10 @@ class ModifyUserResponse(AbstractModel):
 
     @property
     def AccountUserId(self):
+        """第三方账号 ID，用于关联第三方账号体系，如未指定则为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AccountUserId
 
     @AccountUserId.setter
@@ -2462,6 +2968,9 @@ class ModifyUserResponse(AbstractModel):
 
     @property
     def Comment(self):
+        """备注。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -2470,6 +2979,9 @@ class ModifyUserResponse(AbstractModel):
 
     @property
     def Nickname(self):
+        """昵称。
+        :rtype: str
+        """
         return self._Nickname
 
     @Nickname.setter
@@ -2478,6 +2990,9 @@ class ModifyUserResponse(AbstractModel):
 
     @property
     def Avatar(self):
+        """用户头像地址。
+        :rtype: str
+        """
         return self._Avatar
 
     @Avatar.setter
@@ -2486,6 +3001,9 @@ class ModifyUserResponse(AbstractModel):
 
     @property
     def Customize(self):
+        """自定义信息。
+        :rtype: str
+        """
         return self._Customize
 
     @Customize.setter
@@ -2494,6 +3012,9 @@ class ModifyUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2542,6 +3063,9 @@ class SendSmsCodeRequest(AbstractModel):
 
     @property
     def Purpose(self):
+        """验证码目的，当前支持换绑超级管理员账号， BindSuperAdmin；体验版企业升级，ChannelUpdateVerify等
+        :rtype: str
+        """
         return self._Purpose
 
     @Purpose.setter
@@ -2550,6 +3074,9 @@ class SendSmsCodeRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """将作为超级管理员账号的手机号码
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -2558,6 +3085,9 @@ class SendSmsCodeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """官方云盘实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2566,6 +3096,9 @@ class SendSmsCodeRequest(AbstractModel):
 
     @property
     def CountryCode(self):
+        """将作为超级管理员账号的手机号码的国家代码。默认为 +86。
+        :rtype: str
+        """
         return self._CountryCode
 
     @CountryCode.setter
@@ -2602,6 +3135,9 @@ class SendSmsCodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2656,6 +3192,9 @@ class TrafficPackage(AbstractModel):
 
     @property
     def InstanceId(self):
+        """流量资源包所抵扣的实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2664,6 +3203,10 @@ class TrafficPackage(AbstractModel):
 
     @property
     def Domain(self):
+        """专属域名。如果实例无专属域名，则该属性为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -2672,6 +3215,9 @@ class TrafficPackage(AbstractModel):
 
     @property
     def Type(self):
+        """流量资源包来源类型，0 为付费购买，1 为赠送。
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -2680,6 +3226,9 @@ class TrafficPackage(AbstractModel):
 
     @property
     def Size(self):
+        """总流量，单位为 Bytes，由于数字类型精度限制，该字段为 String 类型。
+        :rtype: str
+        """
         return self._Size
 
     @Size.setter
@@ -2688,6 +3237,9 @@ class TrafficPackage(AbstractModel):
 
     @property
     def SizeGB(self):
+        """总流量，单位为 GB
+        :rtype: int
+        """
         return self._SizeGB
 
     @SizeGB.setter
@@ -2696,6 +3248,9 @@ class TrafficPackage(AbstractModel):
 
     @property
     def Remain(self):
+        """剩余流量，单位为 Bytes，由于数字类型精度限制，该字段为 String 类型。
+        :rtype: str
+        """
         return self._Remain
 
     @Remain.setter
@@ -2704,6 +3259,9 @@ class TrafficPackage(AbstractModel):
 
     @property
     def Used(self):
+        """已使用流量，单位为 Bytes，由于数字类型精度限制，该字段为 String 类型。
+        :rtype: str
+        """
         return self._Used
 
     @Used.setter
@@ -2712,6 +3270,9 @@ class TrafficPackage(AbstractModel):
 
     @property
     def UsedPercentage(self):
+        """已使用百分比，由于数字类型精度限制，该字段为 String 类型。
+        :rtype: str
+        """
         return self._UsedPercentage
 
     @UsedPercentage.setter
@@ -2720,6 +3281,9 @@ class TrafficPackage(AbstractModel):
 
     @property
     def EffectiveTime(self):
+        """生效时间，即流量资源包的订购时间
+        :rtype: str
+        """
         return self._EffectiveTime
 
     @EffectiveTime.setter
@@ -2728,6 +3292,10 @@ class TrafficPackage(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """过期时间，即所抵扣的实例的过期时间。如果流量资源包所抵扣的实例为按量计费或永久有效实例，该属性为 null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -2778,6 +3346,9 @@ AccountUserId: x53mYVqykfPqTCqekbNwwa4aXk4
 
     @property
     def Key(self):
+        """过滤类型，当前支持：UserId、PhoneNumber、Email、AccountName、AccountUserId。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -2786,6 +3357,14 @@ AccountUserId: x53mYVqykfPqTCqekbNwwa4aXk4
 
     @property
     def Value(self):
+        """过滤值，只支持完全匹配，不支持模糊搜索。针对不同的 Key，Value 的取值如下：
+UserId: user12345678abcde
+PhoneNumber: +86-13800000000（格式为：{CountryCode}-{PhoneNumber}）
+Email: admin@mail.foobar.com
+AccountName: account_name
+AccountUserId: x53mYVqykfPqTCqekbNwwa4aXk4
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -2832,6 +3411,9 @@ class VerifySmsCodeRequest(AbstractModel):
 
     @property
     def Purpose(self):
+        """验证码目的，当前支持换绑超级管理员账号，BindSuperAdmin；体验版企业升级验证ChannelUpdateVerify，等
+        :rtype: str
+        """
         return self._Purpose
 
     @Purpose.setter
@@ -2840,6 +3422,9 @@ class VerifySmsCodeRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """将作为超级管理员账号的手机号码
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -2848,6 +3433,9 @@ class VerifySmsCodeRequest(AbstractModel):
 
     @property
     def Code(self):
+        """短信验证码
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -2856,6 +3444,9 @@ class VerifySmsCodeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """官方云盘实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2864,6 +3455,9 @@ class VerifySmsCodeRequest(AbstractModel):
 
     @property
     def CountryCode(self):
+        """将作为超级管理员账号的手机号码的国家代码。默认为 +86。
+        :rtype: str
+        """
         return self._CountryCode
 
     @CountryCode.setter
@@ -2901,6 +3495,9 @@ class VerifySmsCodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

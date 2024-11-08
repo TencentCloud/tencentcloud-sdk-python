@@ -49,6 +49,9 @@ class Acl(AbstractModel):
 
     @property
     def ResourceType(self):
+        """Acl资源类型，（0:UNKNOWN，1:ANY，2:TOPIC，3:GROUP，4:CLUSTER，5:TRANSACTIONAL_ID）当前只有TOPIC，
+        :rtype: int
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -57,6 +60,9 @@ class Acl(AbstractModel):
 
     @property
     def ResourceName(self):
+        """资源名称，和resourceType相关如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -65,6 +71,10 @@ class Acl(AbstractModel):
 
     @property
     def Principal(self):
+        """用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Principal
 
     @Principal.setter
@@ -73,6 +83,10 @@ class Acl(AbstractModel):
 
     @property
     def Host(self):
+        """默认\*,表示任何host都可以访问，当前ckafka不支持host为\*，但是后面开源kafka的产品化会直接支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -81,6 +95,9 @@ class Acl(AbstractModel):
 
     @property
     def Operation(self):
+        """Acl操作方式(0:UNKNOWN，1:ANY，2:ALL，3:READ，4:WRITE，5:CREATE，6:DELETE，7:ALTER，8:DESCRIBE，9:CLUSTER_ACTION，10:DESCRIBE_CONFIGS，11:ALTER_CONFIGS，12:IDEMPOTEN_WRITE)
+        :rtype: int
+        """
         return self._Operation
 
     @Operation.setter
@@ -89,6 +106,9 @@ class Acl(AbstractModel):
 
     @property
     def PermissionType(self):
+        """权限类型(0:UNKNOWN，1:ANY，2:DENY，3:ALLOW)
+        :rtype: int
+        """
         return self._PermissionType
 
     @PermissionType.setter
@@ -131,6 +151,9 @@ class AclResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的总数据条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -139,6 +162,10 @@ class AclResponse(AbstractModel):
 
     @property
     def AclList(self):
+        """ACL列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Acl
+        """
         return self._AclList
 
     @AclList.setter
@@ -227,6 +254,10 @@ class AclRule(AbstractModel):
 
     @property
     def RuleName(self):
+        """Acl规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -235,6 +266,10 @@ class AclRule(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -243,6 +278,10 @@ class AclRule(AbstractModel):
 
     @property
     def PatternType(self):
+        """匹配类型，目前只支持前缀匹配，枚举值列表：PREFIXED
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PatternType
 
     @PatternType.setter
@@ -251,6 +290,10 @@ class AclRule(AbstractModel):
 
     @property
     def Pattern(self):
+        """表示前缀匹配的前缀的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Pattern
 
     @Pattern.setter
@@ -259,6 +302,10 @@ class AclRule(AbstractModel):
 
     @property
     def ResourceType(self):
+        """Acl资源类型,目前只支持Topic,枚举值列表：Topic
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -267,6 +314,10 @@ class AclRule(AbstractModel):
 
     @property
     def AclList(self):
+        """该规则所包含的ACL信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AclList
 
     @AclList.setter
@@ -275,6 +326,10 @@ class AclRule(AbstractModel):
 
     @property
     def CreateTimeStamp(self):
+        """规则所创建的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTimeStamp
 
     @CreateTimeStamp.setter
@@ -283,6 +338,10 @@ class AclRule(AbstractModel):
 
     @property
     def IsApplied(self):
+        """预设ACL规则是否应用到新增的topic中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsApplied
 
     @IsApplied.setter
@@ -291,6 +350,10 @@ class AclRule(AbstractModel):
 
     @property
     def UpdateTimeStamp(self):
+        """规则更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UpdateTimeStamp
 
     @UpdateTimeStamp.setter
@@ -299,6 +362,10 @@ class AclRule(AbstractModel):
 
     @property
     def Comment(self):
+        """规则的备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -307,6 +374,10 @@ class AclRule(AbstractModel):
 
     @property
     def TopicName(self):
+        """其中一个显示的对应的TopicName
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -315,6 +386,10 @@ class AclRule(AbstractModel):
 
     @property
     def TopicCount(self):
+        """应用该ACL规则的Topic数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TopicCount
 
     @TopicCount.setter
@@ -323,6 +398,10 @@ class AclRule(AbstractModel):
 
     @property
     def PatternTypeTitle(self):
+        """patternType的中文显示
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PatternTypeTitle
 
     @PatternTypeTitle.setter
@@ -377,6 +456,9 @@ class AclRuleInfo(AbstractModel):
 
     @property
     def Operation(self):
+        """Acl操作方式，枚举值(所有操作: All, 读：Read，写：Write)
+        :rtype: str
+        """
         return self._Operation
 
     @Operation.setter
@@ -385,6 +467,9 @@ class AclRuleInfo(AbstractModel):
 
     @property
     def PermissionType(self):
+        """权限类型，(Deny，Allow)
+        :rtype: str
+        """
         return self._PermissionType
 
     @PermissionType.setter
@@ -393,6 +478,9 @@ class AclRuleInfo(AbstractModel):
 
     @property
     def Host(self):
+        """默认为\*，表示任何host都可以访问，当前ckafka不支持host为\* 和 ip网段
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -401,6 +489,9 @@ class AclRuleInfo(AbstractModel):
 
     @property
     def Principal(self):
+        """用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户。传入格式需要带【User:】前缀。例如用户A，传入为User:A。
+        :rtype: str
+        """
         return self._Principal
 
     @Principal.setter
@@ -441,6 +532,9 @@ class AclRuleResp(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数据条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -449,6 +543,10 @@ class AclRuleResp(AbstractModel):
 
     @property
     def AclRuleList(self):
+        """AclRule列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AclRule
+        """
         return self._AclRuleList
 
     @AclRuleList.setter
@@ -500,6 +598,9 @@ class AnalyseParam(AbstractModel):
 
     @property
     def Format(self):
+        """解析格式，JSON，DELIMITER分隔符，REGULAR正则提取，SOURCE处理上层所有结果
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -508,6 +609,10 @@ class AnalyseParam(AbstractModel):
 
     @property
     def Regex(self):
+        """分隔符、正则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Regex
 
     @Regex.setter
@@ -516,6 +621,10 @@ class AnalyseParam(AbstractModel):
 
     @property
     def InputValueType(self):
+        """需再次处理的KEY——模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InputValueType
 
     @InputValueType.setter
@@ -524,6 +633,10 @@ class AnalyseParam(AbstractModel):
 
     @property
     def InputValue(self):
+        """需再次处理的KEY——KEY表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InputValue
 
     @InputValue.setter
@@ -564,6 +677,9 @@ class AppIdResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合要求的所有AppId数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -572,6 +688,10 @@ class AppIdResponse(AbstractModel):
 
     @property
     def AppIdList(self):
+        """符合要求的App Id列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._AppIdList
 
     @AppIdList.setter
@@ -610,6 +730,9 @@ class Assignment(AbstractModel):
 
     @property
     def Version(self):
+        """assingment版本信息
+        :rtype: int
+        """
         return self._Version
 
     @Version.setter
@@ -618,6 +741,10 @@ class Assignment(AbstractModel):
 
     @property
     def Topics(self):
+        """topic信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GroupInfoTopics
+        """
         return self._Topics
 
     @Topics.setter
@@ -663,6 +790,9 @@ class AuthorizeTokenRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -671,6 +801,9 @@ class AuthorizeTokenRequest(AbstractModel):
 
     @property
     def User(self):
+        """用户
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -679,6 +812,9 @@ class AuthorizeTokenRequest(AbstractModel):
 
     @property
     def Tokens(self):
+        """token串
+        :rtype: str
+        """
         return self._Tokens
 
     @Tokens.setter
@@ -718,6 +854,10 @@ class AuthorizeTokenResponse(AbstractModel):
 
     @property
     def Result(self):
+        """0 成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -726,6 +866,9 @@ class AuthorizeTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -753,6 +896,10 @@ class BatchAnalyseParam(AbstractModel):
 
     @property
     def Format(self):
+        """ONE_BY_ONE单条输出，MERGE合并输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -789,6 +936,9 @@ class BatchContent(AbstractModel):
 
     @property
     def Body(self):
+        """发送的消息体
+        :rtype: str
+        """
         return self._Body
 
     @Body.setter
@@ -797,6 +947,9 @@ class BatchContent(AbstractModel):
 
     @property
     def Key(self):
+        """发送消息的键名
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -840,6 +993,9 @@ class BatchCreateAclRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -848,6 +1004,9 @@ class BatchCreateAclRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """Acl资源类型，(2:TOPIC）
+        :rtype: int
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -856,6 +1015,9 @@ class BatchCreateAclRequest(AbstractModel):
 
     @property
     def ResourceNames(self):
+        """资源列表数组
+        :rtype: list of str
+        """
         return self._ResourceNames
 
     @ResourceNames.setter
@@ -864,6 +1026,9 @@ class BatchCreateAclRequest(AbstractModel):
 
     @property
     def RuleList(self):
+        """设置的ACL规则列表
+        :rtype: list of AclRuleInfo
+        """
         return self._RuleList
 
     @RuleList.setter
@@ -908,6 +1073,9 @@ class BatchCreateAclResponse(AbstractModel):
 
     @property
     def Result(self):
+        """状态码：0-修改成功，否则修改失败
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -916,6 +1084,9 @@ class BatchCreateAclResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -951,6 +1122,9 @@ class BatchModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """消费分组名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -959,6 +1133,9 @@ class BatchModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例名称
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -967,6 +1144,9 @@ class BatchModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Partitions(self):
+        """partition信息
+        :rtype: list of Partitions
+        """
         return self._Partitions
 
     @Partitions.setter
@@ -975,6 +1155,9 @@ class BatchModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """指定topic，默认所有topic
+        :rtype: list of str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -1019,6 +1202,9 @@ class BatchModifyGroupOffsetsResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -1027,6 +1213,9 @@ class BatchModifyGroupOffsetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1058,6 +1247,9 @@ class BatchModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1066,6 +1258,9 @@ class BatchModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def Topic(self):
+        """主题属性列表 (同一个批次最多支持10个)
+        :rtype: list of BatchModifyTopicInfo
+        """
         return self._Topic
 
     @Topic.setter
@@ -1108,6 +1303,9 @@ class BatchModifyTopicAttributesResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果
+        :rtype: list of BatchModifyTopicResultDTO
+        """
         return self._Result
 
     @Result.setter
@@ -1116,6 +1314,9 @@ class BatchModifyTopicAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1177,6 +1378,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def TopicName(self):
+        """topic名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -1185,6 +1389,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def PartitionNum(self):
+        """分区数
+        :rtype: int
+        """
         return self._PartitionNum
 
     @PartitionNum.setter
@@ -1193,6 +1400,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def Note(self):
+        """备注
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -1201,6 +1411,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def ReplicaNum(self):
+        """副本数
+        :rtype: int
+        """
         return self._ReplicaNum
 
     @ReplicaNum.setter
@@ -1209,6 +1422,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def CleanUpPolicy(self):
+        """消息删除策略，可以选择delete 或者compact
+        :rtype: str
+        """
         return self._CleanUpPolicy
 
     @CleanUpPolicy.setter
@@ -1217,6 +1433,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def MinInsyncReplicas(self):
+        """当producer设置request.required.acks为-1时，min.insync.replicas指定replicas的最小数目
+        :rtype: int
+        """
         return self._MinInsyncReplicas
 
     @MinInsyncReplicas.setter
@@ -1225,6 +1444,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def UncleanLeaderElectionEnable(self):
+        """是否允许非ISR的副本成为Leader
+        :rtype: bool
+        """
         return self._UncleanLeaderElectionEnable
 
     @UncleanLeaderElectionEnable.setter
@@ -1233,6 +1455,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def RetentionMs(self):
+        """topic维度的消息保留时间（毫秒）范围1 分钟到90 天
+        :rtype: int
+        """
         return self._RetentionMs
 
     @RetentionMs.setter
@@ -1241,6 +1466,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def RetentionBytes(self):
+        """topic维度的消息保留大小，范围1 MB到1024 GB
+        :rtype: int
+        """
         return self._RetentionBytes
 
     @RetentionBytes.setter
@@ -1249,6 +1477,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def SegmentMs(self):
+        """Segment分片滚动的时长（毫秒），范围1 到90 天
+        :rtype: int
+        """
         return self._SegmentMs
 
     @SegmentMs.setter
@@ -1257,6 +1488,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def MaxMessageBytes(self):
+        """批次的消息大小，范围1 KB到12 MB
+        :rtype: int
+        """
         return self._MaxMessageBytes
 
     @MaxMessageBytes.setter
@@ -1312,6 +1546,10 @@ class BatchModifyTopicResultDTO(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1320,6 +1558,10 @@ class BatchModifyTopicResultDTO(AbstractModel):
 
     @property
     def TopicName(self):
+        """topic名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -1328,6 +1570,10 @@ class BatchModifyTopicResultDTO(AbstractModel):
 
     @property
     def ReturnCode(self):
+        """状态码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReturnCode
 
     @ReturnCode.setter
@@ -1336,6 +1582,9 @@ class BatchModifyTopicResultDTO(AbstractModel):
 
     @property
     def Message(self):
+        """状态消息
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -1381,6 +1630,10 @@ class BrokerTopicData(AbstractModel):
 
     @property
     def TopicName(self):
+        """主题名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -1389,6 +1642,10 @@ class BrokerTopicData(AbstractModel):
 
     @property
     def TopicId(self):
+        """主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -1397,6 +1654,10 @@ class BrokerTopicData(AbstractModel):
 
     @property
     def DataSize(self):
+        """主题占用Broker 容量大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DataSize
 
     @DataSize.setter
@@ -1441,6 +1702,10 @@ class BrokerTopicFlowData(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -1449,6 +1714,10 @@ class BrokerTopicFlowData(AbstractModel):
 
     @property
     def TopicId(self):
+        """Topic Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -1457,6 +1726,10 @@ class BrokerTopicFlowData(AbstractModel):
 
     @property
     def TopicTraffic(self):
+        """Topic 流量(MB)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicTraffic
 
     @TopicTraffic.setter
@@ -1498,6 +1771,9 @@ class CancelAuthorizationTokenRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1506,6 +1782,9 @@ class CancelAuthorizationTokenRequest(AbstractModel):
 
     @property
     def User(self):
+        """用户
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -1514,6 +1793,9 @@ class CancelAuthorizationTokenRequest(AbstractModel):
 
     @property
     def Tokens(self):
+        """token串
+        :rtype: str
+        """
         return self._Tokens
 
     @Tokens.setter
@@ -1553,6 +1835,10 @@ class CancelAuthorizationTokenResponse(AbstractModel):
 
     @property
     def Result(self):
+        """0 成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -1561,6 +1847,9 @@ class CancelAuthorizationTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1588,6 +1877,10 @@ class CdcClusterResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1621,6 +1914,9 @@ class CheckCdcClusterRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1658,6 +1954,10 @@ class CheckCdcClusterResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果状态Success
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -1666,6 +1966,9 @@ class CheckCdcClusterResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1721,6 +2024,10 @@ class ClickHouseConnectParam(AbstractModel):
 
     @property
     def Port(self):
+        """ClickHouse的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -1729,6 +2036,10 @@ class ClickHouseConnectParam(AbstractModel):
 
     @property
     def UserName(self):
+        """ClickHouse连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -1737,6 +2048,10 @@ class ClickHouseConnectParam(AbstractModel):
 
     @property
     def Password(self):
+        """ClickHouse连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -1745,6 +2060,10 @@ class ClickHouseConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """ClickHouse连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -1753,6 +2072,10 @@ class ClickHouseConnectParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
+        """ClickHouse连接源是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SelfBuilt
 
     @SelfBuilt.setter
@@ -1761,6 +2084,10 @@ class ClickHouseConnectParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """ClickHouse连接源的实例vip，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -1769,6 +2096,10 @@ class ClickHouseConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """ClickHouse连接源的vpcId，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -1777,6 +2108,10 @@ class ClickHouseConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
+        """是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUpdate
 
     @IsUpdate.setter
@@ -1846,6 +2181,10 @@ class ClickHouseModifyConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """ClickHouse连接源的实例资源【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -1854,6 +2193,10 @@ class ClickHouseModifyConnectParam(AbstractModel):
 
     @property
     def Port(self):
+        """ClickHouse的连接port【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -1862,6 +2205,10 @@ class ClickHouseModifyConnectParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """ClickHouse连接源的实例vip【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -1870,6 +2217,10 @@ class ClickHouseModifyConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """ClickHouse连接源的vpcId【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -1878,6 +2229,10 @@ class ClickHouseModifyConnectParam(AbstractModel):
 
     @property
     def UserName(self):
+        """ClickHouse连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -1886,6 +2241,10 @@ class ClickHouseModifyConnectParam(AbstractModel):
 
     @property
     def Password(self):
+        """ClickHouse连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -1894,6 +2253,10 @@ class ClickHouseModifyConnectParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
+        """ClickHouse连接源是否为自建集群【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SelfBuilt
 
     @SelfBuilt.setter
@@ -1902,6 +2265,10 @@ class ClickHouseModifyConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
+        """是否更新到关联的Datahub任务，默认为true
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUpdate
 
     @IsUpdate.setter
@@ -2014,6 +2381,10 @@ class ClickHouseParam(AbstractModel):
 
     @property
     def Cluster(self):
+        """ClickHouse的集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Cluster
 
     @Cluster.setter
@@ -2022,6 +2393,10 @@ class ClickHouseParam(AbstractModel):
 
     @property
     def Database(self):
+        """ClickHouse的数据库名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Database
 
     @Database.setter
@@ -2030,6 +2405,10 @@ class ClickHouseParam(AbstractModel):
 
     @property
     def Table(self):
+        """ClickHouse的数据表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Table
 
     @Table.setter
@@ -2038,6 +2417,10 @@ class ClickHouseParam(AbstractModel):
 
     @property
     def Schema(self):
+        """ClickHouse的schema
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ClickHouseSchema
+        """
         return self._Schema
 
     @Schema.setter
@@ -2046,6 +2429,10 @@ class ClickHouseParam(AbstractModel):
 
     @property
     def Resource(self):
+        """实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -2054,6 +2441,10 @@ class ClickHouseParam(AbstractModel):
 
     @property
     def Ip(self):
+        """ClickHouse的连接ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -2062,6 +2453,10 @@ class ClickHouseParam(AbstractModel):
 
     @property
     def Port(self):
+        """ClickHouse的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -2070,6 +2465,10 @@ class ClickHouseParam(AbstractModel):
 
     @property
     def UserName(self):
+        """ClickHouse的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -2078,6 +2477,10 @@ class ClickHouseParam(AbstractModel):
 
     @property
     def Password(self):
+        """ClickHouse的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -2086,6 +2489,10 @@ class ClickHouseParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """实例vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -2094,6 +2501,10 @@ class ClickHouseParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """实例的vpcId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -2102,6 +2513,10 @@ class ClickHouseParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
+        """是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SelfBuilt
 
     @SelfBuilt.setter
@@ -2110,6 +2525,10 @@ class ClickHouseParam(AbstractModel):
 
     @property
     def DropInvalidMessage(self):
+        """ClickHouse是否抛弃解析失败的消息，默认为true
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._DropInvalidMessage
 
     @DropInvalidMessage.setter
@@ -2118,6 +2537,10 @@ class ClickHouseParam(AbstractModel):
 
     @property
     def Type(self):
+        """ClickHouse 类型，emr-clickhouse : "emr";cdw-clickhouse : "cdwch";自建 : ""
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2126,6 +2549,10 @@ class ClickHouseParam(AbstractModel):
 
     @property
     def DropCls(self):
+        """当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DropCls`
+        """
         return self._DropCls
 
     @DropCls.setter
@@ -2134,6 +2561,11 @@ class ClickHouseParam(AbstractModel):
 
     @property
     def BatchSize(self):
+        """每批次投递到 ClickHouse 表消息数量，默认为 1000 条。
+提高该参数值，有利于减少往  ClickHouse 投递的次数，但在错误消息过多及网络不稳定等极端情况下时，可能导致频繁重试影响效率。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BatchSize
 
     @BatchSize.setter
@@ -2142,6 +2574,11 @@ class ClickHouseParam(AbstractModel):
 
     @property
     def ConsumerFetchMinBytes(self):
+        """每次从 topic 中拉取消息大小，默认为 1MB，即至少要从 topic 中批量拉取 1MB 消息，才进行数据投递到 ClickHouse 操作。
+提高该参数值，有利于减少往  ClickHouse 投递的次数，但在错误消息过多及网络不稳定等极端情况下时，可能导致频繁重试影响效率。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ConsumerFetchMinBytes
 
     @ConsumerFetchMinBytes.setter
@@ -2150,6 +2587,11 @@ class ClickHouseParam(AbstractModel):
 
     @property
     def ConsumerFetchMaxWaitMs(self):
+        """每次从 topic 拉取消息最大等待时间，当超过当前最大等待时间时，即使没有拉取到 ConsumerFetchMinBytes 大小，也将进行 ClickHouse 投递操作。
+提高该参数值，有利于减少往  ClickHouse 投递的次数，但在错误消息过多及网络不稳定等极端情况下时，可能导致频繁重试影响效率。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ConsumerFetchMaxWaitMs
 
     @ConsumerFetchMaxWaitMs.setter
@@ -2220,6 +2662,10 @@ class ClickHouseSchema(AbstractModel):
 
     @property
     def ColumnName(self):
+        """表的列名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ColumnName
 
     @ColumnName.setter
@@ -2228,6 +2674,10 @@ class ClickHouseSchema(AbstractModel):
 
     @property
     def JsonKey(self):
+        """该列对应的jsonKey名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._JsonKey
 
     @JsonKey.setter
@@ -2236,6 +2686,10 @@ class ClickHouseSchema(AbstractModel):
 
     @property
     def Type(self):
+        """表列项的类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2244,6 +2698,10 @@ class ClickHouseSchema(AbstractModel):
 
     @property
     def AllowNull(self):
+        """列项是否允许为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._AllowNull
 
     @AllowNull.setter
@@ -2298,6 +2756,10 @@ class ClsParam(AbstractModel):
 
     @property
     def DecodeJson(self):
+        """生产的信息是否为json格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._DecodeJson
 
     @DecodeJson.setter
@@ -2306,6 +2768,10 @@ class ClsParam(AbstractModel):
 
     @property
     def Resource(self):
+        """cls日志主题id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -2314,6 +2780,10 @@ class ClsParam(AbstractModel):
 
     @property
     def LogSet(self):
+        """cls日志集id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._LogSet
 
     @LogSet.setter
@@ -2322,6 +2792,10 @@ class ClsParam(AbstractModel):
 
     @property
     def ContentKey(self):
+        """当DecodeJson为false时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ContentKey
 
     @ContentKey.setter
@@ -2330,6 +2804,11 @@ class ClsParam(AbstractModel):
 
     @property
     def TimeField(self):
+        """指定消息中的某字段内容作为cls日志的时间。
+字段内容格式需要是秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimeField
 
     @TimeField.setter
@@ -2394,6 +2873,9 @@ class ClusterInfo(AbstractModel):
 
     @property
     def ClusterId(self):
+        """集群Id
+        :rtype: int
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2402,6 +2884,9 @@ class ClusterInfo(AbstractModel):
 
     @property
     def ClusterName(self):
+        """集群名称
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -2410,6 +2895,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def MaxDiskSize(self):
+        """集群最大磁盘 单位GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxDiskSize
 
     @MaxDiskSize.setter
@@ -2418,6 +2907,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def MaxBandWidth(self):
+        """集群最大带宽 单位MB/s
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxBandWidth
 
     @MaxBandWidth.setter
@@ -2426,6 +2919,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def AvailableDiskSize(self):
+        """集群当前可用磁盘  单位GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AvailableDiskSize
 
     @AvailableDiskSize.setter
@@ -2434,6 +2931,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def AvailableBandWidth(self):
+        """集群当前可用带宽 单位MB/s
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AvailableBandWidth
 
     @AvailableBandWidth.setter
@@ -2442,6 +2943,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def ZoneId(self):
+        """集群所属可用区，表明集群归属的可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -2450,6 +2955,10 @@ class ClusterInfo(AbstractModel):
 
     @property
     def ZoneIds(self):
+        """集群节点所在的可用区，若该集群为跨可用区集群，则包含该集群节点所在的多个可用区。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._ZoneIds
 
     @ZoneIds.setter
@@ -2520,6 +3029,10 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
 
     @property
     def Retention(self):
+        """消息保留时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Retention
 
     @Retention.setter
@@ -2528,6 +3041,10 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
 
     @property
     def MinInsyncReplicas(self):
+        """最小同步复制数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MinInsyncReplicas
 
     @MinInsyncReplicas.setter
@@ -2536,6 +3053,11 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
 
     @property
     def CleanUpPolicy(self):
+        """日志清理模式，默认 delete。
+delete：日志按保存时间删除；compact：日志按 key 压缩；compact, delete：日志按 key 压缩且会保存时间删除。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CleanUpPolicy
 
     @CleanUpPolicy.setter
@@ -2544,6 +3066,10 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
 
     @property
     def SegmentMs(self):
+        """Segment 分片滚动的时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SegmentMs
 
     @SegmentMs.setter
@@ -2552,6 +3078,10 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
 
     @property
     def UncleanLeaderElectionEnable(self):
+        """0表示 false。 1表示 true。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._UncleanLeaderElectionEnable
 
     @UncleanLeaderElectionEnable.setter
@@ -2560,6 +3090,10 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
 
     @property
     def SegmentBytes(self):
+        """Segment 分片滚动的字节数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._SegmentBytes
 
     @SegmentBytes.setter
@@ -2568,6 +3102,10 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
 
     @property
     def MaxMessageBytes(self):
+        """最大消息字节数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxMessageBytes
 
     @MaxMessageBytes.setter
@@ -2576,6 +3114,10 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
 
     @property
     def RetentionBytes(self):
+        """消息保留文件大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RetentionBytes
 
     @RetentionBytes.setter
@@ -2617,6 +3159,10 @@ class ConnectResourceResourceIdResp(AbstractModel):
 
     @property
     def ResourceId(self):
+        """连接源的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -2656,6 +3202,9 @@ class Connection(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -2664,6 +3213,9 @@ class Connection(AbstractModel):
 
     @property
     def GroupId(self):
+        """消费组ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -2672,6 +3224,9 @@ class Connection(AbstractModel):
 
     @property
     def TopicId(self):
+        """Topic的Id
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -2710,6 +3265,9 @@ class ConsumerGroup(AbstractModel):
 
     @property
     def ConsumerGroupName(self):
+        """用户组名称
+        :rtype: str
+        """
         return self._ConsumerGroupName
 
     @ConsumerGroupName.setter
@@ -2718,6 +3276,9 @@ class ConsumerGroup(AbstractModel):
 
     @property
     def SubscribedInfo(self):
+        """订阅信息实体
+        :rtype: list of SubscribedInfo
+        """
         return self._SubscribedInfo
 
     @SubscribedInfo.setter
@@ -2785,6 +3346,9 @@ class ConsumerGroupResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的消费组数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2793,6 +3357,10 @@ class ConsumerGroupResponse(AbstractModel):
 
     @property
     def TopicList(self):
+        """主题列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ConsumerGroupTopic
+        """
         return self._TopicList
 
     @TopicList.setter
@@ -2801,6 +3369,10 @@ class ConsumerGroupResponse(AbstractModel):
 
     @property
     def GroupList(self):
+        """消费分组List
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ConsumerGroup
+        """
         return self._GroupList
 
     @GroupList.setter
@@ -2809,6 +3381,10 @@ class ConsumerGroupResponse(AbstractModel):
 
     @property
     def TotalPartition(self):
+        """所有分区数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalPartition
 
     @TotalPartition.setter
@@ -2817,6 +3393,10 @@ class ConsumerGroupResponse(AbstractModel):
 
     @property
     def PartitionListForMonitor(self):
+        """监控的分区列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Partition
+        """
         return self._PartitionListForMonitor
 
     @PartitionListForMonitor.setter
@@ -2825,6 +3405,10 @@ class ConsumerGroupResponse(AbstractModel):
 
     @property
     def TotalTopic(self):
+        """主题总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalTopic
 
     @TotalTopic.setter
@@ -2833,6 +3417,10 @@ class ConsumerGroupResponse(AbstractModel):
 
     @property
     def TopicListForMonitor(self):
+        """监控的主题列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ConsumerGroupTopic
+        """
         return self._TopicListForMonitor
 
     @TopicListForMonitor.setter
@@ -2841,6 +3429,10 @@ class ConsumerGroupResponse(AbstractModel):
 
     @property
     def GroupListForMonitor(self):
+        """监控的组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Group
+        """
         return self._GroupListForMonitor
 
     @GroupListForMonitor.setter
@@ -2909,6 +3501,9 @@ class ConsumerGroupSpeed(AbstractModel):
 
     @property
     def ConsumerGroupName(self):
+        """消费者组名称
+        :rtype: str
+        """
         return self._ConsumerGroupName
 
     @ConsumerGroupName.setter
@@ -2917,6 +3512,9 @@ class ConsumerGroupSpeed(AbstractModel):
 
     @property
     def Speed(self):
+        """消费速度 Count/Minute
+        :rtype: int
+        """
         return self._Speed
 
     @Speed.setter
@@ -2954,6 +3552,9 @@ class ConsumerGroupTopic(AbstractModel):
 
     @property
     def TopicId(self):
+        """主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -2962,6 +3563,9 @@ class ConsumerGroupTopic(AbstractModel):
 
     @property
     def TopicName(self):
+        """主题名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -3018,6 +3622,9 @@ class ConsumerRecord(AbstractModel):
 
     @property
     def Topic(self):
+        """主题名
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -3026,6 +3633,9 @@ class ConsumerRecord(AbstractModel):
 
     @property
     def Partition(self):
+        """分区id
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -3034,6 +3644,9 @@ class ConsumerRecord(AbstractModel):
 
     @property
     def Offset(self):
+        """位点
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3042,6 +3655,10 @@ class ConsumerRecord(AbstractModel):
 
     @property
     def Key(self):
+        """消息key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -3050,6 +3667,10 @@ class ConsumerRecord(AbstractModel):
 
     @property
     def Value(self):
+        """消息value
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -3058,6 +3679,10 @@ class ConsumerRecord(AbstractModel):
 
     @property
     def Timestamp(self):
+        """消息时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -3066,6 +3691,10 @@ class ConsumerRecord(AbstractModel):
 
     @property
     def Headers(self):
+        """消息headers
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Headers
 
     @Headers.setter
@@ -3134,6 +3763,10 @@ class CosParam(AbstractModel):
 
     @property
     def BucketName(self):
+        """cos 存储桶名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BucketName
 
     @BucketName.setter
@@ -3142,6 +3775,10 @@ class CosParam(AbstractModel):
 
     @property
     def Region(self):
+        """地域代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -3150,6 +3787,10 @@ class CosParam(AbstractModel):
 
     @property
     def ObjectKey(self):
+        """对象名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ObjectKey
 
     @ObjectKey.setter
@@ -3158,6 +3799,10 @@ class CosParam(AbstractModel):
 
     @property
     def AggregateBatchSize(self):
+        """汇聚消息量的大小（单位：MB)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AggregateBatchSize
 
     @AggregateBatchSize.setter
@@ -3166,6 +3811,10 @@ class CosParam(AbstractModel):
 
     @property
     def AggregateInterval(self):
+        """汇聚的时间间隔（单位：小时）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._AggregateInterval
 
     @AggregateInterval.setter
@@ -3174,6 +3823,10 @@ class CosParam(AbstractModel):
 
     @property
     def FormatOutputType(self):
+        """消息汇聚后的文件格式（支持csv, json）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FormatOutputType
 
     @FormatOutputType.setter
@@ -3182,6 +3835,10 @@ class CosParam(AbstractModel):
 
     @property
     def ObjectKeyPrefix(self):
+        """转储的对象目录前缀
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ObjectKeyPrefix
 
     @ObjectKeyPrefix.setter
@@ -3190,6 +3847,10 @@ class CosParam(AbstractModel):
 
     @property
     def DirectoryTimeFormat(self):
+        """根据strptime 时间格式化的分区格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DirectoryTimeFormat
 
     @DirectoryTimeFormat.setter
@@ -3251,6 +3912,9 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id信息
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3259,6 +3923,9 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """Acl资源类型，(2:TOPIC，3:GROUP，4:CLUSTER)
+        :rtype: int
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -3267,6 +3934,9 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def Operation(self):
+        """Acl操作方式，(2:ALL，3:READ，4:WRITE，5:CREATE，6:DELETE，7:ALTER，8:DESCRIBE，9:CLUSTER_ACTION，10:DESCRIBE_CONFIGS，11:ALTER_CONFIGS，12:IDEMPOTENT_WRITE)
+        :rtype: int
+        """
         return self._Operation
 
     @Operation.setter
@@ -3275,6 +3945,9 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def PermissionType(self):
+        """权限类型，(2:DENY，3:ALLOW)，当前ckakfa支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
+        :rtype: int
+        """
         return self._PermissionType
 
     @PermissionType.setter
@@ -3283,6 +3956,9 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def ResourceName(self):
+        """资源名称，和resourceType相关，如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称，当resourceType为CLUSTER时，该字段可为空。
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -3291,6 +3967,9 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def Host(self):
+        """默认为*，表示任何host都可以访问。支持填写IP或网段，支持“;”分隔。
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -3299,6 +3978,9 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def Principal(self):
+        """用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户。传入时需要加 User: 前缀,如用户A则传入User:A。
+        :rtype: str
+        """
         return self._Principal
 
     @Principal.setter
@@ -3307,6 +3989,9 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def ResourceNameList(self):
+        """资源名称列表,Json字符串格式。ResourceName和resourceNameList只能指定其中一个。
+        :rtype: str
+        """
         return self._ResourceNameList
 
     @ResourceNameList.setter
@@ -3350,6 +4035,9 @@ class CreateAclResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -3358,6 +4046,9 @@ class CreateAclResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3407,6 +4098,9 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id信息
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3415,6 +4109,9 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """Acl资源类型,目前只支持Topic,枚举值列表：Topic
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -3423,6 +4120,9 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def PatternType(self):
+        """匹配类型，目前支持前缀匹配与预设策略，枚举值列表：PREFIXED/PRESET
+        :rtype: str
+        """
         return self._PatternType
 
     @PatternType.setter
@@ -3431,6 +4131,9 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名称
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -3439,6 +4142,9 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def RuleList(self):
+        """设置的ACL规则列表
+        :rtype: list of AclRuleInfo
+        """
         return self._RuleList
 
     @RuleList.setter
@@ -3447,6 +4153,9 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def Pattern(self):
+        """表示前缀匹配的前缀的值
+        :rtype: str
+        """
         return self._Pattern
 
     @Pattern.setter
@@ -3455,6 +4164,9 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def IsApplied(self):
+        """预设ACL规则是否应用到新增的topic中
+        :rtype: int
+        """
         return self._IsApplied
 
     @IsApplied.setter
@@ -3463,6 +4175,9 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """ACL规则的备注
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -3511,6 +4226,9 @@ class CreateAclRuleResponse(AbstractModel):
 
     @property
     def Result(self):
+        """规则的唯一表示Key
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -3519,6 +4237,9 @@ class CreateAclRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3566,6 +4287,9 @@ class CreateCdcClusterRequest(AbstractModel):
 
     @property
     def CdcId(self):
+        """cdc的id
+        :rtype: str
+        """
         return self._CdcId
 
     @CdcId.setter
@@ -3574,6 +4298,9 @@ class CreateCdcClusterRequest(AbstractModel):
 
     @property
     def CdcVpcId(self):
+        """vpcId,一个地域只有唯一一个vpcid用于CDC
+        :rtype: str
+        """
         return self._CdcVpcId
 
     @CdcVpcId.setter
@@ -3582,6 +4309,9 @@ class CreateCdcClusterRequest(AbstractModel):
 
     @property
     def CdcSubnetId(self):
+        """每个CDC集群有唯一一个子网ID
+        :rtype: str
+        """
         return self._CdcSubnetId
 
     @CdcSubnetId.setter
@@ -3590,6 +4320,9 @@ class CreateCdcClusterRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """所在可用区ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -3598,6 +4331,9 @@ class CreateCdcClusterRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
+        """cdc集群的总带宽
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -3606,6 +4342,9 @@ class CreateCdcClusterRequest(AbstractModel):
 
     @property
     def DiskSize(self):
+        """cdc集群的总磁盘
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -3614,6 +4353,9 @@ class CreateCdcClusterRequest(AbstractModel):
 
     @property
     def DiskType(self):
+        """数据盘类型
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -3622,6 +4364,9 @@ class CreateCdcClusterRequest(AbstractModel):
 
     @property
     def SystemDiskType(self):
+        """系统盘类型
+        :rtype: str
+        """
         return self._SystemDiskType
 
     @SystemDiskType.setter
@@ -3665,6 +4410,9 @@ class CreateCdcClusterResponse(AbstractModel):
 
     @property
     def Result(self):
+        """无
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CdcClusterResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -3673,6 +4421,9 @@ class CreateCdcClusterResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3740,6 +4491,9 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def ResourceName(self):
+        """连接源名称
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -3748,6 +4502,9 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def Type(self):
+        """连接源类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3756,6 +4513,9 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def Description(self):
+        """连接源描述
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3764,6 +4524,9 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def DtsConnectParam(self):
+        """Dts配置，Type为DTS时必填
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DtsConnectParam`
+        """
         return self._DtsConnectParam
 
     @DtsConnectParam.setter
@@ -3772,6 +4535,9 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def MongoDBConnectParam(self):
+        """MongoDB配置，Type为MONGODB时必填
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.MongoDBConnectParam`
+        """
         return self._MongoDBConnectParam
 
     @MongoDBConnectParam.setter
@@ -3780,6 +4546,9 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def EsConnectParam(self):
+        """Es配置，Type为ES时必填
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.EsConnectParam`
+        """
         return self._EsConnectParam
 
     @EsConnectParam.setter
@@ -3788,6 +4557,9 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def ClickHouseConnectParam(self):
+        """ClickHouse配置，Type为CLICKHOUSE时必填
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseConnectParam`
+        """
         return self._ClickHouseConnectParam
 
     @ClickHouseConnectParam.setter
@@ -3796,6 +4568,9 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def MySQLConnectParam(self):
+        """MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时必填
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.MySQLConnectParam`
+        """
         return self._MySQLConnectParam
 
     @MySQLConnectParam.setter
@@ -3804,6 +4579,9 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def PostgreSQLConnectParam(self):
+        """PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.PostgreSQLConnectParam`
+        """
         return self._PostgreSQLConnectParam
 
     @PostgreSQLConnectParam.setter
@@ -3812,6 +4590,9 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def MariaDBConnectParam(self):
+        """MariaDB配置，Type为MARIADB时必填
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.MariaDBConnectParam`
+        """
         return self._MariaDBConnectParam
 
     @MariaDBConnectParam.setter
@@ -3820,6 +4601,9 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def SQLServerConnectParam(self):
+        """SQLServer配置，Type为SQLSERVER时必填
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.SQLServerConnectParam`
+        """
         return self._SQLServerConnectParam
 
     @SQLServerConnectParam.setter
@@ -3828,6 +4612,9 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def DorisConnectParam(self):
+        """Doris 配置，Type为 DORIS 时必填
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DorisConnectParam`
+        """
         return self._DorisConnectParam
 
     @DorisConnectParam.setter
@@ -3836,6 +4623,9 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def KafkaConnectParam(self):
+        """Kafka配置，Type为 KAFKA 时必填
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
+        """
         return self._KafkaConnectParam
 
     @KafkaConnectParam.setter
@@ -3844,6 +4634,9 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def MqttConnectParam(self):
+        """MQTT配置，Type为 MQTT 时必填
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.MqttConnectParam`
+        """
         return self._MqttConnectParam
 
     @MqttConnectParam.setter
@@ -3915,6 +4708,9 @@ class CreateConnectResourceResponse(AbstractModel):
 
     @property
     def Result(self):
+        """连接源的Id
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ConnectResourceResourceIdResp`
+        """
         return self._Result
 
     @Result.setter
@@ -3923,6 +4719,9 @@ class CreateConnectResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3960,6 +4759,9 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3968,6 +4770,9 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """group名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -3976,6 +4781,9 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """topic名称，TopicName、TopicNameList 需要显示指定一个存在的topic名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -3984,6 +4792,9 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def TopicNameList(self):
+        """topic名称数组
+        :rtype: list of str
+        """
         return self._TopicNameList
 
     @TopicNameList.setter
@@ -4023,6 +4834,9 @@ class CreateConsumerResponse(AbstractModel):
 
     @property
     def Result(self):
+        """创建group描述
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -4031,6 +4845,9 @@ class CreateConsumerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4086,6 +4903,9 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -4094,6 +4914,9 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型，SOURCE数据接入，SINK数据流出
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -4102,6 +4925,9 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def SourceResource(self):
+        """数据源
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
+        """
         return self._SourceResource
 
     @SourceResource.setter
@@ -4110,6 +4936,9 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def TargetResource(self):
+        """数据目标
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
+        """
         return self._TargetResource
 
     @TargetResource.setter
@@ -4118,6 +4947,9 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def TransformParam(self):
+        """数据处理规则
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TransformParam`
+        """
         return self._TransformParam
 
     @TransformParam.setter
@@ -4126,6 +4958,9 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def PrivateLinkParam(self):
+        """实例连接参数【已废弃】
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.PrivateLinkParam`
+        """
         return self._PrivateLinkParam
 
     @PrivateLinkParam.setter
@@ -4134,6 +4969,9 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def SchemaId(self):
+        """选择所要绑定的SchemaId
+        :rtype: str
+        """
         return self._SchemaId
 
     @SchemaId.setter
@@ -4142,6 +4980,9 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def TransformsParam(self):
+        """数据处理规则
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TransformsParam`
+        """
         return self._TransformsParam
 
     @TransformsParam.setter
@@ -4150,6 +4991,9 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4158,6 +5002,9 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -4219,6 +5066,9 @@ class CreateDatahubTaskRes(AbstractModel):
 
     @property
     def TaskId(self):
+        """转储任务id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4227,6 +5077,10 @@ class CreateDatahubTaskRes(AbstractModel):
 
     @property
     def DatahubId(self):
+        """数据转储Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatahubId
 
     @DatahubId.setter
@@ -4264,6 +5118,9 @@ class CreateDatahubTaskResponse(AbstractModel):
 
     @property
     def Result(self):
+        """任务id
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTaskRes`
+        """
         return self._Result
 
     @Result.setter
@@ -4272,6 +5129,9 @@ class CreateDatahubTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4312,6 +5172,9 @@ class CreateDatahubTopicRequest(AbstractModel):
 
     @property
     def Name(self):
+        """名称，是一个不超过 128 个字符的字符串，必须以“AppId-”为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4320,6 +5183,9 @@ class CreateDatahubTopicRequest(AbstractModel):
 
     @property
     def PartitionNum(self):
+        """Partition个数，大于0
+        :rtype: int
+        """
         return self._PartitionNum
 
     @PartitionNum.setter
@@ -4328,6 +5194,9 @@ class CreateDatahubTopicRequest(AbstractModel):
 
     @property
     def RetentionMs(self):
+        """消息保留时间，单位ms，当前最小值为60000ms
+        :rtype: int
+        """
         return self._RetentionMs
 
     @RetentionMs.setter
@@ -4336,6 +5205,9 @@ class CreateDatahubTopicRequest(AbstractModel):
 
     @property
     def Note(self):
+        """主题备注，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -4344,6 +5216,9 @@ class CreateDatahubTopicRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -4389,6 +5264,9 @@ class CreateDatahubTopicResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回创建结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubTopicResp`
+        """
         return self._Result
 
     @Result.setter
@@ -4397,6 +5275,9 @@ class CreateDatahubTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4438,6 +5319,10 @@ class CreateInstancePostData(AbstractModel):
 
     @property
     def FlowId(self):
+        """CreateInstancePre返回固定为0，不能作为CheckTaskStatus的查询条件。只是为了保证和后台数据结构对齐。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -4446,6 +5331,10 @@ class CreateInstancePostData(AbstractModel):
 
     @property
     def DealNames(self):
+        """订单号列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._DealNames
 
     @DealNames.setter
@@ -4454,6 +5343,10 @@ class CreateInstancePostData(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id，当购买多个实例时，默认返回购买的第一个实例 id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4462,6 +5355,10 @@ class CreateInstancePostData(AbstractModel):
 
     @property
     def DealNameInstanceIdMapping(self):
+        """订单和购买实例对应映射列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DealInstanceDTO
+        """
         return self._DealNameInstanceIdMapping
 
     @DealNameInstanceIdMapping.setter
@@ -4557,6 +5454,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -4565,6 +5465,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """创建的实例默认接入点所在的 vpc 对应 vpcId。目前不支持创建基础网络实例，因此该参数必填
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -4573,6 +5476,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网id。创建实例默认接入点所在的子网对应的子网 id
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -4581,6 +5487,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def BandWidth(self):
+        """实例内网峰值带宽。单位 MB/s。标准版需传入当前实例规格所对应的峰值带宽。注意如果创建的实例为专业版实例，峰值带宽，分区数等参数配置需要满足专业版的计费规格。
+        :rtype: int
+        """
         return self._BandWidth
 
     @BandWidth.setter
@@ -4589,6 +5498,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def InstanceType(self):
+        """国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
+        :rtype: int
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -4597,6 +5509,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def MsgRetentionTime(self):
+        """实例日志的默认最长保留时间，单位分钟。不传入该参数时默认为 1440 分钟（1天），最大30天。当 topic 显式设置消息保留时间时，以 topic 保留时间为准
+        :rtype: int
+        """
         return self._MsgRetentionTime
 
     @MsgRetentionTime.setter
@@ -4605,6 +5520,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """创建实例时可以选择集群Id, 该入参表示集群Id。不指定实例所在集群则不传入该参数
+        :rtype: int
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -4613,6 +5531,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def KafkaVersion(self):
+        """实例版本。目前支持 "0.10.2","1.1.1","2.4.1","2.4.2","2.8.1"。"2.4.1" 与 "2.4.2" 属于同一个版本，传任意一个均可。
+        :rtype: str
+        """
         return self._KafkaVersion
 
     @KafkaVersion.setter
@@ -4621,6 +5542,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def SpecificationsType(self):
+        """实例类型。"standard"：标准版，"profession"：专业版
+        :rtype: str
+        """
         return self._SpecificationsType
 
     @SpecificationsType.setter
@@ -4629,6 +5553,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def DiskType(self):
+        """专业版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认值为 "CLOUD_BASIC"
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -4637,6 +5564,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def DiskSize(self):
+        """实例硬盘大小，需要满足当前实例的计费规格
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -4645,6 +5575,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def Partition(self):
+        """实例最大分区数量，需要满足当前实例的计费规格
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -4653,6 +5586,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def TopicNum(self):
+        """实例最大 topic 数量，需要满足当前实例的计费规格
+        :rtype: int
+        """
         return self._TopicNum
 
     @TopicNum.setter
@@ -4661,6 +5597,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """实例所在的可用区。当创建多可用区实例时，该参数为创建的默认接入点所在子网的可用区 id
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -4669,6 +5608,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def MultiZoneFlag(self):
+        """当前实例是否为多可用区实例。
+        :rtype: bool
+        """
         return self._MultiZoneFlag
 
     @MultiZoneFlag.setter
@@ -4677,6 +5619,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
+        """当实例为多可用区实例时，多可用区 id 列表。注意参数 ZoneId 对应的多可用区需要包含在该参数数组中
+        :rtype: list of int
+        """
         return self._ZoneIds
 
     @ZoneIds.setter
@@ -4685,6 +5630,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def InstanceNum(self):
+        """购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例
+        :rtype: int
+        """
         return self._InstanceNum
 
     @InstanceNum.setter
@@ -4693,6 +5641,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def PublicNetworkMonthly(self):
+        """公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。需要保证传入参数为 3 的整数倍
+        :rtype: int
+        """
         return self._PublicNetworkMonthly
 
     @PublicNetworkMonthly.setter
@@ -4701,6 +5652,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -4764,6 +5718,9 @@ class CreateInstancePostResp(AbstractModel):
 
     @property
     def ReturnCode(self):
+        """返回的code，0为正常，非0为错误
+        :rtype: str
+        """
         return self._ReturnCode
 
     @ReturnCode.setter
@@ -4772,6 +5729,9 @@ class CreateInstancePostResp(AbstractModel):
 
     @property
     def ReturnMessage(self):
+        """接口返回消息，当接口报错时提示错误信息
+        :rtype: str
+        """
         return self._ReturnMessage
 
     @ReturnMessage.setter
@@ -4780,6 +5740,10 @@ class CreateInstancePostResp(AbstractModel):
 
     @property
     def Data(self):
+        """返回的Data数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostData`
+        """
         return self._Data
 
     @Data.setter
@@ -4820,6 +5784,9 @@ class CreateInstancePostResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -4828,6 +5795,9 @@ class CreateInstancePostResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4869,6 +5839,10 @@ class CreateInstancePreData(AbstractModel):
 
     @property
     def FlowId(self):
+        """CreateInstancePre返回固定为0，不能作为CheckTaskStatus的查询条件。只是为了保证和后台数据结构对齐。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -4877,6 +5851,10 @@ class CreateInstancePreData(AbstractModel):
 
     @property
     def DealNames(self):
+        """订单号列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._DealNames
 
     @DealNames.setter
@@ -4885,6 +5863,10 @@ class CreateInstancePreData(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id，当购买多个实例时，默认返回购买的第一个实例 id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4893,6 +5875,10 @@ class CreateInstancePreData(AbstractModel):
 
     @property
     def DealNameInstanceIdMapping(self):
+        """订单和购买实例对应映射列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DealInstanceDTO
+        """
         return self._DealNameInstanceIdMapping
 
     @DealNameInstanceIdMapping.setter
@@ -4994,6 +5980,9 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -5002,6 +5991,9 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """可用区。当购买多可用区实例时，当前参数为主可用区。需要保证传入的参数和 SubnetId 所在子网属于同一个可用区
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -5010,6 +6002,9 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def Period(self):
+        """预付费购买时长，例如 "1m",就是一个月
+        :rtype: str
+        """
         return self._Period
 
     @Period.setter
@@ -5018,6 +6013,9 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def InstanceType(self):
+        """国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
+        :rtype: int
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -5026,6 +6024,9 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """vpcId，必填
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -5034,6 +6035,9 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网id，必填
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -5042,6 +6046,9 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def MsgRetentionTime(self):
+        """可选。实例日志的最长保留时间，单位分钟，默认为10080（7天），最大30天，不填默认0，代表不开启日志保留时间回收策略
+        :rtype: int
+        """
         return self._MsgRetentionTime
 
     @MsgRetentionTime.setter
@@ -5050,6 +6057,9 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """创建实例时可以选择集群Id, 该入参表示集群Id
+        :rtype: int
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -5058,6 +6068,9 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """预付费自动续费标记，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
+        :rtype: int
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -5066,6 +6079,9 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def KafkaVersion(self):
+        """CKafka版本号[0.10.2、1.1.1、2.4.1、2.4.2、2.8.1、3.2.3], 默认是1.1.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。
+        :rtype: str
+        """
         return self._KafkaVersion
 
     @KafkaVersion.setter
@@ -5074,6 +6090,9 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def SpecificationsType(self):
+        """实例类型: [标准版实例]填写 "standard" (默认), [专业版实例]填写 "profession",[高级版实例]填写"premium"
+        :rtype: str
+        """
         return self._SpecificationsType
 
     @SpecificationsType.setter
@@ -5082,6 +6101,9 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def DiskSize(self):
+        """磁盘大小，如果跟控制台规格配比不相符，则无法创建成功
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -5090,6 +6112,9 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def BandWidth(self):
+        """带宽，如果跟控制台规格配比不相符，则无法创建成功
+        :rtype: int
+        """
         return self._BandWidth
 
     @BandWidth.setter
@@ -5098,6 +6123,9 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def Partition(self):
+        """分区大小，如果跟控制台规格配比不相符，则无法创建成功
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -5106,6 +6134,9 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -5114,6 +6145,9 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def DiskType(self):
+        """专业版/高级版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认为 "CLOUD_BASIC"
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -5122,6 +6156,9 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def MultiZoneFlag(self):
+        """是否创建跨可用区实例，当前参数为 true 时，zoneIds必填
+        :rtype: bool
+        """
         return self._MultiZoneFlag
 
     @MultiZoneFlag.setter
@@ -5130,6 +6167,9 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
+        """可用区列表，购买多可用区实例时为必填项
+        :rtype: list of int
+        """
         return self._ZoneIds
 
     @ZoneIds.setter
@@ -5138,6 +6178,9 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def PublicNetworkMonthly(self):
+        """公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。默认值为 0。需要保证传入参数为 3 的整数倍
+        :rtype: int
+        """
         return self._PublicNetworkMonthly
 
     @PublicNetworkMonthly.setter
@@ -5146,6 +6189,9 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def InstanceNum(self):
+        """购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例
+        :rtype: int
+        """
         return self._InstanceNum
 
     @InstanceNum.setter
@@ -5154,6 +6200,9 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
+        """是否自动选择代金券:1-是;0否。默认为0
+        :rtype: int
+        """
         return self._AutoVoucher
 
     @AutoVoucher.setter
@@ -5223,6 +6272,9 @@ class CreateInstancePreResp(AbstractModel):
 
     @property
     def ReturnCode(self):
+        """返回的code，0为正常，非0为错误
+        :rtype: str
+        """
         return self._ReturnCode
 
     @ReturnCode.setter
@@ -5231,6 +6283,9 @@ class CreateInstancePreResp(AbstractModel):
 
     @property
     def ReturnMessage(self):
+        """成功消息
+        :rtype: str
+        """
         return self._ReturnMessage
 
     @ReturnMessage.setter
@@ -5239,6 +6294,10 @@ class CreateInstancePreResp(AbstractModel):
 
     @property
     def Data(self):
+        """操作型返回的Data数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreData`
+        """
         return self._Data
 
     @Data.setter
@@ -5249,6 +6308,10 @@ class CreateInstancePreResp(AbstractModel):
     def DeleteRouteTimestamp(self):
         warnings.warn("parameter `DeleteRouteTimestamp` is deprecated", DeprecationWarning) 
 
+        """删除时间。目前该参数字段已废弃，将会在未来被删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeleteRouteTimestamp
 
     @DeleteRouteTimestamp.setter
@@ -5292,6 +6355,9 @@ class CreateInstancePreResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreResp`
+        """
         return self._Result
 
     @Result.setter
@@ -5300,6 +6366,9 @@ class CreateInstancePreResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5334,6 +6403,9 @@ class CreatePartitionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5342,6 +6414,9 @@ class CreatePartitionRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """主题名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -5350,6 +6425,9 @@ class CreatePartitionRequest(AbstractModel):
 
     @property
     def PartitionNum(self):
+        """主题分区个数
+        :rtype: int
+        """
         return self._PartitionNum
 
     @PartitionNum.setter
@@ -5388,6 +6466,9 @@ class CreatePartitionResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回的结果集
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -5396,6 +6477,9 @@ class CreatePartitionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5478,6 +6562,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -5486,6 +6573,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """创建的实例默认接入点所在的 vpc 对应 vpcId。目前不支持创建基础网络实例，因此该参数必填
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -5494,6 +6584,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网id。创建实例默认接入点所在的子网对应的子网 id
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -5502,6 +6595,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def InstanceType(self):
+        """国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
+        :rtype: int
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -5510,6 +6606,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def MsgRetentionTime(self):
+        """实例日志的默认最长保留时间，单位分钟。不传入该参数时默认为 1440 分钟（1天），最大30天。当 topic 显式设置消息保留时间时，以 topic 保留时间为准
+        :rtype: int
+        """
         return self._MsgRetentionTime
 
     @MsgRetentionTime.setter
@@ -5518,6 +6617,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """创建实例时可以选择集群Id, 该入参表示集群Id。不指定实例所在集群则不传入该参数
+        :rtype: int
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -5526,6 +6628,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def KafkaVersion(self):
+        """实例版本。目前支持 "0.10.2","1.1.1","2.4.1","2.4.2","2.8.1"。"2.4.1" 与 "2.4.2" 属于同一个版本，传任意一个均可。
+        :rtype: str
+        """
         return self._KafkaVersion
 
     @KafkaVersion.setter
@@ -5534,6 +6639,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def SpecificationsType(self):
+        """实例类型。"standard"：标准版，"profession"：专业版。  (标准版仅国际站支持，国内站目前支持专业版)
+        :rtype: str
+        """
         return self._SpecificationsType
 
     @SpecificationsType.setter
@@ -5542,6 +6650,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def DiskType(self):
+        """专业版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认值为 "CLOUD_BASIC"
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -5550,6 +6661,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def BandWidth(self):
+        """实例内网峰值带宽。单位 MB/s。标准版需传入当前实例规格所对应的峰值带宽。注意如果创建的实例为专业版实例，峰值带宽，分区数等参数配置需要满足专业版的计费规格。
+        :rtype: int
+        """
         return self._BandWidth
 
     @BandWidth.setter
@@ -5558,6 +6672,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def DiskSize(self):
+        """实例硬盘大小，需要满足当前实例的计费规格
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -5566,6 +6683,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def Partition(self):
+        """实例最大分区数量，需要满足当前实例的计费规格
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -5574,6 +6694,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def TopicNum(self):
+        """实例最大 topic 数量，需要满足当前实例的计费规格
+        :rtype: int
+        """
         return self._TopicNum
 
     @TopicNum.setter
@@ -5582,6 +6705,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """实例所在的可用区。当创建多可用区实例时，该参数为创建的默认接入点所在子网的可用区 id
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -5590,6 +6716,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def MultiZoneFlag(self):
+        """当前实例是否为多可用区实例。
+        :rtype: bool
+        """
         return self._MultiZoneFlag
 
     @MultiZoneFlag.setter
@@ -5598,6 +6727,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
+        """当实例为多可用区实例时，多可用区 id 列表。注意参数 ZoneId 对应的多可用区需要包含在该参数数组中
+        :rtype: list of int
+        """
         return self._ZoneIds
 
     @ZoneIds.setter
@@ -5606,6 +6738,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def InstanceNum(self):
+        """购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例
+        :rtype: int
+        """
         return self._InstanceNum
 
     @InstanceNum.setter
@@ -5614,6 +6749,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def PublicNetworkMonthly(self):
+        """公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。需要保证传入参数为 3 的整数倍
+        :rtype: int
+        """
         return self._PublicNetworkMonthly
 
     @PublicNetworkMonthly.setter
@@ -5622,6 +6760,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -5681,6 +6822,9 @@ class CreatePostPaidInstanceResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostResp`
+        """
         return self._Result
 
     @Result.setter
@@ -5689,6 +6833,9 @@ class CreatePostPaidInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5723,6 +6870,9 @@ class CreatePrometheusRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ckafka实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5731,6 +6881,9 @@ class CreatePrometheusRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """vpc地址
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -5739,6 +6892,9 @@ class CreatePrometheusRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网地址
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -5777,6 +6933,9 @@ class CreatePrometheusResponse(AbstractModel):
 
     @property
     def Result(self):
+        """打通普罗米修斯
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.PrometheusResult`
+        """
         return self._Result
 
     @Result.setter
@@ -5785,6 +6944,9 @@ class CreatePrometheusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5837,6 +6999,9 @@ class CreateRouteRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例唯一id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5845,6 +7010,9 @@ class CreateRouteRequest(AbstractModel):
 
     @property
     def VipType(self):
+        """路由网络类型(3:vpc路由;7:内部支撑路由)
+        :rtype: int
+        """
         return self._VipType
 
     @VipType.setter
@@ -5853,6 +7021,9 @@ class CreateRouteRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """vpc网络Id
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -5861,6 +7032,9 @@ class CreateRouteRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """vpc子网id
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -5869,6 +7043,9 @@ class CreateRouteRequest(AbstractModel):
 
     @property
     def AccessType(self):
+        """访问类型：0-plaintext；1-sasl_plaintext；2-ssl；3-sasl_ssl
+        :rtype: int
+        """
         return self._AccessType
 
     @AccessType.setter
@@ -5877,6 +7054,9 @@ class CreateRouteRequest(AbstractModel):
 
     @property
     def AuthFlag(self):
+        """是否需要权限管理
+        :rtype: int
+        """
         return self._AuthFlag
 
     @AuthFlag.setter
@@ -5885,6 +7065,9 @@ class CreateRouteRequest(AbstractModel):
 
     @property
     def CallerAppid(self):
+        """调用方appId
+        :rtype: int
+        """
         return self._CallerAppid
 
     @CallerAppid.setter
@@ -5893,6 +7076,9 @@ class CreateRouteRequest(AbstractModel):
 
     @property
     def PublicNetwork(self):
+        """公网带宽
+        :rtype: int
+        """
         return self._PublicNetwork
 
     @PublicNetwork.setter
@@ -5901,6 +7087,9 @@ class CreateRouteRequest(AbstractModel):
 
     @property
     def Ip(self):
+        """vip地址
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -5945,6 +7134,9 @@ class CreateRouteResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -5953,6 +7145,9 @@ class CreateRouteResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5984,6 +7179,9 @@ class CreateTokenRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5992,6 +7190,9 @@ class CreateTokenRequest(AbstractModel):
 
     @property
     def User(self):
+        """用户名
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -6030,6 +7231,10 @@ class CreateTokenResponse(AbstractModel):
 
     @property
     def Result(self):
+        """token串
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -6038,6 +7243,9 @@ class CreateTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6070,6 +7278,9 @@ class CreateTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6078,6 +7289,9 @@ class CreateTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """主题名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -6086,6 +7300,9 @@ class CreateTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def IpWhiteList(self):
+        """ip白名单列表
+        :rtype: list of str
+        """
         return self._IpWhiteList
 
     @IpWhiteList.setter
@@ -6124,6 +7341,9 @@ class CreateTopicIpWhiteListResponse(AbstractModel):
 
     @property
     def Result(self):
+        """删除主题IP白名单结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -6132,6 +7352,9 @@ class CreateTopicIpWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6208,6 +7431,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6216,6 +7442,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """主题名称，是一个不超过 128 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -6224,6 +7453,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def PartitionNum(self):
+        """Partition个数，大于0
+        :rtype: int
+        """
         return self._PartitionNum
 
     @PartitionNum.setter
@@ -6232,6 +7464,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def ReplicaNum(self):
+        """副本个数，不能多于 broker 数，最大为3
+        :rtype: int
+        """
         return self._ReplicaNum
 
     @ReplicaNum.setter
@@ -6240,6 +7475,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def EnableWhiteList(self):
+        """ip白名单开关, 1:打开  0:关闭，默认不打开
+        :rtype: int
+        """
         return self._EnableWhiteList
 
     @EnableWhiteList.setter
@@ -6248,6 +7486,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def IpWhiteList(self):
+        """Ip白名单列表，配额限制，enableWhileList=1时必选
+        :rtype: list of str
+        """
         return self._IpWhiteList
 
     @IpWhiteList.setter
@@ -6256,6 +7497,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def CleanUpPolicy(self):
+        """清理日志策略，日志清理模式，默认为"delete"。"delete"：日志按保存时间删除，"compact"：日志按 key 压缩，"compact, delete"：日志按 key 压缩且会按保存时间删除。
+        :rtype: str
+        """
         return self._CleanUpPolicy
 
     @CleanUpPolicy.setter
@@ -6264,6 +7508,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Note(self):
+        """主题备注，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -6272,6 +7519,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def MinInsyncReplicas(self):
+        """默认为1
+        :rtype: int
+        """
         return self._MinInsyncReplicas
 
     @MinInsyncReplicas.setter
@@ -6280,6 +7530,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def UncleanLeaderElectionEnable(self):
+        """是否允许未同步的副本选为leader，false:不允许，true:允许，默认不允许
+        :rtype: int
+        """
         return self._UncleanLeaderElectionEnable
 
     @UncleanLeaderElectionEnable.setter
@@ -6288,6 +7541,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def RetentionMs(self):
+        """可选参数。消息保留时间，单位ms，当前最小值为60000ms
+        :rtype: int
+        """
         return self._RetentionMs
 
     @RetentionMs.setter
@@ -6296,6 +7552,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def SegmentMs(self):
+        """Segment分片滚动的时长，单位ms，当前最小为3600000ms
+        :rtype: int
+        """
         return self._SegmentMs
 
     @SegmentMs.setter
@@ -6304,6 +7563,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def MaxMessageBytes(self):
+        """主题消息最大值，单位为 Byte，最小值1024Byte(即1KB)，最大值为12582912Byte（即12MB）
+        :rtype: int
+        """
         return self._MaxMessageBytes
 
     @MaxMessageBytes.setter
@@ -6312,6 +7574,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def EnableAclRule(self):
+        """预设ACL规则, 1:打开  0:关闭，默认不打开
+        :rtype: int
+        """
         return self._EnableAclRule
 
     @EnableAclRule.setter
@@ -6320,6 +7585,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def AclRuleName(self):
+        """预设ACL规则的名称
+        :rtype: str
+        """
         return self._AclRuleName
 
     @AclRuleName.setter
@@ -6328,6 +7596,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def RetentionBytes(self):
+        """可选, 保留文件大小. 默认为-1,单位bytes, 当前最小值为1048576B
+        :rtype: int
+        """
         return self._RetentionBytes
 
     @RetentionBytes.setter
@@ -6336,6 +7607,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -6390,6 +7664,9 @@ class CreateTopicResp(AbstractModel):
 
     @property
     def TopicId(self):
+        """主题Id
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -6426,6 +7703,9 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回创建结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateTopicResp`
+        """
         return self._Result
 
     @Result.setter
@@ -6434,6 +7714,9 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6468,6 +7751,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6476,6 +7762,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Name(self):
+        """用户名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6484,6 +7773,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Password(self):
+        """用户密码
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -6522,6 +7814,9 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回的结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -6530,6 +7825,9 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6579,6 +7877,10 @@ class CtsdbConnectParam(AbstractModel):
 
     @property
     def Port(self):
+        """Ctsdb的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -6587,6 +7889,10 @@ class CtsdbConnectParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """Ctsdb连接源的实例vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -6595,6 +7901,10 @@ class CtsdbConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """Ctsdb连接源的vpcId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -6603,6 +7913,10 @@ class CtsdbConnectParam(AbstractModel):
 
     @property
     def UserName(self):
+        """Ctsdb连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -6611,6 +7925,10 @@ class CtsdbConnectParam(AbstractModel):
 
     @property
     def Password(self):
+        """Ctsdb连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -6619,6 +7937,10 @@ class CtsdbConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """Ctsdb连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -6678,6 +8000,10 @@ class CtsdbModifyConnectParam(AbstractModel):
 
     @property
     def Port(self):
+        """Ctsdb的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -6686,6 +8012,10 @@ class CtsdbModifyConnectParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """Ctsdb连接源的实例vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -6694,6 +8024,10 @@ class CtsdbModifyConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """Ctsdb连接源的vpcId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -6702,6 +8036,10 @@ class CtsdbModifyConnectParam(AbstractModel):
 
     @property
     def UserName(self):
+        """Ctsdb连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -6710,6 +8048,10 @@ class CtsdbModifyConnectParam(AbstractModel):
 
     @property
     def Password(self):
+        """Ctsdb连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -6718,6 +8060,10 @@ class CtsdbModifyConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """Ctsdb连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -6761,6 +8107,10 @@ class CtsdbParam(AbstractModel):
 
     @property
     def Resource(self):
+        """连接管理实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -6769,6 +8119,10 @@ class CtsdbParam(AbstractModel):
 
     @property
     def CtsdbMetric(self):
+        """Ctsdb的metric
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CtsdbMetric
 
     @CtsdbMetric.setter
@@ -6871,6 +8225,9 @@ class DatahubResource(AbstractModel):
 
     @property
     def Type(self):
+        """资源类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -6879,6 +8236,10 @@ class DatahubResource(AbstractModel):
 
     @property
     def KafkaParam(self):
+        """ckafka配置，Type为KAFKA时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.KafkaParam`
+        """
         return self._KafkaParam
 
     @KafkaParam.setter
@@ -6887,6 +8248,10 @@ class DatahubResource(AbstractModel):
 
     @property
     def EventBusParam(self):
+        """EB配置，Type为EB时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.EventBusParam`
+        """
         return self._EventBusParam
 
     @EventBusParam.setter
@@ -6895,6 +8260,10 @@ class DatahubResource(AbstractModel):
 
     @property
     def MongoDBParam(self):
+        """MongoDB配置，Type为MONGODB时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.MongoDBParam`
+        """
         return self._MongoDBParam
 
     @MongoDBParam.setter
@@ -6903,6 +8272,10 @@ class DatahubResource(AbstractModel):
 
     @property
     def EsParam(self):
+        """Es配置，Type为ES时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.EsParam`
+        """
         return self._EsParam
 
     @EsParam.setter
@@ -6911,6 +8284,10 @@ class DatahubResource(AbstractModel):
 
     @property
     def TdwParam(self):
+        """Tdw配置，Type为TDW时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TdwParam`
+        """
         return self._TdwParam
 
     @TdwParam.setter
@@ -6919,6 +8296,10 @@ class DatahubResource(AbstractModel):
 
     @property
     def DtsParam(self):
+        """Dts配置，Type为DTS时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DtsParam`
+        """
         return self._DtsParam
 
     @DtsParam.setter
@@ -6927,6 +8308,10 @@ class DatahubResource(AbstractModel):
 
     @property
     def ClickHouseParam(self):
+        """ClickHouse配置，Type为CLICKHOUSE时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseParam`
+        """
         return self._ClickHouseParam
 
     @ClickHouseParam.setter
@@ -6935,6 +8320,10 @@ class DatahubResource(AbstractModel):
 
     @property
     def ClsParam(self):
+        """Cls配置，Type为CLS时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ClsParam`
+        """
         return self._ClsParam
 
     @ClsParam.setter
@@ -6943,6 +8332,10 @@ class DatahubResource(AbstractModel):
 
     @property
     def CosParam(self):
+        """Cos配置，Type为COS时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CosParam`
+        """
         return self._CosParam
 
     @CosParam.setter
@@ -6951,6 +8344,10 @@ class DatahubResource(AbstractModel):
 
     @property
     def MySQLParam(self):
+        """MySQL配置，Type为MYSQL时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.MySQLParam`
+        """
         return self._MySQLParam
 
     @MySQLParam.setter
@@ -6959,6 +8356,10 @@ class DatahubResource(AbstractModel):
 
     @property
     def PostgreSQLParam(self):
+        """PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.PostgreSQLParam`
+        """
         return self._PostgreSQLParam
 
     @PostgreSQLParam.setter
@@ -6967,6 +8368,10 @@ class DatahubResource(AbstractModel):
 
     @property
     def TopicParam(self):
+        """Topic配置，Type为Topic时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TopicParam`
+        """
         return self._TopicParam
 
     @TopicParam.setter
@@ -6975,6 +8380,10 @@ class DatahubResource(AbstractModel):
 
     @property
     def MariaDBParam(self):
+        """MariaDB配置，Type为MARIADB时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.MariaDBParam`
+        """
         return self._MariaDBParam
 
     @MariaDBParam.setter
@@ -6983,6 +8392,10 @@ class DatahubResource(AbstractModel):
 
     @property
     def SQLServerParam(self):
+        """SQLServer配置，Type为SQLSERVER时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.SQLServerParam`
+        """
         return self._SQLServerParam
 
     @SQLServerParam.setter
@@ -6991,6 +8404,10 @@ class DatahubResource(AbstractModel):
 
     @property
     def CtsdbParam(self):
+        """Ctsdb配置，Type为CTSDB时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CtsdbParam`
+        """
         return self._CtsdbParam
 
     @CtsdbParam.setter
@@ -6999,6 +8416,10 @@ class DatahubResource(AbstractModel):
 
     @property
     def ScfParam(self):
+        """Scf配置，Type为SCF时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ScfParam`
+        """
         return self._ScfParam
 
     @ScfParam.setter
@@ -7007,6 +8428,10 @@ class DatahubResource(AbstractModel):
 
     @property
     def MqttParam(self):
+        """MQTT配置，Type为 MQTT 时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.MqttParam`
+        """
         return self._MqttParam
 
     @MqttParam.setter
@@ -7092,6 +8517,10 @@ class DatahubTaskIdRes(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -7166,6 +8595,9 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -7174,6 +8606,9 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -7182,6 +8617,9 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型，SOURCE数据接入，SINK数据流出
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -7190,6 +8628,9 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def Status(self):
+        """状态，-1创建失败，0创建中，1运行中，2删除中，3已删除，4删除失败，5暂停中，6已暂停，7暂停失败，8恢复中，9恢复失败
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -7198,6 +8639,10 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def SourceResource(self):
+        """数据源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
+        """
         return self._SourceResource
 
     @SourceResource.setter
@@ -7206,6 +8651,10 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def TargetResource(self):
+        """数据目标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
+        """
         return self._TargetResource
 
     @TargetResource.setter
@@ -7214,6 +8663,10 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """任务创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -7222,6 +8675,10 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def ErrorMessage(self):
+        """异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorMessage
 
     @ErrorMessage.setter
@@ -7230,6 +8687,10 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def TaskProgress(self):
+        """创建进度百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._TaskProgress
 
     @TaskProgress.setter
@@ -7238,6 +8699,10 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def TaskCurrentStep(self):
+        """任务当前处于的步骤
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TaskCurrentStep
 
     @TaskCurrentStep.setter
@@ -7246,6 +8711,10 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def DatahubId(self):
+        """Datahub转储Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatahubId
 
     @DatahubId.setter
@@ -7254,6 +8723,10 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def StepList(self):
+        """步骤列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._StepList
 
     @StepList.setter
@@ -7320,6 +8793,9 @@ class DatahubTopicDTO(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -7328,6 +8804,9 @@ class DatahubTopicDTO(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -7336,6 +8815,9 @@ class DatahubTopicDTO(AbstractModel):
 
     @property
     def TopicId(self):
+        """Topic Id
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -7344,6 +8826,9 @@ class DatahubTopicDTO(AbstractModel):
 
     @property
     def PartitionNum(self):
+        """分区数
+        :rtype: int
+        """
         return self._PartitionNum
 
     @PartitionNum.setter
@@ -7352,6 +8837,9 @@ class DatahubTopicDTO(AbstractModel):
 
     @property
     def RetentionMs(self):
+        """过期时间
+        :rtype: int
+        """
         return self._RetentionMs
 
     @RetentionMs.setter
@@ -7360,6 +8848,9 @@ class DatahubTopicDTO(AbstractModel):
 
     @property
     def Note(self):
+        """备注
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -7368,6 +8859,9 @@ class DatahubTopicDTO(AbstractModel):
 
     @property
     def Status(self):
+        """状态，1使用中，2删除中
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -7411,6 +8905,9 @@ class DatahubTopicResp(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -7419,6 +8916,10 @@ class DatahubTopicResp(AbstractModel):
 
     @property
     def TopicId(self):
+        """TopicId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -7461,6 +8962,9 @@ class DateParam(AbstractModel):
 
     @property
     def Format(self):
+        """时间格式
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -7469,6 +8973,10 @@ class DateParam(AbstractModel):
 
     @property
     def TargetType(self):
+        """输入类型，string，unix时间戳，默认string
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -7477,6 +8985,10 @@ class DateParam(AbstractModel):
 
     @property
     def TimeZone(self):
+        """时区，默认GMT+8
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimeZone
 
     @TimeZone.setter
@@ -7517,6 +9029,10 @@ class DealInstanceDTO(AbstractModel):
 
     @property
     def DealName(self):
+        """订单流水
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DealName
 
     @DealName.setter
@@ -7525,6 +9041,10 @@ class DealInstanceDTO(AbstractModel):
 
     @property
     def InstanceIdList(self):
+        """订单流水对应购买的 CKafka 实例 id 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._InstanceIdList
 
     @InstanceIdList.setter
@@ -7577,6 +9097,9 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id信息
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7585,6 +9108,9 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """Acl资源类型，(2:TOPIC，3:GROUP，4:CLUSTER)
+        :rtype: int
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -7593,6 +9119,9 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def ResourceName(self):
+        """资源名称，和resourceType相关，如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称，当resourceType为CLUSTER时，该字段可为空。
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -7601,6 +9130,9 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def Operation(self):
+        """Acl操作方式，(2:ALL，3:READ，4:WRITE，5:CREATE，6:DELETE，7:ALTER，8:DESCRIBE，9:CLUSTER_ACTION，10:DESCRIBE_CONFIGS，11:ALTER_CONFIGS，12:IDEMPOTENT_WRITE)
+        :rtype: int
+        """
         return self._Operation
 
     @Operation.setter
@@ -7609,6 +9141,9 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def PermissionType(self):
+        """权限类型，(2:DENY，3:ALLOW)，当前ckakfa支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
+        :rtype: int
+        """
         return self._PermissionType
 
     @PermissionType.setter
@@ -7617,6 +9152,9 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def Host(self):
+        """默认为\*，表示任何host都可以访问，当前ckafka不支持host为\*，但是后面开源kafka的产品化会直接支持
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -7625,6 +9163,9 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def Principal(self):
+        """用户列表，默认为*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户
+        :rtype: str
+        """
         return self._Principal
 
     @Principal.setter
@@ -7667,6 +9208,9 @@ class DeleteAclResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -7675,6 +9219,9 @@ class DeleteAclResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7706,6 +9253,9 @@ class DeleteAclRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id信息
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7714,6 +9264,9 @@ class DeleteAclRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
+        """acl规则名称
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -7751,6 +9304,9 @@ class DeleteAclRuleResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回被删除的规则的ID
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -7759,6 +9315,9 @@ class DeleteAclRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7785,6 +9344,9 @@ class DeleteConnectResourceRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """连接源的Id
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -7821,6 +9383,9 @@ class DeleteConnectResourceResponse(AbstractModel):
 
     @property
     def Result(self):
+        """连接源的Id
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ConnectResourceResourceIdResp`
+        """
         return self._Result
 
     @Result.setter
@@ -7829,6 +9394,9 @@ class DeleteConnectResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7857,6 +9425,9 @@ class DeleteDatahubTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -7894,6 +9465,10 @@ class DeleteDatahubTaskResponse(AbstractModel):
 
     @property
     def Result(self):
+        """任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
+        """
         return self._Result
 
     @Result.setter
@@ -7902,6 +9477,9 @@ class DeleteDatahubTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7930,6 +9508,9 @@ class DeleteDatahubTopicRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Topic名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -7966,6 +9547,9 @@ class DeleteDatahubTopicResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回的结果集
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -7974,6 +9558,9 @@ class DeleteDatahubTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8005,6 +9592,9 @@ class DeleteGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8013,6 +9603,9 @@ class DeleteGroupRequest(AbstractModel):
 
     @property
     def Group(self):
+        """消费分组
+        :rtype: str
+        """
         return self._Group
 
     @Group.setter
@@ -8050,6 +9643,9 @@ class DeleteGroupResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -8058,6 +9654,9 @@ class DeleteGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8086,6 +9685,9 @@ class DeleteInstancePostRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8122,6 +9724,9 @@ class DeleteInstancePostResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回的结果集
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceDeleteResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -8130,6 +9735,9 @@ class DeleteInstancePostResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8158,6 +9766,9 @@ class DeleteInstancePreRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8194,6 +9805,9 @@ class DeleteInstancePreResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreResp`
+        """
         return self._Result
 
     @Result.setter
@@ -8202,6 +9816,9 @@ class DeleteInstancePreResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8239,6 +9856,9 @@ class DeleteRouteRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例唯一id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8247,6 +9867,9 @@ class DeleteRouteRequest(AbstractModel):
 
     @property
     def RouteId(self):
+        """路由id
+        :rtype: int
+        """
         return self._RouteId
 
     @RouteId.setter
@@ -8255,6 +9878,9 @@ class DeleteRouteRequest(AbstractModel):
 
     @property
     def CallerAppid(self):
+        """调用方appId
+        :rtype: int
+        """
         return self._CallerAppid
 
     @CallerAppid.setter
@@ -8263,6 +9889,9 @@ class DeleteRouteRequest(AbstractModel):
 
     @property
     def DeleteRouteTime(self):
+        """删除路由时间
+        :rtype: str
+        """
         return self._DeleteRouteTime
 
     @DeleteRouteTime.setter
@@ -8302,6 +9931,9 @@ class DeleteRouteResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -8310,6 +9942,9 @@ class DeleteRouteResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8341,6 +9976,9 @@ class DeleteRouteTriggerTimeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8349,6 +9987,9 @@ class DeleteRouteTriggerTimeRequest(AbstractModel):
 
     @property
     def DelayTime(self):
+        """修改时间
+        :rtype: str
+        """
         return self._DelayTime
 
     @DelayTime.setter
@@ -8383,6 +10024,9 @@ class DeleteRouteTriggerTimeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8414,6 +10058,9 @@ class DeleteTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8422,6 +10069,9 @@ class DeleteTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """主题名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -8430,6 +10080,9 @@ class DeleteTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def IpWhiteList(self):
+        """ip白名单列表
+        :rtype: list of str
+        """
         return self._IpWhiteList
 
     @IpWhiteList.setter
@@ -8468,6 +10121,9 @@ class DeleteTopicIpWhiteListResponse(AbstractModel):
 
     @property
     def Result(self):
+        """删除主题IP白名单结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -8476,6 +10132,9 @@ class DeleteTopicIpWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8507,6 +10166,9 @@ class DeleteTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ckafka 实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8515,6 +10177,9 @@ class DeleteTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """ckafka 主题名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -8552,6 +10217,9 @@ class DeleteTopicResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回的结果集
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -8560,6 +10228,9 @@ class DeleteTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8591,6 +10262,9 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8599,6 +10273,9 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def Name(self):
+        """用户名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8636,6 +10313,9 @@ class DeleteUserResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -8644,6 +10324,9 @@ class DeleteUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8687,6 +10370,9 @@ class DescribeACLRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8695,6 +10381,9 @@ class DescribeACLRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """Acl资源类型，(2:TOPIC，3:GROUP，4:CLUSTER)
+        :rtype: int
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -8703,6 +10392,9 @@ class DescribeACLRequest(AbstractModel):
 
     @property
     def ResourceName(self):
+        """资源名称，和resourceType相关，如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称，当resourceType为CLUSTER时，该字段可为空。
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -8711,6 +10403,9 @@ class DescribeACLRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移位置
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8719,6 +10414,9 @@ class DescribeACLRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """个数限制
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8727,6 +10425,9 @@ class DescribeACLRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """关键字匹配
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -8768,6 +10469,9 @@ class DescribeACLResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回的ACL结果集对象
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.AclResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -8776,6 +10480,9 @@ class DescribeACLResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8813,6 +10520,9 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8821,6 +10531,9 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
+        """ACL规则名
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -8829,6 +10542,9 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def PatternType(self):
+        """ACL规则匹配类型
+        :rtype: str
+        """
         return self._PatternType
 
     @PatternType.setter
@@ -8837,6 +10553,9 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def IsSimplified(self):
+        """是否读取简略的ACL规则
+        :rtype: bool
+        """
         return self._IsSimplified
 
     @IsSimplified.setter
@@ -8876,6 +10595,9 @@ class DescribeAclRuleResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回的AclRule结果集对象
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.AclRuleResp`
+        """
         return self._Result
 
     @Result.setter
@@ -8884,6 +10606,9 @@ class DescribeAclRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8915,6 +10640,9 @@ class DescribeAppInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移位置
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8923,6 +10651,9 @@ class DescribeAppInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """本次查询用户数目最大数量限制，最大值为50，默认50
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8960,6 +10691,9 @@ class DescribeAppInfoResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回的符合要求的App Id列表
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.AppIdResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -8968,6 +10702,9 @@ class DescribeAppInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8996,6 +10733,9 @@ class DescribeCkafkaZoneRequest(AbstractModel):
 
     @property
     def CdcId(self):
+        """cdc专业集群业务参数
+        :rtype: str
+        """
         return self._CdcId
 
     @CdcId.setter
@@ -9032,6 +10772,9 @@ class DescribeCkafkaZoneResponse(AbstractModel):
 
     @property
     def Result(self):
+        """查询结果复杂对象实体
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ZoneResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -9040,6 +10783,9 @@ class DescribeCkafkaZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9077,6 +10823,10 @@ class DescribeConnectInfoResultDTO(AbstractModel):
 
     @property
     def IpAddr(self):
+        """ip地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IpAddr
 
     @IpAddr.setter
@@ -9085,6 +10835,10 @@ class DescribeConnectInfoResultDTO(AbstractModel):
 
     @property
     def Time(self):
+        """连结时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -9093,6 +10847,10 @@ class DescribeConnectInfoResultDTO(AbstractModel):
 
     @property
     def IsUnSupportVersion(self):
+        """是否支持的版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUnSupportVersion
 
     @IsUnSupportVersion.setter
@@ -9217,6 +10975,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def ResourceId(self):
+        """连接源的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -9225,6 +10987,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def ResourceName(self):
+        """连接源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -9233,6 +10999,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def Description(self):
+        """连接源描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -9241,6 +11011,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def Type(self):
+        """连接源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -9249,6 +11023,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def Status(self):
+        """连接源的状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -9257,6 +11035,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def CreateTime(self):
+        """连接源的创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -9265,6 +11047,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def ErrorMessage(self):
+        """连接源的异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorMessage
 
     @ErrorMessage.setter
@@ -9273,6 +11059,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def DatahubTaskCount(self):
+        """该连接源关联的Datahub任务数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DatahubTaskCount
 
     @DatahubTaskCount.setter
@@ -9281,6 +11071,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def CurrentStep(self):
+        """连接源的当前所处步骤
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CurrentStep
 
     @CurrentStep.setter
@@ -9289,6 +11083,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def TaskProgress(self):
+        """创建进度百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._TaskProgress
 
     @TaskProgress.setter
@@ -9297,6 +11095,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def StepList(self):
+        """步骤列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._StepList
 
     @StepList.setter
@@ -9305,6 +11107,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def DtsConnectParam(self):
+        """Dts配置，Type为DTS时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DtsConnectParam`
+        """
         return self._DtsConnectParam
 
     @DtsConnectParam.setter
@@ -9313,6 +11119,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def MongoDBConnectParam(self):
+        """MongoDB配置，Type为MONGODB时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.MongoDBConnectParam`
+        """
         return self._MongoDBConnectParam
 
     @MongoDBConnectParam.setter
@@ -9321,6 +11131,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def EsConnectParam(self):
+        """Es配置，Type为ES时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.EsConnectParam`
+        """
         return self._EsConnectParam
 
     @EsConnectParam.setter
@@ -9329,6 +11143,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def ClickHouseConnectParam(self):
+        """ClickHouse配置，Type为CLICKHOUSE时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseConnectParam`
+        """
         return self._ClickHouseConnectParam
 
     @ClickHouseConnectParam.setter
@@ -9337,6 +11155,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def MySQLConnectParam(self):
+        """MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.MySQLConnectParam`
+        """
         return self._MySQLConnectParam
 
     @MySQLConnectParam.setter
@@ -9345,6 +11167,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def PostgreSQLConnectParam(self):
+        """PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.PostgreSQLConnectParam`
+        """
         return self._PostgreSQLConnectParam
 
     @PostgreSQLConnectParam.setter
@@ -9353,6 +11179,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def MariaDBConnectParam(self):
+        """MariaDB配置，Type为MARIADB时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.MariaDBConnectParam`
+        """
         return self._MariaDBConnectParam
 
     @MariaDBConnectParam.setter
@@ -9361,6 +11191,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def SQLServerConnectParam(self):
+        """SQLServer配置，Type为SQLSERVER时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.SQLServerConnectParam`
+        """
         return self._SQLServerConnectParam
 
     @SQLServerConnectParam.setter
@@ -9369,6 +11203,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def CtsdbConnectParam(self):
+        """Ctsdb配置，Type为CTSDB时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CtsdbConnectParam`
+        """
         return self._CtsdbConnectParam
 
     @CtsdbConnectParam.setter
@@ -9377,6 +11215,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def DorisConnectParam(self):
+        """Doris 配置，Type 为 DORIS 时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DorisConnectParam`
+        """
         return self._DorisConnectParam
 
     @DorisConnectParam.setter
@@ -9385,6 +11227,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def KafkaConnectParam(self):
+        """Kafka配置，Type 为 KAFKA 时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
+        """
         return self._KafkaConnectParam
 
     @KafkaConnectParam.setter
@@ -9393,6 +11239,10 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def MqttConnectParam(self):
+        """MQTT配置，Type 为 MQTT 时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.MqttConnectParam`
+        """
         return self._MqttConnectParam
 
     @MqttConnectParam.setter
@@ -9472,6 +11322,9 @@ class DescribeConnectResourceRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """连接源的Id
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -9586,6 +11439,10 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def ResourceId(self):
+        """连接源的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -9594,6 +11451,10 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def ResourceName(self):
+        """连接源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -9602,6 +11463,10 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def Description(self):
+        """连接源描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -9610,6 +11475,10 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def Type(self):
+        """连接源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -9618,6 +11487,10 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def Status(self):
+        """连接源的状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -9626,6 +11499,10 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def CreateTime(self):
+        """连接源的创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -9634,6 +11511,10 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def ErrorMessage(self):
+        """连接源的异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorMessage
 
     @ErrorMessage.setter
@@ -9642,6 +11523,10 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def CurrentStep(self):
+        """连接源的当前所处步骤
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CurrentStep
 
     @CurrentStep.setter
@@ -9650,6 +11535,10 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def StepList(self):
+        """步骤列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._StepList
 
     @StepList.setter
@@ -9658,6 +11547,10 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def MySQLConnectParam(self):
+        """MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.MySQLConnectParam`
+        """
         return self._MySQLConnectParam
 
     @MySQLConnectParam.setter
@@ -9666,6 +11559,10 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def PostgreSQLConnectParam(self):
+        """PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.PostgreSQLConnectParam`
+        """
         return self._PostgreSQLConnectParam
 
     @PostgreSQLConnectParam.setter
@@ -9674,6 +11571,10 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def DtsConnectParam(self):
+        """Dts配置，Type为DTS时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DtsConnectParam`
+        """
         return self._DtsConnectParam
 
     @DtsConnectParam.setter
@@ -9682,6 +11583,10 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def MongoDBConnectParam(self):
+        """MongoDB配置，Type为MONGODB时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.MongoDBConnectParam`
+        """
         return self._MongoDBConnectParam
 
     @MongoDBConnectParam.setter
@@ -9690,6 +11595,10 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def EsConnectParam(self):
+        """Es配置，Type为ES时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.EsConnectParam`
+        """
         return self._EsConnectParam
 
     @EsConnectParam.setter
@@ -9698,6 +11607,10 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def ClickHouseConnectParam(self):
+        """ClickHouse配置，Type为CLICKHOUSE时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseConnectParam`
+        """
         return self._ClickHouseConnectParam
 
     @ClickHouseConnectParam.setter
@@ -9706,6 +11619,10 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def MariaDBConnectParam(self):
+        """MariaDB配置，Type为MARIADB时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.MariaDBConnectParam`
+        """
         return self._MariaDBConnectParam
 
     @MariaDBConnectParam.setter
@@ -9714,6 +11631,10 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def SQLServerConnectParam(self):
+        """SQLServer配置，Type为SQLSERVER时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.SQLServerConnectParam`
+        """
         return self._SQLServerConnectParam
 
     @SQLServerConnectParam.setter
@@ -9722,6 +11643,10 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def CtsdbConnectParam(self):
+        """Ctsdb配置，Type为CTSDB时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CtsdbConnectParam`
+        """
         return self._CtsdbConnectParam
 
     @CtsdbConnectParam.setter
@@ -9730,6 +11655,10 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def DorisConnectParam(self):
+        """Doris 配置，Type 为 DORIS 时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DorisConnectParam`
+        """
         return self._DorisConnectParam
 
     @DorisConnectParam.setter
@@ -9738,6 +11667,10 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def KafkaConnectParam(self):
+        """Kafka配置，Type 为 KAFKA 时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
+        """
         return self._KafkaConnectParam
 
     @KafkaConnectParam.setter
@@ -9746,6 +11679,10 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def MqttConnectParam(self):
+        """MQTT配置，Type 为 MQTT 时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.MqttConnectParam`
+        """
         return self._MqttConnectParam
 
     @MqttConnectParam.setter
@@ -9827,6 +11764,10 @@ class DescribeConnectResourceResponse(AbstractModel):
 
     @property
     def Result(self):
+        """连接源的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeConnectResourceResp`
+        """
         return self._Result
 
     @Result.setter
@@ -9835,6 +11776,9 @@ class DescribeConnectResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9875,6 +11819,9 @@ class DescribeConnectResourcesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """连接源类型
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -9883,6 +11830,9 @@ class DescribeConnectResourcesRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """连接源名称的关键字查询
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -9891,6 +11841,9 @@ class DescribeConnectResourcesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -9899,6 +11852,9 @@ class DescribeConnectResourcesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -9907,6 +11863,9 @@ class DescribeConnectResourcesRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """连接源的关键字查询, 根据地域查询本地域内连接管理列表中的连接(仅支持包含region输入的连接源)
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -9948,6 +11907,9 @@ class DescribeConnectResourcesResp(AbstractModel):
 
     @property
     def TotalCount(self):
+        """连接源个数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9956,6 +11918,10 @@ class DescribeConnectResourcesResp(AbstractModel):
 
     @property
     def ConnectResourceList(self):
+        """连接源数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeConnectResource
+        """
         return self._ConnectResourceList
 
     @ConnectResourceList.setter
@@ -9998,6 +11964,9 @@ class DescribeConnectResourcesResponse(AbstractModel):
 
     @property
     def Result(self):
+        """连接源列表
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeConnectResourcesResp`
+        """
         return self._Result
 
     @Result.setter
@@ -10006,6 +11975,9 @@ class DescribeConnectResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10046,6 +12018,9 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ckafka实例id。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -10054,6 +12029,9 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """可选，用户需要查询的group名称。
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -10062,6 +12040,9 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """可选，用户需要查询的group中的对应的topic名称，如果指定了该参数，而group又未指定则忽略该参数。
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -10070,6 +12051,9 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """本次返回个数限制，最大支持50
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -10078,6 +12062,9 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移位置
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -10118,6 +12105,9 @@ class DescribeConsumerGroupResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回的消费分组信息
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ConsumerGroupResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -10126,6 +12116,9 @@ class DescribeConsumerGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10166,6 +12159,9 @@ class DescribeDatahubGroupOffsetsRequest(AbstractModel):
 
     @property
     def Name(self):
+        """（过滤条件）按照实例 ID 过滤
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10174,6 +12170,9 @@ class DescribeDatahubGroupOffsetsRequest(AbstractModel):
 
     @property
     def Group(self):
+        """Kafka 消费分组
+        :rtype: str
+        """
         return self._Group
 
     @Group.setter
@@ -10182,6 +12181,9 @@ class DescribeDatahubGroupOffsetsRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """模糊匹配 topicName
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -10190,6 +12192,9 @@ class DescribeDatahubGroupOffsetsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """本次查询的偏移位置，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -10198,6 +12203,9 @@ class DescribeDatahubGroupOffsetsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """本次返回结果的最大个数，默认为50，最大值为50
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -10238,6 +12246,9 @@ class DescribeDatahubGroupOffsetsResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回的结果对象
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.GroupOffsetResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -10246,6 +12257,9 @@ class DescribeDatahubGroupOffsetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10274,6 +12288,9 @@ class DescribeDatahubTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -10360,6 +12377,9 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -10368,6 +12388,9 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -10376,6 +12399,9 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型，SOURCE数据接入，SINK数据流出
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -10384,6 +12410,9 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def Status(self):
+        """状态，-1创建失败，0创建中，1运行中，2删除中，3已删除，4删除失败，5暂停中，6已暂停，7暂停失败，8恢复中，9恢复失败
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -10392,6 +12421,10 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def SourceResource(self):
+        """数据源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
+        """
         return self._SourceResource
 
     @SourceResource.setter
@@ -10400,6 +12433,10 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def TargetResource(self):
+        """数据目标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
+        """
         return self._TargetResource
 
     @TargetResource.setter
@@ -10408,6 +12445,10 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def Connections(self):
+        """Connection列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Connection
+        """
         return self._Connections
 
     @Connections.setter
@@ -10416,6 +12457,10 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def CreateTime(self):
+        """任务创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -10424,6 +12469,10 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def TransformParam(self):
+        """消息处理规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TransformParam`
+        """
         return self._TransformParam
 
     @TransformParam.setter
@@ -10432,6 +12481,10 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def DatahubId(self):
+        """数据接入ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatahubId
 
     @DatahubId.setter
@@ -10440,6 +12493,10 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def SchemaId(self):
+        """绑定的SchemaId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SchemaId
 
     @SchemaId.setter
@@ -10448,6 +12505,10 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def SchemaName(self):
+        """绑定的Schema名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SchemaName
 
     @SchemaName.setter
@@ -10456,6 +12517,10 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def TransformsParam(self):
+        """数据处理规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TransformsParam`
+        """
         return self._TransformsParam
 
     @TransformsParam.setter
@@ -10464,6 +12529,10 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def ErrorMessage(self):
+        """异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ErrorMessage
 
     @ErrorMessage.setter
@@ -10472,6 +12541,10 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def Tags(self):
+        """任务标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -10540,6 +12613,9 @@ class DescribeDatahubTaskResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTaskRes`
+        """
         return self._Result
 
     @Result.setter
@@ -10548,6 +12624,9 @@ class DescribeDatahubTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10594,6 +12673,9 @@ class DescribeDatahubTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -10602,6 +12684,9 @@ class DescribeDatahubTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页偏移量，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -10610,6 +12695,9 @@ class DescribeDatahubTasksRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """过滤条件，按照 TaskName 过滤，支持模糊查询
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -10618,6 +12706,9 @@ class DescribeDatahubTasksRequest(AbstractModel):
 
     @property
     def TargetType(self):
+        """转储的目标类型
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -10626,6 +12717,9 @@ class DescribeDatahubTasksRequest(AbstractModel):
 
     @property
     def TaskType(self):
+        """任务类型，SOURCE数据接入，SINK数据流出
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -10634,6 +12728,9 @@ class DescribeDatahubTasksRequest(AbstractModel):
 
     @property
     def SourceType(self):
+        """转储的源类型
+        :rtype: str
+        """
         return self._SourceType
 
     @SourceType.setter
@@ -10642,6 +12739,9 @@ class DescribeDatahubTasksRequest(AbstractModel):
 
     @property
     def Resource(self):
+        """转储的资源
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -10685,6 +12785,9 @@ class DescribeDatahubTasksRes(AbstractModel):
 
     @property
     def TotalCount(self):
+        """任务总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10693,6 +12796,10 @@ class DescribeDatahubTasksRes(AbstractModel):
 
     @property
     def TaskList(self):
+        """Datahub任务信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DatahubTaskInfo
+        """
         return self._TaskList
 
     @TaskList.setter
@@ -10735,6 +12842,9 @@ class DescribeDatahubTasksResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回任务查询结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTasksRes`
+        """
         return self._Result
 
     @Result.setter
@@ -10743,6 +12853,9 @@ class DescribeDatahubTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10771,6 +12884,9 @@ class DescribeDatahubTopicRequest(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10833,6 +12949,9 @@ class DescribeDatahubTopicResp(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10841,6 +12960,9 @@ class DescribeDatahubTopicResp(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -10849,6 +12971,9 @@ class DescribeDatahubTopicResp(AbstractModel):
 
     @property
     def TopicId(self):
+        """Topic Id
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -10857,6 +12982,9 @@ class DescribeDatahubTopicResp(AbstractModel):
 
     @property
     def PartitionNum(self):
+        """分区数
+        :rtype: int
+        """
         return self._PartitionNum
 
     @PartitionNum.setter
@@ -10865,6 +12993,9 @@ class DescribeDatahubTopicResp(AbstractModel):
 
     @property
     def RetentionMs(self):
+        """过期时间
+        :rtype: int
+        """
         return self._RetentionMs
 
     @RetentionMs.setter
@@ -10873,6 +13004,10 @@ class DescribeDatahubTopicResp(AbstractModel):
 
     @property
     def Note(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -10881,6 +13016,9 @@ class DescribeDatahubTopicResp(AbstractModel):
 
     @property
     def UserName(self):
+        """用户名
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -10889,6 +13027,9 @@ class DescribeDatahubTopicResp(AbstractModel):
 
     @property
     def Password(self):
+        """密码
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -10897,6 +13038,9 @@ class DescribeDatahubTopicResp(AbstractModel):
 
     @property
     def Status(self):
+        """状态，1使用中，2删除中
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -10905,6 +13049,10 @@ class DescribeDatahubTopicResp(AbstractModel):
 
     @property
     def Address(self):
+        """服务路由地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -10950,6 +13098,9 @@ class DescribeDatahubTopicResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回的结果对象
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicResp`
+        """
         return self._Result
 
     @Result.setter
@@ -10958,6 +13109,9 @@ class DescribeDatahubTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10992,6 +13146,9 @@ class DescribeDatahubTopicsRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """查询值
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -11000,6 +13157,9 @@ class DescribeDatahubTopicsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """本次查询的偏移位置，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -11008,6 +13168,9 @@ class DescribeDatahubTopicsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """本次返回结果的最大个数，默认为50，最大值为50
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -11047,6 +13210,9 @@ class DescribeDatahubTopicsResp(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -11055,6 +13221,10 @@ class DescribeDatahubTopicsResp(AbstractModel):
 
     @property
     def TopicList(self):
+        """Topic列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DatahubTopicDTO
+        """
         return self._TopicList
 
     @TopicList.setter
@@ -11098,6 +13268,10 @@ class DescribeDatahubTopicsResponse(AbstractModel):
 
     @property
     def Result(self):
+        """主题列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicsResp`
+        """
         return self._Result
 
     @Result.setter
@@ -11106,6 +13280,9 @@ class DescribeDatahubTopicsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11137,6 +13314,9 @@ class DescribeGroup(AbstractModel):
 
     @property
     def Group(self):
+        """groupId
+        :rtype: str
+        """
         return self._Group
 
     @Group.setter
@@ -11145,6 +13325,9 @@ class DescribeGroup(AbstractModel):
 
     @property
     def Protocol(self):
+        """该 group 使用的协议。
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -11182,6 +13365,9 @@ class DescribeGroupInfoRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """（过滤条件）按照实例 ID 过滤。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11190,6 +13376,9 @@ class DescribeGroupInfoRequest(AbstractModel):
 
     @property
     def GroupList(self):
+        """Kafka 消费分组，Consumer-group，这里是数组形式，示例：["xxx","yyy"]
+        :rtype: list of str
+        """
         return self._GroupList
 
     @GroupList.setter
@@ -11228,6 +13417,10 @@ class DescribeGroupInfoResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回的结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GroupInfoResponse
+        """
         return self._Result
 
     @Result.setter
@@ -11236,6 +13429,9 @@ class DescribeGroupInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11282,6 +13478,9 @@ class DescribeGroupOffsetsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """（过滤条件）按照实例 ID 过滤
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11290,6 +13489,9 @@ class DescribeGroupOffsetsRequest(AbstractModel):
 
     @property
     def Group(self):
+        """Kafka 消费分组
+        :rtype: str
+        """
         return self._Group
 
     @Group.setter
@@ -11298,6 +13500,9 @@ class DescribeGroupOffsetsRequest(AbstractModel):
 
     @property
     def Topics(self):
+        """group 订阅的主题名称数组，如果没有该数组，则表示指定的 group 下所有 topic 信息
+        :rtype: list of str
+        """
         return self._Topics
 
     @Topics.setter
@@ -11306,6 +13511,9 @@ class DescribeGroupOffsetsRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """模糊匹配 topicName
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -11314,6 +13522,9 @@ class DescribeGroupOffsetsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """本次查询的偏移位置，默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -11322,6 +13533,9 @@ class DescribeGroupOffsetsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """本次返回结果的最大个数，默认为50，最大值为50
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -11363,6 +13577,9 @@ class DescribeGroupOffsetsResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回的结果对象
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.GroupOffsetResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -11371,6 +13588,9 @@ class DescribeGroupOffsetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11408,6 +13628,9 @@ class DescribeGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11416,6 +13639,9 @@ class DescribeGroupRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """搜索关键字
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -11424,6 +13650,9 @@ class DescribeGroupRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -11432,6 +13661,9 @@ class DescribeGroupRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """最大返回数量
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -11471,6 +13703,9 @@ class DescribeGroupResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果集列表
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.GroupResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -11479,6 +13714,9 @@ class DescribeGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11507,6 +13745,9 @@ class DescribeInstanceAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11543,6 +13784,9 @@ class DescribeInstanceAttributesResponse(AbstractModel):
 
     @property
     def Result(self):
+        """实例属性返回结果对象。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceAttributesResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -11551,6 +13795,9 @@ class DescribeInstanceAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11606,6 +13853,9 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """（过滤条件）按照实例ID过滤
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11614,6 +13864,9 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """（过滤条件）按照实例名,实例Id,可用区,私有网络id,子网id 过滤，支持模糊查询
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -11622,6 +13875,9 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def Status(self):
+        """（过滤条件）实例的状态。0：创建中，1：运行中，2：删除中，不填默认返回全部
+        :rtype: list of int
+        """
         return self._Status
 
     @Status.setter
@@ -11630,6 +13886,9 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，不填默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -11638,6 +13897,9 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，不填则默认10，最大值20。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -11646,6 +13908,9 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def TagKey(self):
+        """匹配标签key值。
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -11654,6 +13919,9 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤器。filter.Name 支持('Ip', 'VpcId', 'SubNetId', 'InstanceType','InstanceId') ,filter.Values最多传递10个值.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -11662,6 +13930,9 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """已经废弃， 使用InstanceIdList
+        :rtype: str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -11670,6 +13941,9 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def InstanceIdList(self):
+        """按照实例ID过滤
+        :rtype: list of str
+        """
         return self._InstanceIdList
 
     @InstanceIdList.setter
@@ -11678,6 +13952,9 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def TagList(self):
+        """根据标签列表过滤实例（取交集）
+        :rtype: list of Tag
+        """
         return self._TagList
 
     @TagList.setter
@@ -11733,6 +14010,9 @@ class DescribeInstancesDetailResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回的实例详情结果对象
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceDetailResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -11741,6 +14021,9 @@ class DescribeInstancesDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11787,6 +14070,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """（查询条件）按照ckafka集群实例Id过滤
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11795,6 +14081,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """搜索词   ex:（查询条件）按照实例名称过滤，支持模糊查询
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -11803,6 +14092,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Status(self):
+        """（查询条件）实例的状态  0：创建中，1：运行中，2：删除中，5: 隔离中,  7:升级中 不填默认返回全部
+        :rtype: list of int
+        """
         return self._Status
 
     @Status.setter
@@ -11811,6 +14103,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，不填默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -11819,6 +14114,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，不填则默认10，最大值100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -11827,6 +14125,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def TagKey(self):
+        """已废弃。匹配标签key值。
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -11835,6 +14136,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """（查询条件）私有网络Id
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -11877,6 +14181,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回的结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -11885,6 +14192,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11913,6 +14223,9 @@ class DescribePrometheusRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ckafka实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11949,6 +14262,9 @@ class DescribePrometheusResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Prometheus监控映射列表
+        :rtype: list of PrometheusDTO
+        """
         return self._Result
 
     @Result.setter
@@ -11957,6 +14273,9 @@ class DescribePrometheusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11997,6 +14316,9 @@ class DescribeRegionRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -12005,6 +14327,9 @@ class DescribeRegionRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回最大结果数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -12013,6 +14338,9 @@ class DescribeRegionRequest(AbstractModel):
 
     @property
     def Business(self):
+        """业务字段，可忽略
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -12021,6 +14349,9 @@ class DescribeRegionRequest(AbstractModel):
 
     @property
     def CdcId(self):
+        """cdc专有集群业务字段，可忽略
+        :rtype: str
+        """
         return self._CdcId
 
     @CdcId.setter
@@ -12061,6 +14392,10 @@ class DescribeRegionResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回地域枚举结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Region
+        """
         return self._Result
 
     @Result.setter
@@ -12069,6 +14404,9 @@ class DescribeRegionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12103,6 +14441,9 @@ class DescribeRouteRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例唯一id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -12111,6 +14452,9 @@ class DescribeRouteRequest(AbstractModel):
 
     @property
     def RouteId(self):
+        """路由id
+        :rtype: int
+        """
         return self._RouteId
 
     @RouteId.setter
@@ -12148,6 +14492,9 @@ class DescribeRouteResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回的路由信息结果集
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.RouteResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -12156,6 +14503,9 @@ class DescribeRouteResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12184,6 +14534,9 @@ class DescribeTaskStatusRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """任务唯一标记
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -12220,6 +14573,9 @@ class DescribeTaskStatusResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TaskStatusResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -12228,6 +14584,9 @@ class DescribeTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12259,6 +14618,9 @@ class DescribeTopicAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -12267,6 +14629,9 @@ class DescribeTopicAttributesRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """主题名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -12304,6 +14669,9 @@ class DescribeTopicAttributesResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回的结果对象
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TopicAttributesResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -12312,6 +14680,9 @@ class DescribeTopicAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12352,6 +14723,9 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -12360,6 +14734,9 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """（过滤条件）按照topicName过滤，支持模糊查询
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -12368,6 +14745,9 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，不填默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -12376,6 +14756,9 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，不填则默认 10，最大值20，取值要大于0
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -12384,6 +14767,9 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def AclRuleName(self):
+        """Acl预设策略名称
+        :rtype: str
+        """
         return self._AclRuleName
 
     @AclRuleName.setter
@@ -12424,6 +14810,9 @@ class DescribeTopicDetailResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回的主题详情实体
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TopicDetailResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -12432,6 +14821,9 @@ class DescribeTopicDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12472,6 +14864,9 @@ class DescribeTopicFlowRankingRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -12480,6 +14875,9 @@ class DescribeTopicFlowRankingRequest(AbstractModel):
 
     @property
     def RankingType(self):
+        """排行类别(PRO-Topic生产流量/CON-Topic消费流量)
+        :rtype: str
+        """
         return self._RankingType
 
     @RankingType.setter
@@ -12488,6 +14886,9 @@ class DescribeTopicFlowRankingRequest(AbstractModel):
 
     @property
     def BeginDate(self):
+        """排行起始日期
+        :rtype: str
+        """
         return self._BeginDate
 
     @BeginDate.setter
@@ -12496,6 +14897,9 @@ class DescribeTopicFlowRankingRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """排行结束日期
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -12504,6 +14908,9 @@ class DescribeTopicFlowRankingRequest(AbstractModel):
 
     @property
     def BrokerIp(self):
+        """Broker IP 地址
+        :rtype: str
+        """
         return self._BrokerIp
 
     @BrokerIp.setter
@@ -12544,6 +14951,9 @@ class DescribeTopicFlowRankingResponse(AbstractModel):
 
     @property
     def Result(self):
+        """流量排行
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TopicFlowRankingResult`
+        """
         return self._Result
 
     @Result.setter
@@ -12552,6 +14962,9 @@ class DescribeTopicFlowRankingResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12583,6 +14996,9 @@ class DescribeTopicProduceConnectionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -12591,6 +15007,9 @@ class DescribeTopicProduceConnectionRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """topic名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -12628,6 +15047,9 @@ class DescribeTopicProduceConnectionResponse(AbstractModel):
 
     @property
     def Result(self):
+        """链接信息返回结果集
+        :rtype: list of DescribeConnectInfoResultDTO
+        """
         return self._Result
 
     @Result.setter
@@ -12636,6 +15058,9 @@ class DescribeTopicProduceConnectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12679,6 +15104,9 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -12687,6 +15115,9 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """过滤条件，按照 topicName 过滤，支持模糊查询
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -12695,6 +15126,9 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，不填默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -12703,6 +15137,9 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，不填则默认为20，最大值为50
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -12711,6 +15148,9 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def AclRuleName(self):
+        """Acl预设策略名称
+        :rtype: str
+        """
         return self._AclRuleName
 
     @AclRuleName.setter
@@ -12752,6 +15192,10 @@ class DescribeTopicResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回的结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TopicResult`
+        """
         return self._Result
 
     @Result.setter
@@ -12760,6 +15204,9 @@ class DescribeTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12797,6 +15244,9 @@ class DescribeTopicSubscribeGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -12805,6 +15255,9 @@ class DescribeTopicSubscribeGroupRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """主题名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -12813,6 +15266,9 @@ class DescribeTopicSubscribeGroupRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """分页时的起始位置
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -12821,6 +15277,9 @@ class DescribeTopicSubscribeGroupRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """分页时的个数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -12860,6 +15319,9 @@ class DescribeTopicSubscribeGroupResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TopicSubscribeGroup`
+        """
         return self._Result
 
     @Result.setter
@@ -12868,6 +15330,9 @@ class DescribeTopicSubscribeGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12908,6 +15373,9 @@ class DescribeTopicSyncReplicaRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -12916,6 +15384,9 @@ class DescribeTopicSyncReplicaRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """主题名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -12924,6 +15395,9 @@ class DescribeTopicSyncReplicaRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，不填默认为0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -12932,6 +15406,9 @@ class DescribeTopicSyncReplicaRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，不填则默认10，最大值20。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -12940,6 +15417,9 @@ class DescribeTopicSyncReplicaRequest(AbstractModel):
 
     @property
     def OutOfSyncReplicaOnly(self):
+        """仅筛选未同步副本
+        :rtype: bool
+        """
         return self._OutOfSyncReplicaOnly
 
     @OutOfSyncReplicaOnly.setter
@@ -12980,6 +15460,9 @@ class DescribeTopicSyncReplicaResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回topic 副本详情
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TopicInSyncReplicaResult`
+        """
         return self._Result
 
     @Result.setter
@@ -12988,6 +15471,9 @@ class DescribeTopicSyncReplicaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13025,6 +15511,9 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -13033,6 +15522,9 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """按照名称过滤
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -13041,6 +15533,9 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -13049,6 +15544,9 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """本次返回个数
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -13088,6 +15586,9 @@ class DescribeUserResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果列表
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.UserResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -13096,6 +15597,9 @@ class DescribeUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13157,6 +15661,10 @@ class DorisConnectParam(AbstractModel):
 
     @property
     def Port(self):
+        """Doris jdbc 负载均衡连接 port，通常映射到 fe 的 9030 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -13165,6 +15673,10 @@ class DorisConnectParam(AbstractModel):
 
     @property
     def UserName(self):
+        """Doris 连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -13173,6 +15685,10 @@ class DorisConnectParam(AbstractModel):
 
     @property
     def Password(self):
+        """Doris 连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -13181,6 +15697,10 @@ class DorisConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """Doris 连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -13189,6 +15709,10 @@ class DorisConnectParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """Doris 连接源的实例vip，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -13197,6 +15721,10 @@ class DorisConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """Doris 连接源的vpcId，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -13205,6 +15733,10 @@ class DorisConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
+        """是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUpdate
 
     @IsUpdate.setter
@@ -13213,6 +15745,10 @@ class DorisConnectParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
+        """Doris 连接源是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SelfBuilt
 
     @SelfBuilt.setter
@@ -13221,6 +15757,10 @@ class DorisConnectParam(AbstractModel):
 
     @property
     def BePort(self):
+        """Doris 的 http 负载均衡连接 port，通常映射到 be 的 8040 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BePort
 
     @BePort.setter
@@ -13295,6 +15835,10 @@ class DorisModifyConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """Doris 连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -13303,6 +15847,10 @@ class DorisModifyConnectParam(AbstractModel):
 
     @property
     def Port(self):
+        """Doris jdbc 负载均衡连接 port，通常映射到 fe 的 9030 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -13311,6 +15859,10 @@ class DorisModifyConnectParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """Doris 连接源的实例vip，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -13319,6 +15871,10 @@ class DorisModifyConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """Doris 连接源的vpcId，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -13327,6 +15883,10 @@ class DorisModifyConnectParam(AbstractModel):
 
     @property
     def UserName(self):
+        """Doris 连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -13335,6 +15895,10 @@ class DorisModifyConnectParam(AbstractModel):
 
     @property
     def Password(self):
+        """Doris 连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -13343,6 +15907,10 @@ class DorisModifyConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
+        """是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUpdate
 
     @IsUpdate.setter
@@ -13351,6 +15919,10 @@ class DorisModifyConnectParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
+        """Doris 连接源是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SelfBuilt
 
     @SelfBuilt.setter
@@ -13359,6 +15931,10 @@ class DorisModifyConnectParam(AbstractModel):
 
     @property
     def BePort(self):
+        """Doris 的 http 负载均衡连接 port，通常映射到 be 的 8040 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BePort
 
     @BePort.setter
@@ -13417,6 +15993,10 @@ class DropCls(AbstractModel):
 
     @property
     def DropInvalidMessageToCls(self):
+        """是否投递到cls
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._DropInvalidMessageToCls
 
     @DropInvalidMessageToCls.setter
@@ -13425,6 +16005,10 @@ class DropCls(AbstractModel):
 
     @property
     def DropClsRegion(self):
+        """投递cls的地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DropClsRegion
 
     @DropClsRegion.setter
@@ -13433,6 +16017,10 @@ class DropCls(AbstractModel):
 
     @property
     def DropClsOwneruin(self):
+        """投递cls的账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DropClsOwneruin
 
     @DropClsOwneruin.setter
@@ -13441,6 +16029,10 @@ class DropCls(AbstractModel):
 
     @property
     def DropClsTopicId(self):
+        """投递cls的主题
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DropClsTopicId
 
     @DropClsTopicId.setter
@@ -13449,6 +16041,10 @@ class DropCls(AbstractModel):
 
     @property
     def DropClsLogSet(self):
+        """投递cls的日志集id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DropClsLogSet
 
     @DropClsLogSet.setter
@@ -13511,6 +16107,10 @@ class DtsConnectParam(AbstractModel):
 
     @property
     def Port(self):
+        """Dts的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -13519,6 +16119,10 @@ class DtsConnectParam(AbstractModel):
 
     @property
     def GroupId(self):
+        """Dts消费分组的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -13527,6 +16131,10 @@ class DtsConnectParam(AbstractModel):
 
     @property
     def UserName(self):
+        """Dts消费分组的账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -13535,6 +16143,10 @@ class DtsConnectParam(AbstractModel):
 
     @property
     def Password(self):
+        """Dts消费分组的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -13543,6 +16155,10 @@ class DtsConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """Dts实例Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -13551,6 +16167,10 @@ class DtsConnectParam(AbstractModel):
 
     @property
     def Topic(self):
+        """Dts订阅的topic
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -13559,6 +16179,10 @@ class DtsConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
+        """是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUpdate
 
     @IsUpdate.setter
@@ -13616,6 +16240,9 @@ class DtsModifyConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """Dts实例Id【不支持修改】
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -13624,6 +16251,9 @@ class DtsModifyConnectParam(AbstractModel):
 
     @property
     def Port(self):
+        """Dts的连接port【不支持修改】
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -13632,6 +16262,9 @@ class DtsModifyConnectParam(AbstractModel):
 
     @property
     def GroupId(self):
+        """Dts消费分组的Id
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -13640,6 +16273,9 @@ class DtsModifyConnectParam(AbstractModel):
 
     @property
     def UserName(self):
+        """Dts消费分组的账号
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -13648,6 +16284,9 @@ class DtsModifyConnectParam(AbstractModel):
 
     @property
     def Password(self):
+        """Dts消费分组的密码
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -13656,6 +16295,9 @@ class DtsModifyConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
+        """是否更新到关联的Datahub任务，默认为true
+        :rtype: bool
+        """
         return self._IsUpdate
 
     @IsUpdate.setter
@@ -13664,6 +16306,9 @@ class DtsModifyConnectParam(AbstractModel):
 
     @property
     def Topic(self):
+        """Dts订阅的topic【不支持修改】
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -13732,6 +16377,10 @@ class DtsParam(AbstractModel):
 
     @property
     def Resource(self):
+        """Dts实例Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -13740,6 +16389,10 @@ class DtsParam(AbstractModel):
 
     @property
     def Ip(self):
+        """Dts的连接ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -13748,6 +16401,10 @@ class DtsParam(AbstractModel):
 
     @property
     def Port(self):
+        """Dts的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -13756,6 +16413,10 @@ class DtsParam(AbstractModel):
 
     @property
     def Topic(self):
+        """Dts订阅的topic
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -13764,6 +16425,10 @@ class DtsParam(AbstractModel):
 
     @property
     def GroupId(self):
+        """Dts消费分组的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -13772,6 +16437,10 @@ class DtsParam(AbstractModel):
 
     @property
     def GroupUser(self):
+        """Dts消费分组的账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupUser
 
     @GroupUser.setter
@@ -13780,6 +16449,10 @@ class DtsParam(AbstractModel):
 
     @property
     def GroupPassword(self):
+        """Dts消费分组的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._GroupPassword
 
     @GroupPassword.setter
@@ -13788,6 +16461,10 @@ class DtsParam(AbstractModel):
 
     @property
     def TranSql(self):
+        """false同步原始数据，true同步解析后的json格式数据,默认true
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._TranSql
 
     @TranSql.setter
@@ -13841,6 +16518,10 @@ class DynamicDiskConfig(AbstractModel):
 
     @property
     def Enable(self):
+        """动态硬盘扩容配置开关（0: 关闭，1: 开启）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -13849,6 +16530,10 @@ class DynamicDiskConfig(AbstractModel):
 
     @property
     def StepForwardPercentage(self):
+        """每次磁盘动态扩容大小百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._StepForwardPercentage
 
     @StepForwardPercentage.setter
@@ -13857,6 +16542,10 @@ class DynamicDiskConfig(AbstractModel):
 
     @property
     def DiskQuotaPercentage(self):
+        """磁盘配额百分比触发条件，即消息达到此值触发硬盘自动扩容事件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DiskQuotaPercentage
 
     @DiskQuotaPercentage.setter
@@ -13865,6 +16554,10 @@ class DynamicDiskConfig(AbstractModel):
 
     @property
     def MaxDiskSpace(self):
+        """最大扩容硬盘大小，以 GB 为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxDiskSpace
 
     @MaxDiskSpace.setter
@@ -13914,6 +16607,10 @@ class DynamicRetentionTime(AbstractModel):
 
     @property
     def Enable(self):
+        """动态消息保留时间配置开关（0: 关闭，1: 开启）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -13922,6 +16619,10 @@ class DynamicRetentionTime(AbstractModel):
 
     @property
     def DiskQuotaPercentage(self):
+        """磁盘配额百分比触发条件，即消息达到此值触发消息保留时间变更事件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DiskQuotaPercentage
 
     @DiskQuotaPercentage.setter
@@ -13930,6 +16631,10 @@ class DynamicRetentionTime(AbstractModel):
 
     @property
     def StepForwardPercentage(self):
+        """每次向前调整消息保留时间百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._StepForwardPercentage
 
     @StepForwardPercentage.setter
@@ -13938,6 +16643,10 @@ class DynamicRetentionTime(AbstractModel):
 
     @property
     def BottomRetention(self):
+        """保底时长，单位分钟
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BottomRetention
 
     @BottomRetention.setter
@@ -14003,6 +16712,10 @@ class EsConnectParam(AbstractModel):
 
     @property
     def Port(self):
+        """Es的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -14011,6 +16724,10 @@ class EsConnectParam(AbstractModel):
 
     @property
     def UserName(self):
+        """Es连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -14019,6 +16736,10 @@ class EsConnectParam(AbstractModel):
 
     @property
     def Password(self):
+        """Es连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -14027,6 +16748,10 @@ class EsConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """Es连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -14035,6 +16760,10 @@ class EsConnectParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
+        """Es连接源是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SelfBuilt
 
     @SelfBuilt.setter
@@ -14043,6 +16772,10 @@ class EsConnectParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """Es连接源的实例vip，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -14051,6 +16784,10 @@ class EsConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """Es连接源的vpcId，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -14059,6 +16796,10 @@ class EsConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
+        """是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUpdate
 
     @IsUpdate.setter
@@ -14128,6 +16869,10 @@ class EsModifyConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """Es连接源的实例资源【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -14136,6 +16881,10 @@ class EsModifyConnectParam(AbstractModel):
 
     @property
     def Port(self):
+        """Es的连接port【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -14144,6 +16893,10 @@ class EsModifyConnectParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """Es连接源的实例vip【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -14152,6 +16905,10 @@ class EsModifyConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """Es连接源的vpcId【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -14160,6 +16917,10 @@ class EsModifyConnectParam(AbstractModel):
 
     @property
     def UserName(self):
+        """Es连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -14168,6 +16929,10 @@ class EsModifyConnectParam(AbstractModel):
 
     @property
     def Password(self):
+        """Es连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -14176,6 +16941,10 @@ class EsModifyConnectParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
+        """Es连接源是否为自建集群【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SelfBuilt
 
     @SelfBuilt.setter
@@ -14184,6 +16953,10 @@ class EsModifyConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
+        """是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUpdate
 
     @IsUpdate.setter
@@ -14301,6 +17074,10 @@ class EsParam(AbstractModel):
 
     @property
     def Resource(self):
+        """实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -14309,6 +17086,10 @@ class EsParam(AbstractModel):
 
     @property
     def Port(self):
+        """Es的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -14317,6 +17098,10 @@ class EsParam(AbstractModel):
 
     @property
     def UserName(self):
+        """Es用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -14325,6 +17110,10 @@ class EsParam(AbstractModel):
 
     @property
     def Password(self):
+        """Es密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -14333,6 +17122,10 @@ class EsParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
+        """是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SelfBuilt
 
     @SelfBuilt.setter
@@ -14341,6 +17134,10 @@ class EsParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """实例vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -14349,6 +17146,10 @@ class EsParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """实例的vpcId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -14357,6 +17158,10 @@ class EsParam(AbstractModel):
 
     @property
     def DropInvalidMessage(self):
+        """Es是否抛弃解析失败的消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._DropInvalidMessage
 
     @DropInvalidMessage.setter
@@ -14365,6 +17170,10 @@ class EsParam(AbstractModel):
 
     @property
     def Index(self):
+        """Es自定义index名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Index
 
     @Index.setter
@@ -14373,6 +17182,10 @@ class EsParam(AbstractModel):
 
     @property
     def DateFormat(self):
+        """Es自定义日期后缀
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DateFormat
 
     @DateFormat.setter
@@ -14381,6 +17194,10 @@ class EsParam(AbstractModel):
 
     @property
     def ContentKey(self):
+        """非json格式数据的自定义key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ContentKey
 
     @ContentKey.setter
@@ -14389,6 +17206,10 @@ class EsParam(AbstractModel):
 
     @property
     def DropInvalidJsonMessage(self):
+        """Es是否抛弃非json格式的消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._DropInvalidJsonMessage
 
     @DropInvalidJsonMessage.setter
@@ -14397,6 +17218,10 @@ class EsParam(AbstractModel):
 
     @property
     def DocumentIdField(self):
+        """转储到Es中的文档ID取值字段名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DocumentIdField
 
     @DocumentIdField.setter
@@ -14405,6 +17230,10 @@ class EsParam(AbstractModel):
 
     @property
     def IndexType(self):
+        """Es自定义index名称的类型，STRING，JSONPATH，默认为STRING
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IndexType
 
     @IndexType.setter
@@ -14413,6 +17242,10 @@ class EsParam(AbstractModel):
 
     @property
     def DropCls(self):
+        """当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DropCls`
+        """
         return self._DropCls
 
     @DropCls.setter
@@ -14421,6 +17254,10 @@ class EsParam(AbstractModel):
 
     @property
     def DatabasePrimaryKey(self):
+        """转储到ES的消息为Database的binlog时，如果需要同步数据库操作，即增删改的操作到ES时填写数据库表主键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DatabasePrimaryKey
 
     @DatabasePrimaryKey.setter
@@ -14429,6 +17266,10 @@ class EsParam(AbstractModel):
 
     @property
     def DropDlq(self):
+        """死信队列
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.FailureParam`
+        """
         return self._DropDlq
 
     @DropDlq.setter
@@ -14437,6 +17278,10 @@ class EsParam(AbstractModel):
 
     @property
     def RecordMappingList(self):
+        """使用数据订阅格式导入 es 时，消息与 es 索引字段映射关系。不填默认为默认字段匹配
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EsRecordMapping
+        """
         return self._RecordMappingList
 
     @RecordMappingList.setter
@@ -14445,6 +17290,10 @@ class EsParam(AbstractModel):
 
     @property
     def DateField(self):
+        """消息要映射为 es 索引中 @timestamp 的字段，如果当前配置为空，则使用消息的时间戳进行映射
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DateField
 
     @DateField.setter
@@ -14453,6 +17302,10 @@ class EsParam(AbstractModel):
 
     @property
     def RecordMappingMode(self):
+        """用来区分当前索引映射，属于新建索引还是存量索引。"EXIST_MAPPING"：从存量索引中选择；"NEW_MAPPING"：新建索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RecordMappingMode
 
     @RecordMappingMode.setter
@@ -14519,6 +17372,10 @@ class EsRecordMapping(AbstractModel):
 
     @property
     def ColumnName(self):
+        """es 索引成员名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ColumnName
 
     @ColumnName.setter
@@ -14527,6 +17384,10 @@ class EsRecordMapping(AbstractModel):
 
     @property
     def JsonKey(self):
+        """消息字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._JsonKey
 
     @JsonKey.setter
@@ -14576,6 +17437,9 @@ class EventBusParam(AbstractModel):
 
     @property
     def Type(self):
+        """资源类型。EB_COS/EB_ES/EB_CLS
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -14584,6 +17448,9 @@ class EventBusParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
+        """是否为自建集群
+        :rtype: bool
+        """
         return self._SelfBuilt
 
     @SelfBuilt.setter
@@ -14592,6 +17459,9 @@ class EventBusParam(AbstractModel):
 
     @property
     def Resource(self):
+        """实例资源
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -14600,6 +17470,9 @@ class EventBusParam(AbstractModel):
 
     @property
     def Namespace(self):
+        """SCF云函数命名空间
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -14608,6 +17481,9 @@ class EventBusParam(AbstractModel):
 
     @property
     def FunctionName(self):
+        """SCF云函数函数名
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -14616,6 +17492,9 @@ class EventBusParam(AbstractModel):
 
     @property
     def Qualifier(self):
+        """SCF云函数版本及别名
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -14671,6 +17550,9 @@ class FailureParam(AbstractModel):
 
     @property
     def Type(self):
+        """类型，DLQ死信队列，IGNORE_ERROR保留，DROP废弃
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -14679,6 +17561,9 @@ class FailureParam(AbstractModel):
 
     @property
     def KafkaParam(self):
+        """Ckafka类型死信队列
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.KafkaParam`
+        """
         return self._KafkaParam
 
     @KafkaParam.setter
@@ -14687,6 +17572,9 @@ class FailureParam(AbstractModel):
 
     @property
     def RetryInterval(self):
+        """重试间隔
+        :rtype: int
+        """
         return self._RetryInterval
 
     @RetryInterval.setter
@@ -14695,6 +17583,9 @@ class FailureParam(AbstractModel):
 
     @property
     def MaxRetryAttempts(self):
+        """重试次数
+        :rtype: int
+        """
         return self._MaxRetryAttempts
 
     @MaxRetryAttempts.setter
@@ -14703,6 +17594,10 @@ class FailureParam(AbstractModel):
 
     @property
     def TopicParam(self):
+        """DIP Topic类型死信队列
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TopicParam`
+        """
         return self._TopicParam
 
     @TopicParam.setter
@@ -14711,6 +17606,10 @@ class FailureParam(AbstractModel):
 
     @property
     def DlqType(self):
+        """死信队列类型，CKAFKA，TOPIC
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DlqType
 
     @DlqType.setter
@@ -14759,6 +17658,9 @@ class FetchDatahubMessageByOffsetRequest(AbstractModel):
 
     @property
     def Name(self):
+        """主题名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14767,6 +17669,9 @@ class FetchDatahubMessageByOffsetRequest(AbstractModel):
 
     @property
     def Partition(self):
+        """分区id
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -14775,6 +17680,9 @@ class FetchDatahubMessageByOffsetRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """位点信息，必填
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -14813,6 +17721,9 @@ class FetchDatahubMessageByOffsetResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ConsumerRecord`
+        """
         return self._Result
 
     @Result.setter
@@ -14821,6 +17732,9 @@ class FetchDatahubMessageByOffsetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14858,6 +17772,9 @@ class FetchLatestDatahubMessageListRequest(AbstractModel):
 
     @property
     def Name(self):
+        """主题名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -14866,6 +17783,9 @@ class FetchLatestDatahubMessageListRequest(AbstractModel):
 
     @property
     def Partition(self):
+        """分区id
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -14874,6 +17794,9 @@ class FetchLatestDatahubMessageListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """位点信息
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -14882,6 +17805,9 @@ class FetchLatestDatahubMessageListRequest(AbstractModel):
 
     @property
     def MessageCount(self):
+        """最大查询条数，最小1，最大100
+        :rtype: int
+        """
         return self._MessageCount
 
     @MessageCount.setter
@@ -14921,6 +17847,9 @@ class FetchLatestDatahubMessageListResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果。
+        :rtype: list of ConsumerRecord
+        """
         return self._Result
 
     @Result.setter
@@ -14929,6 +17858,9 @@ class FetchLatestDatahubMessageListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14969,6 +17901,9 @@ class FetchMessageByOffsetRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -14977,6 +17912,9 @@ class FetchMessageByOffsetRequest(AbstractModel):
 
     @property
     def Topic(self):
+        """主题名
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -14985,6 +17923,9 @@ class FetchMessageByOffsetRequest(AbstractModel):
 
     @property
     def Partition(self):
+        """分区id
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -14993,6 +17934,9 @@ class FetchMessageByOffsetRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """位点信息，必填
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -15032,6 +17976,9 @@ class FetchMessageByOffsetResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ConsumerRecord`
+        """
         return self._Result
 
     @Result.setter
@@ -15040,6 +17987,9 @@ class FetchMessageByOffsetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15080,6 +18030,9 @@ class FetchMessageListByOffsetRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -15088,6 +18041,9 @@ class FetchMessageListByOffsetRequest(AbstractModel):
 
     @property
     def Topic(self):
+        """主题名
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -15096,6 +18052,9 @@ class FetchMessageListByOffsetRequest(AbstractModel):
 
     @property
     def Partition(self):
+        """分区id
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -15104,6 +18063,9 @@ class FetchMessageListByOffsetRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """位点信息
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -15112,6 +18074,9 @@ class FetchMessageListByOffsetRequest(AbstractModel):
 
     @property
     def SinglePartitionRecordNumber(self):
+        """最大查询条数，默认20，最大20
+        :rtype: int
+        """
         return self._SinglePartitionRecordNumber
 
     @SinglePartitionRecordNumber.setter
@@ -15152,6 +18117,9 @@ class FetchMessageListByOffsetResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果。注意，列表中不返回具体的消息内容（key、value），如果需要查询具体消息内容，请使用FetchMessageByOffset接口
+        :rtype: list of ConsumerRecord
+        """
         return self._Result
 
     @Result.setter
@@ -15160,6 +18128,9 @@ class FetchMessageListByOffsetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15203,6 +18174,9 @@ class FetchMessageListByTimestampRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -15211,6 +18185,9 @@ class FetchMessageListByTimestampRequest(AbstractModel):
 
     @property
     def Topic(self):
+        """主题名
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -15219,6 +18196,9 @@ class FetchMessageListByTimestampRequest(AbstractModel):
 
     @property
     def Partition(self):
+        """分区id
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -15227,6 +18207,9 @@ class FetchMessageListByTimestampRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """查询开始时间，13位时间戳
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -15235,6 +18218,9 @@ class FetchMessageListByTimestampRequest(AbstractModel):
 
     @property
     def SinglePartitionRecordNumber(self):
+        """最大查询条数，默认20，最大20
+        :rtype: int
+        """
         return self._SinglePartitionRecordNumber
 
     @SinglePartitionRecordNumber.setter
@@ -15275,6 +18261,9 @@ class FetchMessageListByTimestampResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果。注意，列表中不返回具体的消息内容（key、value），如果需要查询具体消息内容，请使用FetchMessageByOffset接口
+        :rtype: list of ConsumerRecord
+        """
         return self._Result
 
     @Result.setter
@@ -15283,6 +18272,9 @@ class FetchMessageListByTimestampResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15342,6 +18334,9 @@ class FieldParam(AbstractModel):
 
     @property
     def Analyse(self):
+        """解析
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.AnalyseParam`
+        """
         return self._Analyse
 
     @Analyse.setter
@@ -15350,6 +18345,10 @@ class FieldParam(AbstractModel):
 
     @property
     def SecondaryAnalyse(self):
+        """二次解析
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.SecondaryAnalyseParam`
+        """
         return self._SecondaryAnalyse
 
     @SecondaryAnalyse.setter
@@ -15358,6 +18357,10 @@ class FieldParam(AbstractModel):
 
     @property
     def SMT(self):
+        """数据处理
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SMTParam
+        """
         return self._SMT
 
     @SMT.setter
@@ -15366,6 +18369,10 @@ class FieldParam(AbstractModel):
 
     @property
     def Result(self):
+        """测试结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -15374,6 +18381,10 @@ class FieldParam(AbstractModel):
 
     @property
     def AnalyseResult(self):
+        """解析结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SMTParam
+        """
         return self._AnalyseResult
 
     @AnalyseResult.setter
@@ -15382,6 +18393,10 @@ class FieldParam(AbstractModel):
 
     @property
     def SecondaryAnalyseResult(self):
+        """二次解析结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SMTParam
+        """
         return self._SecondaryAnalyseResult
 
     @SecondaryAnalyseResult.setter
@@ -15390,6 +18405,10 @@ class FieldParam(AbstractModel):
 
     @property
     def AnalyseJsonResult(self):
+        """JSON格式解析结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._AnalyseJsonResult
 
     @AnalyseJsonResult.setter
@@ -15398,6 +18417,10 @@ class FieldParam(AbstractModel):
 
     @property
     def SecondaryAnalyseJsonResult(self):
+        """JSON格式二次解析结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SecondaryAnalyseJsonResult
 
     @SecondaryAnalyseJsonResult.setter
@@ -15464,6 +18487,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """需要过滤的字段。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -15472,6 +18498,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """字段的过滤值。
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -15515,6 +18544,9 @@ class FilterMapParam(AbstractModel):
 
     @property
     def Key(self):
+        """Key值
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -15523,6 +18555,9 @@ class FilterMapParam(AbstractModel):
 
     @property
     def MatchMode(self):
+        """匹配模式，前缀匹配PREFIX，后缀匹配SUFFIX，包含匹配CONTAINS，EXCEPT除外匹配，数值匹配NUMBER，IP匹配IP
+        :rtype: str
+        """
         return self._MatchMode
 
     @MatchMode.setter
@@ -15531,6 +18566,9 @@ class FilterMapParam(AbstractModel):
 
     @property
     def Value(self):
+        """Value值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -15539,6 +18577,9 @@ class FilterMapParam(AbstractModel):
 
     @property
     def Type(self):
+        """固定REGULAR
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -15575,6 +18616,9 @@ class Group(AbstractModel):
 
     @property
     def GroupName(self):
+        """组名称
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -15617,6 +18661,9 @@ class GroupInfoMember(AbstractModel):
 
     @property
     def MemberId(self):
+        """coordinator 为消费分组中的消费者生成的唯一 ID
+        :rtype: str
+        """
         return self._MemberId
 
     @MemberId.setter
@@ -15625,6 +18672,9 @@ class GroupInfoMember(AbstractModel):
 
     @property
     def ClientId(self):
+        """客户消费者 SDK 自己设置的 client.id 信息
+        :rtype: str
+        """
         return self._ClientId
 
     @ClientId.setter
@@ -15633,6 +18683,9 @@ class GroupInfoMember(AbstractModel):
 
     @property
     def ClientHost(self):
+        """一般存储客户的 IP 地址
+        :rtype: str
+        """
         return self._ClientHost
 
     @ClientHost.setter
@@ -15641,6 +18694,9 @@ class GroupInfoMember(AbstractModel):
 
     @property
     def Assignment(self):
+        """存储着分配给该消费者的 partition 信息
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.Assignment`
+        """
         return self._Assignment
 
     @Assignment.setter
@@ -15699,6 +18755,9 @@ Stable：消费分组中各个消费者已经加入，处于稳定状态
 
     @property
     def ErrorCode(self):
+        """错误码，正常为0
+        :rtype: str
+        """
         return self._ErrorCode
 
     @ErrorCode.setter
@@ -15707,6 +18766,14 @@ Stable：消费分组中各个消费者已经加入，处于稳定状态
 
     @property
     def State(self):
+        """group 状态描述（常见的为 Empty、Stable、Dead 三种状态）：
+Dead：消费分组不存在
+Empty：消费分组，当前没有任何消费者订阅
+PreparingRebalance：消费分组处于 rebalance 状态
+CompletingRebalance：消费分组处于 rebalance 状态
+Stable：消费分组中各个消费者已经加入，处于稳定状态
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -15715,6 +18782,9 @@ Stable：消费分组中各个消费者已经加入，处于稳定状态
 
     @property
     def ProtocolType(self):
+        """消费分组选择的协议类型正常的消费者一般为 consumer 但有些系统采用了自己的协议如 kafka-connect 用的就是 connect。只有标准的 consumer 协议，本接口才知道具体的分配方式的格式，才能解析到具体的 partition 的分配情况
+        :rtype: str
+        """
         return self._ProtocolType
 
     @ProtocolType.setter
@@ -15723,6 +18793,9 @@ Stable：消费分组中各个消费者已经加入，处于稳定状态
 
     @property
     def Protocol(self):
+        """消费者 partition 分配算法常见的有如下几种(Kafka 消费者 SDK 默认的选择项为 range)：range、 roundrobin、 sticky
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -15731,6 +18804,9 @@ Stable：消费分组中各个消费者已经加入，处于稳定状态
 
     @property
     def Members(self):
+        """仅当 state 为 Stable 且 protocol_type 为 consumer 时， 该数组才包含信息
+        :rtype: list of GroupInfoMember
+        """
         return self._Members
 
     @Members.setter
@@ -15739,6 +18815,9 @@ Stable：消费分组中各个消费者已经加入，处于稳定状态
 
     @property
     def Group(self):
+        """Kafka 消费分组
+        :rtype: str
+        """
         return self._Group
 
     @Group.setter
@@ -15786,6 +18865,9 @@ class GroupInfoTopics(AbstractModel):
 
     @property
     def Topic(self):
+        """分配的 topic 名称
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -15794,6 +18876,10 @@ class GroupInfoTopics(AbstractModel):
 
     @property
     def Partitions(self):
+        """分配的 partition 信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._Partitions
 
     @Partitions.setter
@@ -15844,6 +18930,9 @@ class GroupOffsetPartition(AbstractModel):
 
     @property
     def Partition(self):
+        """topic 的 partitionId
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -15852,6 +18941,9 @@ class GroupOffsetPartition(AbstractModel):
 
     @property
     def Offset(self):
+        """consumer 提交的 offset 位置
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -15860,6 +18952,10 @@ class GroupOffsetPartition(AbstractModel):
 
     @property
     def Metadata(self):
+        """支持消费者提交消息时，传入 metadata 作为它用，当前一般为空字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Metadata
 
     @Metadata.setter
@@ -15868,6 +18964,9 @@ class GroupOffsetPartition(AbstractModel):
 
     @property
     def ErrorCode(self):
+        """错误码
+        :rtype: int
+        """
         return self._ErrorCode
 
     @ErrorCode.setter
@@ -15876,6 +18975,9 @@ class GroupOffsetPartition(AbstractModel):
 
     @property
     def LogEndOffset(self):
+        """当前 partition 最新的 offset
+        :rtype: int
+        """
         return self._LogEndOffset
 
     @LogEndOffset.setter
@@ -15884,6 +18986,9 @@ class GroupOffsetPartition(AbstractModel):
 
     @property
     def Lag(self):
+        """未消费的消息个数
+        :rtype: int
+        """
         return self._Lag
 
     @Lag.setter
@@ -15926,6 +19031,9 @@ class GroupOffsetResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合调节的总结果数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -15934,6 +19042,10 @@ class GroupOffsetResponse(AbstractModel):
 
     @property
     def TopicList(self):
+        """该主题分区数组，其中每个元素为一个 json object
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GroupOffsetTopic
+        """
         return self._TopicList
 
     @TopicList.setter
@@ -15977,6 +19089,9 @@ class GroupOffsetTopic(AbstractModel):
 
     @property
     def Topic(self):
+        """主题名称
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -15985,6 +19100,10 @@ class GroupOffsetTopic(AbstractModel):
 
     @property
     def Partitions(self):
+        """该主题分区数组，其中每个元素为一个 json object
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GroupOffsetPartition
+        """
         return self._Partitions
 
     @Partitions.setter
@@ -16033,6 +19152,10 @@ class GroupResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """计数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -16041,6 +19164,10 @@ class GroupResponse(AbstractModel):
 
     @property
     def GroupList(self):
+        """GroupList
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeGroup
+        """
         return self._GroupList
 
     @GroupList.setter
@@ -16049,6 +19176,10 @@ class GroupResponse(AbstractModel):
 
     @property
     def GroupCountQuota(self):
+        """消费分组配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._GroupCountQuota
 
     @GroupCountQuota.setter
@@ -16125,6 +19256,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def InstanceType(self):
+        """国内站标准版填写standards2, 国际站标准版填写standard,专业版填写profession,高级版填写premium
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -16133,6 +19267,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def InstanceChargeParam(self):
+        """购买/续费付费类型(购买时不填的话, 默认获取购买包年包月一个月的费用)
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceChargeParam`
+        """
         return self._InstanceChargeParam
 
     @InstanceChargeParam.setter
@@ -16141,6 +19278,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def InstanceNum(self):
+        """购买/续费时购买的实例数量(不填时, 默认为1个)
+        :rtype: int
+        """
         return self._InstanceNum
 
     @InstanceNum.setter
@@ -16149,6 +19289,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
+        """实例内网带宽大小, 单位MB/s (购买时必填，专业版/高级版询价时带宽信息必填)
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -16157,6 +19300,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def InquiryDiskParam(self):
+        """实例的硬盘购买类型以及大小 (购买时必填，专业版/高级版询价时磁盘信息必填)
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryDiskParam`
+        """
         return self._InquiryDiskParam
 
     @InquiryDiskParam.setter
@@ -16165,6 +19311,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def MessageRetention(self):
+        """实例消息保留时间大小, 单位小时 (购买时必填)
+        :rtype: int
+        """
         return self._MessageRetention
 
     @MessageRetention.setter
@@ -16173,6 +19322,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def Topic(self):
+        """购买实例topic数, 单位个 (购买时必填)
+        :rtype: int
+        """
         return self._Topic
 
     @Topic.setter
@@ -16181,6 +19333,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def Partition(self):
+        """购买实例分区数, 单位个 (购买时必填，专业版/高级版询价时带宽信息必填)
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -16189,6 +19344,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
+        """购买地域, 可通过查看DescribeCkafkaZone这个接口获取ZoneId
+        :rtype: list of int
+        """
         return self._ZoneIds
 
     @ZoneIds.setter
@@ -16197,6 +19355,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def CategoryAction(self):
+        """标记操作, 新购填写purchase, 续费填写renew, (不填时, 默认为purchase)
+        :rtype: str
+        """
         return self._CategoryAction
 
     @CategoryAction.setter
@@ -16205,6 +19366,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def BillType(self):
+        """国内站购买的版本, sv_ckafka_instance_s2_1(入门型), sv_ckafka_instance_s2_2(标准版), sv_ckafka_instance_s2_3(进阶型), 如果instanceType为standards2, 但该参数为空, 则默认值为sv_ckafka_instance_s2_1
+        :rtype: str
+        """
         return self._BillType
 
     @BillType.setter
@@ -16213,6 +19377,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def PublicNetworkParam(self):
+        """公网带宽计费模式, 目前只有专业版支持公网带宽 (购买公网带宽时必填)
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryPublicNetworkParam`
+        """
         return self._PublicNetworkParam
 
     @PublicNetworkParam.setter
@@ -16221,6 +19388,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """续费时的实例id, 续费时填写
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -16277,6 +19447,10 @@ class InquireCkafkaPriceResp(AbstractModel):
 
     @property
     def InstancePrice(self):
+        """实例价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryPrice`
+        """
         return self._InstancePrice
 
     @InstancePrice.setter
@@ -16285,6 +19459,10 @@ class InquireCkafkaPriceResp(AbstractModel):
 
     @property
     def PublicNetworkBandwidthPrice(self):
+        """公网带宽价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryPrice`
+        """
         return self._PublicNetworkBandwidthPrice
 
     @PublicNetworkBandwidthPrice.setter
@@ -16326,6 +19504,9 @@ class InquireCkafkaPriceResponse(AbstractModel):
 
     @property
     def Result(self):
+        """出参
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquireCkafkaPriceResp`
+        """
         return self._Result
 
     @Result.setter
@@ -16334,6 +19515,9 @@ class InquireCkafkaPriceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16403,6 +19587,10 @@ class InquiryBasePrice(AbstractModel):
 
     @property
     def UnitPrice(self):
+        """单位原价
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._UnitPrice
 
     @UnitPrice.setter
@@ -16411,6 +19599,10 @@ class InquiryBasePrice(AbstractModel):
 
     @property
     def UnitPriceDiscount(self):
+        """折扣单位价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._UnitPriceDiscount
 
     @UnitPriceDiscount.setter
@@ -16419,6 +19611,10 @@ class InquiryBasePrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
+        """合计原价
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -16427,6 +19623,10 @@ class InquiryBasePrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
+        """折扣合计价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -16435,6 +19635,10 @@ class InquiryBasePrice(AbstractModel):
 
     @property
     def Discount(self):
+        """折扣(单位是%)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Discount
 
     @Discount.setter
@@ -16443,6 +19647,10 @@ class InquiryBasePrice(AbstractModel):
 
     @property
     def GoodsNum(self):
+        """商品数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._GoodsNum
 
     @GoodsNum.setter
@@ -16451,6 +19659,10 @@ class InquiryBasePrice(AbstractModel):
 
     @property
     def Currency(self):
+        """付费货币
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Currency
 
     @Currency.setter
@@ -16459,6 +19671,10 @@ class InquiryBasePrice(AbstractModel):
 
     @property
     def DiskType(self):
+        """硬盘专用返回参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -16467,6 +19683,10 @@ class InquiryBasePrice(AbstractModel):
 
     @property
     def TimeSpan(self):
+        """购买时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -16475,6 +19695,10 @@ class InquiryBasePrice(AbstractModel):
 
     @property
     def TimeUnit(self):
+        """购买时长单位("m"按月, "h"按小时)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -16483,6 +19707,10 @@ class InquiryBasePrice(AbstractModel):
 
     @property
     def Value(self):
+        """购买数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Value
 
     @Value.setter
@@ -16543,6 +19771,10 @@ class InquiryDetailPrice(AbstractModel):
 
     @property
     def BandwidthPrice(self):
+        """额外内网带宽价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
+        """
         return self._BandwidthPrice
 
     @BandwidthPrice.setter
@@ -16551,6 +19783,10 @@ class InquiryDetailPrice(AbstractModel):
 
     @property
     def DiskPrice(self):
+        """硬盘价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
+        """
         return self._DiskPrice
 
     @DiskPrice.setter
@@ -16559,6 +19795,10 @@ class InquiryDetailPrice(AbstractModel):
 
     @property
     def PartitionPrice(self):
+        """额外分区价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
+        """
         return self._PartitionPrice
 
     @PartitionPrice.setter
@@ -16567,6 +19807,10 @@ class InquiryDetailPrice(AbstractModel):
 
     @property
     def TopicPrice(self):
+        """额外Topic价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
+        """
         return self._TopicPrice
 
     @TopicPrice.setter
@@ -16575,6 +19819,10 @@ class InquiryDetailPrice(AbstractModel):
 
     @property
     def InstanceTypePrice(self):
+        """实例套餐价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
+        """
         return self._InstanceTypePrice
 
     @InstanceTypePrice.setter
@@ -16625,6 +19873,9 @@ class InquiryDiskParam(AbstractModel):
 
     @property
     def DiskType(self):
+        """购买硬盘类型: SSD(SSD), CLOUD_SSD(SSD云硬盘), CLOUD_PREMIUM(高性能云硬盘), CLOUD_BASIC(云盘)
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -16633,6 +19884,9 @@ class InquiryDiskParam(AbstractModel):
 
     @property
     def DiskSize(self):
+        """购买硬盘大小: 单位GB
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -16712,6 +19966,10 @@ class InquiryPrice(AbstractModel):
 
     @property
     def UnitPrice(self):
+        """单位原价
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._UnitPrice
 
     @UnitPrice.setter
@@ -16720,6 +19978,10 @@ class InquiryPrice(AbstractModel):
 
     @property
     def UnitPriceDiscount(self):
+        """折扣单位价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._UnitPriceDiscount
 
     @UnitPriceDiscount.setter
@@ -16728,6 +19990,10 @@ class InquiryPrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
+        """合计原价
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -16736,6 +20002,10 @@ class InquiryPrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
+        """折扣合计价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -16744,6 +20014,10 @@ class InquiryPrice(AbstractModel):
 
     @property
     def Discount(self):
+        """折扣(单位是%)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Discount
 
     @Discount.setter
@@ -16752,6 +20026,10 @@ class InquiryPrice(AbstractModel):
 
     @property
     def GoodsNum(self):
+        """商品数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._GoodsNum
 
     @GoodsNum.setter
@@ -16760,6 +20038,10 @@ class InquiryPrice(AbstractModel):
 
     @property
     def Currency(self):
+        """付费货币
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Currency
 
     @Currency.setter
@@ -16768,6 +20050,10 @@ class InquiryPrice(AbstractModel):
 
     @property
     def DiskType(self):
+        """硬盘专用返回参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -16776,6 +20062,10 @@ class InquiryPrice(AbstractModel):
 
     @property
     def TimeSpan(self):
+        """购买时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -16784,6 +20074,10 @@ class InquiryPrice(AbstractModel):
 
     @property
     def TimeUnit(self):
+        """购买时长单位("m"按月, "h"按小时)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -16792,6 +20086,10 @@ class InquiryPrice(AbstractModel):
 
     @property
     def Value(self):
+        """购买数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Value
 
     @Value.setter
@@ -16800,6 +20098,10 @@ class InquiryPrice(AbstractModel):
 
     @property
     def DetailPrices(self):
+        """详细类别的价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryDetailPrice`
+        """
         return self._DetailPrices
 
     @DetailPrices.setter
@@ -16849,6 +20151,9 @@ class InquiryPublicNetworkParam(AbstractModel):
 
     @property
     def PublicNetworkChargeType(self):
+        """公网计费模式: BANDWIDTH_PREPAID(包年包月), BANDWIDTH_POSTPAID_BY_HOUR(带宽按小时计费)
+        :rtype: str
+        """
         return self._PublicNetworkChargeType
 
     @PublicNetworkChargeType.setter
@@ -16857,6 +20162,9 @@ class InquiryPublicNetworkParam(AbstractModel):
 
     @property
     def PublicNetworkMonthly(self):
+        """公网带宽, 单位MB
+        :rtype: int
+        """
         return self._PublicNetworkMonthly
 
     @PublicNetworkMonthly.setter
@@ -16901,6 +20209,9 @@ class Instance(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -16909,6 +20220,9 @@ class Instance(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -16917,6 +20231,9 @@ class Instance(AbstractModel):
 
     @property
     def Status(self):
+        """实例的状态。0：创建中，1：运行中，2：删除中 ， 5 隔离中，-1 创建失败
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -16925,6 +20242,10 @@ class Instance(AbstractModel):
 
     @property
     def IfCommunity(self):
+        """是否开源实例。开源：true，不开源：false
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IfCommunity
 
     @IfCommunity.setter
@@ -17082,6 +20403,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -17090,6 +20414,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -17098,6 +20425,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def VipList(self):
+        """接入点 VIP 列表信息
+        :rtype: list of VipEntity
+        """
         return self._VipList
 
     @VipList.setter
@@ -17106,6 +20436,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def Vip(self):
+        """虚拟IP
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -17114,6 +20447,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def Vport(self):
+        """虚拟端口
+        :rtype: str
+        """
         return self._Vport
 
     @Vport.setter
@@ -17122,6 +20458,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def Status(self):
+        """实例的状态。0：创建中，1：运行中，2：删除中
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -17130,6 +20469,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def Bandwidth(self):
+        """实例带宽，单位：Mbps
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -17138,6 +20480,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def DiskSize(self):
+        """实例的存储大小，单位：GB
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -17146,6 +20491,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def ZoneId(self):
+        """可用区
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -17154,6 +20502,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC 的 ID，为空表示是基础网络
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -17162,6 +20513,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网 ID， 为空表示基础网络
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -17170,6 +20524,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def Healthy(self):
+        """实例健康状态， 1：健康，2：告警，3：异常
+        :rtype: int
+        """
         return self._Healthy
 
     @Healthy.setter
@@ -17178,6 +20535,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def HealthyMessage(self):
+        """实例健康信息，当前会展示磁盘利用率，最大长度为256
+        :rtype: str
+        """
         return self._HealthyMessage
 
     @HealthyMessage.setter
@@ -17186,6 +20546,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -17194,6 +20557,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def MsgRetentionTime(self):
+        """消息保存时间,单位为分钟
+        :rtype: int
+        """
         return self._MsgRetentionTime
 
     @MsgRetentionTime.setter
@@ -17202,6 +20568,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def Config(self):
+        """自动创建 Topic 配置， 若该字段为空，则表示未开启自动创建
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceConfigDO`
+        """
         return self._Config
 
     @Config.setter
@@ -17210,6 +20579,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def RemainderPartitions(self):
+        """剩余创建分区数
+        :rtype: int
+        """
         return self._RemainderPartitions
 
     @RemainderPartitions.setter
@@ -17218,6 +20590,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def RemainderTopics(self):
+        """剩余创建主题数
+        :rtype: int
+        """
         return self._RemainderTopics
 
     @RemainderTopics.setter
@@ -17226,6 +20601,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def CreatedPartitions(self):
+        """当前创建分区数
+        :rtype: int
+        """
         return self._CreatedPartitions
 
     @CreatedPartitions.setter
@@ -17234,6 +20612,9 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def CreatedTopics(self):
+        """当前创建主题数
+        :rtype: int
+        """
         return self._CreatedTopics
 
     @CreatedTopics.setter
@@ -17242,6 +20623,10 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def Tags(self):
+        """标签数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -17250,6 +20635,10 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -17258,6 +20647,10 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def ZoneIds(self):
+        """跨可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._ZoneIds
 
     @ZoneIds.setter
@@ -17266,6 +20659,10 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def Version(self):
+        """kafka版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -17274,6 +20671,10 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def MaxGroupNum(self):
+        """最大分组数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxGroupNum
 
     @MaxGroupNum.setter
@@ -17282,6 +20683,10 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def Cvm(self):
+        """售卖类型,0:标准版,1:专业版
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Cvm
 
     @Cvm.setter
@@ -17290,6 +20695,10 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def InstanceType(self):
+        """类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -17298,6 +20707,10 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def Features(self):
+        """表示该实例支持的特性。FEATURE_SUBNET_ACL:表示acl策略支持设置子网。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Features
 
     @Features.setter
@@ -17306,6 +20719,10 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def RetentionTimeConfig(self):
+        """动态消息保留策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DynamicRetentionTime`
+        """
         return self._RetentionTimeConfig
 
     @RetentionTimeConfig.setter
@@ -17314,6 +20731,10 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def MaxConnection(self):
+        """最大连接数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxConnection
 
     @MaxConnection.setter
@@ -17322,6 +20743,10 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def PublicNetwork(self):
+        """公网带宽
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PublicNetwork
 
     @PublicNetwork.setter
@@ -17330,6 +20755,10 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def DeleteRouteTimestamp(self):
+        """时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeleteRouteTimestamp
 
     @DeleteRouteTimestamp.setter
@@ -17338,6 +20767,10 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def RemainingPartitions(self):
+        """剩余创建分区数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RemainingPartitions
 
     @RemainingPartitions.setter
@@ -17346,6 +20779,10 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def RemainingTopics(self):
+        """剩余创建主题数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RemainingTopics
 
     @RemainingTopics.setter
@@ -17354,6 +20791,10 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def DynamicDiskConfig(self):
+        """动态硬盘扩容策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
+        """
         return self._DynamicDiskConfig
 
     @DynamicDiskConfig.setter
@@ -17362,6 +20803,10 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """实例计费类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -17449,6 +20894,9 @@ class InstanceChargeParam(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """实例付费类型: PREPAID(包年包月), POSTPAID_BY_HOUR(按量付费)
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -17457,6 +20905,9 @@ class InstanceChargeParam(AbstractModel):
 
     @property
     def InstanceChargePeriod(self):
+        """购买时长: 包年包月时需要填写, 按量计费无需填写
+        :rtype: int
+        """
         return self._InstanceChargePeriod
 
     @InstanceChargePeriod.setter
@@ -17497,6 +20948,9 @@ class InstanceConfigDO(AbstractModel):
 
     @property
     def AutoCreateTopicsEnable(self):
+        """是否自动创建主题
+        :rtype: bool
+        """
         return self._AutoCreateTopicsEnable
 
     @AutoCreateTopicsEnable.setter
@@ -17505,6 +20959,9 @@ class InstanceConfigDO(AbstractModel):
 
     @property
     def DefaultNumPartitions(self):
+        """分区数
+        :rtype: int
+        """
         return self._DefaultNumPartitions
 
     @DefaultNumPartitions.setter
@@ -17513,6 +20970,9 @@ class InstanceConfigDO(AbstractModel):
 
     @property
     def DefaultReplicationFactor(self):
+        """默认的复制Factor
+        :rtype: int
+        """
         return self._DefaultReplicationFactor
 
     @DefaultReplicationFactor.setter
@@ -17549,6 +21009,10 @@ class InstanceDeleteResponse(AbstractModel):
 
     @property
     def FlowId(self):
+        """删除实例返回的任务Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -17688,6 +21152,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -17696,6 +21163,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -17704,6 +21174,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Vip(self):
+        """访问实例的vip 信息
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -17712,6 +21185,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Vport(self):
+        """访问实例的端口信息
+        :rtype: str
+        """
         return self._Vport
 
     @Vport.setter
@@ -17720,6 +21196,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def VipList(self):
+        """虚拟IP列表
+        :rtype: list of VipEntity
+        """
         return self._VipList
 
     @VipList.setter
@@ -17728,6 +21207,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Status(self):
+        """实例的状态。0：创建中，1：运行中，2：删除中：5隔离中， -1 创建失败
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -17736,6 +21218,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Bandwidth(self):
+        """实例带宽，单位Mbps
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -17744,6 +21229,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def DiskSize(self):
+        """实例的存储大小，单位GB
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -17752,6 +21240,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ZoneId(self):
+        """可用区域ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -17760,6 +21251,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def VpcId(self):
+        """vpcId，如果为空，说明是基础网络
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -17768,6 +21262,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网id
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -17776,6 +21273,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """实例是否续费，int  枚举值：1表示自动续费，2表示明确不自动续费
+        :rtype: int
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -17784,6 +21284,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Healthy(self):
+        """实例状态 int：1表示健康，2表示告警，3 表示实例状态异常
+        :rtype: int
+        """
         return self._Healthy
 
     @Healthy.setter
@@ -17792,6 +21295,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def HealthyMessage(self):
+        """实例状态信息
+        :rtype: str
+        """
         return self._HealthyMessage
 
     @HealthyMessage.setter
@@ -17800,6 +21306,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def CreateTime(self):
+        """实例创建时间
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -17808,6 +21317,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """实例过期时间
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -17816,6 +21328,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def IsInternal(self):
+        """是否为内部客户。值为1 表示内部客户
+        :rtype: int
+        """
         return self._IsInternal
 
     @IsInternal.setter
@@ -17824,6 +21339,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def TopicNum(self):
+        """Topic个数
+        :rtype: int
+        """
         return self._TopicNum
 
     @TopicNum.setter
@@ -17832,6 +21350,9 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Tags(self):
+        """标识tag
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -17840,6 +21361,10 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Version(self):
+        """kafka版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -17848,6 +21373,10 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ZoneIds(self):
+        """跨可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._ZoneIds
 
     @ZoneIds.setter
@@ -17856,6 +21385,10 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Cvm(self):
+        """ckafka售卖类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Cvm
 
     @Cvm.setter
@@ -17864,6 +21397,10 @@ class InstanceDetail(AbstractModel):
 
     @property
     def InstanceType(self):
+        """ckafka实例类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -17872,6 +21409,10 @@ class InstanceDetail(AbstractModel):
 
     @property
     def DiskType(self):
+        """磁盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -17880,6 +21421,10 @@ class InstanceDetail(AbstractModel):
 
     @property
     def MaxTopicNumber(self):
+        """当前规格最大Topic数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxTopicNumber
 
     @MaxTopicNumber.setter
@@ -17888,6 +21433,10 @@ class InstanceDetail(AbstractModel):
 
     @property
     def MaxPartitionNumber(self):
+        """当前规格最大Partition数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxPartitionNumber
 
     @MaxPartitionNumber.setter
@@ -17896,6 +21445,10 @@ class InstanceDetail(AbstractModel):
 
     @property
     def RebalanceTime(self):
+        """计划升级配置时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RebalanceTime
 
     @RebalanceTime.setter
@@ -17904,6 +21457,10 @@ class InstanceDetail(AbstractModel):
 
     @property
     def PartitionNumber(self):
+        """实例当前partition数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PartitionNumber
 
     @PartitionNumber.setter
@@ -17912,6 +21469,10 @@ class InstanceDetail(AbstractModel):
 
     @property
     def PublicNetworkChargeType(self):
+        """公网带宽类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PublicNetworkChargeType
 
     @PublicNetworkChargeType.setter
@@ -17920,6 +21481,10 @@ class InstanceDetail(AbstractModel):
 
     @property
     def PublicNetwork(self):
+        """公网带宽值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PublicNetwork
 
     @PublicNetwork.setter
@@ -17928,6 +21493,10 @@ class InstanceDetail(AbstractModel):
 
     @property
     def ClusterType(self):
+        """实例类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -17936,6 +21505,10 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Features(self):
+        """实例功能列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._Features
 
     @Features.setter
@@ -18013,6 +21586,9 @@ class InstanceDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的实例总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -18021,6 +21597,9 @@ class InstanceDetailResponse(AbstractModel):
 
     @property
     def InstanceList(self):
+        """符合条件的实例详情列表
+        :rtype: list of InstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -18065,6 +21644,10 @@ class InstanceQuotaConfigResp(AbstractModel):
 
     @property
     def QuotaProducerByteRate(self):
+        """生产限流大小，单位 MB/s
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._QuotaProducerByteRate
 
     @QuotaProducerByteRate.setter
@@ -18073,6 +21656,10 @@ class InstanceQuotaConfigResp(AbstractModel):
 
     @property
     def QuotaConsumerByteRate(self):
+        """消费限流大小，单位 MB/s
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._QuotaConsumerByteRate
 
     @QuotaConsumerByteRate.setter
@@ -18112,6 +21699,10 @@ class InstanceResponse(AbstractModel):
 
     @property
     def InstanceList(self):
+        """符合条件的实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Instance
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -18120,6 +21711,10 @@ class InstanceResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的结果总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -18172,6 +21767,9 @@ class InstanceScalingDownRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -18180,6 +21778,10 @@ class InstanceScalingDownRequest(AbstractModel):
 
     @property
     def UpgradeStrategy(self):
+        """缩容模式  1:稳定变配 
+2.高速变配
+        :rtype: int
+        """
         return self._UpgradeStrategy
 
     @UpgradeStrategy.setter
@@ -18188,6 +21790,9 @@ class InstanceScalingDownRequest(AbstractModel):
 
     @property
     def DiskSize(self):
+        """磁盘大小 单位 GB
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -18196,6 +21801,9 @@ class InstanceScalingDownRequest(AbstractModel):
 
     @property
     def BandWidth(self):
+        """峰值带宽 单位 MB/s
+        :rtype: int
+        """
         return self._BandWidth
 
     @BandWidth.setter
@@ -18204,6 +21812,9 @@ class InstanceScalingDownRequest(AbstractModel):
 
     @property
     def Partition(self):
+        """分区上限
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -18245,6 +21856,10 @@ class InstanceScalingDownResponse(AbstractModel):
 
     @property
     def Result(self):
+        """缩容应答
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ScalingDownResp`
+        """
         return self._Result
 
     @Result.setter
@@ -18253,6 +21868,9 @@ class InstanceScalingDownResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18288,6 +21906,9 @@ class JgwOperateResponse(AbstractModel):
 
     @property
     def ReturnCode(self):
+        """返回的code，0为正常，非0为错误
+        :rtype: str
+        """
         return self._ReturnCode
 
     @ReturnCode.setter
@@ -18296,6 +21917,9 @@ class JgwOperateResponse(AbstractModel):
 
     @property
     def ReturnMessage(self):
+        """成功消息
+        :rtype: str
+        """
         return self._ReturnMessage
 
     @ReturnMessage.setter
@@ -18304,6 +21928,10 @@ class JgwOperateResponse(AbstractModel):
 
     @property
     def Data(self):
+        """操作型返回的Data数据,可能有flowId等
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.OperateResponseData`
+        """
         return self._Data
 
     @Data.setter
@@ -18344,6 +21972,9 @@ class JsonPathReplaceParam(AbstractModel):
 
     @property
     def OldValue(self):
+        """被替换值，Jsonpath表达式
+        :rtype: str
+        """
         return self._OldValue
 
     @OldValue.setter
@@ -18352,6 +21983,9 @@ class JsonPathReplaceParam(AbstractModel):
 
     @property
     def NewValue(self):
+        """替换值，Jsonpath表达式或字符串
+        :rtype: str
+        """
         return self._NewValue
 
     @NewValue.setter
@@ -18393,6 +22027,9 @@ class KVParam(AbstractModel):
 
     @property
     def Delimiter(self):
+        """分隔符
+        :rtype: str
+        """
         return self._Delimiter
 
     @Delimiter.setter
@@ -18401,6 +22038,9 @@ class KVParam(AbstractModel):
 
     @property
     def Regex(self):
+        """key-value二次解析分隔符
+        :rtype: str
+        """
         return self._Regex
 
     @Regex.setter
@@ -18409,6 +22049,10 @@ class KVParam(AbstractModel):
 
     @property
     def KeepOriginalKey(self):
+        """保留源Key，默认为false不保留
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._KeepOriginalKey
 
     @KeepOriginalKey.setter
@@ -18461,6 +22105,10 @@ class KafkaConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """Kafka连接源的实例资源, 非自建时必填，NetworkType=VPC时传clb实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -18469,6 +22117,10 @@ class KafkaConnectParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
+        """是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SelfBuilt
 
     @SelfBuilt.setter
@@ -18477,6 +22129,10 @@ class KafkaConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
+        """是否更新到关联的Dip任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUpdate
 
     @IsUpdate.setter
@@ -18485,6 +22141,10 @@ class KafkaConnectParam(AbstractModel):
 
     @property
     def BrokerAddress(self):
+        """Kafka连接的broker地址, NetworkType=PUBLIC公网时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BrokerAddress
 
     @BrokerAddress.setter
@@ -18493,6 +22153,10 @@ class KafkaConnectParam(AbstractModel):
 
     @property
     def Region(self):
+        """CKafka连接源的实例资源地域, 跨地域时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -18596,6 +22260,9 @@ class KafkaParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
+        """是否为自建集群
+        :rtype: bool
+        """
         return self._SelfBuilt
 
     @SelfBuilt.setter
@@ -18604,6 +22271,9 @@ class KafkaParam(AbstractModel):
 
     @property
     def Resource(self):
+        """实例资源
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -18612,6 +22282,9 @@ class KafkaParam(AbstractModel):
 
     @property
     def Topic(self):
+        """Topic名称，多个以“,”分隔
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -18620,6 +22293,10 @@ class KafkaParam(AbstractModel):
 
     @property
     def OffsetType(self):
+        """Offset类型，最开始位置earliest，最新位置latest，时间点位置timestamp
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OffsetType
 
     @OffsetType.setter
@@ -18628,6 +22305,10 @@ class KafkaParam(AbstractModel):
 
     @property
     def StartTime(self):
+        """Offset类型为timestamp时必传，传时间戳，精确到秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -18636,6 +22317,10 @@ class KafkaParam(AbstractModel):
 
     @property
     def ResourceName(self):
+        """实例资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -18644,6 +22329,10 @@ class KafkaParam(AbstractModel):
 
     @property
     def ZoneId(self):
+        """Zone ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -18652,6 +22341,10 @@ class KafkaParam(AbstractModel):
 
     @property
     def TopicId(self):
+        """Topic的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -18660,6 +22353,10 @@ class KafkaParam(AbstractModel):
 
     @property
     def PartitionNum(self):
+        """Topic的分区数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PartitionNum
 
     @PartitionNum.setter
@@ -18668,6 +22365,10 @@ class KafkaParam(AbstractModel):
 
     @property
     def EnableToleration(self):
+        """启用容错实例/开启死信队列
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._EnableToleration
 
     @EnableToleration.setter
@@ -18676,6 +22377,10 @@ class KafkaParam(AbstractModel):
 
     @property
     def QpsLimit(self):
+        """Qps 限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._QpsLimit
 
     @QpsLimit.setter
@@ -18684,6 +22389,10 @@ class KafkaParam(AbstractModel):
 
     @property
     def TableMappings(self):
+        """Table到Topic的路由，「分发到多个topic」开关打开时必传
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TableMapping
+        """
         return self._TableMappings
 
     @TableMappings.setter
@@ -18692,6 +22401,10 @@ class KafkaParam(AbstractModel):
 
     @property
     def UseTableMapping(self):
+        """「分发到多个topic」开关，默认为false
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._UseTableMapping
 
     @UseTableMapping.setter
@@ -18700,6 +22413,10 @@ class KafkaParam(AbstractModel):
 
     @property
     def UseAutoCreateTopic(self):
+        """使用的Topic是否需要自动创建（目前只支持SOURCE流入任务，如果不使用分发到多个topic，需要在Topic字段填写需要自动创建的topic名）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._UseAutoCreateTopic
 
     @UseAutoCreateTopic.setter
@@ -18708,6 +22425,10 @@ class KafkaParam(AbstractModel):
 
     @property
     def CompressionType(self):
+        """写入Topic时是否进行压缩，不开启填"none"，开启的话，填写"open"。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CompressionType
 
     @CompressionType.setter
@@ -18716,6 +22437,10 @@ class KafkaParam(AbstractModel):
 
     @property
     def MsgMultiple(self):
+        """源topic消息1条扩增成msgMultiple条写入目标topic(该参数目前只有ckafka流入ckafka适用)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MsgMultiple
 
     @MsgMultiple.setter
@@ -18724,6 +22449,10 @@ class KafkaParam(AbstractModel):
 
     @property
     def ConnectorSyncType(self):
+        """数据同步专用参数, 正常数据处理可为空, 实例级别同步: 仅同步元数据填写"META_SYNC_INSTANCE_TYPE", 同步元数据及全部topic内消息的填写"META_AND_DATA_SYNC_INSTANCE_TYPE"; topic级别同步: 选中的源和目标topic中的消息(需要目标实例也包含该topic)填写"DATA_SYNC_TYPE"
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ConnectorSyncType
 
     @ConnectorSyncType.setter
@@ -18732,6 +22461,10 @@ class KafkaParam(AbstractModel):
 
     @property
     def KeepPartition(self):
+        """数据同步专用参数, 当通过时,希望下游的消息写入分区与上游的一致,则填true,但下游分区小于上游时,会报错; 不需要一致则为false, 默认为false
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._KeepPartition
 
     @KeepPartition.setter
@@ -18799,6 +22532,9 @@ class MapParam(AbstractModel):
 
     @property
     def Key(self):
+        """key值
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -18807,6 +22543,9 @@ class MapParam(AbstractModel):
 
     @property
     def Type(self):
+        """类型，DEFAULT默认，DATE系统预设-时间戳，CUSTOMIZE自定义，MAPPING映射
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -18815,6 +22554,9 @@ class MapParam(AbstractModel):
 
     @property
     def Value(self):
+        """值
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -18875,6 +22617,10 @@ class MariaDBConnectParam(AbstractModel):
 
     @property
     def Port(self):
+        """MariaDB的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -18883,6 +22629,10 @@ class MariaDBConnectParam(AbstractModel):
 
     @property
     def UserName(self):
+        """MariaDB连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -18891,6 +22641,10 @@ class MariaDBConnectParam(AbstractModel):
 
     @property
     def Password(self):
+        """MariaDB连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -18899,6 +22653,10 @@ class MariaDBConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """MariaDB连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -18907,6 +22665,10 @@ class MariaDBConnectParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """MariaDB连接源的实例vip，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -18915,6 +22677,10 @@ class MariaDBConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """MariaDB连接源的vpcId，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -18923,6 +22689,10 @@ class MariaDBConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
+        """是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUpdate
 
     @IsUpdate.setter
@@ -18987,6 +22757,10 @@ class MariaDBModifyConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """MariaDB连接源的实例资源【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -18995,6 +22769,10 @@ class MariaDBModifyConnectParam(AbstractModel):
 
     @property
     def Port(self):
+        """MariaDB的连接port【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -19003,6 +22781,10 @@ class MariaDBModifyConnectParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """MariaDB连接源的实例vip【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -19011,6 +22793,10 @@ class MariaDBModifyConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """MariaDB连接源的vpcId【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -19019,6 +22805,10 @@ class MariaDBModifyConnectParam(AbstractModel):
 
     @property
     def UserName(self):
+        """MariaDB连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -19027,6 +22817,10 @@ class MariaDBModifyConnectParam(AbstractModel):
 
     @property
     def Password(self):
+        """MariaDB连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -19035,6 +22829,10 @@ class MariaDBModifyConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
+        """是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUpdate
 
     @IsUpdate.setter
@@ -19111,6 +22909,10 @@ class MariaDBParam(AbstractModel):
 
     @property
     def Database(self):
+        """MariaDB的数据库名称，"*"为全数据库
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Database
 
     @Database.setter
@@ -19119,6 +22921,10 @@ class MariaDBParam(AbstractModel):
 
     @property
     def Table(self):
+        """MariaDB的数据表名称，"*"为所监听的所有数据库中的非系统表，可以","间隔，监听多个数据表，但数据表需要以"数据库名.数据表名"的格式进行填写
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Table
 
     @Table.setter
@@ -19127,6 +22933,10 @@ class MariaDBParam(AbstractModel):
 
     @property
     def Resource(self):
+        """该MariaDB在连接管理内的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -19135,6 +22945,10 @@ class MariaDBParam(AbstractModel):
 
     @property
     def SnapshotMode(self):
+        """复制存量信息(schema_only不复制, initial全量)，默认位initial
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SnapshotMode
 
     @SnapshotMode.setter
@@ -19143,6 +22957,10 @@ class MariaDBParam(AbstractModel):
 
     @property
     def KeyColumns(self):
+        """格式：库1.表1:字段1,字段2;库2.表2:字段2，表之间;（分号）隔开，字段之间,（逗号）隔开。不指定的表默认取表的主键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._KeyColumns
 
     @KeyColumns.setter
@@ -19151,6 +22969,10 @@ class MariaDBParam(AbstractModel):
 
     @property
     def IsTablePrefix(self):
+        """当Table输入的是前缀时，该项值为true，否则为false
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsTablePrefix
 
     @IsTablePrefix.setter
@@ -19159,6 +22981,10 @@ class MariaDBParam(AbstractModel):
 
     @property
     def OutputFormat(self):
+        """输出格式，DEFAULT、CANAL_1、CANAL_2
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OutputFormat
 
     @OutputFormat.setter
@@ -19167,6 +22993,10 @@ class MariaDBParam(AbstractModel):
 
     @property
     def IncludeContentChanges(self):
+        """如果该值为all，则DDL数据以及DML数据也会写入到选中的topic；若该值为dml，则只有DML数据写入到选中的topic
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IncludeContentChanges
 
     @IncludeContentChanges.setter
@@ -19175,6 +23005,10 @@ class MariaDBParam(AbstractModel):
 
     @property
     def IncludeQuery(self):
+        """如果该值为true，且MySQL中"binlog_rows_query_log_events"配置项的值为"ON"，则流入到topic的数据包含原SQL语句；若该值为false，流入到topic的数据不包含原SQL语句
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IncludeQuery
 
     @IncludeQuery.setter
@@ -19183,6 +23017,10 @@ class MariaDBParam(AbstractModel):
 
     @property
     def RecordWithSchema(self):
+        """如果该值为 true，则消息中会携带消息结构体对应的schema，如果该值为false则不会携带
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._RecordWithSchema
 
     @RecordWithSchema.setter
@@ -19231,6 +23069,9 @@ class ModifyAclRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -19239,6 +23080,9 @@ class ModifyAclRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
+        """ACL策略名
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -19247,6 +23091,9 @@ class ModifyAclRuleRequest(AbstractModel):
 
     @property
     def IsApplied(self):
+        """修改预设规则时传入,是否应用到新增的Topic
+        :rtype: int
+        """
         return self._IsApplied
 
     @IsApplied.setter
@@ -19285,6 +23132,9 @@ class ModifyAclRuleResponse(AbstractModel):
 
     @property
     def Result(self):
+        """规则的唯一表示Key
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -19293,6 +23143,9 @@ class ModifyAclRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19364,6 +23217,9 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """连接源的Id
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -19372,6 +23228,9 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def ResourceName(self):
+        """连接源名称，为空时不修改
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -19380,6 +23239,9 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def Description(self):
+        """连接源描述，为空时不修改
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -19388,6 +23250,9 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def Type(self):
+        """连接源类型，修改数据源参数时，需要与原Type相同，否则编辑数据源无效
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -19396,6 +23261,9 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def DtsConnectParam(self):
+        """Dts配置，Type为DTS时必填
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DtsModifyConnectParam`
+        """
         return self._DtsConnectParam
 
     @DtsConnectParam.setter
@@ -19404,6 +23272,9 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def MongoDBConnectParam(self):
+        """MongoDB配置，Type为MONGODB时必填
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.MongoDBModifyConnectParam`
+        """
         return self._MongoDBConnectParam
 
     @MongoDBConnectParam.setter
@@ -19412,6 +23283,9 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def EsConnectParam(self):
+        """Es配置，Type为ES时必填
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.EsModifyConnectParam`
+        """
         return self._EsConnectParam
 
     @EsConnectParam.setter
@@ -19420,6 +23294,9 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def ClickHouseConnectParam(self):
+        """ClickHouse配置，Type为CLICKHOUSE时必填
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseModifyConnectParam`
+        """
         return self._ClickHouseConnectParam
 
     @ClickHouseConnectParam.setter
@@ -19428,6 +23305,9 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def MySQLConnectParam(self):
+        """MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时必填
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.MySQLModifyConnectParam`
+        """
         return self._MySQLConnectParam
 
     @MySQLConnectParam.setter
@@ -19436,6 +23316,9 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def PostgreSQLConnectParam(self):
+        """PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.PostgreSQLModifyConnectParam`
+        """
         return self._PostgreSQLConnectParam
 
     @PostgreSQLConnectParam.setter
@@ -19444,6 +23327,9 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def MariaDBConnectParam(self):
+        """MariaDB配置，Type为MARIADB时必填
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.MariaDBModifyConnectParam`
+        """
         return self._MariaDBConnectParam
 
     @MariaDBConnectParam.setter
@@ -19452,6 +23338,9 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def SQLServerConnectParam(self):
+        """SQLServer配置，Type为SQLSERVER时必填
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.SQLServerModifyConnectParam`
+        """
         return self._SQLServerConnectParam
 
     @SQLServerConnectParam.setter
@@ -19460,6 +23349,9 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def CtsdbConnectParam(self):
+        """Ctsdb配置，Type为CTSDB
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CtsdbModifyConnectParam`
+        """
         return self._CtsdbConnectParam
 
     @CtsdbConnectParam.setter
@@ -19468,6 +23360,9 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def DorisConnectParam(self):
+        """Doris配置，Type为DORIS
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DorisModifyConnectParam`
+        """
         return self._DorisConnectParam
 
     @DorisConnectParam.setter
@@ -19476,6 +23371,9 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def KafkaConnectParam(self):
+        """Kafka配置，Type为 KAFKA 时必填
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
+        """
         return self._KafkaConnectParam
 
     @KafkaConnectParam.setter
@@ -19484,6 +23382,9 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def MqttConnectParam(self):
+        """MQTT配置，Type为 MQTT 时必填
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.MqttConnectParam`
+        """
         return self._MqttConnectParam
 
     @MqttConnectParam.setter
@@ -19559,6 +23460,9 @@ class ModifyConnectResourceResponse(AbstractModel):
 
     @property
     def Result(self):
+        """连接源的Id
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ConnectResourceResourceIdResp`
+        """
         return self._Result
 
     @Result.setter
@@ -19567,6 +23471,9 @@ class ModifyConnectResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19598,6 +23505,9 @@ class ModifyDatahubTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """任务id
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -19606,6 +23516,9 @@ class ModifyDatahubTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
+        """任务名称
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -19644,6 +23557,10 @@ class ModifyDatahubTaskResponse(AbstractModel):
 
     @property
     def Result(self):
+        """任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
+        """
         return self._Result
 
     @Result.setter
@@ -19652,6 +23569,9 @@ class ModifyDatahubTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19689,6 +23609,9 @@ class ModifyDatahubTopicRequest(AbstractModel):
 
     @property
     def Name(self):
+        """名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -19697,6 +23620,9 @@ class ModifyDatahubTopicRequest(AbstractModel):
 
     @property
     def RetentionMs(self):
+        """消息保留时间，单位：ms，当前最小值为60000ms。
+        :rtype: int
+        """
         return self._RetentionMs
 
     @RetentionMs.setter
@@ -19705,6 +23631,9 @@ class ModifyDatahubTopicRequest(AbstractModel):
 
     @property
     def Note(self):
+        """主题备注，是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线-。
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -19713,6 +23642,9 @@ class ModifyDatahubTopicRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -19757,6 +23689,9 @@ class ModifyDatahubTopicResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果集
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -19765,6 +23700,9 @@ class ModifyDatahubTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19814,6 +23752,9 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """kafka实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -19822,6 +23763,9 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Group(self):
+        """kafka 消费分组
+        :rtype: str
+        """
         return self._Group
 
     @Group.setter
@@ -19830,6 +23774,9 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Strategy(self):
+        """重置offset的策略，入参含义 0. 对齐shift-by参数，代表把offset向前或向后移动shift条 1. 对齐参考(by-duration,to-datetime,to-earliest,to-latest),代表把offset移动到指定timestamp的位置 2. 对齐参考(to-offset)，代表把offset移动到指定的offset位置
+        :rtype: int
+        """
         return self._Strategy
 
     @Strategy.setter
@@ -19838,6 +23785,9 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Topics(self):
+        """表示需要重置的topics， 不填表示全部
+        :rtype: list of str
+        """
         return self._Topics
 
     @Topics.setter
@@ -19846,6 +23796,9 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Shift(self):
+        """当strategy为0时，必须包含该字段，可以大于零代表会把offset向后移动shift条，小于零则将offset向前回溯shift条数。正确重置后新的offset应该是(old_offset + shift)，需要注意的是如果新的offset小于partition的earliest则会设置为earliest，如果大于partition 的latest则会设置为latest
+        :rtype: int
+        """
         return self._Shift
 
     @Shift.setter
@@ -19854,6 +23807,9 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def ShiftTimestamp(self):
+        """单位ms。当strategy为1时，必须包含该字段，其中-2表示重置offset到最开始的位置，-1表示重置到最新的位置(相当于清空)，其它值则代表指定的时间，会获取topic中指定时间的offset然后进行重置，需要注意的时，如果指定的时间不存在消息，则获取最末尾的offset。
+        :rtype: int
+        """
         return self._ShiftTimestamp
 
     @ShiftTimestamp.setter
@@ -19862,6 +23818,9 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """需要重新设置的offset位置。当strategy为2，必须包含该字段。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -19870,6 +23829,9 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Partitions(self):
+        """需要重新设置的partition的列表，如果没有指定Topics参数。则重置全部topics的对应的Partition列表里的partition。指定Topics时则重置指定的topic列表的对应的Partitions列表的partition。
+        :rtype: list of int
+        """
         return self._Partitions
 
     @Partitions.setter
@@ -19913,6 +23875,9 @@ class ModifyGroupOffsetsResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -19921,6 +23886,9 @@ class ModifyGroupOffsetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19955,6 +23923,9 @@ class ModifyInstanceAttributesConfig(AbstractModel):
 
     @property
     def AutoCreateTopicEnable(self):
+        """自动创建 true 表示开启，false 表示不开启
+        :rtype: bool
+        """
         return self._AutoCreateTopicEnable
 
     @AutoCreateTopicEnable.setter
@@ -19963,6 +23934,9 @@ class ModifyInstanceAttributesConfig(AbstractModel):
 
     @property
     def DefaultNumPartitions(self):
+        """可选，如果auto.create.topic.enable设置为true没有设置该值时，默认设置为3
+        :rtype: int
+        """
         return self._DefaultNumPartitions
 
     @DefaultNumPartitions.setter
@@ -19971,6 +23945,9 @@ class ModifyInstanceAttributesConfig(AbstractModel):
 
     @property
     def DefaultReplicationFactor(self):
+        """如果auto.create.topic.enable设置为true没有指定该值时默认设置为2
+        :rtype: int
+        """
         return self._DefaultReplicationFactor
 
     @DefaultReplicationFactor.setter
@@ -20030,6 +24007,9 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -20038,6 +24018,9 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def MsgRetentionTime(self):
+        """实例日志的最长保留时间，单位分钟，最大30天，0代表不开启日志保留时间回收策略
+        :rtype: int
+        """
         return self._MsgRetentionTime
 
     @MsgRetentionTime.setter
@@ -20046,6 +24029,9 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -20054,6 +24040,9 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def Config(self):
+        """实例配置
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ModifyInstanceAttributesConfig`
+        """
         return self._Config
 
     @Config.setter
@@ -20062,6 +24051,9 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def DynamicRetentionConfig(self):
+        """动态消息保留策略配置
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DynamicRetentionTime`
+        """
         return self._DynamicRetentionConfig
 
     @DynamicRetentionConfig.setter
@@ -20070,6 +24062,9 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def RebalanceTime(self):
+        """升配Rebalance时间
+        :rtype: int
+        """
         return self._RebalanceTime
 
     @RebalanceTime.setter
@@ -20078,6 +24073,9 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def PublicNetwork(self):
+        """公网带宽
+        :rtype: int
+        """
         return self._PublicNetwork
 
     @PublicNetwork.setter
@@ -20088,6 +24086,9 @@ class ModifyInstanceAttributesRequest(AbstractModel):
     def DynamicDiskConfig(self):
         warnings.warn("parameter `DynamicDiskConfig` is deprecated", DeprecationWarning) 
 
+        """动态硬盘扩容策略配置
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
+        """
         return self._DynamicDiskConfig
 
     @DynamicDiskConfig.setter
@@ -20098,6 +24099,9 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def MaxMessageByte(self):
+        """实例级别单条消息大小（单位byte)
+        :rtype: int
+        """
         return self._MaxMessageByte
 
     @MaxMessageByte.setter
@@ -20148,6 +24152,9 @@ class ModifyInstanceAttributesResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -20156,6 +24163,9 @@ class ModifyInstanceAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20193,6 +24203,9 @@ class ModifyInstancePreRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例名称
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -20201,6 +24214,9 @@ class ModifyInstancePreRequest(AbstractModel):
 
     @property
     def DiskSize(self):
+        """预计磁盘，根据磁盘步长，规格向上调整。
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -20209,6 +24225,9 @@ class ModifyInstancePreRequest(AbstractModel):
 
     @property
     def BandWidth(self):
+        """预计带宽，根据带宽步长，规格向上调整。
+        :rtype: int
+        """
         return self._BandWidth
 
     @BandWidth.setter
@@ -20217,6 +24236,9 @@ class ModifyInstancePreRequest(AbstractModel):
 
     @property
     def Partition(self):
+        """预计分区，根据带宽步长，规格向上调整。
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -20256,6 +24278,9 @@ class ModifyInstancePreResponse(AbstractModel):
 
     @property
     def Result(self):
+        """变更预付费实例配置返回结构
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreResp`
+        """
         return self._Result
 
     @Result.setter
@@ -20264,6 +24289,9 @@ class ModifyInstancePreResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20301,6 +24329,9 @@ class ModifyPasswordRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例Id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -20309,6 +24340,9 @@ class ModifyPasswordRequest(AbstractModel):
 
     @property
     def Name(self):
+        """用户名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -20317,6 +24351,9 @@ class ModifyPasswordRequest(AbstractModel):
 
     @property
     def Password(self):
+        """用户当前密码
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -20325,6 +24362,9 @@ class ModifyPasswordRequest(AbstractModel):
 
     @property
     def PasswordNew(self):
+        """用户新密码
+        :rtype: str
+        """
         return self._PasswordNew
 
     @PasswordNew.setter
@@ -20364,6 +24404,9 @@ class ModifyPasswordResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -20372,6 +24415,9 @@ class ModifyPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20430,6 +24476,9 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -20438,6 +24487,9 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
 
     @property
     def MaintenanceType(self):
+        """自动化运维类别
+        :rtype: str
+        """
         return self._MaintenanceType
 
     @MaintenanceType.setter
@@ -20446,6 +24498,9 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
 
     @property
     def MaintenanceSubtype(self):
+        """INSTANCE_STORAGE_CAPACITY(磁盘自动扩容)/MESSAGE_RETENTION_PERIOD(磁盘动态消息保留策略)
+        :rtype: str
+        """
         return self._MaintenanceSubtype
 
     @MaintenanceSubtype.setter
@@ -20454,6 +24509,9 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """主题名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -20462,6 +24520,9 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
 
     @property
     def ConfigureThreshold(self):
+        """任务触发阈值
+        :rtype: int
+        """
         return self._ConfigureThreshold
 
     @ConfigureThreshold.setter
@@ -20470,6 +24531,9 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
 
     @property
     def ConfigureStepSize(self):
+        """任务调整步长
+        :rtype: int
+        """
         return self._ConfigureStepSize
 
     @ConfigureStepSize.setter
@@ -20478,6 +24542,9 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
 
     @property
     def ConfigureLimit(self):
+        """任务调整上限
+        :rtype: int
+        """
         return self._ConfigureLimit
 
     @ConfigureLimit.setter
@@ -20486,6 +24553,9 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
 
     @property
     def PlannedTime(self):
+        """任务预期触发时间，存储从当日 0AM 开始偏移的秒数
+        :rtype: int
+        """
         return self._PlannedTime
 
     @PlannedTime.setter
@@ -20494,6 +24564,9 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
 
     @property
     def ExtraConfig(self):
+        """任务额外信息
+        :rtype: str
+        """
         return self._ExtraConfig
 
     @ExtraConfig.setter
@@ -20502,6 +24575,9 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -20510,6 +24586,9 @@ class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
 
     @property
     def Week(self):
+        """执行week day
+        :rtype: str
+        """
         return self._Week
 
     @Week.setter
@@ -20556,6 +24635,9 @@ class ModifyRoutineMaintenanceTaskResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -20564,6 +24646,9 @@ class ModifyRoutineMaintenanceTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20643,6 +24728,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例 ID。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -20651,6 +24739,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """主题名称。
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -20659,6 +24750,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def Note(self):
+        """主题备注，是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线-。
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -20667,6 +24761,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def EnableWhiteList(self):
+        """IP 白名单开关，1：打开；0：关闭。
+        :rtype: int
+        """
         return self._EnableWhiteList
 
     @EnableWhiteList.setter
@@ -20675,6 +24772,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def MinInsyncReplicas(self):
+        """默认为1。
+        :rtype: int
+        """
         return self._MinInsyncReplicas
 
     @MinInsyncReplicas.setter
@@ -20683,6 +24783,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def UncleanLeaderElectionEnable(self):
+        """默认为 0，0：false；1：true。
+        :rtype: int
+        """
         return self._UncleanLeaderElectionEnable
 
     @UncleanLeaderElectionEnable.setter
@@ -20691,6 +24794,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def RetentionMs(self):
+        """消息保留时间，单位：ms，当前最小值为60000ms。
+        :rtype: int
+        """
         return self._RetentionMs
 
     @RetentionMs.setter
@@ -20699,6 +24805,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def MaxMessageBytes(self):
+        """主题消息最大值，单位为 Byte，最大值为12582912Byte（即12MB）。
+        :rtype: int
+        """
         return self._MaxMessageBytes
 
     @MaxMessageBytes.setter
@@ -20707,6 +24816,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def SegmentMs(self):
+        """Segment 分片滚动的时长，单位：ms，当前最小为300000ms。
+        :rtype: int
+        """
         return self._SegmentMs
 
     @SegmentMs.setter
@@ -20715,6 +24827,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def CleanUpPolicy(self):
+        """消息删除策略，可以选择delete 或者compact
+        :rtype: str
+        """
         return self._CleanUpPolicy
 
     @CleanUpPolicy.setter
@@ -20723,6 +24838,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def IpWhiteList(self):
+        """Ip白名单列表，配额限制，enableWhileList=1时必选
+        :rtype: list of str
+        """
         return self._IpWhiteList
 
     @IpWhiteList.setter
@@ -20731,6 +24849,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def EnableAclRule(self):
+        """预设ACL规则, 1:打开  0:关闭，默认不打开
+        :rtype: int
+        """
         return self._EnableAclRule
 
     @EnableAclRule.setter
@@ -20739,6 +24860,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def AclRuleName(self):
+        """预设ACL规则的名称
+        :rtype: str
+        """
         return self._AclRuleName
 
     @AclRuleName.setter
@@ -20747,6 +24871,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def RetentionBytes(self):
+        """可选, 保留文件大小. 默认为-1,单位bytes, 当前最小值为1048576B
+        :rtype: int
+        """
         return self._RetentionBytes
 
     @RetentionBytes.setter
@@ -20755,6 +24882,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -20763,6 +24893,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def QuotaProducerByteRate(self):
+        """生产限流，单位 MB/s
+        :rtype: int
+        """
         return self._QuotaProducerByteRate
 
     @QuotaProducerByteRate.setter
@@ -20771,6 +24904,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def QuotaConsumerByteRate(self):
+        """消费限流，单位 MB/s
+        :rtype: int
+        """
         return self._QuotaConsumerByteRate
 
     @QuotaConsumerByteRate.setter
@@ -20779,6 +24915,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def ReplicaNum(self):
+        """调整topic副本数
+        :rtype: int
+        """
         return self._ReplicaNum
 
     @ReplicaNum.setter
@@ -20837,6 +24976,9 @@ class ModifyTopicAttributesResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回结果集
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -20845,6 +24987,9 @@ class ModifyTopicAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20902,6 +25047,10 @@ class MongoDBConnectParam(AbstractModel):
 
     @property
     def Port(self):
+        """MongoDB的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -20910,6 +25059,10 @@ class MongoDBConnectParam(AbstractModel):
 
     @property
     def UserName(self):
+        """MongoDB连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -20918,6 +25071,10 @@ class MongoDBConnectParam(AbstractModel):
 
     @property
     def Password(self):
+        """MongoDB连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -20926,6 +25083,10 @@ class MongoDBConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """MongoDB连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -20934,6 +25095,10 @@ class MongoDBConnectParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
+        """MongoDB连接源是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SelfBuilt
 
     @SelfBuilt.setter
@@ -20942,6 +25107,10 @@ class MongoDBConnectParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """MongoDB连接源的实例vip，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -20950,6 +25119,10 @@ class MongoDBConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """MongoDB连接源的vpcId，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -20958,6 +25131,10 @@ class MongoDBConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
+        """是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUpdate
 
     @IsUpdate.setter
@@ -21027,6 +25204,10 @@ class MongoDBModifyConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """MongoDB连接源的实例资源【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -21035,6 +25216,10 @@ class MongoDBModifyConnectParam(AbstractModel):
 
     @property
     def Port(self):
+        """MongoDB的连接port【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -21043,6 +25228,10 @@ class MongoDBModifyConnectParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """MongoDB连接源的实例vip【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -21051,6 +25240,10 @@ class MongoDBModifyConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """MongoDB连接源的vpcId【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -21059,6 +25252,10 @@ class MongoDBModifyConnectParam(AbstractModel):
 
     @property
     def UserName(self):
+        """MongoDB连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -21067,6 +25264,10 @@ class MongoDBModifyConnectParam(AbstractModel):
 
     @property
     def Password(self):
+        """MongoDB连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -21075,6 +25276,10 @@ class MongoDBModifyConnectParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
+        """MongoDB连接源是否为自建集群【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SelfBuilt
 
     @SelfBuilt.setter
@@ -21083,6 +25288,10 @@ class MongoDBModifyConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
+        """是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUpdate
 
     @IsUpdate.setter
@@ -21168,6 +25377,10 @@ class MongoDBParam(AbstractModel):
 
     @property
     def Database(self):
+        """MongoDB的数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Database
 
     @Database.setter
@@ -21176,6 +25389,10 @@ class MongoDBParam(AbstractModel):
 
     @property
     def Collection(self):
+        """MongoDB的集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Collection
 
     @Collection.setter
@@ -21184,6 +25401,10 @@ class MongoDBParam(AbstractModel):
 
     @property
     def CopyExisting(self):
+        """是否复制存量数据，默认传参true
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._CopyExisting
 
     @CopyExisting.setter
@@ -21192,6 +25413,10 @@ class MongoDBParam(AbstractModel):
 
     @property
     def Resource(self):
+        """实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -21200,6 +25425,10 @@ class MongoDBParam(AbstractModel):
 
     @property
     def Ip(self):
+        """MongoDB的连接ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -21208,6 +25437,10 @@ class MongoDBParam(AbstractModel):
 
     @property
     def Port(self):
+        """MongoDB的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -21216,6 +25449,10 @@ class MongoDBParam(AbstractModel):
 
     @property
     def UserName(self):
+        """MongoDB数据库用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -21224,6 +25461,10 @@ class MongoDBParam(AbstractModel):
 
     @property
     def Password(self):
+        """MongoDB数据库密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -21232,6 +25473,10 @@ class MongoDBParam(AbstractModel):
 
     @property
     def ListeningEvent(self):
+        """监听事件类型，为空时表示全选。取值包括insert,update,replace,delete,invalidate,drop,dropdatabase,rename，多个类型间使用,逗号分隔
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ListeningEvent
 
     @ListeningEvent.setter
@@ -21240,6 +25485,10 @@ class MongoDBParam(AbstractModel):
 
     @property
     def ReadPreference(self):
+        """主从优先级，默认主节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ReadPreference
 
     @ReadPreference.setter
@@ -21248,6 +25497,10 @@ class MongoDBParam(AbstractModel):
 
     @property
     def Pipeline(self):
+        """聚合管道
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Pipeline
 
     @Pipeline.setter
@@ -21256,6 +25509,10 @@ class MongoDBParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
+        """是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SelfBuilt
 
     @SelfBuilt.setter
@@ -21325,6 +25582,10 @@ class MqttConnectParam(AbstractModel):
 
     @property
     def UserName(self):
+        """MQTT连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -21333,6 +25594,10 @@ class MqttConnectParam(AbstractModel):
 
     @property
     def Password(self):
+        """MQTT连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -21341,6 +25606,10 @@ class MqttConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """MQTT连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -21349,6 +25618,10 @@ class MqttConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """MQTT Instance vpc-id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -21357,6 +25630,10 @@ class MqttConnectParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
+        """是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SelfBuilt
 
     @SelfBuilt.setter
@@ -21365,6 +25642,10 @@ class MqttConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
+        """是否更新到关联的Dip任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUpdate
 
     @IsUpdate.setter
@@ -21373,6 +25654,10 @@ class MqttConnectParam(AbstractModel):
 
     @property
     def Region(self):
+        """MQTT连接源的实例资源地域, 跨地域时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -21457,6 +25742,10 @@ class MqttParam(AbstractModel):
 
     @property
     def Topics(self):
+        """需要同步的MQTT Topic列表, CSV格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Topics
 
     @Topics.setter
@@ -21465,6 +25754,10 @@ class MqttParam(AbstractModel):
 
     @property
     def CleanSession(self):
+        """MQTT clean-session
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._CleanSession
 
     @CleanSession.setter
@@ -21473,6 +25766,10 @@ class MqttParam(AbstractModel):
 
     @property
     def Resource(self):
+        """MQTT instance-id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -21481,6 +25778,10 @@ class MqttParam(AbstractModel):
 
     @property
     def Ip(self):
+        """MQTT实例VIP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -21489,6 +25790,10 @@ class MqttParam(AbstractModel):
 
     @property
     def Port(self):
+        """MQTT VIP 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -21497,6 +25802,10 @@ class MqttParam(AbstractModel):
 
     @property
     def UserName(self):
+        """MQTT实例用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -21505,6 +25814,10 @@ class MqttParam(AbstractModel):
 
     @property
     def Password(self):
+        """MQTT实例内账户密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -21513,6 +25826,10 @@ class MqttParam(AbstractModel):
 
     @property
     def Qos(self):
+        """QoS
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Qos
 
     @Qos.setter
@@ -21521,6 +25838,10 @@ class MqttParam(AbstractModel):
 
     @property
     def MaxTasks(self):
+        """tasks.max 订阅Topic的并发Task个数, 默认为1; 当设置大于1时, 使用Shared Subscription
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxTasks
 
     @MaxTasks.setter
@@ -21529,6 +25850,10 @@ class MqttParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """MQTT 实例的Service VIP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -21537,6 +25862,10 @@ class MqttParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """MQTT实例的VPC ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -21545,6 +25874,10 @@ class MqttParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
+        """是否为自建集群, MQTT只支持非自建集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SelfBuilt
 
     @SelfBuilt.setter
@@ -21622,6 +25955,10 @@ class MySQLConnectParam(AbstractModel):
 
     @property
     def Port(self):
+        """MySQL的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -21630,6 +25967,10 @@ class MySQLConnectParam(AbstractModel):
 
     @property
     def UserName(self):
+        """MySQL连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -21638,6 +25979,10 @@ class MySQLConnectParam(AbstractModel):
 
     @property
     def Password(self):
+        """MySQL连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -21646,6 +25991,10 @@ class MySQLConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """MySQL连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -21654,6 +26003,10 @@ class MySQLConnectParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """MySQL连接源的实例vip，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -21662,6 +26015,10 @@ class MySQLConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """MySQL连接源的vpcId，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -21670,6 +26027,10 @@ class MySQLConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
+        """是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUpdate
 
     @IsUpdate.setter
@@ -21678,6 +26039,10 @@ class MySQLConnectParam(AbstractModel):
 
     @property
     def ClusterId(self):
+        """当type为TDSQL_C_MYSQL时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -21686,6 +26051,10 @@ class MySQLConnectParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
+        """Mysql 连接源是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SelfBuilt
 
     @SelfBuilt.setter
@@ -21760,6 +26129,10 @@ class MySQLModifyConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """MySQL连接源的实例资源【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -21768,6 +26141,10 @@ class MySQLModifyConnectParam(AbstractModel):
 
     @property
     def Port(self):
+        """MySQL的连接port【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -21776,6 +26153,10 @@ class MySQLModifyConnectParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """MySQL连接源的实例vip【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -21784,6 +26165,10 @@ class MySQLModifyConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """MySQL连接源的vpcId【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -21792,6 +26177,10 @@ class MySQLModifyConnectParam(AbstractModel):
 
     @property
     def UserName(self):
+        """MySQL连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -21800,6 +26189,10 @@ class MySQLModifyConnectParam(AbstractModel):
 
     @property
     def Password(self):
+        """MySQL连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -21808,6 +26201,10 @@ class MySQLModifyConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
+        """是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUpdate
 
     @IsUpdate.setter
@@ -21816,6 +26213,10 @@ class MySQLModifyConnectParam(AbstractModel):
 
     @property
     def ClusterId(self):
+        """当type为TDSQL_C_MYSQL时
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -21824,6 +26225,10 @@ class MySQLModifyConnectParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
+        """是否是自建的集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SelfBuilt
 
     @SelfBuilt.setter
@@ -21974,6 +26379,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def Database(self):
+        """MySQL的数据库名称，"*"为全数据库
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Database
 
     @Database.setter
@@ -21982,6 +26391,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def Table(self):
+        """MySQL的数据表名称，"*"为所监听的所有数据库中的非系统表，可以","间隔，监听多个数据表，但数据表需要以"数据库名.数据表名"的格式进行填写，需要填入正则表达式时，格式为"数据库名\\.数据表名"
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Table
 
     @Table.setter
@@ -21990,6 +26403,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def Resource(self):
+        """该MySQL在连接管理内的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -21998,6 +26415,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def SnapshotMode(self):
+        """复制存量信息(schema_only不复制, initial全量)，默认位initial
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SnapshotMode
 
     @SnapshotMode.setter
@@ -22006,6 +26427,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def DdlTopic(self):
+        """存放MySQL的Ddl信息的Topic，为空则默认不存放
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DdlTopic
 
     @DdlTopic.setter
@@ -22014,6 +26439,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def DataSourceMonitorMode(self):
+        """"TABLE" 表示读取项为 table，"QUERY" 表示读取项为 query
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceMonitorMode
 
     @DataSourceMonitorMode.setter
@@ -22022,6 +26451,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def DataSourceMonitorResource(self):
+        """当 "DataMonitorMode"="TABLE" 时，传入需要读取的 Table；当 "DataMonitorMode"="QUERY" 时，传入需要读取的查询 sql 语句
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceMonitorResource
 
     @DataSourceMonitorResource.setter
@@ -22030,6 +26463,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def DataSourceIncrementMode(self):
+        """"TIMESTAMP" 表示增量列为时间戳类型，"INCREMENT" 表示增量列为自增 id 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceIncrementMode
 
     @DataSourceIncrementMode.setter
@@ -22038,6 +26475,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def DataSourceIncrementColumn(self):
+        """传入需要监听的列名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceIncrementColumn
 
     @DataSourceIncrementColumn.setter
@@ -22046,6 +26487,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def DataSourceStartFrom(self):
+        """"HEAD" 表示复制存量 + 增量数据，"TAIL" 表示只复制增量数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataSourceStartFrom
 
     @DataSourceStartFrom.setter
@@ -22054,6 +26499,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def DataTargetInsertMode(self):
+        """"INSERT" 表示使用 Insert 模式插入，"UPSERT" 表示使用 Upsert 模式插入
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataTargetInsertMode
 
     @DataTargetInsertMode.setter
@@ -22062,6 +26511,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def DataTargetPrimaryKeyField(self):
+        """当 "DataInsertMode"="UPSERT" 时，传入当前 upsert 时依赖的主键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataTargetPrimaryKeyField
 
     @DataTargetPrimaryKeyField.setter
@@ -22070,6 +26523,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def DataTargetRecordMapping(self):
+        """表与消息间的映射关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordMapping
+        """
         return self._DataTargetRecordMapping
 
     @DataTargetRecordMapping.setter
@@ -22078,6 +26535,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def TopicRegex(self):
+        """事件路由到特定主题的正则表达式，默认为(.*)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicRegex
 
     @TopicRegex.setter
@@ -22086,6 +26547,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def TopicReplacement(self):
+        """TopicRegex的引用组，指定$1、$2等
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicReplacement
 
     @TopicReplacement.setter
@@ -22094,6 +26559,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def KeyColumns(self):
+        """格式：库1.表1:字段1,字段2;库2.表2:字段2，表之间;（分号）隔开，字段之间,（逗号）隔开。不指定的表默认取表的主键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._KeyColumns
 
     @KeyColumns.setter
@@ -22102,6 +26571,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def DropInvalidMessage(self):
+        """Mysql 是否抛弃解析失败的消息，默认为true
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._DropInvalidMessage
 
     @DropInvalidMessage.setter
@@ -22110,6 +26583,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def DropCls(self):
+        """当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DropCls`
+        """
         return self._DropCls
 
     @DropCls.setter
@@ -22118,6 +26595,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def OutputFormat(self):
+        """输出格式，DEFAULT、CANAL_1、CANAL_2
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OutputFormat
 
     @OutputFormat.setter
@@ -22126,6 +26607,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def IsTablePrefix(self):
+        """当Table输入的是前缀时，该项值为true，否则为false
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsTablePrefix
 
     @IsTablePrefix.setter
@@ -22134,6 +26619,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def IncludeContentChanges(self):
+        """如果该值为all，则DDL数据以及DML数据也会写入到选中的topic；若该值为dml，则只有DML数据写入到选中的topic
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._IncludeContentChanges
 
     @IncludeContentChanges.setter
@@ -22142,6 +26631,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def IncludeQuery(self):
+        """如果该值为true，且MySQL中"binlog_rows_query_log_events"配置项的值为"ON"，则流入到topic的数据包含原SQL语句；若该值为false，流入到topic的数据不包含原SQL语句
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IncludeQuery
 
     @IncludeQuery.setter
@@ -22150,6 +26643,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def RecordWithSchema(self):
+        """如果该值为 true，则消息中会携带消息结构体对应的schema，如果该值为false则不会携带
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._RecordWithSchema
 
     @RecordWithSchema.setter
@@ -22158,6 +26655,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def SignalDatabase(self):
+        """存放信令表的数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SignalDatabase
 
     @SignalDatabase.setter
@@ -22166,6 +26667,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def IsTableRegular(self):
+        """输入的table是否为正则表达式，如果该选项以及IsTablePrefix同时为true，该选项的判断优先级高于IsTablePrefix
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsTableRegular
 
     @IsTableRegular.setter
@@ -22174,6 +26679,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def SignalTable(self):
+        """信号表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SignalTable
 
     @SignalTable.setter
@@ -22182,6 +26691,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def DateTimeZone(self):
+        """datetime 类型字段转换为时间戳的时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DateTimeZone
 
     @DateTimeZone.setter
@@ -22190,6 +26703,10 @@ class MySQLParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
+        """自建
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SelfBuilt
 
     @SelfBuilt.setter
@@ -22262,6 +26779,10 @@ class OperateResponseData(AbstractModel):
 
     @property
     def FlowId(self):
+        """FlowId11
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -22270,6 +26791,10 @@ class OperateResponseData(AbstractModel):
 
     @property
     def RouteDTO(self):
+        """RouteIdDto
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.RouteDTO`
+        """
         return self._RouteDTO
 
     @RouteDTO.setter
@@ -22306,6 +26831,9 @@ class Partition(AbstractModel):
 
     @property
     def PartitionId(self):
+        """分区ID
+        :rtype: int
+        """
         return self._PartitionId
 
     @PartitionId.setter
@@ -22344,6 +26872,10 @@ class PartitionOffset(AbstractModel):
 
     @property
     def Partition(self):
+        """Partition,例如"0"或"1"
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Partition
 
     @Partition.setter
@@ -22352,6 +26884,10 @@ class PartitionOffset(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset,例如100
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -22389,6 +26925,9 @@ class Partitions(AbstractModel):
 
     @property
     def Partition(self):
+        """分区
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -22397,6 +26936,9 @@ class Partitions(AbstractModel):
 
     @property
     def Offset(self):
+        """partition 消费位移
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -22464,6 +27006,10 @@ class PostgreSQLConnectParam(AbstractModel):
 
     @property
     def Port(self):
+        """PostgreSQL的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -22472,6 +27018,10 @@ class PostgreSQLConnectParam(AbstractModel):
 
     @property
     def UserName(self):
+        """PostgreSQL连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -22480,6 +27030,10 @@ class PostgreSQLConnectParam(AbstractModel):
 
     @property
     def Password(self):
+        """PostgreSQL连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -22488,6 +27042,10 @@ class PostgreSQLConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """PostgreSQL连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -22496,6 +27054,10 @@ class PostgreSQLConnectParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """PostgreSQL连接源的实例vip，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -22504,6 +27066,10 @@ class PostgreSQLConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """PostgreSQL连接源的vpcId，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -22512,6 +27078,10 @@ class PostgreSQLConnectParam(AbstractModel):
 
     @property
     def ClusterId(self):
+        """当type为TDSQL_C_POSTGRESQL时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -22520,6 +27090,10 @@ class PostgreSQLConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
+        """是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUpdate
 
     @IsUpdate.setter
@@ -22528,6 +27102,10 @@ class PostgreSQLConnectParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
+        """PostgreSQL连接源是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SelfBuilt
 
     @SelfBuilt.setter
@@ -22602,6 +27180,10 @@ class PostgreSQLModifyConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """PostgreSQL连接源的实例资源【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -22610,6 +27192,10 @@ class PostgreSQLModifyConnectParam(AbstractModel):
 
     @property
     def Port(self):
+        """PostgreSQL的连接port【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -22618,6 +27204,10 @@ class PostgreSQLModifyConnectParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """PostgreSQL连接源的实例vip【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -22626,6 +27216,10 @@ class PostgreSQLModifyConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """PostgreSQL连接源的vpcId【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -22634,6 +27228,10 @@ class PostgreSQLModifyConnectParam(AbstractModel):
 
     @property
     def UserName(self):
+        """PostgreSQL连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -22642,6 +27240,10 @@ class PostgreSQLModifyConnectParam(AbstractModel):
 
     @property
     def Password(self):
+        """PostgreSQL连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -22650,6 +27252,10 @@ class PostgreSQLModifyConnectParam(AbstractModel):
 
     @property
     def ClusterId(self):
+        """当type为TDSQL_C_POSTGRESQL时，该参数才有值【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -22658,6 +27264,10 @@ class PostgreSQLModifyConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
+        """是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUpdate
 
     @IsUpdate.setter
@@ -22666,6 +27276,10 @@ class PostgreSQLModifyConnectParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
+        """是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SelfBuilt
 
     @SelfBuilt.setter
@@ -22756,6 +27370,10 @@ class PostgreSQLParam(AbstractModel):
 
     @property
     def Database(self):
+        """PostgreSQL的数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Database
 
     @Database.setter
@@ -22764,6 +27382,10 @@ class PostgreSQLParam(AbstractModel):
 
     @property
     def Table(self):
+        """PostgreSQL的数据表名称，"*"为所监听的所有数据库中的非系统表，可以","间隔，监听多个数据表，但数据表需要以"Schema名.数据表名"的格式进行填写，需要填入正则表达式时，格式为"Schema名\\.数据表名"
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Table
 
     @Table.setter
@@ -22772,6 +27394,10 @@ class PostgreSQLParam(AbstractModel):
 
     @property
     def Resource(self):
+        """该PostgreSQL在连接管理内的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -22780,6 +27406,10 @@ class PostgreSQLParam(AbstractModel):
 
     @property
     def PluginName(self):
+        """插件名(decoderbufs/pgoutput)，默认为decoderbufs
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PluginName
 
     @PluginName.setter
@@ -22788,6 +27418,10 @@ class PostgreSQLParam(AbstractModel):
 
     @property
     def SnapshotMode(self):
+        """复制存量信息(never增量, initial全量)，默认为initial
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SnapshotMode
 
     @SnapshotMode.setter
@@ -22796,6 +27430,10 @@ class PostgreSQLParam(AbstractModel):
 
     @property
     def DataFormat(self):
+        """上游数据格式(JSON/Debezium), 当数据库同步模式为默认字段匹配时,必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataFormat
 
     @DataFormat.setter
@@ -22804,6 +27442,10 @@ class PostgreSQLParam(AbstractModel):
 
     @property
     def DataTargetInsertMode(self):
+        """"INSERT" 表示使用 Insert 模式插入，"UPSERT" 表示使用 Upsert 模式插入
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataTargetInsertMode
 
     @DataTargetInsertMode.setter
@@ -22812,6 +27454,10 @@ class PostgreSQLParam(AbstractModel):
 
     @property
     def DataTargetPrimaryKeyField(self):
+        """当 "DataInsertMode"="UPSERT" 时，传入当前 upsert 时依赖的主键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DataTargetPrimaryKeyField
 
     @DataTargetPrimaryKeyField.setter
@@ -22820,6 +27466,10 @@ class PostgreSQLParam(AbstractModel):
 
     @property
     def DataTargetRecordMapping(self):
+        """表与消息间的映射关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RecordMapping
+        """
         return self._DataTargetRecordMapping
 
     @DataTargetRecordMapping.setter
@@ -22828,6 +27478,10 @@ class PostgreSQLParam(AbstractModel):
 
     @property
     def DropInvalidMessage(self):
+        """是否抛弃解析失败的消息，默认为true
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._DropInvalidMessage
 
     @DropInvalidMessage.setter
@@ -22836,6 +27490,10 @@ class PostgreSQLParam(AbstractModel):
 
     @property
     def IsTableRegular(self):
+        """输入的table是否为正则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsTableRegular
 
     @IsTableRegular.setter
@@ -22844,6 +27502,10 @@ class PostgreSQLParam(AbstractModel):
 
     @property
     def KeyColumns(self):
+        """格式：库1.表1:字段1,字段2;库2.表2:字段2，表之间;（分号）隔开，字段之间,（逗号）隔开。不指定的表默认取表的主键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._KeyColumns
 
     @KeyColumns.setter
@@ -22852,6 +27514,10 @@ class PostgreSQLParam(AbstractModel):
 
     @property
     def RecordWithSchema(self):
+        """如果该值为 true，则消息中会携带消息结构体对应的schema，如果该值为false则不会携带
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._RecordWithSchema
 
     @RecordWithSchema.setter
@@ -22905,6 +27571,9 @@ class Price(AbstractModel):
 
     @property
     def RealTotalCost(self):
+        """折扣价
+        :rtype: float
+        """
         return self._RealTotalCost
 
     @RealTotalCost.setter
@@ -22913,6 +27582,9 @@ class Price(AbstractModel):
 
     @property
     def TotalCost(self):
+        """原价
+        :rtype: float
+        """
         return self._TotalCost
 
     @TotalCost.setter
@@ -22950,6 +27622,9 @@ class PrivateLinkParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """客户实例的vip
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -22958,6 +27633,9 @@ class PrivateLinkParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """客户实例的vpcId
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -23010,6 +27688,9 @@ class PrometheusDTO(AbstractModel):
 
     @property
     def Type(self):
+        """export类型（jmx_export\node_export）
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -23018,6 +27699,9 @@ class PrometheusDTO(AbstractModel):
 
     @property
     def SourceIp(self):
+        """vip
+        :rtype: str
+        """
         return self._SourceIp
 
     @SourceIp.setter
@@ -23026,6 +27710,9 @@ class PrometheusDTO(AbstractModel):
 
     @property
     def SourcePort(self):
+        """vport
+        :rtype: int
+        """
         return self._SourcePort
 
     @SourcePort.setter
@@ -23034,6 +27721,10 @@ class PrometheusDTO(AbstractModel):
 
     @property
     def BrokerIp(self):
+        """broker地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BrokerIp
 
     @BrokerIp.setter
@@ -23042,6 +27733,10 @@ class PrometheusDTO(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -23050,6 +27745,10 @@ class PrometheusDTO(AbstractModel):
 
     @property
     def SubnetId(self):
+        """子网ID信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -23094,6 +27793,9 @@ class PrometheusResult(AbstractModel):
 
     @property
     def ReturnCode(self):
+        """返回的code，0为正常，非0为错误
+        :rtype: str
+        """
         return self._ReturnCode
 
     @ReturnCode.setter
@@ -23102,6 +27804,9 @@ class PrometheusResult(AbstractModel):
 
     @property
     def ReturnMessage(self):
+        """成功消息
+        :rtype: str
+        """
         return self._ReturnMessage
 
     @ReturnMessage.setter
@@ -23110,6 +27815,9 @@ class PrometheusResult(AbstractModel):
 
     @property
     def Data(self):
+        """操作型返回的Data数据,可能有flowId等
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.OperateResponseData`
+        """
         return self._Data
 
     @Data.setter
@@ -23180,6 +27888,10 @@ class RecordMapping(AbstractModel):
 
     @property
     def JsonKey(self):
+        """消息的 key 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._JsonKey
 
     @JsonKey.setter
@@ -23188,6 +27900,10 @@ class RecordMapping(AbstractModel):
 
     @property
     def Type(self):
+        """消息类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -23196,6 +27912,10 @@ class RecordMapping(AbstractModel):
 
     @property
     def AllowNull(self):
+        """消息是否允许为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._AllowNull
 
     @AllowNull.setter
@@ -23204,6 +27924,10 @@ class RecordMapping(AbstractModel):
 
     @property
     def ColumnName(self):
+        """对应映射列名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ColumnName
 
     @ColumnName.setter
@@ -23212,6 +27936,10 @@ class RecordMapping(AbstractModel):
 
     @property
     def ExtraInfo(self):
+        """数据库表额外字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ExtraInfo
 
     @ExtraInfo.setter
@@ -23220,6 +27948,10 @@ class RecordMapping(AbstractModel):
 
     @property
     def ColumnSize(self):
+        """当前列大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ColumnSize
 
     @ColumnSize.setter
@@ -23228,6 +27960,10 @@ class RecordMapping(AbstractModel):
 
     @property
     def DecimalDigits(self):
+        """当前列精度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DecimalDigits
 
     @DecimalDigits.setter
@@ -23236,6 +27972,10 @@ class RecordMapping(AbstractModel):
 
     @property
     def AutoIncrement(self):
+        """是否为自增列
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._AutoIncrement
 
     @AutoIncrement.setter
@@ -23244,6 +27984,10 @@ class RecordMapping(AbstractModel):
 
     @property
     def DefaultValue(self):
+        """数据库表默认参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DefaultValue
 
     @DefaultValue.setter
@@ -23288,6 +28032,9 @@ class RegexReplaceParam(AbstractModel):
 
     @property
     def Regex(self):
+        """正则表达式
+        :rtype: str
+        """
         return self._Regex
 
     @Regex.setter
@@ -23296,6 +28043,9 @@ class RegexReplaceParam(AbstractModel):
 
     @property
     def NewValue(self):
+        """替换新值
+        :rtype: str
+        """
         return self._NewValue
 
     @NewValue.setter
@@ -23356,6 +28106,9 @@ class Region(AbstractModel):
 
     @property
     def RegionId(self):
+        """地域ID
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -23364,6 +28117,9 @@ class Region(AbstractModel):
 
     @property
     def RegionName(self):
+        """地域名称
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -23372,6 +28128,9 @@ class Region(AbstractModel):
 
     @property
     def AreaName(self):
+        """区域名称
+        :rtype: str
+        """
         return self._AreaName
 
     @AreaName.setter
@@ -23380,6 +28139,10 @@ class Region(AbstractModel):
 
     @property
     def RegionCode(self):
+        """地域代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegionCode
 
     @RegionCode.setter
@@ -23388,6 +28151,10 @@ class Region(AbstractModel):
 
     @property
     def RegionCodeV3(self):
+        """地域代码（V3版本）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RegionCodeV3
 
     @RegionCodeV3.setter
@@ -23396,6 +28163,10 @@ class Region(AbstractModel):
 
     @property
     def Support(self):
+        """NONE:默认值不支持任何特殊机型\nCVM:支持CVM类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Support
 
     @Support.setter
@@ -23404,6 +28175,10 @@ class Region(AbstractModel):
 
     @property
     def Ipv6(self):
+        """是否支持ipv6, 0：表示不支持，1：表示支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Ipv6
 
     @Ipv6.setter
@@ -23412,6 +28187,10 @@ class Region(AbstractModel):
 
     @property
     def MultiZone(self):
+        """是否支持跨可用区, 0：表示不支持，1：表示支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MultiZone
 
     @MultiZone.setter
@@ -23455,6 +28234,9 @@ class RenewCkafkaInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """实例id
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -23463,6 +28245,9 @@ class RenewCkafkaInstanceRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
+        """续费时长, 默认为1, 单位是月
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -23502,6 +28287,10 @@ class RenewCkafkaInstanceResp(AbstractModel):
 
     @property
     def BigDealId(self):
+        """订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._BigDealId
 
     @BigDealId.setter
@@ -23510,6 +28299,10 @@ class RenewCkafkaInstanceResp(AbstractModel):
 
     @property
     def DealName(self):
+        """子订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DealName
 
     @DealName.setter
@@ -23547,6 +28340,9 @@ class RenewCkafkaInstanceResponse(AbstractModel):
 
     @property
     def Result(self):
+        """返回值
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.RenewCkafkaInstanceResp`
+        """
         return self._Result
 
     @Result.setter
@@ -23555,6 +28351,9 @@ class RenewCkafkaInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23586,6 +28385,9 @@ class ReplaceParam(AbstractModel):
 
     @property
     def OldValue(self):
+        """被替换值
+        :rtype: str
+        """
         return self._OldValue
 
     @OldValue.setter
@@ -23594,6 +28396,9 @@ class ReplaceParam(AbstractModel):
 
     @property
     def NewValue(self):
+        """替换值
+        :rtype: str
+        """
         return self._NewValue
 
     @NewValue.setter
@@ -23665,6 +28470,13 @@ class Route(AbstractModel):
 
     @property
     def AccessType(self):
+        """实例接入方式
+0：PLAINTEXT (明文方式，没有带用户信息老版本及社区版本都支持)
+1：SASL_PLAINTEXT（明文方式，不过在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）
+2：SSL（SSL加密通信，没有带用户信息，老版本及社区版本都支持）
+3：SASL_SSL（SSL加密通信，在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）
+        :rtype: int
+        """
         return self._AccessType
 
     @AccessType.setter
@@ -23673,6 +28485,9 @@ class Route(AbstractModel):
 
     @property
     def RouteId(self):
+        """路由ID
+        :rtype: int
+        """
         return self._RouteId
 
     @RouteId.setter
@@ -23681,6 +28496,9 @@ class Route(AbstractModel):
 
     @property
     def VipType(self):
+        """vip网络类型（1:外网TGW  2:基础网络 3:VPC网络 4:支撑网络(idc 环境) 5:SSL外网访问方式访问 6:黑石环境vpc 7:支撑网络(cvm 环境）
+        :rtype: int
+        """
         return self._VipType
 
     @VipType.setter
@@ -23689,6 +28507,9 @@ class Route(AbstractModel):
 
     @property
     def VipList(self):
+        """虚拟IP列表
+        :rtype: list of VipEntity
+        """
         return self._VipList
 
     @VipList.setter
@@ -23697,6 +28518,10 @@ class Route(AbstractModel):
 
     @property
     def Domain(self):
+        """域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -23705,6 +28530,10 @@ class Route(AbstractModel):
 
     @property
     def DomainPort(self):
+        """域名port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._DomainPort
 
     @DomainPort.setter
@@ -23713,6 +28542,10 @@ class Route(AbstractModel):
 
     @property
     def DeleteTimestamp(self):
+        """时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._DeleteTimestamp
 
     @DeleteTimestamp.setter
@@ -23721,6 +28554,10 @@ class Route(AbstractModel):
 
     @property
     def Subnet(self):
+        """子网信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Subnet
 
     @Subnet.setter
@@ -23729,6 +28566,10 @@ class Route(AbstractModel):
 
     @property
     def BrokerVipList(self):
+        """虚拟IP列表(1对1 broker节点)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VipEntity
+        """
         return self._BrokerVipList
 
     @BrokerVipList.setter
@@ -23737,6 +28578,10 @@ class Route(AbstractModel):
 
     @property
     def VpcId(self):
+        """vpc信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -23790,6 +28635,10 @@ class RouteDTO(AbstractModel):
 
     @property
     def RouteId(self):
+        """RouteId11
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._RouteId
 
     @RouteId.setter
@@ -23824,6 +28673,10 @@ class RouteResponse(AbstractModel):
 
     @property
     def Routers(self):
+        """路由信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Route
+        """
         return self._Routers
 
     @Routers.setter
@@ -23870,6 +28723,9 @@ class RowParam(AbstractModel):
 
     @property
     def RowContent(self):
+        """行内容，KEY_VALUE，VALUE
+        :rtype: str
+        """
         return self._RowContent
 
     @RowContent.setter
@@ -23878,6 +28734,10 @@ class RowParam(AbstractModel):
 
     @property
     def KeyValueDelimiter(self):
+        """key和value间的分隔符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._KeyValueDelimiter
 
     @KeyValueDelimiter.setter
@@ -23886,6 +28746,10 @@ class RowParam(AbstractModel):
 
     @property
     def EntryDelimiter(self):
+        """元素建的分隔符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._EntryDelimiter
 
     @EntryDelimiter.setter
@@ -23943,6 +28807,9 @@ class SMTParam(AbstractModel):
 
     @property
     def Key(self):
+        """数据处理KEY
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -23951,6 +28818,9 @@ class SMTParam(AbstractModel):
 
     @property
     def Operate(self):
+        """操作，DATE系统预设-时间戳，CUSTOMIZE自定义，MAPPING映射，JSONPATH
+        :rtype: str
+        """
         return self._Operate
 
     @Operate.setter
@@ -23959,6 +28829,9 @@ class SMTParam(AbstractModel):
 
     @property
     def SchemeType(self):
+        """数据类型，ORIGINAL原始，STRING，INT64，FLOAT64，BOOLEAN，MAP，ARRAY
+        :rtype: str
+        """
         return self._SchemeType
 
     @SchemeType.setter
@@ -23967,6 +28840,10 @@ class SMTParam(AbstractModel):
 
     @property
     def Value(self):
+        """数据处理VALUE
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -23975,6 +28852,10 @@ class SMTParam(AbstractModel):
 
     @property
     def ValueOperate(self):
+        """VALUE处理
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ValueParam`
+        """
         return self._ValueOperate
 
     @ValueOperate.setter
@@ -23983,6 +28864,10 @@ class SMTParam(AbstractModel):
 
     @property
     def OriginalValue(self):
+        """原始VALUE
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OriginalValue
 
     @OriginalValue.setter
@@ -23991,6 +28876,10 @@ class SMTParam(AbstractModel):
 
     @property
     def ValueOperates(self):
+        """VALUE处理链
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ValueParam
+        """
         return self._ValueOperates
 
     @ValueOperates.setter
@@ -24062,6 +28951,10 @@ class SQLServerConnectParam(AbstractModel):
 
     @property
     def Port(self):
+        """SQLServer的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -24070,6 +28963,10 @@ class SQLServerConnectParam(AbstractModel):
 
     @property
     def UserName(self):
+        """SQLServer连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -24078,6 +28975,10 @@ class SQLServerConnectParam(AbstractModel):
 
     @property
     def Password(self):
+        """SQLServer连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -24086,6 +28987,10 @@ class SQLServerConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """SQLServer连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -24094,6 +28999,10 @@ class SQLServerConnectParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """SQLServer连接源的实例vip，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -24102,6 +29011,10 @@ class SQLServerConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """SQLServer连接源的vpcId，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -24110,6 +29023,10 @@ class SQLServerConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
+        """是否更新到关联的Dip任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUpdate
 
     @IsUpdate.setter
@@ -24174,6 +29091,10 @@ class SQLServerModifyConnectParam(AbstractModel):
 
     @property
     def Resource(self):
+        """SQLServer连接源的实例资源【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -24182,6 +29103,10 @@ class SQLServerModifyConnectParam(AbstractModel):
 
     @property
     def Port(self):
+        """SQLServer的连接port【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -24190,6 +29115,10 @@ class SQLServerModifyConnectParam(AbstractModel):
 
     @property
     def ServiceVip(self):
+        """SQLServer连接源的实例vip【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -24198,6 +29127,10 @@ class SQLServerModifyConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """SQLServer连接源的vpcId【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -24206,6 +29139,10 @@ class SQLServerModifyConnectParam(AbstractModel):
 
     @property
     def UserName(self):
+        """SQLServer连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -24214,6 +29151,10 @@ class SQLServerModifyConnectParam(AbstractModel):
 
     @property
     def Password(self):
+        """SQLServer连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -24222,6 +29163,10 @@ class SQLServerModifyConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
+        """是否更新到关联的Dip任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsUpdate
 
     @IsUpdate.setter
@@ -24274,6 +29219,10 @@ class SQLServerParam(AbstractModel):
 
     @property
     def Database(self):
+        """SQLServer的数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Database
 
     @Database.setter
@@ -24282,6 +29231,10 @@ class SQLServerParam(AbstractModel):
 
     @property
     def Table(self):
+        """SQLServer的数据表名称，"*"为所监听的所有数据库中的非系统表，可以","间隔，监听多个数据表，但数据表需要以"数据库名.数据表名"的格式进行填写
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Table
 
     @Table.setter
@@ -24290,6 +29243,10 @@ class SQLServerParam(AbstractModel):
 
     @property
     def Resource(self):
+        """该SQLServer在连接管理内的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -24298,6 +29255,10 @@ class SQLServerParam(AbstractModel):
 
     @property
     def SnapshotMode(self):
+        """复制存量信息(schema_only增量, initial全量)，默认为initial
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SnapshotMode
 
     @SnapshotMode.setter
@@ -24347,6 +29308,10 @@ class SaleInfo(AbstractModel):
 
     @property
     def Flag(self):
+        """手动设置的flag标志
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._Flag
 
     @Flag.setter
@@ -24355,6 +29320,10 @@ class SaleInfo(AbstractModel):
 
     @property
     def Version(self):
+        """ckakfa版本号(1.1.1/2.4.2/0.10.2)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -24363,6 +29332,10 @@ class SaleInfo(AbstractModel):
 
     @property
     def Platform(self):
+        """专业版、标准版标志
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -24371,6 +29344,10 @@ class SaleInfo(AbstractModel):
 
     @property
     def SoldOut(self):
+        """售罄标志：true售罄
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._SoldOut
 
     @SoldOut.setter
@@ -24408,6 +29385,10 @@ class ScalingDownResp(AbstractModel):
 
     @property
     def DealNames(self):
+        """订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._DealNames
 
     @DealNames.setter
@@ -24458,6 +29439,10 @@ class ScfParam(AbstractModel):
 
     @property
     def FunctionName(self):
+        """SCF云函数函数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -24466,6 +29451,10 @@ class ScfParam(AbstractModel):
 
     @property
     def Namespace(self):
+        """SCF云函数命名空间, 默认为default
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -24474,6 +29463,10 @@ class ScfParam(AbstractModel):
 
     @property
     def Qualifier(self):
+        """SCF云函数版本及别名, 默认为$DEFAULT
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -24482,6 +29475,10 @@ class ScfParam(AbstractModel):
 
     @property
     def BatchSize(self):
+        """每批最大发送消息数, 默认为1000
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BatchSize
 
     @BatchSize.setter
@@ -24490,6 +29487,10 @@ class ScfParam(AbstractModel):
 
     @property
     def MaxRetries(self):
+        """SCF调用失败后重试次数, 默认为5
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MaxRetries
 
     @MaxRetries.setter
@@ -24527,6 +29528,9 @@ class SecondaryAnalyseParam(AbstractModel):
 
     @property
     def Regex(self):
+        """分隔符
+        :rtype: str
+        """
         return self._Regex
 
     @Regex.setter
@@ -24563,6 +29567,9 @@ class SendMessageRequest(AbstractModel):
 
     @property
     def DataHubId(self):
+        """DataHub接入ID
+        :rtype: str
+        """
         return self._DataHubId
 
     @DataHubId.setter
@@ -24571,6 +29578,9 @@ class SendMessageRequest(AbstractModel):
 
     @property
     def Message(self):
+        """发送消息内容(单次请求最多500条)
+        :rtype: list of BatchContent
+        """
         return self._Message
 
     @Message.setter
@@ -24613,6 +29623,9 @@ class SendMessageResponse(AbstractModel):
 
     @property
     def MessageId(self):
+        """消息ID列表
+        :rtype: list of str
+        """
         return self._MessageId
 
     @MessageId.setter
@@ -24621,6 +29634,9 @@ class SendMessageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -24647,6 +29663,9 @@ class SplitParam(AbstractModel):
 
     @property
     def Regex(self):
+        """分隔符
+        :rtype: str
+        """
         return self._Regex
 
     @Regex.setter
@@ -24692,6 +29711,9 @@ class SubscribedInfo(AbstractModel):
 
     @property
     def TopicName(self):
+        """订阅的主题名
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -24700,6 +29722,10 @@ class SubscribedInfo(AbstractModel):
 
     @property
     def Partition(self):
+        """订阅的分区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
         return self._Partition
 
     @Partition.setter
@@ -24708,6 +29734,10 @@ class SubscribedInfo(AbstractModel):
 
     @property
     def PartitionOffset(self):
+        """分区offset信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PartitionOffset
+        """
         return self._PartitionOffset
 
     @PartitionOffset.setter
@@ -24716,6 +29746,10 @@ class SubscribedInfo(AbstractModel):
 
     @property
     def TopicId(self):
+        """订阅的主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -24760,6 +29794,9 @@ class SubstrParam(AbstractModel):
 
     @property
     def Start(self):
+        """截取起始位置
+        :rtype: int
+        """
         return self._Start
 
     @Start.setter
@@ -24768,6 +29805,9 @@ class SubstrParam(AbstractModel):
 
     @property
     def End(self):
+        """截取截止位置
+        :rtype: int
+        """
         return self._End
 
     @End.setter
@@ -24811,6 +29851,9 @@ class TableMapping(AbstractModel):
 
     @property
     def Database(self):
+        """库名
+        :rtype: str
+        """
         return self._Database
 
     @Database.setter
@@ -24819,6 +29862,9 @@ class TableMapping(AbstractModel):
 
     @property
     def Table(self):
+        """表名，多个表,（逗号）隔开
+        :rtype: str
+        """
         return self._Table
 
     @Table.setter
@@ -24827,6 +29873,9 @@ class TableMapping(AbstractModel):
 
     @property
     def Topic(self):
+        """Topic名称
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -24835,6 +29884,9 @@ class TableMapping(AbstractModel):
 
     @property
     def TopicId(self):
+        """Topic ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -24874,6 +29926,9 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
+        """标签的key
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -24882,6 +29937,9 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
+        """标签的值
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -24923,6 +29981,12 @@ class TaskStatusResponse(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态:
+0 成功
+1 失败
+2 进行中
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -24931,6 +29995,10 @@ class TaskStatusResponse(AbstractModel):
 
     @property
     def Output(self):
+        """输出信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Output
 
     @Output.setter
@@ -24982,6 +30050,10 @@ class TdwParam(AbstractModel):
 
     @property
     def Bid(self):
+        """Tdw的bid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Bid
 
     @Bid.setter
@@ -24990,6 +30062,10 @@ class TdwParam(AbstractModel):
 
     @property
     def Tid(self):
+        """Tdw的tid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Tid
 
     @Tid.setter
@@ -24998,6 +30074,10 @@ class TdwParam(AbstractModel):
 
     @property
     def IsDomestic(self):
+        """默认true
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._IsDomestic
 
     @IsDomestic.setter
@@ -25006,6 +30086,10 @@ class TdwParam(AbstractModel):
 
     @property
     def TdwHost(self):
+        """TDW地址，默认tl-tdbank-tdmanager.tencent-distribute.com
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TdwHost
 
     @TdwHost.setter
@@ -25014,6 +30098,10 @@ class TdwParam(AbstractModel):
 
     @property
     def TdwPort(self):
+        """TDW端口，默认8099
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TdwPort
 
     @TdwPort.setter
@@ -25058,6 +30146,9 @@ class Topic(AbstractModel):
 
     @property
     def TopicId(self):
+        """主题的ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -25066,6 +30157,9 @@ class Topic(AbstractModel):
 
     @property
     def TopicName(self):
+        """主题的名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -25074,6 +30168,10 @@ class Topic(AbstractModel):
 
     @property
     def Note(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -25147,6 +30245,9 @@ class TopicAttributesResponse(AbstractModel):
 
     @property
     def TopicId(self):
+        """主题 ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -25155,6 +30256,9 @@ class TopicAttributesResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -25163,6 +30267,10 @@ class TopicAttributesResponse(AbstractModel):
 
     @property
     def Note(self):
+        """主题备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -25171,6 +30279,9 @@ class TopicAttributesResponse(AbstractModel):
 
     @property
     def PartitionNum(self):
+        """分区个数
+        :rtype: int
+        """
         return self._PartitionNum
 
     @PartitionNum.setter
@@ -25179,6 +30290,9 @@ class TopicAttributesResponse(AbstractModel):
 
     @property
     def EnableWhiteList(self):
+        """IP 白名单开关，1：打开； 0：关闭
+        :rtype: int
+        """
         return self._EnableWhiteList
 
     @EnableWhiteList.setter
@@ -25187,6 +30301,9 @@ class TopicAttributesResponse(AbstractModel):
 
     @property
     def IpWhiteList(self):
+        """IP 白名单列表
+        :rtype: list of str
+        """
         return self._IpWhiteList
 
     @IpWhiteList.setter
@@ -25195,6 +30312,9 @@ class TopicAttributesResponse(AbstractModel):
 
     @property
     def Config(self):
+        """topic 配置数组
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.Config`
+        """
         return self._Config
 
     @Config.setter
@@ -25203,6 +30323,9 @@ class TopicAttributesResponse(AbstractModel):
 
     @property
     def Partitions(self):
+        """分区详情
+        :rtype: list of TopicPartitionDO
+        """
         return self._Partitions
 
     @Partitions.setter
@@ -25211,6 +30334,10 @@ class TopicAttributesResponse(AbstractModel):
 
     @property
     def EnableAclRule(self):
+        """ACL预设策略开关，1：打开； 0：关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EnableAclRule
 
     @EnableAclRule.setter
@@ -25219,6 +30346,10 @@ class TopicAttributesResponse(AbstractModel):
 
     @property
     def AclRuleList(self):
+        """预设策略列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AclRule
+        """
         return self._AclRuleList
 
     @AclRuleList.setter
@@ -25227,6 +30358,10 @@ class TopicAttributesResponse(AbstractModel):
 
     @property
     def QuotaConfig(self):
+        """topic 限流策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceQuotaConfigResp`
+        """
         return self._QuotaConfig
 
     @QuotaConfig.setter
@@ -25235,6 +30370,10 @@ class TopicAttributesResponse(AbstractModel):
 
     @property
     def ReplicaNum(self):
+        """副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReplicaNum
 
     @ReplicaNum.setter
@@ -25341,6 +30480,9 @@ class TopicDetail(AbstractModel):
 
     @property
     def TopicName(self):
+        """主题名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -25349,6 +30491,9 @@ class TopicDetail(AbstractModel):
 
     @property
     def TopicId(self):
+        """主题ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -25357,6 +30502,9 @@ class TopicDetail(AbstractModel):
 
     @property
     def PartitionNum(self):
+        """分区数
+        :rtype: int
+        """
         return self._PartitionNum
 
     @PartitionNum.setter
@@ -25365,6 +30513,9 @@ class TopicDetail(AbstractModel):
 
     @property
     def ReplicaNum(self):
+        """副本数
+        :rtype: int
+        """
         return self._ReplicaNum
 
     @ReplicaNum.setter
@@ -25373,6 +30524,10 @@ class TopicDetail(AbstractModel):
 
     @property
     def Note(self):
+        """备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -25381,6 +30536,9 @@ class TopicDetail(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -25389,6 +30547,9 @@ class TopicDetail(AbstractModel):
 
     @property
     def EnableWhiteList(self):
+        """是否开启ip鉴权白名单，true表示开启，false表示不开启
+        :rtype: bool
+        """
         return self._EnableWhiteList
 
     @EnableWhiteList.setter
@@ -25397,6 +30558,9 @@ class TopicDetail(AbstractModel):
 
     @property
     def IpWhiteListCount(self):
+        """ip白名单中ip个数
+        :rtype: int
+        """
         return self._IpWhiteListCount
 
     @IpWhiteListCount.setter
@@ -25405,6 +30569,10 @@ class TopicDetail(AbstractModel):
 
     @property
     def ForwardCosBucket(self):
+        """数据备份cos bucket: 转存到cos 的bucket地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._ForwardCosBucket
 
     @ForwardCosBucket.setter
@@ -25413,6 +30581,9 @@ class TopicDetail(AbstractModel):
 
     @property
     def ForwardStatus(self):
+        """数据备份cos 状态： 1 不开启数据备份，0 开启数据备份
+        :rtype: int
+        """
         return self._ForwardStatus
 
     @ForwardStatus.setter
@@ -25421,6 +30592,9 @@ class TopicDetail(AbstractModel):
 
     @property
     def ForwardInterval(self):
+        """数据备份到cos的周期频率
+        :rtype: int
+        """
         return self._ForwardInterval
 
     @ForwardInterval.setter
@@ -25429,6 +30603,10 @@ class TopicDetail(AbstractModel):
 
     @property
     def Config(self):
+        """高级配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.Config`
+        """
         return self._Config
 
     @Config.setter
@@ -25437,6 +30615,10 @@ class TopicDetail(AbstractModel):
 
     @property
     def RetentionTimeConfig(self):
+        """消息保留时间配置(用于动态配置变更记录)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TopicRetentionTimeConfigRsp`
+        """
         return self._RetentionTimeConfig
 
     @RetentionTimeConfig.setter
@@ -25445,6 +30627,10 @@ class TopicDetail(AbstractModel):
 
     @property
     def Status(self):
+        """0:正常，1：已删除，2：删除中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -25453,6 +30639,10 @@ class TopicDetail(AbstractModel):
 
     @property
     def Tags(self):
+        """标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -25513,6 +30703,10 @@ class TopicDetailResponse(AbstractModel):
 
     @property
     def TopicList(self):
+        """返回的主题详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TopicDetail
+        """
         return self._TopicList
 
     @TopicList.setter
@@ -25521,6 +30715,9 @@ class TopicDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的所有主题详情数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -25575,6 +30772,9 @@ class TopicFlowRanking(AbstractModel):
 
     @property
     def TopicId(self):
+        """主题Id
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -25583,6 +30783,9 @@ class TopicFlowRanking(AbstractModel):
 
     @property
     def TopicName(self):
+        """主题名称
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -25591,6 +30794,9 @@ class TopicFlowRanking(AbstractModel):
 
     @property
     def PartitionNum(self):
+        """分区数
+        :rtype: int
+        """
         return self._PartitionNum
 
     @PartitionNum.setter
@@ -25599,6 +30805,9 @@ class TopicFlowRanking(AbstractModel):
 
     @property
     def ReplicaNum(self):
+        """副本数
+        :rtype: int
+        """
         return self._ReplicaNum
 
     @ReplicaNum.setter
@@ -25607,6 +30816,9 @@ class TopicFlowRanking(AbstractModel):
 
     @property
     def TopicTraffic(self):
+        """Topic 流量
+        :rtype: str
+        """
         return self._TopicTraffic
 
     @TopicTraffic.setter
@@ -25615,6 +30827,9 @@ class TopicFlowRanking(AbstractModel):
 
     @property
     def MessageHeap(self):
+        """Topic 消息堆积
+        :rtype: int
+        """
         return self._MessageHeap
 
     @MessageHeap.setter
@@ -25671,6 +30886,9 @@ class TopicFlowRankingResult(AbstractModel):
 
     @property
     def TopicFlow(self):
+        """Topic 流量数组
+        :rtype: list of TopicFlowRanking
+        """
         return self._TopicFlow
 
     @TopicFlow.setter
@@ -25679,6 +30897,9 @@ class TopicFlowRankingResult(AbstractModel):
 
     @property
     def ConsumeSpeed(self):
+        """消费者组消费速度排行速度
+        :rtype: list of ConsumerGroupSpeed
+        """
         return self._ConsumeSpeed
 
     @ConsumeSpeed.setter
@@ -25687,6 +30908,10 @@ class TopicFlowRankingResult(AbstractModel):
 
     @property
     def TopicMessageHeap(self):
+        """Topic 消息堆积/占用磁盘排行
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TopicMessageHeapRanking
+        """
         return self._TopicMessageHeap
 
     @TopicMessageHeap.setter
@@ -25695,6 +30920,10 @@ class TopicFlowRankingResult(AbstractModel):
 
     @property
     def BrokerIp(self):
+        """Broker Ip 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._BrokerIp
 
     @BrokerIp.setter
@@ -25703,6 +30932,10 @@ class TopicFlowRankingResult(AbstractModel):
 
     @property
     def BrokerTopicData(self):
+        """单个broker 节点 Topic占用的数据大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BrokerTopicData
+        """
         return self._BrokerTopicData
 
     @BrokerTopicData.setter
@@ -25711,6 +30944,9 @@ class TopicFlowRankingResult(AbstractModel):
 
     @property
     def BrokerTopicFlowData(self):
+        """单个Broker 节点Topic 流量的大小(单位MB)
+        :rtype: list of BrokerTopicFlowData
+        """
         return self._BrokerTopicFlowData
 
     @BrokerTopicFlowData.setter
@@ -25799,6 +31035,9 @@ class TopicInSyncReplicaInfo(AbstractModel):
 
     @property
     def Partition(self):
+        """分区名称
+        :rtype: str
+        """
         return self._Partition
 
     @Partition.setter
@@ -25807,6 +31046,9 @@ class TopicInSyncReplicaInfo(AbstractModel):
 
     @property
     def Leader(self):
+        """Leader Id
+        :rtype: int
+        """
         return self._Leader
 
     @Leader.setter
@@ -25815,6 +31057,9 @@ class TopicInSyncReplicaInfo(AbstractModel):
 
     @property
     def Replica(self):
+        """副本集
+        :rtype: str
+        """
         return self._Replica
 
     @Replica.setter
@@ -25823,6 +31068,9 @@ class TopicInSyncReplicaInfo(AbstractModel):
 
     @property
     def InSyncReplica(self):
+        """ISR
+        :rtype: str
+        """
         return self._InSyncReplica
 
     @InSyncReplica.setter
@@ -25831,6 +31079,10 @@ class TopicInSyncReplicaInfo(AbstractModel):
 
     @property
     def BeginOffset(self):
+        """起始Offset
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._BeginOffset
 
     @BeginOffset.setter
@@ -25839,6 +31091,10 @@ class TopicInSyncReplicaInfo(AbstractModel):
 
     @property
     def EndOffset(self):
+        """末端Offset
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._EndOffset
 
     @EndOffset.setter
@@ -25847,6 +31103,10 @@ class TopicInSyncReplicaInfo(AbstractModel):
 
     @property
     def MessageCount(self):
+        """消息数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MessageCount
 
     @MessageCount.setter
@@ -25855,6 +31115,10 @@ class TopicInSyncReplicaInfo(AbstractModel):
 
     @property
     def OutOfSyncReplica(self):
+        """未同步副本集
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OutOfSyncReplica
 
     @OutOfSyncReplica.setter
@@ -25898,6 +31162,9 @@ class TopicInSyncReplicaResult(AbstractModel):
 
     @property
     def TopicInSyncReplicaList(self):
+        """Topic详情及副本合集
+        :rtype: list of TopicInSyncReplicaInfo
+        """
         return self._TopicInSyncReplicaList
 
     @TopicInSyncReplicaList.setter
@@ -25906,6 +31173,9 @@ class TopicInSyncReplicaResult(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总计个数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -25966,6 +31236,10 @@ class TopicMessageHeapRanking(AbstractModel):
 
     @property
     def TopicId(self):
+        """主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -25974,6 +31248,10 @@ class TopicMessageHeapRanking(AbstractModel):
 
     @property
     def TopicName(self):
+        """主题名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -25982,6 +31260,10 @@ class TopicMessageHeapRanking(AbstractModel):
 
     @property
     def PartitionNum(self):
+        """分区数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._PartitionNum
 
     @PartitionNum.setter
@@ -25990,6 +31272,10 @@ class TopicMessageHeapRanking(AbstractModel):
 
     @property
     def ReplicaNum(self):
+        """副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ReplicaNum
 
     @ReplicaNum.setter
@@ -25998,6 +31284,10 @@ class TopicMessageHeapRanking(AbstractModel):
 
     @property
     def TopicTraffic(self):
+        """Topic 流量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicTraffic
 
     @TopicTraffic.setter
@@ -26006,6 +31296,10 @@ class TopicMessageHeapRanking(AbstractModel):
 
     @property
     def MessageHeap(self):
+        """topic消息堆积/占用磁盘
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MessageHeap
 
     @MessageHeap.setter
@@ -26068,6 +31362,9 @@ class TopicParam(AbstractModel):
 
     @property
     def Resource(self):
+        """单独售卖Topic的Topic名称
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -26076,6 +31373,10 @@ class TopicParam(AbstractModel):
 
     @property
     def OffsetType(self):
+        """Offset类型，最开始位置earliest，最新位置latest，时间点位置timestamp
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OffsetType
 
     @OffsetType.setter
@@ -26084,6 +31385,10 @@ class TopicParam(AbstractModel):
 
     @property
     def StartTime(self):
+        """Offset类型为timestamp时必传，传时间戳，精确到秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -26092,6 +31397,10 @@ class TopicParam(AbstractModel):
 
     @property
     def TopicId(self):
+        """Topic的TopicId【出参】
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -26100,6 +31409,10 @@ class TopicParam(AbstractModel):
 
     @property
     def CompressionType(self):
+        """写入Topic时是否进行压缩，不开启填"none"，开启的话，可选择"gzip", "snappy", "lz4"中的一个进行填写。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CompressionType
 
     @CompressionType.setter
@@ -26108,6 +31421,10 @@ class TopicParam(AbstractModel):
 
     @property
     def UseAutoCreateTopic(self):
+        """使用的Topic是否需要自动创建（目前只支持SOURCE流入任务）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._UseAutoCreateTopic
 
     @UseAutoCreateTopic.setter
@@ -26116,6 +31433,10 @@ class TopicParam(AbstractModel):
 
     @property
     def MsgMultiple(self):
+        """源topic消息1条扩增成msgMultiple条写入目标topic(该参数目前只有ckafka流入ckafka适用)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._MsgMultiple
 
     @MsgMultiple.setter
@@ -26164,6 +31485,9 @@ class TopicPartitionDO(AbstractModel):
 
     @property
     def Partition(self):
+        """Partition ID
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -26172,6 +31496,9 @@ class TopicPartitionDO(AbstractModel):
 
     @property
     def LeaderStatus(self):
+        """Leader 运行状态
+        :rtype: int
+        """
         return self._LeaderStatus
 
     @LeaderStatus.setter
@@ -26180,6 +31507,9 @@ class TopicPartitionDO(AbstractModel):
 
     @property
     def IsrNum(self):
+        """ISR 个数
+        :rtype: int
+        """
         return self._IsrNum
 
     @IsrNum.setter
@@ -26188,6 +31518,9 @@ class TopicPartitionDO(AbstractModel):
 
     @property
     def ReplicaNum(self):
+        """副本个数
+        :rtype: int
+        """
         return self._ReplicaNum
 
     @ReplicaNum.setter
@@ -26229,6 +31562,10 @@ class TopicResult(AbstractModel):
 
     @property
     def TopicList(self):
+        """返回的主题信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Topic
+        """
         return self._TopicList
 
     @TopicList.setter
@@ -26237,6 +31574,10 @@ class TopicResult(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的 topic 数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -26285,6 +31626,10 @@ class TopicRetentionTimeConfigRsp(AbstractModel):
 
     @property
     def Expect(self):
+        """期望值，即用户配置的Topic消息保留时间(单位分钟)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Expect
 
     @Expect.setter
@@ -26293,6 +31638,10 @@ class TopicRetentionTimeConfigRsp(AbstractModel):
 
     @property
     def Current(self):
+        """当前值，即当前生效值(可能存在动态调整，单位分钟)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Current
 
     @Current.setter
@@ -26301,6 +31650,10 @@ class TopicRetentionTimeConfigRsp(AbstractModel):
 
     @property
     def ModTimeStamp(self):
+        """最近变更时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ModTimeStamp
 
     @ModTimeStamp.setter
@@ -26347,6 +31700,9 @@ class TopicSubscribeGroup(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -26355,6 +31711,9 @@ class TopicSubscribeGroup(AbstractModel):
 
     @property
     def StatusCountInfo(self):
+        """消费分组状态数量信息
+        :rtype: str
+        """
         return self._StatusCountInfo
 
     @StatusCountInfo.setter
@@ -26363,6 +31722,10 @@ class TopicSubscribeGroup(AbstractModel):
 
     @property
     def GroupsInfo(self):
+        """消费分组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GroupInfoResponse
+        """
         return self._GroupsInfo
 
     @GroupsInfo.setter
@@ -26371,6 +31734,10 @@ class TopicSubscribeGroup(AbstractModel):
 
     @property
     def Status(self):
+        """此次请求是否异步的状态。实例里分组较少的会直接返回结果,Status为1。当分组较多时,会异步更新缓存，Status为0时不会返回分组信息，直至Status为1更新完毕返回结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -26445,6 +31812,9 @@ class TransformParam(AbstractModel):
 
     @property
     def AnalysisFormat(self):
+        """解析格式，JSON，DELIMITER分隔符，REGULAR正则提取
+        :rtype: str
+        """
         return self._AnalysisFormat
 
     @AnalysisFormat.setter
@@ -26453,6 +31823,9 @@ class TransformParam(AbstractModel):
 
     @property
     def OutputFormat(self):
+        """输出格式
+        :rtype: str
+        """
         return self._OutputFormat
 
     @OutputFormat.setter
@@ -26461,6 +31834,9 @@ class TransformParam(AbstractModel):
 
     @property
     def FailureParam(self):
+        """是否保留解析失败数据
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.FailureParam`
+        """
         return self._FailureParam
 
     @FailureParam.setter
@@ -26469,6 +31845,9 @@ class TransformParam(AbstractModel):
 
     @property
     def Content(self):
+        """原始数据
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -26477,6 +31856,9 @@ class TransformParam(AbstractModel):
 
     @property
     def SourceType(self):
+        """数据来源，TOPIC从源topic拉取，CUSTOMIZE自定义
+        :rtype: str
+        """
         return self._SourceType
 
     @SourceType.setter
@@ -26485,6 +31867,9 @@ class TransformParam(AbstractModel):
 
     @property
     def Regex(self):
+        """分隔符、正则表达式
+        :rtype: str
+        """
         return self._Regex
 
     @Regex.setter
@@ -26493,6 +31878,9 @@ class TransformParam(AbstractModel):
 
     @property
     def MapParam(self):
+        """Map
+        :rtype: list of MapParam
+        """
         return self._MapParam
 
     @MapParam.setter
@@ -26501,6 +31889,9 @@ class TransformParam(AbstractModel):
 
     @property
     def FilterParam(self):
+        """过滤器
+        :rtype: list of FilterMapParam
+        """
         return self._FilterParam
 
     @FilterParam.setter
@@ -26509,6 +31900,10 @@ class TransformParam(AbstractModel):
 
     @property
     def Result(self):
+        """测试结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -26517,6 +31912,10 @@ class TransformParam(AbstractModel):
 
     @property
     def AnalyseResult(self):
+        """解析结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MapParam
+        """
         return self._AnalyseResult
 
     @AnalyseResult.setter
@@ -26525,6 +31924,10 @@ class TransformParam(AbstractModel):
 
     @property
     def UseEventBus(self):
+        """底层引擎是否使用eb
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._UseEventBus
 
     @UseEventBus.setter
@@ -26620,6 +32023,9 @@ class TransformsParam(AbstractModel):
 
     @property
     def Content(self):
+        """原始数据
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -26628,6 +32034,9 @@ class TransformsParam(AbstractModel):
 
     @property
     def FieldChain(self):
+        """处理链
+        :rtype: list of FieldParam
+        """
         return self._FieldChain
 
     @FieldChain.setter
@@ -26636,6 +32045,10 @@ class TransformsParam(AbstractModel):
 
     @property
     def FilterParam(self):
+        """过滤器
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FilterMapParam
+        """
         return self._FilterParam
 
     @FilterParam.setter
@@ -26644,6 +32057,10 @@ class TransformsParam(AbstractModel):
 
     @property
     def FailureParam(self):
+        """失败处理
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.FailureParam`
+        """
         return self._FailureParam
 
     @FailureParam.setter
@@ -26652,6 +32069,10 @@ class TransformsParam(AbstractModel):
 
     @property
     def Result(self):
+        """测试结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -26660,6 +32081,10 @@ class TransformsParam(AbstractModel):
 
     @property
     def SourceType(self):
+        """数据来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._SourceType
 
     @SourceType.setter
@@ -26668,6 +32093,10 @@ class TransformsParam(AbstractModel):
 
     @property
     def OutputFormat(self):
+        """输出格式，JSON，ROW，默认为JSON
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._OutputFormat
 
     @OutputFormat.setter
@@ -26676,6 +32105,10 @@ class TransformsParam(AbstractModel):
 
     @property
     def RowParam(self):
+        """输出格式为ROW必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.RowParam`
+        """
         return self._RowParam
 
     @RowParam.setter
@@ -26684,6 +32117,10 @@ class TransformsParam(AbstractModel):
 
     @property
     def KeepMetadata(self):
+        """是否保留数据源Topic元数据信息（源Topic、Partition、Offset），默认为false
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._KeepMetadata
 
     @KeepMetadata.setter
@@ -26692,6 +32129,10 @@ class TransformsParam(AbstractModel):
 
     @property
     def BatchAnalyse(self):
+        """数组解析
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.BatchAnalyseParam`
+        """
         return self._BatchAnalyse
 
     @BatchAnalyse.setter
@@ -26751,6 +32192,10 @@ class UrlDecodeParam(AbstractModel):
 
     @property
     def CharsetName(self):
+        """编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._CharsetName
 
     @CharsetName.setter
@@ -26793,6 +32238,9 @@ class User(AbstractModel):
 
     @property
     def UserId(self):
+        """用户id
+        :rtype: int
+        """
         return self._UserId
 
     @UserId.setter
@@ -26801,6 +32249,9 @@ class User(AbstractModel):
 
     @property
     def Name(self):
+        """用户名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -26809,6 +32260,9 @@ class User(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -26817,6 +32271,9 @@ class User(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """最后更新时间
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -26857,6 +32314,10 @@ class UserResponse(AbstractModel):
 
     @property
     def Users(self):
+        """符合条件的用户列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of User
+        """
         return self._Users
 
     @Users.setter
@@ -26865,6 +32326,9 @@ class UserResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """符合条件的总用户数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -26944,6 +32408,9 @@ class ValueParam(AbstractModel):
 
     @property
     def Type(self):
+        """处理模式，REPLACE替换，SUBSTR截取，DATE日期转换，TRIM去除前后空格，REGEX_REPLACE正则替换，URL_DECODE，LOWERCASE转换为小写
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -26952,6 +32419,10 @@ class ValueParam(AbstractModel):
 
     @property
     def Replace(self):
+        """替换，TYPE=REPLACE时必传
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ReplaceParam`
+        """
         return self._Replace
 
     @Replace.setter
@@ -26960,6 +32431,10 @@ class ValueParam(AbstractModel):
 
     @property
     def Substr(self):
+        """截取，TYPE=SUBSTR时必传
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.SubstrParam`
+        """
         return self._Substr
 
     @Substr.setter
@@ -26968,6 +32443,10 @@ class ValueParam(AbstractModel):
 
     @property
     def Date(self):
+        """时间转换，TYPE=DATE时必传
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DateParam`
+        """
         return self._Date
 
     @Date.setter
@@ -26976,6 +32455,10 @@ class ValueParam(AbstractModel):
 
     @property
     def RegexReplace(self):
+        """正则替换，TYPE=REGEX_REPLACE时必传
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.RegexReplaceParam`
+        """
         return self._RegexReplace
 
     @RegexReplace.setter
@@ -26984,6 +32467,10 @@ class ValueParam(AbstractModel):
 
     @property
     def Split(self):
+        """值支持一拆多，TYPE=SPLIT时必传
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.SplitParam`
+        """
         return self._Split
 
     @Split.setter
@@ -26992,6 +32479,10 @@ class ValueParam(AbstractModel):
 
     @property
     def KV(self):
+        """key-value二次解析，TYPE=KV时必传
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.KVParam`
+        """
         return self._KV
 
     @KV.setter
@@ -27000,6 +32491,10 @@ class ValueParam(AbstractModel):
 
     @property
     def Result(self):
+        """处理结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -27008,6 +32503,10 @@ class ValueParam(AbstractModel):
 
     @property
     def JsonPathReplace(self):
+        """JsonPath替换，TYPE=JSON_PATH_REPLACE时必传
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JsonPathReplaceParam`
+        """
         return self._JsonPathReplace
 
     @JsonPathReplace.setter
@@ -27016,6 +32515,10 @@ class ValueParam(AbstractModel):
 
     @property
     def UrlDecode(self):
+        """Url解析
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.UrlDecodeParam`
+        """
         return self._UrlDecode
 
     @UrlDecode.setter
@@ -27024,6 +32527,10 @@ class ValueParam(AbstractModel):
 
     @property
     def Lowercase(self):
+        """小写字符解析
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.LowercaseParam`
+        """
         return self._Lowercase
 
     @Lowercase.setter
@@ -27088,6 +32595,9 @@ class VipEntity(AbstractModel):
 
     @property
     def Vip(self):
+        """虚拟IP
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -27096,6 +32606,9 @@ class VipEntity(AbstractModel):
 
     @property
     def Vport(self):
+        """虚拟端口
+        :rtype: str
+        """
         return self._Vport
 
     @Vport.setter
@@ -27158,6 +32671,9 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneId(self):
+        """zone的id
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -27166,6 +32682,9 @@ class ZoneInfo(AbstractModel):
 
     @property
     def IsInternalApp(self):
+        """是否内部APP
+        :rtype: int
+        """
         return self._IsInternalApp
 
     @IsInternalApp.setter
@@ -27174,6 +32693,9 @@ class ZoneInfo(AbstractModel):
 
     @property
     def AppId(self):
+        """app id
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -27182,6 +32704,9 @@ class ZoneInfo(AbstractModel):
 
     @property
     def Flag(self):
+        """标识
+        :rtype: bool
+        """
         return self._Flag
 
     @Flag.setter
@@ -27190,6 +32715,9 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneName(self):
+        """zone名称
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -27198,6 +32726,9 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneStatus(self):
+        """zone状态
+        :rtype: int
+        """
         return self._ZoneStatus
 
     @ZoneStatus.setter
@@ -27208,6 +32739,9 @@ class ZoneInfo(AbstractModel):
     def Exflag(self):
         warnings.warn("parameter `Exflag` is deprecated", DeprecationWarning) 
 
+        """额外标识
+        :rtype: str
+        """
         return self._Exflag
 
     @Exflag.setter
@@ -27218,6 +32752,9 @@ class ZoneInfo(AbstractModel):
 
     @property
     def SoldOut(self):
+        """json对象，key为机型，value true为售罄，false为未售罄
+        :rtype: str
+        """
         return self._SoldOut
 
     @SoldOut.setter
@@ -27226,6 +32763,10 @@ class ZoneInfo(AbstractModel):
 
     @property
     def SalesInfo(self):
+        """标准版售罄信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SaleInfo
+        """
         return self._SalesInfo
 
     @SalesInfo.setter
@@ -27234,6 +32775,9 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ExtraFlag(self):
+        """额外标识
+        :rtype: str
+        """
         return self._ExtraFlag
 
     @ExtraFlag.setter
@@ -27341,6 +32885,9 @@ class ZoneResponse(AbstractModel):
 
     @property
     def ZoneList(self):
+        """zone列表
+        :rtype: list of ZoneInfo
+        """
         return self._ZoneList
 
     @ZoneList.setter
@@ -27349,6 +32896,9 @@ class ZoneResponse(AbstractModel):
 
     @property
     def MaxBuyInstanceNum(self):
+        """最大购买实例个数
+        :rtype: int
+        """
         return self._MaxBuyInstanceNum
 
     @MaxBuyInstanceNum.setter
@@ -27357,6 +32907,9 @@ class ZoneResponse(AbstractModel):
 
     @property
     def MaxBandwidth(self):
+        """最大购买带宽 单位Mb/s
+        :rtype: int
+        """
         return self._MaxBandwidth
 
     @MaxBandwidth.setter
@@ -27365,6 +32918,9 @@ class ZoneResponse(AbstractModel):
 
     @property
     def UnitPrice(self):
+        """后付费单位价格
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.Price`
+        """
         return self._UnitPrice
 
     @UnitPrice.setter
@@ -27373,6 +32929,9 @@ class ZoneResponse(AbstractModel):
 
     @property
     def MessagePrice(self):
+        """后付费消息单价
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.Price`
+        """
         return self._MessagePrice
 
     @MessagePrice.setter
@@ -27381,6 +32940,10 @@ class ZoneResponse(AbstractModel):
 
     @property
     def ClusterInfo(self):
+        """用户独占集群信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ClusterInfo
+        """
         return self._ClusterInfo
 
     @ClusterInfo.setter
@@ -27389,6 +32952,10 @@ class ZoneResponse(AbstractModel):
 
     @property
     def Standard(self):
+        """购买标准版配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Standard
 
     @Standard.setter
@@ -27397,6 +32964,10 @@ class ZoneResponse(AbstractModel):
 
     @property
     def StandardS2(self):
+        """购买标准版S2配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._StandardS2
 
     @StandardS2.setter
@@ -27405,6 +32976,10 @@ class ZoneResponse(AbstractModel):
 
     @property
     def Profession(self):
+        """购买专业版配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Profession
 
     @Profession.setter
@@ -27413,6 +32988,10 @@ class ZoneResponse(AbstractModel):
 
     @property
     def Physical(self):
+        """购买物理独占版配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Physical
 
     @Physical.setter
@@ -27421,6 +33000,10 @@ class ZoneResponse(AbstractModel):
 
     @property
     def PublicNetwork(self):
+        """公网带宽
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PublicNetwork
 
     @PublicNetwork.setter
@@ -27429,6 +33012,10 @@ class ZoneResponse(AbstractModel):
 
     @property
     def PublicNetworkLimit(self):
+        """公网带宽配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._PublicNetworkLimit
 
     @PublicNetworkLimit.setter
@@ -27437,6 +33024,10 @@ class ZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """请求ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -27445,6 +33036,10 @@ class ZoneResponse(AbstractModel):
 
     @property
     def Version(self):
+        """版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -27453,6 +33048,10 @@ class ZoneResponse(AbstractModel):
 
     @property
     def Offset(self):
+        """分页offset
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -27461,6 +33060,10 @@ class ZoneResponse(AbstractModel):
 
     @property
     def Limit(self):
+        """分页limit
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -27469,6 +33072,10 @@ class ZoneResponse(AbstractModel):
 
     @property
     def ForceCheckTag(self):
+        """是否必须录入tag
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
         return self._ForceCheckTag
 
     @ForceCheckTag.setter

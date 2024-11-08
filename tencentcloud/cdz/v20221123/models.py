@@ -37,6 +37,10 @@ class CloudDedicatedZoneHostsInfo(AbstractModel):
 
     @property
     def HostUuid(self):
+        """Host的唯一标识uuid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._HostUuid
 
     @HostUuid.setter
@@ -45,6 +49,10 @@ class CloudDedicatedZoneHostsInfo(AbstractModel):
 
     @property
     def InstancesInfo(self):
+        """实例名称数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
         return self._InstancesInfo
 
     @InstancesInfo.setter
@@ -106,6 +114,9 @@ class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
 
     @property
     def Item(self):
+        """资源统计项名称
+        :rtype: str
+        """
         return self._Item
 
     @Item.setter
@@ -114,6 +125,9 @@ class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
 
     @property
     def Unit(self):
+        """资源统计项单位
+        :rtype: str
+        """
         return self._Unit
 
     @Unit.setter
@@ -122,6 +136,9 @@ class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
 
     @property
     def Total(self):
+        """资源总量
+        :rtype: str
+        """
         return self._Total
 
     @Total.setter
@@ -130,6 +147,9 @@ class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
 
     @property
     def Usage(self):
+        """已用资源
+        :rtype: str
+        """
         return self._Usage
 
     @Usage.setter
@@ -138,6 +158,9 @@ class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
 
     @property
     def UsageRate(self):
+        """已用资源占比
+        :rtype: str
+        """
         return self._UsageRate
 
     @UsageRate.setter
@@ -146,6 +169,9 @@ class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
 
     @property
     def Remain(self):
+        """剩余资源
+        :rtype: str
+        """
         return self._Remain
 
     @Remain.setter
@@ -154,6 +180,9 @@ class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
 
     @property
     def RemainRate(self):
+        """剩余资源占比
+        :rtype: str
+        """
         return self._RemainRate
 
     @RemainRate.setter
@@ -162,6 +191,9 @@ class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
 
     @property
     def ThisMondayUsageRate(self):
+        """本周一零点资源使用率
+        :rtype: str
+        """
         return self._ThisMondayUsageRate
 
     @ThisMondayUsageRate.setter
@@ -170,6 +202,9 @@ class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
 
     @property
     def ThisMondayUsageGrowthRate(self):
+        """本周资源增长比例
+        :rtype: str
+        """
         return self._ThisMondayUsageGrowthRate
 
     @ThisMondayUsageGrowthRate.setter
@@ -178,6 +213,9 @@ class CloudDedicatedZoneResourceStatisticsInfo(AbstractModel):
 
     @property
     def LastMondayUsageGrowthRate(self):
+        """上周资源增长比例
+        :rtype: str
+        """
         return self._LastMondayUsageGrowthRate
 
     @LastMondayUsageGrowthRate.setter
@@ -226,6 +264,9 @@ class CloudDedicatedZoneResourceSummaryInfo(AbstractModel):
 
     @property
     def ProductName(self):
+        """产品名称
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -234,6 +275,9 @@ class CloudDedicatedZoneResourceSummaryInfo(AbstractModel):
 
     @property
     def SubProductName(self):
+        """子产品名称
+        :rtype: str
+        """
         return self._SubProductName
 
     @SubProductName.setter
@@ -242,6 +286,9 @@ class CloudDedicatedZoneResourceSummaryInfo(AbstractModel):
 
     @property
     def Statistics(self):
+        """资源统计详情
+        :rtype: list of CloudDedicatedZoneResourceStatisticsInfo
+        """
         return self._Statistics
 
     @Statistics.setter
@@ -294,6 +341,9 @@ class DescribeCloudDedicatedZoneHostsRequest(AbstractModel):
 
     @property
     def CloudDedicatedZoneID(self):
+        """专属可用区ID 
+        :rtype: str
+        """
         return self._CloudDedicatedZoneID
 
     @CloudDedicatedZoneID.setter
@@ -302,6 +352,9 @@ class DescribeCloudDedicatedZoneHostsRequest(AbstractModel):
 
     @property
     def HostUuids(self):
+        """一个或多个Host面的CVM实例信息。最大支持查询100台Host。
+        :rtype: list of str
+        """
         return self._HostUuids
 
     @HostUuids.setter
@@ -310,6 +363,9 @@ class DescribeCloudDedicatedZoneHostsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """查询一个实例或者多个实例所在的Host上面的CVM实例信息。最大支持查询100台实例。
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -318,6 +374,9 @@ class DescribeCloudDedicatedZoneHostsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -326,6 +385,9 @@ class DescribeCloudDedicatedZoneHostsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -366,6 +428,9 @@ class DescribeCloudDedicatedZoneHostsResponse(AbstractModel):
 
     @property
     def CloudDedicatedZoneHostsInfoSet(self):
+        """返回Host和Host上部署的实例信息之间的关系
+        :rtype: list of CloudDedicatedZoneHostsInfo
+        """
         return self._CloudDedicatedZoneHostsInfoSet
 
     @CloudDedicatedZoneHostsInfoSet.setter
@@ -374,6 +439,9 @@ class DescribeCloudDedicatedZoneHostsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -405,6 +473,9 @@ class DescribeCloudDedicatedZoneResourceSummaryRequest(AbstractModel):
 
     @property
     def CdzId(self):
+        """专属可用区唯一标识
+        :rtype: str
+        """
         return self._CdzId
 
     @CdzId.setter
@@ -442,6 +513,10 @@ class DescribeCloudDedicatedZoneResourceSummaryResponse(AbstractModel):
 
     @property
     def ResourceSummarySet(self):
+        """资源水位详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CloudDedicatedZoneResourceSummaryInfo
+        """
         return self._ResourceSummarySet
 
     @ResourceSummarySet.setter
@@ -450,6 +525,9 @@ class DescribeCloudDedicatedZoneResourceSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

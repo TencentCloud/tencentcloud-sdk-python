@@ -35,6 +35,9 @@ class Device(AbstractModel):
 
     @property
     def DeviceId(self):
+        """业务入参id
+        :rtype: str
+        """
         return self._DeviceId
 
     @DeviceId.setter
@@ -43,6 +46,9 @@ class Device(AbstractModel):
 
     @property
     def DeviceType(self):
+        """业务入参类型
+        :rtype: int
+        """
         return self._DeviceType
 
     @DeviceType.setter
@@ -86,6 +92,9 @@ class InputBusinessEncryptData(AbstractModel):
 
     @property
     def EncryptMethod(self):
+        """加密方式；0：AES;1:DES
+        :rtype: int
+        """
         return self._EncryptMethod
 
     @EncryptMethod.setter
@@ -94,6 +103,9 @@ class InputBusinessEncryptData(AbstractModel):
 
     @property
     def EncryptData(self):
+        """业务数据加密字符串
+        :rtype: str
+        """
         return self._EncryptData
 
     @EncryptData.setter
@@ -102,6 +114,9 @@ class InputBusinessEncryptData(AbstractModel):
 
     @property
     def EncryptMode(self):
+        """加密模式；0：ECB,1:CBC;2:CTR;3:CFB;4:OFB
+        :rtype: int
+        """
         return self._EncryptMode
 
     @EncryptMode.setter
@@ -110,6 +125,9 @@ class InputBusinessEncryptData(AbstractModel):
 
     @property
     def PaddingType(self):
+        """填充模式;0:ZERO ;1:PKCS5;3:PKCS7
+        :rtype: int
+        """
         return self._PaddingType
 
     @PaddingType.setter
@@ -263,6 +281,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def ModelIdList(self):
+        """模型ID列表
+        :rtype: list of int
+        """
         return self._ModelIdList
 
     @ModelIdList.setter
@@ -271,6 +292,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def Uid(self):
+        """设备ID，AccountType指定的类型
+        :rtype: str
+        """
         return self._Uid
 
     @Uid.setter
@@ -279,6 +303,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def AccountType(self):
+        """设备号类型，1.imei 2.imeiMd5（小写后转MD5转小写）3.idfa， 4.idfaMd5（大写后转MD5转小写），5.手机号,256.其它
+        :rtype: int
+        """
         return self._AccountType
 
     @AccountType.setter
@@ -287,6 +314,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def Ip(self):
+        """用户IP
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -295,6 +325,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def Os(self):
+        """操作系统类型(unknown，android，ios，windows)
+        :rtype: str
+        """
         return self._Os
 
     @Os.setter
@@ -303,6 +336,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def Osv(self):
+        """操作系统版本
+        :rtype: str
+        """
         return self._Osv
 
     @Osv.setter
@@ -311,6 +347,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def Lat(self):
+        """纬度
+        :rtype: str
+        """
         return self._Lat
 
     @Lat.setter
@@ -319,6 +358,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def Lon(self):
+        """经度
+        :rtype: str
+        """
         return self._Lon
 
     @Lon.setter
@@ -327,6 +369,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def DeviceModel(self):
+        """设备型号(MI 6)
+        :rtype: str
+        """
         return self._DeviceModel
 
     @DeviceModel.setter
@@ -335,6 +380,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def BidFloor(self):
+        """竞价底价
+        :rtype: int
+        """
         return self._BidFloor
 
     @BidFloor.setter
@@ -343,6 +391,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def Age(self):
+        """年龄
+        :rtype: int
+        """
         return self._Age
 
     @Age.setter
@@ -351,6 +402,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def Gender(self):
+        """性别(1.MALE 2.FEMALE)
+        :rtype: int
+        """
         return self._Gender
 
     @Gender.setter
@@ -359,6 +413,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def Location(self):
+        """用户地址
+        :rtype: str
+        """
         return self._Location
 
     @Location.setter
@@ -367,6 +424,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def DeliveryMode(self):
+        """投放模式（0=PDB，1=PD，2=RTB，10=其他）
+        :rtype: int
+        """
         return self._DeliveryMode
 
     @DeliveryMode.setter
@@ -375,6 +435,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def AdvertisingType(self):
+        """广告位类型<br />（0=前贴片，1=开屏广告，2=网页头部广告、3=网页中部广告、4=网页底部广告、5=悬浮广告、10=其它）
+        :rtype: int
+        """
         return self._AdvertisingType
 
     @AdvertisingType.setter
@@ -383,6 +446,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def Mac(self):
+        """mac地址，建议提供
+        :rtype: str
+        """
         return self._Mac
 
     @Mac.setter
@@ -391,6 +457,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def Phone(self):
+        """电话号码
+        :rtype: str
+        """
         return self._Phone
 
     @Phone.setter
@@ -399,6 +468,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def Ua(self):
+        """浏览器类型
+        :rtype: str
+        """
         return self._Ua
 
     @Ua.setter
@@ -407,6 +479,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def App(self):
+        """客户端应用
+        :rtype: str
+        """
         return self._App
 
     @App.setter
@@ -415,6 +490,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def Package(self):
+        """应用包名
+        :rtype: str
+        """
         return self._Package
 
     @Package.setter
@@ -423,6 +501,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def Maker(self):
+        """设备制造商
+        :rtype: str
+        """
         return self._Maker
 
     @Maker.setter
@@ -431,6 +512,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def DeviceType(self):
+        """设备类型（PHONE,TABLET）
+        :rtype: str
+        """
         return self._DeviceType
 
     @DeviceType.setter
@@ -439,6 +523,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def AccessMode(self):
+        """入网方式(wifi,4g,3g,2g)
+        :rtype: str
+        """
         return self._AccessMode
 
     @AccessMode.setter
@@ -447,6 +534,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def Sp(self):
+        """运营商(1.移动 2.联通 3.电信等)
+        :rtype: int
+        """
         return self._Sp
 
     @Sp.setter
@@ -455,6 +545,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def DeviceW(self):
+        """设备屏幕分辨率宽度像素数
+        :rtype: int
+        """
         return self._DeviceW
 
     @DeviceW.setter
@@ -463,6 +556,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def DeviceH(self):
+        """设备屏幕分辨率高度像素数
+        :rtype: int
+        """
         return self._DeviceH
 
     @DeviceH.setter
@@ -471,6 +567,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def FullScreen(self):
+        """是否全屏插广告(0-否，1-是)
+        :rtype: int
+        """
         return self._FullScreen
 
     @FullScreen.setter
@@ -479,6 +578,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def ImpBannerW(self):
+        """广告位宽度
+        :rtype: int
+        """
         return self._ImpBannerW
 
     @ImpBannerW.setter
@@ -487,6 +589,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def ImpBannerH(self):
+        """广告位高度
+        :rtype: int
+        """
         return self._ImpBannerH
 
     @ImpBannerH.setter
@@ -495,6 +600,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def Url(self):
+        """网址
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -503,6 +611,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def Context(self):
+        """上下文信息
+        :rtype: str
+        """
         return self._Context
 
     @Context.setter
@@ -511,6 +622,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def Channel(self):
+        """渠道
+        :rtype: str
+        """
         return self._Channel
 
     @Channel.setter
@@ -519,6 +633,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def ReqId(self):
+        """请求ID
+        :rtype: str
+        """
         return self._ReqId
 
     @ReqId.setter
@@ -527,6 +644,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def ReqMd5(self):
+        """请求ID的md5值
+        :rtype: str
+        """
         return self._ReqMd5
 
     @ReqMd5.setter
@@ -535,6 +655,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def AdType(self):
+        """ad_type
+        :rtype: int
+        """
         return self._AdType
 
     @AdType.setter
@@ -543,6 +666,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def AppName(self):
+        """app名称
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -551,6 +677,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def AppVer(self):
+        """app版本描述
+        :rtype: str
+        """
         return self._AppVer
 
     @AppVer.setter
@@ -559,6 +688,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def ReqType(self):
+        """竞价模式1：rtb 2:pd
+        :rtype: int
+        """
         return self._ReqType
 
     @ReqType.setter
@@ -567,6 +699,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def IsAuthorized(self):
+        """用户是否授权,1为授权，0为未授权
+        :rtype: int
+        """
         return self._IsAuthorized
 
     @IsAuthorized.setter
@@ -575,6 +710,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     @property
     def DeviceList(self):
+        """设备信息
+        :rtype: list of Device
+        """
         return self._DeviceList
 
     @DeviceList.setter
@@ -658,6 +796,9 @@ class ManagePortraitRiskInput(AbstractModel):
 
     @property
     def PostTime(self):
+        """请求时间戳秒
+        :rtype: int
+        """
         return self._PostTime
 
     @PostTime.setter
@@ -666,6 +807,9 @@ class ManagePortraitRiskInput(AbstractModel):
 
     @property
     def UserIp(self):
+        """用户公网ip（仅支持IPv4）
+        :rtype: str
+        """
         return self._UserIp
 
     @UserIp.setter
@@ -674,6 +818,9 @@ class ManagePortraitRiskInput(AbstractModel):
 
     @property
     def Channel(self):
+        """渠道号
+        :rtype: int
+        """
         return self._Channel
 
     @Channel.setter
@@ -717,6 +864,9 @@ class ManagePortraitRiskOutput(AbstractModel):
 
     @property
     def Code(self):
+        """返回码（0，成功，其他失败）
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -725,6 +875,10 @@ class ManagePortraitRiskOutput(AbstractModel):
 
     @property
     def Message(self):
+        """返回码对应的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -733,6 +887,10 @@ class ManagePortraitRiskOutput(AbstractModel):
 
     @property
     def Value(self):
+        """结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.taf.v20200210.models.ManagePortraitRiskValueOutput`
+        """
         return self._Value
 
     @Value.setter
@@ -770,6 +928,9 @@ class ManagePortraitRiskRequest(AbstractModel):
 
     @property
     def BusinessSecurityData(self):
+        """业务入参
+        :rtype: :class:`tencentcloud.taf.v20200210.models.ManagePortraitRiskInput`
+        """
         return self._BusinessSecurityData
 
     @BusinessSecurityData.setter
@@ -809,6 +970,10 @@ class ManagePortraitRiskResponse(AbstractModel):
 
     @property
     def Data(self):
+        """业务出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.taf.v20200210.models.ManagePortraitRiskOutput`
+        """
         return self._Data
 
     @Data.setter
@@ -817,6 +982,9 @@ class ManagePortraitRiskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -848,6 +1016,9 @@ class ManagePortraitRiskValueOutput(AbstractModel):
 
     @property
     def UserIp(self):
+        """对应的IP
+        :rtype: str
+        """
         return self._UserIp
 
     @UserIp.setter
@@ -856,6 +1027,9 @@ class ManagePortraitRiskValueOutput(AbstractModel):
 
     @property
     def Level(self):
+        """返回风险等级, 0 - 4，0代表无风险，数值越大，风险越高
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -898,6 +1072,9 @@ class OutputRecognizeTargetAudience(AbstractModel):
 
     @property
     def Code(self):
+        """返回码（0，成功，其他失败）
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -906,6 +1083,10 @@ class OutputRecognizeTargetAudience(AbstractModel):
 
     @property
     def Message(self):
+        """返回码对应的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -914,6 +1095,10 @@ class OutputRecognizeTargetAudience(AbstractModel):
 
     @property
     def Value(self):
+        """返回模型结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OutputRecognizeTargetAudienceValue
+        """
         return self._Value
 
     @Value.setter
@@ -971,6 +1156,10 @@ class OutputRecognizeTargetAudienceValue(AbstractModel):
 
     @property
     def ModelId(self):
+        """模型ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ModelId
 
     @ModelId.setter
@@ -979,6 +1168,10 @@ class OutputRecognizeTargetAudienceValue(AbstractModel):
 
     @property
     def IsFound(self):
+        """是否正常返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._IsFound
 
     @IsFound.setter
@@ -987,6 +1180,10 @@ class OutputRecognizeTargetAudienceValue(AbstractModel):
 
     @property
     def Score(self):
+        """返回分值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
         return self._Score
 
     @Score.setter
@@ -995,6 +1192,10 @@ class OutputRecognizeTargetAudienceValue(AbstractModel):
 
     @property
     def ModelType(self):
+        """模型类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
         return self._ModelType
 
     @ModelType.setter
@@ -1003,6 +1204,10 @@ class OutputRecognizeTargetAudienceValue(AbstractModel):
 
     @property
     def Uid(self):
+        """入参Uid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
         return self._Uid
 
     @Uid.setter
@@ -1040,6 +1245,9 @@ class RecognizeCustomizedAudienceRequest(AbstractModel):
 
     @property
     def BspData(self):
+        """业务入参
+        :rtype: :class:`tencentcloud.taf.v20200210.models.InputRecognizeTargetAudience`
+        """
         return self._BspData
 
     @BspData.setter
@@ -1079,6 +1287,10 @@ class RecognizeCustomizedAudienceResponse(AbstractModel):
 
     @property
     def Data(self):
+        """业务出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.taf.v20200210.models.OutputRecognizeTargetAudience`
+        """
         return self._Data
 
     @Data.setter
@@ -1087,6 +1299,9 @@ class RecognizeCustomizedAudienceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1115,6 +1330,9 @@ class RecognizePreciseTargetAudienceRequest(AbstractModel):
 
     @property
     def BspData(self):
+        """业务数据
+        :rtype: :class:`tencentcloud.taf.v20200210.models.InputRecognizeTargetAudience`
+        """
         return self._BspData
 
     @BspData.setter
@@ -1154,6 +1372,10 @@ class RecognizePreciseTargetAudienceResponse(AbstractModel):
 
     @property
     def Data(self):
+        """回包数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.taf.v20200210.models.OutputRecognizeTargetAudience`
+        """
         return self._Data
 
     @Data.setter
@@ -1162,6 +1384,9 @@ class RecognizePreciseTargetAudienceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1193,6 +1418,9 @@ class RecognizeTargetAudienceRequest(AbstractModel):
 
     @property
     def BspData(self):
+        """业务数据
+        :rtype: :class:`tencentcloud.taf.v20200210.models.InputRecognizeTargetAudience`
+        """
         return self._BspData
 
     @BspData.setter
@@ -1201,6 +1429,9 @@ class RecognizeTargetAudienceRequest(AbstractModel):
 
     @property
     def BusinessEncryptData(self):
+        """业务加密数据
+        :rtype: :class:`tencentcloud.taf.v20200210.models.InputBusinessEncryptData`
+        """
         return self._BusinessEncryptData
 
     @BusinessEncryptData.setter
@@ -1243,6 +1474,10 @@ class RecognizeTargetAudienceResponse(AbstractModel):
 
     @property
     def Data(self):
+        """回包数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.taf.v20200210.models.OutputRecognizeTargetAudience`
+        """
         return self._Data
 
     @Data.setter
@@ -1251,6 +1486,9 @@ class RecognizeTargetAudienceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

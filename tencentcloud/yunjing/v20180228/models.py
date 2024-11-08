@@ -58,6 +58,9 @@ class Account(AbstractModel):
 
     @property
     def Id(self):
+        """唯一ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -66,6 +69,9 @@ class Account(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一Uuid
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -74,6 +80,9 @@ class Account(AbstractModel):
 
     @property
     def MachineIp(self):
+        """主机内网IP。
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -82,6 +91,9 @@ class Account(AbstractModel):
 
     @property
     def MachineName(self):
+        """主机名称。
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -90,6 +102,9 @@ class Account(AbstractModel):
 
     @property
     def Username(self):
+        """帐号名。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -98,6 +113,9 @@ class Account(AbstractModel):
 
     @property
     def Groups(self):
+        """帐号所属组。
+        :rtype: str
+        """
         return self._Groups
 
     @Groups.setter
@@ -106,6 +124,11 @@ class Account(AbstractModel):
 
     @property
     def Privilege(self):
+        """帐号类型。
+<li>ORDINARY：普通帐号</li>
+<li>SUPPER：超级管理员帐号</li>
+        :rtype: str
+        """
         return self._Privilege
 
     @Privilege.setter
@@ -114,6 +137,9 @@ class Account(AbstractModel):
 
     @property
     def AccountCreateTime(self):
+        """帐号创建时间。
+        :rtype: str
+        """
         return self._AccountCreateTime
 
     @AccountCreateTime.setter
@@ -122,6 +148,9 @@ class Account(AbstractModel):
 
     @property
     def LastLoginTime(self):
+        """帐号最后登录时间。
+        :rtype: str
+        """
         return self._LastLoginTime
 
     @LastLoginTime.setter
@@ -166,6 +195,9 @@ class AccountStatistics(AbstractModel):
 
     @property
     def Username(self):
+        """用户名。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -174,6 +206,9 @@ class AccountStatistics(AbstractModel):
 
     @property
     def MachineNum(self):
+        """主机数量。
+        :rtype: int
+        """
         return self._MachineNum
 
     @MachineNum.setter
@@ -208,6 +243,9 @@ class AddLoginWhiteListRequest(AbstractModel):
 
     @property
     def Rules(self):
+        """白名单规则
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.LoginWhiteListsRule`
+        """
         return self._Rules
 
     @Rules.setter
@@ -243,6 +281,9 @@ class AddLoginWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -277,6 +318,9 @@ class AddMachineTagRequest(AbstractModel):
 
     @property
     def Quuid(self):
+        """云服务器ID
+        :rtype: str
+        """
         return self._Quuid
 
     @Quuid.setter
@@ -285,6 +329,9 @@ class AddMachineTagRequest(AbstractModel):
 
     @property
     def TagId(self):
+        """标签ID
+        :rtype: int
+        """
         return self._TagId
 
     @TagId.setter
@@ -293,6 +340,9 @@ class AddMachineTagRequest(AbstractModel):
 
     @property
     def MRegion(self):
+        """云服务器地区
+        :rtype: str
+        """
         return self._MRegion
 
     @MRegion.setter
@@ -301,6 +351,9 @@ class AddMachineTagRequest(AbstractModel):
 
     @property
     def MArea(self):
+        """云服务器类型(CVM|BM)
+        :rtype: str
+        """
         return self._MArea
 
     @MArea.setter
@@ -337,6 +390,9 @@ class AddMachineTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -389,6 +445,9 @@ class AgentVul(AbstractModel):
 
     @property
     def Id(self):
+        """漏洞ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -397,6 +456,9 @@ class AgentVul(AbstractModel):
 
     @property
     def MachineIp(self):
+        """主机IP。
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -405,6 +467,9 @@ class AgentVul(AbstractModel):
 
     @property
     def VulName(self):
+        """漏洞名称。
+        :rtype: str
+        """
         return self._VulName
 
     @VulName.setter
@@ -413,6 +478,13 @@ class AgentVul(AbstractModel):
 
     @property
     def VulLevel(self):
+        """漏洞危害等级。
+<li>HIGH：高危</li>
+<li>MIDDLE：中危</li>
+<li>LOW：低危</li>
+<li>NOTICE：提示</li>
+        :rtype: str
+        """
         return self._VulLevel
 
     @VulLevel.setter
@@ -421,6 +493,9 @@ class AgentVul(AbstractModel):
 
     @property
     def LastScanTime(self):
+        """最后扫描时间。
+        :rtype: str
+        """
         return self._LastScanTime
 
     @LastScanTime.setter
@@ -429,6 +504,9 @@ class AgentVul(AbstractModel):
 
     @property
     def Description(self):
+        """漏洞描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -437,6 +515,9 @@ class AgentVul(AbstractModel):
 
     @property
     def VulId(self):
+        """漏洞种类ID。
+        :rtype: int
+        """
         return self._VulId
 
     @VulId.setter
@@ -445,6 +526,11 @@ class AgentVul(AbstractModel):
 
     @property
     def VulStatus(self):
+        """漏洞状态。
+<li>UN_OPERATED : 待处理</li>
+<li>FIXED : 已修复</li>
+        :rtype: str
+        """
         return self._VulStatus
 
     @VulStatus.setter
@@ -521,6 +607,9 @@ class BashEvent(AbstractModel):
 
     @property
     def Id(self):
+        """ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -529,6 +618,9 @@ class BashEvent(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜ID
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -537,6 +629,9 @@ class BashEvent(AbstractModel):
 
     @property
     def Quuid(self):
+        """主机ID
+        :rtype: str
+        """
         return self._Quuid
 
     @Quuid.setter
@@ -545,6 +640,9 @@ class BashEvent(AbstractModel):
 
     @property
     def Hostip(self):
+        """主机内网IP
+        :rtype: str
+        """
         return self._Hostip
 
     @Hostip.setter
@@ -553,6 +651,9 @@ class BashEvent(AbstractModel):
 
     @property
     def User(self):
+        """执行用户名
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -561,6 +662,9 @@ class BashEvent(AbstractModel):
 
     @property
     def Platform(self):
+        """平台类型
+        :rtype: int
+        """
         return self._Platform
 
     @Platform.setter
@@ -569,6 +673,9 @@ class BashEvent(AbstractModel):
 
     @property
     def BashCmd(self):
+        """执行命令
+        :rtype: str
+        """
         return self._BashCmd
 
     @BashCmd.setter
@@ -577,6 +684,9 @@ class BashEvent(AbstractModel):
 
     @property
     def RuleId(self):
+        """规则ID
+        :rtype: int
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -585,6 +695,9 @@ class BashEvent(AbstractModel):
 
     @property
     def RuleName(self):
+        """规则名称
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -593,6 +706,9 @@ class BashEvent(AbstractModel):
 
     @property
     def RuleLevel(self):
+        """规则等级
+        :rtype: int
+        """
         return self._RuleLevel
 
     @RuleLevel.setter
@@ -601,6 +717,9 @@ class BashEvent(AbstractModel):
 
     @property
     def Status(self):
+        """处理状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -609,6 +728,9 @@ class BashEvent(AbstractModel):
 
     @property
     def CreateTime(self):
+        """发生时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -617,6 +739,9 @@ class BashEvent(AbstractModel):
 
     @property
     def MachineName(self):
+        """主机名
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -695,6 +820,9 @@ class BashRule(AbstractModel):
 
     @property
     def Id(self):
+        """规则ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -703,6 +831,9 @@ class BashRule(AbstractModel):
 
     @property
     def Uuid(self):
+        """客户端ID
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -711,6 +842,9 @@ class BashRule(AbstractModel):
 
     @property
     def Name(self):
+        """规则名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -719,6 +853,9 @@ class BashRule(AbstractModel):
 
     @property
     def Level(self):
+        """危险等级(1: 高危 2:中危 3: 低危)
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -727,6 +864,9 @@ class BashRule(AbstractModel):
 
     @property
     def Rule(self):
+        """正则表达式
+        :rtype: str
+        """
         return self._Rule
 
     @Rule.setter
@@ -735,6 +875,9 @@ class BashRule(AbstractModel):
 
     @property
     def Decription(self):
+        """规则描述
+        :rtype: str
+        """
         return self._Decription
 
     @Decription.setter
@@ -743,6 +886,9 @@ class BashRule(AbstractModel):
 
     @property
     def Operator(self):
+        """操作人
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -751,6 +897,9 @@ class BashRule(AbstractModel):
 
     @property
     def IsGlobal(self):
+        """是否全局规则
+        :rtype: int
+        """
         return self._IsGlobal
 
     @IsGlobal.setter
@@ -759,6 +908,9 @@ class BashRule(AbstractModel):
 
     @property
     def Status(self):
+        """状态 (0: 有效 1: 无效)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -767,6 +919,9 @@ class BashRule(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -775,6 +930,9 @@ class BashRule(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """修改时间
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -783,6 +941,9 @@ class BashRule(AbstractModel):
 
     @property
     def Hostip(self):
+        """主机IP
+        :rtype: str
+        """
         return self._Hostip
 
     @Hostip.setter
@@ -872,6 +1033,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def Id(self):
+        """事件ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -880,6 +1044,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def MachineIp(self):
+        """主机IP。
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -888,6 +1055,12 @@ class BruteAttack(AbstractModel):
 
     @property
     def Status(self):
+        """破解事件状态
+<li>BRUTEATTACK_FAIL_ACCOUNT： 暴力破解事件-失败(存在帐号)  </li>
+<li>BRUTEATTACK_FAIL_NOACCOUNT：暴力破解事件-失败(帐号不存在)</li>
+<li>BRUTEATTACK_SUCCESS：暴力破解事件-成功</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -896,6 +1069,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def UserName(self):
+        """用户名称。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -904,6 +1080,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def City(self):
+        """城市ID。
+        :rtype: int
+        """
         return self._City
 
     @City.setter
@@ -912,6 +1091,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def Country(self):
+        """国家ID。
+        :rtype: int
+        """
         return self._Country
 
     @Country.setter
@@ -920,6 +1102,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def Province(self):
+        """省份ID。
+        :rtype: int
+        """
         return self._Province
 
     @Province.setter
@@ -928,6 +1113,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def SrcIp(self):
+        """来源IP。
+        :rtype: str
+        """
         return self._SrcIp
 
     @SrcIp.setter
@@ -936,6 +1124,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def Count(self):
+        """尝试破解次数。
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -944,6 +1135,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def CreateTime(self):
+        """发生时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -952,6 +1146,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def MachineName(self):
+        """主机名称。
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -960,6 +1157,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一标识UUID。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -968,6 +1168,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def IsProVersion(self):
+        """是否专业版。
+        :rtype: bool
+        """
         return self._IsProVersion
 
     @IsProVersion.setter
@@ -976,6 +1179,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def BanStatus(self):
+        """阻断状态。
+        :rtype: str
+        """
         return self._BanStatus
 
     @BanStatus.setter
@@ -984,6 +1190,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def Quuid(self):
+        """机器UUID
+        :rtype: str
+        """
         return self._Quuid
 
     @Quuid.setter
@@ -1039,6 +1248,9 @@ class ChargePrepaid(AbstractModel):
 
     @property
     def Period(self):
+        """购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -1047,6 +1259,14 @@ class ChargePrepaid(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """自动续费标识。取值范围：
+<li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
+<li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li>
+<li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
+
+默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -1082,6 +1302,10 @@ class CloseProVersionRequest(AbstractModel):
 
     @property
     def Quuid(self):
+        """主机唯一标识Uuid。
+黑石的InstanceId，CVM的Uuid
+        :rtype: str
+        """
         return self._Quuid
 
     @Quuid.setter
@@ -1115,6 +1339,9 @@ class CloseProVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1163,6 +1390,9 @@ class Component(AbstractModel):
 
     @property
     def Id(self):
+        """唯一ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -1171,6 +1401,9 @@ class Component(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一Uuid。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -1179,6 +1412,9 @@ class Component(AbstractModel):
 
     @property
     def MachineIp(self):
+        """主机内网IP。
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -1187,6 +1423,9 @@ class Component(AbstractModel):
 
     @property
     def MachineName(self):
+        """主机名。
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -1195,6 +1434,9 @@ class Component(AbstractModel):
 
     @property
     def ComponentVersion(self):
+        """组件版本号。
+        :rtype: str
+        """
         return self._ComponentVersion
 
     @ComponentVersion.setter
@@ -1203,6 +1445,11 @@ class Component(AbstractModel):
 
     @property
     def ComponentType(self):
+        """组件类型。
+<li>SYSTEM：系统组件</li>
+<li>WEB：Web组件</li>
+        :rtype: str
+        """
         return self._ComponentType
 
     @ComponentType.setter
@@ -1211,6 +1458,9 @@ class Component(AbstractModel):
 
     @property
     def ComponentName(self):
+        """组件名称。
+        :rtype: str
+        """
         return self._ComponentName
 
     @ComponentName.setter
@@ -1219,6 +1469,9 @@ class Component(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """组件检测更新时间。
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -1273,6 +1526,9 @@ class ComponentStatistics(AbstractModel):
 
     @property
     def Id(self):
+        """组件ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -1281,6 +1537,9 @@ class ComponentStatistics(AbstractModel):
 
     @property
     def MachineNum(self):
+        """主机数量。
+        :rtype: int
+        """
         return self._MachineNum
 
     @MachineNum.setter
@@ -1289,6 +1548,9 @@ class ComponentStatistics(AbstractModel):
 
     @property
     def ComponentName(self):
+        """组件名称。
+        :rtype: str
+        """
         return self._ComponentName
 
     @ComponentName.setter
@@ -1297,6 +1559,11 @@ class ComponentStatistics(AbstractModel):
 
     @property
     def ComponentType(self):
+        """组件类型。
+<li>WEB：Web组件</li>
+<li>SYSTEM：系统组件</li>
+        :rtype: str
+        """
         return self._ComponentType
 
     @ComponentType.setter
@@ -1305,6 +1572,9 @@ class ComponentStatistics(AbstractModel):
 
     @property
     def Description(self):
+        """组件描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1363,6 +1633,9 @@ class CreateBaselineStrategyRequest(AbstractModel):
 
     @property
     def StrategyName(self):
+        """策略名称
+        :rtype: str
+        """
         return self._StrategyName
 
     @StrategyName.setter
@@ -1371,6 +1644,9 @@ class CreateBaselineStrategyRequest(AbstractModel):
 
     @property
     def ScanCycle(self):
+        """检测周期, 表示每隔多少天进行检测.示例: 2, 表示每2天进行检测一次.
+        :rtype: int
+        """
         return self._ScanCycle
 
     @ScanCycle.setter
@@ -1379,6 +1655,9 @@ class CreateBaselineStrategyRequest(AbstractModel):
 
     @property
     def ScanAt(self):
+        """定期检测时间，该时间下发扫描. 示例:“22:00”, 表示在22:00下发检测
+        :rtype: str
+        """
         return self._ScanAt
 
     @ScanAt.setter
@@ -1387,6 +1666,9 @@ class CreateBaselineStrategyRequest(AbstractModel):
 
     @property
     def CategoryIds(self):
+        """该策略下选择的基线id数组. 示例: [1,3,5,7]
+        :rtype: list of int non-negative
+        """
         return self._CategoryIds
 
     @CategoryIds.setter
@@ -1395,6 +1677,9 @@ class CreateBaselineStrategyRequest(AbstractModel):
 
     @property
     def IsGlobal(self):
+        """扫描范围是否全部服务器, 1:是  0:否, 为1则为全部专业版主机
+        :rtype: int
+        """
         return self._IsGlobal
 
     @IsGlobal.setter
@@ -1403,6 +1688,9 @@ class CreateBaselineStrategyRequest(AbstractModel):
 
     @property
     def MachineType(self):
+        """云主机类型：“CVM”：虚拟主机，"BMS"：裸金属，"ECM"：边缘计算主机
+        :rtype: str
+        """
         return self._MachineType
 
     @MachineType.setter
@@ -1411,6 +1699,9 @@ class CreateBaselineStrategyRequest(AbstractModel):
 
     @property
     def RegionCode(self):
+        """主机地域. 示例: "ap-bj"
+        :rtype: str
+        """
         return self._RegionCode
 
     @RegionCode.setter
@@ -1419,6 +1710,9 @@ class CreateBaselineStrategyRequest(AbstractModel):
 
     @property
     def Quuids(self):
+        """主机id数组. 示例: ["quuid1","quuid2"]
+        :rtype: list of str
+        """
         return self._Quuids
 
     @Quuids.setter
@@ -1459,6 +1753,9 @@ class CreateBaselineStrategyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1484,6 +1781,9 @@ class CreateOpenPortTaskRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一Uuid。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -1517,6 +1817,9 @@ class CreateOpenPortTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1542,6 +1845,9 @@ class CreateProcessTaskRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一Uuid。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -1575,6 +1881,9 @@ class CreateProcessTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1603,6 +1912,9 @@ class CreateUsualLoginPlacesRequest(AbstractModel):
 
     @property
     def Uuids(self):
+        """云镜客户端UUID数组。
+        :rtype: list of str
+        """
         return self._Uuids
 
     @Uuids.setter
@@ -1611,6 +1923,9 @@ class CreateUsualLoginPlacesRequest(AbstractModel):
 
     @property
     def Places(self):
+        """登录地域信息数组。
+        :rtype: list of Place
+        """
         return self._Places
 
     @Places.setter
@@ -1650,6 +1965,9 @@ class CreateUsualLoginPlacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1714,6 +2032,9 @@ class DefendAttackLog(AbstractModel):
 
     @property
     def Id(self):
+        """日志ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -1722,6 +2043,9 @@ class DefendAttackLog(AbstractModel):
 
     @property
     def Uuid(self):
+        """客户端ID
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -1730,6 +2054,9 @@ class DefendAttackLog(AbstractModel):
 
     @property
     def SrcIp(self):
+        """来源IP
+        :rtype: str
+        """
         return self._SrcIp
 
     @SrcIp.setter
@@ -1738,6 +2065,9 @@ class DefendAttackLog(AbstractModel):
 
     @property
     def SrcPort(self):
+        """来源端口
+        :rtype: int
+        """
         return self._SrcPort
 
     @SrcPort.setter
@@ -1746,6 +2076,9 @@ class DefendAttackLog(AbstractModel):
 
     @property
     def HttpMethod(self):
+        """攻击方式
+        :rtype: str
+        """
         return self._HttpMethod
 
     @HttpMethod.setter
@@ -1754,6 +2087,9 @@ class DefendAttackLog(AbstractModel):
 
     @property
     def HttpCgi(self):
+        """攻击描述
+        :rtype: str
+        """
         return self._HttpCgi
 
     @HttpCgi.setter
@@ -1762,6 +2098,9 @@ class DefendAttackLog(AbstractModel):
 
     @property
     def HttpParam(self):
+        """攻击参数
+        :rtype: str
+        """
         return self._HttpParam
 
     @HttpParam.setter
@@ -1770,6 +2109,9 @@ class DefendAttackLog(AbstractModel):
 
     @property
     def VulType(self):
+        """威胁类型
+        :rtype: str
+        """
         return self._VulType
 
     @VulType.setter
@@ -1778,6 +2120,9 @@ class DefendAttackLog(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """攻击时间
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -1786,6 +2131,9 @@ class DefendAttackLog(AbstractModel):
 
     @property
     def MachineIp(self):
+        """目标服务器IP
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -1794,6 +2142,9 @@ class DefendAttackLog(AbstractModel):
 
     @property
     def MachineName(self):
+        """目标服务器名称
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -1802,6 +2153,9 @@ class DefendAttackLog(AbstractModel):
 
     @property
     def DstIp(self):
+        """目标IP
+        :rtype: str
+        """
         return self._DstIp
 
     @DstIp.setter
@@ -1810,6 +2164,9 @@ class DefendAttackLog(AbstractModel):
 
     @property
     def DstPort(self):
+        """目标端口
+        :rtype: int
+        """
         return self._DstPort
 
     @DstPort.setter
@@ -1818,6 +2175,9 @@ class DefendAttackLog(AbstractModel):
 
     @property
     def HttpContent(self):
+        """攻击内容
+        :rtype: str
+        """
         return self._HttpContent
 
     @HttpContent.setter
@@ -1864,6 +2224,9 @@ class DeleteAttackLogsRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """日志ID数组，最大100条。
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -1897,6 +2260,9 @@ class DeleteAttackLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1922,6 +2288,9 @@ class DeleteBashEventsRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """ID数组，最大100条。
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -1955,6 +2324,9 @@ class DeleteBashEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1980,6 +2352,9 @@ class DeleteBashRulesRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """ID数组，最大100条。
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -2013,6 +2388,9 @@ class DeleteBashRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2038,6 +2416,9 @@ class DeleteBruteAttacksRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """暴力破解事件Id数组。
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -2071,6 +2452,9 @@ class DeleteBruteAttacksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2096,6 +2480,9 @@ class DeleteLoginWhiteListRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """白名单ID
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -2129,6 +2516,9 @@ class DeleteLoginWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2154,6 +2544,9 @@ class DeleteMachineRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端Uuid。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -2187,6 +2580,9 @@ class DeleteMachineResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2212,6 +2608,9 @@ class DeleteMachineTagRequest(AbstractModel):
 
     @property
     def Rid(self):
+        """关联的标签ID
+        :rtype: int
+        """
         return self._Rid
 
     @Rid.setter
@@ -2245,6 +2644,9 @@ class DeleteMachineTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2270,6 +2672,9 @@ class DeleteMaliciousRequestsRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """恶意请求记录ID数组，最大100条。
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -2303,6 +2708,9 @@ class DeleteMaliciousRequestsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2328,6 +2736,9 @@ class DeleteMalwaresRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """木马记录ID数组
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -2361,6 +2772,9 @@ class DeleteMalwaresResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2386,6 +2800,9 @@ class DeleteNonlocalLoginPlacesRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """异地登录事件ID数组。
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -2419,6 +2836,9 @@ class DeleteNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2444,6 +2864,9 @@ class DeletePrivilegeEventsRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """ID数组，最大100条。
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -2477,6 +2900,9 @@ class DeletePrivilegeEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2502,6 +2928,9 @@ class DeletePrivilegeRulesRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """ID数组，最大100条。
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -2535,6 +2964,9 @@ class DeletePrivilegeRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2560,6 +2992,9 @@ class DeleteReverseShellEventsRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """ID数组，最大100条。
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -2593,6 +3028,9 @@ class DeleteReverseShellEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2618,6 +3056,9 @@ class DeleteReverseShellRulesRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """ID数组，最大100条。
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -2651,6 +3092,9 @@ class DeleteReverseShellRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2676,6 +3120,9 @@ class DeleteTagsRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """标签ID
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -2709,6 +3156,9 @@ class DeleteTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2737,6 +3187,9 @@ class DeleteUsualLoginPlacesRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端Uuid
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -2745,6 +3198,9 @@ class DeleteUsualLoginPlacesRequest(AbstractModel):
 
     @property
     def CityIds(self):
+        """已添加常用登录地城市ID数组
+        :rtype: list of int non-negative
+        """
         return self._CityIds
 
     @CityIds.setter
@@ -2779,6 +3235,9 @@ class DeleteUsualLoginPlacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2811,6 +3270,9 @@ class DescribeAccountStatisticsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2819,6 +3281,9 @@ class DescribeAccountStatisticsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2827,6 +3292,10 @@ class DescribeAccountStatisticsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>Username - String - 是否必填：否 - 帐号用户名</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2873,6 +3342,9 @@ class DescribeAccountStatisticsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """帐号统计列表记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2881,6 +3353,9 @@ class DescribeAccountStatisticsResponse(AbstractModel):
 
     @property
     def AccountStatistics(self):
+        """帐号统计列表。
+        :rtype: list of AccountStatistics
+        """
         return self._AccountStatistics
 
     @AccountStatistics.setter
@@ -2889,6 +3364,9 @@ class DescribeAccountStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2936,6 +3414,9 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一Uuid。Username和Uuid必填其一，使用Uuid表示，查询该主机下列表信息。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -2944,6 +3425,9 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Username(self):
+        """云镜客户端唯一Uuid。Username和Uuid必填其一，使用Username表示，查询该用户名下列表信息。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -2952,6 +3436,9 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2960,6 +3447,9 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2968,6 +3458,12 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>Username - String - 是否必填：否 - 帐号名</li>
+<li>Privilege - String - 是否必填：否 - 帐号类型（ORDINARY: 普通帐号 | SUPPER: 超级管理员帐号）</li>
+<li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3016,6 +3512,9 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """帐号列表记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3024,6 +3523,9 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def Accounts(self):
+        """帐号数据列表。
+        :rtype: list of Account
+        """
         return self._Accounts
 
     @Accounts.setter
@@ -3032,6 +3534,9 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3080,6 +3585,12 @@ class DescribeAgentVulsRequest(AbstractModel):
 
     @property
     def VulType(self):
+        """漏洞类型。
+<li>WEB: Web应用漏洞</li>
+<li>SYSTEM：系统组件漏洞</li>
+<li>BASELINE：安全基线</li>
+        :rtype: str
+        """
         return self._VulType
 
     @VulType.setter
@@ -3088,6 +3599,9 @@ class DescribeAgentVulsRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """客户端UUID。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -3096,6 +3610,9 @@ class DescribeAgentVulsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3104,6 +3621,9 @@ class DescribeAgentVulsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3112,6 +3632,10 @@ class DescribeAgentVulsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED: 待处理 | FIXED：已修复）
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3160,6 +3684,9 @@ class DescribeAgentVulsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """记录总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3168,6 +3695,9 @@ class DescribeAgentVulsResponse(AbstractModel):
 
     @property
     def AgentVuls(self):
+        """主机漏洞信息
+        :rtype: list of AgentVul
+        """
         return self._AgentVuls
 
     @AgentVuls.setter
@@ -3176,6 +3706,9 @@ class DescribeAgentVulsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3234,6 +3767,11 @@ class DescribeAlarmAttributeResponse(AbstractModel):
 
     @property
     def Offline(self):
+        """防护软件离线告警状态：
+<li>OPEN：告警已开启</li>
+<li>CLOSE： 告警已关闭</li>
+        :rtype: str
+        """
         return self._Offline
 
     @Offline.setter
@@ -3242,6 +3780,11 @@ class DescribeAlarmAttributeResponse(AbstractModel):
 
     @property
     def Malware(self):
+        """发现木马告警状态：
+<li>OPEN：告警已开启</li>
+<li>CLOSE： 告警已关闭</li>
+        :rtype: str
+        """
         return self._Malware
 
     @Malware.setter
@@ -3250,6 +3793,11 @@ class DescribeAlarmAttributeResponse(AbstractModel):
 
     @property
     def NonlocalLogin(self):
+        """发现异地登录告警状态：
+<li>OPEN：告警已开启</li>
+<li>CLOSE： 告警已关闭</li>
+        :rtype: str
+        """
         return self._NonlocalLogin
 
     @NonlocalLogin.setter
@@ -3258,6 +3806,11 @@ class DescribeAlarmAttributeResponse(AbstractModel):
 
     @property
     def CrackSuccess(self):
+        """被暴力破解成功告警状态：
+<li>OPEN：告警已开启</li>
+<li>CLOSE： 告警已关闭</li>
+        :rtype: str
+        """
         return self._CrackSuccess
 
     @CrackSuccess.setter
@@ -3266,6 +3819,9 @@ class DescribeAlarmAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3295,6 +3851,9 @@ class DescribeAttackLogInfoRequest(AbstractModel):
 
     @property
     def Id(self):
+        """日志ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -3376,6 +3935,9 @@ class DescribeAttackLogInfoResponse(AbstractModel):
 
     @property
     def Id(self):
+        """日志ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -3384,6 +3946,9 @@ class DescribeAttackLogInfoResponse(AbstractModel):
 
     @property
     def Quuid(self):
+        """主机ID
+        :rtype: str
+        """
         return self._Quuid
 
     @Quuid.setter
@@ -3392,6 +3957,9 @@ class DescribeAttackLogInfoResponse(AbstractModel):
 
     @property
     def SrcPort(self):
+        """攻击来源端口
+        :rtype: int
+        """
         return self._SrcPort
 
     @SrcPort.setter
@@ -3400,6 +3968,9 @@ class DescribeAttackLogInfoResponse(AbstractModel):
 
     @property
     def SrcIp(self):
+        """攻击来源IP
+        :rtype: str
+        """
         return self._SrcIp
 
     @SrcIp.setter
@@ -3408,6 +3979,9 @@ class DescribeAttackLogInfoResponse(AbstractModel):
 
     @property
     def DstPort(self):
+        """攻击目标端口
+        :rtype: int
+        """
         return self._DstPort
 
     @DstPort.setter
@@ -3416,6 +3990,9 @@ class DescribeAttackLogInfoResponse(AbstractModel):
 
     @property
     def DstIp(self):
+        """攻击目标IP
+        :rtype: str
+        """
         return self._DstIp
 
     @DstIp.setter
@@ -3424,6 +4001,9 @@ class DescribeAttackLogInfoResponse(AbstractModel):
 
     @property
     def HttpMethod(self):
+        """攻击方法
+        :rtype: str
+        """
         return self._HttpMethod
 
     @HttpMethod.setter
@@ -3432,6 +4012,9 @@ class DescribeAttackLogInfoResponse(AbstractModel):
 
     @property
     def HttpHost(self):
+        """攻击目标主机
+        :rtype: str
+        """
         return self._HttpHost
 
     @HttpHost.setter
@@ -3440,6 +4023,9 @@ class DescribeAttackLogInfoResponse(AbstractModel):
 
     @property
     def HttpHead(self):
+        """攻击头信息
+        :rtype: str
+        """
         return self._HttpHead
 
     @HttpHead.setter
@@ -3448,6 +4034,9 @@ class DescribeAttackLogInfoResponse(AbstractModel):
 
     @property
     def HttpUserAgent(self):
+        """攻击者浏览器标识
+        :rtype: str
+        """
         return self._HttpUserAgent
 
     @HttpUserAgent.setter
@@ -3456,6 +4045,9 @@ class DescribeAttackLogInfoResponse(AbstractModel):
 
     @property
     def HttpReferer(self):
+        """请求源
+        :rtype: str
+        """
         return self._HttpReferer
 
     @HttpReferer.setter
@@ -3464,6 +4056,9 @@ class DescribeAttackLogInfoResponse(AbstractModel):
 
     @property
     def VulType(self):
+        """威胁类型
+        :rtype: str
+        """
         return self._VulType
 
     @VulType.setter
@@ -3472,6 +4067,9 @@ class DescribeAttackLogInfoResponse(AbstractModel):
 
     @property
     def HttpCgi(self):
+        """攻击路径
+        :rtype: str
+        """
         return self._HttpCgi
 
     @HttpCgi.setter
@@ -3480,6 +4078,9 @@ class DescribeAttackLogInfoResponse(AbstractModel):
 
     @property
     def HttpParam(self):
+        """攻击参数
+        :rtype: str
+        """
         return self._HttpParam
 
     @HttpParam.setter
@@ -3488,6 +4089,9 @@ class DescribeAttackLogInfoResponse(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """攻击时间
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -3496,6 +4100,9 @@ class DescribeAttackLogInfoResponse(AbstractModel):
 
     @property
     def HttpContent(self):
+        """攻击内容
+        :rtype: str
+        """
         return self._HttpContent
 
     @HttpContent.setter
@@ -3504,6 +4111,9 @@ class DescribeAttackLogInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3560,6 +4170,9 @@ class DescribeAttackLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3568,6 +4181,9 @@ class DescribeAttackLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3576,6 +4192,12 @@ class DescribeAttackLogsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>HttpMethod - String - 是否必填：否 - 攻击方法(POST|GET)</li>
+<li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
+<li>DateRange - String - 是否必填：否 - 时间范围(存储最近3个月的数据)，如最近一个月["2019-11-17", "2019-12-17"]</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3584,6 +4206,9 @@ class DescribeAttackLogsRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """主机安全客户端ID
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -3592,6 +4217,9 @@ class DescribeAttackLogsRequest(AbstractModel):
 
     @property
     def Quuid(self):
+        """云主机机器ID
+        :rtype: str
+        """
         return self._Quuid
 
     @Quuid.setter
@@ -3641,6 +4269,10 @@ class DescribeAttackLogsResponse(AbstractModel):
 
     @property
     def AttackLogs(self):
+        """日志列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DefendAttackLog
+        """
         return self._AttackLogs
 
     @AttackLogs.setter
@@ -3649,6 +4281,9 @@ class DescribeAttackLogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3657,6 +4292,9 @@ class DescribeAttackLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3696,6 +4334,9 @@ class DescribeBashEventsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3704,6 +4345,9 @@ class DescribeBashEventsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3712,6 +4356,10 @@ class DescribeBashEventsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>Keywords - String - 是否必填：否 - 关键词(主机内网IP)</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3758,6 +4406,9 @@ class DescribeBashEventsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3766,6 +4417,9 @@ class DescribeBashEventsResponse(AbstractModel):
 
     @property
     def List(self):
+        """高危命令事件列表
+        :rtype: list of BashEvent
+        """
         return self._List
 
     @List.setter
@@ -3774,6 +4428,9 @@ class DescribeBashEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3816,6 +4473,9 @@ class DescribeBashRulesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """0-系统规则; 1-用户规则
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -3824,6 +4484,9 @@ class DescribeBashRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3832,6 +4495,9 @@ class DescribeBashRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3840,6 +4506,10 @@ class DescribeBashRulesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>Keywords - String - 是否必填：否 - 关键字(规则名称)</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3887,6 +4557,9 @@ class DescribeBashRulesResponse(AbstractModel):
 
     @property
     def List(self):
+        """列表内容
+        :rtype: list of BashRule
+        """
         return self._List
 
     @List.setter
@@ -3895,6 +4568,9 @@ class DescribeBashRulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3903,6 +4579,9 @@ class DescribeBashRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3946,6 +4625,9 @@ class DescribeBruteAttacksRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """客户端唯一Uuid。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -3954,6 +4636,9 @@ class DescribeBruteAttacksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3962,6 +4647,11 @@ class DescribeBruteAttacksRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>Keywords - String - 是否必填：否 -  查询关键字</li>
+<li>Status - String - 是否必填：否 -  查询状态（FAILED：破解失败 |SUCCESS：破解成功）</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3970,6 +4660,9 @@ class DescribeBruteAttacksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4017,6 +4710,9 @@ class DescribeBruteAttacksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """事件数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4025,6 +4721,9 @@ class DescribeBruteAttacksResponse(AbstractModel):
 
     @property
     def BruteAttacks(self):
+        """暴力破解事件列表
+        :rtype: list of BruteAttack
+        """
         return self._BruteAttacks
 
     @BruteAttacks.setter
@@ -4033,6 +4732,9 @@ class DescribeBruteAttacksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4065,6 +4767,9 @@ class DescribeComponentInfoRequest(AbstractModel):
 
     @property
     def ComponentId(self):
+        """组件ID。
+        :rtype: int
+        """
         return self._ComponentId
 
     @ComponentId.setter
@@ -4115,6 +4820,9 @@ class DescribeComponentInfoResponse(AbstractModel):
 
     @property
     def Id(self):
+        """组件ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -4123,6 +4831,9 @@ class DescribeComponentInfoResponse(AbstractModel):
 
     @property
     def ComponentName(self):
+        """组件名称。
+        :rtype: str
+        """
         return self._ComponentName
 
     @ComponentName.setter
@@ -4131,6 +4842,11 @@ class DescribeComponentInfoResponse(AbstractModel):
 
     @property
     def ComponentType(self):
+        """组件类型。
+<li>WEB：web组件</li>
+<li>SYSTEM：系统组件</li>
+        :rtype: str
+        """
         return self._ComponentType
 
     @ComponentType.setter
@@ -4139,6 +4855,9 @@ class DescribeComponentInfoResponse(AbstractModel):
 
     @property
     def Homepage(self):
+        """组件官网。
+        :rtype: str
+        """
         return self._Homepage
 
     @Homepage.setter
@@ -4147,6 +4866,9 @@ class DescribeComponentInfoResponse(AbstractModel):
 
     @property
     def Description(self):
+        """组件描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4155,6 +4877,9 @@ class DescribeComponentInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4192,6 +4917,9 @@ ComponentName - String - 是否必填：否 - 组件名称
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4200,6 +4928,9 @@ ComponentName - String - 是否必填：否 - 组件名称
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4208,6 +4939,10 @@ ComponentName - String - 是否必填：否 - 组件名称
 
     @property
     def Filters(self):
+        """过滤条件。
+ComponentName - String - 是否必填：否 - 组件名称
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4254,6 +4989,9 @@ class DescribeComponentStatisticsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """组件统计列表记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4262,6 +5000,9 @@ class DescribeComponentStatisticsResponse(AbstractModel):
 
     @property
     def ComponentStatistics(self):
+        """组件统计列表数据数组。
+        :rtype: list of ComponentStatistics
+        """
         return self._ComponentStatistics
 
     @ComponentStatistics.setter
@@ -4270,6 +5011,9 @@ class DescribeComponentStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4316,6 +5060,9 @@ class DescribeComponentsRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一Uuid。Uuid和ComponentId必填其一，使用Uuid表示，查询该主机列表信息。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -4324,6 +5071,9 @@ class DescribeComponentsRequest(AbstractModel):
 
     @property
     def ComponentId(self):
+        """组件ID。Uuid和ComponentId必填其一，使用ComponentId表示，查询该组件列表信息。
+        :rtype: int
+        """
         return self._ComponentId
 
     @ComponentId.setter
@@ -4332,6 +5082,9 @@ class DescribeComponentsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4340,6 +5093,9 @@ class DescribeComponentsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4348,6 +5104,11 @@ class DescribeComponentsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>ComponentVersion - String - 是否必填：否 - 组件版本号</li>
+<li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4396,6 +5157,9 @@ class DescribeComponentsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """组件列表记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4404,6 +5168,9 @@ class DescribeComponentsResponse(AbstractModel):
 
     @property
     def Components(self):
+        """组件列表数据。
+        :rtype: list of Component
+        """
         return self._Components
 
     @Components.setter
@@ -4412,6 +5179,9 @@ class DescribeComponentsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4454,6 +5224,9 @@ class DescribeHistoryAccountsRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一Uuid。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -4462,6 +5235,9 @@ class DescribeHistoryAccountsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4470,6 +5246,9 @@ class DescribeHistoryAccountsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4478,6 +5257,10 @@ class DescribeHistoryAccountsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>Username - String - 是否必填：否 - 帐号名</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4525,6 +5308,9 @@ class DescribeHistoryAccountsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """帐号变更历史列表记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4533,6 +5319,9 @@ class DescribeHistoryAccountsResponse(AbstractModel):
 
     @property
     def HistoryAccounts(self):
+        """帐号变更历史数据数组。
+        :rtype: list of HistoryAccount
+        """
         return self._HistoryAccounts
 
     @HistoryAccounts.setter
@@ -4541,6 +5330,9 @@ class DescribeHistoryAccountsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4583,6 +5375,9 @@ class DescribeImpactedHostsRequest(AbstractModel):
 
     @property
     def VulId(self):
+        """漏洞种类ID。
+        :rtype: int
+        """
         return self._VulId
 
     @VulId.setter
@@ -4591,6 +5386,9 @@ class DescribeImpactedHostsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4599,6 +5397,9 @@ class DescribeImpactedHostsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4607,6 +5408,10 @@ class DescribeImpactedHostsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED：待处理 | FIXED：已修复）</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4654,6 +5459,9 @@ class DescribeImpactedHostsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """记录总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4662,6 +5470,9 @@ class DescribeImpactedHostsResponse(AbstractModel):
 
     @property
     def ImpactedHosts(self):
+        """漏洞影响机器列表数组
+        :rtype: list of ImpactedHost
+        """
         return self._ImpactedHosts
 
     @ImpactedHosts.setter
@@ -4670,6 +5481,9 @@ class DescribeImpactedHostsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4709,6 +5523,9 @@ class DescribeLoginWhiteListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4717,6 +5534,9 @@ class DescribeLoginWhiteListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4725,6 +5545,10 @@ class DescribeLoginWhiteListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>Keywords - String - 是否必填：否 - 查询关键字 </li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4771,6 +5595,9 @@ class DescribeLoginWhiteListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """记录总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4779,6 +5606,9 @@ class DescribeLoginWhiteListResponse(AbstractModel):
 
     @property
     def LoginWhiteLists(self):
+        """异地登录白名单数组
+        :rtype: list of LoginWhiteLists
+        """
         return self._LoginWhiteLists
 
     @LoginWhiteLists.setter
@@ -4787,6 +5617,9 @@ class DescribeLoginWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4819,6 +5652,9 @@ class DescribeMachineInfoRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一Uuid。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -4908,6 +5744,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def MachineIp(self):
+        """机器ip。
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -4916,6 +5755,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def ProtectDays(self):
+        """受云镜保护天数。
+        :rtype: int
+        """
         return self._ProtectDays
 
     @ProtectDays.setter
@@ -4924,6 +5766,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def MachineOs(self):
+        """操作系统。
+        :rtype: str
+        """
         return self._MachineOs
 
     @MachineOs.setter
@@ -4932,6 +5777,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def MachineName(self):
+        """主机名称。
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -4940,6 +5788,11 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def MachineStatus(self):
+        """在线状态。
+<li>ONLINE： 在线</li>
+<li>OFFLINE：离线</li>
+        :rtype: str
+        """
         return self._MachineStatus
 
     @MachineStatus.setter
@@ -4948,6 +5801,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """CVM或BM主机唯一标识。
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4956,6 +5812,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def MachineWanIp(self):
+        """主机外网IP。
+        :rtype: str
+        """
         return self._MachineWanIp
 
     @MachineWanIp.setter
@@ -4964,6 +5823,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def Quuid(self):
+        """CVM或BM主机唯一Uuid。
+        :rtype: str
+        """
         return self._Quuid
 
     @Quuid.setter
@@ -4972,6 +5834,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一Uuid。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -4980,6 +5845,11 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def IsProVersion(self):
+        """是否开通专业版。
+<li>true：是</li>
+<li>false：否</li>
+        :rtype: bool
+        """
         return self._IsProVersion
 
     @IsProVersion.setter
@@ -4988,6 +5858,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def ProVersionOpenDate(self):
+        """专业版开通时间。
+        :rtype: str
+        """
         return self._ProVersionOpenDate
 
     @ProVersionOpenDate.setter
@@ -4996,6 +5869,11 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def MachineType(self):
+        """云主机类型。
+<li>CVM: 虚拟主机</li>
+<li>BM: 黑石物理机</li>
+        :rtype: str
+        """
         return self._MachineType
 
     @MachineType.setter
@@ -5004,6 +5882,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def MachineRegion(self):
+        """机器所属地域。如：ap-guangzhou，ap-shanghai
+        :rtype: str
+        """
         return self._MachineRegion
 
     @MachineRegion.setter
@@ -5012,6 +5893,11 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def PayMode(self):
+        """主机状态。
+<li>POSTPAY: 表示后付费，即按量计费  </li>
+<li>PREPAY: 表示预付费，即包年包月</li>
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -5020,6 +5906,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def FreeMalwaresLeft(self):
+        """免费木马剩余检测数量。
+        :rtype: int
+        """
         return self._FreeMalwaresLeft
 
     @FreeMalwaresLeft.setter
@@ -5028,6 +5917,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def FreeVulsLeft(self):
+        """免费漏洞剩余检测数量。
+        :rtype: int
+        """
         return self._FreeVulsLeft
 
     @FreeVulsLeft.setter
@@ -5036,6 +5928,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5095,6 +5990,11 @@ class DescribeMachinesRequest(AbstractModel):
 
     @property
     def MachineType(self):
+        """云主机类型。
+<li>CVM：表示虚拟主机</li>
+<li>BM:  表示黑石物理机</li>
+        :rtype: str
+        """
         return self._MachineType
 
     @MachineType.setter
@@ -5103,6 +6003,9 @@ class DescribeMachinesRequest(AbstractModel):
 
     @property
     def MachineRegion(self):
+        """机器所属地域。如：ap-guangzhou，ap-shanghai
+        :rtype: str
+        """
         return self._MachineRegion
 
     @MachineRegion.setter
@@ -5111,6 +6014,9 @@ class DescribeMachinesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5119,6 +6025,9 @@ class DescribeMachinesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5127,6 +6036,13 @@ class DescribeMachinesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>Keywords - String - 是否必填：否 - 查询关键字 </li>
+<li>Status - String - 是否必填：否 - 客户端在线状态（OFFLINE: 离线 | ONLINE: 在线 | UNINSTALLED：未安装）</li>
+<li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版）</li>
+每个过滤条件只支持一个值，暂不支持多个值“或”关系查询
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -5175,6 +6091,9 @@ class DescribeMachinesResponse(AbstractModel):
 
     @property
     def Machines(self):
+        """主机列表
+        :rtype: list of Machine
+        """
         return self._Machines
 
     @Machines.setter
@@ -5183,6 +6102,9 @@ class DescribeMachinesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """主机数量
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5191,6 +6113,9 @@ class DescribeMachinesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5235,6 +6160,9 @@ class DescribeMaliciousRequestsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5243,6 +6171,9 @@ class DescribeMaliciousRequestsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5251,6 +6182,12 @@ class DescribeMaliciousRequestsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED: 待处理 | TRUSTED：已信任 | UN_TRUSTED：已取消信任）</li>
+<li>Domain - String - 是否必填：否 - 恶意请求的域名</li>
+<li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -5259,6 +6196,9 @@ class DescribeMaliciousRequestsRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一UUID。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -5306,6 +6246,9 @@ class DescribeMaliciousRequestsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5314,6 +6257,9 @@ class DescribeMaliciousRequestsResponse(AbstractModel):
 
     @property
     def MaliciousRequests(self):
+        """恶意请求记录数组。
+        :rtype: list of MaliciousRequest
+        """
         return self._MaliciousRequests
 
     @MaliciousRequests.setter
@@ -5322,6 +6268,9 @@ class DescribeMaliciousRequestsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5366,6 +6315,9 @@ class DescribeMalwaresRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """客户端唯一Uuid。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -5374,6 +6326,9 @@ class DescribeMalwaresRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5382,6 +6337,9 @@ class DescribeMalwaresRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5390,6 +6348,12 @@ class DescribeMalwaresRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>Keywords - String - 是否必填：否 - 查询关键字 </li>
+<li>Status - String - 是否必填：否 - 木马状态（UN_OPERATED: 未处理 | SEGREGATED: 已隔离|TRUSTED：信任）</li>
+每个过滤条件只支持一个值，暂不支持多个值“或”关系查询。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -5437,6 +6401,9 @@ class DescribeMalwaresResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """木马总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5445,6 +6412,9 @@ class DescribeMalwaresResponse(AbstractModel):
 
     @property
     def Malwares(self):
+        """Malware数组。
+        :rtype: list of Malware
+        """
         return self._Malwares
 
     @Malwares.setter
@@ -5453,6 +6423,9 @@ class DescribeMalwaresResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5496,6 +6469,9 @@ class DescribeNonlocalLoginPlacesRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """客户端唯一Uuid。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -5504,6 +6480,9 @@ class DescribeNonlocalLoginPlacesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5512,6 +6491,9 @@ class DescribeNonlocalLoginPlacesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5520,6 +6502,11 @@ class DescribeNonlocalLoginPlacesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>Keywords - String - 是否必填：否 -  查询关键字</li>
+<li>Status - String - 是否必填：否 -  登录状态（NON_LOCAL_LOGIN: 异地登录 | NORMAL_LOGIN : 正常登录）</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -5567,6 +6554,9 @@ class DescribeNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5575,6 +6565,9 @@ class DescribeNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def NonLocalLoginPlaces(self):
+        """异地登录信息数组。
+        :rtype: list of NonLocalLoginPlace
+        """
         return self._NonLocalLoginPlaces
 
     @NonLocalLoginPlaces.setter
@@ -5583,6 +6576,9 @@ class DescribeNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5622,6 +6618,9 @@ class DescribeOpenPortStatisticsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5630,6 +6629,9 @@ class DescribeOpenPortStatisticsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5638,6 +6640,10 @@ class DescribeOpenPortStatisticsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>Port - Uint64 - 是否必填：否 - 端口号</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -5684,6 +6690,9 @@ class DescribeOpenPortStatisticsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """端口统计列表总数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5692,6 +6701,9 @@ class DescribeOpenPortStatisticsResponse(AbstractModel):
 
     @property
     def OpenPortStatistics(self):
+        """端口统计数据列表
+        :rtype: list of OpenPortStatistics
+        """
         return self._OpenPortStatistics
 
     @OpenPortStatistics.setter
@@ -5700,6 +6712,9 @@ class DescribeOpenPortStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5732,6 +6747,9 @@ class DescribeOpenPortTaskStatusRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一Uuid。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -5772,6 +6790,13 @@ class DescribeOpenPortTaskStatusResponse(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态。
+<li>COMPLETE：完成（此时可以调用DescribeOpenPorts接口获取实时进程列表）</li>
+<li>AGENT_OFFLINE：云镜客户端离线</li>
+<li>COLLECTING：端口获取中</li>
+<li>FAILED：进程获取失败</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -5780,6 +6805,9 @@ class DescribeOpenPortTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5821,6 +6849,9 @@ class DescribeOpenPortsRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一Uuid。Port和Uuid必填其一，使用Uuid表示，查询该主机列表信息。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -5829,6 +6860,9 @@ class DescribeOpenPortsRequest(AbstractModel):
 
     @property
     def Port(self):
+        """开放端口号。Port和Uuid必填其一，使用Port表示查询该端口的列表信息。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -5837,6 +6871,9 @@ class DescribeOpenPortsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5845,6 +6882,9 @@ class DescribeOpenPortsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5853,6 +6893,12 @@ class DescribeOpenPortsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>Port - Uint64 - 是否必填：否 - 端口号</li>
+<li>ProcessName - String - 是否必填：否 - 进程名</li>
+<li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -5901,6 +6947,9 @@ class DescribeOpenPortsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """端口列表记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5909,6 +6958,9 @@ class DescribeOpenPortsResponse(AbstractModel):
 
     @property
     def OpenPorts(self):
+        """端口列表。
+        :rtype: list of OpenPort
+        """
         return self._OpenPorts
 
     @OpenPorts.setter
@@ -5917,6 +6969,9 @@ class DescribeOpenPortsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5976,6 +7031,9 @@ class DescribeOverviewStatisticsResponse(AbstractModel):
 
     @property
     def OnlineMachineNum(self):
+        """服务器在线数。
+        :rtype: int
+        """
         return self._OnlineMachineNum
 
     @OnlineMachineNum.setter
@@ -5984,6 +7042,9 @@ class DescribeOverviewStatisticsResponse(AbstractModel):
 
     @property
     def ProVersionMachineNum(self):
+        """专业服务器数。
+        :rtype: int
+        """
         return self._ProVersionMachineNum
 
     @ProVersionMachineNum.setter
@@ -5992,6 +7053,9 @@ class DescribeOverviewStatisticsResponse(AbstractModel):
 
     @property
     def MalwareNum(self):
+        """木马文件数。
+        :rtype: int
+        """
         return self._MalwareNum
 
     @MalwareNum.setter
@@ -6000,6 +7064,9 @@ class DescribeOverviewStatisticsResponse(AbstractModel):
 
     @property
     def NonlocalLoginNum(self):
+        """异地登录数。
+        :rtype: int
+        """
         return self._NonlocalLoginNum
 
     @NonlocalLoginNum.setter
@@ -6008,6 +7075,9 @@ class DescribeOverviewStatisticsResponse(AbstractModel):
 
     @property
     def BruteAttackSuccessNum(self):
+        """暴力破解成功数。
+        :rtype: int
+        """
         return self._BruteAttackSuccessNum
 
     @BruteAttackSuccessNum.setter
@@ -6016,6 +7086,9 @@ class DescribeOverviewStatisticsResponse(AbstractModel):
 
     @property
     def VulNum(self):
+        """漏洞数。
+        :rtype: int
+        """
         return self._VulNum
 
     @VulNum.setter
@@ -6024,6 +7097,9 @@ class DescribeOverviewStatisticsResponse(AbstractModel):
 
     @property
     def BaseLineNum(self):
+        """安全基线数。
+        :rtype: int
+        """
         return self._BaseLineNum
 
     @BaseLineNum.setter
@@ -6032,6 +7108,9 @@ class DescribeOverviewStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6071,6 +7150,9 @@ class DescribePrivilegeEventsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6079,6 +7161,9 @@ class DescribePrivilegeEventsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6087,6 +7172,10 @@ class DescribePrivilegeEventsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>Keywords - String - 是否必填：否 - 关键词(主机IP)</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -6133,6 +7222,9 @@ class DescribePrivilegeEventsResponse(AbstractModel):
 
     @property
     def List(self):
+        """数据列表
+        :rtype: list of PrivilegeEscalationProcess
+        """
         return self._List
 
     @List.setter
@@ -6141,6 +7233,9 @@ class DescribePrivilegeEventsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6149,6 +7244,9 @@ class DescribePrivilegeEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6188,6 +7286,9 @@ class DescribePrivilegeRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6196,6 +7297,9 @@ class DescribePrivilegeRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6204,6 +7308,10 @@ class DescribePrivilegeRulesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -6250,6 +7358,9 @@ class DescribePrivilegeRulesResponse(AbstractModel):
 
     @property
     def List(self):
+        """列表内容
+        :rtype: list of PrivilegeRule
+        """
         return self._List
 
     @List.setter
@@ -6258,6 +7369,9 @@ class DescribePrivilegeRulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6266,6 +7380,9 @@ class DescribePrivilegeRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6313,6 +7430,9 @@ class DescribeProVersionInfoResponse(AbstractModel):
 
     @property
     def PostPayCost(self):
+        """后付费昨日扣费
+        :rtype: int
+        """
         return self._PostPayCost
 
     @PostPayCost.setter
@@ -6321,6 +7441,9 @@ class DescribeProVersionInfoResponse(AbstractModel):
 
     @property
     def IsAutoOpenProVersion(self):
+        """新增主机是否自动开通专业版
+        :rtype: bool
+        """
         return self._IsAutoOpenProVersion
 
     @IsAutoOpenProVersion.setter
@@ -6329,6 +7452,9 @@ class DescribeProVersionInfoResponse(AbstractModel):
 
     @property
     def ProVersionNum(self):
+        """开通专业版主机数
+        :rtype: int
+        """
         return self._ProVersionNum
 
     @ProVersionNum.setter
@@ -6337,6 +7463,9 @@ class DescribeProVersionInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6372,6 +7501,9 @@ class DescribeProcessStatisticsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6380,6 +7512,9 @@ class DescribeProcessStatisticsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6388,6 +7523,10 @@ class DescribeProcessStatisticsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>ProcessName - String - 是否必填：否 - 进程名</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -6434,6 +7573,9 @@ class DescribeProcessStatisticsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """进程统计列表记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6442,6 +7584,9 @@ class DescribeProcessStatisticsResponse(AbstractModel):
 
     @property
     def ProcessStatistics(self):
+        """进程统计列表数据数组。
+        :rtype: list of ProcessStatistics
+        """
         return self._ProcessStatistics
 
     @ProcessStatistics.setter
@@ -6450,6 +7595,9 @@ class DescribeProcessStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6482,6 +7630,9 @@ class DescribeProcessTaskStatusRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一Uuid。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -6522,6 +7673,13 @@ class DescribeProcessTaskStatusResponse(AbstractModel):
 
     @property
     def Status(self):
+        """任务状态。
+<li>COMPLETE：完成（此时可以调用DescribeProcesses接口获取实时进程列表）</li>
+<li>AGENT_OFFLINE：云镜客户端离线</li>
+<li>COLLECTING：进程获取中</li>
+<li>FAILED：进程获取失败</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -6530,6 +7688,9 @@ class DescribeProcessTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6570,6 +7731,9 @@ class DescribeProcessesRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一Uuid。Uuid和ProcessName必填其一，使用Uuid表示，查询该主机列表信息。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -6578,6 +7742,9 @@ class DescribeProcessesRequest(AbstractModel):
 
     @property
     def ProcessName(self):
+        """进程名。Uuid和ProcessName必填其一，使用ProcessName表示，查询该进程列表信息。
+        :rtype: str
+        """
         return self._ProcessName
 
     @ProcessName.setter
@@ -6586,6 +7753,9 @@ class DescribeProcessesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6594,6 +7764,9 @@ class DescribeProcessesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6602,6 +7775,11 @@ class DescribeProcessesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>ProcessName - String - 是否必填：否 - 进程名</li>
+<li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -6650,6 +7828,9 @@ class DescribeProcessesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """进程列表记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6658,6 +7839,9 @@ class DescribeProcessesResponse(AbstractModel):
 
     @property
     def Processes(self):
+        """进程列表数据数组。
+        :rtype: list of Process
+        """
         return self._Processes
 
     @Processes.setter
@@ -6666,6 +7850,9 @@ class DescribeProcessesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6705,6 +7892,9 @@ class DescribeReverseShellEventsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6713,6 +7903,9 @@ class DescribeReverseShellEventsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6721,6 +7914,10 @@ class DescribeReverseShellEventsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>Keywords - String - 是否必填：否 - 关键字(主机内网IP|进程名)</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -6767,6 +7964,9 @@ class DescribeReverseShellEventsResponse(AbstractModel):
 
     @property
     def List(self):
+        """列表内容
+        :rtype: list of ReverseShell
+        """
         return self._List
 
     @List.setter
@@ -6775,6 +7975,9 @@ class DescribeReverseShellEventsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6783,6 +7986,9 @@ class DescribeReverseShellEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6822,6 +8028,9 @@ class DescribeReverseShellRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6830,6 +8039,9 @@ class DescribeReverseShellRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6838,6 +8050,10 @@ class DescribeReverseShellRulesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -6884,6 +8100,9 @@ class DescribeReverseShellRulesResponse(AbstractModel):
 
     @property
     def List(self):
+        """列表内容
+        :rtype: list of ReverseShellRule
+        """
         return self._List
 
     @List.setter
@@ -6892,6 +8111,9 @@ class DescribeReverseShellRulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """总条数
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6900,6 +8122,9 @@ class DescribeReverseShellRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6935,6 +8160,9 @@ class DescribeSecurityDynamicsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6943,6 +8171,9 @@ class DescribeSecurityDynamicsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6983,6 +8214,9 @@ class DescribeSecurityDynamicsResponse(AbstractModel):
 
     @property
     def SecurityDynamics(self):
+        """安全事件消息数组。
+        :rtype: list of SecurityDynamic
+        """
         return self._SecurityDynamics
 
     @SecurityDynamics.setter
@@ -6991,6 +8225,9 @@ class DescribeSecurityDynamicsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6999,6 +8236,9 @@ class DescribeSecurityDynamicsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7034,6 +8274,9 @@ class DescribeSecurityTrendsRequest(AbstractModel):
 
     @property
     def BeginDate(self):
+        """开始时间。
+        :rtype: str
+        """
         return self._BeginDate
 
     @BeginDate.setter
@@ -7042,6 +8285,9 @@ class DescribeSecurityTrendsRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """结束时间。
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -7106,6 +8352,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def Malwares(self):
+        """木马事件统计数据数组。
+        :rtype: list of SecurityTrend
+        """
         return self._Malwares
 
     @Malwares.setter
@@ -7114,6 +8363,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def NonLocalLoginPlaces(self):
+        """异地登录事件统计数据数组。
+        :rtype: list of SecurityTrend
+        """
         return self._NonLocalLoginPlaces
 
     @NonLocalLoginPlaces.setter
@@ -7122,6 +8374,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def BruteAttacks(self):
+        """密码破解事件统计数据数组。
+        :rtype: list of SecurityTrend
+        """
         return self._BruteAttacks
 
     @BruteAttacks.setter
@@ -7130,6 +8385,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def Vuls(self):
+        """漏洞统计数据数组。
+        :rtype: list of SecurityTrend
+        """
         return self._Vuls
 
     @Vuls.setter
@@ -7138,6 +8396,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def BaseLines(self):
+        """基线统计数据数组。
+        :rtype: list of SecurityTrend
+        """
         return self._BaseLines
 
     @BaseLines.setter
@@ -7146,6 +8407,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def MaliciousRequests(self):
+        """恶意请求统计数据数组。
+        :rtype: list of SecurityTrend
+        """
         return self._MaliciousRequests
 
     @MaliciousRequests.setter
@@ -7154,6 +8418,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def HighRiskBashs(self):
+        """高危命令统计数据数组。
+        :rtype: list of SecurityTrend
+        """
         return self._HighRiskBashs
 
     @HighRiskBashs.setter
@@ -7162,6 +8429,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def ReverseShells(self):
+        """反弹shell统计数据数组。
+        :rtype: list of SecurityTrend
+        """
         return self._ReverseShells
 
     @ReverseShells.setter
@@ -7170,6 +8440,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def PrivilegeEscalations(self):
+        """本地提权统计数据数组。
+        :rtype: list of SecurityTrend
+        """
         return self._PrivilegeEscalations
 
     @PrivilegeEscalations.setter
@@ -7178,6 +8451,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def CyberAttacks(self):
+        """网络攻击统计数据数组。
+        :rtype: list of SecurityTrend
+        """
         return self._CyberAttacks
 
     @CyberAttacks.setter
@@ -7186,6 +8462,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7271,6 +8550,9 @@ class DescribeTagMachinesRequest(AbstractModel):
 
     @property
     def Id(self):
+        """标签ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -7307,6 +8589,9 @@ class DescribeTagMachinesResponse(AbstractModel):
 
     @property
     def List(self):
+        """列表数据
+        :rtype: list of TagMachine
+        """
         return self._List
 
     @List.setter
@@ -7315,6 +8600,9 @@ class DescribeTagMachinesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7351,6 +8639,11 @@ class DescribeTagsRequest(AbstractModel):
 
     @property
     def MachineType(self):
+        """云主机类型。
+<li>CVM：表示虚拟主机</li>
+<li>BM:  表示黑石物理机</li>
+        :rtype: str
+        """
         return self._MachineType
 
     @MachineType.setter
@@ -7359,6 +8652,9 @@ class DescribeTagsRequest(AbstractModel):
 
     @property
     def MachineRegion(self):
+        """机器所属地域。如：ap-guangzhou，ap-shanghai
+        :rtype: str
+        """
         return self._MachineRegion
 
     @MachineRegion.setter
@@ -7396,6 +8692,9 @@ class DescribeTagsResponse(AbstractModel):
 
     @property
     def List(self):
+        """列表信息
+        :rtype: list of Tag
+        """
         return self._List
 
     @List.setter
@@ -7404,6 +8703,9 @@ class DescribeTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7435,6 +8737,9 @@ class DescribeUsualLoginPlacesRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端UUID
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -7471,6 +8776,9 @@ class DescribeUsualLoginPlacesResponse(AbstractModel):
 
     @property
     def UsualLoginPlaces(self):
+        """常用登录地数组
+        :rtype: list of UsualPlace
+        """
         return self._UsualLoginPlaces
 
     @UsualLoginPlaces.setter
@@ -7479,6 +8787,9 @@ class DescribeUsualLoginPlacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7510,6 +8821,9 @@ class DescribeVulInfoRequest(AbstractModel):
 
     @property
     def VulId(self):
+        """漏洞种类ID。
+        :rtype: int
+        """
         return self._VulId
 
     @VulId.setter
@@ -7567,6 +8881,9 @@ class DescribeVulInfoResponse(AbstractModel):
 
     @property
     def VulId(self):
+        """漏洞种类ID。
+        :rtype: int
+        """
         return self._VulId
 
     @VulId.setter
@@ -7575,6 +8892,9 @@ class DescribeVulInfoResponse(AbstractModel):
 
     @property
     def VulName(self):
+        """漏洞名称。
+        :rtype: str
+        """
         return self._VulName
 
     @VulName.setter
@@ -7583,6 +8903,9 @@ class DescribeVulInfoResponse(AbstractModel):
 
     @property
     def VulLevel(self):
+        """漏洞等级。
+        :rtype: str
+        """
         return self._VulLevel
 
     @VulLevel.setter
@@ -7591,6 +8914,9 @@ class DescribeVulInfoResponse(AbstractModel):
 
     @property
     def VulType(self):
+        """漏洞类型。
+        :rtype: str
+        """
         return self._VulType
 
     @VulType.setter
@@ -7599,6 +8925,9 @@ class DescribeVulInfoResponse(AbstractModel):
 
     @property
     def Description(self):
+        """漏洞描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -7607,6 +8936,9 @@ class DescribeVulInfoResponse(AbstractModel):
 
     @property
     def RepairPlan(self):
+        """修复方案。
+        :rtype: str
+        """
         return self._RepairPlan
 
     @RepairPlan.setter
@@ -7615,6 +8947,9 @@ class DescribeVulInfoResponse(AbstractModel):
 
     @property
     def CveId(self):
+        """漏洞CVE。
+        :rtype: str
+        """
         return self._CveId
 
     @CveId.setter
@@ -7623,6 +8958,9 @@ class DescribeVulInfoResponse(AbstractModel):
 
     @property
     def Reference(self):
+        """参考链接。
+        :rtype: str
+        """
         return self._Reference
 
     @Reference.setter
@@ -7631,6 +8969,9 @@ class DescribeVulInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7685,6 +9026,9 @@ class DescribeVulScanResultResponse(AbstractModel):
 
     @property
     def VulNum(self):
+        """漏洞数量。
+        :rtype: int
+        """
         return self._VulNum
 
     @VulNum.setter
@@ -7693,6 +9037,9 @@ class DescribeVulScanResultResponse(AbstractModel):
 
     @property
     def ProVersionNum(self):
+        """专业版机器数。
+        :rtype: int
+        """
         return self._ProVersionNum
 
     @ProVersionNum.setter
@@ -7701,6 +9048,9 @@ class DescribeVulScanResultResponse(AbstractModel):
 
     @property
     def ImpactedHostNum(self):
+        """受影响的专业版主机数。
+        :rtype: int
+        """
         return self._ImpactedHostNum
 
     @ImpactedHostNum.setter
@@ -7709,6 +9059,9 @@ class DescribeVulScanResultResponse(AbstractModel):
 
     @property
     def HostNum(self):
+        """主机总数。
+        :rtype: int
+        """
         return self._HostNum
 
     @HostNum.setter
@@ -7717,6 +9070,9 @@ class DescribeVulScanResultResponse(AbstractModel):
 
     @property
     def BasicVersionNum(self):
+        """基础版机器数。
+        :rtype: int
+        """
         return self._BasicVersionNum
 
     @BasicVersionNum.setter
@@ -7725,6 +9081,9 @@ class DescribeVulScanResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7770,6 +9129,12 @@ Status过滤条件值只能取其一，不能是“或”逻辑。
 
     @property
     def VulType(self):
+        """漏洞类型。
+<li>WEB：Web应用漏洞</li>
+<li>SYSTEM：系统组件漏洞</li>
+<li>BASELINE：安全基线</li>
+        :rtype: str
+        """
         return self._VulType
 
     @VulType.setter
@@ -7778,6 +9143,9 @@ Status过滤条件值只能取其一，不能是“或”逻辑。
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7786,6 +9154,9 @@ Status过滤条件值只能取其一，不能是“或”逻辑。
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7794,6 +9165,12 @@ Status过滤条件值只能取其一，不能是“或”逻辑。
 
     @property
     def Filters(self):
+        """过滤条件。
+<li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED: 待处理 | FIXED：已修复）
+
+Status过滤条件值只能取其一，不能是“或”逻辑。
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -7841,6 +9218,9 @@ class DescribeVulsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """漏洞数量。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7849,6 +9229,9 @@ class DescribeVulsResponse(AbstractModel):
 
     @property
     def Vuls(self):
+        """漏洞列表数组。
+        :rtype: list of Vul
+        """
         return self._Vuls
 
     @Vuls.setter
@@ -7857,6 +9240,9 @@ class DescribeVulsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7895,6 +9281,9 @@ class DescribeWeeklyReportBruteAttacksRequest(AbstractModel):
 
     @property
     def BeginDate(self):
+        """专业周报开始时间。
+        :rtype: str
+        """
         return self._BeginDate
 
     @BeginDate.setter
@@ -7903,6 +9292,9 @@ class DescribeWeeklyReportBruteAttacksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7911,6 +9303,9 @@ class DescribeWeeklyReportBruteAttacksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7952,6 +9347,9 @@ class DescribeWeeklyReportBruteAttacksResponse(AbstractModel):
 
     @property
     def WeeklyReportBruteAttacks(self):
+        """专业周报密码破解数组。
+        :rtype: list of WeeklyReportBruteAttack
+        """
         return self._WeeklyReportBruteAttacks
 
     @WeeklyReportBruteAttacks.setter
@@ -7960,6 +9358,9 @@ class DescribeWeeklyReportBruteAttacksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7968,6 +9369,9 @@ class DescribeWeeklyReportBruteAttacksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8000,6 +9404,9 @@ class DescribeWeeklyReportInfoRequest(AbstractModel):
 
     @property
     def BeginDate(self):
+        """专业周报开始时间。
+        :rtype: str
+        """
         return self._BeginDate
 
     @BeginDate.setter
@@ -8075,6 +9482,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def CompanyName(self):
+        """账号所属公司或个人名称。
+        :rtype: str
+        """
         return self._CompanyName
 
     @CompanyName.setter
@@ -8083,6 +9493,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def MachineNum(self):
+        """机器总数。
+        :rtype: int
+        """
         return self._MachineNum
 
     @MachineNum.setter
@@ -8091,6 +9504,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def OnlineMachineNum(self):
+        """云镜客户端在线数。
+        :rtype: int
+        """
         return self._OnlineMachineNum
 
     @OnlineMachineNum.setter
@@ -8099,6 +9515,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def OfflineMachineNum(self):
+        """云镜客户端离线数。
+        :rtype: int
+        """
         return self._OfflineMachineNum
 
     @OfflineMachineNum.setter
@@ -8107,6 +9526,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def ProVersionMachineNum(self):
+        """开通云镜专业版数量。
+        :rtype: int
+        """
         return self._ProVersionMachineNum
 
     @ProVersionMachineNum.setter
@@ -8115,6 +9537,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def BeginDate(self):
+        """周报开始时间。
+        :rtype: str
+        """
         return self._BeginDate
 
     @BeginDate.setter
@@ -8123,6 +9548,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def EndDate(self):
+        """周报结束时间。
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -8131,6 +9559,12 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def Level(self):
+        """安全等级。
+<li>HIGH：高</li>
+<li>MIDDLE：中</li>
+<li>LOW：低</li>
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -8139,6 +9573,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def MalwareNum(self):
+        """木马记录数。
+        :rtype: int
+        """
         return self._MalwareNum
 
     @MalwareNum.setter
@@ -8147,6 +9584,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def NonlocalLoginNum(self):
+        """异地登录数。
+        :rtype: int
+        """
         return self._NonlocalLoginNum
 
     @NonlocalLoginNum.setter
@@ -8155,6 +9595,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def BruteAttackSuccessNum(self):
+        """密码破解成功数。
+        :rtype: int
+        """
         return self._BruteAttackSuccessNum
 
     @BruteAttackSuccessNum.setter
@@ -8163,6 +9606,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def VulNum(self):
+        """漏洞数。
+        :rtype: int
+        """
         return self._VulNum
 
     @VulNum.setter
@@ -8171,6 +9617,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
+        """导出文件下载地址。
+        :rtype: str
+        """
         return self._DownloadUrl
 
     @DownloadUrl.setter
@@ -8179,6 +9628,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8223,6 +9675,9 @@ class DescribeWeeklyReportMalwaresRequest(AbstractModel):
 
     @property
     def BeginDate(self):
+        """专业周报开始时间。
+        :rtype: str
+        """
         return self._BeginDate
 
     @BeginDate.setter
@@ -8231,6 +9686,9 @@ class DescribeWeeklyReportMalwaresRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8239,6 +9697,9 @@ class DescribeWeeklyReportMalwaresRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8280,6 +9741,9 @@ class DescribeWeeklyReportMalwaresResponse(AbstractModel):
 
     @property
     def WeeklyReportMalwares(self):
+        """专业周报木马数据。
+        :rtype: list of WeeklyReportMalware
+        """
         return self._WeeklyReportMalwares
 
     @WeeklyReportMalwares.setter
@@ -8288,6 +9752,9 @@ class DescribeWeeklyReportMalwaresResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8296,6 +9763,9 @@ class DescribeWeeklyReportMalwaresResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8334,6 +9804,9 @@ class DescribeWeeklyReportNonlocalLoginPlacesRequest(AbstractModel):
 
     @property
     def BeginDate(self):
+        """专业周报开始时间。
+        :rtype: str
+        """
         return self._BeginDate
 
     @BeginDate.setter
@@ -8342,6 +9815,9 @@ class DescribeWeeklyReportNonlocalLoginPlacesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8350,6 +9826,9 @@ class DescribeWeeklyReportNonlocalLoginPlacesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8391,6 +9870,9 @@ class DescribeWeeklyReportNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def WeeklyReportNonlocalLoginPlaces(self):
+        """专业周报异地登录数据。
+        :rtype: list of WeeklyReportNonlocalLoginPlace
+        """
         return self._WeeklyReportNonlocalLoginPlaces
 
     @WeeklyReportNonlocalLoginPlaces.setter
@@ -8399,6 +9881,9 @@ class DescribeWeeklyReportNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8407,6 +9892,9 @@ class DescribeWeeklyReportNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8445,6 +9933,9 @@ class DescribeWeeklyReportVulsRequest(AbstractModel):
 
     @property
     def BeginDate(self):
+        """专业版周报开始时间。
+        :rtype: str
+        """
         return self._BeginDate
 
     @BeginDate.setter
@@ -8453,6 +9944,9 @@ class DescribeWeeklyReportVulsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8461,6 +9955,9 @@ class DescribeWeeklyReportVulsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8502,6 +9999,9 @@ class DescribeWeeklyReportVulsResponse(AbstractModel):
 
     @property
     def WeeklyReportVuls(self):
+        """专业周报漏洞数据数组。
+        :rtype: list of WeeklyReportVul
+        """
         return self._WeeklyReportVuls
 
     @WeeklyReportVuls.setter
@@ -8510,6 +10010,9 @@ class DescribeWeeklyReportVulsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8518,6 +10021,9 @@ class DescribeWeeklyReportVulsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8553,6 +10059,9 @@ class DescribeWeeklyReportsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """返回数量，默认为10，最大值为100。
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8561,6 +10070,9 @@ class DescribeWeeklyReportsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8601,6 +10113,9 @@ class DescribeWeeklyReportsResponse(AbstractModel):
 
     @property
     def WeeklyReports(self):
+        """专业周报列表数组。
+        :rtype: list of WeeklyReport
+        """
         return self._WeeklyReports
 
     @WeeklyReports.setter
@@ -8609,6 +10124,9 @@ class DescribeWeeklyReportsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """记录总数。
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8617,6 +10135,9 @@ class DescribeWeeklyReportsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8667,6 +10188,9 @@ class EditBashRuleRequest(AbstractModel):
 
     @property
     def Name(self):
+        """规则名称
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8675,6 +10199,9 @@ class EditBashRuleRequest(AbstractModel):
 
     @property
     def Level(self):
+        """危险等级(1: 高危 2:中危 3: 低危)
+        :rtype: int
+        """
         return self._Level
 
     @Level.setter
@@ -8683,6 +10210,9 @@ class EditBashRuleRequest(AbstractModel):
 
     @property
     def Rule(self):
+        """正则表达式
+        :rtype: str
+        """
         return self._Rule
 
     @Rule.setter
@@ -8691,6 +10221,9 @@ class EditBashRuleRequest(AbstractModel):
 
     @property
     def Id(self):
+        """规则ID(新增时不填)
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -8699,6 +10232,9 @@ class EditBashRuleRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """客户端ID(IsGlobal为1时，Uuid或Hostip必填一个)
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -8707,6 +10243,9 @@ class EditBashRuleRequest(AbstractModel):
 
     @property
     def Hostip(self):
+        """主机IP(IsGlobal为1时，Uuid或Hostip必填一个)
+        :rtype: str
+        """
         return self._Hostip
 
     @Hostip.setter
@@ -8715,6 +10254,9 @@ class EditBashRuleRequest(AbstractModel):
 
     @property
     def IsGlobal(self):
+        """是否全局规则(默认否)
+        :rtype: int
+        """
         return self._IsGlobal
 
     @IsGlobal.setter
@@ -8754,6 +10296,9 @@ class EditBashRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8794,6 +10339,9 @@ class EditPrivilegeRuleRequest(AbstractModel):
 
     @property
     def Id(self):
+        """规则ID(新增时请留空)
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -8802,6 +10350,9 @@ class EditPrivilegeRuleRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """客户端ID(IsGlobal为1时，Uuid或Hostip必填一个)
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -8810,6 +10361,9 @@ class EditPrivilegeRuleRequest(AbstractModel):
 
     @property
     def Hostip(self):
+        """主机IP(IsGlobal为1时，Uuid或Hostip必填一个)
+        :rtype: str
+        """
         return self._Hostip
 
     @Hostip.setter
@@ -8818,6 +10372,9 @@ class EditPrivilegeRuleRequest(AbstractModel):
 
     @property
     def ProcessName(self):
+        """进程名
+        :rtype: str
+        """
         return self._ProcessName
 
     @ProcessName.setter
@@ -8826,6 +10383,9 @@ class EditPrivilegeRuleRequest(AbstractModel):
 
     @property
     def SMode(self):
+        """是否S权限进程
+        :rtype: int
+        """
         return self._SMode
 
     @SMode.setter
@@ -8834,6 +10394,9 @@ class EditPrivilegeRuleRequest(AbstractModel):
 
     @property
     def IsGlobal(self):
+        """是否全局规则(默认否)
+        :rtype: int
+        """
         return self._IsGlobal
 
     @IsGlobal.setter
@@ -8872,6 +10435,9 @@ class EditPrivilegeRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8915,6 +10481,9 @@ class EditReverseShellRuleRequest(AbstractModel):
 
     @property
     def Id(self):
+        """规则ID(新增时请留空)
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -8923,6 +10492,9 @@ class EditReverseShellRuleRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """客户端ID(IsGlobal为1时，Uuid或Hostip必填一个)
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -8931,6 +10503,9 @@ class EditReverseShellRuleRequest(AbstractModel):
 
     @property
     def Hostip(self):
+        """主机IP(IsGlobal为1时，Uuid或Hostip必填一个)
+        :rtype: str
+        """
         return self._Hostip
 
     @Hostip.setter
@@ -8939,6 +10514,9 @@ class EditReverseShellRuleRequest(AbstractModel):
 
     @property
     def DestIp(self):
+        """目标IP
+        :rtype: str
+        """
         return self._DestIp
 
     @DestIp.setter
@@ -8947,6 +10525,9 @@ class EditReverseShellRuleRequest(AbstractModel):
 
     @property
     def DestPort(self):
+        """目标端口
+        :rtype: str
+        """
         return self._DestPort
 
     @DestPort.setter
@@ -8955,6 +10536,9 @@ class EditReverseShellRuleRequest(AbstractModel):
 
     @property
     def ProcessName(self):
+        """进程名
+        :rtype: str
+        """
         return self._ProcessName
 
     @ProcessName.setter
@@ -8963,6 +10547,9 @@ class EditReverseShellRuleRequest(AbstractModel):
 
     @property
     def IsGlobal(self):
+        """是否全局规则(默认否)
+        :rtype: int
+        """
         return self._IsGlobal
 
     @IsGlobal.setter
@@ -9002,6 +10589,9 @@ class EditReverseShellRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9033,6 +10623,9 @@ class EditTagsRequest(AbstractModel):
 
     @property
     def Name(self):
+        """标签名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9041,6 +10634,9 @@ class EditTagsRequest(AbstractModel):
 
     @property
     def Id(self):
+        """标签ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -9049,6 +10645,9 @@ class EditTagsRequest(AbstractModel):
 
     @property
     def Quuids(self):
+        """CVM主机ID
+        :rtype: list of str
+        """
         return self._Quuids
 
     @Quuids.setter
@@ -9084,6 +10683,9 @@ class EditTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9121,6 +10723,9 @@ class ExportAttackLogsResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
+        """导出文件下载链接地址。
+        :rtype: str
+        """
         return self._DownloadUrl
 
     @DownloadUrl.setter
@@ -9129,6 +10734,9 @@ class ExportAttackLogsResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """导出任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -9137,6 +10745,9 @@ class ExportAttackLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9173,6 +10784,9 @@ class ExportBashEventsResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
+        """导出文件下载链接地址。
+        :rtype: str
+        """
         return self._DownloadUrl
 
     @DownloadUrl.setter
@@ -9181,6 +10795,9 @@ class ExportBashEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9216,6 +10833,9 @@ class ExportBruteAttacksResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
+        """导出文件下载链接地址。
+        :rtype: str
+        """
         return self._DownloadUrl
 
     @DownloadUrl.setter
@@ -9224,6 +10844,9 @@ class ExportBruteAttacksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9259,6 +10882,9 @@ class ExportMaliciousRequestsResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
+        """导出文件下载链接地址。
+        :rtype: str
+        """
         return self._DownloadUrl
 
     @DownloadUrl.setter
@@ -9267,6 +10893,9 @@ class ExportMaliciousRequestsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9302,6 +10931,9 @@ class ExportMalwaresResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
+        """导出文件下载链接地址。
+        :rtype: str
+        """
         return self._DownloadUrl
 
     @DownloadUrl.setter
@@ -9310,6 +10942,9 @@ class ExportMalwaresResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9348,6 +10983,9 @@ class ExportNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
+        """导出文件下载链接地址。
+        :rtype: str
+        """
         return self._DownloadUrl
 
     @DownloadUrl.setter
@@ -9356,6 +10994,9 @@ class ExportNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """导出任务ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -9364,6 +11005,9 @@ class ExportNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9400,6 +11044,9 @@ class ExportPrivilegeEventsResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
+        """导出文件下载链接地址。
+        :rtype: str
+        """
         return self._DownloadUrl
 
     @DownloadUrl.setter
@@ -9408,6 +11055,9 @@ class ExportPrivilegeEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9443,6 +11093,9 @@ class ExportReverseShellEventsResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
+        """导出文件下载链接地址。
+        :rtype: str
+        """
         return self._DownloadUrl
 
     @DownloadUrl.setter
@@ -9451,6 +11104,9 @@ class ExportReverseShellEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9486,6 +11142,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """过滤键的名称。
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9494,6 +11153,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """一个或者多个过滤值。
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -9549,6 +11211,9 @@ class HistoryAccount(AbstractModel):
 
     @property
     def Id(self):
+        """唯一ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -9557,6 +11222,9 @@ class HistoryAccount(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一Uuid。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -9565,6 +11233,9 @@ class HistoryAccount(AbstractModel):
 
     @property
     def MachineIp(self):
+        """主机内网IP。
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -9573,6 +11244,9 @@ class HistoryAccount(AbstractModel):
 
     @property
     def MachineName(self):
+        """主机名。
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -9581,6 +11255,9 @@ class HistoryAccount(AbstractModel):
 
     @property
     def Username(self):
+        """帐号名。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -9589,6 +11266,12 @@ class HistoryAccount(AbstractModel):
 
     @property
     def ModifyType(self):
+        """帐号变更类型。
+<li>CREATE：表示新增帐号</li>
+<li>MODIFY：表示修改帐号</li>
+<li>DELETE：表示删除帐号</li>
+        :rtype: str
+        """
         return self._ModifyType
 
     @ModifyType.setter
@@ -9597,6 +11280,9 @@ class HistoryAccount(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """变更时间。
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -9636,6 +11322,9 @@ class IgnoreImpactedHostsRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """漏洞ID数组。
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -9669,6 +11358,9 @@ class IgnoreImpactedHostsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9721,6 +11413,9 @@ class ImpactedHost(AbstractModel):
 
     @property
     def Id(self):
+        """漏洞ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -9729,6 +11424,9 @@ class ImpactedHost(AbstractModel):
 
     @property
     def MachineIp(self):
+        """主机IP。
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -9737,6 +11435,9 @@ class ImpactedHost(AbstractModel):
 
     @property
     def MachineName(self):
+        """主机名称。
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -9745,6 +11446,9 @@ class ImpactedHost(AbstractModel):
 
     @property
     def LastScanTime(self):
+        """最后检测时间。
+        :rtype: str
+        """
         return self._LastScanTime
 
     @LastScanTime.setter
@@ -9753,6 +11457,12 @@ class ImpactedHost(AbstractModel):
 
     @property
     def VulStatus(self):
+        """漏洞状态。
+<li>UN_OPERATED ：待处理</li>
+<li>SCANING : 扫描中</li>
+<li>FIXED : 已修复</li>
+        :rtype: str
+        """
         return self._VulStatus
 
     @VulStatus.setter
@@ -9761,6 +11471,9 @@ class ImpactedHost(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一标识UUID。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -9769,6 +11482,9 @@ class ImpactedHost(AbstractModel):
 
     @property
     def Description(self):
+        """漏洞描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -9777,6 +11493,9 @@ class ImpactedHost(AbstractModel):
 
     @property
     def VulId(self):
+        """漏洞种类ID。
+        :rtype: int
+        """
         return self._VulId
 
     @VulId.setter
@@ -9785,6 +11504,9 @@ class ImpactedHost(AbstractModel):
 
     @property
     def IsProVersion(self):
+        """是否为专业版。
+        :rtype: bool
+        """
         return self._IsProVersion
 
     @IsProVersion.setter
@@ -9829,6 +11551,9 @@ class InquiryPriceOpenProVersionPrepaidRequest(AbstractModel):
 
     @property
     def ChargePrepaid(self):
+        """预付费模式(包年包月)参数设置。
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.ChargePrepaid`
+        """
         return self._ChargePrepaid
 
     @ChargePrepaid.setter
@@ -9837,6 +11562,9 @@ class InquiryPriceOpenProVersionPrepaidRequest(AbstractModel):
 
     @property
     def Machines(self):
+        """需要开通专业版机器列表数组。
+        :rtype: list of ProVersionMachine
+        """
         return self._Machines
 
     @Machines.setter
@@ -9884,6 +11612,9 @@ class InquiryPriceOpenProVersionPrepaidResponse(AbstractModel):
 
     @property
     def OriginalPrice(self):
+        """预支费用的原价，单位：元。
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -9892,6 +11623,9 @@ class InquiryPriceOpenProVersionPrepaidResponse(AbstractModel):
 
     @property
     def DiscountPrice(self):
+        """预支费用的折扣价，单位：元。
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -9900,6 +11634,9 @@ class InquiryPriceOpenProVersionPrepaidResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9960,6 +11697,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def Id(self):
+        """记录ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -9968,6 +11708,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端ID
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -9976,6 +11719,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def Places(self):
+        """白名单地域
+        :rtype: list of Place
+        """
         return self._Places
 
     @Places.setter
@@ -9984,6 +11730,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def UserName(self):
+        """白名单用户（多个用户逗号隔开）
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -9992,6 +11741,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def SrcIp(self):
+        """白名单IP（多个IP逗号隔开）
+        :rtype: str
+        """
         return self._SrcIp
 
     @SrcIp.setter
@@ -10000,6 +11752,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def IsGlobal(self):
+        """是否为全局规则
+        :rtype: bool
+        """
         return self._IsGlobal
 
     @IsGlobal.setter
@@ -10008,6 +11763,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建白名单时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -10016,6 +11774,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """修改白名单时间
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -10024,6 +11785,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def MachineName(self):
+        """机器名
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -10032,6 +11796,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def HostIp(self):
+        """机器IP
+        :rtype: str
+        """
         return self._HostIp
 
     @HostIp.setter
@@ -10040,6 +11807,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def StartTime(self):
+        """起始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -10048,6 +11818,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -10118,6 +11891,9 @@ class LoginWhiteListsRule(AbstractModel):
 
     @property
     def Places(self):
+        """加白地域
+        :rtype: list of Place
+        """
         return self._Places
 
     @Places.setter
@@ -10126,6 +11902,9 @@ class LoginWhiteListsRule(AbstractModel):
 
     @property
     def SrcIp(self):
+        """加白源IP，支持网段，多个IP以逗号隔开
+        :rtype: str
+        """
         return self._SrcIp
 
     @SrcIp.setter
@@ -10134,6 +11913,9 @@ class LoginWhiteListsRule(AbstractModel):
 
     @property
     def UserName(self):
+        """加白用户名，多个用户名以逗号隔开
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -10142,6 +11924,9 @@ class LoginWhiteListsRule(AbstractModel):
 
     @property
     def IsGlobal(self):
+        """是否对全局生效
+        :rtype: bool
+        """
         return self._IsGlobal
 
     @IsGlobal.setter
@@ -10150,6 +11935,9 @@ class LoginWhiteListsRule(AbstractModel):
 
     @property
     def HostIp(self):
+        """白名单生效的机器
+        :rtype: str
+        """
         return self._HostIp
 
     @HostIp.setter
@@ -10158,6 +11946,9 @@ class LoginWhiteListsRule(AbstractModel):
 
     @property
     def Id(self):
+        """规则ID，用于更新规则
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -10166,6 +11957,9 @@ class LoginWhiteListsRule(AbstractModel):
 
     @property
     def StartTime(self):
+        """起始时间
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -10174,6 +11968,9 @@ class LoginWhiteListsRule(AbstractModel):
 
     @property
     def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -10277,6 +12074,9 @@ class Machine(AbstractModel):
 
     @property
     def MachineName(self):
+        """主机名称。
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -10285,6 +12085,9 @@ class Machine(AbstractModel):
 
     @property
     def MachineOs(self):
+        """主机系统。
+        :rtype: str
+        """
         return self._MachineOs
 
     @MachineOs.setter
@@ -10293,6 +12096,12 @@ class Machine(AbstractModel):
 
     @property
     def MachineStatus(self):
+        """主机状态。
+<li>OFFLINE: 离线  </li>
+<li>ONLINE: 在线</li>
+<li>MACHINE_STOPPED: 已关机</li>
+        :rtype: str
+        """
         return self._MachineStatus
 
     @MachineStatus.setter
@@ -10301,6 +12110,9 @@ class Machine(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一Uuid，若客户端长时间不在线将返回空字符。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -10309,6 +12121,9 @@ class Machine(AbstractModel):
 
     @property
     def Quuid(self):
+        """CVM或BM机器唯一Uuid。
+        :rtype: str
+        """
         return self._Quuid
 
     @Quuid.setter
@@ -10317,6 +12132,9 @@ class Machine(AbstractModel):
 
     @property
     def VulNum(self):
+        """漏洞数。
+        :rtype: int
+        """
         return self._VulNum
 
     @VulNum.setter
@@ -10325,6 +12143,9 @@ class Machine(AbstractModel):
 
     @property
     def MachineIp(self):
+        """主机IP。
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -10333,6 +12154,11 @@ class Machine(AbstractModel):
 
     @property
     def IsProVersion(self):
+        """是否是专业版。
+<li>true： 是</li>
+<li>false：否</li>
+        :rtype: bool
+        """
         return self._IsProVersion
 
     @IsProVersion.setter
@@ -10341,6 +12167,9 @@ class Machine(AbstractModel):
 
     @property
     def MachineWanIp(self):
+        """主机外网IP。
+        :rtype: str
+        """
         return self._MachineWanIp
 
     @MachineWanIp.setter
@@ -10349,6 +12178,11 @@ class Machine(AbstractModel):
 
     @property
     def PayMode(self):
+        """主机状态。
+<li>POSTPAY: 表示后付费，即按量计费  </li>
+<li>PREPAY: 表示预付费，即包年包月</li>
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -10357,6 +12191,9 @@ class Machine(AbstractModel):
 
     @property
     def MalwareNum(self):
+        """木马数。
+        :rtype: int
+        """
         return self._MalwareNum
 
     @MalwareNum.setter
@@ -10365,6 +12202,9 @@ class Machine(AbstractModel):
 
     @property
     def Tag(self):
+        """标签信息
+        :rtype: list of MachineTag
+        """
         return self._Tag
 
     @Tag.setter
@@ -10373,6 +12213,9 @@ class Machine(AbstractModel):
 
     @property
     def BaselineNum(self):
+        """基线风险数。
+        :rtype: int
+        """
         return self._BaselineNum
 
     @BaselineNum.setter
@@ -10381,6 +12224,9 @@ class Machine(AbstractModel):
 
     @property
     def CyberAttackNum(self):
+        """网络风险数。
+        :rtype: int
+        """
         return self._CyberAttackNum
 
     @CyberAttackNum.setter
@@ -10389,6 +12235,12 @@ class Machine(AbstractModel):
 
     @property
     def SecurityStatus(self):
+        """风险状态。
+<li>SAFE：安全</li>
+<li>RISK：风险</li>
+<li>UNKNOWN：未知</li>
+        :rtype: str
+        """
         return self._SecurityStatus
 
     @SecurityStatus.setter
@@ -10397,6 +12249,9 @@ class Machine(AbstractModel):
 
     @property
     def InvasionNum(self):
+        """入侵事件数
+        :rtype: int
+        """
         return self._InvasionNum
 
     @InvasionNum.setter
@@ -10405,6 +12260,9 @@ class Machine(AbstractModel):
 
     @property
     def RegionInfo(self):
+        """地域信息
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.RegionInfo`
+        """
         return self._RegionInfo
 
     @RegionInfo.setter
@@ -10467,6 +12325,9 @@ class MachineTag(AbstractModel):
 
     @property
     def Rid(self):
+        """关联标签ID
+        :rtype: int
+        """
         return self._Rid
 
     @Rid.setter
@@ -10475,6 +12336,9 @@ class MachineTag(AbstractModel):
 
     @property
     def Name(self):
+        """标签名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10483,6 +12347,9 @@ class MachineTag(AbstractModel):
 
     @property
     def TagId(self):
+        """标签ID
+        :rtype: int
+        """
         return self._TagId
 
     @TagId.setter
@@ -10564,6 +12431,9 @@ class MaliciousRequest(AbstractModel):
 
     @property
     def Id(self):
+        """记录ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -10572,6 +12442,9 @@ class MaliciousRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端UUID。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -10580,6 +12453,9 @@ class MaliciousRequest(AbstractModel):
 
     @property
     def MachineIp(self):
+        """主机内网IP。
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -10588,6 +12464,9 @@ class MaliciousRequest(AbstractModel):
 
     @property
     def MachineName(self):
+        """主机名。
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -10596,6 +12475,9 @@ class MaliciousRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """恶意请求域名。
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -10604,6 +12486,9 @@ class MaliciousRequest(AbstractModel):
 
     @property
     def Count(self):
+        """恶意请求数。
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -10612,6 +12497,9 @@ class MaliciousRequest(AbstractModel):
 
     @property
     def ProcessName(self):
+        """进程名。
+        :rtype: str
+        """
         return self._ProcessName
 
     @ProcessName.setter
@@ -10620,6 +12508,12 @@ class MaliciousRequest(AbstractModel):
 
     @property
     def Status(self):
+        """记录状态。
+<li>UN_OPERATED：待处理</li>
+<li>TRUSTED：已信任</li>
+<li>UN_TRUSTED：已取消信任</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -10628,6 +12522,9 @@ class MaliciousRequest(AbstractModel):
 
     @property
     def Description(self):
+        """恶意请求域名描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -10636,6 +12533,9 @@ class MaliciousRequest(AbstractModel):
 
     @property
     def Reference(self):
+        """参考地址。
+        :rtype: str
+        """
         return self._Reference
 
     @Reference.setter
@@ -10644,6 +12544,9 @@ class MaliciousRequest(AbstractModel):
 
     @property
     def CreateTime(self):
+        """发现时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -10652,6 +12555,9 @@ class MaliciousRequest(AbstractModel):
 
     @property
     def MergeTime(self):
+        """记录合并时间。
+        :rtype: str
+        """
         return self._MergeTime
 
     @MergeTime.setter
@@ -10660,6 +12566,10 @@ class MaliciousRequest(AbstractModel):
 
     @property
     def ProcessMd5(self):
+        """进程MD5
+值。
+        :rtype: str
+        """
         return self._ProcessMd5
 
     @ProcessMd5.setter
@@ -10668,6 +12578,9 @@ class MaliciousRequest(AbstractModel):
 
     @property
     def CmdLine(self):
+        """执行命令行。
+        :rtype: str
+        """
         return self._CmdLine
 
     @CmdLine.setter
@@ -10676,6 +12589,9 @@ class MaliciousRequest(AbstractModel):
 
     @property
     def Pid(self):
+        """进程PID。
+        :rtype: int
+        """
         return self._Pid
 
     @Pid.setter
@@ -10749,6 +12665,9 @@ class Malware(AbstractModel):
 
     @property
     def Id(self):
+        """事件ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -10757,6 +12676,9 @@ class Malware(AbstractModel):
 
     @property
     def MachineIp(self):
+        """主机IP。
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -10765,6 +12687,11 @@ class Malware(AbstractModel):
 
     @property
     def Status(self):
+        """当前木马状态。
+<li>UN_OPERATED：未处理</li><li>SEGREGATED：已隔离</li><li>TRUSTED：已信任</li>
+<li>SEPARATING：隔离中</li><li>RECOVERING：恢复中</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -10773,6 +12700,9 @@ class Malware(AbstractModel):
 
     @property
     def FilePath(self):
+        """木马所在的路径。
+        :rtype: str
+        """
         return self._FilePath
 
     @FilePath.setter
@@ -10781,6 +12711,9 @@ class Malware(AbstractModel):
 
     @property
     def Description(self):
+        """木马描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -10789,6 +12722,9 @@ class Malware(AbstractModel):
 
     @property
     def MachineName(self):
+        """主机名称。
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -10797,6 +12733,9 @@ class Malware(AbstractModel):
 
     @property
     def FileCreateTime(self):
+        """木马文件创建时间。
+        :rtype: str
+        """
         return self._FileCreateTime
 
     @FileCreateTime.setter
@@ -10805,6 +12744,9 @@ class Malware(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """木马文件修改时间。
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -10813,6 +12755,9 @@ class Malware(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一标识UUID。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -10854,6 +12799,9 @@ class MisAlarmNonlocalLoginPlacesRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """异地登录事件Id数组。
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -10887,6 +12835,9 @@ class MisAlarmNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10921,6 +12872,13 @@ class ModifyAlarmAttributeRequest(AbstractModel):
 
     @property
     def Attribute(self):
+        """告警项目。
+<li>Offline：防护软件离线</li>
+<li>Malware：发现木马文件</li>
+<li>NonlocalLogin：发现异地登录行为</li>
+<li>CrackSuccess：被暴力破解成功</li>
+        :rtype: str
+        """
         return self._Attribute
 
     @Attribute.setter
@@ -10929,6 +12887,11 @@ class ModifyAlarmAttributeRequest(AbstractModel):
 
     @property
     def Value(self):
+        """告警项目属性。
+<li>CLOSE：关闭</li>
+<li>OPEN：打开</li>
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -10963,6 +12926,9 @@ class ModifyAlarmAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10990,6 +12956,11 @@ class ModifyAutoOpenProVersionConfigRequest(AbstractModel):
 
     @property
     def Status(self):
+        """设置自动开通状态。
+<li>CLOSE：关闭</li>
+<li>OPEN：打开</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -11023,6 +12994,9 @@ class ModifyAutoOpenProVersionConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11048,6 +13022,9 @@ class ModifyLoginWhiteListRequest(AbstractModel):
 
     @property
     def Rules(self):
+        """白名单规则
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.LoginWhiteListsRule`
+        """
         return self._Rules
 
     @Rules.setter
@@ -11083,6 +13060,9 @@ class ModifyLoginWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11114,6 +13094,12 @@ class ModifyProVersionRenewFlagRequest(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """自动续费标识。取值范围：
+<li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
+<li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li>
+<li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -11122,6 +13108,9 @@ class ModifyProVersionRenewFlagRequest(AbstractModel):
 
     @property
     def Quuid(self):
+        """主机唯一ID，对应CVM的uuid、BM的instanceId。
+        :rtype: str
+        """
         return self._Quuid
 
     @Quuid.setter
@@ -11156,6 +13145,9 @@ class ModifyProVersionRenewFlagResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11213,6 +13205,9 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def Id(self):
+        """事件ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -11221,6 +13216,9 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def MachineIp(self):
+        """主机IP。
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -11229,6 +13227,11 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def Status(self):
+        """登录状态
+<li>NON_LOCAL_LOGIN：异地登录</li>
+<li>NORMAL_LOGIN：正常登录</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -11237,6 +13240,9 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def UserName(self):
+        """用户名。
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -11245,6 +13251,9 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def City(self):
+        """城市ID。
+        :rtype: int
+        """
         return self._City
 
     @City.setter
@@ -11253,6 +13262,9 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def Country(self):
+        """国家ID。
+        :rtype: int
+        """
         return self._Country
 
     @Country.setter
@@ -11261,6 +13273,9 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def Province(self):
+        """省份ID。
+        :rtype: int
+        """
         return self._Province
 
     @Province.setter
@@ -11269,6 +13284,9 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def SrcIp(self):
+        """登录IP。
+        :rtype: str
+        """
         return self._SrcIp
 
     @SrcIp.setter
@@ -11277,6 +13295,9 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def MachineName(self):
+        """机器名称。
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -11285,6 +13306,9 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def LoginTime(self):
+        """登录时间。
+        :rtype: str
+        """
         return self._LoginTime
 
     @LoginTime.setter
@@ -11293,6 +13317,9 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一标识Uuid。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -11360,6 +13387,9 @@ class OpenPort(AbstractModel):
 
     @property
     def Id(self):
+        """唯一ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -11368,6 +13398,9 @@ class OpenPort(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一UUID。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -11376,6 +13409,9 @@ class OpenPort(AbstractModel):
 
     @property
     def Port(self):
+        """开放端口号。
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -11384,6 +13420,9 @@ class OpenPort(AbstractModel):
 
     @property
     def MachineIp(self):
+        """主机IP。
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -11392,6 +13431,9 @@ class OpenPort(AbstractModel):
 
     @property
     def MachineName(self):
+        """主机名。
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -11400,6 +13442,9 @@ class OpenPort(AbstractModel):
 
     @property
     def ProcessName(self):
+        """端口对应进程名。
+        :rtype: str
+        """
         return self._ProcessName
 
     @ProcessName.setter
@@ -11408,6 +13453,9 @@ class OpenPort(AbstractModel):
 
     @property
     def Pid(self):
+        """端口对应进程Pid。
+        :rtype: int
+        """
         return self._Pid
 
     @Pid.setter
@@ -11416,6 +13464,9 @@ class OpenPort(AbstractModel):
 
     @property
     def CreateTime(self):
+        """记录创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -11424,6 +13475,9 @@ class OpenPort(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """记录更新时间。
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -11468,6 +13522,9 @@ class OpenPortStatistics(AbstractModel):
 
     @property
     def Port(self):
+        """端口号
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -11476,6 +13533,9 @@ class OpenPortStatistics(AbstractModel):
 
     @property
     def MachineNum(self):
+        """主机数量
+        :rtype: int
+        """
         return self._MachineNum
 
     @MachineNum.setter
@@ -11513,6 +13573,9 @@ class OpenProVersionPrepaidRequest(AbstractModel):
 
     @property
     def ChargePrepaid(self):
+        """购买相关参数。
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.ChargePrepaid`
+        """
         return self._ChargePrepaid
 
     @ChargePrepaid.setter
@@ -11521,6 +13584,9 @@ class OpenProVersionPrepaidRequest(AbstractModel):
 
     @property
     def Machines(self):
+        """需要开通专业版主机信息数组。
+        :rtype: list of ProVersionMachine
+        """
         return self._Machines
 
     @Machines.setter
@@ -11565,6 +13631,9 @@ class OpenProVersionPrepaidResponse(AbstractModel):
 
     @property
     def DealIds(self):
+        """订单ID列表。
+        :rtype: list of str
+        """
         return self._DealIds
 
     @DealIds.setter
@@ -11573,6 +13642,9 @@ class OpenProVersionPrepaidResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11612,6 +13684,11 @@ class OpenProVersionRequest(AbstractModel):
 
     @property
     def MachineType(self):
+        """云主机类型。
+<li>CVM：表示虚拟主机</li>
+<li>BM:  表示黑石物理机</li>
+        :rtype: str
+        """
         return self._MachineType
 
     @MachineType.setter
@@ -11620,6 +13697,10 @@ class OpenProVersionRequest(AbstractModel):
 
     @property
     def MachineRegion(self):
+        """机器所属地域。
+如：ap-guangzhou，ap-shanghai
+        :rtype: str
+        """
         return self._MachineRegion
 
     @MachineRegion.setter
@@ -11628,6 +13709,10 @@ class OpenProVersionRequest(AbstractModel):
 
     @property
     def Quuids(self):
+        """主机唯一标识Uuid数组。
+黑石的InstanceId，CVM的Uuid
+        :rtype: list of str
+        """
         return self._Quuids
 
     @Quuids.setter
@@ -11636,6 +13721,9 @@ class OpenProVersionRequest(AbstractModel):
 
     @property
     def ActivityId(self):
+        """活动ID。
+        :rtype: int
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -11672,6 +13760,9 @@ class OpenProVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11703,6 +13794,9 @@ class Place(AbstractModel):
 
     @property
     def CityId(self):
+        """城市 ID。
+        :rtype: int
+        """
         return self._CityId
 
     @CityId.setter
@@ -11711,6 +13805,9 @@ class Place(AbstractModel):
 
     @property
     def ProvinceId(self):
+        """省份 ID。
+        :rtype: int
+        """
         return self._ProvinceId
 
     @ProvinceId.setter
@@ -11719,6 +13816,9 @@ class Place(AbstractModel):
 
     @property
     def CountryId(self):
+        """国家ID，暂只支持国内：1。
+        :rtype: int
+        """
         return self._CountryId
 
     @CountryId.setter
@@ -11805,6 +13905,9 @@ class PrivilegeEscalationProcess(AbstractModel):
 
     @property
     def Id(self):
+        """数据ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -11813,6 +13916,9 @@ class PrivilegeEscalationProcess(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜ID
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -11821,6 +13927,9 @@ class PrivilegeEscalationProcess(AbstractModel):
 
     @property
     def Quuid(self):
+        """主机ID
+        :rtype: str
+        """
         return self._Quuid
 
     @Quuid.setter
@@ -11829,6 +13938,9 @@ class PrivilegeEscalationProcess(AbstractModel):
 
     @property
     def Hostip(self):
+        """主机内网IP
+        :rtype: str
+        """
         return self._Hostip
 
     @Hostip.setter
@@ -11837,6 +13949,9 @@ class PrivilegeEscalationProcess(AbstractModel):
 
     @property
     def ProcessName(self):
+        """进程名
+        :rtype: str
+        """
         return self._ProcessName
 
     @ProcessName.setter
@@ -11845,6 +13960,9 @@ class PrivilegeEscalationProcess(AbstractModel):
 
     @property
     def FullPath(self):
+        """进程路径
+        :rtype: str
+        """
         return self._FullPath
 
     @FullPath.setter
@@ -11853,6 +13971,9 @@ class PrivilegeEscalationProcess(AbstractModel):
 
     @property
     def CmdLine(self):
+        """执行命令
+        :rtype: str
+        """
         return self._CmdLine
 
     @CmdLine.setter
@@ -11861,6 +13982,9 @@ class PrivilegeEscalationProcess(AbstractModel):
 
     @property
     def UserName(self):
+        """用户名
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -11869,6 +13993,9 @@ class PrivilegeEscalationProcess(AbstractModel):
 
     @property
     def UserGroup(self):
+        """用户组
+        :rtype: str
+        """
         return self._UserGroup
 
     @UserGroup.setter
@@ -11877,6 +14004,9 @@ class PrivilegeEscalationProcess(AbstractModel):
 
     @property
     def ProcFilePrivilege(self):
+        """进程文件权限
+        :rtype: str
+        """
         return self._ProcFilePrivilege
 
     @ProcFilePrivilege.setter
@@ -11885,6 +14015,9 @@ class PrivilegeEscalationProcess(AbstractModel):
 
     @property
     def ParentProcName(self):
+        """父进程名
+        :rtype: str
+        """
         return self._ParentProcName
 
     @ParentProcName.setter
@@ -11893,6 +14026,9 @@ class PrivilegeEscalationProcess(AbstractModel):
 
     @property
     def ParentProcUser(self):
+        """父进程用户名
+        :rtype: str
+        """
         return self._ParentProcUser
 
     @ParentProcUser.setter
@@ -11901,6 +14037,9 @@ class PrivilegeEscalationProcess(AbstractModel):
 
     @property
     def ParentProcGroup(self):
+        """父进程用户组
+        :rtype: str
+        """
         return self._ParentProcGroup
 
     @ParentProcGroup.setter
@@ -11909,6 +14048,9 @@ class PrivilegeEscalationProcess(AbstractModel):
 
     @property
     def ParentProcPath(self):
+        """父进程路径
+        :rtype: str
+        """
         return self._ParentProcPath
 
     @ParentProcPath.setter
@@ -11917,6 +14059,9 @@ class PrivilegeEscalationProcess(AbstractModel):
 
     @property
     def ProcTree(self):
+        """进程树
+        :rtype: str
+        """
         return self._ProcTree
 
     @ProcTree.setter
@@ -11925,6 +14070,9 @@ class PrivilegeEscalationProcess(AbstractModel):
 
     @property
     def Status(self):
+        """处理状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -11933,6 +14081,9 @@ class PrivilegeEscalationProcess(AbstractModel):
 
     @property
     def CreateTime(self):
+        """发生时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -11941,6 +14092,9 @@ class PrivilegeEscalationProcess(AbstractModel):
 
     @property
     def MachineName(self):
+        """机器名
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -12018,6 +14172,9 @@ class PrivilegeRule(AbstractModel):
 
     @property
     def Id(self):
+        """规则ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -12026,6 +14183,9 @@ class PrivilegeRule(AbstractModel):
 
     @property
     def Uuid(self):
+        """客户端ID
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -12034,6 +14194,9 @@ class PrivilegeRule(AbstractModel):
 
     @property
     def ProcessName(self):
+        """进程名
+        :rtype: str
+        """
         return self._ProcessName
 
     @ProcessName.setter
@@ -12042,6 +14205,9 @@ class PrivilegeRule(AbstractModel):
 
     @property
     def SMode(self):
+        """是否S权限
+        :rtype: int
+        """
         return self._SMode
 
     @SMode.setter
@@ -12050,6 +14216,9 @@ class PrivilegeRule(AbstractModel):
 
     @property
     def Operator(self):
+        """操作人
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -12058,6 +14227,9 @@ class PrivilegeRule(AbstractModel):
 
     @property
     def IsGlobal(self):
+        """是否全局规则
+        :rtype: int
+        """
         return self._IsGlobal
 
     @IsGlobal.setter
@@ -12066,6 +14238,9 @@ class PrivilegeRule(AbstractModel):
 
     @property
     def Status(self):
+        """状态(0: 有效 1: 无效)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -12074,6 +14249,9 @@ class PrivilegeRule(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -12082,6 +14260,9 @@ class PrivilegeRule(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """修改时间
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -12090,6 +14271,9 @@ class PrivilegeRule(AbstractModel):
 
     @property
     def Hostip(self):
+        """主机IP
+        :rtype: str
+        """
         return self._Hostip
 
     @Hostip.setter
@@ -12142,6 +14326,11 @@ class ProVersionMachine(AbstractModel):
 
     @property
     def MachineType(self):
+        """主机类型。
+<li>CVM: 虚拟主机</li>
+<li>BM: 黑石物理机</li>
+        :rtype: str
+        """
         return self._MachineType
 
     @MachineType.setter
@@ -12150,6 +14339,10 @@ class ProVersionMachine(AbstractModel):
 
     @property
     def MachineRegion(self):
+        """主机所在地域。
+如：ap-guangzhou、ap-beijing
+        :rtype: str
+        """
         return self._MachineRegion
 
     @MachineRegion.setter
@@ -12158,6 +14351,10 @@ class ProVersionMachine(AbstractModel):
 
     @property
     def Quuid(self):
+        """主机唯一标识Uuid。
+黑石的InstanceId，CVM的Uuid
+        :rtype: str
+        """
         return self._Quuid
 
     @Quuid.setter
@@ -12227,6 +14424,9 @@ class Process(AbstractModel):
 
     @property
     def Id(self):
+        """唯一ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -12235,6 +14435,9 @@ class Process(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一UUID。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -12243,6 +14446,9 @@ class Process(AbstractModel):
 
     @property
     def MachineIp(self):
+        """主机内网IP。
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -12251,6 +14457,9 @@ class Process(AbstractModel):
 
     @property
     def MachineName(self):
+        """主机名。
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -12259,6 +14468,9 @@ class Process(AbstractModel):
 
     @property
     def Pid(self):
+        """进程Pid。
+        :rtype: int
+        """
         return self._Pid
 
     @Pid.setter
@@ -12267,6 +14479,9 @@ class Process(AbstractModel):
 
     @property
     def Ppid(self):
+        """进程Ppid。
+        :rtype: int
+        """
         return self._Ppid
 
     @Ppid.setter
@@ -12275,6 +14490,9 @@ class Process(AbstractModel):
 
     @property
     def ProcessName(self):
+        """进程名。
+        :rtype: str
+        """
         return self._ProcessName
 
     @ProcessName.setter
@@ -12283,6 +14501,9 @@ class Process(AbstractModel):
 
     @property
     def Username(self):
+        """进程用户名。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -12291,6 +14512,13 @@ class Process(AbstractModel):
 
     @property
     def Platform(self):
+        """所属平台。
+<li>WIN32：windows32位</li>
+<li>WIN64：windows64位</li>
+<li>LINUX32：Linux32位</li>
+<li>LINUX64：Linux64位</li>
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -12299,6 +14527,9 @@ class Process(AbstractModel):
 
     @property
     def FullPath(self):
+        """进程路径。
+        :rtype: str
+        """
         return self._FullPath
 
     @FullPath.setter
@@ -12307,6 +14538,9 @@ class Process(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间。
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -12353,6 +14587,9 @@ class ProcessStatistics(AbstractModel):
 
     @property
     def ProcessName(self):
+        """进程名。
+        :rtype: str
+        """
         return self._ProcessName
 
     @ProcessName.setter
@@ -12361,6 +14598,9 @@ class ProcessStatistics(AbstractModel):
 
     @property
     def MachineNum(self):
+        """主机数量。
+        :rtype: int
+        """
         return self._MachineNum
 
     @MachineNum.setter
@@ -12395,6 +14635,9 @@ class RecoverMalwaresRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """木马Id数组,单次最大删除不能超过200条
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -12434,6 +14677,9 @@ class RecoverMalwaresResponse(AbstractModel):
 
     @property
     def SuccessIds(self):
+        """恢复成功id数组
+        :rtype: list of int non-negative
+        """
         return self._SuccessIds
 
     @SuccessIds.setter
@@ -12442,6 +14688,9 @@ class RecoverMalwaresResponse(AbstractModel):
 
     @property
     def FailedIds(self):
+        """恢复失败id数组
+        :rtype: list of int non-negative
+        """
         return self._FailedIds
 
     @FailedIds.setter
@@ -12450,6 +14699,9 @@ class RecoverMalwaresResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12486,6 +14738,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def Region(self):
+        """地域标志，如 ap-guangzhou，ap-shanghai，ap-beijing
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -12494,6 +14749,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionName(self):
+        """地域中文名，如华南地区（广州），华东地区（上海金融），华北地区（北京）
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -12502,6 +14760,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionId(self):
+        """地域ID
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -12510,6 +14771,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionCode(self):
+        """地域代码，如 gz，sh，bj
+        :rtype: str
+        """
         return self._RegionCode
 
     @RegionCode.setter
@@ -12549,6 +14813,9 @@ class RenewProVersionRequest(AbstractModel):
 
     @property
     def ChargePrepaid(self):
+        """购买相关参数。
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.ChargePrepaid`
+        """
         return self._ChargePrepaid
 
     @ChargePrepaid.setter
@@ -12557,6 +14824,9 @@ class RenewProVersionRequest(AbstractModel):
 
     @property
     def Quuid(self):
+        """主机唯一ID，对应CVM的uuid、BM的InstanceId。
+        :rtype: str
+        """
         return self._Quuid
 
     @Quuid.setter
@@ -12593,6 +14863,9 @@ class RenewProVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12618,6 +14891,9 @@ class RescanImpactedHostRequest(AbstractModel):
 
     @property
     def Id(self):
+        """漏洞ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -12651,6 +14927,9 @@ class RescanImpactedHostResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12730,6 +15009,9 @@ class ReverseShell(AbstractModel):
 
     @property
     def Id(self):
+        """ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -12738,6 +15020,9 @@ class ReverseShell(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜UUID
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -12746,6 +15031,9 @@ class ReverseShell(AbstractModel):
 
     @property
     def Quuid(self):
+        """主机ID
+        :rtype: str
+        """
         return self._Quuid
 
     @Quuid.setter
@@ -12754,6 +15042,9 @@ class ReverseShell(AbstractModel):
 
     @property
     def Hostip(self):
+        """主机内网IP
+        :rtype: str
+        """
         return self._Hostip
 
     @Hostip.setter
@@ -12762,6 +15053,9 @@ class ReverseShell(AbstractModel):
 
     @property
     def DstIp(self):
+        """目标IP
+        :rtype: str
+        """
         return self._DstIp
 
     @DstIp.setter
@@ -12770,6 +15064,9 @@ class ReverseShell(AbstractModel):
 
     @property
     def DstPort(self):
+        """目标端口
+        :rtype: int
+        """
         return self._DstPort
 
     @DstPort.setter
@@ -12778,6 +15075,9 @@ class ReverseShell(AbstractModel):
 
     @property
     def ProcessName(self):
+        """进程名
+        :rtype: str
+        """
         return self._ProcessName
 
     @ProcessName.setter
@@ -12786,6 +15086,9 @@ class ReverseShell(AbstractModel):
 
     @property
     def FullPath(self):
+        """进程路径
+        :rtype: str
+        """
         return self._FullPath
 
     @FullPath.setter
@@ -12794,6 +15097,9 @@ class ReverseShell(AbstractModel):
 
     @property
     def CmdLine(self):
+        """命令详情
+        :rtype: str
+        """
         return self._CmdLine
 
     @CmdLine.setter
@@ -12802,6 +15108,9 @@ class ReverseShell(AbstractModel):
 
     @property
     def UserName(self):
+        """执行用户
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -12810,6 +15119,9 @@ class ReverseShell(AbstractModel):
 
     @property
     def UserGroup(self):
+        """执行用户组
+        :rtype: str
+        """
         return self._UserGroup
 
     @UserGroup.setter
@@ -12818,6 +15130,9 @@ class ReverseShell(AbstractModel):
 
     @property
     def ParentProcName(self):
+        """父进程名
+        :rtype: str
+        """
         return self._ParentProcName
 
     @ParentProcName.setter
@@ -12826,6 +15141,9 @@ class ReverseShell(AbstractModel):
 
     @property
     def ParentProcUser(self):
+        """父进程用户
+        :rtype: str
+        """
         return self._ParentProcUser
 
     @ParentProcUser.setter
@@ -12834,6 +15152,9 @@ class ReverseShell(AbstractModel):
 
     @property
     def ParentProcGroup(self):
+        """父进程用户组
+        :rtype: str
+        """
         return self._ParentProcGroup
 
     @ParentProcGroup.setter
@@ -12842,6 +15163,9 @@ class ReverseShell(AbstractModel):
 
     @property
     def ParentProcPath(self):
+        """父进程路径
+        :rtype: str
+        """
         return self._ParentProcPath
 
     @ParentProcPath.setter
@@ -12850,6 +15174,9 @@ class ReverseShell(AbstractModel):
 
     @property
     def Status(self):
+        """处理状态
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -12858,6 +15185,9 @@ class ReverseShell(AbstractModel):
 
     @property
     def CreateTime(self):
+        """产生时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -12866,6 +15196,9 @@ class ReverseShell(AbstractModel):
 
     @property
     def MachineName(self):
+        """主机名
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -12874,6 +15207,9 @@ class ReverseShell(AbstractModel):
 
     @property
     def ProcTree(self):
+        """进程树
+        :rtype: str
+        """
         return self._ProcTree
 
     @ProcTree.setter
@@ -12955,6 +15291,9 @@ class ReverseShellRule(AbstractModel):
 
     @property
     def Id(self):
+        """规则ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -12963,6 +15302,9 @@ class ReverseShellRule(AbstractModel):
 
     @property
     def Uuid(self):
+        """客户端ID
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -12971,6 +15313,9 @@ class ReverseShellRule(AbstractModel):
 
     @property
     def ProcessName(self):
+        """进程名称
+        :rtype: str
+        """
         return self._ProcessName
 
     @ProcessName.setter
@@ -12979,6 +15324,9 @@ class ReverseShellRule(AbstractModel):
 
     @property
     def DestIp(self):
+        """目标IP
+        :rtype: str
+        """
         return self._DestIp
 
     @DestIp.setter
@@ -12987,6 +15335,9 @@ class ReverseShellRule(AbstractModel):
 
     @property
     def DestPort(self):
+        """目标端口
+        :rtype: str
+        """
         return self._DestPort
 
     @DestPort.setter
@@ -12995,6 +15346,9 @@ class ReverseShellRule(AbstractModel):
 
     @property
     def Operator(self):
+        """操作人
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -13003,6 +15357,9 @@ class ReverseShellRule(AbstractModel):
 
     @property
     def IsGlobal(self):
+        """是否全局规则
+        :rtype: int
+        """
         return self._IsGlobal
 
     @IsGlobal.setter
@@ -13011,6 +15368,9 @@ class ReverseShellRule(AbstractModel):
 
     @property
     def Status(self):
+        """状态 (0: 有效 1: 无效)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -13019,6 +15379,9 @@ class ReverseShellRule(AbstractModel):
 
     @property
     def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -13027,6 +15390,9 @@ class ReverseShellRule(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """修改时间
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -13035,6 +15401,9 @@ class ReverseShellRule(AbstractModel):
 
     @property
     def Hostip(self):
+        """主机IP
+        :rtype: str
+        """
         return self._Hostip
 
     @Hostip.setter
@@ -13099,6 +15468,9 @@ class SecurityDynamic(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端UUID。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -13107,6 +15479,9 @@ class SecurityDynamic(AbstractModel):
 
     @property
     def EventTime(self):
+        """安全事件发生事件。
+        :rtype: str
+        """
         return self._EventTime
 
     @EventTime.setter
@@ -13115,6 +15490,14 @@ class SecurityDynamic(AbstractModel):
 
     @property
     def EventType(self):
+        """安全事件类型。
+<li>MALWARE：木马事件</li>
+<li>NON_LOCAL_LOGIN：异地登录</li>
+<li>BRUTEATTACK_SUCCESS：密码破解成功</li>
+<li>VUL：漏洞</li>
+<li>BASELINE：安全基线</li>
+        :rtype: str
+        """
         return self._EventType
 
     @EventType.setter
@@ -13123,6 +15506,9 @@ class SecurityDynamic(AbstractModel):
 
     @property
     def Message(self):
+        """安全事件消息。
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -13131,6 +15517,13 @@ class SecurityDynamic(AbstractModel):
 
     @property
     def SecurityLevel(self):
+        """安全事件等级。
+<li>RISK: 严重</li>
+<li>HIGH: 高危</li>
+<li>NORMAL: 中危</li>
+<li>LOW: 低危</li>
+        :rtype: str
+        """
         return self._SecurityLevel
 
     @SecurityLevel.setter
@@ -13171,6 +15564,9 @@ class SecurityTrend(AbstractModel):
 
     @property
     def Date(self):
+        """事件时间。
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -13179,6 +15575,9 @@ class SecurityTrend(AbstractModel):
 
     @property
     def EventNum(self):
+        """事件数量。
+        :rtype: int
+        """
         return self._EventNum
 
     @EventNum.setter
@@ -13213,6 +15612,9 @@ class SeparateMalwaresRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """木马事件ID数组。
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -13252,6 +15654,9 @@ class SeparateMalwaresResponse(AbstractModel):
 
     @property
     def SuccessIds(self):
+        """隔离成功的id数组。
+        :rtype: list of int non-negative
+        """
         return self._SuccessIds
 
     @SuccessIds.setter
@@ -13260,6 +15665,9 @@ class SeparateMalwaresResponse(AbstractModel):
 
     @property
     def FailedIds(self):
+        """隔离失败的id数组。
+        :rtype: list of int non-negative
+        """
         return self._FailedIds
 
     @FailedIds.setter
@@ -13268,6 +15676,9 @@ class SeparateMalwaresResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13298,6 +15709,9 @@ class SetBashEventsStatusRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """ID数组，最大100条。
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -13306,6 +15720,9 @@ class SetBashEventsStatusRequest(AbstractModel):
 
     @property
     def Status(self):
+        """新状态(0-待处理 1-高危 2-正常)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -13340,6 +15757,9 @@ class SetBashEventsStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13368,6 +15788,9 @@ class SwitchBashRulesRequest(AbstractModel):
 
     @property
     def Id(self):
+        """规则ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -13376,6 +15799,9 @@ class SwitchBashRulesRequest(AbstractModel):
 
     @property
     def Disabled(self):
+        """是否禁用
+        :rtype: int
+        """
         return self._Disabled
 
     @Disabled.setter
@@ -13410,6 +15836,9 @@ class SwitchBashRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13441,6 +15870,9 @@ class Tag(AbstractModel):
 
     @property
     def Id(self):
+        """标签ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -13449,6 +15881,9 @@ class Tag(AbstractModel):
 
     @property
     def Name(self):
+        """标签名
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -13457,6 +15892,9 @@ class Tag(AbstractModel):
 
     @property
     def Count(self):
+        """服务器数
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -13510,6 +15948,9 @@ class TagMachine(AbstractModel):
 
     @property
     def Id(self):
+        """ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -13518,6 +15959,9 @@ class TagMachine(AbstractModel):
 
     @property
     def Quuid(self):
+        """主机ID
+        :rtype: str
+        """
         return self._Quuid
 
     @Quuid.setter
@@ -13526,6 +15970,9 @@ class TagMachine(AbstractModel):
 
     @property
     def MachineName(self):
+        """主机名称
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -13534,6 +15981,9 @@ class TagMachine(AbstractModel):
 
     @property
     def MachineIp(self):
+        """主机内网IP
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -13542,6 +15992,9 @@ class TagMachine(AbstractModel):
 
     @property
     def MachineWanIp(self):
+        """主机外网IP
+        :rtype: str
+        """
         return self._MachineWanIp
 
     @MachineWanIp.setter
@@ -13550,6 +16003,9 @@ class TagMachine(AbstractModel):
 
     @property
     def MachineRegion(self):
+        """主机区域
+        :rtype: str
+        """
         return self._MachineRegion
 
     @MachineRegion.setter
@@ -13558,6 +16014,9 @@ class TagMachine(AbstractModel):
 
     @property
     def MachineType(self):
+        """主机区域类型
+        :rtype: str
+        """
         return self._MachineType
 
     @MachineType.setter
@@ -13597,6 +16056,9 @@ class TrustMaliciousRequestRequest(AbstractModel):
 
     @property
     def Id(self):
+        """恶意请求记录ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -13630,6 +16092,9 @@ class TrustMaliciousRequestResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13655,6 +16120,9 @@ class TrustMalwaresRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """木马ID数组。
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -13688,6 +16156,9 @@ class TrustMalwaresResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13713,6 +16184,9 @@ class UntrustMaliciousRequestRequest(AbstractModel):
 
     @property
     def Id(self):
+        """受信任记录ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -13746,6 +16220,9 @@ class UntrustMaliciousRequestResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13771,6 +16248,9 @@ class UntrustMalwaresRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """木马ID数组，单次最大处理不能超过200条。
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -13804,6 +16284,9 @@ class UntrustMalwaresResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13841,6 +16324,9 @@ class UsualPlace(AbstractModel):
 
     @property
     def Id(self):
+        """ID。
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -13849,6 +16335,9 @@ class UsualPlace(AbstractModel):
 
     @property
     def Uuid(self):
+        """云镜客户端唯一标识UUID。
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -13857,6 +16346,9 @@ class UsualPlace(AbstractModel):
 
     @property
     def CountryId(self):
+        """国家 ID。
+        :rtype: int
+        """
         return self._CountryId
 
     @CountryId.setter
@@ -13865,6 +16357,9 @@ class UsualPlace(AbstractModel):
 
     @property
     def ProvinceId(self):
+        """省份 ID。
+        :rtype: int
+        """
         return self._ProvinceId
 
     @ProvinceId.setter
@@ -13873,6 +16368,9 @@ class UsualPlace(AbstractModel):
 
     @property
     def CityId(self):
+        """城市 ID。
+        :rtype: int
+        """
         return self._CityId
 
     @CityId.setter
@@ -13931,6 +16429,9 @@ NOTICE：提示
 
     @property
     def VulId(self):
+        """漏洞种类ID
+        :rtype: int
+        """
         return self._VulId
 
     @VulId.setter
@@ -13939,6 +16440,9 @@ NOTICE：提示
 
     @property
     def VulName(self):
+        """漏洞名称
+        :rtype: str
+        """
         return self._VulName
 
     @VulName.setter
@@ -13947,6 +16451,13 @@ NOTICE：提示
 
     @property
     def VulLevel(self):
+        """漏洞危害等级:
+HIGH：高危
+MIDDLE：中危
+LOW：低危
+NOTICE：提示
+        :rtype: str
+        """
         return self._VulLevel
 
     @VulLevel.setter
@@ -13955,6 +16466,9 @@ NOTICE：提示
 
     @property
     def LastScanTime(self):
+        """最后扫描时间
+        :rtype: str
+        """
         return self._LastScanTime
 
     @LastScanTime.setter
@@ -13963,6 +16477,9 @@ NOTICE：提示
 
     @property
     def ImpactedHostNum(self):
+        """受影响机器数量
+        :rtype: int
+        """
         return self._ImpactedHostNum
 
     @ImpactedHostNum.setter
@@ -13971,6 +16488,11 @@ NOTICE：提示
 
     @property
     def VulStatus(self):
+        """漏洞状态
+* UN_OPERATED : 待处理
+* FIXED : 已修复
+        :rtype: str
+        """
         return self._VulStatus
 
     @VulStatus.setter
@@ -14012,6 +16534,9 @@ class WeeklyReport(AbstractModel):
 
     @property
     def BeginDate(self):
+        """周报开始时间。
+        :rtype: str
+        """
         return self._BeginDate
 
     @BeginDate.setter
@@ -14020,6 +16545,9 @@ class WeeklyReport(AbstractModel):
 
     @property
     def EndDate(self):
+        """周报结束时间。
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -14066,6 +16594,9 @@ class WeeklyReportBruteAttack(AbstractModel):
 
     @property
     def MachineIp(self):
+        """主机IP。
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -14074,6 +16605,9 @@ class WeeklyReportBruteAttack(AbstractModel):
 
     @property
     def Username(self):
+        """被破解用户名。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -14082,6 +16616,9 @@ class WeeklyReportBruteAttack(AbstractModel):
 
     @property
     def SrcIp(self):
+        """源IP。
+        :rtype: str
+        """
         return self._SrcIp
 
     @SrcIp.setter
@@ -14090,6 +16627,9 @@ class WeeklyReportBruteAttack(AbstractModel):
 
     @property
     def Count(self):
+        """尝试次数。
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -14098,6 +16638,9 @@ class WeeklyReportBruteAttack(AbstractModel):
 
     @property
     def AttackTime(self):
+        """攻击时间。
+        :rtype: str
+        """
         return self._AttackTime
 
     @AttackTime.setter
@@ -14152,6 +16695,9 @@ class WeeklyReportMalware(AbstractModel):
 
     @property
     def MachineIp(self):
+        """主机IP。
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -14160,6 +16706,9 @@ class WeeklyReportMalware(AbstractModel):
 
     @property
     def FilePath(self):
+        """木马文件路径。
+        :rtype: str
+        """
         return self._FilePath
 
     @FilePath.setter
@@ -14168,6 +16717,9 @@ class WeeklyReportMalware(AbstractModel):
 
     @property
     def Md5(self):
+        """木马文件MD5值。
+        :rtype: str
+        """
         return self._Md5
 
     @Md5.setter
@@ -14176,6 +16728,9 @@ class WeeklyReportMalware(AbstractModel):
 
     @property
     def FindTime(self):
+        """木马发现时间。
+        :rtype: str
+        """
         return self._FindTime
 
     @FindTime.setter
@@ -14184,6 +16739,14 @@ class WeeklyReportMalware(AbstractModel):
 
     @property
     def Status(self):
+        """当前木马状态。
+<li>UN_OPERATED：未处理</li>
+<li>SEGREGATED：已隔离</li>
+<li>TRUSTED：已信任</li>
+<li>SEPARATING：隔离中</li>
+<li>RECOVERING：恢复中</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -14239,6 +16802,9 @@ class WeeklyReportNonlocalLoginPlace(AbstractModel):
 
     @property
     def MachineIp(self):
+        """主机IP。
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -14247,6 +16813,9 @@ class WeeklyReportNonlocalLoginPlace(AbstractModel):
 
     @property
     def Username(self):
+        """用户名。
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -14255,6 +16824,9 @@ class WeeklyReportNonlocalLoginPlace(AbstractModel):
 
     @property
     def SrcIp(self):
+        """源IP。
+        :rtype: str
+        """
         return self._SrcIp
 
     @SrcIp.setter
@@ -14263,6 +16835,9 @@ class WeeklyReportNonlocalLoginPlace(AbstractModel):
 
     @property
     def Country(self):
+        """国家ID。
+        :rtype: int
+        """
         return self._Country
 
     @Country.setter
@@ -14271,6 +16846,9 @@ class WeeklyReportNonlocalLoginPlace(AbstractModel):
 
     @property
     def Province(self):
+        """省份ID。
+        :rtype: int
+        """
         return self._Province
 
     @Province.setter
@@ -14279,6 +16857,9 @@ class WeeklyReportNonlocalLoginPlace(AbstractModel):
 
     @property
     def City(self):
+        """城市ID。
+        :rtype: int
+        """
         return self._City
 
     @City.setter
@@ -14287,6 +16868,9 @@ class WeeklyReportNonlocalLoginPlace(AbstractModel):
 
     @property
     def LoginTime(self):
+        """登录时间。
+        :rtype: str
+        """
         return self._LoginTime
 
     @LoginTime.setter
@@ -14347,6 +16931,9 @@ class WeeklyReportVul(AbstractModel):
 
     @property
     def MachineIp(self):
+        """主机内网IP。
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -14355,6 +16942,9 @@ class WeeklyReportVul(AbstractModel):
 
     @property
     def VulName(self):
+        """漏洞名称。
+        :rtype: str
+        """
         return self._VulName
 
     @VulName.setter
@@ -14363,6 +16953,12 @@ class WeeklyReportVul(AbstractModel):
 
     @property
     def VulType(self):
+        """漏洞类型。
+<li> WEB : Web漏洞</li>
+<li> SYSTEM :系统组件漏洞</li>
+<li> BASELINE : 安全基线</li>
+        :rtype: str
+        """
         return self._VulType
 
     @VulType.setter
@@ -14371,6 +16967,9 @@ class WeeklyReportVul(AbstractModel):
 
     @property
     def Description(self):
+        """漏洞描述。
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -14379,6 +16978,12 @@ class WeeklyReportVul(AbstractModel):
 
     @property
     def VulStatus(self):
+        """漏洞状态。
+<li> UN_OPERATED : 待处理</li>
+<li> SCANING : 扫描中</li>
+<li> FIXED : 已修复</li>
+        :rtype: str
+        """
         return self._VulStatus
 
     @VulStatus.setter
@@ -14387,6 +16992,9 @@ class WeeklyReportVul(AbstractModel):
 
     @property
     def LastScanTime(self):
+        """最后扫描时间。
+        :rtype: str
+        """
         return self._LastScanTime
 
     @LastScanTime.setter
