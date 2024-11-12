@@ -601,6 +601,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDataModel(self, request):
+        """创建数据建模，提供给云应用使用，实现“Wedata数据建模”的下单发货
+
+        :param request: Request instance for CreateDataModel.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.CreateDataModelRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CreateDataModelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDataModel", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDataModelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDataSource(self, request):
         """创建数据源
 
@@ -983,6 +1006,29 @@ class WedataClient(AbstractClient):
             body = self.call("DeleteCustomFunction", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCustomFunctionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDataModel(self, request):
+        """销毁数据建模，提供给云应用使用，实现“Wedata数据建模”的销毁
+
+        :param request: Request instance for DeleteDataModel.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteDataModelRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DeleteDataModelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDataModel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDataModelResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5387,6 +5433,29 @@ class WedataClient(AbstractClient):
             body = self.call("UnlockIntegrationTask", params, headers=headers)
             response = json.loads(body)
             model = models.UnlockIntegrationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateDataModelRegistryInfo(self, request):
+        """数语向wedata注册，提供自身cam角色信息，跳转域名、ip、端口信息等
+
+        :param request: Request instance for UpdateDataModelRegistryInfo.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.UpdateDataModelRegistryInfoRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.UpdateDataModelRegistryInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateDataModelRegistryInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateDataModelRegistryInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

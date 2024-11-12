@@ -325,31 +325,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateCloudProtectServiceOrderRecord(self, request):
-        """云护航计费产品已下线
-
-        云护航服务使用完成后，该接口可以确认收货
-
-        :param request: Request instance for CreateCloudProtectServiceOrderRecord.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.CreateCloudProtectServiceOrderRecordRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.CreateCloudProtectServiceOrderRecordResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateCloudProtectServiceOrderRecord", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateCloudProtectServiceOrderRecordResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateEmergencyVulScan(self, request):
         """创建应急漏洞扫描任务
 

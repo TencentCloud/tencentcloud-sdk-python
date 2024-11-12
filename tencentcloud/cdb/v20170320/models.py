@@ -206,7 +206,7 @@ class AddTimeWindowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
         :param _Monday: 星期一的可维护时间段，其中每一个时间段的格式形如：10:00-12:00；起始时间按半个小时对齐；最短半个小时，最长三个小时；可设置多个时间段。 一周中应至少设置一天的时间窗。下同。
         :type Monday: list of str
@@ -222,7 +222,7 @@ class AddTimeWindowRequest(AbstractModel):
         :type Saturday: list of str
         :param _Sunday: 星期日的可维护时间窗口。 一周中应至少设置一天的时间窗。
         :type Sunday: list of str
-        :param _MaxDelayTime: 最大延迟阈值，仅对主实例和灾备实例有效
+        :param _MaxDelayTime: 最大延迟阈值，仅对主实例和灾备实例有效。
         :type MaxDelayTime: int
         """
         self._InstanceId = None
@@ -237,7 +237,7 @@ class AddTimeWindowRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        """实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
         :rtype: str
         """
         return self._InstanceId
@@ -325,7 +325,7 @@ class AddTimeWindowRequest(AbstractModel):
 
     @property
     def MaxDelayTime(self):
-        """最大延迟阈值，仅对主实例和灾备实例有效
+        """最大延迟阈值，仅对主实例和灾备实例有效。
         :rtype: int
         """
         return self._MaxDelayTime
@@ -10140,8 +10140,10 @@ class DBSwitchInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _SwitchTime: 切换时间，格式为：2017-09-03 01:34:31
+注意：此字段可能返回 null，表示取不到有效值。
         :type SwitchTime: str
         :param _SwitchType: 切换类型，可能的返回值为：TRANSFER - 数据迁移；MASTER2SLAVE - 主备切换；RECOVERY - 主从恢复
+注意：此字段可能返回 null，表示取不到有效值。
         :type SwitchType: str
         """
         self._SwitchTime = None
@@ -10150,6 +10152,7 @@ class DBSwitchInfo(AbstractModel):
     @property
     def SwitchTime(self):
         """切换时间，格式为：2017-09-03 01:34:31
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SwitchTime
@@ -10161,6 +10164,7 @@ class DBSwitchInfo(AbstractModel):
     @property
     def SwitchType(self):
         """切换类型，可能的返回值为：TRANSFER - 数据迁移；MASTER2SLAVE - 主备切换；RECOVERY - 主从恢复
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SwitchType
@@ -14846,14 +14850,14 @@ class DescribeClusterInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id。
+        :param _InstanceId: 实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例id。
+        """实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -15805,14 +15809,14 @@ class DescribeDBInstanceInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例 ID 。
+        """实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -16083,6 +16087,11 @@ class DescribeDBInstanceRebootTimeRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceIds: 实例的 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+说明：可输入多个实例 ID 进行查询，json 格式如下。
+[
+    "cdb-30z11v8s",
+    "cdb-93h11efg"
+  ]
         :type InstanceIds: list of str
         """
         self._InstanceIds = None
@@ -16090,6 +16099,11 @@ class DescribeDBInstanceRebootTimeRequest(AbstractModel):
     @property
     def InstanceIds(self):
         """实例的 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+说明：可输入多个实例 ID 进行查询，json 格式如下。
+[
+    "cdb-30z11v8s",
+    "cdb-93h11efg"
+  ]
         :rtype: list of str
         """
         return self._InstanceIds
@@ -16816,9 +16830,9 @@ class DescribeDBPriceRequest(AbstractModel):
         :type Zone: str
         :param _GoodsNum: 实例数量，默认值为 1，最小值 1，最大值为 100。InstanceId为空时该参数为必填项。
         :type GoodsNum: int
-        :param _Memory: 实例内存大小，单位：MB。InstanceId为空时该参数为必填项。
+        :param _Memory: 实例内存大小，单位：MB。InstanceId 为空时该参数为必填项。为保证传入值有效，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229) 接口获取可售卖的实例内存大小范围。
         :type Memory: int
-        :param _Volume: 实例硬盘大小，单位：GB。InstanceId为空时该参数为必填项。
+        :param _Volume: 实例硬盘大小，单位：GB。InstanceId 为空时该参数为必填项。为保证传入值有效，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229) 接口获取可售卖的硬盘大小范围。
         :type Volume: int
         :param _InstanceRole: 实例类型，默认为 master，支持值包括：master - 表示主实例，ro - 表示只读实例，dr - 表示灾备实例。InstanceId为空时该参数为必填项。
         :type InstanceRole: str
@@ -16886,7 +16900,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """实例内存大小，单位：MB。InstanceId为空时该参数为必填项。
+        """实例内存大小，单位：MB。InstanceId 为空时该参数为必填项。为保证传入值有效，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229) 接口获取可售卖的实例内存大小范围。
         :rtype: int
         """
         return self._Memory
@@ -16897,7 +16911,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def Volume(self):
-        """实例硬盘大小，单位：GB。InstanceId为空时该参数为必填项。
+        """实例硬盘大小，单位：GB。InstanceId 为空时该参数为必填项。为保证传入值有效，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229) 接口获取可售卖的硬盘大小范围。
         :rtype: int
         """
         return self._Volume
@@ -17217,7 +17231,7 @@ class DescribeDBSwitchRecordsRequest(AbstractModel):
         :type InstanceId: str
         :param _Offset: 分页偏移量。
         :type Offset: int
-        :param _Limit: 分页大小，默认值为 50，最小值为 1，最大值为 2000。
+        :param _Limit: 分页大小，默认值为50，最小值为1，最大值为1000。
         :type Limit: int
         """
         self._InstanceId = None
@@ -17248,7 +17262,7 @@ class DescribeDBSwitchRecordsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页大小，默认值为 50，最小值为 1，最大值为 2000。
+        """分页大小，默认值为50，最小值为1，最大值为1000。
         :rtype: int
         """
         return self._Limit
@@ -18729,29 +18743,29 @@ class DescribeInstanceUpgradeTypeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: 实例 ID。
         :type InstanceId: str
-        :param _DstCpu: 目标实例cpu
+        :param _DstCpu: 目标实例 CPU 的核数。
         :type DstCpu: float
-        :param _DstMemory: 目标实例内存
+        :param _DstMemory: 目标实例内存大小，单位：MB。
         :type DstMemory: int
-        :param _DstDisk: 目标实例磁盘
+        :param _DstDisk: 目标实例磁盘大小，单位：GB。
         :type DstDisk: int
-        :param _DstVersion: 目标实例版本
+        :param _DstVersion: 目标实例数据库版本。
         :type DstVersion: str
-        :param _DstDeployMode: 目标实例部署模型
+        :param _DstDeployMode: 目标实例部署模型。
         :type DstDeployMode: int
-        :param _DstProtectMode: 目标实例复制类型
+        :param _DstProtectMode: 目标实例复制类型。
         :type DstProtectMode: int
-        :param _DstSlaveZone: 目标实例备机1可用区
+        :param _DstSlaveZone: 目标实例备机1可用区。
         :type DstSlaveZone: int
-        :param _DstBackupZone: 目标实例备机2可用区
+        :param _DstBackupZone: 目标实例备机2可用区。
         :type DstBackupZone: int
-        :param _DstCdbType: 目标实例类型
+        :param _DstCdbType: 目标实例类型。
         :type DstCdbType: str
-        :param _DstZoneId: 目标实例主可用区
+        :param _DstZoneId: 目标实例主可用区。
         :type DstZoneId: int
-        :param _NodeDistribution: 独享集群CDB实例的节点分布情况
+        :param _NodeDistribution: 独享集群 CDB 实例的节点分布情况。
         :type NodeDistribution: :class:`tencentcloud.cdb.v20170320.models.NodeDistribution`
         :param _ClusterTopology: 集群版的节点拓扑配置
         :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
@@ -18772,7 +18786,7 @@ class DescribeInstanceUpgradeTypeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        """实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -18783,7 +18797,7 @@ class DescribeInstanceUpgradeTypeRequest(AbstractModel):
 
     @property
     def DstCpu(self):
-        """目标实例cpu
+        """目标实例 CPU 的核数。
         :rtype: float
         """
         return self._DstCpu
@@ -18794,7 +18808,7 @@ class DescribeInstanceUpgradeTypeRequest(AbstractModel):
 
     @property
     def DstMemory(self):
-        """目标实例内存
+        """目标实例内存大小，单位：MB。
         :rtype: int
         """
         return self._DstMemory
@@ -18805,7 +18819,7 @@ class DescribeInstanceUpgradeTypeRequest(AbstractModel):
 
     @property
     def DstDisk(self):
-        """目标实例磁盘
+        """目标实例磁盘大小，单位：GB。
         :rtype: int
         """
         return self._DstDisk
@@ -18816,7 +18830,7 @@ class DescribeInstanceUpgradeTypeRequest(AbstractModel):
 
     @property
     def DstVersion(self):
-        """目标实例版本
+        """目标实例数据库版本。
         :rtype: str
         """
         return self._DstVersion
@@ -18827,7 +18841,7 @@ class DescribeInstanceUpgradeTypeRequest(AbstractModel):
 
     @property
     def DstDeployMode(self):
-        """目标实例部署模型
+        """目标实例部署模型。
         :rtype: int
         """
         return self._DstDeployMode
@@ -18838,7 +18852,7 @@ class DescribeInstanceUpgradeTypeRequest(AbstractModel):
 
     @property
     def DstProtectMode(self):
-        """目标实例复制类型
+        """目标实例复制类型。
         :rtype: int
         """
         return self._DstProtectMode
@@ -18849,7 +18863,7 @@ class DescribeInstanceUpgradeTypeRequest(AbstractModel):
 
     @property
     def DstSlaveZone(self):
-        """目标实例备机1可用区
+        """目标实例备机1可用区。
         :rtype: int
         """
         return self._DstSlaveZone
@@ -18860,7 +18874,7 @@ class DescribeInstanceUpgradeTypeRequest(AbstractModel):
 
     @property
     def DstBackupZone(self):
-        """目标实例备机2可用区
+        """目标实例备机2可用区。
         :rtype: int
         """
         return self._DstBackupZone
@@ -18871,7 +18885,7 @@ class DescribeInstanceUpgradeTypeRequest(AbstractModel):
 
     @property
     def DstCdbType(self):
-        """目标实例类型
+        """目标实例类型。
         :rtype: str
         """
         return self._DstCdbType
@@ -18882,7 +18896,7 @@ class DescribeInstanceUpgradeTypeRequest(AbstractModel):
 
     @property
     def DstZoneId(self):
-        """目标实例主可用区
+        """目标实例主可用区。
         :rtype: int
         """
         return self._DstZoneId
@@ -18893,7 +18907,7 @@ class DescribeInstanceUpgradeTypeRequest(AbstractModel):
 
     @property
     def NodeDistribution(self):
-        """独享集群CDB实例的节点分布情况
+        """独享集群 CDB 实例的节点分布情况。
         :rtype: :class:`tencentcloud.cdb.v20170320.models.NodeDistribution`
         """
         return self._NodeDistribution
@@ -18949,9 +18963,9 @@ class DescribeInstanceUpgradeTypeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: 实例 ID。
         :type InstanceId: str
-        :param _UpgradeType: 实例升级类型
+        :param _UpgradeType: 实例升级类型。
         :type UpgradeType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18962,7 +18976,7 @@ class DescribeInstanceUpgradeTypeResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        """实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -18973,7 +18987,7 @@ class DescribeInstanceUpgradeTypeResponse(AbstractModel):
 
     @property
     def UpgradeType(self):
-        """实例升级类型
+        """实例升级类型。
         :rtype: str
         """
         return self._UpgradeType
@@ -20061,14 +20075,14 @@ class DescribeRoGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，格式如：cdb-c1nl9rpv或者cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例ID，格式如：cdb-c1nl9rpv或者cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        """实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
         :rtype: str
         """
         return self._InstanceId
@@ -20097,7 +20111,7 @@ class DescribeRoGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoGroups: RO组信息数组，一个实例可关联多个RO组。
+        :param _RoGroups: RO 组信息数组，一个实例可关联多个 RO 组。
         :type RoGroups: list of RoGroup
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20107,7 +20121,7 @@ class DescribeRoGroupsResponse(AbstractModel):
 
     @property
     def RoGroups(self):
-        """RO组信息数组，一个实例可关联多个RO组。
+        """RO 组信息数组，一个实例可关联多个 RO 组。
         :rtype: list of RoGroup
         """
         return self._RoGroups
@@ -24371,8 +24385,10 @@ class InstanceRebootTime(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同
+注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _TimeInSeconds: 预期重启时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type TimeInSeconds: int
         """
         self._InstanceId = None
@@ -24381,6 +24397,7 @@ class InstanceRebootTime(AbstractModel):
     @property
     def InstanceId(self):
         """实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -24392,6 +24409,7 @@ class InstanceRebootTime(AbstractModel):
     @property
     def TimeInSeconds(self):
         """预期重启时间
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TimeInSeconds
@@ -26377,6 +26395,11 @@ class ModifyAutoRenewFlagRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceIds: 实例的 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+说明：可输入多个实例 ID 进行修改，json 格式如下。
+[
+    "cdb-30z11v8s",
+    "cdb-93h11efg"
+  ]
         :type InstanceIds: list of str
         :param _AutoRenew: 自动续费标记，可取值的有：0 - 不自动续费，1 - 自动续费。
         :type AutoRenew: int
@@ -26387,6 +26410,11 @@ class ModifyAutoRenewFlagRequest(AbstractModel):
     @property
     def InstanceIds(self):
         """实例的 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+说明：可输入多个实例 ID 进行修改，json 格式如下。
+[
+    "cdb-30z11v8s",
+    "cdb-93h11efg"
+  ]
         :rtype: list of str
         """
         return self._InstanceIds
@@ -27636,9 +27664,14 @@ class ModifyDBInstanceProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 实例 ID 数组，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+        :param _InstanceIds: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+说明：可输入多个实例 ID 进行修改，json 格式如下。
+[
+    "cdb-30z11v8s",
+    "cdb-93h11efg"
+  ]
         :type InstanceIds: list of str
-        :param _NewProjectId: 项目的 ID。
+        :param _NewProjectId: 实例所属项目的 ID，可在账号中心下的项目管理页面查询。
         :type NewProjectId: int
         """
         self._InstanceIds = None
@@ -27646,7 +27679,12 @@ class ModifyDBInstanceProjectRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例 ID 数组，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+        """实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+说明：可输入多个实例 ID 进行修改，json 格式如下。
+[
+    "cdb-30z11v8s",
+    "cdb-93h11efg"
+  ]
         :rtype: list of str
         """
         return self._InstanceIds
@@ -27657,7 +27695,7 @@ class ModifyDBInstanceProjectRequest(AbstractModel):
 
     @property
     def NewProjectId(self):
-        """项目的 ID。
+        """实例所属项目的 ID，可在账号中心下的项目管理页面查询。
         :rtype: int
         """
         return self._NewProjectId
@@ -27682,6 +27720,85 @@ class ModifyDBInstanceProjectRequest(AbstractModel):
 
 class ModifyDBInstanceProjectResponse(AbstractModel):
     """ModifyDBInstanceProject返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDBInstanceReadOnlyStatusRequest(AbstractModel):
+    """ModifyDBInstanceReadOnlyStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+        :type InstanceId: str
+        :param _ReadOnly: 是否设置为只读。其中：1表示设置实例为只读，0表示解除只读状态
+        :type ReadOnly: int
+        """
+        self._InstanceId = None
+        self._ReadOnly = None
+
+    @property
+    def InstanceId(self):
+        """实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ReadOnly(self):
+        """是否设置为只读。其中：1表示设置实例为只读，0表示解除只读状态
+        :rtype: int
+        """
+        return self._ReadOnly
+
+    @ReadOnly.setter
+    def ReadOnly(self, ReadOnly):
+        self._ReadOnly = ReadOnly
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ReadOnly = params.get("ReadOnly")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceReadOnlyStatusResponse(AbstractModel):
+    """ModifyDBInstanceReadOnlyStatus返回参数结构体
 
     """
 
@@ -28934,8 +29051,18 @@ class ModifyTimeWindowRequest(AbstractModel):
         :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
         :param _TimeRanges: 修改后的可维护时间段，其中每一个时间段的格式形如：10:00-12:00；起止时间按半个小时对齐；最短半个小时，最长三个小时；最多设置两个时间段；起止时间范围为：[00:00, 24:00]。
+说明：设置两个时间段的 json 示例如下。
+[
+    "01:00-01:30",
+    "02:00-02:30"
+  ]
         :type TimeRanges: list of str
-        :param _Weekdays: 指定修改哪一天的客户时间段，可能的取值为：monday，tuesday，wednesday，thursday，friday，saturday，sunday。如果不指定该值或者为空，则默认一周七天都修改。
+        :param _Weekdays: 指定修改哪一天的可维护时间段，可能的取值为：monday，tuesday，wednesday，thursday，friday，saturday，sunday。如果不指定该值或者为空，则默认一周七天都修改。
+说明：指定修改多天的 json 示例如下。
+[
+    "monday",
+    "tuesday"
+  ]
         :type Weekdays: list of str
         :param _MaxDelayTime: 数据延迟阈值，仅对主实例和灾备实例有效，不传默认修改为10
         :type MaxDelayTime: int
@@ -28959,6 +29086,11 @@ class ModifyTimeWindowRequest(AbstractModel):
     @property
     def TimeRanges(self):
         """修改后的可维护时间段，其中每一个时间段的格式形如：10:00-12:00；起止时间按半个小时对齐；最短半个小时，最长三个小时；最多设置两个时间段；起止时间范围为：[00:00, 24:00]。
+说明：设置两个时间段的 json 示例如下。
+[
+    "01:00-01:30",
+    "02:00-02:30"
+  ]
         :rtype: list of str
         """
         return self._TimeRanges
@@ -28969,7 +29101,12 @@ class ModifyTimeWindowRequest(AbstractModel):
 
     @property
     def Weekdays(self):
-        """指定修改哪一天的客户时间段，可能的取值为：monday，tuesday，wednesday，thursday，friday，saturday，sunday。如果不指定该值或者为空，则默认一周七天都修改。
+        """指定修改哪一天的可维护时间段，可能的取值为：monday，tuesday，wednesday，thursday，friday，saturday，sunday。如果不指定该值或者为空，则默认一周七天都修改。
+说明：指定修改多天的 json 示例如下。
+[
+    "monday",
+    "tuesday"
+  ]
         :rtype: list of str
         """
         return self._Weekdays
@@ -29334,9 +29471,9 @@ class OpenDBInstanceEncryptionRequest(AbstractModel):
         r"""
         :param _InstanceId: 云数据库实例 ID。
         :type InstanceId: str
-        :param _KeyId: 用户自定义密钥ID，CMK唯一标识符。该值为空时，将使用腾讯云自动生成的密钥KMS-CDB。
+        :param _KeyId: 用户自定义密钥 ID，CMK 唯一标识符。该值为空时，将使用腾讯云自动生成的密钥 KMS-CDB。
         :type KeyId: str
-        :param _KeyRegion: 用户自定义密钥的存储地域。如：ap-guangzhou 。KeyId不为空时，该参数必填。
+        :param _KeyRegion: 用户自定义密钥的存储地域。如：ap-guangzhou 。KeyId 不为空时，该参数必填。
         :type KeyRegion: str
         """
         self._InstanceId = None
@@ -29356,7 +29493,7 @@ class OpenDBInstanceEncryptionRequest(AbstractModel):
 
     @property
     def KeyId(self):
-        """用户自定义密钥ID，CMK唯一标识符。该值为空时，将使用腾讯云自动生成的密钥KMS-CDB。
+        """用户自定义密钥 ID，CMK 唯一标识符。该值为空时，将使用腾讯云自动生成的密钥 KMS-CDB。
         :rtype: str
         """
         return self._KeyId
@@ -29367,7 +29504,7 @@ class OpenDBInstanceEncryptionRequest(AbstractModel):
 
     @property
     def KeyRegion(self):
-        """用户自定义密钥的存储地域。如：ap-guangzhou 。KeyId不为空时，该参数必填。
+        """用户自定义密钥的存储地域。如：ap-guangzhou 。KeyId 不为空时，该参数必填。
         :rtype: str
         """
         return self._KeyRegion
@@ -31488,14 +31625,24 @@ class ReleaseIsolatedDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 实例 ID 数组，单个实例 ID 格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+        :param _InstanceIds: 实例 ID，单个实例 ID 格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+说明：可输入多个实例 ID 进行操作，json 格式如下。
+[
+    "cdb-30z11v8s",
+    "cdb-93h11efg"
+  ]
         :type InstanceIds: list of str
         """
         self._InstanceIds = None
 
     @property
     def InstanceIds(self):
-        """实例 ID 数组，单个实例 ID 格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+        """实例 ID，单个实例 ID 格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+说明：可输入多个实例 ID 进行操作，json 格式如下。
+[
+    "cdb-30z11v8s",
+    "cdb-93h11efg"
+  ]
         :rtype: list of str
         """
         return self._InstanceIds
@@ -35269,9 +35416,9 @@ class SubmitInstanceUpgradeCheckJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例D
+        :param _InstanceId: 实例 ID。
         :type InstanceId: str
-        :param _DstMysqlVersion: 目标数据库版本
+        :param _DstMysqlVersion: 目标数据库版本。
         :type DstMysqlVersion: str
         """
         self._InstanceId = None
@@ -35279,7 +35426,7 @@ class SubmitInstanceUpgradeCheckJobRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例D
+        """实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -35290,7 +35437,7 @@ class SubmitInstanceUpgradeCheckJobRequest(AbstractModel):
 
     @property
     def DstMysqlVersion(self):
-        """目标数据库版本
+        """目标数据库版本。
         :rtype: str
         """
         return self._DstMysqlVersion
@@ -35320,7 +35467,7 @@ class SubmitInstanceUpgradeCheckJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务ID
+        :param _JobId: 任务 ID
         :type JobId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -35330,7 +35477,7 @@ class SubmitInstanceUpgradeCheckJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """任务ID
+        """任务 ID
         :rtype: int
         """
         return self._JobId
@@ -35450,7 +35597,7 @@ class SwitchDBInstanceMasterSlaveRequest(AbstractModel):
         :type ForceSwitch: bool
         :param _WaitSwitch: 是否时间窗内切换。默认为 False，即不在时间窗内切换。注意，如果设置了 ForceSwitch 参数为 True，则该参数不生效。
         :type WaitSwitch: bool
-        :param _DstNodeId: 集群版实例指定节点id发起主从切换。
+        :param _DstNodeId: 集群版实例指定节点 ID 发起主从切换。
         :type DstNodeId: str
         """
         self._InstanceId = None
@@ -35505,7 +35652,7 @@ class SwitchDBInstanceMasterSlaveRequest(AbstractModel):
 
     @property
     def DstNodeId(self):
-        """集群版实例指定节点id发起主从切换。
+        """集群版实例指定节点 ID 发起主从切换。
         :rtype: str
         """
         return self._DstNodeId
@@ -35581,14 +35728,14 @@ class SwitchDrInstanceToMasterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 灾备实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :param _InstanceId: 灾备实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """灾备实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        """灾备实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
         :rtype: str
         """
         return self._InstanceId

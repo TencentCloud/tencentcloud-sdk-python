@@ -32,9 +32,6 @@ FAILEDOPERATION_DEVICERESPONSETIMEOUT = 'FailedOperation.DeviceResponseTimeOut'
 # 设备端结果响应超时
 FAILEDOPERATION_DEVICERESULTTIMEOUT = 'FailedOperation.DeviceResultTimeOut'
 
-# 域名CNAME解析未成功，请到域名服务商处检查配置
-FAILEDOPERATION_NOMATCHEDCNAME = 'FailedOperation.NoMatchedCname'
-
 # 没有该子用户
 FAILEDOPERATION_NOTHAVESUBUSER = 'FailedOperation.NotHaveSubUser'
 
@@ -211,9 +208,6 @@ INVALIDPARAMETERVALUE_INVALIDDEVICESTATUS = 'InvalidParameterValue.InvalidDevice
 
 # 无效的设备类型
 INVALIDPARAMETERVALUE_INVALIDDEVICETYPE = 'InvalidParameterValue.InvalidDeviceType'
-
-# 无效的域名，长度或内容不符合规则
-INVALIDPARAMETERVALUE_INVALIDDOMAIN = 'InvalidParameterValue.InvalidDomain'
 
 # 无效的域名类型参数
 INVALIDPARAMETERVALUE_INVALIDDOMAINTYPE = 'InvalidParameterValue.InvalidDomainType'
@@ -526,9 +520,6 @@ RESOURCEUNAVAILABLE_DEVNOREGISTER = 'ResourceUnavailable.DevNoRegister'
 
 # 设备离线
 RESOURCEUNAVAILABLE_DEVOFFLINE = 'ResourceUnavailable.DevOffline'
-
-# 该域名没有备案
-RESOURCEUNAVAILABLE_DOMAINNOTRECORD = 'ResourceUnavailable.DomainNotRecord'
 
 # 录像已归档
 RESOURCEUNAVAILABLE_VIDEOARCHIVED = 'ResourceUnavailable.VideoArchived'

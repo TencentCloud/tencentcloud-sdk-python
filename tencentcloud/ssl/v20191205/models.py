@@ -1084,6 +1084,102 @@ class CdnInstanceList(AbstractModel):
         
 
 
+class CertBasicInfo(AbstractModel):
+    """证书基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Issuer: 颁发者
+        :type Issuer: str
+        :param _Subject: 颁发给
+        :type Subject: str
+        :param _Fingerprint: 证书指纹
+        :type Fingerprint: str
+        :param _ValidFrom: 证书有效期开始时间
+        :type ValidFrom: str
+        :param _ValidTo: 证书有效期结束时间
+        :type ValidTo: str
+        """
+        self._Issuer = None
+        self._Subject = None
+        self._Fingerprint = None
+        self._ValidFrom = None
+        self._ValidTo = None
+
+    @property
+    def Issuer(self):
+        """颁发者
+        :rtype: str
+        """
+        return self._Issuer
+
+    @Issuer.setter
+    def Issuer(self, Issuer):
+        self._Issuer = Issuer
+
+    @property
+    def Subject(self):
+        """颁发给
+        :rtype: str
+        """
+        return self._Subject
+
+    @Subject.setter
+    def Subject(self, Subject):
+        self._Subject = Subject
+
+    @property
+    def Fingerprint(self):
+        """证书指纹
+        :rtype: str
+        """
+        return self._Fingerprint
+
+    @Fingerprint.setter
+    def Fingerprint(self, Fingerprint):
+        self._Fingerprint = Fingerprint
+
+    @property
+    def ValidFrom(self):
+        """证书有效期开始时间
+        :rtype: str
+        """
+        return self._ValidFrom
+
+    @ValidFrom.setter
+    def ValidFrom(self, ValidFrom):
+        self._ValidFrom = ValidFrom
+
+    @property
+    def ValidTo(self):
+        """证书有效期结束时间
+        :rtype: str
+        """
+        return self._ValidTo
+
+    @ValidTo.setter
+    def ValidTo(self, ValidTo):
+        self._ValidTo = ValidTo
+
+
+    def _deserialize(self, params):
+        self._Issuer = params.get("Issuer")
+        self._Subject = params.get("Subject")
+        self._Fingerprint = params.get("Fingerprint")
+        self._ValidFrom = params.get("ValidFrom")
+        self._ValidTo = params.get("ValidTo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CertTaskId(AbstractModel):
     """证书异步任务ID
 
@@ -6259,6 +6355,9 @@ class DescribeCertificateDetailResponse(AbstractModel):
         :param _DvRevokeAuthDetail: DV证书吊销验证值
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvRevokeAuthDetail: list of DvAuths
+        :param _CertChainInfo: 证书链信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertChainInfo: list of CertBasicInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6303,6 +6402,7 @@ class DescribeCertificateDetailResponse(AbstractModel):
         self._EncryptCertFingerprint = None
         self._EncryptAlgorithm = None
         self._DvRevokeAuthDetail = None
+        self._CertChainInfo = None
         self._RequestId = None
 
     @property
@@ -6798,6 +6898,18 @@ class DescribeCertificateDetailResponse(AbstractModel):
         self._DvRevokeAuthDetail = DvRevokeAuthDetail
 
     @property
+    def CertChainInfo(self):
+        """证书链信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CertBasicInfo
+        """
+        return self._CertChainInfo
+
+    @CertChainInfo.setter
+    def CertChainInfo(self, CertChainInfo):
+        self._CertChainInfo = CertChainInfo
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -6869,6 +6981,12 @@ class DescribeCertificateDetailResponse(AbstractModel):
                 obj = DvAuths()
                 obj._deserialize(item)
                 self._DvRevokeAuthDetail.append(obj)
+        if params.get("CertChainInfo") is not None:
+            self._CertChainInfo = []
+            for item in params.get("CertChainInfo"):
+                obj = CertBasicInfo()
+                obj._deserialize(item)
+                self._CertChainInfo.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -12848,9 +12966,15 @@ class HostingConfig(AbstractModel):
         :param _MessageTypes: 托管发送消息类型：0，托管开始前消息提醒（没有续费证书也会收到该提示消息）； 1， 托管开始消息提醒（存在续费证书才会收到消息提醒）； 2， 托管资源替换失败消息提醒； 3 托管资源替换成功消息提醒
 注意：此字段可能返回 null，表示取不到有效值。
         :type MessageTypes: list of int
+        :param _ReplaceStartTime: 资源替换开始时间
+        :type ReplaceStartTime: str
+        :param _ReplaceEndTime: 资源替换结束时间
+        :type ReplaceEndTime: str
         """
         self._ReplaceTime = None
         self._MessageTypes = None
+        self._ReplaceStartTime = None
+        self._ReplaceEndTime = None
 
     @property
     def ReplaceTime(self):
@@ -12876,10 +13000,34 @@ class HostingConfig(AbstractModel):
     def MessageTypes(self, MessageTypes):
         self._MessageTypes = MessageTypes
 
+    @property
+    def ReplaceStartTime(self):
+        """资源替换开始时间
+        :rtype: str
+        """
+        return self._ReplaceStartTime
+
+    @ReplaceStartTime.setter
+    def ReplaceStartTime(self, ReplaceStartTime):
+        self._ReplaceStartTime = ReplaceStartTime
+
+    @property
+    def ReplaceEndTime(self):
+        """资源替换结束时间
+        :rtype: str
+        """
+        return self._ReplaceEndTime
+
+    @ReplaceEndTime.setter
+    def ReplaceEndTime(self, ReplaceEndTime):
+        self._ReplaceEndTime = ReplaceEndTime
+
 
     def _deserialize(self, params):
         self._ReplaceTime = params.get("ReplaceTime")
         self._MessageTypes = params.get("MessageTypes")
+        self._ReplaceStartTime = params.get("ReplaceStartTime")
+        self._ReplaceEndTime = params.get("ReplaceEndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

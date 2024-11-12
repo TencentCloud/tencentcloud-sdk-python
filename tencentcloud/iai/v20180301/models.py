@@ -6706,9 +6706,9 @@ class Point(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _X: x坐标
+        :param _X: x坐标。
         :type X: int
-        :param _Y: Y坐标
+        :param _Y: Y坐标。
         :type Y: int
         """
         self._X = None
@@ -6716,7 +6716,7 @@ class Point(AbstractModel):
 
     @property
     def X(self):
-        """x坐标
+        """x坐标。
         :rtype: int
         """
         return self._X
@@ -6727,7 +6727,7 @@ class Point(AbstractModel):
 
     @property
     def Y(self):
-        """Y坐标
+        """Y坐标。
         :rtype: int
         """
         return self._Y

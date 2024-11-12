@@ -282,29 +282,6 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CheckDomain(self, request):
-        """用于检测域名是否备案。
-
-        :param request: Request instance for CheckDomain.
-        :type request: :class:`tencentcloud.iss.v20230517.models.CheckDomainRequest`
-        :rtype: :class:`tencentcloud.iss.v20230517.models.CheckDomainResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CheckDomain", params, headers=headers)
-            response = json.loads(body)
-            model = models.CheckDomainResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ControlDevicePTZ(self, request):
         """用于设备通道云台控制，包括转动、变倍、变焦、光圈等。
 

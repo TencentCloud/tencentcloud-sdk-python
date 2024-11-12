@@ -168,7 +168,7 @@ class ChatCompletionsRequest(AbstractModel):
 4. 未传值时默认关闭。
 5. 开启并搜索到对应的多媒体信息时，会输出对应的多媒体地址，可以定制个性化的图文消息。
         :type EnableMultimedia: bool
-        :param _EnableDeepSearch: 是否开启搜索深度模式，默认是false，在值为true且命中搜索时，会请求深度搜索。
+        :param _EnableDeepSearch: 是否开启深度研究该问题，默认是false，在值为true且命中深度研究该问题时，会返回深度研究该问题信息。
         :type EnableDeepSearch: bool
         :param _Seed: 说明： 1. 确保模型的输出是可复现的。 2. 取值区间为非0正整数，最大值10000。 3. 非必要不建议使用，不合理的取值会影响效果。
         :type Seed: int
@@ -397,7 +397,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def EnableDeepSearch(self):
-        """是否开启搜索深度模式，默认是false，在值为true且命中搜索时，会请求深度搜索。
+        """是否开启深度研究该问题，默认是false，在值为true且命中深度研究该问题时，会返回深度研究该问题信息。
         :rtype: bool
         """
         return self._EnableDeepSearch
@@ -1692,8 +1692,11 @@ class GetEmbeddingRequest(AbstractModel):
         r"""
         :param _Input: 输入文本。总长度不超过 1024 个 Token，超过则会截断最后面的内容。
         :type Input: str
+        :param _InputList: 输入文本数组。输入数组总长度不超过 200 。
+        :type InputList: list of str
         """
         self._Input = None
+        self._InputList = None
 
     @property
     def Input(self):
@@ -1706,9 +1709,21 @@ class GetEmbeddingRequest(AbstractModel):
     def Input(self, Input):
         self._Input = Input
 
+    @property
+    def InputList(self):
+        """输入文本数组。输入数组总长度不超过 200 。
+        :rtype: list of str
+        """
+        return self._InputList
+
+    @InputList.setter
+    def InputList(self, InputList):
+        self._InputList = InputList
+
 
     def _deserialize(self, params):
         self._Input = params.get("Input")
+        self._InputList = params.get("InputList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1726,7 +1741,7 @@ class GetEmbeddingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 返回的 Embedding 信息。当前不支持批量，所以数组元素数目为 1。
+        :param _Data: 返回的 Embedding 信息。
         :type Data: list of EmbeddingData
         :param _Usage: Token 使用计数，按照总 Token 数量收费。
         :type Usage: :class:`tencentcloud.hunyuan.v20230901.models.EmbeddingUsage`
@@ -1739,7 +1754,7 @@ class GetEmbeddingResponse(AbstractModel):
 
     @property
     def Data(self):
-        """返回的 Embedding 信息。当前不支持批量，所以数组元素数目为 1。
+        """返回的 Embedding 信息。
         :rtype: list of EmbeddingData
         """
         return self._Data

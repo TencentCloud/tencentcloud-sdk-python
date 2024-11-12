@@ -1839,7 +1839,6 @@ class Command(AbstractModel):
         :param _SessionTime: 该命令所属会话的会话开始时间
         :type SessionTime: str
         :param _SessTime: 该命令所属会话的会话开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type SessTime: str
         :param _ConfirmTime: 复核时间
         :type ConfirmTime: str
@@ -1987,7 +1986,6 @@ class Command(AbstractModel):
         warnings.warn("parameter `SessTime` is deprecated", DeprecationWarning) 
 
         """该命令所属会话的会话开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SessTime
@@ -8308,7 +8306,6 @@ class Domain(AbstractModel):
         :param _DomainId: 网络域id
         :type DomainId: str
         :param _DomainName: 网络域名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainName: str
         :param _ResourceId: 堡垒机id
         :type ResourceId: str
@@ -8358,7 +8355,6 @@ class Domain(AbstractModel):
     @property
     def DomainName(self):
         """网络域名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DomainName
@@ -11185,7 +11181,6 @@ class Resource(AbstractModel):
         :param _LogDelivery: 日志投递规格信息
         :type LogDelivery: str
         :param _DeployModel: 部署模式
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeployModel: int
         """
         self._ResourceId = None
@@ -11613,7 +11608,6 @@ class Resource(AbstractModel):
     @property
     def DeployModel(self):
         """部署模式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DeployModel
@@ -12462,7 +12456,6 @@ class SearchCommandResult(AbstractModel):
         :param _SessionTime: 该命令所属会话的会话开始时间
         :type SessionTime: str
         :param _SessTime: 该命令所属会话的会话开始时间（废弃，使用SessionTime）
-注意：此字段可能返回 null，表示取不到有效值。
         :type SessTime: str
         :param _ConfirmTime: 复核时间
         :type ConfirmTime: str
@@ -12658,7 +12651,6 @@ class SearchCommandResult(AbstractModel):
         warnings.warn("parameter `SessTime` is deprecated", DeprecationWarning) 
 
         """该命令所属会话的会话开始时间（废弃，使用SessionTime）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SessTime

@@ -6772,7 +6772,7 @@ class DescribeEmrOverviewMetricsRequest(AbstractModel):
         r"""
         :param _End: 结束时间
         :type End: int
-        :param _Metric: 指标名
+        :param _Metric: 指标名，NODE.CPU：节点平均CPU利用率和总核数；NODE.CPU.SLHBASE：Serverless实例平均CPU利用率和总核数；HDFS.NN.CAPACITY：存储使用率和总量
         :type Metric: str
         :param _InstanceId: 集群id
         :type InstanceId: str
@@ -6806,7 +6806,7 @@ class DescribeEmrOverviewMetricsRequest(AbstractModel):
 
     @property
     def Metric(self):
-        """指标名
+        """指标名，NODE.CPU：节点平均CPU利用率和总核数；NODE.CPU.SLHBASE：Serverless实例平均CPU利用率和总核数；HDFS.NN.CAPACITY：存储使用率和总量
         :rtype: str
         """
         return self._Metric
@@ -23295,6 +23295,15 @@ class RenewInstancesInfo(AbstractModel):
         :type Spec: str
         :param _StorageType: 磁盘类型
         :type StorageType: int
+        :param _RootSize: 系统盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RootSize: int
+        :param _RootStorageType: 系统盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RootStorageType: int
+        :param _MCMultiDisk: 数据盘信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MCMultiDisk: list of MultiDiskMC
         """
         self._EmrResourceId = None
         self._Flag = None
@@ -23305,6 +23314,9 @@ class RenewInstancesInfo(AbstractModel):
         self._ExpireTime = None
         self._Spec = None
         self._StorageType = None
+        self._RootSize = None
+        self._RootStorageType = None
+        self._MCMultiDisk = None
 
     @property
     def EmrResourceId(self):
@@ -23406,6 +23418,42 @@ class RenewInstancesInfo(AbstractModel):
     def StorageType(self, StorageType):
         self._StorageType = StorageType
 
+    @property
+    def RootSize(self):
+        """系统盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RootSize
+
+    @RootSize.setter
+    def RootSize(self, RootSize):
+        self._RootSize = RootSize
+
+    @property
+    def RootStorageType(self):
+        """系统盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RootStorageType
+
+    @RootStorageType.setter
+    def RootStorageType(self, RootStorageType):
+        self._RootStorageType = RootStorageType
+
+    @property
+    def MCMultiDisk(self):
+        """数据盘信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MultiDiskMC
+        """
+        return self._MCMultiDisk
+
+    @MCMultiDisk.setter
+    def MCMultiDisk(self, MCMultiDisk):
+        self._MCMultiDisk = MCMultiDisk
+
 
     def _deserialize(self, params):
         self._EmrResourceId = params.get("EmrResourceId")
@@ -23417,6 +23465,14 @@ class RenewInstancesInfo(AbstractModel):
         self._ExpireTime = params.get("ExpireTime")
         self._Spec = params.get("Spec")
         self._StorageType = params.get("StorageType")
+        self._RootSize = params.get("RootSize")
+        self._RootStorageType = params.get("RootStorageType")
+        if params.get("MCMultiDisk") is not None:
+            self._MCMultiDisk = []
+            for item in params.get("MCMultiDisk"):
+                obj = MultiDiskMC()
+                obj._deserialize(item)
+                self._MCMultiDisk.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

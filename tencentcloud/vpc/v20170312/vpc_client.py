@@ -6701,6 +6701,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyBandwidthPackageBandwidth(self, request):
+        """接口用于调整[共享带宽包](https://cloud.tencent.com/document/product/684/15245)(BWP)带宽
+
+        :param request: Request instance for ModifyBandwidthPackageBandwidth.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyBandwidthPackageBandwidthRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyBandwidthPackageBandwidthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBandwidthPackageBandwidth", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBandwidthPackageBandwidthResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyCcnAttachedInstancesAttribute(self, request):
         """修改CCN关联实例属性，目前仅修改备注description
 

@@ -2416,7 +2416,7 @@ class DescribeDedicatedClusterCbsStatisticsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束时间
         :type EndTime: str
-        :param _Period: 时间范围精度，1分钟/5分钟
+        :param _Period: 时间范围精度，1分钟(ONE_MINUTE)/5分钟(FIVE_MINUTE)
         :type Period: str
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
@@ -2477,7 +2477,7 @@ class DescribeDedicatedClusterCbsStatisticsRequest(AbstractModel):
 
     @property
     def Period(self):
-        """时间范围精度，1分钟/5分钟
+        """时间范围精度，1分钟(ONE_MINUTE)/5分钟(FIVE_MINUTE)
         :rtype: str
         """
         return self._Period
@@ -5125,7 +5125,7 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
         :type MaxWeight: int
         :param _PowerDrawKva: 功耗(KW)
         :type PowerDrawKva: int
-        :param _UplinkSpeedGbps: 网络到腾讯云Region区域的上行链路速度
+        :param _UplinkSpeedGbps: 网络到腾讯云Region区域的上行链路速度(Gbps)
         :type UplinkSpeedGbps: int
         :param _UplinkCount: 将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
         :type UplinkCount: int
@@ -5245,7 +5245,7 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def UplinkSpeedGbps(self):
-        """网络到腾讯云Region区域的上行链路速度
+        """网络到腾讯云Region区域的上行链路速度(Gbps)
         :rtype: int
         """
         return self._UplinkSpeedGbps

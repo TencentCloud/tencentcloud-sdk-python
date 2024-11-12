@@ -9800,6 +9800,160 @@ class CreateCustomFunctionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDataModelRequest(AbstractModel):
+    """CreateDataModel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CloudappId: 云应用的实例id
+        :type CloudappId: str
+        :param _UserId: 用户的子账号id
+        :type UserId: str
+        :param _TimeUnit: Wedata数据建模购买参数，包年包月类型单位，年：y，月：m，默认m
+        :type TimeUnit: str
+        :param _TimeSpan: Wedata数据建模购买参数，购买时长，默认1
+        :type TimeSpan: int
+        :param _AutoRenewFlag: Wedata数据建模购买参数，是否自动续费，是：1，否：0，默认0
+        :type AutoRenewFlag: int
+        :param _DataModelVersion: Wedata数据建模购买参数，标准版：DATA_MODEL_STANDARD，企业版：DATA_MODEL_PRO，默认DATA_MODEL_STANDARD
+        :type DataModelVersion: str
+        """
+        self._CloudappId = None
+        self._UserId = None
+        self._TimeUnit = None
+        self._TimeSpan = None
+        self._AutoRenewFlag = None
+        self._DataModelVersion = None
+
+    @property
+    def CloudappId(self):
+        """云应用的实例id
+        :rtype: str
+        """
+        return self._CloudappId
+
+    @CloudappId.setter
+    def CloudappId(self, CloudappId):
+        self._CloudappId = CloudappId
+
+    @property
+    def UserId(self):
+        """用户的子账号id
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def TimeUnit(self):
+        """Wedata数据建模购买参数，包年包月类型单位，年：y，月：m，默认m
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def TimeSpan(self):
+        """Wedata数据建模购买参数，购买时长，默认1
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def AutoRenewFlag(self):
+        """Wedata数据建模购买参数，是否自动续费，是：1，否：0，默认0
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def DataModelVersion(self):
+        """Wedata数据建模购买参数，标准版：DATA_MODEL_STANDARD，企业版：DATA_MODEL_PRO，默认DATA_MODEL_STANDARD
+        :rtype: str
+        """
+        return self._DataModelVersion
+
+    @DataModelVersion.setter
+    def DataModelVersion(self, DataModelVersion):
+        self._DataModelVersion = DataModelVersion
+
+
+    def _deserialize(self, params):
+        self._CloudappId = params.get("CloudappId")
+        self._UserId = params.get("UserId")
+        self._TimeUnit = params.get("TimeUnit")
+        self._TimeSpan = params.get("TimeSpan")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._DataModelVersion = params.get("DataModelVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDataModelResponse(AbstractModel):
+    """CreateDataModel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: “Wedata数据建模”的实例id
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """“Wedata数据建模”的实例id
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDataSourceRequest(AbstractModel):
     """CreateDataSource请求参数结构体
 
@@ -15683,6 +15837,115 @@ class DeleteCustomFunctionResponse(AbstractModel):
     def _deserialize(self, params):
         self._FunctionId = params.get("FunctionId")
         self._ErrorMessage = params.get("ErrorMessage")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDataModelRequest(AbstractModel):
+    """DeleteDataModel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CloudappId: 云应用的实例id
+        :type CloudappId: str
+        :param _DataModelId: 数据建模的实例id
+        :type DataModelId: str
+        :param _UserId: 用户的子账号id
+        :type UserId: str
+        """
+        self._CloudappId = None
+        self._DataModelId = None
+        self._UserId = None
+
+    @property
+    def CloudappId(self):
+        """云应用的实例id
+        :rtype: str
+        """
+        return self._CloudappId
+
+    @CloudappId.setter
+    def CloudappId(self, CloudappId):
+        self._CloudappId = CloudappId
+
+    @property
+    def DataModelId(self):
+        """数据建模的实例id
+        :rtype: str
+        """
+        return self._DataModelId
+
+    @DataModelId.setter
+    def DataModelId(self, DataModelId):
+        self._DataModelId = DataModelId
+
+    @property
+    def UserId(self):
+        """用户的子账号id
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._CloudappId = params.get("CloudappId")
+        self._DataModelId = params.get("DataModelId")
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDataModelResponse(AbstractModel):
+    """DeleteDataModel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 是否销毁成功
+        :type Data: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """是否销毁成功
+        :rtype: bool
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
 
 
@@ -78799,6 +79062,190 @@ class UnlockIntegrationTaskResponse(AbstractModel):
     @property
     def Data(self):
         """操作成功与否标识
+        :rtype: bool
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateDataModelRegistryInfoRequest(AbstractModel):
+    """UpdateDataModelRegistryInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CloudappId: 云应用的实例id
+        :type CloudappId: str
+        :param _AppCamRole: 数语的CAM角色
+        :type AppCamRole: str
+        :param _Vip: 数语的ip
+        :type Vip: str
+        :param _Vport: 数语的端口
+        :type Vport: int
+        :param _AppCamRoleId: 数语的CAM角色id
+        :type AppCamRoleId: str
+        :param _Provider: 服务提供方
+        :type Provider: str
+        :param _TenantId: 租户id
+        :type TenantId: str
+        :param _OwnId: 主账号id
+        :type OwnId: str
+        """
+        self._CloudappId = None
+        self._AppCamRole = None
+        self._Vip = None
+        self._Vport = None
+        self._AppCamRoleId = None
+        self._Provider = None
+        self._TenantId = None
+        self._OwnId = None
+
+    @property
+    def CloudappId(self):
+        """云应用的实例id
+        :rtype: str
+        """
+        return self._CloudappId
+
+    @CloudappId.setter
+    def CloudappId(self, CloudappId):
+        self._CloudappId = CloudappId
+
+    @property
+    def AppCamRole(self):
+        """数语的CAM角色
+        :rtype: str
+        """
+        return self._AppCamRole
+
+    @AppCamRole.setter
+    def AppCamRole(self, AppCamRole):
+        self._AppCamRole = AppCamRole
+
+    @property
+    def Vip(self):
+        """数语的ip
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        """数语的端口
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def AppCamRoleId(self):
+        """数语的CAM角色id
+        :rtype: str
+        """
+        return self._AppCamRoleId
+
+    @AppCamRoleId.setter
+    def AppCamRoleId(self, AppCamRoleId):
+        self._AppCamRoleId = AppCamRoleId
+
+    @property
+    def Provider(self):
+        """服务提供方
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def TenantId(self):
+        """租户id
+        :rtype: str
+        """
+        return self._TenantId
+
+    @TenantId.setter
+    def TenantId(self, TenantId):
+        self._TenantId = TenantId
+
+    @property
+    def OwnId(self):
+        """主账号id
+        :rtype: str
+        """
+        return self._OwnId
+
+    @OwnId.setter
+    def OwnId(self, OwnId):
+        self._OwnId = OwnId
+
+
+    def _deserialize(self, params):
+        self._CloudappId = params.get("CloudappId")
+        self._AppCamRole = params.get("AppCamRole")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._AppCamRoleId = params.get("AppCamRoleId")
+        self._Provider = params.get("Provider")
+        self._TenantId = params.get("TenantId")
+        self._OwnId = params.get("OwnId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateDataModelRegistryInfoResponse(AbstractModel):
+    """UpdateDataModelRegistryInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 数语向wedata注册成功
+        :type Data: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """数语向wedata注册成功
         :rtype: bool
         """
         return self._Data

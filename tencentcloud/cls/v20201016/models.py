@@ -20070,6 +20070,8 @@ class ModifyAlarmNoticeRequest(AbstractModel):
         r"""
         :param _AlarmNoticeId: 通知渠道组ID。
         :type AlarmNoticeId: str
+        :param _Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的通知渠道组。最大支持10个标签键值对，并且不能有重复的键值对。
+        :type Tags: list of Tag
         :param _Name: 通知渠道组名称。
         :type Name: str
         :param _Type: 通知类型。可选值：
@@ -20079,7 +20081,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
         :type Type: str
         :param _NoticeReceivers: 通知接收对象。
         :type NoticeReceivers: list of NoticeReceiver
-        :param _WebCallbacks: 接口回调信息（包括企业微信）。
+        :param _WebCallbacks: 接口回调信息（包括企业微信等）。
         :type WebCallbacks: list of WebCallback
         :param _NoticeRules: 通知规则。
 
@@ -20088,13 +20090,36 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 - Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，2组配置互斥。
 - 传其中一组数据，则另一组数据置空。
         :type NoticeRules: list of NoticeRule
+        :param _JumpDomain: 调用链接域名。http:// 或者 https:// 开头，不能/结尾
+        :type JumpDomain: str
+        :param _DeliverStatus: 投递日志开关。
+
+参数值：
+1：关闭；
+
+2：开启 
+
+        :type DeliverStatus: int
+        :param _DeliverConfig: 投递日志配置。
+        :type DeliverConfig: :class:`tencentcloud.cls.v20201016.models.DeliverConfig`
+        :param _AlarmShieldStatus: 免登录操作告警开关。
+
+参数值： 
+        1：关闭
+        2：开启（默认开启）
+        :type AlarmShieldStatus: int
         """
         self._AlarmNoticeId = None
+        self._Tags = None
         self._Name = None
         self._Type = None
         self._NoticeReceivers = None
         self._WebCallbacks = None
         self._NoticeRules = None
+        self._JumpDomain = None
+        self._DeliverStatus = None
+        self._DeliverConfig = None
+        self._AlarmShieldStatus = None
 
     @property
     def AlarmNoticeId(self):
@@ -20106,6 +20131,17 @@ class ModifyAlarmNoticeRequest(AbstractModel):
     @AlarmNoticeId.setter
     def AlarmNoticeId(self, AlarmNoticeId):
         self._AlarmNoticeId = AlarmNoticeId
+
+    @property
+    def Tags(self):
+        """标签描述列表，通过指定该参数可以同时绑定标签到相应的通知渠道组。最大支持10个标签键值对，并且不能有重复的键值对。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
     @property
     def Name(self):
@@ -20145,7 +20181,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def WebCallbacks(self):
-        """接口回调信息（包括企业微信）。
+        """接口回调信息（包括企业微信等）。
         :rtype: list of WebCallback
         """
         return self._WebCallbacks
@@ -20170,9 +20206,69 @@ class ModifyAlarmNoticeRequest(AbstractModel):
     def NoticeRules(self, NoticeRules):
         self._NoticeRules = NoticeRules
 
+    @property
+    def JumpDomain(self):
+        """调用链接域名。http:// 或者 https:// 开头，不能/结尾
+        :rtype: str
+        """
+        return self._JumpDomain
+
+    @JumpDomain.setter
+    def JumpDomain(self, JumpDomain):
+        self._JumpDomain = JumpDomain
+
+    @property
+    def DeliverStatus(self):
+        """投递日志开关。
+
+参数值：
+1：关闭；
+
+2：开启 
+
+        :rtype: int
+        """
+        return self._DeliverStatus
+
+    @DeliverStatus.setter
+    def DeliverStatus(self, DeliverStatus):
+        self._DeliverStatus = DeliverStatus
+
+    @property
+    def DeliverConfig(self):
+        """投递日志配置。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeliverConfig`
+        """
+        return self._DeliverConfig
+
+    @DeliverConfig.setter
+    def DeliverConfig(self, DeliverConfig):
+        self._DeliverConfig = DeliverConfig
+
+    @property
+    def AlarmShieldStatus(self):
+        """免登录操作告警开关。
+
+参数值： 
+        1：关闭
+        2：开启（默认开启）
+        :rtype: int
+        """
+        return self._AlarmShieldStatus
+
+    @AlarmShieldStatus.setter
+    def AlarmShieldStatus(self, AlarmShieldStatus):
+        self._AlarmShieldStatus = AlarmShieldStatus
+
 
     def _deserialize(self, params):
         self._AlarmNoticeId = params.get("AlarmNoticeId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         self._Name = params.get("Name")
         self._Type = params.get("Type")
         if params.get("NoticeReceivers") is not None:
@@ -20193,6 +20289,12 @@ class ModifyAlarmNoticeRequest(AbstractModel):
                 obj = NoticeRule()
                 obj._deserialize(item)
                 self._NoticeRules.append(obj)
+        self._JumpDomain = params.get("JumpDomain")
+        self._DeliverStatus = params.get("DeliverStatus")
+        if params.get("DeliverConfig") is not None:
+            self._DeliverConfig = DeliverConfig()
+            self._DeliverConfig._deserialize(params.get("DeliverConfig"))
+        self._AlarmShieldStatus = params.get("AlarmShieldStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

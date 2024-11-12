@@ -12934,7 +12934,7 @@ class CreateReleaseFlowRequest(AbstractModel):
 如需更换原合同中的企业端签署人，可通过指定该签署人的RecipientId编号更换此企业端签署人。(可通过接口<a href="https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo/">DescribeFlowInfo</a>查询签署人的RecipientId编号)<br/>
 
 注意：
-`只能更换自己企业的签署人,  不支持更换个人类型或者其他企业的签署人。`
+`只能更换自己企业的签署人,  不支持更换个人类型。`
 `可以不指定替换签署人, 使用原流程的签署人 `
         :type ReleasedApprovers: list of ReleasedApprover
         :param _Deadline: 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的7天时截止。
@@ -13007,7 +13007,7 @@ class CreateReleaseFlowRequest(AbstractModel):
 如需更换原合同中的企业端签署人，可通过指定该签署人的RecipientId编号更换此企业端签署人。(可通过接口<a href="https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo/">DescribeFlowInfo</a>查询签署人的RecipientId编号)<br/>
 
 注意：
-`只能更换自己企业的签署人,  不支持更换个人类型或者其他企业的签署人。`
+`只能更换自己企业的签署人,  不支持更换个人类型。`
 `可以不指定替换签署人, 使用原流程的签署人 `
         :rtype: list of ReleasedApprover
         """

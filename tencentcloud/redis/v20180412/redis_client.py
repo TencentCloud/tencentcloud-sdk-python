@@ -418,7 +418,7 @@ class RedisClient(AbstractClient):
 
 
     def DeleteReplicationInstance(self, request):
-        """移除复制组成员 注：接口下线中，请使用 RemoveReplicationInstance
+        """移除复制组成员。注：该接口下线中，请使用 [RemoveReplicationInstance](https://cloud.tencent.com/document/product/239/90099)。
 
         :param request: Request instance for DeleteReplicationInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.DeleteReplicationInstanceRequest`

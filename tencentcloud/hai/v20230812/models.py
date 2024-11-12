@@ -505,7 +505,7 @@ class DescribeInstancesRequest(AbstractModel):
         r"""
         :param _InstanceIds: 实例元组
         :type InstanceIds: list of str
-        :param _Filters: 描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有：instance-id，实例id；instance-state，实例状态
+        :param _Filters: 描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有：instance-id，实例id；instance-state，实例状态；charge-type，付费方式；public-ip-address，公网IP过滤
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0
 
@@ -531,7 +531,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有：instance-id，实例id；instance-state，实例状态
+        """描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有：instance-id，实例id；instance-state，实例状态；charge-type，付费方式；public-ip-address，公网IP过滤
         :rtype: list of Filter
         """
         return self._Filters
@@ -973,6 +973,10 @@ class InquirePriceRunInstancesRequest(AbstractModel):
         :type ClientToken: str
         :param _DryRun: DryRun为True就是只验接口连通性，默认为False
         :type DryRun: bool
+        :param _InstanceChargeType: 付费方式，POSTPAID_BY_HOUR按量后付费，PREPAID_BY_MONTH预付费按月，PREPAID_BY_DAY预付费按天
+        :type InstanceChargeType: str
+        :param _InstanceChargePrepaid: 预付费参数
+        :type InstanceChargePrepaid: :class:`tencentcloud.hai.v20230812.models.InstanceChargePrepaid`
         """
         self._ApplicationId = None
         self._BundleType = None
@@ -981,6 +985,8 @@ class InquirePriceRunInstancesRequest(AbstractModel):
         self._InstanceName = None
         self._ClientToken = None
         self._DryRun = None
+        self._InstanceChargeType = None
+        self._InstanceChargePrepaid = None
 
     @property
     def ApplicationId(self):
@@ -1059,6 +1065,28 @@ class InquirePriceRunInstancesRequest(AbstractModel):
     def DryRun(self, DryRun):
         self._DryRun = DryRun
 
+    @property
+    def InstanceChargeType(self):
+        """付费方式，POSTPAID_BY_HOUR按量后付费，PREPAID_BY_MONTH预付费按月，PREPAID_BY_DAY预付费按天
+        :rtype: str
+        """
+        return self._InstanceChargeType
+
+    @InstanceChargeType.setter
+    def InstanceChargeType(self, InstanceChargeType):
+        self._InstanceChargeType = InstanceChargeType
+
+    @property
+    def InstanceChargePrepaid(self):
+        """预付费参数
+        :rtype: :class:`tencentcloud.hai.v20230812.models.InstanceChargePrepaid`
+        """
+        return self._InstanceChargePrepaid
+
+    @InstanceChargePrepaid.setter
+    def InstanceChargePrepaid(self, InstanceChargePrepaid):
+        self._InstanceChargePrepaid = InstanceChargePrepaid
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
@@ -1070,6 +1098,10 @@ class InquirePriceRunInstancesRequest(AbstractModel):
         self._InstanceName = params.get("InstanceName")
         self._ClientToken = params.get("ClientToken")
         self._DryRun = params.get("DryRun")
+        self._InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceChargePrepaid") is not None:
+            self._InstanceChargePrepaid = InstanceChargePrepaid()
+            self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1559,6 +1591,82 @@ FAILED：表示操作失败
         
 
 
+class InstanceChargePrepaid(AbstractModel):
+    """实例预付费入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Period: 时长，默认值：1
+        :type Period: int
+        :param _RenewFlag: 续费标志可选参数：
+NOTIFY_AND_MANUAL_RENEW：表示默认状态(用户未设置，即初始状态：若用户有预付费不停服特权，也会对该值进行自动续费)
+NOTIFY_AND_AUTO_RENEW：表示自动续费
+DISABLE_NOTIFY_AND_MANUAL_RENEW：表示明确不自动续费(用户设置)
+默认值：NOTIFY_AND_MANUAL_RENEW
+
+        :type RenewFlag: str
+        :param _TimeUnit: 时长单位，默认值MONTH
+        :type TimeUnit: str
+        """
+        self._Period = None
+        self._RenewFlag = None
+        self._TimeUnit = None
+
+    @property
+    def Period(self):
+        """时长，默认值：1
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def RenewFlag(self):
+        """续费标志可选参数：
+NOTIFY_AND_MANUAL_RENEW：表示默认状态(用户未设置，即初始状态：若用户有预付费不停服特权，也会对该值进行自动续费)
+NOTIFY_AND_AUTO_RENEW：表示自动续费
+DISABLE_NOTIFY_AND_MANUAL_RENEW：表示明确不自动续费(用户设置)
+默认值：NOTIFY_AND_MANUAL_RENEW
+
+        :rtype: str
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def TimeUnit(self):
+        """时长单位，默认值MONTH
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+
+    def _deserialize(self, params):
+        self._Period = params.get("Period")
+        self._RenewFlag = params.get("RenewFlag")
+        self._TimeUnit = params.get("TimeUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ItemPrice(AbstractModel):
     """套餐价格
 
@@ -1575,7 +1683,7 @@ class ItemPrice(AbstractModel):
         :param _Discount: 折扣
 注意：此字段可能返回 null，表示取不到有效值。
         :type Discount: float
-        :param _ChargeUnit: 单位：时
+        :param _ChargeUnit: 单位：时/月
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeUnit: str
@@ -1627,7 +1735,7 @@ class ItemPrice(AbstractModel):
 
     @property
     def ChargeUnit(self):
-        """单位：时
+        """单位：时/月
 
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -1657,6 +1765,101 @@ class ItemPrice(AbstractModel):
         self._Discount = params.get("Discount")
         self._ChargeUnit = params.get("ChargeUnit")
         self._Amount = params.get("Amount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ItemPriceDetail(AbstractModel):
+    """分实例价格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _InstancePrice: 实例价格详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstancePrice: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
+        :param _CloudDiskPrice: 磁盘价格详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudDiskPrice: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
+        :param _InstanceTotalPrice: 该实例的总价钱
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceTotalPrice: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
+        """
+        self._InstanceId = None
+        self._InstancePrice = None
+        self._CloudDiskPrice = None
+        self._InstanceTotalPrice = None
+
+    @property
+    def InstanceId(self):
+        """实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstancePrice(self):
+        """实例价格详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
+        """
+        return self._InstancePrice
+
+    @InstancePrice.setter
+    def InstancePrice(self, InstancePrice):
+        self._InstancePrice = InstancePrice
+
+    @property
+    def CloudDiskPrice(self):
+        """磁盘价格详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
+        """
+        return self._CloudDiskPrice
+
+    @CloudDiskPrice.setter
+    def CloudDiskPrice(self, CloudDiskPrice):
+        self._CloudDiskPrice = CloudDiskPrice
+
+    @property
+    def InstanceTotalPrice(self):
+        """该实例的总价钱
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
+        """
+        return self._InstanceTotalPrice
+
+    @InstanceTotalPrice.setter
+    def InstanceTotalPrice(self, InstanceTotalPrice):
+        self._InstanceTotalPrice = InstanceTotalPrice
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("InstancePrice") is not None:
+            self._InstancePrice = ItemPrice()
+            self._InstancePrice._deserialize(params.get("InstancePrice"))
+        if params.get("CloudDiskPrice") is not None:
+            self._CloudDiskPrice = ItemPrice()
+            self._CloudDiskPrice._deserialize(params.get("CloudDiskPrice"))
+        if params.get("InstanceTotalPrice") is not None:
+            self._InstanceTotalPrice = ItemPrice()
+            self._InstanceTotalPrice._deserialize(params.get("InstanceTotalPrice"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1879,9 +2082,13 @@ class Price(AbstractModel):
         :param _CloudDiskPrice: 云盘价格信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CloudDiskPrice: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
+        :param _PriceDetailSet: 分实例价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PriceDetailSet: list of ItemPriceDetail
         """
         self._InstancePrice = None
         self._CloudDiskPrice = None
+        self._PriceDetailSet = None
 
     @property
     def InstancePrice(self):
@@ -1907,6 +2114,18 @@ class Price(AbstractModel):
     def CloudDiskPrice(self, CloudDiskPrice):
         self._CloudDiskPrice = CloudDiskPrice
 
+    @property
+    def PriceDetailSet(self):
+        """分实例价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ItemPriceDetail
+        """
+        return self._PriceDetailSet
+
+    @PriceDetailSet.setter
+    def PriceDetailSet(self, PriceDetailSet):
+        self._PriceDetailSet = PriceDetailSet
+
 
     def _deserialize(self, params):
         if params.get("InstancePrice") is not None:
@@ -1915,6 +2134,12 @@ class Price(AbstractModel):
         if params.get("CloudDiskPrice") is not None:
             self._CloudDiskPrice = ItemPrice()
             self._CloudDiskPrice._deserialize(params.get("CloudDiskPrice"))
+        if params.get("PriceDetailSet") is not None:
+            self._PriceDetailSet = []
+            for item in params.get("PriceDetailSet"):
+                obj = ItemPriceDetail()
+                obj._deserialize(item)
+                self._PriceDetailSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

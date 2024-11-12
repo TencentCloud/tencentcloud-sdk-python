@@ -2212,7 +2212,7 @@ class CreateInstanceAccountRequest(AbstractModel):
 - 长度不能大于32位。
         :type AccountName: str
         :param _AccountPassword: 设置自定义账号的密码。密码复杂度要求如下：
-- 字符个数为[8,32]。
+- 字符个数为[8,64]。
 - 至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的两种。
 - 不能以"/"开头。
 
@@ -2262,7 +2262,7 @@ class CreateInstanceAccountRequest(AbstractModel):
     @property
     def AccountPassword(self):
         """设置自定义账号的密码。密码复杂度要求如下：
-- 字符个数为[8,32]。
+- 字符个数为[8,64]。
 - 至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的两种。
 - 不能以"/"开头。
 
@@ -11813,11 +11813,9 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
         :type BillingMode: int
         :param _ZoneId: 实例所属的可用区ID，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
         :type ZoneId: int
-        :param _RedisShardNum: 实例分片数量。
-Redis2.8标准架构、CKV标准架构、Redis4.0标准架构无需填写。
+        :param _RedisShardNum: 实例分片数量。2.8 标准架构无需配置分片，其余版本标准架构需要配置分片数量为1。集群架构需指定需购买的分片数量。
         :type RedisShardNum: int
-        :param _RedisReplicasNum: 实例副本数量。
-Redis2.8标准架构、CKV标准架构无需填写。
+        :param _RedisReplicasNum: 实例副本数量。2.8 标准架构无需配置副本数量。
         :type RedisReplicasNum: int
         :param _ReplicasReadonly: 是否支持副本只读。Redis2.8标准架构、CKV标准架构无需填写。
 - true：无需支持副本只读。
@@ -11923,8 +11921,7 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
 
     @property
     def RedisShardNum(self):
-        """实例分片数量。
-Redis2.8标准架构、CKV标准架构、Redis4.0标准架构无需填写。
+        """实例分片数量。2.8 标准架构无需配置分片，其余版本标准架构需要配置分片数量为1。集群架构需指定需购买的分片数量。
         :rtype: int
         """
         return self._RedisShardNum
@@ -11935,8 +11932,7 @@ Redis2.8标准架构、CKV标准架构、Redis4.0标准架构无需填写。
 
     @property
     def RedisReplicasNum(self):
-        """实例副本数量。
-Redis2.8标准架构、CKV标准架构无需填写。
+        """实例副本数量。2.8 标准架构无需配置副本数量。
         :rtype: int
         """
         return self._RedisReplicasNum
