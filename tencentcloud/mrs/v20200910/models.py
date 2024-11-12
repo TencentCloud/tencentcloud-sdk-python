@@ -12723,9 +12723,12 @@ class ImageMaskAsyncRequest(AbstractModel):
         :type Image: :class:`tencentcloud.mrs.v20200910.models.ImageInfo`
         :param _MaskFlag: 图片脱敏选项, 不传默认都脱敏
         :type MaskFlag: :class:`tencentcloud.mrs.v20200910.models.ImageMaskFlags`
+        :param _AutoFixImageDirection: 是否自动矫正图片方向
+        :type AutoFixImageDirection: bool
         """
         self._Image = None
         self._MaskFlag = None
+        self._AutoFixImageDirection = None
 
     @property
     def Image(self):
@@ -12749,6 +12752,17 @@ class ImageMaskAsyncRequest(AbstractModel):
     def MaskFlag(self, MaskFlag):
         self._MaskFlag = MaskFlag
 
+    @property
+    def AutoFixImageDirection(self):
+        """是否自动矫正图片方向
+        :rtype: bool
+        """
+        return self._AutoFixImageDirection
+
+    @AutoFixImageDirection.setter
+    def AutoFixImageDirection(self, AutoFixImageDirection):
+        self._AutoFixImageDirection = AutoFixImageDirection
+
 
     def _deserialize(self, params):
         if params.get("Image") is not None:
@@ -12757,6 +12771,7 @@ class ImageMaskAsyncRequest(AbstractModel):
         if params.get("MaskFlag") is not None:
             self._MaskFlag = ImageMaskFlags()
             self._MaskFlag._deserialize(params.get("MaskFlag"))
+        self._AutoFixImageDirection = params.get("AutoFixImageDirection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12903,9 +12918,12 @@ class ImageMaskRequest(AbstractModel):
         :type Image: :class:`tencentcloud.mrs.v20200910.models.ImageInfo`
         :param _MaskFlag: 图片脱敏选项, 不传默认都脱敏
         :type MaskFlag: :class:`tencentcloud.mrs.v20200910.models.ImageMaskFlags`
+        :param _AutoFixImageDirection: 是否自动矫正图片方向
+        :type AutoFixImageDirection: bool
         """
         self._Image = None
         self._MaskFlag = None
+        self._AutoFixImageDirection = None
 
     @property
     def Image(self):
@@ -12929,6 +12947,17 @@ class ImageMaskRequest(AbstractModel):
     def MaskFlag(self, MaskFlag):
         self._MaskFlag = MaskFlag
 
+    @property
+    def AutoFixImageDirection(self):
+        """是否自动矫正图片方向
+        :rtype: bool
+        """
+        return self._AutoFixImageDirection
+
+    @AutoFixImageDirection.setter
+    def AutoFixImageDirection(self, AutoFixImageDirection):
+        self._AutoFixImageDirection = AutoFixImageDirection
+
 
     def _deserialize(self, params):
         if params.get("Image") is not None:
@@ -12937,6 +12966,7 @@ class ImageMaskRequest(AbstractModel):
         if params.get("MaskFlag") is not None:
             self._MaskFlag = ImageMaskFlags()
             self._MaskFlag._deserialize(params.get("MaskFlag"))
+        self._AutoFixImageDirection = params.get("AutoFixImageDirection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

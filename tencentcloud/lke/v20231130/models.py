@@ -6548,7 +6548,7 @@ class DescribeStorageCredentialRequest(AbstractModel):
         :type BotBizId: str
         :param _FileType: 文件类型,正常的文件名类型后缀，例如 xlsx、pdf、 docx、png 等
         :type FileType: str
-        :param _IsPublic: IsPublic为空用于上传文件时选择场景，当上传为图片文件是IsPublic为true，上传文档文件时场景IsPublic为false
+        :param _IsPublic: IsPublic用于上传文件时选择场景，当上传为对话端文件时IsPublic为true，上传文档库文件时场景IsPublic为false
         :type IsPublic: bool
         :param _TypeKey: 存储类型: offline:离线文件，realtime:实时文件；为空默认为offline
         :type TypeKey: str
@@ -6582,7 +6582,7 @@ class DescribeStorageCredentialRequest(AbstractModel):
 
     @property
     def IsPublic(self):
-        """IsPublic为空用于上传文件时选择场景，当上传为图片文件是IsPublic为true，上传文档文件时场景IsPublic为false
+        """IsPublic用于上传文件时选择场景，当上传为对话端文件时IsPublic为true，上传文档库文件时场景IsPublic为false
         :rtype: bool
         """
         return self._IsPublic
@@ -9065,7 +9065,7 @@ class GetDocPreviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DocBizId: 文档业务ID
+        :param _DocBizId: 文档BizID
         :type DocBizId: str
         :param _BotBizId: 应用ID
         :type BotBizId: str
@@ -9078,7 +9078,7 @@ class GetDocPreviewRequest(AbstractModel):
 
     @property
     def DocBizId(self):
-        """文档业务ID
+        """文档BizID
         :rtype: str
         """
         return self._DocBizId
@@ -9793,14 +9793,14 @@ class GetReconstructDocumentResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务唯一id
+        :param _TaskId: 任务唯一Id。[CreateReconstructDocumentFlow](https://cloud.tencent.com/document/product/1759/107506) 返回的TaskId。
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        """任务唯一id
+        """任务唯一Id。[CreateReconstructDocumentFlow](https://cloud.tencent.com/document/product/1759/107506) 返回的TaskId。
         :rtype: str
         """
         return self._TaskId
@@ -9829,11 +9829,11 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 任务状态: Success->执行完成；Processing->执行中；Failed->执行失败；WaitExecute->等待执行；
+        :param _Status: 任务状态: Success->执行完成；Processing->执行中；Failed->执行失败；WaitExecute->等待执行。
         :type Status: str
-        :param _DocumentRecognizeResultUrl: 输入文件中嵌入的图片中文字内容的识别结果，存储在腾讯云cos的下载地址
+        :param _DocumentRecognizeResultUrl: 本次文档解析的结果文件，存储在腾讯云COS的下载URL，下载URL的有效期为10分钟。
         :type DocumentRecognizeResultUrl: str
-        :param _FailedPages: 文档解析失败的页码
+        :param _FailedPages: 本次文档解析失败的页码信息。
         :type FailedPages: list of ReconstructDocumentFailedPage
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9845,7 +9845,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态: Success->执行完成；Processing->执行中；Failed->执行失败；WaitExecute->等待执行；
+        """任务状态: Success->执行完成；Processing->执行中；Failed->执行失败；WaitExecute->等待执行。
         :rtype: str
         """
         return self._Status
@@ -9856,7 +9856,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def DocumentRecognizeResultUrl(self):
-        """输入文件中嵌入的图片中文字内容的识别结果，存储在腾讯云cos的下载地址
+        """本次文档解析的结果文件，存储在腾讯云COS的下载URL，下载URL的有效期为10分钟。
         :rtype: str
         """
         return self._DocumentRecognizeResultUrl
@@ -9867,7 +9867,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def FailedPages(self):
-        """文档解析失败的页码
+        """本次文档解析失败的页码信息。
         :rtype: list of ReconstructDocumentFailedPage
         """
         return self._FailedPages
@@ -10298,7 +10298,7 @@ class GroupQARequest(AbstractModel):
         r"""
         :param _BotBizId: 应用ID
         :type BotBizId: str
-        :param _QaBizIds: QA业务ID列表
+        :param _QaBizIds: QaBizID列表
         :type QaBizIds: list of str
         :param _CateBizId: 分组 ID
         :type CateBizId: str
@@ -10320,7 +10320,7 @@ class GroupQARequest(AbstractModel):
 
     @property
     def QaBizIds(self):
-        """QA业务ID列表
+        """QaBizID列表
         :rtype: list of str
         """
         return self._QaBizIds
@@ -14047,7 +14047,7 @@ class ListReleaseDocPreviewRequest(AbstractModel):
         :type PageSize: int
         :param _Query: 查询内容
         :type Query: str
-        :param _ReleaseBizId: 发布业务ID
+        :param _ReleaseBizId: 发布单ID
         :type ReleaseBizId: str
         :param _StartTime: 开始时间
         :type StartTime: str
@@ -14111,7 +14111,7 @@ class ListReleaseDocPreviewRequest(AbstractModel):
 
     @property
     def ReleaseBizId(self):
-        """发布业务ID
+        """发布单ID
         :rtype: str
         """
         return self._ReleaseBizId

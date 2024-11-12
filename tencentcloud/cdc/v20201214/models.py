@@ -203,7 +203,7 @@ class CreateDedicatedClusterOrderRequest(AbstractModel):
         :type CbsInfo: :class:`tencentcloud.cdc.v20201214.models.CbsInfo`
         :param _PurchaseSource: 购买来源，默认为cloudApi
         :type PurchaseSource: str
-        :param _DedicatedClusterOrderId: 当调用API接口提交订单时，需要提交DedicatedClusterOrderId
+        :param _DedicatedClusterOrderId: 当调用API接口提交订单时，需要提交DedicatedClusterOrderId，此处DedicatedClusterOrderId是之前创建的订单，可通过DescribeDedicatedClusterOrders接口查询，这里传入DedicatedClusterOrderId用于调整订单和支付。
         :type DedicatedClusterOrderId: str
         """
         self._DedicatedClusterId = None
@@ -270,7 +270,7 @@ class CreateDedicatedClusterOrderRequest(AbstractModel):
 
     @property
     def DedicatedClusterOrderId(self):
-        """当调用API接口提交订单时，需要提交DedicatedClusterOrderId
+        """当调用API接口提交订单时，需要提交DedicatedClusterOrderId，此处DedicatedClusterOrderId是之前创建的订单，可通过DescribeDedicatedClusterOrders接口查询，这里传入DedicatedClusterOrderId用于调整订单和支付。
         :rtype: str
         """
         return self._DedicatedClusterOrderId
@@ -496,19 +496,19 @@ class CreateSiteRequest(AbstractModel):
         :type Description: str
         :param _Note: 注意事项
         :type Note: str
-        :param _FiberType: 您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。
+        :param _FiberType: 您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。取值范围："MM","SM"
         :type FiberType: str
         :param _OpticalStandard: 您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。
         :type OpticalStandard: str
         :param _PowerConnectors: 电源连接器类型
         :type PowerConnectors: str
-        :param _PowerFeedDrop: 从机架上方还是下方供电。
+        :param _PowerFeedDrop: 从机架上方还是下方供电。取值范围：["UP","DOWN"]
         :type PowerFeedDrop: str
         :param _MaxWeight: 最大承重(KG)
         :type MaxWeight: int
         :param _PowerDrawKva: 功耗(KW)
         :type PowerDrawKva: int
-        :param _UplinkSpeedGbps: 网络到腾讯云Region区域的上行链路速度
+        :param _UplinkSpeedGbps: 网络到腾讯云Region区域的上行链路速度(Gbps)
         :type UplinkSpeedGbps: int
         :param _UplinkCount: 将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
         :type UplinkCount: int
@@ -640,7 +640,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def FiberType(self):
-        """您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。
+        """您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。取值范围："MM","SM"
         :rtype: str
         """
         return self._FiberType
@@ -673,7 +673,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def PowerFeedDrop(self):
-        """从机架上方还是下方供电。
+        """从机架上方还是下方供电。取值范围：["UP","DOWN"]
         :rtype: str
         """
         return self._PowerFeedDrop
@@ -706,7 +706,7 @@ class CreateSiteRequest(AbstractModel):
 
     @property
     def UplinkSpeedGbps(self):
-        """网络到腾讯云Region区域的上行链路速度
+        """网络到腾讯云Region区域的上行链路速度(Gbps)
         :rtype: int
         """
         return self._UplinkSpeedGbps
@@ -2690,7 +2690,7 @@ class DescribeDedicatedClusterHostStatisticsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束时间
         :type EndTime: str
-        :param _Period: 时间范围精度，1分钟/5分钟
+        :param _Period: 时间范围精度，1分钟(ONE_MINUTE)/5分钟(FIVE_MINUTE)
         :type Period: str
         """
         self._DedicatedClusterId = None
@@ -2745,7 +2745,7 @@ class DescribeDedicatedClusterHostStatisticsRequest(AbstractModel):
 
     @property
     def Period(self):
-        """时间范围精度，1分钟/5分钟
+        """时间范围精度，1分钟(ONE_MINUTE)/5分钟(FIVE_MINUTE)
         :rtype: str
         """
         return self._Period
@@ -5019,9 +5019,9 @@ class ModifyOrderStatusRequest(AbstractModel):
         r"""
         :param _Status: 要更新成的状态
         :type Status: str
-        :param _DedicatedClusterOrderId: 大订单ID
+        :param _DedicatedClusterOrderId: 大订单ID，可以在本地专用集群的基础信息页获取大订单ID
         :type DedicatedClusterOrderId: str
-        :param _SubOrderIds: 小订单ID
+        :param _SubOrderIds: 小订单ID，进入大订单的详情页，可以看到小订单ID
         :type SubOrderIds: list of str
         """
         self._Status = None
@@ -5041,7 +5041,7 @@ class ModifyOrderStatusRequest(AbstractModel):
 
     @property
     def DedicatedClusterOrderId(self):
-        """大订单ID
+        """大订单ID，可以在本地专用集群的基础信息页获取大订单ID
         :rtype: str
         """
         return self._DedicatedClusterOrderId
@@ -5052,7 +5052,7 @@ class ModifyOrderStatusRequest(AbstractModel):
 
     @property
     def SubOrderIds(self):
-        """小订单ID
+        """小订单ID，进入大订单的详情页，可以看到小订单ID
         :rtype: list of str
         """
         return self._SubOrderIds
@@ -5119,7 +5119,7 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
         :type OpticalStandard: str
         :param _PowerConnectors: 电源连接器类型
         :type PowerConnectors: str
-        :param _PowerFeedDrop: 从机架上方还是下方供电。
+        :param _PowerFeedDrop: 从机架上方还是下方供电。取值范围：["UP","DOWN"]
         :type PowerFeedDrop: str
         :param _MaxWeight: 最大承重(KG)
         :type MaxWeight: int
@@ -5212,7 +5212,7 @@ class ModifySiteDeviceInfoRequest(AbstractModel):
 
     @property
     def PowerFeedDrop(self):
-        """从机架上方还是下方供电。
+        """从机架上方还是下方供电。取值范围：["UP","DOWN"]
         :rtype: str
         """
         return self._PowerFeedDrop

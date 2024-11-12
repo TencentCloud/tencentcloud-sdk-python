@@ -246,10 +246,8 @@ class Command(AbstractModel):
         :param _DefaultParameters: 自定义参数的默认取值。
         :type DefaultParameters: str
         :param _DefaultParameterConfs: 自定义参数的默认取值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultParameterConfs: list of DefaultParameterConf
         :param _Scenes: 命令关联的场景
-注意：此字段可能返回 null，表示取不到有效值。
         :type Scenes: list of str
         :param _FormattedDescription: 命令的结构化描述。公共命令有值，用户命令为空字符串。
         :type FormattedDescription: str
@@ -408,7 +406,6 @@ class Command(AbstractModel):
     @property
     def DefaultParameterConfs(self):
         """自定义参数的默认取值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DefaultParameterConf
         """
         return self._DefaultParameterConfs
@@ -420,7 +417,6 @@ class Command(AbstractModel):
     @property
     def Scenes(self):
         """命令关联的场景
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Scenes
@@ -1288,13 +1284,10 @@ class DefaultParameterConf(AbstractModel):
     def __init__(self):
         r"""
         :param _ParameterName: 参数名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParameterName: str
         :param _ParameterValue: 参数默认值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParameterValue: str
         :param _ParameterDescription: 参数描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParameterDescription: str
         """
         self._ParameterName = None
@@ -1304,7 +1297,6 @@ class DefaultParameterConf(AbstractModel):
     @property
     def ParameterName(self):
         """参数名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParameterName
@@ -1316,7 +1308,6 @@ class DefaultParameterConf(AbstractModel):
     @property
     def ParameterValue(self):
         """参数默认值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParameterValue
@@ -1328,7 +1319,6 @@ class DefaultParameterConf(AbstractModel):
     @property
     def ParameterDescription(self):
         """参数描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParameterDescription
@@ -2461,11 +2451,7 @@ class DescribeInvokersRequest(AbstractModel):
         r"""
         :param _InvokerIds: 执行器ID列表。
         :type InvokerIds: list of str
-        :param _Filters: 过滤条件：
-
-<li> invoker-id - String - 是否必填：否 - （过滤条件）按执行器ID过滤。
-<li> command-id - String - 是否必填：否 - （过滤条件）按命令ID过滤。
-<li> type - String - 是否必填：否 - （过滤条件）按执行器类型过滤。
+        :param _Filters: 过滤条件：<li> invoker-id - String - 是否必填：否 - （过滤条件）按执行器ID过滤。</li> <li> command-id - String - 是否必填：否 - （过滤条件）按命令ID过滤。</li> <li> type - String - 是否必填：否 - （过滤条件）按执行器类型过滤。</li>
         :type Filters: list of Filter
         :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
@@ -2490,11 +2476,7 @@ class DescribeInvokersRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件：
-
-<li> invoker-id - String - 是否必填：否 - （过滤条件）按执行器ID过滤。
-<li> command-id - String - 是否必填：否 - （过滤条件）按命令ID过滤。
-<li> type - String - 是否必填：否 - （过滤条件）按执行器类型过滤。
+        """过滤条件：<li> invoker-id - String - 是否必填：否 - （过滤条件）按执行器ID过滤。</li> <li> command-id - String - 是否必填：否 - （过滤条件）按命令ID过滤。</li> <li> type - String - 是否必填：否 - （过滤条件）按执行器类型过滤。</li>
         :rtype: list of Filter
         """
         return self._Filters

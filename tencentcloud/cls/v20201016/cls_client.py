@@ -217,6 +217,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCloudProductLogTask(self, request):
+        """内部云产品接入使用相关接口
+
+        :param request: Request instance for CreateCloudProductLogTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateCloudProductLogTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateCloudProductLogTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudProductLogTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudProductLogTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateConfig(self, request):
         """创建采集规则配置
 
@@ -668,6 +691,29 @@ class ClsClient(AbstractClient):
             body = self.call("DeleteAlarmShield", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAlarmShieldResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCloudProductLogTask(self, request):
+        """内部云产品接入使用相关接口
+
+        :param request: Request instance for DeleteCloudProductLogTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteCloudProductLogTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteCloudProductLogTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudProductLogTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudProductLogTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1151,6 +1197,29 @@ class ClsClient(AbstractClient):
             body = self.call("DescribeAlertRecordHistory", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAlertRecordHistoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudProductLogTasks(self, request):
+        """云产品接入使用相关接口
+
+        :param request: Request instance for DescribeCloudProductLogTasks.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeCloudProductLogTasksRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeCloudProductLogTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudProductLogTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudProductLogTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1842,6 +1911,29 @@ class ClsClient(AbstractClient):
             body = self.call("ModifyAlarmShield", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAlarmShieldResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCloudProductLogTask(self, request):
+        """内部云产品接入使用相关接口
+
+        :param request: Request instance for ModifyCloudProductLogTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyCloudProductLogTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyCloudProductLogTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCloudProductLogTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCloudProductLogTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
