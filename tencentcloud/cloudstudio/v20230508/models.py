@@ -469,7 +469,6 @@ class DescribeConfigResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 配置值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -480,7 +479,6 @@ class DescribeConfigResponse(AbstractModel):
     @property
     def Data(self):
         """配置值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Data
@@ -1317,28 +1315,20 @@ class WorkspaceStatusInfo(AbstractModel):
         :param _Memory: 内存
         :type Memory: int
         :param _Icon: 工作空间图标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Icon: str
         :param _StatusReason: 工作空间状态, 异常原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatusReason: str
         :param _Description: 工作空间描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _WorkspaceType: 工作空间类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type WorkspaceType: str
         :param _VersionControlUrl: Git 仓库 HTTPS 地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type VersionControlUrl: str
         :param _VersionControlRef: Git 仓库引用。指定分支使用 /refs/heads/{分支名}, 指定 Tag 用 /refs/tags/{Tag名}
-注意：此字段可能返回 null，表示取不到有效值。
         :type VersionControlRef: str
         :param _LastOpsDate: 最后操作时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastOpsDate: str
         :param _CreateDate: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateDate: str
         """
         self._Id = None
@@ -1425,7 +1415,6 @@ class WorkspaceStatusInfo(AbstractModel):
     @property
     def Icon(self):
         """工作空间图标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Icon
@@ -1437,7 +1426,6 @@ class WorkspaceStatusInfo(AbstractModel):
     @property
     def StatusReason(self):
         """工作空间状态, 异常原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StatusReason
@@ -1449,7 +1437,6 @@ class WorkspaceStatusInfo(AbstractModel):
     @property
     def Description(self):
         """工作空间描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -1461,7 +1448,6 @@ class WorkspaceStatusInfo(AbstractModel):
     @property
     def WorkspaceType(self):
         """工作空间类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WorkspaceType
@@ -1473,7 +1459,6 @@ class WorkspaceStatusInfo(AbstractModel):
     @property
     def VersionControlUrl(self):
         """Git 仓库 HTTPS 地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VersionControlUrl
@@ -1485,7 +1470,6 @@ class WorkspaceStatusInfo(AbstractModel):
     @property
     def VersionControlRef(self):
         """Git 仓库引用。指定分支使用 /refs/heads/{分支名}, 指定 Tag 用 /refs/tags/{Tag名}
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VersionControlRef
@@ -1497,7 +1481,6 @@ class WorkspaceStatusInfo(AbstractModel):
     @property
     def LastOpsDate(self):
         """最后操作时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastOpsDate
@@ -1509,7 +1492,6 @@ class WorkspaceStatusInfo(AbstractModel):
     @property
     def CreateDate(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateDate

@@ -11182,6 +11182,14 @@ class Resource(AbstractModel):
         :type LogDelivery: str
         :param _DeployModel: 部署模式
         :type DeployModel: int
+        :param _IntranetAccess: 0 默认值，非内网访问，1 内网访问
+        :type IntranetAccess: int
+        :param _IntranetPrivateIpSet: 内网访问的ip
+        :type IntranetPrivateIpSet: list of str
+        :param _IntranetVpcId: 开通内网访问的vpc
+        :type IntranetVpcId: str
+        :param _IntranetVpcCidr: 开通内网访问vpc的网段
+        :type IntranetVpcCidr: str
         """
         self._ResourceId = None
         self._ApCode = None
@@ -11219,6 +11227,10 @@ class Resource(AbstractModel):
         self._CdcClusterId = None
         self._LogDelivery = None
         self._DeployModel = None
+        self._IntranetAccess = None
+        self._IntranetPrivateIpSet = None
+        self._IntranetVpcId = None
+        self._IntranetVpcCidr = None
 
     @property
     def ResourceId(self):
@@ -11616,6 +11628,50 @@ class Resource(AbstractModel):
     def DeployModel(self, DeployModel):
         self._DeployModel = DeployModel
 
+    @property
+    def IntranetAccess(self):
+        """0 默认值，非内网访问，1 内网访问
+        :rtype: int
+        """
+        return self._IntranetAccess
+
+    @IntranetAccess.setter
+    def IntranetAccess(self, IntranetAccess):
+        self._IntranetAccess = IntranetAccess
+
+    @property
+    def IntranetPrivateIpSet(self):
+        """内网访问的ip
+        :rtype: list of str
+        """
+        return self._IntranetPrivateIpSet
+
+    @IntranetPrivateIpSet.setter
+    def IntranetPrivateIpSet(self, IntranetPrivateIpSet):
+        self._IntranetPrivateIpSet = IntranetPrivateIpSet
+
+    @property
+    def IntranetVpcId(self):
+        """开通内网访问的vpc
+        :rtype: str
+        """
+        return self._IntranetVpcId
+
+    @IntranetVpcId.setter
+    def IntranetVpcId(self, IntranetVpcId):
+        self._IntranetVpcId = IntranetVpcId
+
+    @property
+    def IntranetVpcCidr(self):
+        """开通内网访问vpc的网段
+        :rtype: str
+        """
+        return self._IntranetVpcCidr
+
+    @IntranetVpcCidr.setter
+    def IntranetVpcCidr(self, IntranetVpcCidr):
+        self._IntranetVpcCidr = IntranetVpcCidr
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -11659,6 +11715,10 @@ class Resource(AbstractModel):
         self._CdcClusterId = params.get("CdcClusterId")
         self._LogDelivery = params.get("LogDelivery")
         self._DeployModel = params.get("DeployModel")
+        self._IntranetAccess = params.get("IntranetAccess")
+        self._IntranetPrivateIpSet = params.get("IntranetPrivateIpSet")
+        self._IntranetVpcId = params.get("IntranetVpcId")
+        self._IntranetVpcCidr = params.get("IntranetVpcCidr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

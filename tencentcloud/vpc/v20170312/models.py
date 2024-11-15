@@ -1484,7 +1484,7 @@ class AddressTemplateItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AddressTemplateId: ipm-xxxxxxxx
+        :param _AddressTemplateId: IP地址模板ID
         :type AddressTemplateId: str
         :param _AddressTemplateName: IP模板名称
         :type AddressTemplateName: str
@@ -1500,7 +1500,7 @@ class AddressTemplateItem(AbstractModel):
 
     @property
     def AddressTemplateId(self):
-        """ipm-xxxxxxxx
+        """IP地址模板ID
         :rtype: str
         """
         return self._AddressTemplateId
@@ -1792,6 +1792,8 @@ class AllocateAddressesRequest(AbstractModel):
         :param _AnycastZone: Anycast发布域。
 <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li><li><b>[已废弃]</b> ANYCAST_ZONE_A：发布域A（已更新为全球发布域）</li><li><b>[已废弃]</b> ANYCAST_ZONE_B：发布域B（已更新为全球发布域）</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
         :type AnycastZone: str
+        :param _VipCluster: 指定IP地址申请EIP，每个账户每个月只有三次配额
+        :type VipCluster: list of str
         :param _ApplicableForCLB: <b>[已废弃]</b> AnycastEIP不再区分是否负载均衡。原参数说明如下：
 AnycastEIP是否用于绑定负载均衡。
 <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>TRUE：AnycastEIP可绑定对象为负载均衡</li>
@@ -1819,6 +1821,7 @@ AnycastEIP是否用于绑定负载均衡。
         self._AddressChargePrepaid = None
         self._AddressType = None
         self._AnycastZone = None
+        self._VipCluster = None
         self._ApplicableForCLB = None
         self._Tags = None
         self._BandwidthPackageId = None
@@ -1923,6 +1926,17 @@ AnycastEIP是否用于绑定负载均衡。
         self._AnycastZone = AnycastZone
 
     @property
+    def VipCluster(self):
+        """指定IP地址申请EIP，每个账户每个月只有三次配额
+        :rtype: list of str
+        """
+        return self._VipCluster
+
+    @VipCluster.setter
+    def VipCluster(self, VipCluster):
+        self._VipCluster = VipCluster
+
+    @property
     def ApplicableForCLB(self):
         """<b>[已废弃]</b> AnycastEIP不再区分是否负载均衡。原参数说明如下：
 AnycastEIP是否用于绑定负载均衡。
@@ -2024,6 +2038,7 @@ AnycastEIP是否用于绑定负载均衡。
             self._AddressChargePrepaid._deserialize(params.get("AddressChargePrepaid"))
         self._AddressType = params.get("AddressType")
         self._AnycastZone = params.get("AnycastZone")
+        self._VipCluster = params.get("VipCluster")
         self._ApplicableForCLB = params.get("ApplicableForCLB")
         if params.get("Tags") is not None:
             self._Tags = []
@@ -7750,17 +7765,20 @@ class ConflictItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfilctId: 冲突资源的ID
+        :param _ConfilctId: 冲突资源的ID。已废弃
         :type ConfilctId: str
         :param _DestinationItem: 冲突目的资源
         :type DestinationItem: str
+        :param _ConflictId: 冲突资源的ID
+        :type ConflictId: str
         """
         self._ConfilctId = None
         self._DestinationItem = None
+        self._ConflictId = None
 
     @property
     def ConfilctId(self):
-        """冲突资源的ID
+        """冲突资源的ID。已废弃
         :rtype: str
         """
         return self._ConfilctId
@@ -7780,10 +7798,22 @@ class ConflictItem(AbstractModel):
     def DestinationItem(self, DestinationItem):
         self._DestinationItem = DestinationItem
 
+    @property
+    def ConflictId(self):
+        """冲突资源的ID
+        :rtype: str
+        """
+        return self._ConflictId
+
+    @ConflictId.setter
+    def ConflictId(self, ConflictId):
+        self._ConflictId = ConflictId
+
 
     def _deserialize(self, params):
         self._ConfilctId = params.get("ConfilctId")
         self._DestinationItem = params.get("DestinationItem")
+        self._ConflictId = params.get("ConflictId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9957,6 +9987,8 @@ class CreateHaVipRequest(AbstractModel):
         :type NetworkInterfaceId: str
         :param _CheckAssociate: 是否开启`HAVIP`漂移时子机或网卡范围的校验。默认不开启。
         :type CheckAssociate: bool
+        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :type Tags: list of Tag
         """
         self._VpcId = None
         self._HaVipName = None
@@ -9964,6 +9996,7 @@ class CreateHaVipRequest(AbstractModel):
         self._Vip = None
         self._NetworkInterfaceId = None
         self._CheckAssociate = None
+        self._Tags = None
 
     @property
     def VpcId(self):
@@ -10031,6 +10064,17 @@ class CreateHaVipRequest(AbstractModel):
     def CheckAssociate(self, CheckAssociate):
         self._CheckAssociate = CheckAssociate
 
+    @property
+    def Tags(self):
+        """指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -10039,6 +10083,12 @@ class CreateHaVipRequest(AbstractModel):
         self._Vip = params.get("Vip")
         self._NetworkInterfaceId = params.get("NetworkInterfaceId")
         self._CheckAssociate = params.get("CheckAssociate")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42180,12 +42230,16 @@ class ItemPrice(AbstractModel):
     def __init__(self):
         r"""
         :param _UnitPrice: 按量计费后付费单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPrice: float
         :param _ChargeUnit: 按量计费后付费计价单元，可取值范围： HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）： GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeUnit: str
         :param _OriginalPrice: 预付费商品的原价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalPrice: float
         :param _DiscountPrice: 预付费商品的折扣价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountPrice: float
         """
         self._UnitPrice = None
@@ -42196,6 +42250,7 @@ class ItemPrice(AbstractModel):
     @property
     def UnitPrice(self):
         """按量计费后付费单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._UnitPrice
@@ -42207,6 +42262,7 @@ class ItemPrice(AbstractModel):
     @property
     def ChargeUnit(self):
         """按量计费后付费计价单元，可取值范围： HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）： GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChargeUnit
@@ -42218,6 +42274,7 @@ class ItemPrice(AbstractModel):
     @property
     def OriginalPrice(self):
         """预付费商品的原价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._OriginalPrice
@@ -42229,6 +42286,7 @@ class ItemPrice(AbstractModel):
     @property
     def DiscountPrice(self):
         """预付费商品的折扣价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._DiscountPrice
@@ -58800,7 +58858,7 @@ class SourceIpTranslationNatRule(AbstractModel):
         :type PrivateIpAddress: str
         :param _PublicIpAddresses: 弹性IP地址池
         :type PublicIpAddresses: list of str
-        :param _Description: 描述
+        :param _Description: 规则描述
         :type Description: str
         :param _NatGatewaySnatId: Snat规则ID
         :type NatGatewaySnatId: str
@@ -58871,7 +58929,7 @@ class SourceIpTranslationNatRule(AbstractModel):
 
     @property
     def Description(self):
-        """描述
+        """规则描述
         :rtype: str
         """
         return self._Description

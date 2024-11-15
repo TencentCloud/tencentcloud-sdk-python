@@ -1304,9 +1304,9 @@ class RiskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 风险类型
+        :param _Type: 风险类型。更多详情请参见：[Android](https://cloud.tencent.com/document/product/1628/85898)、[iOS](https://cloud.tencent.com/document/product/1628/85896)、[H5](https://cloud.tencent.com/document/product/1628/85897)、[小程序](https://cloud.tencent.com/document/product/1628/85895)、[场景风险](https://cloud.tencent.com/document/product/1628/88912)
         :type Type: int
-        :param _Level: 风险等级
+        :param _Level: [风险等级](https://cloud.tencent.com/document/product/1628/85308)
         :type Level: int
         """
         self._Type = None
@@ -1314,7 +1314,7 @@ class RiskInfo(AbstractModel):
 
     @property
     def Type(self):
-        """风险类型
+        """风险类型。更多详情请参见：[Android](https://cloud.tencent.com/document/product/1628/85898)、[iOS](https://cloud.tencent.com/document/product/1628/85896)、[H5](https://cloud.tencent.com/document/product/1628/85897)、[小程序](https://cloud.tencent.com/document/product/1628/85895)、[场景风险](https://cloud.tencent.com/document/product/1628/88912)
         :rtype: int
         """
         return self._Type
@@ -1325,7 +1325,7 @@ class RiskInfo(AbstractModel):
 
     @property
     def Level(self):
-        """风险等级
+        """[风险等级](https://cloud.tencent.com/document/product/1628/85308)
         :rtype: int
         """
         return self._Level

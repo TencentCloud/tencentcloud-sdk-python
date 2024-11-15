@@ -2120,7 +2120,6 @@ InProgress：表示当前录制任务正在进行中。
 Exited：表示当前录制任务正在退出的过程中。
         :type Status: str
         :param _StorageFileList: 录制文件信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StorageFileList: list of StorageFile
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2158,7 +2157,6 @@ Exited：表示当前录制任务正在退出的过程中。
     @property
     def StorageFileList(self):
         """录制文件信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StorageFile
         """
         return self._StorageFileList
@@ -5481,6 +5479,69 @@ class DismissRoomResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class EmulateMobileParams(AbstractModel):
+    """渲染移动模式参数，不渲染移动模式时，请勿设置此参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MobileDeviceType: 移动设备类型，
+0: 手机
+1: 平板
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MobileDeviceType: int
+        :param _ScreenOrientation: 屏幕方向，
+0: 竖屏，
+1: 横屏
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScreenOrientation: int
+        """
+        self._MobileDeviceType = None
+        self._ScreenOrientation = None
+
+    @property
+    def MobileDeviceType(self):
+        """移动设备类型，
+0: 手机
+1: 平板
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MobileDeviceType
+
+    @MobileDeviceType.setter
+    def MobileDeviceType(self, MobileDeviceType):
+        self._MobileDeviceType = MobileDeviceType
+
+    @property
+    def ScreenOrientation(self):
+        """屏幕方向，
+0: 竖屏，
+1: 横屏
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ScreenOrientation
+
+    @ScreenOrientation.setter
+    def ScreenOrientation(self, ScreenOrientation):
+        self._ScreenOrientation = ScreenOrientation
+
+
+    def _deserialize(self, params):
+        self._MobileDeviceType = params.get("MobileDeviceType")
+        self._ScreenOrientation = params.get("ScreenOrientation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class EncodeParams(AbstractModel):
@@ -10211,11 +10272,15 @@ class STTConfig(AbstractModel):
 注：Language指定为"zh-dialect" # 中国方言 时，不支持模糊识别，该字段无效
 
         :type AlternativeLanguage: list of str
+        :param _CustomParam: 自定义参数，联系后台使用
+
+        :type CustomParam: str
         :param _VadSilenceTime: 语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
         :type VadSilenceTime: int
         """
         self._Language = None
         self._AlternativeLanguage = None
+        self._CustomParam = None
         self._VadSilenceTime = None
 
     @property
@@ -10270,6 +10335,18 @@ class STTConfig(AbstractModel):
         self._AlternativeLanguage = AlternativeLanguage
 
     @property
+    def CustomParam(self):
+        """自定义参数，联系后台使用
+
+        :rtype: str
+        """
+        return self._CustomParam
+
+    @CustomParam.setter
+    def CustomParam(self, CustomParam):
+        self._CustomParam = CustomParam
+
+    @property
     def VadSilenceTime(self):
         """语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
         :rtype: int
@@ -10284,6 +10361,7 @@ class STTConfig(AbstractModel):
     def _deserialize(self, params):
         self._Language = params.get("Language")
         self._AlternativeLanguage = params.get("AlternativeLanguage")
+        self._CustomParam = params.get("CustomParam")
         self._VadSilenceTime = params.get("VadSilenceTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -12130,6 +12208,8 @@ class StartWebRecordRequest(AbstractModel):
         :type PublishCdnParams: list of McuPublishCdnParam
         :param _ReadyTimeout: 录制页面资源加载的超时时间，单位：秒。默认值为 0 秒，该值需大于等于 0秒，且小于等于 60秒。录制页面未启用页面加载超时检测时，请勿设置此参数。
         :type ReadyTimeout: int
+        :param _EmulateMobileParams: 渲染移动模式参数；不准备渲染移动模式页面时，请勿设置此参数。
+        :type EmulateMobileParams: :class:`tencentcloud.trtc.v20190722.models.EmulateMobileParams`
         """
         self._RecordUrl = None
         self._MaxDurationLimit = None
@@ -12139,6 +12219,7 @@ class StartWebRecordRequest(AbstractModel):
         self._RecordId = None
         self._PublishCdnParams = None
         self._ReadyTimeout = None
+        self._EmulateMobileParams = None
 
     @property
     def RecordUrl(self):
@@ -12231,6 +12312,17 @@ class StartWebRecordRequest(AbstractModel):
     def ReadyTimeout(self, ReadyTimeout):
         self._ReadyTimeout = ReadyTimeout
 
+    @property
+    def EmulateMobileParams(self):
+        """渲染移动模式参数；不准备渲染移动模式页面时，请勿设置此参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.EmulateMobileParams`
+        """
+        return self._EmulateMobileParams
+
+    @EmulateMobileParams.setter
+    def EmulateMobileParams(self, EmulateMobileParams):
+        self._EmulateMobileParams = EmulateMobileParams
+
 
     def _deserialize(self, params):
         self._RecordUrl = params.get("RecordUrl")
@@ -12250,6 +12342,9 @@ class StartWebRecordRequest(AbstractModel):
                 obj._deserialize(item)
                 self._PublishCdnParams.append(obj)
         self._ReadyTimeout = params.get("ReadyTimeout")
+        if params.get("EmulateMobileParams") is not None:
+            self._EmulateMobileParams = EmulateMobileParams()
+            self._EmulateMobileParams._deserialize(params.get("EmulateMobileParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

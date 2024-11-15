@@ -666,52 +666,58 @@ class CompareFaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageA: A 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-若图片中包含多张人脸，只选取其中置信度最高的人脸。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param _ImageA: A 图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- 若图片中包含多张人脸，只选取其中置信度最高的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type ImageA: str
-        :param _ImageB: B 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-若图片中包含多张人脸，只选取其中置信度最高的人脸。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param _ImageB: B 图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- 若图片中包含多张人脸，只选取其中置信度最高的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type ImageB: str
-        :param _UrlA: A 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
-图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-非腾讯云存储的Url速度和稳定性可能受一定影响。
-若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param _UrlA: A 图片的 Url。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type UrlA: str
-        :param _UrlB: B 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
-图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-非腾讯云存储的Url速度和稳定性可能受一定影响。
-若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param _UrlB: B 图片的 Url 。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type UrlB: str
         :param _FaceModelVersion: 人脸识别服务所用的算法模型版本。
-
-目前入参支持 “2.0”和“3.0“ 两个输入。
-
-2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。
-
-2020年11月26日后开通服务的账号仅支持输入“3.0”。
-
-不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
+- 目前入参支持 “2.0”和“3.0“ 两个输入。
+- 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。
+- 2020年11月26日后开通服务的账号仅支持输入“3.0”。
+- 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
         :type FaceModelVersion: str
         :param _QualityControl: 图片质量控制。 
+- 取值范围：
 0: 不进行控制； 
 1: 较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
 4: 很高的质量要求，各个维度均为最好或最多，在某一维度上存在轻微问题； 
 默认 0。 
-若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+
+- 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :type QualityControl: int
-        :param _NeedRotateDetection: 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        :param _NeedRotateDetection: 是否开启图片旋转识别支持。
+- 取值范围：0为不开启，1为开启。
+- 默认为0。
+- 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
+- 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
         :type NeedRotateDetection: int
         """
         self._ImageA = None
@@ -724,10 +730,11 @@ B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def ImageA(self):
-        """A 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-若图片中包含多张人脸，只选取其中置信度最高的人脸。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        """A 图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- 若图片中包含多张人脸，只选取其中置信度最高的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
         """
         return self._ImageA
@@ -738,10 +745,11 @@ jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2
 
     @property
     def ImageB(self):
-        """B 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-若图片中包含多张人脸，只选取其中置信度最高的人脸。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        """B 图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- 若图片中包含多张人脸，只选取其中置信度最高的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
         """
         return self._ImageB
@@ -752,13 +760,14 @@ jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2
 
     @property
     def UrlA(self):
-        """A 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
-图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-非腾讯云存储的Url速度和稳定性可能受一定影响。
-若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        """A 图片的 Url。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
         """
         return self._UrlA
@@ -769,13 +778,14 @@ A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def UrlB(self):
-        """B 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
-图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-非腾讯云存储的Url速度和稳定性可能受一定影响。
-若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        """B 图片的 Url 。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
         """
         return self._UrlB
@@ -787,14 +797,10 @@ B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
     @property
     def FaceModelVersion(self):
         """人脸识别服务所用的算法模型版本。
-
-目前入参支持 “2.0”和“3.0“ 两个输入。
-
-2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。
-
-2020年11月26日后开通服务的账号仅支持输入“3.0”。
-
-不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
+- 目前入参支持 “2.0”和“3.0“ 两个输入。
+- 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。
+- 2020年11月26日后开通服务的账号仅支持输入“3.0”。
+- 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
         :rtype: str
         """
         return self._FaceModelVersion
@@ -806,13 +812,15 @@ B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
     @property
     def QualityControl(self):
         """图片质量控制。 
+- 取值范围：
 0: 不进行控制； 
 1: 较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
 4: 很高的质量要求，各个维度均为最好或最多，在某一维度上存在轻微问题； 
 默认 0。 
-若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+
+- 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :rtype: int
         """
         return self._QualityControl
@@ -823,7 +831,11 @@ B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def NeedRotateDetection(self):
-        """是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        """是否开启图片旋转识别支持。
+- 取值范围：0为不开启，1为开启。
+- 默认为0。
+- 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
+- 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -859,10 +871,10 @@ class CompareFaceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Score: 两张图片中人脸的相似度分数。
-不同算法版本返回的相似度分数不同。 
-若需要验证两张图片中人脸是否为同一人，3.0版本误识率千分之一对应分数为40分，误识率万分之一对应分数为50分，误识率十万分之一对应分数为60分。  一般超过50分则可认定为同一人。 
-2.0版本误识率千分之一对应分数为70分，误识率万分之一对应分数为80分，误识率十万分之一对应分数为90分。 一般超过80分则可认定为同一人。 
-若需要验证两张图片中的人脸是否为同一人，建议使用人脸验证接口。
+- 不同算法版本返回的相似度分数不同。 
+- 若需要验证两张图片中人脸是否为同一人，3.0版本误识率千分之一对应分数为40分，误识率万分之一对应分数为50分，误识率十万分之一对应分数为60分。  一般超过50分则可认定为同一人。 
+- 2.0版本误识率千分之一对应分数为70分，误识率万分之一对应分数为80分，误识率十万分之一对应分数为90分。 一般超过80分则可认定为同一人。 
+- 若需要验证两张图片中的人脸是否为同一人，建议使用人脸验证接口。
         :type Score: float
         :param _FaceModelVersion: 人脸识别所用的算法模型版本。
         :type FaceModelVersion: str
@@ -876,10 +888,10 @@ class CompareFaceResponse(AbstractModel):
     @property
     def Score(self):
         """两张图片中人脸的相似度分数。
-不同算法版本返回的相似度分数不同。 
-若需要验证两张图片中人脸是否为同一人，3.0版本误识率千分之一对应分数为40分，误识率万分之一对应分数为50分，误识率十万分之一对应分数为60分。  一般超过50分则可认定为同一人。 
-2.0版本误识率千分之一对应分数为70分，误识率万分之一对应分数为80分，误识率十万分之一对应分数为90分。 一般超过80分则可认定为同一人。 
-若需要验证两张图片中的人脸是否为同一人，建议使用人脸验证接口。
+- 不同算法版本返回的相似度分数不同。 
+- 若需要验证两张图片中人脸是否为同一人，3.0版本误识率千分之一对应分数为40分，误识率万分之一对应分数为50分，误识率十万分之一对应分数为60分。  一般超过50分则可认定为同一人。 
+- 2.0版本误识率千分之一对应分数为70分，误识率万分之一对应分数为80分，误识率十万分之一对应分数为90分。 一般超过80分则可认定为同一人。 
+- 若需要验证两张图片中的人脸是否为同一人，建议使用人脸验证接口。
         :rtype: float
         """
         return self._Score
@@ -924,42 +936,47 @@ class CompareMaskFaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageA: A 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param _ImageA: A 图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type ImageA: str
-        :param _ImageB: B 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param _ImageB: B 图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type ImageB: str
-        :param _UrlA: A 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
-图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-非腾讯云存储的Url速度和稳定性可能受一定影响。
-若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param _UrlA: A 图片的 Url 。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type UrlA: str
-        :param _UrlB: B 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
-图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-非腾讯云存储的Url速度和稳定性可能受一定影响。
-若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param _UrlB: B 图片的 Url 。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type UrlB: str
         :param _FaceModelVersion: 人脸识别服务所用的算法模型版本。该接口只支持"3.0"
         :type FaceModelVersion: str
         :param _QualityControl: 图片质量控制。 
+- 取值范围：
 0: 不进行控制； 
 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
 4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
-默认 0。 
-若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+- 默认 0。 
+- 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :type QualityControl: int
         """
         self._ImageA = None
@@ -971,10 +988,11 @@ B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def ImageA(self):
-        """A 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        """A 图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
         """
         return self._ImageA
@@ -985,10 +1003,11 @@ jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2
 
     @property
     def ImageB(self):
-        """B 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        """B 图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
         """
         return self._ImageB
@@ -999,13 +1018,14 @@ jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2
 
     @property
     def UrlA(self):
-        """A 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
-图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-非腾讯云存储的Url速度和稳定性可能受一定影响。
-若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        """A 图片的 Url 。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
         """
         return self._UrlA
@@ -1016,13 +1036,14 @@ A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def UrlB(self):
-        """B 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
-图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-非腾讯云存储的Url速度和稳定性可能受一定影响。
-若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        """B 图片的 Url 。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
         """
         return self._UrlB
@@ -1045,13 +1066,14 @@ B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
     @property
     def QualityControl(self):
         """图片质量控制。 
+- 取值范围：
 0: 不进行控制； 
 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
 4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
-默认 0。 
-若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+- 默认 0。 
+- 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :rtype: int
         """
         return self._QualityControl
@@ -1086,10 +1108,10 @@ class CompareMaskFaceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Score: 两张图片中人脸的相似度分数。
-不同算法版本返回的相似度分数不同。 
-若需要验证两张图片中人脸是否为同一人，3.0版本误识率千分之一对应分数为40分，误识率万分之一对应分数为50分，误识率十万分之一对应分数为60分。  一般超过50分则可认定为同一人。 
-2.0版本误识率千分之一对应分数为70分，误识率万分之一对应分数为80分，误识率十万分之一对应分数为90分。 一般超过80分则可认定为同一人。 
-若需要验证两张图片中的人脸是否为同一人，建议使用人脸验证接口。
+- 不同算法版本返回的相似度分数不同。 
+- 若需要验证两张图片中人脸是否为同一人，3.0版本误识率千分之一对应分数为40分，误识率万分之一对应分数为50分，误识率十万分之一对应分数为60分。  一般超过50分则可认定为同一人。 
+- 2.0版本误识率千分之一对应分数为70分，误识率万分之一对应分数为80分，误识率十万分之一对应分数为90分。 一般超过80分则可认定为同一人。 
+- 若需要验证两张图片中的人脸是否为同一人，建议使用人脸验证接口。
         :type Score: float
         :param _FaceModelVersion: 人脸识别所用的算法模型版本。
         :type FaceModelVersion: str
@@ -1103,10 +1125,10 @@ class CompareMaskFaceResponse(AbstractModel):
     @property
     def Score(self):
         """两张图片中人脸的相似度分数。
-不同算法版本返回的相似度分数不同。 
-若需要验证两张图片中人脸是否为同一人，3.0版本误识率千分之一对应分数为40分，误识率万分之一对应分数为50分，误识率十万分之一对应分数为60分。  一般超过50分则可认定为同一人。 
-2.0版本误识率千分之一对应分数为70分，误识率万分之一对应分数为80分，误识率十万分之一对应分数为90分。 一般超过80分则可认定为同一人。 
-若需要验证两张图片中的人脸是否为同一人，建议使用人脸验证接口。
+- 不同算法版本返回的相似度分数不同。 
+- 若需要验证两张图片中人脸是否为同一人，3.0版本误识率千分之一对应分数为40分，误识率万分之一对应分数为50分，误识率十万分之一对应分数为60分。  一般超过50分则可认定为同一人。 
+- 2.0版本误识率千分之一对应分数为70分，误识率万分之一对应分数为80分，误识率十万分之一对应分数为90分。 一般超过80分则可认定为同一人。 
+- 若需要验证两张图片中的人脸是否为同一人，建议使用人脸验证接口。
         :rtype: float
         """
         return self._Score
@@ -1151,9 +1173,9 @@ class CopyPersonRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PersonId: 人员ID，取值为创建人员接口中的PersonId
+        :param _PersonId: 人员ID，取值为创建人员接口中的PersonId。
         :type PersonId: str
-        :param _GroupIds: 待加入的人员库列表，数组元素取值为创建人员库接口中的GroupId
+        :param _GroupIds: 待加入的人员库列表，数组元素取值为创建人员库接口中的GroupId。
         :type GroupIds: list of str
         """
         self._PersonId = None
@@ -1161,7 +1183,7 @@ class CopyPersonRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID，取值为创建人员接口中的PersonId
+        """人员ID，取值为创建人员接口中的PersonId。
         :rtype: str
         """
         return self._PersonId
@@ -1172,7 +1194,7 @@ class CopyPersonRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        """待加入的人员库列表，数组元素取值为创建人员库接口中的GroupId
+        """待加入的人员库列表，数组元素取值为创建人员库接口中的GroupId。
         :rtype: list of str
         """
         return self._GroupIds
@@ -1202,9 +1224,9 @@ class CopyPersonResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SucGroupNum: 成功加入的人员库数量
+        :param _SucGroupNum: 成功加入的人员库数量。
         :type SucGroupNum: int
-        :param _SucGroupIds: 成功加入的人员库列表
+        :param _SucGroupIds: 成功加入的人员库列表。
         :type SucGroupIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1215,7 +1237,7 @@ class CopyPersonResponse(AbstractModel):
 
     @property
     def SucGroupNum(self):
-        """成功加入的人员库数量
+        """成功加入的人员库数量。
         :rtype: int
         """
         return self._SucGroupNum
@@ -1226,7 +1248,7 @@ class CopyPersonResponse(AbstractModel):
 
     @property
     def SucGroupIds(self):
-        """成功加入的人员库列表
+        """成功加入的人员库列表。
         :rtype: list of str
         """
         return self._SucGroupIds
@@ -1260,36 +1282,44 @@ class CreateFaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PersonId: 人员ID，取值为创建人员接口中的PersonId
+        :param _PersonId: 人员ID，取值为创建人员接口中的PersonId。
         :type PersonId: str
-        :param _Images: 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-人员人脸总数量不可超过5张。
-若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param _Images: 图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- 人员人脸总数量不可超过5张。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Images: list of str
-        :param _Urls: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-Url、Image必须提供一个，如果都提供，只使用 Url。  
-图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-非腾讯云存储的Url速度和稳定性可能受一定影响。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-人员人脸总数量不可超过5张。
-若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+        :param _Urls: 图片的 Url 。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- Url、Image必须提供一个，如果都提供，只使用 Url。  
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+- 人员人脸总数量不可超过5张。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
         :type Urls: list of str
         :param _FaceMatchThreshold: 只有和该人员已有的人脸相似度超过FaceMatchThreshold值的人脸，才能增加人脸成功。 
-默认值60分。取值范围[0,100] 。
+- 默认值60分。
+- 取值范围：[0,100] 。
         :type FaceMatchThreshold: float
         :param _QualityControl: 图片质量控制。 
+- 取值范围：
 0: 不进行控制； 
 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
 4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
-默认 0。 
-若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+- 默认 0。 
+- 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :type QualityControl: int
-        :param _NeedRotateDetection: 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        :param _NeedRotateDetection: 是否开启图片旋转识别支持。
+- 取值范围：0为不开启，1为开启。
+- 默认为0。
+- 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
+- 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
         :type NeedRotateDetection: int
         """
         self._PersonId = None
@@ -1301,7 +1331,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def PersonId(self):
-        """人员ID，取值为创建人员接口中的PersonId
+        """人员ID，取值为创建人员接口中的PersonId。
         :rtype: str
         """
         return self._PersonId
@@ -1312,11 +1342,12 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def Images(self):
-        """图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-人员人脸总数量不可超过5张。
-若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        """图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- 人员人脸总数量不可超过5张。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: list of str
         """
         return self._Images
@@ -1327,14 +1358,15 @@ jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2
 
     @property
     def Urls(self):
-        """图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-Url、Image必须提供一个，如果都提供，只使用 Url。  
-图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-非腾讯云存储的Url速度和稳定性可能受一定影响。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-人员人脸总数量不可超过5张。
-若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+        """图片的 Url 。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- Url、Image必须提供一个，如果都提供，只使用 Url。  
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+- 人员人脸总数量不可超过5张。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
         :rtype: list of str
         """
         return self._Urls
@@ -1346,7 +1378,8 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
     @property
     def FaceMatchThreshold(self):
         """只有和该人员已有的人脸相似度超过FaceMatchThreshold值的人脸，才能增加人脸成功。 
-默认值60分。取值范围[0,100] 。
+- 默认值60分。
+- 取值范围：[0,100] 。
         :rtype: float
         """
         return self._FaceMatchThreshold
@@ -1358,13 +1391,14 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
     @property
     def QualityControl(self):
         """图片质量控制。 
+- 取值范围：
 0: 不进行控制； 
 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
 4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
-默认 0。 
-若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+- 默认 0。 
+- 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :rtype: int
         """
         return self._QualityControl
@@ -1375,7 +1409,11 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def NeedRotateDetection(self):
-        """是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        """是否开启图片旋转识别支持。
+- 取值范围：0为不开启，1为开启。
+- 默认为0。
+- 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
+- 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -1409,17 +1447,22 @@ class CreateFaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SucFaceNum: 加入成功的人脸数量
+        :param _SucFaceNum: 加入成功的人脸数量。
         :type SucFaceNum: int
-        :param _SucFaceIds: 加入成功的人脸ID列表
+        :param _SucFaceIds: 加入成功的人脸ID列表。
         :type SucFaceIds: list of str
-        :param _RetCode: 每张人脸图片添加结果，-1101 代表未检测到人脸，-1102 代表图片解码失败，-1109 代表图片尺寸过大或者过小， 
--1601代表不符合图片质量控制要求, -1604 代表人脸相似度没有超过FaceMatchThreshold。 
-其他非 0 值代表算法服务异常。 
-RetCode的顺序和入参中 Images 或 Urls 的顺序一致。
+        :param _RetCode: 每张人脸图片添加结果。
+- 其他非 0 值代表算法服务异常，取值范围：
+-1101 代表未检测到人脸。
+-1102 代表图片解码失败。
+-1109 代表图片尺寸过大或者过小。
+-1601代表不符合图片质量控制要求。
+-1604 代表人脸相似度没有超过FaceMatchThreshold。 
+- RetCode的顺序和入参中 Images 或 Urls 的顺序一致。
         :type RetCode: list of int
-        :param _SucIndexes: 加入成功的人脸索引。索引顺序和入参中 Images 或 Urls 的顺序一致。 
-例如， Urls 中 有 3 个 url，第二个 url 失败，则 SucIndexes 值为 [0,2] 。
+        :param _SucIndexes: 加入成功的人脸索引。
+- 索引顺序和入参中 Images 或 Urls 的顺序一致。 
+- 例如， Urls 中 有 3 个 url，第二个 url 失败，则 SucIndexes 值为 [0,2] 。
         :type SucIndexes: list of int non-negative
         :param _SucFaceRects: 加入成功的人脸框位置。顺序和入参中 Images 或 Urls 的顺序一致。
         :type SucFaceRects: list of FaceRect
@@ -1438,7 +1481,7 @@ RetCode的顺序和入参中 Images 或 Urls 的顺序一致。
 
     @property
     def SucFaceNum(self):
-        """加入成功的人脸数量
+        """加入成功的人脸数量。
         :rtype: int
         """
         return self._SucFaceNum
@@ -1449,7 +1492,7 @@ RetCode的顺序和入参中 Images 或 Urls 的顺序一致。
 
     @property
     def SucFaceIds(self):
-        """加入成功的人脸ID列表
+        """加入成功的人脸ID列表。
         :rtype: list of str
         """
         return self._SucFaceIds
@@ -1460,10 +1503,14 @@ RetCode的顺序和入参中 Images 或 Urls 的顺序一致。
 
     @property
     def RetCode(self):
-        """每张人脸图片添加结果，-1101 代表未检测到人脸，-1102 代表图片解码失败，-1109 代表图片尺寸过大或者过小， 
--1601代表不符合图片质量控制要求, -1604 代表人脸相似度没有超过FaceMatchThreshold。 
-其他非 0 值代表算法服务异常。 
-RetCode的顺序和入参中 Images 或 Urls 的顺序一致。
+        """每张人脸图片添加结果。
+- 其他非 0 值代表算法服务异常，取值范围：
+-1101 代表未检测到人脸。
+-1102 代表图片解码失败。
+-1109 代表图片尺寸过大或者过小。
+-1601代表不符合图片质量控制要求。
+-1604 代表人脸相似度没有超过FaceMatchThreshold。 
+- RetCode的顺序和入参中 Images 或 Urls 的顺序一致。
         :rtype: list of int
         """
         return self._RetCode
@@ -1474,8 +1521,9 @@ RetCode的顺序和入参中 Images 或 Urls 的顺序一致。
 
     @property
     def SucIndexes(self):
-        """加入成功的人脸索引。索引顺序和入参中 Images 或 Urls 的顺序一致。 
-例如， Urls 中 有 3 个 url，第二个 url 失败，则 SucIndexes 值为 [0,2] 。
+        """加入成功的人脸索引。
+- 索引顺序和入参中 Images 或 Urls 的顺序一致。 
+- 例如， Urls 中 有 3 个 url，第二个 url 失败，则 SucIndexes 值为 [0,2] 。
         :rtype: list of int non-negative
         """
         return self._SucIndexes
@@ -1545,20 +1593,18 @@ class CreateGroupRequest(AbstractModel):
         :param _GroupId: 人员库 ID，不可修改，不可重复。支持英文、数字、-%@#&_，长度限制64B。
         :type GroupId: str
         :param _GroupExDescriptions: 人员库自定义描述字段，用于描述人员库中人员属性，该人员库下所有人员将拥有此描述字段。 
-最多可以创建5个。 
-每个自定义描述字段支持[1,30]个字符。 
-在同一人员库中自定义描述字段不可重复。 
-例： 设置某人员库“自定义描述字段”为["学号","工号","手机号"]， 
-则该人员库下所有人员将拥有名为“学号”、“工号”、“手机号”的描述字段， 
-可在对应人员描述字段中填写内容，登记该人员的学号、工号、手机号等信息。
+- 最多可以创建5个。 
+- 每个自定义描述字段支持[1,30]个字符。 
+- 在同一人员库中自定义描述字段不可重复。 
+- 例： 设置某人员库“自定义描述字段”为["学号","工号","手机号"]， 则该人员库下所有人员将拥有名为“学号”、“工号”、“手机号”的描述字段， 可在对应人员描述字段中填写内容，登记该人员的学号、工号、手机号等信息。
         :type GroupExDescriptions: list of str
         :param _Tag: 人员库信息备注，[0，40]个字符。
         :type Tag: str
         :param _FaceModelVersion: 人脸识别服务所用的算法模型版本。
-目前入参支持 “2.0”和“3.0“ 两个输入。
-2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。
-2020年11月26日后开通服务的账号仅支持输入“3.0”。
-不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
+- 目前入参支持 “2.0”和“3.0“ 两个输入。
+- 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。
+- 2020年11月26日后开通服务的账号仅支持输入“3.0”。
+- 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
         :type FaceModelVersion: str
         """
         self._GroupName = None
@@ -1592,12 +1638,10 @@ class CreateGroupRequest(AbstractModel):
     @property
     def GroupExDescriptions(self):
         """人员库自定义描述字段，用于描述人员库中人员属性，该人员库下所有人员将拥有此描述字段。 
-最多可以创建5个。 
-每个自定义描述字段支持[1,30]个字符。 
-在同一人员库中自定义描述字段不可重复。 
-例： 设置某人员库“自定义描述字段”为["学号","工号","手机号"]， 
-则该人员库下所有人员将拥有名为“学号”、“工号”、“手机号”的描述字段， 
-可在对应人员描述字段中填写内容，登记该人员的学号、工号、手机号等信息。
+- 最多可以创建5个。 
+- 每个自定义描述字段支持[1,30]个字符。 
+- 在同一人员库中自定义描述字段不可重复。 
+- 例： 设置某人员库“自定义描述字段”为["学号","工号","手机号"]， 则该人员库下所有人员将拥有名为“学号”、“工号”、“手机号”的描述字段， 可在对应人员描述字段中填写内容，登记该人员的学号、工号、手机号等信息。
         :rtype: list of str
         """
         return self._GroupExDescriptions
@@ -1620,10 +1664,10 @@ class CreateGroupRequest(AbstractModel):
     @property
     def FaceModelVersion(self):
         """人脸识别服务所用的算法模型版本。
-目前入参支持 “2.0”和“3.0“ 两个输入。
-2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。
-2020年11月26日后开通服务的账号仅支持输入“3.0”。
-不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
+- 目前入参支持 “2.0”和“3.0“ 两个输入。
+- 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。
+- 2020年11月26日后开通服务的账号仅支持输入“3.0”。
+- 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
         :rtype: str
         """
         return self._FaceModelVersion
@@ -1699,48 +1743,59 @@ class CreatePersonRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 待加入的人员库ID，取值为创建人员库接口中的GroupId
+        :param _GroupId: 待加入的人员库ID，取值为创建人员库接口中的GroupId。
         :type GroupId: str
         :param _PersonName: 人员名称。[1，60]个字符，可修改，可重复。
         :type PersonName: str
-        :param _PersonId: 人员ID，单个腾讯云账号下不可修改，不可重复。支持英文、数字、-%@#&_，长度限制64B。
+        :param _PersonId: 人员ID。
+- 单个腾讯云账号下不可修改，不可重复。
+- 支持英文、数字、-%@#&_，长度限制64B。
         :type PersonId: str
-        :param _Gender: 0代表未填写，1代表男性，2代表女性。
+        :param _Gender: 性别。
+- 取值范围：0代表未填写，1代表男性，2代表女性。
         :type Gender: int
         :param _PersonExDescriptionInfos: 人员描述字段内容，key-value。[0，60]个字符，可修改，可重复。
         :type PersonExDescriptionInfos: list of PersonExDescriptionInfo
-        :param _Image: 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param _Image: 图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
-        :param _Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-Url、Image必须提供一个，如果都提供，只使用 Url。  
-图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-非腾讯云存储的Url速度和稳定性可能受一定影响。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param _Url: 图片的 Url 。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- Url、Image必须提供一个，如果都提供，只使用 Url。  
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Url: str
         :param _UniquePersonControl: 此参数用于控制判断 Image 或 Url 中图片包含的人脸，是否在人员库中已有疑似的同一人。 
-如果判断为已有相同人在人员库中，则不会创建新的人员，返回疑似同一人的人员信息。 
-如果判断没有，则完成创建人员。 
+- 如果判断为已有相同人在人员库中，则不会创建新的人员，返回疑似同一人的人员信息。 
+- 如果判断没有，则完成创建人员。 
+- 取值范围：
 0: 不进行判断，无论是否有疑似同一人在库中均完成入库； 
 1:较低的同一人判断要求（百一误识别率）； 
 2: 一般的同一人判断要求（千一误识别率）； 
 3: 较高的同一人判断要求（万一误识别率）； 
 4: 很高的同一人判断要求（十万一误识别率）。 
-默认 0。  
-注： 要求越高，则疑似同一人的概率越小。不同要求对应的误识别率仅为参考值，您可以根据实际情况调整。
+- 默认 0。  
+- 注： 要求越高，则疑似同一人的概率越小。不同要求对应的误识别率仅为参考值，您可以根据实际情况调整。
         :type UniquePersonControl: int
         :param _QualityControl: 图片质量控制。 
+- 取值范围：
 0: 不进行控制； 
 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
 4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
-默认 0。 
-若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+- 默认 0。 
+- 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :type QualityControl: int
-        :param _NeedRotateDetection: 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        :param _NeedRotateDetection: 是否开启图片旋转识别支持。
+- 取值范围：0为不开启，1为开启。
+- 默认为0。
+- 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
+- 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
         :type NeedRotateDetection: int
         """
         self._GroupId = None
@@ -1756,7 +1811,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def GroupId(self):
-        """待加入的人员库ID，取值为创建人员库接口中的GroupId
+        """待加入的人员库ID，取值为创建人员库接口中的GroupId。
         :rtype: str
         """
         return self._GroupId
@@ -1778,7 +1833,9 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def PersonId(self):
-        """人员ID，单个腾讯云账号下不可修改，不可重复。支持英文、数字、-%@#&_，长度限制64B。
+        """人员ID。
+- 单个腾讯云账号下不可修改，不可重复。
+- 支持英文、数字、-%@#&_，长度限制64B。
         :rtype: str
         """
         return self._PersonId
@@ -1789,7 +1846,8 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def Gender(self):
-        """0代表未填写，1代表男性，2代表女性。
+        """性别。
+- 取值范围：0代表未填写，1代表男性，2代表女性。
         :rtype: int
         """
         return self._Gender
@@ -1811,9 +1869,10 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def Image(self):
-        """图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        """图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
         """
         return self._Image
@@ -1824,12 +1883,13 @@ jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2
 
     @property
     def Url(self):
-        """图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-Url、Image必须提供一个，如果都提供，只使用 Url。  
-图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-非腾讯云存储的Url速度和稳定性可能受一定影响。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        """图片的 Url 。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
+- Url、Image必须提供一个，如果都提供，只使用 Url。  
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
         """
         return self._Url
@@ -1841,15 +1901,16 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
     @property
     def UniquePersonControl(self):
         """此参数用于控制判断 Image 或 Url 中图片包含的人脸，是否在人员库中已有疑似的同一人。 
-如果判断为已有相同人在人员库中，则不会创建新的人员，返回疑似同一人的人员信息。 
-如果判断没有，则完成创建人员。 
+- 如果判断为已有相同人在人员库中，则不会创建新的人员，返回疑似同一人的人员信息。 
+- 如果判断没有，则完成创建人员。 
+- 取值范围：
 0: 不进行判断，无论是否有疑似同一人在库中均完成入库； 
 1:较低的同一人判断要求（百一误识别率）； 
 2: 一般的同一人判断要求（千一误识别率）； 
 3: 较高的同一人判断要求（万一误识别率）； 
 4: 很高的同一人判断要求（十万一误识别率）。 
-默认 0。  
-注： 要求越高，则疑似同一人的概率越小。不同要求对应的误识别率仅为参考值，您可以根据实际情况调整。
+- 默认 0。  
+- 注： 要求越高，则疑似同一人的概率越小。不同要求对应的误识别率仅为参考值，您可以根据实际情况调整。
         :rtype: int
         """
         return self._UniquePersonControl
@@ -1861,13 +1922,14 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
     @property
     def QualityControl(self):
         """图片质量控制。 
+- 取值范围：
 0: 不进行控制； 
 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
 4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
-默认 0。 
-若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+- 默认 0。 
+- 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :rtype: int
         """
         return self._QualityControl
@@ -1878,7 +1940,11 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def NeedRotateDetection(self):
-        """是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        """是否开启图片旋转识别支持。
+- 取值范围：0为不开启，1为开启。
+- 默认为0。
+- 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
+- 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -1927,7 +1993,7 @@ class CreatePersonResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type FaceRect: :class:`tencentcloud.iai.v20200303.models.FaceRect`
         :param _SimilarPersonId: 疑似同一人的PersonId。 
-当 UniquePersonControl 参数不为0且人员库中有疑似的同一人，此参数才有意义。
+- 当 UniquePersonControl 参数不为0且人员库中有疑似的同一人，此参数才有意义。
         :type SimilarPersonId: str
         :param _FaceModelVersion: 人脸识别所用的算法模型版本。
         :type FaceModelVersion: str
@@ -1966,7 +2032,7 @@ class CreatePersonResponse(AbstractModel):
     @property
     def SimilarPersonId(self):
         """疑似同一人的PersonId。 
-当 UniquePersonControl 参数不为0且人员库中有疑似的同一人，此参数才有意义。
+- 当 UniquePersonControl 参数不为0且人员库中有疑似的同一人，此参数才有意义。
         :rtype: str
         """
         return self._SimilarPersonId
@@ -2015,9 +2081,9 @@ class DeleteFaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PersonId: 人员ID，取值为创建人员接口中的PersonId
+        :param _PersonId: 人员ID，取值为创建人员接口中的PersonId。
         :type PersonId: str
-        :param _FaceIds: 待删除的人脸ID列表，数组元素取值为增加人脸接口返回的FaceId
+        :param _FaceIds: 待删除的人脸ID列表，数组元素取值为增加人脸接口返回的FaceId。
         :type FaceIds: list of str
         """
         self._PersonId = None
@@ -2025,7 +2091,7 @@ class DeleteFaceRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID，取值为创建人员接口中的PersonId
+        """人员ID，取值为创建人员接口中的PersonId。
         :rtype: str
         """
         return self._PersonId
@@ -2036,7 +2102,7 @@ class DeleteFaceRequest(AbstractModel):
 
     @property
     def FaceIds(self):
-        """待删除的人脸ID列表，数组元素取值为增加人脸接口返回的FaceId
+        """待删除的人脸ID列表，数组元素取值为增加人脸接口返回的FaceId。
         :rtype: list of str
         """
         return self._FaceIds
@@ -2066,9 +2132,9 @@ class DeleteFaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SucDeletedNum: 删除成功的人脸数量
+        :param _SucDeletedNum: 删除成功的人脸数量.
         :type SucDeletedNum: int
-        :param _SucFaceIds: 删除成功的人脸ID列表
+        :param _SucFaceIds: 删除成功的人脸ID列表。
         :type SucFaceIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2079,7 +2145,7 @@ class DeleteFaceResponse(AbstractModel):
 
     @property
     def SucDeletedNum(self):
-        """删除成功的人脸数量
+        """删除成功的人脸数量.
         :rtype: int
         """
         return self._SucDeletedNum
@@ -2090,7 +2156,7 @@ class DeleteFaceResponse(AbstractModel):
 
     @property
     def SucFaceIds(self):
-        """删除成功的人脸ID列表
+        """删除成功的人脸ID列表。
         :rtype: list of str
         """
         return self._SucFaceIds
@@ -2124,14 +2190,14 @@ class DeleteGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 人员库ID，取值为创建人员库接口中的GroupId
+        :param _GroupId: 人员库ID，取值为创建人员库接口中的GroupId。
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """人员库ID，取值为创建人员库接口中的GroupId
+        """人员库ID，取值为创建人员库接口中的GroupId。
         :rtype: str
         """
         return self._GroupId
@@ -2188,9 +2254,9 @@ class DeletePersonFromGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PersonId: 人员ID，取值为创建人员接口中的PersonId
+        :param _PersonId: 人员ID，取值为创建人员接口中的PersonId。
         :type PersonId: str
-        :param _GroupId: 人员库ID，取值为创建人员库接口中的GroupId
+        :param _GroupId: 人员库ID，取值为创建人员库接口中的GroupId。
         :type GroupId: str
         """
         self._PersonId = None
@@ -2198,7 +2264,7 @@ class DeletePersonFromGroupRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID，取值为创建人员接口中的PersonId
+        """人员ID，取值为创建人员接口中的PersonId。
         :rtype: str
         """
         return self._PersonId
@@ -2209,7 +2275,7 @@ class DeletePersonFromGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """人员库ID，取值为创建人员库接口中的GroupId
+        """人员库ID，取值为创建人员库接口中的GroupId。
         :rtype: str
         """
         return self._GroupId
@@ -2267,14 +2333,14 @@ class DeletePersonRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PersonId: 人员ID，取值为创建人员接口中的PersonId
+        :param _PersonId: 人员ID，取值为创建人员接口中的PersonId。
         :type PersonId: str
         """
         self._PersonId = None
 
     @property
     def PersonId(self):
-        """人员ID，取值为创建人员接口中的PersonId
+        """人员ID，取值为创建人员接口中的PersonId。
         :rtype: str
         """
         return self._PersonId
@@ -5165,14 +5231,14 @@ class GetGroupInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 人员库 ID，取值为创建人员库接口中的GroupId
+        :param _GroupId: 人员库 ID，取值为创建人员库接口中的GroupId。
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """人员库 ID，取值为创建人员库接口中的GroupId
+        """人员库 ID，取值为创建人员库接口中的GroupId。
         :rtype: str
         """
         return self._GroupId
@@ -5201,13 +5267,13 @@ class GetGroupInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupName: 人员库名称
+        :param _GroupName: 人员库名称。
         :type GroupName: str
-        :param _GroupId: 人员库ID
+        :param _GroupId: 人员库ID。
         :type GroupId: str
-        :param _GroupExDescriptions: 人员库自定义描述字段
+        :param _GroupExDescriptions: 人员库自定义描述字段。
         :type GroupExDescriptions: list of str
-        :param _Tag: 人员库信息备注
+        :param _Tag: 人员库信息备注。
         :type Tag: str
         :param _FaceModelVersion: 人脸识别所用的算法模型版本。
         :type FaceModelVersion: str
@@ -5226,7 +5292,7 @@ class GetGroupInfoResponse(AbstractModel):
 
     @property
     def GroupName(self):
-        """人员库名称
+        """人员库名称。
         :rtype: str
         """
         return self._GroupName
@@ -5237,7 +5303,7 @@ class GetGroupInfoResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """人员库ID
+        """人员库ID。
         :rtype: str
         """
         return self._GroupId
@@ -5248,7 +5314,7 @@ class GetGroupInfoResponse(AbstractModel):
 
     @property
     def GroupExDescriptions(self):
-        """人员库自定义描述字段
+        """人员库自定义描述字段。
         :rtype: list of str
         """
         return self._GroupExDescriptions
@@ -5259,7 +5325,7 @@ class GetGroupInfoResponse(AbstractModel):
 
     @property
     def Tag(self):
-        """人员库信息备注
+        """人员库信息备注。
         :rtype: str
         """
         return self._Tag
@@ -5435,14 +5501,14 @@ class GetPersonBaseInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PersonId: 人员ID，创建人员接口中的PersonId
+        :param _PersonId: 人员ID，创建人员接口中的PersonId。
         :type PersonId: str
         """
         self._PersonId = None
 
     @property
     def PersonId(self):
-        """人员ID，创建人员接口中的PersonId
+        """人员ID，创建人员接口中的PersonId。
         :rtype: str
         """
         return self._PersonId
@@ -5471,11 +5537,12 @@ class GetPersonBaseInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PersonName: 人员名称
+        :param _PersonName: 人员名称。
         :type PersonName: str
-        :param _Gender: 人员性别，0代表未填写，1代表男性，2代表女性
+        :param _Gender: 人员性别。
+- 取值范围：0代表未填写，1代表男性，2代表女性。
         :type Gender: int
-        :param _FaceIds: 包含的人脸 ID 列表
+        :param _FaceIds: 包含的人脸 ID 列表。
         :type FaceIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5487,7 +5554,7 @@ class GetPersonBaseInfoResponse(AbstractModel):
 
     @property
     def PersonName(self):
-        """人员名称
+        """人员名称。
         :rtype: str
         """
         return self._PersonName
@@ -5498,7 +5565,8 @@ class GetPersonBaseInfoResponse(AbstractModel):
 
     @property
     def Gender(self):
-        """人员性别，0代表未填写，1代表男性，2代表女性
+        """人员性别。
+- 取值范围：0代表未填写，1代表男性，2代表女性。
         :rtype: int
         """
         return self._Gender
@@ -5509,7 +5577,7 @@ class GetPersonBaseInfoResponse(AbstractModel):
 
     @property
     def FaceIds(self):
-        """包含的人脸 ID 列表
+        """包含的人脸 ID 列表。
         :rtype: list of str
         """
         return self._FaceIds
@@ -5544,11 +5612,11 @@ class GetPersonGroupInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PersonId: 人员ID，取值为创建人员接口中的PersonId
+        :param _PersonId: 人员ID，取值为创建人员接口中的PersonId。
         :type PersonId: str
-        :param _Offset: 起始序号，默认值为0
+        :param _Offset: 起始序号，默认值为0。
         :type Offset: int
-        :param _Limit: 返回数量，默认值为10，最大值为100
+        :param _Limit: 返回数量，默认值为10，最大值为100。
         :type Limit: int
         """
         self._PersonId = None
@@ -5557,7 +5625,7 @@ class GetPersonGroupInfoRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID，取值为创建人员接口中的PersonId
+        """人员ID，取值为创建人员接口中的PersonId。
         :rtype: str
         """
         return self._PersonId
@@ -5568,7 +5636,7 @@ class GetPersonGroupInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """起始序号，默认值为0
+        """起始序号，默认值为0。
         :rtype: int
         """
         return self._Offset
@@ -5579,7 +5647,7 @@ class GetPersonGroupInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认值为10，最大值为100
+        """返回数量，默认值为10，最大值为100。
         :rtype: int
         """
         return self._Limit
@@ -5610,9 +5678,9 @@ class GetPersonGroupInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PersonGroupInfos: 包含此人员的人员库及描述字段内容列表
+        :param _PersonGroupInfos: 包含此人员的人员库及描述字段内容列表。
         :type PersonGroupInfos: list of PersonGroupInfo
-        :param _GroupNum: 人员库总数量
+        :param _GroupNum: 人员库总数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupNum: int
         :param _FaceModelVersion: 人脸识别服务所用的算法模型版本。
@@ -5628,7 +5696,7 @@ class GetPersonGroupInfoResponse(AbstractModel):
 
     @property
     def PersonGroupInfos(self):
-        """包含此人员的人员库及描述字段内容列表
+        """包含此人员的人员库及描述字段内容列表。
         :rtype: list of PersonGroupInfo
         """
         return self._PersonGroupInfos
@@ -5639,7 +5707,7 @@ class GetPersonGroupInfoResponse(AbstractModel):
 
     @property
     def GroupNum(self):
-        """人员库总数量
+        """人员库总数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5692,14 +5760,14 @@ class GetPersonListNumRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 人员库ID，取值为创建人员库接口中的GroupId
+        :param _GroupId: 人员库ID，取值为创建人员库接口中的GroupId。
         :type GroupId: str
         """
         self._GroupId = None
 
     @property
     def GroupId(self):
-        """人员库ID，取值为创建人员库接口中的GroupId
+        """人员库ID，取值为创建人员库接口中的GroupId。
         :rtype: str
         """
         return self._GroupId
@@ -5728,9 +5796,9 @@ class GetPersonListNumResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PersonNum: 人员数量
+        :param _PersonNum: 人员数量。
         :type PersonNum: int
-        :param _FaceNum: 人脸数量
+        :param _FaceNum: 人脸数量。
         :type FaceNum: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5741,7 +5809,7 @@ class GetPersonListNumResponse(AbstractModel):
 
     @property
     def PersonNum(self):
-        """人员数量
+        """人员数量。
         :rtype: int
         """
         return self._PersonNum
@@ -5752,7 +5820,7 @@ class GetPersonListNumResponse(AbstractModel):
 
     @property
     def FaceNum(self):
-        """人脸数量
+        """人脸数量。
         :rtype: int
         """
         return self._FaceNum
@@ -5786,11 +5854,11 @@ class GetPersonListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 人员库ID，取值为创建人员库接口中的GroupId
+        :param _GroupId: 人员库ID，取值为创建人员库接口中的GroupId。
         :type GroupId: str
-        :param _Offset: 起始序号，默认值为0
+        :param _Offset: 起始序号，默认值为0。
         :type Offset: int
-        :param _Limit: 返回数量，默认值为10，最大值为1000
+        :param _Limit: 返回数量，默认值为10，最大值为1000。
         :type Limit: int
         """
         self._GroupId = None
@@ -5799,7 +5867,7 @@ class GetPersonListRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """人员库ID，取值为创建人员库接口中的GroupId
+        """人员库ID，取值为创建人员库接口中的GroupId。
         :rtype: str
         """
         return self._GroupId
@@ -5810,7 +5878,7 @@ class GetPersonListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """起始序号，默认值为0
+        """起始序号，默认值为0。
         :rtype: int
         """
         return self._Offset
@@ -5821,7 +5889,7 @@ class GetPersonListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量，默认值为10，最大值为1000
+        """返回数量，默认值为10，最大值为1000。
         :rtype: int
         """
         return self._Limit
@@ -5852,12 +5920,12 @@ class GetPersonListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PersonInfos: 返回的人员信息
+        :param _PersonInfos: 返回的人员信息。
         :type PersonInfos: list of PersonInfo
-        :param _PersonNum: 该人员库的人员数量
+        :param _PersonNum: 该人员库的人员数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PersonNum: int
-        :param _FaceNum: 该人员库的人脸数量
+        :param _FaceNum: 该人员库的人脸数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FaceNum: int
         :param _FaceModelVersion: 人脸识别所用的算法模型版本。
@@ -5874,7 +5942,7 @@ class GetPersonListResponse(AbstractModel):
 
     @property
     def PersonInfos(self):
-        """返回的人员信息
+        """返回的人员信息。
         :rtype: list of PersonInfo
         """
         return self._PersonInfos
@@ -5885,7 +5953,7 @@ class GetPersonListResponse(AbstractModel):
 
     @property
     def PersonNum(self):
-        """该人员库的人员数量
+        """该人员库的人员数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5897,7 +5965,7 @@ class GetPersonListResponse(AbstractModel):
 
     @property
     def FaceNum(self):
-        """该人员库的人脸数量
+        """该人员库的人脸数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6694,13 +6762,13 @@ class ModifyGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 人员库ID，取值为创建人员库接口中的GroupId
+        :param _GroupId: 人员库ID，取值为创建人员库接口中的GroupId。
         :type GroupId: str
-        :param _GroupName: 人员库名称
+        :param _GroupName: 人员库名称。
         :type GroupName: str
-        :param _GroupExDescriptionInfos: 需要修改的人员库自定义描述字段，key-value
+        :param _GroupExDescriptionInfos: 需要修改的人员库自定义描述字段，key-value。
         :type GroupExDescriptionInfos: list of GroupExDescriptionInfo
-        :param _Tag: 人员库信息备注
+        :param _Tag: 人员库信息备注。
         :type Tag: str
         """
         self._GroupId = None
@@ -6710,7 +6778,7 @@ class ModifyGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """人员库ID，取值为创建人员库接口中的GroupId
+        """人员库ID，取值为创建人员库接口中的GroupId。
         :rtype: str
         """
         return self._GroupId
@@ -6721,7 +6789,7 @@ class ModifyGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """人员库名称
+        """人员库名称。
         :rtype: str
         """
         return self._GroupName
@@ -6732,7 +6800,7 @@ class ModifyGroupRequest(AbstractModel):
 
     @property
     def GroupExDescriptionInfos(self):
-        """需要修改的人员库自定义描述字段，key-value
+        """需要修改的人员库自定义描述字段，key-value。
         :rtype: list of GroupExDescriptionInfo
         """
         return self._GroupExDescriptionInfos
@@ -6743,7 +6811,7 @@ class ModifyGroupRequest(AbstractModel):
 
     @property
     def Tag(self):
-        """人员库信息备注
+        """人员库信息备注。
         :rtype: str
         """
         return self._Tag
@@ -6808,11 +6876,11 @@ class ModifyPersonBaseInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PersonId: 人员ID，取值为创建人员接口中的PersonId
+        :param _PersonId: 人员ID，取值为创建人员接口中的PersonId。
         :type PersonId: str
-        :param _PersonName: 需要修改的人员名称
+        :param _PersonName: 需要修改的人员名称。
         :type PersonName: str
-        :param _Gender: 需要修改的人员性别，1代表男性，2代表女性
+        :param _Gender: 需要修改的人员性别，1代表男性，2代表女性。
         :type Gender: int
         """
         self._PersonId = None
@@ -6821,7 +6889,7 @@ class ModifyPersonBaseInfoRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID，取值为创建人员接口中的PersonId
+        """人员ID，取值为创建人员接口中的PersonId。
         :rtype: str
         """
         return self._PersonId
@@ -6832,7 +6900,7 @@ class ModifyPersonBaseInfoRequest(AbstractModel):
 
     @property
     def PersonName(self):
-        """需要修改的人员名称
+        """需要修改的人员名称。
         :rtype: str
         """
         return self._PersonName
@@ -6843,7 +6911,7 @@ class ModifyPersonBaseInfoRequest(AbstractModel):
 
     @property
     def Gender(self):
-        """需要修改的人员性别，1代表男性，2代表女性
+        """需要修改的人员性别，1代表男性，2代表女性。
         :rtype: int
         """
         return self._Gender
@@ -6902,11 +6970,11 @@ class ModifyPersonGroupInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 人员库ID，取值为创建人员库接口中的GroupId
+        :param _GroupId: 人员库ID，取值为创建人员库接口中的GroupId。
         :type GroupId: str
-        :param _PersonId: 人员ID，取值为创建人员接口中的PersonId
+        :param _PersonId: 人员ID，取值为创建人员接口中的PersonId。
         :type PersonId: str
-        :param _PersonExDescriptionInfos: 需要修改的人员描述字段内容，key-value
+        :param _PersonExDescriptionInfos: 需要修改的人员描述字段内容，key-value。
         :type PersonExDescriptionInfos: list of PersonExDescriptionInfo
         """
         self._GroupId = None
@@ -6915,7 +6983,7 @@ class ModifyPersonGroupInfoRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """人员库ID，取值为创建人员库接口中的GroupId
+        """人员库ID，取值为创建人员库接口中的GroupId。
         :rtype: str
         """
         return self._GroupId
@@ -6926,7 +6994,7 @@ class ModifyPersonGroupInfoRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """人员ID，取值为创建人员接口中的PersonId
+        """人员ID，取值为创建人员接口中的PersonId。
         :rtype: str
         """
         return self._PersonId
@@ -6937,7 +7005,7 @@ class ModifyPersonGroupInfoRequest(AbstractModel):
 
     @property
     def PersonExDescriptionInfos(self):
-        """需要修改的人员描述字段内容，key-value
+        """需要修改的人员描述字段内容，key-value。
         :rtype: list of PersonExDescriptionInfo
         """
         return self._PersonExDescriptionInfos
@@ -7529,44 +7597,63 @@ class SearchFacesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupIds: 希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId。
-不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
+        :param _GroupIds: 希望搜索的人员库列表，上限100个。
+- 数组元素取值为创建人员库接口中的GroupId。
+- 不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
         :type GroupIds: list of str
-        :param _Image: 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param _Image: 图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+- 所有格式的图片短边像素不小于64。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
-        :param _Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-Url、Image必须提供一个，如果都提供，只使用 Url。  
-图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-非腾讯云存储的Url速度和稳定性可能受一定影响。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param _Url: 图片的 Url 。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+- 所有格式的图片短边像素不小于64。
+- Url、Image必须提供一个，如果都提供，只使用 Url。  
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Url: str
-        :param _MaxFaceNum: 最多识别的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。 
-MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。 
-例如：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
+        :param _MaxFaceNum: 最多识别的人脸数目。
+- 默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。 
+- MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。 
+- 例如：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
         :type MaxFaceNum: int
-        :param _MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为34。低于34的人脸图片无法被识别。建议设置为80。
+        :param _MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。
+- 默认为34。
+- 低于34的人脸图片无法被识别。
+- 建议设置为80。
         :type MinFaceSize: int
-        :param _MaxPersonNum: 单张被识别的人脸返回的最相似人员数量。默认值为5，最大值为100。 
-例如，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
-值越大，需要处理的时间越长。建议不要超过10。
+        :param _MaxPersonNum: 单张被识别的人脸返回的最相似人员数量。
+- 默认值为5，最大值为100。 
+- 例如，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
+- 值越大，需要处理的时间越长。
+- 建议不要超过10。
         :type MaxPersonNum: int
-        :param _NeedPersonInfo: 是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0
+        :param _NeedPersonInfo: 是否返回人员具体信息。
+- 取值范围：0 为关闭，1 为开启。
+- 默认为 0。
+- 其他非0非1值默认为0。
         :type NeedPersonInfo: int
         :param _QualityControl: 图片质量控制。 
-0: 不进行控制； 
-1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
-2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
-3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
-4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
-默认 0。 
-若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+- 取值范围：
+0: 不进行控制。
+1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。
+2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况。
+3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况。
+4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题。
+- 默认 0。 
+- 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :type QualityControl: int
         :param _FaceMatchThreshold: 出参Score中，只有超过FaceMatchThreshold值的结果才会返回。默认为0。
         :type FaceMatchThreshold: float
-        :param _NeedRotateDetection: 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        :param _NeedRotateDetection: 是否开启图片旋转识别支持。
+- 取值范围：0为不开启，1为开启。
+- 默认为0。
+- 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
+- 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
         :type NeedRotateDetection: int
         """
         self._GroupIds = None
@@ -7582,8 +7669,9 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def GroupIds(self):
-        """希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId。
-不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
+        """希望搜索的人员库列表，上限100个。
+- 数组元素取值为创建人员库接口中的GroupId。
+- 不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
         :rtype: list of str
         """
         return self._GroupIds
@@ -7594,9 +7682,11 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def Image(self):
-        """图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        """图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+- 所有格式的图片短边像素不小于64。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
         """
         return self._Image
@@ -7607,12 +7697,14 @@ jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2
 
     @property
     def Url(self):
-        """图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-Url、Image必须提供一个，如果都提供，只使用 Url。  
-图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-非腾讯云存储的Url速度和稳定性可能受一定影响。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        """图片的 Url 。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+- 所有格式的图片短边像素不小于64。
+- Url、Image必须提供一个，如果都提供，只使用 Url。  
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
         """
         return self._Url
@@ -7623,9 +7715,10 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def MaxFaceNum(self):
-        """最多识别的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。 
-MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。 
-例如：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
+        """最多识别的人脸数目。
+- 默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。 
+- MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。 
+- 例如：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
         :rtype: int
         """
         return self._MaxFaceNum
@@ -7636,7 +7729,10 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def MinFaceSize(self):
-        """人脸长和宽的最小尺寸，单位为像素。默认为34。低于34的人脸图片无法被识别。建议设置为80。
+        """人脸长和宽的最小尺寸，单位为像素。
+- 默认为34。
+- 低于34的人脸图片无法被识别。
+- 建议设置为80。
         :rtype: int
         """
         return self._MinFaceSize
@@ -7647,9 +7743,11 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def MaxPersonNum(self):
-        """单张被识别的人脸返回的最相似人员数量。默认值为5，最大值为100。 
-例如，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
-值越大，需要处理的时间越长。建议不要超过10。
+        """单张被识别的人脸返回的最相似人员数量。
+- 默认值为5，最大值为100。 
+- 例如，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
+- 值越大，需要处理的时间越长。
+- 建议不要超过10。
         :rtype: int
         """
         return self._MaxPersonNum
@@ -7660,7 +7758,10 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def NeedPersonInfo(self):
-        """是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0
+        """是否返回人员具体信息。
+- 取值范围：0 为关闭，1 为开启。
+- 默认为 0。
+- 其他非0非1值默认为0。
         :rtype: int
         """
         return self._NeedPersonInfo
@@ -7672,13 +7773,14 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
     @property
     def QualityControl(self):
         """图片质量控制。 
-0: 不进行控制； 
-1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
-2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
-3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
-4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
-默认 0。 
-若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+- 取值范围：
+0: 不进行控制。
+1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。
+2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况。
+3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况。
+4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题。
+- 默认 0。 
+- 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :rtype: int
         """
         return self._QualityControl
@@ -7700,7 +7802,11 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def NeedRotateDetection(self):
-        """是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        """是否开启图片旋转识别支持。
+- 取值范围：0为不开启，1为开启。
+- 默认为0。
+- 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
+- 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -7816,45 +7922,63 @@ class SearchFacesReturnsByGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupIds: 希望搜索的人员库列表，上限60个。数组元素取值为创建人员库接口中的GroupId。
-不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
+        :param _GroupIds: 希望搜索的人员库列表，上限60个。
+- 数组元素取值为创建人员库接口中的GroupId。
+- 不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
         :type GroupIds: list of str
-        :param _Image: 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param _Image: 图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+- 所有格式的图片短边像素不小于64。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
-        :param _Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-Url、Image必须提供一个，如果都提供，只使用 Url。
-图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
-非腾讯云存储的Url速度和稳定性可能受一定影响。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param _Url: 图片的 Url 。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+- 所有格式的图片短边像素不小于64。
+- Url、Image必须提供一个，如果都提供，只使用 Url。
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Url: str
-        :param _MaxFaceNum: 最多识别的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
-MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
-例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
+        :param _MaxFaceNum: 最多识别的人脸数目。
+- 默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
+- MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
+- 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
         :type MaxFaceNum: int
-        :param _MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为34。低于34将影响搜索精度。建议设置为80。
+        :param _MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。
+- 默认为34。
+- 低于34将影响搜索精度。
+- 建议设置为80。
         :type MinFaceSize: int
-        :param _MaxPersonNumPerGroup: 被检测到的人脸，对应最多返回的最相似人员数目。默认值为5，最大值为10。  
-例，设MaxFaceNum为3，MaxPersonNumPerGroup为5，GroupIds长度为3，则最多可能返回3*5*3=45个人员。
+        :param _MaxPersonNumPerGroup: 被检测到的人脸，对应最多返回的最相似人员数目。
+- 默认值为5，最大值为10。  
+- 例，设MaxFaceNum为3，MaxPersonNumPerGroup为5，GroupIds长度为3，则最多可能返回3*5*3=45个人员。
         :type MaxPersonNumPerGroup: int
-        :param _NeedPersonInfo: 是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0
+        :param _NeedPersonInfo: 是否返回人员具体信息。
+- 取值范围：0 为关闭，1 为开启。
+- 默认为 0。
+- 其他非0非1值默认为0
         :type NeedPersonInfo: int
         :param _QualityControl: 图片质量控制。 
-0: 不进行控制； 
-1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
-2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
-3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
-4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
-默认 0。 
-若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+- 取值范围：
+0: 不进行控制。
+1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。
+2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况。
+3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况。
+4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题。
+- 默认 0。 
+- 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :type QualityControl: int
         :param _FaceMatchThreshold: 出参Score中，只有大于等于FaceMatchThreshold值的结果才会返回。
-默认为0。
-取值范围[0.0,100.0) 。
+- 默认为0。
+- 取值范围：[0.0,100.0) 。
         :type FaceMatchThreshold: float
-        :param _NeedRotateDetection: 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        :param _NeedRotateDetection: 是否开启图片旋转识别支持。
+- 取值范围：0为不开启，1为开启。
+- 默认为0。
+- 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
+- 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
         :type NeedRotateDetection: int
         """
         self._GroupIds = None
@@ -7870,8 +7994,9 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def GroupIds(self):
-        """希望搜索的人员库列表，上限60个。数组元素取值为创建人员库接口中的GroupId。
-不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
+        """希望搜索的人员库列表，上限60个。
+- 数组元素取值为创建人员库接口中的GroupId。
+- 不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
         :rtype: list of str
         """
         return self._GroupIds
@@ -7882,9 +8007,11 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def Image(self):
-        """图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        """图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+- 所有格式的图片短边像素不小于64。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
         """
         return self._Image
@@ -7895,12 +8022,14 @@ jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2
 
     @property
     def Url(self):
-        """图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-Url、Image必须提供一个，如果都提供，只使用 Url。
-图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
-非腾讯云存储的Url速度和稳定性可能受一定影响。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        """图片的 Url 。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+- 所有格式的图片短边像素不小于64。
+- Url、Image必须提供一个，如果都提供，只使用 Url。
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
         """
         return self._Url
@@ -7911,9 +8040,10 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def MaxFaceNum(self):
-        """最多识别的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
-MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
-例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
+        """最多识别的人脸数目。
+- 默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
+- MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
+- 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
         :rtype: int
         """
         return self._MaxFaceNum
@@ -7924,7 +8054,10 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def MinFaceSize(self):
-        """人脸长和宽的最小尺寸，单位为像素。默认为34。低于34将影响搜索精度。建议设置为80。
+        """人脸长和宽的最小尺寸，单位为像素。
+- 默认为34。
+- 低于34将影响搜索精度。
+- 建议设置为80。
         :rtype: int
         """
         return self._MinFaceSize
@@ -7935,8 +8068,9 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def MaxPersonNumPerGroup(self):
-        """被检测到的人脸，对应最多返回的最相似人员数目。默认值为5，最大值为10。  
-例，设MaxFaceNum为3，MaxPersonNumPerGroup为5，GroupIds长度为3，则最多可能返回3*5*3=45个人员。
+        """被检测到的人脸，对应最多返回的最相似人员数目。
+- 默认值为5，最大值为10。  
+- 例，设MaxFaceNum为3，MaxPersonNumPerGroup为5，GroupIds长度为3，则最多可能返回3*5*3=45个人员。
         :rtype: int
         """
         return self._MaxPersonNumPerGroup
@@ -7947,7 +8081,10 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def NeedPersonInfo(self):
-        """是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0
+        """是否返回人员具体信息。
+- 取值范围：0 为关闭，1 为开启。
+- 默认为 0。
+- 其他非0非1值默认为0
         :rtype: int
         """
         return self._NeedPersonInfo
@@ -7959,13 +8096,14 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
     @property
     def QualityControl(self):
         """图片质量控制。 
-0: 不进行控制； 
-1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
-2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
-3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
-4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
-默认 0。 
-若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+- 取值范围：
+0: 不进行控制。
+1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。
+2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况。
+3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况。
+4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题。
+- 默认 0。 
+- 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :rtype: int
         """
         return self._QualityControl
@@ -7977,8 +8115,8 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
     @property
     def FaceMatchThreshold(self):
         """出参Score中，只有大于等于FaceMatchThreshold值的结果才会返回。
-默认为0。
-取值范围[0.0,100.0) 。
+- 默认为0。
+- 取值范围：[0.0,100.0) 。
         :rtype: float
         """
         return self._FaceMatchThreshold
@@ -7989,7 +8127,11 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def NeedRotateDetection(self):
-        """是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        """是否开启图片旋转识别支持。
+- 取值范围：0为不开启，1为开启。
+- 默认为0。
+- 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
+- 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -8105,44 +8247,63 @@ class SearchPersonsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupIds: 希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId
+        :param _GroupIds: 希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId。
         :type GroupIds: list of str
-        :param _Image: 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param _Image: 图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+- 所有格式的图片短边像素不小于64。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
-        :param _Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-Url、Image必须提供一个，如果都提供，只使用 Url。
-图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
-非腾讯云存储的Url速度和稳定性可能受一定影响。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param _Url: 图片的 Url 。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+- 所有格式的图片短边像素不小于64。
+- Url、Image必须提供一个，如果都提供，只使用 Url。
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Url: str
-        :param _MaxFaceNum: 最多识别的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
-MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
-例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
+        :param _MaxFaceNum: 最多识别的人脸数目。
+- 默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
+- MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
+- 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
         :type MaxFaceNum: int
-        :param _MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为34。低于34将影响搜索精度。建议设置为80。
+        :param _MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。
+- 默认为34。
+- 低于34将影响搜索精度。
+- 建议设置为80。
         :type MinFaceSize: int
-        :param _MaxPersonNum: 单张被识别的人脸返回的最相似人员数量。默认值为5，最大值为100。
-例，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
-值越大，需要处理的时间越长。建议不要超过10。
+        :param _MaxPersonNum: 单张被识别的人脸返回的最相似人员数量。
+- 默认值为5，最大值为100。
+- 例，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
+- 值越大，需要处理的时间越长。建议不要超过10。
         :type MaxPersonNum: int
         :param _QualityControl: 图片质量控制。 
-0: 不进行控制； 
-1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
-2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
-3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
-4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
-默认 0。 
-若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+- 取值范围：
+0: 不进行控制。
+1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。
+2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况。
+3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况。
+4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题。
+- 默认 0。 
+- 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :type QualityControl: int
-        :param _FaceMatchThreshold: 出参Score中，只有大于等于FaceMatchThreshold值的结果才会返回。默认为0。取值范围[0.0,100.0) 。
+        :param _FaceMatchThreshold: 出参Score中，只有大于等于FaceMatchThreshold值的结果才会返回。
+- 默认为0。
+- 取值范围：[0.0,100.0) 。
         :type FaceMatchThreshold: float
-        :param _NeedPersonInfo: 是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0
+        :param _NeedPersonInfo: 是否返回人员具体信息。
+- 取值范围：0 为关闭，1 为开启。
+- 默认为 0。
+- 其他非0非1值默认为0
         :type NeedPersonInfo: int
-        :param _NeedRotateDetection: 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        :param _NeedRotateDetection: 是否开启图片旋转识别支持。
+- 取值范围：0为不开启，1为开启。
+- 默认为0。
+- 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
+- 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
         :type NeedRotateDetection: int
         """
         self._GroupIds = None
@@ -8158,7 +8319,7 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def GroupIds(self):
-        """希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId
+        """希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId。
         :rtype: list of str
         """
         return self._GroupIds
@@ -8169,10 +8330,12 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def Image(self):
-        """图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        """图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+- 所有格式的图片短边像素不小于64。
+- 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
         """
         return self._Image
@@ -8183,12 +8346,14 @@ jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2
 
     @property
     def Url(self):
-        """图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-Url、Image必须提供一个，如果都提供，只使用 Url。
-图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
-非腾讯云存储的Url速度和稳定性可能受一定影响。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        """图片的 Url 。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+- 所有格式的图片短边像素不小于64。
+- Url、Image必须提供一个，如果都提供，只使用 Url。
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
         """
         return self._Url
@@ -8199,9 +8364,10 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def MaxFaceNum(self):
-        """最多识别的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
-MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
-例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
+        """最多识别的人脸数目。
+- 默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
+- MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
+- 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
         :rtype: int
         """
         return self._MaxFaceNum
@@ -8212,7 +8378,10 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def MinFaceSize(self):
-        """人脸长和宽的最小尺寸，单位为像素。默认为34。低于34将影响搜索精度。建议设置为80。
+        """人脸长和宽的最小尺寸，单位为像素。
+- 默认为34。
+- 低于34将影响搜索精度。
+- 建议设置为80。
         :rtype: int
         """
         return self._MinFaceSize
@@ -8223,9 +8392,10 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def MaxPersonNum(self):
-        """单张被识别的人脸返回的最相似人员数量。默认值为5，最大值为100。
-例，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
-值越大，需要处理的时间越长。建议不要超过10。
+        """单张被识别的人脸返回的最相似人员数量。
+- 默认值为5，最大值为100。
+- 例，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
+- 值越大，需要处理的时间越长。建议不要超过10。
         :rtype: int
         """
         return self._MaxPersonNum
@@ -8237,13 +8407,14 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
     @property
     def QualityControl(self):
         """图片质量控制。 
-0: 不进行控制； 
-1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
-2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
-3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
-4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
-默认 0。 
-若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+- 取值范围：
+0: 不进行控制。
+1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。
+2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况。
+3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况。
+4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题。
+- 默认 0。 
+- 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :rtype: int
         """
         return self._QualityControl
@@ -8254,7 +8425,9 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def FaceMatchThreshold(self):
-        """出参Score中，只有大于等于FaceMatchThreshold值的结果才会返回。默认为0。取值范围[0.0,100.0) 。
+        """出参Score中，只有大于等于FaceMatchThreshold值的结果才会返回。
+- 默认为0。
+- 取值范围：[0.0,100.0) 。
         :rtype: float
         """
         return self._FaceMatchThreshold
@@ -8265,7 +8438,10 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def NeedPersonInfo(self):
-        """是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0
+        """是否返回人员具体信息。
+- 取值范围：0 为关闭，1 为开启。
+- 默认为 0。
+- 其他非0非1值默认为0
         :rtype: int
         """
         return self._NeedPersonInfo
@@ -8276,7 +8452,11 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def NeedRotateDetection(self):
-        """是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        """是否开启图片旋转识别支持。
+- 取值范围：0为不开启，1为开启。
+- 默认为0。
+- 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
+- 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -8394,42 +8574,59 @@ class SearchPersonsReturnsByGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupIds: 希望搜索的人员库列表，上限60个。数组元素取值为创建人员库接口中的GroupId
+        :param _GroupIds: 希望搜索的人员库列表，上限60个。数组元素取值为创建人员库接口中的GroupId。
         :type GroupIds: list of str
-        :param _Image: 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param _Image: 图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+- 所有格式的图片短边像素不小于64。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
-        :param _Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-Url、Image必须提供一个，如果都提供，只使用 Url。
-图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
-非腾讯云存储的Url速度和稳定性可能受一定影响。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param _Url: 图片的 Url 。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+- 所有格式的图片短边像素不小于64。
+- Url、Image必须提供一个，如果都提供，只使用 Url。
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Url: str
-        :param _MaxFaceNum: 最多识别的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
-MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
-例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
+        :param _MaxFaceNum: 最多识别的人脸数目。
+- 默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
+- MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
+- 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
         :type MaxFaceNum: int
-        :param _MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为34。低于34将影响搜索精度。建议设置为80。
+        :param _MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。
+- 默认为34。
+- 低于34将影响搜索精度。
+- 建议设置为80。
         :type MinFaceSize: int
-        :param _MaxPersonNumPerGroup: 被检测到的人脸，对应最多返回的最相似人员数目。默认值为5，最大值为10。  
-例，设MaxFaceNum为3，MaxPersonNumPerGroup为5，GroupIds长度为3，则最多可能返回3*5*3=45个人员。
+        :param _MaxPersonNumPerGroup: 被检测到的人脸，对应最多返回的最相似人员数目。
+- 默认值为5，最大值为10。  
+- 例，设MaxFaceNum为3，MaxPersonNumPerGroup为5，GroupIds长度为3，则最多可能返回3*5*3=45个人员。
         :type MaxPersonNumPerGroup: int
         :param _QualityControl: 图片质量控制。 
-0: 不进行控制； 
-1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
-2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
-3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
-4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
-默认 0。 
-若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+- 取值范围：
+0: 不进行控制。
+1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。
+2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况。
+3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况。
+4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题。
+- 默认 0。 
+- 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :type QualityControl: int
         :param _FaceMatchThreshold: 出参Score中，只有超过FaceMatchThreshold值的结果才会返回。默认为0。
         :type FaceMatchThreshold: float
-        :param _NeedPersonInfo: 是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0
+        :param _NeedPersonInfo: 是否返回人员具体信息。
+- 取值范围：0 为关闭，1 为开启。
+- 默认为 0。
+- 其他非0非1值默认为0。
         :type NeedPersonInfo: int
-        :param _NeedRotateDetection: 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        :param _NeedRotateDetection: 是否开启图片旋转识别支持。
+- 取值范围：0为不开启，1为开启。
+- 默认为0。
+- 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
+- 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
         :type NeedRotateDetection: int
         """
         self._GroupIds = None
@@ -8445,7 +8642,7 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def GroupIds(self):
-        """希望搜索的人员库列表，上限60个。数组元素取值为创建人员库接口中的GroupId
+        """希望搜索的人员库列表，上限60个。数组元素取值为创建人员库接口中的GroupId。
         :rtype: list of str
         """
         return self._GroupIds
@@ -8456,9 +8653,11 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def Image(self):
-        """图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        """图片 base64 数据。
+- base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+- 所有格式的图片短边像素不小于64。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
         """
         return self._Image
@@ -8469,12 +8668,14 @@ jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2
 
     @property
     def Url(self):
-        """图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-Url、Image必须提供一个，如果都提供，只使用 Url。
-图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
-非腾讯云存储的Url速度和稳定性可能受一定影响。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        """图片的 Url 。
+- 对应图片 base64 编码后大小不可超过5M。
+- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+- 所有格式的图片短边像素不小于64。
+- Url、Image必须提供一个，如果都提供，只使用 Url。
+- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
+- 非腾讯云存储的Url速度和稳定性可能受一定影响。
+- 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :rtype: str
         """
         return self._Url
@@ -8485,9 +8686,10 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 
     @property
     def MaxFaceNum(self):
-        """最多识别的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
-MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
-例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
+        """最多识别的人脸数目。
+- 默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
+- MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
+- 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
         :rtype: int
         """
         return self._MaxFaceNum
@@ -8498,7 +8700,10 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def MinFaceSize(self):
-        """人脸长和宽的最小尺寸，单位为像素。默认为34。低于34将影响搜索精度。建议设置为80。
+        """人脸长和宽的最小尺寸，单位为像素。
+- 默认为34。
+- 低于34将影响搜索精度。
+- 建议设置为80。
         :rtype: int
         """
         return self._MinFaceSize
@@ -8509,8 +8714,9 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def MaxPersonNumPerGroup(self):
-        """被检测到的人脸，对应最多返回的最相似人员数目。默认值为5，最大值为10。  
-例，设MaxFaceNum为3，MaxPersonNumPerGroup为5，GroupIds长度为3，则最多可能返回3*5*3=45个人员。
+        """被检测到的人脸，对应最多返回的最相似人员数目。
+- 默认值为5，最大值为10。  
+- 例，设MaxFaceNum为3，MaxPersonNumPerGroup为5，GroupIds长度为3，则最多可能返回3*5*3=45个人员。
         :rtype: int
         """
         return self._MaxPersonNumPerGroup
@@ -8522,13 +8728,14 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
     @property
     def QualityControl(self):
         """图片质量控制。 
-0: 不进行控制； 
-1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
-2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
-3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
-4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
-默认 0。 
-若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+- 取值范围：
+0: 不进行控制。
+1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。
+2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况。
+3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况。
+4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题。
+- 默认 0。 
+- 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :rtype: int
         """
         return self._QualityControl
@@ -8550,7 +8757,10 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def NeedPersonInfo(self):
-        """是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0
+        """是否返回人员具体信息。
+- 取值范围：0 为关闭，1 为开启。
+- 默认为 0。
+- 其他非0非1值默认为0。
         :rtype: int
         """
         return self._NeedPersonInfo
@@ -8561,7 +8771,11 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 
     @property
     def NeedRotateDetection(self):
-        """是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        """是否开启图片旋转识别支持。
+- 取值范围：0为不开启，1为开启。
+- 默认为0。
+- 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
+- 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
         :rtype: int
         """
         return self._NeedRotateDetection

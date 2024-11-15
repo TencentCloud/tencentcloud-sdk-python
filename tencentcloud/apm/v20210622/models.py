@@ -802,6 +802,18 @@ class ApmInstanceDetail(AbstractModel):
         :param _DefaultTSF: 是否tsf默认业务系统（0=否，1-是）
 注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultTSF: int
+        :param _IsRelatedDashboard: 是否关联dashboard： 0 关 1 开
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsRelatedDashboard: int
+        :param _DashboardTopicID: dashboard ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DashboardTopicID: str
+        :param _IsInstrumentationVulnerabilityScan: 是否开启组件漏洞检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsInstrumentationVulnerabilityScan: int
+        :param _IsSqlInjectionAnalysis: 是否开启SQL注入分析
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSqlInjectionAnalysis: int
         """
         self._AmountOfUsedStorage = None
         self._Name = None
@@ -835,6 +847,10 @@ class ApmInstanceDetail(AbstractModel):
         self._ResponseDurationWarningThreshold = None
         self._Free = None
         self._DefaultTSF = None
+        self._IsRelatedDashboard = None
+        self._DashboardTopicID = None
+        self._IsInstrumentationVulnerabilityScan = None
+        self._IsSqlInjectionAnalysis = None
 
     @property
     def AmountOfUsedStorage(self):
@@ -1220,6 +1236,54 @@ class ApmInstanceDetail(AbstractModel):
     def DefaultTSF(self, DefaultTSF):
         self._DefaultTSF = DefaultTSF
 
+    @property
+    def IsRelatedDashboard(self):
+        """是否关联dashboard： 0 关 1 开
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IsRelatedDashboard
+
+    @IsRelatedDashboard.setter
+    def IsRelatedDashboard(self, IsRelatedDashboard):
+        self._IsRelatedDashboard = IsRelatedDashboard
+
+    @property
+    def DashboardTopicID(self):
+        """dashboard ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DashboardTopicID
+
+    @DashboardTopicID.setter
+    def DashboardTopicID(self, DashboardTopicID):
+        self._DashboardTopicID = DashboardTopicID
+
+    @property
+    def IsInstrumentationVulnerabilityScan(self):
+        """是否开启组件漏洞检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IsInstrumentationVulnerabilityScan
+
+    @IsInstrumentationVulnerabilityScan.setter
+    def IsInstrumentationVulnerabilityScan(self, IsInstrumentationVulnerabilityScan):
+        self._IsInstrumentationVulnerabilityScan = IsInstrumentationVulnerabilityScan
+
+    @property
+    def IsSqlInjectionAnalysis(self):
+        """是否开启SQL注入分析
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IsSqlInjectionAnalysis
+
+    @IsSqlInjectionAnalysis.setter
+    def IsSqlInjectionAnalysis(self, IsSqlInjectionAnalysis):
+        self._IsSqlInjectionAnalysis = IsSqlInjectionAnalysis
+
 
     def _deserialize(self, params):
         self._AmountOfUsedStorage = params.get("AmountOfUsedStorage")
@@ -1259,6 +1323,10 @@ class ApmInstanceDetail(AbstractModel):
         self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
         self._Free = params.get("Free")
         self._DefaultTSF = params.get("DefaultTSF")
+        self._IsRelatedDashboard = params.get("IsRelatedDashboard")
+        self._DashboardTopicID = params.get("DashboardTopicID")
+        self._IsInstrumentationVulnerabilityScan = params.get("IsInstrumentationVulnerabilityScan")
+        self._IsSqlInjectionAnalysis = params.get("IsSqlInjectionAnalysis")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1400,6 +1468,8 @@ class CreateApmInstanceRequest(AbstractModel):
         :type SpanDailyCounters: int
         :param _PayMode: 实例的计费模式
         :type PayMode: int
+        :param _Free: （0=付费版；1=tsf受限免费版；2=免费版）
+        :type Free: int
         """
         self._Name = None
         self._Description = None
@@ -1407,6 +1477,7 @@ class CreateApmInstanceRequest(AbstractModel):
         self._Tags = None
         self._SpanDailyCounters = None
         self._PayMode = None
+        self._Free = None
 
     @property
     def Name(self):
@@ -1474,6 +1545,17 @@ class CreateApmInstanceRequest(AbstractModel):
     def PayMode(self, PayMode):
         self._PayMode = PayMode
 
+    @property
+    def Free(self):
+        """（0=付费版；1=tsf受限免费版；2=免费版）
+        :rtype: int
+        """
+        return self._Free
+
+    @Free.setter
+    def Free(self, Free):
+        self._Free = Free
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1487,6 +1569,7 @@ class CreateApmInstanceRequest(AbstractModel):
                 self._Tags.append(obj)
         self._SpanDailyCounters = params.get("SpanDailyCounters")
         self._PayMode = params.get("PayMode")
+        self._Free = params.get("Free")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3443,10 +3526,16 @@ class ModifyApmInstanceRequest(AbstractModel):
         :type PayMode: int
         :param _ResponseDurationWarningThreshold: 响应时间满意阈值
         :type ResponseDurationWarningThreshold: int
+        :param _Free: （0=付费版；1=tsf受限免费版；2=免费版）
+        :type Free: int
         :param _IsRelatedDashboard: 是否关联dashboard： 0 关 1 开
         :type IsRelatedDashboard: int
         :param _DashboardTopicID: dashboard ID
         :type DashboardTopicID: str
+        :param _IsSqlInjectionAnalysis: 是否开启SQL注入检测
+        :type IsSqlInjectionAnalysis: int
+        :param _IsInstrumentationVulnerabilityScan: 是否开启组件漏洞检测
+        :type IsInstrumentationVulnerabilityScan: int
         """
         self._InstanceId = None
         self._Name = None
@@ -3467,8 +3556,11 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._CustomShowTags = None
         self._PayMode = None
         self._ResponseDurationWarningThreshold = None
+        self._Free = None
         self._IsRelatedDashboard = None
         self._DashboardTopicID = None
+        self._IsSqlInjectionAnalysis = None
+        self._IsInstrumentationVulnerabilityScan = None
 
     @property
     def InstanceId(self):
@@ -3682,6 +3774,17 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._ResponseDurationWarningThreshold = ResponseDurationWarningThreshold
 
     @property
+    def Free(self):
+        """（0=付费版；1=tsf受限免费版；2=免费版）
+        :rtype: int
+        """
+        return self._Free
+
+    @Free.setter
+    def Free(self, Free):
+        self._Free = Free
+
+    @property
     def IsRelatedDashboard(self):
         """是否关联dashboard： 0 关 1 开
         :rtype: int
@@ -3702,6 +3805,28 @@ class ModifyApmInstanceRequest(AbstractModel):
     @DashboardTopicID.setter
     def DashboardTopicID(self, DashboardTopicID):
         self._DashboardTopicID = DashboardTopicID
+
+    @property
+    def IsSqlInjectionAnalysis(self):
+        """是否开启SQL注入检测
+        :rtype: int
+        """
+        return self._IsSqlInjectionAnalysis
+
+    @IsSqlInjectionAnalysis.setter
+    def IsSqlInjectionAnalysis(self, IsSqlInjectionAnalysis):
+        self._IsSqlInjectionAnalysis = IsSqlInjectionAnalysis
+
+    @property
+    def IsInstrumentationVulnerabilityScan(self):
+        """是否开启组件漏洞检测
+        :rtype: int
+        """
+        return self._IsInstrumentationVulnerabilityScan
+
+    @IsInstrumentationVulnerabilityScan.setter
+    def IsInstrumentationVulnerabilityScan(self, IsInstrumentationVulnerabilityScan):
+        self._IsInstrumentationVulnerabilityScan = IsInstrumentationVulnerabilityScan
 
 
     def _deserialize(self, params):
@@ -3729,8 +3854,11 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._CustomShowTags = params.get("CustomShowTags")
         self._PayMode = params.get("PayMode")
         self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
+        self._Free = params.get("Free")
         self._IsRelatedDashboard = params.get("IsRelatedDashboard")
         self._DashboardTopicID = params.get("DashboardTopicID")
+        self._IsSqlInjectionAnalysis = params.get("IsSqlInjectionAnalysis")
+        self._IsInstrumentationVulnerabilityScan = params.get("IsInstrumentationVulnerabilityScan")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

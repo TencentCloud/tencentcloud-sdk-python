@@ -52,16 +52,12 @@ class AgentAuditedClient(AbstractModel):
         :param _ProjectType: 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
         :type ProjectType: str
         :param _SalesUin: 业务员ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SalesUin: str
         :param _SalesName: 业务员姓名
-注意：此字段可能返回 null，表示取不到有效值。
         :type SalesName: str
         :param _Mail: 代客邮箱
-注意：此字段可能返回 null，表示取不到有效值。
         :type Mail: str
         :param _TransactionType: 交易类型:交易类型 1-原类型 2-代理型  3-代采型
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransactionType: str
         """
         self._Uin = None
@@ -228,7 +224,6 @@ class AgentAuditedClient(AbstractModel):
     @property
     def SalesUin(self):
         """业务员ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SalesUin
@@ -240,7 +235,6 @@ class AgentAuditedClient(AbstractModel):
     @property
     def SalesName(self):
         """业务员姓名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SalesName
@@ -252,7 +246,6 @@ class AgentAuditedClient(AbstractModel):
     @property
     def Mail(self):
         """代客邮箱
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Mail
@@ -264,7 +257,6 @@ class AgentAuditedClient(AbstractModel):
     @property
     def TransactionType(self):
         """交易类型:交易类型 1-原类型 2-代理型  3-代采型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TransactionType
@@ -330,13 +322,10 @@ class AgentBillElem(AbstractModel):
         :param _PayerMode: agentpay：代付；selfpay：自付
         :type PayerMode: str
         :param _ClientType: 客户类型：可以为new(自拓)/assign(指定)/old(官网)/direct(直销)/direct_newopp(直销(新商机))/空
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientType: str
         :param _ProjectType: 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectType: str
         :param _ActivityId: 活动ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityId: str
         """
         self._Uin = None
@@ -466,7 +455,6 @@ class AgentBillElem(AbstractModel):
     @property
     def ClientType(self):
         """客户类型：可以为new(自拓)/assign(指定)/old(官网)/direct(直销)/direct_newopp(直销(新商机))/空
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClientType
@@ -478,7 +466,6 @@ class AgentBillElem(AbstractModel):
     @property
     def ProjectType(self):
         """项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectType
@@ -490,7 +477,6 @@ class AgentBillElem(AbstractModel):
     @property
     def ActivityId(self):
         """活动ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActivityId
@@ -537,7 +523,7 @@ class AgentClientElem(AbstractModel):
         :type ClientUin: str
         :param _ApplyTime: 代客申请时间戳
         :type ApplyTime: int
-        :param _ClientFlag: 代客类型，可能值为a/b/c
+        :param _ClientFlag: 代客类型，可能值为a/b/c/other
         :type ClientFlag: str
         :param _Mail: 代客邮箱，打码显示
         :type Mail: str
@@ -548,13 +534,10 @@ class AgentClientElem(AbstractModel):
         :param _Status: 1:待代理商审核;2:待腾讯云审核4:待腾讯云渠道审批
         :type Status: int
         :param _SalesUin: 业务员ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SalesUin: str
         :param _SalesName: 业务员姓名
-注意：此字段可能返回 null，表示取不到有效值。
         :type SalesName: str
         :param _ClientName: 客户名称，此字段和控制台返回一致。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientName: str
         """
         self._Uin = None
@@ -604,7 +587,7 @@ class AgentClientElem(AbstractModel):
 
     @property
     def ClientFlag(self):
-        """代客类型，可能值为a/b/c
+        """代客类型，可能值为a/b/c/other
         :rtype: str
         """
         return self._ClientFlag
@@ -660,7 +643,6 @@ class AgentClientElem(AbstractModel):
     @property
     def SalesUin(self):
         """业务员ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SalesUin
@@ -672,7 +654,6 @@ class AgentClientElem(AbstractModel):
     @property
     def SalesName(self):
         """业务员姓名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SalesName
@@ -684,7 +665,6 @@ class AgentClientElem(AbstractModel):
     @property
     def ClientName(self):
         """客户名称，此字段和控制台返回一致。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClientName
@@ -732,85 +712,58 @@ class AgentDealNewElem(AbstractModel):
         :param _OwnerUin: 订单所有者
         :type OwnerUin: str
         :param _AppId: 订单所有者对应 appId
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
         :param _GoodsNum: 商品数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type GoodsNum: str
         :param _GoodsPrice: 价格详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type GoodsPrice: :class:`tencentcloud.partners.v20180321.models.DealGoodsPriceNewElem`
         :param _Creater: 下单人
-注意：此字段可能返回 null，表示取不到有效值。
         :type Creater: str
         :param _CreatTime: 下单时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatTime: str
         :param _PayEndTime: 支付结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayEndTime: str
         :param _BillId: 扣费流水号
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillId: str
         :param _Payer: 支付人
-注意：此字段可能返回 null，表示取不到有效值。
         :type Payer: str
         :param _DealStatus: 订单状态，中文描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type DealStatus: str
         :param _Status: 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _GoodsName: 产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GoodsName: str
         :param _ClientRemark: 客户备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientRemark: str
         :param _ActionType: 订单操作类型，"purchase":"新购","upgrade":"升配","upConvertExpire":"升配","downgrade":"降配","downConvertExpire":"降配","renew":"续费","refund":"退货","modifyNetworkMode":"调整带宽模式","modifyNetworkSize":"调整带宽大小","preMoveOut":"资源迁出","preMoveIn":"资源迁入","preToPost":"包年包月转按量","modify":"变配","postMoveOut":"资源迁出","postMoveIn":"资源迁入","recoverRefundForward":"调账补偿","recoverPayReserve":"调账补偿","recoverPayForward":"调账扣费","recoverRefundReserve":"调账扣费"
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionType: str
         :param _VoucherDecline: 代金券抵扣金额，单位分
-注意：此字段可能返回 null，表示取不到有效值。
         :type VoucherDecline: str
         :param _BigDealId: 大订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :type BigDealId: str
         :param _ClientType: 客户类型（new：自拓；old：官网；assign：指派；direct：直销；direct_newopp：直销(新商机)）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientType: str
         :param _ProjectType: 项目类型（self：自拓；repeat：直销；platform：官网合作）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectType: str
         :param _SalesUin: 业务员账号ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SalesUin: str
         :param _PayerMode: 支付方式，0：自付；1：代付
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayerMode: str
         :param _ActivityId: 活动ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityId: str
         :param _OverdueTime: 订单过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type OverdueTime: str
         :param _ProductInfo: 产品详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductInfo: list of ProductInfoElem
         :param _PaymentMethod: 付款方式
-注意：此字段可能返回 null，表示取不到有效值。
         :type PaymentMethod: str
         :param _UpdateTime: 订单更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _ResourceIds: 资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: list of str
         :param _RefundMap: 退款单的原订单信息。当前仅 DescribeClientDealsByCache 接口会返回该字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type RefundMap: list of RefundMap
         :param _SubGoodsName: 子产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubGoodsName: str
         """
         self._DealId = None
@@ -892,7 +845,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def AppId(self):
         """订单所有者对应 appId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AppId
@@ -904,7 +856,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def GoodsNum(self):
         """商品数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GoodsNum
@@ -916,7 +867,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def GoodsPrice(self):
         """价格详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.partners.v20180321.models.DealGoodsPriceNewElem`
         """
         return self._GoodsPrice
@@ -928,7 +878,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def Creater(self):
         """下单人
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Creater
@@ -940,7 +889,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def CreatTime(self):
         """下单时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatTime
@@ -952,7 +900,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def PayEndTime(self):
         """支付结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayEndTime
@@ -964,7 +911,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def BillId(self):
         """扣费流水号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BillId
@@ -976,7 +922,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def Payer(self):
         """支付人
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Payer
@@ -988,7 +933,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def DealStatus(self):
         """订单状态，中文描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DealStatus
@@ -1000,7 +944,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def Status(self):
         """订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -1012,7 +955,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def GoodsName(self):
         """产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GoodsName
@@ -1024,7 +966,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def ClientRemark(self):
         """客户备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClientRemark
@@ -1036,7 +977,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def ActionType(self):
         """订单操作类型，"purchase":"新购","upgrade":"升配","upConvertExpire":"升配","downgrade":"降配","downConvertExpire":"降配","renew":"续费","refund":"退货","modifyNetworkMode":"调整带宽模式","modifyNetworkSize":"调整带宽大小","preMoveOut":"资源迁出","preMoveIn":"资源迁入","preToPost":"包年包月转按量","modify":"变配","postMoveOut":"资源迁出","postMoveIn":"资源迁入","recoverRefundForward":"调账补偿","recoverPayReserve":"调账补偿","recoverPayForward":"调账扣费","recoverRefundReserve":"调账扣费"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActionType
@@ -1048,7 +988,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def VoucherDecline(self):
         """代金券抵扣金额，单位分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VoucherDecline
@@ -1060,7 +999,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def BigDealId(self):
         """大订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BigDealId
@@ -1072,7 +1010,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def ClientType(self):
         """客户类型（new：自拓；old：官网；assign：指派；direct：直销；direct_newopp：直销(新商机)）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClientType
@@ -1084,7 +1021,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def ProjectType(self):
         """项目类型（self：自拓；repeat：直销；platform：官网合作）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectType
@@ -1096,7 +1032,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def SalesUin(self):
         """业务员账号ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SalesUin
@@ -1108,7 +1043,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def PayerMode(self):
         """支付方式，0：自付；1：代付
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayerMode
@@ -1120,7 +1054,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def ActivityId(self):
         """活动ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActivityId
@@ -1132,7 +1065,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def OverdueTime(self):
         """订单过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OverdueTime
@@ -1144,7 +1076,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def ProductInfo(self):
         """产品详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ProductInfoElem
         """
         return self._ProductInfo
@@ -1156,7 +1087,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def PaymentMethod(self):
         """付款方式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PaymentMethod
@@ -1168,7 +1098,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def UpdateTime(self):
         """订单更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -1180,7 +1109,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def ResourceIds(self):
         """资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ResourceIds
@@ -1192,7 +1120,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def RefundMap(self):
         """退款单的原订单信息。当前仅 DescribeClientDealsByCache 接口会返回该字段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RefundMap
         """
         return self._RefundMap
@@ -1204,7 +1131,6 @@ class AgentDealNewElem(AbstractModel):
     @property
     def SubGoodsName(self):
         """子产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubGoodsName
@@ -1611,10 +1537,8 @@ class AssignClientsToSalesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SucceedUins: 处理成功的代客uin列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SucceedUins: list of str
         :param _FailedUins: 处理失败的代客uin列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedUins: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1626,7 +1550,6 @@ class AssignClientsToSalesResponse(AbstractModel):
     @property
     def SucceedUins(self):
         """处理成功的代客uin列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SucceedUins
@@ -1638,7 +1561,6 @@ class AssignClientsToSalesResponse(AbstractModel):
     @property
     def FailedUins(self):
         """处理失败的代客uin列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._FailedUins
@@ -1745,7 +1667,6 @@ class AuditApplyClientResponse(AbstractModel):
         :param _AuditResult: 审核结果，包括accept/reject/qcloudaudit（腾讯云审核）
         :type AuditResult: str
         :param _AgentTime: 关联时间对应的时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type AgentTime: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1792,7 +1713,6 @@ class AuditApplyClientResponse(AbstractModel):
     @property
     def AgentTime(self):
         """关联时间对应的时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AgentTime
@@ -3229,7 +3149,6 @@ class DescribeAgentRelateBigDealIdsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _BigDealIdList: 申请合并支付的关联大订单号列表（不包含请求的订单号）
-注意：此字段可能返回 null，表示取不到有效值。
         :type BigDealIdList: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3240,7 +3159,6 @@ class DescribeAgentRelateBigDealIdsResponse(AbstractModel):
     @property
     def BigDealIdList(self):
         """申请合并支付的关联大订单号列表（不包含请求的订单号）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._BigDealIdList
@@ -4323,16 +4241,22 @@ class RebateInfoElem(AbstractModel):
     def __init__(self):
         r"""
         :param _Uin: 代理商账号ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _RebateMonth: 返佣月份，如2018-02
+注意：此字段可能返回 null，表示取不到有效值。
         :type RebateMonth: str
         :param _Amt: 返佣金额，单位分
+注意：此字段可能返回 null，表示取不到有效值。
         :type Amt: int
         :param _MonthSales: 月度业绩，单位分
+注意：此字段可能返回 null，表示取不到有效值。
         :type MonthSales: int
         :param _QuarterSales: 季度业绩，单位分
+注意：此字段可能返回 null，表示取不到有效值。
         :type QuarterSales: int
         :param _ExceptionFlag: NORMAL(正常)/HAS_OVERDUE_BILL(欠费)/NO_CONTRACT(缺合同)
+注意：此字段可能返回 null，表示取不到有效值。
         :type ExceptionFlag: str
         """
         self._Uin = None
@@ -4345,6 +4269,7 @@ class RebateInfoElem(AbstractModel):
     @property
     def Uin(self):
         """代理商账号ID
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Uin
@@ -4356,6 +4281,7 @@ class RebateInfoElem(AbstractModel):
     @property
     def RebateMonth(self):
         """返佣月份，如2018-02
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RebateMonth
@@ -4367,6 +4293,7 @@ class RebateInfoElem(AbstractModel):
     @property
     def Amt(self):
         """返佣金额，单位分
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Amt
@@ -4378,6 +4305,7 @@ class RebateInfoElem(AbstractModel):
     @property
     def MonthSales(self):
         """月度业绩，单位分
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MonthSales
@@ -4389,6 +4317,7 @@ class RebateInfoElem(AbstractModel):
     @property
     def QuarterSales(self):
         """季度业绩，单位分
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._QuarterSales
@@ -4400,6 +4329,7 @@ class RebateInfoElem(AbstractModel):
     @property
     def ExceptionFlag(self):
         """NORMAL(正常)/HAS_OVERDUE_BILL(欠费)/NO_CONTRACT(缺合同)
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExceptionFlag
@@ -4545,10 +4475,8 @@ class RefundMap(AbstractModel):
     def __init__(self):
         r"""
         :param _DealName: 退款单关联的原始子订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :type DealName: str
         :param _RefundAmount: 退款金额，单位分
-注意：此字段可能返回 null，表示取不到有效值。
         :type RefundAmount: int
         """
         self._DealName = None
@@ -4557,7 +4485,6 @@ class RefundMap(AbstractModel):
     @property
     def DealName(self):
         """退款单关联的原始子订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DealName
@@ -4569,7 +4496,6 @@ class RefundMap(AbstractModel):
     @property
     def RefundAmount(self):
         """退款金额，单位分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RefundAmount
@@ -4670,10 +4596,8 @@ class UnbindClientElem(AbstractModel):
         :param _Status: 状态：0:审核中；1：已解绑；2：已撤销 3：关联撤销 4: 已驳回
         :type Status: int
         :param _ApplyTime: 申请时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplyTime: str
         :param _ActionTime: 解绑/撤销时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionTime: str
         """
         self._Uin = None
@@ -4718,7 +4642,6 @@ class UnbindClientElem(AbstractModel):
     @property
     def ApplyTime(self):
         """申请时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplyTime
@@ -4730,7 +4653,6 @@ class UnbindClientElem(AbstractModel):
     @property
     def ActionTime(self):
         """解绑/撤销时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActionTime

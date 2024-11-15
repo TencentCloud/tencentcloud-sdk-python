@@ -712,7 +712,6 @@ class CreateVolumeResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _VolumeId: 缓存卷ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VolumeId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -723,7 +722,6 @@ class CreateVolumeResponse(AbstractModel):
     @property
     def VolumeId(self):
         """缓存卷ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VolumeId
@@ -1888,10 +1886,8 @@ class DescribeVolumesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Volumes: 缓存卷。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Volumes: list of Volume
         :param _TotalCount: 符合条件的数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1903,7 +1899,6 @@ class DescribeVolumesResponse(AbstractModel):
     @property
     def Volumes(self):
         """缓存卷。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Volume
         """
         return self._Volumes
@@ -1915,7 +1910,6 @@ class DescribeVolumesResponse(AbstractModel):
     @property
     def TotalCount(self):
         """符合条件的数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -1985,10 +1979,8 @@ class Environment(AbstractModel):
         :param _ResourceIds: 云资源ID。
         :type ResourceIds: :class:`tencentcloud.omics.v20221128.models.ResourceIds`
         :param _LastWorkflowUuid: 上个工作流UUID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastWorkflowUuid: str
         :param _CreationTime: 创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreationTime: str
         """
         self._EnvironmentId = None
@@ -2137,7 +2129,6 @@ class Environment(AbstractModel):
     @property
     def LastWorkflowUuid(self):
         """上个工作流UUID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastWorkflowUuid
@@ -2149,7 +2140,6 @@ class Environment(AbstractModel):
     @property
     def CreationTime(self):
         """创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreationTime
@@ -3081,10 +3071,8 @@ class LimitRange(AbstractModel):
     def __init__(self):
         r"""
         :param _MaxCPU: 最大CPU设置
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxCPU: str
         :param _MaxMemory: 最大内存设置（单位：Mi，Gi，Ti，M，G，T）
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxMemory: str
         """
         self._MaxCPU = None
@@ -3093,7 +3081,6 @@ class LimitRange(AbstractModel):
     @property
     def MaxCPU(self):
         """最大CPU设置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MaxCPU
@@ -3105,7 +3092,6 @@ class LimitRange(AbstractModel):
     @property
     def MaxMemory(self):
         """最大内存设置（单位：Mi，Gi，Ti，M，G，T）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MaxMemory
@@ -3357,32 +3343,24 @@ class ResourceIds(AbstractModel):
     def __init__(self):
         r"""
         :param _VPCId: 私有网络ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VPCId: str
         :param _SubnetId: 子网ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param _SecurityGroupId: 安全组ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupId: str
         :param _TDSQLCId: TDSQL-C Mysql版数据库ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TDSQLCId: str
         :param _CFSId: 文件存储ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CFSId: str
         :param _CFSStorageType: 文件存储类型：取值范围：
 - SD：通用标准型
 - HP：通用性能型
 - TB：turbo标准型
 - TP：turbo性能型
-注意：此字段可能返回 null，表示取不到有效值。
         :type CFSStorageType: str
         :param _CVMId: 云服务器ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CVMId: str
         :param _EKSId: 弹性容器集群ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EKSId: str
         """
         self._VPCId = None
@@ -3397,7 +3375,6 @@ class ResourceIds(AbstractModel):
     @property
     def VPCId(self):
         """私有网络ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VPCId
@@ -3409,7 +3386,6 @@ class ResourceIds(AbstractModel):
     @property
     def SubnetId(self):
         """子网ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId
@@ -3421,7 +3397,6 @@ class ResourceIds(AbstractModel):
     @property
     def SecurityGroupId(self):
         """安全组ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SecurityGroupId
@@ -3433,7 +3408,6 @@ class ResourceIds(AbstractModel):
     @property
     def TDSQLCId(self):
         """TDSQL-C Mysql版数据库ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TDSQLCId
@@ -3445,7 +3419,6 @@ class ResourceIds(AbstractModel):
     @property
     def CFSId(self):
         """文件存储ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CFSId
@@ -3461,7 +3434,6 @@ class ResourceIds(AbstractModel):
 - HP：通用性能型
 - TB：turbo标准型
 - TP：turbo性能型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CFSStorageType
@@ -3473,7 +3445,6 @@ class ResourceIds(AbstractModel):
     @property
     def CVMId(self):
         """云服务器ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CVMId
@@ -3485,7 +3456,6 @@ class ResourceIds(AbstractModel):
     @property
     def EKSId(self):
         """弹性容器集群ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EKSId
@@ -3522,13 +3492,10 @@ class ResourceQuota(AbstractModel):
     def __init__(self):
         r"""
         :param _CPULimit: CPU Limit设置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CPULimit: str
         :param _MemoryLimit: 内存Limit设置（单位：Mi，Gi，Ti，M，G，T）
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemoryLimit: str
         :param _Pods: Pods数量设置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Pods: str
         """
         self._CPULimit = None
@@ -3538,7 +3505,6 @@ class ResourceQuota(AbstractModel):
     @property
     def CPULimit(self):
         """CPU Limit设置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CPULimit
@@ -3550,7 +3516,6 @@ class ResourceQuota(AbstractModel):
     @property
     def MemoryLimit(self):
         """内存Limit设置（单位：Mi，Gi，Ti，M，G，T）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MemoryLimit
@@ -3562,7 +3527,6 @@ class ResourceQuota(AbstractModel):
     @property
     def Pods(self):
         """Pods数量设置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Pods
@@ -6262,20 +6226,15 @@ class Volume(AbstractModel):
     def __init__(self):
         r"""
         :param _VolumeId: 缓存卷ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VolumeId: str
         :param _Name: 名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Description: 描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _EnvironmentId: 环境ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnvironmentId: str
         :param _Type: 缓存卷类型，取值范围：
 * SHARED：多点挂载共享存储
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Spec: 缓存卷规格，取值范围：
 
@@ -6283,25 +6242,18 @@ class Volume(AbstractModel):
 - HP：通用性能型
 - TB：turbo标准型
 - TP：turbo性能型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Spec: str
         :param _Capacity: 缓存卷大小（GB）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Capacity: int
         :param _Usage: 缓存卷使用量（Byte）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Usage: int
         :param _BandwidthLimit: 缓存卷吞吐上限（MiB/s）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BandwidthLimit: float
         :param _DefaultMountPath: 默认挂载路径。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultMountPath: str
         :param _IsDefault: 是否为默认缓存卷。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsDefault: bool
         :param _Status: 状态。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         """
         self._VolumeId = None
@@ -6320,7 +6272,6 @@ class Volume(AbstractModel):
     @property
     def VolumeId(self):
         """缓存卷ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VolumeId
@@ -6332,7 +6283,6 @@ class Volume(AbstractModel):
     @property
     def Name(self):
         """名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -6344,7 +6294,6 @@ class Volume(AbstractModel):
     @property
     def Description(self):
         """描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -6356,7 +6305,6 @@ class Volume(AbstractModel):
     @property
     def EnvironmentId(self):
         """环境ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnvironmentId
@@ -6369,7 +6317,6 @@ class Volume(AbstractModel):
     def Type(self):
         """缓存卷类型，取值范围：
 * SHARED：多点挂载共享存储
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -6386,7 +6333,6 @@ class Volume(AbstractModel):
 - HP：通用性能型
 - TB：turbo标准型
 - TP：turbo性能型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Spec
@@ -6398,7 +6344,6 @@ class Volume(AbstractModel):
     @property
     def Capacity(self):
         """缓存卷大小（GB）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Capacity
@@ -6410,7 +6355,6 @@ class Volume(AbstractModel):
     @property
     def Usage(self):
         """缓存卷使用量（Byte）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Usage
@@ -6422,7 +6366,6 @@ class Volume(AbstractModel):
     @property
     def BandwidthLimit(self):
         """缓存卷吞吐上限（MiB/s）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._BandwidthLimit
@@ -6434,7 +6377,6 @@ class Volume(AbstractModel):
     @property
     def DefaultMountPath(self):
         """默认挂载路径。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DefaultMountPath
@@ -6446,7 +6388,6 @@ class Volume(AbstractModel):
     @property
     def IsDefault(self):
         """是否为默认缓存卷。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsDefault
@@ -6458,7 +6399,6 @@ class Volume(AbstractModel):
     @property
     def Status(self):
         """状态。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status

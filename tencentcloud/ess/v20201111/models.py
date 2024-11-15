@@ -2894,7 +2894,8 @@ class Component(AbstractModel):
 
 * 个人方
 <ul><li> <b>SIGN_DATE</b> : 签署日期控件；</li>
-<li> <b>SIGN_SIGNATURE</b> : 用户签名控件；</li></ul>
+<li> <b>SIGN_SIGNATURE</b> : 用户签名控件；</li>
+<li> <b>SIGN_OPINION</b> : 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认；</li></ul>
  
 注：` 表单域的控件不能作为印章和签名控件`
         :type ComponentType: str
@@ -3012,6 +3013,9 @@ class Component(AbstractModel):
 <ul><li> <b>PageRanges</b> :PageRange的数组，通过PageRanges属性设置该印章在PDF所有页面上盖章（适用于标书在所有页面盖章的情况）</li></ul>
 <b>参数样例</b>：` "{"PageRanges":[{"BeginPage":1,"EndPage":-1}]}"`
 
+<font color="red">签署印章透明度功能设置，</font>当ComponentType为SIGN_SIGNATURE、SIGN_SEAL、SIGN_PAGING_SEAL、SIGN_LEGAL_PERSON_SEAL时，可以通过以下参数设置签署印章的透明度：
+<ul><li> <b>Opacity</b>：印章透明度，支持范围：0-1，0.7表示70%的透明度，1表示无透明度</li></ul>
+<b>参数样例</b>：`{"Opacity":0.7}`
 
 <font color="red">关键字模式下支持关键字找不到的情况下不进行报错的设置</font>
 <ul><li> <b>IgnoreKeywordError</b> :1-关键字查找不到时不进行报错</li></ul>
@@ -3137,7 +3141,8 @@ class Component(AbstractModel):
 
 * 个人方
 <ul><li> <b>SIGN_DATE</b> : 签署日期控件；</li>
-<li> <b>SIGN_SIGNATURE</b> : 用户签名控件；</li></ul>
+<li> <b>SIGN_SIGNATURE</b> : 用户签名控件；</li>
+<li> <b>SIGN_OPINION</b> : 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认；</li></ul>
  
 注：` 表单域的控件不能作为印章和签名控件`
         :rtype: str
@@ -3363,6 +3368,9 @@ class Component(AbstractModel):
 <ul><li> <b>PageRanges</b> :PageRange的数组，通过PageRanges属性设置该印章在PDF所有页面上盖章（适用于标书在所有页面盖章的情况）</li></ul>
 <b>参数样例</b>：` "{"PageRanges":[{"BeginPage":1,"EndPage":-1}]}"`
 
+<font color="red">签署印章透明度功能设置，</font>当ComponentType为SIGN_SIGNATURE、SIGN_SEAL、SIGN_PAGING_SEAL、SIGN_LEGAL_PERSON_SEAL时，可以通过以下参数设置签署印章的透明度：
+<ul><li> <b>Opacity</b>：印章透明度，支持范围：0-1，0.7表示70%的透明度，1表示无透明度</li></ul>
+<b>参数样例</b>：`{"Opacity":0.7}`
 
 <font color="red">关键字模式下支持关键字找不到的情况下不进行报错的设置</font>
 <ul><li> <b>IgnoreKeywordError</b> :1-关键字查找不到时不进行报错</li></ul>
@@ -11646,15 +11654,25 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param _Operator: 执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _AuthorizedOrganizationId: 被授企业id/授权方企业id，和AuthorizedOrganizationName二选一传入
+        :param _AuthorizedOrganizationId: 被授企业id/授权方企业id（即OrganizationId），和AuthorizedOrganizationName二选一传入
         :type AuthorizedOrganizationId: str
-        :param _AuthorizedOrganizationName: 被授企业名称/授权方企业名称，和AuthorizedOrganizationId二选一传入
+        :param _AuthorizedOrganizationName: 被授企业名称/授权方企业的名字，和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。
+注: `如果名称中包含英文括号()，请使用中文括号（）代替。`
         :type AuthorizedOrganizationName: str
-        :param _SealTypes: 指定印章类型，指定后只能选择该类型的印章进行授权支持以下印章类型：- OFFICIAL : 企业公章- CONTRACT : 合同专用章- FINANCE : 财务专用章- PERSONNEL : 人事专用章
+        :param _SealTypes: 在设置印章授权时，可以指定特定的印章类型，以确保在授权过程中只使用相应类型的印章。支持的印章类型包括：
+
+<ul>
+<li><strong>OFFICIAL</strong>：企业公章，用于代表企业对外的正式文件和重要事务的认证。</li>
+<li><strong>CONTRACT</strong>：合同专用章，专门用于签署各类合同。</li>
+<li><strong>FINANCE</strong>：财务专用章，用于企业的财务相关文件，如发票、收据等财务凭证的认证。</li>
+<li><strong>PERSONNEL</strong>：人事专用章，用于人事管理相关文件，如劳动合同、人事任命等。</li>
+</ul>
         :type SealTypes: list of str
-        :param _AuthToMe: 他方授权给我方：
-- false：我方授权他方，AuthorizedOrganizationName代表【被授权方】企业名称
-- true：他方授权我方，AuthorizedOrganizationName代表【授权方】企业名称
+        :param _AuthToMe: 在处理授权关系时，授权的方向
+<ul>
+<li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
+<li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【授权方】的企业名称，即提供授权的企业。</li>
+</ul>
         :type AuthToMe: bool
         """
         self._Agent = None
@@ -11688,7 +11706,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def AuthorizedOrganizationId(self):
-        """被授企业id/授权方企业id，和AuthorizedOrganizationName二选一传入
+        """被授企业id/授权方企业id（即OrganizationId），和AuthorizedOrganizationName二选一传入
         :rtype: str
         """
         return self._AuthorizedOrganizationId
@@ -11699,7 +11717,8 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def AuthorizedOrganizationName(self):
-        """被授企业名称/授权方企业名称，和AuthorizedOrganizationId二选一传入
+        """被授企业名称/授权方企业的名字，和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。
+注: `如果名称中包含英文括号()，请使用中文括号（）代替。`
         :rtype: str
         """
         return self._AuthorizedOrganizationName
@@ -11710,7 +11729,14 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def SealTypes(self):
-        """指定印章类型，指定后只能选择该类型的印章进行授权支持以下印章类型：- OFFICIAL : 企业公章- CONTRACT : 合同专用章- FINANCE : 财务专用章- PERSONNEL : 人事专用章
+        """在设置印章授权时，可以指定特定的印章类型，以确保在授权过程中只使用相应类型的印章。支持的印章类型包括：
+
+<ul>
+<li><strong>OFFICIAL</strong>：企业公章，用于代表企业对外的正式文件和重要事务的认证。</li>
+<li><strong>CONTRACT</strong>：合同专用章，专门用于签署各类合同。</li>
+<li><strong>FINANCE</strong>：财务专用章，用于企业的财务相关文件，如发票、收据等财务凭证的认证。</li>
+<li><strong>PERSONNEL</strong>：人事专用章，用于人事管理相关文件，如劳动合同、人事任命等。</li>
+</ul>
         :rtype: list of str
         """
         return self._SealTypes
@@ -11721,9 +11747,11 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def AuthToMe(self):
-        """他方授权给我方：
-- false：我方授权他方，AuthorizedOrganizationName代表【被授权方】企业名称
-- true：他方授权我方，AuthorizedOrganizationName代表【授权方】企业名称
+        """在处理授权关系时，授权的方向
+<ul>
+<li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
+<li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【授权方】的企业名称，即提供授权的企业。</li>
+</ul>
         :rtype: bool
         """
         return self._AuthToMe

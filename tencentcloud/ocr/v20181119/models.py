@@ -7215,10 +7215,10 @@ class Encryption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CiphertextBlob: 有加密需求的用户，接入传入kms的CiphertextBlob，关于数据加密可查阅[敏感数据加密指引](https://cloud.tencent.com/document/product/866/106048)文档。
+        :param _CiphertextBlob: 有加密需求的用户，接入传入kms的CiphertextBlob（Base64编码），关于数据加密可查阅[敏感数据加密指引](https://cloud.tencent.com/document/product/866/106048)文档。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CiphertextBlob: str
-        :param _Iv: 有加密需求的用户，传入CBC加密的初始向量（客户自定义字符串，长度16字符）。
+        :param _Iv: 有加密需求的用户，传入CBC加密的初始向量（客户自定义字符串，长度16字符，Base64编码）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Iv: str
         :param _Algorithm: 加密使用的算法（支持'AES-256-CBC'、'SM4-GCM'），不传默认为'AES-256-CBC'
@@ -7239,7 +7239,7 @@ class Encryption(AbstractModel):
 
     @property
     def CiphertextBlob(self):
-        """有加密需求的用户，接入传入kms的CiphertextBlob，关于数据加密可查阅[敏感数据加密指引](https://cloud.tencent.com/document/product/866/106048)文档。
+        """有加密需求的用户，接入传入kms的CiphertextBlob（Base64编码），关于数据加密可查阅[敏感数据加密指引](https://cloud.tencent.com/document/product/866/106048)文档。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7251,7 +7251,7 @@ class Encryption(AbstractModel):
 
     @property
     def Iv(self):
-        """有加密需求的用户，传入CBC加密的初始向量（客户自定义字符串，长度16字符）。
+        """有加密需求的用户，传入CBC加密的初始向量（客户自定义字符串，长度16字符，Base64编码）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10562,11 +10562,14 @@ class GeneralHandwritingOCRResponse(AbstractModel):
         :type TextDetections: list of TextGeneralHandwriting
         :param _Angel: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :type Angel: float
+        :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+        :type Angle: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TextDetections = None
         self._Angel = None
+        self._Angle = None
         self._RequestId = None
 
     @property
@@ -10582,6 +10585,8 @@ class GeneralHandwritingOCRResponse(AbstractModel):
 
     @property
     def Angel(self):
+        warnings.warn("parameter `Angel` is deprecated", DeprecationWarning) 
+
         """图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :rtype: float
         """
@@ -10589,7 +10594,20 @@ class GeneralHandwritingOCRResponse(AbstractModel):
 
     @Angel.setter
     def Angel(self, Angel):
+        warnings.warn("parameter `Angel` is deprecated", DeprecationWarning) 
+
         self._Angel = Angel
+
+    @property
+    def Angle(self):
+        """图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+        :rtype: float
+        """
+        return self._Angle
+
+    @Angle.setter
+    def Angle(self, Angle):
+        self._Angle = Angle
 
     @property
     def RequestId(self):
@@ -10611,6 +10629,7 @@ class GeneralHandwritingOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self._TextDetections.append(obj)
         self._Angel = params.get("Angel")
+        self._Angle = params.get("Angle")
         self._RequestId = params.get("RequestId")
 
 
@@ -21269,7 +21288,7 @@ class RecognizeEncryptedIDCardOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EncryptedBody: 请求体被加密后的密文，本接口只支持加密传输
+        :param _EncryptedBody: 请求体被加密后的密文（Base64编码），本接口只支持加密传输
         :type EncryptedBody: str
         :param _Encryption: 敏感数据加密信息。对传入信息有加密需求的用户可使用此参数，详情请点击左侧链接。
         :type Encryption: :class:`tencentcloud.ocr.v20181119.models.Encryption`
@@ -21319,7 +21338,7 @@ Config = {"CropIdCard":true,"CropPortrait":true}
 
     @property
     def EncryptedBody(self):
-        """请求体被加密后的密文，本接口只支持加密传输
+        """请求体被加密后的密文（Base64编码），本接口只支持加密传输
         :rtype: str
         """
         return self._EncryptedBody
@@ -21494,7 +21513,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
         :type AdvancedInfo: str
         :param _ReflectDetailInfos: 反光点覆盖区域详情结果，具体内容请点击左侧链接
         :type ReflectDetailInfos: list of ReflectDetailInfo
-        :param _EncryptedBody: 加密后的数据
+        :param _EncryptedBody: 加密后的数据（Base64编码）
         :type EncryptedBody: str
         :param _Encryption: 敏感数据加密信息
         :type Encryption: :class:`tencentcloud.ocr.v20181119.models.Encryption`
@@ -21645,7 +21664,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 
     @property
     def EncryptedBody(self):
-        """加密后的数据
+        """加密后的数据（Base64编码）
         :rtype: str
         """
         return self._EncryptedBody
@@ -23181,6 +23200,492 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
         self._Provinsi = params.get("Provinsi")
         self._Kota = params.get("Kota")
         self._WarnCardInfos = params.get("WarnCardInfos")
+        self._RequestId = params.get("RequestId")
+
+
+class RecognizeKoreanDrivingLicenseOCRRequest(AbstractModel):
+    """RecognizeKoreanDrivingLicenseOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param _ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        :param _ReturnHeadImage: 是否返回人像照片。
+        :type ReturnHeadImage: bool
+        """
+        self._ImageBase64 = None
+        self._ImageUrl = None
+        self._ReturnHeadImage = None
+
+    @property
+    def ImageBase64(self):
+        """图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def ImageUrl(self):
+        """图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ReturnHeadImage(self):
+        """是否返回人像照片。
+        :rtype: bool
+        """
+        return self._ReturnHeadImage
+
+    @ReturnHeadImage.setter
+    def ReturnHeadImage(self, ReturnHeadImage):
+        self._ReturnHeadImage = ReturnHeadImage
+
+
+    def _deserialize(self, params):
+        self._ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ReturnHeadImage = params.get("ReturnHeadImage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeKoreanDrivingLicenseOCRResponse(AbstractModel):
+    """RecognizeKoreanDrivingLicenseOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 身份证号码
+        :type ID: str
+        :param _LicenseNumber: 驾照号码
+        :type LicenseNumber: str
+        :param _Number: 居民登记号码
+        :type Number: str
+        :param _Type: 驾照类型
+        :type Type: str
+        :param _Address: 地址
+        :type Address: str
+        :param _Name: 姓名
+        :type Name: str
+        :param _AptitudeTesDate: 换证时间
+        :type AptitudeTesDate: str
+        :param _DateOfIssue: 发证日期
+        :type DateOfIssue: str
+        :param _Photo: 人像截图Base64后的结果
+        :type Photo: str
+        :param _Sex: 性别
+        :type Sex: str
+        :param _Birthday: 生日，格式为dd/mm/yyyy
+        :type Birthday: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ID = None
+        self._LicenseNumber = None
+        self._Number = None
+        self._Type = None
+        self._Address = None
+        self._Name = None
+        self._AptitudeTesDate = None
+        self._DateOfIssue = None
+        self._Photo = None
+        self._Sex = None
+        self._Birthday = None
+        self._RequestId = None
+
+    @property
+    def ID(self):
+        """身份证号码
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def LicenseNumber(self):
+        """驾照号码
+        :rtype: str
+        """
+        return self._LicenseNumber
+
+    @LicenseNumber.setter
+    def LicenseNumber(self, LicenseNumber):
+        self._LicenseNumber = LicenseNumber
+
+    @property
+    def Number(self):
+        """居民登记号码
+        :rtype: str
+        """
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
+
+    @property
+    def Type(self):
+        """驾照类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Address(self):
+        """地址
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def Name(self):
+        """姓名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def AptitudeTesDate(self):
+        """换证时间
+        :rtype: str
+        """
+        return self._AptitudeTesDate
+
+    @AptitudeTesDate.setter
+    def AptitudeTesDate(self, AptitudeTesDate):
+        self._AptitudeTesDate = AptitudeTesDate
+
+    @property
+    def DateOfIssue(self):
+        """发证日期
+        :rtype: str
+        """
+        return self._DateOfIssue
+
+    @DateOfIssue.setter
+    def DateOfIssue(self, DateOfIssue):
+        self._DateOfIssue = DateOfIssue
+
+    @property
+    def Photo(self):
+        """人像截图Base64后的结果
+        :rtype: str
+        """
+        return self._Photo
+
+    @Photo.setter
+    def Photo(self, Photo):
+        self._Photo = Photo
+
+    @property
+    def Sex(self):
+        """性别
+        :rtype: str
+        """
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+    @property
+    def Birthday(self):
+        """生日，格式为dd/mm/yyyy
+        :rtype: str
+        """
+        return self._Birthday
+
+    @Birthday.setter
+    def Birthday(self, Birthday):
+        self._Birthday = Birthday
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._LicenseNumber = params.get("LicenseNumber")
+        self._Number = params.get("Number")
+        self._Type = params.get("Type")
+        self._Address = params.get("Address")
+        self._Name = params.get("Name")
+        self._AptitudeTesDate = params.get("AptitudeTesDate")
+        self._DateOfIssue = params.get("DateOfIssue")
+        self._Photo = params.get("Photo")
+        self._Sex = params.get("Sex")
+        self._Birthday = params.get("Birthday")
+        self._RequestId = params.get("RequestId")
+
+
+class RecognizeKoreanIDCardOCRRequest(AbstractModel):
+    """RecognizeKoreanIDCardOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param _ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        :param _ReturnHeadImage: 是否返回人像照片。
+        :type ReturnHeadImage: bool
+        """
+        self._ImageBase64 = None
+        self._ImageUrl = None
+        self._ReturnHeadImage = None
+
+    @property
+    def ImageBase64(self):
+        """图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def ImageUrl(self):
+        """图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ReturnHeadImage(self):
+        """是否返回人像照片。
+        :rtype: bool
+        """
+        return self._ReturnHeadImage
+
+    @ReturnHeadImage.setter
+    def ReturnHeadImage(self, ReturnHeadImage):
+        self._ReturnHeadImage = ReturnHeadImage
+
+
+    def _deserialize(self, params):
+        self._ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ReturnHeadImage = params.get("ReturnHeadImage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeKoreanIDCardOCRResponse(AbstractModel):
+    """RecognizeKoreanIDCardOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 身份证号码
+        :type ID: str
+        :param _Address: 地址
+        :type Address: str
+        :param _Name: 姓名
+        :type Name: str
+        :param _DateOfIssue: 发证日期
+        :type DateOfIssue: str
+        :param _Photo: 人像截图Base64后的结果
+        :type Photo: str
+        :param _Sex: 性别
+        :type Sex: str
+        :param _Birthday: 生日，格式为dd/mm/yyyy
+        :type Birthday: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ID = None
+        self._Address = None
+        self._Name = None
+        self._DateOfIssue = None
+        self._Photo = None
+        self._Sex = None
+        self._Birthday = None
+        self._RequestId = None
+
+    @property
+    def ID(self):
+        """身份证号码
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Address(self):
+        """地址
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def Name(self):
+        """姓名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def DateOfIssue(self):
+        """发证日期
+        :rtype: str
+        """
+        return self._DateOfIssue
+
+    @DateOfIssue.setter
+    def DateOfIssue(self, DateOfIssue):
+        self._DateOfIssue = DateOfIssue
+
+    @property
+    def Photo(self):
+        """人像截图Base64后的结果
+        :rtype: str
+        """
+        return self._Photo
+
+    @Photo.setter
+    def Photo(self, Photo):
+        self._Photo = Photo
+
+    @property
+    def Sex(self):
+        """性别
+        :rtype: str
+        """
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+    @property
+    def Birthday(self):
+        """生日，格式为dd/mm/yyyy
+        :rtype: str
+        """
+        return self._Birthday
+
+    @Birthday.setter
+    def Birthday(self, Birthday):
+        self._Birthday = Birthday
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Address = params.get("Address")
+        self._Name = params.get("Name")
+        self._DateOfIssue = params.get("DateOfIssue")
+        self._Photo = params.get("Photo")
+        self._Sex = params.get("Sex")
+        self._Birthday = params.get("Birthday")
         self._RequestId = params.get("RequestId")
 
 
@@ -26124,7 +26629,7 @@ class ReconstructDocumentRequest(AbstractModel):
         r"""
         :param _FileType: PDF,Image
         :type FileType: str
-        :param _FileBase64: 图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param _FileBase64: 图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
         :type FileBase64: str
         :param _FileUrl: 图片的 Url 地址。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经 Base64 编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type FileUrl: str
@@ -26156,7 +26661,7 @@ class ReconstructDocumentRequest(AbstractModel):
 
     @property
     def FileBase64(self):
-        """图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        """图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
         :rtype: str
         """
         return self._FileBase64

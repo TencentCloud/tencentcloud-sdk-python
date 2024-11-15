@@ -1718,6 +1718,8 @@ class CompanyStateInfo(AbstractModel):
         :type BusinessId: str
         :param _ModifyTime: 修改时间
         :type ModifyTime: int
+        :param _ContractNo: 合同编号
+        :type ContractNo: str
         """
         self._Id = None
         self._CompanyName = None
@@ -1727,6 +1729,7 @@ class CompanyStateInfo(AbstractModel):
         self._State = None
         self._BusinessId = None
         self._ModifyTime = None
+        self._ContractNo = None
 
     @property
     def Id(self):
@@ -1816,6 +1819,17 @@ class CompanyStateInfo(AbstractModel):
     def ModifyTime(self, ModifyTime):
         self._ModifyTime = ModifyTime
 
+    @property
+    def ContractNo(self):
+        """合同编号
+        :rtype: str
+        """
+        return self._ContractNo
+
+    @ContractNo.setter
+    def ContractNo(self, ContractNo):
+        self._ContractNo = ContractNo
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -1826,6 +1840,7 @@ class CompanyStateInfo(AbstractModel):
         self._State = params.get("State")
         self._BusinessId = params.get("BusinessId")
         self._ModifyTime = params.get("ModifyTime")
+        self._ContractNo = params.get("ContractNo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1455,6 +1455,8 @@ class BiologicalProductInfoName(AbstractModel):
 
     @property
     def BarndName(self):
+        warnings.warn("parameter `BarndName` is deprecated", DeprecationWarning) 
+
         """品牌名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -1463,6 +1465,8 @@ class BiologicalProductInfoName(AbstractModel):
 
     @BarndName.setter
     def BarndName(self, BarndName):
+        warnings.warn("parameter `BarndName` is deprecated", DeprecationWarning) 
+
         self._BarndName = BarndName
 
     @property
@@ -4585,12 +4589,15 @@ class ChemicalProductInfoName(AbstractModel):
         :param _Pinyin: 拼音
 注意：此字段可能返回 null，表示取不到有效值。
         :type Pinyin: str
+        :param _BrandName: 品牌名
+        :type BrandName: str
         """
         self._Text = None
         self._GenericName = None
         self._BarndName = None
         self._EnName = None
         self._Pinyin = None
+        self._BrandName = None
 
     @property
     def Text(self):
@@ -4618,6 +4625,8 @@ class ChemicalProductInfoName(AbstractModel):
 
     @property
     def BarndName(self):
+        warnings.warn("parameter `BarndName` is deprecated", DeprecationWarning) 
+
         """品牌名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -4626,6 +4635,8 @@ class ChemicalProductInfoName(AbstractModel):
 
     @BarndName.setter
     def BarndName(self, BarndName):
+        warnings.warn("parameter `BarndName` is deprecated", DeprecationWarning) 
+
         self._BarndName = BarndName
 
     @property
@@ -4652,6 +4663,17 @@ class ChemicalProductInfoName(AbstractModel):
     def Pinyin(self, Pinyin):
         self._Pinyin = Pinyin
 
+    @property
+    def BrandName(self):
+        """品牌名
+        :rtype: str
+        """
+        return self._BrandName
+
+    @BrandName.setter
+    def BrandName(self, BrandName):
+        self._BrandName = BrandName
+
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
@@ -4659,6 +4681,7 @@ class ChemicalProductInfoName(AbstractModel):
         self._BarndName = params.get("BarndName")
         self._EnName = params.get("EnName")
         self._Pinyin = params.get("Pinyin")
+        self._BrandName = params.get("BrandName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

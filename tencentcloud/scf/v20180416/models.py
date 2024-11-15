@@ -3737,7 +3737,7 @@ class FunctionLog(AbstractModel):
         :type RequestId: str
         :param _StartTime: 函数开始执行时的时间点
         :type StartTime: str
-        :param _RetCode: 函数执行结果，如果是 0 表示执行成功，其他值表示失败
+        :param _RetCode: 函数执行结果，如果是 0 表示执行成功，2表示函数运行中，3表示函数执行中断，其他值表示失败
         :type RetCode: int
         :param _InvokeFinished: 函数调用是否结束，如果是 1 表示执行结束，其他值表示调用异常
         :type InvokeFinished: int
@@ -3816,7 +3816,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def RetCode(self):
-        """函数执行结果，如果是 0 表示执行成功，其他值表示失败
+        """函数执行结果，如果是 0 表示执行成功，2表示函数运行中，3表示函数执行中断，其他值表示失败
         :rtype: int
         """
         return self._RetCode

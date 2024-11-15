@@ -2099,33 +2099,47 @@ class DetectAuthRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: 用于细分客户使用场景，申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。如有疑问，请添加[腾讯云人脸核身小助手](https://cloud.tencent.com/document/product/1007/56130)进行咨询。
+        :param _RuleId: 业务流程ID。
+- 用于细分客户使用场景, 可为业务配置不同的业务流程。
+- 申请开通服务后，登录腾讯云[慧眼人脸核身控制](https://console.cloud.tencent.com/faceid)进行创建，审核通过后即可调用。
+- 如有疑问，请添加[腾讯云人脸核身小助手](https://cloud.tencent.com/document/product/1007/56130)进行咨询。
         :type RuleId: str
         :param _TerminalType: 本接口不需要传递此参数。
         :type TerminalType: str
-        :param _IdCard: 身份标识（是否必传基于[控制台](https://console.cloud.tencent.com/faceid/access)申请业务流程时配置的提示）。
-规则：a-z，A-Z，0-9组合。最长长度32位。
+        :param _IdCard: 验证人的身份证号码。
+- 是否必传基于[控制台](https://console.cloud.tencent.com/faceid/access)申请业务流程时配置的提示。
+
         :type IdCard: str
-        :param _Name: 姓名。（是否必传基于[控制台](https://console.cloud.tencent.com/faceid/access)申请业务流程时配置的提示）。
-最长长度32位。中文请使用UTF-8编码。
+        :param _Name: 验证人的姓名。
+- 是否必传基于[控制台](https://console.cloud.tencent.com/faceid/access)申请业务流程时配置的提示。
+- 最长长度32位。中文请使用UTF-8编码。
         :type Name: str
-        :param _RedirectUrl: 认证结束后重定向的回调链接地址。最长长度1024位。
+        :param _RedirectUrl: 认证结束后重定向的回调链接地址。
+- 最长长度1024位。
         :type RedirectUrl: str
         :param _Extra: 透传字段，在获取验证结果时返回。
         :type Extra: str
-        :param _ImageBase64: 用于人脸比对的照片，图片的Base64值；
-Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+        :param _ImageBase64: 用于人脸比对的图像数据，使用base64编码。
+- Base64编码后的图片数据大小不超过3M。
+- 仅支持jpg、png格式。
+- 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
         :type ImageBase64: str
         :param _Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
-        :param _IntentionVerifyText: 意愿核身（朗读模式）使用的文案，若未使用意愿核身（朗读模式），则该字段无需传入。默认为空，最长可接受120的字符串长度。
+        :param _IntentionVerifyText: 意愿核身（朗读模式）使用的文案。
+- 若未使用意愿核身（朗读模式），则该字段无需传入。
+- 最长可接受120的字符串长度。
         :type IntentionVerifyText: str
-        :param _IntentionQuestions: 意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。当前仅支持1轮问答。
+        :param _IntentionQuestions: 意愿核身（语音播报+语音回答模式）使用的文案。
+- 包括：系统语音播报的文本、需要核验的标准文本。
+- 当前仅支持1轮问答。
         :type IntentionQuestions: list of IntentionQuestion
-        :param _Config: RuleId相关配置
-        :type Config: :class:`tencentcloud.faceid.v20180301.models.RuleIdConfig`
-        :param _IntentionActions: 意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。当前仅支持一个提示文本。
+        :param _IntentionActions: 意愿核身（点头确认模式）使用的文案。
+- 若未使用意愿核身（点头确认模式），则该字段无需传入。
+- 当前仅支持一个提示文本。
         :type IntentionActions: list of IntentionActionConfig
+        :param _Config: 意愿核身流程配置。
+        :type Config: :class:`tencentcloud.faceid.v20180301.models.RuleIdConfig`
         """
         self._RuleId = None
         self._TerminalType = None
@@ -2137,12 +2151,15 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
         self._Encryption = None
         self._IntentionVerifyText = None
         self._IntentionQuestions = None
-        self._Config = None
         self._IntentionActions = None
+        self._Config = None
 
     @property
     def RuleId(self):
-        """用于细分客户使用场景，申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。如有疑问，请添加[腾讯云人脸核身小助手](https://cloud.tencent.com/document/product/1007/56130)进行咨询。
+        """业务流程ID。
+- 用于细分客户使用场景, 可为业务配置不同的业务流程。
+- 申请开通服务后，登录腾讯云[慧眼人脸核身控制](https://console.cloud.tencent.com/faceid)进行创建，审核通过后即可调用。
+- 如有疑问，请添加[腾讯云人脸核身小助手](https://cloud.tencent.com/document/product/1007/56130)进行咨询。
         :rtype: str
         """
         return self._RuleId
@@ -2164,8 +2181,9 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
 
     @property
     def IdCard(self):
-        """身份标识（是否必传基于[控制台](https://console.cloud.tencent.com/faceid/access)申请业务流程时配置的提示）。
-规则：a-z，A-Z，0-9组合。最长长度32位。
+        """验证人的身份证号码。
+- 是否必传基于[控制台](https://console.cloud.tencent.com/faceid/access)申请业务流程时配置的提示。
+
         :rtype: str
         """
         return self._IdCard
@@ -2176,8 +2194,9 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
 
     @property
     def Name(self):
-        """姓名。（是否必传基于[控制台](https://console.cloud.tencent.com/faceid/access)申请业务流程时配置的提示）。
-最长长度32位。中文请使用UTF-8编码。
+        """验证人的姓名。
+- 是否必传基于[控制台](https://console.cloud.tencent.com/faceid/access)申请业务流程时配置的提示。
+- 最长长度32位。中文请使用UTF-8编码。
         :rtype: str
         """
         return self._Name
@@ -2188,7 +2207,8 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
 
     @property
     def RedirectUrl(self):
-        """认证结束后重定向的回调链接地址。最长长度1024位。
+        """认证结束后重定向的回调链接地址。
+- 最长长度1024位。
         :rtype: str
         """
         return self._RedirectUrl
@@ -2210,8 +2230,10 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
 
     @property
     def ImageBase64(self):
-        """用于人脸比对的照片，图片的Base64值；
-Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+        """用于人脸比对的图像数据，使用base64编码。
+- Base64编码后的图片数据大小不超过3M。
+- 仅支持jpg、png格式。
+- 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
         :rtype: str
         """
         return self._ImageBase64
@@ -2233,7 +2255,9 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
 
     @property
     def IntentionVerifyText(self):
-        """意愿核身（朗读模式）使用的文案，若未使用意愿核身（朗读模式），则该字段无需传入。默认为空，最长可接受120的字符串长度。
+        """意愿核身（朗读模式）使用的文案。
+- 若未使用意愿核身（朗读模式），则该字段无需传入。
+- 最长可接受120的字符串长度。
         :rtype: str
         """
         return self._IntentionVerifyText
@@ -2244,7 +2268,9 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
 
     @property
     def IntentionQuestions(self):
-        """意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。当前仅支持1轮问答。
+        """意愿核身（语音播报+语音回答模式）使用的文案。
+- 包括：系统语音播报的文本、需要核验的标准文本。
+- 当前仅支持1轮问答。
         :rtype: list of IntentionQuestion
         """
         return self._IntentionQuestions
@@ -2254,19 +2280,10 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
         self._IntentionQuestions = IntentionQuestions
 
     @property
-    def Config(self):
-        """RuleId相关配置
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.RuleIdConfig`
-        """
-        return self._Config
-
-    @Config.setter
-    def Config(self, Config):
-        self._Config = Config
-
-    @property
     def IntentionActions(self):
-        """意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。当前仅支持一个提示文本。
+        """意愿核身（点头确认模式）使用的文案。
+- 若未使用意愿核身（点头确认模式），则该字段无需传入。
+- 当前仅支持一个提示文本。
         :rtype: list of IntentionActionConfig
         """
         return self._IntentionActions
@@ -2274,6 +2291,17 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
     @IntentionActions.setter
     def IntentionActions(self, IntentionActions):
         self._IntentionActions = IntentionActions
+
+    @property
+    def Config(self):
+        """意愿核身流程配置。
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.RuleIdConfig`
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
 
 
     def _deserialize(self, params):
@@ -2294,15 +2322,15 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
                 obj = IntentionQuestion()
                 obj._deserialize(item)
                 self._IntentionQuestions.append(obj)
-        if params.get("Config") is not None:
-            self._Config = RuleIdConfig()
-            self._Config._deserialize(params.get("Config"))
         if params.get("IntentionActions") is not None:
             self._IntentionActions = []
             for item in params.get("IntentionActions"):
                 obj = IntentionActionConfig()
                 obj._deserialize(item)
                 self._IntentionActions.append(obj)
+        if params.get("Config") is not None:
+            self._Config = RuleIdConfig()
+            self._Config._deserialize(params.get("Config"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2322,8 +2350,9 @@ class DetectAuthResponse(AbstractModel):
         r"""
         :param _Url: 用于发起核身流程的URL，仅微信H5场景使用。
         :type Url: str
-        :param _BizToken: 一次核身流程的标识，有效时间为7,200秒；
-完成核身后，可用该标识获取验证结果信息。
+        :param _BizToken: 一次核验流程的唯一标识。
+- 有效时间为7,200秒，超过有效期再进行人脸核验会报错，请在有效期内进行核验。
+- 完成人脸核验后，需根据此标识调用[获取实名核身结果信息增强版](https://cloud.tencent.com/document/api/1007/41957)获取用户最终验证结果信息。
         :type BizToken: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2345,8 +2374,9 @@ class DetectAuthResponse(AbstractModel):
 
     @property
     def BizToken(self):
-        """一次核身流程的标识，有效时间为7,200秒；
-完成核身后，可用该标识获取验证结果信息。
+        """一次核验流程的唯一标识。
+- 有效时间为7,200秒，超过有效期再进行人脸核验会报错，请在有效期内进行核验。
+- 完成人脸核验后，需根据此标识调用[获取实名核身结果信息增强版](https://cloud.tencent.com/document/api/1007/41957)获取用户最终验证结果信息。
         :rtype: str
         """
         return self._BizToken
@@ -2651,7 +2681,7 @@ class DetectDetail(AbstractModel):
 
 
 class DetectInfoBestFrame(AbstractModel):
-    """核身最佳帧信息
+    """核身最佳帧信息。
 
     """
 
@@ -2706,7 +2736,7 @@ class DetectInfoBestFrame(AbstractModel):
 
 
 class DetectInfoIdCardData(AbstractModel):
-    """核身身份证图片信息
+    """核身身份证图片信息。
 
     """
 
@@ -2715,7 +2745,7 @@ class DetectInfoIdCardData(AbstractModel):
         :param _OcrFront: OCR正面照片的base64编码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrFront: str
-        :param _OcrBack: OCR反面照片的base64编码
+        :param _OcrBack: OCR反面照片的base64编码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrBack: str
         :param _ProcessedFrontImage: 旋转裁边后的正面照片base64编码。
@@ -2727,26 +2757,30 @@ class DetectInfoIdCardData(AbstractModel):
         :param _Avatar: 身份证正面人像图base64编码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Avatar: str
-        :param _WarnInfos: 身份证人像面告警码，开启身份证告警功能后才会返回，返回数组中可能出现的告警码如下：
--9100 身份证有效日期不合法告警，
--9101 身份证边框不完整告警，
--9102 身份证复印件告警，
--9103 身份证翻拍告警，
--9105 身份证框内遮挡告警，
--9104 临时身份证告警，
--9106 身份证 PS 告警（疑似存在PS痕迹），
--9107 身份证反光告警。
+        :param _WarnInfos: 身份证人像面告警码。
+- 开启身份证告警功能后才会返回。
+- 返回数组中可能出现的告警码如下：
+    - -9100 身份证有效日期不合法告警。
+    - -9101 身份证边框不完整告警。
+    - -9102 身份证复印件告警。
+    - -9103 身份证翻拍告警。
+    - -9105 身份证框内遮挡告警。
+    - -9104 临时身份证告警。
+    - -9106 身份证 PS 告警（疑似存在PS痕迹）。
+    - -9107 身份证反光告警。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WarnInfos: list of int
-        :param _BackWarnInfos: 身份证国徽面告警码，开启身份证告警功能后才会返回，返回数组中可能出现的告警码如下：
--9100 身份证有效日期不合法告警，
--9101 身份证边框不完整告警，
--9102 身份证复印件告警，
--9103 身份证翻拍告警，
--9105 身份证框内遮挡告警，
--9104 临时身份证告警，
--9106 身份证 PS 告警（疑似存在PS痕迹），
--9107 身份证反光告警。
+        :param _BackWarnInfos: 身份证国徽面告警码。
+- 开启身份证告警功能后才会返回。
+- 返回数组中可能出现的告警码如下：
+    -   -9100 身份证有效日期不合法告警，
+    -     -9101 身份证边框不完整告警，
+    -     -9102 身份证复印件告警，
+    -     -9103 身份证翻拍告警，
+    -     -9105 身份证框内遮挡告警，
+    -     -9104 临时身份证告警，
+    -     -9106 身份证 PS 告警（疑似存在PS痕迹），
+    -     -9107 身份证反光告警。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackWarnInfos: list of int
         """
@@ -2772,7 +2806,7 @@ class DetectInfoIdCardData(AbstractModel):
 
     @property
     def OcrBack(self):
-        """OCR反面照片的base64编码
+        """OCR反面照片的base64编码。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2820,15 +2854,17 @@ class DetectInfoIdCardData(AbstractModel):
 
     @property
     def WarnInfos(self):
-        """身份证人像面告警码，开启身份证告警功能后才会返回，返回数组中可能出现的告警码如下：
--9100 身份证有效日期不合法告警，
--9101 身份证边框不完整告警，
--9102 身份证复印件告警，
--9103 身份证翻拍告警，
--9105 身份证框内遮挡告警，
--9104 临时身份证告警，
--9106 身份证 PS 告警（疑似存在PS痕迹），
--9107 身份证反光告警。
+        """身份证人像面告警码。
+- 开启身份证告警功能后才会返回。
+- 返回数组中可能出现的告警码如下：
+    - -9100 身份证有效日期不合法告警。
+    - -9101 身份证边框不完整告警。
+    - -9102 身份证复印件告警。
+    - -9103 身份证翻拍告警。
+    - -9105 身份证框内遮挡告警。
+    - -9104 临时身份证告警。
+    - -9106 身份证 PS 告警（疑似存在PS痕迹）。
+    - -9107 身份证反光告警。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
@@ -2840,15 +2876,17 @@ class DetectInfoIdCardData(AbstractModel):
 
     @property
     def BackWarnInfos(self):
-        """身份证国徽面告警码，开启身份证告警功能后才会返回，返回数组中可能出现的告警码如下：
--9100 身份证有效日期不合法告警，
--9101 身份证边框不完整告警，
--9102 身份证复印件告警，
--9103 身份证翻拍告警，
--9105 身份证框内遮挡告警，
--9104 临时身份证告警，
--9106 身份证 PS 告警（疑似存在PS痕迹），
--9107 身份证反光告警。
+        """身份证国徽面告警码。
+- 开启身份证告警功能后才会返回。
+- 返回数组中可能出现的告警码如下：
+    -   -9100 身份证有效日期不合法告警，
+    -     -9101 身份证边框不完整告警，
+    -     -9102 身份证复印件告警，
+    -     -9103 身份证翻拍告警，
+    -     -9105 身份证框内遮挡告警，
+    -     -9104 临时身份证告警，
+    -     -9106 身份证 PS 告警（疑似存在PS痕迹），
+    -     -9107 身份证反光告警。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
@@ -2878,25 +2916,29 @@ class DetectInfoIdCardData(AbstractModel):
 
 
 class DetectInfoText(AbstractModel):
-    """核身文本信息
+    """核身文本信息。
 
     """
 
     def __init__(self):
         r"""
-        :param _ErrCode: 本次流程最终验证结果。0为成功（仅包含活体人脸核身结果，不包含意愿核身结果）
+        :param _ErrCode: 本次流程最终验证结果。
+- 取值范围：0为成功。
+- 仅包含活体人脸核身结果，不包含意愿核身结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
-        :param _ErrMsg: 本次流程最终验证结果描述。（仅描述用，文案更新时不会通知。）
+        :param _ErrMsg: 本次流程最终验证结果描述。
+- 仅描述用，文案更新时不会通知。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrMsg: str
         :param _IdCard: 本次验证使用的身份证号。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdCard: str
-        :param _UseIDType: 用户认证时使用的证件号码类型：
-0：二代身份证的证件号码
-1：港澳台居住证的证件号码
-2：其他（核验使用的证件号码非合法身份号码）
+        :param _UseIDType: 用户认证时使用的证件号码类型。
+- 取值范围：
+    0：二代身份证的证件号码。
+    1：港澳台居住证的证件号码。
+    2：其他（核验使用的证件号码非合法身份号码）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UseIDType: int
         :param _Name: 本次验证使用的姓名。
@@ -2908,13 +2950,15 @@ class DetectInfoText(AbstractModel):
         :param _OcrAddress: 身份校验环节识别结果：家庭住址。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrAddress: str
-        :param _OcrBirth: 身份校验环节识别结果：生日。格式为：YYYY/M/D
+        :param _OcrBirth: 身份校验环节识别结果：生日。
+- 格式为：YYYY/M/D
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrBirth: str
         :param _OcrAuthority: 身份校验环节识别结果：签发机关。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrAuthority: str
-        :param _OcrValidDate: 身份校验环节识别结果：有效日期。格式为：YYYY.MM.DD-YYYY.MM.DD
+        :param _OcrValidDate: 身份校验环节识别结果：有效日期。
+- 格式为：YYYY.MM.DD-YYYY.MM.DD。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrValidDate: str
         :param _OcrName: 身份校验环节识别结果：姓名。
@@ -2927,22 +2971,29 @@ class DetectInfoText(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrGender: str
         :param _IdInfoFrom: 身份校验环节采用的信息上传方式。
-取值有"NFC"、"OCR"、"手动输入"、"其他"
+- 取值有"NFC"、"OCR"、"手动输入"、"其他"
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdInfoFrom: str
-        :param _LiveStatus: 本次流程最终活体结果。0为成功
+        :param _LiveStatus: 本次流程最终活体结果。
+- 0为成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type LiveStatus: int
-        :param _LiveMsg: 本次流程最终活体结果描述。（仅描述用，文案更新时不会通知。）
+        :param _LiveMsg: 本次流程最终活体结果描述。
+- 仅描述用，文案更新时不会通知。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LiveMsg: str
-        :param _Comparestatus: 本次流程最终一比一结果。0为成功
+        :param _Comparestatus: 本次流程最终一比一结果。
+- 0为成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type Comparestatus: int
-        :param _Comparemsg: 本次流程最终一比一结果描述。（仅描述用，文案更新时不会通知。）
+        :param _Comparemsg: 本次流程最终一比一结果描述。
+- 仅描述用，文案更新时不会通知。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Comparemsg: str
-        :param _Sim: 本次流程活体一比一的分数，取值范围 [0.00, 100.00]。相似度大于等于70时才判断为同一人，也可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
+        :param _Sim: 本次流程活体一比一的分数。
+- 取值范围 [0.00, 100.00]。
+- 相似度大于等于70时才判断为同一人，也可根据具体场景自行调整阈值。
+- 阈值70的误通过率为千分之一，阈值80的误通过率是万分之一。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Sim: str
         :param _Location: 地理位置经纬度。
@@ -2954,51 +3005,54 @@ class DetectInfoText(AbstractModel):
         :param _LivenessDetail: 本次流程进行的活体一比一流水。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LivenessDetail: list of DetectDetail
-        :param _LivenessInfoTag: 描述当前请求活体阶段被拒绝的详细原因，详情如下：
-01-用户全程闭眼
-02-用户未完成指定动作
-03-疑似翻拍攻击
-04-疑似合成攻击
-05-疑似黑产模版
-06-疑似存在水印
-07-反光校验未通过
-08-疑似中途换人
-09-人脸质量过差
-10-距离校验不通过
-11-疑似对抗样本攻击
-12-嘴巴区域疑似存在攻击痕迹
-13-眼睛区域疑似存在攻击痕迹
-14-眼睛或嘴巴被遮挡
+        :param _LivenessInfoTag: 描述当前请求活体阶段被拒绝的详细原因，该参数仅限PLUS版本核身服务返回。
+- 详情如下：
+    01-用户全程闭眼
+    02-用户未完成指定动作
+    03-疑似翻拍攻击
+    04-疑似合成攻击
+    05-疑似黑产模版
+    06-疑似存在水印
+    07-反光校验未通过
+    08-疑似中途换人
+    09-人脸质量过差
+    10-距离校验不通过
+    11-疑似对抗样本攻击
+    12-嘴巴区域疑似存在攻击痕迹
+    13-眼睛区域疑似存在攻击痕迹
+    14-眼睛或嘴巴被遮挡
 注意：此字段可能返回 null，表示取不到有效值。
         :type LivenessInfoTag: list of str
         :param _Mobile: 手机号码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mobile: str
-        :param _CompareLibType: 本次流程最终比对库源类型。包括：
-权威库；
-业务方自有库（用户上传照片、客户的混合库、混合部署库）；
-二次验证库；
-人工审核库；
+        :param _CompareLibType: 本次流程最终比对库源类型。
+- 取值范围：
+    权威库。
+    业务方自有库（用户上传照片、客户的混合库、混合部署库）。
+    二次验证库。
+    人工审核库。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompareLibType: str
-        :param _LivenessMode: 本次流程最终活体类型。包括：
-0：未知
-1：数字活体
-2：动作活体
-3：静默活体
-4：一闪活体（动作+光线）
+        :param _LivenessMode: 本次流程最终活体类型。
+- 取值范围：
+    0：未知
+    1：数字活体
+    2：动作活体
+    3：静默活体
+    4：一闪活体（动作+光线）
 注意：此字段可能返回 null，表示取不到有效值。
         :type LivenessMode: int
-        :param _NFCRequestIds: nfc重复计费requestId列表
+        :param _NFCRequestIds: nfc重复计费requestId列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NFCRequestIds: list of str
-        :param _NFCBillingCounts: nfc重复计费计数
+        :param _NFCBillingCounts: nfc重复计费计数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NFCBillingCounts: int
-        :param _PassNo: 港澳台居住证通行证号码
+        :param _PassNo: 港澳台居住证通行证号码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PassNo: str
-        :param _VisaNum: 港澳台居住证签发次数
+        :param _VisaNum: 港澳台居住证签发次数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VisaNum: str
         """
@@ -3035,7 +3089,9 @@ class DetectInfoText(AbstractModel):
 
     @property
     def ErrCode(self):
-        """本次流程最终验证结果。0为成功（仅包含活体人脸核身结果，不包含意愿核身结果）
+        """本次流程最终验证结果。
+- 取值范围：0为成功。
+- 仅包含活体人脸核身结果，不包含意愿核身结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3047,7 +3103,8 @@ class DetectInfoText(AbstractModel):
 
     @property
     def ErrMsg(self):
-        """本次流程最终验证结果描述。（仅描述用，文案更新时不会通知。）
+        """本次流程最终验证结果描述。
+- 仅描述用，文案更新时不会通知。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3071,10 +3128,11 @@ class DetectInfoText(AbstractModel):
 
     @property
     def UseIDType(self):
-        """用户认证时使用的证件号码类型：
-0：二代身份证的证件号码
-1：港澳台居住证的证件号码
-2：其他（核验使用的证件号码非合法身份号码）
+        """用户认证时使用的证件号码类型。
+- 取值范围：
+    0：二代身份证的证件号码。
+    1：港澳台居住证的证件号码。
+    2：其他（核验使用的证件号码非合法身份号码）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3122,7 +3180,8 @@ class DetectInfoText(AbstractModel):
 
     @property
     def OcrBirth(self):
-        """身份校验环节识别结果：生日。格式为：YYYY/M/D
+        """身份校验环节识别结果：生日。
+- 格式为：YYYY/M/D
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3146,7 +3205,8 @@ class DetectInfoText(AbstractModel):
 
     @property
     def OcrValidDate(self):
-        """身份校验环节识别结果：有效日期。格式为：YYYY.MM.DD-YYYY.MM.DD
+        """身份校验环节识别结果：有效日期。
+- 格式为：YYYY.MM.DD-YYYY.MM.DD。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3195,7 +3255,7 @@ class DetectInfoText(AbstractModel):
     @property
     def IdInfoFrom(self):
         """身份校验环节采用的信息上传方式。
-取值有"NFC"、"OCR"、"手动输入"、"其他"
+- 取值有"NFC"、"OCR"、"手动输入"、"其他"
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3207,7 +3267,8 @@ class DetectInfoText(AbstractModel):
 
     @property
     def LiveStatus(self):
-        """本次流程最终活体结果。0为成功
+        """本次流程最终活体结果。
+- 0为成功
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3219,7 +3280,8 @@ class DetectInfoText(AbstractModel):
 
     @property
     def LiveMsg(self):
-        """本次流程最终活体结果描述。（仅描述用，文案更新时不会通知。）
+        """本次流程最终活体结果描述。
+- 仅描述用，文案更新时不会通知。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3231,7 +3293,8 @@ class DetectInfoText(AbstractModel):
 
     @property
     def Comparestatus(self):
-        """本次流程最终一比一结果。0为成功
+        """本次流程最终一比一结果。
+- 0为成功
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3243,7 +3306,8 @@ class DetectInfoText(AbstractModel):
 
     @property
     def Comparemsg(self):
-        """本次流程最终一比一结果描述。（仅描述用，文案更新时不会通知。）
+        """本次流程最终一比一结果描述。
+- 仅描述用，文案更新时不会通知。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3255,7 +3319,10 @@ class DetectInfoText(AbstractModel):
 
     @property
     def Sim(self):
-        """本次流程活体一比一的分数，取值范围 [0.00, 100.00]。相似度大于等于70时才判断为同一人，也可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
+        """本次流程活体一比一的分数。
+- 取值范围 [0.00, 100.00]。
+- 相似度大于等于70时才判断为同一人，也可根据具体场景自行调整阈值。
+- 阈值70的误通过率为千分之一，阈值80的误通过率是万分之一。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3303,21 +3370,22 @@ class DetectInfoText(AbstractModel):
 
     @property
     def LivenessInfoTag(self):
-        """描述当前请求活体阶段被拒绝的详细原因，详情如下：
-01-用户全程闭眼
-02-用户未完成指定动作
-03-疑似翻拍攻击
-04-疑似合成攻击
-05-疑似黑产模版
-06-疑似存在水印
-07-反光校验未通过
-08-疑似中途换人
-09-人脸质量过差
-10-距离校验不通过
-11-疑似对抗样本攻击
-12-嘴巴区域疑似存在攻击痕迹
-13-眼睛区域疑似存在攻击痕迹
-14-眼睛或嘴巴被遮挡
+        """描述当前请求活体阶段被拒绝的详细原因，该参数仅限PLUS版本核身服务返回。
+- 详情如下：
+    01-用户全程闭眼
+    02-用户未完成指定动作
+    03-疑似翻拍攻击
+    04-疑似合成攻击
+    05-疑似黑产模版
+    06-疑似存在水印
+    07-反光校验未通过
+    08-疑似中途换人
+    09-人脸质量过差
+    10-距离校验不通过
+    11-疑似对抗样本攻击
+    12-嘴巴区域疑似存在攻击痕迹
+    13-眼睛区域疑似存在攻击痕迹
+    14-眼睛或嘴巴被遮挡
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -3341,11 +3409,12 @@ class DetectInfoText(AbstractModel):
 
     @property
     def CompareLibType(self):
-        """本次流程最终比对库源类型。包括：
-权威库；
-业务方自有库（用户上传照片、客户的混合库、混合部署库）；
-二次验证库；
-人工审核库；
+        """本次流程最终比对库源类型。
+- 取值范围：
+    权威库。
+    业务方自有库（用户上传照片、客户的混合库、混合部署库）。
+    二次验证库。
+    人工审核库。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3357,12 +3426,13 @@ class DetectInfoText(AbstractModel):
 
     @property
     def LivenessMode(self):
-        """本次流程最终活体类型。包括：
-0：未知
-1：数字活体
-2：动作活体
-3：静默活体
-4：一闪活体（动作+光线）
+        """本次流程最终活体类型。
+- 取值范围：
+    0：未知
+    1：数字活体
+    2：动作活体
+    3：静默活体
+    4：一闪活体（动作+光线）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3374,7 +3444,7 @@ class DetectInfoText(AbstractModel):
 
     @property
     def NFCRequestIds(self):
-        """nfc重复计费requestId列表
+        """nfc重复计费requestId列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -3386,7 +3456,7 @@ class DetectInfoText(AbstractModel):
 
     @property
     def NFCBillingCounts(self):
-        """nfc重复计费计数
+        """nfc重复计费计数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3398,7 +3468,7 @@ class DetectInfoText(AbstractModel):
 
     @property
     def PassNo(self):
-        """港澳台居住证通行证号码
+        """港澳台居住证通行证号码。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3410,7 +3480,7 @@ class DetectInfoText(AbstractModel):
 
     @property
     def VisaNum(self):
-        """港澳台居住证签发次数
+        """港澳台居住证签发次数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3468,13 +3538,13 @@ class DetectInfoText(AbstractModel):
 
 
 class DetectInfoVideoData(AbstractModel):
-    """核身视频信息
+    """核身视频信息。
 
     """
 
     def __init__(self):
         r"""
-        :param _LivenessVideo: 活体视频的base64编码
+        :param _LivenessVideo: 活体视频的base64编码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LivenessVideo: str
         """
@@ -3482,7 +3552,7 @@ class DetectInfoVideoData(AbstractModel):
 
     @property
     def LivenessVideo(self):
-        """活体视频的base64编码
+        """活体视频的base64编码。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3512,13 +3582,13 @@ class EidInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EidCode: 商户方 appeIDcode 的数字证书
+        :param _EidCode: 商户方 appeIDcode 的数字证书。
         :type EidCode: str
-        :param _EidSign: Eid中心针对商户方EidCode的电子签名
+        :param _EidSign: Eid中心针对商户方EidCode的电子签名。
         :type EidSign: str
-        :param _DesKey: 商户方公钥加密的会话密钥的base64字符串，[指引详见](https://cloud.tencent.com/document/product/1007/63370)
+        :param _DesKey: 商户方公钥加密的会话密钥的base64字符串，[指引详见](https://cloud.tencent.com/document/product/1007/63370)。
         :type DesKey: str
-        :param _UserInfo: 会话密钥sm2加密后的base64字符串，[指引详见](https://cloud.tencent.com/document/product/1007/63370)
+        :param _UserInfo: 会话密钥sm2加密后的base64字符串，[指引详见](https://cloud.tencent.com/document/product/1007/63370)。
         :type UserInfo: str
         """
         self._EidCode = None
@@ -3528,7 +3598,7 @@ class EidInfo(AbstractModel):
 
     @property
     def EidCode(self):
-        """商户方 appeIDcode 的数字证书
+        """商户方 appeIDcode 的数字证书。
         :rtype: str
         """
         return self._EidCode
@@ -3539,7 +3609,7 @@ class EidInfo(AbstractModel):
 
     @property
     def EidSign(self):
-        """Eid中心针对商户方EidCode的电子签名
+        """Eid中心针对商户方EidCode的电子签名。
         :rtype: str
         """
         return self._EidSign
@@ -3550,7 +3620,7 @@ class EidInfo(AbstractModel):
 
     @property
     def DesKey(self):
-        """商户方公钥加密的会话密钥的base64字符串，[指引详见](https://cloud.tencent.com/document/product/1007/63370)
+        """商户方公钥加密的会话密钥的base64字符串，[指引详见](https://cloud.tencent.com/document/product/1007/63370)。
         :rtype: str
         """
         return self._DesKey
@@ -3561,7 +3631,7 @@ class EidInfo(AbstractModel):
 
     @property
     def UserInfo(self):
-        """会话密钥sm2加密后的base64字符串，[指引详见](https://cloud.tencent.com/document/product/1007/63370)
+        """会话密钥sm2加密后的base64字符串，[指引详见](https://cloud.tencent.com/document/product/1007/63370)。
         :rtype: str
         """
         return self._UserInfo
@@ -4011,21 +4081,31 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
         :type BizToken: str
         :param _RuleId: 用于细分客户使用场景，由腾讯侧在线下对接时分配。
         :type RuleId: str
-        :param _InfoType: 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：视频最佳截图信息）。
-如 13表示拉取文本类、视频最佳截图信息。
-默认值：0
+        :param _InfoType: 指定拉取的结果信息。
+- 取值（0：全部；1：文本类；2：身份证信息；3：视频最佳截图信息）。
+- 例如 13 表示拉取文本类、视频最佳截图信息。
+- 默认值：0
         :type InfoType: str
-        :param _BestFramesCount: 从活体视频中截取一定张数的最佳帧（仅部分服务支持，若需使用请与慧眼小助手沟通）。默认为0，最大为10，超出10的最多只给10张。（InfoType需要包含3）
+        :param _BestFramesCount: 从活体视频中截取一定张数的最佳帧。
+- 仅部分服务支持，若需使用请与慧眼小助手沟通。
+- 默认值为0，最大值为10，超出10的最多只给10张。
+- InfoType需要包含3。
         :type BestFramesCount: int
-        :param _IsCutIdCardImage: 是否对身份证照片进行裁边。默认为false。（InfoType需要包含2）
+        :param _IsCutIdCardImage: 是否对身份证照片进行裁边。
+- 默认为false。
+- InfoType需要包含2。
         :type IsCutIdCardImage: bool
-        :param _IsNeedIdCardAvatar: 是否需要从身份证中抠出头像。默认为false。（InfoType需要包含2）
+        :param _IsNeedIdCardAvatar: 是否需要从身份证中抠出头像。
+- 默认为false。
+- InfoType需要包含2。
         :type IsNeedIdCardAvatar: bool
         :param _IsEncrypt: 已弃用。
         :type IsEncrypt: bool
-        :param _Encryption: 是否需要对返回中的敏感信息进行加密。仅指定加密算法Algorithm即可，其余字段传入默认值。其中敏感信息包括：Response.Text.IdCard、Response.Text.Name、Response.Text.OcrIdCard、Response.Text.OcrName
+        :param _Encryption: 是否需要对返回中的敏感信息进行加密。
+- 只需指定加密算法Algorithm即可，其余字段传入默认值。
+- 敏感信息包括：Response.Text.IdCard、Response.Text.Name、Response.Text.OcrIdCard、Response.Text.OcrName。
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
-        :param _IsEncryptResponse: 是否对回包整体进行加密
+        :param _IsEncryptResponse: 是否对回包整体进行加密。
         :type IsEncryptResponse: bool
         """
         self._BizToken = None
@@ -4062,9 +4142,10 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
 
     @property
     def InfoType(self):
-        """指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：视频最佳截图信息）。
-如 13表示拉取文本类、视频最佳截图信息。
-默认值：0
+        """指定拉取的结果信息。
+- 取值（0：全部；1：文本类；2：身份证信息；3：视频最佳截图信息）。
+- 例如 13 表示拉取文本类、视频最佳截图信息。
+- 默认值：0
         :rtype: str
         """
         return self._InfoType
@@ -4075,7 +4156,10 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
 
     @property
     def BestFramesCount(self):
-        """从活体视频中截取一定张数的最佳帧（仅部分服务支持，若需使用请与慧眼小助手沟通）。默认为0，最大为10，超出10的最多只给10张。（InfoType需要包含3）
+        """从活体视频中截取一定张数的最佳帧。
+- 仅部分服务支持，若需使用请与慧眼小助手沟通。
+- 默认值为0，最大值为10，超出10的最多只给10张。
+- InfoType需要包含3。
         :rtype: int
         """
         return self._BestFramesCount
@@ -4086,7 +4170,9 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
 
     @property
     def IsCutIdCardImage(self):
-        """是否对身份证照片进行裁边。默认为false。（InfoType需要包含2）
+        """是否对身份证照片进行裁边。
+- 默认为false。
+- InfoType需要包含2。
         :rtype: bool
         """
         return self._IsCutIdCardImage
@@ -4097,7 +4183,9 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
 
     @property
     def IsNeedIdCardAvatar(self):
-        """是否需要从身份证中抠出头像。默认为false。（InfoType需要包含2）
+        """是否需要从身份证中抠出头像。
+- 默认为false。
+- InfoType需要包含2。
         :rtype: bool
         """
         return self._IsNeedIdCardAvatar
@@ -4119,7 +4207,9 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
 
     @property
     def Encryption(self):
-        """是否需要对返回中的敏感信息进行加密。仅指定加密算法Algorithm即可，其余字段传入默认值。其中敏感信息包括：Response.Text.IdCard、Response.Text.Name、Response.Text.OcrIdCard、Response.Text.OcrName
+        """是否需要对返回中的敏感信息进行加密。
+- 只需指定加密算法Algorithm即可，其余字段传入默认值。
+- 敏感信息包括：Response.Text.IdCard、Response.Text.Name、Response.Text.OcrIdCard、Response.Text.OcrName。
         :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         return self._Encryption
@@ -4130,7 +4220,7 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
 
     @property
     def IsEncryptResponse(self):
-        """是否对回包整体进行加密
+        """是否对回包整体进行加密。
         :rtype: bool
         """
         return self._IsEncryptResponse
@@ -4184,16 +4274,20 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
         :param _Encryption: 敏感数据加密信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
-        :param _IntentionVerifyData: 意愿核身朗读模式结果信息。若未使用意愿核身功能，该字段返回值可以不处理。
+        :param _IntentionVerifyData: 意愿核身朗读模式结果信息。
+- 若未使用意愿核身功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionVerifyData: :class:`tencentcloud.faceid.v20180301.models.IntentionVerifyData`
-        :param _IntentionQuestionResult: 意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。
+        :param _IntentionQuestionResult: 意愿核身问答模式结果。
+
+- 若未使用该意愿核身功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionQuestionResult: :class:`tencentcloud.faceid.v20180301.models.IntentionQuestionResult`
-        :param _IntentionActionResult: 意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
+        :param _IntentionActionResult: 意愿核身点头确认模式的结果信息。
+- 若未使用该意愿核身功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionActionResult: :class:`tencentcloud.faceid.v20180301.models.IntentionActionResult`
-        :param _EncryptedBody: 加密后的数据
+        :param _EncryptedBody: 加密后的数据。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptedBody: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4272,7 +4366,8 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
 
     @property
     def IntentionVerifyData(self):
-        """意愿核身朗读模式结果信息。若未使用意愿核身功能，该字段返回值可以不处理。
+        """意愿核身朗读模式结果信息。
+- 若未使用意愿核身功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.faceid.v20180301.models.IntentionVerifyData`
         """
@@ -4284,7 +4379,9 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
 
     @property
     def IntentionQuestionResult(self):
-        """意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。
+        """意愿核身问答模式结果。
+
+- 若未使用该意愿核身功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.faceid.v20180301.models.IntentionQuestionResult`
         """
@@ -4296,7 +4393,8 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
 
     @property
     def IntentionActionResult(self):
-        """意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
+        """意愿核身点头确认模式的结果信息。
+- 若未使用该意愿核身功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.faceid.v20180301.models.IntentionActionResult`
         """
@@ -4308,7 +4406,7 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
 
     @property
     def EncryptedBody(self):
-        """加密后的数据
+        """加密后的数据。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4577,15 +4675,28 @@ class GetEidResultRequest(AbstractModel):
         r"""
         :param _EidToken: E证通流程的唯一标识，调用GetEidToken接口时生成。
         :type EidToken: str
-        :param _InfoType: 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息；5：意愿核身朗读模式相关结果；6：意愿核身问答模式相关结果）。
-如 13表示拉取文本类、最佳截图信息。
-默认值：0
+        :param _InfoType: 指定拉取的结果信息。
+- 取值范围：
+     0：全部。
+    1：文本类。
+    2：身份证信息。
+    3：最佳截图信息。
+    5：意愿核身朗读模式相关结果。
+    6：意愿核身问答模式相关结果。
+- 例如 13表示拉取文本类、最佳截图信息。
+- 默认值：0
         :type InfoType: str
-        :param _BestFramesCount: 从活体视频中截取一定张数的最佳帧。默认为0，最大为3，超出3的最多只给3张。（InfoType需要包含3）
+        :param _BestFramesCount: 从活体视频中截取一定张数的最佳帧。
+- 默认为0，最大为3，超出3的最多只给3张。
+- InfoType需要包含3。
         :type BestFramesCount: int
-        :param _IsCutIdCardImage: 是否对身份证照片进行裁边。默认为false。（InfoType需要包含2）
+        :param _IsCutIdCardImage: 是否对身份证照片进行裁边。
+- 默认为false。
+- InfoType需要包含2。
         :type IsCutIdCardImage: bool
-        :param _IsNeedIdCardAvatar: 是否需要从身份证中抠出头像。默认为false。（InfoType需要包含2）
+        :param _IsNeedIdCardAvatar: 是否需要从身份证中抠出头像。
+- 默认为false。
+- InfoType需要包含2。
         :type IsNeedIdCardAvatar: bool
         """
         self._EidToken = None
@@ -4607,9 +4718,16 @@ class GetEidResultRequest(AbstractModel):
 
     @property
     def InfoType(self):
-        """指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息；5：意愿核身朗读模式相关结果；6：意愿核身问答模式相关结果）。
-如 13表示拉取文本类、最佳截图信息。
-默认值：0
+        """指定拉取的结果信息。
+- 取值范围：
+     0：全部。
+    1：文本类。
+    2：身份证信息。
+    3：最佳截图信息。
+    5：意愿核身朗读模式相关结果。
+    6：意愿核身问答模式相关结果。
+- 例如 13表示拉取文本类、最佳截图信息。
+- 默认值：0
         :rtype: str
         """
         return self._InfoType
@@ -4620,7 +4738,9 @@ class GetEidResultRequest(AbstractModel):
 
     @property
     def BestFramesCount(self):
-        """从活体视频中截取一定张数的最佳帧。默认为0，最大为3，超出3的最多只给3张。（InfoType需要包含3）
+        """从活体视频中截取一定张数的最佳帧。
+- 默认为0，最大为3，超出3的最多只给3张。
+- InfoType需要包含3。
         :rtype: int
         """
         return self._BestFramesCount
@@ -4631,7 +4751,9 @@ class GetEidResultRequest(AbstractModel):
 
     @property
     def IsCutIdCardImage(self):
-        """是否对身份证照片进行裁边。默认为false。（InfoType需要包含2）
+        """是否对身份证照片进行裁边。
+- 默认为false。
+- InfoType需要包含2。
         :rtype: bool
         """
         return self._IsCutIdCardImage
@@ -4642,7 +4764,9 @@ class GetEidResultRequest(AbstractModel):
 
     @property
     def IsNeedIdCardAvatar(self):
-        """是否需要从身份证中抠出头像。默认为false。（InfoType需要包含2）
+        """是否需要从身份证中抠出头像。
+- 默认为false。
+- InfoType需要包含2。
         :rtype: bool
         """
         return self._IsNeedIdCardAvatar
@@ -4675,7 +4799,9 @@ class GetEidResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Text: 文本类信息。（基于对敏感信息的保护，验证使用的姓名和身份证号统一通过加密后从Eidinfo参数中返回，如需获取请在控制台申请返回身份信息，详见[E证通获取实名信息指引](https://cloud.tencent.com/document/product/1007/63370)）
+        :param _Text: 文本类信息。
+- 基于对敏感信息的保护，验证使用的姓名和身份证号统一通过加密后从EidInfo参数中返回。
+- 如需获取请在控制台申请返回身份信息，详见[E证通获取实名信息指引](https://cloud.tencent.com/document/product/1007/63370)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.faceid.v20180301.models.DetectInfoText`
         :param _IdCardData: 身份证照片信息。
@@ -4684,16 +4810,21 @@ class GetEidResultResponse(AbstractModel):
         :param _BestFrame: 最佳帧信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BestFrame: :class:`tencentcloud.faceid.v20180301.models.DetectInfoBestFrame`
-        :param _EidInfo: Eid信息。（包括商户下用户唯一标识以及加密后的姓名、身份证号信息。解密方式详见[E证通获取实名信息指引](https://cloud.tencent.com/document/product/1007/63370)）
+        :param _EidInfo: Eid信息。
+- 包括商户下用户唯一标识以及加密后的姓名、身份证号信息。
+- 解密方式详见[E证通获取实名信息指引](https://cloud.tencent.com/document/product/1007/63370)
 注意：此字段可能返回 null，表示取不到有效值。
         :type EidInfo: :class:`tencentcloud.faceid.v20180301.models.EidInfo`
-        :param _IntentionVerifyData: 意愿核身朗读模式相关信息。若未使用意愿核身朗读功能，该字段返回值可以不处理。
+        :param _IntentionVerifyData: 意愿核身朗读模式相关信息。
+- 若未使用意愿核身朗读功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionVerifyData: :class:`tencentcloud.faceid.v20180301.models.IntentionVerifyData`
-        :param _IntentionQuestionResult: 意愿核身问答模式相关信息。若未使用意愿核身问答模式功能，该字段返回值可以不处理。
+        :param _IntentionQuestionResult: 意愿核身问答模式相关信息。
+- 若未使用意愿核身问答模式功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionQuestionResult: :class:`tencentcloud.faceid.v20180301.models.IntentionQuestionResult`
-        :param _IntentionActionResult: 意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
+        :param _IntentionActionResult: 意愿核身点头确认模式的结果信息。
+- 若未使用该意愿核身功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionActionResult: :class:`tencentcloud.faceid.v20180301.models.IntentionActionResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4710,7 +4841,9 @@ class GetEidResultResponse(AbstractModel):
 
     @property
     def Text(self):
-        """文本类信息。（基于对敏感信息的保护，验证使用的姓名和身份证号统一通过加密后从Eidinfo参数中返回，如需获取请在控制台申请返回身份信息，详见[E证通获取实名信息指引](https://cloud.tencent.com/document/product/1007/63370)）
+        """文本类信息。
+- 基于对敏感信息的保护，验证使用的姓名和身份证号统一通过加密后从EidInfo参数中返回。
+- 如需获取请在控制台申请返回身份信息，详见[E证通获取实名信息指引](https://cloud.tencent.com/document/product/1007/63370)。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.faceid.v20180301.models.DetectInfoText`
         """
@@ -4746,7 +4879,9 @@ class GetEidResultResponse(AbstractModel):
 
     @property
     def EidInfo(self):
-        """Eid信息。（包括商户下用户唯一标识以及加密后的姓名、身份证号信息。解密方式详见[E证通获取实名信息指引](https://cloud.tencent.com/document/product/1007/63370)）
+        """Eid信息。
+- 包括商户下用户唯一标识以及加密后的姓名、身份证号信息。
+- 解密方式详见[E证通获取实名信息指引](https://cloud.tencent.com/document/product/1007/63370)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.faceid.v20180301.models.EidInfo`
         """
@@ -4758,7 +4893,8 @@ class GetEidResultResponse(AbstractModel):
 
     @property
     def IntentionVerifyData(self):
-        """意愿核身朗读模式相关信息。若未使用意愿核身朗读功能，该字段返回值可以不处理。
+        """意愿核身朗读模式相关信息。
+- 若未使用意愿核身朗读功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.faceid.v20180301.models.IntentionVerifyData`
         """
@@ -4770,7 +4906,8 @@ class GetEidResultResponse(AbstractModel):
 
     @property
     def IntentionQuestionResult(self):
-        """意愿核身问答模式相关信息。若未使用意愿核身问答模式功能，该字段返回值可以不处理。
+        """意愿核身问答模式相关信息。
+- 若未使用意愿核身问答模式功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.faceid.v20180301.models.IntentionQuestionResult`
         """
@@ -4782,7 +4919,8 @@ class GetEidResultResponse(AbstractModel):
 
     @property
     def IntentionActionResult(self):
-        """意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
+        """意愿核身点头确认模式的结果信息。
+- 若未使用该意愿核身功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.faceid.v20180301.models.IntentionActionResult`
         """
@@ -4837,30 +4975,55 @@ class GetEidTokenConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _InputType: 姓名身份证输入方式。
-1：传身份证正反面OCR   
-2：传身份证正面OCR  
-3：用户手动输入  
-4：客户后台传入  
-默认1
-注：使用OCR时仅支持用户修改结果中的姓名
+- 取值范围：
+1：传身份证正反面OCR。
+2：传身份证正面OCR。
+3：用户手动输入。
+4：客户后台传入。
+- 默认值：1。
+- 注意：使用OCR时仅支持用户修改结果中的姓名。
         :type InputType: str
-        :param _UseIntentionVerify: 是否使用意愿核身，默认不使用。注意：如开启使用，则计费标签按【意愿核身】计费标签计价；如不开启，则计费标签按【E证通】计费标签计价，价格详见：[价格说明](https://cloud.tencent.com/document/product/1007/56804)。
+        :param _UseIntentionVerify: 是否使用意愿核身。
+
+- 默认不使用。
+- 注意：如开启使用，则计费标签按【意愿核身】计费标签计价；如不开启，则计费标签按【E证通】计费标签计价，价格详见：[价格说明](https://cloud.tencent.com/document/product/1007/56804)。
         :type UseIntentionVerify: bool
-        :param _IntentionMode: 意愿核身模式。枚举值：1( 语音朗读模式)，2（语音问答模式） ，3（点头确认模式）。默认值为1。
+        :param _IntentionMode: 意愿核身模式。
+- 取值范围：
+1：语音朗读模式。
+2：语音问答模式。
+3：点头确认模式。
+- 默认值为1。
         :type IntentionMode: str
-        :param _IntentionVerifyText: 意愿核身朗读模式使用的文案，若未使用意愿核身朗读功能，该字段无需传入。默认为空，最长可接受120的字符串长度。
+        :param _IntentionVerifyText: 意愿核身朗读模式使用的文案。
+- 若未使用意愿核身朗读功能，该字段无需传入。
+- 默认为空，最长可接受120的字符串长度。
         :type IntentionVerifyText: str
-        :param _IntentionQuestions: 意愿核身问答模式的配置列表。当前仅支持一个问答。
+        :param _IntentionQuestions: 意愿核身问答模式的配置列表。
+- 当前仅支持一个问答。
         :type IntentionQuestions: list of IntentionQuestion
-        :param _IntentionActions: 意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。默认为空，最长可接受150的字符串长度。
+        :param _IntentionActions: 意愿核身（点头确认模式）使用的文案。
+- 若未使用意愿核身（点头确认模式），则该字段无需传入。
+- 默认为空，最长可接受150的字符串长度。
         :type IntentionActions: list of IntentionActionConfig
-        :param _IntentionRecognition: 意愿核身过程中识别用户的回答意图，开启后除了IntentionQuestions的Answers列表中的标准回答会通过，近似意图的回答也会通过，默认开启。
+        :param _IntentionRecognition: 意愿核身过程中识别用户的回答意图。
+- 开启后除了IntentionQuestions的Answers列表中的标准回答会通过，近似意图的回答也会通过。
+- 默认开启。
         :type IntentionRecognition: bool
-        :param _IsSupportHMTResidentPermitOCR: 是否支持港澳台居住证识别
+        :param _IsSupportHMTResidentPermitOCR: 是否支持港澳台居住证识别。
         :type IsSupportHMTResidentPermitOCR: bool
-        :param _MouthOpenRecognition: 用户语音回答过程中是否开启张嘴识别检测，默认不开启，仅在意愿核身问答模式中使用。
+        :param _MouthOpenRecognition: 用户语音回答过程中是否开启张嘴识别检测。
+- 默认不开启。
+- 仅在意愿核身问答模式中使用。
         :type MouthOpenRecognition: bool
-        :param _Speed: 意愿核身语音播报速度，配置后问答模式和点头模式的语音播报环节都会生效，默认值为0： 0：智能语速（根据播报文案的长度自动调整语音播报速度） 1：固定1倍速 2：固定1.2倍速 3：固定1.5倍速
+        :param _Speed: 意愿核身语音播报速度。
+- 配置后问答模式和点头模式的语音播报环节都会生效。
+- 默认值为0。
+- 取值范围： 
+0：智能语速（根据播报文案的长度自动调整语音播报速度）。
+1：固定1倍速。
+2：固定1.2倍速。
+3：固定1.5倍速。
         :type Speed: int
         """
         self._InputType = None
@@ -4877,12 +5040,13 @@ class GetEidTokenConfig(AbstractModel):
     @property
     def InputType(self):
         """姓名身份证输入方式。
-1：传身份证正反面OCR   
-2：传身份证正面OCR  
-3：用户手动输入  
-4：客户后台传入  
-默认1
-注：使用OCR时仅支持用户修改结果中的姓名
+- 取值范围：
+1：传身份证正反面OCR。
+2：传身份证正面OCR。
+3：用户手动输入。
+4：客户后台传入。
+- 默认值：1。
+- 注意：使用OCR时仅支持用户修改结果中的姓名。
         :rtype: str
         """
         return self._InputType
@@ -4893,7 +5057,10 @@ class GetEidTokenConfig(AbstractModel):
 
     @property
     def UseIntentionVerify(self):
-        """是否使用意愿核身，默认不使用。注意：如开启使用，则计费标签按【意愿核身】计费标签计价；如不开启，则计费标签按【E证通】计费标签计价，价格详见：[价格说明](https://cloud.tencent.com/document/product/1007/56804)。
+        """是否使用意愿核身。
+
+- 默认不使用。
+- 注意：如开启使用，则计费标签按【意愿核身】计费标签计价；如不开启，则计费标签按【E证通】计费标签计价，价格详见：[价格说明](https://cloud.tencent.com/document/product/1007/56804)。
         :rtype: bool
         """
         return self._UseIntentionVerify
@@ -4904,7 +5071,12 @@ class GetEidTokenConfig(AbstractModel):
 
     @property
     def IntentionMode(self):
-        """意愿核身模式。枚举值：1( 语音朗读模式)，2（语音问答模式） ，3（点头确认模式）。默认值为1。
+        """意愿核身模式。
+- 取值范围：
+1：语音朗读模式。
+2：语音问答模式。
+3：点头确认模式。
+- 默认值为1。
         :rtype: str
         """
         return self._IntentionMode
@@ -4915,7 +5087,9 @@ class GetEidTokenConfig(AbstractModel):
 
     @property
     def IntentionVerifyText(self):
-        """意愿核身朗读模式使用的文案，若未使用意愿核身朗读功能，该字段无需传入。默认为空，最长可接受120的字符串长度。
+        """意愿核身朗读模式使用的文案。
+- 若未使用意愿核身朗读功能，该字段无需传入。
+- 默认为空，最长可接受120的字符串长度。
         :rtype: str
         """
         return self._IntentionVerifyText
@@ -4926,7 +5100,8 @@ class GetEidTokenConfig(AbstractModel):
 
     @property
     def IntentionQuestions(self):
-        """意愿核身问答模式的配置列表。当前仅支持一个问答。
+        """意愿核身问答模式的配置列表。
+- 当前仅支持一个问答。
         :rtype: list of IntentionQuestion
         """
         return self._IntentionQuestions
@@ -4937,7 +5112,9 @@ class GetEidTokenConfig(AbstractModel):
 
     @property
     def IntentionActions(self):
-        """意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。默认为空，最长可接受150的字符串长度。
+        """意愿核身（点头确认模式）使用的文案。
+- 若未使用意愿核身（点头确认模式），则该字段无需传入。
+- 默认为空，最长可接受150的字符串长度。
         :rtype: list of IntentionActionConfig
         """
         return self._IntentionActions
@@ -4948,7 +5125,9 @@ class GetEidTokenConfig(AbstractModel):
 
     @property
     def IntentionRecognition(self):
-        """意愿核身过程中识别用户的回答意图，开启后除了IntentionQuestions的Answers列表中的标准回答会通过，近似意图的回答也会通过，默认开启。
+        """意愿核身过程中识别用户的回答意图。
+- 开启后除了IntentionQuestions的Answers列表中的标准回答会通过，近似意图的回答也会通过。
+- 默认开启。
         :rtype: bool
         """
         return self._IntentionRecognition
@@ -4959,7 +5138,7 @@ class GetEidTokenConfig(AbstractModel):
 
     @property
     def IsSupportHMTResidentPermitOCR(self):
-        """是否支持港澳台居住证识别
+        """是否支持港澳台居住证识别。
         :rtype: bool
         """
         return self._IsSupportHMTResidentPermitOCR
@@ -4970,7 +5149,9 @@ class GetEidTokenConfig(AbstractModel):
 
     @property
     def MouthOpenRecognition(self):
-        """用户语音回答过程中是否开启张嘴识别检测，默认不开启，仅在意愿核身问答模式中使用。
+        """用户语音回答过程中是否开启张嘴识别检测。
+- 默认不开启。
+- 仅在意愿核身问答模式中使用。
         :rtype: bool
         """
         return self._MouthOpenRecognition
@@ -4981,7 +5162,14 @@ class GetEidTokenConfig(AbstractModel):
 
     @property
     def Speed(self):
-        """意愿核身语音播报速度，配置后问答模式和点头模式的语音播报环节都会生效，默认值为0： 0：智能语速（根据播报文案的长度自动调整语音播报速度） 1：固定1倍速 2：固定1.2倍速 3：固定1.5倍速
+        """意愿核身语音播报速度。
+- 配置后问答模式和点头模式的语音播报环节都会生效。
+- 默认值为0。
+- 取值范围： 
+0：智能语速（根据播报文案的长度自动调整语音播报速度）。
+1：固定1倍速。
+2：固定1.2倍速。
+3：固定1.5倍速。
         :rtype: int
         """
         return self._Speed
@@ -5029,20 +5217,30 @@ class GetEidTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MerchantId: EID商户id，字段长度最长50位。
+        :param _MerchantId: EID商户id。
+- 字段长度最长50位。
         :type MerchantId: str
-        :param _IdCard: 身份标识（未使用OCR服务时，必须传入）。
-规则：a-z，A-Z，0-9组合。最长长度32位。
+        :param _IdCard: 身份标识。
+- 未使用OCR服务时，必须传入。
+- 规则：a-z，A-Z，0-9组合。
+- 最长长度32位。
         :type IdCard: str
-        :param _Name: 姓名。（未使用OCR服务时，必须传入）最长长度32位。中文请使用UTF-8编码。
+        :param _Name: 姓名。
+- 未使用OCR服务时，必须传入。
+- 最长长度32位。
+- 中文请使用UTF-8编码。
         :type Name: str
-        :param _Extra: 透传字段，在获取验证结果时返回。最长长度1024位。
+        :param _Extra: 透传字段，在获取验证结果时返回。
+- 最长长度1024位。
         :type Extra: str
         :param _Config: 小程序模式配置，包括如何传入姓名身份证的配置，以及是否使用意愿核身。
         :type Config: :class:`tencentcloud.faceid.v20180301.models.GetEidTokenConfig`
-        :param _RedirectUrl: 最长长度1024位。用户从Url中进入核身认证结束后重定向的回调链接地址。EidToken会在该链接的query参数中。
+        :param _RedirectUrl: 用户从Url中进入核身认证结束后重定向的回调链接地址。
+- 最长长度1024位。
+- EidToken会在该链接的query参数中。
         :type RedirectUrl: str
-        :param _Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :param _Encryption: 敏感数据加密信息。
+- 对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self._MerchantId = None
@@ -5055,7 +5253,8 @@ class GetEidTokenRequest(AbstractModel):
 
     @property
     def MerchantId(self):
-        """EID商户id，字段长度最长50位。
+        """EID商户id。
+- 字段长度最长50位。
         :rtype: str
         """
         return self._MerchantId
@@ -5066,8 +5265,10 @@ class GetEidTokenRequest(AbstractModel):
 
     @property
     def IdCard(self):
-        """身份标识（未使用OCR服务时，必须传入）。
-规则：a-z，A-Z，0-9组合。最长长度32位。
+        """身份标识。
+- 未使用OCR服务时，必须传入。
+- 规则：a-z，A-Z，0-9组合。
+- 最长长度32位。
         :rtype: str
         """
         return self._IdCard
@@ -5078,7 +5279,10 @@ class GetEidTokenRequest(AbstractModel):
 
     @property
     def Name(self):
-        """姓名。（未使用OCR服务时，必须传入）最长长度32位。中文请使用UTF-8编码。
+        """姓名。
+- 未使用OCR服务时，必须传入。
+- 最长长度32位。
+- 中文请使用UTF-8编码。
         :rtype: str
         """
         return self._Name
@@ -5089,7 +5293,8 @@ class GetEidTokenRequest(AbstractModel):
 
     @property
     def Extra(self):
-        """透传字段，在获取验证结果时返回。最长长度1024位。
+        """透传字段，在获取验证结果时返回。
+- 最长长度1024位。
         :rtype: str
         """
         return self._Extra
@@ -5111,7 +5316,9 @@ class GetEidTokenRequest(AbstractModel):
 
     @property
     def RedirectUrl(self):
-        """最长长度1024位。用户从Url中进入核身认证结束后重定向的回调链接地址。EidToken会在该链接的query参数中。
+        """用户从Url中进入核身认证结束后重定向的回调链接地址。
+- 最长长度1024位。
+- EidToken会在该链接的query参数中。
         :rtype: str
         """
         return self._RedirectUrl
@@ -5122,7 +5329,8 @@ class GetEidTokenRequest(AbstractModel):
 
     @property
     def Encryption(self):
-        """敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        """敏感数据加密信息。
+- 对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
         :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         return self._Encryption
@@ -5161,10 +5369,12 @@ class GetEidTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EidToken: 一次核身流程的标识，有效时间为600秒；
-完成核身后，可用该标识获取验证结果信息。
+        :param _EidToken: 一次核身流程的标识。
+- 有效时间为600秒。
+- 完成核身后，可用该标识获取验证结果信息。
         :type EidToken: str
-        :param _Url: 发起核身流程的URL，用于H5场景核身。
+        :param _Url: 发起核身流程的URL。
+- 用于H5场景核身。
         :type Url: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5175,8 +5385,9 @@ class GetEidTokenResponse(AbstractModel):
 
     @property
     def EidToken(self):
-        """一次核身流程的标识，有效时间为600秒；
-完成核身后，可用该标识获取验证结果信息。
+        """一次核身流程的标识。
+- 有效时间为600秒。
+- 完成核身后，可用该标识获取验证结果信息。
         :rtype: str
         """
         return self._EidToken
@@ -5187,7 +5398,8 @@ class GetEidTokenResponse(AbstractModel):
 
     @property
     def Url(self):
-        """发起核身流程的URL，用于H5场景核身。
+        """发起核身流程的URL。
+- 用于H5场景核身。
         :rtype: str
         """
         return self._Url
@@ -5221,11 +5433,14 @@ class GetFaceIdResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FaceIdToken: SDK人脸核身流程的标识，调用GetFaceIdToken接口时生成。
+        :param _FaceIdToken: SDK人脸核身流程的标识。
+- 调用GetFaceIdToken接口时生成。
         :type FaceIdToken: str
-        :param _IsNeedVideo: 是否需要拉取视频，默认false不需要
+        :param _IsNeedVideo: 是否需要拉取视频。
+- 默认false：不需要。
         :type IsNeedVideo: bool
-        :param _IsNeedBestFrame: 是否需要拉取截帧，默认false不需要
+        :param _IsNeedBestFrame: 是否需要拉取截帧。
+- 默认false：不需要。
         :type IsNeedBestFrame: bool
         """
         self._FaceIdToken = None
@@ -5234,7 +5449,8 @@ class GetFaceIdResultRequest(AbstractModel):
 
     @property
     def FaceIdToken(self):
-        """SDK人脸核身流程的标识，调用GetFaceIdToken接口时生成。
+        """SDK人脸核身流程的标识。
+- 调用GetFaceIdToken接口时生成。
         :rtype: str
         """
         return self._FaceIdToken
@@ -5245,7 +5461,8 @@ class GetFaceIdResultRequest(AbstractModel):
 
     @property
     def IsNeedVideo(self):
-        """是否需要拉取视频，默认false不需要
+        """是否需要拉取视频。
+- 默认false：不需要。
         :rtype: bool
         """
         return self._IsNeedVideo
@@ -5256,7 +5473,8 @@ class GetFaceIdResultRequest(AbstractModel):
 
     @property
     def IsNeedBestFrame(self):
-        """是否需要拉取截帧，默认false不需要
+        """是否需要拉取截帧。
+- 默认false：不需要。
         :rtype: bool
         """
         return self._IsNeedBestFrame
@@ -5287,50 +5505,75 @@ class GetFaceIdResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdCard: 身份证
+        :param _IdCard: 身份证。
         :type IdCard: str
-        :param _Name: 姓名
+        :param _Name: 姓名。
         :type Name: str
-        :param _Result: 业务核验结果，参考https://cloud.tencent.com/document/product/1007/47912
+        :param _Result: 业务核验结果。
+- 参考：https://cloud.tencent.com/document/product/1007/47912。
         :type Result: str
-        :param _Description: 业务核验描述
+        :param _Description: 业务核验描述。
         :type Description: str
-        :param _Similarity: 相似度，0-100，数值越大相似度越高
+        :param _Similarity: 相似度。
+- 取值：0-100。
+- 数值越大相似度越高。
         :type Similarity: float
-        :param _VideoBase64: 用户核验的视频base64，如果选择了使用cos，返回完整cos地址如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey
+        :param _VideoBase64: 用户核验的视频base64。
+- 如果选择了使用cos，返回完整cos地址，如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoBase64: str
-        :param _BestFrameBase64: 用户核验视频的截帧base64，如果选择了使用cos，返回完整cos地址如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey
+        :param _BestFrameBase64: 用户核验视频的截帧base64。
+- 如果选择了使用cos，返回完整cos地址如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BestFrameBase64: str
-        :param _Extra: 获取token时透传的信息
+        :param _Extra: 获取token时透传的信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
-        :param _DeviceInfoTag: plus版：描述当前请求所在设备的风险标签，详情如下：
-01-设备疑似被Root/设备疑似越狱
-02-设备疑似被注入
-03-设备疑似为模拟器
-04-设备疑似存在风险操作
-05-摄像头疑似被劫持
-06-疑似黑产设备
-null-无设备风险
-增强版：此字段不生效，默认为null
+        :param _DeviceInfoTag: plus版：描述当前请求所在设备的风险标签。
+- 详情如下：
+01-设备疑似被Root/设备疑似越狱。
+02-设备疑似被注入。
+03-设备疑似为模拟器。
+04-设备疑似存在风险操作。
+05-摄像头疑似被劫持。
+06-疑似黑产设备。
+null-无设备风险。
+- 增强版：此字段不生效，默认为null。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceInfoTag: str
-        :param _RiskInfoTag: 行为风险标签，仅错误码返回1007（设备疑似被劫持）时返回风险标签。标签说明：
+        :param _RiskInfoTag: 行为风险标签。
+- 仅错误码返回1007（设备疑似被劫持）时返回风险标签。
+- 标签说明：
 02：攻击风险
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskInfoTag: str
-        :param _LivenessInfoTag: plus版：描述当前请求活体阶段被拒绝的详细原因，详情如下：01-用户全程闭眼02-用户未完成指定动作03-疑似翻拍攻击04-疑似合成图片05-疑似合成视频06-疑似合成动作07-疑似黑产模板08-疑似存在水印09-反光校验未通过10-最佳帧校验未通过11-人脸质量过差12-人脸距离不匹配13-疑似对抗样本攻击null-无增强版：此字段不生效，默认为null
+        :param _LivenessInfoTag: plus版：描述当前请求活体阶段被拒绝的详细原因。
+- 详情如下：
+01-用户全程闭眼。
+02-用户未完成指定动作。
+03-疑似翻拍攻击。
+04-疑似合成图片。
+05-疑似合成视频。
+06-疑似合成动作。
+07-疑似黑产模板。
+08-疑似存在水印。
+09-反光校验未通过。
+10-最佳帧校验未通过。
+11-人脸质量过差。
+12-人脸距离不匹配。
+13-疑似对抗样本攻击。
+null-无。
+- 增强版：此字段不生效，默认为null。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LivenessInfoTag: str
-        :param _DeviceInfoLevel: plus版：描述当前请求所在设备的风险等级，共4级，详情如下：
-1 - 安全
-2 - 低风险
-3 - 中风险
-4 - 高危
-null - 未获取到风险等级
-增强版：此字段不生效，默认为null
+        :param _DeviceInfoLevel: plus版：描述当前请求所在设备的风险等级，共4级。
+- 详情如下：
+1 - 安全。
+2 - 低风险。
+3 - 中风险。
+4 - 高危。
+null - 未获取到风险等级。
+- 增强版：此字段不生效，默认为null。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceInfoLevel: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5352,7 +5595,7 @@ null - 未获取到风险等级
 
     @property
     def IdCard(self):
-        """身份证
+        """身份证。
         :rtype: str
         """
         return self._IdCard
@@ -5363,7 +5606,7 @@ null - 未获取到风险等级
 
     @property
     def Name(self):
-        """姓名
+        """姓名。
         :rtype: str
         """
         return self._Name
@@ -5374,7 +5617,8 @@ null - 未获取到风险等级
 
     @property
     def Result(self):
-        """业务核验结果，参考https://cloud.tencent.com/document/product/1007/47912
+        """业务核验结果。
+- 参考：https://cloud.tencent.com/document/product/1007/47912。
         :rtype: str
         """
         return self._Result
@@ -5385,7 +5629,7 @@ null - 未获取到风险等级
 
     @property
     def Description(self):
-        """业务核验描述
+        """业务核验描述。
         :rtype: str
         """
         return self._Description
@@ -5396,7 +5640,9 @@ null - 未获取到风险等级
 
     @property
     def Similarity(self):
-        """相似度，0-100，数值越大相似度越高
+        """相似度。
+- 取值：0-100。
+- 数值越大相似度越高。
         :rtype: float
         """
         return self._Similarity
@@ -5407,7 +5653,8 @@ null - 未获取到风险等级
 
     @property
     def VideoBase64(self):
-        """用户核验的视频base64，如果选择了使用cos，返回完整cos地址如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey
+        """用户核验的视频base64。
+- 如果选择了使用cos，返回完整cos地址，如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5419,7 +5666,8 @@ null - 未获取到风险等级
 
     @property
     def BestFrameBase64(self):
-        """用户核验视频的截帧base64，如果选择了使用cos，返回完整cos地址如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey
+        """用户核验视频的截帧base64。
+- 如果选择了使用cos，返回完整cos地址如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5431,7 +5679,7 @@ null - 未获取到风险等级
 
     @property
     def Extra(self):
-        """获取token时透传的信息
+        """获取token时透传的信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5443,15 +5691,16 @@ null - 未获取到风险等级
 
     @property
     def DeviceInfoTag(self):
-        """plus版：描述当前请求所在设备的风险标签，详情如下：
-01-设备疑似被Root/设备疑似越狱
-02-设备疑似被注入
-03-设备疑似为模拟器
-04-设备疑似存在风险操作
-05-摄像头疑似被劫持
-06-疑似黑产设备
-null-无设备风险
-增强版：此字段不生效，默认为null
+        """plus版：描述当前请求所在设备的风险标签。
+- 详情如下：
+01-设备疑似被Root/设备疑似越狱。
+02-设备疑似被注入。
+03-设备疑似为模拟器。
+04-设备疑似存在风险操作。
+05-摄像头疑似被劫持。
+06-疑似黑产设备。
+null-无设备风险。
+- 增强版：此字段不生效，默认为null。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5463,7 +5712,9 @@ null-无设备风险
 
     @property
     def RiskInfoTag(self):
-        """行为风险标签，仅错误码返回1007（设备疑似被劫持）时返回风险标签。标签说明：
+        """行为风险标签。
+- 仅错误码返回1007（设备疑似被劫持）时返回风险标签。
+- 标签说明：
 02：攻击风险
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -5476,7 +5727,23 @@ null-无设备风险
 
     @property
     def LivenessInfoTag(self):
-        """plus版：描述当前请求活体阶段被拒绝的详细原因，详情如下：01-用户全程闭眼02-用户未完成指定动作03-疑似翻拍攻击04-疑似合成图片05-疑似合成视频06-疑似合成动作07-疑似黑产模板08-疑似存在水印09-反光校验未通过10-最佳帧校验未通过11-人脸质量过差12-人脸距离不匹配13-疑似对抗样本攻击null-无增强版：此字段不生效，默认为null
+        """plus版：描述当前请求活体阶段被拒绝的详细原因。
+- 详情如下：
+01-用户全程闭眼。
+02-用户未完成指定动作。
+03-疑似翻拍攻击。
+04-疑似合成图片。
+05-疑似合成视频。
+06-疑似合成动作。
+07-疑似黑产模板。
+08-疑似存在水印。
+09-反光校验未通过。
+10-最佳帧校验未通过。
+11-人脸质量过差。
+12-人脸距离不匹配。
+13-疑似对抗样本攻击。
+null-无。
+- 增强版：此字段不生效，默认为null。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5488,13 +5755,14 @@ null-无设备风险
 
     @property
     def DeviceInfoLevel(self):
-        """plus版：描述当前请求所在设备的风险等级，共4级，详情如下：
-1 - 安全
-2 - 低风险
-3 - 中风险
-4 - 高危
-null - 未获取到风险等级
-增强版：此字段不生效，默认为null
+        """plus版：描述当前请求所在设备的风险等级，共4级。
+- 详情如下：
+1 - 安全。
+2 - 低风险。
+3 - 中风险。
+4 - 高危。
+null - 未获取到风险等级。
+- 增强版：此字段不生效，默认为null。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5575,22 +5843,50 @@ class GetFaceIdRiskInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeviceInfoTag: 描述当前请求所在设备的风险标签，详情如下： 01-设备疑似被Root/设备疑似越狱 02-设备疑似被注入 03-设备疑似为模拟器 04-设备疑似存在风险操作 05-摄像头疑似被劫持 06-疑似黑产设备
+        :param _DeviceInfoTag: 描述当前请求所在设备的风险标签
+- 详情如下：
+01-设备疑似被Root/设备疑似越狱。
+02-设备疑似被注入。
+03-设备疑似为模拟器。
+04-设备疑似存在风险操作。
+05-摄像头疑似被劫持。
+06-疑似黑产设备。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceInfoTag: str
-        :param _DeviceInfoLevel: 描述当前请求所在设备的风险等级，共4级，详情如下： 1 - 低风险 2 - 中风险 3 - 高风险 4 - 攻击 ，-1表示未获取到风险等级
+        :param _DeviceInfoLevel: 描述当前请求所在设备的风险等级，共4级。
+- 详情如下：
+ 1 - 低风险。
+ 2 - 中风险。
+ 3 - 高风险。
+ 4 - 攻击。 
+-1表示未获取到风险等级。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceInfoLevel: int
-        :param _OpenId: 设备id标识
+        :param _OpenId: 设备id标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OpenId: str
-        :param _CameraInfoLevel: 描述当前请求所在设备的相机指纹风险等级，共4级，详情如下： 1 - 低风险 2 - 中风险 3 - 高风险 4 - 攻击 ，-1表示未获取到风险等级
+        :param _CameraInfoLevel: 描述当前请求所在设备的相机指纹风险等级，共4级。
+- 详情如下：
+ 1 - 低风险。
+ 2 - 中风险。
+ 3 - 高风险。
+ 4 - 攻击。
+ -1表示未获取到风险等级。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CameraInfoLevel: int
-        :param _CameraInfoTag: 描述当前请求所在设备的相机指纹风险标签，详情如下： 01-设备疑似被Root/设备疑似越狱 02-设备疑似被注入 03-设备疑似为模拟器 04-设备疑似存在风险操作 05-摄像头疑似被劫持 06-疑似黑产设备，空表示没有相机指纹风险
+        :param _CameraInfoTag: 描述当前请求所在设备的相机指纹风险标签。
+
+- 详情如下：
+ 01-设备疑似被Root/设备疑似越狱。
+ 02-设备疑似被注入。
+ 03-设备疑似为模拟器。
+ 04-设备疑似存在风险操作。
+ 05-摄像头疑似被劫持。
+ 06-疑似黑产设备。
+ 空表示没有相机指纹风险。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CameraInfoTag: str
-        :param _Extra: 获取token时透传的信息	
+        :param _Extra: 获取token时透传的信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5606,7 +5902,14 @@ class GetFaceIdRiskInfoResponse(AbstractModel):
 
     @property
     def DeviceInfoTag(self):
-        """描述当前请求所在设备的风险标签，详情如下： 01-设备疑似被Root/设备疑似越狱 02-设备疑似被注入 03-设备疑似为模拟器 04-设备疑似存在风险操作 05-摄像头疑似被劫持 06-疑似黑产设备
+        """描述当前请求所在设备的风险标签
+- 详情如下：
+01-设备疑似被Root/设备疑似越狱。
+02-设备疑似被注入。
+03-设备疑似为模拟器。
+04-设备疑似存在风险操作。
+05-摄像头疑似被劫持。
+06-疑似黑产设备。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5618,7 +5921,13 @@ class GetFaceIdRiskInfoResponse(AbstractModel):
 
     @property
     def DeviceInfoLevel(self):
-        """描述当前请求所在设备的风险等级，共4级，详情如下： 1 - 低风险 2 - 中风险 3 - 高风险 4 - 攻击 ，-1表示未获取到风险等级
+        """描述当前请求所在设备的风险等级，共4级。
+- 详情如下：
+ 1 - 低风险。
+ 2 - 中风险。
+ 3 - 高风险。
+ 4 - 攻击。 
+-1表示未获取到风险等级。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5630,7 +5939,7 @@ class GetFaceIdRiskInfoResponse(AbstractModel):
 
     @property
     def OpenId(self):
-        """设备id标识
+        """设备id标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5642,7 +5951,13 @@ class GetFaceIdRiskInfoResponse(AbstractModel):
 
     @property
     def CameraInfoLevel(self):
-        """描述当前请求所在设备的相机指纹风险等级，共4级，详情如下： 1 - 低风险 2 - 中风险 3 - 高风险 4 - 攻击 ，-1表示未获取到风险等级
+        """描述当前请求所在设备的相机指纹风险等级，共4级。
+- 详情如下：
+ 1 - 低风险。
+ 2 - 中风险。
+ 3 - 高风险。
+ 4 - 攻击。
+ -1表示未获取到风险等级。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5654,7 +5969,16 @@ class GetFaceIdRiskInfoResponse(AbstractModel):
 
     @property
     def CameraInfoTag(self):
-        """描述当前请求所在设备的相机指纹风险标签，详情如下： 01-设备疑似被Root/设备疑似越狱 02-设备疑似被注入 03-设备疑似为模拟器 04-设备疑似存在风险操作 05-摄像头疑似被劫持 06-疑似黑产设备，空表示没有相机指纹风险
+        """描述当前请求所在设备的相机指纹风险标签。
+
+- 详情如下：
+ 01-设备疑似被Root/设备疑似越狱。
+ 02-设备疑似被注入。
+ 03-设备疑似为模拟器。
+ 04-设备疑似存在风险操作。
+ 05-摄像头疑似被劫持。
+ 06-疑似黑产设备。
+ 空表示没有相机指纹风险。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5666,7 +5990,7 @@ class GetFaceIdRiskInfoResponse(AbstractModel):
 
     @property
     def Extra(self):
-        """获取token时透传的信息	
+        """获取token时透传的信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5705,26 +6029,38 @@ class GetFaceIdTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CompareLib: 本地上传照片(LOCAL)、商业库(BUSINESS)
+        :param _CompareLib: 比对库。
+- 取值范围：
+LOCAL：本地上传照片。
+BUSINESS：商业库。
         :type CompareLib: str
-        :param _IdCard: CompareLib为商业库时必传。
+        :param _IdCard: 身份证。
+- CompareLib为商业库时必传。
         :type IdCard: str
-        :param _Name: CompareLib为商业库时必传。
+        :param _Name: 姓名。
+- CompareLib为商业库时必传。
         :type Name: str
-        :param _ImageBase64: CompareLib为上传照片比对时必传，Base64后图片最大8MB。
-请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+        :param _ImageBase64: 图片的Base64。
+- CompareLib为上传照片比对时必传。
+- Base64后图片最大8MB。
+- 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
         :type ImageBase64: str
-        :param _Meta: SDK中生成的Meta字符串
+        :param _Meta: SDK中生成的Meta字符串。
         :type Meta: str
-        :param _Extra: 透传参数 1000长度字符串
+        :param _Extra: 透传参数。
+- 1000长度字符串
         :type Extra: str
-        :param _UseCos: 默认为false，设置该参数为true后，核身过程中的视频图片将会存储在人脸核身控制台授权cos的bucket中，拉取结果时会返回对应资源完整cos地址。开通地址见https://console.cloud.tencent.com/faceid/cos
-【注意】选择该参数为true后将不返回base64数据，请根据接入情况谨慎修改。
+        :param _UseCos: 是否使用cos桶。
+- 默认为false。
+- 设置该参数为true后，核身过程中的视频图片将会存储在人脸核身控制台授权cos的bucket中，拉取结果时会返回对应资源完整cos地址。
+- 开通地址见https://console.cloud.tencent.com/faceid/cos
+- 【注意】选择该参数为true后将不返回base64数据，请根据接入情况谨慎修改。
         :type UseCos: bool
         :param _Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
-        :param _RuleId: 用于细分客户使用场景，申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。如有疑问，请添加腾讯云人脸核身小助手进行咨询。
-示例值：1
+        :param _RuleId: 用于细分客户使用场景。
+- 申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。
+- 如有疑问，请添加腾讯云人脸核身小助手进行咨询。
         :type RuleId: str
         """
         self._CompareLib = None
@@ -5739,7 +6075,10 @@ class GetFaceIdTokenRequest(AbstractModel):
 
     @property
     def CompareLib(self):
-        """本地上传照片(LOCAL)、商业库(BUSINESS)
+        """比对库。
+- 取值范围：
+LOCAL：本地上传照片。
+BUSINESS：商业库。
         :rtype: str
         """
         return self._CompareLib
@@ -5750,7 +6089,8 @@ class GetFaceIdTokenRequest(AbstractModel):
 
     @property
     def IdCard(self):
-        """CompareLib为商业库时必传。
+        """身份证。
+- CompareLib为商业库时必传。
         :rtype: str
         """
         return self._IdCard
@@ -5761,7 +6101,8 @@ class GetFaceIdTokenRequest(AbstractModel):
 
     @property
     def Name(self):
-        """CompareLib为商业库时必传。
+        """姓名。
+- CompareLib为商业库时必传。
         :rtype: str
         """
         return self._Name
@@ -5772,8 +6113,10 @@ class GetFaceIdTokenRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """CompareLib为上传照片比对时必传，Base64后图片最大8MB。
-请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+        """图片的Base64。
+- CompareLib为上传照片比对时必传。
+- Base64后图片最大8MB。
+- 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
         :rtype: str
         """
         return self._ImageBase64
@@ -5784,7 +6127,7 @@ class GetFaceIdTokenRequest(AbstractModel):
 
     @property
     def Meta(self):
-        """SDK中生成的Meta字符串
+        """SDK中生成的Meta字符串。
         :rtype: str
         """
         return self._Meta
@@ -5795,7 +6138,8 @@ class GetFaceIdTokenRequest(AbstractModel):
 
     @property
     def Extra(self):
-        """透传参数 1000长度字符串
+        """透传参数。
+- 1000长度字符串
         :rtype: str
         """
         return self._Extra
@@ -5806,8 +6150,11 @@ class GetFaceIdTokenRequest(AbstractModel):
 
     @property
     def UseCos(self):
-        """默认为false，设置该参数为true后，核身过程中的视频图片将会存储在人脸核身控制台授权cos的bucket中，拉取结果时会返回对应资源完整cos地址。开通地址见https://console.cloud.tencent.com/faceid/cos
-【注意】选择该参数为true后将不返回base64数据，请根据接入情况谨慎修改。
+        """是否使用cos桶。
+- 默认为false。
+- 设置该参数为true后，核身过程中的视频图片将会存储在人脸核身控制台授权cos的bucket中，拉取结果时会返回对应资源完整cos地址。
+- 开通地址见https://console.cloud.tencent.com/faceid/cos
+- 【注意】选择该参数为true后将不返回base64数据，请根据接入情况谨慎修改。
         :rtype: bool
         """
         return self._UseCos
@@ -5829,8 +6176,9 @@ class GetFaceIdTokenRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """用于细分客户使用场景，申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。如有疑问，请添加腾讯云人脸核身小助手进行咨询。
-示例值：1
+        """用于细分客户使用场景。
+- 申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。
+- 如有疑问，请添加腾讯云人脸核身小助手进行咨询。
         :rtype: str
         """
         return self._RuleId
@@ -5869,7 +6217,7 @@ class GetFaceIdTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FaceIdToken: 有效期 10分钟。只能完成1次核身。
+        :param _FaceIdToken: token值。- 有效期 10分钟。- 只能完成1次核身。
         :type FaceIdToken: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5879,7 +6227,7 @@ class GetFaceIdTokenResponse(AbstractModel):
 
     @property
     def FaceIdToken(self):
-        """有效期 10分钟。只能完成1次核身。
+        """token值。- 有效期 10分钟。- 只能完成1次核身。
         :rtype: str
         """
         return self._FaceIdToken
@@ -5912,9 +6260,9 @@ class GetFaceidRiskInfoTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Meta: SDK中生成的Meta字符串
+        :param _Meta: SDK中生成的Meta字符串。
         :type Meta: str
-        :param _Extra: 透传参数 1000长度字符串
+        :param _Extra: 透传参数 1000长度字符串。
         :type Extra: str
         """
         self._Meta = None
@@ -5922,7 +6270,7 @@ class GetFaceidRiskInfoTokenRequest(AbstractModel):
 
     @property
     def Meta(self):
-        """SDK中生成的Meta字符串
+        """SDK中生成的Meta字符串。
         :rtype: str
         """
         return self._Meta
@@ -5933,7 +6281,7 @@ class GetFaceidRiskInfoTokenRequest(AbstractModel):
 
     @property
     def Extra(self):
-        """透传参数 1000长度字符串
+        """透传参数 1000长度字符串。
         :rtype: str
         """
         return self._Extra
@@ -6814,9 +7162,10 @@ class ImageRecognitionV2Request(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdCard: 身份证号
+        :param _IdCard: 身份证号。
         :type IdCard: str
-        :param _Name: 姓名。中文请使用UTF-8编码。
+        :param _Name: 姓名。
+- 中文请使用UTF-8编码。
         :type Name: str
         :param _ImageBase64: 用于人脸比对的照片，图片的Base64值；
 Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
@@ -6824,7 +7173,8 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
         :type ImageBase64: str
         :param _Optional: 本接口不需要传递此参数。
         :type Optional: str
-        :param _Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :param _Encryption: 敏感数据加密信息。
+- 对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self._IdCard = None
@@ -6835,7 +7185,7 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
 
     @property
     def IdCard(self):
-        """身份证号
+        """身份证号。
         :rtype: str
         """
         return self._IdCard
@@ -6846,7 +7196,8 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
 
     @property
     def Name(self):
-        """姓名。中文请使用UTF-8编码。
+        """姓名。
+- 中文请使用UTF-8编码。
         :rtype: str
         """
         return self._Name
@@ -6881,7 +7232,8 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
 
     @property
     def Encryption(self):
-        """敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        """敏感数据加密信息。
+- 对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
         :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         return self._Encryption
@@ -6916,9 +7268,13 @@ class ImageRecognitionV2Response(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Sim: 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
+        :param _Sim: 相似度。
+- 取值范围 [0.00, 100.00]。
+- 推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
         :type Sim: float
-        :param _Result: 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+        :param _Result: 业务错误码。
+- 成功情况返回Success。
+- 错误情况请参考下方错误码 列表中FailedOperation部分
         :type Result: str
         :param _Description: 业务结果描述。
         :type Description: str
@@ -6932,7 +7288,9 @@ class ImageRecognitionV2Response(AbstractModel):
 
     @property
     def Sim(self):
-        """相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
+        """相似度。
+- 取值范围 [0.00, 100.00]。
+- 推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
         :rtype: float
         """
         return self._Sim
@@ -6943,7 +7301,9 @@ class ImageRecognitionV2Response(AbstractModel):
 
     @property
     def Result(self):
-        """业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+        """业务错误码。
+- 成功情况返回Success。
+- 错误情况请参考下方错误码 列表中FailedOperation部分
         :rtype: str
         """
         return self._Result
@@ -7197,9 +7557,12 @@ class IntentionQuestion(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Question: 当选择语音问答模式时，系统自动播报的问题文本，最大长度为150个字符。
+        :param _Question: 当选择语音问答模式时，系统自动播报的问题文本。
+- 最大长度为150个字符。
         :type Question: str
-        :param _Answers: 当选择语音问答模式时，用于判断用户回答是否通过的标准答案列表，传入后可自动判断用户回答文本是否在标准文本列表中。列表长度最大为50，单个答案长度限制10个字符。
+        :param _Answers: 当选择语音问答模式时，用于判断用户回答是否通过的标准答案列表。
+- 传入后可自动判断用户回答文本是否在标准文本列表中。
+- 列表长度最大为50，单个答案长度限制10个字符。
         :type Answers: list of str
         """
         self._Question = None
@@ -7207,7 +7570,8 @@ class IntentionQuestion(AbstractModel):
 
     @property
     def Question(self):
-        """当选择语音问答模式时，系统自动播报的问题文本，最大长度为150个字符。
+        """当选择语音问答模式时，系统自动播报的问题文本。
+- 最大长度为150个字符。
         :rtype: str
         """
         return self._Question
@@ -7218,7 +7582,9 @@ class IntentionQuestion(AbstractModel):
 
     @property
     def Answers(self):
-        """当选择语音问答模式时，用于判断用户回答是否通过的标准答案列表，传入后可自动判断用户回答文本是否在标准文本列表中。列表长度最大为50，单个答案长度限制10个字符。
+        """当选择语音问答模式时，用于判断用户回答是否通过的标准答案列表。
+- 传入后可自动判断用户回答文本是否在标准文本列表中。
+- 列表长度最大为50，单个答案长度限制10个字符。
         :rtype: list of str
         """
         return self._Answers
@@ -7242,57 +7608,63 @@ class IntentionQuestion(AbstractModel):
 
 
 class IntentionQuestionResult(AbstractModel):
-    """意愿核身问答模式结果
+    """意愿核身问答模式结果。
 
     """
 
     def __init__(self):
         r"""
-        :param _FinalResultDetailCode: 意愿核身错误码：
-0: "成功"       
--1: "参数错误"    
--2: "系统异常"    
--101: "请保持人脸在框内"    
--102: "检测到多张人脸"   
--103: "人脸检测失败"   
--104: "人脸检测不完整"   
--105: "请勿遮挡眼睛"    
--106: "请勿遮挡嘴巴"     
--107: "请勿遮挡鼻子"     
--201: "人脸比对相似度低"    
--202: "人脸比对失败"    
--301: "意愿核验不通过"       
--302: "用户回答阶段未检测到张嘴动作"  
--800: "前端不兼容错误"    
--801: "用户未授权摄像头和麦克风权限"   
--802: "核验流程异常中断，请勿切屏或进行其他操作"   
--803: "用户主动关闭链接/异常断开链接"   
--998: "系统数据异常"   
--999: "系统未知错误，请联系人工核实"   
-若在人脸核身过程失败、未进入意愿确认过程，则该参数返回为空，请参考人脸核身错误码结果（DetectInfoText.ErrCode)
+        :param _FinalResultDetailCode: 意愿核身错误码。
+- 取值范围：
+    0: "成功"       
+    -1: "参数错误"    
+    -2: "系统异常"    
+    -101: "请保持人脸在框内"    
+    -102: "检测到多张人脸"   
+    -103: "人脸检测失败"   
+    -104: "人脸检测不完整"   
+    -105: "请勿遮挡眼睛"    
+    -106: "请勿遮挡嘴巴"     
+    -107: "请勿遮挡鼻子"     
+    -201: "人脸比对相似度低"    
+    -202: "人脸比对失败"    
+    -301: "意愿核验不通过"       
+    -302: "用户回答阶段未检测到张嘴动作"  
+    -800: "前端不兼容错误"    
+    -801: "用户未授权摄像头和麦克风权限"   
+    -802: "核验流程异常中断，请勿切屏或进行其他操作"   
+    -803: "用户主动关闭链接/异常断开链接"   
+    -998: "系统数据异常"   
+    -999: "系统未知错误，请联系人工核实"   
+- 若在人脸核身过程失败、未进入意愿确认过程，则该参数返回为空，请参考人脸核身错误码结果（DetectInfoText.ErrCode)
 注意：此字段可能返回 null，表示取不到有效值。
         :type FinalResultDetailCode: int
-        :param _FinalResultMessage: 意愿核身错误信息
+        :param _FinalResultMessage: 意愿核身错误信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FinalResultMessage: str
-        :param _Video: 视频base64（其中包含全程问题和回答音频，mp4格式）
+        :param _Video: 视频base64。
+- 其中包含全程问题和回答音频，mp4格式。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Video: str
-        :param _ScreenShot: 屏幕截图base64列表
+        :param _ScreenShot: 屏幕截图base64列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScreenShot: list of str
-        :param _ResultCode: 和答案匹配结果列表
-0：成功，-1：不匹配
+        :param _ResultCode: 和答案匹配结果列表。
+- 取值范围（0：成功；-1：不匹配）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultCode: list of str
-        :param _AsrResult: 回答问题语音识别结果列表
+        :param _AsrResult: 回答问题语音识别结果列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsrResult: list of str
-        :param _Audios: 答案录音音频
+        :param _Audios: 答案录音音频。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Audios: list of str
-        :param _FinalResultCode: 意愿核身最终结果：
-0：认证通过，-1：认证未通过，-2：浏览器内核不兼容，无法进行意愿校验。建议使用“FinalResultDetailCode”参数获取详细的错误码信息。
+        :param _FinalResultCode: 意愿核身最终结果。
+- 取值范围：
+0：认证通过。
+-1：认证未通过。
+-2：浏览器内核不兼容，无法进行意愿校验。
+- 建议使用“FinalResultDetailCode”参数获取详细的错误码信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FinalResultCode: str
         """
@@ -7307,28 +7679,29 @@ class IntentionQuestionResult(AbstractModel):
 
     @property
     def FinalResultDetailCode(self):
-        """意愿核身错误码：
-0: "成功"       
--1: "参数错误"    
--2: "系统异常"    
--101: "请保持人脸在框内"    
--102: "检测到多张人脸"   
--103: "人脸检测失败"   
--104: "人脸检测不完整"   
--105: "请勿遮挡眼睛"    
--106: "请勿遮挡嘴巴"     
--107: "请勿遮挡鼻子"     
--201: "人脸比对相似度低"    
--202: "人脸比对失败"    
--301: "意愿核验不通过"       
--302: "用户回答阶段未检测到张嘴动作"  
--800: "前端不兼容错误"    
--801: "用户未授权摄像头和麦克风权限"   
--802: "核验流程异常中断，请勿切屏或进行其他操作"   
--803: "用户主动关闭链接/异常断开链接"   
--998: "系统数据异常"   
--999: "系统未知错误，请联系人工核实"   
-若在人脸核身过程失败、未进入意愿确认过程，则该参数返回为空，请参考人脸核身错误码结果（DetectInfoText.ErrCode)
+        """意愿核身错误码。
+- 取值范围：
+    0: "成功"       
+    -1: "参数错误"    
+    -2: "系统异常"    
+    -101: "请保持人脸在框内"    
+    -102: "检测到多张人脸"   
+    -103: "人脸检测失败"   
+    -104: "人脸检测不完整"   
+    -105: "请勿遮挡眼睛"    
+    -106: "请勿遮挡嘴巴"     
+    -107: "请勿遮挡鼻子"     
+    -201: "人脸比对相似度低"    
+    -202: "人脸比对失败"    
+    -301: "意愿核验不通过"       
+    -302: "用户回答阶段未检测到张嘴动作"  
+    -800: "前端不兼容错误"    
+    -801: "用户未授权摄像头和麦克风权限"   
+    -802: "核验流程异常中断，请勿切屏或进行其他操作"   
+    -803: "用户主动关闭链接/异常断开链接"   
+    -998: "系统数据异常"   
+    -999: "系统未知错误，请联系人工核实"   
+- 若在人脸核身过程失败、未进入意愿确认过程，则该参数返回为空，请参考人脸核身错误码结果（DetectInfoText.ErrCode)
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7340,7 +7713,7 @@ class IntentionQuestionResult(AbstractModel):
 
     @property
     def FinalResultMessage(self):
-        """意愿核身错误信息
+        """意愿核身错误信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7352,7 +7725,8 @@ class IntentionQuestionResult(AbstractModel):
 
     @property
     def Video(self):
-        """视频base64（其中包含全程问题和回答音频，mp4格式）
+        """视频base64。
+- 其中包含全程问题和回答音频，mp4格式。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7364,7 +7738,7 @@ class IntentionQuestionResult(AbstractModel):
 
     @property
     def ScreenShot(self):
-        """屏幕截图base64列表
+        """屏幕截图base64列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -7376,8 +7750,8 @@ class IntentionQuestionResult(AbstractModel):
 
     @property
     def ResultCode(self):
-        """和答案匹配结果列表
-0：成功，-1：不匹配
+        """和答案匹配结果列表。
+- 取值范围（0：成功；-1：不匹配）
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -7389,7 +7763,7 @@ class IntentionQuestionResult(AbstractModel):
 
     @property
     def AsrResult(self):
-        """回答问题语音识别结果列表
+        """回答问题语音识别结果列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -7401,7 +7775,7 @@ class IntentionQuestionResult(AbstractModel):
 
     @property
     def Audios(self):
-        """答案录音音频
+        """答案录音音频。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -7413,8 +7787,12 @@ class IntentionQuestionResult(AbstractModel):
 
     @property
     def FinalResultCode(self):
-        """意愿核身最终结果：
-0：认证通过，-1：认证未通过，-2：浏览器内核不兼容，无法进行意愿校验。建议使用“FinalResultDetailCode”参数获取详细的错误码信息。
+        """意愿核身最终结果。
+- 取值范围：
+0：认证通过。
+-1：认证未通过。
+-2：浏览器内核不兼容，无法进行意愿校验。
+- 建议使用“FinalResultDetailCode”参数获取详细的错误码信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7445,25 +7823,29 @@ class IntentionQuestionResult(AbstractModel):
 
 
 class IntentionVerifyData(AbstractModel):
-    """意愿核身相关结果
+    """意愿核身相关结果。
 
     """
 
     def __init__(self):
         r"""
-        :param _IntentionVerifyVideo: 意愿确认环节中录制的视频（base64）。若不存在则为空字符串。
+        :param _IntentionVerifyVideo: 意愿确认环节中录制的视频（base64）。
+- 若不存在则为空字符串。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionVerifyVideo: str
-        :param _AsrResult: 意愿确认环节中用户语音转文字的识别结果。若不存在则为空字符串。
+        :param _AsrResult: 意愿确认环节中用户语音转文字的识别结果。
+- 若不存在则为空字符串。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsrResult: str
-        :param _ErrorCode: 意愿确认环节的结果码。当该结果码为0时，语音朗读的视频与语音识别结果才会返回。
+        :param _ErrorCode: 意愿确认环节的结果码。
+- 当该结果码为0时，语音朗读的视频与语音识别结果才会返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorCode: int
         :param _ErrorMessage: 意愿确认环节的结果信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMessage: str
-        :param _IntentionVerifyBestFrame: 意愿确认环节中录制视频的最佳帧（base64）。若不存在则为空字符串。
+        :param _IntentionVerifyBestFrame: 意愿确认环节中录制视频的最佳帧（base64）。
+- 若不存在则为空字符串。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionVerifyBestFrame: str
         :param _AsrResultSimilarity: 本次流程用户语音与传入文本比对的相似度分值，取值范围 [0.00, 100.00]。只有配置了相似度阈值后才进行语音校验并返回相似度分值。
@@ -7479,7 +7861,8 @@ class IntentionVerifyData(AbstractModel):
 
     @property
     def IntentionVerifyVideo(self):
-        """意愿确认环节中录制的视频（base64）。若不存在则为空字符串。
+        """意愿确认环节中录制的视频（base64）。
+- 若不存在则为空字符串。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7491,7 +7874,8 @@ class IntentionVerifyData(AbstractModel):
 
     @property
     def AsrResult(self):
-        """意愿确认环节中用户语音转文字的识别结果。若不存在则为空字符串。
+        """意愿确认环节中用户语音转文字的识别结果。
+- 若不存在则为空字符串。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7503,7 +7887,8 @@ class IntentionVerifyData(AbstractModel):
 
     @property
     def ErrorCode(self):
-        """意愿确认环节的结果码。当该结果码为0时，语音朗读的视频与语音识别结果才会返回。
+        """意愿确认环节的结果码。
+- 当该结果码为0时，语音朗读的视频与语音识别结果才会返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7527,7 +7912,8 @@ class IntentionVerifyData(AbstractModel):
 
     @property
     def IntentionVerifyBestFrame(self):
-        """意愿确认环节中录制视频的最佳帧（base64）。若不存在则为空字符串。
+        """意愿确认环节中录制视频的最佳帧（base64）。
+- 若不存在则为空字符串。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7871,32 +8257,37 @@ class LivenessRecognitionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdCard: 身份证号
+        :param _IdCard: 身份证号。
         :type IdCard: str
-        :param _Name: 姓名。中文请使用UTF-8编码。
+        :param _Name: 姓名。
+- 中文请使用UTF-8编码。
         :type Name: str
-        :param _LivenessType: 活体检测类型，取值：LIP/ACTION/SILENT。
-LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
+        :param _LivenessType: 活体检测类型。
+- 取值：LIP/ACTION/SILENT。
+- LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
         :type LivenessType: str
         :param _VideoBase64: 用于活体检测的视频，视频的BASE64值；
 BASE64编码后的大小不超过8M，支持mp4、avi、flv格式。
         :type VideoBase64: str
-        :param _VideoUrl: 用于活体检测的视频Url 地址。视频下载后经Base64编码不超过 8M，视频下载耗时不超过4S，支持mp4、avi、flv格式。
-
-视频的 VideoUrl、VideoBase64 必须提供一个，如果都提供，只使用 VideoBase64。
-
-建议视频存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议视频存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :param _VideoUrl: 用于活体检测的视频Url 地址。
+- 视频下载后经Base64编码不超过 8M，视频下载耗时不超过4S，支持mp4、avi、flv格式。
+- 视频的 VideoUrl、VideoBase64 必须提供一个，如果都提供，只使用 VideoBase64。
+- 建议视频存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议视频存储于腾讯云。
+- 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type VideoUrl: str
-        :param _ValidateData: 数字模式传参：传数字验证码，验证码需先调用<a href="https://cloud.tencent.com/document/product/1007/31821">获取数字验证码接口</a>得到；
-动作模式传参：传动作顺序，动作顺序需先调用<a href="https://cloud.tencent.com/document/product/1007/31822">获取动作顺序接口</a>得到；
-静默模式传参：空。
+        :param _ValidateData: 验证数据。
+- 数字模式传参：传数字验证码，验证码需先调用<a href="https://cloud.tencent.com/document/product/1007/31821">获取数字验证码接口</a>得到；
+- 动作模式传参：传动作顺序，动作顺序需先调用<a href="https://cloud.tencent.com/document/product/1007/31822">获取动作顺序接口</a>得到；
+- 静默模式传参：空。
         :type ValidateData: str
         :param _Optional: 额外配置，传入JSON字符串。
+- 格式如下：
 {
 "BestFrameNum": 2  //需要返回多张最佳截图，取值范围2-10
 }
         :type Optional: str
-        :param _Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :param _Encryption: 敏感数据加密信息。
+- 对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self._IdCard = None
@@ -7910,7 +8301,7 @@ BASE64编码后的大小不超过8M，支持mp4、avi、flv格式。
 
     @property
     def IdCard(self):
-        """身份证号
+        """身份证号。
         :rtype: str
         """
         return self._IdCard
@@ -7921,7 +8312,8 @@ BASE64编码后的大小不超过8M，支持mp4、avi、flv格式。
 
     @property
     def Name(self):
-        """姓名。中文请使用UTF-8编码。
+        """姓名。
+- 中文请使用UTF-8编码。
         :rtype: str
         """
         return self._Name
@@ -7932,8 +8324,9 @@ BASE64编码后的大小不超过8M，支持mp4、avi、flv格式。
 
     @property
     def LivenessType(self):
-        """活体检测类型，取值：LIP/ACTION/SILENT。
-LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
+        """活体检测类型。
+- 取值：LIP/ACTION/SILENT。
+- LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
         :rtype: str
         """
         return self._LivenessType
@@ -7956,11 +8349,11 @@ BASE64编码后的大小不超过8M，支持mp4、avi、flv格式。
 
     @property
     def VideoUrl(self):
-        """用于活体检测的视频Url 地址。视频下载后经Base64编码不超过 8M，视频下载耗时不超过4S，支持mp4、avi、flv格式。
-
-视频的 VideoUrl、VideoBase64 必须提供一个，如果都提供，只使用 VideoBase64。
-
-建议视频存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议视频存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        """用于活体检测的视频Url 地址。
+- 视频下载后经Base64编码不超过 8M，视频下载耗时不超过4S，支持mp4、avi、flv格式。
+- 视频的 VideoUrl、VideoBase64 必须提供一个，如果都提供，只使用 VideoBase64。
+- 建议视频存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议视频存储于腾讯云。
+- 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._VideoUrl
@@ -7971,9 +8364,10 @@ BASE64编码后的大小不超过8M，支持mp4、avi、flv格式。
 
     @property
     def ValidateData(self):
-        """数字模式传参：传数字验证码，验证码需先调用<a href="https://cloud.tencent.com/document/product/1007/31821">获取数字验证码接口</a>得到；
-动作模式传参：传动作顺序，动作顺序需先调用<a href="https://cloud.tencent.com/document/product/1007/31822">获取动作顺序接口</a>得到；
-静默模式传参：空。
+        """验证数据。
+- 数字模式传参：传数字验证码，验证码需先调用<a href="https://cloud.tencent.com/document/product/1007/31821">获取数字验证码接口</a>得到；
+- 动作模式传参：传动作顺序，动作顺序需先调用<a href="https://cloud.tencent.com/document/product/1007/31822">获取动作顺序接口</a>得到；
+- 静默模式传参：空。
         :rtype: str
         """
         return self._ValidateData
@@ -7985,6 +8379,7 @@ BASE64编码后的大小不超过8M，支持mp4、avi、flv格式。
     @property
     def Optional(self):
         """额外配置，传入JSON字符串。
+- 格式如下：
 {
 "BestFrameNum": 2  //需要返回多张最佳截图，取值范围2-10
 }
@@ -7998,7 +8393,8 @@ BASE64编码后的大小不超过8M，支持mp4、avi、flv格式。
 
     @property
     def Encryption(self):
-        """敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        """敏感数据加密信息。
+- 对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
         :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         return self._Encryption
@@ -8036,12 +8432,17 @@ class LivenessRecognitionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BestFrameBase64: 验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
+        :param _BestFrameBase64: 验证通过后的视频最佳截图照片。
+- 照片为BASE64编码后的值，jpg格式。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BestFrameBase64: str
-        :param _Sim: 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
+        :param _Sim: 相似度。
+- 取值范围 [0.00, 100.00]。
+- 推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
         :type Sim: float
-        :param _Result: 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+        :param _Result: 业务错误码。
+- 成功情况返回Success。
+- 错误情况请参考下方错误码 列表中FailedOperation部分
         :type Result: str
         :param _Description: 业务结果描述。
         :type Description: str
@@ -8060,7 +8461,8 @@ class LivenessRecognitionResponse(AbstractModel):
 
     @property
     def BestFrameBase64(self):
-        """验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
+        """验证通过后的视频最佳截图照片。
+- 照片为BASE64编码后的值，jpg格式。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8072,7 +8474,9 @@ class LivenessRecognitionResponse(AbstractModel):
 
     @property
     def Sim(self):
-        """相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
+        """相似度。
+- 取值范围 [0.00, 100.00]。
+- 推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
         :rtype: float
         """
         return self._Sim
@@ -8083,7 +8487,9 @@ class LivenessRecognitionResponse(AbstractModel):
 
     @property
     def Result(self):
-        """业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+        """业务错误码。
+- 成功情况返回Success。
+- 错误情况请参考下方错误码 列表中FailedOperation部分
         :rtype: str
         """
         return self._Result
@@ -8849,14 +9255,14 @@ class ParseNfcDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReqId: 前端SDK返回
+        :param _ReqId: 前端SDK返回。
         :type ReqId: str
         """
         self._ReqId = None
 
     @property
     def ReqId(self):
-        """前端SDK返回
+        """前端SDK返回。
         :rtype: str
         """
         return self._ReqId
@@ -8885,66 +9291,85 @@ class ParseNfcDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResultCode: 0为首次查询成功，-1为查询失败。
+        :param _ResultCode: 结果码。
+- 取值范围：0为首次查询成功，-1为查询失败。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultCode: str
-        :param _IdNum: 身份证号
+        :param _IdNum: 身份证号。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdNum: str
-        :param _Name: 姓名
+        :param _Name: 姓名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Picture: 照片
+        :param _Picture: 照片。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Picture: str
-        :param _BirthDate: 出生日期
+        :param _BirthDate: 出生日期。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BirthDate: str
-        :param _BeginTime: 有效期起始时间
+        :param _BeginTime: 有效期起始时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BeginTime: str
-        :param _EndTime: 有效期结束时间
+        :param _EndTime: 有效期结束时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param _Address: 住址
+        :param _Address: 住址。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Address: str
-        :param _Nation: 民族
+        :param _Nation: 民族。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Nation: str
-        :param _Sex: 性别
+        :param _Sex: 性别。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Sex: str
-        :param _IdType: 身份证 01 中国护照 03 军官证 04 武警证 05 港澳通行证 06 台胞证 07 外国护照 08 士兵证 09 临时身份证 10 户口本 11 警官证 12 外国人永久居留证 13 港澳台居民居住证 14 回乡证 15 大陆居民来往台湾通行证 16 其他证件 99
+        :param _IdType: 类型。
+- 取值范围：
+01：身份证。 
+03 ：中国护照。
+04 ：军官证。
+05 ：武警证。
+06：港澳通行证 。
+07 ：台胞证 。
+08：外国护照 。
+09 ：士兵证。
+09 ：临时身份证。
+11：户口本  。
+12 ：警官证 。
+13：外国人永久居留证。
+14：港澳台居民居住证。
+15：回乡证。
+16：大陆居民来往台湾通行证。
+99：其他证件。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdType: str
-        :param _EnName: 英文姓名
+        :param _EnName: 英文姓名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnName: str
         :param _SigningOrganization: 签发机关
 注意：此字段可能返回 null，表示取不到有效值。
         :type SigningOrganization: str
-        :param _OtherIdNum: 港澳台居民居住证，通行证号码
+        :param _OtherIdNum: 港澳台居民居住证，通行证号码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OtherIdNum: str
-        :param _Nationality: 旅行证件国籍
+        :param _Nationality: 旅行证件国籍。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Nationality: str
-        :param _PersonalNumber: 旅行证件机读区第二行 29~42 位
+        :param _PersonalNumber: 旅行证件机读区第二行 29~42 位。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PersonalNumber: str
-        :param _CheckMRTD: 旅行证件类的核验结果。JSON格式如下：
-{"result_issuer ":"签发者证书合法性验证结果 ","result_pape r":"证件安全对象合法性验证 结果 ","result_data" :"防数据篡改验证结果 ","result_chip" :"防证书件芯片被复制验证结果"} 
- 0:验证通过，1: 验证不通过，2: 未验证，3:部分通过，当4项核验结果都为0时，表示证件为真
+        :param _CheckMRTD: 旅行证件类的核验结果。
+- JSON格式如下：
+{"result_issuer ":"签发者证书合法性验证结果 ","result_pape r":"证件安全对象合法性验证 结果 ","result_data" :"防数据篡改验证结果 ","result_chip" :"防证书件芯片被复制验证结果"} 。
+- 取值范围： 0:验证通过，1: 验证不通过，2: 未验证，3:部分通过，当4项核验结果都为0时，表示证件为真。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckMRTD: str
-        :param _ImageA: 身份证照片面合成图片
+        :param _ImageA: 身份证照片面合成图片。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageA: str
-        :param _ImageB: 身份证国徽面合成图片
+        :param _ImageB: 身份证国徽面合成图片。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageB: str
-        :param _ResultDescription: 对result code的结果描述
+        :param _ResultDescription: 对result code的结果描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultDescription: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8974,7 +9399,8 @@ class ParseNfcDataResponse(AbstractModel):
 
     @property
     def ResultCode(self):
-        """0为首次查询成功，-1为查询失败。
+        """结果码。
+- 取值范围：0为首次查询成功，-1为查询失败。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8986,7 +9412,7 @@ class ParseNfcDataResponse(AbstractModel):
 
     @property
     def IdNum(self):
-        """身份证号
+        """身份证号。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8998,7 +9424,7 @@ class ParseNfcDataResponse(AbstractModel):
 
     @property
     def Name(self):
-        """姓名
+        """姓名。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9010,7 +9436,7 @@ class ParseNfcDataResponse(AbstractModel):
 
     @property
     def Picture(self):
-        """照片
+        """照片。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9022,7 +9448,7 @@ class ParseNfcDataResponse(AbstractModel):
 
     @property
     def BirthDate(self):
-        """出生日期
+        """出生日期。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9034,7 +9460,7 @@ class ParseNfcDataResponse(AbstractModel):
 
     @property
     def BeginTime(self):
-        """有效期起始时间
+        """有效期起始时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9046,7 +9472,7 @@ class ParseNfcDataResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        """有效期结束时间
+        """有效期结束时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9058,7 +9484,7 @@ class ParseNfcDataResponse(AbstractModel):
 
     @property
     def Address(self):
-        """住址
+        """住址。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9070,7 +9496,7 @@ class ParseNfcDataResponse(AbstractModel):
 
     @property
     def Nation(self):
-        """民族
+        """民族。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9082,7 +9508,7 @@ class ParseNfcDataResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """性别
+        """性别。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9094,7 +9520,24 @@ class ParseNfcDataResponse(AbstractModel):
 
     @property
     def IdType(self):
-        """身份证 01 中国护照 03 军官证 04 武警证 05 港澳通行证 06 台胞证 07 外国护照 08 士兵证 09 临时身份证 10 户口本 11 警官证 12 外国人永久居留证 13 港澳台居民居住证 14 回乡证 15 大陆居民来往台湾通行证 16 其他证件 99
+        """类型。
+- 取值范围：
+01：身份证。 
+03 ：中国护照。
+04 ：军官证。
+05 ：武警证。
+06：港澳通行证 。
+07 ：台胞证 。
+08：外国护照 。
+09 ：士兵证。
+09 ：临时身份证。
+11：户口本  。
+12 ：警官证 。
+13：外国人永久居留证。
+14：港澳台居民居住证。
+15：回乡证。
+16：大陆居民来往台湾通行证。
+99：其他证件。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9106,7 +9549,7 @@ class ParseNfcDataResponse(AbstractModel):
 
     @property
     def EnName(self):
-        """英文姓名
+        """英文姓名。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9130,7 +9573,7 @@ class ParseNfcDataResponse(AbstractModel):
 
     @property
     def OtherIdNum(self):
-        """港澳台居民居住证，通行证号码
+        """港澳台居民居住证，通行证号码。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9142,7 +9585,7 @@ class ParseNfcDataResponse(AbstractModel):
 
     @property
     def Nationality(self):
-        """旅行证件国籍
+        """旅行证件国籍。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9154,7 +9597,7 @@ class ParseNfcDataResponse(AbstractModel):
 
     @property
     def PersonalNumber(self):
-        """旅行证件机读区第二行 29~42 位
+        """旅行证件机读区第二行 29~42 位。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9166,9 +9609,10 @@ class ParseNfcDataResponse(AbstractModel):
 
     @property
     def CheckMRTD(self):
-        """旅行证件类的核验结果。JSON格式如下：
-{"result_issuer ":"签发者证书合法性验证结果 ","result_pape r":"证件安全对象合法性验证 结果 ","result_data" :"防数据篡改验证结果 ","result_chip" :"防证书件芯片被复制验证结果"} 
- 0:验证通过，1: 验证不通过，2: 未验证，3:部分通过，当4项核验结果都为0时，表示证件为真
+        """旅行证件类的核验结果。
+- JSON格式如下：
+{"result_issuer ":"签发者证书合法性验证结果 ","result_pape r":"证件安全对象合法性验证 结果 ","result_data" :"防数据篡改验证结果 ","result_chip" :"防证书件芯片被复制验证结果"} 。
+- 取值范围： 0:验证通过，1: 验证不通过，2: 未验证，3:部分通过，当4项核验结果都为0时，表示证件为真。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9180,7 +9624,7 @@ class ParseNfcDataResponse(AbstractModel):
 
     @property
     def ImageA(self):
-        """身份证照片面合成图片
+        """身份证照片面合成图片。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9192,7 +9636,7 @@ class ParseNfcDataResponse(AbstractModel):
 
     @property
     def ImageB(self):
-        """身份证国徽面合成图片
+        """身份证国徽面合成图片。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9204,7 +9648,7 @@ class ParseNfcDataResponse(AbstractModel):
 
     @property
     def ResultDescription(self):
-        """对result code的结果描述
+        """对result code的结果描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

@@ -8047,6 +8047,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
         :param _DiskType: 磁盘类型，基础版或者集群版实例可以指定此参数。CLOUD_SSD 表示 SSD 云硬盘，CLOUD_HSSD 表示增强型 SSD 云硬盘。
         :type DiskType: str
+        :param _ClusterType: 集群类型:cage——金融围拢，cdc——CDB ON CDC；dedicate——独享集群
+        :type ClusterType: str
         """
         self._GoodsNum = None
         self._Memory = None
@@ -8088,6 +8090,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._DataProtectVolume = None
         self._ClusterTopology = None
         self._DiskType = None
+        self._ClusterType = None
 
     @property
     def GoodsNum(self):
@@ -8535,6 +8538,17 @@ class CreateDBInstanceHourRequest(AbstractModel):
     def DiskType(self, DiskType):
         self._DiskType = DiskType
 
+    @property
+    def ClusterType(self):
+        """集群类型:cage——金融围拢，cdc——CDB ON CDC；dedicate——独享集群
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
 
     def _deserialize(self, params):
         self._GoodsNum = params.get("GoodsNum")
@@ -8591,6 +8605,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
             self._ClusterTopology = ClusterTopology()
             self._ClusterTopology._deserialize(params.get("ClusterTopology"))
         self._DiskType = params.get("DiskType")
+        self._ClusterType = params.get("ClusterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8687,7 +8702,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type Port: int
         :param _InstanceRole: 实例类型，默认为 master，支持值包括：master - 表示主实例，dr - 表示灾备实例，ro - 表示只读实例。
         :type InstanceRole: str
-        :param _MasterInstanceId: 实例 ID，购买只读实例时必填，该字段表示只读实例的主实例ID，请使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询云数据库实例 ID。
+        :param _MasterInstanceId: 实例 ID，购买只读实例时必填，该字段表示只读实例的主实例 ID，请使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询云数据库实例 ID。
         :type MasterInstanceId: str
         :param _EngineVersion: MySQL 版本，值包括：5.5、5.6、5.7和8.0，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口获取可创建的实例版本。
 说明：创建非集群版实例时，请根据需要指定实例版本（推荐5.7或8.0），若此参数不填，则默认值为5.6；若创建的是集群版实例，则此参数仅能指定为5.7或8.0。
@@ -8911,7 +8926,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def MasterInstanceId(self):
-        """实例 ID，购买只读实例时必填，该字段表示只读实例的主实例ID，请使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询云数据库实例 ID。
+        """实例 ID，购买只读实例时必填，该字段表示只读实例的主实例 ID，请使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询云数据库实例 ID。
         :rtype: str
         """
         return self._MasterInstanceId
@@ -31120,10 +31135,8 @@ class ProxyInst(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
         :param _InstNodeId: 实例节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstNodeId: str
         :param _InstNodeRole: 节点角色
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstNodeRole: str
         """
         self._InstanceId = None
@@ -31223,7 +31236,6 @@ class ProxyInst(AbstractModel):
     @property
     def InstNodeId(self):
         """实例节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstNodeId
@@ -31235,7 +31247,6 @@ class ProxyInst(AbstractModel):
     @property
     def InstNodeRole(self):
         """节点角色
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstNodeRole

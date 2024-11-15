@@ -28942,6 +28942,7 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
 <li> VideoProduce: 视频制作</li>
 <li> MediaCast: 媒体转推</li>
 <li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
+<li>VoiceTranslation: 语音翻译</li>
         :type Type: str
         """
         self._StartTime = None
@@ -29005,6 +29006,7 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
 <li> VideoProduce: 视频制作</li>
 <li> MediaCast: 媒体转推</li>
 <li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
+<li>VoiceTranslation: 语音翻译</li>
         :rtype: str
         """
         return self._Type
@@ -33052,6 +33054,9 @@ class DomainDetailInfo(AbstractModel):
         :param _QUICConfig: 域名 QUIC 配置信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QUICConfig: :class:`tencentcloud.vod.v20180717.models.DomainQUICConfig`
+        :param _IPFilterPolicy: IP 访问限制配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IPFilterPolicy: :class:`tencentcloud.vod.v20180717.models.IPFilterPolicy`
         """
         self._Domain = None
         self._AccelerateAreaInfos = None
@@ -33061,6 +33066,7 @@ class DomainDetailInfo(AbstractModel):
         self._RefererAuthPolicy = None
         self._CreateTime = None
         self._QUICConfig = None
+        self._IPFilterPolicy = None
 
     @property
     def Domain(self):
@@ -33159,6 +33165,18 @@ class DomainDetailInfo(AbstractModel):
     def QUICConfig(self, QUICConfig):
         self._QUICConfig = QUICConfig
 
+    @property
+    def IPFilterPolicy(self):
+        """IP 访问限制配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.IPFilterPolicy`
+        """
+        return self._IPFilterPolicy
+
+    @IPFilterPolicy.setter
+    def IPFilterPolicy(self, IPFilterPolicy):
+        self._IPFilterPolicy = IPFilterPolicy
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -33182,6 +33200,9 @@ class DomainDetailInfo(AbstractModel):
         if params.get("QUICConfig") is not None:
             self._QUICConfig = DomainQUICConfig()
             self._QUICConfig._deserialize(params.get("QUICConfig"))
+        if params.get("IPFilterPolicy") is not None:
+            self._IPFilterPolicy = IPFilterPolicy()
+            self._IPFilterPolicy._deserialize(params.get("IPFilterPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38410,6 +38431,78 @@ class HighlightsConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IPFilterPolicy(AbstractModel):
+    """IP 访问限制规则，当前支持配置 IP 黑名单和白名单。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: IP 访问限制状态，可选值：
+<li>Enabled：启用；</li>
+<li>Disabled：禁用。</li>
+        :type Status: str
+        :param _FilterType: IP 访问限制类型：  <li>Black：黑名单方式校验。只有来自 IPList 列表中的 IP 请求会被拦截。</li>
+<li>White：白名单方式校验。只有来自 IPList 列表中的 IP 请求会被放行。</li>当 Status 取值为 Enabled 时，FilterType  必须赋值。
+        :type FilterType: str
+        :param _IPList: IP 列表，支持 X.X.X.X 格式 IPV4 地址，或 X:X:X:X:X:X:X:X 格式 IPV6 地址，或网段格式 /N（IPV4:1≤N≤32；IPV6:1≤N≤128）；最多可填充 200 个 IP 或网段。当 Status 取值为 Enabled 时，IPList 必须赋值。
+        :type IPList: list of str
+        """
+        self._Status = None
+        self._FilterType = None
+        self._IPList = None
+
+    @property
+    def Status(self):
+        """IP 访问限制状态，可选值：
+<li>Enabled：启用；</li>
+<li>Disabled：禁用。</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def FilterType(self):
+        """IP 访问限制类型：  <li>Black：黑名单方式校验。只有来自 IPList 列表中的 IP 请求会被拦截。</li>
+<li>White：白名单方式校验。只有来自 IPList 列表中的 IP 请求会被放行。</li>当 Status 取值为 Enabled 时，FilterType  必须赋值。
+        :rtype: str
+        """
+        return self._FilterType
+
+    @FilterType.setter
+    def FilterType(self, FilterType):
+        self._FilterType = FilterType
+
+    @property
+    def IPList(self):
+        """IP 列表，支持 X.X.X.X 格式 IPV4 地址，或 X:X:X:X:X:X:X:X 格式 IPV6 地址，或网段格式 /N（IPV4:1≤N≤32；IPV6:1≤N≤128）；最多可填充 200 个 IP 或网段。当 Status 取值为 Enabled 时，IPList 必须赋值。
+        :rtype: list of str
+        """
+        return self._IPList
+
+    @IPList.setter
+    def IPList(self, IPList):
+        self._IPList = IPList
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._FilterType = params.get("FilterType")
+        self._IPList = params.get("IPList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -51943,12 +52036,15 @@ class ModifyVodDomainConfigRequest(AbstractModel):
         :type UrlSignatureAuthPolicy: :class:`tencentcloud.vod.v20180717.models.UrlSignatureAuthPolicy`
         :param _QUICConfig: QUIC 配置。
         :type QUICConfig: :class:`tencentcloud.vod.v20180717.models.DomainQUICConfig`
+        :param _IPFilterPolicy: IP 访问限制规则。
+        :type IPFilterPolicy: :class:`tencentcloud.vod.v20180717.models.IPFilterPolicy`
         """
         self._Domain = None
         self._SubAppId = None
         self._RefererAuthPolicy = None
         self._UrlSignatureAuthPolicy = None
         self._QUICConfig = None
+        self._IPFilterPolicy = None
 
     @property
     def Domain(self):
@@ -52005,6 +52101,17 @@ class ModifyVodDomainConfigRequest(AbstractModel):
     def QUICConfig(self, QUICConfig):
         self._QUICConfig = QUICConfig
 
+    @property
+    def IPFilterPolicy(self):
+        """IP 访问限制规则。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.IPFilterPolicy`
+        """
+        return self._IPFilterPolicy
+
+    @IPFilterPolicy.setter
+    def IPFilterPolicy(self, IPFilterPolicy):
+        self._IPFilterPolicy = IPFilterPolicy
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -52018,6 +52125,9 @@ class ModifyVodDomainConfigRequest(AbstractModel):
         if params.get("QUICConfig") is not None:
             self._QUICConfig = DomainQUICConfig()
             self._QUICConfig._deserialize(params.get("QUICConfig"))
+        if params.get("IPFilterPolicy") is not None:
+            self._IPFilterPolicy = IPFilterPolicy()
+            self._IPFilterPolicy._deserialize(params.get("IPFilterPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -70113,6 +70223,7 @@ class TaskStatData(AbstractModel):
 <li> RebuildMedia: 音画质重生</li>
 <li> QualityInspect: 音画质检测</li>
 <li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
+<li>VoiceTranslation: 语音翻译</li>
         :type TaskType: str
         :param _Summary: 任务数统计数据概览，用量单位为秒。
         :type Summary: list of TaskStatDataItem
@@ -70191,6 +70302,7 @@ class TaskStatData(AbstractModel):
 <li> RebuildMedia: 音画质重生</li>
 <li> QualityInspect: 音画质检测</li>
 <li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
+<li>VoiceTranslation: 语音翻译</li>
         :rtype: str
         """
         return self._TaskType

@@ -441,12 +441,11 @@ class DescribePortraitSingJobResponse(AbstractModel):
         :type StatusCode: str
         :param _StatusMsg: 任务状态信息
         :type StatusMsg: str
-        :param _ErrorCode: 错误码
+        :param _ErrorCode: 任务执行错误码。当任务状态不为FAIL时，该值为""。
         :type ErrorCode: str
-        :param _ErrorMessage: 错误信息
+        :param _ErrorMessage: 任务执行错误信息。当任务状态不为FAIL时，该值为""。
         :type ErrorMessage: str
-        :param _ResultVideoUrl: 生成视频的URL地址
-有效期24小时
+        :param _ResultVideoUrl: 生成视频的URL地址。有效期24小时。
         :type ResultVideoUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -498,7 +497,7 @@ class DescribePortraitSingJobResponse(AbstractModel):
 
     @property
     def ErrorCode(self):
-        """错误码
+        """任务执行错误码。当任务状态不为FAIL时，该值为""。
         :rtype: str
         """
         return self._ErrorCode
@@ -509,7 +508,7 @@ class DescribePortraitSingJobResponse(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        """错误信息
+        """任务执行错误信息。当任务状态不为FAIL时，该值为""。
         :rtype: str
         """
         return self._ErrorMessage
@@ -520,8 +519,7 @@ class DescribePortraitSingJobResponse(AbstractModel):
 
     @property
     def ResultVideoUrl(self):
-        """生成视频的URL地址
-有效期24小时
+        """生成视频的URL地址。有效期24小时。
         :rtype: str
         """
         return self._ResultVideoUrl
@@ -963,13 +961,10 @@ class LogoParam(AbstractModel):
     def __init__(self):
         r"""
         :param _LogoUrl: 水印 Url
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogoUrl: str
         :param _LogoImage: 水印 Base64，Url 和 Base64 二选一传入，如果都提供以 Url 为准
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogoImage: str
-        :param _LogoRect: 水印图片位于生成结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _LogoRect: 水印图片位于生成结果图中的坐标及宽高，将按照坐标对标识图片进行位置和大小的拉伸匹配。
         :type LogoRect: :class:`tencentcloud.vclm.v20240523.models.LogoRect`
         """
         self._LogoUrl = None
@@ -979,7 +974,6 @@ class LogoParam(AbstractModel):
     @property
     def LogoUrl(self):
         """水印 Url
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogoUrl
@@ -991,7 +985,6 @@ class LogoParam(AbstractModel):
     @property
     def LogoImage(self):
         """水印 Base64，Url 和 Base64 二选一传入，如果都提供以 Url 为准
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogoImage
@@ -1002,8 +995,7 @@ class LogoParam(AbstractModel):
 
     @property
     def LogoRect(self):
-        """水印图片位于生成结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配
-注意：此字段可能返回 null，表示取不到有效值。
+        """水印图片位于生成结果图中的坐标及宽高，将按照坐标对标识图片进行位置和大小的拉伸匹配。
         :rtype: :class:`tencentcloud.vclm.v20240523.models.LogoRect`
         """
         return self._LogoRect
@@ -1030,23 +1022,19 @@ class LogoParam(AbstractModel):
 
 
 class LogoRect(AbstractModel):
-    """输入框
+    """水印图输入框
 
     """
 
     def __init__(self):
         r"""
-        :param _X: 左上角X坐标
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _X: 水印图框X坐标值。当值大于0时，坐标轴原点位于原图左侧，方向指右；当值小于0时，坐标轴原点位于原图右侧，方向指左。
         :type X: int
-        :param _Y: 左上角Y坐标
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Y: 水印图框Y坐标值。当值大于0时，坐标轴原点位于原图上侧，方向指下；当值小于0时，坐标轴原点位于原图下侧，方向指上。
         :type Y: int
-        :param _Width: 方框宽度
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Width: 水印图框宽度。
         :type Width: int
-        :param _Height: 方框高度
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Height: 水印图框高度。
         :type Height: int
         """
         self._X = None
@@ -1056,8 +1044,7 @@ class LogoRect(AbstractModel):
 
     @property
     def X(self):
-        """左上角X坐标
-注意：此字段可能返回 null，表示取不到有效值。
+        """水印图框X坐标值。当值大于0时，坐标轴原点位于原图左侧，方向指右；当值小于0时，坐标轴原点位于原图右侧，方向指左。
         :rtype: int
         """
         return self._X
@@ -1068,8 +1055,7 @@ class LogoRect(AbstractModel):
 
     @property
     def Y(self):
-        """左上角Y坐标
-注意：此字段可能返回 null，表示取不到有效值。
+        """水印图框Y坐标值。当值大于0时，坐标轴原点位于原图上侧，方向指下；当值小于0时，坐标轴原点位于原图下侧，方向指上。
         :rtype: int
         """
         return self._Y
@@ -1080,8 +1066,7 @@ class LogoRect(AbstractModel):
 
     @property
     def Width(self):
-        """方框宽度
-注意：此字段可能返回 null，表示取不到有效值。
+        """水印图框宽度。
         :rtype: int
         """
         return self._Width
@@ -1092,8 +1077,7 @@ class LogoRect(AbstractModel):
 
     @property
     def Height(self):
-        """方框高度
-注意：此字段可能返回 null，表示取不到有效值。
+        """水印图框高度。
         :rtype: int
         """
         return self._Height
@@ -1340,7 +1324,7 @@ class SubmitPortraitSingJobRequest(AbstractModel):
 - 图片分辨率：192～4096
 - 图片大小：不超过10M
 - 图片宽高比：图片【宽：高】在1:2到2:1范围内
-- 图片内容：避免上传无人脸/宠物脸或脸部过小、不完整、不清晰、偏转角度过大的图片。
+- 图片内容：避免上传无人脸、无宠物脸或脸部过小、不完整、不清晰、偏转角度过大、嘴部被遮挡的图片。
         :type ImageUrl: str
         :param _ImageBase64: 传入图片Base64编码，编码后请求体大小不超过10M。
 图片Base64编码与URL地址必传其一，如果都传以ImageBase64为准。
@@ -1349,11 +1333,28 @@ class SubmitPortraitSingJobRequest(AbstractModel):
 Person：人像模式，仅支持上传人像图片，人像生成效果更好，如果图中未检测到有效人脸将被拦截，生成时会将视频短边分辨率放缩至512。
 Pet：宠物模式，支持宠物等非人像图片，固定生成512:512分辨率视频。
         :type Mode: str
+        :param _Resolution: 生成视频尺寸。可选取值："512:512"。
+
+人像模式下，如果不传该参数，默认生成视频的短边分辨率为512，长边分辨率不固定、由模型根据生成效果自动适配得到。如需固定生成分辨率可传入512:512。
+
+宠物模式下，如果不传该参数，默认将脸部唱演视频回贴原图，生成视频分辨率与原图一致。如不需要脸部回贴，仅保留脸部唱演视频，可传入512:512。
+        :type Resolution: str
+        :param _LogoAdd: 为生成视频添加标识的开关，默认为0。 
+1：添加标识；
+ 0：不添加标识；
+其他数值：默认按1处理。 
+建议您使用显著标识来提示，该视频是 AI 生成的视频。
+        :type LogoAdd: int
+        :param _LogoParam: 标识内容设置。 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :type LogoParam: :class:`tencentcloud.vclm.v20240523.models.LogoParam`
         """
         self._AudioUrl = None
         self._ImageUrl = None
         self._ImageBase64 = None
         self._Mode = None
+        self._Resolution = None
+        self._LogoAdd = None
+        self._LogoParam = None
 
     @property
     def AudioUrl(self):
@@ -1375,7 +1376,7 @@ Pet：宠物模式，支持宠物等非人像图片，固定生成512:512分辨�
 - 图片分辨率：192～4096
 - 图片大小：不超过10M
 - 图片宽高比：图片【宽：高】在1:2到2:1范围内
-- 图片内容：避免上传无人脸/宠物脸或脸部过小、不完整、不清晰、偏转角度过大的图片。
+- 图片内容：避免上传无人脸、无宠物脸或脸部过小、不完整、不清晰、偏转角度过大、嘴部被遮挡的图片。
         :rtype: str
         """
         return self._ImageUrl
@@ -1409,12 +1410,58 @@ Pet：宠物模式，支持宠物等非人像图片，固定生成512:512分辨�
     def Mode(self, Mode):
         self._Mode = Mode
 
+    @property
+    def Resolution(self):
+        """生成视频尺寸。可选取值："512:512"。
+
+人像模式下，如果不传该参数，默认生成视频的短边分辨率为512，长边分辨率不固定、由模型根据生成效果自动适配得到。如需固定生成分辨率可传入512:512。
+
+宠物模式下，如果不传该参数，默认将脸部唱演视频回贴原图，生成视频分辨率与原图一致。如不需要脸部回贴，仅保留脸部唱演视频，可传入512:512。
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def LogoAdd(self):
+        """为生成视频添加标识的开关，默认为0。 
+1：添加标识；
+ 0：不添加标识；
+其他数值：默认按1处理。 
+建议您使用显著标识来提示，该视频是 AI 生成的视频。
+        :rtype: int
+        """
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def LogoParam(self):
+        """标识内容设置。 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.LogoParam`
+        """
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
+
 
     def _deserialize(self, params):
         self._AudioUrl = params.get("AudioUrl")
         self._ImageUrl = params.get("ImageUrl")
         self._ImageBase64 = params.get("ImageBase64")
         self._Mode = params.get("Mode")
+        self._Resolution = params.get("Resolution")
+        self._LogoAdd = params.get("LogoAdd")
+        if params.get("LogoParam") is not None:
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1432,7 +1479,7 @@ class SubmitPortraitSingJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务ID
+        :param _JobId: 任务ID。任务有效期为48小时。
         :type JobId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1442,7 +1489,7 @@ class SubmitPortraitSingJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """任务ID
+        """任务ID。任务有效期为48小时。
         :rtype: str
         """
         return self._JobId
@@ -1600,50 +1647,58 @@ class SubmitVideoTranslateJobRequest(AbstractModel):
         r"""
         :param _VideoUrl: 视频地址URL。
 格式要求：支持 mp4、mov 。
-时长要求：【10-300】秒。
+时长要求：【5-600】秒。
 fps 要求：【15-60】fps
-分辨率要求：单边像素要求在 【540~1920】 之间。
+分辨率要求：单边像素要求在 【360~4096】 之间。
+大小要求：不超过500Mb
 
         :type VideoUrl: str
-        :param _SrcLang: 源语言：zh(中文), en(英文)
+        :param _SrcLang: 输入视频中音频语种
+目前支持语种范围：zh(中文), en(英文)
         :type SrcLang: str
-        :param _DstLang: 目标语种：
-zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)、fr(法语)、id(印尼语)、it(意大利语)、ja(日语)、ko(韩语)、ms(马来语)、pt(葡萄牙语)、ru(俄语)、th(泰语)、tr(土耳其语)、vi(越南语)
-        :type DstLang: str
-        :param _AudioUrl: 当音频 URL 不为空时，默认以音频驱动视频任务口型。
+        :param _AudioUrl: 当音频 URL 不为空时，不经过语音AI处理，直接以视频为素材用音频内容做视频口型驱动。
 格式要求：支持 mp3、m4a、acc、wav 格式。
-时长要求：【10~300】秒
-大小要求：不超过 100M。
+时长要求：【5~600】秒，音频时长要匹配视频时长。
+大小要求：不超过 100Mb。
         :type AudioUrl: str
+        :param _DstLang: 输出视频中翻译语种
+目前支持语种范围：zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)、fr(法语)、id(印尼语)、it(意大利语)、ja(日语)、ko(韩语)、ms(马来语)、pt(葡萄牙语)、ru(俄语)、th(泰语)、tr(土耳其语)、vi(越南语)
+        :type DstLang: str
+        :param _VoiceType: 翻译语种匹配音色种别，其他说明如下：
+1）默认不填代表克隆输入视频中音频音色；
+2）翻译语种非中英（即zh、en），该项必填；
+
+具体音色种别详见说明“支持音色种别列表”，每个音色都支持 15 个目标语种。
+
+        :type VoiceType: str
+        :param _Confirm: 是否需要纠正视频中音频识别与翻译内容，取值范围：0-不需要，1-需要，默认0。
+
+        :type Confirm: int
         :param _RemoveVocal: 是否需要去除VideoUrl或AudioUrl中背景音，取值范围：0-不需要，1-需要，默认0 。
         :type RemoveVocal: int
-        :param _Confirm: 是否需要确认翻译结果0：不需要，1：需要
-        :type Confirm: int
-        :param _LipSync: 是否开启口型驱动，0：不开启，1：开启。默认开启。
+        :param _LipSync: 是否开启口型驱动，0-不开启，1-开启。默认0。
         :type LipSync: int
-        :param _VoiceType: 音色种别：一种音色种别对应一种不同区域的音色
-1）目标语种为小语种(非zh,en)时，该项为必填
-2）目标语种为zh,en时，该项为非必填，若填入，则对应填入的音色
-
-具体音色包含请见“支持音色种别列表”
-        :type VoiceType: str
+        :param _VideoLoop: 当 AudioUrl 字段有输入音频时，如果输入音频时长大于输入视频时长，会拼接视频（ 0-正向拼接、1-反向拼接 ）对齐音频时长。默认 0。
+        :type VideoLoop: int
         """
         self._VideoUrl = None
         self._SrcLang = None
-        self._DstLang = None
         self._AudioUrl = None
-        self._RemoveVocal = None
-        self._Confirm = None
-        self._LipSync = None
+        self._DstLang = None
         self._VoiceType = None
+        self._Confirm = None
+        self._RemoveVocal = None
+        self._LipSync = None
+        self._VideoLoop = None
 
     @property
     def VideoUrl(self):
         """视频地址URL。
 格式要求：支持 mp4、mov 。
-时长要求：【10-300】秒。
+时长要求：【5-600】秒。
 fps 要求：【15-60】fps
-分辨率要求：单边像素要求在 【540~1920】 之间。
+分辨率要求：单边像素要求在 【360~4096】 之间。
+大小要求：不超过500Mb
 
         :rtype: str
         """
@@ -1655,7 +1710,8 @@ fps 要求：【15-60】fps
 
     @property
     def SrcLang(self):
-        """源语言：zh(中文), en(英文)
+        """输入视频中音频语种
+目前支持语种范围：zh(中文), en(英文)
         :rtype: str
         """
         return self._SrcLang
@@ -1665,9 +1721,23 @@ fps 要求：【15-60】fps
         self._SrcLang = SrcLang
 
     @property
+    def AudioUrl(self):
+        """当音频 URL 不为空时，不经过语音AI处理，直接以视频为素材用音频内容做视频口型驱动。
+格式要求：支持 mp3、m4a、acc、wav 格式。
+时长要求：【5~600】秒，音频时长要匹配视频时长。
+大小要求：不超过 100Mb。
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
     def DstLang(self):
-        """目标语种：
-zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)、fr(法语)、id(印尼语)、it(意大利语)、ja(日语)、ko(韩语)、ms(马来语)、pt(葡萄牙语)、ru(俄语)、th(泰语)、tr(土耳其语)、vi(越南语)
+        """输出视频中翻译语种
+目前支持语种范围：zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)、fr(法语)、id(印尼语)、it(意大利语)、ja(日语)、ko(韩语)、ms(马来语)、pt(葡萄牙语)、ru(俄语)、th(泰语)、tr(土耳其语)、vi(越南语)
         :rtype: str
         """
         return self._DstLang
@@ -1677,18 +1747,32 @@ zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)
         self._DstLang = DstLang
 
     @property
-    def AudioUrl(self):
-        """当音频 URL 不为空时，默认以音频驱动视频任务口型。
-格式要求：支持 mp3、m4a、acc、wav 格式。
-时长要求：【10~300】秒
-大小要求：不超过 100M。
+    def VoiceType(self):
+        """翻译语种匹配音色种别，其他说明如下：
+1）默认不填代表克隆输入视频中音频音色；
+2）翻译语种非中英（即zh、en），该项必填；
+
+具体音色种别详见说明“支持音色种别列表”，每个音色都支持 15 个目标语种。
+
         :rtype: str
         """
-        return self._AudioUrl
+        return self._VoiceType
 
-    @AudioUrl.setter
-    def AudioUrl(self, AudioUrl):
-        self._AudioUrl = AudioUrl
+    @VoiceType.setter
+    def VoiceType(self, VoiceType):
+        self._VoiceType = VoiceType
+
+    @property
+    def Confirm(self):
+        """是否需要纠正视频中音频识别与翻译内容，取值范围：0-不需要，1-需要，默认0。
+
+        :rtype: int
+        """
+        return self._Confirm
+
+    @Confirm.setter
+    def Confirm(self, Confirm):
+        self._Confirm = Confirm
 
     @property
     def RemoveVocal(self):
@@ -1702,19 +1786,8 @@ zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)
         self._RemoveVocal = RemoveVocal
 
     @property
-    def Confirm(self):
-        """是否需要确认翻译结果0：不需要，1：需要
-        :rtype: int
-        """
-        return self._Confirm
-
-    @Confirm.setter
-    def Confirm(self, Confirm):
-        self._Confirm = Confirm
-
-    @property
     def LipSync(self):
-        """是否开启口型驱动，0：不开启，1：开启。默认开启。
+        """是否开启口型驱动，0-不开启，1-开启。默认0。
         :rtype: int
         """
         return self._LipSync
@@ -1724,30 +1797,27 @@ zh(简体中文)、en(英语)、ar(阿拉伯语)、de(德语)、es(西班牙语)
         self._LipSync = LipSync
 
     @property
-    def VoiceType(self):
-        """音色种别：一种音色种别对应一种不同区域的音色
-1）目标语种为小语种(非zh,en)时，该项为必填
-2）目标语种为zh,en时，该项为非必填，若填入，则对应填入的音色
-
-具体音色包含请见“支持音色种别列表”
-        :rtype: str
+    def VideoLoop(self):
+        """当 AudioUrl 字段有输入音频时，如果输入音频时长大于输入视频时长，会拼接视频（ 0-正向拼接、1-反向拼接 ）对齐音频时长。默认 0。
+        :rtype: int
         """
-        return self._VoiceType
+        return self._VideoLoop
 
-    @VoiceType.setter
-    def VoiceType(self, VoiceType):
-        self._VoiceType = VoiceType
+    @VideoLoop.setter
+    def VideoLoop(self, VideoLoop):
+        self._VideoLoop = VideoLoop
 
 
     def _deserialize(self, params):
         self._VideoUrl = params.get("VideoUrl")
         self._SrcLang = params.get("SrcLang")
-        self._DstLang = params.get("DstLang")
         self._AudioUrl = params.get("AudioUrl")
-        self._RemoveVocal = params.get("RemoveVocal")
-        self._Confirm = params.get("Confirm")
-        self._LipSync = params.get("LipSync")
+        self._DstLang = params.get("DstLang")
         self._VoiceType = params.get("VoiceType")
+        self._Confirm = params.get("Confirm")
+        self._RemoveVocal = params.get("RemoveVocal")
+        self._LipSync = params.get("LipSync")
+        self._VideoLoop = params.get("VideoLoop")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1765,7 +1835,7 @@ class SubmitVideoTranslateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 视频转译任务的Job id
+        :param _JobId: 视频转译任务的ID
         :type JobId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1775,7 +1845,7 @@ class SubmitVideoTranslateJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """视频转译任务的Job id
+        """视频转译任务的ID
         :rtype: str
         """
         return self._JobId

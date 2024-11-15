@@ -4014,31 +4014,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeCloudProtectServiceOrderList(self, request):
-        """云护航计费产品已下线
-
-        查询云护航服务订单列表
-
-        :param request: Request instance for DescribeCloudProtectServiceOrderList.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeCloudProtectServiceOrderListRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeCloudProtectServiceOrderListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeCloudProtectServiceOrderList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeCloudProtectServiceOrderListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeComponentStatistics(self, request):
         """接口已无效
 

@@ -77,7 +77,6 @@ class BatchDeleteDevicesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FailedDeviceIds: 删除失败的设备ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedDeviceIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -88,7 +87,6 @@ class BatchDeleteDevicesResponse(AbstractModel):
     @property
     def FailedDeviceIds(self):
         """删除失败的设备ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._FailedDeviceIds
@@ -3016,22 +3014,16 @@ class License(AbstractModel):
     def __init__(self):
         r"""
         :param _Count: 该类型的license个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         :param _Status: license状态：0:未绑定；1:已绑定；2:已停服；3:已退费
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _ExpireTime: 到期时间戳：s
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
         :param _Duration: 服务时长：s
-注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: str
         :param _RemainDay: 剩余天数：天
-注意：此字段可能返回 null，表示取不到有效值。
         :type RemainDay: int
         :param _LicenseIds: 该类型的licenseId列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type LicenseIds: list of str
         """
         self._Count = None
@@ -3044,7 +3036,6 @@ class License(AbstractModel):
     @property
     def Count(self):
         """该类型的license个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Count
@@ -3056,7 +3047,6 @@ class License(AbstractModel):
     @property
     def Status(self):
         """license状态：0:未绑定；1:已绑定；2:已停服；3:已退费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -3068,7 +3058,6 @@ class License(AbstractModel):
     @property
     def ExpireTime(self):
         """到期时间戳：s
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExpireTime
@@ -3080,7 +3069,6 @@ class License(AbstractModel):
     @property
     def Duration(self):
         """服务时长：s
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Duration
@@ -3092,7 +3080,6 @@ class License(AbstractModel):
     @property
     def RemainDay(self):
         """剩余天数：天
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RemainDay
@@ -3104,7 +3091,6 @@ class License(AbstractModel):
     @property
     def LicenseIds(self):
         """该类型的licenseId列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._LicenseIds
@@ -3344,10 +3330,8 @@ class ModifyPolicyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FailedInsertIds: 添加关联失败的现场设备ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedInsertIds: list of str
         :param _FailedDeleteIds: 解除关联失败的现场设备ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedDeleteIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3359,7 +3343,6 @@ class ModifyPolicyResponse(AbstractModel):
     @property
     def FailedInsertIds(self):
         """添加关联失败的现场设备ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._FailedInsertIds
@@ -3371,7 +3354,6 @@ class ModifyPolicyResponse(AbstractModel):
     @property
     def FailedDeleteIds(self):
         """解除关联失败的现场设备ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._FailedDeleteIds
@@ -3515,22 +3497,16 @@ class MultiNet(AbstractModel):
     def __init__(self):
         r"""
         :param _NetId: 网卡序号
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetId: int
         :param _NetIp: 网卡IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetIp: str
         :param _Rtt: 时延，单位ms
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rtt: list of int
         :param _Lost: 丢包率，单位%
-注意：此字段可能返回 null，表示取不到有效值。
         :type Lost: list of int
         :param _SendBps: 发送bps，单位kbps
-注意：此字段可能返回 null，表示取不到有效值。
         :type SendBps: list of int
         :param _RecvBps: 接收bps，单位kbps
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecvBps: list of int
         """
         self._NetId = None
@@ -3543,7 +3519,6 @@ class MultiNet(AbstractModel):
     @property
     def NetId(self):
         """网卡序号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NetId
@@ -3555,7 +3530,6 @@ class MultiNet(AbstractModel):
     @property
     def NetIp(self):
         """网卡IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NetIp
@@ -3567,7 +3541,6 @@ class MultiNet(AbstractModel):
     @property
     def Rtt(self):
         """时延，单位ms
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Rtt
@@ -3579,7 +3552,6 @@ class MultiNet(AbstractModel):
     @property
     def Lost(self):
         """丢包率，单位%
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Lost
@@ -3591,7 +3563,6 @@ class MultiNet(AbstractModel):
     @property
     def SendBps(self):
         """发送bps，单位kbps
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._SendBps
@@ -3603,7 +3574,6 @@ class MultiNet(AbstractModel):
     @property
     def RecvBps(self):
         """接收bps，单位kbps
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._RecvBps

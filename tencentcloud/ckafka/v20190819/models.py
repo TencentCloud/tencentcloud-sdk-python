@@ -5305,7 +5305,7 @@ class CreateInstancePostData(AbstractModel):
         :param _DealNames: 订单号列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DealNames: list of str
-        :param _InstanceId: 实例Id，当购买多个实例时，默认返回购买的第一个实例 id
+        :param _InstanceId: ckafka集群实例Id，当购买多个实例时，默认返回购买的第一个实例 id
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _DealNameInstanceIdMapping: 订单和购买实例对应映射列表
@@ -5343,7 +5343,7 @@ class CreateInstancePostData(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id，当购买多个实例时，默认返回购买的第一个实例 id
+        """ckafka集群实例Id，当购买多个实例时，默认返回购买的第一个实例 id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6501,9 +6501,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceName: 实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :param _InstanceName: ckafka集群实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
         :type InstanceName: str
-        :param _VpcId: 创建的实例默认接入点所在的 vpc 对应 vpcId。目前不支持创建基础网络实例，因此该参数必填
+        :param _VpcId: 私有网络Id  创建的实例默认接入点所在的 vpc 对应 vpcId。目前不支持创建基础网络实例，因此该参数必填
         :type VpcId: str
         :param _SubnetId: 子网id。创建实例默认接入点所在的子网对应的子网 id
         :type SubnetId: str
@@ -6539,6 +6539,8 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         :type PublicNetworkMonthly: int
         :param _Tags: 标签
         :type Tags: list of Tag
+        :param _ElasticBandwidthSwitch: 弹性带宽开关 0不开启  1开启（0默认
+        :type ElasticBandwidthSwitch: int
         """
         self._InstanceName = None
         self._VpcId = None
@@ -6559,10 +6561,11 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         self._InstanceNum = None
         self._PublicNetworkMonthly = None
         self._Tags = None
+        self._ElasticBandwidthSwitch = None
 
     @property
     def InstanceName(self):
-        """实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        """ckafka集群实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
         :rtype: str
         """
         return self._InstanceName
@@ -6573,7 +6576,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """创建的实例默认接入点所在的 vpc 对应 vpcId。目前不支持创建基础网络实例，因此该参数必填
+        """私有网络Id  创建的实例默认接入点所在的 vpc 对应 vpcId。目前不支持创建基础网络实例，因此该参数必填
         :rtype: str
         """
         return self._VpcId
@@ -6769,6 +6772,17 @@ class CreatePostPaidInstanceRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def ElasticBandwidthSwitch(self):
+        """弹性带宽开关 0不开启  1开启（0默认
+        :rtype: int
+        """
+        return self._ElasticBandwidthSwitch
+
+    @ElasticBandwidthSwitch.setter
+    def ElasticBandwidthSwitch(self, ElasticBandwidthSwitch):
+        self._ElasticBandwidthSwitch = ElasticBandwidthSwitch
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -6795,6 +6809,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._ElasticBandwidthSwitch = params.get("ElasticBandwidthSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -19676,6 +19676,8 @@ https：使用https协议回源
         :type GmSSLId: str
         :param _Labels: 域名标签
         :type Labels: list of str
+        :param _ProbeStatus: 拨测状态。 0: 禁用拨测, 1: 启用拨测
+        :type ProbeStatus: int
         """
         self._Domain = None
         self._DomainId = None
@@ -19727,6 +19729,7 @@ https：使用https协议回源
         self._GmEncPrivateKey = None
         self._GmSSLId = None
         self._Labels = None
+        self._ProbeStatus = None
 
     @property
     def Domain(self):
@@ -20323,6 +20326,17 @@ https：使用https协议回源
     def Labels(self, Labels):
         self._Labels = Labels
 
+    @property
+    def ProbeStatus(self):
+        """拨测状态。 0: 禁用拨测, 1: 启用拨测
+        :rtype: int
+        """
+        return self._ProbeStatus
+
+    @ProbeStatus.setter
+    def ProbeStatus(self, ProbeStatus):
+        self._ProbeStatus = ProbeStatus
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -20380,6 +20394,7 @@ https：使用https协议回源
         self._GmEncPrivateKey = params.get("GmEncPrivateKey")
         self._GmSSLId = params.get("GmSSLId")
         self._Labels = params.get("Labels")
+        self._ProbeStatus = params.get("ProbeStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

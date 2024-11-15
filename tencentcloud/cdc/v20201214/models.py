@@ -1063,7 +1063,7 @@ class DedicatedClusterInstanceType(AbstractModel):
         :type Fpga: int
         :param _Remark: 机型描述
         :type Remark: str
-        :param _Status: 实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br><li>SOLD_OUT：表示实例已售罄。
+        :param _Status: 实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br></li><li>SOLD_OUT：表示实例已售罄。</li>
         :type Status: str
         """
         self._Zone = None
@@ -1238,7 +1238,7 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def Status(self):
-        """实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br><li>SOLD_OUT：表示实例已售罄。
+        """实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br></li><li>SOLD_OUT：表示实例已售罄。</li>
         :rtype: str
         """
         return self._Status
@@ -1331,25 +1331,18 @@ class DedicatedClusterOrder(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrderType: str
         :param _CheckStatus: 验收状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckStatus: str
         :param _DeliverExpectTime: 交付预期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeliverExpectTime: str
         :param _DeliverFinishTime: 交付实际完成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeliverFinishTime: str
         :param _CheckExpectTime: 验收预期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckExpectTime: str
         :param _CheckFinishTime: 验收实际完成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckFinishTime: str
         :param _OrderSLA: 订单SLA
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrderSLA: str
         :param _OrderPayPlan: 订单支付计划
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrderPayPlan: str
         """
         self._DedicatedClusterId = None
@@ -1612,7 +1605,6 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def CheckStatus(self):
         """验收状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckStatus
@@ -1624,7 +1616,6 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def DeliverExpectTime(self):
         """交付预期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeliverExpectTime
@@ -1636,7 +1627,6 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def DeliverFinishTime(self):
         """交付实际完成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeliverFinishTime
@@ -1648,7 +1638,6 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def CheckExpectTime(self):
         """验收预期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckExpectTime
@@ -1660,7 +1649,6 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def CheckFinishTime(self):
         """验收实际完成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckFinishTime
@@ -1672,7 +1660,6 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def OrderSLA(self):
         """订单SLA
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrderSLA
@@ -1684,7 +1671,6 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def OrderPayPlan(self):
         """订单支付计划
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrderPayPlan
@@ -2535,10 +2521,8 @@ class DescribeDedicatedClusterCbsStatisticsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SetList: 云硬盘仓库信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SetList: list of SetInfo
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2550,7 +2534,6 @@ class DescribeDedicatedClusterCbsStatisticsResponse(AbstractModel):
     @property
     def SetList(self):
         """云硬盘仓库信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SetInfo
         """
         return self._SetList
@@ -2562,7 +2545,6 @@ class DescribeDedicatedClusterCbsStatisticsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -3283,13 +3265,10 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpnConnectionBandwidthData: list of VpngwBandwidthData
         :param _HostDetailInfo: 宿主机资源概览信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostDetailInfo: list of HostDetailInfo
         :param _HostStandbyCount: 热备宿主机数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostStandbyCount: int
         :param _HostNormalCount: 普通宿主机数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostNormalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3378,7 +3357,6 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
     @property
     def HostDetailInfo(self):
         """宿主机资源概览信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HostDetailInfo
         """
         return self._HostDetailInfo
@@ -3390,7 +3368,6 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
     @property
     def HostStandbyCount(self):
         """热备宿主机数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HostStandbyCount
@@ -3402,7 +3379,6 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
     @property
     def HostNormalCount(self):
         """普通宿主机数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HostNormalCount
@@ -4178,10 +4154,8 @@ class DetailData(AbstractModel):
     def __init__(self):
         r"""
         :param _Timestamps: 时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamps: list of float
         :param _Values: 对应的具体值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of float
         """
         self._Timestamps = None
@@ -4190,7 +4164,6 @@ class DetailData(AbstractModel):
     @property
     def Timestamps(self):
         """时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
         return self._Timestamps
@@ -4202,7 +4175,6 @@ class DetailData(AbstractModel):
     @property
     def Values(self):
         """对应的具体值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
         return self._Values
@@ -4233,19 +4205,14 @@ class HostDetailInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _HostTypeFamily: 类型族
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostTypeFamily: str
         :param _CpuTotal: 总CPU
-注意：此字段可能返回 null，表示取不到有效值。
         :type CpuTotal: float
         :param _CpuAvailable: 可用CPU
-注意：此字段可能返回 null，表示取不到有效值。
         :type CpuAvailable: float
         :param _MemTotal: 总内存
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemTotal: float
         :param _MemAvailable: 可用内存
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemAvailable: float
         """
         self._HostTypeFamily = None
@@ -4257,7 +4224,6 @@ class HostDetailInfo(AbstractModel):
     @property
     def HostTypeFamily(self):
         """类型族
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostTypeFamily
@@ -4269,7 +4235,6 @@ class HostDetailInfo(AbstractModel):
     @property
     def CpuTotal(self):
         """总CPU
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._CpuTotal
@@ -4281,7 +4246,6 @@ class HostDetailInfo(AbstractModel):
     @property
     def CpuAvailable(self):
         """可用CPU
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._CpuAvailable
@@ -4293,7 +4257,6 @@ class HostDetailInfo(AbstractModel):
     @property
     def MemTotal(self):
         """总内存
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._MemTotal
@@ -4305,7 +4268,6 @@ class HostDetailInfo(AbstractModel):
     @property
     def MemAvailable(self):
         """可用内存
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._MemAvailable
@@ -4537,25 +4499,18 @@ class HostStatistic(AbstractModel):
         :param _Count: 该规格宿主机的数量
         :type Count: int
         :param _CpuAverage: 平均cpu负载百分比
-注意：此字段可能返回 null，表示取不到有效值。
         :type CpuAverage: float
         :param _MemAverage: 平均内存使用率百分比
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemAverage: float
         :param _NetAverage: 平均网络流量
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetAverage: float
         :param _CpuDetailData: cpu详细监控数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type CpuDetailData: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         :param _MemDetailData: 内存详细数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemDetailData: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         :param _NetRateDetailData: 网络速率详细数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetRateDetailData: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         :param _NetPacketDetailData: 网速包详细数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetPacketDetailData: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         """
         self._HostType = None
@@ -4629,7 +4584,6 @@ class HostStatistic(AbstractModel):
     @property
     def CpuAverage(self):
         """平均cpu负载百分比
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._CpuAverage
@@ -4641,7 +4595,6 @@ class HostStatistic(AbstractModel):
     @property
     def MemAverage(self):
         """平均内存使用率百分比
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._MemAverage
@@ -4653,7 +4606,6 @@ class HostStatistic(AbstractModel):
     @property
     def NetAverage(self):
         """平均网络流量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._NetAverage
@@ -4665,7 +4617,6 @@ class HostStatistic(AbstractModel):
     @property
     def CpuDetailData(self):
         """cpu详细监控数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         """
         return self._CpuDetailData
@@ -4677,7 +4628,6 @@ class HostStatistic(AbstractModel):
     @property
     def MemDetailData(self):
         """内存详细数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         """
         return self._MemDetailData
@@ -4689,7 +4639,6 @@ class HostStatistic(AbstractModel):
     @property
     def NetRateDetailData(self):
         """网络速率详细数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         """
         return self._NetRateDetailData
@@ -4701,7 +4650,6 @@ class HostStatistic(AbstractModel):
     @property
     def NetPacketDetailData(self):
         """网速包详细数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         """
         return self._NetPacketDetailData

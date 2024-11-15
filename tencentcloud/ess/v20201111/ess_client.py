@@ -1434,38 +1434,26 @@ class EssClient(AbstractClient):
     def CreateOrganizationInfoChangeUrl(self, request):
         """此接口（CreateOrganizationInfoChangeUrl）用于创建企业信息变更链接，支持创建企业超管变更链接或企业基础信息变更链接，通过入参ChangeType指定。
 
+         需要企业的<font color="red">现有的超级管理员、法人来点击</font>链接执行变动操作。
 
-        <h3 id="1-企业超管变更">1. 企业超管变更</h3>
+        ### 2. 企业基础信息
+        #### A. 可变动的信息
+        - **企业名称**
+        - **法定代表人姓名**（新法人将收到邀请链接）
+        - **企业地址和所在地**
+        - **企业超级管理员变更** （此变更将企业超级管理员的职责转移给企业的其他员工）
 
-        <p>换成企业的其他员工来当超管</p>
+        #### B. 不可变动的信息
+        - **统一社会信用代码**
+        - **企业主体类型**
 
-        <h3 id="2-企业基础信息变更">2. 企业基础信息变更</h3>
+        ### 3.变更影响
 
-        <h4 id="可以变动">可以变动</h4>
+        如果企业的名字变更将导致下面的影响：
 
-        <ul>
-        <li>企业名称<br>
-        </li>
-        <li>法定代表人姓名(新法人有邀请链接)<br>
-        </li>
-        <li>企业地址和所在地</li>
-        </ul>
-
-        <h4 id="不可变动">不可变动</h4>
-
-        <ul>
-        <li>统一社会信用代码<br>
-        </li>
-        <li>企业主体类型</li>
-        </ul>
-
-        <p>如果企业名称变动会引起下面的变动</p>
-
-        <ul>
-        <li>合同:   老合同不做任何处理,   新发起的合同需要用新的企业名字作为签署方, 否则无法签署</li>
-        <li>印章:   会删除所有的印章所有的机构公章和合同专用章,  然后用新企业名称生成新的机构公章 和合同专用章,  而法人章, 财务专用章和人事专用章不会处理</li>
-        <li>证书:   企业证书会重新请求CA机构用新企业名称生成新的证书</li>
-        </ul>
+        - **合同**：已存在的合同将保持不变。新发起的合同需使用新的企业名称作为签署方，否则无法签署。
+        - **印章**：所有现有的机构公章和合同专用章将被删除，并将根据新的企业名称重新生成。法人章、财务专用章和人事专用章将不做处理。
+        - **证书**：企业证书将重新由CA机构使用新的企业名称生成。
 
         :param request: Request instance for CreateOrganizationInfoChangeUrl.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateOrganizationInfoChangeUrlRequest`
@@ -1488,15 +1476,19 @@ class EssClient(AbstractClient):
 
 
     def CreatePartnerAutoSignAuthUrl(self, request):
-        """创建他方自动签授权链接（他方授权/我方授权），通过该链接可进入小程序进行合作方企业的自动签授权，若授权企业未开通企业自动签，通过该链接会先引导开通本企业自动签。
-        该接口效果同控制台： 企业设置-> 扩展服务 -> 企业自动签署 -> 合作企业方授权
+        """创建一个用于他方自动签授权的链接（可选择他方授权或我方授权）。通过这个链接，合作方企业可以直接进入小程序，进行自动签授权操作。
 
-
+        如果授权企业尚未开通企业自动签功能，该链接还将引导他们首先开通本企业的自动签服务
 
         注:
         1. <font color='red'>所在企业的超管、法人才有权限调用此接口</font>(Operator.UserId 需要传递超管或者法人的UserId)
         2. 已经在授权中或者授权成功的企业，无法重复授权
         3. 授权企业和被授权企业必须都是已认证企业
+        4. <font color='red'>需要授权企业或被授权企业的超管或者法人打开链接</font>走开通逻辑。
+
+
+        **该接口效果同控制台： 企业设置-> 扩展服务 -> 企业自动签署 -> 合作企业方授权**
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/489aa0bf74941469b5e740f428f17c3a.png)
 
         :param request: Request instance for CreatePartnerAutoSignAuthUrl.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreatePartnerAutoSignAuthUrlRequest`

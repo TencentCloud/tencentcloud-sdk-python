@@ -4508,6 +4508,8 @@ class CreateSLInstanceRequest(AbstractModel):
         :type ZoneSettings: list of ZoneSetting
         :param _Tags: 实例要绑定的标签列表。
         :type Tags: list of Tag
+        :param _PrePaySetting: 预付费参数
+        :type PrePaySetting: :class:`tencentcloud.emr.v20190103.models.PrePaySetting`
         """
         self._InstanceName = None
         self._PayMode = None
@@ -4516,6 +4518,7 @@ class CreateSLInstanceRequest(AbstractModel):
         self._NodeType = None
         self._ZoneSettings = None
         self._Tags = None
+        self._PrePaySetting = None
 
     @property
     def InstanceName(self):
@@ -4594,6 +4597,17 @@ class CreateSLInstanceRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def PrePaySetting(self):
+        """预付费参数
+        :rtype: :class:`tencentcloud.emr.v20190103.models.PrePaySetting`
+        """
+        return self._PrePaySetting
+
+    @PrePaySetting.setter
+    def PrePaySetting(self, PrePaySetting):
+        self._PrePaySetting = PrePaySetting
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -4613,6 +4627,9 @@ class CreateSLInstanceRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        if params.get("PrePaySetting") is not None:
+            self._PrePaySetting = PrePaySetting()
+            self._PrePaySetting._deserialize(params.get("PrePaySetting"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9243,6 +9260,8 @@ class DescribeSLInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _InstanceId: 实例字符串标识。
+        :type InstanceId: str
         :param _InstanceName: 实例名称。
         :type InstanceName: str
         :param _PayMode: 实例计费模式。0表示后付费，即按量计费，1表示预付费，即包年包月。
@@ -9258,9 +9277,28 @@ class DescribeSLInstanceResponse(AbstractModel):
         :param _Tags: 实例绑定的标签列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param _ClusterId: 实例数字标识。
+        :type ClusterId: int
+        :param _RegionId: 实例区域ID。
+        :type RegionId: int
+        :param _Zone: 实例主可用区。
+        :type Zone: str
+        :param _ExpireTime: 实例过期时间，后付费返回0000-00-00 00:00:00
+        :type ExpireTime: str
+        :param _IsolateTime: 实例隔离时间，未隔离返回0000-00-00 00:00:00。
+        :type IsolateTime: str
+        :param _CreateTime: 实例创建时间。
+        :type CreateTime: str
+        :param _Status: 实例状态码，-2:  "TERMINATED", 2:   "RUNNING", 14:  "TERMINATING", 19:  "ISOLATING", 22:  "ADJUSTING", 201: "ISOLATED"。
+        :type Status: int
+        :param _AutoRenewFlag: 自动续费标记， 0：表示通知即将过期，但不自动续费 1：表示通知即将过期，而且自动续费 2：表示不通知即将过期，也不自动续费，若业务无续费概念为0
+        :type AutoRenewFlag: int
+        :param _NodeNum: 实例节点总数。
+        :type NodeNum: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._InstanceId = None
         self._InstanceName = None
         self._PayMode = None
         self._DiskType = None
@@ -9268,7 +9306,27 @@ class DescribeSLInstanceResponse(AbstractModel):
         self._NodeType = None
         self._ZoneSettings = None
         self._Tags = None
+        self._ClusterId = None
+        self._RegionId = None
+        self._Zone = None
+        self._ExpireTime = None
+        self._IsolateTime = None
+        self._CreateTime = None
+        self._Status = None
+        self._AutoRenewFlag = None
+        self._NodeNum = None
         self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        """实例字符串标识。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
     @property
     def InstanceName(self):
@@ -9349,6 +9407,105 @@ class DescribeSLInstanceResponse(AbstractModel):
         self._Tags = Tags
 
     @property
+    def ClusterId(self):
+        """实例数字标识。
+        :rtype: int
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def RegionId(self):
+        """实例区域ID。
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def Zone(self):
+        """实例主可用区。
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ExpireTime(self):
+        """实例过期时间，后付费返回0000-00-00 00:00:00
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def IsolateTime(self):
+        """实例隔离时间，未隔离返回0000-00-00 00:00:00。
+        :rtype: str
+        """
+        return self._IsolateTime
+
+    @IsolateTime.setter
+    def IsolateTime(self, IsolateTime):
+        self._IsolateTime = IsolateTime
+
+    @property
+    def CreateTime(self):
+        """实例创建时间。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        """实例状态码，-2:  "TERMINATED", 2:   "RUNNING", 14:  "TERMINATING", 19:  "ISOLATING", 22:  "ADJUSTING", 201: "ISOLATED"。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AutoRenewFlag(self):
+        """自动续费标记， 0：表示通知即将过期，但不自动续费 1：表示通知即将过期，而且自动续费 2：表示不通知即将过期，也不自动续费，若业务无续费概念为0
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def NodeNum(self):
+        """实例节点总数。
+        :rtype: int
+        """
+        return self._NodeNum
+
+    @NodeNum.setter
+    def NodeNum(self, NodeNum):
+        self._NodeNum = NodeNum
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -9361,6 +9518,7 @@ class DescribeSLInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
         self._InstanceName = params.get("InstanceName")
         self._PayMode = params.get("PayMode")
         self._DiskType = params.get("DiskType")
@@ -9378,6 +9536,15 @@ class DescribeSLInstanceResponse(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._ClusterId = params.get("ClusterId")
+        self._RegionId = params.get("RegionId")
+        self._Zone = params.get("Zone")
+        self._ExpireTime = params.get("ExpireTime")
+        self._IsolateTime = params.get("IsolateTime")
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._NodeNum = params.get("NodeNum")
         self._RequestId = params.get("RequestId")
 
 
@@ -21115,6 +21282,61 @@ class PartDetailPriceItem(AbstractModel):
         
 
 
+class Period(AbstractModel):
+    """Serverless HBase包年包月时间
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeSpan: 时间跨度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeSpan: int
+        :param _TimeUnit: 时间单位，"m"代表月。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeUnit: str
+        """
+        self._TimeSpan = None
+        self._TimeUnit = None
+
+    @property
+    def TimeSpan(self):
+        """时间跨度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        """时间单位，"m"代表月。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+
+    def _deserialize(self, params):
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PersistentVolumeContext(AbstractModel):
     """Pod PVC存储方式描述
 
@@ -22782,6 +23004,63 @@ class PreExecuteFileSettings(AbstractModel):
         self._CosSecretKey = params.get("CosSecretKey")
         self._AppId = params.get("AppId")
         self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrePaySetting(AbstractModel):
+    """Serverless HBase 预付费设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Period: 时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Period: :class:`tencentcloud.emr.v20190103.models.Period`
+        :param _AutoRenewFlag: 自动续费标记，0：表示通知即将过期，但不自动续费 1：表示通知即将过期，而且自动续费 2：表示不通知即将过期，也不自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenewFlag: int
+        """
+        self._Period = None
+        self._AutoRenewFlag = None
+
+    @property
+    def Period(self):
+        """时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.emr.v20190103.models.Period`
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def AutoRenewFlag(self):
+        """自动续费标记，0：表示通知即将过期，但不自动续费 1：表示通知即将过期，而且自动续费 2：表示不通知即将过期，也不自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+
+    def _deserialize(self, params):
+        if params.get("Period") is not None:
+            self._Period = Period()
+            self._Period._deserialize(params.get("Period"))
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24528,7 +24807,7 @@ class RunJobFlowResponse(AbstractModel):
 
 
 class SLInstanceInfo(AbstractModel):
-    """EMR Lite HBase 实例信息
+    """Serverless HBase 实例信息
 
     """
 
@@ -24566,6 +24845,12 @@ class SLInstanceInfo(AbstractModel):
         :param _Tags: 实例标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param _AutoRenewFlag: 自动续费标记， 0：表示通知即将过期，但不自动续费 1：表示通知即将过期，而且自动续费 2：表示不通知即将过期，也不自动续费，若业务无续费概念，设置为0
+        :type AutoRenewFlag: int
+        :param _IsolateTime: 隔离时间，未隔离返回0000-00-00 00:00:00。
+        :type IsolateTime: str
+        :param _ExpireTime: 过期时间，后付费返回0000-00-00 00:00:00
+        :type ExpireTime: str
         """
         self._ClusterId = None
         self._Id = None
@@ -24582,6 +24867,9 @@ class SLInstanceInfo(AbstractModel):
         self._PayMode = None
         self._ZoneSettings = None
         self._Tags = None
+        self._AutoRenewFlag = None
+        self._IsolateTime = None
+        self._ExpireTime = None
 
     @property
     def ClusterId(self):
@@ -24750,6 +25038,39 @@ class SLInstanceInfo(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def AutoRenewFlag(self):
+        """自动续费标记， 0：表示通知即将过期，但不自动续费 1：表示通知即将过期，而且自动续费 2：表示不通知即将过期，也不自动续费，若业务无续费概念，设置为0
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def IsolateTime(self):
+        """隔离时间，未隔离返回0000-00-00 00:00:00。
+        :rtype: str
+        """
+        return self._IsolateTime
+
+    @IsolateTime.setter
+    def IsolateTime(self, IsolateTime):
+        self._IsolateTime = IsolateTime
+
+    @property
+    def ExpireTime(self):
+        """过期时间，后付费返回0000-00-00 00:00:00
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -24777,6 +25098,9 @@ class SLInstanceInfo(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._IsolateTime = params.get("IsolateTime")
+        self._ExpireTime = params.get("ExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -9976,9 +9976,15 @@ class InstallInstanceModelRequest(AbstractModel):
         :type InstanceId: str
         :param _UsrCosModelUrlList: 客户上传到cos的模型地址，单次请求限制一个。cos文件为压缩文件，格式包括：zip、tgz和tar.gz
         :type UsrCosModelUrlList: list of str
+        :param _ModelNames: 客户指定安装的模型名称，可为空，默认为模型文件名
+        :type ModelNames: list of str
+        :param _TaskTypes: 模型使用的任务类型，包括：fill_mask, ner, question_answering, text_classification, text_embedding, text_expansion, text_similarity和zero_shot_classification，默认为text_embedding
+        :type TaskTypes: list of str
         """
         self._InstanceId = None
         self._UsrCosModelUrlList = None
+        self._ModelNames = None
+        self._TaskTypes = None
 
     @property
     def InstanceId(self):
@@ -10002,10 +10008,34 @@ class InstallInstanceModelRequest(AbstractModel):
     def UsrCosModelUrlList(self, UsrCosModelUrlList):
         self._UsrCosModelUrlList = UsrCosModelUrlList
 
+    @property
+    def ModelNames(self):
+        """客户指定安装的模型名称，可为空，默认为模型文件名
+        :rtype: list of str
+        """
+        return self._ModelNames
+
+    @ModelNames.setter
+    def ModelNames(self, ModelNames):
+        self._ModelNames = ModelNames
+
+    @property
+    def TaskTypes(self):
+        """模型使用的任务类型，包括：fill_mask, ner, question_answering, text_classification, text_embedding, text_expansion, text_similarity和zero_shot_classification，默认为text_embedding
+        :rtype: list of str
+        """
+        return self._TaskTypes
+
+    @TaskTypes.setter
+    def TaskTypes(self, TaskTypes):
+        self._TaskTypes = TaskTypes
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._UsrCosModelUrlList = params.get("UsrCosModelUrlList")
+        self._ModelNames = params.get("ModelNames")
+        self._TaskTypes = params.get("TaskTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -3394,6 +3394,8 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
         :type ResourceIDs: list of str
         :param _NodeIpType: 拨测节点的IP类型，0-不限，1-IPv4，2-IPv6
         :type NodeIpType: int
+        :param _BatchTasks: 批量任务名-地址
+        :type BatchTasks: list of ProbeTaskBasicConfiguration
         """
         self._TaskIds = None
         self._Nodes = None
@@ -3402,6 +3404,7 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
         self._Cron = None
         self._ResourceIDs = None
         self._NodeIpType = None
+        self._BatchTasks = None
 
     @property
     def TaskIds(self):
@@ -3481,6 +3484,17 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
     def NodeIpType(self, NodeIpType):
         self._NodeIpType = NodeIpType
 
+    @property
+    def BatchTasks(self):
+        """批量任务名-地址
+        :rtype: list of ProbeTaskBasicConfiguration
+        """
+        return self._BatchTasks
+
+    @BatchTasks.setter
+    def BatchTasks(self, BatchTasks):
+        self._BatchTasks = BatchTasks
+
 
     def _deserialize(self, params):
         self._TaskIds = params.get("TaskIds")
@@ -3490,6 +3504,12 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
         self._Cron = params.get("Cron")
         self._ResourceIDs = params.get("ResourceIDs")
         self._NodeIpType = params.get("NodeIpType")
+        if params.get("BatchTasks") is not None:
+            self._BatchTasks = []
+            for item in params.get("BatchTasks"):
+                obj = ProbeTaskBasicConfiguration()
+                obj._deserialize(item)
+                self._BatchTasks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

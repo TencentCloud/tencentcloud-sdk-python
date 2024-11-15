@@ -1792,13 +1792,16 @@ class DeleteRoomMemberRequest(AbstractModel):
         :type DeleteType: int
         :param _BizId: 应用id
         :type BizId: int
-        :param _Uids: 要剔除的用户列表
+        :param _Uids: 要剔除的用户列表（整型）
         :type Uids: list of str
+        :param _StrUids: 要剔除的用户列表（字符串类型）
+        :type StrUids: list of str
         """
         self._RoomId = None
         self._DeleteType = None
         self._BizId = None
         self._Uids = None
+        self._StrUids = None
 
     @property
     def RoomId(self):
@@ -1835,7 +1838,7 @@ class DeleteRoomMemberRequest(AbstractModel):
 
     @property
     def Uids(self):
-        """要剔除的用户列表
+        """要剔除的用户列表（整型）
         :rtype: list of str
         """
         return self._Uids
@@ -1844,12 +1847,24 @@ class DeleteRoomMemberRequest(AbstractModel):
     def Uids(self, Uids):
         self._Uids = Uids
 
+    @property
+    def StrUids(self):
+        """要剔除的用户列表（字符串类型）
+        :rtype: list of str
+        """
+        return self._StrUids
+
+    @StrUids.setter
+    def StrUids(self, StrUids):
+        self._StrUids = StrUids
+
 
     def _deserialize(self, params):
         self._RoomId = params.get("RoomId")
         self._DeleteType = params.get("DeleteType")
         self._BizId = params.get("BizId")
         self._Uids = params.get("Uids")
+        self._StrUids = params.get("StrUids")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
